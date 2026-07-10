@@ -10,15 +10,6 @@ type DataLakeApiBase struct {
 	Pipeline *string `json:"pipeline,omitempty"`
 	// Human-readable label that identifies the source collection for the view.
 	Source *string `json:"source,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DataLakeApiBase) MarshalJSON() ([]byte, error) {
-	type noMethod DataLakeApiBase
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataLakeApiBase instantiates a new DataLakeApiBase object
@@ -71,12 +62,6 @@ func (o *DataLakeApiBase) SetName(v string) {
 	o.Name = &v
 }
 
-// SetNameNil sets Name to an explicit JSON null when marshaled.
-func (o *DataLakeApiBase) SetNameNil() {
-	o.Name = nil
-	o.NullFields = append(o.NullFields, "Name")
-}
-
 // GetPipeline returns the Pipeline field value if set, zero value otherwise
 func (o *DataLakeApiBase) GetPipeline() string {
 	if o == nil || IsNil(o.Pipeline) {
@@ -110,12 +95,6 @@ func (o *DataLakeApiBase) SetPipeline(v string) {
 	o.Pipeline = &v
 }
 
-// SetPipelineNil sets Pipeline to an explicit JSON null when marshaled.
-func (o *DataLakeApiBase) SetPipelineNil() {
-	o.Pipeline = nil
-	o.NullFields = append(o.NullFields, "Pipeline")
-}
-
 // GetSource returns the Source field value if set, zero value otherwise
 func (o *DataLakeApiBase) GetSource() string {
 	if o == nil || IsNil(o.Source) {
@@ -147,10 +126,4 @@ func (o *DataLakeApiBase) HasSource() bool {
 // SetSource gets a reference to the given string and assigns it to the Source field.
 func (o *DataLakeApiBase) SetSource(v string) {
 	o.Source = &v
-}
-
-// SetSourceNil sets Source to an explicit JSON null when marshaled.
-func (o *DataLakeApiBase) SetSourceNil() {
-	o.Source = nil
-	o.NullFields = append(o.NullFields, "Source")
 }

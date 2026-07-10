@@ -10,15 +10,6 @@ type SkuResponse struct {
 	// Unique string that identifies the SKU.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *SkuResponse) MarshalJSON() ([]byte, error) {
-	type noMethod SkuResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSkuResponse instantiates a new SkuResponse object
@@ -71,12 +62,6 @@ func (o *SkuResponse) SetDescription(v string) {
 	o.Description = &v
 }
 
-// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
-func (o *SkuResponse) SetDescriptionNil() {
-	o.Description = nil
-	o.NullFields = append(o.NullFields, "Description")
-}
-
 // GetId returns the Id field value if set, zero value otherwise
 func (o *SkuResponse) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -108,10 +93,4 @@ func (o *SkuResponse) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *SkuResponse) SetId(v string) {
 	o.Id = &v
-}
-
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *SkuResponse) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
 }

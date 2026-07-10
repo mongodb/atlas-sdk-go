@@ -6,15 +6,6 @@ package admin
 type AddUserToTeam struct {
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user.
 	Id string `json:"id"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *AddUserToTeam) MarshalJSON() ([]byte, error) {
-	type noMethod AddUserToTeam
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAddUserToTeam instantiates a new AddUserToTeam object

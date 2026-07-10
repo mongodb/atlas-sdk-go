@@ -11,15 +11,6 @@ type StreamsPublicPrivateLinkNetworkingAccess struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Selected networking type. Either `PUBLIC` or `PRIVATE_LINK`. Defaults to `PUBLIC`. For AWS, Azure, and GCP connections, use `PRIVATE_LINK` for AWS PrivateLink, Azure Private Link, or GCP Private Service Connect (PSC) respectively.
 	Type *string `json:"type,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsPublicPrivateLinkNetworkingAccess) MarshalJSON() ([]byte, error) {
-	type noMethod StreamsPublicPrivateLinkNetworkingAccess
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsPublicPrivateLinkNetworkingAccess instantiates a new StreamsPublicPrivateLinkNetworkingAccess object
@@ -70,12 +61,6 @@ func (o *StreamsPublicPrivateLinkNetworkingAccess) HasConnectionId() bool {
 // SetConnectionId gets a reference to the given string and assigns it to the ConnectionId field.
 func (o *StreamsPublicPrivateLinkNetworkingAccess) SetConnectionId(v string) {
 	o.ConnectionId = &v
-}
-
-// SetConnectionIdNil sets ConnectionId to an explicit JSON null when marshaled.
-func (o *StreamsPublicPrivateLinkNetworkingAccess) SetConnectionIdNil() {
-	o.ConnectionId = nil
-	o.NullFields = append(o.NullFields, "ConnectionId")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -142,10 +127,4 @@ func (o *StreamsPublicPrivateLinkNetworkingAccess) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *StreamsPublicPrivateLinkNetworkingAccess) SetType(v string) {
 	o.Type = &v
-}
-
-// SetTypeNil sets Type to an explicit JSON null when marshaled.
-func (o *StreamsPublicPrivateLinkNetworkingAccess) SetTypeNil() {
-	o.Type = nil
-	o.NullFields = append(o.NullFields, "Type")
 }

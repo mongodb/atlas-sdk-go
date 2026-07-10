@@ -22,15 +22,6 @@ type PerformanceAdvisorShape struct {
 	// List that contains specific about individual queries.
 	// Read only field.
 	Operations *[]PerformanceAdvisorOperation `json:"operations,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PerformanceAdvisorShape) MarshalJSON() ([]byte, error) {
-	type noMethod PerformanceAdvisorShape
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPerformanceAdvisorShape instantiates a new PerformanceAdvisorShape object
@@ -83,12 +74,6 @@ func (o *PerformanceAdvisorShape) SetAvgMs(v int64) {
 	o.AvgMs = &v
 }
 
-// SetAvgMsNil sets AvgMs to an explicit JSON null when marshaled.
-func (o *PerformanceAdvisorShape) SetAvgMsNil() {
-	o.AvgMs = nil
-	o.NullFields = append(o.NullFields, "AvgMs")
-}
-
 // GetCount returns the Count field value if set, zero value otherwise
 func (o *PerformanceAdvisorShape) GetCount() int64 {
 	if o == nil || IsNil(o.Count) {
@@ -120,12 +105,6 @@ func (o *PerformanceAdvisorShape) HasCount() bool {
 // SetCount gets a reference to the given int64 and assigns it to the Count field.
 func (o *PerformanceAdvisorShape) SetCount(v int64) {
 	o.Count = &v
-}
-
-// SetCountNil sets Count to an explicit JSON null when marshaled.
-func (o *PerformanceAdvisorShape) SetCountNil() {
-	o.Count = nil
-	o.NullFields = append(o.NullFields, "Count")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -161,12 +140,6 @@ func (o *PerformanceAdvisorShape) SetId(v string) {
 	o.Id = &v
 }
 
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *PerformanceAdvisorShape) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
-}
-
 // GetInefficiencyScore returns the InefficiencyScore field value if set, zero value otherwise
 func (o *PerformanceAdvisorShape) GetInefficiencyScore() int64 {
 	if o == nil || IsNil(o.InefficiencyScore) {
@@ -200,12 +173,6 @@ func (o *PerformanceAdvisorShape) SetInefficiencyScore(v int64) {
 	o.InefficiencyScore = &v
 }
 
-// SetInefficiencyScoreNil sets InefficiencyScore to an explicit JSON null when marshaled.
-func (o *PerformanceAdvisorShape) SetInefficiencyScoreNil() {
-	o.InefficiencyScore = nil
-	o.NullFields = append(o.NullFields, "InefficiencyScore")
-}
-
 // GetNamespace returns the Namespace field value if set, zero value otherwise
 func (o *PerformanceAdvisorShape) GetNamespace() string {
 	if o == nil || IsNil(o.Namespace) {
@@ -237,12 +204,6 @@ func (o *PerformanceAdvisorShape) HasNamespace() bool {
 // SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *PerformanceAdvisorShape) SetNamespace(v string) {
 	o.Namespace = &v
-}
-
-// SetNamespaceNil sets Namespace to an explicit JSON null when marshaled.
-func (o *PerformanceAdvisorShape) SetNamespaceNil() {
-	o.Namespace = nil
-	o.NullFields = append(o.NullFields, "Namespace")
 }
 
 // GetOperations returns the Operations field value if set, zero value otherwise

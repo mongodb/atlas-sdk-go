@@ -10,15 +10,6 @@ type MeasurementDiskPartition struct {
 	// Human-readable label of the disk or partition to which the measurements apply.
 	// Read only field.
 	PartitionName *string `json:"partitionName,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *MeasurementDiskPartition) MarshalJSON() ([]byte, error) {
-	type noMethod MeasurementDiskPartition
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewMeasurementDiskPartition instantiates a new MeasurementDiskPartition object
@@ -102,10 +93,4 @@ func (o *MeasurementDiskPartition) HasPartitionName() bool {
 // SetPartitionName gets a reference to the given string and assigns it to the PartitionName field.
 func (o *MeasurementDiskPartition) SetPartitionName(v string) {
 	o.PartitionName = &v
-}
-
-// SetPartitionNameNil sets PartitionName to an explicit JSON null when marshaled.
-func (o *MeasurementDiskPartition) SetPartitionNameNil() {
-	o.PartitionName = nil
-	o.NullFields = append(o.NullFields, "PartitionName")
 }

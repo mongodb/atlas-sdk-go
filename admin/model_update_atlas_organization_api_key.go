@@ -8,15 +8,6 @@ type UpdateAtlasOrganizationApiKey struct {
 	Desc *string `json:"desc,omitempty"`
 	// List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this organization.
 	Roles *[]string `json:"roles,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *UpdateAtlasOrganizationApiKey) MarshalJSON() ([]byte, error) {
-	type noMethod UpdateAtlasOrganizationApiKey
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewUpdateAtlasOrganizationApiKey instantiates a new UpdateAtlasOrganizationApiKey object
@@ -67,12 +58,6 @@ func (o *UpdateAtlasOrganizationApiKey) HasDesc() bool {
 // SetDesc gets a reference to the given string and assigns it to the Desc field.
 func (o *UpdateAtlasOrganizationApiKey) SetDesc(v string) {
 	o.Desc = &v
-}
-
-// SetDescNil sets Desc to an explicit JSON null when marshaled.
-func (o *UpdateAtlasOrganizationApiKey) SetDescNil() {
-	o.Desc = nil
-	o.NullFields = append(o.NullFields, "Desc")
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise

@@ -8,15 +8,6 @@ type UserScope struct {
 	Name string `json:"name"`
 	// Category of resource that this database user can access.
 	Type string `json:"type"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *UserScope) MarshalJSON() ([]byte, error) {
-	type noMethod UserScope
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewUserScope instantiates a new UserScope object

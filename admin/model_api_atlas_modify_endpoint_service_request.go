@@ -8,15 +8,6 @@ type ApiAtlasModifyEndpointServiceRequest struct {
 	CloudProvider string `json:"cloudProvider"`
 	// List of regions that the endpoint service supports. Native cross region support is implemented for AWS only.
 	SupportedRemoteRegions *[]string `json:"supportedRemoteRegions,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiAtlasModifyEndpointServiceRequest) MarshalJSON() ([]byte, error) {
-	type noMethod ApiAtlasModifyEndpointServiceRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasModifyEndpointServiceRequest instantiates a new ApiAtlasModifyEndpointServiceRequest object

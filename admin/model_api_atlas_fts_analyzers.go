@@ -11,15 +11,6 @@ type ApiAtlasFTSAnalyzers struct {
 	// Filter that performs operations such as:  - Stemming, which reduces related words, such as \"talking\", \"talked\", and \"talks\" to their root word \"talk\".  - Redaction, the removal of sensitive information from public documents.
 	TokenFilters *[]any                        `json:"tokenFilters,omitempty"`
 	Tokenizer    ApiAtlasFTSAnalyzersTokenizer `json:"tokenizer"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiAtlasFTSAnalyzers) MarshalJSON() ([]byte, error) {
-	type noMethod ApiAtlasFTSAnalyzers
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasFTSAnalyzers instantiates a new ApiAtlasFTSAnalyzers object

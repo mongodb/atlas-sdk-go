@@ -9,15 +9,6 @@ type ClusterStatus struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ClusterStatus) MarshalJSON() ([]byte, error) {
-	type noMethod ClusterStatus
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterStatus instantiates a new ClusterStatus object
@@ -68,12 +59,6 @@ func (o *ClusterStatus) HasChangeStatus() bool {
 // SetChangeStatus gets a reference to the given string and assigns it to the ChangeStatus field.
 func (o *ClusterStatus) SetChangeStatus(v string) {
 	o.ChangeStatus = &v
-}
-
-// SetChangeStatusNil sets ChangeStatus to an explicit JSON null when marshaled.
-func (o *ClusterStatus) SetChangeStatusNil() {
-	o.ChangeStatus = nil
-	o.NullFields = append(o.NullFields, "ChangeStatus")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise

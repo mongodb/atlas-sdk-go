@@ -35,15 +35,6 @@ type CloudProviderContainer struct {
 	// Unique string that identifies the MongoDB Cloud VPC on AWS.
 	// Read only field.
 	VpcId *string `json:"vpcId,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *CloudProviderContainer) MarshalJSON() ([]byte, error) {
-	type noMethod CloudProviderContainer
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudProviderContainer instantiates a new CloudProviderContainer object
@@ -96,12 +87,6 @@ func (o *CloudProviderContainer) SetId(v string) {
 	o.Id = &v
 }
 
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *CloudProviderContainer) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
-}
-
 // GetProviderName returns the ProviderName field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetProviderName() string {
 	if o == nil || IsNil(o.ProviderName) {
@@ -133,12 +118,6 @@ func (o *CloudProviderContainer) HasProviderName() bool {
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *CloudProviderContainer) SetProviderName(v string) {
 	o.ProviderName = &v
-}
-
-// SetProviderNameNil sets ProviderName to an explicit JSON null when marshaled.
-func (o *CloudProviderContainer) SetProviderNameNil() {
-	o.ProviderName = nil
-	o.NullFields = append(o.NullFields, "ProviderName")
 }
 
 // GetProvisioned returns the Provisioned field value if set, zero value otherwise
@@ -174,12 +153,6 @@ func (o *CloudProviderContainer) SetProvisioned(v bool) {
 	o.Provisioned = &v
 }
 
-// SetProvisionedNil sets Provisioned to an explicit JSON null when marshaled.
-func (o *CloudProviderContainer) SetProvisionedNil() {
-	o.Provisioned = nil
-	o.NullFields = append(o.NullFields, "Provisioned")
-}
-
 // GetAtlasCidrBlock returns the AtlasCidrBlock field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetAtlasCidrBlock() string {
 	if o == nil || IsNil(o.AtlasCidrBlock) {
@@ -211,12 +184,6 @@ func (o *CloudProviderContainer) HasAtlasCidrBlock() bool {
 // SetAtlasCidrBlock gets a reference to the given string and assigns it to the AtlasCidrBlock field.
 func (o *CloudProviderContainer) SetAtlasCidrBlock(v string) {
 	o.AtlasCidrBlock = &v
-}
-
-// SetAtlasCidrBlockNil sets AtlasCidrBlock to an explicit JSON null when marshaled.
-func (o *CloudProviderContainer) SetAtlasCidrBlockNil() {
-	o.AtlasCidrBlock = nil
-	o.NullFields = append(o.NullFields, "AtlasCidrBlock")
 }
 
 // GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise
@@ -252,12 +219,6 @@ func (o *CloudProviderContainer) SetAzureSubscriptionId(v string) {
 	o.AzureSubscriptionId = &v
 }
 
-// SetAzureSubscriptionIdNil sets AzureSubscriptionId to an explicit JSON null when marshaled.
-func (o *CloudProviderContainer) SetAzureSubscriptionIdNil() {
-	o.AzureSubscriptionId = nil
-	o.NullFields = append(o.NullFields, "AzureSubscriptionId")
-}
-
 // GetRegion returns the Region field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
@@ -289,12 +250,6 @@ func (o *CloudProviderContainer) HasRegion() bool {
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *CloudProviderContainer) SetRegion(v string) {
 	o.Region = &v
-}
-
-// SetRegionNil sets Region to an explicit JSON null when marshaled.
-func (o *CloudProviderContainer) SetRegionNil() {
-	o.Region = nil
-	o.NullFields = append(o.NullFields, "Region")
 }
 
 // GetVnetName returns the VnetName field value if set, zero value otherwise
@@ -330,12 +285,6 @@ func (o *CloudProviderContainer) SetVnetName(v string) {
 	o.VnetName = &v
 }
 
-// SetVnetNameNil sets VnetName to an explicit JSON null when marshaled.
-func (o *CloudProviderContainer) SetVnetNameNil() {
-	o.VnetName = nil
-	o.NullFields = append(o.NullFields, "VnetName")
-}
-
 // GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetGcpProjectId() string {
 	if o == nil || IsNil(o.GcpProjectId) {
@@ -369,12 +318,6 @@ func (o *CloudProviderContainer) SetGcpProjectId(v string) {
 	o.GcpProjectId = &v
 }
 
-// SetGcpProjectIdNil sets GcpProjectId to an explicit JSON null when marshaled.
-func (o *CloudProviderContainer) SetGcpProjectIdNil() {
-	o.GcpProjectId = nil
-	o.NullFields = append(o.NullFields, "GcpProjectId")
-}
-
 // GetNetworkName returns the NetworkName field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetNetworkName() string {
 	if o == nil || IsNil(o.NetworkName) {
@@ -406,12 +349,6 @@ func (o *CloudProviderContainer) HasNetworkName() bool {
 // SetNetworkName gets a reference to the given string and assigns it to the NetworkName field.
 func (o *CloudProviderContainer) SetNetworkName(v string) {
 	o.NetworkName = &v
-}
-
-// SetNetworkNameNil sets NetworkName to an explicit JSON null when marshaled.
-func (o *CloudProviderContainer) SetNetworkNameNil() {
-	o.NetworkName = nil
-	o.NullFields = append(o.NullFields, "NetworkName")
 }
 
 // GetRegions returns the Regions field value if set, zero value otherwise
@@ -480,12 +417,6 @@ func (o *CloudProviderContainer) SetRegionName(v string) {
 	o.RegionName = &v
 }
 
-// SetRegionNameNil sets RegionName to an explicit JSON null when marshaled.
-func (o *CloudProviderContainer) SetRegionNameNil() {
-	o.RegionName = nil
-	o.NullFields = append(o.NullFields, "RegionName")
-}
-
 // GetVpcId returns the VpcId field value if set, zero value otherwise
 func (o *CloudProviderContainer) GetVpcId() string {
 	if o == nil || IsNil(o.VpcId) {
@@ -517,10 +448,4 @@ func (o *CloudProviderContainer) HasVpcId() bool {
 // SetVpcId gets a reference to the given string and assigns it to the VpcId field.
 func (o *CloudProviderContainer) SetVpcId(v string) {
 	o.VpcId = &v
-}
-
-// SetVpcIdNil sets VpcId to an explicit JSON null when marshaled.
-func (o *CloudProviderContainer) SetVpcIdNil() {
-	o.VpcId = nil
-	o.NullFields = append(o.NullFields, "VpcId")
 }

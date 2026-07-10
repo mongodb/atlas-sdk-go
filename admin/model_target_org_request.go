@@ -6,15 +6,6 @@ package admin
 type TargetOrgRequest struct {
 	// IP address access list entries associated with the API key.
 	AccessListIps *[]string `json:"accessListIps,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *TargetOrgRequest) MarshalJSON() ([]byte, error) {
-	type noMethod TargetOrgRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewTargetOrgRequest instantiates a new TargetOrgRequest object

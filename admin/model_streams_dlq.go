@@ -13,15 +13,6 @@ type StreamsDLQ struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsDLQ) MarshalJSON() ([]byte, error) {
-	type noMethod StreamsDLQ
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsDLQ instantiates a new StreamsDLQ object
@@ -74,12 +65,6 @@ func (o *StreamsDLQ) SetColl(v string) {
 	o.Coll = &v
 }
 
-// SetCollNil sets Coll to an explicit JSON null when marshaled.
-func (o *StreamsDLQ) SetCollNil() {
-	o.Coll = nil
-	o.NullFields = append(o.NullFields, "Coll")
-}
-
 // GetConnectionName returns the ConnectionName field value if set, zero value otherwise
 func (o *StreamsDLQ) GetConnectionName() string {
 	if o == nil || IsNil(o.ConnectionName) {
@@ -113,12 +98,6 @@ func (o *StreamsDLQ) SetConnectionName(v string) {
 	o.ConnectionName = &v
 }
 
-// SetConnectionNameNil sets ConnectionName to an explicit JSON null when marshaled.
-func (o *StreamsDLQ) SetConnectionNameNil() {
-	o.ConnectionName = nil
-	o.NullFields = append(o.NullFields, "ConnectionName")
-}
-
 // GetDb returns the Db field value if set, zero value otherwise
 func (o *StreamsDLQ) GetDb() string {
 	if o == nil || IsNil(o.Db) {
@@ -150,12 +129,6 @@ func (o *StreamsDLQ) HasDb() bool {
 // SetDb gets a reference to the given string and assigns it to the Db field.
 func (o *StreamsDLQ) SetDb(v string) {
 	o.Db = &v
-}
-
-// SetDbNil sets Db to an explicit JSON null when marshaled.
-func (o *StreamsDLQ) SetDbNil() {
-	o.Db = nil
-	o.NullFields = append(o.NullFields, "Db")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise

@@ -10,15 +10,6 @@ type ServerlessInstanceDescriptionConnectionStrings struct {
 	// Public connection string that you can use to connect to this serverless instance. This connection string uses the `mongodb+srv://` protocol.
 	// Read only field.
 	StandardSrv *string `json:"standardSrv,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ServerlessInstanceDescriptionConnectionStrings) MarshalJSON() ([]byte, error) {
-	type noMethod ServerlessInstanceDescriptionConnectionStrings
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewServerlessInstanceDescriptionConnectionStrings instantiates a new ServerlessInstanceDescriptionConnectionStrings object
@@ -102,10 +93,4 @@ func (o *ServerlessInstanceDescriptionConnectionStrings) HasStandardSrv() bool {
 // SetStandardSrv gets a reference to the given string and assigns it to the StandardSrv field.
 func (o *ServerlessInstanceDescriptionConnectionStrings) SetStandardSrv(v string) {
 	o.StandardSrv = &v
-}
-
-// SetStandardSrvNil sets StandardSrv to an explicit JSON null when marshaled.
-func (o *ServerlessInstanceDescriptionConnectionStrings) SetStandardSrvNil() {
-	o.StandardSrv = nil
-	o.NullFields = append(o.NullFields, "StandardSrv")
 }

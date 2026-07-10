@@ -21,15 +21,6 @@ type DataLakeTenant struct {
 	// Read only field.
 	State   *string          `json:"state,omitempty"`
 	Storage *DataLakeStorage `json:"storage,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DataLakeTenant) MarshalJSON() ([]byte, error) {
-	type noMethod DataLakeTenant
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataLakeTenant instantiates a new DataLakeTenant object
@@ -82,12 +73,6 @@ func (o *DataLakeTenant) SetCloudProviderConfig(v DataLakeCloudProviderConfig) {
 	o.CloudProviderConfig = &v
 }
 
-// SetCloudProviderConfigNil sets CloudProviderConfig to an explicit JSON null when marshaled.
-func (o *DataLakeTenant) SetCloudProviderConfigNil() {
-	o.CloudProviderConfig = nil
-	o.NullFields = append(o.NullFields, "CloudProviderConfig")
-}
-
 // GetDataProcessRegion returns the DataProcessRegion field value if set, zero value otherwise
 func (o *DataLakeTenant) GetDataProcessRegion() DataLakeDataProcessRegion {
 	if o == nil || IsNil(o.DataProcessRegion) {
@@ -121,12 +106,6 @@ func (o *DataLakeTenant) SetDataProcessRegion(v DataLakeDataProcessRegion) {
 	o.DataProcessRegion = &v
 }
 
-// SetDataProcessRegionNil sets DataProcessRegion to an explicit JSON null when marshaled.
-func (o *DataLakeTenant) SetDataProcessRegionNil() {
-	o.DataProcessRegion = nil
-	o.NullFields = append(o.NullFields, "DataProcessRegion")
-}
-
 // GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *DataLakeTenant) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
@@ -158,12 +137,6 @@ func (o *DataLakeTenant) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *DataLakeTenant) SetGroupId(v string) {
 	o.GroupId = &v
-}
-
-// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
-func (o *DataLakeTenant) SetGroupIdNil() {
-	o.GroupId = nil
-	o.NullFields = append(o.NullFields, "GroupId")
 }
 
 // GetHostnames returns the Hostnames field value if set, zero value otherwise
@@ -232,12 +205,6 @@ func (o *DataLakeTenant) SetName(v string) {
 	o.Name = &v
 }
 
-// SetNameNil sets Name to an explicit JSON null when marshaled.
-func (o *DataLakeTenant) SetNameNil() {
-	o.Name = nil
-	o.NullFields = append(o.NullFields, "Name")
-}
-
 // GetPrivateEndpointHostnames returns the PrivateEndpointHostnames field value if set, zero value otherwise
 func (o *DataLakeTenant) GetPrivateEndpointHostnames() []PrivateEndpointHostname {
 	if o == nil || IsNil(o.PrivateEndpointHostnames) {
@@ -304,12 +271,6 @@ func (o *DataLakeTenant) SetState(v string) {
 	o.State = &v
 }
 
-// SetStateNil sets State to an explicit JSON null when marshaled.
-func (o *DataLakeTenant) SetStateNil() {
-	o.State = nil
-	o.NullFields = append(o.NullFields, "State")
-}
-
 // GetStorage returns the Storage field value if set, zero value otherwise
 func (o *DataLakeTenant) GetStorage() DataLakeStorage {
 	if o == nil || IsNil(o.Storage) {
@@ -341,10 +302,4 @@ func (o *DataLakeTenant) HasStorage() bool {
 // SetStorage gets a reference to the given DataLakeStorage and assigns it to the Storage field.
 func (o *DataLakeTenant) SetStorage(v DataLakeStorage) {
 	o.Storage = &v
-}
-
-// SetStorageNil sets Storage to an explicit JSON null when marshaled.
-func (o *DataLakeTenant) SetStorageNil() {
-	o.Storage = nil
-	o.NullFields = append(o.NullFields, "Storage")
 }

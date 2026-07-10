@@ -8,15 +8,6 @@ type TriggerIngestionPipelineRequest struct {
 	// Unique 24-hexadecimal character string that identifies the snapshot.
 	// Write only field.
 	SnapshotId string `json:"snapshotId"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *TriggerIngestionPipelineRequest) MarshalJSON() ([]byte, error) {
-	type noMethod TriggerIngestionPipelineRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewTriggerIngestionPipelineRequest instantiates a new TriggerIngestionPipelineRequest object
@@ -68,12 +59,6 @@ func (o *TriggerIngestionPipelineRequest) HasDatasetRetentionPolicy() bool {
 // SetDatasetRetentionPolicy gets a reference to the given DatasetRetentionPolicy and assigns it to the DatasetRetentionPolicy field.
 func (o *TriggerIngestionPipelineRequest) SetDatasetRetentionPolicy(v DatasetRetentionPolicy) {
 	o.DatasetRetentionPolicy = &v
-}
-
-// SetDatasetRetentionPolicyNil sets DatasetRetentionPolicy to an explicit JSON null when marshaled.
-func (o *TriggerIngestionPipelineRequest) SetDatasetRetentionPolicyNil() {
-	o.DatasetRetentionPolicy = nil
-	o.NullFields = append(o.NullFields, "DatasetRetentionPolicy")
 }
 
 // GetSnapshotId returns the SnapshotId field value

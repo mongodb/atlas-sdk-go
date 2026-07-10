@@ -7,15 +7,6 @@ type ClusterAutoScalingSettings struct {
 	Compute *ClusterComputeAutoScaling `json:"compute,omitempty"`
 	// Flag that indicates whether someone enabled disk auto-scaling for this cluster.
 	DiskGBEnabled *bool `json:"diskGBEnabled,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ClusterAutoScalingSettings) MarshalJSON() ([]byte, error) {
-	type noMethod ClusterAutoScalingSettings
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterAutoScalingSettings instantiates a new ClusterAutoScalingSettings object
@@ -72,12 +63,6 @@ func (o *ClusterAutoScalingSettings) SetCompute(v ClusterComputeAutoScaling) {
 	o.Compute = &v
 }
 
-// SetComputeNil sets Compute to an explicit JSON null when marshaled.
-func (o *ClusterAutoScalingSettings) SetComputeNil() {
-	o.Compute = nil
-	o.NullFields = append(o.NullFields, "Compute")
-}
-
 // GetDiskGBEnabled returns the DiskGBEnabled field value if set, zero value otherwise
 func (o *ClusterAutoScalingSettings) GetDiskGBEnabled() bool {
 	if o == nil || IsNil(o.DiskGBEnabled) {
@@ -109,10 +94,4 @@ func (o *ClusterAutoScalingSettings) HasDiskGBEnabled() bool {
 // SetDiskGBEnabled gets a reference to the given bool and assigns it to the DiskGBEnabled field.
 func (o *ClusterAutoScalingSettings) SetDiskGBEnabled(v bool) {
 	o.DiskGBEnabled = &v
-}
-
-// SetDiskGBEnabledNil sets DiskGBEnabled to an explicit JSON null when marshaled.
-func (o *ClusterAutoScalingSettings) SetDiskGBEnabledNil() {
-	o.DiskGBEnabled = nil
-	o.NullFields = append(o.NullFields, "DiskGBEnabled")
 }

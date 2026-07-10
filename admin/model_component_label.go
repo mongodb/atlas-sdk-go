@@ -8,15 +8,6 @@ type ComponentLabel struct {
 	Key *string `json:"key,omitempty"`
 	// Value set to the Key applied to tag and categorize this component.
 	Value *string `json:"value,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ComponentLabel) MarshalJSON() ([]byte, error) {
-	type noMethod ComponentLabel
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewComponentLabel instantiates a new ComponentLabel object
@@ -69,12 +60,6 @@ func (o *ComponentLabel) SetKey(v string) {
 	o.Key = &v
 }
 
-// SetKeyNil sets Key to an explicit JSON null when marshaled.
-func (o *ComponentLabel) SetKeyNil() {
-	o.Key = nil
-	o.NullFields = append(o.NullFields, "Key")
-}
-
 // GetValue returns the Value field value if set, zero value otherwise
 func (o *ComponentLabel) GetValue() string {
 	if o == nil || IsNil(o.Value) {
@@ -106,10 +91,4 @@ func (o *ComponentLabel) HasValue() bool {
 // SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *ComponentLabel) SetValue(v string) {
 	o.Value = &v
-}
-
-// SetValueNil sets Value to an explicit JSON null when marshaled.
-func (o *ComponentLabel) SetValueNil() {
-	o.Value = nil
-	o.NullFields = append(o.NullFields, "Value")
 }

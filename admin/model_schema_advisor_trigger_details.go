@@ -10,15 +10,6 @@ type SchemaAdvisorTriggerDetails struct {
 	// Type of trigger.
 	// Read only field.
 	TriggerType *string `json:"triggerType,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *SchemaAdvisorTriggerDetails) MarshalJSON() ([]byte, error) {
-	type noMethod SchemaAdvisorTriggerDetails
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSchemaAdvisorTriggerDetails instantiates a new SchemaAdvisorTriggerDetails object
@@ -71,12 +62,6 @@ func (o *SchemaAdvisorTriggerDetails) SetDescription(v string) {
 	o.Description = &v
 }
 
-// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
-func (o *SchemaAdvisorTriggerDetails) SetDescriptionNil() {
-	o.Description = nil
-	o.NullFields = append(o.NullFields, "Description")
-}
-
 // GetTriggerType returns the TriggerType field value if set, zero value otherwise
 func (o *SchemaAdvisorTriggerDetails) GetTriggerType() string {
 	if o == nil || IsNil(o.TriggerType) {
@@ -108,10 +93,4 @@ func (o *SchemaAdvisorTriggerDetails) HasTriggerType() bool {
 // SetTriggerType gets a reference to the given string and assigns it to the TriggerType field.
 func (o *SchemaAdvisorTriggerDetails) SetTriggerType(v string) {
 	o.TriggerType = &v
-}
-
-// SetTriggerTypeNil sets TriggerType to an explicit JSON null when marshaled.
-func (o *SchemaAdvisorTriggerDetails) SetTriggerTypeNil() {
-	o.TriggerType = nil
-	o.NullFields = append(o.NullFields, "TriggerType")
 }

@@ -8,15 +8,6 @@ type GroupRole struct {
 	GroupId *string `json:"groupId,omitempty"`
 	// Human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific API key, MongoDB Cloud user, or MongoDB Cloud team. These roles include project-level roles.
 	GroupRole *string `json:"groupRole,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *GroupRole) MarshalJSON() ([]byte, error) {
-	type noMethod GroupRole
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGroupRole instantiates a new GroupRole object
@@ -69,12 +60,6 @@ func (o *GroupRole) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
-func (o *GroupRole) SetGroupIdNil() {
-	o.GroupId = nil
-	o.NullFields = append(o.NullFields, "GroupId")
-}
-
 // GetGroupRole returns the GroupRole field value if set, zero value otherwise
 func (o *GroupRole) GetGroupRole() string {
 	if o == nil || IsNil(o.GroupRole) {
@@ -106,10 +91,4 @@ func (o *GroupRole) HasGroupRole() bool {
 // SetGroupRole gets a reference to the given string and assigns it to the GroupRole field.
 func (o *GroupRole) SetGroupRole(v string) {
 	o.GroupRole = &v
-}
-
-// SetGroupRoleNil sets GroupRole to an explicit JSON null when marshaled.
-func (o *GroupRole) SetGroupRoleNil() {
-	o.GroupRole = nil
-	o.NullFields = append(o.NullFields, "GroupRole")
 }

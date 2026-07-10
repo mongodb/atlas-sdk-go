@@ -6,15 +6,6 @@ package admin
 type ControlPlaneIPAddresses struct {
 	Inbound  *InboundControlPlaneCloudProviderIPAddresses  `json:"inbound,omitempty"`
 	Outbound *OutboundControlPlaneCloudProviderIPAddresses `json:"outbound,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ControlPlaneIPAddresses) MarshalJSON() ([]byte, error) {
-	type noMethod ControlPlaneIPAddresses
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewControlPlaneIPAddresses instantiates a new ControlPlaneIPAddresses object
@@ -67,12 +58,6 @@ func (o *ControlPlaneIPAddresses) SetInbound(v InboundControlPlaneCloudProviderI
 	o.Inbound = &v
 }
 
-// SetInboundNil sets Inbound to an explicit JSON null when marshaled.
-func (o *ControlPlaneIPAddresses) SetInboundNil() {
-	o.Inbound = nil
-	o.NullFields = append(o.NullFields, "Inbound")
-}
-
 // GetOutbound returns the Outbound field value if set, zero value otherwise
 func (o *ControlPlaneIPAddresses) GetOutbound() OutboundControlPlaneCloudProviderIPAddresses {
 	if o == nil || IsNil(o.Outbound) {
@@ -104,10 +89,4 @@ func (o *ControlPlaneIPAddresses) HasOutbound() bool {
 // SetOutbound gets a reference to the given OutboundControlPlaneCloudProviderIPAddresses and assigns it to the Outbound field.
 func (o *ControlPlaneIPAddresses) SetOutbound(v OutboundControlPlaneCloudProviderIPAddresses) {
 	o.Outbound = &v
-}
-
-// SetOutboundNil sets Outbound to an explicit JSON null when marshaled.
-func (o *ControlPlaneIPAddresses) SetOutboundNil() {
-	o.Outbound = nil
-	o.NullFields = append(o.NullFields, "Outbound")
 }

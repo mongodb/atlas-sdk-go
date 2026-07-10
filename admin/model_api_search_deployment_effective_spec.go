@@ -16,15 +16,6 @@ type ApiSearchDeploymentEffectiveSpec struct {
 	// Cloud provider region where Search Nodes are provisioned.
 	// Read only field.
 	RegionName *string `json:"regionName,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiSearchDeploymentEffectiveSpec) MarshalJSON() ([]byte, error) {
-	type noMethod ApiSearchDeploymentEffectiveSpec
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiSearchDeploymentEffectiveSpec instantiates a new ApiSearchDeploymentEffectiveSpec object
@@ -77,12 +68,6 @@ func (o *ApiSearchDeploymentEffectiveSpec) SetCloudProvider(v string) {
 	o.CloudProvider = &v
 }
 
-// SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentEffectiveSpec) SetCloudProviderNil() {
-	o.CloudProvider = nil
-	o.NullFields = append(o.NullFields, "CloudProvider")
-}
-
 // GetInstanceSize returns the InstanceSize field value if set, zero value otherwise
 func (o *ApiSearchDeploymentEffectiveSpec) GetInstanceSize() string {
 	if o == nil || IsNil(o.InstanceSize) {
@@ -114,12 +99,6 @@ func (o *ApiSearchDeploymentEffectiveSpec) HasInstanceSize() bool {
 // SetInstanceSize gets a reference to the given string and assigns it to the InstanceSize field.
 func (o *ApiSearchDeploymentEffectiveSpec) SetInstanceSize(v string) {
 	o.InstanceSize = &v
-}
-
-// SetInstanceSizeNil sets InstanceSize to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentEffectiveSpec) SetInstanceSizeNil() {
-	o.InstanceSize = nil
-	o.NullFields = append(o.NullFields, "InstanceSize")
 }
 
 // GetNodeCount returns the NodeCount field value if set, zero value otherwise
@@ -155,12 +134,6 @@ func (o *ApiSearchDeploymentEffectiveSpec) SetNodeCount(v int) {
 	o.NodeCount = &v
 }
 
-// SetNodeCountNil sets NodeCount to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentEffectiveSpec) SetNodeCountNil() {
-	o.NodeCount = nil
-	o.NullFields = append(o.NullFields, "NodeCount")
-}
-
 // GetRegionName returns the RegionName field value if set, zero value otherwise
 func (o *ApiSearchDeploymentEffectiveSpec) GetRegionName() string {
 	if o == nil || IsNil(o.RegionName) {
@@ -192,10 +165,4 @@ func (o *ApiSearchDeploymentEffectiveSpec) HasRegionName() bool {
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *ApiSearchDeploymentEffectiveSpec) SetRegionName(v string) {
 	o.RegionName = &v
-}
-
-// SetRegionNameNil sets RegionName to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentEffectiveSpec) SetRegionNameNil() {
-	o.RegionName = nil
-	o.NullFields = append(o.NullFields, "RegionName")
 }

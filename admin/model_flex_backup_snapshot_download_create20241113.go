@@ -10,15 +10,6 @@ type FlexBackupSnapshotDownloadCreate20241113 struct {
 	// Unique 24-hexadecimal digit string that identifies the snapshot to download.
 	// Write only field.
 	SnapshotId string `json:"snapshotId"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *FlexBackupSnapshotDownloadCreate20241113) MarshalJSON() ([]byte, error) {
-	type noMethod FlexBackupSnapshotDownloadCreate20241113
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFlexBackupSnapshotDownloadCreate20241113 instantiates a new FlexBackupSnapshotDownloadCreate20241113 object

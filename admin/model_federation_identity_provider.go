@@ -62,15 +62,6 @@ type FederationIdentityProvider struct {
 	RequestedScopes *[]string `json:"requestedScopes,omitempty"`
 	// Identifier of the claim which contains the user ID in the token.
 	UserClaim *string `json:"userClaim,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *FederationIdentityProvider) MarshalJSON() ([]byte, error) {
-	type noMethod FederationIdentityProvider
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFederationIdentityProvider instantiates a new FederationIdentityProvider object
@@ -158,12 +149,6 @@ func (o *FederationIdentityProvider) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
-// SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetCreatedAtNil() {
-	o.CreatedAt = nil
-	o.NullFields = append(o.NullFields, "CreatedAt")
-}
-
 // GetDescription returns the Description field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
@@ -197,12 +182,6 @@ func (o *FederationIdentityProvider) SetDescription(v string) {
 	o.Description = &v
 }
 
-// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetDescriptionNil() {
-	o.Description = nil
-	o.NullFields = append(o.NullFields, "Description")
-}
-
 // GetDisplayName returns the DisplayName field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetDisplayName() string {
 	if o == nil || IsNil(o.DisplayName) {
@@ -234,12 +213,6 @@ func (o *FederationIdentityProvider) HasDisplayName() bool {
 // SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
 func (o *FederationIdentityProvider) SetDisplayName(v string) {
 	o.DisplayName = &v
-}
-
-// SetDisplayNameNil sets DisplayName to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetDisplayNameNil() {
-	o.DisplayName = nil
-	o.NullFields = append(o.NullFields, "DisplayName")
 }
 
 // GetId returns the Id field value
@@ -299,12 +272,6 @@ func (o *FederationIdentityProvider) SetIdpType(v string) {
 	o.IdpType = &v
 }
 
-// SetIdpTypeNil sets IdpType to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetIdpTypeNil() {
-	o.IdpType = nil
-	o.NullFields = append(o.NullFields, "IdpType")
-}
-
 // GetIssuerUri returns the IssuerUri field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetIssuerUri() string {
 	if o == nil || IsNil(o.IssuerUri) {
@@ -336,12 +303,6 @@ func (o *FederationIdentityProvider) HasIssuerUri() bool {
 // SetIssuerUri gets a reference to the given string and assigns it to the IssuerUri field.
 func (o *FederationIdentityProvider) SetIssuerUri(v string) {
 	o.IssuerUri = &v
-}
-
-// SetIssuerUriNil sets IssuerUri to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetIssuerUriNil() {
-	o.IssuerUri = nil
-	o.NullFields = append(o.NullFields, "IssuerUri")
 }
 
 // GetOktaIdpId returns the OktaIdpId field value
@@ -401,12 +362,6 @@ func (o *FederationIdentityProvider) SetProtocol(v string) {
 	o.Protocol = &v
 }
 
-// SetProtocolNil sets Protocol to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetProtocolNil() {
-	o.Protocol = nil
-	o.NullFields = append(o.NullFields, "Protocol")
-}
-
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
@@ -440,12 +395,6 @@ func (o *FederationIdentityProvider) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
-// SetUpdatedAtNil sets UpdatedAt to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetUpdatedAtNil() {
-	o.UpdatedAt = nil
-	o.NullFields = append(o.NullFields, "UpdatedAt")
-}
-
 // GetAcsUrl returns the AcsUrl field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetAcsUrl() string {
 	if o == nil || IsNil(o.AcsUrl) {
@@ -477,12 +426,6 @@ func (o *FederationIdentityProvider) HasAcsUrl() bool {
 // SetAcsUrl gets a reference to the given string and assigns it to the AcsUrl field.
 func (o *FederationIdentityProvider) SetAcsUrl(v string) {
 	o.AcsUrl = &v
-}
-
-// SetAcsUrlNil sets AcsUrl to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetAcsUrlNil() {
-	o.AcsUrl = nil
-	o.NullFields = append(o.NullFields, "AcsUrl")
 }
 
 // GetAssociatedDomains returns the AssociatedDomains field value if set, zero value otherwise
@@ -551,12 +494,6 @@ func (o *FederationIdentityProvider) SetAudienceUri(v string) {
 	o.AudienceUri = &v
 }
 
-// SetAudienceUriNil sets AudienceUri to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetAudienceUriNil() {
-	o.AudienceUri = nil
-	o.NullFields = append(o.NullFields, "AudienceUri")
-}
-
 // GetPemFileInfo returns the PemFileInfo field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetPemFileInfo() PemFileInfo {
 	if o == nil || IsNil(o.PemFileInfo) {
@@ -588,12 +525,6 @@ func (o *FederationIdentityProvider) HasPemFileInfo() bool {
 // SetPemFileInfo gets a reference to the given PemFileInfo and assigns it to the PemFileInfo field.
 func (o *FederationIdentityProvider) SetPemFileInfo(v PemFileInfo) {
 	o.PemFileInfo = &v
-}
-
-// SetPemFileInfoNil sets PemFileInfo to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetPemFileInfoNil() {
-	o.PemFileInfo = nil
-	o.NullFields = append(o.NullFields, "PemFileInfo")
 }
 
 // GetRequestBinding returns the RequestBinding field value if set, zero value otherwise
@@ -629,12 +560,6 @@ func (o *FederationIdentityProvider) SetRequestBinding(v string) {
 	o.RequestBinding = &v
 }
 
-// SetRequestBindingNil sets RequestBinding to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetRequestBindingNil() {
-	o.RequestBinding = nil
-	o.NullFields = append(o.NullFields, "RequestBinding")
-}
-
 // GetResponseSignatureAlgorithm returns the ResponseSignatureAlgorithm field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetResponseSignatureAlgorithm() string {
 	if o == nil || IsNil(o.ResponseSignatureAlgorithm) {
@@ -666,12 +591,6 @@ func (o *FederationIdentityProvider) HasResponseSignatureAlgorithm() bool {
 // SetResponseSignatureAlgorithm gets a reference to the given string and assigns it to the ResponseSignatureAlgorithm field.
 func (o *FederationIdentityProvider) SetResponseSignatureAlgorithm(v string) {
 	o.ResponseSignatureAlgorithm = &v
-}
-
-// SetResponseSignatureAlgorithmNil sets ResponseSignatureAlgorithm to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetResponseSignatureAlgorithmNil() {
-	o.ResponseSignatureAlgorithm = nil
-	o.NullFields = append(o.NullFields, "ResponseSignatureAlgorithm")
 }
 
 // GetSlug returns the Slug field value if set, zero value otherwise
@@ -707,12 +626,6 @@ func (o *FederationIdentityProvider) SetSlug(v string) {
 	o.Slug = &v
 }
 
-// SetSlugNil sets Slug to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetSlugNil() {
-	o.Slug = nil
-	o.NullFields = append(o.NullFields, "Slug")
-}
-
 // GetSsoDebugEnabled returns the SsoDebugEnabled field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetSsoDebugEnabled() bool {
 	if o == nil || IsNil(o.SsoDebugEnabled) {
@@ -744,12 +657,6 @@ func (o *FederationIdentityProvider) HasSsoDebugEnabled() bool {
 // SetSsoDebugEnabled gets a reference to the given bool and assigns it to the SsoDebugEnabled field.
 func (o *FederationIdentityProvider) SetSsoDebugEnabled(v bool) {
 	o.SsoDebugEnabled = &v
-}
-
-// SetSsoDebugEnabledNil sets SsoDebugEnabled to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetSsoDebugEnabledNil() {
-	o.SsoDebugEnabled = nil
-	o.NullFields = append(o.NullFields, "SsoDebugEnabled")
 }
 
 // GetSsoUrl returns the SsoUrl field value if set, zero value otherwise
@@ -785,12 +692,6 @@ func (o *FederationIdentityProvider) SetSsoUrl(v string) {
 	o.SsoUrl = &v
 }
 
-// SetSsoUrlNil sets SsoUrl to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetSsoUrlNil() {
-	o.SsoUrl = nil
-	o.NullFields = append(o.NullFields, "SsoUrl")
-}
-
 // GetStatus returns the Status field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
@@ -822,12 +723,6 @@ func (o *FederationIdentityProvider) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *FederationIdentityProvider) SetStatus(v string) {
 	o.Status = &v
-}
-
-// SetStatusNil sets Status to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetStatusNil() {
-	o.Status = nil
-	o.NullFields = append(o.NullFields, "Status")
 }
 
 // GetAudience returns the Audience field value if set, zero value otherwise
@@ -863,12 +758,6 @@ func (o *FederationIdentityProvider) SetAudience(v string) {
 	o.Audience = &v
 }
 
-// SetAudienceNil sets Audience to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetAudienceNil() {
-	o.Audience = nil
-	o.NullFields = append(o.NullFields, "Audience")
-}
-
 // GetAuthorizationType returns the AuthorizationType field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetAuthorizationType() string {
 	if o == nil || IsNil(o.AuthorizationType) {
@@ -900,12 +789,6 @@ func (o *FederationIdentityProvider) HasAuthorizationType() bool {
 // SetAuthorizationType gets a reference to the given string and assigns it to the AuthorizationType field.
 func (o *FederationIdentityProvider) SetAuthorizationType(v string) {
 	o.AuthorizationType = &v
-}
-
-// SetAuthorizationTypeNil sets AuthorizationType to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetAuthorizationTypeNil() {
-	o.AuthorizationType = nil
-	o.NullFields = append(o.NullFields, "AuthorizationType")
 }
 
 // GetClientId returns the ClientId field value if set, zero value otherwise
@@ -941,12 +824,6 @@ func (o *FederationIdentityProvider) SetClientId(v string) {
 	o.ClientId = &v
 }
 
-// SetClientIdNil sets ClientId to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetClientIdNil() {
-	o.ClientId = nil
-	o.NullFields = append(o.NullFields, "ClientId")
-}
-
 // GetGroupsClaim returns the GroupsClaim field value if set, zero value otherwise
 func (o *FederationIdentityProvider) GetGroupsClaim() string {
 	if o == nil || IsNil(o.GroupsClaim) {
@@ -978,12 +855,6 @@ func (o *FederationIdentityProvider) HasGroupsClaim() bool {
 // SetGroupsClaim gets a reference to the given string and assigns it to the GroupsClaim field.
 func (o *FederationIdentityProvider) SetGroupsClaim(v string) {
 	o.GroupsClaim = &v
-}
-
-// SetGroupsClaimNil sets GroupsClaim to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetGroupsClaimNil() {
-	o.GroupsClaim = nil
-	o.NullFields = append(o.NullFields, "GroupsClaim")
 }
 
 // GetRequestedScopes returns the RequestedScopes field value if set, zero value otherwise
@@ -1050,10 +921,4 @@ func (o *FederationIdentityProvider) HasUserClaim() bool {
 // SetUserClaim gets a reference to the given string and assigns it to the UserClaim field.
 func (o *FederationIdentityProvider) SetUserClaim(v string) {
 	o.UserClaim = &v
-}
-
-// SetUserClaimNil sets UserClaim to an explicit JSON null when marshaled.
-func (o *FederationIdentityProvider) SetUserClaimNil() {
-	o.UserClaim = nil
-	o.NullFields = append(o.NullFields, "UserClaim")
 }

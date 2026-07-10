@@ -10,15 +10,6 @@ type ApiAtlasPolicy struct {
 	// Unique 24-hexadecimal character string that identifies the policy.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiAtlasPolicy) MarshalJSON() ([]byte, error) {
-	type noMethod ApiAtlasPolicy
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasPolicy instantiates a new ApiAtlasPolicy object
@@ -71,12 +62,6 @@ func (o *ApiAtlasPolicy) SetBody(v string) {
 	o.Body = &v
 }
 
-// SetBodyNil sets Body to an explicit JSON null when marshaled.
-func (o *ApiAtlasPolicy) SetBodyNil() {
-	o.Body = nil
-	o.NullFields = append(o.NullFields, "Body")
-}
-
 // GetId returns the Id field value if set, zero value otherwise
 func (o *ApiAtlasPolicy) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -108,10 +93,4 @@ func (o *ApiAtlasPolicy) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApiAtlasPolicy) SetId(v string) {
 	o.Id = &v
-}
-
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *ApiAtlasPolicy) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
 }

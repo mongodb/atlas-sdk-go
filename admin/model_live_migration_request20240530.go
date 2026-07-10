@@ -18,15 +18,6 @@ type LiveMigrationRequest20240530 struct {
 	MigrationHosts []string         `json:"migrationHosts"`
 	Sharding       *ShardingRequest `json:"sharding,omitempty"`
 	Source         Source           `json:"source"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *LiveMigrationRequest20240530) MarshalJSON() ([]byte, error) {
-	type noMethod LiveMigrationRequest20240530
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewLiveMigrationRequest20240530 instantiates a new LiveMigrationRequest20240530 object
@@ -86,12 +77,6 @@ func (o *LiveMigrationRequest20240530) SetId(v string) {
 	o.Id = &v
 }
 
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *LiveMigrationRequest20240530) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
-}
-
 // GetDestination returns the Destination field value
 func (o *LiveMigrationRequest20240530) GetDestination() Destination {
 	if o == nil {
@@ -147,12 +132,6 @@ func (o *LiveMigrationRequest20240530) HasDropDestinationData() bool {
 // SetDropDestinationData gets a reference to the given bool and assigns it to the DropDestinationData field.
 func (o *LiveMigrationRequest20240530) SetDropDestinationData(v bool) {
 	o.DropDestinationData = &v
-}
-
-// SetDropDestinationDataNil sets DropDestinationData to an explicit JSON null when marshaled.
-func (o *LiveMigrationRequest20240530) SetDropDestinationDataNil() {
-	o.DropDestinationData = nil
-	o.NullFields = append(o.NullFields, "DropDestinationData")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -243,12 +222,6 @@ func (o *LiveMigrationRequest20240530) HasSharding() bool {
 // SetSharding gets a reference to the given ShardingRequest and assigns it to the Sharding field.
 func (o *LiveMigrationRequest20240530) SetSharding(v ShardingRequest) {
 	o.Sharding = &v
-}
-
-// SetShardingNil sets Sharding to an explicit JSON null when marshaled.
-func (o *LiveMigrationRequest20240530) SetShardingNil() {
-	o.Sharding = nil
-	o.NullFields = append(o.NullFields, "Sharding")
 }
 
 // GetSource returns the Source field value

@@ -8,15 +8,6 @@ type DatabasePrivilegeAction struct {
 	Action string `json:"action"`
 	// List of resources on which you grant the action.
 	Resources []DatabasePermittedNamespaceResource `json:"resources"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DatabasePrivilegeAction) MarshalJSON() ([]byte, error) {
-	type noMethod DatabasePrivilegeAction
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDatabasePrivilegeAction instantiates a new DatabasePrivilegeAction object

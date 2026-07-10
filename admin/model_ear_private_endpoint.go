@@ -21,15 +21,6 @@ type EARPrivateEndpoint struct {
 	// Resource Id of the Aws Private Endpoint.
 	// Read only field.
 	PrivateEndpointConnectionName *string `json:"privateEndpointConnectionName,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *EARPrivateEndpoint) MarshalJSON() ([]byte, error) {
-	type noMethod EARPrivateEndpoint
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewEARPrivateEndpoint instantiates a new EARPrivateEndpoint object
@@ -82,12 +73,6 @@ func (o *EARPrivateEndpoint) SetCloudProvider(v string) {
 	o.CloudProvider = &v
 }
 
-// SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled.
-func (o *EARPrivateEndpoint) SetCloudProviderNil() {
-	o.CloudProvider = nil
-	o.NullFields = append(o.NullFields, "CloudProvider")
-}
-
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise
 func (o *EARPrivateEndpoint) GetErrorMessage() string {
 	if o == nil || IsNil(o.ErrorMessage) {
@@ -119,12 +104,6 @@ func (o *EARPrivateEndpoint) HasErrorMessage() bool {
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *EARPrivateEndpoint) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
-}
-
-// SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled.
-func (o *EARPrivateEndpoint) SetErrorMessageNil() {
-	o.ErrorMessage = nil
-	o.NullFields = append(o.NullFields, "ErrorMessage")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -160,12 +139,6 @@ func (o *EARPrivateEndpoint) SetId(v string) {
 	o.Id = &v
 }
 
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *EARPrivateEndpoint) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
-}
-
 // GetRegionName returns the RegionName field value if set, zero value otherwise
 func (o *EARPrivateEndpoint) GetRegionName() string {
 	if o == nil || IsNil(o.RegionName) {
@@ -197,12 +170,6 @@ func (o *EARPrivateEndpoint) HasRegionName() bool {
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *EARPrivateEndpoint) SetRegionName(v string) {
 	o.RegionName = &v
-}
-
-// SetRegionNameNil sets RegionName to an explicit JSON null when marshaled.
-func (o *EARPrivateEndpoint) SetRegionNameNil() {
-	o.RegionName = nil
-	o.NullFields = append(o.NullFields, "RegionName")
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
@@ -238,12 +205,6 @@ func (o *EARPrivateEndpoint) SetStatus(v string) {
 	o.Status = &v
 }
 
-// SetStatusNil sets Status to an explicit JSON null when marshaled.
-func (o *EARPrivateEndpoint) SetStatusNil() {
-	o.Status = nil
-	o.NullFields = append(o.NullFields, "Status")
-}
-
 // GetPrivateEndpointConnectionName returns the PrivateEndpointConnectionName field value if set, zero value otherwise
 func (o *EARPrivateEndpoint) GetPrivateEndpointConnectionName() string {
 	if o == nil || IsNil(o.PrivateEndpointConnectionName) {
@@ -275,10 +236,4 @@ func (o *EARPrivateEndpoint) HasPrivateEndpointConnectionName() bool {
 // SetPrivateEndpointConnectionName gets a reference to the given string and assigns it to the PrivateEndpointConnectionName field.
 func (o *EARPrivateEndpoint) SetPrivateEndpointConnectionName(v string) {
 	o.PrivateEndpointConnectionName = &v
-}
-
-// SetPrivateEndpointConnectionNameNil sets PrivateEndpointConnectionName to an explicit JSON null when marshaled.
-func (o *EARPrivateEndpoint) SetPrivateEndpointConnectionNameNil() {
-	o.PrivateEndpointConnectionName = nil
-	o.NullFields = append(o.NullFields, "PrivateEndpointConnectionName")
 }

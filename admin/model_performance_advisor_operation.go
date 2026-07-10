@@ -8,15 +8,6 @@ type PerformanceAdvisorOperation struct {
 	// Read only field.
 	Predicates *[]any                     `json:"predicates,omitempty"`
 	Stats      *PerformanceAdvisorOpStats `json:"stats,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PerformanceAdvisorOperation) MarshalJSON() ([]byte, error) {
-	type noMethod PerformanceAdvisorOperation
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPerformanceAdvisorOperation instantiates a new PerformanceAdvisorOperation object
@@ -100,10 +91,4 @@ func (o *PerformanceAdvisorOperation) HasStats() bool {
 // SetStats gets a reference to the given PerformanceAdvisorOpStats and assigns it to the Stats field.
 func (o *PerformanceAdvisorOperation) SetStats(v PerformanceAdvisorOpStats) {
 	o.Stats = &v
-}
-
-// SetStatsNil sets Stats to an explicit JSON null when marshaled.
-func (o *PerformanceAdvisorOperation) SetStatsNil() {
-	o.Stats = nil
-	o.NullFields = append(o.NullFields, "Stats")
 }

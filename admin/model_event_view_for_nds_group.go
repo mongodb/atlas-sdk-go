@@ -136,15 +136,6 @@ type EventViewForNdsGroup struct {
 	// Resource policy action taken by the user and evaluated against the currently active policies.
 	// Read only field.
 	ViolationAction *string `json:"violationAction,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *EventViewForNdsGroup) MarshalJSON() ([]byte, error) {
-	type noMethod EventViewForNdsGroup
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewEventViewForNdsGroup instantiates a new EventViewForNdsGroup object
@@ -197,12 +188,6 @@ func (o *EventViewForNdsGroup) SetApiKeyId(v string) {
 	o.ApiKeyId = &v
 }
 
-// SetApiKeyIdNil sets ApiKeyId to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetApiKeyIdNil() {
-	o.ApiKeyId = nil
-	o.NullFields = append(o.NullFields, "ApiKeyId")
-}
-
 // GetCreated returns the Created field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetCreated() time.Time {
 	if o == nil || IsNil(o.Created) {
@@ -234,12 +219,6 @@ func (o *EventViewForNdsGroup) HasCreated() bool {
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *EventViewForNdsGroup) SetCreated(v time.Time) {
 	o.Created = &v
-}
-
-// SetCreatedNil sets Created to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetCreatedNil() {
-	o.Created = nil
-	o.NullFields = append(o.NullFields, "Created")
 }
 
 // GetEventTypeName returns the EventTypeName field value if set, zero value otherwise
@@ -275,12 +254,6 @@ func (o *EventViewForNdsGroup) SetEventTypeName(v string) {
 	o.EventTypeName = &v
 }
 
-// SetEventTypeNameNil sets EventTypeName to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetEventTypeNameNil() {
-	o.EventTypeName = nil
-	o.NullFields = append(o.NullFields, "EventTypeName")
-}
-
 // GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
@@ -312,12 +285,6 @@ func (o *EventViewForNdsGroup) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *EventViewForNdsGroup) SetGroupId(v string) {
 	o.GroupId = &v
-}
-
-// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetGroupIdNil() {
-	o.GroupId = nil
-	o.NullFields = append(o.NullFields, "GroupId")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -353,12 +320,6 @@ func (o *EventViewForNdsGroup) SetId(v string) {
 	o.Id = &v
 }
 
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
-}
-
 // GetIsGlobalAdmin returns the IsGlobalAdmin field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetIsGlobalAdmin() bool {
 	if o == nil || IsNil(o.IsGlobalAdmin) {
@@ -390,12 +351,6 @@ func (o *EventViewForNdsGroup) HasIsGlobalAdmin() bool {
 // SetIsGlobalAdmin gets a reference to the given bool and assigns it to the IsGlobalAdmin field.
 func (o *EventViewForNdsGroup) SetIsGlobalAdmin(v bool) {
 	o.IsGlobalAdmin = &v
-}
-
-// SetIsGlobalAdminNil sets IsGlobalAdmin to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetIsGlobalAdminNil() {
-	o.IsGlobalAdmin = nil
-	o.NullFields = append(o.NullFields, "IsGlobalAdmin")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -464,12 +419,6 @@ func (o *EventViewForNdsGroup) SetOrgId(v string) {
 	o.OrgId = &v
 }
 
-// SetOrgIdNil sets OrgId to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetOrgIdNil() {
-	o.OrgId = nil
-	o.NullFields = append(o.NullFields, "OrgId")
-}
-
 // GetPublicKey returns the PublicKey field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetPublicKey() string {
 	if o == nil || IsNil(o.PublicKey) {
@@ -501,12 +450,6 @@ func (o *EventViewForNdsGroup) HasPublicKey() bool {
 // SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
 func (o *EventViewForNdsGroup) SetPublicKey(v string) {
 	o.PublicKey = &v
-}
-
-// SetPublicKeyNil sets PublicKey to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetPublicKeyNil() {
-	o.PublicKey = nil
-	o.NullFields = append(o.NullFields, "PublicKey")
 }
 
 // GetRaw returns the Raw field value if set, zero value otherwise
@@ -542,12 +485,6 @@ func (o *EventViewForNdsGroup) SetRaw(v Raw) {
 	o.Raw = &v
 }
 
-// SetRawNil sets Raw to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetRawNil() {
-	o.Raw = nil
-	o.NullFields = append(o.NullFields, "Raw")
-}
-
 // GetRemoteAddress returns the RemoteAddress field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetRemoteAddress() string {
 	if o == nil || IsNil(o.RemoteAddress) {
@@ -579,12 +516,6 @@ func (o *EventViewForNdsGroup) HasRemoteAddress() bool {
 // SetRemoteAddress gets a reference to the given string and assigns it to the RemoteAddress field.
 func (o *EventViewForNdsGroup) SetRemoteAddress(v string) {
 	o.RemoteAddress = &v
-}
-
-// SetRemoteAddressNil sets RemoteAddress to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetRemoteAddressNil() {
-	o.RemoteAddress = nil
-	o.NullFields = append(o.NullFields, "RemoteAddress")
 }
 
 // GetUserId returns the UserId field value if set, zero value otherwise
@@ -620,12 +551,6 @@ func (o *EventViewForNdsGroup) SetUserId(v string) {
 	o.UserId = &v
 }
 
-// SetUserIdNil sets UserId to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetUserIdNil() {
-	o.UserId = nil
-	o.NullFields = append(o.NullFields, "UserId")
-}
-
 // GetUsername returns the Username field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
@@ -657,12 +582,6 @@ func (o *EventViewForNdsGroup) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *EventViewForNdsGroup) SetUsername(v string) {
 	o.Username = &v
-}
-
-// SetUsernameNil sets Username to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetUsernameNil() {
-	o.Username = nil
-	o.NullFields = append(o.NullFields, "Username")
 }
 
 // GetAlertId returns the AlertId field value if set, zero value otherwise
@@ -698,12 +617,6 @@ func (o *EventViewForNdsGroup) SetAlertId(v string) {
 	o.AlertId = &v
 }
 
-// SetAlertIdNil sets AlertId to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetAlertIdNil() {
-	o.AlertId = nil
-	o.NullFields = append(o.NullFields, "AlertId")
-}
-
 // GetAlertConfigId returns the AlertConfigId field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetAlertConfigId() string {
 	if o == nil || IsNil(o.AlertConfigId) {
@@ -735,12 +648,6 @@ func (o *EventViewForNdsGroup) HasAlertConfigId() bool {
 // SetAlertConfigId gets a reference to the given string and assigns it to the AlertConfigId field.
 func (o *EventViewForNdsGroup) SetAlertConfigId(v string) {
 	o.AlertConfigId = &v
-}
-
-// SetAlertConfigIdNil sets AlertConfigId to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetAlertConfigIdNil() {
-	o.AlertConfigId = nil
-	o.NullFields = append(o.NullFields, "AlertConfigId")
 }
 
 // GetTargetPublicKey returns the TargetPublicKey field value if set, zero value otherwise
@@ -776,12 +683,6 @@ func (o *EventViewForNdsGroup) SetTargetPublicKey(v string) {
 	o.TargetPublicKey = &v
 }
 
-// SetTargetPublicKeyNil sets TargetPublicKey to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetTargetPublicKeyNil() {
-	o.TargetPublicKey = nil
-	o.NullFields = append(o.NullFields, "TargetPublicKey")
-}
-
 // GetWhitelistEntry returns the WhitelistEntry field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetWhitelistEntry() string {
 	if o == nil || IsNil(o.WhitelistEntry) {
@@ -813,12 +714,6 @@ func (o *EventViewForNdsGroup) HasWhitelistEntry() bool {
 // SetWhitelistEntry gets a reference to the given string and assigns it to the WhitelistEntry field.
 func (o *EventViewForNdsGroup) SetWhitelistEntry(v string) {
 	o.WhitelistEntry = &v
-}
-
-// SetWhitelistEntryNil sets WhitelistEntry to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetWhitelistEntryNil() {
-	o.WhitelistEntry = nil
-	o.NullFields = append(o.NullFields, "WhitelistEntry")
 }
 
 // GetInvoiceId returns the InvoiceId field value if set, zero value otherwise
@@ -854,12 +749,6 @@ func (o *EventViewForNdsGroup) SetInvoiceId(v string) {
 	o.InvoiceId = &v
 }
 
-// SetInvoiceIdNil sets InvoiceId to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetInvoiceIdNil() {
-	o.InvoiceId = nil
-	o.NullFields = append(o.NullFields, "InvoiceId")
-}
-
 // GetPaymentId returns the PaymentId field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetPaymentId() string {
 	if o == nil || IsNil(o.PaymentId) {
@@ -891,12 +780,6 @@ func (o *EventViewForNdsGroup) HasPaymentId() bool {
 // SetPaymentId gets a reference to the given string and assigns it to the PaymentId field.
 func (o *EventViewForNdsGroup) SetPaymentId(v string) {
 	o.PaymentId = &v
-}
-
-// SetPaymentIdNil sets PaymentId to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetPaymentIdNil() {
-	o.PaymentId = nil
-	o.NullFields = append(o.NullFields, "PaymentId")
 }
 
 // GetShardName returns the ShardName field value if set, zero value otherwise
@@ -932,12 +815,6 @@ func (o *EventViewForNdsGroup) SetShardName(v string) {
 	o.ShardName = &v
 }
 
-// SetShardNameNil sets ShardName to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetShardNameNil() {
-	o.ShardName = nil
-	o.NullFields = append(o.NullFields, "ShardName")
-}
-
 // GetCollection returns the Collection field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetCollection() string {
 	if o == nil || IsNil(o.Collection) {
@@ -969,12 +846,6 @@ func (o *EventViewForNdsGroup) HasCollection() bool {
 // SetCollection gets a reference to the given string and assigns it to the Collection field.
 func (o *EventViewForNdsGroup) SetCollection(v string) {
 	o.Collection = &v
-}
-
-// SetCollectionNil sets Collection to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetCollectionNil() {
-	o.Collection = nil
-	o.NullFields = append(o.NullFields, "Collection")
 }
 
 // GetDatabase returns the Database field value if set, zero value otherwise
@@ -1010,12 +881,6 @@ func (o *EventViewForNdsGroup) SetDatabase(v string) {
 	o.Database = &v
 }
 
-// SetDatabaseNil sets Database to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetDatabaseNil() {
-	o.Database = nil
-	o.NullFields = append(o.NullFields, "Database")
-}
-
 // GetOpType returns the OpType field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetOpType() string {
 	if o == nil || IsNil(o.OpType) {
@@ -1047,12 +912,6 @@ func (o *EventViewForNdsGroup) HasOpType() bool {
 // SetOpType gets a reference to the given string and assigns it to the OpType field.
 func (o *EventViewForNdsGroup) SetOpType(v string) {
 	o.OpType = &v
-}
-
-// SetOpTypeNil sets OpType to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetOpTypeNil() {
-	o.OpType = nil
-	o.NullFields = append(o.NullFields, "OpType")
 }
 
 // GetSessionId returns the SessionId field value if set, zero value otherwise
@@ -1088,12 +947,6 @@ func (o *EventViewForNdsGroup) SetSessionId(v string) {
 	o.SessionId = &v
 }
 
-// SetSessionIdNil sets SessionId to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetSessionIdNil() {
-	o.SessionId = nil
-	o.NullFields = append(o.NullFields, "SessionId")
-}
-
 // GetDeskLocation returns the DeskLocation field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetDeskLocation() string {
 	if o == nil || IsNil(o.DeskLocation) {
@@ -1125,12 +978,6 @@ func (o *EventViewForNdsGroup) HasDeskLocation() bool {
 // SetDeskLocation gets a reference to the given string and assigns it to the DeskLocation field.
 func (o *EventViewForNdsGroup) SetDeskLocation(v string) {
 	o.DeskLocation = &v
-}
-
-// SetDeskLocationNil sets DeskLocation to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetDeskLocationNil() {
-	o.DeskLocation = nil
-	o.NullFields = append(o.NullFields, "DeskLocation")
 }
 
 // GetEmployeeIdentifier returns the EmployeeIdentifier field value if set, zero value otherwise
@@ -1166,12 +1013,6 @@ func (o *EventViewForNdsGroup) SetEmployeeIdentifier(v string) {
 	o.EmployeeIdentifier = &v
 }
 
-// SetEmployeeIdentifierNil sets EmployeeIdentifier to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetEmployeeIdentifierNil() {
-	o.EmployeeIdentifier = nil
-	o.NullFields = append(o.NullFields, "EmployeeIdentifier")
-}
-
 // GetPort returns the Port field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetPort() int {
 	if o == nil || IsNil(o.Port) {
@@ -1203,12 +1044,6 @@ func (o *EventViewForNdsGroup) HasPort() bool {
 // SetPort gets a reference to the given int and assigns it to the Port field.
 func (o *EventViewForNdsGroup) SetPort(v int) {
 	o.Port = &v
-}
-
-// SetPortNil sets Port to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetPortNil() {
-	o.Port = nil
-	o.NullFields = append(o.NullFields, "Port")
 }
 
 // GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise
@@ -1244,12 +1079,6 @@ func (o *EventViewForNdsGroup) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
 }
 
-// SetReplicaSetNameNil sets ReplicaSetName to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetReplicaSetNameNil() {
-	o.ReplicaSetName = nil
-	o.NullFields = append(o.NullFields, "ReplicaSetName")
-}
-
 // GetCurrentValue returns the CurrentValue field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetCurrentValue() NumberMetricValue {
 	if o == nil || IsNil(o.CurrentValue) {
@@ -1281,12 +1110,6 @@ func (o *EventViewForNdsGroup) HasCurrentValue() bool {
 // SetCurrentValue gets a reference to the given NumberMetricValue and assigns it to the CurrentValue field.
 func (o *EventViewForNdsGroup) SetCurrentValue(v NumberMetricValue) {
 	o.CurrentValue = &v
-}
-
-// SetCurrentValueNil sets CurrentValue to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetCurrentValueNil() {
-	o.CurrentValue = nil
-	o.NullFields = append(o.NullFields, "CurrentValue")
 }
 
 // GetMetricName returns the MetricName field value if set, zero value otherwise
@@ -1322,12 +1145,6 @@ func (o *EventViewForNdsGroup) SetMetricName(v string) {
 	o.MetricName = &v
 }
 
-// SetMetricNameNil sets MetricName to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetMetricNameNil() {
-	o.MetricName = nil
-	o.NullFields = append(o.NullFields, "MetricName")
-}
-
 // GetDbUserUsername returns the DbUserUsername field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetDbUserUsername() string {
 	if o == nil || IsNil(o.DbUserUsername) {
@@ -1359,12 +1176,6 @@ func (o *EventViewForNdsGroup) HasDbUserUsername() bool {
 // SetDbUserUsername gets a reference to the given string and assigns it to the DbUserUsername field.
 func (o *EventViewForNdsGroup) SetDbUserUsername(v string) {
 	o.DbUserUsername = &v
-}
-
-// SetDbUserUsernameNil sets DbUserUsername to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetDbUserUsernameNil() {
-	o.DbUserUsername = nil
-	o.NullFields = append(o.NullFields, "DbUserUsername")
 }
 
 // GetEndpointId returns the EndpointId field value if set, zero value otherwise
@@ -1400,12 +1211,6 @@ func (o *EventViewForNdsGroup) SetEndpointId(v string) {
 	o.EndpointId = &v
 }
 
-// SetEndpointIdNil sets EndpointId to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetEndpointIdNil() {
-	o.EndpointId = nil
-	o.NullFields = append(o.NullFields, "EndpointId")
-}
-
 // GetProviderEndpointId returns the ProviderEndpointId field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetProviderEndpointId() string {
 	if o == nil || IsNil(o.ProviderEndpointId) {
@@ -1437,12 +1242,6 @@ func (o *EventViewForNdsGroup) HasProviderEndpointId() bool {
 // SetProviderEndpointId gets a reference to the given string and assigns it to the ProviderEndpointId field.
 func (o *EventViewForNdsGroup) SetProviderEndpointId(v string) {
 	o.ProviderEndpointId = &v
-}
-
-// SetProviderEndpointIdNil sets ProviderEndpointId to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetProviderEndpointIdNil() {
-	o.ProviderEndpointId = nil
-	o.NullFields = append(o.NullFields, "ProviderEndpointId")
 }
 
 // GetHostname returns the Hostname field value if set, zero value otherwise
@@ -1478,12 +1277,6 @@ func (o *EventViewForNdsGroup) SetHostname(v string) {
 	o.Hostname = &v
 }
 
-// SetHostnameNil sets Hostname to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetHostnameNil() {
-	o.Hostname = nil
-	o.NullFields = append(o.NullFields, "Hostname")
-}
-
 // GetTeamId returns the TeamId field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetTeamId() string {
 	if o == nil || IsNil(o.TeamId) {
@@ -1515,12 +1308,6 @@ func (o *EventViewForNdsGroup) HasTeamId() bool {
 // SetTeamId gets a reference to the given string and assigns it to the TeamId field.
 func (o *EventViewForNdsGroup) SetTeamId(v string) {
 	o.TeamId = &v
-}
-
-// SetTeamIdNil sets TeamId to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetTeamIdNil() {
-	o.TeamId = nil
-	o.NullFields = append(o.NullFields, "TeamId")
 }
 
 // GetTargetUsername returns the TargetUsername field value if set, zero value otherwise
@@ -1556,12 +1343,6 @@ func (o *EventViewForNdsGroup) SetTargetUsername(v string) {
 	o.TargetUsername = &v
 }
 
-// SetTargetUsernameNil sets TargetUsername to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetTargetUsernameNil() {
-	o.TargetUsername = nil
-	o.NullFields = append(o.NullFields, "TargetUsername")
-}
-
 // GetResourceId returns the ResourceId field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetResourceId() string {
 	if o == nil || IsNil(o.ResourceId) {
@@ -1593,12 +1374,6 @@ func (o *EventViewForNdsGroup) HasResourceId() bool {
 // SetResourceId gets a reference to the given string and assigns it to the ResourceId field.
 func (o *EventViewForNdsGroup) SetResourceId(v string) {
 	o.ResourceId = &v
-}
-
-// SetResourceIdNil sets ResourceId to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetResourceIdNil() {
-	o.ResourceId = nil
-	o.NullFields = append(o.NullFields, "ResourceId")
 }
 
 // GetResourceType returns the ResourceType field value if set, zero value otherwise
@@ -1634,12 +1409,6 @@ func (o *EventViewForNdsGroup) SetResourceType(v string) {
 	o.ResourceType = &v
 }
 
-// SetResourceTypeNil sets ResourceType to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetResourceTypeNil() {
-	o.ResourceType = nil
-	o.NullFields = append(o.NullFields, "ResourceType")
-}
-
 // GetInstanceName returns the InstanceName field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetInstanceName() string {
 	if o == nil || IsNil(o.InstanceName) {
@@ -1671,12 +1440,6 @@ func (o *EventViewForNdsGroup) HasInstanceName() bool {
 // SetInstanceName gets a reference to the given string and assigns it to the InstanceName field.
 func (o *EventViewForNdsGroup) SetInstanceName(v string) {
 	o.InstanceName = &v
-}
-
-// SetInstanceNameNil sets InstanceName to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetInstanceNameNil() {
-	o.InstanceName = nil
-	o.NullFields = append(o.NullFields, "InstanceName")
 }
 
 // GetProcessorErrorMsg returns the ProcessorErrorMsg field value if set, zero value otherwise
@@ -1712,12 +1475,6 @@ func (o *EventViewForNdsGroup) SetProcessorErrorMsg(v string) {
 	o.ProcessorErrorMsg = &v
 }
 
-// SetProcessorErrorMsgNil sets ProcessorErrorMsg to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetProcessorErrorMsgNil() {
-	o.ProcessorErrorMsg = nil
-	o.NullFields = append(o.NullFields, "ProcessorErrorMsg")
-}
-
 // GetProcessorName returns the ProcessorName field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetProcessorName() string {
 	if o == nil || IsNil(o.ProcessorName) {
@@ -1749,12 +1506,6 @@ func (o *EventViewForNdsGroup) HasProcessorName() bool {
 // SetProcessorName gets a reference to the given string and assigns it to the ProcessorName field.
 func (o *EventViewForNdsGroup) SetProcessorName(v string) {
 	o.ProcessorName = &v
-}
-
-// SetProcessorNameNil sets ProcessorName to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetProcessorNameNil() {
-	o.ProcessorName = nil
-	o.NullFields = append(o.NullFields, "ProcessorName")
 }
 
 // GetProcessorState returns the ProcessorState field value if set, zero value otherwise
@@ -1790,12 +1541,6 @@ func (o *EventViewForNdsGroup) SetProcessorState(v string) {
 	o.ProcessorState = &v
 }
 
-// SetProcessorStateNil sets ProcessorState to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetProcessorStateNil() {
-	o.ProcessorState = nil
-	o.NullFields = append(o.NullFields, "ProcessorState")
-}
-
 // GetResourcePolicyId returns the ResourcePolicyId field value if set, zero value otherwise
 func (o *EventViewForNdsGroup) GetResourcePolicyId() string {
 	if o == nil || IsNil(o.ResourcePolicyId) {
@@ -1827,12 +1572,6 @@ func (o *EventViewForNdsGroup) HasResourcePolicyId() bool {
 // SetResourcePolicyId gets a reference to the given string and assigns it to the ResourcePolicyId field.
 func (o *EventViewForNdsGroup) SetResourcePolicyId(v string) {
 	o.ResourcePolicyId = &v
-}
-
-// SetResourcePolicyIdNil sets ResourcePolicyId to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetResourcePolicyIdNil() {
-	o.ResourcePolicyId = nil
-	o.NullFields = append(o.NullFields, "ResourcePolicyId")
 }
 
 // GetViolatedPolicies returns the ViolatedPolicies field value if set, zero value otherwise
@@ -1899,10 +1638,4 @@ func (o *EventViewForNdsGroup) HasViolationAction() bool {
 // SetViolationAction gets a reference to the given string and assigns it to the ViolationAction field.
 func (o *EventViewForNdsGroup) SetViolationAction(v string) {
 	o.ViolationAction = &v
-}
-
-// SetViolationActionNil sets ViolationAction to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetViolationActionNil() {
-	o.ViolationAction = nil
-	o.NullFields = append(o.NullFields, "ViolationAction")
 }

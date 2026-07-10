@@ -90,15 +90,6 @@ type ClusterDescription20240805 struct {
 	UseAwsTimeBasedSnapshotCopyForFastInitialSync *bool `json:"useAwsTimeBasedSnapshotCopyForFastInitialSync,omitempty"`
 	// Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify `mongoDBMajorVersion`.
 	VersionReleaseSystem *string `json:"versionReleaseSystem,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ClusterDescription20240805) MarshalJSON() ([]byte, error) {
-	type noMethod ClusterDescription20240805
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterDescription20240805 instantiates a new ClusterDescription20240805 object
@@ -187,12 +178,6 @@ func (o *ClusterDescription20240805) SetAcceptDataRisksAndForceReplicaSetReconfi
 	o.AcceptDataRisksAndForceReplicaSetReconfig = &v
 }
 
-// SetAcceptDataRisksAndForceReplicaSetReconfigNil sets AcceptDataRisksAndForceReplicaSetReconfig to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetAcceptDataRisksAndForceReplicaSetReconfigNil() {
-	o.AcceptDataRisksAndForceReplicaSetReconfig = nil
-	o.NullFields = append(o.NullFields, "AcceptDataRisksAndForceReplicaSetReconfig")
-}
-
 // GetAdaptiveCapacity returns the AdaptiveCapacity field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetAdaptiveCapacity() string {
 	if o == nil || IsNil(o.AdaptiveCapacity) {
@@ -224,12 +209,6 @@ func (o *ClusterDescription20240805) HasAdaptiveCapacity() bool {
 // SetAdaptiveCapacity gets a reference to the given string and assigns it to the AdaptiveCapacity field.
 func (o *ClusterDescription20240805) SetAdaptiveCapacity(v string) {
 	o.AdaptiveCapacity = &v
-}
-
-// SetAdaptiveCapacityNil sets AdaptiveCapacity to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetAdaptiveCapacityNil() {
-	o.AdaptiveCapacity = nil
-	o.NullFields = append(o.NullFields, "AdaptiveCapacity")
 }
 
 // GetAdvancedConfiguration returns the AdvancedConfiguration field value if set, zero value otherwise
@@ -265,12 +244,6 @@ func (o *ClusterDescription20240805) SetAdvancedConfiguration(v ApiAtlasClusterA
 	o.AdvancedConfiguration = &v
 }
 
-// SetAdvancedConfigurationNil sets AdvancedConfiguration to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetAdvancedConfigurationNil() {
-	o.AdvancedConfiguration = nil
-	o.NullFields = append(o.NullFields, "AdvancedConfiguration")
-}
-
 // GetBackupEnabled returns the BackupEnabled field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetBackupEnabled() bool {
 	if o == nil || IsNil(o.BackupEnabled) {
@@ -302,12 +275,6 @@ func (o *ClusterDescription20240805) HasBackupEnabled() bool {
 // SetBackupEnabled gets a reference to the given bool and assigns it to the BackupEnabled field.
 func (o *ClusterDescription20240805) SetBackupEnabled(v bool) {
 	o.BackupEnabled = &v
-}
-
-// SetBackupEnabledNil sets BackupEnabled to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetBackupEnabledNil() {
-	o.BackupEnabled = nil
-	o.NullFields = append(o.NullFields, "BackupEnabled")
 }
 
 // GetBiConnector returns the BiConnector field value if set, zero value otherwise
@@ -343,12 +310,6 @@ func (o *ClusterDescription20240805) SetBiConnector(v BiConnector) {
 	o.BiConnector = &v
 }
 
-// SetBiConnectorNil sets BiConnector to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetBiConnectorNil() {
-	o.BiConnector = nil
-	o.NullFields = append(o.NullFields, "BiConnector")
-}
-
 // GetClusterType returns the ClusterType field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetClusterType() string {
 	if o == nil || IsNil(o.ClusterType) {
@@ -380,12 +341,6 @@ func (o *ClusterDescription20240805) HasClusterType() bool {
 // SetClusterType gets a reference to the given string and assigns it to the ClusterType field.
 func (o *ClusterDescription20240805) SetClusterType(v string) {
 	o.ClusterType = &v
-}
-
-// SetClusterTypeNil sets ClusterType to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetClusterTypeNil() {
-	o.ClusterType = nil
-	o.NullFields = append(o.NullFields, "ClusterType")
 }
 
 // GetConfigServerManagementMode returns the ConfigServerManagementMode field value if set, zero value otherwise
@@ -421,12 +376,6 @@ func (o *ClusterDescription20240805) SetConfigServerManagementMode(v string) {
 	o.ConfigServerManagementMode = &v
 }
 
-// SetConfigServerManagementModeNil sets ConfigServerManagementMode to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetConfigServerManagementModeNil() {
-	o.ConfigServerManagementMode = nil
-	o.NullFields = append(o.NullFields, "ConfigServerManagementMode")
-}
-
 // GetConfigServerType returns the ConfigServerType field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetConfigServerType() string {
 	if o == nil || IsNil(o.ConfigServerType) {
@@ -458,12 +407,6 @@ func (o *ClusterDescription20240805) HasConfigServerType() bool {
 // SetConfigServerType gets a reference to the given string and assigns it to the ConfigServerType field.
 func (o *ClusterDescription20240805) SetConfigServerType(v string) {
 	o.ConfigServerType = &v
-}
-
-// SetConfigServerTypeNil sets ConfigServerType to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetConfigServerTypeNil() {
-	o.ConfigServerType = nil
-	o.NullFields = append(o.NullFields, "ConfigServerType")
 }
 
 // GetConnectionStrings returns the ConnectionStrings field value if set, zero value otherwise
@@ -499,12 +442,6 @@ func (o *ClusterDescription20240805) SetConnectionStrings(v ClusterConnectionStr
 	o.ConnectionStrings = &v
 }
 
-// SetConnectionStringsNil sets ConnectionStrings to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetConnectionStringsNil() {
-	o.ConnectionStrings = nil
-	o.NullFields = append(o.NullFields, "ConnectionStrings")
-}
-
 // GetCreateDate returns the CreateDate field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetCreateDate() time.Time {
 	if o == nil || IsNil(o.CreateDate) {
@@ -538,12 +475,6 @@ func (o *ClusterDescription20240805) SetCreateDate(v time.Time) {
 	o.CreateDate = &v
 }
 
-// SetCreateDateNil sets CreateDate to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetCreateDateNil() {
-	o.CreateDate = nil
-	o.NullFields = append(o.NullFields, "CreateDate")
-}
-
 // GetDiskWarmingMode returns the DiskWarmingMode field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetDiskWarmingMode() string {
 	if o == nil || IsNil(o.DiskWarmingMode) {
@@ -575,12 +506,6 @@ func (o *ClusterDescription20240805) HasDiskWarmingMode() bool {
 // SetDiskWarmingMode gets a reference to the given string and assigns it to the DiskWarmingMode field.
 func (o *ClusterDescription20240805) SetDiskWarmingMode(v string) {
 	o.DiskWarmingMode = &v
-}
-
-// SetDiskWarmingModeNil sets DiskWarmingMode to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetDiskWarmingModeNil() {
-	o.DiskWarmingMode = nil
-	o.NullFields = append(o.NullFields, "DiskWarmingMode")
 }
 
 // GetEffectiveReplicationSpecs returns the EffectiveReplicationSpecs field value if set, zero value otherwise
@@ -649,12 +574,6 @@ func (o *ClusterDescription20240805) SetEncryptionAtRestProvider(v string) {
 	o.EncryptionAtRestProvider = &v
 }
 
-// SetEncryptionAtRestProviderNil sets EncryptionAtRestProvider to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetEncryptionAtRestProviderNil() {
-	o.EncryptionAtRestProvider = nil
-	o.NullFields = append(o.NullFields, "EncryptionAtRestProvider")
-}
-
 // GetFeatureCompatibilityVersion returns the FeatureCompatibilityVersion field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetFeatureCompatibilityVersion() string {
 	if o == nil || IsNil(o.FeatureCompatibilityVersion) {
@@ -686,12 +605,6 @@ func (o *ClusterDescription20240805) HasFeatureCompatibilityVersion() bool {
 // SetFeatureCompatibilityVersion gets a reference to the given string and assigns it to the FeatureCompatibilityVersion field.
 func (o *ClusterDescription20240805) SetFeatureCompatibilityVersion(v string) {
 	o.FeatureCompatibilityVersion = &v
-}
-
-// SetFeatureCompatibilityVersionNil sets FeatureCompatibilityVersion to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetFeatureCompatibilityVersionNil() {
-	o.FeatureCompatibilityVersion = nil
-	o.NullFields = append(o.NullFields, "FeatureCompatibilityVersion")
 }
 
 // GetFeatureCompatibilityVersionExpirationDate returns the FeatureCompatibilityVersionExpirationDate field value if set, zero value otherwise
@@ -727,12 +640,6 @@ func (o *ClusterDescription20240805) SetFeatureCompatibilityVersionExpirationDat
 	o.FeatureCompatibilityVersionExpirationDate = &v
 }
 
-// SetFeatureCompatibilityVersionExpirationDateNil sets FeatureCompatibilityVersionExpirationDate to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetFeatureCompatibilityVersionExpirationDateNil() {
-	o.FeatureCompatibilityVersionExpirationDate = nil
-	o.NullFields = append(o.NullFields, "FeatureCompatibilityVersionExpirationDate")
-}
-
 // GetGlobalClusterSelfManagedSharding returns the GlobalClusterSelfManagedSharding field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetGlobalClusterSelfManagedSharding() bool {
 	if o == nil || IsNil(o.GlobalClusterSelfManagedSharding) {
@@ -764,12 +671,6 @@ func (o *ClusterDescription20240805) HasGlobalClusterSelfManagedSharding() bool 
 // SetGlobalClusterSelfManagedSharding gets a reference to the given bool and assigns it to the GlobalClusterSelfManagedSharding field.
 func (o *ClusterDescription20240805) SetGlobalClusterSelfManagedSharding(v bool) {
 	o.GlobalClusterSelfManagedSharding = &v
-}
-
-// SetGlobalClusterSelfManagedShardingNil sets GlobalClusterSelfManagedSharding to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetGlobalClusterSelfManagedShardingNil() {
-	o.GlobalClusterSelfManagedSharding = nil
-	o.NullFields = append(o.NullFields, "GlobalClusterSelfManagedSharding")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -805,12 +706,6 @@ func (o *ClusterDescription20240805) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetGroupIdNil() {
-	o.GroupId = nil
-	o.NullFields = append(o.NullFields, "GroupId")
-}
-
 // GetId returns the Id field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -844,12 +739,6 @@ func (o *ClusterDescription20240805) SetId(v string) {
 	o.Id = &v
 }
 
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
-}
-
 // GetInternalClusterRole returns the InternalClusterRole field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetInternalClusterRole() string {
 	if o == nil || IsNil(o.InternalClusterRole) {
@@ -881,12 +770,6 @@ func (o *ClusterDescription20240805) HasInternalClusterRole() bool {
 // SetInternalClusterRole gets a reference to the given string and assigns it to the InternalClusterRole field.
 func (o *ClusterDescription20240805) SetInternalClusterRole(v string) {
 	o.InternalClusterRole = &v
-}
-
-// SetInternalClusterRoleNil sets InternalClusterRole to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetInternalClusterRoleNil() {
-	o.InternalClusterRole = nil
-	o.NullFields = append(o.NullFields, "InternalClusterRole")
 }
 
 // GetLabels returns the Labels field value if set, zero value otherwise
@@ -991,12 +874,6 @@ func (o *ClusterDescription20240805) SetMongoDBEmployeeAccessGrant(v EmployeeAcc
 	o.MongoDBEmployeeAccessGrant = &v
 }
 
-// SetMongoDBEmployeeAccessGrantNil sets MongoDBEmployeeAccessGrant to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetMongoDBEmployeeAccessGrantNil() {
-	o.MongoDBEmployeeAccessGrant = nil
-	o.NullFields = append(o.NullFields, "MongoDBEmployeeAccessGrant")
-}
-
 // GetMongoDBMajorVersion returns the MongoDBMajorVersion field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetMongoDBMajorVersion() string {
 	if o == nil || IsNil(o.MongoDBMajorVersion) {
@@ -1028,12 +905,6 @@ func (o *ClusterDescription20240805) HasMongoDBMajorVersion() bool {
 // SetMongoDBMajorVersion gets a reference to the given string and assigns it to the MongoDBMajorVersion field.
 func (o *ClusterDescription20240805) SetMongoDBMajorVersion(v string) {
 	o.MongoDBMajorVersion = &v
-}
-
-// SetMongoDBMajorVersionNil sets MongoDBMajorVersion to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetMongoDBMajorVersionNil() {
-	o.MongoDBMajorVersion = nil
-	o.NullFields = append(o.NullFields, "MongoDBMajorVersion")
 }
 
 // GetMongoDBVersion returns the MongoDBVersion field value if set, zero value otherwise
@@ -1069,12 +940,6 @@ func (o *ClusterDescription20240805) SetMongoDBVersion(v string) {
 	o.MongoDBVersion = &v
 }
 
-// SetMongoDBVersionNil sets MongoDBVersion to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetMongoDBVersionNil() {
-	o.MongoDBVersion = nil
-	o.NullFields = append(o.NullFields, "MongoDBVersion")
-}
-
 // GetName returns the Name field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -1106,12 +971,6 @@ func (o *ClusterDescription20240805) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ClusterDescription20240805) SetName(v string) {
 	o.Name = &v
-}
-
-// SetNameNil sets Name to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetNameNil() {
-	o.Name = nil
-	o.NullFields = append(o.NullFields, "Name")
 }
 
 // GetPaused returns the Paused field value if set, zero value otherwise
@@ -1147,12 +1006,6 @@ func (o *ClusterDescription20240805) SetPaused(v bool) {
 	o.Paused = &v
 }
 
-// SetPausedNil sets Paused to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetPausedNil() {
-	o.Paused = nil
-	o.NullFields = append(o.NullFields, "Paused")
-}
-
 // GetPitEnabled returns the PitEnabled field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetPitEnabled() bool {
 	if o == nil || IsNil(o.PitEnabled) {
@@ -1184,12 +1037,6 @@ func (o *ClusterDescription20240805) HasPitEnabled() bool {
 // SetPitEnabled gets a reference to the given bool and assigns it to the PitEnabled field.
 func (o *ClusterDescription20240805) SetPitEnabled(v bool) {
 	o.PitEnabled = &v
-}
-
-// SetPitEnabledNil sets PitEnabled to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetPitEnabledNil() {
-	o.PitEnabled = nil
-	o.NullFields = append(o.NullFields, "PitEnabled")
 }
 
 // GetRedactClientLogData returns the RedactClientLogData field value if set, zero value otherwise
@@ -1225,12 +1072,6 @@ func (o *ClusterDescription20240805) SetRedactClientLogData(v bool) {
 	o.RedactClientLogData = &v
 }
 
-// SetRedactClientLogDataNil sets RedactClientLogData to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetRedactClientLogDataNil() {
-	o.RedactClientLogData = nil
-	o.NullFields = append(o.NullFields, "RedactClientLogData")
-}
-
 // GetReplicaSetScalingStrategy returns the ReplicaSetScalingStrategy field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetReplicaSetScalingStrategy() string {
 	if o == nil || IsNil(o.ReplicaSetScalingStrategy) {
@@ -1262,12 +1103,6 @@ func (o *ClusterDescription20240805) HasReplicaSetScalingStrategy() bool {
 // SetReplicaSetScalingStrategy gets a reference to the given string and assigns it to the ReplicaSetScalingStrategy field.
 func (o *ClusterDescription20240805) SetReplicaSetScalingStrategy(v string) {
 	o.ReplicaSetScalingStrategy = &v
-}
-
-// SetReplicaSetScalingStrategyNil sets ReplicaSetScalingStrategy to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetReplicaSetScalingStrategyNil() {
-	o.ReplicaSetScalingStrategy = nil
-	o.NullFields = append(o.NullFields, "ReplicaSetScalingStrategy")
 }
 
 // GetReplicationSpecs returns the ReplicationSpecs field value if set, zero value otherwise
@@ -1336,12 +1171,6 @@ func (o *ClusterDescription20240805) SetRetainBackups(v bool) {
 	o.RetainBackups = &v
 }
 
-// SetRetainBackupsNil sets RetainBackups to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetRetainBackupsNil() {
-	o.RetainBackups = nil
-	o.NullFields = append(o.NullFields, "RetainBackups")
-}
-
 // GetRootCertType returns the RootCertType field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetRootCertType() string {
 	if o == nil || IsNil(o.RootCertType) {
@@ -1375,12 +1204,6 @@ func (o *ClusterDescription20240805) SetRootCertType(v string) {
 	o.RootCertType = &v
 }
 
-// SetRootCertTypeNil sets RootCertType to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetRootCertTypeNil() {
-	o.RootCertType = nil
-	o.NullFields = append(o.NullFields, "RootCertType")
-}
-
 // GetStateName returns the StateName field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetStateName() string {
 	if o == nil || IsNil(o.StateName) {
@@ -1412,12 +1235,6 @@ func (o *ClusterDescription20240805) HasStateName() bool {
 // SetStateName gets a reference to the given string and assigns it to the StateName field.
 func (o *ClusterDescription20240805) SetStateName(v string) {
 	o.StateName = &v
-}
-
-// SetStateNameNil sets StateName to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetStateNameNil() {
-	o.StateName = nil
-	o.NullFields = append(o.NullFields, "StateName")
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise
@@ -1486,12 +1303,6 @@ func (o *ClusterDescription20240805) SetTerminationProtectionEnabled(v bool) {
 	o.TerminationProtectionEnabled = &v
 }
 
-// SetTerminationProtectionEnabledNil sets TerminationProtectionEnabled to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetTerminationProtectionEnabledNil() {
-	o.TerminationProtectionEnabled = nil
-	o.NullFields = append(o.NullFields, "TerminationProtectionEnabled")
-}
-
 // GetUseAwsTimeBasedSnapshotCopyForFastInitialSync returns the UseAwsTimeBasedSnapshotCopyForFastInitialSync field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetUseAwsTimeBasedSnapshotCopyForFastInitialSync() bool {
 	if o == nil || IsNil(o.UseAwsTimeBasedSnapshotCopyForFastInitialSync) {
@@ -1525,12 +1336,6 @@ func (o *ClusterDescription20240805) SetUseAwsTimeBasedSnapshotCopyForFastInitia
 	o.UseAwsTimeBasedSnapshotCopyForFastInitialSync = &v
 }
 
-// SetUseAwsTimeBasedSnapshotCopyForFastInitialSyncNil sets UseAwsTimeBasedSnapshotCopyForFastInitialSync to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetUseAwsTimeBasedSnapshotCopyForFastInitialSyncNil() {
-	o.UseAwsTimeBasedSnapshotCopyForFastInitialSync = nil
-	o.NullFields = append(o.NullFields, "UseAwsTimeBasedSnapshotCopyForFastInitialSync")
-}
-
 // GetVersionReleaseSystem returns the VersionReleaseSystem field value if set, zero value otherwise
 func (o *ClusterDescription20240805) GetVersionReleaseSystem() string {
 	if o == nil || IsNil(o.VersionReleaseSystem) {
@@ -1562,10 +1367,4 @@ func (o *ClusterDescription20240805) HasVersionReleaseSystem() bool {
 // SetVersionReleaseSystem gets a reference to the given string and assigns it to the VersionReleaseSystem field.
 func (o *ClusterDescription20240805) SetVersionReleaseSystem(v string) {
 	o.VersionReleaseSystem = &v
-}
-
-// SetVersionReleaseSystemNil sets VersionReleaseSystem to an explicit JSON null when marshaled.
-func (o *ClusterDescription20240805) SetVersionReleaseSystemNil() {
-	o.VersionReleaseSystem = nil
-	o.NullFields = append(o.NullFields, "VersionReleaseSystem")
 }

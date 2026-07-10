@@ -13,15 +13,6 @@ type ServerlessConnectionStringsPrivateEndpointList struct {
 	// MongoDB process type to which your application connects.
 	// Read only field.
 	Type *string `json:"type,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ServerlessConnectionStringsPrivateEndpointList) MarshalJSON() ([]byte, error) {
-	type noMethod ServerlessConnectionStringsPrivateEndpointList
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewServerlessConnectionStringsPrivateEndpointList instantiates a new ServerlessConnectionStringsPrivateEndpointList object
@@ -107,12 +98,6 @@ func (o *ServerlessConnectionStringsPrivateEndpointList) SetSrvConnectionString(
 	o.SrvConnectionString = &v
 }
 
-// SetSrvConnectionStringNil sets SrvConnectionString to an explicit JSON null when marshaled.
-func (o *ServerlessConnectionStringsPrivateEndpointList) SetSrvConnectionStringNil() {
-	o.SrvConnectionString = nil
-	o.NullFields = append(o.NullFields, "SrvConnectionString")
-}
-
 // GetType returns the Type field value if set, zero value otherwise
 func (o *ServerlessConnectionStringsPrivateEndpointList) GetType() string {
 	if o == nil || IsNil(o.Type) {
@@ -144,10 +129,4 @@ func (o *ServerlessConnectionStringsPrivateEndpointList) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *ServerlessConnectionStringsPrivateEndpointList) SetType(v string) {
 	o.Type = &v
-}
-
-// SetTypeNil sets Type to an explicit JSON null when marshaled.
-func (o *ServerlessConnectionStringsPrivateEndpointList) SetTypeNil() {
-	o.Type = nil
-	o.NullFields = append(o.NullFields, "Type")
 }

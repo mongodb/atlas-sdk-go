@@ -23,15 +23,6 @@ type ApiSearchDeploymentResponse struct {
 	// Human-readable label that indicates the current operating condition of this search deployment.
 	// Read only field.
 	StateName *string `json:"stateName,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiSearchDeploymentResponse) MarshalJSON() ([]byte, error) {
-	type noMethod ApiSearchDeploymentResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiSearchDeploymentResponse instantiates a new ApiSearchDeploymentResponse object
@@ -117,12 +108,6 @@ func (o *ApiSearchDeploymentResponse) SetEncryptionAtRestProvider(v string) {
 	o.EncryptionAtRestProvider = &v
 }
 
-// SetEncryptionAtRestProviderNil sets EncryptionAtRestProvider to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentResponse) SetEncryptionAtRestProviderNil() {
-	o.EncryptionAtRestProvider = nil
-	o.NullFields = append(o.NullFields, "EncryptionAtRestProvider")
-}
-
 // GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *ApiSearchDeploymentResponse) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
@@ -156,12 +141,6 @@ func (o *ApiSearchDeploymentResponse) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentResponse) SetGroupIdNil() {
-	o.GroupId = nil
-	o.NullFields = append(o.NullFields, "GroupId")
-}
-
 // GetId returns the Id field value if set, zero value otherwise
 func (o *ApiSearchDeploymentResponse) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -193,12 +172,6 @@ func (o *ApiSearchDeploymentResponse) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApiSearchDeploymentResponse) SetId(v string) {
 	o.Id = &v
-}
-
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentResponse) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetSpecs returns the Specs field value if set, zero value otherwise
@@ -268,10 +241,4 @@ func (o *ApiSearchDeploymentResponse) HasStateName() bool {
 // SetStateName gets a reference to the given string and assigns it to the StateName field.
 func (o *ApiSearchDeploymentResponse) SetStateName(v string) {
 	o.StateName = &v
-}
-
-// SetStateNameNil sets StateName to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentResponse) SetStateNameNil() {
-	o.StateName = nil
-	o.NullFields = append(o.NullFields, "StateName")
 }

@@ -10,15 +10,6 @@ type UserCustomDBRole struct {
 	InheritedRoles *[]DatabaseInheritedRole `json:"inheritedRoles,omitempty"`
 	// Human-readable label that identifies the role for the request. This name must be unique for this custom role in this project.
 	RoleName string `json:"roleName"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *UserCustomDBRole) MarshalJSON() ([]byte, error) {
-	type noMethod UserCustomDBRole
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewUserCustomDBRole instantiates a new UserCustomDBRole object

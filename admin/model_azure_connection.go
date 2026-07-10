@@ -14,15 +14,6 @@ type AzureConnection struct {
 	ServicePrincipalId *string `json:"servicePrincipalId,omitempty"`
 	// Name of the Azure Storage Account to connect to.
 	StorageAccountName *string `json:"storageAccountName,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *AzureConnection) MarshalJSON() ([]byte, error) {
-	type noMethod AzureConnection
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAzureConnection instantiates a new AzureConnection object
@@ -111,12 +102,6 @@ func (o *AzureConnection) SetRegion(v string) {
 	o.Region = &v
 }
 
-// SetRegionNil sets Region to an explicit JSON null when marshaled.
-func (o *AzureConnection) SetRegionNil() {
-	o.Region = nil
-	o.NullFields = append(o.NullFields, "Region")
-}
-
 // GetServicePrincipalId returns the ServicePrincipalId field value if set, zero value otherwise
 func (o *AzureConnection) GetServicePrincipalId() string {
 	if o == nil || IsNil(o.ServicePrincipalId) {
@@ -150,12 +135,6 @@ func (o *AzureConnection) SetServicePrincipalId(v string) {
 	o.ServicePrincipalId = &v
 }
 
-// SetServicePrincipalIdNil sets ServicePrincipalId to an explicit JSON null when marshaled.
-func (o *AzureConnection) SetServicePrincipalIdNil() {
-	o.ServicePrincipalId = nil
-	o.NullFields = append(o.NullFields, "ServicePrincipalId")
-}
-
 // GetStorageAccountName returns the StorageAccountName field value if set, zero value otherwise
 func (o *AzureConnection) GetStorageAccountName() string {
 	if o == nil || IsNil(o.StorageAccountName) {
@@ -187,10 +166,4 @@ func (o *AzureConnection) HasStorageAccountName() bool {
 // SetStorageAccountName gets a reference to the given string and assigns it to the StorageAccountName field.
 func (o *AzureConnection) SetStorageAccountName(v string) {
 	o.StorageAccountName = &v
-}
-
-// SetStorageAccountNameNil sets StorageAccountName to an explicit JSON null when marshaled.
-func (o *AzureConnection) SetStorageAccountNameNil() {
-	o.StorageAccountName = nil
-	o.NullFields = append(o.NullFields, "StorageAccountName")
 }

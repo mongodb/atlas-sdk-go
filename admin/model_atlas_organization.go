@@ -17,15 +17,6 @@ type AtlasOrganization struct {
 	Name string `json:"name"`
 	// Disables automatic alert creation. When set to true, no organization level alerts will be created automatically.
 	SkipDefaultAlertsSettings *bool `json:"skipDefaultAlertsSettings,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *AtlasOrganization) MarshalJSON() ([]byte, error) {
-	type noMethod AtlasOrganization
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAtlasOrganization instantiates a new AtlasOrganization object
@@ -83,12 +74,6 @@ func (o *AtlasOrganization) SetId(v string) {
 	o.Id = &v
 }
 
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *AtlasOrganization) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
-}
-
 // GetIsDeleted returns the IsDeleted field value if set, zero value otherwise
 func (o *AtlasOrganization) GetIsDeleted() bool {
 	if o == nil || IsNil(o.IsDeleted) {
@@ -120,12 +105,6 @@ func (o *AtlasOrganization) HasIsDeleted() bool {
 // SetIsDeleted gets a reference to the given bool and assigns it to the IsDeleted field.
 func (o *AtlasOrganization) SetIsDeleted(v bool) {
 	o.IsDeleted = &v
-}
-
-// SetIsDeletedNil sets IsDeleted to an explicit JSON null when marshaled.
-func (o *AtlasOrganization) SetIsDeletedNil() {
-	o.IsDeleted = nil
-	o.NullFields = append(o.NullFields, "IsDeleted")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -216,10 +195,4 @@ func (o *AtlasOrganization) HasSkipDefaultAlertsSettings() bool {
 // SetSkipDefaultAlertsSettings gets a reference to the given bool and assigns it to the SkipDefaultAlertsSettings field.
 func (o *AtlasOrganization) SetSkipDefaultAlertsSettings(v bool) {
 	o.SkipDefaultAlertsSettings = &v
-}
-
-// SetSkipDefaultAlertsSettingsNil sets SkipDefaultAlertsSettings to an explicit JSON null when marshaled.
-func (o *AtlasOrganization) SetSkipDefaultAlertsSettingsNil() {
-	o.SkipDefaultAlertsSettings = nil
-	o.NullFields = append(o.NullFields, "SkipDefaultAlertsSettings")
 }

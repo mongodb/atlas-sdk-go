@@ -11,15 +11,6 @@ type StreamsDataProcessRegion struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Name of the cloud provider region hosting Atlas Stream Processing.
 	Region string `json:"region"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsDataProcessRegion) MarshalJSON() ([]byte, error) {
-	type noMethod StreamsDataProcessRegion
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsDataProcessRegion instantiates a new StreamsDataProcessRegion object

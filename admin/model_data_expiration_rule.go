@@ -6,15 +6,6 @@ package admin
 type DataExpirationRule struct {
 	// Number of days used in the date criteria for nominating documents for deletion.
 	ExpireAfterDays *int `json:"expireAfterDays,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DataExpirationRule) MarshalJSON() ([]byte, error) {
-	type noMethod DataExpirationRule
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataExpirationRule instantiates a new DataExpirationRule object
@@ -65,10 +56,4 @@ func (o *DataExpirationRule) HasExpireAfterDays() bool {
 // SetExpireAfterDays gets a reference to the given int and assigns it to the ExpireAfterDays field.
 func (o *DataExpirationRule) SetExpireAfterDays(v int) {
 	o.ExpireAfterDays = &v
-}
-
-// SetExpireAfterDaysNil sets ExpireAfterDays to an explicit JSON null when marshaled.
-func (o *DataExpirationRule) SetExpireAfterDaysNil() {
-	o.ExpireAfterDays = nil
-	o.NullFields = append(o.NullFields, "ExpireAfterDays")
 }

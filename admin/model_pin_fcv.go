@@ -13,15 +13,6 @@ type PinFCV struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PinFCV) MarshalJSON() ([]byte, error) {
-	type noMethod PinFCV
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPinFCV instantiates a new PinFCV object
@@ -72,12 +63,6 @@ func (o *PinFCV) HasExpirationDate() bool {
 // SetExpirationDate gets a reference to the given time.Time and assigns it to the ExpirationDate field.
 func (o *PinFCV) SetExpirationDate(v time.Time) {
 	o.ExpirationDate = &v
-}
-
-// SetExpirationDateNil sets ExpirationDate to an explicit JSON null when marshaled.
-func (o *PinFCV) SetExpirationDateNil() {
-	o.ExpirationDate = nil
-	o.NullFields = append(o.NullFields, "ExpirationDate")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise

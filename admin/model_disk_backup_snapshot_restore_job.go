@@ -56,15 +56,6 @@ type DiskBackupSnapshotRestoreJob struct {
 	// Date and time when MongoDB Cloud took the snapshot associated with `snapshotId`. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Timestamp *time.Time `json:"timestamp,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DiskBackupSnapshotRestoreJob) MarshalJSON() ([]byte, error) {
-	type noMethod DiskBackupSnapshotRestoreJob
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupSnapshotRestoreJob instantiates a new DiskBackupSnapshotRestoreJob object
@@ -116,12 +107,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasCancelled() bool {
 // SetCancelled gets a reference to the given bool and assigns it to the Cancelled field.
 func (o *DiskBackupSnapshotRestoreJob) SetCancelled(v bool) {
 	o.Cancelled = &v
-}
-
-// SetCancelledNil sets Cancelled to an explicit JSON null when marshaled.
-func (o *DiskBackupSnapshotRestoreJob) SetCancelledNil() {
-	o.Cancelled = nil
-	o.NullFields = append(o.NullFields, "Cancelled")
 }
 
 // GetComponents returns the Components field value if set, zero value otherwise
@@ -247,12 +232,6 @@ func (o *DiskBackupSnapshotRestoreJob) SetDesiredTimestamp(v ApiBSONTimestamp) {
 	o.DesiredTimestamp = &v
 }
 
-// SetDesiredTimestampNil sets DesiredTimestamp to an explicit JSON null when marshaled.
-func (o *DiskBackupSnapshotRestoreJob) SetDesiredTimestampNil() {
-	o.DesiredTimestamp = nil
-	o.NullFields = append(o.NullFields, "DesiredTimestamp")
-}
-
 // GetExpired returns the Expired field value if set, zero value otherwise
 func (o *DiskBackupSnapshotRestoreJob) GetExpired() bool {
 	if o == nil || IsNil(o.Expired) {
@@ -284,12 +263,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasExpired() bool {
 // SetExpired gets a reference to the given bool and assigns it to the Expired field.
 func (o *DiskBackupSnapshotRestoreJob) SetExpired(v bool) {
 	o.Expired = &v
-}
-
-// SetExpiredNil sets Expired to an explicit JSON null when marshaled.
-func (o *DiskBackupSnapshotRestoreJob) SetExpiredNil() {
-	o.Expired = nil
-	o.NullFields = append(o.NullFields, "Expired")
 }
 
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise
@@ -325,12 +298,6 @@ func (o *DiskBackupSnapshotRestoreJob) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
 }
 
-// SetExpiresAtNil sets ExpiresAt to an explicit JSON null when marshaled.
-func (o *DiskBackupSnapshotRestoreJob) SetExpiresAtNil() {
-	o.ExpiresAt = nil
-	o.NullFields = append(o.NullFields, "ExpiresAt")
-}
-
 // GetFailed returns the Failed field value if set, zero value otherwise
 func (o *DiskBackupSnapshotRestoreJob) GetFailed() bool {
 	if o == nil || IsNil(o.Failed) {
@@ -362,12 +329,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasFailed() bool {
 // SetFailed gets a reference to the given bool and assigns it to the Failed field.
 func (o *DiskBackupSnapshotRestoreJob) SetFailed(v bool) {
 	o.Failed = &v
-}
-
-// SetFailedNil sets Failed to an explicit JSON null when marshaled.
-func (o *DiskBackupSnapshotRestoreJob) SetFailedNil() {
-	o.Failed = nil
-	o.NullFields = append(o.NullFields, "Failed")
 }
 
 // GetFinishedAt returns the FinishedAt field value if set, zero value otherwise
@@ -403,12 +364,6 @@ func (o *DiskBackupSnapshotRestoreJob) SetFinishedAt(v time.Time) {
 	o.FinishedAt = &v
 }
 
-// SetFinishedAtNil sets FinishedAt to an explicit JSON null when marshaled.
-func (o *DiskBackupSnapshotRestoreJob) SetFinishedAtNil() {
-	o.FinishedAt = nil
-	o.NullFields = append(o.NullFields, "FinishedAt")
-}
-
 // GetId returns the Id field value if set, zero value otherwise
 func (o *DiskBackupSnapshotRestoreJob) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -440,12 +395,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *DiskBackupSnapshotRestoreJob) SetId(v string) {
 	o.Id = &v
-}
-
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *DiskBackupSnapshotRestoreJob) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -514,12 +463,6 @@ func (o *DiskBackupSnapshotRestoreJob) SetOplogInc(v int) {
 	o.OplogInc = &v
 }
 
-// SetOplogIncNil sets OplogInc to an explicit JSON null when marshaled.
-func (o *DiskBackupSnapshotRestoreJob) SetOplogIncNil() {
-	o.OplogInc = nil
-	o.NullFields = append(o.NullFields, "OplogInc")
-}
-
 // GetOplogTs returns the OplogTs field value if set, zero value otherwise
 func (o *DiskBackupSnapshotRestoreJob) GetOplogTs() int {
 	if o == nil || IsNil(o.OplogTs) {
@@ -553,12 +496,6 @@ func (o *DiskBackupSnapshotRestoreJob) SetOplogTs(v int) {
 	o.OplogTs = &v
 }
 
-// SetOplogTsNil sets OplogTs to an explicit JSON null when marshaled.
-func (o *DiskBackupSnapshotRestoreJob) SetOplogTsNil() {
-	o.OplogTs = nil
-	o.NullFields = append(o.NullFields, "OplogTs")
-}
-
 // GetPointInTimeUTCSeconds returns the PointInTimeUTCSeconds field value if set, zero value otherwise
 func (o *DiskBackupSnapshotRestoreJob) GetPointInTimeUTCSeconds() int {
 	if o == nil || IsNil(o.PointInTimeUTCSeconds) {
@@ -590,12 +527,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasPointInTimeUTCSeconds() bool {
 // SetPointInTimeUTCSeconds gets a reference to the given int and assigns it to the PointInTimeUTCSeconds field.
 func (o *DiskBackupSnapshotRestoreJob) SetPointInTimeUTCSeconds(v int) {
 	o.PointInTimeUTCSeconds = &v
-}
-
-// SetPointInTimeUTCSecondsNil sets PointInTimeUTCSeconds to an explicit JSON null when marshaled.
-func (o *DiskBackupSnapshotRestoreJob) SetPointInTimeUTCSecondsNil() {
-	o.PointInTimeUTCSeconds = nil
-	o.NullFields = append(o.NullFields, "PointInTimeUTCSeconds")
 }
 
 // GetPrivateDownloadDeliveryUrls returns the PrivateDownloadDeliveryUrls field value if set, zero value otherwise
@@ -664,12 +595,6 @@ func (o *DiskBackupSnapshotRestoreJob) SetSnapshotId(v string) {
 	o.SnapshotId = &v
 }
 
-// SetSnapshotIdNil sets SnapshotId to an explicit JSON null when marshaled.
-func (o *DiskBackupSnapshotRestoreJob) SetSnapshotIdNil() {
-	o.SnapshotId = nil
-	o.NullFields = append(o.NullFields, "SnapshotId")
-}
-
 // GetTargetClusterName returns the TargetClusterName field value if set, zero value otherwise
 func (o *DiskBackupSnapshotRestoreJob) GetTargetClusterName() string {
 	if o == nil || IsNil(o.TargetClusterName) {
@@ -701,12 +626,6 @@ func (o *DiskBackupSnapshotRestoreJob) HasTargetClusterName() bool {
 // SetTargetClusterName gets a reference to the given string and assigns it to the TargetClusterName field.
 func (o *DiskBackupSnapshotRestoreJob) SetTargetClusterName(v string) {
 	o.TargetClusterName = &v
-}
-
-// SetTargetClusterNameNil sets TargetClusterName to an explicit JSON null when marshaled.
-func (o *DiskBackupSnapshotRestoreJob) SetTargetClusterNameNil() {
-	o.TargetClusterName = nil
-	o.NullFields = append(o.NullFields, "TargetClusterName")
 }
 
 // GetTargetGroupId returns the TargetGroupId field value if set, zero value otherwise
@@ -742,12 +661,6 @@ func (o *DiskBackupSnapshotRestoreJob) SetTargetGroupId(v string) {
 	o.TargetGroupId = &v
 }
 
-// SetTargetGroupIdNil sets TargetGroupId to an explicit JSON null when marshaled.
-func (o *DiskBackupSnapshotRestoreJob) SetTargetGroupIdNil() {
-	o.TargetGroupId = nil
-	o.NullFields = append(o.NullFields, "TargetGroupId")
-}
-
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise
 func (o *DiskBackupSnapshotRestoreJob) GetTimestamp() time.Time {
 	if o == nil || IsNil(o.Timestamp) {
@@ -779,10 +692,4 @@ func (o *DiskBackupSnapshotRestoreJob) HasTimestamp() bool {
 // SetTimestamp gets a reference to the given time.Time and assigns it to the Timestamp field.
 func (o *DiskBackupSnapshotRestoreJob) SetTimestamp(v time.Time) {
 	o.Timestamp = &v
-}
-
-// SetTimestampNil sets Timestamp to an explicit JSON null when marshaled.
-func (o *DiskBackupSnapshotRestoreJob) SetTimestampNil() {
-	o.Timestamp = nil
-	o.NullFields = append(o.NullFields, "Timestamp")
 }

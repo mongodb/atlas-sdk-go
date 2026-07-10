@@ -13,15 +13,6 @@ type ApiAtlasResourcePolicyMetadata struct {
 	// Human-readable label that describes the atlas resource policy.
 	// Read only field.
 	ResourcePolicyName *string `json:"resourcePolicyName,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiAtlasResourcePolicyMetadata) MarshalJSON() ([]byte, error) {
-	type noMethod ApiAtlasResourcePolicyMetadata
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasResourcePolicyMetadata instantiates a new ApiAtlasResourcePolicyMetadata object
@@ -107,12 +98,6 @@ func (o *ApiAtlasResourcePolicyMetadata) SetResourcePolicyId(v string) {
 	o.ResourcePolicyId = &v
 }
 
-// SetResourcePolicyIdNil sets ResourcePolicyId to an explicit JSON null when marshaled.
-func (o *ApiAtlasResourcePolicyMetadata) SetResourcePolicyIdNil() {
-	o.ResourcePolicyId = nil
-	o.NullFields = append(o.NullFields, "ResourcePolicyId")
-}
-
 // GetResourcePolicyName returns the ResourcePolicyName field value if set, zero value otherwise
 func (o *ApiAtlasResourcePolicyMetadata) GetResourcePolicyName() string {
 	if o == nil || IsNil(o.ResourcePolicyName) {
@@ -144,10 +129,4 @@ func (o *ApiAtlasResourcePolicyMetadata) HasResourcePolicyName() bool {
 // SetResourcePolicyName gets a reference to the given string and assigns it to the ResourcePolicyName field.
 func (o *ApiAtlasResourcePolicyMetadata) SetResourcePolicyName(v string) {
 	o.ResourcePolicyName = &v
-}
-
-// SetResourcePolicyNameNil sets ResourcePolicyName to an explicit JSON null when marshaled.
-func (o *ApiAtlasResourcePolicyMetadata) SetResourcePolicyNameNil() {
-	o.ResourcePolicyName = nil
-	o.NullFields = append(o.NullFields, "ResourcePolicyName")
 }

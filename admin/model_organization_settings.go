@@ -19,15 +19,6 @@ type OrganizationSettings struct {
 	SecurityContact *string `json:"securityContact,omitempty"`
 	// Flag that indicates whether a group's Atlas Stream Processing workspaces in this organization can create connections to other group's clusters in the same organization.
 	StreamsCrossGroupEnabled *bool `json:"streamsCrossGroupEnabled,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *OrganizationSettings) MarshalJSON() ([]byte, error) {
-	type noMethod OrganizationSettings
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewOrganizationSettings instantiates a new OrganizationSettings object
@@ -84,12 +75,6 @@ func (o *OrganizationSettings) SetApiAccessListRequired(v bool) {
 	o.ApiAccessListRequired = &v
 }
 
-// SetApiAccessListRequiredNil sets ApiAccessListRequired to an explicit JSON null when marshaled.
-func (o *OrganizationSettings) SetApiAccessListRequiredNil() {
-	o.ApiAccessListRequired = nil
-	o.NullFields = append(o.NullFields, "ApiAccessListRequired")
-}
-
 // GetCustomSessionTimeouts returns the CustomSessionTimeouts field value if set, zero value otherwise
 func (o *OrganizationSettings) GetCustomSessionTimeouts() CustomSessionTimeouts {
 	if o == nil || IsNil(o.CustomSessionTimeouts) {
@@ -121,12 +106,6 @@ func (o *OrganizationSettings) HasCustomSessionTimeouts() bool {
 // SetCustomSessionTimeouts gets a reference to the given CustomSessionTimeouts and assigns it to the CustomSessionTimeouts field.
 func (o *OrganizationSettings) SetCustomSessionTimeouts(v CustomSessionTimeouts) {
 	o.CustomSessionTimeouts = &v
-}
-
-// SetCustomSessionTimeoutsNil sets CustomSessionTimeouts to an explicit JSON null when marshaled.
-func (o *OrganizationSettings) SetCustomSessionTimeoutsNil() {
-	o.CustomSessionTimeouts = nil
-	o.NullFields = append(o.NullFields, "CustomSessionTimeouts")
 }
 
 // GetGenAIFeaturesEnabled returns the GenAIFeaturesEnabled field value if set, zero value otherwise
@@ -162,12 +141,6 @@ func (o *OrganizationSettings) SetGenAIFeaturesEnabled(v bool) {
 	o.GenAIFeaturesEnabled = &v
 }
 
-// SetGenAIFeaturesEnabledNil sets GenAIFeaturesEnabled to an explicit JSON null when marshaled.
-func (o *OrganizationSettings) SetGenAIFeaturesEnabledNil() {
-	o.GenAIFeaturesEnabled = nil
-	o.NullFields = append(o.NullFields, "GenAIFeaturesEnabled")
-}
-
 // GetMaxServiceAccountSecretValidityInHours returns the MaxServiceAccountSecretValidityInHours field value if set, zero value otherwise
 func (o *OrganizationSettings) GetMaxServiceAccountSecretValidityInHours() int {
 	if o == nil || IsNil(o.MaxServiceAccountSecretValidityInHours) {
@@ -199,12 +172,6 @@ func (o *OrganizationSettings) HasMaxServiceAccountSecretValidityInHours() bool 
 // SetMaxServiceAccountSecretValidityInHours gets a reference to the given int and assigns it to the MaxServiceAccountSecretValidityInHours field.
 func (o *OrganizationSettings) SetMaxServiceAccountSecretValidityInHours(v int) {
 	o.MaxServiceAccountSecretValidityInHours = &v
-}
-
-// SetMaxServiceAccountSecretValidityInHoursNil sets MaxServiceAccountSecretValidityInHours to an explicit JSON null when marshaled.
-func (o *OrganizationSettings) SetMaxServiceAccountSecretValidityInHoursNil() {
-	o.MaxServiceAccountSecretValidityInHours = nil
-	o.NullFields = append(o.NullFields, "MaxServiceAccountSecretValidityInHours")
 }
 
 // GetMultiFactorAuthRequired returns the MultiFactorAuthRequired field value if set, zero value otherwise
@@ -240,12 +207,6 @@ func (o *OrganizationSettings) SetMultiFactorAuthRequired(v bool) {
 	o.MultiFactorAuthRequired = &v
 }
 
-// SetMultiFactorAuthRequiredNil sets MultiFactorAuthRequired to an explicit JSON null when marshaled.
-func (o *OrganizationSettings) SetMultiFactorAuthRequiredNil() {
-	o.MultiFactorAuthRequired = nil
-	o.NullFields = append(o.NullFields, "MultiFactorAuthRequired")
-}
-
 // GetRestrictEmployeeAccess returns the RestrictEmployeeAccess field value if set, zero value otherwise
 func (o *OrganizationSettings) GetRestrictEmployeeAccess() bool {
 	if o == nil || IsNil(o.RestrictEmployeeAccess) {
@@ -277,12 +238,6 @@ func (o *OrganizationSettings) HasRestrictEmployeeAccess() bool {
 // SetRestrictEmployeeAccess gets a reference to the given bool and assigns it to the RestrictEmployeeAccess field.
 func (o *OrganizationSettings) SetRestrictEmployeeAccess(v bool) {
 	o.RestrictEmployeeAccess = &v
-}
-
-// SetRestrictEmployeeAccessNil sets RestrictEmployeeAccess to an explicit JSON null when marshaled.
-func (o *OrganizationSettings) SetRestrictEmployeeAccessNil() {
-	o.RestrictEmployeeAccess = nil
-	o.NullFields = append(o.NullFields, "RestrictEmployeeAccess")
 }
 
 // GetSecurityContact returns the SecurityContact field value if set, zero value otherwise
@@ -318,12 +273,6 @@ func (o *OrganizationSettings) SetSecurityContact(v string) {
 	o.SecurityContact = &v
 }
 
-// SetSecurityContactNil sets SecurityContact to an explicit JSON null when marshaled.
-func (o *OrganizationSettings) SetSecurityContactNil() {
-	o.SecurityContact = nil
-	o.NullFields = append(o.NullFields, "SecurityContact")
-}
-
 // GetStreamsCrossGroupEnabled returns the StreamsCrossGroupEnabled field value if set, zero value otherwise
 func (o *OrganizationSettings) GetStreamsCrossGroupEnabled() bool {
 	if o == nil || IsNil(o.StreamsCrossGroupEnabled) {
@@ -355,10 +304,4 @@ func (o *OrganizationSettings) HasStreamsCrossGroupEnabled() bool {
 // SetStreamsCrossGroupEnabled gets a reference to the given bool and assigns it to the StreamsCrossGroupEnabled field.
 func (o *OrganizationSettings) SetStreamsCrossGroupEnabled(v bool) {
 	o.StreamsCrossGroupEnabled = &v
-}
-
-// SetStreamsCrossGroupEnabledNil sets StreamsCrossGroupEnabled to an explicit JSON null when marshaled.
-func (o *OrganizationSettings) SetStreamsCrossGroupEnabledNil() {
-	o.StreamsCrossGroupEnabled = nil
-	o.NullFields = append(o.NullFields, "StreamsCrossGroupEnabled")
 }

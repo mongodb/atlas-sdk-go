@@ -13,15 +13,6 @@ type EventTypeDetails struct {
 	// Enum representation of the event type.
 	// Read only field.
 	EventType *string `json:"eventType,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *EventTypeDetails) MarshalJSON() ([]byte, error) {
-	type noMethod EventTypeDetails
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewEventTypeDetails instantiates a new EventTypeDetails object
@@ -74,12 +65,6 @@ func (o *EventTypeDetails) SetAlertable(v bool) {
 	o.Alertable = &v
 }
 
-// SetAlertableNil sets Alertable to an explicit JSON null when marshaled.
-func (o *EventTypeDetails) SetAlertableNil() {
-	o.Alertable = nil
-	o.NullFields = append(o.NullFields, "Alertable")
-}
-
 // GetDescription returns the Description field value if set, zero value otherwise
 func (o *EventTypeDetails) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
@@ -113,12 +98,6 @@ func (o *EventTypeDetails) SetDescription(v string) {
 	o.Description = &v
 }
 
-// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
-func (o *EventTypeDetails) SetDescriptionNil() {
-	o.Description = nil
-	o.NullFields = append(o.NullFields, "Description")
-}
-
 // GetEventType returns the EventType field value if set, zero value otherwise
 func (o *EventTypeDetails) GetEventType() string {
 	if o == nil || IsNil(o.EventType) {
@@ -150,10 +129,4 @@ func (o *EventTypeDetails) HasEventType() bool {
 // SetEventType gets a reference to the given string and assigns it to the EventType field.
 func (o *EventTypeDetails) SetEventType(v string) {
 	o.EventType = &v
-}
-
-// SetEventTypeNil sets EventType to an explicit JSON null when marshaled.
-func (o *EventTypeDetails) SetEventTypeNil() {
-	o.EventType = nil
-	o.NullFields = append(o.NullFields, "EventType")
 }

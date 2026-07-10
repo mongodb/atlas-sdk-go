@@ -105,15 +105,6 @@ type LegacyAtlasCluster struct {
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
 	// Method by which the cluster maintains the MongoDB versions. If value is `CONTINUOUS`, you must not specify `mongoDBMajorVersion`.
 	VersionReleaseSystem *string `json:"versionReleaseSystem,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *LegacyAtlasCluster) MarshalJSON() ([]byte, error) {
-	type noMethod LegacyAtlasCluster
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewLegacyAtlasCluster instantiates a new LegacyAtlasCluster object
@@ -198,12 +189,6 @@ func (o *LegacyAtlasCluster) SetAcceptDataRisksAndForceReplicaSetReconfig(v time
 	o.AcceptDataRisksAndForceReplicaSetReconfig = &v
 }
 
-// SetAcceptDataRisksAndForceReplicaSetReconfigNil sets AcceptDataRisksAndForceReplicaSetReconfig to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetAcceptDataRisksAndForceReplicaSetReconfigNil() {
-	o.AcceptDataRisksAndForceReplicaSetReconfig = nil
-	o.NullFields = append(o.NullFields, "AcceptDataRisksAndForceReplicaSetReconfig")
-}
-
 // GetAdvancedConfiguration returns the AdvancedConfiguration field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetAdvancedConfiguration() ApiAtlasClusterAdvancedConfiguration {
 	if o == nil || IsNil(o.AdvancedConfiguration) {
@@ -235,12 +220,6 @@ func (o *LegacyAtlasCluster) HasAdvancedConfiguration() bool {
 // SetAdvancedConfiguration gets a reference to the given ApiAtlasClusterAdvancedConfiguration and assigns it to the AdvancedConfiguration field.
 func (o *LegacyAtlasCluster) SetAdvancedConfiguration(v ApiAtlasClusterAdvancedConfiguration) {
 	o.AdvancedConfiguration = &v
-}
-
-// SetAdvancedConfigurationNil sets AdvancedConfiguration to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetAdvancedConfigurationNil() {
-	o.AdvancedConfiguration = nil
-	o.NullFields = append(o.NullFields, "AdvancedConfiguration")
 }
 
 // GetAutoScaling returns the AutoScaling field value if set, zero value otherwise
@@ -276,12 +255,6 @@ func (o *LegacyAtlasCluster) SetAutoScaling(v ClusterAutoScalingSettings) {
 	o.AutoScaling = &v
 }
 
-// SetAutoScalingNil sets AutoScaling to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetAutoScalingNil() {
-	o.AutoScaling = nil
-	o.NullFields = append(o.NullFields, "AutoScaling")
-}
-
 // GetBackupEnabled returns the BackupEnabled field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetBackupEnabled() bool {
 	if o == nil || IsNil(o.BackupEnabled) {
@@ -313,12 +286,6 @@ func (o *LegacyAtlasCluster) HasBackupEnabled() bool {
 // SetBackupEnabled gets a reference to the given bool and assigns it to the BackupEnabled field.
 func (o *LegacyAtlasCluster) SetBackupEnabled(v bool) {
 	o.BackupEnabled = &v
-}
-
-// SetBackupEnabledNil sets BackupEnabled to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetBackupEnabledNil() {
-	o.BackupEnabled = nil
-	o.NullFields = append(o.NullFields, "BackupEnabled")
 }
 
 // GetBiConnector returns the BiConnector field value if set, zero value otherwise
@@ -354,12 +321,6 @@ func (o *LegacyAtlasCluster) SetBiConnector(v BiConnector) {
 	o.BiConnector = &v
 }
 
-// SetBiConnectorNil sets BiConnector to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetBiConnectorNil() {
-	o.BiConnector = nil
-	o.NullFields = append(o.NullFields, "BiConnector")
-}
-
 // GetClusterType returns the ClusterType field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetClusterType() string {
 	if o == nil || IsNil(o.ClusterType) {
@@ -391,12 +352,6 @@ func (o *LegacyAtlasCluster) HasClusterType() bool {
 // SetClusterType gets a reference to the given string and assigns it to the ClusterType field.
 func (o *LegacyAtlasCluster) SetClusterType(v string) {
 	o.ClusterType = &v
-}
-
-// SetClusterTypeNil sets ClusterType to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetClusterTypeNil() {
-	o.ClusterType = nil
-	o.NullFields = append(o.NullFields, "ClusterType")
 }
 
 // GetConfigServerManagementMode returns the ConfigServerManagementMode field value if set, zero value otherwise
@@ -432,12 +387,6 @@ func (o *LegacyAtlasCluster) SetConfigServerManagementMode(v string) {
 	o.ConfigServerManagementMode = &v
 }
 
-// SetConfigServerManagementModeNil sets ConfigServerManagementMode to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetConfigServerManagementModeNil() {
-	o.ConfigServerManagementMode = nil
-	o.NullFields = append(o.NullFields, "ConfigServerManagementMode")
-}
-
 // GetConfigServerType returns the ConfigServerType field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetConfigServerType() string {
 	if o == nil || IsNil(o.ConfigServerType) {
@@ -469,12 +418,6 @@ func (o *LegacyAtlasCluster) HasConfigServerType() bool {
 // SetConfigServerType gets a reference to the given string and assigns it to the ConfigServerType field.
 func (o *LegacyAtlasCluster) SetConfigServerType(v string) {
 	o.ConfigServerType = &v
-}
-
-// SetConfigServerTypeNil sets ConfigServerType to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetConfigServerTypeNil() {
-	o.ConfigServerType = nil
-	o.NullFields = append(o.NullFields, "ConfigServerType")
 }
 
 // GetConnectionStrings returns the ConnectionStrings field value if set, zero value otherwise
@@ -510,12 +453,6 @@ func (o *LegacyAtlasCluster) SetConnectionStrings(v ClusterConnectionStrings) {
 	o.ConnectionStrings = &v
 }
 
-// SetConnectionStringsNil sets ConnectionStrings to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetConnectionStringsNil() {
-	o.ConnectionStrings = nil
-	o.NullFields = append(o.NullFields, "ConnectionStrings")
-}
-
 // GetCreateDate returns the CreateDate field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetCreateDate() time.Time {
 	if o == nil || IsNil(o.CreateDate) {
@@ -547,12 +484,6 @@ func (o *LegacyAtlasCluster) HasCreateDate() bool {
 // SetCreateDate gets a reference to the given time.Time and assigns it to the CreateDate field.
 func (o *LegacyAtlasCluster) SetCreateDate(v time.Time) {
 	o.CreateDate = &v
-}
-
-// SetCreateDateNil sets CreateDate to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetCreateDateNil() {
-	o.CreateDate = nil
-	o.NullFields = append(o.NullFields, "CreateDate")
 }
 
 // GetDeleteAfterCreationHours returns the DeleteAfterCreationHours field value if set, zero value otherwise
@@ -588,12 +519,6 @@ func (o *LegacyAtlasCluster) SetDeleteAfterCreationHours(v int) {
 	o.DeleteAfterCreationHours = &v
 }
 
-// SetDeleteAfterCreationHoursNil sets DeleteAfterCreationHours to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetDeleteAfterCreationHoursNil() {
-	o.DeleteAfterCreationHours = nil
-	o.NullFields = append(o.NullFields, "DeleteAfterCreationHours")
-}
-
 // GetDeleteAfterDate returns the DeleteAfterDate field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetDeleteAfterDate() time.Time {
 	if o == nil || IsNil(o.DeleteAfterDate) {
@@ -625,12 +550,6 @@ func (o *LegacyAtlasCluster) HasDeleteAfterDate() bool {
 // SetDeleteAfterDate gets a reference to the given time.Time and assigns it to the DeleteAfterDate field.
 func (o *LegacyAtlasCluster) SetDeleteAfterDate(v time.Time) {
 	o.DeleteAfterDate = &v
-}
-
-// SetDeleteAfterDateNil sets DeleteAfterDate to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetDeleteAfterDateNil() {
-	o.DeleteAfterDate = nil
-	o.NullFields = append(o.NullFields, "DeleteAfterDate")
 }
 
 // GetDiskSizeGB returns the DiskSizeGB field value if set, zero value otherwise
@@ -666,12 +585,6 @@ func (o *LegacyAtlasCluster) SetDiskSizeGB(v float64) {
 	o.DiskSizeGB = &v
 }
 
-// SetDiskSizeGBNil sets DiskSizeGB to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetDiskSizeGBNil() {
-	o.DiskSizeGB = nil
-	o.NullFields = append(o.NullFields, "DiskSizeGB")
-}
-
 // GetDiskWarmingMode returns the DiskWarmingMode field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetDiskWarmingMode() string {
 	if o == nil || IsNil(o.DiskWarmingMode) {
@@ -703,12 +616,6 @@ func (o *LegacyAtlasCluster) HasDiskWarmingMode() bool {
 // SetDiskWarmingMode gets a reference to the given string and assigns it to the DiskWarmingMode field.
 func (o *LegacyAtlasCluster) SetDiskWarmingMode(v string) {
 	o.DiskWarmingMode = &v
-}
-
-// SetDiskWarmingModeNil sets DiskWarmingMode to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetDiskWarmingModeNil() {
-	o.DiskWarmingMode = nil
-	o.NullFields = append(o.NullFields, "DiskWarmingMode")
 }
 
 // GetEncryptionAtRestProvider returns the EncryptionAtRestProvider field value if set, zero value otherwise
@@ -744,12 +651,6 @@ func (o *LegacyAtlasCluster) SetEncryptionAtRestProvider(v string) {
 	o.EncryptionAtRestProvider = &v
 }
 
-// SetEncryptionAtRestProviderNil sets EncryptionAtRestProvider to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetEncryptionAtRestProviderNil() {
-	o.EncryptionAtRestProvider = nil
-	o.NullFields = append(o.NullFields, "EncryptionAtRestProvider")
-}
-
 // GetFeatureCompatibilityVersion returns the FeatureCompatibilityVersion field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetFeatureCompatibilityVersion() string {
 	if o == nil || IsNil(o.FeatureCompatibilityVersion) {
@@ -781,12 +682,6 @@ func (o *LegacyAtlasCluster) HasFeatureCompatibilityVersion() bool {
 // SetFeatureCompatibilityVersion gets a reference to the given string and assigns it to the FeatureCompatibilityVersion field.
 func (o *LegacyAtlasCluster) SetFeatureCompatibilityVersion(v string) {
 	o.FeatureCompatibilityVersion = &v
-}
-
-// SetFeatureCompatibilityVersionNil sets FeatureCompatibilityVersion to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetFeatureCompatibilityVersionNil() {
-	o.FeatureCompatibilityVersion = nil
-	o.NullFields = append(o.NullFields, "FeatureCompatibilityVersion")
 }
 
 // GetFeatureCompatibilityVersionExpirationDate returns the FeatureCompatibilityVersionExpirationDate field value if set, zero value otherwise
@@ -822,12 +717,6 @@ func (o *LegacyAtlasCluster) SetFeatureCompatibilityVersionExpirationDate(v time
 	o.FeatureCompatibilityVersionExpirationDate = &v
 }
 
-// SetFeatureCompatibilityVersionExpirationDateNil sets FeatureCompatibilityVersionExpirationDate to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetFeatureCompatibilityVersionExpirationDateNil() {
-	o.FeatureCompatibilityVersionExpirationDate = nil
-	o.NullFields = append(o.NullFields, "FeatureCompatibilityVersionExpirationDate")
-}
-
 // GetGlobalClusterSelfManagedSharding returns the GlobalClusterSelfManagedSharding field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetGlobalClusterSelfManagedSharding() bool {
 	if o == nil || IsNil(o.GlobalClusterSelfManagedSharding) {
@@ -859,12 +748,6 @@ func (o *LegacyAtlasCluster) HasGlobalClusterSelfManagedSharding() bool {
 // SetGlobalClusterSelfManagedSharding gets a reference to the given bool and assigns it to the GlobalClusterSelfManagedSharding field.
 func (o *LegacyAtlasCluster) SetGlobalClusterSelfManagedSharding(v bool) {
 	o.GlobalClusterSelfManagedSharding = &v
-}
-
-// SetGlobalClusterSelfManagedShardingNil sets GlobalClusterSelfManagedSharding to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetGlobalClusterSelfManagedShardingNil() {
-	o.GlobalClusterSelfManagedSharding = nil
-	o.NullFields = append(o.NullFields, "GlobalClusterSelfManagedSharding")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -900,12 +783,6 @@ func (o *LegacyAtlasCluster) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetGroupIdNil() {
-	o.GroupId = nil
-	o.NullFields = append(o.NullFields, "GroupId")
-}
-
 // GetId returns the Id field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -937,12 +814,6 @@ func (o *LegacyAtlasCluster) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *LegacyAtlasCluster) SetId(v string) {
 	o.Id = &v
-}
-
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetLabels returns the Labels field value if set, zero value otherwise
@@ -1047,12 +918,6 @@ func (o *LegacyAtlasCluster) SetMongoDBEmployeeAccessGrant(v EmployeeAccessGrant
 	o.MongoDBEmployeeAccessGrant = &v
 }
 
-// SetMongoDBEmployeeAccessGrantNil sets MongoDBEmployeeAccessGrant to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetMongoDBEmployeeAccessGrantNil() {
-	o.MongoDBEmployeeAccessGrant = nil
-	o.NullFields = append(o.NullFields, "MongoDBEmployeeAccessGrant")
-}
-
 // GetMongoDBMajorVersion returns the MongoDBMajorVersion field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetMongoDBMajorVersion() string {
 	if o == nil || IsNil(o.MongoDBMajorVersion) {
@@ -1084,12 +949,6 @@ func (o *LegacyAtlasCluster) HasMongoDBMajorVersion() bool {
 // SetMongoDBMajorVersion gets a reference to the given string and assigns it to the MongoDBMajorVersion field.
 func (o *LegacyAtlasCluster) SetMongoDBMajorVersion(v string) {
 	o.MongoDBMajorVersion = &v
-}
-
-// SetMongoDBMajorVersionNil sets MongoDBMajorVersion to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetMongoDBMajorVersionNil() {
-	o.MongoDBMajorVersion = nil
-	o.NullFields = append(o.NullFields, "MongoDBMajorVersion")
 }
 
 // GetMongoDBVersion returns the MongoDBVersion field value if set, zero value otherwise
@@ -1125,12 +984,6 @@ func (o *LegacyAtlasCluster) SetMongoDBVersion(v string) {
 	o.MongoDBVersion = &v
 }
 
-// SetMongoDBVersionNil sets MongoDBVersion to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetMongoDBVersionNil() {
-	o.MongoDBVersion = nil
-	o.NullFields = append(o.NullFields, "MongoDBVersion")
-}
-
 // GetMongoURI returns the MongoURI field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetMongoURI() string {
 	if o == nil || IsNil(o.MongoURI) {
@@ -1162,12 +1015,6 @@ func (o *LegacyAtlasCluster) HasMongoURI() bool {
 // SetMongoURI gets a reference to the given string and assigns it to the MongoURI field.
 func (o *LegacyAtlasCluster) SetMongoURI(v string) {
 	o.MongoURI = &v
-}
-
-// SetMongoURINil sets MongoURI to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetMongoURINil() {
-	o.MongoURI = nil
-	o.NullFields = append(o.NullFields, "MongoURI")
 }
 
 // GetMongoURIUpdated returns the MongoURIUpdated field value if set, zero value otherwise
@@ -1203,12 +1050,6 @@ func (o *LegacyAtlasCluster) SetMongoURIUpdated(v time.Time) {
 	o.MongoURIUpdated = &v
 }
 
-// SetMongoURIUpdatedNil sets MongoURIUpdated to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetMongoURIUpdatedNil() {
-	o.MongoURIUpdated = nil
-	o.NullFields = append(o.NullFields, "MongoURIUpdated")
-}
-
 // GetMongoURIWithOptions returns the MongoURIWithOptions field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetMongoURIWithOptions() string {
 	if o == nil || IsNil(o.MongoURIWithOptions) {
@@ -1240,12 +1081,6 @@ func (o *LegacyAtlasCluster) HasMongoURIWithOptions() bool {
 // SetMongoURIWithOptions gets a reference to the given string and assigns it to the MongoURIWithOptions field.
 func (o *LegacyAtlasCluster) SetMongoURIWithOptions(v string) {
 	o.MongoURIWithOptions = &v
-}
-
-// SetMongoURIWithOptionsNil sets MongoURIWithOptions to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetMongoURIWithOptionsNil() {
-	o.MongoURIWithOptions = nil
-	o.NullFields = append(o.NullFields, "MongoURIWithOptions")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -1281,12 +1116,6 @@ func (o *LegacyAtlasCluster) SetName(v string) {
 	o.Name = &v
 }
 
-// SetNameNil sets Name to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetNameNil() {
-	o.Name = nil
-	o.NullFields = append(o.NullFields, "Name")
-}
-
 // GetNumShards returns the NumShards field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetNumShards() int {
 	if o == nil || IsNil(o.NumShards) {
@@ -1318,12 +1147,6 @@ func (o *LegacyAtlasCluster) HasNumShards() bool {
 // SetNumShards gets a reference to the given int and assigns it to the NumShards field.
 func (o *LegacyAtlasCluster) SetNumShards(v int) {
 	o.NumShards = &v
-}
-
-// SetNumShardsNil sets NumShards to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetNumShardsNil() {
-	o.NumShards = nil
-	o.NullFields = append(o.NullFields, "NumShards")
 }
 
 // GetPaused returns the Paused field value if set, zero value otherwise
@@ -1359,12 +1182,6 @@ func (o *LegacyAtlasCluster) SetPaused(v bool) {
 	o.Paused = &v
 }
 
-// SetPausedNil sets Paused to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetPausedNil() {
-	o.Paused = nil
-	o.NullFields = append(o.NullFields, "Paused")
-}
-
 // GetPitEnabled returns the PitEnabled field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetPitEnabled() bool {
 	if o == nil || IsNil(o.PitEnabled) {
@@ -1396,12 +1213,6 @@ func (o *LegacyAtlasCluster) HasPitEnabled() bool {
 // SetPitEnabled gets a reference to the given bool and assigns it to the PitEnabled field.
 func (o *LegacyAtlasCluster) SetPitEnabled(v bool) {
 	o.PitEnabled = &v
-}
-
-// SetPitEnabledNil sets PitEnabled to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetPitEnabledNil() {
-	o.PitEnabled = nil
-	o.NullFields = append(o.NullFields, "PitEnabled")
 }
 
 // GetProviderBackupEnabled returns the ProviderBackupEnabled field value if set, zero value otherwise
@@ -1437,12 +1248,6 @@ func (o *LegacyAtlasCluster) SetProviderBackupEnabled(v bool) {
 	o.ProviderBackupEnabled = &v
 }
 
-// SetProviderBackupEnabledNil sets ProviderBackupEnabled to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetProviderBackupEnabledNil() {
-	o.ProviderBackupEnabled = nil
-	o.NullFields = append(o.NullFields, "ProviderBackupEnabled")
-}
-
 // GetProviderSettings returns the ProviderSettings field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetProviderSettings() ClusterProviderSettings {
 	if o == nil || IsNil(o.ProviderSettings) {
@@ -1476,12 +1281,6 @@ func (o *LegacyAtlasCluster) SetProviderSettings(v ClusterProviderSettings) {
 	o.ProviderSettings = &v
 }
 
-// SetProviderSettingsNil sets ProviderSettings to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetProviderSettingsNil() {
-	o.ProviderSettings = nil
-	o.NullFields = append(o.NullFields, "ProviderSettings")
-}
-
 // GetReplicaSetScalingStrategy returns the ReplicaSetScalingStrategy field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetReplicaSetScalingStrategy() string {
 	if o == nil || IsNil(o.ReplicaSetScalingStrategy) {
@@ -1513,12 +1312,6 @@ func (o *LegacyAtlasCluster) HasReplicaSetScalingStrategy() bool {
 // SetReplicaSetScalingStrategy gets a reference to the given string and assigns it to the ReplicaSetScalingStrategy field.
 func (o *LegacyAtlasCluster) SetReplicaSetScalingStrategy(v string) {
 	o.ReplicaSetScalingStrategy = &v
-}
-
-// SetReplicaSetScalingStrategyNil sets ReplicaSetScalingStrategy to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetReplicaSetScalingStrategyNil() {
-	o.ReplicaSetScalingStrategy = nil
-	o.NullFields = append(o.NullFields, "ReplicaSetScalingStrategy")
 }
 
 // GetReplicationFactor returns the ReplicationFactor field value if set, zero value otherwise
@@ -1557,12 +1350,6 @@ func (o *LegacyAtlasCluster) SetReplicationFactor(v int) {
 	o.ReplicationFactor = &v
 }
 
-// SetReplicationFactorNil sets ReplicationFactor to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetReplicationFactorNil() {
-	o.ReplicationFactor = nil
-	o.NullFields = append(o.NullFields, "ReplicationFactor")
-}
-
 // GetReplicationSpec returns the ReplicationSpec field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetReplicationSpec() map[string]RegionSpec {
 	if o == nil || IsNil(o.ReplicationSpec) {
@@ -1594,12 +1381,6 @@ func (o *LegacyAtlasCluster) HasReplicationSpec() bool {
 // SetReplicationSpec gets a reference to the given map[string]RegionSpec and assigns it to the ReplicationSpec field.
 func (o *LegacyAtlasCluster) SetReplicationSpec(v map[string]RegionSpec) {
 	o.ReplicationSpec = &v
-}
-
-// SetReplicationSpecNil sets ReplicationSpec to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetReplicationSpecNil() {
-	o.ReplicationSpec = nil
-	o.NullFields = append(o.NullFields, "ReplicationSpec")
 }
 
 // GetReplicationSpecs returns the ReplicationSpecs field value if set, zero value otherwise
@@ -1668,12 +1449,6 @@ func (o *LegacyAtlasCluster) SetRootCertType(v string) {
 	o.RootCertType = &v
 }
 
-// SetRootCertTypeNil sets RootCertType to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetRootCertTypeNil() {
-	o.RootCertType = nil
-	o.NullFields = append(o.NullFields, "RootCertType")
-}
-
 // GetSrvAddress returns the SrvAddress field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetSrvAddress() string {
 	if o == nil || IsNil(o.SrvAddress) {
@@ -1707,12 +1482,6 @@ func (o *LegacyAtlasCluster) SetSrvAddress(v string) {
 	o.SrvAddress = &v
 }
 
-// SetSrvAddressNil sets SrvAddress to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetSrvAddressNil() {
-	o.SrvAddress = nil
-	o.NullFields = append(o.NullFields, "SrvAddress")
-}
-
 // GetStateName returns the StateName field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetStateName() string {
 	if o == nil || IsNil(o.StateName) {
@@ -1744,12 +1513,6 @@ func (o *LegacyAtlasCluster) HasStateName() bool {
 // SetStateName gets a reference to the given string and assigns it to the StateName field.
 func (o *LegacyAtlasCluster) SetStateName(v string) {
 	o.StateName = &v
-}
-
-// SetStateNameNil sets StateName to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetStateNameNil() {
-	o.StateName = nil
-	o.NullFields = append(o.NullFields, "StateName")
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise
@@ -1818,12 +1581,6 @@ func (o *LegacyAtlasCluster) SetTerminationProtectionEnabled(v bool) {
 	o.TerminationProtectionEnabled = &v
 }
 
-// SetTerminationProtectionEnabledNil sets TerminationProtectionEnabled to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetTerminationProtectionEnabledNil() {
-	o.TerminationProtectionEnabled = nil
-	o.NullFields = append(o.NullFields, "TerminationProtectionEnabled")
-}
-
 // GetVersionReleaseSystem returns the VersionReleaseSystem field value if set, zero value otherwise
 func (o *LegacyAtlasCluster) GetVersionReleaseSystem() string {
 	if o == nil || IsNil(o.VersionReleaseSystem) {
@@ -1855,10 +1612,4 @@ func (o *LegacyAtlasCluster) HasVersionReleaseSystem() bool {
 // SetVersionReleaseSystem gets a reference to the given string and assigns it to the VersionReleaseSystem field.
 func (o *LegacyAtlasCluster) SetVersionReleaseSystem(v string) {
 	o.VersionReleaseSystem = &v
-}
-
-// SetVersionReleaseSystemNil sets VersionReleaseSystem to an explicit JSON null when marshaled.
-func (o *LegacyAtlasCluster) SetVersionReleaseSystemNil() {
-	o.VersionReleaseSystem = nil
-	o.NullFields = append(o.NullFields, "VersionReleaseSystem")
 }

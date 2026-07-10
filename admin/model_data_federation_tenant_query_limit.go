@@ -30,15 +30,6 @@ type DataFederationTenantQueryLimit struct {
 	TenantName *string `json:"tenantName,omitempty"`
 	// Amount to set the limit to.
 	Value int64 `json:"value"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DataFederationTenantQueryLimit) MarshalJSON() ([]byte, error) {
-	type noMethod DataFederationTenantQueryLimit
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataFederationTenantQueryLimit instantiates a new DataFederationTenantQueryLimit object
@@ -93,12 +84,6 @@ func (o *DataFederationTenantQueryLimit) SetCurrentUsage(v int64) {
 	o.CurrentUsage = &v
 }
 
-// SetCurrentUsageNil sets CurrentUsage to an explicit JSON null when marshaled.
-func (o *DataFederationTenantQueryLimit) SetCurrentUsageNil() {
-	o.CurrentUsage = nil
-	o.NullFields = append(o.NullFields, "CurrentUsage")
-}
-
 // GetDefaultLimit returns the DefaultLimit field value if set, zero value otherwise
 func (o *DataFederationTenantQueryLimit) GetDefaultLimit() int64 {
 	if o == nil || IsNil(o.DefaultLimit) {
@@ -130,12 +115,6 @@ func (o *DataFederationTenantQueryLimit) HasDefaultLimit() bool {
 // SetDefaultLimit gets a reference to the given int64 and assigns it to the DefaultLimit field.
 func (o *DataFederationTenantQueryLimit) SetDefaultLimit(v int64) {
 	o.DefaultLimit = &v
-}
-
-// SetDefaultLimitNil sets DefaultLimit to an explicit JSON null when marshaled.
-func (o *DataFederationTenantQueryLimit) SetDefaultLimitNil() {
-	o.DefaultLimit = nil
-	o.NullFields = append(o.NullFields, "DefaultLimit")
 }
 
 // GetLastModifiedDate returns the LastModifiedDate field value if set, zero value otherwise
@@ -171,12 +150,6 @@ func (o *DataFederationTenantQueryLimit) SetLastModifiedDate(v time.Time) {
 	o.LastModifiedDate = &v
 }
 
-// SetLastModifiedDateNil sets LastModifiedDate to an explicit JSON null when marshaled.
-func (o *DataFederationTenantQueryLimit) SetLastModifiedDateNil() {
-	o.LastModifiedDate = nil
-	o.NullFields = append(o.NullFields, "LastModifiedDate")
-}
-
 // GetMaximumLimit returns the MaximumLimit field value if set, zero value otherwise
 func (o *DataFederationTenantQueryLimit) GetMaximumLimit() int64 {
 	if o == nil || IsNil(o.MaximumLimit) {
@@ -208,12 +181,6 @@ func (o *DataFederationTenantQueryLimit) HasMaximumLimit() bool {
 // SetMaximumLimit gets a reference to the given int64 and assigns it to the MaximumLimit field.
 func (o *DataFederationTenantQueryLimit) SetMaximumLimit(v int64) {
 	o.MaximumLimit = &v
-}
-
-// SetMaximumLimitNil sets MaximumLimit to an explicit JSON null when marshaled.
-func (o *DataFederationTenantQueryLimit) SetMaximumLimitNil() {
-	o.MaximumLimit = nil
-	o.NullFields = append(o.NullFields, "MaximumLimit")
 }
 
 // GetName returns the Name field value
@@ -273,12 +240,6 @@ func (o *DataFederationTenantQueryLimit) SetOverrunPolicy(v string) {
 	o.OverrunPolicy = &v
 }
 
-// SetOverrunPolicyNil sets OverrunPolicy to an explicit JSON null when marshaled.
-func (o *DataFederationTenantQueryLimit) SetOverrunPolicyNil() {
-	o.OverrunPolicy = nil
-	o.NullFields = append(o.NullFields, "OverrunPolicy")
-}
-
 // GetTenantName returns the TenantName field value if set, zero value otherwise
 func (o *DataFederationTenantQueryLimit) GetTenantName() string {
 	if o == nil || IsNil(o.TenantName) {
@@ -310,12 +271,6 @@ func (o *DataFederationTenantQueryLimit) HasTenantName() bool {
 // SetTenantName gets a reference to the given string and assigns it to the TenantName field.
 func (o *DataFederationTenantQueryLimit) SetTenantName(v string) {
 	o.TenantName = &v
-}
-
-// SetTenantNameNil sets TenantName to an explicit JSON null when marshaled.
-func (o *DataFederationTenantQueryLimit) SetTenantNameNil() {
-	o.TenantName = nil
-	o.NullFields = append(o.NullFields, "TenantName")
 }
 
 // GetValue returns the Value field value

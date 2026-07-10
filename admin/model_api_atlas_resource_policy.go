@@ -34,15 +34,6 @@ type ApiAtlasResourcePolicy struct {
 	// A string that identifies the version of the atlas resource policy.
 	// Read only field.
 	Version *string `json:"version,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiAtlasResourcePolicy) MarshalJSON() ([]byte, error) {
-	type noMethod ApiAtlasResourcePolicy
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasResourcePolicy instantiates a new ApiAtlasResourcePolicy object
@@ -95,12 +86,6 @@ func (o *ApiAtlasResourcePolicy) SetCreatedByUser(v ApiAtlasUserMetadata) {
 	o.CreatedByUser = &v
 }
 
-// SetCreatedByUserNil sets CreatedByUser to an explicit JSON null when marshaled.
-func (o *ApiAtlasResourcePolicy) SetCreatedByUserNil() {
-	o.CreatedByUser = nil
-	o.NullFields = append(o.NullFields, "CreatedByUser")
-}
-
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise
 func (o *ApiAtlasResourcePolicy) GetCreatedDate() time.Time {
 	if o == nil || IsNil(o.CreatedDate) {
@@ -132,12 +117,6 @@ func (o *ApiAtlasResourcePolicy) HasCreatedDate() bool {
 // SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
 func (o *ApiAtlasResourcePolicy) SetCreatedDate(v time.Time) {
 	o.CreatedDate = &v
-}
-
-// SetCreatedDateNil sets CreatedDate to an explicit JSON null when marshaled.
-func (o *ApiAtlasResourcePolicy) SetCreatedDateNil() {
-	o.CreatedDate = nil
-	o.NullFields = append(o.NullFields, "CreatedDate")
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise
@@ -173,12 +152,6 @@ func (o *ApiAtlasResourcePolicy) SetDescription(v string) {
 	o.Description = &v
 }
 
-// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
-func (o *ApiAtlasResourcePolicy) SetDescriptionNil() {
-	o.Description = nil
-	o.NullFields = append(o.NullFields, "Description")
-}
-
 // GetId returns the Id field value if set, zero value otherwise
 func (o *ApiAtlasResourcePolicy) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -210,12 +183,6 @@ func (o *ApiAtlasResourcePolicy) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApiAtlasResourcePolicy) SetId(v string) {
 	o.Id = &v
-}
-
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *ApiAtlasResourcePolicy) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetLastUpdatedByUser returns the LastUpdatedByUser field value if set, zero value otherwise
@@ -251,12 +218,6 @@ func (o *ApiAtlasResourcePolicy) SetLastUpdatedByUser(v ApiAtlasUserMetadata) {
 	o.LastUpdatedByUser = &v
 }
 
-// SetLastUpdatedByUserNil sets LastUpdatedByUser to an explicit JSON null when marshaled.
-func (o *ApiAtlasResourcePolicy) SetLastUpdatedByUserNil() {
-	o.LastUpdatedByUser = nil
-	o.NullFields = append(o.NullFields, "LastUpdatedByUser")
-}
-
 // GetLastUpdatedDate returns the LastUpdatedDate field value if set, zero value otherwise
 func (o *ApiAtlasResourcePolicy) GetLastUpdatedDate() time.Time {
 	if o == nil || IsNil(o.LastUpdatedDate) {
@@ -288,12 +249,6 @@ func (o *ApiAtlasResourcePolicy) HasLastUpdatedDate() bool {
 // SetLastUpdatedDate gets a reference to the given time.Time and assigns it to the LastUpdatedDate field.
 func (o *ApiAtlasResourcePolicy) SetLastUpdatedDate(v time.Time) {
 	o.LastUpdatedDate = &v
-}
-
-// SetLastUpdatedDateNil sets LastUpdatedDate to an explicit JSON null when marshaled.
-func (o *ApiAtlasResourcePolicy) SetLastUpdatedDateNil() {
-	o.LastUpdatedDate = nil
-	o.NullFields = append(o.NullFields, "LastUpdatedDate")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -329,12 +284,6 @@ func (o *ApiAtlasResourcePolicy) SetName(v string) {
 	o.Name = &v
 }
 
-// SetNameNil sets Name to an explicit JSON null when marshaled.
-func (o *ApiAtlasResourcePolicy) SetNameNil() {
-	o.Name = nil
-	o.NullFields = append(o.NullFields, "Name")
-}
-
 // GetOrgId returns the OrgId field value if set, zero value otherwise
 func (o *ApiAtlasResourcePolicy) GetOrgId() string {
 	if o == nil || IsNil(o.OrgId) {
@@ -366,12 +315,6 @@ func (o *ApiAtlasResourcePolicy) HasOrgId() bool {
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *ApiAtlasResourcePolicy) SetOrgId(v string) {
 	o.OrgId = &v
-}
-
-// SetOrgIdNil sets OrgId to an explicit JSON null when marshaled.
-func (o *ApiAtlasResourcePolicy) SetOrgIdNil() {
-	o.OrgId = nil
-	o.NullFields = append(o.NullFields, "OrgId")
 }
 
 // GetPolicies returns the Policies field value if set, zero value otherwise
@@ -438,10 +381,4 @@ func (o *ApiAtlasResourcePolicy) HasVersion() bool {
 // SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *ApiAtlasResourcePolicy) SetVersion(v string) {
 	o.Version = &v
-}
-
-// SetVersionNil sets Version to an explicit JSON null when marshaled.
-func (o *ApiAtlasResourcePolicy) SetVersionNil() {
-	o.Version = nil
-	o.NullFields = append(o.NullFields, "Version")
 }

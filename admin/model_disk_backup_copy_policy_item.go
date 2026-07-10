@@ -13,15 +13,6 @@ type DiskBackupCopyPolicyItem struct {
 	RetentionUnit *string `json:"retentionUnit,omitempty"`
 	// Duration in days, weeks, months, or years that MongoDB Cloud retains the snapshot copy.
 	RetentionValue *int `json:"retentionValue,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DiskBackupCopyPolicyItem) MarshalJSON() ([]byte, error) {
-	type noMethod DiskBackupCopyPolicyItem
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupCopyPolicyItem instantiates a new DiskBackupCopyPolicyItem object
@@ -99,12 +90,6 @@ func (o *DiskBackupCopyPolicyItem) SetId(v string) {
 	o.Id = &v
 }
 
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *DiskBackupCopyPolicyItem) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
-}
-
 // GetRetentionUnit returns the RetentionUnit field value if set, zero value otherwise
 func (o *DiskBackupCopyPolicyItem) GetRetentionUnit() string {
 	if o == nil || IsNil(o.RetentionUnit) {
@@ -138,12 +123,6 @@ func (o *DiskBackupCopyPolicyItem) SetRetentionUnit(v string) {
 	o.RetentionUnit = &v
 }
 
-// SetRetentionUnitNil sets RetentionUnit to an explicit JSON null when marshaled.
-func (o *DiskBackupCopyPolicyItem) SetRetentionUnitNil() {
-	o.RetentionUnit = nil
-	o.NullFields = append(o.NullFields, "RetentionUnit")
-}
-
 // GetRetentionValue returns the RetentionValue field value if set, zero value otherwise
 func (o *DiskBackupCopyPolicyItem) GetRetentionValue() int {
 	if o == nil || IsNil(o.RetentionValue) {
@@ -175,10 +154,4 @@ func (o *DiskBackupCopyPolicyItem) HasRetentionValue() bool {
 // SetRetentionValue gets a reference to the given int and assigns it to the RetentionValue field.
 func (o *DiskBackupCopyPolicyItem) SetRetentionValue(v int) {
 	o.RetentionValue = &v
-}
-
-// SetRetentionValueNil sets RetentionValue to an explicit JSON null when marshaled.
-func (o *DiskBackupCopyPolicyItem) SetRetentionValueNil() {
-	o.RetentionValue = nil
-	o.NullFields = append(o.NullFields, "RetentionValue")
 }

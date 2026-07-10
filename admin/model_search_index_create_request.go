@@ -13,15 +13,6 @@ type SearchIndexCreateRequest struct {
 	// Type of the index. The default type is search.
 	Type       *string                                 `json:"type,omitempty"`
 	Definition *BaseSearchIndexCreateRequestDefinition `json:"definition,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *SearchIndexCreateRequest) MarshalJSON() ([]byte, error) {
-	type noMethod SearchIndexCreateRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSearchIndexCreateRequest instantiates a new SearchIndexCreateRequest object
@@ -149,12 +140,6 @@ func (o *SearchIndexCreateRequest) SetType(v string) {
 	o.Type = &v
 }
 
-// SetTypeNil sets Type to an explicit JSON null when marshaled.
-func (o *SearchIndexCreateRequest) SetTypeNil() {
-	o.Type = nil
-	o.NullFields = append(o.NullFields, "Type")
-}
-
 // GetDefinition returns the Definition field value if set, zero value otherwise
 func (o *SearchIndexCreateRequest) GetDefinition() BaseSearchIndexCreateRequestDefinition {
 	if o == nil || IsNil(o.Definition) {
@@ -186,10 +171,4 @@ func (o *SearchIndexCreateRequest) HasDefinition() bool {
 // SetDefinition gets a reference to the given BaseSearchIndexCreateRequestDefinition and assigns it to the Definition field.
 func (o *SearchIndexCreateRequest) SetDefinition(v BaseSearchIndexCreateRequestDefinition) {
 	o.Definition = &v
-}
-
-// SetDefinitionNil sets Definition to an explicit JSON null when marshaled.
-func (o *SearchIndexCreateRequest) SetDefinitionNil() {
-	o.Definition = nil
-	o.NullFields = append(o.NullFields, "Definition")
 }

@@ -18,15 +18,6 @@ type StreamsStartStreamProcessorWith struct {
 	StartAtOperationTime *time.Time `json:"startAtOperationTime,omitempty"`
 	// Selected tier for the Stream Workspace. Configures Memory / VCPU allowances.
 	Tier *string `json:"tier,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsStartStreamProcessorWith) MarshalJSON() ([]byte, error) {
-	type noMethod StreamsStartStreamProcessorWith
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsStartStreamProcessorWith instantiates a new StreamsStartStreamProcessorWith object
@@ -77,12 +68,6 @@ func (o *StreamsStartStreamProcessorWith) HasFailover() bool {
 // SetFailover gets a reference to the given StreamsStartProcessorFailover and assigns it to the Failover field.
 func (o *StreamsStartStreamProcessorWith) SetFailover(v StreamsStartProcessorFailover) {
 	o.Failover = &v
-}
-
-// SetFailoverNil sets Failover to an explicit JSON null when marshaled.
-func (o *StreamsStartStreamProcessorWith) SetFailoverNil() {
-	o.Failover = nil
-	o.NullFields = append(o.NullFields, "Failover")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -151,12 +136,6 @@ func (o *StreamsStartStreamProcessorWith) SetResumeFromCheckpoint(v bool) {
 	o.ResumeFromCheckpoint = &v
 }
 
-// SetResumeFromCheckpointNil sets ResumeFromCheckpoint to an explicit JSON null when marshaled.
-func (o *StreamsStartStreamProcessorWith) SetResumeFromCheckpointNil() {
-	o.ResumeFromCheckpoint = nil
-	o.NullFields = append(o.NullFields, "ResumeFromCheckpoint")
-}
-
 // GetStartAtOperationTime returns the StartAtOperationTime field value if set, zero value otherwise
 func (o *StreamsStartStreamProcessorWith) GetStartAtOperationTime() time.Time {
 	if o == nil || IsNil(o.StartAtOperationTime) {
@@ -190,12 +169,6 @@ func (o *StreamsStartStreamProcessorWith) SetStartAtOperationTime(v time.Time) {
 	o.StartAtOperationTime = &v
 }
 
-// SetStartAtOperationTimeNil sets StartAtOperationTime to an explicit JSON null when marshaled.
-func (o *StreamsStartStreamProcessorWith) SetStartAtOperationTimeNil() {
-	o.StartAtOperationTime = nil
-	o.NullFields = append(o.NullFields, "StartAtOperationTime")
-}
-
 // GetTier returns the Tier field value if set, zero value otherwise
 func (o *StreamsStartStreamProcessorWith) GetTier() string {
 	if o == nil || IsNil(o.Tier) {
@@ -227,10 +200,4 @@ func (o *StreamsStartStreamProcessorWith) HasTier() bool {
 // SetTier gets a reference to the given string and assigns it to the Tier field.
 func (o *StreamsStartStreamProcessorWith) SetTier(v string) {
 	o.Tier = &v
-}
-
-// SetTierNil sets Tier to an explicit JSON null when marshaled.
-func (o *StreamsStartStreamProcessorWith) SetTierNil() {
-	o.Tier = nil
-	o.NullFields = append(o.NullFields, "Tier")
 }

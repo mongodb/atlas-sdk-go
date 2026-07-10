@@ -25,15 +25,6 @@ type ClusterConnectionStrings struct {
 	// Public connection string that you can use to connect to this cluster. This connection string uses the `mongodb+srv://` protocol.
 	// Read only field.
 	StandardSrv *string `json:"standardSrv,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ClusterConnectionStrings) MarshalJSON() ([]byte, error) {
-	type noMethod ClusterConnectionStrings
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterConnectionStrings instantiates a new ClusterConnectionStrings object
@@ -86,12 +77,6 @@ func (o *ClusterConnectionStrings) SetAwsPrivateLink(v map[string]string) {
 	o.AwsPrivateLink = &v
 }
 
-// SetAwsPrivateLinkNil sets AwsPrivateLink to an explicit JSON null when marshaled.
-func (o *ClusterConnectionStrings) SetAwsPrivateLinkNil() {
-	o.AwsPrivateLink = nil
-	o.NullFields = append(o.NullFields, "AwsPrivateLink")
-}
-
 // GetAwsPrivateLinkSrv returns the AwsPrivateLinkSrv field value if set, zero value otherwise
 func (o *ClusterConnectionStrings) GetAwsPrivateLinkSrv() map[string]string {
 	if o == nil || IsNil(o.AwsPrivateLinkSrv) {
@@ -125,12 +110,6 @@ func (o *ClusterConnectionStrings) SetAwsPrivateLinkSrv(v map[string]string) {
 	o.AwsPrivateLinkSrv = &v
 }
 
-// SetAwsPrivateLinkSrvNil sets AwsPrivateLinkSrv to an explicit JSON null when marshaled.
-func (o *ClusterConnectionStrings) SetAwsPrivateLinkSrvNil() {
-	o.AwsPrivateLinkSrv = nil
-	o.NullFields = append(o.NullFields, "AwsPrivateLinkSrv")
-}
-
 // GetPrivate returns the Private field value if set, zero value otherwise
 func (o *ClusterConnectionStrings) GetPrivate() string {
 	if o == nil || IsNil(o.Private) {
@@ -162,12 +141,6 @@ func (o *ClusterConnectionStrings) HasPrivate() bool {
 // SetPrivate gets a reference to the given string and assigns it to the Private field.
 func (o *ClusterConnectionStrings) SetPrivate(v string) {
 	o.Private = &v
-}
-
-// SetPrivateNil sets Private to an explicit JSON null when marshaled.
-func (o *ClusterConnectionStrings) SetPrivateNil() {
-	o.Private = nil
-	o.NullFields = append(o.NullFields, "Private")
 }
 
 // GetPrivateEndpoint returns the PrivateEndpoint field value if set, zero value otherwise
@@ -236,12 +209,6 @@ func (o *ClusterConnectionStrings) SetPrivateSrv(v string) {
 	o.PrivateSrv = &v
 }
 
-// SetPrivateSrvNil sets PrivateSrv to an explicit JSON null when marshaled.
-func (o *ClusterConnectionStrings) SetPrivateSrvNil() {
-	o.PrivateSrv = nil
-	o.NullFields = append(o.NullFields, "PrivateSrv")
-}
-
 // GetStandard returns the Standard field value if set, zero value otherwise
 func (o *ClusterConnectionStrings) GetStandard() string {
 	if o == nil || IsNil(o.Standard) {
@@ -275,12 +242,6 @@ func (o *ClusterConnectionStrings) SetStandard(v string) {
 	o.Standard = &v
 }
 
-// SetStandardNil sets Standard to an explicit JSON null when marshaled.
-func (o *ClusterConnectionStrings) SetStandardNil() {
-	o.Standard = nil
-	o.NullFields = append(o.NullFields, "Standard")
-}
-
 // GetStandardSrv returns the StandardSrv field value if set, zero value otherwise
 func (o *ClusterConnectionStrings) GetStandardSrv() string {
 	if o == nil || IsNil(o.StandardSrv) {
@@ -312,10 +273,4 @@ func (o *ClusterConnectionStrings) HasStandardSrv() bool {
 // SetStandardSrv gets a reference to the given string and assigns it to the StandardSrv field.
 func (o *ClusterConnectionStrings) SetStandardSrv(v string) {
 	o.StandardSrv = &v
-}
-
-// SetStandardSrvNil sets StandardSrv to an explicit JSON null when marshaled.
-func (o *ClusterConnectionStrings) SetStandardSrvNil() {
-	o.StandardSrv = nil
-	o.NullFields = append(o.NullFields, "StandardSrv")
 }

@@ -13,15 +13,6 @@ type ClusterConfigurationValidation struct {
 	SearchDeploymentSpec *ApiSearchDeploymentSpec `json:"searchDeploymentSpec,omitempty"`
 	// Optional list of resource tags.
 	Tags *[]ResourceTag `json:"tags,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ClusterConfigurationValidation) MarshalJSON() ([]byte, error) {
-	type noMethod ClusterConfigurationValidation
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterConfigurationValidation instantiates a new ClusterConfigurationValidation object
@@ -74,12 +65,6 @@ func (o *ClusterConfigurationValidation) HasAdvancedConfiguration() bool {
 // SetAdvancedConfiguration gets a reference to the given ClusterDescriptionProcessArgs20240805 and assigns it to the AdvancedConfiguration field.
 func (o *ClusterConfigurationValidation) SetAdvancedConfiguration(v ClusterDescriptionProcessArgs20240805) {
 	o.AdvancedConfiguration = &v
-}
-
-// SetAdvancedConfigurationNil sets AdvancedConfiguration to an explicit JSON null when marshaled.
-func (o *ClusterConfigurationValidation) SetAdvancedConfigurationNil() {
-	o.AdvancedConfiguration = nil
-	o.NullFields = append(o.NullFields, "AdvancedConfiguration")
 }
 
 // GetClusterDescription returns the ClusterDescription field value
@@ -139,12 +124,6 @@ func (o *ClusterConfigurationValidation) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
-// SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled.
-func (o *ClusterConfigurationValidation) SetClusterNameNil() {
-	o.ClusterName = nil
-	o.NullFields = append(o.NullFields, "ClusterName")
-}
-
 // GetEditing returns the Editing field value
 func (o *ClusterConfigurationValidation) GetEditing() bool {
 	if o == nil {
@@ -200,12 +179,6 @@ func (o *ClusterConfigurationValidation) HasSearchDeploymentSpec() bool {
 // SetSearchDeploymentSpec gets a reference to the given ApiSearchDeploymentSpec and assigns it to the SearchDeploymentSpec field.
 func (o *ClusterConfigurationValidation) SetSearchDeploymentSpec(v ApiSearchDeploymentSpec) {
 	o.SearchDeploymentSpec = &v
-}
-
-// SetSearchDeploymentSpecNil sets SearchDeploymentSpec to an explicit JSON null when marshaled.
-func (o *ClusterConfigurationValidation) SetSearchDeploymentSpecNil() {
-	o.SearchDeploymentSpec = nil
-	o.NullFields = append(o.NullFields, "SearchDeploymentSpec")
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise

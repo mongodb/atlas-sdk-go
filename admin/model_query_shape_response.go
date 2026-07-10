@@ -18,15 +18,6 @@ type QueryShapeResponse struct {
 	QueryShapeHash string `json:"queryShapeHash"`
 	// The rejection status of a query shape. Use REJECTED to prevent the query shape from executing on the cluster, or UNREJECTED to allow it to execute.
 	Status string `json:"status"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *QueryShapeResponse) MarshalJSON() ([]byte, error) {
-	type noMethod QueryShapeResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewQueryShapeResponse instantiates a new QueryShapeResponse object
@@ -81,12 +72,6 @@ func (o *QueryShapeResponse) SetCommand(v string) {
 	o.Command = &v
 }
 
-// SetCommandNil sets Command to an explicit JSON null when marshaled.
-func (o *QueryShapeResponse) SetCommandNil() {
-	o.Command = nil
-	o.NullFields = append(o.NullFields, "Command")
-}
-
 // GetNamespace returns the Namespace field value if set, zero value otherwise
 func (o *QueryShapeResponse) GetNamespace() string {
 	if o == nil || IsNil(o.Namespace) {
@@ -120,12 +105,6 @@ func (o *QueryShapeResponse) SetNamespace(v string) {
 	o.Namespace = &v
 }
 
-// SetNamespaceNil sets Namespace to an explicit JSON null when marshaled.
-func (o *QueryShapeResponse) SetNamespaceNil() {
-	o.Namespace = nil
-	o.NullFields = append(o.NullFields, "Namespace")
-}
-
 // GetQueryShape returns the QueryShape field value if set, zero value otherwise
 func (o *QueryShapeResponse) GetQueryShape() string {
 	if o == nil || IsNil(o.QueryShape) {
@@ -157,12 +136,6 @@ func (o *QueryShapeResponse) HasQueryShape() bool {
 // SetQueryShape gets a reference to the given string and assigns it to the QueryShape field.
 func (o *QueryShapeResponse) SetQueryShape(v string) {
 	o.QueryShape = &v
-}
-
-// SetQueryShapeNil sets QueryShape to an explicit JSON null when marshaled.
-func (o *QueryShapeResponse) SetQueryShapeNil() {
-	o.QueryShape = nil
-	o.NullFields = append(o.NullFields, "QueryShape")
 }
 
 // GetQueryShapeHash returns the QueryShapeHash field value

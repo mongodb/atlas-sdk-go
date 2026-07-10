@@ -9,15 +9,6 @@ type SearchSynonymMappingDefinition struct {
 	// Label that identifies the synonym definition. Each `synonym.name` must be unique within the same index definition.
 	Name   string        `json:"name"`
 	Source SynonymSource `json:"source"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *SearchSynonymMappingDefinition) MarshalJSON() ([]byte, error) {
-	type noMethod SearchSynonymMappingDefinition
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSearchSynonymMappingDefinition instantiates a new SearchSynonymMappingDefinition object

@@ -15,15 +15,6 @@ type BackupComplianceScheduledPolicyItem struct {
 	RetentionUnit string `json:"retentionUnit"`
 	// Duration in days, weeks, months, or years that MongoDB Cloud retains the Snapshot. For less frequent policy items, MongoDB Cloud requires that you specify a value greater than or equal to the value specified for more frequent policy items.  For example: If the hourly policy item specifies a retention of two days, you must specify two days or greater for the retention of the weekly policy item.
 	RetentionValue int `json:"retentionValue"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *BackupComplianceScheduledPolicyItem) MarshalJSON() ([]byte, error) {
-	type noMethod BackupComplianceScheduledPolicyItem
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewBackupComplianceScheduledPolicyItem instantiates a new BackupComplianceScheduledPolicyItem object
@@ -126,12 +117,6 @@ func (o *BackupComplianceScheduledPolicyItem) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *BackupComplianceScheduledPolicyItem) SetId(v string) {
 	o.Id = &v
-}
-
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *BackupComplianceScheduledPolicyItem) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetRetentionUnit returns the RetentionUnit field value

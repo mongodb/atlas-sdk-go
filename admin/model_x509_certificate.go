@@ -12,15 +12,6 @@ type X509Certificate struct {
 	NotAfter *time.Time `json:"notAfter,omitempty"`
 	// Earliest date that the certificate is valid. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	NotBefore *time.Time `json:"notBefore,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *X509Certificate) MarshalJSON() ([]byte, error) {
-	type noMethod X509Certificate
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewX509Certificate instantiates a new X509Certificate object
@@ -73,12 +64,6 @@ func (o *X509Certificate) SetNotAfter(v time.Time) {
 	o.NotAfter = &v
 }
 
-// SetNotAfterNil sets NotAfter to an explicit JSON null when marshaled.
-func (o *X509Certificate) SetNotAfterNil() {
-	o.NotAfter = nil
-	o.NullFields = append(o.NullFields, "NotAfter")
-}
-
 // GetNotBefore returns the NotBefore field value if set, zero value otherwise
 func (o *X509Certificate) GetNotBefore() time.Time {
 	if o == nil || IsNil(o.NotBefore) {
@@ -110,10 +95,4 @@ func (o *X509Certificate) HasNotBefore() bool {
 // SetNotBefore gets a reference to the given time.Time and assigns it to the NotBefore field.
 func (o *X509Certificate) SetNotBefore(v time.Time) {
 	o.NotBefore = &v
-}
-
-// SetNotBeforeNil sets NotBefore to an explicit JSON null when marshaled.
-func (o *X509Certificate) SetNotBeforeNil() {
-	o.NotBefore = nil
-	o.NullFields = append(o.NullFields, "NotBefore")
 }

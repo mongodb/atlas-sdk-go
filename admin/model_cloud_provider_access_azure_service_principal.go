@@ -47,15 +47,6 @@ type CloudProviderAccessAzureServicePrincipal struct {
 	// Provision status of the service account.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *CloudProviderAccessAzureServicePrincipal) MarshalJSON() ([]byte, error) {
-	type noMethod CloudProviderAccessAzureServicePrincipal
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudProviderAccessAzureServicePrincipal instantiates a new CloudProviderAccessAzureServicePrincipal object
@@ -109,12 +100,6 @@ func (o *CloudProviderAccessAzureServicePrincipal) SetId(v string) {
 	o.Id = &v
 }
 
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *CloudProviderAccessAzureServicePrincipal) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
-}
-
 // GetAtlasAzureAppId returns the AtlasAzureAppId field value if set, zero value otherwise
 func (o *CloudProviderAccessAzureServicePrincipal) GetAtlasAzureAppId() string {
 	if o == nil || IsNil(o.AtlasAzureAppId) {
@@ -148,12 +133,6 @@ func (o *CloudProviderAccessAzureServicePrincipal) SetAtlasAzureAppId(v string) 
 	o.AtlasAzureAppId = &v
 }
 
-// SetAtlasAzureAppIdNil sets AtlasAzureAppId to an explicit JSON null when marshaled.
-func (o *CloudProviderAccessAzureServicePrincipal) SetAtlasAzureAppIdNil() {
-	o.AtlasAzureAppId = nil
-	o.NullFields = append(o.NullFields, "AtlasAzureAppId")
-}
-
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise
 func (o *CloudProviderAccessAzureServicePrincipal) GetCreatedDate() time.Time {
 	if o == nil || IsNil(o.CreatedDate) {
@@ -185,12 +164,6 @@ func (o *CloudProviderAccessAzureServicePrincipal) HasCreatedDate() bool {
 // SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
 func (o *CloudProviderAccessAzureServicePrincipal) SetCreatedDate(v time.Time) {
 	o.CreatedDate = &v
-}
-
-// SetCreatedDateNil sets CreatedDate to an explicit JSON null when marshaled.
-func (o *CloudProviderAccessAzureServicePrincipal) SetCreatedDateNil() {
-	o.CreatedDate = nil
-	o.NullFields = append(o.NullFields, "CreatedDate")
 }
 
 // GetFeatureUsages returns the FeatureUsages field value if set, zero value otherwise
@@ -259,12 +232,6 @@ func (o *CloudProviderAccessAzureServicePrincipal) SetLastUpdatedDate(v time.Tim
 	o.LastUpdatedDate = &v
 }
 
-// SetLastUpdatedDateNil sets LastUpdatedDate to an explicit JSON null when marshaled.
-func (o *CloudProviderAccessAzureServicePrincipal) SetLastUpdatedDateNil() {
-	o.LastUpdatedDate = nil
-	o.NullFields = append(o.NullFields, "LastUpdatedDate")
-}
-
 // GetServicePrincipalId returns the ServicePrincipalId field value if set, zero value otherwise
 func (o *CloudProviderAccessAzureServicePrincipal) GetServicePrincipalId() string {
 	if o == nil || IsNil(o.ServicePrincipalId) {
@@ -298,12 +265,6 @@ func (o *CloudProviderAccessAzureServicePrincipal) SetServicePrincipalId(v strin
 	o.ServicePrincipalId = &v
 }
 
-// SetServicePrincipalIdNil sets ServicePrincipalId to an explicit JSON null when marshaled.
-func (o *CloudProviderAccessAzureServicePrincipal) SetServicePrincipalIdNil() {
-	o.ServicePrincipalId = nil
-	o.NullFields = append(o.NullFields, "ServicePrincipalId")
-}
-
 // GetTenantId returns the TenantId field value if set, zero value otherwise
 func (o *CloudProviderAccessAzureServicePrincipal) GetTenantId() string {
 	if o == nil || IsNil(o.TenantId) {
@@ -335,12 +296,6 @@ func (o *CloudProviderAccessAzureServicePrincipal) HasTenantId() bool {
 // SetTenantId gets a reference to the given string and assigns it to the TenantId field.
 func (o *CloudProviderAccessAzureServicePrincipal) SetTenantId(v string) {
 	o.TenantId = &v
-}
-
-// SetTenantIdNil sets TenantId to an explicit JSON null when marshaled.
-func (o *CloudProviderAccessAzureServicePrincipal) SetTenantIdNil() {
-	o.TenantId = nil
-	o.NullFields = append(o.NullFields, "TenantId")
 }
 
 // GetProviderName returns the ProviderName field value
@@ -400,12 +355,6 @@ func (o *CloudProviderAccessAzureServicePrincipal) SetAtlasAWSAccountArn(v strin
 	o.AtlasAWSAccountArn = &v
 }
 
-// SetAtlasAWSAccountArnNil sets AtlasAWSAccountArn to an explicit JSON null when marshaled.
-func (o *CloudProviderAccessAzureServicePrincipal) SetAtlasAWSAccountArnNil() {
-	o.AtlasAWSAccountArn = nil
-	o.NullFields = append(o.NullFields, "AtlasAWSAccountArn")
-}
-
 // GetAtlasAssumedRoleExternalId returns the AtlasAssumedRoleExternalId field value if set, zero value otherwise
 func (o *CloudProviderAccessAzureServicePrincipal) GetAtlasAssumedRoleExternalId() string {
 	if o == nil || IsNil(o.AtlasAssumedRoleExternalId) {
@@ -437,12 +386,6 @@ func (o *CloudProviderAccessAzureServicePrincipal) HasAtlasAssumedRoleExternalId
 // SetAtlasAssumedRoleExternalId gets a reference to the given string and assigns it to the AtlasAssumedRoleExternalId field.
 func (o *CloudProviderAccessAzureServicePrincipal) SetAtlasAssumedRoleExternalId(v string) {
 	o.AtlasAssumedRoleExternalId = &v
-}
-
-// SetAtlasAssumedRoleExternalIdNil sets AtlasAssumedRoleExternalId to an explicit JSON null when marshaled.
-func (o *CloudProviderAccessAzureServicePrincipal) SetAtlasAssumedRoleExternalIdNil() {
-	o.AtlasAssumedRoleExternalId = nil
-	o.NullFields = append(o.NullFields, "AtlasAssumedRoleExternalId")
 }
 
 // GetAuthorizedDate returns the AuthorizedDate field value if set, zero value otherwise
@@ -478,12 +421,6 @@ func (o *CloudProviderAccessAzureServicePrincipal) SetAuthorizedDate(v time.Time
 	o.AuthorizedDate = &v
 }
 
-// SetAuthorizedDateNil sets AuthorizedDate to an explicit JSON null when marshaled.
-func (o *CloudProviderAccessAzureServicePrincipal) SetAuthorizedDateNil() {
-	o.AuthorizedDate = nil
-	o.NullFields = append(o.NullFields, "AuthorizedDate")
-}
-
 // GetIamAssumedRoleArn returns the IamAssumedRoleArn field value if set, zero value otherwise
 func (o *CloudProviderAccessAzureServicePrincipal) GetIamAssumedRoleArn() string {
 	if o == nil || IsNil(o.IamAssumedRoleArn) {
@@ -515,12 +452,6 @@ func (o *CloudProviderAccessAzureServicePrincipal) HasIamAssumedRoleArn() bool {
 // SetIamAssumedRoleArn gets a reference to the given string and assigns it to the IamAssumedRoleArn field.
 func (o *CloudProviderAccessAzureServicePrincipal) SetIamAssumedRoleArn(v string) {
 	o.IamAssumedRoleArn = &v
-}
-
-// SetIamAssumedRoleArnNil sets IamAssumedRoleArn to an explicit JSON null when marshaled.
-func (o *CloudProviderAccessAzureServicePrincipal) SetIamAssumedRoleArnNil() {
-	o.IamAssumedRoleArn = nil
-	o.NullFields = append(o.NullFields, "IamAssumedRoleArn")
 }
 
 // GetRoleId returns the RoleId field value if set, zero value otherwise
@@ -556,12 +487,6 @@ func (o *CloudProviderAccessAzureServicePrincipal) SetRoleId(v string) {
 	o.RoleId = &v
 }
 
-// SetRoleIdNil sets RoleId to an explicit JSON null when marshaled.
-func (o *CloudProviderAccessAzureServicePrincipal) SetRoleIdNil() {
-	o.RoleId = nil
-	o.NullFields = append(o.NullFields, "RoleId")
-}
-
 // GetGcpServiceAccountForAtlas returns the GcpServiceAccountForAtlas field value if set, zero value otherwise
 func (o *CloudProviderAccessAzureServicePrincipal) GetGcpServiceAccountForAtlas() string {
 	if o == nil || IsNil(o.GcpServiceAccountForAtlas) {
@@ -595,12 +520,6 @@ func (o *CloudProviderAccessAzureServicePrincipal) SetGcpServiceAccountForAtlas(
 	o.GcpServiceAccountForAtlas = &v
 }
 
-// SetGcpServiceAccountForAtlasNil sets GcpServiceAccountForAtlas to an explicit JSON null when marshaled.
-func (o *CloudProviderAccessAzureServicePrincipal) SetGcpServiceAccountForAtlasNil() {
-	o.GcpServiceAccountForAtlas = nil
-	o.NullFields = append(o.NullFields, "GcpServiceAccountForAtlas")
-}
-
 // GetStatus returns the Status field value if set, zero value otherwise
 func (o *CloudProviderAccessAzureServicePrincipal) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
@@ -632,10 +551,4 @@ func (o *CloudProviderAccessAzureServicePrincipal) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *CloudProviderAccessAzureServicePrincipal) SetStatus(v string) {
 	o.Status = &v
-}
-
-// SetStatusNil sets Status to an explicit JSON null when marshaled.
-func (o *CloudProviderAccessAzureServicePrincipal) SetStatusNil() {
-	o.Status = nil
-	o.NullFields = append(o.NullFields, "Status")
 }

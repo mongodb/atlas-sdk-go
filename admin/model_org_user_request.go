@@ -11,15 +11,6 @@ type OrgUserRequest struct {
 	// Email address that represents the username of the MongoDB Cloud user.
 	// Write only field.
 	Username string `json:"username"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *OrgUserRequest) MarshalJSON() ([]byte, error) {
-	type noMethod OrgUserRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewOrgUserRequest instantiates a new OrgUserRequest object

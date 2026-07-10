@@ -18,15 +18,6 @@ type DataFederationLimit struct {
 	Name string `json:"name"`
 	// Amount to set the limit to.
 	Value int64 `json:"value"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DataFederationLimit) MarshalJSON() ([]byte, error) {
-	type noMethod DataFederationLimit
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataFederationLimit instantiates a new DataFederationLimit object
@@ -81,12 +72,6 @@ func (o *DataFederationLimit) SetCurrentUsage(v int64) {
 	o.CurrentUsage = &v
 }
 
-// SetCurrentUsageNil sets CurrentUsage to an explicit JSON null when marshaled.
-func (o *DataFederationLimit) SetCurrentUsageNil() {
-	o.CurrentUsage = nil
-	o.NullFields = append(o.NullFields, "CurrentUsage")
-}
-
 // GetDefaultLimit returns the DefaultLimit field value if set, zero value otherwise
 func (o *DataFederationLimit) GetDefaultLimit() int64 {
 	if o == nil || IsNil(o.DefaultLimit) {
@@ -120,12 +105,6 @@ func (o *DataFederationLimit) SetDefaultLimit(v int64) {
 	o.DefaultLimit = &v
 }
 
-// SetDefaultLimitNil sets DefaultLimit to an explicit JSON null when marshaled.
-func (o *DataFederationLimit) SetDefaultLimitNil() {
-	o.DefaultLimit = nil
-	o.NullFields = append(o.NullFields, "DefaultLimit")
-}
-
 // GetMaximumLimit returns the MaximumLimit field value if set, zero value otherwise
 func (o *DataFederationLimit) GetMaximumLimit() int64 {
 	if o == nil || IsNil(o.MaximumLimit) {
@@ -157,12 +136,6 @@ func (o *DataFederationLimit) HasMaximumLimit() bool {
 // SetMaximumLimit gets a reference to the given int64 and assigns it to the MaximumLimit field.
 func (o *DataFederationLimit) SetMaximumLimit(v int64) {
 	o.MaximumLimit = &v
-}
-
-// SetMaximumLimitNil sets MaximumLimit to an explicit JSON null when marshaled.
-func (o *DataFederationLimit) SetMaximumLimitNil() {
-	o.MaximumLimit = nil
-	o.NullFields = append(o.NullFields, "MaximumLimit")
 }
 
 // GetName returns the Name field value

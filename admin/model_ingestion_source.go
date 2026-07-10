@@ -17,15 +17,6 @@ type IngestionSource struct {
 	GroupId *string `json:"groupId,omitempty"`
 	// Unique 24-hexadecimal character string that identifies a policy item.
 	PolicyItemId *string `json:"policyItemId,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *IngestionSource) MarshalJSON() ([]byte, error) {
-	type noMethod IngestionSource
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewIngestionSource instantiates a new IngestionSource object
@@ -78,12 +69,6 @@ func (o *IngestionSource) SetType(v string) {
 	o.Type = &v
 }
 
-// SetTypeNil sets Type to an explicit JSON null when marshaled.
-func (o *IngestionSource) SetTypeNil() {
-	o.Type = nil
-	o.NullFields = append(o.NullFields, "Type")
-}
-
 // GetClusterName returns the ClusterName field value if set, zero value otherwise
 func (o *IngestionSource) GetClusterName() string {
 	if o == nil || IsNil(o.ClusterName) {
@@ -115,12 +100,6 @@ func (o *IngestionSource) HasClusterName() bool {
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *IngestionSource) SetClusterName(v string) {
 	o.ClusterName = &v
-}
-
-// SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled.
-func (o *IngestionSource) SetClusterNameNil() {
-	o.ClusterName = nil
-	o.NullFields = append(o.NullFields, "ClusterName")
 }
 
 // GetCollectionName returns the CollectionName field value if set, zero value otherwise
@@ -156,12 +135,6 @@ func (o *IngestionSource) SetCollectionName(v string) {
 	o.CollectionName = &v
 }
 
-// SetCollectionNameNil sets CollectionName to an explicit JSON null when marshaled.
-func (o *IngestionSource) SetCollectionNameNil() {
-	o.CollectionName = nil
-	o.NullFields = append(o.NullFields, "CollectionName")
-}
-
 // GetDatabaseName returns the DatabaseName field value if set, zero value otherwise
 func (o *IngestionSource) GetDatabaseName() string {
 	if o == nil || IsNil(o.DatabaseName) {
@@ -193,12 +166,6 @@ func (o *IngestionSource) HasDatabaseName() bool {
 // SetDatabaseName gets a reference to the given string and assigns it to the DatabaseName field.
 func (o *IngestionSource) SetDatabaseName(v string) {
 	o.DatabaseName = &v
-}
-
-// SetDatabaseNameNil sets DatabaseName to an explicit JSON null when marshaled.
-func (o *IngestionSource) SetDatabaseNameNil() {
-	o.DatabaseName = nil
-	o.NullFields = append(o.NullFields, "DatabaseName")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -234,12 +201,6 @@ func (o *IngestionSource) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
-func (o *IngestionSource) SetGroupIdNil() {
-	o.GroupId = nil
-	o.NullFields = append(o.NullFields, "GroupId")
-}
-
 // GetPolicyItemId returns the PolicyItemId field value if set, zero value otherwise
 func (o *IngestionSource) GetPolicyItemId() string {
 	if o == nil || IsNil(o.PolicyItemId) {
@@ -271,10 +232,4 @@ func (o *IngestionSource) HasPolicyItemId() bool {
 // SetPolicyItemId gets a reference to the given string and assigns it to the PolicyItemId field.
 func (o *IngestionSource) SetPolicyItemId(v string) {
 	o.PolicyItemId = &v
-}
-
-// SetPolicyItemIdNil sets PolicyItemId to an explicit JSON null when marshaled.
-func (o *IngestionSource) SetPolicyItemIdNil() {
-	o.PolicyItemId = nil
-	o.NullFields = append(o.NullFields, "PolicyItemId")
 }

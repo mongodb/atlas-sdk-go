@@ -10,15 +10,6 @@ type OrganizationInvitationUpdateRequest struct {
 	Roles *[]string `json:"roles,omitempty"`
 	// List of teams to which you want to invite the desired MongoDB Cloud user.
 	TeamIds *[]string `json:"teamIds,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *OrganizationInvitationUpdateRequest) MarshalJSON() ([]byte, error) {
-	type noMethod OrganizationInvitationUpdateRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewOrganizationInvitationUpdateRequest instantiates a new OrganizationInvitationUpdateRequest object

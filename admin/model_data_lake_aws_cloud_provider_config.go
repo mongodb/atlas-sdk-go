@@ -18,15 +18,6 @@ type DataLakeAWSCloudProviderConfig struct {
 	// Name of the S3 data bucket that the provided role ID is authorized to access. Required if specifying `cloudProviderConfig`.
 	// Write only field.
 	TestS3Bucket string `json:"testS3Bucket"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DataLakeAWSCloudProviderConfig) MarshalJSON() ([]byte, error) {
-	type noMethod DataLakeAWSCloudProviderConfig
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataLakeAWSCloudProviderConfig instantiates a new DataLakeAWSCloudProviderConfig object
@@ -81,12 +72,6 @@ func (o *DataLakeAWSCloudProviderConfig) SetExternalId(v string) {
 	o.ExternalId = &v
 }
 
-// SetExternalIdNil sets ExternalId to an explicit JSON null when marshaled.
-func (o *DataLakeAWSCloudProviderConfig) SetExternalIdNil() {
-	o.ExternalId = nil
-	o.NullFields = append(o.NullFields, "ExternalId")
-}
-
 // GetIamAssumedRoleARN returns the IamAssumedRoleARN field value if set, zero value otherwise
 func (o *DataLakeAWSCloudProviderConfig) GetIamAssumedRoleARN() string {
 	if o == nil || IsNil(o.IamAssumedRoleARN) {
@@ -120,12 +105,6 @@ func (o *DataLakeAWSCloudProviderConfig) SetIamAssumedRoleARN(v string) {
 	o.IamAssumedRoleARN = &v
 }
 
-// SetIamAssumedRoleARNNil sets IamAssumedRoleARN to an explicit JSON null when marshaled.
-func (o *DataLakeAWSCloudProviderConfig) SetIamAssumedRoleARNNil() {
-	o.IamAssumedRoleARN = nil
-	o.NullFields = append(o.NullFields, "IamAssumedRoleARN")
-}
-
 // GetIamUserARN returns the IamUserARN field value if set, zero value otherwise
 func (o *DataLakeAWSCloudProviderConfig) GetIamUserARN() string {
 	if o == nil || IsNil(o.IamUserARN) {
@@ -157,12 +136,6 @@ func (o *DataLakeAWSCloudProviderConfig) HasIamUserARN() bool {
 // SetIamUserARN gets a reference to the given string and assigns it to the IamUserARN field.
 func (o *DataLakeAWSCloudProviderConfig) SetIamUserARN(v string) {
 	o.IamUserARN = &v
-}
-
-// SetIamUserARNNil sets IamUserARN to an explicit JSON null when marshaled.
-func (o *DataLakeAWSCloudProviderConfig) SetIamUserARNNil() {
-	o.IamUserARN = nil
-	o.NullFields = append(o.NullFields, "IamUserARN")
 }
 
 // GetRoleId returns the RoleId field value

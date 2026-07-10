@@ -10,15 +10,6 @@ type OrgServiceAccountUpdateRequest struct {
 	Name *string `json:"name,omitempty"`
 	// A list of organization-level roles for the Service Account.
 	Roles *[]string `json:"roles,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *OrgServiceAccountUpdateRequest) MarshalJSON() ([]byte, error) {
-	type noMethod OrgServiceAccountUpdateRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewOrgServiceAccountUpdateRequest instantiates a new OrgServiceAccountUpdateRequest object
@@ -71,12 +62,6 @@ func (o *OrgServiceAccountUpdateRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
-// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
-func (o *OrgServiceAccountUpdateRequest) SetDescriptionNil() {
-	o.Description = nil
-	o.NullFields = append(o.NullFields, "Description")
-}
-
 // GetName returns the Name field value if set, zero value otherwise
 func (o *OrgServiceAccountUpdateRequest) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -108,12 +93,6 @@ func (o *OrgServiceAccountUpdateRequest) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *OrgServiceAccountUpdateRequest) SetName(v string) {
 	o.Name = &v
-}
-
-// SetNameNil sets Name to an explicit JSON null when marshaled.
-func (o *OrgServiceAccountUpdateRequest) SetNameNil() {
-	o.Name = nil
-	o.NullFields = append(o.NullFields, "Name")
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise

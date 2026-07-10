@@ -9,15 +9,6 @@ type UserAccessRoleAssignment struct {
 	// Unique 24-hexadecimal digit string that identifies the organization API key.
 	// Read only field.
 	UserId *string `json:"userId,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *UserAccessRoleAssignment) MarshalJSON() ([]byte, error) {
-	type noMethod UserAccessRoleAssignment
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewUserAccessRoleAssignment instantiates a new UserAccessRoleAssignment object
@@ -101,10 +92,4 @@ func (o *UserAccessRoleAssignment) HasUserId() bool {
 // SetUserId gets a reference to the given string and assigns it to the UserId field.
 func (o *UserAccessRoleAssignment) SetUserId(v string) {
 	o.UserId = &v
-}
-
-// SetUserIdNil sets UserId to an explicit JSON null when marshaled.
-func (o *UserAccessRoleAssignment) SetUserIdNil() {
-	o.UserId = nil
-	o.NullFields = append(o.NullFields, "UserId")
 }

@@ -12,15 +12,6 @@ type VectorSearchIndexDefinition struct {
 	NumPartitions *int `json:"numPartitions,omitempty"`
 	// Flag that indicates whether to store all fields (true) on Atlas Search. By default, Atlas doesn't store (false) the fields on Atlas Search.  Alternatively, you can specify an object that only contains the list of fields to store (include) or not store (exclude) on Atlas Search. Note that storing all fields (true) is not allowed for vector search indexes. To learn more, see Stored Source Fields.
 	StoredSource any `json:"storedSource,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *VectorSearchIndexDefinition) MarshalJSON() ([]byte, error) {
-	type noMethod VectorSearchIndexDefinition
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewVectorSearchIndexDefinition instantiates a new VectorSearchIndexDefinition object
@@ -102,12 +93,6 @@ func (o *VectorSearchIndexDefinition) SetNestedRoot(v string) {
 	o.NestedRoot = &v
 }
 
-// SetNestedRootNil sets NestedRoot to an explicit JSON null when marshaled.
-func (o *VectorSearchIndexDefinition) SetNestedRootNil() {
-	o.NestedRoot = nil
-	o.NullFields = append(o.NullFields, "NestedRoot")
-}
-
 // GetNumPartitions returns the NumPartitions field value if set, zero value otherwise
 func (o *VectorSearchIndexDefinition) GetNumPartitions() int {
 	if o == nil || IsNil(o.NumPartitions) {
@@ -139,12 +124,6 @@ func (o *VectorSearchIndexDefinition) HasNumPartitions() bool {
 // SetNumPartitions gets a reference to the given int and assigns it to the NumPartitions field.
 func (o *VectorSearchIndexDefinition) SetNumPartitions(v int) {
 	o.NumPartitions = &v
-}
-
-// SetNumPartitionsNil sets NumPartitions to an explicit JSON null when marshaled.
-func (o *VectorSearchIndexDefinition) SetNumPartitionsNil() {
-	o.NumPartitions = nil
-	o.NullFields = append(o.NullFields, "NumPartitions")
 }
 
 // GetStoredSource returns the StoredSource field value if set, zero value otherwise
@@ -179,10 +158,4 @@ func (o *VectorSearchIndexDefinition) HasStoredSource() bool {
 // SetStoredSource gets a reference to the given any and assigns it to the StoredSource field.
 func (o *VectorSearchIndexDefinition) SetStoredSource(v any) {
 	o.StoredSource = v
-}
-
-// SetStoredSourceNil sets StoredSource to an explicit JSON null when marshaled.
-func (o *VectorSearchIndexDefinition) SetStoredSourceNil() {
-	o.StoredSource = nil
-	o.NullFields = append(o.NullFields, "StoredSource")
 }

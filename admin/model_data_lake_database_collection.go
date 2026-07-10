@@ -8,15 +8,6 @@ type DataLakeDatabaseCollection struct {
 	DataSources *[]DataLakeDatabaseDataSourceSettings `json:"dataSources,omitempty"`
 	// Human-readable label that identifies the collection to which MongoDB Cloud maps the data in the data stores.
 	Name *string `json:"name,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DataLakeDatabaseCollection) MarshalJSON() ([]byte, error) {
-	type noMethod DataLakeDatabaseCollection
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataLakeDatabaseCollection instantiates a new DataLakeDatabaseCollection object
@@ -100,10 +91,4 @@ func (o *DataLakeDatabaseCollection) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DataLakeDatabaseCollection) SetName(v string) {
 	o.Name = &v
-}
-
-// SetNameNil sets Name to an explicit JSON null when marshaled.
-func (o *DataLakeDatabaseCollection) SetNameNil() {
-	o.Name = nil
-	o.NullFields = append(o.NullFields, "Name")
 }

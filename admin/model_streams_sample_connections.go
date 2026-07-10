@@ -9,15 +9,6 @@ type StreamsSampleConnections struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Flag that indicates whether to add a `sample_stream_solar` connection.
 	Solar *bool `json:"solar,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsSampleConnections) MarshalJSON() ([]byte, error) {
-	type noMethod StreamsSampleConnections
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsSampleConnections instantiates a new StreamsSampleConnections object
@@ -105,10 +96,4 @@ func (o *StreamsSampleConnections) HasSolar() bool {
 // SetSolar gets a reference to the given bool and assigns it to the Solar field.
 func (o *StreamsSampleConnections) SetSolar(v bool) {
 	o.Solar = &v
-}
-
-// SetSolarNil sets Solar to an explicit JSON null when marshaled.
-func (o *StreamsSampleConnections) SetSolarNil() {
-	o.Solar = nil
-	o.NullFields = append(o.NullFields, "Solar")
 }

@@ -22,15 +22,6 @@ type DropIndexSuggestionsIndex struct {
 	Since *time.Time `json:"since,omitempty"`
 	// Size of index.
 	SizeBytes *int64 `json:"sizeBytes,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DropIndexSuggestionsIndex) MarshalJSON() ([]byte, error) {
-	type noMethod DropIndexSuggestionsIndex
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDropIndexSuggestionsIndex instantiates a new DropIndexSuggestionsIndex object
@@ -81,12 +72,6 @@ func (o *DropIndexSuggestionsIndex) HasAccessCount() bool {
 // SetAccessCount gets a reference to the given int64 and assigns it to the AccessCount field.
 func (o *DropIndexSuggestionsIndex) SetAccessCount(v int64) {
 	o.AccessCount = &v
-}
-
-// SetAccessCountNil sets AccessCount to an explicit JSON null when marshaled.
-func (o *DropIndexSuggestionsIndex) SetAccessCountNil() {
-	o.AccessCount = nil
-	o.NullFields = append(o.NullFields, "AccessCount")
 }
 
 // GetIndex returns the Index field value if set, zero value otherwise
@@ -155,12 +140,6 @@ func (o *DropIndexSuggestionsIndex) SetName(v string) {
 	o.Name = &v
 }
 
-// SetNameNil sets Name to an explicit JSON null when marshaled.
-func (o *DropIndexSuggestionsIndex) SetNameNil() {
-	o.Name = nil
-	o.NullFields = append(o.NullFields, "Name")
-}
-
 // GetNamespace returns the Namespace field value if set, zero value otherwise
 func (o *DropIndexSuggestionsIndex) GetNamespace() string {
 	if o == nil || IsNil(o.Namespace) {
@@ -192,12 +171,6 @@ func (o *DropIndexSuggestionsIndex) HasNamespace() bool {
 // SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *DropIndexSuggestionsIndex) SetNamespace(v string) {
 	o.Namespace = &v
-}
-
-// SetNamespaceNil sets Namespace to an explicit JSON null when marshaled.
-func (o *DropIndexSuggestionsIndex) SetNamespaceNil() {
-	o.Namespace = nil
-	o.NullFields = append(o.NullFields, "Namespace")
 }
 
 // GetShards returns the Shards field value if set, zero value otherwise
@@ -266,12 +239,6 @@ func (o *DropIndexSuggestionsIndex) SetSince(v time.Time) {
 	o.Since = &v
 }
 
-// SetSinceNil sets Since to an explicit JSON null when marshaled.
-func (o *DropIndexSuggestionsIndex) SetSinceNil() {
-	o.Since = nil
-	o.NullFields = append(o.NullFields, "Since")
-}
-
 // GetSizeBytes returns the SizeBytes field value if set, zero value otherwise
 func (o *DropIndexSuggestionsIndex) GetSizeBytes() int64 {
 	if o == nil || IsNil(o.SizeBytes) {
@@ -303,10 +270,4 @@ func (o *DropIndexSuggestionsIndex) HasSizeBytes() bool {
 // SetSizeBytes gets a reference to the given int64 and assigns it to the SizeBytes field.
 func (o *DropIndexSuggestionsIndex) SetSizeBytes(v int64) {
 	o.SizeBytes = &v
-}
-
-// SetSizeBytesNil sets SizeBytes to an explicit JSON null when marshaled.
-func (o *DropIndexSuggestionsIndex) SetSizeBytesNil() {
-	o.SizeBytes = nil
-	o.NullFields = append(o.NullFields, "SizeBytes")
 }

@@ -8,15 +8,6 @@ type DataLakeAtlasStoreReadPreferenceTag struct {
 	Name *string `json:"name,omitempty"`
 	// Value of the tag.
 	Value *string `json:"value,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DataLakeAtlasStoreReadPreferenceTag) MarshalJSON() ([]byte, error) {
-	type noMethod DataLakeAtlasStoreReadPreferenceTag
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataLakeAtlasStoreReadPreferenceTag instantiates a new DataLakeAtlasStoreReadPreferenceTag object
@@ -69,12 +60,6 @@ func (o *DataLakeAtlasStoreReadPreferenceTag) SetName(v string) {
 	o.Name = &v
 }
 
-// SetNameNil sets Name to an explicit JSON null when marshaled.
-func (o *DataLakeAtlasStoreReadPreferenceTag) SetNameNil() {
-	o.Name = nil
-	o.NullFields = append(o.NullFields, "Name")
-}
-
 // GetValue returns the Value field value if set, zero value otherwise
 func (o *DataLakeAtlasStoreReadPreferenceTag) GetValue() string {
 	if o == nil || IsNil(o.Value) {
@@ -106,10 +91,4 @@ func (o *DataLakeAtlasStoreReadPreferenceTag) HasValue() bool {
 // SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *DataLakeAtlasStoreReadPreferenceTag) SetValue(v string) {
 	o.Value = &v
-}
-
-// SetValueNil sets Value to an explicit JSON null when marshaled.
-func (o *DataLakeAtlasStoreReadPreferenceTag) SetValueNil() {
-	o.Value = nil
-	o.NullFields = append(o.NullFields, "Value")
 }

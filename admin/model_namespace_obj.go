@@ -10,15 +10,6 @@ type NamespaceObj struct {
 	// Human-readable label that identifies the type of namespace.
 	// Read only field.
 	Type *string `json:"type,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *NamespaceObj) MarshalJSON() ([]byte, error) {
-	type noMethod NamespaceObj
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewNamespaceObj instantiates a new NamespaceObj object
@@ -71,12 +62,6 @@ func (o *NamespaceObj) SetNamespace(v string) {
 	o.Namespace = &v
 }
 
-// SetNamespaceNil sets Namespace to an explicit JSON null when marshaled.
-func (o *NamespaceObj) SetNamespaceNil() {
-	o.Namespace = nil
-	o.NullFields = append(o.NullFields, "Namespace")
-}
-
 // GetType returns the Type field value if set, zero value otherwise
 func (o *NamespaceObj) GetType() string {
 	if o == nil || IsNil(o.Type) {
@@ -108,10 +93,4 @@ func (o *NamespaceObj) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *NamespaceObj) SetType(v string) {
 	o.Type = &v
-}
-
-// SetTypeNil sets Type to an explicit JSON null when marshaled.
-func (o *NamespaceObj) SetTypeNil() {
-	o.Type = nil
-	o.NullFields = append(o.NullFields, "Type")
 }

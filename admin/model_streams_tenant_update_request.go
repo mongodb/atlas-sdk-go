@@ -15,15 +15,6 @@ type StreamsTenantUpdateRequest struct {
 	// Name of the cloud provider region hosting Atlas Stream Processing.
 	Region       *string       `json:"region,omitempty"`
 	StreamConfig *StreamConfig `json:"streamConfig,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsTenantUpdateRequest) MarshalJSON() ([]byte, error) {
-	type noMethod StreamsTenantUpdateRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsTenantUpdateRequest instantiates a new StreamsTenantUpdateRequest object
@@ -74,12 +65,6 @@ func (o *StreamsTenantUpdateRequest) HasCloudProvider() bool {
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *StreamsTenantUpdateRequest) SetCloudProvider(v string) {
 	o.CloudProvider = &v
-}
-
-// SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled.
-func (o *StreamsTenantUpdateRequest) SetCloudProviderNil() {
-	o.CloudProvider = nil
-	o.NullFields = append(o.NullFields, "CloudProvider")
 }
 
 // GetFailoverRegions returns the FailoverRegions field value if set, zero value otherwise
@@ -181,12 +166,6 @@ func (o *StreamsTenantUpdateRequest) SetProcessorStatus(v StreamsProcessorStatus
 	o.ProcessorStatus = &v
 }
 
-// SetProcessorStatusNil sets ProcessorStatus to an explicit JSON null when marshaled.
-func (o *StreamsTenantUpdateRequest) SetProcessorStatusNil() {
-	o.ProcessorStatus = nil
-	o.NullFields = append(o.NullFields, "ProcessorStatus")
-}
-
 // GetRegion returns the Region field value if set, zero value otherwise
 func (o *StreamsTenantUpdateRequest) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
@@ -220,12 +199,6 @@ func (o *StreamsTenantUpdateRequest) SetRegion(v string) {
 	o.Region = &v
 }
 
-// SetRegionNil sets Region to an explicit JSON null when marshaled.
-func (o *StreamsTenantUpdateRequest) SetRegionNil() {
-	o.Region = nil
-	o.NullFields = append(o.NullFields, "Region")
-}
-
 // GetStreamConfig returns the StreamConfig field value if set, zero value otherwise
 func (o *StreamsTenantUpdateRequest) GetStreamConfig() StreamConfig {
 	if o == nil || IsNil(o.StreamConfig) {
@@ -257,10 +230,4 @@ func (o *StreamsTenantUpdateRequest) HasStreamConfig() bool {
 // SetStreamConfig gets a reference to the given StreamConfig and assigns it to the StreamConfig field.
 func (o *StreamsTenantUpdateRequest) SetStreamConfig(v StreamConfig) {
 	o.StreamConfig = &v
-}
-
-// SetStreamConfigNil sets StreamConfig to an explicit JSON null when marshaled.
-func (o *StreamsTenantUpdateRequest) SetStreamConfigNil() {
-	o.StreamConfig = nil
-	o.NullFields = append(o.NullFields, "StreamConfig")
 }

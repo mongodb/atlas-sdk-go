@@ -21,15 +21,6 @@ type CloudSearchMetrics struct {
 	ProcessId string `json:"processId"`
 	// List that contains all available Atlas Search status metrics when MongoDB Atlas received this request.
 	StatusMetrics []FTSMetric `json:"statusMetrics"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *CloudSearchMetrics) MarshalJSON() ([]byte, error) {
-	type noMethod CloudSearchMetrics
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudSearchMetrics instantiates a new CloudSearchMetrics object

@@ -9,15 +9,6 @@ type ActivityFeedLinkResponse struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ActivityFeedLinkResponse) MarshalJSON() ([]byte, error) {
-	type noMethod ActivityFeedLinkResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewActivityFeedLinkResponse instantiates a new ActivityFeedLinkResponse object

@@ -52,15 +52,6 @@ type BillingInvoiceMetadata struct {
 	// Date and time when MongoDB Cloud last updated the value of this payment. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Updated *time.Time `json:"updated,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *BillingInvoiceMetadata) MarshalJSON() ([]byte, error) {
-	type noMethod BillingInvoiceMetadata
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewBillingInvoiceMetadata instantiates a new BillingInvoiceMetadata object
@@ -113,12 +104,6 @@ func (o *BillingInvoiceMetadata) SetAmountBilledCents(v int64) {
 	o.AmountBilledCents = &v
 }
 
-// SetAmountBilledCentsNil sets AmountBilledCents to an explicit JSON null when marshaled.
-func (o *BillingInvoiceMetadata) SetAmountBilledCentsNil() {
-	o.AmountBilledCents = nil
-	o.NullFields = append(o.NullFields, "AmountBilledCents")
-}
-
 // GetAmountPaidCents returns the AmountPaidCents field value if set, zero value otherwise
 func (o *BillingInvoiceMetadata) GetAmountPaidCents() int64 {
 	if o == nil || IsNil(o.AmountPaidCents) {
@@ -150,12 +135,6 @@ func (o *BillingInvoiceMetadata) HasAmountPaidCents() bool {
 // SetAmountPaidCents gets a reference to the given int64 and assigns it to the AmountPaidCents field.
 func (o *BillingInvoiceMetadata) SetAmountPaidCents(v int64) {
 	o.AmountPaidCents = &v
-}
-
-// SetAmountPaidCentsNil sets AmountPaidCents to an explicit JSON null when marshaled.
-func (o *BillingInvoiceMetadata) SetAmountPaidCentsNil() {
-	o.AmountPaidCents = nil
-	o.NullFields = append(o.NullFields, "AmountPaidCents")
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise
@@ -191,12 +170,6 @@ func (o *BillingInvoiceMetadata) SetCreated(v time.Time) {
 	o.Created = &v
 }
 
-// SetCreatedNil sets Created to an explicit JSON null when marshaled.
-func (o *BillingInvoiceMetadata) SetCreatedNil() {
-	o.Created = nil
-	o.NullFields = append(o.NullFields, "Created")
-}
-
 // GetCreditsCents returns the CreditsCents field value if set, zero value otherwise
 func (o *BillingInvoiceMetadata) GetCreditsCents() int64 {
 	if o == nil || IsNil(o.CreditsCents) {
@@ -228,12 +201,6 @@ func (o *BillingInvoiceMetadata) HasCreditsCents() bool {
 // SetCreditsCents gets a reference to the given int64 and assigns it to the CreditsCents field.
 func (o *BillingInvoiceMetadata) SetCreditsCents(v int64) {
 	o.CreditsCents = &v
-}
-
-// SetCreditsCentsNil sets CreditsCents to an explicit JSON null when marshaled.
-func (o *BillingInvoiceMetadata) SetCreditsCentsNil() {
-	o.CreditsCents = nil
-	o.NullFields = append(o.NullFields, "CreditsCents")
 }
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise
@@ -269,12 +236,6 @@ func (o *BillingInvoiceMetadata) SetEndDate(v time.Time) {
 	o.EndDate = &v
 }
 
-// SetEndDateNil sets EndDate to an explicit JSON null when marshaled.
-func (o *BillingInvoiceMetadata) SetEndDateNil() {
-	o.EndDate = nil
-	o.NullFields = append(o.NullFields, "EndDate")
-}
-
 // GetId returns the Id field value if set, zero value otherwise
 func (o *BillingInvoiceMetadata) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -306,12 +267,6 @@ func (o *BillingInvoiceMetadata) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *BillingInvoiceMetadata) SetId(v string) {
 	o.Id = &v
-}
-
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *BillingInvoiceMetadata) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetLinkedInvoices returns the LinkedInvoices field value if set, zero value otherwise
@@ -413,12 +368,6 @@ func (o *BillingInvoiceMetadata) SetOrgId(v string) {
 	o.OrgId = &v
 }
 
-// SetOrgIdNil sets OrgId to an explicit JSON null when marshaled.
-func (o *BillingInvoiceMetadata) SetOrgIdNil() {
-	o.OrgId = nil
-	o.NullFields = append(o.NullFields, "OrgId")
-}
-
 // GetSalesTaxCents returns the SalesTaxCents field value if set, zero value otherwise
 func (o *BillingInvoiceMetadata) GetSalesTaxCents() int64 {
 	if o == nil || IsNil(o.SalesTaxCents) {
@@ -450,12 +399,6 @@ func (o *BillingInvoiceMetadata) HasSalesTaxCents() bool {
 // SetSalesTaxCents gets a reference to the given int64 and assigns it to the SalesTaxCents field.
 func (o *BillingInvoiceMetadata) SetSalesTaxCents(v int64) {
 	o.SalesTaxCents = &v
-}
-
-// SetSalesTaxCentsNil sets SalesTaxCents to an explicit JSON null when marshaled.
-func (o *BillingInvoiceMetadata) SetSalesTaxCentsNil() {
-	o.SalesTaxCents = nil
-	o.NullFields = append(o.NullFields, "SalesTaxCents")
 }
 
 // GetStartDate returns the StartDate field value if set, zero value otherwise
@@ -491,12 +434,6 @@ func (o *BillingInvoiceMetadata) SetStartDate(v time.Time) {
 	o.StartDate = &v
 }
 
-// SetStartDateNil sets StartDate to an explicit JSON null when marshaled.
-func (o *BillingInvoiceMetadata) SetStartDateNil() {
-	o.StartDate = nil
-	o.NullFields = append(o.NullFields, "StartDate")
-}
-
 // GetStartingBalanceCents returns the StartingBalanceCents field value if set, zero value otherwise
 func (o *BillingInvoiceMetadata) GetStartingBalanceCents() int64 {
 	if o == nil || IsNil(o.StartingBalanceCents) {
@@ -528,12 +465,6 @@ func (o *BillingInvoiceMetadata) HasStartingBalanceCents() bool {
 // SetStartingBalanceCents gets a reference to the given int64 and assigns it to the StartingBalanceCents field.
 func (o *BillingInvoiceMetadata) SetStartingBalanceCents(v int64) {
 	o.StartingBalanceCents = &v
-}
-
-// SetStartingBalanceCentsNil sets StartingBalanceCents to an explicit JSON null when marshaled.
-func (o *BillingInvoiceMetadata) SetStartingBalanceCentsNil() {
-	o.StartingBalanceCents = nil
-	o.NullFields = append(o.NullFields, "StartingBalanceCents")
 }
 
 // GetStatusName returns the StatusName field value if set, zero value otherwise
@@ -569,12 +500,6 @@ func (o *BillingInvoiceMetadata) SetStatusName(v string) {
 	o.StatusName = &v
 }
 
-// SetStatusNameNil sets StatusName to an explicit JSON null when marshaled.
-func (o *BillingInvoiceMetadata) SetStatusNameNil() {
-	o.StatusName = nil
-	o.NullFields = append(o.NullFields, "StatusName")
-}
-
 // GetSubtotalCents returns the SubtotalCents field value if set, zero value otherwise
 func (o *BillingInvoiceMetadata) GetSubtotalCents() int64 {
 	if o == nil || IsNil(o.SubtotalCents) {
@@ -608,12 +533,6 @@ func (o *BillingInvoiceMetadata) SetSubtotalCents(v int64) {
 	o.SubtotalCents = &v
 }
 
-// SetSubtotalCentsNil sets SubtotalCents to an explicit JSON null when marshaled.
-func (o *BillingInvoiceMetadata) SetSubtotalCentsNil() {
-	o.SubtotalCents = nil
-	o.NullFields = append(o.NullFields, "SubtotalCents")
-}
-
 // GetUpdated returns the Updated field value if set, zero value otherwise
 func (o *BillingInvoiceMetadata) GetUpdated() time.Time {
 	if o == nil || IsNil(o.Updated) {
@@ -645,10 +564,4 @@ func (o *BillingInvoiceMetadata) HasUpdated() bool {
 // SetUpdated gets a reference to the given time.Time and assigns it to the Updated field.
 func (o *BillingInvoiceMetadata) SetUpdated(v time.Time) {
 	o.Updated = &v
-}
-
-// SetUpdatedNil sets Updated to an explicit JSON null when marshaled.
-func (o *BillingInvoiceMetadata) SetUpdatedNil() {
-	o.Updated = nil
-	o.NullFields = append(o.NullFields, "Updated")
 }

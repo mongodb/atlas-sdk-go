@@ -10,15 +10,6 @@ type FlexConnectionStrings20241113 struct {
 	// Public connection string that you can use to connect to this flex cluster. This connection string uses the `mongodb+srv://` protocol.
 	// Read only field.
 	StandardSrv *string `json:"standardSrv,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *FlexConnectionStrings20241113) MarshalJSON() ([]byte, error) {
-	type noMethod FlexConnectionStrings20241113
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFlexConnectionStrings20241113 instantiates a new FlexConnectionStrings20241113 object
@@ -71,12 +62,6 @@ func (o *FlexConnectionStrings20241113) SetStandard(v string) {
 	o.Standard = &v
 }
 
-// SetStandardNil sets Standard to an explicit JSON null when marshaled.
-func (o *FlexConnectionStrings20241113) SetStandardNil() {
-	o.Standard = nil
-	o.NullFields = append(o.NullFields, "Standard")
-}
-
 // GetStandardSrv returns the StandardSrv field value if set, zero value otherwise
 func (o *FlexConnectionStrings20241113) GetStandardSrv() string {
 	if o == nil || IsNil(o.StandardSrv) {
@@ -108,10 +93,4 @@ func (o *FlexConnectionStrings20241113) HasStandardSrv() bool {
 // SetStandardSrv gets a reference to the given string and assigns it to the StandardSrv field.
 func (o *FlexConnectionStrings20241113) SetStandardSrv(v string) {
 	o.StandardSrv = &v
-}
-
-// SetStandardSrvNil sets StandardSrv to an explicit JSON null when marshaled.
-func (o *FlexConnectionStrings20241113) SetStandardSrvNil() {
-	o.StandardSrv = nil
-	o.NullFields = append(o.NullFields, "StandardSrv")
 }

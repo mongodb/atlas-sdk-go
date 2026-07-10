@@ -10,15 +10,6 @@ type ShardingRequest struct {
 	// List of shard configurations to shard destination collections. Atlas shards only those collections that you include in the sharding entries array.
 	// Write only field.
 	ShardingEntries []ShardEntry `json:"shardingEntries"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ShardingRequest) MarshalJSON() ([]byte, error) {
-	type noMethod ShardingRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewShardingRequest instantiates a new ShardingRequest object

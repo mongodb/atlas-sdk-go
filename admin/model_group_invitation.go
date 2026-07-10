@@ -34,15 +34,6 @@ type GroupInvitation struct {
 	// Email address of the MongoDB Cloud user invited to join the project.
 	// Read only field.
 	Username *string `json:"username,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *GroupInvitation) MarshalJSON() ([]byte, error) {
-	type noMethod GroupInvitation
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGroupInvitation instantiates a new GroupInvitation object
@@ -95,12 +86,6 @@ func (o *GroupInvitation) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
-// SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled.
-func (o *GroupInvitation) SetCreatedAtNil() {
-	o.CreatedAt = nil
-	o.NullFields = append(o.NullFields, "CreatedAt")
-}
-
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise
 func (o *GroupInvitation) GetExpiresAt() time.Time {
 	if o == nil || IsNil(o.ExpiresAt) {
@@ -132,12 +117,6 @@ func (o *GroupInvitation) HasExpiresAt() bool {
 // SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *GroupInvitation) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
-}
-
-// SetExpiresAtNil sets ExpiresAt to an explicit JSON null when marshaled.
-func (o *GroupInvitation) SetExpiresAtNil() {
-	o.ExpiresAt = nil
-	o.NullFields = append(o.NullFields, "ExpiresAt")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -173,12 +152,6 @@ func (o *GroupInvitation) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
-func (o *GroupInvitation) SetGroupIdNil() {
-	o.GroupId = nil
-	o.NullFields = append(o.NullFields, "GroupId")
-}
-
 // GetGroupName returns the GroupName field value if set, zero value otherwise
 func (o *GroupInvitation) GetGroupName() string {
 	if o == nil || IsNil(o.GroupName) {
@@ -210,12 +183,6 @@ func (o *GroupInvitation) HasGroupName() bool {
 // SetGroupName gets a reference to the given string and assigns it to the GroupName field.
 func (o *GroupInvitation) SetGroupName(v string) {
 	o.GroupName = &v
-}
-
-// SetGroupNameNil sets GroupName to an explicit JSON null when marshaled.
-func (o *GroupInvitation) SetGroupNameNil() {
-	o.GroupName = nil
-	o.NullFields = append(o.NullFields, "GroupName")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -251,12 +218,6 @@ func (o *GroupInvitation) SetId(v string) {
 	o.Id = &v
 }
 
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *GroupInvitation) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
-}
-
 // GetInviterUsername returns the InviterUsername field value if set, zero value otherwise
 func (o *GroupInvitation) GetInviterUsername() string {
 	if o == nil || IsNil(o.InviterUsername) {
@@ -288,12 +249,6 @@ func (o *GroupInvitation) HasInviterUsername() bool {
 // SetInviterUsername gets a reference to the given string and assigns it to the InviterUsername field.
 func (o *GroupInvitation) SetInviterUsername(v string) {
 	o.InviterUsername = &v
-}
-
-// SetInviterUsernameNil sets InviterUsername to an explicit JSON null when marshaled.
-func (o *GroupInvitation) SetInviterUsernameNil() {
-	o.InviterUsername = nil
-	o.NullFields = append(o.NullFields, "InviterUsername")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -393,10 +348,4 @@ func (o *GroupInvitation) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *GroupInvitation) SetUsername(v string) {
 	o.Username = &v
-}
-
-// SetUsernameNil sets Username to an explicit JSON null when marshaled.
-func (o *GroupInvitation) SetUsernameNil() {
-	o.Username = nil
-	o.NullFields = append(o.NullFields, "Username")
 }

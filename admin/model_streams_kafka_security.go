@@ -11,15 +11,6 @@ type StreamsKafkaSecurity struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Describes the transport type. Can be either `SASL_PLAINTEXT`, `SASL_SSL`, or `SSL`.
 	Protocol *string `json:"protocol,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsKafkaSecurity) MarshalJSON() ([]byte, error) {
-	type noMethod StreamsKafkaSecurity
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsKafkaSecurity instantiates a new StreamsKafkaSecurity object
@@ -70,12 +61,6 @@ func (o *StreamsKafkaSecurity) HasBrokerPublicCertificate() bool {
 // SetBrokerPublicCertificate gets a reference to the given string and assigns it to the BrokerPublicCertificate field.
 func (o *StreamsKafkaSecurity) SetBrokerPublicCertificate(v string) {
 	o.BrokerPublicCertificate = &v
-}
-
-// SetBrokerPublicCertificateNil sets BrokerPublicCertificate to an explicit JSON null when marshaled.
-func (o *StreamsKafkaSecurity) SetBrokerPublicCertificateNil() {
-	o.BrokerPublicCertificate = nil
-	o.NullFields = append(o.NullFields, "BrokerPublicCertificate")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -142,10 +127,4 @@ func (o *StreamsKafkaSecurity) HasProtocol() bool {
 // SetProtocol gets a reference to the given string and assigns it to the Protocol field.
 func (o *StreamsKafkaSecurity) SetProtocol(v string) {
 	o.Protocol = &v
-}
-
-// SetProtocolNil sets Protocol to an explicit JSON null when marshaled.
-func (o *StreamsKafkaSecurity) SetProtocolNil() {
-	o.Protocol = nil
-	o.NullFields = append(o.NullFields, "Protocol")
 }

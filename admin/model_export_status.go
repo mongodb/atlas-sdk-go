@@ -10,15 +10,6 @@ type ExportStatus struct {
 	// Total count of collections whose documents will be exported to the Export Bucket.
 	// Read only field.
 	TotalCollections *int `json:"totalCollections,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ExportStatus) MarshalJSON() ([]byte, error) {
-	type noMethod ExportStatus
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewExportStatus instantiates a new ExportStatus object
@@ -71,12 +62,6 @@ func (o *ExportStatus) SetExportedCollections(v int) {
 	o.ExportedCollections = &v
 }
 
-// SetExportedCollectionsNil sets ExportedCollections to an explicit JSON null when marshaled.
-func (o *ExportStatus) SetExportedCollectionsNil() {
-	o.ExportedCollections = nil
-	o.NullFields = append(o.NullFields, "ExportedCollections")
-}
-
 // GetTotalCollections returns the TotalCollections field value if set, zero value otherwise
 func (o *ExportStatus) GetTotalCollections() int {
 	if o == nil || IsNil(o.TotalCollections) {
@@ -108,10 +93,4 @@ func (o *ExportStatus) HasTotalCollections() bool {
 // SetTotalCollections gets a reference to the given int and assigns it to the TotalCollections field.
 func (o *ExportStatus) SetTotalCollections(v int) {
 	o.TotalCollections = &v
-}
-
-// SetTotalCollectionsNil sets TotalCollections to an explicit JSON null when marshaled.
-func (o *ExportStatus) SetTotalCollectionsNil() {
-	o.TotalCollections = nil
-	o.NullFields = append(o.NullFields, "TotalCollections")
 }

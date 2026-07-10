@@ -14,15 +14,6 @@ type MetricDataPointAtlas struct {
 	// Value that comprises this data point.
 	// Read only field.
 	Value *float32 `json:"value,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *MetricDataPointAtlas) MarshalJSON() ([]byte, error) {
-	type noMethod MetricDataPointAtlas
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewMetricDataPointAtlas instantiates a new MetricDataPointAtlas object
@@ -75,12 +66,6 @@ func (o *MetricDataPointAtlas) SetTimestamp(v time.Time) {
 	o.Timestamp = &v
 }
 
-// SetTimestampNil sets Timestamp to an explicit JSON null when marshaled.
-func (o *MetricDataPointAtlas) SetTimestampNil() {
-	o.Timestamp = nil
-	o.NullFields = append(o.NullFields, "Timestamp")
-}
-
 // GetValue returns the Value field value if set, zero value otherwise
 func (o *MetricDataPointAtlas) GetValue() float32 {
 	if o == nil || IsNil(o.Value) {
@@ -112,10 +97,4 @@ func (o *MetricDataPointAtlas) HasValue() bool {
 // SetValue gets a reference to the given float32 and assigns it to the Value field.
 func (o *MetricDataPointAtlas) SetValue(v float32) {
 	o.Value = &v
-}
-
-// SetValueNil sets Value to an explicit JSON null when marshaled.
-func (o *MetricDataPointAtlas) SetValueNil() {
-	o.Value = nil
-	o.NullFields = append(o.NullFields, "Value")
 }

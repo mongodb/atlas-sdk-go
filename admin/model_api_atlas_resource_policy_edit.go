@@ -10,15 +10,6 @@ type ApiAtlasResourcePolicyEdit struct {
 	Name *string `json:"name,omitempty"`
 	// List of policies that make up the atlas resource policy.
 	Policies *[]ApiAtlasPolicyCreate `json:"policies,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiAtlasResourcePolicyEdit) MarshalJSON() ([]byte, error) {
-	type noMethod ApiAtlasResourcePolicyEdit
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasResourcePolicyEdit instantiates a new ApiAtlasResourcePolicyEdit object
@@ -71,12 +62,6 @@ func (o *ApiAtlasResourcePolicyEdit) SetDescription(v string) {
 	o.Description = &v
 }
 
-// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
-func (o *ApiAtlasResourcePolicyEdit) SetDescriptionNil() {
-	o.Description = nil
-	o.NullFields = append(o.NullFields, "Description")
-}
-
 // GetName returns the Name field value if set, zero value otherwise
 func (o *ApiAtlasResourcePolicyEdit) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -108,12 +93,6 @@ func (o *ApiAtlasResourcePolicyEdit) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ApiAtlasResourcePolicyEdit) SetName(v string) {
 	o.Name = &v
-}
-
-// SetNameNil sets Name to an explicit JSON null when marshaled.
-func (o *ApiAtlasResourcePolicyEdit) SetNameNil() {
-	o.Name = nil
-	o.NullFields = append(o.NullFields, "Name")
 }
 
 // GetPolicies returns the Policies field value if set, zero value otherwise

@@ -32,15 +32,6 @@ type FlexBackupSnapshot20241113 struct {
 	// Phase of the workflow for this snapshot at the time this resource made this request.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *FlexBackupSnapshot20241113) MarshalJSON() ([]byte, error) {
-	type noMethod FlexBackupSnapshot20241113
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFlexBackupSnapshot20241113 instantiates a new FlexBackupSnapshot20241113 object
@@ -93,12 +84,6 @@ func (o *FlexBackupSnapshot20241113) SetExpiration(v time.Time) {
 	o.Expiration = &v
 }
 
-// SetExpirationNil sets Expiration to an explicit JSON null when marshaled.
-func (o *FlexBackupSnapshot20241113) SetExpirationNil() {
-	o.Expiration = nil
-	o.NullFields = append(o.NullFields, "Expiration")
-}
-
 // GetFinishTime returns the FinishTime field value if set, zero value otherwise
 func (o *FlexBackupSnapshot20241113) GetFinishTime() time.Time {
 	if o == nil || IsNil(o.FinishTime) {
@@ -132,12 +117,6 @@ func (o *FlexBackupSnapshot20241113) SetFinishTime(v time.Time) {
 	o.FinishTime = &v
 }
 
-// SetFinishTimeNil sets FinishTime to an explicit JSON null when marshaled.
-func (o *FlexBackupSnapshot20241113) SetFinishTimeNil() {
-	o.FinishTime = nil
-	o.NullFields = append(o.NullFields, "FinishTime")
-}
-
 // GetId returns the Id field value if set, zero value otherwise
 func (o *FlexBackupSnapshot20241113) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -169,12 +148,6 @@ func (o *FlexBackupSnapshot20241113) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *FlexBackupSnapshot20241113) SetId(v string) {
 	o.Id = &v
-}
-
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *FlexBackupSnapshot20241113) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -243,12 +216,6 @@ func (o *FlexBackupSnapshot20241113) SetMongoDBVersion(v string) {
 	o.MongoDBVersion = &v
 }
 
-// SetMongoDBVersionNil sets MongoDBVersion to an explicit JSON null when marshaled.
-func (o *FlexBackupSnapshot20241113) SetMongoDBVersionNil() {
-	o.MongoDBVersion = nil
-	o.NullFields = append(o.NullFields, "MongoDBVersion")
-}
-
 // GetScheduledTime returns the ScheduledTime field value if set, zero value otherwise
 func (o *FlexBackupSnapshot20241113) GetScheduledTime() time.Time {
 	if o == nil || IsNil(o.ScheduledTime) {
@@ -280,12 +247,6 @@ func (o *FlexBackupSnapshot20241113) HasScheduledTime() bool {
 // SetScheduledTime gets a reference to the given time.Time and assigns it to the ScheduledTime field.
 func (o *FlexBackupSnapshot20241113) SetScheduledTime(v time.Time) {
 	o.ScheduledTime = &v
-}
-
-// SetScheduledTimeNil sets ScheduledTime to an explicit JSON null when marshaled.
-func (o *FlexBackupSnapshot20241113) SetScheduledTimeNil() {
-	o.ScheduledTime = nil
-	o.NullFields = append(o.NullFields, "ScheduledTime")
 }
 
 // GetStartTime returns the StartTime field value if set, zero value otherwise
@@ -321,12 +282,6 @@ func (o *FlexBackupSnapshot20241113) SetStartTime(v time.Time) {
 	o.StartTime = &v
 }
 
-// SetStartTimeNil sets StartTime to an explicit JSON null when marshaled.
-func (o *FlexBackupSnapshot20241113) SetStartTimeNil() {
-	o.StartTime = nil
-	o.NullFields = append(o.NullFields, "StartTime")
-}
-
 // GetStatus returns the Status field value if set, zero value otherwise
 func (o *FlexBackupSnapshot20241113) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
@@ -358,10 +313,4 @@ func (o *FlexBackupSnapshot20241113) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *FlexBackupSnapshot20241113) SetStatus(v string) {
 	o.Status = &v
-}
-
-// SetStatusNil sets Status to an explicit JSON null when marshaled.
-func (o *FlexBackupSnapshot20241113) SetStatusNil() {
-	o.Status = nil
-	o.NullFields = append(o.NullFields, "Status")
 }

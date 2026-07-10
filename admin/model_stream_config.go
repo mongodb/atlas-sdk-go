@@ -11,15 +11,6 @@ type StreamConfig struct {
 	MaxTierSize *string `json:"maxTierSize,omitempty"`
 	// Selected tier for the Stream Workspace. Configures Memory / VCPU allowances.
 	Tier *string `json:"tier,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamConfig) MarshalJSON() ([]byte, error) {
-	type noMethod StreamConfig
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamConfig instantiates a new StreamConfig object
@@ -105,12 +96,6 @@ func (o *StreamConfig) SetMaxTierSize(v string) {
 	o.MaxTierSize = &v
 }
 
-// SetMaxTierSizeNil sets MaxTierSize to an explicit JSON null when marshaled.
-func (o *StreamConfig) SetMaxTierSizeNil() {
-	o.MaxTierSize = nil
-	o.NullFields = append(o.NullFields, "MaxTierSize")
-}
-
 // GetTier returns the Tier field value if set, zero value otherwise
 func (o *StreamConfig) GetTier() string {
 	if o == nil || IsNil(o.Tier) {
@@ -142,10 +127,4 @@ func (o *StreamConfig) HasTier() bool {
 // SetTier gets a reference to the given string and assigns it to the Tier field.
 func (o *StreamConfig) SetTier(v string) {
 	o.Tier = &v
-}
-
-// SetTierNil sets Tier to an explicit JSON null when marshaled.
-func (o *StreamConfig) SetTierNil() {
-	o.Tier = nil
-	o.NullFields = append(o.NullFields, "Tier")
 }

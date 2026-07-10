@@ -60,15 +60,6 @@ type AlertsNotificationRootForGroup struct {
 	WebhookSecret *string `json:"webhookSecret,omitempty"`
 	// Target URL for a webhook-based alert.  Atlas returns this value if you set `\"notifications.[n].typeName\" :\"WEBHOOK\"` and either: * You set `notification.[n].webhookURL` to a non-empty string * You set a default webhook URL either on the Integrations page, or with the Integrations API  **NOTE**: When you view or edit the alert for a Webhook URL notification, the URL appears partially redacted.
 	WebhookUrl *string `json:"webhookUrl,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *AlertsNotificationRootForGroup) MarshalJSON() ([]byte, error) {
-	type noMethod AlertsNotificationRootForGroup
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAlertsNotificationRootForGroup instantiates a new AlertsNotificationRootForGroup object
@@ -133,12 +124,6 @@ func (o *AlertsNotificationRootForGroup) SetDatadogApiKey(v string) {
 	o.DatadogApiKey = &v
 }
 
-// SetDatadogApiKeyNil sets DatadogApiKey to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetDatadogApiKeyNil() {
-	o.DatadogApiKey = nil
-	o.NullFields = append(o.NullFields, "DatadogApiKey")
-}
-
 // GetDatadogRegion returns the DatadogRegion field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetDatadogRegion() string {
 	if o == nil || IsNil(o.DatadogRegion) {
@@ -170,12 +155,6 @@ func (o *AlertsNotificationRootForGroup) HasDatadogRegion() bool {
 // SetDatadogRegion gets a reference to the given string and assigns it to the DatadogRegion field.
 func (o *AlertsNotificationRootForGroup) SetDatadogRegion(v string) {
 	o.DatadogRegion = &v
-}
-
-// SetDatadogRegionNil sets DatadogRegion to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetDatadogRegionNil() {
-	o.DatadogRegion = nil
-	o.NullFields = append(o.NullFields, "DatadogRegion")
 }
 
 // GetDelayMin returns the DelayMin field value if set, zero value otherwise
@@ -211,12 +190,6 @@ func (o *AlertsNotificationRootForGroup) SetDelayMin(v int) {
 	o.DelayMin = &v
 }
 
-// SetDelayMinNil sets DelayMin to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetDelayMinNil() {
-	o.DelayMin = nil
-	o.NullFields = append(o.NullFields, "DelayMin")
-}
-
 // GetIntegrationId returns the IntegrationId field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetIntegrationId() string {
 	if o == nil || IsNil(o.IntegrationId) {
@@ -248,12 +221,6 @@ func (o *AlertsNotificationRootForGroup) HasIntegrationId() bool {
 // SetIntegrationId gets a reference to the given string and assigns it to the IntegrationId field.
 func (o *AlertsNotificationRootForGroup) SetIntegrationId(v string) {
 	o.IntegrationId = &v
-}
-
-// SetIntegrationIdNil sets IntegrationId to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetIntegrationIdNil() {
-	o.IntegrationId = nil
-	o.NullFields = append(o.NullFields, "IntegrationId")
 }
 
 // GetIntervalMin returns the IntervalMin field value if set, zero value otherwise
@@ -289,12 +256,6 @@ func (o *AlertsNotificationRootForGroup) SetIntervalMin(v int) {
 	o.IntervalMin = &v
 }
 
-// SetIntervalMinNil sets IntervalMin to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetIntervalMinNil() {
-	o.IntervalMin = nil
-	o.NullFields = append(o.NullFields, "IntervalMin")
-}
-
 // GetNotifierId returns the NotifierId field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetNotifierId() string {
 	if o == nil || IsNil(o.NotifierId) {
@@ -326,12 +287,6 @@ func (o *AlertsNotificationRootForGroup) HasNotifierId() bool {
 // SetNotifierId gets a reference to the given string and assigns it to the NotifierId field.
 func (o *AlertsNotificationRootForGroup) SetNotifierId(v string) {
 	o.NotifierId = &v
-}
-
-// SetNotifierIdNil sets NotifierId to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetNotifierIdNil() {
-	o.NotifierId = nil
-	o.NullFields = append(o.NullFields, "NotifierId")
 }
 
 // GetTypeName returns the TypeName field value if set, zero value otherwise
@@ -367,12 +322,6 @@ func (o *AlertsNotificationRootForGroup) SetTypeName(v string) {
 	o.TypeName = &v
 }
 
-// SetTypeNameNil sets TypeName to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetTypeNameNil() {
-	o.TypeName = nil
-	o.NullFields = append(o.NullFields, "TypeName")
-}
-
 // GetEmailAddress returns the EmailAddress field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetEmailAddress() string {
 	if o == nil || IsNil(o.EmailAddress) {
@@ -406,12 +355,6 @@ func (o *AlertsNotificationRootForGroup) SetEmailAddress(v string) {
 	o.EmailAddress = &v
 }
 
-// SetEmailAddressNil sets EmailAddress to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetEmailAddressNil() {
-	o.EmailAddress = nil
-	o.NullFields = append(o.NullFields, "EmailAddress")
-}
-
 // GetEmailEnabled returns the EmailEnabled field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetEmailEnabled() bool {
 	if o == nil || IsNil(o.EmailEnabled) {
@@ -443,12 +386,6 @@ func (o *AlertsNotificationRootForGroup) HasEmailEnabled() bool {
 // SetEmailEnabled gets a reference to the given bool and assigns it to the EmailEnabled field.
 func (o *AlertsNotificationRootForGroup) SetEmailEnabled(v bool) {
 	o.EmailEnabled = &v
-}
-
-// SetEmailEnabledNil sets EmailEnabled to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetEmailEnabledNil() {
-	o.EmailEnabled = nil
-	o.NullFields = append(o.NullFields, "EmailEnabled")
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise
@@ -517,12 +454,6 @@ func (o *AlertsNotificationRootForGroup) SetSmsEnabled(v bool) {
 	o.SmsEnabled = &v
 }
 
-// SetSmsEnabledNil sets SmsEnabled to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetSmsEnabledNil() {
-	o.SmsEnabled = nil
-	o.NullFields = append(o.NullFields, "SmsEnabled")
-}
-
 // GetNotificationToken returns the NotificationToken field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetNotificationToken() string {
 	if o == nil || IsNil(o.NotificationToken) {
@@ -554,12 +485,6 @@ func (o *AlertsNotificationRootForGroup) HasNotificationToken() bool {
 // SetNotificationToken gets a reference to the given string and assigns it to the NotificationToken field.
 func (o *AlertsNotificationRootForGroup) SetNotificationToken(v string) {
 	o.NotificationToken = &v
-}
-
-// SetNotificationTokenNil sets NotificationToken to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetNotificationTokenNil() {
-	o.NotificationToken = nil
-	o.NullFields = append(o.NullFields, "NotificationToken")
 }
 
 // GetRoomName returns the RoomName field value if set, zero value otherwise
@@ -595,12 +520,6 @@ func (o *AlertsNotificationRootForGroup) SetRoomName(v string) {
 	o.RoomName = &v
 }
 
-// SetRoomNameNil sets RoomName to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetRoomNameNil() {
-	o.RoomName = nil
-	o.NullFields = append(o.NullFields, "RoomName")
-}
-
 // GetMicrosoftTeamsWebhookUrl returns the MicrosoftTeamsWebhookUrl field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetMicrosoftTeamsWebhookUrl() string {
 	if o == nil || IsNil(o.MicrosoftTeamsWebhookUrl) {
@@ -632,12 +551,6 @@ func (o *AlertsNotificationRootForGroup) HasMicrosoftTeamsWebhookUrl() bool {
 // SetMicrosoftTeamsWebhookUrl gets a reference to the given string and assigns it to the MicrosoftTeamsWebhookUrl field.
 func (o *AlertsNotificationRootForGroup) SetMicrosoftTeamsWebhookUrl(v string) {
 	o.MicrosoftTeamsWebhookUrl = &v
-}
-
-// SetMicrosoftTeamsWebhookUrlNil sets MicrosoftTeamsWebhookUrl to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetMicrosoftTeamsWebhookUrlNil() {
-	o.MicrosoftTeamsWebhookUrl = nil
-	o.NullFields = append(o.NullFields, "MicrosoftTeamsWebhookUrl")
 }
 
 // GetOpsGenieApiKey returns the OpsGenieApiKey field value if set, zero value otherwise
@@ -673,12 +586,6 @@ func (o *AlertsNotificationRootForGroup) SetOpsGenieApiKey(v string) {
 	o.OpsGenieApiKey = &v
 }
 
-// SetOpsGenieApiKeyNil sets OpsGenieApiKey to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetOpsGenieApiKeyNil() {
-	o.OpsGenieApiKey = nil
-	o.NullFields = append(o.NullFields, "OpsGenieApiKey")
-}
-
 // GetOpsGenieRegion returns the OpsGenieRegion field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetOpsGenieRegion() string {
 	if o == nil || IsNil(o.OpsGenieRegion) {
@@ -710,12 +617,6 @@ func (o *AlertsNotificationRootForGroup) HasOpsGenieRegion() bool {
 // SetOpsGenieRegion gets a reference to the given string and assigns it to the OpsGenieRegion field.
 func (o *AlertsNotificationRootForGroup) SetOpsGenieRegion(v string) {
 	o.OpsGenieRegion = &v
-}
-
-// SetOpsGenieRegionNil sets OpsGenieRegion to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetOpsGenieRegionNil() {
-	o.OpsGenieRegion = nil
-	o.NullFields = append(o.NullFields, "OpsGenieRegion")
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise
@@ -751,12 +652,6 @@ func (o *AlertsNotificationRootForGroup) SetRegion(v string) {
 	o.Region = &v
 }
 
-// SetRegionNil sets Region to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetRegionNil() {
-	o.Region = nil
-	o.NullFields = append(o.NullFields, "Region")
-}
-
 // GetServiceKey returns the ServiceKey field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetServiceKey() string {
 	if o == nil || IsNil(o.ServiceKey) {
@@ -788,12 +683,6 @@ func (o *AlertsNotificationRootForGroup) HasServiceKey() bool {
 // SetServiceKey gets a reference to the given string and assigns it to the ServiceKey field.
 func (o *AlertsNotificationRootForGroup) SetServiceKey(v string) {
 	o.ServiceKey = &v
-}
-
-// SetServiceKeyNil sets ServiceKey to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetServiceKeyNil() {
-	o.ServiceKey = nil
-	o.NullFields = append(o.NullFields, "ServiceKey")
 }
 
 // GetApiToken returns the ApiToken field value if set, zero value otherwise
@@ -829,12 +718,6 @@ func (o *AlertsNotificationRootForGroup) SetApiToken(v string) {
 	o.ApiToken = &v
 }
 
-// SetApiTokenNil sets ApiToken to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetApiTokenNil() {
-	o.ApiToken = nil
-	o.NullFields = append(o.NullFields, "ApiToken")
-}
-
 // GetChannelName returns the ChannelName field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetChannelName() string {
 	if o == nil || IsNil(o.ChannelName) {
@@ -866,12 +749,6 @@ func (o *AlertsNotificationRootForGroup) HasChannelName() bool {
 // SetChannelName gets a reference to the given string and assigns it to the ChannelName field.
 func (o *AlertsNotificationRootForGroup) SetChannelName(v string) {
 	o.ChannelName = &v
-}
-
-// SetChannelNameNil sets ChannelName to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetChannelNameNil() {
-	o.ChannelName = nil
-	o.NullFields = append(o.NullFields, "ChannelName")
 }
 
 // GetMobileNumber returns the MobileNumber field value if set, zero value otherwise
@@ -907,12 +784,6 @@ func (o *AlertsNotificationRootForGroup) SetMobileNumber(v string) {
 	o.MobileNumber = &v
 }
 
-// SetMobileNumberNil sets MobileNumber to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetMobileNumberNil() {
-	o.MobileNumber = nil
-	o.NullFields = append(o.NullFields, "MobileNumber")
-}
-
 // GetTeamId returns the TeamId field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetTeamId() string {
 	if o == nil || IsNil(o.TeamId) {
@@ -944,12 +815,6 @@ func (o *AlertsNotificationRootForGroup) HasTeamId() bool {
 // SetTeamId gets a reference to the given string and assigns it to the TeamId field.
 func (o *AlertsNotificationRootForGroup) SetTeamId(v string) {
 	o.TeamId = &v
-}
-
-// SetTeamIdNil sets TeamId to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetTeamIdNil() {
-	o.TeamId = nil
-	o.NullFields = append(o.NullFields, "TeamId")
 }
 
 // GetTeamName returns the TeamName field value if set, zero value otherwise
@@ -985,12 +850,6 @@ func (o *AlertsNotificationRootForGroup) SetTeamName(v string) {
 	o.TeamName = &v
 }
 
-// SetTeamNameNil sets TeamName to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetTeamNameNil() {
-	o.TeamName = nil
-	o.NullFields = append(o.NullFields, "TeamName")
-}
-
 // GetUsername returns the Username field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
@@ -1022,12 +881,6 @@ func (o *AlertsNotificationRootForGroup) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *AlertsNotificationRootForGroup) SetUsername(v string) {
 	o.Username = &v
-}
-
-// SetUsernameNil sets Username to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetUsernameNil() {
-	o.Username = nil
-	o.NullFields = append(o.NullFields, "Username")
 }
 
 // GetVictorOpsApiKey returns the VictorOpsApiKey field value if set, zero value otherwise
@@ -1063,12 +916,6 @@ func (o *AlertsNotificationRootForGroup) SetVictorOpsApiKey(v string) {
 	o.VictorOpsApiKey = &v
 }
 
-// SetVictorOpsApiKeyNil sets VictorOpsApiKey to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetVictorOpsApiKeyNil() {
-	o.VictorOpsApiKey = nil
-	o.NullFields = append(o.NullFields, "VictorOpsApiKey")
-}
-
 // GetVictorOpsRoutingKey returns the VictorOpsRoutingKey field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetVictorOpsRoutingKey() string {
 	if o == nil || IsNil(o.VictorOpsRoutingKey) {
@@ -1100,12 +947,6 @@ func (o *AlertsNotificationRootForGroup) HasVictorOpsRoutingKey() bool {
 // SetVictorOpsRoutingKey gets a reference to the given string and assigns it to the VictorOpsRoutingKey field.
 func (o *AlertsNotificationRootForGroup) SetVictorOpsRoutingKey(v string) {
 	o.VictorOpsRoutingKey = &v
-}
-
-// SetVictorOpsRoutingKeyNil sets VictorOpsRoutingKey to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetVictorOpsRoutingKeyNil() {
-	o.VictorOpsRoutingKey = nil
-	o.NullFields = append(o.NullFields, "VictorOpsRoutingKey")
 }
 
 // GetWebhookSecret returns the WebhookSecret field value if set, zero value otherwise
@@ -1141,12 +982,6 @@ func (o *AlertsNotificationRootForGroup) SetWebhookSecret(v string) {
 	o.WebhookSecret = &v
 }
 
-// SetWebhookSecretNil sets WebhookSecret to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetWebhookSecretNil() {
-	o.WebhookSecret = nil
-	o.NullFields = append(o.NullFields, "WebhookSecret")
-}
-
 // GetWebhookUrl returns the WebhookUrl field value if set, zero value otherwise
 func (o *AlertsNotificationRootForGroup) GetWebhookUrl() string {
 	if o == nil || IsNil(o.WebhookUrl) {
@@ -1178,10 +1013,4 @@ func (o *AlertsNotificationRootForGroup) HasWebhookUrl() bool {
 // SetWebhookUrl gets a reference to the given string and assigns it to the WebhookUrl field.
 func (o *AlertsNotificationRootForGroup) SetWebhookUrl(v string) {
 	o.WebhookUrl = &v
-}
-
-// SetWebhookUrlNil sets WebhookUrl to an explicit JSON null when marshaled.
-func (o *AlertsNotificationRootForGroup) SetWebhookUrlNil() {
-	o.WebhookUrl = nil
-	o.NullFields = append(o.NullFields, "WebhookUrl")
 }

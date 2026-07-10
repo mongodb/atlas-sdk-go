@@ -7,15 +7,6 @@ type NetworkPermissionEntryStatus struct {
 	// State of the access list entry when MongoDB Cloud made this request.  `ACTIVE`: This access list entry applies to all relevant cloud providers.  `PENDING`: MongoDB Cloud has started to add access list entry. This access list entry may not apply to all cloud providers at the time of this request.  `FAILED`: MongoDB Cloud didn't succeed in adding this access list entry.
 	// Read only field.
 	STATUS string `json:"STATUS"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *NetworkPermissionEntryStatus) MarshalJSON() ([]byte, error) {
-	type noMethod NetworkPermissionEntryStatus
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewNetworkPermissionEntryStatus instantiates a new NetworkPermissionEntryStatus object

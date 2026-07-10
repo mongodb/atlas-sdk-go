@@ -8,15 +8,6 @@ type ApiAtlasFTSMappings struct {
 	Dynamic *bool `json:"dynamic,omitempty"`
 	// One or more field specifications for the Atlas Search index. Required if `mappings.dynamic` is omitted or set to `false`.
 	Fields any `json:"fields,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiAtlasFTSMappings) MarshalJSON() ([]byte, error) {
-	type noMethod ApiAtlasFTSMappings
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasFTSMappings instantiates a new ApiAtlasFTSMappings object
@@ -73,12 +64,6 @@ func (o *ApiAtlasFTSMappings) SetDynamic(v bool) {
 	o.Dynamic = &v
 }
 
-// SetDynamicNil sets Dynamic to an explicit JSON null when marshaled.
-func (o *ApiAtlasFTSMappings) SetDynamicNil() {
-	o.Dynamic = nil
-	o.NullFields = append(o.NullFields, "Dynamic")
-}
-
 // GetFields returns the Fields field value if set, zero value otherwise
 func (o *ApiAtlasFTSMappings) GetFields() any {
 	if o == nil || IsNil(o.Fields) {
@@ -111,10 +96,4 @@ func (o *ApiAtlasFTSMappings) HasFields() bool {
 // SetFields gets a reference to the given any and assigns it to the Fields field.
 func (o *ApiAtlasFTSMappings) SetFields(v any) {
 	o.Fields = v
-}
-
-// SetFieldsNil sets Fields to an explicit JSON null when marshaled.
-func (o *ApiAtlasFTSMappings) SetFieldsNil() {
-	o.Fields = nil
-	o.NullFields = append(o.NullFields, "Fields")
 }

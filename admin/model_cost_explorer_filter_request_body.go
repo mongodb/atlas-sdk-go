@@ -20,15 +20,6 @@ type CostExplorerFilterRequestBody struct {
 	Services *[]string `json:"services,omitempty"`
 	// The inclusive starting date for the Cost Explorer query. The date must be the start of a month.
 	StartDate string `json:"startDate"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *CostExplorerFilterRequestBody) MarshalJSON() ([]byte, error) {
-	type noMethod CostExplorerFilterRequestBody
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCostExplorerFilterRequestBody instantiates a new CostExplorerFilterRequestBody object
@@ -140,12 +131,6 @@ func (o *CostExplorerFilterRequestBody) SetGroupBy(v string) {
 	o.GroupBy = &v
 }
 
-// SetGroupByNil sets GroupBy to an explicit JSON null when marshaled.
-func (o *CostExplorerFilterRequestBody) SetGroupByNil() {
-	o.GroupBy = nil
-	o.NullFields = append(o.NullFields, "GroupBy")
-}
-
 // GetIncludePartialMatches returns the IncludePartialMatches field value if set, zero value otherwise
 func (o *CostExplorerFilterRequestBody) GetIncludePartialMatches() bool {
 	if o == nil || IsNil(o.IncludePartialMatches) {
@@ -177,12 +162,6 @@ func (o *CostExplorerFilterRequestBody) HasIncludePartialMatches() bool {
 // SetIncludePartialMatches gets a reference to the given bool and assigns it to the IncludePartialMatches field.
 func (o *CostExplorerFilterRequestBody) SetIncludePartialMatches(v bool) {
 	o.IncludePartialMatches = &v
-}
-
-// SetIncludePartialMatchesNil sets IncludePartialMatches to an explicit JSON null when marshaled.
-func (o *CostExplorerFilterRequestBody) SetIncludePartialMatchesNil() {
-	o.IncludePartialMatches = nil
-	o.NullFields = append(o.NullFields, "IncludePartialMatches")
 }
 
 // GetOrganizations returns the Organizations field value if set, zero value otherwise

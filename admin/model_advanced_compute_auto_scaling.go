@@ -14,15 +14,6 @@ type AdvancedComputeAutoScaling struct {
 	MinInstanceSize *string `json:"minInstanceSize,omitempty"`
 	// Flag that indicates whether the instance size may scale down via reactive auto-scaling. MongoDB Cloud requires this parameter if `replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled` is `true`. If you enable this option, specify a value for `replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize`.
 	ScaleDownEnabled *bool `json:"scaleDownEnabled,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *AdvancedComputeAutoScaling) MarshalJSON() ([]byte, error) {
-	type noMethod AdvancedComputeAutoScaling
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAdvancedComputeAutoScaling instantiates a new AdvancedComputeAutoScaling object
@@ -75,12 +66,6 @@ func (o *AdvancedComputeAutoScaling) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// SetEnabledNil sets Enabled to an explicit JSON null when marshaled.
-func (o *AdvancedComputeAutoScaling) SetEnabledNil() {
-	o.Enabled = nil
-	o.NullFields = append(o.NullFields, "Enabled")
-}
-
 // GetMaxInstanceSize returns the MaxInstanceSize field value if set, zero value otherwise
 func (o *AdvancedComputeAutoScaling) GetMaxInstanceSize() string {
 	if o == nil || IsNil(o.MaxInstanceSize) {
@@ -112,12 +97,6 @@ func (o *AdvancedComputeAutoScaling) HasMaxInstanceSize() bool {
 // SetMaxInstanceSize gets a reference to the given string and assigns it to the MaxInstanceSize field.
 func (o *AdvancedComputeAutoScaling) SetMaxInstanceSize(v string) {
 	o.MaxInstanceSize = &v
-}
-
-// SetMaxInstanceSizeNil sets MaxInstanceSize to an explicit JSON null when marshaled.
-func (o *AdvancedComputeAutoScaling) SetMaxInstanceSizeNil() {
-	o.MaxInstanceSize = nil
-	o.NullFields = append(o.NullFields, "MaxInstanceSize")
 }
 
 // GetMinInstanceSize returns the MinInstanceSize field value if set, zero value otherwise
@@ -153,12 +132,6 @@ func (o *AdvancedComputeAutoScaling) SetMinInstanceSize(v string) {
 	o.MinInstanceSize = &v
 }
 
-// SetMinInstanceSizeNil sets MinInstanceSize to an explicit JSON null when marshaled.
-func (o *AdvancedComputeAutoScaling) SetMinInstanceSizeNil() {
-	o.MinInstanceSize = nil
-	o.NullFields = append(o.NullFields, "MinInstanceSize")
-}
-
 // GetScaleDownEnabled returns the ScaleDownEnabled field value if set, zero value otherwise
 func (o *AdvancedComputeAutoScaling) GetScaleDownEnabled() bool {
 	if o == nil || IsNil(o.ScaleDownEnabled) {
@@ -190,10 +163,4 @@ func (o *AdvancedComputeAutoScaling) HasScaleDownEnabled() bool {
 // SetScaleDownEnabled gets a reference to the given bool and assigns it to the ScaleDownEnabled field.
 func (o *AdvancedComputeAutoScaling) SetScaleDownEnabled(v bool) {
 	o.ScaleDownEnabled = &v
-}
-
-// SetScaleDownEnabledNil sets ScaleDownEnabled to an explicit JSON null when marshaled.
-func (o *AdvancedComputeAutoScaling) SetScaleDownEnabledNil() {
-	o.ScaleDownEnabled = nil
-	o.NullFields = append(o.NullFields, "ScaleDownEnabled")
 }

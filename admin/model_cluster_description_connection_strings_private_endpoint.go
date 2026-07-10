@@ -19,15 +19,6 @@ type ClusterDescriptionConnectionStringsPrivateEndpoint struct {
 	// MongoDB process type to which your application connects. Use `MONGOD` for replica sets and `MONGOS` for sharded clusters.
 	// Read only field.
 	Type *string `json:"type,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) MarshalJSON() ([]byte, error) {
-	type noMethod ClusterDescriptionConnectionStringsPrivateEndpoint
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterDescriptionConnectionStringsPrivateEndpoint instantiates a new ClusterDescriptionConnectionStringsPrivateEndpoint object
@@ -78,12 +69,6 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasConnectionString
 // SetConnectionString gets a reference to the given string and assigns it to the ConnectionString field.
 func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetConnectionString(v string) {
 	o.ConnectionString = &v
-}
-
-// SetConnectionStringNil sets ConnectionString to an explicit JSON null when marshaled.
-func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetConnectionStringNil() {
-	o.ConnectionString = nil
-	o.NullFields = append(o.NullFields, "ConnectionString")
 }
 
 // GetEndpoints returns the Endpoints field value if set, zero value otherwise
@@ -152,12 +137,6 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetSrvConnectionStr
 	o.SrvConnectionString = &v
 }
 
-// SetSrvConnectionStringNil sets SrvConnectionString to an explicit JSON null when marshaled.
-func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetSrvConnectionStringNil() {
-	o.SrvConnectionString = nil
-	o.NullFields = append(o.NullFields, "SrvConnectionString")
-}
-
 // GetSrvShardOptimizedConnectionString returns the SrvShardOptimizedConnectionString field value if set, zero value otherwise
 func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) GetSrvShardOptimizedConnectionString() string {
 	if o == nil || IsNil(o.SrvShardOptimizedConnectionString) {
@@ -191,12 +170,6 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetSrvShardOptimize
 	o.SrvShardOptimizedConnectionString = &v
 }
 
-// SetSrvShardOptimizedConnectionStringNil sets SrvShardOptimizedConnectionString to an explicit JSON null when marshaled.
-func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetSrvShardOptimizedConnectionStringNil() {
-	o.SrvShardOptimizedConnectionString = nil
-	o.NullFields = append(o.NullFields, "SrvShardOptimizedConnectionString")
-}
-
 // GetType returns the Type field value if set, zero value otherwise
 func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) GetType() string {
 	if o == nil || IsNil(o.Type) {
@@ -228,10 +201,4 @@ func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetType(v string) {
 	o.Type = &v
-}
-
-// SetTypeNil sets Type to an explicit JSON null when marshaled.
-func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetTypeNil() {
-	o.Type = nil
-	o.NullFields = append(o.NullFields, "Type")
 }

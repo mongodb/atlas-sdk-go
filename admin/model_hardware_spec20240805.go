@@ -20,15 +20,6 @@ type HardwareSpec20240805 struct {
 	// The true tenant instance size. This is present to support backwards compatibility for deprecated provider types and/or instance sizes.
 	// Read only field.
 	EffectiveInstanceSize *string `json:"effectiveInstanceSize,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *HardwareSpec20240805) MarshalJSON() ([]byte, error) {
-	type noMethod HardwareSpec20240805
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewHardwareSpec20240805 instantiates a new HardwareSpec20240805 object
@@ -85,12 +76,6 @@ func (o *HardwareSpec20240805) SetDiskSizeGB(v float64) {
 	o.DiskSizeGB = &v
 }
 
-// SetDiskSizeGBNil sets DiskSizeGB to an explicit JSON null when marshaled.
-func (o *HardwareSpec20240805) SetDiskSizeGBNil() {
-	o.DiskSizeGB = nil
-	o.NullFields = append(o.NullFields, "DiskSizeGB")
-}
-
 // GetDiskIOPS returns the DiskIOPS field value if set, zero value otherwise
 func (o *HardwareSpec20240805) GetDiskIOPS() int {
 	if o == nil || IsNil(o.DiskIOPS) {
@@ -122,12 +107,6 @@ func (o *HardwareSpec20240805) HasDiskIOPS() bool {
 // SetDiskIOPS gets a reference to the given int and assigns it to the DiskIOPS field.
 func (o *HardwareSpec20240805) SetDiskIOPS(v int) {
 	o.DiskIOPS = &v
-}
-
-// SetDiskIOPSNil sets DiskIOPS to an explicit JSON null when marshaled.
-func (o *HardwareSpec20240805) SetDiskIOPSNil() {
-	o.DiskIOPS = nil
-	o.NullFields = append(o.NullFields, "DiskIOPS")
 }
 
 // GetDiskThroughput returns the DiskThroughput field value if set, zero value otherwise
@@ -163,12 +142,6 @@ func (o *HardwareSpec20240805) SetDiskThroughput(v int) {
 	o.DiskThroughput = &v
 }
 
-// SetDiskThroughputNil sets DiskThroughput to an explicit JSON null when marshaled.
-func (o *HardwareSpec20240805) SetDiskThroughputNil() {
-	o.DiskThroughput = nil
-	o.NullFields = append(o.NullFields, "DiskThroughput")
-}
-
 // GetEbsVolumeType returns the EbsVolumeType field value if set, zero value otherwise
 func (o *HardwareSpec20240805) GetEbsVolumeType() string {
 	if o == nil || IsNil(o.EbsVolumeType) {
@@ -200,12 +173,6 @@ func (o *HardwareSpec20240805) HasEbsVolumeType() bool {
 // SetEbsVolumeType gets a reference to the given string and assigns it to the EbsVolumeType field.
 func (o *HardwareSpec20240805) SetEbsVolumeType(v string) {
 	o.EbsVolumeType = &v
-}
-
-// SetEbsVolumeTypeNil sets EbsVolumeType to an explicit JSON null when marshaled.
-func (o *HardwareSpec20240805) SetEbsVolumeTypeNil() {
-	o.EbsVolumeType = nil
-	o.NullFields = append(o.NullFields, "EbsVolumeType")
 }
 
 // GetInstanceSize returns the InstanceSize field value if set, zero value otherwise
@@ -241,12 +208,6 @@ func (o *HardwareSpec20240805) SetInstanceSize(v string) {
 	o.InstanceSize = &v
 }
 
-// SetInstanceSizeNil sets InstanceSize to an explicit JSON null when marshaled.
-func (o *HardwareSpec20240805) SetInstanceSizeNil() {
-	o.InstanceSize = nil
-	o.NullFields = append(o.NullFields, "InstanceSize")
-}
-
 // GetNodeCount returns the NodeCount field value if set, zero value otherwise
 func (o *HardwareSpec20240805) GetNodeCount() int {
 	if o == nil || IsNil(o.NodeCount) {
@@ -280,12 +241,6 @@ func (o *HardwareSpec20240805) SetNodeCount(v int) {
 	o.NodeCount = &v
 }
 
-// SetNodeCountNil sets NodeCount to an explicit JSON null when marshaled.
-func (o *HardwareSpec20240805) SetNodeCountNil() {
-	o.NodeCount = nil
-	o.NullFields = append(o.NullFields, "NodeCount")
-}
-
 // GetEffectiveInstanceSize returns the EffectiveInstanceSize field value if set, zero value otherwise
 func (o *HardwareSpec20240805) GetEffectiveInstanceSize() string {
 	if o == nil || IsNil(o.EffectiveInstanceSize) {
@@ -317,10 +272,4 @@ func (o *HardwareSpec20240805) HasEffectiveInstanceSize() bool {
 // SetEffectiveInstanceSize gets a reference to the given string and assigns it to the EffectiveInstanceSize field.
 func (o *HardwareSpec20240805) SetEffectiveInstanceSize(v string) {
 	o.EffectiveInstanceSize = &v
-}
-
-// SetEffectiveInstanceSizeNil sets EffectiveInstanceSize to an explicit JSON null when marshaled.
-func (o *HardwareSpec20240805) SetEffectiveInstanceSizeNil() {
-	o.EffectiveInstanceSize = nil
-	o.NullFields = append(o.NullFields, "EffectiveInstanceSize")
 }

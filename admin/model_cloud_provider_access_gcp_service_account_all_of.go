@@ -22,15 +22,6 @@ type CloudProviderAccessGCPServiceAccountAllOf struct {
 	// Provision status of the service account.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *CloudProviderAccessGCPServiceAccountAllOf) MarshalJSON() ([]byte, error) {
-	type noMethod CloudProviderAccessGCPServiceAccountAllOf
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudProviderAccessGCPServiceAccountAllOf instantiates a new CloudProviderAccessGCPServiceAccountAllOf object
@@ -81,12 +72,6 @@ func (o *CloudProviderAccessGCPServiceAccountAllOf) HasCreatedDate() bool {
 // SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
 func (o *CloudProviderAccessGCPServiceAccountAllOf) SetCreatedDate(v time.Time) {
 	o.CreatedDate = &v
-}
-
-// SetCreatedDateNil sets CreatedDate to an explicit JSON null when marshaled.
-func (o *CloudProviderAccessGCPServiceAccountAllOf) SetCreatedDateNil() {
-	o.CreatedDate = nil
-	o.NullFields = append(o.NullFields, "CreatedDate")
 }
 
 // GetFeatureUsages returns the FeatureUsages field value if set, zero value otherwise
@@ -155,12 +140,6 @@ func (o *CloudProviderAccessGCPServiceAccountAllOf) SetGcpServiceAccountForAtlas
 	o.GcpServiceAccountForAtlas = &v
 }
 
-// SetGcpServiceAccountForAtlasNil sets GcpServiceAccountForAtlas to an explicit JSON null when marshaled.
-func (o *CloudProviderAccessGCPServiceAccountAllOf) SetGcpServiceAccountForAtlasNil() {
-	o.GcpServiceAccountForAtlas = nil
-	o.NullFields = append(o.NullFields, "GcpServiceAccountForAtlas")
-}
-
 // GetRoleId returns the RoleId field value if set, zero value otherwise
 func (o *CloudProviderAccessGCPServiceAccountAllOf) GetRoleId() string {
 	if o == nil || IsNil(o.RoleId) {
@@ -194,12 +173,6 @@ func (o *CloudProviderAccessGCPServiceAccountAllOf) SetRoleId(v string) {
 	o.RoleId = &v
 }
 
-// SetRoleIdNil sets RoleId to an explicit JSON null when marshaled.
-func (o *CloudProviderAccessGCPServiceAccountAllOf) SetRoleIdNil() {
-	o.RoleId = nil
-	o.NullFields = append(o.NullFields, "RoleId")
-}
-
 // GetStatus returns the Status field value if set, zero value otherwise
 func (o *CloudProviderAccessGCPServiceAccountAllOf) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
@@ -231,10 +204,4 @@ func (o *CloudProviderAccessGCPServiceAccountAllOf) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *CloudProviderAccessGCPServiceAccountAllOf) SetStatus(v string) {
 	o.Status = &v
-}
-
-// SetStatusNil sets Status to an explicit JSON null when marshaled.
-func (o *CloudProviderAccessGCPServiceAccountAllOf) SetStatusNil() {
-	o.Status = nil
-	o.NullFields = append(o.NullFields, "Status")
 }

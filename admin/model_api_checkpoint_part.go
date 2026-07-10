@@ -17,15 +17,6 @@ type ApiCheckpointPart struct {
 	// Human-readable label that identifies the type of host that the part represents.
 	// Read only field.
 	TypeName *string `json:"typeName,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiCheckpointPart) MarshalJSON() ([]byte, error) {
-	type noMethod ApiCheckpointPart
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiCheckpointPart instantiates a new ApiCheckpointPart object
@@ -78,12 +69,6 @@ func (o *ApiCheckpointPart) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
 }
 
-// SetReplicaSetNameNil sets ReplicaSetName to an explicit JSON null when marshaled.
-func (o *ApiCheckpointPart) SetReplicaSetNameNil() {
-	o.ReplicaSetName = nil
-	o.NullFields = append(o.NullFields, "ReplicaSetName")
-}
-
 // GetShardName returns the ShardName field value if set, zero value otherwise
 func (o *ApiCheckpointPart) GetShardName() string {
 	if o == nil || IsNil(o.ShardName) {
@@ -115,12 +100,6 @@ func (o *ApiCheckpointPart) HasShardName() bool {
 // SetShardName gets a reference to the given string and assigns it to the ShardName field.
 func (o *ApiCheckpointPart) SetShardName(v string) {
 	o.ShardName = &v
-}
-
-// SetShardNameNil sets ShardName to an explicit JSON null when marshaled.
-func (o *ApiCheckpointPart) SetShardNameNil() {
-	o.ShardName = nil
-	o.NullFields = append(o.NullFields, "ShardName")
 }
 
 // GetTokenDiscovered returns the TokenDiscovered field value if set, zero value otherwise
@@ -156,12 +135,6 @@ func (o *ApiCheckpointPart) SetTokenDiscovered(v bool) {
 	o.TokenDiscovered = &v
 }
 
-// SetTokenDiscoveredNil sets TokenDiscovered to an explicit JSON null when marshaled.
-func (o *ApiCheckpointPart) SetTokenDiscoveredNil() {
-	o.TokenDiscovered = nil
-	o.NullFields = append(o.NullFields, "TokenDiscovered")
-}
-
 // GetTokenTimestamp returns the TokenTimestamp field value if set, zero value otherwise
 func (o *ApiCheckpointPart) GetTokenTimestamp() ApiBSONTimestamp {
 	if o == nil || IsNil(o.TokenTimestamp) {
@@ -195,12 +168,6 @@ func (o *ApiCheckpointPart) SetTokenTimestamp(v ApiBSONTimestamp) {
 	o.TokenTimestamp = &v
 }
 
-// SetTokenTimestampNil sets TokenTimestamp to an explicit JSON null when marshaled.
-func (o *ApiCheckpointPart) SetTokenTimestampNil() {
-	o.TokenTimestamp = nil
-	o.NullFields = append(o.NullFields, "TokenTimestamp")
-}
-
 // GetTypeName returns the TypeName field value if set, zero value otherwise
 func (o *ApiCheckpointPart) GetTypeName() string {
 	if o == nil || IsNil(o.TypeName) {
@@ -232,10 +199,4 @@ func (o *ApiCheckpointPart) HasTypeName() bool {
 // SetTypeName gets a reference to the given string and assigns it to the TypeName field.
 func (o *ApiCheckpointPart) SetTypeName(v string) {
 	o.TypeName = &v
-}
-
-// SetTypeNameNil sets TypeName to an explicit JSON null when marshaled.
-func (o *ApiCheckpointPart) SetTypeNameNil() {
-	o.TypeName = nil
-	o.NullFields = append(o.NullFields, "TypeName")
 }

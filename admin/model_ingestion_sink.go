@@ -13,15 +13,6 @@ type IngestionSink struct {
 	MetadataRegion *string `json:"metadataRegion,omitempty"`
 	// Ordered fields used to physically organize data in the destination.
 	PartitionFields *[]DataLakePipelinesPartitionField `json:"partitionFields,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *IngestionSink) MarshalJSON() ([]byte, error) {
-	type noMethod IngestionSink
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewIngestionSink instantiates a new IngestionSink object
@@ -74,12 +65,6 @@ func (o *IngestionSink) SetType(v string) {
 	o.Type = &v
 }
 
-// SetTypeNil sets Type to an explicit JSON null when marshaled.
-func (o *IngestionSink) SetTypeNil() {
-	o.Type = nil
-	o.NullFields = append(o.NullFields, "Type")
-}
-
 // GetMetadataProvider returns the MetadataProvider field value if set, zero value otherwise
 func (o *IngestionSink) GetMetadataProvider() string {
 	if o == nil || IsNil(o.MetadataProvider) {
@@ -113,12 +98,6 @@ func (o *IngestionSink) SetMetadataProvider(v string) {
 	o.MetadataProvider = &v
 }
 
-// SetMetadataProviderNil sets MetadataProvider to an explicit JSON null when marshaled.
-func (o *IngestionSink) SetMetadataProviderNil() {
-	o.MetadataProvider = nil
-	o.NullFields = append(o.NullFields, "MetadataProvider")
-}
-
 // GetMetadataRegion returns the MetadataRegion field value if set, zero value otherwise
 func (o *IngestionSink) GetMetadataRegion() string {
 	if o == nil || IsNil(o.MetadataRegion) {
@@ -150,12 +129,6 @@ func (o *IngestionSink) HasMetadataRegion() bool {
 // SetMetadataRegion gets a reference to the given string and assigns it to the MetadataRegion field.
 func (o *IngestionSink) SetMetadataRegion(v string) {
 	o.MetadataRegion = &v
-}
-
-// SetMetadataRegionNil sets MetadataRegion to an explicit JSON null when marshaled.
-func (o *IngestionSink) SetMetadataRegionNil() {
-	o.MetadataRegion = nil
-	o.NullFields = append(o.NullFields, "MetadataRegion")
 }
 
 // GetPartitionFields returns the PartitionFields field value if set, zero value otherwise

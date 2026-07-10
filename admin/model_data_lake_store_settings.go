@@ -40,15 +40,6 @@ type DataLakeStoreSettings struct {
 	ReplacementDelimiter *string `json:"replacementDelimiter,omitempty"`
 	// Service URL.
 	ServiceURL *string `json:"serviceURL,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DataLakeStoreSettings) MarshalJSON() ([]byte, error) {
-	type noMethod DataLakeStoreSettings
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataLakeStoreSettings instantiates a new DataLakeStoreSettings object
@@ -112,12 +103,6 @@ func (o *DataLakeStoreSettings) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DataLakeStoreSettings) SetName(v string) {
 	o.Name = &v
-}
-
-// SetNameNil sets Name to an explicit JSON null when marshaled.
-func (o *DataLakeStoreSettings) SetNameNil() {
-	o.Name = nil
-	o.NullFields = append(o.NullFields, "Name")
 }
 
 // GetProvider returns the Provider field value
@@ -210,12 +195,6 @@ func (o *DataLakeStoreSettings) SetBucket(v string) {
 	o.Bucket = &v
 }
 
-// SetBucketNil sets Bucket to an explicit JSON null when marshaled.
-func (o *DataLakeStoreSettings) SetBucketNil() {
-	o.Bucket = nil
-	o.NullFields = append(o.NullFields, "Bucket")
-}
-
 // GetDelimiter returns the Delimiter field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetDelimiter() string {
 	if o == nil || IsNil(o.Delimiter) {
@@ -247,12 +226,6 @@ func (o *DataLakeStoreSettings) HasDelimiter() bool {
 // SetDelimiter gets a reference to the given string and assigns it to the Delimiter field.
 func (o *DataLakeStoreSettings) SetDelimiter(v string) {
 	o.Delimiter = &v
-}
-
-// SetDelimiterNil sets Delimiter to an explicit JSON null when marshaled.
-func (o *DataLakeStoreSettings) SetDelimiterNil() {
-	o.Delimiter = nil
-	o.NullFields = append(o.NullFields, "Delimiter")
 }
 
 // GetIncludeTags returns the IncludeTags field value if set, zero value otherwise
@@ -288,12 +261,6 @@ func (o *DataLakeStoreSettings) SetIncludeTags(v bool) {
 	o.IncludeTags = &v
 }
 
-// SetIncludeTagsNil sets IncludeTags to an explicit JSON null when marshaled.
-func (o *DataLakeStoreSettings) SetIncludeTagsNil() {
-	o.IncludeTags = nil
-	o.NullFields = append(o.NullFields, "IncludeTags")
-}
-
 // GetPrefix returns the Prefix field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetPrefix() string {
 	if o == nil || IsNil(o.Prefix) {
@@ -325,12 +292,6 @@ func (o *DataLakeStoreSettings) HasPrefix() bool {
 // SetPrefix gets a reference to the given string and assigns it to the Prefix field.
 func (o *DataLakeStoreSettings) SetPrefix(v string) {
 	o.Prefix = &v
-}
-
-// SetPrefixNil sets Prefix to an explicit JSON null when marshaled.
-func (o *DataLakeStoreSettings) SetPrefixNil() {
-	o.Prefix = nil
-	o.NullFields = append(o.NullFields, "Prefix")
 }
 
 // GetPublic returns the Public field value if set, zero value otherwise
@@ -366,12 +327,6 @@ func (o *DataLakeStoreSettings) SetPublic(v bool) {
 	o.Public = &v
 }
 
-// SetPublicNil sets Public to an explicit JSON null when marshaled.
-func (o *DataLakeStoreSettings) SetPublicNil() {
-	o.Public = nil
-	o.NullFields = append(o.NullFields, "Public")
-}
-
 // GetRegion returns the Region field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetRegion() string {
 	if o == nil || IsNil(o.Region) {
@@ -403,12 +358,6 @@ func (o *DataLakeStoreSettings) HasRegion() bool {
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *DataLakeStoreSettings) SetRegion(v string) {
 	o.Region = &v
-}
-
-// SetRegionNil sets Region to an explicit JSON null when marshaled.
-func (o *DataLakeStoreSettings) SetRegionNil() {
-	o.Region = nil
-	o.NullFields = append(o.NullFields, "Region")
 }
 
 // GetClusterName returns the ClusterName field value if set, zero value otherwise
@@ -444,12 +393,6 @@ func (o *DataLakeStoreSettings) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
-// SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled.
-func (o *DataLakeStoreSettings) SetClusterNameNil() {
-	o.ClusterName = nil
-	o.NullFields = append(o.NullFields, "ClusterName")
-}
-
 // GetProjectId returns the ProjectId field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetProjectId() string {
 	if o == nil || IsNil(o.ProjectId) {
@@ -481,12 +424,6 @@ func (o *DataLakeStoreSettings) HasProjectId() bool {
 // SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
 func (o *DataLakeStoreSettings) SetProjectId(v string) {
 	o.ProjectId = &v
-}
-
-// SetProjectIdNil sets ProjectId to an explicit JSON null when marshaled.
-func (o *DataLakeStoreSettings) SetProjectIdNil() {
-	o.ProjectId = nil
-	o.NullFields = append(o.NullFields, "ProjectId")
 }
 
 // GetReadConcern returns the ReadConcern field value if set, zero value otherwise
@@ -522,12 +459,6 @@ func (o *DataLakeStoreSettings) SetReadConcern(v DataLakeAtlasStoreReadConcern) 
 	o.ReadConcern = &v
 }
 
-// SetReadConcernNil sets ReadConcern to an explicit JSON null when marshaled.
-func (o *DataLakeStoreSettings) SetReadConcernNil() {
-	o.ReadConcern = nil
-	o.NullFields = append(o.NullFields, "ReadConcern")
-}
-
 // GetReadPreference returns the ReadPreference field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetReadPreference() DataLakeAtlasStoreReadPreference {
 	if o == nil || IsNil(o.ReadPreference) {
@@ -559,12 +490,6 @@ func (o *DataLakeStoreSettings) HasReadPreference() bool {
 // SetReadPreference gets a reference to the given DataLakeAtlasStoreReadPreference and assigns it to the ReadPreference field.
 func (o *DataLakeStoreSettings) SetReadPreference(v DataLakeAtlasStoreReadPreference) {
 	o.ReadPreference = &v
-}
-
-// SetReadPreferenceNil sets ReadPreference to an explicit JSON null when marshaled.
-func (o *DataLakeStoreSettings) SetReadPreferenceNil() {
-	o.ReadPreference = nil
-	o.NullFields = append(o.NullFields, "ReadPreference")
 }
 
 // GetAllowInsecure returns the AllowInsecure field value if set, zero value otherwise
@@ -600,12 +525,6 @@ func (o *DataLakeStoreSettings) SetAllowInsecure(v bool) {
 	o.AllowInsecure = &v
 }
 
-// SetAllowInsecureNil sets AllowInsecure to an explicit JSON null when marshaled.
-func (o *DataLakeStoreSettings) SetAllowInsecureNil() {
-	o.AllowInsecure = nil
-	o.NullFields = append(o.NullFields, "AllowInsecure")
-}
-
 // GetDefaultFormat returns the DefaultFormat field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetDefaultFormat() string {
 	if o == nil || IsNil(o.DefaultFormat) {
@@ -637,12 +556,6 @@ func (o *DataLakeStoreSettings) HasDefaultFormat() bool {
 // SetDefaultFormat gets a reference to the given string and assigns it to the DefaultFormat field.
 func (o *DataLakeStoreSettings) SetDefaultFormat(v string) {
 	o.DefaultFormat = &v
-}
-
-// SetDefaultFormatNil sets DefaultFormat to an explicit JSON null when marshaled.
-func (o *DataLakeStoreSettings) SetDefaultFormatNil() {
-	o.DefaultFormat = nil
-	o.NullFields = append(o.NullFields, "DefaultFormat")
 }
 
 // GetUrls returns the Urls field value if set, zero value otherwise
@@ -711,12 +624,6 @@ func (o *DataLakeStoreSettings) SetContainerName(v string) {
 	o.ContainerName = &v
 }
 
-// SetContainerNameNil sets ContainerName to an explicit JSON null when marshaled.
-func (o *DataLakeStoreSettings) SetContainerNameNil() {
-	o.ContainerName = nil
-	o.NullFields = append(o.NullFields, "ContainerName")
-}
-
 // GetReplacementDelimiter returns the ReplacementDelimiter field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetReplacementDelimiter() string {
 	if o == nil || IsNil(o.ReplacementDelimiter) {
@@ -750,12 +657,6 @@ func (o *DataLakeStoreSettings) SetReplacementDelimiter(v string) {
 	o.ReplacementDelimiter = &v
 }
 
-// SetReplacementDelimiterNil sets ReplacementDelimiter to an explicit JSON null when marshaled.
-func (o *DataLakeStoreSettings) SetReplacementDelimiterNil() {
-	o.ReplacementDelimiter = nil
-	o.NullFields = append(o.NullFields, "ReplacementDelimiter")
-}
-
 // GetServiceURL returns the ServiceURL field value if set, zero value otherwise
 func (o *DataLakeStoreSettings) GetServiceURL() string {
 	if o == nil || IsNil(o.ServiceURL) {
@@ -787,10 +688,4 @@ func (o *DataLakeStoreSettings) HasServiceURL() bool {
 // SetServiceURL gets a reference to the given string and assigns it to the ServiceURL field.
 func (o *DataLakeStoreSettings) SetServiceURL(v string) {
 	o.ServiceURL = &v
-}
-
-// SetServiceURLNil sets ServiceURL to an explicit JSON null when marshaled.
-func (o *DataLakeStoreSettings) SetServiceURLNil() {
-	o.ServiceURL = nil
-	o.NullFields = append(o.NullFields, "ServiceURL")
 }

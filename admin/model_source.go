@@ -20,15 +20,6 @@ type Source struct {
 	// Label that identifies the SCRAM-SHA user that connects to the source cluster.
 	// Write only field.
 	Username *string `json:"username,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *Source) MarshalJSON() ([]byte, error) {
-	type noMethod Source
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSource instantiates a new Source object
@@ -83,12 +74,6 @@ func (o *Source) HasCaCertificatePath() bool {
 // SetCaCertificatePath gets a reference to the given string and assigns it to the CaCertificatePath field.
 func (o *Source) SetCaCertificatePath(v string) {
 	o.CaCertificatePath = &v
-}
-
-// SetCaCertificatePathNil sets CaCertificatePath to an explicit JSON null when marshaled.
-func (o *Source) SetCaCertificatePathNil() {
-	o.CaCertificatePath = nil
-	o.NullFields = append(o.NullFields, "CaCertificatePath")
 }
 
 // GetClusterName returns the ClusterName field value
@@ -196,12 +181,6 @@ func (o *Source) SetPassword(v string) {
 	o.Password = &v
 }
 
-// SetPasswordNil sets Password to an explicit JSON null when marshaled.
-func (o *Source) SetPasswordNil() {
-	o.Password = nil
-	o.NullFields = append(o.NullFields, "Password")
-}
-
 // GetSsl returns the Ssl field value
 func (o *Source) GetSsl() bool {
 	if o == nil {
@@ -257,10 +236,4 @@ func (o *Source) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *Source) SetUsername(v string) {
 	o.Username = &v
-}
-
-// SetUsernameNil sets Username to an explicit JSON null when marshaled.
-func (o *Source) SetUsernameNil() {
-	o.Username = nil
-	o.NullFields = append(o.NullFields, "Username")
 }

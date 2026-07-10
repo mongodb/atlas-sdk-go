@@ -32,15 +32,6 @@ type MeasurementsNonIndex struct {
 	// List that contains the Atlas Search status measurements.
 	// Read only field.
 	StatusMeasurements *[]MetricsMeasurement `json:"statusMeasurements,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *MeasurementsNonIndex) MarshalJSON() ([]byte, error) {
-	type noMethod MeasurementsNonIndex
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewMeasurementsNonIndex instantiates a new MeasurementsNonIndex object
@@ -93,12 +84,6 @@ func (o *MeasurementsNonIndex) SetEnd(v time.Time) {
 	o.End = &v
 }
 
-// SetEndNil sets End to an explicit JSON null when marshaled.
-func (o *MeasurementsNonIndex) SetEndNil() {
-	o.End = nil
-	o.NullFields = append(o.NullFields, "End")
-}
-
 // GetGranularity returns the Granularity field value if set, zero value otherwise
 func (o *MeasurementsNonIndex) GetGranularity() string {
 	if o == nil || IsNil(o.Granularity) {
@@ -132,12 +117,6 @@ func (o *MeasurementsNonIndex) SetGranularity(v string) {
 	o.Granularity = &v
 }
 
-// SetGranularityNil sets Granularity to an explicit JSON null when marshaled.
-func (o *MeasurementsNonIndex) SetGranularityNil() {
-	o.Granularity = nil
-	o.NullFields = append(o.NullFields, "Granularity")
-}
-
 // GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *MeasurementsNonIndex) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
@@ -169,12 +148,6 @@ func (o *MeasurementsNonIndex) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *MeasurementsNonIndex) SetGroupId(v string) {
 	o.GroupId = &v
-}
-
-// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
-func (o *MeasurementsNonIndex) SetGroupIdNil() {
-	o.GroupId = nil
-	o.NullFields = append(o.NullFields, "GroupId")
 }
 
 // GetHardwareMeasurements returns the HardwareMeasurements field value if set, zero value otherwise
@@ -276,12 +249,6 @@ func (o *MeasurementsNonIndex) SetProcessId(v string) {
 	o.ProcessId = &v
 }
 
-// SetProcessIdNil sets ProcessId to an explicit JSON null when marshaled.
-func (o *MeasurementsNonIndex) SetProcessIdNil() {
-	o.ProcessId = nil
-	o.NullFields = append(o.NullFields, "ProcessId")
-}
-
 // GetStart returns the Start field value if set, zero value otherwise
 func (o *MeasurementsNonIndex) GetStart() time.Time {
 	if o == nil || IsNil(o.Start) {
@@ -313,12 +280,6 @@ func (o *MeasurementsNonIndex) HasStart() bool {
 // SetStart gets a reference to the given time.Time and assigns it to the Start field.
 func (o *MeasurementsNonIndex) SetStart(v time.Time) {
 	o.Start = &v
-}
-
-// SetStartNil sets Start to an explicit JSON null when marshaled.
-func (o *MeasurementsNonIndex) SetStartNil() {
-	o.Start = nil
-	o.NullFields = append(o.NullFields, "Start")
 }
 
 // GetStatusMeasurements returns the StatusMeasurements field value if set, zero value otherwise

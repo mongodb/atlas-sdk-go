@@ -11,15 +11,6 @@ type TeamRole struct {
 	RoleNames []string `json:"roleNames"`
 	// Unique 24-hexadecimal character string that identifies the team.
 	TeamId string `json:"teamId"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *TeamRole) MarshalJSON() ([]byte, error) {
-	type noMethod TeamRole
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewTeamRole instantiates a new TeamRole object

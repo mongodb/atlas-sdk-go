@@ -26,15 +26,6 @@ type SearchIndexResponse struct {
 	SynonymMappingStatus *string `json:"synonymMappingStatus,omitempty"`
 	// A list of documents describing the status of the index's synonym mappings on each search host. Only appears if the index has synonyms defined.
 	SynonymMappingStatusDetail *[]map[string]SynonymMappingStatusDetail `json:"synonymMappingStatusDetail,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *SearchIndexResponse) MarshalJSON() ([]byte, error) {
-	type noMethod SearchIndexResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSearchIndexResponse instantiates a new SearchIndexResponse object
@@ -87,12 +78,6 @@ func (o *SearchIndexResponse) SetCollectionName(v string) {
 	o.CollectionName = &v
 }
 
-// SetCollectionNameNil sets CollectionName to an explicit JSON null when marshaled.
-func (o *SearchIndexResponse) SetCollectionNameNil() {
-	o.CollectionName = nil
-	o.NullFields = append(o.NullFields, "CollectionName")
-}
-
 // GetDatabase returns the Database field value if set, zero value otherwise
 func (o *SearchIndexResponse) GetDatabase() string {
 	if o == nil || IsNil(o.Database) {
@@ -124,12 +109,6 @@ func (o *SearchIndexResponse) HasDatabase() bool {
 // SetDatabase gets a reference to the given string and assigns it to the Database field.
 func (o *SearchIndexResponse) SetDatabase(v string) {
 	o.Database = &v
-}
-
-// SetDatabaseNil sets Database to an explicit JSON null when marshaled.
-func (o *SearchIndexResponse) SetDatabaseNil() {
-	o.Database = nil
-	o.NullFields = append(o.NullFields, "Database")
 }
 
 // GetIndexID returns the IndexID field value if set, zero value otherwise
@@ -165,12 +144,6 @@ func (o *SearchIndexResponse) SetIndexID(v string) {
 	o.IndexID = &v
 }
 
-// SetIndexIDNil sets IndexID to an explicit JSON null when marshaled.
-func (o *SearchIndexResponse) SetIndexIDNil() {
-	o.IndexID = nil
-	o.NullFields = append(o.NullFields, "IndexID")
-}
-
 // GetLatestDefinition returns the LatestDefinition field value if set, zero value otherwise
 func (o *SearchIndexResponse) GetLatestDefinition() BaseSearchIndexResponseLatestDefinition {
 	if o == nil || IsNil(o.LatestDefinition) {
@@ -202,12 +175,6 @@ func (o *SearchIndexResponse) HasLatestDefinition() bool {
 // SetLatestDefinition gets a reference to the given BaseSearchIndexResponseLatestDefinition and assigns it to the LatestDefinition field.
 func (o *SearchIndexResponse) SetLatestDefinition(v BaseSearchIndexResponseLatestDefinition) {
 	o.LatestDefinition = &v
-}
-
-// SetLatestDefinitionNil sets LatestDefinition to an explicit JSON null when marshaled.
-func (o *SearchIndexResponse) SetLatestDefinitionNil() {
-	o.LatestDefinition = nil
-	o.NullFields = append(o.NullFields, "LatestDefinition")
 }
 
 // GetLatestDefinitionVersion returns the LatestDefinitionVersion field value if set, zero value otherwise
@@ -243,12 +210,6 @@ func (o *SearchIndexResponse) SetLatestDefinitionVersion(v SearchIndexDefinition
 	o.LatestDefinitionVersion = &v
 }
 
-// SetLatestDefinitionVersionNil sets LatestDefinitionVersion to an explicit JSON null when marshaled.
-func (o *SearchIndexResponse) SetLatestDefinitionVersionNil() {
-	o.LatestDefinitionVersion = nil
-	o.NullFields = append(o.NullFields, "LatestDefinitionVersion")
-}
-
 // GetName returns the Name field value if set, zero value otherwise
 func (o *SearchIndexResponse) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -280,12 +241,6 @@ func (o *SearchIndexResponse) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *SearchIndexResponse) SetName(v string) {
 	o.Name = &v
-}
-
-// SetNameNil sets Name to an explicit JSON null when marshaled.
-func (o *SearchIndexResponse) SetNameNil() {
-	o.Name = nil
-	o.NullFields = append(o.NullFields, "Name")
 }
 
 // GetQueryable returns the Queryable field value if set, zero value otherwise
@@ -321,12 +276,6 @@ func (o *SearchIndexResponse) SetQueryable(v bool) {
 	o.Queryable = &v
 }
 
-// SetQueryableNil sets Queryable to an explicit JSON null when marshaled.
-func (o *SearchIndexResponse) SetQueryableNil() {
-	o.Queryable = nil
-	o.NullFields = append(o.NullFields, "Queryable")
-}
-
 // GetStatus returns the Status field value if set, zero value otherwise
 func (o *SearchIndexResponse) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
@@ -358,12 +307,6 @@ func (o *SearchIndexResponse) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *SearchIndexResponse) SetStatus(v string) {
 	o.Status = &v
-}
-
-// SetStatusNil sets Status to an explicit JSON null when marshaled.
-func (o *SearchIndexResponse) SetStatusNil() {
-	o.Status = nil
-	o.NullFields = append(o.NullFields, "Status")
 }
 
 // GetStatusDetail returns the StatusDetail field value if set, zero value otherwise
@@ -432,12 +375,6 @@ func (o *SearchIndexResponse) SetType(v string) {
 	o.Type = &v
 }
 
-// SetTypeNil sets Type to an explicit JSON null when marshaled.
-func (o *SearchIndexResponse) SetTypeNil() {
-	o.Type = nil
-	o.NullFields = append(o.NullFields, "Type")
-}
-
 // GetSynonymMappingStatus returns the SynonymMappingStatus field value if set, zero value otherwise
 func (o *SearchIndexResponse) GetSynonymMappingStatus() string {
 	if o == nil || IsNil(o.SynonymMappingStatus) {
@@ -469,12 +406,6 @@ func (o *SearchIndexResponse) HasSynonymMappingStatus() bool {
 // SetSynonymMappingStatus gets a reference to the given string and assigns it to the SynonymMappingStatus field.
 func (o *SearchIndexResponse) SetSynonymMappingStatus(v string) {
 	o.SynonymMappingStatus = &v
-}
-
-// SetSynonymMappingStatusNil sets SynonymMappingStatus to an explicit JSON null when marshaled.
-func (o *SearchIndexResponse) SetSynonymMappingStatusNil() {
-	o.SynonymMappingStatus = nil
-	o.NullFields = append(o.NullFields, "SynonymMappingStatus")
 }
 
 // GetSynonymMappingStatusDetail returns the SynonymMappingStatusDetail field value if set, zero value otherwise

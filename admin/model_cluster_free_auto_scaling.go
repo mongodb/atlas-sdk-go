@@ -5,15 +5,6 @@ package admin
 // ClusterFreeAutoScaling Range of instance sizes to which your cluster can scale.
 type ClusterFreeAutoScaling struct {
 	Compute *FreeComputeAutoScalingRules `json:"compute,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ClusterFreeAutoScaling) MarshalJSON() ([]byte, error) {
-	type noMethod ClusterFreeAutoScaling
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterFreeAutoScaling instantiates a new ClusterFreeAutoScaling object
@@ -64,10 +55,4 @@ func (o *ClusterFreeAutoScaling) HasCompute() bool {
 // SetCompute gets a reference to the given FreeComputeAutoScalingRules and assigns it to the Compute field.
 func (o *ClusterFreeAutoScaling) SetCompute(v FreeComputeAutoScalingRules) {
 	o.Compute = &v
-}
-
-// SetComputeNil sets Compute to an explicit JSON null when marshaled.
-func (o *ClusterFreeAutoScaling) SetComputeNil() {
-	o.Compute = nil
-	o.NullFields = append(o.NullFields, "Compute")
 }

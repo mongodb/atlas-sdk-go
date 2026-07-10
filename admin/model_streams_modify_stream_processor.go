@@ -14,15 +14,6 @@ type StreamsModifyStreamProcessor struct {
 	Options *StreamsModifyStreamProcessorOptions `json:"options,omitempty"`
 	// New pipeline for the stream processor.
 	Pipeline *[]any `json:"pipeline,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsModifyStreamProcessor) MarshalJSON() ([]byte, error) {
-	type noMethod StreamsModifyStreamProcessor
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsModifyStreamProcessor instantiates a new StreamsModifyStreamProcessor object
@@ -73,12 +64,6 @@ func (o *StreamsModifyStreamProcessor) HasFailoverEnabled() bool {
 // SetFailoverEnabled gets a reference to the given bool and assigns it to the FailoverEnabled field.
 func (o *StreamsModifyStreamProcessor) SetFailoverEnabled(v bool) {
 	o.FailoverEnabled = &v
-}
-
-// SetFailoverEnabledNil sets FailoverEnabled to an explicit JSON null when marshaled.
-func (o *StreamsModifyStreamProcessor) SetFailoverEnabledNil() {
-	o.FailoverEnabled = nil
-	o.NullFields = append(o.NullFields, "FailoverEnabled")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -147,12 +132,6 @@ func (o *StreamsModifyStreamProcessor) SetName(v string) {
 	o.Name = &v
 }
 
-// SetNameNil sets Name to an explicit JSON null when marshaled.
-func (o *StreamsModifyStreamProcessor) SetNameNil() {
-	o.Name = nil
-	o.NullFields = append(o.NullFields, "Name")
-}
-
 // GetOptions returns the Options field value if set, zero value otherwise
 func (o *StreamsModifyStreamProcessor) GetOptions() StreamsModifyStreamProcessorOptions {
 	if o == nil || IsNil(o.Options) {
@@ -184,12 +163,6 @@ func (o *StreamsModifyStreamProcessor) HasOptions() bool {
 // SetOptions gets a reference to the given StreamsModifyStreamProcessorOptions and assigns it to the Options field.
 func (o *StreamsModifyStreamProcessor) SetOptions(v StreamsModifyStreamProcessorOptions) {
 	o.Options = &v
-}
-
-// SetOptionsNil sets Options to an explicit JSON null when marshaled.
-func (o *StreamsModifyStreamProcessor) SetOptionsNil() {
-	o.Options = nil
-	o.NullFields = append(o.NullFields, "Options")
 }
 
 // GetPipeline returns the Pipeline field value if set, zero value otherwise

@@ -6,15 +6,6 @@ package admin
 type AlertsToggle struct {
 	// Flag that indicates whether to enable or disable the specified alert configuration in the specified project.
 	Enabled *bool `json:"enabled,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *AlertsToggle) MarshalJSON() ([]byte, error) {
-	type noMethod AlertsToggle
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAlertsToggle instantiates a new AlertsToggle object
@@ -65,10 +56,4 @@ func (o *AlertsToggle) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *AlertsToggle) SetEnabled(v bool) {
 	o.Enabled = &v
-}
-
-// SetEnabledNil sets Enabled to an explicit JSON null when marshaled.
-func (o *AlertsToggle) SetEnabledNil() {
-	o.Enabled = nil
-	o.NullFields = append(o.NullFields, "Enabled")
 }

@@ -10,15 +10,6 @@ type SynonymMappingStatusDetail struct {
 	Queryable *bool `json:"queryable,omitempty"`
 	// Status that describes this index's synonym mappings. This status appears only if the index has synonyms defined.
 	Status *string `json:"status,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *SynonymMappingStatusDetail) MarshalJSON() ([]byte, error) {
-	type noMethod SynonymMappingStatusDetail
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSynonymMappingStatusDetail instantiates a new SynonymMappingStatusDetail object
@@ -71,12 +62,6 @@ func (o *SynonymMappingStatusDetail) SetMessage(v string) {
 	o.Message = &v
 }
 
-// SetMessageNil sets Message to an explicit JSON null when marshaled.
-func (o *SynonymMappingStatusDetail) SetMessageNil() {
-	o.Message = nil
-	o.NullFields = append(o.NullFields, "Message")
-}
-
 // GetQueryable returns the Queryable field value if set, zero value otherwise
 func (o *SynonymMappingStatusDetail) GetQueryable() bool {
 	if o == nil || IsNil(o.Queryable) {
@@ -110,12 +95,6 @@ func (o *SynonymMappingStatusDetail) SetQueryable(v bool) {
 	o.Queryable = &v
 }
 
-// SetQueryableNil sets Queryable to an explicit JSON null when marshaled.
-func (o *SynonymMappingStatusDetail) SetQueryableNil() {
-	o.Queryable = nil
-	o.NullFields = append(o.NullFields, "Queryable")
-}
-
 // GetStatus returns the Status field value if set, zero value otherwise
 func (o *SynonymMappingStatusDetail) GetStatus() string {
 	if o == nil || IsNil(o.Status) {
@@ -147,10 +126,4 @@ func (o *SynonymMappingStatusDetail) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *SynonymMappingStatusDetail) SetStatus(v string) {
 	o.Status = &v
-}
-
-// SetStatusNil sets Status to an explicit JSON null when marshaled.
-func (o *SynonymMappingStatusDetail) SetStatusNil() {
-	o.Status = nil
-	o.NullFields = append(o.NullFields, "Status")
 }

@@ -11,15 +11,6 @@ type SchemaRegistryAuthentication struct {
 	Password *string `json:"password,omitempty"`
 	// Username or Public Key for authentication.
 	Username *string `json:"username,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *SchemaRegistryAuthentication) MarshalJSON() ([]byte, error) {
-	type noMethod SchemaRegistryAuthentication
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSchemaRegistryAuthentication instantiates a new SchemaRegistryAuthentication object
@@ -97,12 +88,6 @@ func (o *SchemaRegistryAuthentication) SetPassword(v string) {
 	o.Password = &v
 }
 
-// SetPasswordNil sets Password to an explicit JSON null when marshaled.
-func (o *SchemaRegistryAuthentication) SetPasswordNil() {
-	o.Password = nil
-	o.NullFields = append(o.NullFields, "Password")
-}
-
 // GetUsername returns the Username field value if set, zero value otherwise
 func (o *SchemaRegistryAuthentication) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
@@ -134,10 +119,4 @@ func (o *SchemaRegistryAuthentication) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *SchemaRegistryAuthentication) SetUsername(v string) {
 	o.Username = &v
-}
-
-// SetUsernameNil sets Username to an explicit JSON null when marshaled.
-func (o *SchemaRegistryAuthentication) SetUsernameNil() {
-	o.Username = nil
-	o.NullFields = append(o.NullFields, "Username")
 }

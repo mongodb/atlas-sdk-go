@@ -13,15 +13,6 @@ type PinnedNamespaces struct {
 	// List of all pinned namespaces.
 	// Read only field.
 	PinnedNamespaces []string `json:"pinnedNamespaces"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PinnedNamespaces) MarshalJSON() ([]byte, error) {
-	type noMethod PinnedNamespaces
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPinnedNamespaces instantiates a new PinnedNamespaces object
@@ -75,12 +66,6 @@ func (o *PinnedNamespaces) SetClusterId(v string) {
 	o.ClusterId = &v
 }
 
-// SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled.
-func (o *PinnedNamespaces) SetClusterIdNil() {
-	o.ClusterId = nil
-	o.NullFields = append(o.NullFields, "ClusterId")
-}
-
 // GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *PinnedNamespaces) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
@@ -112,12 +97,6 @@ func (o *PinnedNamespaces) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *PinnedNamespaces) SetGroupId(v string) {
 	o.GroupId = &v
-}
-
-// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
-func (o *PinnedNamespaces) SetGroupIdNil() {
-	o.GroupId = nil
-	o.NullFields = append(o.NullFields, "GroupId")
 }
 
 // GetPinnedNamespaces returns the PinnedNamespaces field value

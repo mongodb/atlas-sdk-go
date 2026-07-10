@@ -30,15 +30,6 @@ type DataLakeIngestionPipeline struct {
 	State *string `json:"state,omitempty"`
 	// Fields to be excluded for this Data Lake Pipeline.
 	Transformations *[]FieldTransformation `json:"transformations,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DataLakeIngestionPipeline) MarshalJSON() ([]byte, error) {
-	type noMethod DataLakeIngestionPipeline
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataLakeIngestionPipeline instantiates a new DataLakeIngestionPipeline object
@@ -91,12 +82,6 @@ func (o *DataLakeIngestionPipeline) SetId(v string) {
 	o.Id = &v
 }
 
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *DataLakeIngestionPipeline) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
-}
-
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise
 func (o *DataLakeIngestionPipeline) GetCreatedDate() time.Time {
 	if o == nil || IsNil(o.CreatedDate) {
@@ -128,12 +113,6 @@ func (o *DataLakeIngestionPipeline) HasCreatedDate() bool {
 // SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
 func (o *DataLakeIngestionPipeline) SetCreatedDate(v time.Time) {
 	o.CreatedDate = &v
-}
-
-// SetCreatedDateNil sets CreatedDate to an explicit JSON null when marshaled.
-func (o *DataLakeIngestionPipeline) SetCreatedDateNil() {
-	o.CreatedDate = nil
-	o.NullFields = append(o.NullFields, "CreatedDate")
 }
 
 // GetDatasetRetentionPolicy returns the DatasetRetentionPolicy field value if set, zero value otherwise
@@ -169,12 +148,6 @@ func (o *DataLakeIngestionPipeline) SetDatasetRetentionPolicy(v DatasetRetention
 	o.DatasetRetentionPolicy = &v
 }
 
-// SetDatasetRetentionPolicyNil sets DatasetRetentionPolicy to an explicit JSON null when marshaled.
-func (o *DataLakeIngestionPipeline) SetDatasetRetentionPolicyNil() {
-	o.DatasetRetentionPolicy = nil
-	o.NullFields = append(o.NullFields, "DatasetRetentionPolicy")
-}
-
 // GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *DataLakeIngestionPipeline) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
@@ -206,12 +179,6 @@ func (o *DataLakeIngestionPipeline) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *DataLakeIngestionPipeline) SetGroupId(v string) {
 	o.GroupId = &v
-}
-
-// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
-func (o *DataLakeIngestionPipeline) SetGroupIdNil() {
-	o.GroupId = nil
-	o.NullFields = append(o.NullFields, "GroupId")
 }
 
 // GetLastUpdatedDate returns the LastUpdatedDate field value if set, zero value otherwise
@@ -247,12 +214,6 @@ func (o *DataLakeIngestionPipeline) SetLastUpdatedDate(v time.Time) {
 	o.LastUpdatedDate = &v
 }
 
-// SetLastUpdatedDateNil sets LastUpdatedDate to an explicit JSON null when marshaled.
-func (o *DataLakeIngestionPipeline) SetLastUpdatedDateNil() {
-	o.LastUpdatedDate = nil
-	o.NullFields = append(o.NullFields, "LastUpdatedDate")
-}
-
 // GetName returns the Name field value if set, zero value otherwise
 func (o *DataLakeIngestionPipeline) GetName() string {
 	if o == nil || IsNil(o.Name) {
@@ -284,12 +245,6 @@ func (o *DataLakeIngestionPipeline) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DataLakeIngestionPipeline) SetName(v string) {
 	o.Name = &v
-}
-
-// SetNameNil sets Name to an explicit JSON null when marshaled.
-func (o *DataLakeIngestionPipeline) SetNameNil() {
-	o.Name = nil
-	o.NullFields = append(o.NullFields, "Name")
 }
 
 // GetSink returns the Sink field value if set, zero value otherwise
@@ -325,12 +280,6 @@ func (o *DataLakeIngestionPipeline) SetSink(v IngestionSink) {
 	o.Sink = &v
 }
 
-// SetSinkNil sets Sink to an explicit JSON null when marshaled.
-func (o *DataLakeIngestionPipeline) SetSinkNil() {
-	o.Sink = nil
-	o.NullFields = append(o.NullFields, "Sink")
-}
-
 // GetSource returns the Source field value if set, zero value otherwise
 func (o *DataLakeIngestionPipeline) GetSource() IngestionSource {
 	if o == nil || IsNil(o.Source) {
@@ -364,12 +313,6 @@ func (o *DataLakeIngestionPipeline) SetSource(v IngestionSource) {
 	o.Source = &v
 }
 
-// SetSourceNil sets Source to an explicit JSON null when marshaled.
-func (o *DataLakeIngestionPipeline) SetSourceNil() {
-	o.Source = nil
-	o.NullFields = append(o.NullFields, "Source")
-}
-
 // GetState returns the State field value if set, zero value otherwise
 func (o *DataLakeIngestionPipeline) GetState() string {
 	if o == nil || IsNil(o.State) {
@@ -401,12 +344,6 @@ func (o *DataLakeIngestionPipeline) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *DataLakeIngestionPipeline) SetState(v string) {
 	o.State = &v
-}
-
-// SetStateNil sets State to an explicit JSON null when marshaled.
-func (o *DataLakeIngestionPipeline) SetStateNil() {
-	o.State = nil
-	o.NullFields = append(o.NullFields, "State")
 }
 
 // GetTransformations returns the Transformations field value if set, zero value otherwise

@@ -9,15 +9,6 @@ type ApiPublicUsageDetailsQueryRequest struct {
 	SortField *string `json:"sortField,omitempty"`
 	// Specify the sort order (ascending / descending) used to specify how to sort query results. Defaults to descending.
 	SortOrder *string `json:"sortOrder,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiPublicUsageDetailsQueryRequest) MarshalJSON() ([]byte, error) {
-	type noMethod ApiPublicUsageDetailsQueryRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiPublicUsageDetailsQueryRequest instantiates a new ApiPublicUsageDetailsQueryRequest object
@@ -70,12 +61,6 @@ func (o *ApiPublicUsageDetailsQueryRequest) SetFilters(v UsageDetailsFilterReque
 	o.Filters = &v
 }
 
-// SetFiltersNil sets Filters to an explicit JSON null when marshaled.
-func (o *ApiPublicUsageDetailsQueryRequest) SetFiltersNil() {
-	o.Filters = nil
-	o.NullFields = append(o.NullFields, "Filters")
-}
-
 // GetSortField returns the SortField field value if set, zero value otherwise
 func (o *ApiPublicUsageDetailsQueryRequest) GetSortField() string {
 	if o == nil || IsNil(o.SortField) {
@@ -109,12 +94,6 @@ func (o *ApiPublicUsageDetailsQueryRequest) SetSortField(v string) {
 	o.SortField = &v
 }
 
-// SetSortFieldNil sets SortField to an explicit JSON null when marshaled.
-func (o *ApiPublicUsageDetailsQueryRequest) SetSortFieldNil() {
-	o.SortField = nil
-	o.NullFields = append(o.NullFields, "SortField")
-}
-
 // GetSortOrder returns the SortOrder field value if set, zero value otherwise
 func (o *ApiPublicUsageDetailsQueryRequest) GetSortOrder() string {
 	if o == nil || IsNil(o.SortOrder) {
@@ -146,10 +125,4 @@ func (o *ApiPublicUsageDetailsQueryRequest) HasSortOrder() bool {
 // SetSortOrder gets a reference to the given string and assigns it to the SortOrder field.
 func (o *ApiPublicUsageDetailsQueryRequest) SetSortOrder(v string) {
 	o.SortOrder = &v
-}
-
-// SetSortOrderNil sets SortOrder to an explicit JSON null when marshaled.
-func (o *ApiPublicUsageDetailsQueryRequest) SetSortOrderNil() {
-	o.SortOrder = nil
-	o.NullFields = append(o.NullFields, "SortOrder")
 }

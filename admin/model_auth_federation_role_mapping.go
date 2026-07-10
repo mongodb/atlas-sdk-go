@@ -11,15 +11,6 @@ type AuthFederationRoleMapping struct {
 	Id *string `json:"id,omitempty"`
 	// Atlas roles and the unique identifiers of the groups and organizations associated with each role. The array must include at least one element with an Organization role and its respective `orgId`. Each element in the array can have a value for `orgId` or `groupId`, but not both.
 	RoleAssignments []ConnectedOrgConfigRoleAssignment `json:"roleAssignments"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *AuthFederationRoleMapping) MarshalJSON() ([]byte, error) {
-	type noMethod AuthFederationRoleMapping
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAuthFederationRoleMapping instantiates a new AuthFederationRoleMapping object
@@ -96,12 +87,6 @@ func (o *AuthFederationRoleMapping) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *AuthFederationRoleMapping) SetId(v string) {
 	o.Id = &v
-}
-
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *AuthFederationRoleMapping) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetRoleAssignments returns the RoleAssignments field value

@@ -6,15 +6,6 @@ package admin
 type AddOrRemoveGroupRole struct {
 	// Project-level role to assign to or remove from the MongoDB Cloud user.
 	GroupRole string `json:"groupRole"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *AddOrRemoveGroupRole) MarshalJSON() ([]byte, error) {
-	type noMethod AddOrRemoveGroupRole
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAddOrRemoveGroupRole instantiates a new AddOrRemoveGroupRole object

@@ -12,15 +12,6 @@ type ApiSearchDeploymentRequestSpec struct {
 	NodeCount *int `json:"nodeCount,omitempty"`
 	// Cloud provider region where Search Nodes are provisioned. Required when the request configures more than one region; optional for single-region requests.
 	RegionName *string `json:"regionName,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiSearchDeploymentRequestSpec) MarshalJSON() ([]byte, error) {
-	type noMethod ApiSearchDeploymentRequestSpec
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiSearchDeploymentRequestSpec instantiates a new ApiSearchDeploymentRequestSpec object
@@ -72,12 +63,6 @@ func (o *ApiSearchDeploymentRequestSpec) HasCloudProvider() bool {
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *ApiSearchDeploymentRequestSpec) SetCloudProvider(v string) {
 	o.CloudProvider = &v
-}
-
-// SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentRequestSpec) SetCloudProviderNil() {
-	o.CloudProvider = nil
-	o.NullFields = append(o.NullFields, "CloudProvider")
 }
 
 // GetInstanceSize returns the InstanceSize field value
@@ -137,12 +122,6 @@ func (o *ApiSearchDeploymentRequestSpec) SetNodeCount(v int) {
 	o.NodeCount = &v
 }
 
-// SetNodeCountNil sets NodeCount to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentRequestSpec) SetNodeCountNil() {
-	o.NodeCount = nil
-	o.NullFields = append(o.NullFields, "NodeCount")
-}
-
 // GetRegionName returns the RegionName field value if set, zero value otherwise
 func (o *ApiSearchDeploymentRequestSpec) GetRegionName() string {
 	if o == nil || IsNil(o.RegionName) {
@@ -174,10 +153,4 @@ func (o *ApiSearchDeploymentRequestSpec) HasRegionName() bool {
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *ApiSearchDeploymentRequestSpec) SetRegionName(v string) {
 	o.RegionName = &v
-}
-
-// SetRegionNameNil sets RegionName to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentRequestSpec) SetRegionNameNil() {
-	o.RegionName = nil
-	o.NullFields = append(o.NullFields, "RegionName")
 }

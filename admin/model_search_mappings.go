@@ -8,15 +8,6 @@ type SearchMappings struct {
 	Dynamic any `json:"dynamic,omitempty"`
 	// One or more field specifications for the Atlas Search index. Required if `mappings.dynamic` is omitted or set to `false`.
 	Fields *map[string]any `json:"fields,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *SearchMappings) MarshalJSON() ([]byte, error) {
-	type noMethod SearchMappings
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSearchMappings instantiates a new SearchMappings object
@@ -70,12 +61,6 @@ func (o *SearchMappings) SetDynamic(v any) {
 	o.Dynamic = v
 }
 
-// SetDynamicNil sets Dynamic to an explicit JSON null when marshaled.
-func (o *SearchMappings) SetDynamicNil() {
-	o.Dynamic = nil
-	o.NullFields = append(o.NullFields, "Dynamic")
-}
-
 // GetFields returns the Fields field value if set, zero value otherwise
 func (o *SearchMappings) GetFields() map[string]any {
 	if o == nil || IsNil(o.Fields) {
@@ -107,10 +92,4 @@ func (o *SearchMappings) HasFields() bool {
 // SetFields gets a reference to the given map[string]any and assigns it to the Fields field.
 func (o *SearchMappings) SetFields(v map[string]any) {
 	o.Fields = &v
-}
-
-// SetFieldsNil sets Fields to an explicit JSON null when marshaled.
-func (o *SearchMappings) SetFieldsNil() {
-	o.Fields = nil
-	o.NullFields = append(o.NullFields, "Fields")
 }

@@ -26,15 +26,6 @@ type ApiAtlasSnapshotSchedule struct {
 	SnapshotRetentionDays int `json:"snapshotRetentionDays"`
 	// Number of weeks that MongoDB Cloud must keep weekly snapshots. Set this value to `0` to disable weekly snapshot retention.
 	WeeklySnapshotRetentionWeeks int `json:"weeklySnapshotRetentionWeeks"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiAtlasSnapshotSchedule) MarshalJSON() ([]byte, error) {
-	type noMethod ApiAtlasSnapshotSchedule
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasSnapshotSchedule instantiates a new ApiAtlasSnapshotSchedule object

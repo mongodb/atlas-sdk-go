@@ -5,15 +5,6 @@ package admin
 // SearchIndexUpdateRequest struct for SearchIndexUpdateRequest
 type SearchIndexUpdateRequest struct {
 	Definition SearchIndexUpdateRequestDefinition `json:"definition"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *SearchIndexUpdateRequest) MarshalJSON() ([]byte, error) {
-	type noMethod SearchIndexUpdateRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSearchIndexUpdateRequest instantiates a new SearchIndexUpdateRequest object

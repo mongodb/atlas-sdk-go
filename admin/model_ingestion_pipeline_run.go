@@ -43,15 +43,6 @@ type IngestionPipelineRun struct {
 	// Read only field.
 	State *string           `json:"state,omitempty"`
 	Stats *PipelineRunStats `json:"stats,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *IngestionPipelineRun) MarshalJSON() ([]byte, error) {
-	type noMethod IngestionPipelineRun
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewIngestionPipelineRun instantiates a new IngestionPipelineRun object
@@ -104,12 +95,6 @@ func (o *IngestionPipelineRun) SetId(v string) {
 	o.Id = &v
 }
 
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *IngestionPipelineRun) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
-}
-
 // GetBackupFrequencyType returns the BackupFrequencyType field value if set, zero value otherwise
 func (o *IngestionPipelineRun) GetBackupFrequencyType() string {
 	if o == nil || IsNil(o.BackupFrequencyType) {
@@ -141,12 +126,6 @@ func (o *IngestionPipelineRun) HasBackupFrequencyType() bool {
 // SetBackupFrequencyType gets a reference to the given string and assigns it to the BackupFrequencyType field.
 func (o *IngestionPipelineRun) SetBackupFrequencyType(v string) {
 	o.BackupFrequencyType = &v
-}
-
-// SetBackupFrequencyTypeNil sets BackupFrequencyType to an explicit JSON null when marshaled.
-func (o *IngestionPipelineRun) SetBackupFrequencyTypeNil() {
-	o.BackupFrequencyType = nil
-	o.NullFields = append(o.NullFields, "BackupFrequencyType")
 }
 
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise
@@ -182,12 +161,6 @@ func (o *IngestionPipelineRun) SetCreatedDate(v time.Time) {
 	o.CreatedDate = &v
 }
 
-// SetCreatedDateNil sets CreatedDate to an explicit JSON null when marshaled.
-func (o *IngestionPipelineRun) SetCreatedDateNil() {
-	o.CreatedDate = nil
-	o.NullFields = append(o.NullFields, "CreatedDate")
-}
-
 // GetDatasetName returns the DatasetName field value if set, zero value otherwise
 func (o *IngestionPipelineRun) GetDatasetName() string {
 	if o == nil || IsNil(o.DatasetName) {
@@ -219,12 +192,6 @@ func (o *IngestionPipelineRun) HasDatasetName() bool {
 // SetDatasetName gets a reference to the given string and assigns it to the DatasetName field.
 func (o *IngestionPipelineRun) SetDatasetName(v string) {
 	o.DatasetName = &v
-}
-
-// SetDatasetNameNil sets DatasetName to an explicit JSON null when marshaled.
-func (o *IngestionPipelineRun) SetDatasetNameNil() {
-	o.DatasetName = nil
-	o.NullFields = append(o.NullFields, "DatasetName")
 }
 
 // GetDatasetRetentionPolicy returns the DatasetRetentionPolicy field value if set, zero value otherwise
@@ -260,12 +227,6 @@ func (o *IngestionPipelineRun) SetDatasetRetentionPolicy(v DatasetRetentionPolic
 	o.DatasetRetentionPolicy = &v
 }
 
-// SetDatasetRetentionPolicyNil sets DatasetRetentionPolicy to an explicit JSON null when marshaled.
-func (o *IngestionPipelineRun) SetDatasetRetentionPolicyNil() {
-	o.DatasetRetentionPolicy = nil
-	o.NullFields = append(o.NullFields, "DatasetRetentionPolicy")
-}
-
 // GetGroupId returns the GroupId field value if set, zero value otherwise
 func (o *IngestionPipelineRun) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
@@ -297,12 +258,6 @@ func (o *IngestionPipelineRun) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *IngestionPipelineRun) SetGroupId(v string) {
 	o.GroupId = &v
-}
-
-// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
-func (o *IngestionPipelineRun) SetGroupIdNil() {
-	o.GroupId = nil
-	o.NullFields = append(o.NullFields, "GroupId")
 }
 
 // GetLastUpdatedDate returns the LastUpdatedDate field value if set, zero value otherwise
@@ -338,12 +293,6 @@ func (o *IngestionPipelineRun) SetLastUpdatedDate(v time.Time) {
 	o.LastUpdatedDate = &v
 }
 
-// SetLastUpdatedDateNil sets LastUpdatedDate to an explicit JSON null when marshaled.
-func (o *IngestionPipelineRun) SetLastUpdatedDateNil() {
-	o.LastUpdatedDate = nil
-	o.NullFields = append(o.NullFields, "LastUpdatedDate")
-}
-
 // GetPhase returns the Phase field value if set, zero value otherwise
 func (o *IngestionPipelineRun) GetPhase() string {
 	if o == nil || IsNil(o.Phase) {
@@ -375,12 +324,6 @@ func (o *IngestionPipelineRun) HasPhase() bool {
 // SetPhase gets a reference to the given string and assigns it to the Phase field.
 func (o *IngestionPipelineRun) SetPhase(v string) {
 	o.Phase = &v
-}
-
-// SetPhaseNil sets Phase to an explicit JSON null when marshaled.
-func (o *IngestionPipelineRun) SetPhaseNil() {
-	o.Phase = nil
-	o.NullFields = append(o.NullFields, "Phase")
 }
 
 // GetPipelineId returns the PipelineId field value if set, zero value otherwise
@@ -416,12 +359,6 @@ func (o *IngestionPipelineRun) SetPipelineId(v string) {
 	o.PipelineId = &v
 }
 
-// SetPipelineIdNil sets PipelineId to an explicit JSON null when marshaled.
-func (o *IngestionPipelineRun) SetPipelineIdNil() {
-	o.PipelineId = nil
-	o.NullFields = append(o.NullFields, "PipelineId")
-}
-
 // GetScheduledDeletionDate returns the ScheduledDeletionDate field value if set, zero value otherwise
 func (o *IngestionPipelineRun) GetScheduledDeletionDate() time.Time {
 	if o == nil || IsNil(o.ScheduledDeletionDate) {
@@ -453,12 +390,6 @@ func (o *IngestionPipelineRun) HasScheduledDeletionDate() bool {
 // SetScheduledDeletionDate gets a reference to the given time.Time and assigns it to the ScheduledDeletionDate field.
 func (o *IngestionPipelineRun) SetScheduledDeletionDate(v time.Time) {
 	o.ScheduledDeletionDate = &v
-}
-
-// SetScheduledDeletionDateNil sets ScheduledDeletionDate to an explicit JSON null when marshaled.
-func (o *IngestionPipelineRun) SetScheduledDeletionDateNil() {
-	o.ScheduledDeletionDate = nil
-	o.NullFields = append(o.NullFields, "ScheduledDeletionDate")
 }
 
 // GetSnapshotId returns the SnapshotId field value if set, zero value otherwise
@@ -494,12 +425,6 @@ func (o *IngestionPipelineRun) SetSnapshotId(v string) {
 	o.SnapshotId = &v
 }
 
-// SetSnapshotIdNil sets SnapshotId to an explicit JSON null when marshaled.
-func (o *IngestionPipelineRun) SetSnapshotIdNil() {
-	o.SnapshotId = nil
-	o.NullFields = append(o.NullFields, "SnapshotId")
-}
-
 // GetState returns the State field value if set, zero value otherwise
 func (o *IngestionPipelineRun) GetState() string {
 	if o == nil || IsNil(o.State) {
@@ -533,12 +458,6 @@ func (o *IngestionPipelineRun) SetState(v string) {
 	o.State = &v
 }
 
-// SetStateNil sets State to an explicit JSON null when marshaled.
-func (o *IngestionPipelineRun) SetStateNil() {
-	o.State = nil
-	o.NullFields = append(o.NullFields, "State")
-}
-
 // GetStats returns the Stats field value if set, zero value otherwise
 func (o *IngestionPipelineRun) GetStats() PipelineRunStats {
 	if o == nil || IsNil(o.Stats) {
@@ -570,10 +489,4 @@ func (o *IngestionPipelineRun) HasStats() bool {
 // SetStats gets a reference to the given PipelineRunStats and assigns it to the Stats field.
 func (o *IngestionPipelineRun) SetStats(v PipelineRunStats) {
 	o.Stats = &v
-}
-
-// SetStatsNil sets Stats to an explicit JSON null when marshaled.
-func (o *IngestionPipelineRun) SetStatsNil() {
-	o.Stats = nil
-	o.NullFields = append(o.NullFields, "Stats")
 }

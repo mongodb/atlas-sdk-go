@@ -7,15 +7,6 @@ type SchemaAdvisorResponse struct {
 	// List that contains the documents with information about the schema advice that Performance Advisor suggests.
 	// Read only field.
 	Recommendations *[]SchemaAdvisorItemRecommendation `json:"recommendations,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *SchemaAdvisorResponse) MarshalJSON() ([]byte, error) {
-	type noMethod SchemaAdvisorResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSchemaAdvisorResponse instantiates a new SchemaAdvisorResponse object

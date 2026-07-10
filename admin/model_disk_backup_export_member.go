@@ -10,15 +10,6 @@ type DiskBackupExportMember struct {
 	// Human-readable label that identifies the replica set on the sharded cluster.
 	// Read only field.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DiskBackupExportMember) MarshalJSON() ([]byte, error) {
-	type noMethod DiskBackupExportMember
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupExportMember instantiates a new DiskBackupExportMember object
@@ -71,12 +62,6 @@ func (o *DiskBackupExportMember) SetExportId(v string) {
 	o.ExportId = &v
 }
 
-// SetExportIdNil sets ExportId to an explicit JSON null when marshaled.
-func (o *DiskBackupExportMember) SetExportIdNil() {
-	o.ExportId = nil
-	o.NullFields = append(o.NullFields, "ExportId")
-}
-
 // GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise
 func (o *DiskBackupExportMember) GetReplicaSetName() string {
 	if o == nil || IsNil(o.ReplicaSetName) {
@@ -108,10 +93,4 @@ func (o *DiskBackupExportMember) HasReplicaSetName() bool {
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
 func (o *DiskBackupExportMember) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
-}
-
-// SetReplicaSetNameNil sets ReplicaSetName to an explicit JSON null when marshaled.
-func (o *DiskBackupExportMember) SetReplicaSetNameNil() {
-	o.ReplicaSetName = nil
-	o.NullFields = append(o.NullFields, "ReplicaSetName")
 }

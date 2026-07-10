@@ -15,15 +15,6 @@ type EmployeeAccessGrant struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *EmployeeAccessGrant) MarshalJSON() ([]byte, error) {
-	type noMethod EmployeeAccessGrant
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewEmployeeAccessGrant instantiates a new EmployeeAccessGrant object

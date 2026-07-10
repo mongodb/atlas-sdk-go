@@ -6,15 +6,6 @@ package admin
 type ClusterServerlessBackupOptions struct {
 	// Flag that indicates whether the serverless instance uses **Serverless Continuous Backup**.  If this parameter is `false`, the serverless instance uses **Basic Backup**.   | Option | Description |  |---|---|  | Serverless Continuous Backup | Atlas takes incremental [snapshots](https://www.mongodb.com/docs/atlas/backup/cloud-backup/overview/#std-label-serverless-snapshots) of the data in your serverless instance every six hours and lets you restore the data from a selected point in time within the last 72 hours. Atlas also takes daily snapshots and retains these daily snapshots for 35 days. To learn more, see [Serverless Instance Costs](https://www.mongodb.com/docs/atlas/billing/serverless-instance-costs/#std-label-serverless-instance-costs). |  | Basic Backup | Atlas takes incremental [snapshots](https://www.mongodb.com/docs/atlas/backup/cloud-backup/overview/#std-label-serverless-snapshots) of the data in your serverless instance every six hours and retains only the two most recent snapshots. You can use this option for free. |
 	ServerlessContinuousBackupEnabled *bool `json:"serverlessContinuousBackupEnabled,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ClusterServerlessBackupOptions) MarshalJSON() ([]byte, error) {
-	type noMethod ClusterServerlessBackupOptions
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterServerlessBackupOptions instantiates a new ClusterServerlessBackupOptions object
@@ -69,10 +60,4 @@ func (o *ClusterServerlessBackupOptions) HasServerlessContinuousBackupEnabled() 
 // SetServerlessContinuousBackupEnabled gets a reference to the given bool and assigns it to the ServerlessContinuousBackupEnabled field.
 func (o *ClusterServerlessBackupOptions) SetServerlessContinuousBackupEnabled(v bool) {
 	o.ServerlessContinuousBackupEnabled = &v
-}
-
-// SetServerlessContinuousBackupEnabledNil sets ServerlessContinuousBackupEnabled to an explicit JSON null when marshaled.
-func (o *ClusterServerlessBackupOptions) SetServerlessContinuousBackupEnabledNil() {
-	o.ServerlessContinuousBackupEnabled = nil
-	o.NullFields = append(o.NullFields, "ServerlessContinuousBackupEnabled")
 }

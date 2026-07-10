@@ -10,15 +10,6 @@ type CreatePushBasedLogExportProjectRequest struct {
 	IamRoleId string `json:"iamRoleId"`
 	// S3 directory in which vector will write to in order to store the logs. An empty string denotes the root directory.
 	PrefixPath string `json:"prefixPath"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *CreatePushBasedLogExportProjectRequest) MarshalJSON() ([]byte, error) {
-	type noMethod CreatePushBasedLogExportProjectRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCreatePushBasedLogExportProjectRequest instantiates a new CreatePushBasedLogExportProjectRequest object

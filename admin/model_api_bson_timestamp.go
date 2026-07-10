@@ -14,15 +14,6 @@ type ApiBSONTimestamp struct {
 	// Order of the database operation that the oplog recorded at specific date and time.
 	// Read only field.
 	Increment *int `json:"increment,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiBSONTimestamp) MarshalJSON() ([]byte, error) {
-	type noMethod ApiBSONTimestamp
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiBSONTimestamp instantiates a new ApiBSONTimestamp object
@@ -75,12 +66,6 @@ func (o *ApiBSONTimestamp) SetDate(v time.Time) {
 	o.Date = &v
 }
 
-// SetDateNil sets Date to an explicit JSON null when marshaled.
-func (o *ApiBSONTimestamp) SetDateNil() {
-	o.Date = nil
-	o.NullFields = append(o.NullFields, "Date")
-}
-
 // GetIncrement returns the Increment field value if set, zero value otherwise
 func (o *ApiBSONTimestamp) GetIncrement() int {
 	if o == nil || IsNil(o.Increment) {
@@ -112,10 +97,4 @@ func (o *ApiBSONTimestamp) HasIncrement() bool {
 // SetIncrement gets a reference to the given int and assigns it to the Increment field.
 func (o *ApiBSONTimestamp) SetIncrement(v int) {
 	o.Increment = &v
-}
-
-// SetIncrementNil sets Increment to an explicit JSON null when marshaled.
-func (o *ApiBSONTimestamp) SetIncrementNil() {
-	o.Increment = nil
-	o.NullFields = append(o.NullFields, "Increment")
 }

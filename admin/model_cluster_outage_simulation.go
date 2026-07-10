@@ -28,15 +28,6 @@ type ClusterOutageSimulation struct {
 	// Phase of the outage simulation.  | State       | Indication | |-------------|------------| | `START_REQUESTED`    | User has requested cluster outage simulation.| | `STARTING`           | MongoDB Cloud is starting cluster outage simulation.| | `SIMULATING`         | MongoDB Cloud is simulating cluster outage.| | `RECOVERY_REQUESTED` | User has requested recovery from the simulated outage.| | `RECOVERING`         | MongoDB Cloud is recovering the cluster from the simulated outage.| | `COMPLETE`           | MongoDB Cloud has completed the cluster outage simulation.|
 	// Read only field.
 	State *string `json:"state,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ClusterOutageSimulation) MarshalJSON() ([]byte, error) {
-	type noMethod ClusterOutageSimulation
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterOutageSimulation instantiates a new ClusterOutageSimulation object
@@ -89,12 +80,6 @@ func (o *ClusterOutageSimulation) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
-// SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled.
-func (o *ClusterOutageSimulation) SetClusterNameNil() {
-	o.ClusterName = nil
-	o.NullFields = append(o.NullFields, "ClusterName")
-}
-
 // GetExpirationDate returns the ExpirationDate field value if set, zero value otherwise
 func (o *ClusterOutageSimulation) GetExpirationDate() time.Time {
 	if o == nil || IsNil(o.ExpirationDate) {
@@ -126,12 +111,6 @@ func (o *ClusterOutageSimulation) HasExpirationDate() bool {
 // SetExpirationDate gets a reference to the given time.Time and assigns it to the ExpirationDate field.
 func (o *ClusterOutageSimulation) SetExpirationDate(v time.Time) {
 	o.ExpirationDate = &v
-}
-
-// SetExpirationDateNil sets ExpirationDate to an explicit JSON null when marshaled.
-func (o *ClusterOutageSimulation) SetExpirationDateNil() {
-	o.ExpirationDate = nil
-	o.NullFields = append(o.NullFields, "ExpirationDate")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -167,12 +146,6 @@ func (o *ClusterOutageSimulation) SetGroupId(v string) {
 	o.GroupId = &v
 }
 
-// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
-func (o *ClusterOutageSimulation) SetGroupIdNil() {
-	o.GroupId = nil
-	o.NullFields = append(o.NullFields, "GroupId")
-}
-
 // GetId returns the Id field value if set, zero value otherwise
 func (o *ClusterOutageSimulation) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -204,12 +177,6 @@ func (o *ClusterOutageSimulation) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ClusterOutageSimulation) SetId(v string) {
 	o.Id = &v
-}
-
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *ClusterOutageSimulation) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetOutageFilters returns the OutageFilters field value if set, zero value otherwise
@@ -278,12 +245,6 @@ func (o *ClusterOutageSimulation) SetStartRequestDate(v time.Time) {
 	o.StartRequestDate = &v
 }
 
-// SetStartRequestDateNil sets StartRequestDate to an explicit JSON null when marshaled.
-func (o *ClusterOutageSimulation) SetStartRequestDateNil() {
-	o.StartRequestDate = nil
-	o.NullFields = append(o.NullFields, "StartRequestDate")
-}
-
 // GetState returns the State field value if set, zero value otherwise
 func (o *ClusterOutageSimulation) GetState() string {
 	if o == nil || IsNil(o.State) {
@@ -315,10 +276,4 @@ func (o *ClusterOutageSimulation) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *ClusterOutageSimulation) SetState(v string) {
 	o.State = &v
-}
-
-// SetStateNil sets State to an explicit JSON null when marshaled.
-func (o *ClusterOutageSimulation) SetStateNil() {
-	o.State = nil
-	o.NullFields = append(o.NullFields, "State")
 }

@@ -15,15 +15,6 @@ type OrgFederationSettings struct {
 	IdentityProviderId *string `json:"identityProviderId,omitempty"`
 	// String enum that indicates whether the identity provider is active.
 	IdentityProviderStatus *string `json:"identityProviderStatus,omitempty"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *OrgFederationSettings) MarshalJSON() ([]byte, error) {
-	type noMethod OrgFederationSettings
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewOrgFederationSettings instantiates a new OrgFederationSettings object
@@ -101,12 +92,6 @@ func (o *OrgFederationSettings) SetHasRoleMappings(v bool) {
 	o.HasRoleMappings = &v
 }
 
-// SetHasRoleMappingsNil sets HasRoleMappings to an explicit JSON null when marshaled.
-func (o *OrgFederationSettings) SetHasRoleMappingsNil() {
-	o.HasRoleMappings = nil
-	o.NullFields = append(o.NullFields, "HasRoleMappings")
-}
-
 // GetId returns the Id field value if set, zero value otherwise
 func (o *OrgFederationSettings) GetId() string {
 	if o == nil || IsNil(o.Id) {
@@ -138,12 +123,6 @@ func (o *OrgFederationSettings) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *OrgFederationSettings) SetId(v string) {
 	o.Id = &v
-}
-
-// SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *OrgFederationSettings) SetIdNil() {
-	o.Id = nil
-	o.NullFields = append(o.NullFields, "Id")
 }
 
 // GetIdentityProviderId returns the IdentityProviderId field value if set, zero value otherwise
@@ -179,12 +158,6 @@ func (o *OrgFederationSettings) SetIdentityProviderId(v string) {
 	o.IdentityProviderId = &v
 }
 
-// SetIdentityProviderIdNil sets IdentityProviderId to an explicit JSON null when marshaled.
-func (o *OrgFederationSettings) SetIdentityProviderIdNil() {
-	o.IdentityProviderId = nil
-	o.NullFields = append(o.NullFields, "IdentityProviderId")
-}
-
 // GetIdentityProviderStatus returns the IdentityProviderStatus field value if set, zero value otherwise
 func (o *OrgFederationSettings) GetIdentityProviderStatus() string {
 	if o == nil || IsNil(o.IdentityProviderStatus) {
@@ -216,10 +189,4 @@ func (o *OrgFederationSettings) HasIdentityProviderStatus() bool {
 // SetIdentityProviderStatus gets a reference to the given string and assigns it to the IdentityProviderStatus field.
 func (o *OrgFederationSettings) SetIdentityProviderStatus(v string) {
 	o.IdentityProviderStatus = &v
-}
-
-// SetIdentityProviderStatusNil sets IdentityProviderStatus to an explicit JSON null when marshaled.
-func (o *OrgFederationSettings) SetIdentityProviderStatusNil() {
-	o.IdentityProviderStatus = nil
-	o.NullFields = append(o.NullFields, "IdentityProviderStatus")
 }

@@ -16,15 +16,6 @@ type FlexProviderSettingsCreate20241113 struct {
 	// Human-readable label that identifies the geographic location of your MongoDB flex cluster. The region you choose can affect network latency for clients accessing your databases. For a complete list of region names, see [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws), [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/).
 	// Write only field.
 	RegionName string `json:"regionName"`
-	// NullFields is a list of field names (e.g. "FieldName") to send as an explicit JSON null,
-	// overriding the field's actual value.
-	NullFields []string `json:"-"`
-}
-
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *FlexProviderSettingsCreate20241113) MarshalJSON() ([]byte, error) {
-	type noMethod FlexProviderSettingsCreate20241113
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFlexProviderSettingsCreate20241113 instantiates a new FlexProviderSettingsCreate20241113 object
@@ -103,12 +94,6 @@ func (o *FlexProviderSettingsCreate20241113) SetDiskSizeGB(v float64) {
 	o.DiskSizeGB = &v
 }
 
-// SetDiskSizeGBNil sets DiskSizeGB to an explicit JSON null when marshaled.
-func (o *FlexProviderSettingsCreate20241113) SetDiskSizeGBNil() {
-	o.DiskSizeGB = nil
-	o.NullFields = append(o.NullFields, "DiskSizeGB")
-}
-
 // GetProviderName returns the ProviderName field value if set, zero value otherwise
 func (o *FlexProviderSettingsCreate20241113) GetProviderName() string {
 	if o == nil || IsNil(o.ProviderName) {
@@ -140,12 +125,6 @@ func (o *FlexProviderSettingsCreate20241113) HasProviderName() bool {
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *FlexProviderSettingsCreate20241113) SetProviderName(v string) {
 	o.ProviderName = &v
-}
-
-// SetProviderNameNil sets ProviderName to an explicit JSON null when marshaled.
-func (o *FlexProviderSettingsCreate20241113) SetProviderNameNil() {
-	o.ProviderName = nil
-	o.NullFields = append(o.NullFields, "ProviderName")
 }
 
 // GetRegionName returns the RegionName field value
