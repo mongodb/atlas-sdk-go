@@ -40,6 +40,10 @@ type APIClient struct {
 
 	// API Services
 
+	AIModelAPIKeysApi AIModelAPIKeysApi
+
+	AIModelRateLimitsApi AIModelRateLimitsApi
+
 	AWSClustersDNSApi AWSClustersDNSApi
 
 	AccessTrackingApi AccessTrackingApi
@@ -76,6 +80,8 @@ type APIClient struct {
 
 	EncryptionAtRestUsingCustomerKeyManagementApi EncryptionAtRestUsingCustomerKeyManagementApi
 
+	EphemeralClustersApi EphemeralClustersApi
+
 	EventsApi EventsApi
 
 	FederatedAuthenticationApi FederatedAuthenticationApi
@@ -94,6 +100,8 @@ type APIClient struct {
 
 	LegacyBackupApi LegacyBackupApi
 
+	LimitDescriptionApi LimitDescriptionApi
+
 	MaintenanceWindowsApi MaintenanceWindowsApi
 
 	MongoDBCloudUsersApi MongoDBCloudUsersApi
@@ -103,6 +111,8 @@ type APIClient struct {
 	NetworkPeeringApi NetworkPeeringApi
 
 	OnlineArchiveApi OnlineArchiveApi
+
+	OpenAPIApi OpenAPIApi
 
 	OrganizationsApi OrganizationsApi
 
@@ -121,6 +131,8 @@ type APIClient struct {
 	QueryShapeInsightsApi QueryShapeInsightsApi
 
 	RateLimitingApi RateLimitingApi
+
+	RemoteMCPConfigurationsApi RemoteMCPConfigurationsApi
 
 	ResourcePoliciesApi ResourcePoliciesApi
 
@@ -160,6 +172,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.UntypedClient.client = c
 
 	// API Services
+	c.AIModelAPIKeysApi = (*AIModelAPIKeysApiService)(&c.common)
+	c.AIModelRateLimitsApi = (*AIModelRateLimitsApiService)(&c.common)
 	c.AWSClustersDNSApi = (*AWSClustersDNSApiService)(&c.common)
 	c.AccessTrackingApi = (*AccessTrackingApiService)(&c.common)
 	c.ActivityFeedApi = (*ActivityFeedApiService)(&c.common)
@@ -178,6 +192,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DataLakePipelinesApi = (*DataLakePipelinesApiService)(&c.common)
 	c.DatabaseUsersApi = (*DatabaseUsersApiService)(&c.common)
 	c.EncryptionAtRestUsingCustomerKeyManagementApi = (*EncryptionAtRestUsingCustomerKeyManagementApiService)(&c.common)
+	c.EphemeralClustersApi = (*EphemeralClustersApiService)(&c.common)
 	c.EventsApi = (*EventsApiService)(&c.common)
 	c.FederatedAuthenticationApi = (*FederatedAuthenticationApiService)(&c.common)
 	c.FlexClustersApi = (*FlexClustersApiService)(&c.common)
@@ -187,11 +202,13 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.InvoicesApi = (*InvoicesApiService)(&c.common)
 	c.LDAPConfigurationApi = (*LDAPConfigurationApiService)(&c.common)
 	c.LegacyBackupApi = (*LegacyBackupApiService)(&c.common)
+	c.LimitDescriptionApi = (*LimitDescriptionApiService)(&c.common)
 	c.MaintenanceWindowsApi = (*MaintenanceWindowsApiService)(&c.common)
 	c.MongoDBCloudUsersApi = (*MongoDBCloudUsersApiService)(&c.common)
 	c.MonitoringAndLogsApi = (*MonitoringAndLogsApiService)(&c.common)
 	c.NetworkPeeringApi = (*NetworkPeeringApiService)(&c.common)
 	c.OnlineArchiveApi = (*OnlineArchiveApiService)(&c.common)
+	c.OpenAPIApi = (*OpenAPIApiService)(&c.common)
 	c.OrganizationsApi = (*OrganizationsApiService)(&c.common)
 	c.PerformanceAdvisorApi = (*PerformanceAdvisorApiService)(&c.common)
 	c.PrivateEndpointServicesApi = (*PrivateEndpointServicesApiService)(&c.common)
@@ -201,6 +218,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PushBasedLogExportApi = (*PushBasedLogExportApiService)(&c.common)
 	c.QueryShapeInsightsApi = (*QueryShapeInsightsApiService)(&c.common)
 	c.RateLimitingApi = (*RateLimitingApiService)(&c.common)
+	c.RemoteMCPConfigurationsApi = (*RemoteMCPConfigurationsApiService)(&c.common)
 	c.ResourcePoliciesApi = (*ResourcePoliciesApiService)(&c.common)
 	c.RollingIndexApi = (*RollingIndexApiService)(&c.common)
 	c.RootApi = (*RootApiService)(&c.common)

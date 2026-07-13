@@ -119,6 +119,9 @@ type EventViewForNdsGroup struct {
 	// Name of the stream processing workspace associated with the event.
 	// Read only field.
 	InstanceName *string `json:"instanceName,omitempty"`
+	// Username of the user who modified the stream processor.
+	// Read only field.
+	ModifiedBy *string `json:"modifiedBy,omitempty"`
 	// Error message linked to the stream processor associated with the event.
 	// Read only field.
 	ProcessorErrorMsg *string `json:"processorErrorMsg,omitempty"`
@@ -1440,6 +1443,39 @@ func (o *EventViewForNdsGroup) HasInstanceName() bool {
 // SetInstanceName gets a reference to the given string and assigns it to the InstanceName field.
 func (o *EventViewForNdsGroup) SetInstanceName(v string) {
 	o.InstanceName = &v
+}
+
+// GetModifiedBy returns the ModifiedBy field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetModifiedBy() string {
+	if o == nil || IsNil(o.ModifiedBy) {
+		var ret string
+		return ret
+	}
+	return *o.ModifiedBy
+}
+
+// GetModifiedByOk returns a tuple with the ModifiedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetModifiedByOk() (*string, bool) {
+	if o == nil || IsNil(o.ModifiedBy) {
+		return nil, false
+	}
+
+	return o.ModifiedBy, true
+}
+
+// HasModifiedBy returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasModifiedBy() bool {
+	if o != nil && !IsNil(o.ModifiedBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetModifiedBy gets a reference to the given string and assigns it to the ModifiedBy field.
+func (o *EventViewForNdsGroup) SetModifiedBy(v string) {
+	o.ModifiedBy = &v
 }
 
 // GetProcessorErrorMsg returns the ProcessorErrorMsg field value if set, zero value otherwise

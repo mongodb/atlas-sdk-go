@@ -44,16 +44,18 @@ type ClustersApi interface {
 	/*
 			CreateCluster Create One Cluster in One Project
 
-			Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. This feature is not available for serverless clusters.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		Please note that using an `instanceSize` of M2 or M5 will create a Flex cluster instead. Support for the `instanceSize` of M2 or M5 will be discontinued in January 2026. We recommend using the Create Flex Cluster API for such configurations moving forward. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
+		 Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. This feature is not available for serverless clusters.
+
+		Please note that using an `instanceSize` of M2 or M5 will create a Flex cluster instead. Support for the `instanceSize` of M2 or M5 will be discontinued in January 2026. We recommend using the Create Flex Cluster API for such configurations moving forward. Deprecated versions: v2-{2024-10-23}, v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param clusterDescription20240805 Cluster to create in this project.
+			@param apiAtlasClusterDescriptionPreview Cluster to create in this project.
 			@return CreateClusterApiRequest
 	*/
-	CreateCluster(ctx context.Context, groupId string, clusterDescription20240805 *ClusterDescription20240805) CreateClusterApiRequest
+	CreateCluster(ctx context.Context, groupId string, apiAtlasClusterDescriptionPreview *ApiAtlasClusterDescriptionPreview) CreateClusterApiRequest
 	/*
 		CreateCluster Create One Cluster in One Project
 
@@ -65,7 +67,7 @@ type ClustersApi interface {
 	CreateClusterWithParams(ctx context.Context, args *CreateClusterApiParams) CreateClusterApiRequest
 
 	// Method available only for mocking purposes
-	CreateClusterExecute(r CreateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error)
+	CreateClusterExecute(r CreateClusterApiRequest) (*ApiAtlasClusterDescriptionPreview, *http.Response, error)
 
 	/*
 			DeleteCluster Remove One Cluster from One Project
@@ -96,9 +98,11 @@ type ClustersApi interface {
 	/*
 			GetCluster Return One Cluster from One Project
 
-			Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. This feature is not available for serverless clusters.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		This endpoint can also be used on Flex clusters that were created using the [Create Cluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the Get Flex Cluster endpoint for Flex clusters instead. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
+		 Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. This feature is not available for serverless clusters.
+
+		This endpoint can also be used on Flex clusters that were created using the [Create Cluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the Get Flex Cluster endpoint for Flex clusters instead. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -117,7 +121,7 @@ type ClustersApi interface {
 	GetClusterWithParams(ctx context.Context, args *GetClusterApiParams) GetClusterApiRequest
 
 	// Method available only for mocking purposes
-	GetClusterExecute(r GetClusterApiRequest) (*ClusterDescription20240805, *http.Response, error)
+	GetClusterExecute(r GetClusterApiRequest) (*ApiAtlasClusterDescriptionPreview, *http.Response, error)
 
 	/*
 		GetClusterStatus Return Status of All Cluster Operations
@@ -408,17 +412,19 @@ type ClustersApi interface {
 	UnpinFeatureCompatibilityVersionExecute(r UnpinFeatureCompatibilityVersionApiRequest) (*http.Response, error)
 
 	/*
-		UpdateCluster Update One Cluster in One Project
+			UpdateCluster Update One Cluster in One Project
 
-		Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update clusters with asymmetrically-sized shards. To update a cluster's termination protection, the requesting Service Account or API Key must have the Project Owner role. For all other updates, the requesting Service Account or API Key must have the Project Cluster Manager role or the Project Replica Set Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies the cluster.
-		@param clusterDescription20240805 Cluster to update in the specified project.
-		@return UpdateClusterApiRequest
+		 Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update clusters with asymmetrically-sized shards. To update a cluster's termination protection, the requesting Service Account or API Key must have the Project Owner role. For all other updates, the requesting Service Account or API Key must have the Project Cluster Manager role or the Project Replica Set Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2024-10-23}, v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the cluster.
+			@param apiAtlasClusterDescriptionPreview Cluster to update in the specified project.
+			@return UpdateClusterApiRequest
 	*/
-	UpdateCluster(ctx context.Context, groupId string, clusterName string, clusterDescription20240805 *ClusterDescription20240805) UpdateClusterApiRequest
+	UpdateCluster(ctx context.Context, groupId string, clusterName string, apiAtlasClusterDescriptionPreview *ApiAtlasClusterDescriptionPreview) UpdateClusterApiRequest
 	/*
 		UpdateCluster Update One Cluster in One Project
 
@@ -430,7 +436,7 @@ type ClustersApi interface {
 	UpdateClusterWithParams(ctx context.Context, args *UpdateClusterApiParams) UpdateClusterApiRequest
 
 	// Method available only for mocking purposes
-	UpdateClusterExecute(r UpdateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error)
+	UpdateClusterExecute(r UpdateClusterApiRequest) (*ApiAtlasClusterDescriptionPreview, *http.Response, error)
 
 	/*
 		UpdateProcessArgs Update Advanced Configuration Options for One Cluster
@@ -672,14 +678,14 @@ type CreateClusterApiRequest struct {
 	ctx                                context.Context
 	ApiService                         ClustersApi
 	groupId                            string
-	clusterDescription20240805         *ClusterDescription20240805
+	apiAtlasClusterDescriptionPreview  *ApiAtlasClusterDescriptionPreview
 	useEffectiveInstanceFields         *bool
 	useEffectiveFieldsReplicationSpecs *bool
 }
 
 type CreateClusterApiParams struct {
 	GroupId                            string
-	ClusterDescription20240805         *ClusterDescription20240805
+	ApiAtlasClusterDescriptionPreview  *ApiAtlasClusterDescriptionPreview
 	UseEffectiveInstanceFields         *bool
 	UseEffectiveFieldsReplicationSpecs *bool
 }
@@ -689,7 +695,7 @@ func (a *ClustersApiService) CreateClusterWithParams(ctx context.Context, args *
 		ApiService:                         a,
 		ctx:                                ctx,
 		groupId:                            args.GroupId,
-		clusterDescription20240805:         args.ClusterDescription20240805,
+		apiAtlasClusterDescriptionPreview:  args.ApiAtlasClusterDescriptionPreview,
 		useEffectiveInstanceFields:         args.UseEffectiveInstanceFields,
 		useEffectiveFieldsReplicationSpecs: args.UseEffectiveFieldsReplicationSpecs,
 	}
@@ -707,39 +713,41 @@ func (r CreateClusterApiRequest) UseEffectiveFieldsReplicationSpecs(useEffective
 	return r
 }
 
-func (r CreateClusterApiRequest) Execute() (*ClusterDescription20240805, *http.Response, error) {
+func (r CreateClusterApiRequest) Execute() (*ApiAtlasClusterDescriptionPreview, *http.Response, error) {
 	return r.ApiService.CreateClusterExecute(r)
 }
 
 /*
 CreateCluster Create One Cluster in One Project
 
-Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. This feature is not available for serverless clusters.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-Please note that using an `instanceSize` of M2 or M5 will create a Flex cluster instead. Support for the `instanceSize` of M2 or M5 will be discontinued in January 2026. We recommend using the Create Flex Cluster API for such configurations moving forward. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
+	Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. This feature is not available for serverless clusters.
+
+Please note that using an `instanceSize` of M2 or M5 will create a Flex cluster instead. Support for the `instanceSize` of M2 or M5 will be discontinued in January 2026. We recommend using the Create Flex Cluster API for such configurations moving forward. Deprecated versions: v2-{2024-10-23}, v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateClusterApiRequest
 */
-func (a *ClustersApiService) CreateCluster(ctx context.Context, groupId string, clusterDescription20240805 *ClusterDescription20240805) CreateClusterApiRequest {
+func (a *ClustersApiService) CreateCluster(ctx context.Context, groupId string, apiAtlasClusterDescriptionPreview *ApiAtlasClusterDescriptionPreview) CreateClusterApiRequest {
 	return CreateClusterApiRequest{
-		ApiService:                 a,
-		ctx:                        ctx,
-		groupId:                    groupId,
-		clusterDescription20240805: clusterDescription20240805,
+		ApiService:                        a,
+		ctx:                               ctx,
+		groupId:                           groupId,
+		apiAtlasClusterDescriptionPreview: apiAtlasClusterDescriptionPreview,
 	}
 }
 
 // CreateClusterExecute executes the request
 //
-//	@return ClusterDescription20240805
-func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
+//	@return ApiAtlasClusterDescriptionPreview
+func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*ApiAtlasClusterDescriptionPreview, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *ClusterDescription20240805
+		localVarReturnValue *ApiAtlasClusterDescriptionPreview
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.CreateCluster")
@@ -756,12 +764,12 @@ func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*C
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.clusterDescription20240805 == nil {
-		return localVarReturnValue, nil, reportError("clusterDescription20240805 is required and must be specified")
+	if r.apiAtlasClusterDescriptionPreview == nil {
+		return localVarReturnValue, nil, reportError("apiAtlasClusterDescriptionPreview is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-10-23+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -770,7 +778,7 @@ func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*C
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-10-23+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -784,7 +792,7 @@ func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*C
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Fields-Replication-Specs", r.useEffectiveFieldsReplicationSpecs, "")
 	}
 	// body params
-	localVarPostBody = r.clusterDescription20240805
+	localVarPostBody = r.apiAtlasClusterDescriptionPreview
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -976,16 +984,18 @@ func (r GetClusterApiRequest) UseEffectiveFieldsReplicationSpecs(useEffectiveFie
 	return r
 }
 
-func (r GetClusterApiRequest) Execute() (*ClusterDescription20240805, *http.Response, error) {
+func (r GetClusterApiRequest) Execute() (*ApiAtlasClusterDescriptionPreview, *http.Response, error) {
 	return r.ApiService.GetClusterExecute(r)
 }
 
 /*
 GetCluster Return One Cluster from One Project
 
-Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. This feature is not available for serverless clusters.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-This endpoint can also be used on Flex clusters that were created using the [Create Cluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the Get Flex Cluster endpoint for Flex clusters instead. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
+	Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. This feature is not available for serverless clusters.
+
+This endpoint can also be used on Flex clusters that were created using the [Create Cluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the Get Flex Cluster endpoint for Flex clusters instead. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1003,13 +1013,13 @@ func (a *ClustersApiService) GetCluster(ctx context.Context, groupId string, clu
 
 // GetClusterExecute executes the request
 //
-//	@return ClusterDescription20240805
-func (a *ClustersApiService) GetClusterExecute(r GetClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
+//	@return ApiAtlasClusterDescriptionPreview
+func (a *ClustersApiService) GetClusterExecute(r GetClusterApiRequest) (*ApiAtlasClusterDescriptionPreview, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *ClusterDescription20240805
+		localVarReturnValue *ApiAtlasClusterDescriptionPreview
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetCluster")
@@ -1041,7 +1051,7 @@ func (a *ClustersApiService) GetClusterExecute(r GetClusterApiRequest) (*Cluster
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2663,7 +2673,7 @@ type UpdateClusterApiRequest struct {
 	ApiService                         ClustersApi
 	groupId                            string
 	clusterName                        string
-	clusterDescription20240805         *ClusterDescription20240805
+	apiAtlasClusterDescriptionPreview  *ApiAtlasClusterDescriptionPreview
 	useEffectiveInstanceFields         *bool
 	useEffectiveFieldsReplicationSpecs *bool
 }
@@ -2671,7 +2681,7 @@ type UpdateClusterApiRequest struct {
 type UpdateClusterApiParams struct {
 	GroupId                            string
 	ClusterName                        string
-	ClusterDescription20240805         *ClusterDescription20240805
+	ApiAtlasClusterDescriptionPreview  *ApiAtlasClusterDescriptionPreview
 	UseEffectiveInstanceFields         *bool
 	UseEffectiveFieldsReplicationSpecs *bool
 }
@@ -2682,7 +2692,7 @@ func (a *ClustersApiService) UpdateClusterWithParams(ctx context.Context, args *
 		ctx:                                ctx,
 		groupId:                            args.GroupId,
 		clusterName:                        args.ClusterName,
-		clusterDescription20240805:         args.ClusterDescription20240805,
+		apiAtlasClusterDescriptionPreview:  args.ApiAtlasClusterDescriptionPreview,
 		useEffectiveInstanceFields:         args.UseEffectiveInstanceFields,
 		useEffectiveFieldsReplicationSpecs: args.UseEffectiveFieldsReplicationSpecs,
 	}
@@ -2700,39 +2710,41 @@ func (r UpdateClusterApiRequest) UseEffectiveFieldsReplicationSpecs(useEffective
 	return r
 }
 
-func (r UpdateClusterApiRequest) Execute() (*ClusterDescription20240805, *http.Response, error) {
+func (r UpdateClusterApiRequest) Execute() (*ApiAtlasClusterDescriptionPreview, *http.Response, error) {
 	return r.ApiService.UpdateClusterExecute(r)
 }
 
 /*
 UpdateCluster Update One Cluster in One Project
 
-Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update clusters with asymmetrically-sized shards. To update a cluster's termination protection, the requesting Service Account or API Key must have the Project Owner role. For all other updates, the requesting Service Account or API Key must have the Project Cluster Manager role or the Project Replica Set Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update clusters with asymmetrically-sized shards. To update a cluster's termination protection, the requesting Service Account or API Key must have the Project Owner role. For all other updates, the requesting Service Account or API Key must have the Project Cluster Manager role or the Project Replica Set Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2024-10-23}, v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
 	@return UpdateClusterApiRequest
 */
-func (a *ClustersApiService) UpdateCluster(ctx context.Context, groupId string, clusterName string, clusterDescription20240805 *ClusterDescription20240805) UpdateClusterApiRequest {
+func (a *ClustersApiService) UpdateCluster(ctx context.Context, groupId string, clusterName string, apiAtlasClusterDescriptionPreview *ApiAtlasClusterDescriptionPreview) UpdateClusterApiRequest {
 	return UpdateClusterApiRequest{
-		ApiService:                 a,
-		ctx:                        ctx,
-		groupId:                    groupId,
-		clusterName:                clusterName,
-		clusterDescription20240805: clusterDescription20240805,
+		ApiService:                        a,
+		ctx:                               ctx,
+		groupId:                           groupId,
+		clusterName:                       clusterName,
+		apiAtlasClusterDescriptionPreview: apiAtlasClusterDescriptionPreview,
 	}
 }
 
 // UpdateClusterExecute executes the request
 //
-//	@return ClusterDescription20240805
-func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
+//	@return ApiAtlasClusterDescriptionPreview
+func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*ApiAtlasClusterDescriptionPreview, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *ClusterDescription20240805
+		localVarReturnValue *ApiAtlasClusterDescriptionPreview
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UpdateCluster")
@@ -2753,12 +2765,12 @@ func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*C
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.clusterDescription20240805 == nil {
-		return localVarReturnValue, nil, reportError("clusterDescription20240805 is required and must be specified")
+	if r.apiAtlasClusterDescriptionPreview == nil {
+		return localVarReturnValue, nil, reportError("apiAtlasClusterDescriptionPreview is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-10-23+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2767,7 +2779,7 @@ func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*C
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-10-23+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2781,7 +2793,7 @@ func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*C
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Fields-Replication-Specs", r.useEffectiveFieldsReplicationSpecs, "")
 	}
 	// body params
-	localVarPostBody = r.clusterDescription20240805
+	localVarPostBody = r.apiAtlasClusterDescriptionPreview
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

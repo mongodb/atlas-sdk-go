@@ -2,7 +2,7 @@
 
 package admin
 
-// PerformanceAdvisorResponse struct for PerformanceAdvisorResponse
+// PerformanceAdvisorResponse Response that contains Performance Advisor suggested indexes and query shapes.
 type PerformanceAdvisorResponse struct {
 	// List of query predicates, sorts, and projections that the Performance Advisor suggests.
 	// Read only field.

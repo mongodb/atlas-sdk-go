@@ -13,6 +13,8 @@ type OrganizationSettings struct {
 	MaxServiceAccountSecretValidityInHours *int `json:"maxServiceAccountSecretValidityInHours,omitempty"`
 	// Flag that indicates whether to require users to set up Multi-Factor Authentication (MFA) before accessing the specified organization. To learn more, see: https://www.mongodb.com/docs/atlas/security-multi-factor-authentication/.
 	MultiFactorAuthRequired *bool `json:"multiFactorAuthRequired,omitempty"`
+	// String that specifies a distribution list email address for the specified organization to receive proactive notifications about its infrastructure. The operations contact is used for notifications only and is not authorized to make decisions or approvals. Passing an explicit null clears the existing operations contact (if any). An empty string is invalid and is rejected with a validation error.
+	OperationsContact *string `json:"operationsContact,omitempty"`
 	// Flag that indicates whether to block MongoDB Support from accessing Atlas infrastructure and cluster logs for any deployment in the specified organization without explicit permission. Once this setting is turned on, you can grant MongoDB Support a 24-hour bypass access to the Atlas deployment to resolve support issues. To learn more, see: https://www.mongodb.com/docs/atlas/security-restrict-support-access/.
 	RestrictEmployeeAccess *bool `json:"restrictEmployeeAccess,omitempty"`
 	// String that specifies a single email address for the specified organization to receive security-related notifications. Specifying a security contact does not grant them authorization or access to Atlas for security decisions or approvals. An empty string is valid and clears the existing security contact (if any).
@@ -205,6 +207,39 @@ func (o *OrganizationSettings) HasMultiFactorAuthRequired() bool {
 // SetMultiFactorAuthRequired gets a reference to the given bool and assigns it to the MultiFactorAuthRequired field.
 func (o *OrganizationSettings) SetMultiFactorAuthRequired(v bool) {
 	o.MultiFactorAuthRequired = &v
+}
+
+// GetOperationsContact returns the OperationsContact field value if set, zero value otherwise
+func (o *OrganizationSettings) GetOperationsContact() string {
+	if o == nil || IsNil(o.OperationsContact) {
+		var ret string
+		return ret
+	}
+	return *o.OperationsContact
+}
+
+// GetOperationsContactOk returns a tuple with the OperationsContact field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationSettings) GetOperationsContactOk() (*string, bool) {
+	if o == nil || IsNil(o.OperationsContact) {
+		return nil, false
+	}
+
+	return o.OperationsContact, true
+}
+
+// HasOperationsContact returns a boolean if a field has been set.
+func (o *OrganizationSettings) HasOperationsContact() bool {
+	if o != nil && !IsNil(o.OperationsContact) {
+		return true
+	}
+
+	return false
+}
+
+// SetOperationsContact gets a reference to the given string and assigns it to the OperationsContact field.
+func (o *OrganizationSettings) SetOperationsContact(v string) {
+	o.OperationsContact = &v
 }
 
 // GetRestrictEmployeeAccess returns the RestrictEmployeeAccess field value if set, zero value otherwise

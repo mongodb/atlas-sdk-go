@@ -2,7 +2,7 @@
 
 package admin
 
-// SchemaAdvisorResponse struct for SchemaAdvisorResponse
+// SchemaAdvisorResponse Response that contains Performance Advisor schema suggestions.
 type SchemaAdvisorResponse struct {
 	// List that contains the documents with information about the schema advice that Performance Advisor suggests.
 	// Read only field.
