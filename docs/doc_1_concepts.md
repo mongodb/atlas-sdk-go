@@ -7,7 +7,7 @@ The Atlas Go SDK is flexible because it accepts many different types of argument
 
 ## Fetching Data from the Back End
 
-To fetch data, you can execute the `{Api}.{Operation}WithParams()` method:
+To fetch data, you can execute the `{API}.{Operation}WithParams()` method:
 
 ```go 
 // Surrounding code omitted for brevity

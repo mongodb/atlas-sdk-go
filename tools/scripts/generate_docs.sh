@@ -18,6 +18,11 @@ transformed_file="atlas-api-transformed.yaml"
 client_package="admin"
 openapiFileLocation="$OPENAPI_FOLDER/$transformed_file"
 
+# The spec has been growing by roughly 1KB/day; SnakeYAML's parser (bundled
+# with the generator) refuses YAML documents over 3MB by default. Raise that
+# ceiling well ahead of time so growth doesn't silently break generation.
+export JAVA_OPTS="${JAVA_OPTS:-} -DmaxYamlCodePoints=20000000"
+
 echo "# Running Client Generation"
 
 npm exec openapi-generator-cli -- generate \
