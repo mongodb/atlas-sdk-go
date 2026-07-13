@@ -4,19 +4,19 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddGroupTeams**](TeamsAPI.md#AddGroupTeams) | **Post** /api/atlas/v2/groups/{groupId}/teams | Add Multiple Teams to One Project
-[**AddTeamUsers**](TeamsAPI.md#AddTeamUsers) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Assign MongoDB Cloud Users in One Organization to One Team
-[**CreateOrgTeam**](TeamsAPI.md#CreateOrgTeam) | **Post** /api/atlas/v2/orgs/{orgId}/teams | Create One Team in One Organization
-[**DeleteOrgTeam**](TeamsAPI.md#DeleteOrgTeam) | **Delete** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Remove One Team from One Organization
-[**GetGroupTeam**](TeamsAPI.md#GetGroupTeam) | **Get** /api/atlas/v2/groups/{groupId}/teams/{teamId} | Return One Team in One Project
-[**GetOrgTeam**](TeamsAPI.md#GetOrgTeam) | **Get** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Return One Team by ID
-[**GetTeamByName**](TeamsAPI.md#GetTeamByName) | **Get** /api/atlas/v2/orgs/{orgId}/teams/byName/{teamName} | Return One Team by Name
-[**ListGroupTeams**](TeamsAPI.md#ListGroupTeams) | **Get** /api/atlas/v2/groups/{groupId}/teams | Return All Teams in One Project
-[**ListOrgTeams**](TeamsAPI.md#ListOrgTeams) | **Get** /api/atlas/v2/orgs/{orgId}/teams | Return All Teams in One Organization
-[**RemoveGroupTeam**](TeamsAPI.md#RemoveGroupTeam) | **Delete** /api/atlas/v2/groups/{groupId}/teams/{teamId} | Remove One Team from One Project
-[**RemoveUserFromTeam**](TeamsAPI.md#RemoveUserFromTeam) | **Delete** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId} | Remove One MongoDB Cloud User from One Team
-[**RenameOrgTeam**](TeamsAPI.md#RenameOrgTeam) | **Patch** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Rename One Team
-[**UpdateGroupTeam**](TeamsAPI.md#UpdateGroupTeam) | **Patch** /api/atlas/v2/groups/{groupId}/teams/{teamId} | Update Team Roles in One Project
+[**AddGroupTeams**](TeamsApi.md#AddGroupTeams) | **Post** /api/atlas/v2/groups/{groupId}/teams | Add Multiple Teams to One Project
+[**AddTeamUsers**](TeamsApi.md#AddTeamUsers) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Assign MongoDB Cloud Users in One Organization to One Team
+[**CreateOrgTeam**](TeamsApi.md#CreateOrgTeam) | **Post** /api/atlas/v2/orgs/{orgId}/teams | Create One Team in One Organization
+[**DeleteOrgTeam**](TeamsApi.md#DeleteOrgTeam) | **Delete** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Remove One Team from One Organization
+[**GetGroupTeam**](TeamsApi.md#GetGroupTeam) | **Get** /api/atlas/v2/groups/{groupId}/teams/{teamId} | Return One Team in One Project
+[**GetOrgTeam**](TeamsApi.md#GetOrgTeam) | **Get** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Return One Team by ID
+[**GetTeamByName**](TeamsApi.md#GetTeamByName) | **Get** /api/atlas/v2/orgs/{orgId}/teams/byName/{teamName} | Return One Team by Name
+[**ListGroupTeams**](TeamsApi.md#ListGroupTeams) | **Get** /api/atlas/v2/groups/{groupId}/teams | Return All Teams in One Project
+[**ListOrgTeams**](TeamsApi.md#ListOrgTeams) | **Get** /api/atlas/v2/orgs/{orgId}/teams | Return All Teams in One Organization
+[**RemoveGroupTeam**](TeamsApi.md#RemoveGroupTeam) | **Delete** /api/atlas/v2/groups/{groupId}/teams/{teamId} | Remove One Team from One Project
+[**RemoveUserFromTeam**](TeamsApi.md#RemoveUserFromTeam) | **Delete** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId} | Remove One MongoDB Cloud User from One Team
+[**RenameOrgTeam**](TeamsApi.md#RenameOrgTeam) | **Patch** /api/atlas/v2/orgs/{orgId}/teams/{teamId} | Rename One Team
+[**UpdateGroupTeam**](TeamsApi.md#UpdateGroupTeam) | **Patch** /api/atlas/v2/groups/{groupId}/teams/{teamId} | Update Team Roles in One Project
 
 
 

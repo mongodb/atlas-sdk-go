@@ -4,24 +4,24 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateClusterFtsIndex**](AtlasSearchAPI.md#CreateClusterFtsIndex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes | Create One Atlas Search Index
-[**CreateClusterSearchDeployment**](AtlasSearchAPI.md#CreateClusterSearchDeployment) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Create Search Nodes
-[**CreateClusterSearchIndex**](AtlasSearchAPI.md#CreateClusterSearchIndex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes | Create One Atlas Search Index
-[**DeleteClusterFtsIndex**](AtlasSearchAPI.md#DeleteClusterFtsIndex) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Remove One Atlas Search Index
-[**DeleteClusterSearchDeployment**](AtlasSearchAPI.md#DeleteClusterSearchDeployment) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Delete Search Nodes
-[**DeleteClusterSearchIndex**](AtlasSearchAPI.md#DeleteClusterSearchIndex) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId} | Remove One Atlas Search Index by ID
-[**DeleteIndexByName**](AtlasSearchAPI.md#DeleteIndexByName) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName} | Remove One Atlas Search Index by Name
-[**GetClusterFtsIndex**](AtlasSearchAPI.md#GetClusterFtsIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Return One Atlas Search Index
-[**GetClusterSearchDeployment**](AtlasSearchAPI.md#GetClusterSearchDeployment) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Return All Search Nodes
-[**GetClusterSearchIndex**](AtlasSearchAPI.md#GetClusterSearchIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId} | Return One Atlas Search Index by ID
-[**GetIndexByName**](AtlasSearchAPI.md#GetIndexByName) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName} | Return One Atlas Search Index by Name
-[**ListClusterFtsIndex**](AtlasSearchAPI.md#ListClusterFtsIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{databaseName}/{collectionName} | Return All Atlas Search Indexes for One Collection
-[**ListClusterSearchIndexes**](AtlasSearchAPI.md#ListClusterSearchIndexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes | Return All Atlas Search Indexes for One Cluster
-[**ListSearchIndex**](AtlasSearchAPI.md#ListSearchIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName} | Return All Atlas Search Indexes for One Collection
-[**UpdateClusterFtsIndex**](AtlasSearchAPI.md#UpdateClusterFtsIndex) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Update One Atlas Search Index
-[**UpdateClusterSearchDeployment**](AtlasSearchAPI.md#UpdateClusterSearchDeployment) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Update Search Nodes
-[**UpdateClusterSearchIndex**](AtlasSearchAPI.md#UpdateClusterSearchIndex) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId} | Update One Atlas Search Index by ID
-[**UpdateIndexByName**](AtlasSearchAPI.md#UpdateIndexByName) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName} | Update One Atlas Search Index by Name
+[**CreateClusterFtsIndex**](AtlasSearchApi.md#CreateClusterFtsIndex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes | Create One Atlas Search Index
+[**CreateClusterSearchDeployment**](AtlasSearchApi.md#CreateClusterSearchDeployment) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Create Search Nodes
+[**CreateClusterSearchIndex**](AtlasSearchApi.md#CreateClusterSearchIndex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes | Create One Atlas Search Index
+[**DeleteClusterFtsIndex**](AtlasSearchApi.md#DeleteClusterFtsIndex) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Remove One Atlas Search Index
+[**DeleteClusterSearchDeployment**](AtlasSearchApi.md#DeleteClusterSearchDeployment) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Delete Search Nodes
+[**DeleteClusterSearchIndex**](AtlasSearchApi.md#DeleteClusterSearchIndex) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId} | Remove One Atlas Search Index by ID
+[**DeleteIndexByName**](AtlasSearchApi.md#DeleteIndexByName) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName} | Remove One Atlas Search Index by Name
+[**GetClusterFtsIndex**](AtlasSearchApi.md#GetClusterFtsIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Return One Atlas Search Index
+[**GetClusterSearchDeployment**](AtlasSearchApi.md#GetClusterSearchDeployment) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Return All Search Nodes
+[**GetClusterSearchIndex**](AtlasSearchApi.md#GetClusterSearchIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId} | Return One Atlas Search Index by ID
+[**GetIndexByName**](AtlasSearchApi.md#GetIndexByName) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName} | Return One Atlas Search Index by Name
+[**ListClusterFtsIndex**](AtlasSearchApi.md#ListClusterFtsIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{databaseName}/{collectionName} | Return All Atlas Search Indexes for One Collection
+[**ListClusterSearchIndexes**](AtlasSearchApi.md#ListClusterSearchIndexes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes | Return All Atlas Search Indexes for One Cluster
+[**ListSearchIndex**](AtlasSearchApi.md#ListSearchIndex) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName} | Return All Atlas Search Indexes for One Collection
+[**UpdateClusterFtsIndex**](AtlasSearchApi.md#UpdateClusterFtsIndex) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes/{indexId} | Update One Atlas Search Index
+[**UpdateClusterSearchDeployment**](AtlasSearchApi.md#UpdateClusterSearchDeployment) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment | Update Search Nodes
+[**UpdateClusterSearchIndex**](AtlasSearchApi.md#UpdateClusterSearchIndex) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{indexId} | Update One Atlas Search Index by ID
+[**UpdateIndexByName**](AtlasSearchApi.md#UpdateIndexByName) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/indexes/{databaseName}/{collectionName}/{indexName} | Update One Atlas Search Index by Name
 
 
 

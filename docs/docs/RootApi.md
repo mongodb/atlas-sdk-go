@@ -4,8 +4,8 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetSystemStatus**](RootAPI.md#GetSystemStatus) | **Get** /api/atlas/v2 | Return the Status of This MongoDB Application
-[**ListControlPlaneAddresses**](RootAPI.md#ListControlPlaneAddresses) | **Get** /api/atlas/v2/unauth/controlPlaneIPAddresses | Return All Control Plane IP Addresses
+[**GetSystemStatus**](RootApi.md#GetSystemStatus) | **Get** /api/atlas/v2 | Return the Status of This MongoDB Application
+[**ListControlPlaneAddresses**](RootApi.md#ListControlPlaneAddresses) | **Get** /api/atlas/v2/unauth/controlPlaneIPAddresses | Return All Control Plane IP Addresses
 
 
 

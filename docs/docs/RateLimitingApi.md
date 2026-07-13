@@ -4,8 +4,8 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetRateLimit**](RateLimitingAPI.md#GetRateLimit) | **Get** /api/atlas/v2/rateLimits/{endpointSetId} | Return One Rate Limit
-[**ListRateLimits**](RateLimitingAPI.md#ListRateLimits) | **Get** /api/atlas/v2/rateLimits | Return All Rate Limits
+[**GetRateLimit**](RateLimitingApi.md#GetRateLimit) | **Get** /api/atlas/v2/rateLimits/{endpointSetId} | Return One Rate Limit
+[**ListRateLimits**](RateLimitingApi.md#ListRateLimits) | **Get** /api/atlas/v2/rateLimits | Return All Rate Limits
 
 
 

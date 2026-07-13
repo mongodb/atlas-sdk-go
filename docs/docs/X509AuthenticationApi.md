@@ -4,9 +4,9 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateDatabaseUserCert**](X509AuthenticationAPI.md#CreateDatabaseUserCert) | **Post** /api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs | Create One X.509 Certificate for One Database User
-[**DisableSecurityCustomerX509**](X509AuthenticationAPI.md#DisableSecurityCustomerX509) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/customerX509 | Disable Customer-Managed X.509
-[**ListDatabaseUserCerts**](X509AuthenticationAPI.md#ListDatabaseUserCerts) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs | Return All X.509 Certificates Assigned to One Database User
+[**CreateDatabaseUserCert**](X509AuthenticationApi.md#CreateDatabaseUserCert) | **Post** /api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs | Create One X.509 Certificate for One Database User
+[**DisableSecurityCustomerX509**](X509AuthenticationApi.md#DisableSecurityCustomerX509) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/customerX509 | Disable Customer-Managed X.509
+[**ListDatabaseUserCerts**](X509AuthenticationApi.md#ListDatabaseUserCerts) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers/{username}/certs | Return All X.509 Certificates Assigned to One Database User
 
 
 

@@ -4,15 +4,15 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCostExplorerProcess**](InvoicesAPI.md#CreateCostExplorerProcess) | **Post** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage | Create One Cost Explorer Query Process
-[**GetCostExplorerUsage**](InvoicesAPI.md#GetCostExplorerUsage) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return Usage Details for One Cost Explorer Query
-[**GetInvoice**](InvoicesAPI.md#GetInvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId} | Return One Invoice for One Organization
-[**GetInvoiceCsv**](InvoicesAPI.md#GetInvoiceCsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Invoice as CSV for One Organization
-[**GetSku**](InvoicesAPI.md#GetSku) | **Get** /api/atlas/v2/skus/{skuId} | Return One Stock Keeping Unit
-[**ListInvoicePending**](InvoicesAPI.md#ListInvoicePending) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/pending | Return All Pending Invoices for One Organization
-[**ListInvoices**](InvoicesAPI.md#ListInvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices | Return All Invoices for One Organization
-[**ListSkus**](InvoicesAPI.md#ListSkus) | **Get** /api/atlas/v2/skus | Return All Stock Keeping Units
-[**SearchInvoiceLineItems**](InvoicesAPI.md#SearchInvoiceLineItems) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems:search | Return All Line Items for One Invoice by Invoice ID
+[**CreateCostExplorerProcess**](InvoicesApi.md#CreateCostExplorerProcess) | **Post** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage | Create One Cost Explorer Query Process
+[**GetCostExplorerUsage**](InvoicesApi.md#GetCostExplorerUsage) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return Usage Details for One Cost Explorer Query
+[**GetInvoice**](InvoicesApi.md#GetInvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId} | Return One Invoice for One Organization
+[**GetInvoiceCsv**](InvoicesApi.md#GetInvoiceCsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Invoice as CSV for One Organization
+[**GetSku**](InvoicesApi.md#GetSku) | **Get** /api/atlas/v2/skus/{skuId} | Return One Stock Keeping Unit
+[**ListInvoicePending**](InvoicesApi.md#ListInvoicePending) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/pending | Return All Pending Invoices for One Organization
+[**ListInvoices**](InvoicesApi.md#ListInvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices | Return All Invoices for One Organization
+[**ListSkus**](InvoicesApi.md#ListSkus) | **Get** /api/atlas/v2/skus | Return All Stock Keeping Units
+[**SearchInvoiceLineItems**](InvoicesApi.md#SearchInvoiceLineItems) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems:search | Return All Line Items for One Invoice by Invoice ID
 
 
 

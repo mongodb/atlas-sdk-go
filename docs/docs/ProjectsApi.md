@@ -4,29 +4,29 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddGroupUser**](ProjectsAPI.md#AddGroupUser) | **Post** /api/atlas/v2/groups/{groupId}/access | Add One MongoDB Cloud User to One Project
-[**CreateGroup**](ProjectsAPI.md#CreateGroup) | **Post** /api/atlas/v2/groups | Create One Project
-[**CreateGroupInvite**](ProjectsAPI.md#CreateGroupInvite) | **Post** /api/atlas/v2/groups/{groupId}/invites | Create Invitation for One MongoDB Cloud User in One Project
-[**DeleteGroup**](ProjectsAPI.md#DeleteGroup) | **Delete** /api/atlas/v2/groups/{groupId} | Remove One Project
-[**DeleteGroupInvite**](ProjectsAPI.md#DeleteGroupInvite) | **Delete** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Remove One Invitation from One Project
-[**DeleteGroupLimit**](ProjectsAPI.md#DeleteGroupLimit) | **Delete** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Remove One Project Limit
-[**GetGroup**](ProjectsAPI.md#GetGroup) | **Get** /api/atlas/v2/groups/{groupId} | Return One Project
-[**GetGroupByName**](ProjectsAPI.md#GetGroupByName) | **Get** /api/atlas/v2/groups/byName/{groupName} | Return One Project by Name
-[**GetGroupInvite**](ProjectsAPI.md#GetGroupInvite) | **Get** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Return One Invitation in One Project by Invitation ID
-[**GetGroupIpAddresses**](ProjectsAPI.md#GetGroupIpAddresses) | **Get** /api/atlas/v2/groups/{groupId}/ipAddresses | Return All IP Addresses for One Project
-[**GetGroupLimit**](ProjectsAPI.md#GetGroupLimit) | **Get** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Return One Limit for One Project
-[**GetGroupSettings**](ProjectsAPI.md#GetGroupSettings) | **Get** /api/atlas/v2/groups/{groupId}/settings | Return Project Settings
-[**GetMongoDbVersions**](ProjectsAPI.md#GetMongoDbVersions) | **Get** /api/atlas/v2/groups/{groupId}/mongoDBVersions | Return All Available MongoDB LTS Versions for Clusters in One Project
-[**ListGroupInvites**](ProjectsAPI.md#ListGroupInvites) | **Get** /api/atlas/v2/groups/{groupId}/invites | Return All Invitations in One Project
-[**ListGroupLimits**](ProjectsAPI.md#ListGroupLimits) | **Get** /api/atlas/v2/groups/{groupId}/limits | Return All Limits for One Project
-[**ListGroups**](ProjectsAPI.md#ListGroups) | **Get** /api/atlas/v2/groups | Return All Projects
-[**MigrateGroup**](ProjectsAPI.md#MigrateGroup) | **Post** /api/atlas/v2/groups/{groupId}:migrate | Migrate One Project to Another Organization
-[**SetGroupLimit**](ProjectsAPI.md#SetGroupLimit) | **Patch** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Set One Project Limit
-[**UpdateGroup**](ProjectsAPI.md#UpdateGroup) | **Patch** /api/atlas/v2/groups/{groupId} | Update One Project
-[**UpdateGroupInvites**](ProjectsAPI.md#UpdateGroupInvites) | **Patch** /api/atlas/v2/groups/{groupId}/invites | Update One Invitation in One Project
-[**UpdateGroupSettings**](ProjectsAPI.md#UpdateGroupSettings) | **Patch** /api/atlas/v2/groups/{groupId}/settings | Update Project Settings
-[**UpdateGroupUserRoles**](ProjectsAPI.md#UpdateGroupUserRoles) | **Put** /api/atlas/v2/groups/{groupId}/users/{userId}/roles | Update Project Roles for One MongoDB Cloud User
-[**UpdateInviteById**](ProjectsAPI.md#UpdateInviteById) | **Patch** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Update One Invitation in One Project by Invitation ID
+[**AddGroupUser**](ProjectsApi.md#AddGroupUser) | **Post** /api/atlas/v2/groups/{groupId}/access | Add One MongoDB Cloud User to One Project
+[**CreateGroup**](ProjectsApi.md#CreateGroup) | **Post** /api/atlas/v2/groups | Create One Project
+[**CreateGroupInvite**](ProjectsApi.md#CreateGroupInvite) | **Post** /api/atlas/v2/groups/{groupId}/invites | Create Invitation for One MongoDB Cloud User in One Project
+[**DeleteGroup**](ProjectsApi.md#DeleteGroup) | **Delete** /api/atlas/v2/groups/{groupId} | Remove One Project
+[**DeleteGroupInvite**](ProjectsApi.md#DeleteGroupInvite) | **Delete** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Remove One Invitation from One Project
+[**DeleteGroupLimit**](ProjectsApi.md#DeleteGroupLimit) | **Delete** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Remove One Project Limit
+[**GetGroup**](ProjectsApi.md#GetGroup) | **Get** /api/atlas/v2/groups/{groupId} | Return One Project
+[**GetGroupByName**](ProjectsApi.md#GetGroupByName) | **Get** /api/atlas/v2/groups/byName/{groupName} | Return One Project by Name
+[**GetGroupInvite**](ProjectsApi.md#GetGroupInvite) | **Get** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Return One Invitation in One Project by Invitation ID
+[**GetGroupIpAddresses**](ProjectsApi.md#GetGroupIpAddresses) | **Get** /api/atlas/v2/groups/{groupId}/ipAddresses | Return All IP Addresses for One Project
+[**GetGroupLimit**](ProjectsApi.md#GetGroupLimit) | **Get** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Return One Limit for One Project
+[**GetGroupSettings**](ProjectsApi.md#GetGroupSettings) | **Get** /api/atlas/v2/groups/{groupId}/settings | Return Project Settings
+[**GetMongoDbVersions**](ProjectsApi.md#GetMongoDbVersions) | **Get** /api/atlas/v2/groups/{groupId}/mongoDBVersions | Return All Available MongoDB LTS Versions for Clusters in One Project
+[**ListGroupInvites**](ProjectsApi.md#ListGroupInvites) | **Get** /api/atlas/v2/groups/{groupId}/invites | Return All Invitations in One Project
+[**ListGroupLimits**](ProjectsApi.md#ListGroupLimits) | **Get** /api/atlas/v2/groups/{groupId}/limits | Return All Limits for One Project
+[**ListGroups**](ProjectsApi.md#ListGroups) | **Get** /api/atlas/v2/groups | Return All Projects
+[**MigrateGroup**](ProjectsApi.md#MigrateGroup) | **Post** /api/atlas/v2/groups/{groupId}:migrate | Migrate One Project to Another Organization
+[**SetGroupLimit**](ProjectsApi.md#SetGroupLimit) | **Patch** /api/atlas/v2/groups/{groupId}/limits/{limitName} | Set One Project Limit
+[**UpdateGroup**](ProjectsApi.md#UpdateGroup) | **Patch** /api/atlas/v2/groups/{groupId} | Update One Project
+[**UpdateGroupInvites**](ProjectsApi.md#UpdateGroupInvites) | **Patch** /api/atlas/v2/groups/{groupId}/invites | Update One Invitation in One Project
+[**UpdateGroupSettings**](ProjectsApi.md#UpdateGroupSettings) | **Patch** /api/atlas/v2/groups/{groupId}/settings | Update Project Settings
+[**UpdateGroupUserRoles**](ProjectsApi.md#UpdateGroupUserRoles) | **Put** /api/atlas/v2/groups/{groupId}/users/{userId}/roles | Update Project Roles for One MongoDB Cloud User
+[**UpdateInviteById**](ProjectsApi.md#UpdateInviteById) | **Patch** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Update One Invitation in One Project by Invitation ID
 
 
 

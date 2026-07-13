@@ -4,21 +4,21 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateOrg**](OrganizationsAPI.md#CreateOrg) | **Post** /api/atlas/v2/orgs | Create One Organization
-[**CreateOrgInvite**](OrganizationsAPI.md#CreateOrgInvite) | **Post** /api/atlas/v2/orgs/{orgId}/invites | Create Invitation for One MongoDB Cloud User in One Organization
-[**DeleteOrg**](OrganizationsAPI.md#DeleteOrg) | **Delete** /api/atlas/v2/orgs/{orgId} | Remove One Organization
-[**DeleteOrgInvite**](OrganizationsAPI.md#DeleteOrgInvite) | **Delete** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Remove One Invitation from One Organization
-[**GetOrg**](OrganizationsAPI.md#GetOrg) | **Get** /api/atlas/v2/orgs/{orgId} | Return One Organization
-[**GetOrgGroups**](OrganizationsAPI.md#GetOrgGroups) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return All Projects in One Organization
-[**GetOrgInvite**](OrganizationsAPI.md#GetOrgInvite) | **Get** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Return One Invitation in One Organization by Invitation ID
-[**GetOrgSettings**](OrganizationsAPI.md#GetOrgSettings) | **Get** /api/atlas/v2/orgs/{orgId}/settings | Return Settings for One Organization
-[**ListOrgInvites**](OrganizationsAPI.md#ListOrgInvites) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Invitations in One Organization
-[**ListOrgs**](OrganizationsAPI.md#ListOrgs) | **Get** /api/atlas/v2/orgs | Return All Organizations
-[**UpdateOrg**](OrganizationsAPI.md#UpdateOrg) | **Patch** /api/atlas/v2/orgs/{orgId} | Update One Organization
-[**UpdateOrgInviteById**](OrganizationsAPI.md#UpdateOrgInviteById) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Invitation in One Organization by Invitation ID
-[**UpdateOrgInvites**](OrganizationsAPI.md#UpdateOrgInvites) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Invitation in One Organization
-[**UpdateOrgSettings**](OrganizationsAPI.md#UpdateOrgSettings) | **Patch** /api/atlas/v2/orgs/{orgId}/settings | Update Settings for One Organization
-[**UpdateOrgUserRoles**](OrganizationsAPI.md#UpdateOrgUserRoles) | **Put** /api/atlas/v2/orgs/{orgId}/users/{userId}/roles | Update Organization Roles for One MongoDB Cloud User
+[**CreateOrg**](OrganizationsApi.md#CreateOrg) | **Post** /api/atlas/v2/orgs | Create One Organization
+[**CreateOrgInvite**](OrganizationsApi.md#CreateOrgInvite) | **Post** /api/atlas/v2/orgs/{orgId}/invites | Create Invitation for One MongoDB Cloud User in One Organization
+[**DeleteOrg**](OrganizationsApi.md#DeleteOrg) | **Delete** /api/atlas/v2/orgs/{orgId} | Remove One Organization
+[**DeleteOrgInvite**](OrganizationsApi.md#DeleteOrgInvite) | **Delete** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Remove One Invitation from One Organization
+[**GetOrg**](OrganizationsApi.md#GetOrg) | **Get** /api/atlas/v2/orgs/{orgId} | Return One Organization
+[**GetOrgGroups**](OrganizationsApi.md#GetOrgGroups) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return All Projects in One Organization
+[**GetOrgInvite**](OrganizationsApi.md#GetOrgInvite) | **Get** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Return One Invitation in One Organization by Invitation ID
+[**GetOrgSettings**](OrganizationsApi.md#GetOrgSettings) | **Get** /api/atlas/v2/orgs/{orgId}/settings | Return Settings for One Organization
+[**ListOrgInvites**](OrganizationsApi.md#ListOrgInvites) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Invitations in One Organization
+[**ListOrgs**](OrganizationsApi.md#ListOrgs) | **Get** /api/atlas/v2/orgs | Return All Organizations
+[**UpdateOrg**](OrganizationsApi.md#UpdateOrg) | **Patch** /api/atlas/v2/orgs/{orgId} | Update One Organization
+[**UpdateOrgInviteById**](OrganizationsApi.md#UpdateOrgInviteById) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Invitation in One Organization by Invitation ID
+[**UpdateOrgInvites**](OrganizationsApi.md#UpdateOrgInvites) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Invitation in One Organization
+[**UpdateOrgSettings**](OrganizationsApi.md#UpdateOrgSettings) | **Patch** /api/atlas/v2/orgs/{orgId}/settings | Update Settings for One Organization
+[**UpdateOrgUserRoles**](OrganizationsApi.md#UpdateOrgUserRoles) | **Put** /api/atlas/v2/orgs/{orgId}/users/{userId}/roles | Update Organization Roles for One MongoDB Cloud User
 
 
 

@@ -4,8 +4,8 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetGroupAuditLog**](AuditingAPI.md#GetGroupAuditLog) | **Get** /api/atlas/v2/groups/{groupId}/auditLog | Return Auditing Configuration for One Project
-[**UpdateAuditLog**](AuditingAPI.md#UpdateAuditLog) | **Patch** /api/atlas/v2/groups/{groupId}/auditLog | Update Auditing Configuration for One Project
+[**GetGroupAuditLog**](AuditingApi.md#GetGroupAuditLog) | **Get** /api/atlas/v2/groups/{groupId}/auditLog | Return Auditing Configuration for One Project
+[**UpdateAuditLog**](AuditingApi.md#UpdateAuditLog) | **Patch** /api/atlas/v2/groups/{groupId}/auditLog | Update Auditing Configuration for One Project
 
 
 

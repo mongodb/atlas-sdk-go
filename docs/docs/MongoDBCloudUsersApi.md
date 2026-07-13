@@ -4,25 +4,25 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddGroupUserRole**](MongoDBCloudUsersAPI.md#AddGroupUserRole) | **Post** /api/atlas/v2/groups/{groupId}/users/{userId}:addRole | Add One Project Role to One MongoDB Cloud User
-[**AddGroupUsers**](MongoDBCloudUsersAPI.md#AddGroupUsers) | **Post** /api/atlas/v2/groups/{groupId}/users | Add One MongoDB Cloud User to One Project
-[**AddOrgRole**](MongoDBCloudUsersAPI.md#AddOrgRole) | **Post** /api/atlas/v2/orgs/{orgId}/users/{userId}:addRole | Add One Organization Role to One MongoDB Cloud User
-[**AddOrgTeamUser**](MongoDBCloudUsersAPI.md#AddOrgTeamUser) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}:addUser | Add One MongoDB Cloud User to One Team
-[**CreateOrgUser**](MongoDBCloudUsersAPI.md#CreateOrgUser) | **Post** /api/atlas/v2/orgs/{orgId}/users | Add One MongoDB Cloud User to One Organization
-[**CreateUser**](MongoDBCloudUsersAPI.md#CreateUser) | **Post** /api/atlas/v2/users | Create One MongoDB Cloud User
-[**GetGroupUser**](MongoDBCloudUsersAPI.md#GetGroupUser) | **Get** /api/atlas/v2/groups/{groupId}/users/{userId} | Return One MongoDB Cloud User in One Project
-[**GetOrgUser**](MongoDBCloudUsersAPI.md#GetOrgUser) | **Get** /api/atlas/v2/orgs/{orgId}/users/{userId} | Return One MongoDB Cloud User in One Organization
-[**GetUser**](MongoDBCloudUsersAPI.md#GetUser) | **Get** /api/atlas/v2/users/{userId} | Return One MongoDB Cloud User by ID
-[**GetUserByName**](MongoDBCloudUsersAPI.md#GetUserByName) | **Get** /api/atlas/v2/users/byName/{userName} | Return One MongoDB Cloud User by Username
-[**ListGroupUsers**](MongoDBCloudUsersAPI.md#ListGroupUsers) | **Get** /api/atlas/v2/groups/{groupId}/users | Return All MongoDB Cloud Users in One Project
-[**ListOrgUsers**](MongoDBCloudUsersAPI.md#ListOrgUsers) | **Get** /api/atlas/v2/orgs/{orgId}/users | Return All MongoDB Cloud Users in One Organization
-[**ListTeamUsers**](MongoDBCloudUsersAPI.md#ListTeamUsers) | **Get** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Return All MongoDB Cloud Users Assigned to One Team
-[**RemoveGroupUser**](MongoDBCloudUsersAPI.md#RemoveGroupUser) | **Delete** /api/atlas/v2/groups/{groupId}/users/{userId} | Remove One MongoDB Cloud User from One Project
-[**RemoveGroupUserRole**](MongoDBCloudUsersAPI.md#RemoveGroupUserRole) | **Post** /api/atlas/v2/groups/{groupId}/users/{userId}:removeRole | Remove One Project Role from One MongoDB Cloud User
-[**RemoveOrgRole**](MongoDBCloudUsersAPI.md#RemoveOrgRole) | **Post** /api/atlas/v2/orgs/{orgId}/users/{userId}:removeRole | Remove One Organization Role from One MongoDB Cloud User
-[**RemoveOrgTeamUser**](MongoDBCloudUsersAPI.md#RemoveOrgTeamUser) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}:removeUser | Remove One MongoDB Cloud User from One Team
-[**RemoveOrgUser**](MongoDBCloudUsersAPI.md#RemoveOrgUser) | **Delete** /api/atlas/v2/orgs/{orgId}/users/{userId} | Remove One MongoDB Cloud User from One Organization
-[**UpdateOrgUser**](MongoDBCloudUsersAPI.md#UpdateOrgUser) | **Patch** /api/atlas/v2/orgs/{orgId}/users/{userId} | Update One MongoDB Cloud User in One Organization
+[**AddGroupUserRole**](MongoDBCloudUsersApi.md#AddGroupUserRole) | **Post** /api/atlas/v2/groups/{groupId}/users/{userId}:addRole | Add One Project Role to One MongoDB Cloud User
+[**AddGroupUsers**](MongoDBCloudUsersApi.md#AddGroupUsers) | **Post** /api/atlas/v2/groups/{groupId}/users | Add One MongoDB Cloud User to One Project
+[**AddOrgRole**](MongoDBCloudUsersApi.md#AddOrgRole) | **Post** /api/atlas/v2/orgs/{orgId}/users/{userId}:addRole | Add One Organization Role to One MongoDB Cloud User
+[**AddOrgTeamUser**](MongoDBCloudUsersApi.md#AddOrgTeamUser) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}:addUser | Add One MongoDB Cloud User to One Team
+[**CreateOrgUser**](MongoDBCloudUsersApi.md#CreateOrgUser) | **Post** /api/atlas/v2/orgs/{orgId}/users | Add One MongoDB Cloud User to One Organization
+[**CreateUser**](MongoDBCloudUsersApi.md#CreateUser) | **Post** /api/atlas/v2/users | Create One MongoDB Cloud User
+[**GetGroupUser**](MongoDBCloudUsersApi.md#GetGroupUser) | **Get** /api/atlas/v2/groups/{groupId}/users/{userId} | Return One MongoDB Cloud User in One Project
+[**GetOrgUser**](MongoDBCloudUsersApi.md#GetOrgUser) | **Get** /api/atlas/v2/orgs/{orgId}/users/{userId} | Return One MongoDB Cloud User in One Organization
+[**GetUser**](MongoDBCloudUsersApi.md#GetUser) | **Get** /api/atlas/v2/users/{userId} | Return One MongoDB Cloud User by ID
+[**GetUserByName**](MongoDBCloudUsersApi.md#GetUserByName) | **Get** /api/atlas/v2/users/byName/{userName} | Return One MongoDB Cloud User by Username
+[**ListGroupUsers**](MongoDBCloudUsersApi.md#ListGroupUsers) | **Get** /api/atlas/v2/groups/{groupId}/users | Return All MongoDB Cloud Users in One Project
+[**ListOrgUsers**](MongoDBCloudUsersApi.md#ListOrgUsers) | **Get** /api/atlas/v2/orgs/{orgId}/users | Return All MongoDB Cloud Users in One Organization
+[**ListTeamUsers**](MongoDBCloudUsersApi.md#ListTeamUsers) | **Get** /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users | Return All MongoDB Cloud Users Assigned to One Team
+[**RemoveGroupUser**](MongoDBCloudUsersApi.md#RemoveGroupUser) | **Delete** /api/atlas/v2/groups/{groupId}/users/{userId} | Remove One MongoDB Cloud User from One Project
+[**RemoveGroupUserRole**](MongoDBCloudUsersApi.md#RemoveGroupUserRole) | **Post** /api/atlas/v2/groups/{groupId}/users/{userId}:removeRole | Remove One Project Role from One MongoDB Cloud User
+[**RemoveOrgRole**](MongoDBCloudUsersApi.md#RemoveOrgRole) | **Post** /api/atlas/v2/orgs/{orgId}/users/{userId}:removeRole | Remove One Organization Role from One MongoDB Cloud User
+[**RemoveOrgTeamUser**](MongoDBCloudUsersApi.md#RemoveOrgTeamUser) | **Post** /api/atlas/v2/orgs/{orgId}/teams/{teamId}:removeUser | Remove One MongoDB Cloud User from One Team
+[**RemoveOrgUser**](MongoDBCloudUsersApi.md#RemoveOrgUser) | **Delete** /api/atlas/v2/orgs/{orgId}/users/{userId} | Remove One MongoDB Cloud User from One Organization
+[**UpdateOrgUser**](MongoDBCloudUsersApi.md#UpdateOrgUser) | **Patch** /api/atlas/v2/orgs/{orgId}/users/{userId} | Update One MongoDB Cloud User in One Organization
 
 
 

@@ -4,14 +4,14 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAlertConfig**](AlertConfigurationsAPI.md#CreateAlertConfig) | **Post** /api/atlas/v2/groups/{groupId}/alertConfigs | Create One Alert Configuration in One Project
-[**DeleteAlertConfig**](AlertConfigurationsAPI.md#DeleteAlertConfig) | **Delete** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Remove One Alert Configuration from One Project
-[**GetAlertConfig**](AlertConfigurationsAPI.md#GetAlertConfig) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Return One Alert Configuration from One Project
-[**GetAlertConfigs**](AlertConfigurationsAPI.md#GetAlertConfigs) | **Get** /api/atlas/v2/groups/{groupId}/alerts/{alertId}/alertConfigs | Return All Alert Configurations Set for One Alert
-[**ListAlertConfigs**](AlertConfigurationsAPI.md#ListAlertConfigs) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs | Return All Alert Configurations in One Project
-[**ListMatcherFieldNames**](AlertConfigurationsAPI.md#ListMatcherFieldNames) | **Get** /api/atlas/v2/alertConfigs/matchers/fieldNames | Return All Alert Configuration Matchers Field Names
-[**ToggleAlertConfig**](AlertConfigurationsAPI.md#ToggleAlertConfig) | **Patch** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Toggle State of One Alert Configuration in One Project
-[**UpdateAlertConfig**](AlertConfigurationsAPI.md#UpdateAlertConfig) | **Put** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Update One Alert Configuration in One Project
+[**CreateAlertConfig**](AlertConfigurationsApi.md#CreateAlertConfig) | **Post** /api/atlas/v2/groups/{groupId}/alertConfigs | Create One Alert Configuration in One Project
+[**DeleteAlertConfig**](AlertConfigurationsApi.md#DeleteAlertConfig) | **Delete** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Remove One Alert Configuration from One Project
+[**GetAlertConfig**](AlertConfigurationsApi.md#GetAlertConfig) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Return One Alert Configuration from One Project
+[**GetAlertConfigs**](AlertConfigurationsApi.md#GetAlertConfigs) | **Get** /api/atlas/v2/groups/{groupId}/alerts/{alertId}/alertConfigs | Return All Alert Configurations Set for One Alert
+[**ListAlertConfigs**](AlertConfigurationsApi.md#ListAlertConfigs) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs | Return All Alert Configurations in One Project
+[**ListMatcherFieldNames**](AlertConfigurationsApi.md#ListMatcherFieldNames) | **Get** /api/atlas/v2/alertConfigs/matchers/fieldNames | Return All Alert Configuration Matchers Field Names
+[**ToggleAlertConfig**](AlertConfigurationsApi.md#ToggleAlertConfig) | **Patch** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Toggle State of One Alert Configuration in One Project
+[**UpdateAlertConfig**](AlertConfigurationsApi.md#UpdateAlertConfig) | **Put** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId} | Update One Alert Configuration in One Project
 
 
 

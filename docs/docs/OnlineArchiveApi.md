@@ -4,12 +4,12 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateOnlineArchive**](OnlineArchiveAPI.md#CreateOnlineArchive) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives | Create One Online Archive
-[**DeleteOnlineArchive**](OnlineArchiveAPI.md#DeleteOnlineArchive) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId} | Remove One Online Archive
-[**DownloadQueryLogs**](OnlineArchiveAPI.md#DownloadQueryLogs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/queryLogs.gz | Download Online Archive Query Logs
-[**GetOnlineArchive**](OnlineArchiveAPI.md#GetOnlineArchive) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId} | Return One Online Archive
-[**ListOnlineArchives**](OnlineArchiveAPI.md#ListOnlineArchives) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives | Return All Online Archives for One Cluster
-[**UpdateOnlineArchive**](OnlineArchiveAPI.md#UpdateOnlineArchive) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId} | Update One Online Archive
+[**CreateOnlineArchive**](OnlineArchiveApi.md#CreateOnlineArchive) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives | Create One Online Archive
+[**DeleteOnlineArchive**](OnlineArchiveApi.md#DeleteOnlineArchive) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId} | Remove One Online Archive
+[**DownloadQueryLogs**](OnlineArchiveApi.md#DownloadQueryLogs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/queryLogs.gz | Download Online Archive Query Logs
+[**GetOnlineArchive**](OnlineArchiveApi.md#GetOnlineArchive) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId} | Return One Online Archive
+[**ListOnlineArchives**](OnlineArchiveApi.md#ListOnlineArchives) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives | Return All Online Archives for One Cluster
+[**UpdateOnlineArchive**](OnlineArchiveApi.md#UpdateOnlineArchive) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId} | Update One Online Archive
 
 
 

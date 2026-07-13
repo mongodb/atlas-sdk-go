@@ -4,11 +4,11 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateServerlessPrivateEndpoint**](ServerlessPrivateEndpointsAPI.md#CreateServerlessPrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint | Create One Private Endpoint for One Serverless Instance
-[**DeleteServerlessPrivateEndpoint**](ServerlessPrivateEndpointsAPI.md#DeleteServerlessPrivateEndpoint) | **Delete** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Remove One Private Endpoint for One Serverless Instance
-[**GetServerlessPrivateEndpoint**](ServerlessPrivateEndpointsAPI.md#GetServerlessPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Return One Private Endpoint for One Serverless Instance
-[**ListServerlessPrivateEndpoint**](ServerlessPrivateEndpointsAPI.md#ListServerlessPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint | Return All Private Endpoints for One Serverless Instance
-[**UpdateServerlessPrivateEndpoint**](ServerlessPrivateEndpointsAPI.md#UpdateServerlessPrivateEndpoint) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Update One Private Endpoint for One Serverless Instance
+[**CreateServerlessPrivateEndpoint**](ServerlessPrivateEndpointsApi.md#CreateServerlessPrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint | Create One Private Endpoint for One Serverless Instance
+[**DeleteServerlessPrivateEndpoint**](ServerlessPrivateEndpointsApi.md#DeleteServerlessPrivateEndpoint) | **Delete** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Remove One Private Endpoint for One Serverless Instance
+[**GetServerlessPrivateEndpoint**](ServerlessPrivateEndpointsApi.md#GetServerlessPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Return One Private Endpoint for One Serverless Instance
+[**ListServerlessPrivateEndpoint**](ServerlessPrivateEndpointsApi.md#ListServerlessPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint | Return All Private Endpoints for One Serverless Instance
+[**UpdateServerlessPrivateEndpoint**](ServerlessPrivateEndpointsApi.md#UpdateServerlessPrivateEndpoint) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/serverless/instance/{instanceName}/endpoint/{endpointId} | Update One Private Endpoint for One Serverless Instance
 
 
 

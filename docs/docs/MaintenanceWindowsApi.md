@@ -4,11 +4,11 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeferMaintenanceWindow**](MaintenanceWindowsAPI.md#DeferMaintenanceWindow) | **Post** /api/atlas/v2/groups/{groupId}/maintenanceWindow/defer | Defer One Maintenance Window for One Project
-[**GetMaintenanceWindow**](MaintenanceWindowsAPI.md#GetMaintenanceWindow) | **Get** /api/atlas/v2/groups/{groupId}/maintenanceWindow | Return One Maintenance Window for One Project
-[**ResetMaintenanceWindow**](MaintenanceWindowsAPI.md#ResetMaintenanceWindow) | **Delete** /api/atlas/v2/groups/{groupId}/maintenanceWindow | Reset One Maintenance Window for One Project
-[**ToggleMaintenanceAutoDefer**](MaintenanceWindowsAPI.md#ToggleMaintenanceAutoDefer) | **Post** /api/atlas/v2/groups/{groupId}/maintenanceWindow/autoDefer | Toggle Automatic Deferral of Maintenance for One Project
-[**UpdateMaintenanceWindow**](MaintenanceWindowsAPI.md#UpdateMaintenanceWindow) | **Patch** /api/atlas/v2/groups/{groupId}/maintenanceWindow | Update One Maintenance Window for One Project
+[**DeferMaintenanceWindow**](MaintenanceWindowsApi.md#DeferMaintenanceWindow) | **Post** /api/atlas/v2/groups/{groupId}/maintenanceWindow/defer | Defer One Maintenance Window for One Project
+[**GetMaintenanceWindow**](MaintenanceWindowsApi.md#GetMaintenanceWindow) | **Get** /api/atlas/v2/groups/{groupId}/maintenanceWindow | Return One Maintenance Window for One Project
+[**ResetMaintenanceWindow**](MaintenanceWindowsApi.md#ResetMaintenanceWindow) | **Delete** /api/atlas/v2/groups/{groupId}/maintenanceWindow | Reset One Maintenance Window for One Project
+[**ToggleMaintenanceAutoDefer**](MaintenanceWindowsApi.md#ToggleMaintenanceAutoDefer) | **Post** /api/atlas/v2/groups/{groupId}/maintenanceWindow/autoDefer | Toggle Automatic Deferral of Maintenance for One Project
+[**UpdateMaintenanceWindow**](MaintenanceWindowsApi.md#UpdateMaintenanceWindow) | **Patch** /api/atlas/v2/groups/{groupId}/maintenanceWindow | Update One Maintenance Window for One Project
 
 
 

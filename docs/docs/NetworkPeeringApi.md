@@ -4,19 +4,19 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGroupContainer**](NetworkPeeringAPI.md#CreateGroupContainer) | **Post** /api/atlas/v2/groups/{groupId}/containers | Create One Network Peering Container
-[**CreateGroupPeer**](NetworkPeeringAPI.md#CreateGroupPeer) | **Post** /api/atlas/v2/groups/{groupId}/peers | Create One Network Peering Connection
-[**DeleteGroupContainer**](NetworkPeeringAPI.md#DeleteGroupContainer) | **Delete** /api/atlas/v2/groups/{groupId}/containers/{containerId} | Remove One Network Peering Container
-[**DeleteGroupPeer**](NetworkPeeringAPI.md#DeleteGroupPeer) | **Delete** /api/atlas/v2/groups/{groupId}/peers/{peerId} | Remove One Network Peering Connection
-[**DisablePeering**](NetworkPeeringAPI.md#DisablePeering) | **Patch** /api/atlas/v2/groups/{groupId}/privateIpMode | Disable Connect via Peering-Only Mode for One Project
-[**GetGroupContainer**](NetworkPeeringAPI.md#GetGroupContainer) | **Get** /api/atlas/v2/groups/{groupId}/containers/{containerId} | Return One Network Peering Container
-[**GetGroupPeer**](NetworkPeeringAPI.md#GetGroupPeer) | **Get** /api/atlas/v2/groups/{groupId}/peers/{peerId} | Return One Network Peering Connection in One Project
-[**ListGroupContainerAll**](NetworkPeeringAPI.md#ListGroupContainerAll) | **Get** /api/atlas/v2/groups/{groupId}/containers/all | Return All Network Peering Containers in One Project
-[**ListGroupContainers**](NetworkPeeringAPI.md#ListGroupContainers) | **Get** /api/atlas/v2/groups/{groupId}/containers | Return All Network Peering Containers in One Project for One Cloud Provider
-[**ListGroupPeers**](NetworkPeeringAPI.md#ListGroupPeers) | **Get** /api/atlas/v2/groups/{groupId}/peers | Return All Network Peering Connections in One Project
-[**UpdateGroupContainer**](NetworkPeeringAPI.md#UpdateGroupContainer) | **Patch** /api/atlas/v2/groups/{groupId}/containers/{containerId} | Update One Network Peering Container
-[**UpdateGroupPeer**](NetworkPeeringAPI.md#UpdateGroupPeer) | **Patch** /api/atlas/v2/groups/{groupId}/peers/{peerId} | Update One Network Peering Connection
-[**VerifyPrivateIpMode**](NetworkPeeringAPI.md#VerifyPrivateIpMode) | **Get** /api/atlas/v2/groups/{groupId}/privateIpMode | Verify Connect via Peering-Only Mode for One Project
+[**CreateGroupContainer**](NetworkPeeringApi.md#CreateGroupContainer) | **Post** /api/atlas/v2/groups/{groupId}/containers | Create One Network Peering Container
+[**CreateGroupPeer**](NetworkPeeringApi.md#CreateGroupPeer) | **Post** /api/atlas/v2/groups/{groupId}/peers | Create One Network Peering Connection
+[**DeleteGroupContainer**](NetworkPeeringApi.md#DeleteGroupContainer) | **Delete** /api/atlas/v2/groups/{groupId}/containers/{containerId} | Remove One Network Peering Container
+[**DeleteGroupPeer**](NetworkPeeringApi.md#DeleteGroupPeer) | **Delete** /api/atlas/v2/groups/{groupId}/peers/{peerId} | Remove One Network Peering Connection
+[**DisablePeering**](NetworkPeeringApi.md#DisablePeering) | **Patch** /api/atlas/v2/groups/{groupId}/privateIpMode | Disable Connect via Peering-Only Mode for One Project
+[**GetGroupContainer**](NetworkPeeringApi.md#GetGroupContainer) | **Get** /api/atlas/v2/groups/{groupId}/containers/{containerId} | Return One Network Peering Container
+[**GetGroupPeer**](NetworkPeeringApi.md#GetGroupPeer) | **Get** /api/atlas/v2/groups/{groupId}/peers/{peerId} | Return One Network Peering Connection in One Project
+[**ListGroupContainerAll**](NetworkPeeringApi.md#ListGroupContainerAll) | **Get** /api/atlas/v2/groups/{groupId}/containers/all | Return All Network Peering Containers in One Project
+[**ListGroupContainers**](NetworkPeeringApi.md#ListGroupContainers) | **Get** /api/atlas/v2/groups/{groupId}/containers | Return All Network Peering Containers in One Project for One Cloud Provider
+[**ListGroupPeers**](NetworkPeeringApi.md#ListGroupPeers) | **Get** /api/atlas/v2/groups/{groupId}/peers | Return All Network Peering Connections in One Project
+[**UpdateGroupContainer**](NetworkPeeringApi.md#UpdateGroupContainer) | **Patch** /api/atlas/v2/groups/{groupId}/containers/{containerId} | Update One Network Peering Container
+[**UpdateGroupPeer**](NetworkPeeringApi.md#UpdateGroupPeer) | **Patch** /api/atlas/v2/groups/{groupId}/peers/{peerId} | Update One Network Peering Connection
+[**VerifyPrivateIpMode**](NetworkPeeringApi.md#VerifyPrivateIpMode) | **Get** /api/atlas/v2/groups/{groupId}/privateIpMode | Verify Connect via Peering-Only Mode for One Project
 
 
 

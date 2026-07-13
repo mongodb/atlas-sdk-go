@@ -4,9 +4,9 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**EndOutageSimulation**](ClusterOutageSimulationAPI.md#EndOutageSimulation) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | End One Outage Simulation
-[**GetOutageSimulation**](ClusterOutageSimulationAPI.md#GetOutageSimulation) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | Return One Outage Simulation
-[**StartOutageSimulation**](ClusterOutageSimulationAPI.md#StartOutageSimulation) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | Start One Outage Simulation
+[**EndOutageSimulation**](ClusterOutageSimulationApi.md#EndOutageSimulation) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | End One Outage Simulation
+[**GetOutageSimulation**](ClusterOutageSimulationApi.md#GetOutageSimulation) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | Return One Outage Simulation
+[**StartOutageSimulation**](ClusterOutageSimulationApi.md#StartOutageSimulation) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation | Start One Outage Simulation
 
 
 

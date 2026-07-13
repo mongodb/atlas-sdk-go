@@ -4,12 +4,12 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateFlexCluster**](FlexClustersAPI.md#CreateFlexCluster) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters | Create One Flex Cluster in One Project
-[**DeleteFlexCluster**](FlexClustersAPI.md#DeleteFlexCluster) | **Delete** /api/atlas/v2/groups/{groupId}/flexClusters/{name} | Remove One Flex Cluster from One Project
-[**GetFlexCluster**](FlexClustersAPI.md#GetFlexCluster) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name} | Return One Flex Cluster from One Project
-[**ListFlexClusters**](FlexClustersAPI.md#ListFlexClusters) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters | Return All Flex Clusters from One Project
-[**TenantUpgrade**](FlexClustersAPI.md#TenantUpgrade) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters:tenantUpgrade | Upgrade One Flex Cluster
-[**UpdateFlexCluster**](FlexClustersAPI.md#UpdateFlexCluster) | **Patch** /api/atlas/v2/groups/{groupId}/flexClusters/{name} | Update One Flex Cluster in One Project
+[**CreateFlexCluster**](FlexClustersApi.md#CreateFlexCluster) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters | Create One Flex Cluster in One Project
+[**DeleteFlexCluster**](FlexClustersApi.md#DeleteFlexCluster) | **Delete** /api/atlas/v2/groups/{groupId}/flexClusters/{name} | Remove One Flex Cluster from One Project
+[**GetFlexCluster**](FlexClustersApi.md#GetFlexCluster) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name} | Return One Flex Cluster from One Project
+[**ListFlexClusters**](FlexClustersApi.md#ListFlexClusters) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters | Return All Flex Clusters from One Project
+[**TenantUpgrade**](FlexClustersApi.md#TenantUpgrade) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters:tenantUpgrade | Upgrade One Flex Cluster
+[**UpdateFlexCluster**](FlexClustersApi.md#UpdateFlexCluster) | **Patch** /api/atlas/v2/groups/{groupId}/flexClusters/{name} | Update One Flex Cluster in One Project
 
 
 

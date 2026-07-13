@@ -4,20 +4,20 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DownloadClusterLog**](MonitoringAndLogsAPI.md#DownloadClusterLog) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz | Download Logs for One Cluster Host in One Project
-[**GetDatabase**](MonitoringAndLogsAPI.md#GetDatabase) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName} | Return One Database for One MongoDB Process
-[**GetDatabaseMeasurements**](MonitoringAndLogsAPI.md#GetDatabaseMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}/measurements | Return Measurements for One Database in One MongoDB Process
-[**GetGroupProcess**](MonitoringAndLogsAPI.md#GetGroupProcess) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId} | Return One MongoDB Process by ID
-[**GetIndexMeasurements**](MonitoringAndLogsAPI.md#GetIndexMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/{indexName}/measurements | Return Atlas Search Metrics for One Index in One Namespace
-[**GetProcessDisk**](MonitoringAndLogsAPI.md#GetProcessDisk) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName} | Return Measurements for One Disk
-[**GetProcessDiskMeasurements**](MonitoringAndLogsAPI.md#GetProcessDiskMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements | Return Measurements of One Disk for One MongoDB Process
-[**GetProcessMeasurements**](MonitoringAndLogsAPI.md#GetProcessMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/measurements | Return Measurements for One MongoDB Process
-[**ListDatabases**](MonitoringAndLogsAPI.md#ListDatabases) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases | Return Available Databases for One MongoDB Process
-[**ListGroupProcesses**](MonitoringAndLogsAPI.md#ListGroupProcesses) | **Get** /api/atlas/v2/groups/{groupId}/processes | Return All MongoDB Processes in One Project
-[**ListHostFtsMetrics**](MonitoringAndLogsAPI.md#ListHostFtsMetrics) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics | Return All Atlas Search Metric Types for One Process
-[**ListIndexMeasurements**](MonitoringAndLogsAPI.md#ListIndexMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/measurements | Return All Atlas Search Index Metrics for One Namespace
-[**ListMeasurements**](MonitoringAndLogsAPI.md#ListMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements | Return Atlas Search Hardware and Status Metrics
-[**ListProcessDisks**](MonitoringAndLogsAPI.md#ListProcessDisks) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks | Return Available Disks for One MongoDB Process
+[**DownloadClusterLog**](MonitoringAndLogsApi.md#DownloadClusterLog) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{hostName}/logs/{logName}.gz | Download Logs for One Cluster Host in One Project
+[**GetDatabase**](MonitoringAndLogsApi.md#GetDatabase) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName} | Return One Database for One MongoDB Process
+[**GetDatabaseMeasurements**](MonitoringAndLogsApi.md#GetDatabaseMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases/{databaseName}/measurements | Return Measurements for One Database in One MongoDB Process
+[**GetGroupProcess**](MonitoringAndLogsApi.md#GetGroupProcess) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId} | Return One MongoDB Process by ID
+[**GetIndexMeasurements**](MonitoringAndLogsApi.md#GetIndexMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/{indexName}/measurements | Return Atlas Search Metrics for One Index in One Namespace
+[**GetProcessDisk**](MonitoringAndLogsApi.md#GetProcessDisk) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName} | Return Measurements for One Disk
+[**GetProcessDiskMeasurements**](MonitoringAndLogsApi.md#GetProcessDiskMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks/{partitionName}/measurements | Return Measurements of One Disk for One MongoDB Process
+[**GetProcessMeasurements**](MonitoringAndLogsApi.md#GetProcessMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/measurements | Return Measurements for One MongoDB Process
+[**ListDatabases**](MonitoringAndLogsApi.md#ListDatabases) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/databases | Return Available Databases for One MongoDB Process
+[**ListGroupProcesses**](MonitoringAndLogsApi.md#ListGroupProcesses) | **Get** /api/atlas/v2/groups/{groupId}/processes | Return All MongoDB Processes in One Project
+[**ListHostFtsMetrics**](MonitoringAndLogsApi.md#ListHostFtsMetrics) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics | Return All Atlas Search Metric Types for One Process
+[**ListIndexMeasurements**](MonitoringAndLogsApi.md#ListIndexMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/indexes/{databaseName}/{collectionName}/measurements | Return All Atlas Search Index Metrics for One Namespace
+[**ListMeasurements**](MonitoringAndLogsApi.md#ListMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/hosts/{processId}/fts/metrics/measurements | Return Atlas Search Hardware and Status Metrics
+[**ListProcessDisks**](MonitoringAndLogsApi.md#ListProcessDisks) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/disks | Return Available Disks for One MongoDB Process
 
 
 

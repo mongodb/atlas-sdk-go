@@ -4,7 +4,7 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateRollingIndex**](RollingIndexAPI.md#CreateRollingIndex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index | Create One Rolling Index
+[**CreateRollingIndex**](RollingIndexApi.md#CreateRollingIndex) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/index | Create One Rolling Index
 
 
 

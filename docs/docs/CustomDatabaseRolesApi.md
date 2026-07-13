@@ -4,11 +4,11 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateCustomDbRole**](CustomDatabaseRolesAPI.md#CreateCustomDbRole) | **Post** /api/atlas/v2/groups/{groupId}/customDBRoles/roles | Create One Custom Role
-[**DeleteCustomDbRole**](CustomDatabaseRolesAPI.md#DeleteCustomDbRole) | **Delete** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Remove One Custom Role from One Project
-[**GetCustomDbRole**](CustomDatabaseRolesAPI.md#GetCustomDbRole) | **Get** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Return One Custom Role in One Project
-[**ListCustomDbRoles**](CustomDatabaseRolesAPI.md#ListCustomDbRoles) | **Get** /api/atlas/v2/groups/{groupId}/customDBRoles/roles | Return All Custom Roles in One Project
-[**UpdateCustomDbRole**](CustomDatabaseRolesAPI.md#UpdateCustomDbRole) | **Patch** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Update One Custom Role in One Project
+[**CreateCustomDbRole**](CustomDatabaseRolesApi.md#CreateCustomDbRole) | **Post** /api/atlas/v2/groups/{groupId}/customDBRoles/roles | Create One Custom Role
+[**DeleteCustomDbRole**](CustomDatabaseRolesApi.md#DeleteCustomDbRole) | **Delete** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Remove One Custom Role from One Project
+[**GetCustomDbRole**](CustomDatabaseRolesApi.md#GetCustomDbRole) | **Get** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Return One Custom Role in One Project
+[**ListCustomDbRoles**](CustomDatabaseRolesApi.md#ListCustomDbRoles) | **Get** /api/atlas/v2/groups/{groupId}/customDBRoles/roles | Return All Custom Roles in One Project
+[**UpdateCustomDbRole**](CustomDatabaseRolesApi.md#UpdateCustomDbRole) | **Patch** /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName} | Update One Custom Role in One Project
 
 
 

@@ -4,8 +4,8 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetServerlessInstance**](ServerlessInstancesAPI.md#GetServerlessInstance) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{name} | Return One Serverless Instance from One Project
-[**ListServerlessInstances**](ServerlessInstancesAPI.md#ListServerlessInstances) | **Get** /api/atlas/v2/groups/{groupId}/serverless | Return All Serverless Instances in One Project
+[**GetServerlessInstance**](ServerlessInstancesApi.md#GetServerlessInstance) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{name} | Return One Serverless Instance from One Project
+[**ListServerlessInstances**](ServerlessInstancesApi.md#ListServerlessInstances) | **Get** /api/atlas/v2/groups/{groupId}/serverless | Return All Serverless Instances in One Project
 
 
 

@@ -4,28 +4,28 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAccessList**](ServiceAccountsAPI.md#CreateAccessList) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList | Add Access List Entries for One Project Service Account
-[**CreateGroupSecret**](ServiceAccountsAPI.md#CreateGroupSecret) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets | Create One Project Service Account Secret
-[**CreateGroupServiceAccount**](ServiceAccountsAPI.md#CreateGroupServiceAccount) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts | Create One Project Service Account
-[**CreateOrgAccessList**](ServiceAccountsAPI.md#CreateOrgAccessList) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList | Add Access List Entries for One Organization Service Account
-[**CreateOrgSecret**](ServiceAccountsAPI.md#CreateOrgSecret) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets | Create One Organization Service Account Secret
-[**CreateOrgServiceAccount**](ServiceAccountsAPI.md#CreateOrgServiceAccount) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts | Create One Organization Service Account
-[**DeleteGroupAccessEntry**](ServiceAccountsAPI.md#DeleteGroupAccessEntry) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress} | Remove One Access List Entry from One Project Service Account
-[**DeleteGroupSecret**](ServiceAccountsAPI.md#DeleteGroupSecret) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets/{secretId} | Delete One Project Service Account Secret
-[**DeleteGroupServiceAccount**](ServiceAccountsAPI.md#DeleteGroupServiceAccount) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Remove One Project Service Account
-[**DeleteOrgAccessEntry**](ServiceAccountsAPI.md#DeleteOrgAccessEntry) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress} | Remove One Access List Entry from One Organization Service Account
-[**DeleteOrgSecret**](ServiceAccountsAPI.md#DeleteOrgSecret) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets/{secretId} | Delete One Organization Service Account Secret
-[**DeleteOrgServiceAccount**](ServiceAccountsAPI.md#DeleteOrgServiceAccount) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Delete One Organization Service Account
-[**GetGroupServiceAccount**](ServiceAccountsAPI.md#GetGroupServiceAccount) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Return One Project Service Account
-[**GetOrgServiceAccount**](ServiceAccountsAPI.md#GetOrgServiceAccount) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Return One Organization Service Account
-[**GetServiceAccountGroups**](ServiceAccountsAPI.md#GetServiceAccountGroups) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/groups | Return All Service Account Project Assignments
-[**InviteGroupServiceAccount**](ServiceAccountsAPI.md#InviteGroupServiceAccount) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}:invite | Assign One Service Account to One Project
-[**ListAccessList**](ServiceAccountsAPI.md#ListAccessList) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList | Return All Access List Entries for One Project Service Account
-[**ListGroupServiceAccounts**](ServiceAccountsAPI.md#ListGroupServiceAccounts) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts | Return All Project Service Accounts
-[**ListOrgAccessList**](ServiceAccountsAPI.md#ListOrgAccessList) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList | Return All Access List Entries for One Organization Service Account
-[**ListOrgServiceAccounts**](ServiceAccountsAPI.md#ListOrgServiceAccounts) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts | Return All Organization Service Accounts
-[**UpdateGroupServiceAccount**](ServiceAccountsAPI.md#UpdateGroupServiceAccount) | **Patch** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Update One Project Service Account
-[**UpdateOrgServiceAccount**](ServiceAccountsAPI.md#UpdateOrgServiceAccount) | **Patch** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Update One Organization Service Account
+[**CreateAccessList**](ServiceAccountsApi.md#CreateAccessList) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList | Add Access List Entries for One Project Service Account
+[**CreateGroupSecret**](ServiceAccountsApi.md#CreateGroupSecret) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets | Create One Project Service Account Secret
+[**CreateGroupServiceAccount**](ServiceAccountsApi.md#CreateGroupServiceAccount) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts | Create One Project Service Account
+[**CreateOrgAccessList**](ServiceAccountsApi.md#CreateOrgAccessList) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList | Add Access List Entries for One Organization Service Account
+[**CreateOrgSecret**](ServiceAccountsApi.md#CreateOrgSecret) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets | Create One Organization Service Account Secret
+[**CreateOrgServiceAccount**](ServiceAccountsApi.md#CreateOrgServiceAccount) | **Post** /api/atlas/v2/orgs/{orgId}/serviceAccounts | Create One Organization Service Account
+[**DeleteGroupAccessEntry**](ServiceAccountsApi.md#DeleteGroupAccessEntry) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress} | Remove One Access List Entry from One Project Service Account
+[**DeleteGroupSecret**](ServiceAccountsApi.md#DeleteGroupSecret) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets/{secretId} | Delete One Project Service Account Secret
+[**DeleteGroupServiceAccount**](ServiceAccountsApi.md#DeleteGroupServiceAccount) | **Delete** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Remove One Project Service Account
+[**DeleteOrgAccessEntry**](ServiceAccountsApi.md#DeleteOrgAccessEntry) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress} | Remove One Access List Entry from One Organization Service Account
+[**DeleteOrgSecret**](ServiceAccountsApi.md#DeleteOrgSecret) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets/{secretId} | Delete One Organization Service Account Secret
+[**DeleteOrgServiceAccount**](ServiceAccountsApi.md#DeleteOrgServiceAccount) | **Delete** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Delete One Organization Service Account
+[**GetGroupServiceAccount**](ServiceAccountsApi.md#GetGroupServiceAccount) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Return One Project Service Account
+[**GetOrgServiceAccount**](ServiceAccountsApi.md#GetOrgServiceAccount) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Return One Organization Service Account
+[**GetServiceAccountGroups**](ServiceAccountsApi.md#GetServiceAccountGroups) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/groups | Return All Service Account Project Assignments
+[**InviteGroupServiceAccount**](ServiceAccountsApi.md#InviteGroupServiceAccount) | **Post** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}:invite | Assign One Service Account to One Project
+[**ListAccessList**](ServiceAccountsApi.md#ListAccessList) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList | Return All Access List Entries for One Project Service Account
+[**ListGroupServiceAccounts**](ServiceAccountsApi.md#ListGroupServiceAccounts) | **Get** /api/atlas/v2/groups/{groupId}/serviceAccounts | Return All Project Service Accounts
+[**ListOrgAccessList**](ServiceAccountsApi.md#ListOrgAccessList) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList | Return All Access List Entries for One Organization Service Account
+[**ListOrgServiceAccounts**](ServiceAccountsApi.md#ListOrgServiceAccounts) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts | Return All Organization Service Accounts
+[**UpdateGroupServiceAccount**](ServiceAccountsApi.md#UpdateGroupServiceAccount) | **Patch** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Update One Project Service Account
+[**UpdateOrgServiceAccount**](ServiceAccountsApi.md#UpdateOrgServiceAccount) | **Patch** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Update One Organization Service Account
 
 
 

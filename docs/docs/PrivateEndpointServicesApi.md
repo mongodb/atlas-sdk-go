@@ -4,16 +4,16 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreatePrivateEndpoint**](PrivateEndpointServicesAPI.md#CreatePrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint | Create One Private Endpoint for One Provider
-[**CreatePrivateEndpointService**](PrivateEndpointServicesAPI.md#CreatePrivateEndpointService) | **Post** /api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService | Create One Private Endpoint Service for One Provider
-[**DeletePrivateEndpoint**](PrivateEndpointServicesAPI.md#DeletePrivateEndpoint) | **Delete** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId} | Remove One Private Endpoint for One Provider
-[**DeletePrivateEndpointService**](PrivateEndpointServicesAPI.md#DeletePrivateEndpointService) | **Delete** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId} | Remove One Private Endpoint Service for One Provider
-[**GetPrivateEndpoint**](PrivateEndpointServicesAPI.md#GetPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId} | Return One Private Endpoint for One Provider
-[**GetPrivateEndpointService**](PrivateEndpointServicesAPI.md#GetPrivateEndpointService) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId} | Return One Private Endpoint Service for One Provider
-[**GetRegionalEndpointMode**](PrivateEndpointServicesAPI.md#GetRegionalEndpointMode) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode | Return Regionalized Private Endpoint Status
-[**ListPrivateEndpointService**](PrivateEndpointServicesAPI.md#ListPrivateEndpointService) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService | Return All Private Endpoint Services for One Provider
-[**ToggleRegionalEndpointMode**](PrivateEndpointServicesAPI.md#ToggleRegionalEndpointMode) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode | Toggle Regionalized Private Endpoint Status
-[**UpdatePrivateEndpointService**](PrivateEndpointServicesAPI.md#UpdatePrivateEndpointService) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService/{endpointServiceId} | Update One Private Endpoint Service for One Provider
+[**CreatePrivateEndpoint**](PrivateEndpointServicesApi.md#CreatePrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint | Create One Private Endpoint for One Provider
+[**CreatePrivateEndpointService**](PrivateEndpointServicesApi.md#CreatePrivateEndpointService) | **Post** /api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService | Create One Private Endpoint Service for One Provider
+[**DeletePrivateEndpoint**](PrivateEndpointServicesApi.md#DeletePrivateEndpoint) | **Delete** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId} | Remove One Private Endpoint for One Provider
+[**DeletePrivateEndpointService**](PrivateEndpointServicesApi.md#DeletePrivateEndpointService) | **Delete** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId} | Remove One Private Endpoint Service for One Provider
+[**GetPrivateEndpoint**](PrivateEndpointServicesApi.md#GetPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId}/endpoint/{endpointId} | Return One Private Endpoint for One Provider
+[**GetPrivateEndpointService**](PrivateEndpointServicesApi.md#GetPrivateEndpointService) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService/{endpointServiceId} | Return One Private Endpoint Service for One Provider
+[**GetRegionalEndpointMode**](PrivateEndpointServicesApi.md#GetRegionalEndpointMode) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode | Return Regionalized Private Endpoint Status
+[**ListPrivateEndpointService**](PrivateEndpointServicesApi.md#ListPrivateEndpointService) | **Get** /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService | Return All Private Endpoint Services for One Provider
+[**ToggleRegionalEndpointMode**](PrivateEndpointServicesApi.md#ToggleRegionalEndpointMode) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/regionalMode | Toggle Regionalized Private Endpoint Status
+[**UpdatePrivateEndpointService**](PrivateEndpointServicesApi.md#UpdatePrivateEndpointService) | **Patch** /api/atlas/v2/groups/{groupId}/privateEndpoint/endpointService/{endpointServiceId} | Update One Private Endpoint Service for One Provider
 
 
 

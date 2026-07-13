@@ -4,27 +4,27 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AutoScalingConfiguration**](ClustersAPI.md#AutoScalingConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/autoScalingConfiguration | Return Auto Scaling Configuration for One Sharded Cluster
-[**CreateCluster**](ClustersAPI.md#CreateCluster) | **Post** /api/atlas/v2/groups/{groupId}/clusters | Create One Cluster in One Project
-[**DeleteCluster**](ClustersAPI.md#DeleteCluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Remove One Cluster from One Project
-[**GetCluster**](ClustersAPI.md#GetCluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Return One Cluster from One Project
-[**GetClusterStatus**](ClustersAPI.md#GetClusterStatus) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/status | Return Status of All Cluster Operations
-[**GetProcessArgs**](ClustersAPI.md#GetProcessArgs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Return Advanced Configuration Options for One Cluster
-[**GetSampleDatasetLoad**](ClustersAPI.md#GetSampleDatasetLoad) | **Get** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{sampleDatasetId} | Return Status of Sample Dataset Load for One Cluster
-[**GrantMongoEmployeeAccess**](ClustersAPI.md#GrantMongoEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess | Grant MongoDB Employee Cluster Access for One Cluster
-[**ListClusterDetails**](ClustersAPI.md#ListClusterDetails) | **Get** /api/atlas/v2/clusters | Return All Authorized Clusters in All Projects
-[**ListClusterProviderRegions**](ClustersAPI.md#ListClusterProviderRegions) | **Get** /api/atlas/v2/groups/{groupId}/clusters/provider/regions | Return All Cloud Provider Regions
-[**ListClusters**](ClustersAPI.md#ListClusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters | Return All Clusters in One Project
-[**PinFeatureCompatibilityVersion**](ClustersAPI.md#PinFeatureCompatibilityVersion) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:pinFeatureCompatibilityVersion | Pin Feature Compatibility Version for One Cluster in One Project
-[**RequestSampleDatasetLoad**](ClustersAPI.md#RequestSampleDatasetLoad) | **Post** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name} | Load Sample Dataset into One Cluster
-[**RestartPrimaries**](ClustersAPI.md#RestartPrimaries) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries | Test Failover for One Cluster
-[**RevokeMongoEmployeeAccess**](ClustersAPI.md#RevokeMongoEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess | Revoke MongoDB Employee Cluster Access for One Cluster
-[**UnpinFeatureCompatibilityVersion**](ClustersAPI.md#UnpinFeatureCompatibilityVersion) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:unpinFeatureCompatibilityVersion | Unpin Feature Compatibility Version for One Cluster in One Project
-[**UpdateCluster**](ClustersAPI.md#UpdateCluster) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Update One Cluster in One Project
-[**UpdateProcessArgs**](ClustersAPI.md#UpdateProcessArgs) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Update Advanced Configuration Options for One Cluster
-[**UpgradeClusterToServerless**](ClustersAPI.md#UpgradeClusterToServerless) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgradeToServerless | Upgrade One Shared-Tier Cluster to One Serverless Instance
-[**UpgradeTenantUpgrade**](ClustersAPI.md#UpgradeTenantUpgrade) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade | Upgrade One Shared-Tier Cluster
-[**ValidateGroupClusterConfigurations**](ClustersAPI.md#ValidateGroupClusterConfigurations) | **Post** /api/atlas/v2/groups/{groupId}/clusterConfigurations:validate | Validate One Cluster Configuration
+[**AutoScalingConfiguration**](ClustersApi.md#AutoScalingConfiguration) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/autoScalingConfiguration | Return Auto Scaling Configuration for One Sharded Cluster
+[**CreateCluster**](ClustersApi.md#CreateCluster) | **Post** /api/atlas/v2/groups/{groupId}/clusters | Create One Cluster in One Project
+[**DeleteCluster**](ClustersApi.md#DeleteCluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Remove One Cluster from One Project
+[**GetCluster**](ClustersApi.md#GetCluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Return One Cluster from One Project
+[**GetClusterStatus**](ClustersApi.md#GetClusterStatus) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/status | Return Status of All Cluster Operations
+[**GetProcessArgs**](ClustersApi.md#GetProcessArgs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Return Advanced Configuration Options for One Cluster
+[**GetSampleDatasetLoad**](ClustersApi.md#GetSampleDatasetLoad) | **Get** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{sampleDatasetId} | Return Status of Sample Dataset Load for One Cluster
+[**GrantMongoEmployeeAccess**](ClustersApi.md#GrantMongoEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess | Grant MongoDB Employee Cluster Access for One Cluster
+[**ListClusterDetails**](ClustersApi.md#ListClusterDetails) | **Get** /api/atlas/v2/clusters | Return All Authorized Clusters in All Projects
+[**ListClusterProviderRegions**](ClustersApi.md#ListClusterProviderRegions) | **Get** /api/atlas/v2/groups/{groupId}/clusters/provider/regions | Return All Cloud Provider Regions
+[**ListClusters**](ClustersApi.md#ListClusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters | Return All Clusters in One Project
+[**PinFeatureCompatibilityVersion**](ClustersApi.md#PinFeatureCompatibilityVersion) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:pinFeatureCompatibilityVersion | Pin Feature Compatibility Version for One Cluster in One Project
+[**RequestSampleDatasetLoad**](ClustersApi.md#RequestSampleDatasetLoad) | **Post** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{name} | Load Sample Dataset into One Cluster
+[**RestartPrimaries**](ClustersApi.md#RestartPrimaries) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restartPrimaries | Test Failover for One Cluster
+[**RevokeMongoEmployeeAccess**](ClustersApi.md#RevokeMongoEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess | Revoke MongoDB Employee Cluster Access for One Cluster
+[**UnpinFeatureCompatibilityVersion**](ClustersApi.md#UnpinFeatureCompatibilityVersion) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:unpinFeatureCompatibilityVersion | Unpin Feature Compatibility Version for One Cluster in One Project
+[**UpdateCluster**](ClustersApi.md#UpdateCluster) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Update One Cluster in One Project
+[**UpdateProcessArgs**](ClustersApi.md#UpdateProcessArgs) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Update Advanced Configuration Options for One Cluster
+[**UpgradeClusterToServerless**](ClustersApi.md#UpgradeClusterToServerless) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgradeToServerless | Upgrade One Shared-Tier Cluster to One Serverless Instance
+[**UpgradeTenantUpgrade**](ClustersApi.md#UpgradeTenantUpgrade) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade | Upgrade One Shared-Tier Cluster
+[**ValidateGroupClusterConfigurations**](ClustersApi.md#ValidateGroupClusterConfigurations) | **Post** /api/atlas/v2/groups/{groupId}/clusterConfigurations:validate | Validate One Cluster Configuration
 
 
 

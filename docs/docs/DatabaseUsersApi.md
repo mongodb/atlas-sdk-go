@@ -4,11 +4,11 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateDatabaseUser**](DatabaseUsersAPI.md#CreateDatabaseUser) | **Post** /api/atlas/v2/groups/{groupId}/databaseUsers | Create One Database User in One Project
-[**DeleteDatabaseUser**](DatabaseUsersAPI.md#DeleteDatabaseUser) | **Delete** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Remove One Database User from One Project
-[**GetDatabaseUser**](DatabaseUsersAPI.md#GetDatabaseUser) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Return One Database User from One Project
-[**ListDatabaseUsers**](DatabaseUsersAPI.md#ListDatabaseUsers) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers | Return All Database Users in One Project
-[**UpdateDatabaseUser**](DatabaseUsersAPI.md#UpdateDatabaseUser) | **Patch** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Update One Database User in One Project
+[**CreateDatabaseUser**](DatabaseUsersApi.md#CreateDatabaseUser) | **Post** /api/atlas/v2/groups/{groupId}/databaseUsers | Create One Database User in One Project
+[**DeleteDatabaseUser**](DatabaseUsersApi.md#DeleteDatabaseUser) | **Delete** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Remove One Database User from One Project
+[**GetDatabaseUser**](DatabaseUsersApi.md#GetDatabaseUser) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Return One Database User from One Project
+[**ListDatabaseUsers**](DatabaseUsersApi.md#ListDatabaseUsers) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers | Return All Database Users in One Project
+[**UpdateDatabaseUser**](DatabaseUsersApi.md#UpdateDatabaseUser) | **Patch** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Update One Database User in One Project
 
 
 

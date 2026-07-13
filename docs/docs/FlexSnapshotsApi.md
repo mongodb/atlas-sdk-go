@@ -4,9 +4,9 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DownloadFlexBackup**](FlexSnapshotsAPI.md#DownloadFlexBackup) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/download | Download One Flex Cluster Snapshot
-[**GetFlexBackupSnapshot**](FlexSnapshotsAPI.md#GetFlexBackupSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId} | Return One Snapshot for One Flex Cluster
-[**ListFlexBackupSnapshots**](FlexSnapshotsAPI.md#ListFlexBackupSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots | Return All Snapshots for One Flex Cluster
+[**DownloadFlexBackup**](FlexSnapshotsApi.md#DownloadFlexBackup) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/download | Download One Flex Cluster Snapshot
+[**GetFlexBackupSnapshot**](FlexSnapshotsApi.md#GetFlexBackupSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots/{snapshotId} | Return One Snapshot for One Flex Cluster
+[**ListFlexBackupSnapshots**](FlexSnapshotsApi.md#ListFlexBackupSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/snapshots | Return All Snapshots for One Flex Cluster
 
 
 

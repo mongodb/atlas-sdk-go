@@ -4,11 +4,11 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteLdapUserMapping**](LDAPConfigurationAPI.md#DeleteLdapUserMapping) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping | Remove LDAP User to DN Mapping
-[**GetUserSecurity**](LDAPConfigurationAPI.md#GetUserSecurity) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity | Return LDAP or X.509 Configuration
-[**GetUserSecurityVerify**](LDAPConfigurationAPI.md#GetUserSecurityVerify) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId} | Return Status of LDAP Configuration Verification in One Project
-[**UpdateUserSecurity**](LDAPConfigurationAPI.md#UpdateUserSecurity) | **Patch** /api/atlas/v2/groups/{groupId}/userSecurity | Update LDAP or X.509 Configuration
-[**VerifyUserSecurityLdap**](LDAPConfigurationAPI.md#VerifyUserSecurityLdap) | **Post** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify | Verify LDAP Configuration in One Project
+[**DeleteLdapUserMapping**](LDAPConfigurationApi.md#DeleteLdapUserMapping) | **Delete** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/userToDNMapping | Remove LDAP User to DN Mapping
+[**GetUserSecurity**](LDAPConfigurationApi.md#GetUserSecurity) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity | Return LDAP or X.509 Configuration
+[**GetUserSecurityVerify**](LDAPConfigurationApi.md#GetUserSecurityVerify) | **Get** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId} | Return Status of LDAP Configuration Verification in One Project
+[**UpdateUserSecurity**](LDAPConfigurationApi.md#UpdateUserSecurity) | **Patch** /api/atlas/v2/groups/{groupId}/userSecurity | Update LDAP or X.509 Configuration
+[**VerifyUserSecurityLdap**](LDAPConfigurationApi.md#VerifyUserSecurityLdap) | **Post** /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify | Verify LDAP Configuration in One Project
 
 
 

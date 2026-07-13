@@ -4,20 +4,20 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddGroupApiKey**](ProgrammaticAPIKeysAPI.md#AddGroupApiKey) | **Post** /api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId} | Assign One Organization API Key to One Project
-[**CreateGroupApiKey**](ProgrammaticAPIKeysAPI.md#CreateGroupApiKey) | **Post** /api/atlas/v2/groups/{groupId}/apiKeys | Create and Assign One Organization API Key to One Project
-[**CreateOrgAccessEntry**](ProgrammaticAPIKeysAPI.md#CreateOrgAccessEntry) | **Post** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList | Create One Access List Entry for One Organization API Key
-[**CreateOrgApiKey**](ProgrammaticAPIKeysAPI.md#CreateOrgApiKey) | **Post** /api/atlas/v2/orgs/{orgId}/apiKeys | Create One Organization API Key
-[**DeleteAccessEntry**](ProgrammaticAPIKeysAPI.md#DeleteAccessEntry) | **Delete** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress} | Remove One Access List Entry for One Organization API Key
-[**DeleteOrgApiKey**](ProgrammaticAPIKeysAPI.md#DeleteOrgApiKey) | **Delete** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId} | Remove One Organization API Key
-[**GetOrgAccessEntry**](ProgrammaticAPIKeysAPI.md#GetOrgAccessEntry) | **Get** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress} | Return One Access List Entry for One Organization API Key
-[**GetOrgApiKey**](ProgrammaticAPIKeysAPI.md#GetOrgApiKey) | **Get** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId} | Return One Organization API Key
-[**ListGroupApiKeys**](ProgrammaticAPIKeysAPI.md#ListGroupApiKeys) | **Get** /api/atlas/v2/groups/{groupId}/apiKeys | Return All Organization API Keys Assigned to One Project
-[**ListOrgAccessEntries**](ProgrammaticAPIKeysAPI.md#ListOrgAccessEntries) | **Get** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList | Return All Access List Entries for One Organization API Key
-[**ListOrgApiKeys**](ProgrammaticAPIKeysAPI.md#ListOrgApiKeys) | **Get** /api/atlas/v2/orgs/{orgId}/apiKeys | Return All Organization API Keys
-[**RemoveGroupApiKey**](ProgrammaticAPIKeysAPI.md#RemoveGroupApiKey) | **Delete** /api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId} | Unassign One Organization API Key from One Project
-[**UpdateApiKeyRoles**](ProgrammaticAPIKeysAPI.md#UpdateApiKeyRoles) | **Patch** /api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId} | Update Organization API Key Roles for One Project
-[**UpdateOrgApiKey**](ProgrammaticAPIKeysAPI.md#UpdateOrgApiKey) | **Patch** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId} | Update One Organization API Key
+[**AddGroupApiKey**](ProgrammaticAPIKeysApi.md#AddGroupApiKey) | **Post** /api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId} | Assign One Organization API Key to One Project
+[**CreateGroupApiKey**](ProgrammaticAPIKeysApi.md#CreateGroupApiKey) | **Post** /api/atlas/v2/groups/{groupId}/apiKeys | Create and Assign One Organization API Key to One Project
+[**CreateOrgAccessEntry**](ProgrammaticAPIKeysApi.md#CreateOrgAccessEntry) | **Post** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList | Create One Access List Entry for One Organization API Key
+[**CreateOrgApiKey**](ProgrammaticAPIKeysApi.md#CreateOrgApiKey) | **Post** /api/atlas/v2/orgs/{orgId}/apiKeys | Create One Organization API Key
+[**DeleteAccessEntry**](ProgrammaticAPIKeysApi.md#DeleteAccessEntry) | **Delete** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress} | Remove One Access List Entry for One Organization API Key
+[**DeleteOrgApiKey**](ProgrammaticAPIKeysApi.md#DeleteOrgApiKey) | **Delete** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId} | Remove One Organization API Key
+[**GetOrgAccessEntry**](ProgrammaticAPIKeysApi.md#GetOrgAccessEntry) | **Get** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress} | Return One Access List Entry for One Organization API Key
+[**GetOrgApiKey**](ProgrammaticAPIKeysApi.md#GetOrgApiKey) | **Get** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId} | Return One Organization API Key
+[**ListGroupApiKeys**](ProgrammaticAPIKeysApi.md#ListGroupApiKeys) | **Get** /api/atlas/v2/groups/{groupId}/apiKeys | Return All Organization API Keys Assigned to One Project
+[**ListOrgAccessEntries**](ProgrammaticAPIKeysApi.md#ListOrgAccessEntries) | **Get** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList | Return All Access List Entries for One Organization API Key
+[**ListOrgApiKeys**](ProgrammaticAPIKeysApi.md#ListOrgApiKeys) | **Get** /api/atlas/v2/orgs/{orgId}/apiKeys | Return All Organization API Keys
+[**RemoveGroupApiKey**](ProgrammaticAPIKeysApi.md#RemoveGroupApiKey) | **Delete** /api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId} | Unassign One Organization API Key from One Project
+[**UpdateApiKeyRoles**](ProgrammaticAPIKeysApi.md#UpdateApiKeyRoles) | **Patch** /api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId} | Update Organization API Key Roles for One Project
+[**UpdateOrgApiKey**](ProgrammaticAPIKeysApi.md#UpdateOrgApiKey) | **Patch** /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId} | Update One Organization API Key
 
 
 

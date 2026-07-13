@@ -4,9 +4,9 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateFlexRestoreJob**](FlexRestoreJobsAPI.md#CreateFlexRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Create One Restore Job for One Flex Cluster
-[**GetFlexRestoreJob**](FlexRestoreJobsAPI.md#GetFlexRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Flex Cluster
-[**ListFlexRestoreJobs**](FlexRestoreJobsAPI.md#ListFlexRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Return All Restore Jobs for One Flex Cluster
+[**CreateFlexRestoreJob**](FlexRestoreJobsApi.md#CreateFlexRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Create One Restore Job for One Flex Cluster
+[**GetFlexRestoreJob**](FlexRestoreJobsApi.md#GetFlexRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Flex Cluster
+[**ListFlexRestoreJobs**](FlexRestoreJobsApi.md#ListFlexRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/flexClusters/{name}/backup/restoreJobs | Return All Restore Jobs for One Flex Cluster
 
 
 

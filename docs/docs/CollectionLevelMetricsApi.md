@@ -4,15 +4,15 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetClusterNamespaces**](CollectionLevelMetricsAPI.md#GetClusterNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/collStats/namespaces | Return Ranked Namespaces from One Cluster
-[**GetProcessNamespaces**](CollectionLevelMetricsAPI.md#GetProcessNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/collStats/namespaces | Return Ranked Namespaces from One Host
-[**ListCollStatMeasurements**](CollectionLevelMetricsAPI.md#ListCollStatMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/{databaseName}/{collectionName}/collStats/measurements | Return Cluster-Level Query Latency
-[**ListCollStatMetrics**](CollectionLevelMetricsAPI.md#ListCollStatMetrics) | **Get** /api/atlas/v2/groups/{groupId}/collStats/metrics | Return All Metric Names
-[**ListPinnedNamespaces**](CollectionLevelMetricsAPI.md#ListPinnedNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Return Pinned Namespaces
-[**ListProcessMeasurements**](CollectionLevelMetricsAPI.md#ListProcessMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/{databaseName}/{collectionName}/collStats/measurements | Return Host-Level Query Latency
-[**PinNamespaces**](CollectionLevelMetricsAPI.md#PinNamespaces) | **Put** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Pin Namespaces
-[**UnpinNamespaces**](CollectionLevelMetricsAPI.md#UnpinNamespaces) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/unpin | Unpin Namespaces
-[**UpdatePinnedNamespaces**](CollectionLevelMetricsAPI.md#UpdatePinnedNamespaces) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Add Pinned Namespaces
+[**GetClusterNamespaces**](CollectionLevelMetricsApi.md#GetClusterNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/collStats/namespaces | Return Ranked Namespaces from One Cluster
+[**GetProcessNamespaces**](CollectionLevelMetricsApi.md#GetProcessNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/collStats/namespaces | Return Ranked Namespaces from One Host
+[**ListCollStatMeasurements**](CollectionLevelMetricsApi.md#ListCollStatMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/{databaseName}/{collectionName}/collStats/measurements | Return Cluster-Level Query Latency
+[**ListCollStatMetrics**](CollectionLevelMetricsApi.md#ListCollStatMetrics) | **Get** /api/atlas/v2/groups/{groupId}/collStats/metrics | Return All Metric Names
+[**ListPinnedNamespaces**](CollectionLevelMetricsApi.md#ListPinnedNamespaces) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Return Pinned Namespaces
+[**ListProcessMeasurements**](CollectionLevelMetricsApi.md#ListProcessMeasurements) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/{databaseName}/{collectionName}/collStats/measurements | Return Host-Level Query Latency
+[**PinNamespaces**](CollectionLevelMetricsApi.md#PinNamespaces) | **Put** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Pin Namespaces
+[**UnpinNamespaces**](CollectionLevelMetricsApi.md#UnpinNamespaces) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/unpin | Unpin Namespaces
+[**UpdatePinnedNamespaces**](CollectionLevelMetricsApi.md#UpdatePinnedNamespaces) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collStats/pinned | Add Pinned Namespaces
 
 
 

@@ -4,17 +4,17 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateClusterRestoreJob**](LegacyBackupAPI.md#CreateClusterRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs | Create One Legacy Backup Restore Job
-[**DeleteClusterSnapshot**](LegacyBackupAPI.md#DeleteClusterSnapshot) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Remove One Legacy Backup Snapshot
-[**GetClusterBackupCheckpoint**](LegacyBackupAPI.md#GetClusterBackupCheckpoint) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints/{checkpointId} | Return One Legacy Backup Checkpoint
-[**GetClusterRestoreJob**](LegacyBackupAPI.md#GetClusterRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs/{jobId} | Return One Legacy Backup Restore Job
-[**GetClusterSnapshot**](LegacyBackupAPI.md#GetClusterSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Return One Legacy Backup Snapshot
-[**GetClusterSnapshotSchedule**](LegacyBackupAPI.md#GetClusterSnapshotSchedule) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshotSchedule | Return One Snapshot Schedule
-[**ListClusterBackupCheckpoints**](LegacyBackupAPI.md#ListClusterBackupCheckpoints) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints | Return All Legacy Backup Checkpoints
-[**ListClusterRestoreJobs**](LegacyBackupAPI.md#ListClusterRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs | Return All Legacy Backup Restore Jobs
-[**ListClusterSnapshots**](LegacyBackupAPI.md#ListClusterSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots | Return All Legacy Backup Snapshots
-[**UpdateClusterSnapshot**](LegacyBackupAPI.md#UpdateClusterSnapshot) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Update Expiration Date for One Legacy Backup Snapshot
-[**UpdateClusterSnapshotSchedule**](LegacyBackupAPI.md#UpdateClusterSnapshotSchedule) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshotSchedule | Update Snapshot Schedule for One Cluster
+[**CreateClusterRestoreJob**](LegacyBackupApi.md#CreateClusterRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs | Create One Legacy Backup Restore Job
+[**DeleteClusterSnapshot**](LegacyBackupApi.md#DeleteClusterSnapshot) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Remove One Legacy Backup Snapshot
+[**GetClusterBackupCheckpoint**](LegacyBackupApi.md#GetClusterBackupCheckpoint) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints/{checkpointId} | Return One Legacy Backup Checkpoint
+[**GetClusterRestoreJob**](LegacyBackupApi.md#GetClusterRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs/{jobId} | Return One Legacy Backup Restore Job
+[**GetClusterSnapshot**](LegacyBackupApi.md#GetClusterSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Return One Legacy Backup Snapshot
+[**GetClusterSnapshotSchedule**](LegacyBackupApi.md#GetClusterSnapshotSchedule) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshotSchedule | Return One Snapshot Schedule
+[**ListClusterBackupCheckpoints**](LegacyBackupApi.md#ListClusterBackupCheckpoints) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backupCheckpoints | Return All Legacy Backup Checkpoints
+[**ListClusterRestoreJobs**](LegacyBackupApi.md#ListClusterRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/restoreJobs | Return All Legacy Backup Restore Jobs
+[**ListClusterSnapshots**](LegacyBackupApi.md#ListClusterSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots | Return All Legacy Backup Snapshots
+[**UpdateClusterSnapshot**](LegacyBackupApi.md#UpdateClusterSnapshot) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshots/{snapshotId} | Update Expiration Date for One Legacy Backup Snapshot
+[**UpdateClusterSnapshotSchedule**](LegacyBackupApi.md#UpdateClusterSnapshotSchedule) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/snapshotSchedule | Update Snapshot Schedule for One Cluster
 
 
 

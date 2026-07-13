@@ -4,8 +4,8 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAwsCustomDns**](AWSClustersDNSAPI.md#GetAwsCustomDns) | **Get** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Return One Custom DNS Configuration for Atlas Clusters on AWS
-[**ToggleAwsCustomDns**](AWSClustersDNSAPI.md#ToggleAwsCustomDns) | **Patch** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Update State of One Custom DNS Configuration for Atlas Clusters on AWS
+[**GetAwsCustomDns**](AWSClustersDNSApi.md#GetAwsCustomDns) | **Get** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Return One Custom DNS Configuration for Atlas Clusters on AWS
+[**ToggleAwsCustomDns**](AWSClustersDNSApi.md#ToggleAwsCustomDns) | **Patch** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Update State of One Custom DNS Configuration for Atlas Clusters on AWS
 
 
 

@@ -4,13 +4,13 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateOrgResourcePolicy**](ResourcePoliciesAPI.md#CreateOrgResourcePolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Create One Atlas Resource Policy
-[**DeleteOrgResourcePolicy**](ResourcePoliciesAPI.md#DeleteOrgResourcePolicy) | **Delete** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Delete One Atlas Resource Policy
-[**GetNonCompliantResources**](ResourcePoliciesAPI.md#GetNonCompliantResources) | **Get** /api/atlas/v2/orgs/{orgId}/nonCompliantResources | Return All Non-Compliant Resources
-[**GetOrgResourcePolicy**](ResourcePoliciesAPI.md#GetOrgResourcePolicy) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Return One Atlas Resource Policy
-[**ListOrgResourcePolicies**](ResourcePoliciesAPI.md#ListOrgResourcePolicies) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Return All Atlas Resource Policies
-[**UpdateOrgResourcePolicy**](ResourcePoliciesAPI.md#UpdateOrgResourcePolicy) | **Patch** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Update One Atlas Resource Policy
-[**ValidateResourcePolicies**](ResourcePoliciesAPI.md#ValidateResourcePolicies) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies:validate | Validate One Atlas Resource Policy
+[**CreateOrgResourcePolicy**](ResourcePoliciesApi.md#CreateOrgResourcePolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Create One Atlas Resource Policy
+[**DeleteOrgResourcePolicy**](ResourcePoliciesApi.md#DeleteOrgResourcePolicy) | **Delete** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Delete One Atlas Resource Policy
+[**GetNonCompliantResources**](ResourcePoliciesApi.md#GetNonCompliantResources) | **Get** /api/atlas/v2/orgs/{orgId}/nonCompliantResources | Return All Non-Compliant Resources
+[**GetOrgResourcePolicy**](ResourcePoliciesApi.md#GetOrgResourcePolicy) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Return One Atlas Resource Policy
+[**ListOrgResourcePolicies**](ResourcePoliciesApi.md#ListOrgResourcePolicies) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Return All Atlas Resource Policies
+[**UpdateOrgResourcePolicy**](ResourcePoliciesApi.md#UpdateOrgResourcePolicy) | **Patch** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Update One Atlas Resource Policy
+[**ValidateResourcePolicies**](ResourcePoliciesApi.md#ValidateResourcePolicies) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies:validate | Validate One Atlas Resource Policy
 
 
 

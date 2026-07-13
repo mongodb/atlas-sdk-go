@@ -4,11 +4,11 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAccessListEntry**](ProjectIPAccessListAPI.md#CreateAccessListEntry) | **Post** /api/atlas/v2/groups/{groupId}/accessList | Add Entries to Project IP Access List
-[**DeleteAccessListEntry**](ProjectIPAccessListAPI.md#DeleteAccessListEntry) | **Delete** /api/atlas/v2/groups/{groupId}/accessList/{entryValue} | Remove One Entry from One Project IP Access List
-[**GetAccessListEntry**](ProjectIPAccessListAPI.md#GetAccessListEntry) | **Get** /api/atlas/v2/groups/{groupId}/accessList/{entryValue} | Return One Project IP Access List Entry
-[**GetAccessListStatus**](ProjectIPAccessListAPI.md#GetAccessListStatus) | **Get** /api/atlas/v2/groups/{groupId}/accessList/{entryValue}/status | Return Status of One Project IP Access List Entry
-[**ListAccessListEntries**](ProjectIPAccessListAPI.md#ListAccessListEntries) | **Get** /api/atlas/v2/groups/{groupId}/accessList | Return All Project IP Access List Entries
+[**CreateAccessListEntry**](ProjectIPAccessListApi.md#CreateAccessListEntry) | **Post** /api/atlas/v2/groups/{groupId}/accessList | Add Entries to Project IP Access List
+[**DeleteAccessListEntry**](ProjectIPAccessListApi.md#DeleteAccessListEntry) | **Delete** /api/atlas/v2/groups/{groupId}/accessList/{entryValue} | Remove One Entry from One Project IP Access List
+[**GetAccessListEntry**](ProjectIPAccessListApi.md#GetAccessListEntry) | **Get** /api/atlas/v2/groups/{groupId}/accessList/{entryValue} | Return One Project IP Access List Entry
+[**GetAccessListStatus**](ProjectIPAccessListApi.md#GetAccessListStatus) | **Get** /api/atlas/v2/groups/{groupId}/accessList/{entryValue}/status | Return Status of One Project IP Access List Entry
+[**ListAccessListEntries**](ProjectIPAccessListApi.md#ListAccessListEntries) | **Get** /api/atlas/v2/groups/{groupId}/accessList | Return All Project IP Access List Entries
 
 
 

@@ -4,11 +4,11 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGroupIntegration**](ThirdPartyIntegrationsAPI.md#CreateGroupIntegration) | **Post** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Create One Third-Party Service Integration
-[**DeleteGroupIntegration**](ThirdPartyIntegrationsAPI.md#DeleteGroupIntegration) | **Delete** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Remove One Third-Party Service Integration
-[**GetGroupIntegration**](ThirdPartyIntegrationsAPI.md#GetGroupIntegration) | **Get** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Return One Third-Party Service Integration
-[**ListGroupIntegrations**](ThirdPartyIntegrationsAPI.md#ListGroupIntegrations) | **Get** /api/atlas/v2/groups/{groupId}/integrations | Return All Active Third-Party Service Integrations
-[**UpdateGroupIntegration**](ThirdPartyIntegrationsAPI.md#UpdateGroupIntegration) | **Put** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Update One Third-Party Service Integration
+[**CreateGroupIntegration**](ThirdPartyIntegrationsApi.md#CreateGroupIntegration) | **Post** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Create One Third-Party Service Integration
+[**DeleteGroupIntegration**](ThirdPartyIntegrationsApi.md#DeleteGroupIntegration) | **Delete** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Remove One Third-Party Service Integration
+[**GetGroupIntegration**](ThirdPartyIntegrationsApi.md#GetGroupIntegration) | **Get** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Return One Third-Party Service Integration
+[**ListGroupIntegrations**](ThirdPartyIntegrationsApi.md#ListGroupIntegrations) | **Get** /api/atlas/v2/groups/{groupId}/integrations | Return All Active Third-Party Service Integrations
+[**UpdateGroupIntegration**](ThirdPartyIntegrationsApi.md#UpdateGroupIntegration) | **Put** /api/atlas/v2/groups/{groupId}/integrations/{integrationType} | Update One Third-Party Service Integration
 
 
 

@@ -4,10 +4,10 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AcknowledgeAlert**](AlertsAPI.md#AcknowledgeAlert) | **Patch** /api/atlas/v2/groups/{groupId}/alerts/{alertId} | Acknowledge One Alert from One Project
-[**GetAlert**](AlertsAPI.md#GetAlert) | **Get** /api/atlas/v2/groups/{groupId}/alerts/{alertId} | Return One Alert from One Project
-[**GetAlertConfigAlerts**](AlertsAPI.md#GetAlertConfigAlerts) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}/alerts | Return All Open Alerts for One Alert Configuration
-[**ListAlerts**](AlertsAPI.md#ListAlerts) | **Get** /api/atlas/v2/groups/{groupId}/alerts | Return All Alerts from One Project
+[**AcknowledgeAlert**](AlertsApi.md#AcknowledgeAlert) | **Patch** /api/atlas/v2/groups/{groupId}/alerts/{alertId} | Acknowledge One Alert from One Project
+[**GetAlert**](AlertsApi.md#GetAlert) | **Get** /api/atlas/v2/groups/{groupId}/alerts/{alertId} | Return One Alert from One Project
+[**GetAlertConfigAlerts**](AlertsApi.md#GetAlertConfigAlerts) | **Get** /api/atlas/v2/groups/{groupId}/alertConfigs/{alertConfigId}/alerts | Return All Open Alerts for One Alert Configuration
+[**ListAlerts**](AlertsApi.md#ListAlerts) | **Get** /api/atlas/v2/groups/{groupId}/alerts | Return All Alerts from One Project
 
 
 

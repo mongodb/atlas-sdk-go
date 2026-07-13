@@ -4,11 +4,11 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetGroupEvent**](EventsAPI.md#GetGroupEvent) | **Get** /api/atlas/v2/groups/{groupId}/events/{eventId} | Return One Event from One Project
-[**GetOrgEvent**](EventsAPI.md#GetOrgEvent) | **Get** /api/atlas/v2/orgs/{orgId}/events/{eventId} | Return One Event from One Organization
-[**ListEventTypes**](EventsAPI.md#ListEventTypes) | **Get** /api/atlas/v2/eventTypes | Return All Event Types
-[**ListGroupEvents**](EventsAPI.md#ListGroupEvents) | **Get** /api/atlas/v2/groups/{groupId}/events | Return Events from One Project
-[**ListOrgEvents**](EventsAPI.md#ListOrgEvents) | **Get** /api/atlas/v2/orgs/{orgId}/events | Return Events from One Organization
+[**GetGroupEvent**](EventsApi.md#GetGroupEvent) | **Get** /api/atlas/v2/groups/{groupId}/events/{eventId} | Return One Event from One Project
+[**GetOrgEvent**](EventsApi.md#GetOrgEvent) | **Get** /api/atlas/v2/orgs/{orgId}/events/{eventId} | Return One Event from One Organization
+[**ListEventTypes**](EventsApi.md#ListEventTypes) | **Get** /api/atlas/v2/eventTypes | Return All Event Types
+[**ListGroupEvents**](EventsApi.md#ListGroupEvents) | **Get** /api/atlas/v2/groups/{groupId}/events | Return Events from One Project
+[**ListOrgEvents**](EventsApi.md#ListOrgEvents) | **Get** /api/atlas/v2/orgs/{orgId}/events | Return Events from One Organization
 
 
 

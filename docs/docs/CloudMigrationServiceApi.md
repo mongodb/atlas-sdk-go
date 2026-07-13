@@ -4,14 +4,14 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGroupLiveMigration**](CloudMigrationServiceAPI.md#CreateGroupLiveMigration) | **Post** /api/atlas/v2/groups/{groupId}/liveMigrations | Create One Migration for One Local Managed Cluster to MongoDB Atlas
-[**CreateLinkToken**](CloudMigrationServiceAPI.md#CreateLinkToken) | **Post** /api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens | Create One Link-Token
-[**CutoverMigration**](CloudMigrationServiceAPI.md#CutoverMigration) | **Put** /api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId}/cutover | Cut Over One Migrated Cluster
-[**DeleteLinkTokens**](CloudMigrationServiceAPI.md#DeleteLinkTokens) | **Delete** /api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens | Remove One Link-Token
-[**GetGroupLiveMigration**](CloudMigrationServiceAPI.md#GetGroupLiveMigration) | **Get** /api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId} | Return One Migration Job
-[**GetMigrationValidateStatus**](CloudMigrationServiceAPI.md#GetMigrationValidateStatus) | **Get** /api/atlas/v2/groups/{groupId}/liveMigrations/validate/{validationId} | Return One Migration Validation Job
-[**ListAvailableProjects**](CloudMigrationServiceAPI.md#ListAvailableProjects) | **Get** /api/atlas/v2/orgs/{orgId}/liveMigrations/availableProjects | Return All Projects Available for Migration
-[**ValidateLiveMigrations**](CloudMigrationServiceAPI.md#ValidateLiveMigrations) | **Post** /api/atlas/v2/groups/{groupId}/liveMigrations/validate | Validate One Migration Request
+[**CreateGroupLiveMigration**](CloudMigrationServiceApi.md#CreateGroupLiveMigration) | **Post** /api/atlas/v2/groups/{groupId}/liveMigrations | Create One Migration for One Local Managed Cluster to MongoDB Atlas
+[**CreateLinkToken**](CloudMigrationServiceApi.md#CreateLinkToken) | **Post** /api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens | Create One Link-Token
+[**CutoverMigration**](CloudMigrationServiceApi.md#CutoverMigration) | **Put** /api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId}/cutover | Cut Over One Migrated Cluster
+[**DeleteLinkTokens**](CloudMigrationServiceApi.md#DeleteLinkTokens) | **Delete** /api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens | Remove One Link-Token
+[**GetGroupLiveMigration**](CloudMigrationServiceApi.md#GetGroupLiveMigration) | **Get** /api/atlas/v2/groups/{groupId}/liveMigrations/{liveMigrationId} | Return One Migration Job
+[**GetMigrationValidateStatus**](CloudMigrationServiceApi.md#GetMigrationValidateStatus) | **Get** /api/atlas/v2/groups/{groupId}/liveMigrations/validate/{validationId} | Return One Migration Validation Job
+[**ListAvailableProjects**](CloudMigrationServiceApi.md#ListAvailableProjects) | **Get** /api/atlas/v2/orgs/{orgId}/liveMigrations/availableProjects | Return All Projects Available for Migration
+[**ValidateLiveMigrations**](CloudMigrationServiceApi.md#ValidateLiveMigrations) | **Post** /api/atlas/v2/groups/{groupId}/liveMigrations/validate | Validate One Migration Request
 
 
 

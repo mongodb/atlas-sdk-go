@@ -4,11 +4,11 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthorizeProviderAccessRole**](CloudProviderAccessAPI.md#AuthorizeProviderAccessRole) | **Patch** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId} | Authorize One Cloud Provider Access Role
-[**CreateCloudProviderAccess**](CloudProviderAccessAPI.md#CreateCloudProviderAccess) | **Post** /api/atlas/v2/groups/{groupId}/cloudProviderAccess | Create One Cloud Provider Access Role
-[**DeauthorizeProviderAccessRole**](CloudProviderAccessAPI.md#DeauthorizeProviderAccessRole) | **Delete** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{cloudProvider}/{roleId} | Deauthorize One Cloud Provider Access Role
-[**GetCloudProviderAccess**](CloudProviderAccessAPI.md#GetCloudProviderAccess) | **Get** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId} | Return One Cloud Provider Access Role
-[**ListCloudProviderAccess**](CloudProviderAccessAPI.md#ListCloudProviderAccess) | **Get** /api/atlas/v2/groups/{groupId}/cloudProviderAccess | Return All Cloud Provider Access Roles
+[**AuthorizeProviderAccessRole**](CloudProviderAccessApi.md#AuthorizeProviderAccessRole) | **Patch** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId} | Authorize One Cloud Provider Access Role
+[**CreateCloudProviderAccess**](CloudProviderAccessApi.md#CreateCloudProviderAccess) | **Post** /api/atlas/v2/groups/{groupId}/cloudProviderAccess | Create One Cloud Provider Access Role
+[**DeauthorizeProviderAccessRole**](CloudProviderAccessApi.md#DeauthorizeProviderAccessRole) | **Delete** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{cloudProvider}/{roleId} | Deauthorize One Cloud Provider Access Role
+[**GetCloudProviderAccess**](CloudProviderAccessApi.md#GetCloudProviderAccess) | **Get** /api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId} | Return One Cloud Provider Access Role
+[**ListCloudProviderAccess**](CloudProviderAccessApi.md#ListCloudProviderAccess) | **Get** /api/atlas/v2/groups/{groupId}/cloudProviderAccess | Return All Cloud Provider Access Roles
 
 
 

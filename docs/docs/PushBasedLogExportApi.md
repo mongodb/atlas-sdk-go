@@ -4,15 +4,15 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGroupLogIntegration**](PushBasedLogExportAPI.md#CreateGroupLogIntegration) | **Post** /api/atlas/v2/groups/{groupId}/logIntegrations | Create One Log Integration
-[**CreateLogExport**](PushBasedLogExportAPI.md#CreateLogExport) | **Post** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Create One Push-Based Log Export Configuration in One Project
-[**DeleteGroupLogIntegration**](PushBasedLogExportAPI.md#DeleteGroupLogIntegration) | **Delete** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Remove One Log Integration
-[**DeleteLogExport**](PushBasedLogExportAPI.md#DeleteLogExport) | **Delete** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Disable Push-Based Log Export for One Project
-[**GetGroupLogIntegration**](PushBasedLogExportAPI.md#GetGroupLogIntegration) | **Get** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Return One Log Integration
-[**GetLogExport**](PushBasedLogExportAPI.md#GetLogExport) | **Get** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Return One Push-Based Log Export Configuration in One Project
-[**ListGroupLogIntegrations**](PushBasedLogExportAPI.md#ListGroupLogIntegrations) | **Get** /api/atlas/v2/groups/{groupId}/logIntegrations | Return All Active Log Integrations
-[**UpdateGroupLogIntegration**](PushBasedLogExportAPI.md#UpdateGroupLogIntegration) | **Put** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Update One Log Integration
-[**UpdateLogExport**](PushBasedLogExportAPI.md#UpdateLogExport) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update One Push-Based Log Export Configuration in One Project
+[**CreateGroupLogIntegration**](PushBasedLogExportApi.md#CreateGroupLogIntegration) | **Post** /api/atlas/v2/groups/{groupId}/logIntegrations | Create One Log Integration
+[**CreateLogExport**](PushBasedLogExportApi.md#CreateLogExport) | **Post** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Create One Push-Based Log Export Configuration in One Project
+[**DeleteGroupLogIntegration**](PushBasedLogExportApi.md#DeleteGroupLogIntegration) | **Delete** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Remove One Log Integration
+[**DeleteLogExport**](PushBasedLogExportApi.md#DeleteLogExport) | **Delete** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Disable Push-Based Log Export for One Project
+[**GetGroupLogIntegration**](PushBasedLogExportApi.md#GetGroupLogIntegration) | **Get** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Return One Log Integration
+[**GetLogExport**](PushBasedLogExportApi.md#GetLogExport) | **Get** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Return One Push-Based Log Export Configuration in One Project
+[**ListGroupLogIntegrations**](PushBasedLogExportApi.md#ListGroupLogIntegrations) | **Get** /api/atlas/v2/groups/{groupId}/logIntegrations | Return All Active Log Integrations
+[**UpdateGroupLogIntegration**](PushBasedLogExportApi.md#UpdateGroupLogIntegration) | **Put** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Update One Log Integration
+[**UpdateLogExport**](PushBasedLogExportApi.md#UpdateLogExport) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update One Push-Based Log Export Configuration in One Project
 
 
 

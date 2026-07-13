@@ -4,11 +4,11 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetClusterQueryShape**](QueryShapeInsightsAPI.md#GetClusterQueryShape) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash} | Return One Query Shape
-[**GetQueryShapeDetails**](QueryShapeInsightsAPI.md#GetQueryShapeDetails) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details | Return Query Shape Details
-[**ListClusterQueryShapes**](QueryShapeInsightsAPI.md#ListClusterQueryShapes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes | Return All Query Shapes
-[**ListQueryShapeSummaries**](QueryShapeInsightsAPI.md#ListQueryShapeSummaries) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries | Return Query Statistic Summaries
-[**UpdateClusterQueryShape**](QueryShapeInsightsAPI.md#UpdateClusterQueryShape) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash} | Update Query Shape Rejection Status
+[**GetClusterQueryShape**](QueryShapeInsightsApi.md#GetClusterQueryShape) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash} | Return One Query Shape
+[**GetQueryShapeDetails**](QueryShapeInsightsApi.md#GetQueryShapeDetails) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details | Return Query Shape Details
+[**ListClusterQueryShapes**](QueryShapeInsightsApi.md#ListClusterQueryShapes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes | Return All Query Shapes
+[**ListQueryShapeSummaries**](QueryShapeInsightsApi.md#ListQueryShapeSummaries) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/summaries | Return Query Statistic Summaries
+[**UpdateClusterQueryShape**](QueryShapeInsightsApi.md#UpdateClusterQueryShape) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash} | Update Query Shape Rejection Status
 
 
 

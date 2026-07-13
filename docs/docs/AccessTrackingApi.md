@@ -4,8 +4,8 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetAccessHistoryCluster**](AccessTrackingAPI.md#GetAccessHistoryCluster) | **Get** /api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName} | Return Database Access History for One Cluster by Cluster Name
-[**GetAccessHistoryProcess**](AccessTrackingAPI.md#GetAccessHistoryProcess) | **Get** /api/atlas/v2/groups/{groupId}/dbAccessHistory/processes/{hostname} | Return Database Access History for One Cluster by Hostname
+[**GetAccessHistoryCluster**](AccessTrackingApi.md#GetAccessHistoryCluster) | **Get** /api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName} | Return Database Access History for One Cluster by Cluster Name
+[**GetAccessHistoryProcess**](AccessTrackingApi.md#GetAccessHistoryProcess) | **Get** /api/atlas/v2/groups/{groupId}/dbAccessHistory/processes/{hostname} | Return Database Access History for One Cluster by Hostname
 
 
 

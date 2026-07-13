@@ -4,8 +4,8 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetGroupActivityFeed**](ActivityFeedAPI.md#GetGroupActivityFeed) | **Get** /api/atlas/v2/groups/{groupId}/activityFeed | Return Pre-Filtered Activity Feed Link for One Project
-[**GetOrgActivityFeed**](ActivityFeedAPI.md#GetOrgActivityFeed) | **Get** /api/atlas/v2/orgs/{orgId}/activityFeed | Return Pre-Filtered Activity Feed Link for One Organization
+[**GetGroupActivityFeed**](ActivityFeedApi.md#GetGroupActivityFeed) | **Get** /api/atlas/v2/groups/{groupId}/activityFeed | Return Pre-Filtered Activity Feed Link for One Project
+[**GetOrgActivityFeed**](ActivityFeedApi.md#GetOrgActivityFeed) | **Get** /api/atlas/v2/orgs/{orgId}/activityFeed | Return Pre-Filtered Activity Feed Link for One Organization
 
 
 

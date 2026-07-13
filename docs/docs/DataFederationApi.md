@@ -4,20 +4,20 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateDataFederation**](DataFederationAPI.md#CreateDataFederation) | **Post** /api/atlas/v2/groups/{groupId}/dataFederation | Create One Federated Database Instance in One Project
-[**CreatePrivateEndpointId**](DataFederationAPI.md#CreatePrivateEndpointId) | **Post** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds | Create One Federated Database Instance and Online Archive Private Endpoint for One Project
-[**DeleteDataFederation**](DataFederationAPI.md#DeleteDataFederation) | **Delete** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName} | Remove One Federated Database Instance from One Project
-[**DeleteDataFederationLimit**](DataFederationAPI.md#DeleteDataFederationLimit) | **Delete** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName} | Delete One Query Limit for One Federated Database Instance
-[**DeletePrivateEndpointId**](DataFederationAPI.md#DeletePrivateEndpointId) | **Delete** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId} | Remove One Federated Database Instance and Online Archive Private Endpoint from One Project
-[**DownloadFederationQueryLogs**](DataFederationAPI.md#DownloadFederationQueryLogs) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/queryLogs.gz | Download Query Logs for One Federated Database Instance
-[**GetDataFederation**](DataFederationAPI.md#GetDataFederation) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName} | Return One Federated Database Instance in One Project
-[**GetDataFederationLimit**](DataFederationAPI.md#GetDataFederationLimit) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName} | Return One Federated Database Instance Query Limit for One Project
-[**GetPrivateEndpointId**](DataFederationAPI.md#GetPrivateEndpointId) | **Get** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId} | Return One Federated Database Instance and Online Archive Private Endpoint in One Project
-[**ListDataFederation**](DataFederationAPI.md#ListDataFederation) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation | Return All Federated Database Instances in One Project
-[**ListDataFederationLimits**](DataFederationAPI.md#ListDataFederationLimits) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits | Return All Query Limits for One Federated Database Instance
-[**ListPrivateEndpointIds**](DataFederationAPI.md#ListPrivateEndpointIds) | **Get** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds | Return All Federated Database Instance and Online Archive Private Endpoints in One Project
-[**SetDataFederationLimit**](DataFederationAPI.md#SetDataFederationLimit) | **Patch** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName} | Configure One Query Limit for One Federated Database Instance
-[**UpdateDataFederation**](DataFederationAPI.md#UpdateDataFederation) | **Patch** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName} | Update One Federated Database Instance in One Project
+[**CreateDataFederation**](DataFederationApi.md#CreateDataFederation) | **Post** /api/atlas/v2/groups/{groupId}/dataFederation | Create One Federated Database Instance in One Project
+[**CreatePrivateEndpointId**](DataFederationApi.md#CreatePrivateEndpointId) | **Post** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds | Create One Federated Database Instance and Online Archive Private Endpoint for One Project
+[**DeleteDataFederation**](DataFederationApi.md#DeleteDataFederation) | **Delete** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName} | Remove One Federated Database Instance from One Project
+[**DeleteDataFederationLimit**](DataFederationApi.md#DeleteDataFederationLimit) | **Delete** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName} | Delete One Query Limit for One Federated Database Instance
+[**DeletePrivateEndpointId**](DataFederationApi.md#DeletePrivateEndpointId) | **Delete** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId} | Remove One Federated Database Instance and Online Archive Private Endpoint from One Project
+[**DownloadFederationQueryLogs**](DataFederationApi.md#DownloadFederationQueryLogs) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/queryLogs.gz | Download Query Logs for One Federated Database Instance
+[**GetDataFederation**](DataFederationApi.md#GetDataFederation) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName} | Return One Federated Database Instance in One Project
+[**GetDataFederationLimit**](DataFederationApi.md#GetDataFederationLimit) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName} | Return One Federated Database Instance Query Limit for One Project
+[**GetPrivateEndpointId**](DataFederationApi.md#GetPrivateEndpointId) | **Get** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId} | Return One Federated Database Instance and Online Archive Private Endpoint in One Project
+[**ListDataFederation**](DataFederationApi.md#ListDataFederation) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation | Return All Federated Database Instances in One Project
+[**ListDataFederationLimits**](DataFederationApi.md#ListDataFederationLimits) | **Get** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits | Return All Query Limits for One Federated Database Instance
+[**ListPrivateEndpointIds**](DataFederationApi.md#ListPrivateEndpointIds) | **Get** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds | Return All Federated Database Instance and Online Archive Private Endpoints in One Project
+[**SetDataFederationLimit**](DataFederationApi.md#SetDataFederationLimit) | **Patch** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName} | Configure One Query Limit for One Federated Database Instance
+[**UpdateDataFederation**](DataFederationApi.md#UpdateDataFederation) | **Patch** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName} | Update One Federated Database Instance in One Project
 
 
 
