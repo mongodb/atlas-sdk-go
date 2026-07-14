@@ -130,6 +130,20 @@ data := Data{
 
 These practices ensure accurate handling of optional values and array updates in the SDK when you work with pointers in Golang.
 
+## Working with Explicit Null Values
+
+By default, the Atlas Go SDK omits `nil` fields from request payloads because model fields use `omitempty`. This preserves the existing value on the server and is the right behavior for most requests.
+
+For `PATCH` or other update operations, however, you may want to explicitly reset a field by sending `null`. Call `SetXxxNil()` on the request model to force that field to be sent as `null`:
+
+```go
+// Surrounding code omitted for brevity
+
+entry := admin.NewNetworkPermissionEntry()
+entry.SetIpAddress("1.2.3.4")
+entry.SetCommentNil() // sends "comment": null in the JSON payload
+```
+
 ## Working with Binary Responses
 
 In the Atlas Go SDK, the `io.ReadCloser` type is used to return binary data using the APIs. 
