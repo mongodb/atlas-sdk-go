@@ -40,6 +40,9 @@ mv "$DOC_FOLDER"/README.md "$DOC_FOLDER"/doc_last_reference.md
 find "$DOC_FOLDER/docs" -name "*.md" -exec perl -pi -e "s/openapiclient/${client_package}/g" {} +
 
 # The Go generator names API doc files with an "Api" suffix (e.g. ThirdPartyIntegrationsApi.md)
-# but links/classnames use the Go type name, which has an "API" suffix. Fix these broken links.
-find "$DOC_FOLDER/docs" -name "*.md" -exec perl -pi -e 's/([A-Za-z]+)API\.md/$1Api.md/g' {} +
-perl -pi -e 's/([A-Za-z]+)API\.md/$1Api.md/g' "$DOC_FOLDER/doc_last_reference.md"
+# but links/classnames use the Go type name, which has an "API" suffix (Go treats API as an
+# initialism). Rename the files to match rather than rewriting the links.
+for f in "$DOC_FOLDER/docs/"*Api.md; do
+  [ -e "$f" ] || continue
+  mv "$f" "${f%Api.md}API.md"
+done
