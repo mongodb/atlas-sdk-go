@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**CreateBackupExport**](CloudBackupsApi.md#CreateBackupExport) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports | Create One Snapshot Export Job
 [**CreateBackupPrivateEndpoint**](CloudBackupsApi.md#CreateBackupPrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints | Create One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project
 [**CreateBackupRestoreJob**](CloudBackupsApi.md#CreateBackupRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs | Create One Restore Job of One Cluster
+[**CreateCollectionRestoreJob**](CloudBackupsApi.md#CreateCollectionRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs | Create One Collection Restore Job
 [**CreateExportBucket**](CloudBackupsApi.md#CreateExportBucket) | **Post** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Create One Snapshot Export Bucket
 [**CreateServerlessRestoreJob**](CloudBackupsApi.md#CreateServerlessRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Create One Restore Job for One Serverless Instance
 [**DeleteBackupPrivateEndpoint**](CloudBackupsApi.md#DeleteBackupPrivateEndpoint) | **Delete** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId} | Delete One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider from One Project
@@ -21,19 +22,27 @@ Method | HTTP request | Description
 [**GetBackupRestoreJob**](CloudBackupsApi.md#GetBackupRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Cluster
 [**GetBackupSchedule**](CloudBackupsApi.md#GetBackupSchedule) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Return One Cloud Backup Schedule
 [**GetBackupShardedCluster**](CloudBackupsApi.md#GetBackupShardedCluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId} | Return One Sharded Cluster Cloud Backup
+[**GetBackupSnapshotDatabase**](CloudBackupsApi.md#GetBackupSnapshotDatabase) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName} | Return One Database in One Snapshot
 [**GetClusterBackupSnapshot**](CloudBackupsApi.md#GetClusterBackupSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId} | Return One Replica Set Cloud Backup
+[**GetCollectionRestoreJob**](CloudBackupsApi.md#GetCollectionRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId} | Return One Collection Restore Job for One Cluster
 [**GetCompliancePolicy**](CloudBackupsApi.md#GetCompliancePolicy) | **Get** /api/atlas/v2/groups/{groupId}/backupCompliancePolicy | Return Backup Compliance Policy Settings
 [**GetExportBucket**](CloudBackupsApi.md#GetExportBucket) | **Get** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Return One Snapshot Export Bucket
+[**GetRestoreJobCollection**](CloudBackupsApi.md#GetRestoreJobCollection) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections/{sourceNamespace} | Return One Collection State for One Collection Restore Job
 [**GetServerlessBackupSnapshot**](CloudBackupsApi.md#GetServerlessBackupSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots/{snapshotId} | Return One Snapshot of One Serverless Instance
 [**GetServerlessRestoreJob**](CloudBackupsApi.md#GetServerlessRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Serverless Instance
+[**GetSnapshotDatabaseCollection**](CloudBackupsApi.md#GetSnapshotDatabaseCollection) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections/{collectionName} | Return One Collection in One Database in One Snapshot
 [**ListBackupExports**](CloudBackupsApi.md#ListBackupExports) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports | Return All Snapshot Export Jobs
 [**ListBackupPrivateEndpoints**](CloudBackupsApi.md#ListBackupPrivateEndpoints) | **Get** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints | Return Object Storage Private Endpoints for Cloud Backups for One Cloud Provider in One Project
 [**ListBackupRestoreJobs**](CloudBackupsApi.md#ListBackupRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs | Return All Restore Jobs for One Cluster
 [**ListBackupShardedClusters**](CloudBackupsApi.md#ListBackupShardedClusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedClusters | Return All Sharded Cluster Cloud Backups
+[**ListBackupSnapshotDatabases**](CloudBackupsApi.md#ListBackupSnapshotDatabases) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases | Return Databases in One Snapshot
 [**ListBackupSnapshots**](CloudBackupsApi.md#ListBackupSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots | Return All Replica Set Cloud Backups
+[**ListCollectionRestoreJobs**](CloudBackupsApi.md#ListCollectionRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs | Return All Collection Restore Jobs for One Cluster
 [**ListExportBuckets**](CloudBackupsApi.md#ListExportBuckets) | **Get** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Return All Snapshot Export Buckets
+[**ListRestoreJobCollections**](CloudBackupsApi.md#ListRestoreJobCollections) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections | Return All Collection States for One Collection Restore Job
 [**ListServerlessBackupSnapshots**](CloudBackupsApi.md#ListServerlessBackupSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots | Return All Snapshots of One Serverless Instance
 [**ListServerlessRestoreJobs**](CloudBackupsApi.md#ListServerlessRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Return All Restore Jobs for One Serverless Instance
+[**ListSnapshotDatabaseCollections**](CloudBackupsApi.md#ListSnapshotDatabaseCollections) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections | Return Collections in One Database in One Snapshot
 [**TakeSnapshots**](CloudBackupsApi.md#TakeSnapshots) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots | Take One On-Demand Snapshot
 [**UpdateBackupExportBucket**](CloudBackupsApi.md#UpdateBackupExportBucket) | **Patch** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Update One Export Bucket Private Networking Settings
 [**UpdateBackupSchedule**](CloudBackupsApi.md#UpdateBackupSchedule) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Update Cloud Backup Schedule for One Cluster
@@ -375,6 +384,91 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/vnd.atlas.2023-01-01+json
 - **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateCollectionRestoreJob
+
+> ApiAtlasCollectionRestoreJobResponse CreateCollectionRestoreJob(ctx, groupId, clusterName, apiAtlasCollectionRestoreJobRequest ApiAtlasCollectionRestoreJobRequest).Execute()
+
+Create One Collection Restore Job
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    apiAtlasCollectionRestoreJobRequest := *admin.NewApiAtlasCollectionRestoreJobRequest("IndexStrategy_example", "TargetClusterName_example", "32b6e34b3d91647abb20e7b8", "WriteStrategy_example") // ApiAtlasCollectionRestoreJobRequest | 
+
+    resp, r, err := sdk.CloudBackupsApi.CreateCollectionRestoreJob(context.Background(), groupId, clusterName, &apiAtlasCollectionRestoreJobRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.CreateCollectionRestoreJob`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `CreateCollectionRestoreJob`: ApiAtlasCollectionRestoreJobResponse
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.CreateCollectionRestoreJob`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the source cluster for the restore. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateCollectionRestoreJobRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **apiAtlasCollectionRestoreJobRequest** | [**ApiAtlasCollectionRestoreJobRequest**](ApiAtlasCollectionRestoreJobRequest.md) | Creates one collection-level restore job for one cluster from the specified project. | 
+
+### Return type
+
+[**ApiAtlasCollectionRestoreJobResponse**](ApiAtlasCollectionRestoreJobResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2025-03-12+json
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1469,6 +1563,95 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetBackupSnapshotDatabase
+
+> DiskBackupDatabaseResponse GetBackupSnapshotDatabase(ctx, groupId, clusterName, snapshotId, databaseName).Execute()
+
+Return One Database in One Snapshot
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    snapshotId := "snapshotId_example" // string | 
+    databaseName := "databaseName_example" // string | 
+
+    resp, r, err := sdk.CloudBackupsApi.GetBackupSnapshotDatabase(context.Background(), groupId, clusterName, snapshotId, databaseName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetBackupSnapshotDatabase`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetBackupSnapshotDatabase`: DiskBackupDatabaseResponse
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetBackupSnapshotDatabase`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster. | 
+**snapshotId** | **string** | Unique 24-hexadecimal digit string that identifies the desired snapshot. | 
+**databaseName** | **string** | Human-readable label that identifies the database. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetBackupSnapshotDatabaseRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+
+### Return type
+
+[**DiskBackupDatabaseResponse**](DiskBackupDatabaseResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetClusterBackupSnapshot
 
 > DiskBackupReplicaSet GetClusterBackupSnapshot(ctx, groupId, clusterName, snapshotId).Execute()
@@ -1549,6 +1732,92 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetCollectionRestoreJob
+
+> ApiAtlasCollectionRestoreJobResponse GetCollectionRestoreJob(ctx, groupId, clusterName, jobId).Execute()
+
+Return One Collection Restore Job for One Cluster
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    jobId := "jobId_example" // string | 
+
+    resp, r, err := sdk.CloudBackupsApi.GetCollectionRestoreJob(context.Background(), groupId, clusterName, jobId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetCollectionRestoreJob`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetCollectionRestoreJob`: ApiAtlasCollectionRestoreJobResponse
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetCollectionRestoreJob`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster with the collection restore jobs you want to return. | 
+**jobId** | **string** | Unique 24-hexadecimal digit string that identifies the collection restore job to return. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetCollectionRestoreJobRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**ApiAtlasCollectionRestoreJobResponse**](ApiAtlasCollectionRestoreJobResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1712,6 +1981,95 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2024-05-30+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRestoreJobCollection
+
+> ApiAtlasCollectionRestoreCollectionStateResponse GetRestoreJobCollection(ctx, groupId, clusterName, jobId, sourceNamespace).Execute()
+
+Return One Collection State for One Collection Restore Job
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    jobId := "jobId_example" // string | 
+    sourceNamespace := "sourceNamespace_example" // string | 
+
+    resp, r, err := sdk.CloudBackupsApi.GetRestoreJobCollection(context.Background(), groupId, clusterName, jobId, sourceNamespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetRestoreJobCollection`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetRestoreJobCollection`: ApiAtlasCollectionRestoreCollectionStateResponse
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetRestoreJobCollection`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster with the collection restore job you want to return. | 
+**jobId** | **string** | Unique 24-hexadecimal digit string that identifies the collection restore job. | 
+**sourceNamespace** | **string** | Source namespace that identifies the collection to return (e.g. &#x60;db.collection&#x60;). | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRestoreJobCollectionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+
+### Return type
+
+[**ApiAtlasCollectionRestoreCollectionStateResponse**](ApiAtlasCollectionRestoreCollectionStateResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1884,6 +2242,98 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetSnapshotDatabaseCollection
+
+> DiskBackupCollectionResponse GetSnapshotDatabaseCollection(ctx, groupId, clusterName, snapshotId, databaseName, collectionName).Execute()
+
+Return One Collection in One Database in One Snapshot
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    snapshotId := "snapshotId_example" // string | 
+    databaseName := "databaseName_example" // string | 
+    collectionName := "collectionName_example" // string | 
+
+    resp, r, err := sdk.CloudBackupsApi.GetSnapshotDatabaseCollection(context.Background(), groupId, clusterName, snapshotId, databaseName, collectionName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.GetSnapshotDatabaseCollection`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetSnapshotDatabaseCollection`: DiskBackupCollectionResponse
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.GetSnapshotDatabaseCollection`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster. | 
+**snapshotId** | **string** | Unique 24-hexadecimal digit string that identifies the desired snapshot. | 
+**databaseName** | **string** | Human-readable label that identifies the database. | 
+**collectionName** | **string** | Human-readable label that identifies the collection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSnapshotDatabaseCollectionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+
+
+### Return type
+
+[**DiskBackupCollectionResponse**](DiskBackupCollectionResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2240,6 +2690,98 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListBackupSnapshotDatabases
+
+> PaginatedApiAtlasDiskBackupDatabase ListBackupSnapshotDatabases(ctx, groupId, clusterName, snapshotId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+
+Return Databases in One Snapshot
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    snapshotId := "snapshotId_example" // string | 
+    includeCount := true // bool |  (optional) (default to true)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
+
+    resp, r, err := sdk.CloudBackupsApi.ListBackupSnapshotDatabases(context.Background(), groupId, clusterName, snapshotId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListBackupSnapshotDatabases`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListBackupSnapshotDatabases`: PaginatedApiAtlasDiskBackupDatabase
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListBackupSnapshotDatabases`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster. | 
+**snapshotId** | **string** | Unique 24-hexadecimal digit string that identifies the desired snapshot. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListBackupSnapshotDatabasesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+
+### Return type
+
+[**PaginatedApiAtlasDiskBackupDatabase**](PaginatedApiAtlasDiskBackupDatabase.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListBackupSnapshots
 
 > PaginatedCloudBackupReplicaSet ListBackupSnapshots(ctx, groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).PointInTimeUtcSeconds(pointInTimeUtcSeconds).OplogTs(oplogTs).OplogInc(oplogInc).Execute()
@@ -2335,6 +2877,93 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListCollectionRestoreJobs
+
+> PaginatedApiAtlasCollectionRestoreJob ListCollectionRestoreJobs(ctx, groupId, clusterName).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+
+Return All Collection Restore Jobs for One Cluster
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
+
+    resp, r, err := sdk.CloudBackupsApi.ListCollectionRestoreJobs(context.Background(), groupId, clusterName).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListCollectionRestoreJobs`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListCollectionRestoreJobs`: PaginatedApiAtlasCollectionRestoreJob
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListCollectionRestoreJobs`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster with the collection restore jobs you want to return. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListCollectionRestoreJobsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+
+### Return type
+
+[**PaginatedApiAtlasCollectionRestoreJob**](PaginatedApiAtlasCollectionRestoreJob.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListExportBuckets
 
 > PaginatedBackupSnapshotExportBuckets ListExportBuckets(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
@@ -2415,6 +3044,102 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2024-05-30+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListRestoreJobCollections
+
+> PaginatedApiAtlasCollectionRestoreCollectionState ListRestoreJobCollections(ctx, groupId, clusterName, jobId).ItemsPerPage(itemsPerPage).PageNum(pageNum).State(state).SourceNamespace(sourceNamespace).TargetNamespace(targetNamespace).Execute()
+
+Return All Collection States for One Collection Restore Job
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    jobId := "jobId_example" // string | 
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
+    state := "state_example" // string |  (optional)
+    sourceNamespace := "sourceNamespace_example" // string |  (optional)
+    targetNamespace := "targetNamespace_example" // string |  (optional)
+
+    resp, r, err := sdk.CloudBackupsApi.ListRestoreJobCollections(context.Background(), groupId, clusterName, jobId).ItemsPerPage(itemsPerPage).PageNum(pageNum).State(state).SourceNamespace(sourceNamespace).TargetNamespace(targetNamespace).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListRestoreJobCollections`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListRestoreJobCollections`: PaginatedApiAtlasCollectionRestoreCollectionState
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListRestoreJobCollections`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster with the collection restore job you want to return. | 
+**jobId** | **string** | Unique 24-hexadecimal digit string that identifies the collection restore job. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListRestoreJobCollectionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+ **state** | **string** | Collection-level state to filter by. | 
+ **sourceNamespace** | **string** | Source namespace to filter by (e.g. &#x60;db.collection&#x60;). | 
+ **targetNamespace** | **string** | Target namespace to filter by (e.g. &#x60;db.collection&#x60;). | 
+
+### Return type
+
+[**PaginatedApiAtlasCollectionRestoreCollectionState**](PaginatedApiAtlasCollectionRestoreCollectionState.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2593,6 +3318,101 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListSnapshotDatabaseCollections
+
+> PaginatedApiAtlasDiskBackupCollection ListSnapshotDatabaseCollections(ctx, groupId, clusterName, snapshotId, databaseName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+
+Return Collections in One Database in One Snapshot
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    snapshotId := "snapshotId_example" // string | 
+    databaseName := "databaseName_example" // string | 
+    includeCount := true // bool |  (optional) (default to true)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
+
+    resp, r, err := sdk.CloudBackupsApi.ListSnapshotDatabaseCollections(context.Background(), groupId, clusterName, snapshotId, databaseName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsApi.ListSnapshotDatabaseCollections`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListSnapshotDatabaseCollections`: PaginatedApiAtlasDiskBackupCollection
+    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsApi.ListSnapshotDatabaseCollections`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster. | 
+**snapshotId** | **string** | Unique 24-hexadecimal digit string that identifies the desired snapshot. | 
+**databaseName** | **string** | Human-readable label that identifies the database. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListSnapshotDatabaseCollectionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+
+### Return type
+
+[**PaginatedApiAtlasDiskBackupCollection**](PaginatedApiAtlasDiskBackupCollection.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

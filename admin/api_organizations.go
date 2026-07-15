@@ -145,6 +145,29 @@ type OrganizationsApi interface {
 	GetOrgExecute(r GetOrgApiRequest) (*AtlasOrganization, *http.Response, error)
 
 	/*
+		GetOrgDelegationSettings Return Delegation Settings for One Organization
+
+		Returns the delegation settings for the specified organization.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@return GetOrgDelegationSettingsApiRequest
+	*/
+	GetOrgDelegationSettings(ctx context.Context, orgId string) GetOrgDelegationSettingsApiRequest
+	/*
+		GetOrgDelegationSettings Return Delegation Settings for One Organization
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetOrgDelegationSettingsApiParams - Parameters for the request
+		@return GetOrgDelegationSettingsApiRequest
+	*/
+	GetOrgDelegationSettingsWithParams(ctx context.Context, args *GetOrgDelegationSettingsApiParams) GetOrgDelegationSettingsApiRequest
+
+	// Method available only for mocking purposes
+	GetOrgDelegationSettingsExecute(r GetOrgDelegationSettingsApiRequest) (*OrgDelegationSettingsResponse, *http.Response, error)
+
+	/*
 			GetOrgGroups Return All Projects in One Organization
 
 			Returns multiple projects in the specified organization. Each organization can have multiple projects. Use projects to:
@@ -299,6 +322,30 @@ type OrganizationsApi interface {
 
 	// Method available only for mocking purposes
 	UpdateOrgExecute(r UpdateOrgApiRequest) (*AtlasOrganization, *http.Response, error)
+
+	/*
+		UpdateOrgDelegationSettings Update Delegation Settings for One Organization
+
+		Updates the delegation settings for the specified organization. Only fields present in the request body are updated; omitted fields retain their current values.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgDelegationSettingsUpdateRequest Delegation settings to update.
+		@return UpdateOrgDelegationSettingsApiRequest
+	*/
+	UpdateOrgDelegationSettings(ctx context.Context, orgId string, orgDelegationSettingsUpdateRequest *OrgDelegationSettingsUpdateRequest) UpdateOrgDelegationSettingsApiRequest
+	/*
+		UpdateOrgDelegationSettings Update Delegation Settings for One Organization
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdateOrgDelegationSettingsApiParams - Parameters for the request
+		@return UpdateOrgDelegationSettingsApiRequest
+	*/
+	UpdateOrgDelegationSettingsWithParams(ctx context.Context, args *UpdateOrgDelegationSettingsApiParams) UpdateOrgDelegationSettingsApiRequest
+
+	// Method available only for mocking purposes
+	UpdateOrgDelegationSettingsExecute(r UpdateOrgDelegationSettingsApiRequest) (*OrgDelegationSettingsResponse, *http.Response, error)
 
 	/*
 			UpdateOrgInviteById Update One Invitation in One Organization by Invitation ID
@@ -949,6 +996,120 @@ func (a *OrganizationsApiService) GetOrgExecute(r GetOrgApiRequest) (*AtlasOrgan
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetOrgDelegationSettingsApiRequest struct {
+	ctx        context.Context
+	ApiService OrganizationsApi
+	orgId      string
+}
+
+type GetOrgDelegationSettingsApiParams struct {
+	OrgId string
+}
+
+func (a *OrganizationsApiService) GetOrgDelegationSettingsWithParams(ctx context.Context, args *GetOrgDelegationSettingsApiParams) GetOrgDelegationSettingsApiRequest {
+	return GetOrgDelegationSettingsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      args.OrgId,
+	}
+}
+
+func (r GetOrgDelegationSettingsApiRequest) Execute() (*OrgDelegationSettingsResponse, *http.Response, error) {
+	return r.ApiService.GetOrgDelegationSettingsExecute(r)
+}
+
+/*
+GetOrgDelegationSettings Return Delegation Settings for One Organization
+
+Returns the delegation settings for the specified organization.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return GetOrgDelegationSettingsApiRequest
+*/
+func (a *OrganizationsApiService) GetOrgDelegationSettings(ctx context.Context, orgId string) GetOrgDelegationSettingsApiRequest {
+	return GetOrgDelegationSettingsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+	}
+}
+
+// GetOrgDelegationSettingsExecute executes the request
+//
+//	@return OrgDelegationSettingsResponse
+func (a *OrganizationsApiService) GetOrgDelegationSettingsExecute(r GetOrgDelegationSettingsApiRequest) (*OrgDelegationSettingsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *OrgDelegationSettingsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.GetOrgDelegationSettings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/delegationSettings"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1797,6 +1958,129 @@ func (a *OrganizationsApiService) UpdateOrgExecute(r UpdateOrgApiRequest) (*Atla
 	}
 	// body params
 	localVarPostBody = r.atlasOrganization
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UpdateOrgDelegationSettingsApiRequest struct {
+	ctx                                context.Context
+	ApiService                         OrganizationsApi
+	orgId                              string
+	orgDelegationSettingsUpdateRequest *OrgDelegationSettingsUpdateRequest
+}
+
+type UpdateOrgDelegationSettingsApiParams struct {
+	OrgId                              string
+	OrgDelegationSettingsUpdateRequest *OrgDelegationSettingsUpdateRequest
+}
+
+func (a *OrganizationsApiService) UpdateOrgDelegationSettingsWithParams(ctx context.Context, args *UpdateOrgDelegationSettingsApiParams) UpdateOrgDelegationSettingsApiRequest {
+	return UpdateOrgDelegationSettingsApiRequest{
+		ApiService:                         a,
+		ctx:                                ctx,
+		orgId:                              args.OrgId,
+		orgDelegationSettingsUpdateRequest: args.OrgDelegationSettingsUpdateRequest,
+	}
+}
+
+func (r UpdateOrgDelegationSettingsApiRequest) Execute() (*OrgDelegationSettingsResponse, *http.Response, error) {
+	return r.ApiService.UpdateOrgDelegationSettingsExecute(r)
+}
+
+/*
+UpdateOrgDelegationSettings Update Delegation Settings for One Organization
+
+Updates the delegation settings for the specified organization. Only fields present in the request body are updated; omitted fields retain their current values.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return UpdateOrgDelegationSettingsApiRequest
+*/
+func (a *OrganizationsApiService) UpdateOrgDelegationSettings(ctx context.Context, orgId string, orgDelegationSettingsUpdateRequest *OrgDelegationSettingsUpdateRequest) UpdateOrgDelegationSettingsApiRequest {
+	return UpdateOrgDelegationSettingsApiRequest{
+		ApiService:                         a,
+		ctx:                                ctx,
+		orgId:                              orgId,
+		orgDelegationSettingsUpdateRequest: orgDelegationSettingsUpdateRequest,
+	}
+}
+
+// UpdateOrgDelegationSettingsExecute executes the request
+//
+//	@return OrgDelegationSettingsResponse
+func (a *OrganizationsApiService) UpdateOrgDelegationSettingsExecute(r UpdateOrgDelegationSettingsApiRequest) (*OrgDelegationSettingsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *OrgDelegationSettingsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.UpdateOrgDelegationSettings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/delegationSettings"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.orgDelegationSettingsUpdateRequest == nil {
+		return localVarReturnValue, nil, reportError("orgDelegationSettingsUpdateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.orgDelegationSettingsUpdateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

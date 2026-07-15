@@ -40,6 +40,10 @@ type APIClient struct {
 
 	// API Services
 
+	AIModelAPIKeysApi AIModelAPIKeysApi
+
+	AIModelRateLimitsApi AIModelRateLimitsApi
+
 	AWSClustersDNSApi AWSClustersDNSApi
 
 	AccessTrackingApi AccessTrackingApi
@@ -160,6 +164,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.UntypedClient.client = c
 
 	// API Services
+	c.AIModelAPIKeysApi = (*AIModelAPIKeysApiService)(&c.common)
+	c.AIModelRateLimitsApi = (*AIModelRateLimitsApiService)(&c.common)
 	c.AWSClustersDNSApi = (*AWSClustersDNSApiService)(&c.common)
 	c.AccessTrackingApi = (*AccessTrackingApiService)(&c.common)
 	c.ActivityFeedApi = (*ActivityFeedApiService)(&c.common)

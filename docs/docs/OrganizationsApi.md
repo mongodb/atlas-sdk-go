@@ -9,12 +9,14 @@ Method | HTTP request | Description
 [**DeleteOrg**](OrganizationsApi.md#DeleteOrg) | **Delete** /api/atlas/v2/orgs/{orgId} | Remove One Organization
 [**DeleteOrgInvite**](OrganizationsApi.md#DeleteOrgInvite) | **Delete** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Remove One Invitation from One Organization
 [**GetOrg**](OrganizationsApi.md#GetOrg) | **Get** /api/atlas/v2/orgs/{orgId} | Return One Organization
+[**GetOrgDelegationSettings**](OrganizationsApi.md#GetOrgDelegationSettings) | **Get** /api/atlas/v2/orgs/{orgId}/delegationSettings | Return Delegation Settings for One Organization
 [**GetOrgGroups**](OrganizationsApi.md#GetOrgGroups) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return All Projects in One Organization
 [**GetOrgInvite**](OrganizationsApi.md#GetOrgInvite) | **Get** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Return One Invitation in One Organization by Invitation ID
 [**GetOrgSettings**](OrganizationsApi.md#GetOrgSettings) | **Get** /api/atlas/v2/orgs/{orgId}/settings | Return Settings for One Organization
 [**ListOrgInvites**](OrganizationsApi.md#ListOrgInvites) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Invitations in One Organization
 [**ListOrgs**](OrganizationsApi.md#ListOrgs) | **Get** /api/atlas/v2/orgs | Return All Organizations
 [**UpdateOrg**](OrganizationsApi.md#UpdateOrg) | **Patch** /api/atlas/v2/orgs/{orgId} | Update One Organization
+[**UpdateOrgDelegationSettings**](OrganizationsApi.md#UpdateOrgDelegationSettings) | **Patch** /api/atlas/v2/orgs/{orgId}/delegationSettings | Update Delegation Settings for One Organization
 [**UpdateOrgInviteById**](OrganizationsApi.md#UpdateOrgInviteById) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Invitation in One Organization by Invitation ID
 [**UpdateOrgInvites**](OrganizationsApi.md#UpdateOrgInvites) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Invitation in One Organization
 [**UpdateOrgSettings**](OrganizationsApi.md#UpdateOrgSettings) | **Patch** /api/atlas/v2/orgs/{orgId}/settings | Update Settings for One Organization
@@ -413,6 +415,86 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetOrgDelegationSettings
+
+> OrgDelegationSettingsResponse GetOrgDelegationSettings(ctx, orgId).Execute()
+
+Return Delegation Settings for One Organization
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+
+    resp, r, err := sdk.OrganizationsApi.GetOrgDelegationSettings(context.Background(), orgId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.GetOrgDelegationSettings`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetOrgDelegationSettings`: OrgDelegationSettingsResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.GetOrgDelegationSettings`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOrgDelegationSettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**OrgDelegationSettingsResponse**](OrgDelegationSettingsResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -910,6 +992,88 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/vnd.atlas.2023-01-01+json
 - **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateOrgDelegationSettings
+
+> OrgDelegationSettingsResponse UpdateOrgDelegationSettings(ctx, orgId, orgDelegationSettingsUpdateRequest OrgDelegationSettingsUpdateRequest).Execute()
+
+Update Delegation Settings for One Organization
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    orgDelegationSettingsUpdateRequest := *admin.NewOrgDelegationSettingsUpdateRequest() // OrgDelegationSettingsUpdateRequest | 
+
+    resp, r, err := sdk.OrganizationsApi.UpdateOrgDelegationSettings(context.Background(), orgId, &orgDelegationSettingsUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsApi.UpdateOrgDelegationSettings`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `UpdateOrgDelegationSettings`: OrgDelegationSettingsResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsApi.UpdateOrgDelegationSettings`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateOrgDelegationSettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **orgDelegationSettingsUpdateRequest** | [**OrgDelegationSettingsUpdateRequest**](OrgDelegationSettingsUpdateRequest.md) | Delegation settings to update. | 
+
+### Return type
+
+[**OrgDelegationSettingsResponse**](OrgDelegationSettingsResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2025-03-12+json
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

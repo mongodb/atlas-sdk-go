@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **DomainAllowList** | Pointer to **[]string** | Approved domains that restrict users who can join the organization based on their email address. | [optional] 
 **DomainRestrictionEnabled** | **bool** | Value that indicates whether domain restriction is enabled for this connected organization. | 
 **IdentityProviderId** | Pointer to **string** | Legacy 20-hexadecimal digit string that identifies the UI access identity provider that this connected organization configuration is associated with. This id can be found within the Federation Management Console &gt; Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider. | [optional] 
+**InstantUserProvisioningDisabled** | Pointer to **bool** | Flag that indicates whether instant user provisioning is disabled for this connected organization. | [optional] 
 **OrgId** | **string** | Unique 24-hexadecimal digit string that identifies the connected organization configuration. | [readonly] 
 **PostAuthRoleGrants** | Pointer to **[]string** | Atlas roles that are granted to a user in this organization after authenticating. Roles are a human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific MongoDB Cloud user. These roles can only be organization specific roles. | [optional] 
 **RoleMappings** | Pointer to [**[]AuthFederationRoleMapping**](AuthFederationRoleMapping.md) | Role mappings that are configured in this organization. | [optional] 
@@ -123,6 +124,30 @@ SetIdentityProviderId sets IdentityProviderId field to given value.
 `func (o *ConnectedOrgConfig) HasIdentityProviderId() bool`
 
 HasIdentityProviderId returns a boolean if a field has been set.
+### GetInstantUserProvisioningDisabled
+
+`func (o *ConnectedOrgConfig) GetInstantUserProvisioningDisabled() bool`
+
+GetInstantUserProvisioningDisabled returns the InstantUserProvisioningDisabled field if non-nil, zero value otherwise.
+
+### GetInstantUserProvisioningDisabledOk
+
+`func (o *ConnectedOrgConfig) GetInstantUserProvisioningDisabledOk() (*bool, bool)`
+
+GetInstantUserProvisioningDisabledOk returns a tuple with the InstantUserProvisioningDisabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstantUserProvisioningDisabled
+
+`func (o *ConnectedOrgConfig) SetInstantUserProvisioningDisabled(v bool)`
+
+SetInstantUserProvisioningDisabled sets InstantUserProvisioningDisabled field to given value.
+
+### HasInstantUserProvisioningDisabled
+
+`func (o *ConnectedOrgConfig) HasInstantUserProvisioningDisabled() bool`
+
+HasInstantUserProvisioningDisabled returns a boolean if a field has been set.
 ### GetOrgId
 
 `func (o *ConnectedOrgConfig) GetOrgId() string`

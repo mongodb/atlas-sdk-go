@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 **ReadToken** | Pointer to **string** | Query key used to access your New Relic account. | [optional] 
 **WriteToken** | Pointer to **string** | Insert key associated with your New Relic account. | [optional] 
 **RoutingKey** | Pointer to **string** | Routing key associated with your Splunk On-Call account. | [optional] 
+**BodyTemplate** | Pointer to **string** | HTTP body template for a webhook-based alert. The rendered output MUST be valid JSON — MongoDB Cloud sends the rendered body with &#x60;Content-Type: application/json&#x60;. If the template fails to render, exceeds the 16 KB limit, or renders non-JSON output, MongoDB Cloud sends the webhook with its default JSON payload instead. | [optional] 
+**HeadersTemplate** | Pointer to **string** | HTTP headers template for a webhook-based alert. The rendered output MUST be a JSON object mapping header name to header value (e.g. &#x60;{\&quot;X-Custom-Header\&quot;: \&quot;static-value\&quot;, \&quot;X-Alert-Id\&quot;: \&quot;${id}\&quot;}&#x60;). Placeholders may reference any alert-view field plus &#x60;${eventType}&#x60;; the webhook secret and the signature header are NOT exposed to templates. If the template fails to render, exceeds the 4 KB limit, or renders output that is not a valid JSON name→value object, MongoDB Cloud sends the webhook with its default set of headers instead. | [optional] 
 **Secret** | Pointer to **string** | An optional field returned if your webhook is configured with a secret.  **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted. | [optional] 
 **Url** | Pointer to **string** | Endpoint web address to which MongoDB Cloud sends notifications.  **NOTE**: When you view or edit the alert for a webhook notification, the URL appears partially redacted. | [optional] 
 **Enabled** | Pointer to **bool** | Flag that indicates whether someone has activated the Prometheus integration. | [optional] 
@@ -457,6 +459,54 @@ SetRoutingKey sets RoutingKey field to given value.
 `func (o *ThirdPartyIntegration) HasRoutingKey() bool`
 
 HasRoutingKey returns a boolean if a field has been set.
+### GetBodyTemplate
+
+`func (o *ThirdPartyIntegration) GetBodyTemplate() string`
+
+GetBodyTemplate returns the BodyTemplate field if non-nil, zero value otherwise.
+
+### GetBodyTemplateOk
+
+`func (o *ThirdPartyIntegration) GetBodyTemplateOk() (*string, bool)`
+
+GetBodyTemplateOk returns a tuple with the BodyTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBodyTemplate
+
+`func (o *ThirdPartyIntegration) SetBodyTemplate(v string)`
+
+SetBodyTemplate sets BodyTemplate field to given value.
+
+### HasBodyTemplate
+
+`func (o *ThirdPartyIntegration) HasBodyTemplate() bool`
+
+HasBodyTemplate returns a boolean if a field has been set.
+### GetHeadersTemplate
+
+`func (o *ThirdPartyIntegration) GetHeadersTemplate() string`
+
+GetHeadersTemplate returns the HeadersTemplate field if non-nil, zero value otherwise.
+
+### GetHeadersTemplateOk
+
+`func (o *ThirdPartyIntegration) GetHeadersTemplateOk() (*string, bool)`
+
+GetHeadersTemplateOk returns a tuple with the HeadersTemplate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHeadersTemplate
+
+`func (o *ThirdPartyIntegration) SetHeadersTemplate(v string)`
+
+SetHeadersTemplate sets HeadersTemplate field to given value.
+
+### HasHeadersTemplate
+
+`func (o *ThirdPartyIntegration) HasHeadersTemplate() bool`
+
+HasHeadersTemplate returns a boolean if a field has been set.
 ### GetSecret
 
 `func (o *ThirdPartyIntegration) GetSecret() string`

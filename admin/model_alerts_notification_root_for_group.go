@@ -56,6 +56,10 @@ type AlertsNotificationRootForGroup struct {
 	VictorOpsApiKey *string `json:"victorOpsApiKey,omitempty"`
 	// Routing key that MongoDB Cloud needs to send alert notifications to Splunk On-Call. The resource requires this parameter when `\"notifications.[n].typeName\" : \"VICTOR_OPS\"`. If the key later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it.
 	VictorOpsRoutingKey *string `json:"victorOpsRoutingKey,omitempty"`
+	// Template, using ${field} interpolation, that renders the HTTP body MongoDB Cloud sends with each webhook notification. Must render valid JSON. When unset, MongoDB Cloud sends its default JSON payload.
+	WebhookBodyTemplate *string `json:"webhookBodyTemplate,omitempty"`
+	// Template, using ${field} interpolation, that renders the HTTP headers MongoDB Cloud sends with each webhook notification. Must render a JSON object mapping header name to header value. The webhook secret and the signature header are NOT exposed to templates.
+	WebhookHeadersTemplate *string `json:"webhookHeadersTemplate,omitempty"`
 	// Authentication secret for a webhook-based alert.  Atlas returns this value if you set `notifications.[n].typeName` :`WEBHOOK` and either: * You set `notification.[n].webhookSecret` to a non-empty string * You set a default webhook secret either on the Integrations page, or with the Integrations API  **NOTE**: When you view or edit the alert for a webhook notification, the secret appears completely redacted.
 	WebhookSecret *string `json:"webhookSecret,omitempty"`
 	// Target URL for a webhook-based alert.  Atlas returns this value if you set `\"notifications.[n].typeName\" :\"WEBHOOK\"` and either: * You set `notification.[n].webhookURL` to a non-empty string * You set a default webhook URL either on the Integrations page, or with the Integrations API  **NOTE**: When you view or edit the alert for a Webhook URL notification, the URL appears partially redacted.
@@ -947,6 +951,72 @@ func (o *AlertsNotificationRootForGroup) HasVictorOpsRoutingKey() bool {
 // SetVictorOpsRoutingKey gets a reference to the given string and assigns it to the VictorOpsRoutingKey field.
 func (o *AlertsNotificationRootForGroup) SetVictorOpsRoutingKey(v string) {
 	o.VictorOpsRoutingKey = &v
+}
+
+// GetWebhookBodyTemplate returns the WebhookBodyTemplate field value if set, zero value otherwise
+func (o *AlertsNotificationRootForGroup) GetWebhookBodyTemplate() string {
+	if o == nil || IsNil(o.WebhookBodyTemplate) {
+		var ret string
+		return ret
+	}
+	return *o.WebhookBodyTemplate
+}
+
+// GetWebhookBodyTemplateOk returns a tuple with the WebhookBodyTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlertsNotificationRootForGroup) GetWebhookBodyTemplateOk() (*string, bool) {
+	if o == nil || IsNil(o.WebhookBodyTemplate) {
+		return nil, false
+	}
+
+	return o.WebhookBodyTemplate, true
+}
+
+// HasWebhookBodyTemplate returns a boolean if a field has been set.
+func (o *AlertsNotificationRootForGroup) HasWebhookBodyTemplate() bool {
+	if o != nil && !IsNil(o.WebhookBodyTemplate) {
+		return true
+	}
+
+	return false
+}
+
+// SetWebhookBodyTemplate gets a reference to the given string and assigns it to the WebhookBodyTemplate field.
+func (o *AlertsNotificationRootForGroup) SetWebhookBodyTemplate(v string) {
+	o.WebhookBodyTemplate = &v
+}
+
+// GetWebhookHeadersTemplate returns the WebhookHeadersTemplate field value if set, zero value otherwise
+func (o *AlertsNotificationRootForGroup) GetWebhookHeadersTemplate() string {
+	if o == nil || IsNil(o.WebhookHeadersTemplate) {
+		var ret string
+		return ret
+	}
+	return *o.WebhookHeadersTemplate
+}
+
+// GetWebhookHeadersTemplateOk returns a tuple with the WebhookHeadersTemplate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlertsNotificationRootForGroup) GetWebhookHeadersTemplateOk() (*string, bool) {
+	if o == nil || IsNil(o.WebhookHeadersTemplate) {
+		return nil, false
+	}
+
+	return o.WebhookHeadersTemplate, true
+}
+
+// HasWebhookHeadersTemplate returns a boolean if a field has been set.
+func (o *AlertsNotificationRootForGroup) HasWebhookHeadersTemplate() bool {
+	if o != nil && !IsNil(o.WebhookHeadersTemplate) {
+		return true
+	}
+
+	return false
+}
+
+// SetWebhookHeadersTemplate gets a reference to the given string and assigns it to the WebhookHeadersTemplate field.
+func (o *AlertsNotificationRootForGroup) SetWebhookHeadersTemplate(v string) {
+	o.WebhookHeadersTemplate = &v
 }
 
 // GetWebhookSecret returns the WebhookSecret field value if set, zero value otherwise

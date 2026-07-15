@@ -6,6 +6,20 @@ All URIs are relative to *https://cloud.mongodb.com*
 
 Class        | Method        | HTTP request  | Description   | 
 ------------ | ------------- | ------------- | ------------- |
+*AIModelAPIKeysApi* | [CreateGroupModelKey](./docs/AIModelAPIKeysApi.md#creategroupmodelkey) | **Post** /api/atlas/v2/groups/{groupId}/aiModelApiKeys | Create New AI Model API Key |
+*AIModelAPIKeysApi* | [DeleteGroupModelKey](./docs/AIModelAPIKeysApi.md#deletegroupmodelkey) | **Delete** /api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId} | Delete Existing AI Model API Key |
+*AIModelAPIKeysApi* | [GetGroupModelKey](./docs/AIModelAPIKeysApi.md#getgroupmodelkey) | **Get** /api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId} | Return Single AI Model API Key for One Group |
+*AIModelAPIKeysApi* | [GetOrgModelKey](./docs/AIModelAPIKeysApi.md#getorgmodelkey) | **Get** /api/atlas/v2/orgs/{orgId}/aiModelApiKeys/{apiKeyId} | Return Single AI Model API Key for One Organization |
+*AIModelAPIKeysApi* | [ListGroupModelKeys](./docs/AIModelAPIKeysApi.md#listgroupmodelkeys) | **Get** /api/atlas/v2/groups/{groupId}/aiModelApiKeys | Return AI Model API Keys for One Group |
+*AIModelAPIKeysApi* | [ListOrgModelKeys](./docs/AIModelAPIKeysApi.md#listorgmodelkeys) | **Get** /api/atlas/v2/orgs/{orgId}/aiModelApiKeys | Return AI Model API Keys for One Organization |
+*AIModelAPIKeysApi* | [UpdateGroupModelKey](./docs/AIModelAPIKeysApi.md#updategroupmodelkey) | **Patch** /api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId} | Update Existing AI Model API Key |
+*AIModelRateLimitsApi* | [GetGroupModelLimits](./docs/AIModelRateLimitsApi.md#getgroupmodellimits) | **Get** /api/atlas/v2/groups/{groupId}/aiModelApiRateLimits | Return AI Model Rate Limits for One Group |
+*AIModelRateLimitsApi* | [GetGroupRateLimits](./docs/AIModelRateLimitsApi.md#getgroupratelimits) | **Get** /api/atlas/v2/groups/{groupId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits | Return Single AI Model Rate Limit for One Group |
+*AIModelRateLimitsApi* | [GetOrgModelLimits](./docs/AIModelRateLimitsApi.md#getorgmodellimits) | **Get** /api/atlas/v2/orgs/{orgId}/aiModelApiRateLimits | Return AI Model Rate Limits for One Organization |
+*AIModelRateLimitsApi* | [GetOrgRateLimits](./docs/AIModelRateLimitsApi.md#getorgratelimits) | **Get** /api/atlas/v2/orgs/{orgId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits | Return Single AI Model Rate Limit for One Organization |
+*AIModelRateLimitsApi* | [ResetGroupModelLimits](./docs/AIModelRateLimitsApi.md#resetgroupmodellimits) | **Post** /api/atlas/v2/groups/{groupId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits:reset | Reset AI Model Rate Limit for One Model Group |
+*AIModelRateLimitsApi* | [ResetGroupRateLimits](./docs/AIModelRateLimitsApi.md#resetgroupratelimits) | **Post** /api/atlas/v2/groups/{groupId}/aiModelApiRateLimits:reset | Reset AI Model Rate Limits for Group |
+*AIModelRateLimitsApi* | [UpdateGroupRateLimits](./docs/AIModelRateLimitsApi.md#updategroupratelimits) | **Patch** /api/atlas/v2/groups/{groupId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits | Update AI Model Rate Limit |
 *AWSClustersDNSApi* | [GetAwsCustomDns](./docs/AWSClustersDNSApi.md#getawscustomdns) | **Get** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Return One Custom DNS Configuration for Atlas Clusters on AWS |
 *AWSClustersDNSApi* | [ToggleAwsCustomDns](./docs/AWSClustersDNSApi.md#toggleawscustomdns) | **Patch** /api/atlas/v2/groups/{groupId}/awsCustomDNS | Update State of One Custom DNS Configuration for Atlas Clusters on AWS |
 *AccessTrackingApi* | [GetAccessHistoryCluster](./docs/AccessTrackingApi.md#getaccesshistorycluster) | **Get** /api/atlas/v2/groups/{groupId}/dbAccessHistory/clusters/{clusterName} | Return Database Access History for One Cluster by Cluster Name |
@@ -48,6 +62,7 @@ Class        | Method        | HTTP request  | Description   |
 *CloudBackupsApi* | [CreateBackupExport](./docs/CloudBackupsApi.md#createbackupexport) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports | Create One Snapshot Export Job |
 *CloudBackupsApi* | [CreateBackupPrivateEndpoint](./docs/CloudBackupsApi.md#createbackupprivateendpoint) | **Post** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints | Create One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider in One Project |
 *CloudBackupsApi* | [CreateBackupRestoreJob](./docs/CloudBackupsApi.md#createbackuprestorejob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs | Create One Restore Job of One Cluster |
+*CloudBackupsApi* | [CreateCollectionRestoreJob](./docs/CloudBackupsApi.md#createcollectionrestorejob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs | Create One Collection Restore Job |
 *CloudBackupsApi* | [CreateExportBucket](./docs/CloudBackupsApi.md#createexportbucket) | **Post** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Create One Snapshot Export Bucket |
 *CloudBackupsApi* | [CreateServerlessRestoreJob](./docs/CloudBackupsApi.md#createserverlessrestorejob) | **Post** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Create One Restore Job for One Serverless Instance |
 *CloudBackupsApi* | [DeleteBackupPrivateEndpoint](./docs/CloudBackupsApi.md#deletebackupprivateendpoint) | **Delete** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId} | Delete One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider from One Project |
@@ -61,19 +76,27 @@ Class        | Method        | HTTP request  | Description   |
 *CloudBackupsApi* | [GetBackupRestoreJob](./docs/CloudBackupsApi.md#getbackuprestorejob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Cluster |
 *CloudBackupsApi* | [GetBackupSchedule](./docs/CloudBackupsApi.md#getbackupschedule) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Return One Cloud Backup Schedule |
 *CloudBackupsApi* | [GetBackupShardedCluster](./docs/CloudBackupsApi.md#getbackupshardedcluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId} | Return One Sharded Cluster Cloud Backup |
+*CloudBackupsApi* | [GetBackupSnapshotDatabase](./docs/CloudBackupsApi.md#getbackupsnapshotdatabase) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName} | Return One Database in One Snapshot |
 *CloudBackupsApi* | [GetClusterBackupSnapshot](./docs/CloudBackupsApi.md#getclusterbackupsnapshot) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId} | Return One Replica Set Cloud Backup |
+*CloudBackupsApi* | [GetCollectionRestoreJob](./docs/CloudBackupsApi.md#getcollectionrestorejob) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId} | Return One Collection Restore Job for One Cluster |
 *CloudBackupsApi* | [GetCompliancePolicy](./docs/CloudBackupsApi.md#getcompliancepolicy) | **Get** /api/atlas/v2/groups/{groupId}/backupCompliancePolicy | Return Backup Compliance Policy Settings |
 *CloudBackupsApi* | [GetExportBucket](./docs/CloudBackupsApi.md#getexportbucket) | **Get** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Return One Snapshot Export Bucket |
+*CloudBackupsApi* | [GetRestoreJobCollection](./docs/CloudBackupsApi.md#getrestorejobcollection) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections/{sourceNamespace} | Return One Collection State for One Collection Restore Job |
 *CloudBackupsApi* | [GetServerlessBackupSnapshot](./docs/CloudBackupsApi.md#getserverlessbackupsnapshot) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots/{snapshotId} | Return One Snapshot of One Serverless Instance |
 *CloudBackupsApi* | [GetServerlessRestoreJob](./docs/CloudBackupsApi.md#getserverlessrestorejob) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Serverless Instance |
+*CloudBackupsApi* | [GetSnapshotDatabaseCollection](./docs/CloudBackupsApi.md#getsnapshotdatabasecollection) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections/{collectionName} | Return One Collection in One Database in One Snapshot |
 *CloudBackupsApi* | [ListBackupExports](./docs/CloudBackupsApi.md#listbackupexports) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports | Return All Snapshot Export Jobs |
 *CloudBackupsApi* | [ListBackupPrivateEndpoints](./docs/CloudBackupsApi.md#listbackupprivateendpoints) | **Get** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints | Return Object Storage Private Endpoints for Cloud Backups for One Cloud Provider in One Project |
 *CloudBackupsApi* | [ListBackupRestoreJobs](./docs/CloudBackupsApi.md#listbackuprestorejobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs | Return All Restore Jobs for One Cluster |
 *CloudBackupsApi* | [ListBackupShardedClusters](./docs/CloudBackupsApi.md#listbackupshardedclusters) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedClusters | Return All Sharded Cluster Cloud Backups |
+*CloudBackupsApi* | [ListBackupSnapshotDatabases](./docs/CloudBackupsApi.md#listbackupsnapshotdatabases) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases | Return Databases in One Snapshot |
 *CloudBackupsApi* | [ListBackupSnapshots](./docs/CloudBackupsApi.md#listbackupsnapshots) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots | Return All Replica Set Cloud Backups |
+*CloudBackupsApi* | [ListCollectionRestoreJobs](./docs/CloudBackupsApi.md#listcollectionrestorejobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs | Return All Collection Restore Jobs for One Cluster |
 *CloudBackupsApi* | [ListExportBuckets](./docs/CloudBackupsApi.md#listexportbuckets) | **Get** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Return All Snapshot Export Buckets |
+*CloudBackupsApi* | [ListRestoreJobCollections](./docs/CloudBackupsApi.md#listrestorejobcollections) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections | Return All Collection States for One Collection Restore Job |
 *CloudBackupsApi* | [ListServerlessBackupSnapshots](./docs/CloudBackupsApi.md#listserverlessbackupsnapshots) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots | Return All Snapshots of One Serverless Instance |
 *CloudBackupsApi* | [ListServerlessRestoreJobs](./docs/CloudBackupsApi.md#listserverlessrestorejobs) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Return All Restore Jobs for One Serverless Instance |
+*CloudBackupsApi* | [ListSnapshotDatabaseCollections](./docs/CloudBackupsApi.md#listsnapshotdatabasecollections) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections | Return Collections in One Database in One Snapshot |
 *CloudBackupsApi* | [TakeSnapshots](./docs/CloudBackupsApi.md#takesnapshots) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots | Take One On-Demand Snapshot |
 *CloudBackupsApi* | [UpdateBackupExportBucket](./docs/CloudBackupsApi.md#updatebackupexportbucket) | **Patch** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Update One Export Bucket Private Networking Settings |
 *CloudBackupsApi* | [UpdateBackupSchedule](./docs/CloudBackupsApi.md#updatebackupschedule) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Update Cloud Backup Schedule for One Cluster |
@@ -295,12 +318,14 @@ Class        | Method        | HTTP request  | Description   |
 *OrganizationsApi* | [DeleteOrg](./docs/OrganizationsApi.md#deleteorg) | **Delete** /api/atlas/v2/orgs/{orgId} | Remove One Organization |
 *OrganizationsApi* | [DeleteOrgInvite](./docs/OrganizationsApi.md#deleteorginvite) | **Delete** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Remove One Invitation from One Organization |
 *OrganizationsApi* | [GetOrg](./docs/OrganizationsApi.md#getorg) | **Get** /api/atlas/v2/orgs/{orgId} | Return One Organization |
+*OrganizationsApi* | [GetOrgDelegationSettings](./docs/OrganizationsApi.md#getorgdelegationsettings) | **Get** /api/atlas/v2/orgs/{orgId}/delegationSettings | Return Delegation Settings for One Organization |
 *OrganizationsApi* | [GetOrgGroups](./docs/OrganizationsApi.md#getorggroups) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return All Projects in One Organization |
 *OrganizationsApi* | [GetOrgInvite](./docs/OrganizationsApi.md#getorginvite) | **Get** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Return One Invitation in One Organization by Invitation ID |
 *OrganizationsApi* | [GetOrgSettings](./docs/OrganizationsApi.md#getorgsettings) | **Get** /api/atlas/v2/orgs/{orgId}/settings | Return Settings for One Organization |
 *OrganizationsApi* | [ListOrgInvites](./docs/OrganizationsApi.md#listorginvites) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Invitations in One Organization |
 *OrganizationsApi* | [ListOrgs](./docs/OrganizationsApi.md#listorgs) | **Get** /api/atlas/v2/orgs | Return All Organizations |
 *OrganizationsApi* | [UpdateOrg](./docs/OrganizationsApi.md#updateorg) | **Patch** /api/atlas/v2/orgs/{orgId} | Update One Organization |
+*OrganizationsApi* | [UpdateOrgDelegationSettings](./docs/OrganizationsApi.md#updateorgdelegationsettings) | **Patch** /api/atlas/v2/orgs/{orgId}/delegationSettings | Update Delegation Settings for One Organization |
 *OrganizationsApi* | [UpdateOrgInviteById](./docs/OrganizationsApi.md#updateorginvitebyid) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Invitation in One Organization by Invitation ID |
 *OrganizationsApi* | [UpdateOrgInvites](./docs/OrganizationsApi.md#updateorginvites) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Invitation in One Organization |
 *OrganizationsApi* | [UpdateOrgSettings](./docs/OrganizationsApi.md#updateorgsettings) | **Patch** /api/atlas/v2/orgs/{orgId}/settings | Update Settings for One Organization |
@@ -454,6 +479,7 @@ Class        | Method        | HTTP request  | Description   |
 *StreamsApi* | [StartStreamProcessor](./docs/StreamsApi.md#startstreamprocessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start | Start One Stream Processor |
 *StreamsApi* | [StartStreamProcessorWith](./docs/StreamsApi.md#startstreamprocessorwith) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:startWith | Start One Stream Processor With Options |
 *StreamsApi* | [StopStreamProcessor](./docs/StreamsApi.md#stopstreamprocessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop | Stop One Stream Processor |
+*StreamsApi* | [UpdatePrivateLinkConnection](./docs/StreamsApi.md#updateprivatelinkconnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Update One Private Link Connection |
 *StreamsApi* | [UpdateStreamConnection](./docs/StreamsApi.md#updatestreamconnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Update One Stream Connection |
 *StreamsApi* | [UpdateStreamFailoverConnection](./docs/StreamsApi.md#updatestreamfailoverconnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId} | Update One Stream Failover Connection |
 *StreamsApi* | [UpdateStreamProcessor](./docs/StreamsApi.md#updatestreamprocessor) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Update One Stream Processor |
@@ -498,11 +524,21 @@ Class        | Method        | HTTP request  | Description   |
  - [AdvancedAutoScalingSettings](./docs/AdvancedAutoScalingSettings.md)
  - [AdvancedComputeAutoScaling](./docs/AdvancedComputeAutoScaling.md)
  - [AdvancedDiskBackupSnapshotSchedulePolicy](./docs/AdvancedDiskBackupSnapshotSchedulePolicy.md)
+ - [AiModelApiKeyCreateRequest](./docs/AiModelApiKeyCreateRequest.md)
+ - [AiModelApiKeyResponse](./docs/AiModelApiKeyResponse.md)
+ - [AiModelApiKeyUpdateRequest](./docs/AiModelApiKeyUpdateRequest.md)
+ - [AiModelRateLimitResponse](./docs/AiModelRateLimitResponse.md)
+ - [AiModelsRateLimitUpdateRequest](./docs/AiModelsRateLimitUpdateRequest.md)
  - [AlertViewForNdsGroup](./docs/AlertViewForNdsGroup.md)
  - [AlertsNotificationRootForGroup](./docs/AlertsNotificationRootForGroup.md)
  - [AlertsToggle](./docs/AlertsToggle.md)
  - [ApiAtlasCheckpoint](./docs/ApiAtlasCheckpoint.md)
  - [ApiAtlasClusterAdvancedConfiguration](./docs/ApiAtlasClusterAdvancedConfiguration.md)
+ - [ApiAtlasCollectionRestoreCollectionStateResponse](./docs/ApiAtlasCollectionRestoreCollectionStateResponse.md)
+ - [ApiAtlasCollectionRestoreIndexStatus](./docs/ApiAtlasCollectionRestoreIndexStatus.md)
+ - [ApiAtlasCollectionRestoreJobIndexStatus](./docs/ApiAtlasCollectionRestoreJobIndexStatus.md)
+ - [ApiAtlasCollectionRestoreJobRequest](./docs/ApiAtlasCollectionRestoreJobRequest.md)
+ - [ApiAtlasCollectionRestoreJobResponse](./docs/ApiAtlasCollectionRestoreJobResponse.md)
  - [ApiAtlasFTSAnalyzers](./docs/ApiAtlasFTSAnalyzers.md)
  - [ApiAtlasFTSAnalyzersTokenizer](./docs/ApiAtlasFTSAnalyzersTokenizer.md)
  - [ApiAtlasFTSMappings](./docs/ApiAtlasFTSMappings.md)
@@ -518,6 +554,7 @@ Class        | Method        | HTTP request  | Description   |
  - [ApiAtlasResourcePolicyCreate](./docs/ApiAtlasResourcePolicyCreate.md)
  - [ApiAtlasResourcePolicyEdit](./docs/ApiAtlasResourcePolicyEdit.md)
  - [ApiAtlasResourcePolicyMetadata](./docs/ApiAtlasResourcePolicyMetadata.md)
+ - [ApiAtlasRestoreNamespace](./docs/ApiAtlasRestoreNamespace.md)
  - [ApiAtlasSnapshotSchedule](./docs/ApiAtlasSnapshotSchedule.md)
  - [ApiAtlasUserMetadata](./docs/ApiAtlasUserMetadata.md)
  - [ApiBSONTimestamp](./docs/ApiBSONTimestamp.md)
@@ -659,8 +696,10 @@ Class        | Method        | HTTP request  | Description   |
  - [DeleteCopiedBackups20240805](./docs/DeleteCopiedBackups20240805.md)
  - [Destination](./docs/Destination.md)
  - [DiskBackupApiPolicyItem](./docs/DiskBackupApiPolicyItem.md)
+ - [DiskBackupCollectionResponse](./docs/DiskBackupCollectionResponse.md)
  - [DiskBackupCopyPolicyItem](./docs/DiskBackupCopyPolicyItem.md)
  - [DiskBackupCopySetting20240805](./docs/DiskBackupCopySetting20240805.md)
+ - [DiskBackupDatabaseResponse](./docs/DiskBackupDatabaseResponse.md)
  - [DiskBackupExportJob](./docs/DiskBackupExportJob.md)
  - [DiskBackupExportJobRequest](./docs/DiskBackupExportJobRequest.md)
  - [DiskBackupExportMember](./docs/DiskBackupExportMember.md)
@@ -776,6 +815,8 @@ Class        | Method        | HTTP request  | Description   |
  - [ObjectStoragePrivateEndpointRequest](./docs/ObjectStoragePrivateEndpointRequest.md)
  - [ObjectStoragePrivateEndpointResponse](./docs/ObjectStoragePrivateEndpointResponse.md)
  - [OnlineArchiveSchedule](./docs/OnlineArchiveSchedule.md)
+ - [OrgDelegationSettingsResponse](./docs/OrgDelegationSettingsResponse.md)
+ - [OrgDelegationSettingsUpdateRequest](./docs/OrgDelegationSettingsUpdateRequest.md)
  - [OrgFederationSettings](./docs/OrgFederationSettings.md)
  - [OrgGroup](./docs/OrgGroup.md)
  - [OrgPaginatedEvent](./docs/OrgPaginatedEvent.md)
@@ -798,7 +839,11 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedApiApiUser](./docs/PaginatedApiApiUser.md)
  - [PaginatedApiAppUser](./docs/PaginatedApiAppUser.md)
  - [PaginatedApiAtlasCheckpoint](./docs/PaginatedApiAtlasCheckpoint.md)
+ - [PaginatedApiAtlasCollectionRestoreCollectionState](./docs/PaginatedApiAtlasCollectionRestoreCollectionState.md)
+ - [PaginatedApiAtlasCollectionRestoreJob](./docs/PaginatedApiAtlasCollectionRestoreJob.md)
  - [PaginatedApiAtlasDatabaseUser](./docs/PaginatedApiAtlasDatabaseUser.md)
+ - [PaginatedApiAtlasDiskBackupCollection](./docs/PaginatedApiAtlasDiskBackupCollection.md)
+ - [PaginatedApiAtlasDiskBackupDatabase](./docs/PaginatedApiAtlasDiskBackupDatabase.md)
  - [PaginatedApiAtlasDiskBackupExportJob](./docs/PaginatedApiAtlasDiskBackupExportJob.md)
  - [PaginatedApiAtlasEARPrivateEndpoint](./docs/PaginatedApiAtlasEARPrivateEndpoint.md)
  - [PaginatedApiAtlasFlexBackupRestoreJob20241113](./docs/PaginatedApiAtlasFlexBackupRestoreJob20241113.md)
@@ -817,6 +862,8 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedApiStreamsTenant](./docs/PaginatedApiStreamsTenant.md)
  - [PaginatedApiStreamsVPCPeeringConnection](./docs/PaginatedApiStreamsVPCPeeringConnection.md)
  - [PaginatedApiUserAccessListResponse](./docs/PaginatedApiUserAccessListResponse.md)
+ - [PaginatedAtlasAiModelApiKeysResponse](./docs/PaginatedAtlasAiModelApiKeysResponse.md)
+ - [PaginatedAtlasAiModelRateLimitsResponse](./docs/PaginatedAtlasAiModelRateLimitsResponse.md)
  - [PaginatedAtlasGroup](./docs/PaginatedAtlasGroup.md)
  - [PaginatedAvailableVersion](./docs/PaginatedAvailableVersion.md)
  - [PaginatedBackupSnapshot](./docs/PaginatedBackupSnapshot.md)
@@ -946,6 +993,7 @@ Class        | Method        | HTTP request  | Description   |
  - [StreamsModifyStreamProcessorOptions](./docs/StreamsModifyStreamProcessorOptions.md)
  - [StreamsOptions](./docs/StreamsOptions.md)
  - [StreamsPrivateLinkConnection](./docs/StreamsPrivateLinkConnection.md)
+ - [StreamsPrivateLinkConnectionRequest](./docs/StreamsPrivateLinkConnectionRequest.md)
  - [StreamsProcessor](./docs/StreamsProcessor.md)
  - [StreamsProcessorStatus](./docs/StreamsProcessorStatus.md)
  - [StreamsProcessorWithStats](./docs/StreamsProcessorWithStats.md)
