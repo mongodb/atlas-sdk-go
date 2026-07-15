@@ -4963,6 +4963,169 @@ func (_c *StreamsApi_StopStreamProcessorWithParams_Call) RunAndReturn(run func(c
 	return _c
 }
 
+// UpdatePrivateLinkConnection provides a mock function with given fields: ctx, groupId, connectionId, streamsPrivateLinkConnectionRequest
+func (_m *StreamsApi) UpdatePrivateLinkConnection(ctx context.Context, groupId string, connectionId string, streamsPrivateLinkConnectionRequest *admin.StreamsPrivateLinkConnectionRequest) admin.UpdatePrivateLinkConnectionApiRequest {
+	ret := _m.Called(ctx, groupId, connectionId, streamsPrivateLinkConnectionRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdatePrivateLinkConnection")
+	}
+
+	var r0 admin.UpdatePrivateLinkConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.StreamsPrivateLinkConnectionRequest) admin.UpdatePrivateLinkConnectionApiRequest); ok {
+		r0 = rf(ctx, groupId, connectionId, streamsPrivateLinkConnectionRequest)
+	} else {
+		r0 = ret.Get(0).(admin.UpdatePrivateLinkConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_UpdatePrivateLinkConnection_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePrivateLinkConnection'
+type StreamsApi_UpdatePrivateLinkConnection_Call struct {
+	*mock.Call
+}
+
+// UpdatePrivateLinkConnection is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - connectionId string
+//   - streamsPrivateLinkConnectionRequest *admin.StreamsPrivateLinkConnectionRequest
+func (_e *StreamsApi_Expecter) UpdatePrivateLinkConnection(ctx any, groupId any, connectionId any, streamsPrivateLinkConnectionRequest any) *StreamsApi_UpdatePrivateLinkConnection_Call {
+	return &StreamsApi_UpdatePrivateLinkConnection_Call{Call: _e.mock.On("UpdatePrivateLinkConnection", ctx, groupId, connectionId, streamsPrivateLinkConnectionRequest)}
+}
+
+func (_c *StreamsApi_UpdatePrivateLinkConnection_Call) Run(run func(ctx context.Context, groupId string, connectionId string, streamsPrivateLinkConnectionRequest *admin.StreamsPrivateLinkConnectionRequest)) *StreamsApi_UpdatePrivateLinkConnection_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.StreamsPrivateLinkConnectionRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_UpdatePrivateLinkConnection_Call) Return(_a0 admin.UpdatePrivateLinkConnectionApiRequest) *StreamsApi_UpdatePrivateLinkConnection_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_UpdatePrivateLinkConnection_Call) RunAndReturn(run func(context.Context, string, string, *admin.StreamsPrivateLinkConnectionRequest) admin.UpdatePrivateLinkConnectionApiRequest) *StreamsApi_UpdatePrivateLinkConnection_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdatePrivateLinkConnectionExecute provides a mock function with given fields: r
+func (_m *StreamsApi) UpdatePrivateLinkConnectionExecute(r admin.UpdatePrivateLinkConnectionApiRequest) (*admin.StreamsPrivateLinkConnection, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdatePrivateLinkConnectionExecute")
+	}
+
+	var r0 *admin.StreamsPrivateLinkConnection
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdatePrivateLinkConnectionApiRequest) (*admin.StreamsPrivateLinkConnection, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdatePrivateLinkConnectionApiRequest) *admin.StreamsPrivateLinkConnection); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsPrivateLinkConnection)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdatePrivateLinkConnectionApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdatePrivateLinkConnectionApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsApi_UpdatePrivateLinkConnectionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePrivateLinkConnectionExecute'
+type StreamsApi_UpdatePrivateLinkConnectionExecute_Call struct {
+	*mock.Call
+}
+
+// UpdatePrivateLinkConnectionExecute is a helper method to define mock.On call
+//   - r admin.UpdatePrivateLinkConnectionApiRequest
+func (_e *StreamsApi_Expecter) UpdatePrivateLinkConnectionExecute(r any) *StreamsApi_UpdatePrivateLinkConnectionExecute_Call {
+	return &StreamsApi_UpdatePrivateLinkConnectionExecute_Call{Call: _e.mock.On("UpdatePrivateLinkConnectionExecute", r)}
+}
+
+func (_c *StreamsApi_UpdatePrivateLinkConnectionExecute_Call) Run(run func(r admin.UpdatePrivateLinkConnectionApiRequest)) *StreamsApi_UpdatePrivateLinkConnectionExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdatePrivateLinkConnectionApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_UpdatePrivateLinkConnectionExecute_Call) Return(_a0 *admin.StreamsPrivateLinkConnection, _a1 *http.Response, _a2 error) *StreamsApi_UpdatePrivateLinkConnectionExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsApi_UpdatePrivateLinkConnectionExecute_Call) RunAndReturn(run func(admin.UpdatePrivateLinkConnectionApiRequest) (*admin.StreamsPrivateLinkConnection, *http.Response, error)) *StreamsApi_UpdatePrivateLinkConnectionExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdatePrivateLinkConnectionWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsApi) UpdatePrivateLinkConnectionWithParams(ctx context.Context, args *admin.UpdatePrivateLinkConnectionApiParams) admin.UpdatePrivateLinkConnectionApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdatePrivateLinkConnectionWithParams")
+	}
+
+	var r0 admin.UpdatePrivateLinkConnectionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdatePrivateLinkConnectionApiParams) admin.UpdatePrivateLinkConnectionApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdatePrivateLinkConnectionApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsApi_UpdatePrivateLinkConnectionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdatePrivateLinkConnectionWithParams'
+type StreamsApi_UpdatePrivateLinkConnectionWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdatePrivateLinkConnectionWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdatePrivateLinkConnectionApiParams
+func (_e *StreamsApi_Expecter) UpdatePrivateLinkConnectionWithParams(ctx any, args any) *StreamsApi_UpdatePrivateLinkConnectionWithParams_Call {
+	return &StreamsApi_UpdatePrivateLinkConnectionWithParams_Call{Call: _e.mock.On("UpdatePrivateLinkConnectionWithParams", ctx, args)}
+}
+
+func (_c *StreamsApi_UpdatePrivateLinkConnectionWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdatePrivateLinkConnectionApiParams)) *StreamsApi_UpdatePrivateLinkConnectionWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdatePrivateLinkConnectionApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsApi_UpdatePrivateLinkConnectionWithParams_Call) Return(_a0 admin.UpdatePrivateLinkConnectionApiRequest) *StreamsApi_UpdatePrivateLinkConnectionWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsApi_UpdatePrivateLinkConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdatePrivateLinkConnectionApiParams) admin.UpdatePrivateLinkConnectionApiRequest) *StreamsApi_UpdatePrivateLinkConnectionWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // UpdateStreamConnection provides a mock function with given fields: ctx, groupId, tenantName, connectionName, streamsConnection
 func (_m *StreamsApi) UpdateStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsConnection *admin.StreamsConnection) admin.UpdateStreamConnectionApiRequest {
 	ret := _m.Called(ctx, groupId, tenantName, connectionName, streamsConnection)
