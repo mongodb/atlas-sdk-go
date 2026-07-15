@@ -770,6 +770,31 @@ type StreamsApi interface {
 	StopStreamProcessorExecute(r StopStreamProcessorApiRequest) (*http.Response, error)
 
 	/*
+		UpdatePrivateLinkConnection Update One Private Link Connection
+
+		Updates one Private Link connection in the specified project.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param connectionId Unique ID that identifies the Private Link connection.
+		@param streamsPrivateLinkConnectionRequest The fields to update on the Private Link connection.
+		@return UpdatePrivateLinkConnectionApiRequest
+	*/
+	UpdatePrivateLinkConnection(ctx context.Context, groupId string, connectionId string, streamsPrivateLinkConnectionRequest *StreamsPrivateLinkConnectionRequest) UpdatePrivateLinkConnectionApiRequest
+	/*
+		UpdatePrivateLinkConnection Update One Private Link Connection
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdatePrivateLinkConnectionApiParams - Parameters for the request
+		@return UpdatePrivateLinkConnectionApiRequest
+	*/
+	UpdatePrivateLinkConnectionWithParams(ctx context.Context, args *UpdatePrivateLinkConnectionApiParams) UpdatePrivateLinkConnectionApiRequest
+
+	// Method available only for mocking purposes
+	UpdatePrivateLinkConnectionExecute(r UpdatePrivateLinkConnectionApiRequest) (*StreamsPrivateLinkConnection, *http.Response, error)
+
+	/*
 		UpdateStreamConnection Update One Stream Connection
 
 		Update one connection for the specified stream workspace in the specified project.
@@ -5002,6 +5027,138 @@ func (a *StreamsApiService) StopStreamProcessorExecute(r StopStreamProcessorApiR
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type UpdatePrivateLinkConnectionApiRequest struct {
+	ctx                                 context.Context
+	ApiService                          StreamsApi
+	groupId                             string
+	connectionId                        string
+	streamsPrivateLinkConnectionRequest *StreamsPrivateLinkConnectionRequest
+}
+
+type UpdatePrivateLinkConnectionApiParams struct {
+	GroupId                             string
+	ConnectionId                        string
+	StreamsPrivateLinkConnectionRequest *StreamsPrivateLinkConnectionRequest
+}
+
+func (a *StreamsApiService) UpdatePrivateLinkConnectionWithParams(ctx context.Context, args *UpdatePrivateLinkConnectionApiParams) UpdatePrivateLinkConnectionApiRequest {
+	return UpdatePrivateLinkConnectionApiRequest{
+		ApiService:                          a,
+		ctx:                                 ctx,
+		groupId:                             args.GroupId,
+		connectionId:                        args.ConnectionId,
+		streamsPrivateLinkConnectionRequest: args.StreamsPrivateLinkConnectionRequest,
+	}
+}
+
+func (r UpdatePrivateLinkConnectionApiRequest) Execute() (*StreamsPrivateLinkConnection, *http.Response, error) {
+	return r.ApiService.UpdatePrivateLinkConnectionExecute(r)
+}
+
+/*
+UpdatePrivateLinkConnection Update One Private Link Connection
+
+Updates one Private Link connection in the specified project.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param connectionId Unique ID that identifies the Private Link connection.
+	@return UpdatePrivateLinkConnectionApiRequest
+*/
+func (a *StreamsApiService) UpdatePrivateLinkConnection(ctx context.Context, groupId string, connectionId string, streamsPrivateLinkConnectionRequest *StreamsPrivateLinkConnectionRequest) UpdatePrivateLinkConnectionApiRequest {
+	return UpdatePrivateLinkConnectionApiRequest{
+		ApiService:                          a,
+		ctx:                                 ctx,
+		groupId:                             groupId,
+		connectionId:                        connectionId,
+		streamsPrivateLinkConnectionRequest: streamsPrivateLinkConnectionRequest,
+	}
+}
+
+// UpdatePrivateLinkConnectionExecute executes the request
+//
+//	@return StreamsPrivateLinkConnection
+func (a *StreamsApiService) UpdatePrivateLinkConnectionExecute(r UpdatePrivateLinkConnectionApiRequest) (*StreamsPrivateLinkConnection, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *StreamsPrivateLinkConnection
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.UpdatePrivateLinkConnection")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.connectionId == "" {
+		return localVarReturnValue, nil, reportError("connectionId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionId"+"}", url.PathEscape(r.connectionId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.streamsPrivateLinkConnectionRequest == nil {
+		return localVarReturnValue, nil, reportError("streamsPrivateLinkConnectionRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.streamsPrivateLinkConnectionRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type UpdateStreamConnectionApiRequest struct {

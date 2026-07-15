@@ -35,6 +35,7 @@ Method | HTTP request | Description
 [**StartStreamProcessor**](StreamsApi.md#StartStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start | Start One Stream Processor
 [**StartStreamProcessorWith**](StreamsApi.md#StartStreamProcessorWith) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:startWith | Start One Stream Processor With Options
 [**StopStreamProcessor**](StreamsApi.md#StopStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop | Stop One Stream Processor
+[**UpdatePrivateLinkConnection**](StreamsApi.md#UpdatePrivateLinkConnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Update One Private Link Connection
 [**UpdateStreamConnection**](StreamsApi.md#UpdateStreamConnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Update One Stream Connection
 [**UpdateStreamFailoverConnection**](StreamsApi.md#UpdateStreamFailoverConnection) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId} | Update One Stream Failover Connection
 [**UpdateStreamProcessor**](StreamsApi.md#UpdateStreamProcessor) | **Patch** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Update One Stream Processor
@@ -2670,6 +2671,91 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2024-05-30+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdatePrivateLinkConnection
+
+> StreamsPrivateLinkConnection UpdatePrivateLinkConnection(ctx, groupId, connectionId, streamsPrivateLinkConnectionRequest StreamsPrivateLinkConnectionRequest).Execute()
+
+Update One Private Link Connection
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    connectionId := "connectionId_example" // string | 
+    streamsPrivateLinkConnectionRequest := *admin.NewStreamsPrivateLinkConnectionRequest() // StreamsPrivateLinkConnectionRequest | 
+
+    resp, r, err := sdk.StreamsApi.UpdatePrivateLinkConnection(context.Background(), groupId, connectionId, &streamsPrivateLinkConnectionRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsApi.UpdatePrivateLinkConnection`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `UpdatePrivateLinkConnection`: StreamsPrivateLinkConnection
+    fmt.Fprintf(os.Stdout, "Response from `StreamsApi.UpdatePrivateLinkConnection`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**connectionId** | **string** | Unique ID that identifies the Private Link connection. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdatePrivateLinkConnectionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **streamsPrivateLinkConnectionRequest** | [**StreamsPrivateLinkConnectionRequest**](StreamsPrivateLinkConnectionRequest.md) | The fields to update on the Private Link connection. | 
+
+### Return type
+
+[**StreamsPrivateLinkConnection**](StreamsPrivateLinkConnection.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2025-03-12+json
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -12,6 +12,8 @@ type ConnectedOrgConfig struct {
 	DomainRestrictionEnabled bool `json:"domainRestrictionEnabled"`
 	// Legacy 20-hexadecimal digit string that identifies the UI access identity provider that this connected organization configuration is associated with. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider.
 	IdentityProviderId *string `json:"identityProviderId,omitempty"`
+	// Flag that indicates whether instant user provisioning is disabled for this connected organization.
+	InstantUserProvisioningDisabled *bool `json:"instantUserProvisioningDisabled,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the connected organization configuration.
 	// Read only field.
 	OrgId string `json:"orgId"`
@@ -163,6 +165,39 @@ func (o *ConnectedOrgConfig) HasIdentityProviderId() bool {
 // SetIdentityProviderId gets a reference to the given string and assigns it to the IdentityProviderId field.
 func (o *ConnectedOrgConfig) SetIdentityProviderId(v string) {
 	o.IdentityProviderId = &v
+}
+
+// GetInstantUserProvisioningDisabled returns the InstantUserProvisioningDisabled field value if set, zero value otherwise
+func (o *ConnectedOrgConfig) GetInstantUserProvisioningDisabled() bool {
+	if o == nil || IsNil(o.InstantUserProvisioningDisabled) {
+		var ret bool
+		return ret
+	}
+	return *o.InstantUserProvisioningDisabled
+}
+
+// GetInstantUserProvisioningDisabledOk returns a tuple with the InstantUserProvisioningDisabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ConnectedOrgConfig) GetInstantUserProvisioningDisabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.InstantUserProvisioningDisabled) {
+		return nil, false
+	}
+
+	return o.InstantUserProvisioningDisabled, true
+}
+
+// HasInstantUserProvisioningDisabled returns a boolean if a field has been set.
+func (o *ConnectedOrgConfig) HasInstantUserProvisioningDisabled() bool {
+	if o != nil && !IsNil(o.InstantUserProvisioningDisabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstantUserProvisioningDisabled gets a reference to the given bool and assigns it to the InstantUserProvisioningDisabled field.
+func (o *ConnectedOrgConfig) SetInstantUserProvisioningDisabled(v bool) {
+	o.InstantUserProvisioningDisabled = &v
 }
 
 // GetOrgId returns the OrgId field value

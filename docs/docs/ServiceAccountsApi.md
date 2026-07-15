@@ -1472,7 +1472,7 @@ Name | Type | Description  | Notes
 
 ## ListGroupServiceAccounts
 
-> PaginatedGroupServiceAccounts ListGroupServiceAccounts(ctx, groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedGroupServiceAccounts ListGroupServiceAccounts(ctx, groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeSystemManaged(includeSystemManaged).Execute()
 
 Return All Project Service Accounts
 
@@ -1503,8 +1503,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
+    includeSystemManaged := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.ServiceAccountsApi.ListGroupServiceAccounts(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ServiceAccountsApi.ListGroupServiceAccounts(context.Background(), groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeSystemManaged(includeSystemManaged).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.ListGroupServiceAccounts`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -1536,6 +1537,7 @@ Name | Type | Description  | Notes
 
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+ **includeSystemManaged** | **bool** | Flag that indicates whether system-managed Service Accounts (such as those used for MCP ingress/egress integrations) are included in the response. When false, only user-managed Service Accounts are returned. | [default to false]
 
 ### Return type
 
@@ -1645,7 +1647,7 @@ Name | Type | Description  | Notes
 
 ## ListOrgServiceAccounts
 
-> PaginatedOrgServiceAccounts ListOrgServiceAccounts(ctx, orgId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+> PaginatedOrgServiceAccounts ListOrgServiceAccounts(ctx, orgId).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeSystemManaged(includeSystemManaged).Execute()
 
 Return All Organization Service Accounts
 
@@ -1676,8 +1678,9 @@ func main() {
     orgId := "4888442a3354817a7320eb61" // string | 
     itemsPerPage := int(56) // int |  (optional) (default to 100)
     pageNum := int(56) // int |  (optional) (default to 1)
+    includeSystemManaged := true // bool |  (optional) (default to false)
 
-    resp, r, err := sdk.ServiceAccountsApi.ListOrgServiceAccounts(context.Background(), orgId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    resp, r, err := sdk.ServiceAccountsApi.ListOrgServiceAccounts(context.Background(), orgId).ItemsPerPage(itemsPerPage).PageNum(pageNum).IncludeSystemManaged(includeSystemManaged).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ServiceAccountsApi.ListOrgServiceAccounts`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -1709,6 +1712,7 @@ Name | Type | Description  | Notes
 
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+ **includeSystemManaged** | **bool** | Flag that indicates whether system-managed Service Accounts (such as those used for MCP ingress/egress integrations) are included in the response. When false, only user-managed Service Accounts are returned. | [default to false]
 
 ### Return type
 
