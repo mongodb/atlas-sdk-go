@@ -2,7 +2,10 @@
 package {{packageName}}
 
 import (
+	"encoding/json"
 	"reflect"
+	"strings"
+	"sync"
 	"time"
 )
 
@@ -92,4 +95,76 @@ func Int64PtrToIntPtr(i64 *int64) *int {
 
 	i := int(*i64)
 	return &i
+}
+
+var jsonTagCache sync.Map // reflect.Type -> map[string]string (Go field name -> JSON field name)
+
+// jsonTagsByFieldName returns the JSON field name for each exported struct field of v, keyed by Go field name.
+func jsonTagsByFieldName(v any) map[string]string {
+	t := reflect.TypeOf(v)
+	if cached, ok := jsonTagCache.Load(t); ok {
+		return cached.(map[string]string)
+	}
+
+	tags := make(map[string]string, t.NumField())
+	for i := 0; i < t.NumField(); i++ {
+		field := t.Field(i)
+		tag := field.Tag.Get("json")
+		if tag == "" || tag == "-" {
+			continue
+		}
+		name, _, _ := strings.Cut(tag, ",")
+		tags[field.Name] = name
+	}
+	jsonTagCache.Store(t, tags)
+	return tags
+}
+
+// addNullField appends name to fields if not already present.
+func addNullField(fields []string, name string) []string {
+	for _, f := range fields {
+		if f == name {
+			return fields
+		}
+	}
+	return append(fields, name)
+}
+
+// removeNullField returns fields with name removed, if present.
+func removeNullField(fields []string, name string) []string {
+	for i, f := range fields {
+		if f == name {
+			return append(fields[:i], fields[i+1:]...)
+		}
+	}
+	return fields
+}
+
+// marshalWithNullFields marshals v to JSON as usual, then patches the result so that fields named
+// in nullFields are sent as an explicit JSON null, regardless of their value.
+//
+// v must be a struct value whose type carries no MarshalJSON method (to avoid infinite recursion,
+// callers pass a locally declared alias type of the original model).
+func marshalWithNullFields(v any, nullFields []string) ([]byte, error) {
+	if len(nullFields) == 0 {
+		return json.Marshal(v)
+	}
+
+	base, err := json.Marshal(v)
+	if err != nil {
+		return nil, err
+	}
+	var out map[string]json.RawMessage
+	if err := json.Unmarshal(base, &out); err != nil {
+		return nil, err
+	}
+
+	tags := jsonTagsByFieldName(v)
+	for _, f := range nullFields {
+		if tag, ok := tags[f]; ok {
+			out[tag] = json.RawMessage("null")
+		}
+	}
+
+	return json.Marshal(out)
 }
