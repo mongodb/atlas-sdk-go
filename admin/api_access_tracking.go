@@ -1,5 +1,4 @@
 // Code based on the AtlasAPI V2 OpenAPI file
-
 package admin
 
 import (
@@ -10,7 +9,7 @@ import (
 	"strings"
 )
 
-type AccessTrackingApi interface {
+type AccessTrackingAPI interface {
 
 	/*
 		GetAccessHistoryCluster Return Database Access History for One Cluster by Cluster Name
@@ -61,12 +60,12 @@ type AccessTrackingApi interface {
 	GetAccessHistoryProcessExecute(r GetAccessHistoryProcessApiRequest) (*MongoDBAccessLogsList, *http.Response, error)
 }
 
-// AccessTrackingApiService AccessTrackingApi service
-type AccessTrackingApiService service
+// AccessTrackingAPIService AccessTrackingAPI service
+type AccessTrackingAPIService service
 
 type GetAccessHistoryClusterApiRequest struct {
 	ctx         context.Context
-	ApiService  AccessTrackingApi
+	ApiService  AccessTrackingAPI
 	groupId     string
 	clusterName string
 	authResult  *bool
@@ -86,7 +85,7 @@ type GetAccessHistoryClusterApiParams struct {
 	Start       *int64
 }
 
-func (a *AccessTrackingApiService) GetAccessHistoryClusterWithParams(ctx context.Context, args *GetAccessHistoryClusterApiParams) GetAccessHistoryClusterApiRequest {
+func (a *AccessTrackingAPIService) GetAccessHistoryClusterWithParams(ctx context.Context, args *GetAccessHistoryClusterApiParams) GetAccessHistoryClusterApiRequest {
 	return GetAccessHistoryClusterApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -144,7 +143,7 @@ Returns the access logs of one cluster identified by the cluster's name. Access 
 	@param clusterName Human-readable label that identifies the cluster.
 	@return GetAccessHistoryClusterApiRequest
 */
-func (a *AccessTrackingApiService) GetAccessHistoryCluster(ctx context.Context, groupId string, clusterName string) GetAccessHistoryClusterApiRequest {
+func (a *AccessTrackingAPIService) GetAccessHistoryCluster(ctx context.Context, groupId string, clusterName string) GetAccessHistoryClusterApiRequest {
 	return GetAccessHistoryClusterApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -156,7 +155,7 @@ func (a *AccessTrackingApiService) GetAccessHistoryCluster(ctx context.Context, 
 // GetAccessHistoryClusterExecute executes the request
 //
 //	@return MongoDBAccessLogsList
-func (a *AccessTrackingApiService) GetAccessHistoryClusterExecute(r GetAccessHistoryClusterApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {
+func (a *AccessTrackingAPIService) GetAccessHistoryClusterExecute(r GetAccessHistoryClusterApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -164,7 +163,7 @@ func (a *AccessTrackingApiService) GetAccessHistoryClusterExecute(r GetAccessHis
 		localVarReturnValue *MongoDBAccessLogsList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessTrackingApiService.GetAccessHistoryCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessTrackingAPIService.GetAccessHistoryCluster")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -253,7 +252,7 @@ func (a *AccessTrackingApiService) GetAccessHistoryClusterExecute(r GetAccessHis
 
 type GetAccessHistoryProcessApiRequest struct {
 	ctx        context.Context
-	ApiService AccessTrackingApi
+	ApiService AccessTrackingAPI
 	groupId    string
 	hostname   string
 	authResult *bool
@@ -273,7 +272,7 @@ type GetAccessHistoryProcessApiParams struct {
 	Start      *int64
 }
 
-func (a *AccessTrackingApiService) GetAccessHistoryProcessWithParams(ctx context.Context, args *GetAccessHistoryProcessApiParams) GetAccessHistoryProcessApiRequest {
+func (a *AccessTrackingAPIService) GetAccessHistoryProcessWithParams(ctx context.Context, args *GetAccessHistoryProcessApiParams) GetAccessHistoryProcessApiRequest {
 	return GetAccessHistoryProcessApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -331,7 +330,7 @@ Returns the access logs of one cluster identified by the cluster's hostname. Acc
 	@param hostname Fully qualified domain name or IP address of the MongoDB host that stores the log files that you want to download.
 	@return GetAccessHistoryProcessApiRequest
 */
-func (a *AccessTrackingApiService) GetAccessHistoryProcess(ctx context.Context, groupId string, hostname string) GetAccessHistoryProcessApiRequest {
+func (a *AccessTrackingAPIService) GetAccessHistoryProcess(ctx context.Context, groupId string, hostname string) GetAccessHistoryProcessApiRequest {
 	return GetAccessHistoryProcessApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -343,7 +342,7 @@ func (a *AccessTrackingApiService) GetAccessHistoryProcess(ctx context.Context, 
 // GetAccessHistoryProcessExecute executes the request
 //
 //	@return MongoDBAccessLogsList
-func (a *AccessTrackingApiService) GetAccessHistoryProcessExecute(r GetAccessHistoryProcessApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {
+func (a *AccessTrackingAPIService) GetAccessHistoryProcessExecute(r GetAccessHistoryProcessApiRequest) (*MongoDBAccessLogsList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -351,7 +350,7 @@ func (a *AccessTrackingApiService) GetAccessHistoryProcessExecute(r GetAccessHis
 		localVarReturnValue *MongoDBAccessLogsList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessTrackingApiService.GetAccessHistoryProcess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AccessTrackingAPIService.GetAccessHistoryProcess")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

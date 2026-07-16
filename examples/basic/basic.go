@@ -7,8 +7,8 @@ import (
 
 	"context"
 
-	"go.mongodb.org/atlas-sdk/v20250312021/admin"
-	"go.mongodb.org/atlas-sdk/v20250312021/examples"
+	"go.mongodb.org/atlas-sdk/v20250312022/admin"
+	"go.mongodb.org/atlas-sdk/v20250312022/examples"
 )
 
 /*
@@ -32,7 +32,7 @@ func main() {
 	examples.HandleErr(err, nil)
 
 	// -- 1. Get first project
-	request := sdk.ProjectsApi.ListGroupsWithParams(ctx,
+	request := sdk.ProjectsAPI.ListGroupsWithParams(ctx,
 		// 2. We are passing a struct with all parameters to the request
 		&admin.ListGroupsApiParams{
 			ItemsPerPage: admin.PtrInt(1),

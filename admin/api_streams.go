@@ -1,5 +1,4 @@
 // Code based on the AtlasAPI V2 OpenAPI file
-
 package admin
 
 import (
@@ -10,7 +9,7 @@ import (
 	"strings"
 )
 
-type StreamsApi interface {
+type StreamsAPI interface {
 
 	/*
 		AcceptVpcPeeringConnection Accept One Incoming VPC Peering Connection
@@ -923,12 +922,12 @@ type StreamsApi interface {
 	WithStreamSampleConnectionsExecute(r WithStreamSampleConnectionsApiRequest) (*StreamsTenant, *http.Response, error)
 }
 
-// StreamsApiService StreamsApi service
-type StreamsApiService service
+// StreamsAPIService StreamsAPI service
+type StreamsAPIService service
 
 type AcceptVpcPeeringConnectionApiRequest struct {
 	ctx                       context.Context
-	ApiService                StreamsApi
+	ApiService                StreamsAPI
 	groupId                   string
 	id                        string
 	vPCPeeringActionChallenge *VPCPeeringActionChallenge
@@ -940,7 +939,7 @@ type AcceptVpcPeeringConnectionApiParams struct {
 	VPCPeeringActionChallenge *VPCPeeringActionChallenge
 }
 
-func (a *StreamsApiService) AcceptVpcPeeringConnectionWithParams(ctx context.Context, args *AcceptVpcPeeringConnectionApiParams) AcceptVpcPeeringConnectionApiRequest {
+func (a *StreamsAPIService) AcceptVpcPeeringConnectionWithParams(ctx context.Context, args *AcceptVpcPeeringConnectionApiParams) AcceptVpcPeeringConnectionApiRequest {
 	return AcceptVpcPeeringConnectionApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -964,7 +963,7 @@ Requests the acceptance of an incoming VPC Peering connection.
 	@param id The VPC Peering Connection id.
 	@return AcceptVpcPeeringConnectionApiRequest
 */
-func (a *StreamsApiService) AcceptVpcPeeringConnection(ctx context.Context, groupId string, id string, vPCPeeringActionChallenge *VPCPeeringActionChallenge) AcceptVpcPeeringConnectionApiRequest {
+func (a *StreamsAPIService) AcceptVpcPeeringConnection(ctx context.Context, groupId string, id string, vPCPeeringActionChallenge *VPCPeeringActionChallenge) AcceptVpcPeeringConnectionApiRequest {
 	return AcceptVpcPeeringConnectionApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -975,14 +974,14 @@ func (a *StreamsApiService) AcceptVpcPeeringConnection(ctx context.Context, grou
 }
 
 // AcceptVpcPeeringConnectionExecute executes the request
-func (a *StreamsApiService) AcceptVpcPeeringConnectionExecute(r AcceptVpcPeeringConnectionApiRequest) (*http.Response, error) {
+func (a *StreamsAPIService) AcceptVpcPeeringConnectionExecute(r AcceptVpcPeeringConnectionApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.AcceptVpcPeeringConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.AcceptVpcPeeringConnection")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1043,7 +1042,7 @@ func (a *StreamsApiService) AcceptVpcPeeringConnectionExecute(r AcceptVpcPeering
 
 type CreateFailoverConnectionApiRequest struct {
 	ctx               context.Context
-	ApiService        StreamsApi
+	ApiService        StreamsAPI
 	groupId           string
 	tenantName        string
 	connectionName    string
@@ -1057,7 +1056,7 @@ type CreateFailoverConnectionApiParams struct {
 	StreamsConnection *StreamsConnection
 }
 
-func (a *StreamsApiService) CreateFailoverConnectionWithParams(ctx context.Context, args *CreateFailoverConnectionApiParams) CreateFailoverConnectionApiRequest {
+func (a *StreamsAPIService) CreateFailoverConnectionWithParams(ctx context.Context, args *CreateFailoverConnectionApiParams) CreateFailoverConnectionApiRequest {
 	return CreateFailoverConnectionApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1083,7 +1082,7 @@ Creates one failover connection for a stream workspace in the specified project.
 	@param connectionName Label that identifies the stream connection name.
 	@return CreateFailoverConnectionApiRequest
 */
-func (a *StreamsApiService) CreateFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsConnection *StreamsConnection) CreateFailoverConnectionApiRequest {
+func (a *StreamsAPIService) CreateFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsConnection *StreamsConnection) CreateFailoverConnectionApiRequest {
 	return CreateFailoverConnectionApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1097,7 +1096,7 @@ func (a *StreamsApiService) CreateFailoverConnection(ctx context.Context, groupI
 // CreateFailoverConnectionExecute executes the request
 //
 //	@return StreamsConnection
-func (a *StreamsApiService) CreateFailoverConnectionExecute(r CreateFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+func (a *StreamsAPIService) CreateFailoverConnectionExecute(r CreateFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1105,7 +1104,7 @@ func (a *StreamsApiService) CreateFailoverConnectionExecute(r CreateFailoverConn
 		localVarReturnValue *StreamsConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.CreateFailoverConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.CreateFailoverConnection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1184,7 +1183,7 @@ func (a *StreamsApiService) CreateFailoverConnectionExecute(r CreateFailoverConn
 
 type CreatePrivateLinkConnectionApiRequest struct {
 	ctx                          context.Context
-	ApiService                   StreamsApi
+	ApiService                   StreamsAPI
 	groupId                      string
 	streamsPrivateLinkConnection *StreamsPrivateLinkConnection
 }
@@ -1194,7 +1193,7 @@ type CreatePrivateLinkConnectionApiParams struct {
 	StreamsPrivateLinkConnection *StreamsPrivateLinkConnection
 }
 
-func (a *StreamsApiService) CreatePrivateLinkConnectionWithParams(ctx context.Context, args *CreatePrivateLinkConnectionApiParams) CreatePrivateLinkConnectionApiRequest {
+func (a *StreamsAPIService) CreatePrivateLinkConnectionWithParams(ctx context.Context, args *CreatePrivateLinkConnectionApiParams) CreatePrivateLinkConnectionApiRequest {
 	return CreatePrivateLinkConnectionApiRequest{
 		ApiService:                   a,
 		ctx:                          ctx,
@@ -1216,7 +1215,7 @@ Creates one Private Link in the specified project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreatePrivateLinkConnectionApiRequest
 */
-func (a *StreamsApiService) CreatePrivateLinkConnection(ctx context.Context, groupId string, streamsPrivateLinkConnection *StreamsPrivateLinkConnection) CreatePrivateLinkConnectionApiRequest {
+func (a *StreamsAPIService) CreatePrivateLinkConnection(ctx context.Context, groupId string, streamsPrivateLinkConnection *StreamsPrivateLinkConnection) CreatePrivateLinkConnectionApiRequest {
 	return CreatePrivateLinkConnectionApiRequest{
 		ApiService:                   a,
 		ctx:                          ctx,
@@ -1228,7 +1227,7 @@ func (a *StreamsApiService) CreatePrivateLinkConnection(ctx context.Context, gro
 // CreatePrivateLinkConnectionExecute executes the request
 //
 //	@return StreamsPrivateLinkConnection
-func (a *StreamsApiService) CreatePrivateLinkConnectionExecute(r CreatePrivateLinkConnectionApiRequest) (*StreamsPrivateLinkConnection, *http.Response, error) {
+func (a *StreamsAPIService) CreatePrivateLinkConnectionExecute(r CreatePrivateLinkConnectionApiRequest) (*StreamsPrivateLinkConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1236,7 +1235,7 @@ func (a *StreamsApiService) CreatePrivateLinkConnectionExecute(r CreatePrivateLi
 		localVarReturnValue *StreamsPrivateLinkConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.CreatePrivateLinkConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.CreatePrivateLinkConnection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1307,7 +1306,7 @@ func (a *StreamsApiService) CreatePrivateLinkConnectionExecute(r CreatePrivateLi
 
 type CreateStreamConnectionApiRequest struct {
 	ctx               context.Context
-	ApiService        StreamsApi
+	ApiService        StreamsAPI
 	groupId           string
 	tenantName        string
 	streamsConnection *StreamsConnection
@@ -1319,7 +1318,7 @@ type CreateStreamConnectionApiParams struct {
 	StreamsConnection *StreamsConnection
 }
 
-func (a *StreamsApiService) CreateStreamConnectionWithParams(ctx context.Context, args *CreateStreamConnectionApiParams) CreateStreamConnectionApiRequest {
+func (a *StreamsAPIService) CreateStreamConnectionWithParams(ctx context.Context, args *CreateStreamConnectionApiParams) CreateStreamConnectionApiRequest {
 	return CreateStreamConnectionApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1343,7 +1342,7 @@ Creates one connection for a stream workspace in the specified project.
 	@param tenantName Label that identifies the stream workspace.
 	@return CreateStreamConnectionApiRequest
 */
-func (a *StreamsApiService) CreateStreamConnection(ctx context.Context, groupId string, tenantName string, streamsConnection *StreamsConnection) CreateStreamConnectionApiRequest {
+func (a *StreamsAPIService) CreateStreamConnection(ctx context.Context, groupId string, tenantName string, streamsConnection *StreamsConnection) CreateStreamConnectionApiRequest {
 	return CreateStreamConnectionApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1356,7 +1355,7 @@ func (a *StreamsApiService) CreateStreamConnection(ctx context.Context, groupId 
 // CreateStreamConnectionExecute executes the request
 //
 //	@return StreamsConnection
-func (a *StreamsApiService) CreateStreamConnectionExecute(r CreateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+func (a *StreamsAPIService) CreateStreamConnectionExecute(r CreateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1364,7 +1363,7 @@ func (a *StreamsApiService) CreateStreamConnectionExecute(r CreateStreamConnecti
 		localVarReturnValue *StreamsConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.CreateStreamConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.CreateStreamConnection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1439,7 +1438,7 @@ func (a *StreamsApiService) CreateStreamConnectionExecute(r CreateStreamConnecti
 
 type CreateStreamProcessorApiRequest struct {
 	ctx              context.Context
-	ApiService       StreamsApi
+	ApiService       StreamsAPI
 	groupId          string
 	tenantName       string
 	streamsProcessor *StreamsProcessor
@@ -1451,7 +1450,7 @@ type CreateStreamProcessorApiParams struct {
 	StreamsProcessor *StreamsProcessor
 }
 
-func (a *StreamsApiService) CreateStreamProcessorWithParams(ctx context.Context, args *CreateStreamProcessorApiParams) CreateStreamProcessorApiRequest {
+func (a *StreamsAPIService) CreateStreamProcessorWithParams(ctx context.Context, args *CreateStreamProcessorApiParams) CreateStreamProcessorApiRequest {
 	return CreateStreamProcessorApiRequest{
 		ApiService:       a,
 		ctx:              ctx,
@@ -1475,7 +1474,7 @@ Create one Stream Processor within the specified stream workspace.
 	@param tenantName Label that identifies the stream workspace.
 	@return CreateStreamProcessorApiRequest
 */
-func (a *StreamsApiService) CreateStreamProcessor(ctx context.Context, groupId string, tenantName string, streamsProcessor *StreamsProcessor) CreateStreamProcessorApiRequest {
+func (a *StreamsAPIService) CreateStreamProcessor(ctx context.Context, groupId string, tenantName string, streamsProcessor *StreamsProcessor) CreateStreamProcessorApiRequest {
 	return CreateStreamProcessorApiRequest{
 		ApiService:       a,
 		ctx:              ctx,
@@ -1488,7 +1487,7 @@ func (a *StreamsApiService) CreateStreamProcessor(ctx context.Context, groupId s
 // CreateStreamProcessorExecute executes the request
 //
 //	@return StreamsProcessor
-func (a *StreamsApiService) CreateStreamProcessorExecute(r CreateStreamProcessorApiRequest) (*StreamsProcessor, *http.Response, error) {
+func (a *StreamsAPIService) CreateStreamProcessorExecute(r CreateStreamProcessorApiRequest) (*StreamsProcessor, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1496,7 +1495,7 @@ func (a *StreamsApiService) CreateStreamProcessorExecute(r CreateStreamProcessor
 		localVarReturnValue *StreamsProcessor
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.CreateStreamProcessor")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.CreateStreamProcessor")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1571,7 +1570,7 @@ func (a *StreamsApiService) CreateStreamProcessorExecute(r CreateStreamProcessor
 
 type CreateStreamWorkspaceApiRequest struct {
 	ctx           context.Context
-	ApiService    StreamsApi
+	ApiService    StreamsAPI
 	groupId       string
 	streamsTenant *StreamsTenant
 }
@@ -1581,7 +1580,7 @@ type CreateStreamWorkspaceApiParams struct {
 	StreamsTenant *StreamsTenant
 }
 
-func (a *StreamsApiService) CreateStreamWorkspaceWithParams(ctx context.Context, args *CreateStreamWorkspaceApiParams) CreateStreamWorkspaceApiRequest {
+func (a *StreamsAPIService) CreateStreamWorkspaceWithParams(ctx context.Context, args *CreateStreamWorkspaceApiParams) CreateStreamWorkspaceApiRequest {
 	return CreateStreamWorkspaceApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1603,7 +1602,7 @@ Creates one stream workspace in the specified project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateStreamWorkspaceApiRequest
 */
-func (a *StreamsApiService) CreateStreamWorkspace(ctx context.Context, groupId string, streamsTenant *StreamsTenant) CreateStreamWorkspaceApiRequest {
+func (a *StreamsAPIService) CreateStreamWorkspace(ctx context.Context, groupId string, streamsTenant *StreamsTenant) CreateStreamWorkspaceApiRequest {
 	return CreateStreamWorkspaceApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1615,7 +1614,7 @@ func (a *StreamsApiService) CreateStreamWorkspace(ctx context.Context, groupId s
 // CreateStreamWorkspaceExecute executes the request
 //
 //	@return StreamsTenant
-func (a *StreamsApiService) CreateStreamWorkspaceExecute(r CreateStreamWorkspaceApiRequest) (*StreamsTenant, *http.Response, error) {
+func (a *StreamsAPIService) CreateStreamWorkspaceExecute(r CreateStreamWorkspaceApiRequest) (*StreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1623,7 +1622,7 @@ func (a *StreamsApiService) CreateStreamWorkspaceExecute(r CreateStreamWorkspace
 		localVarReturnValue *StreamsTenant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.CreateStreamWorkspace")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.CreateStreamWorkspace")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1694,7 +1693,7 @@ func (a *StreamsApiService) CreateStreamWorkspaceExecute(r CreateStreamWorkspace
 
 type DeletePrivateLinkConnectionApiRequest struct {
 	ctx          context.Context
-	ApiService   StreamsApi
+	ApiService   StreamsAPI
 	groupId      string
 	connectionId string
 }
@@ -1704,7 +1703,7 @@ type DeletePrivateLinkConnectionApiParams struct {
 	ConnectionId string
 }
 
-func (a *StreamsApiService) DeletePrivateLinkConnectionWithParams(ctx context.Context, args *DeletePrivateLinkConnectionApiParams) DeletePrivateLinkConnectionApiRequest {
+func (a *StreamsAPIService) DeletePrivateLinkConnectionWithParams(ctx context.Context, args *DeletePrivateLinkConnectionApiParams) DeletePrivateLinkConnectionApiRequest {
 	return DeletePrivateLinkConnectionApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1727,7 +1726,7 @@ Deletes one Private Link in the specified project.
 	@param connectionId Unique ID that identifies the Private Link connection.
 	@return DeletePrivateLinkConnectionApiRequest
 */
-func (a *StreamsApiService) DeletePrivateLinkConnection(ctx context.Context, groupId string, connectionId string) DeletePrivateLinkConnectionApiRequest {
+func (a *StreamsAPIService) DeletePrivateLinkConnection(ctx context.Context, groupId string, connectionId string) DeletePrivateLinkConnectionApiRequest {
 	return DeletePrivateLinkConnectionApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1737,14 +1736,14 @@ func (a *StreamsApiService) DeletePrivateLinkConnection(ctx context.Context, gro
 }
 
 // DeletePrivateLinkConnectionExecute executes the request
-func (a *StreamsApiService) DeletePrivateLinkConnectionExecute(r DeletePrivateLinkConnectionApiRequest) (*http.Response, error) {
+func (a *StreamsAPIService) DeletePrivateLinkConnectionExecute(r DeletePrivateLinkConnectionApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DeletePrivateLinkConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.DeletePrivateLinkConnection")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1800,7 +1799,7 @@ func (a *StreamsApiService) DeletePrivateLinkConnectionExecute(r DeletePrivateLi
 
 type DeleteStreamConnectionApiRequest struct {
 	ctx            context.Context
-	ApiService     StreamsApi
+	ApiService     StreamsAPI
 	groupId        string
 	tenantName     string
 	connectionName string
@@ -1812,7 +1811,7 @@ type DeleteStreamConnectionApiParams struct {
 	ConnectionName string
 }
 
-func (a *StreamsApiService) DeleteStreamConnectionWithParams(ctx context.Context, args *DeleteStreamConnectionApiParams) DeleteStreamConnectionApiRequest {
+func (a *StreamsAPIService) DeleteStreamConnectionWithParams(ctx context.Context, args *DeleteStreamConnectionApiParams) DeleteStreamConnectionApiRequest {
 	return DeleteStreamConnectionApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1837,7 +1836,7 @@ Delete one connection of the specified stream workspace.
 	@param connectionName Label that identifies the stream connection.
 	@return DeleteStreamConnectionApiRequest
 */
-func (a *StreamsApiService) DeleteStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string) DeleteStreamConnectionApiRequest {
+func (a *StreamsAPIService) DeleteStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string) DeleteStreamConnectionApiRequest {
 	return DeleteStreamConnectionApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1848,14 +1847,14 @@ func (a *StreamsApiService) DeleteStreamConnection(ctx context.Context, groupId 
 }
 
 // DeleteStreamConnectionExecute executes the request
-func (a *StreamsApiService) DeleteStreamConnectionExecute(r DeleteStreamConnectionApiRequest) (*http.Response, error) {
+func (a *StreamsAPIService) DeleteStreamConnectionExecute(r DeleteStreamConnectionApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DeleteStreamConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.DeleteStreamConnection")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1915,7 +1914,7 @@ func (a *StreamsApiService) DeleteStreamConnectionExecute(r DeleteStreamConnecti
 
 type DeleteStreamFailoverConnectionApiRequest struct {
 	ctx                  context.Context
-	ApiService           StreamsApi
+	ApiService           StreamsAPI
 	groupId              string
 	tenantName           string
 	connectionName       string
@@ -1929,7 +1928,7 @@ type DeleteStreamFailoverConnectionApiParams struct {
 	FailoverConnectionId string
 }
 
-func (a *StreamsApiService) DeleteStreamFailoverConnectionWithParams(ctx context.Context, args *DeleteStreamFailoverConnectionApiParams) DeleteStreamFailoverConnectionApiRequest {
+func (a *StreamsAPIService) DeleteStreamFailoverConnectionWithParams(ctx context.Context, args *DeleteStreamFailoverConnectionApiParams) DeleteStreamFailoverConnectionApiRequest {
 	return DeleteStreamFailoverConnectionApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -1956,7 +1955,7 @@ Delete one failover connection of the specified stream workspace.
 	@param failoverConnectionId Label that identifies the stream failover connection id.
 	@return DeleteStreamFailoverConnectionApiRequest
 */
-func (a *StreamsApiService) DeleteStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string) DeleteStreamFailoverConnectionApiRequest {
+func (a *StreamsAPIService) DeleteStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string) DeleteStreamFailoverConnectionApiRequest {
 	return DeleteStreamFailoverConnectionApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -1968,14 +1967,14 @@ func (a *StreamsApiService) DeleteStreamFailoverConnection(ctx context.Context, 
 }
 
 // DeleteStreamFailoverConnectionExecute executes the request
-func (a *StreamsApiService) DeleteStreamFailoverConnectionExecute(r DeleteStreamFailoverConnectionApiRequest) (*http.Response, error) {
+func (a *StreamsAPIService) DeleteStreamFailoverConnectionExecute(r DeleteStreamFailoverConnectionApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DeleteStreamFailoverConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.DeleteStreamFailoverConnection")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2039,7 +2038,7 @@ func (a *StreamsApiService) DeleteStreamFailoverConnectionExecute(r DeleteStream
 
 type DeleteStreamProcessorApiRequest struct {
 	ctx           context.Context
-	ApiService    StreamsApi
+	ApiService    StreamsAPI
 	groupId       string
 	tenantName    string
 	processorName string
@@ -2051,7 +2050,7 @@ type DeleteStreamProcessorApiParams struct {
 	ProcessorName string
 }
 
-func (a *StreamsApiService) DeleteStreamProcessorWithParams(ctx context.Context, args *DeleteStreamProcessorApiParams) DeleteStreamProcessorApiRequest {
+func (a *StreamsAPIService) DeleteStreamProcessorWithParams(ctx context.Context, args *DeleteStreamProcessorApiParams) DeleteStreamProcessorApiRequest {
 	return DeleteStreamProcessorApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -2076,7 +2075,7 @@ Delete a Stream Processor within the specified stream workspace.
 	@param processorName Label that identifies the stream processor.
 	@return DeleteStreamProcessorApiRequest
 */
-func (a *StreamsApiService) DeleteStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) DeleteStreamProcessorApiRequest {
+func (a *StreamsAPIService) DeleteStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) DeleteStreamProcessorApiRequest {
 	return DeleteStreamProcessorApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -2087,14 +2086,14 @@ func (a *StreamsApiService) DeleteStreamProcessor(ctx context.Context, groupId s
 }
 
 // DeleteStreamProcessorExecute executes the request
-func (a *StreamsApiService) DeleteStreamProcessorExecute(r DeleteStreamProcessorApiRequest) (*http.Response, error) {
+func (a *StreamsAPIService) DeleteStreamProcessorExecute(r DeleteStreamProcessorApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DeleteStreamProcessor")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.DeleteStreamProcessor")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2154,7 +2153,7 @@ func (a *StreamsApiService) DeleteStreamProcessorExecute(r DeleteStreamProcessor
 
 type DeleteStreamWorkspaceApiRequest struct {
 	ctx        context.Context
-	ApiService StreamsApi
+	ApiService StreamsAPI
 	groupId    string
 	tenantName string
 }
@@ -2164,7 +2163,7 @@ type DeleteStreamWorkspaceApiParams struct {
 	TenantName string
 }
 
-func (a *StreamsApiService) DeleteStreamWorkspaceWithParams(ctx context.Context, args *DeleteStreamWorkspaceApiParams) DeleteStreamWorkspaceApiRequest {
+func (a *StreamsAPIService) DeleteStreamWorkspaceWithParams(ctx context.Context, args *DeleteStreamWorkspaceApiParams) DeleteStreamWorkspaceApiRequest {
 	return DeleteStreamWorkspaceApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2187,7 +2186,7 @@ Delete one stream workspace in the specified project.
 	@param tenantName Label that identifies the stream workspace to delete.
 	@return DeleteStreamWorkspaceApiRequest
 */
-func (a *StreamsApiService) DeleteStreamWorkspace(ctx context.Context, groupId string, tenantName string) DeleteStreamWorkspaceApiRequest {
+func (a *StreamsAPIService) DeleteStreamWorkspace(ctx context.Context, groupId string, tenantName string) DeleteStreamWorkspaceApiRequest {
 	return DeleteStreamWorkspaceApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2197,14 +2196,14 @@ func (a *StreamsApiService) DeleteStreamWorkspace(ctx context.Context, groupId s
 }
 
 // DeleteStreamWorkspaceExecute executes the request
-func (a *StreamsApiService) DeleteStreamWorkspaceExecute(r DeleteStreamWorkspaceApiRequest) (*http.Response, error) {
+func (a *StreamsAPIService) DeleteStreamWorkspaceExecute(r DeleteStreamWorkspaceApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DeleteStreamWorkspace")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.DeleteStreamWorkspace")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2260,7 +2259,7 @@ func (a *StreamsApiService) DeleteStreamWorkspaceExecute(r DeleteStreamWorkspace
 
 type DeleteVpcPeeringConnectionApiRequest struct {
 	ctx        context.Context
-	ApiService StreamsApi
+	ApiService StreamsAPI
 	groupId    string
 	id         string
 }
@@ -2270,7 +2269,7 @@ type DeleteVpcPeeringConnectionApiParams struct {
 	Id      string
 }
 
-func (a *StreamsApiService) DeleteVpcPeeringConnectionWithParams(ctx context.Context, args *DeleteVpcPeeringConnectionApiParams) DeleteVpcPeeringConnectionApiRequest {
+func (a *StreamsAPIService) DeleteVpcPeeringConnectionWithParams(ctx context.Context, args *DeleteVpcPeeringConnectionApiParams) DeleteVpcPeeringConnectionApiRequest {
 	return DeleteVpcPeeringConnectionApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2293,7 +2292,7 @@ Deletes an incoming VPC Peering connection.
 	@param id The VPC Peering Connection id.
 	@return DeleteVpcPeeringConnectionApiRequest
 */
-func (a *StreamsApiService) DeleteVpcPeeringConnection(ctx context.Context, groupId string, id string) DeleteVpcPeeringConnectionApiRequest {
+func (a *StreamsAPIService) DeleteVpcPeeringConnection(ctx context.Context, groupId string, id string) DeleteVpcPeeringConnectionApiRequest {
 	return DeleteVpcPeeringConnectionApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2303,14 +2302,14 @@ func (a *StreamsApiService) DeleteVpcPeeringConnection(ctx context.Context, grou
 }
 
 // DeleteVpcPeeringConnectionExecute executes the request
-func (a *StreamsApiService) DeleteVpcPeeringConnectionExecute(r DeleteVpcPeeringConnectionApiRequest) (*http.Response, error) {
+func (a *StreamsAPIService) DeleteVpcPeeringConnectionExecute(r DeleteVpcPeeringConnectionApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DeleteVpcPeeringConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.DeleteVpcPeeringConnection")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2366,7 +2365,7 @@ func (a *StreamsApiService) DeleteVpcPeeringConnectionExecute(r DeleteVpcPeering
 
 type DownloadAuditLogsApiRequest struct {
 	ctx        context.Context
-	ApiService StreamsApi
+	ApiService StreamsAPI
 	groupId    string
 	tenantName string
 	endDate    *int64
@@ -2382,7 +2381,7 @@ type DownloadAuditLogsApiParams struct {
 	SpName     *string
 }
 
-func (a *StreamsApiService) DownloadAuditLogsWithParams(ctx context.Context, args *DownloadAuditLogsApiParams) DownloadAuditLogsApiRequest {
+func (a *StreamsAPIService) DownloadAuditLogsWithParams(ctx context.Context, args *DownloadAuditLogsApiParams) DownloadAuditLogsApiRequest {
 	return DownloadAuditLogsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2426,7 +2425,7 @@ Downloads the audit logs for the specified Atlas Streams Processing workspace or
 	@param tenantName Label that identifies the stream workspace.
 	@return DownloadAuditLogsApiRequest
 */
-func (a *StreamsApiService) DownloadAuditLogs(ctx context.Context, groupId string, tenantName string) DownloadAuditLogsApiRequest {
+func (a *StreamsAPIService) DownloadAuditLogs(ctx context.Context, groupId string, tenantName string) DownloadAuditLogsApiRequest {
 	return DownloadAuditLogsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2438,7 +2437,7 @@ func (a *StreamsApiService) DownloadAuditLogs(ctx context.Context, groupId strin
 // DownloadAuditLogsExecute executes the request
 //
 //	@return io.ReadCloser
-func (a *StreamsApiService) DownloadAuditLogsExecute(r DownloadAuditLogsApiRequest) (io.ReadCloser, *http.Response, error) {
+func (a *StreamsAPIService) DownloadAuditLogsExecute(r DownloadAuditLogsApiRequest) (io.ReadCloser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2446,7 +2445,7 @@ func (a *StreamsApiService) DownloadAuditLogsExecute(r DownloadAuditLogsApiReque
 		localVarReturnValue io.ReadCloser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DownloadAuditLogs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.DownloadAuditLogs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2525,7 +2524,7 @@ func (a *StreamsApiService) DownloadAuditLogsExecute(r DownloadAuditLogsApiReque
 
 type DownloadOperationalLogsApiRequest struct {
 	ctx        context.Context
-	ApiService StreamsApi
+	ApiService StreamsAPI
 	groupId    string
 	tenantName string
 	endDate    *int64
@@ -2541,7 +2540,7 @@ type DownloadOperationalLogsApiParams struct {
 	SpName     *string
 }
 
-func (a *StreamsApiService) DownloadOperationalLogsWithParams(ctx context.Context, args *DownloadOperationalLogsApiParams) DownloadOperationalLogsApiRequest {
+func (a *StreamsAPIService) DownloadOperationalLogsWithParams(ctx context.Context, args *DownloadOperationalLogsApiParams) DownloadOperationalLogsApiRequest {
 	return DownloadOperationalLogsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2585,7 +2584,7 @@ Downloads the operational logs for the specified Atlas Streams Processing worksp
 	@param tenantName Label that identifies the stream workspace.
 	@return DownloadOperationalLogsApiRequest
 */
-func (a *StreamsApiService) DownloadOperationalLogs(ctx context.Context, groupId string, tenantName string) DownloadOperationalLogsApiRequest {
+func (a *StreamsAPIService) DownloadOperationalLogs(ctx context.Context, groupId string, tenantName string) DownloadOperationalLogsApiRequest {
 	return DownloadOperationalLogsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2597,7 +2596,7 @@ func (a *StreamsApiService) DownloadOperationalLogs(ctx context.Context, groupId
 // DownloadOperationalLogsExecute executes the request
 //
 //	@return io.ReadCloser
-func (a *StreamsApiService) DownloadOperationalLogsExecute(r DownloadOperationalLogsApiRequest) (io.ReadCloser, *http.Response, error) {
+func (a *StreamsAPIService) DownloadOperationalLogsExecute(r DownloadOperationalLogsApiRequest) (io.ReadCloser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2605,7 +2604,7 @@ func (a *StreamsApiService) DownloadOperationalLogsExecute(r DownloadOperational
 		localVarReturnValue io.ReadCloser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.DownloadOperationalLogs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.DownloadOperationalLogs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2684,7 +2683,7 @@ func (a *StreamsApiService) DownloadOperationalLogsExecute(r DownloadOperational
 
 type GetAccountDetailsApiRequest struct {
 	ctx           context.Context
-	ApiService    StreamsApi
+	ApiService    StreamsAPI
 	groupId       string
 	cloudProvider *string
 	regionName    *string
@@ -2696,7 +2695,7 @@ type GetAccountDetailsApiParams struct {
 	RegionName    *string
 }
 
-func (a *StreamsApiService) GetAccountDetailsWithParams(ctx context.Context, args *GetAccountDetailsApiParams) GetAccountDetailsApiRequest {
+func (a *StreamsAPIService) GetAccountDetailsWithParams(ctx context.Context, args *GetAccountDetailsApiParams) GetAccountDetailsApiRequest {
 	return GetAccountDetailsApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -2731,7 +2730,7 @@ Returns the Account ID, and the VPC ID for the group and region specified.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetAccountDetailsApiRequest
 */
-func (a *StreamsApiService) GetAccountDetails(ctx context.Context, groupId string) GetAccountDetailsApiRequest {
+func (a *StreamsAPIService) GetAccountDetails(ctx context.Context, groupId string) GetAccountDetailsApiRequest {
 	return GetAccountDetailsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2742,7 +2741,7 @@ func (a *StreamsApiService) GetAccountDetails(ctx context.Context, groupId strin
 // GetAccountDetailsExecute executes the request
 //
 //	@return AccountDetails
-func (a *StreamsApiService) GetAccountDetailsExecute(r GetAccountDetailsApiRequest) (*AccountDetails, *http.Response, error) {
+func (a *StreamsAPIService) GetAccountDetailsExecute(r GetAccountDetailsApiRequest) (*AccountDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2750,7 +2749,7 @@ func (a *StreamsApiService) GetAccountDetailsExecute(r GetAccountDetailsApiReque
 		localVarReturnValue *AccountDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetAccountDetails")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.GetAccountDetails")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2824,7 +2823,7 @@ func (a *StreamsApiService) GetAccountDetailsExecute(r GetAccountDetailsApiReque
 
 type GetPrivateLinkConnectionApiRequest struct {
 	ctx          context.Context
-	ApiService   StreamsApi
+	ApiService   StreamsAPI
 	groupId      string
 	connectionId string
 }
@@ -2834,7 +2833,7 @@ type GetPrivateLinkConnectionApiParams struct {
 	ConnectionId string
 }
 
-func (a *StreamsApiService) GetPrivateLinkConnectionWithParams(ctx context.Context, args *GetPrivateLinkConnectionApiParams) GetPrivateLinkConnectionApiRequest {
+func (a *StreamsAPIService) GetPrivateLinkConnectionWithParams(ctx context.Context, args *GetPrivateLinkConnectionApiParams) GetPrivateLinkConnectionApiRequest {
 	return GetPrivateLinkConnectionApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -2857,7 +2856,7 @@ Returns the details of one Private Link connection within the project.
 	@param connectionId Unique ID that identifies the Private Link connection.
 	@return GetPrivateLinkConnectionApiRequest
 */
-func (a *StreamsApiService) GetPrivateLinkConnection(ctx context.Context, groupId string, connectionId string) GetPrivateLinkConnectionApiRequest {
+func (a *StreamsAPIService) GetPrivateLinkConnection(ctx context.Context, groupId string, connectionId string) GetPrivateLinkConnectionApiRequest {
 	return GetPrivateLinkConnectionApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -2869,7 +2868,7 @@ func (a *StreamsApiService) GetPrivateLinkConnection(ctx context.Context, groupI
 // GetPrivateLinkConnectionExecute executes the request
 //
 //	@return StreamsPrivateLinkConnection
-func (a *StreamsApiService) GetPrivateLinkConnectionExecute(r GetPrivateLinkConnectionApiRequest) (*StreamsPrivateLinkConnection, *http.Response, error) {
+func (a *StreamsAPIService) GetPrivateLinkConnectionExecute(r GetPrivateLinkConnectionApiRequest) (*StreamsPrivateLinkConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2877,7 +2876,7 @@ func (a *StreamsApiService) GetPrivateLinkConnectionExecute(r GetPrivateLinkConn
 		localVarReturnValue *StreamsPrivateLinkConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetPrivateLinkConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.GetPrivateLinkConnection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2947,7 +2946,7 @@ func (a *StreamsApiService) GetPrivateLinkConnectionExecute(r GetPrivateLinkConn
 
 type GetStreamConnectionApiRequest struct {
 	ctx            context.Context
-	ApiService     StreamsApi
+	ApiService     StreamsAPI
 	groupId        string
 	tenantName     string
 	connectionName string
@@ -2959,7 +2958,7 @@ type GetStreamConnectionApiParams struct {
 	ConnectionName string
 }
 
-func (a *StreamsApiService) GetStreamConnectionWithParams(ctx context.Context, args *GetStreamConnectionApiParams) GetStreamConnectionApiRequest {
+func (a *StreamsAPIService) GetStreamConnectionWithParams(ctx context.Context, args *GetStreamConnectionApiParams) GetStreamConnectionApiRequest {
 	return GetStreamConnectionApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -2984,7 +2983,7 @@ Returns the details of one stream connection within the specified stream workspa
 	@param connectionName Label that identifies the stream connection to return.
 	@return GetStreamConnectionApiRequest
 */
-func (a *StreamsApiService) GetStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string) GetStreamConnectionApiRequest {
+func (a *StreamsAPIService) GetStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string) GetStreamConnectionApiRequest {
 	return GetStreamConnectionApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -2997,7 +2996,7 @@ func (a *StreamsApiService) GetStreamConnection(ctx context.Context, groupId str
 // GetStreamConnectionExecute executes the request
 //
 //	@return StreamsConnection
-func (a *StreamsApiService) GetStreamConnectionExecute(r GetStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+func (a *StreamsAPIService) GetStreamConnectionExecute(r GetStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -3005,7 +3004,7 @@ func (a *StreamsApiService) GetStreamConnectionExecute(r GetStreamConnectionApiR
 		localVarReturnValue *StreamsConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetStreamConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.GetStreamConnection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3079,7 +3078,7 @@ func (a *StreamsApiService) GetStreamConnectionExecute(r GetStreamConnectionApiR
 
 type GetStreamFailoverConnectionApiRequest struct {
 	ctx                  context.Context
-	ApiService           StreamsApi
+	ApiService           StreamsAPI
 	groupId              string
 	tenantName           string
 	connectionName       string
@@ -3093,7 +3092,7 @@ type GetStreamFailoverConnectionApiParams struct {
 	FailoverConnectionId string
 }
 
-func (a *StreamsApiService) GetStreamFailoverConnectionWithParams(ctx context.Context, args *GetStreamFailoverConnectionApiParams) GetStreamFailoverConnectionApiRequest {
+func (a *StreamsAPIService) GetStreamFailoverConnectionWithParams(ctx context.Context, args *GetStreamFailoverConnectionApiParams) GetStreamFailoverConnectionApiRequest {
 	return GetStreamFailoverConnectionApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -3120,7 +3119,7 @@ Get one failover connection of the specified stream workspace.
 	@param failoverConnectionId Label that identifies the stream failover connection id.
 	@return GetStreamFailoverConnectionApiRequest
 */
-func (a *StreamsApiService) GetStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string) GetStreamFailoverConnectionApiRequest {
+func (a *StreamsAPIService) GetStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string) GetStreamFailoverConnectionApiRequest {
 	return GetStreamFailoverConnectionApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -3134,7 +3133,7 @@ func (a *StreamsApiService) GetStreamFailoverConnection(ctx context.Context, gro
 // GetStreamFailoverConnectionExecute executes the request
 //
 //	@return StreamsConnection
-func (a *StreamsApiService) GetStreamFailoverConnectionExecute(r GetStreamFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+func (a *StreamsAPIService) GetStreamFailoverConnectionExecute(r GetStreamFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -3142,7 +3141,7 @@ func (a *StreamsApiService) GetStreamFailoverConnectionExecute(r GetStreamFailov
 		localVarReturnValue *StreamsConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetStreamFailoverConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.GetStreamFailoverConnection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3220,7 +3219,7 @@ func (a *StreamsApiService) GetStreamFailoverConnectionExecute(r GetStreamFailov
 
 type GetStreamProcessorApiRequest struct {
 	ctx           context.Context
-	ApiService    StreamsApi
+	ApiService    StreamsAPI
 	groupId       string
 	tenantName    string
 	processorName string
@@ -3232,7 +3231,7 @@ type GetStreamProcessorApiParams struct {
 	ProcessorName string
 }
 
-func (a *StreamsApiService) GetStreamProcessorWithParams(ctx context.Context, args *GetStreamProcessorApiParams) GetStreamProcessorApiRequest {
+func (a *StreamsAPIService) GetStreamProcessorWithParams(ctx context.Context, args *GetStreamProcessorApiParams) GetStreamProcessorApiRequest {
 	return GetStreamProcessorApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -3257,7 +3256,7 @@ Get one Stream Processor within the specified stream workspace.
 	@param processorName Label that identifies the stream processor.
 	@return GetStreamProcessorApiRequest
 */
-func (a *StreamsApiService) GetStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) GetStreamProcessorApiRequest {
+func (a *StreamsAPIService) GetStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) GetStreamProcessorApiRequest {
 	return GetStreamProcessorApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -3270,7 +3269,7 @@ func (a *StreamsApiService) GetStreamProcessor(ctx context.Context, groupId stri
 // GetStreamProcessorExecute executes the request
 //
 //	@return StreamsProcessorWithStats
-func (a *StreamsApiService) GetStreamProcessorExecute(r GetStreamProcessorApiRequest) (*StreamsProcessorWithStats, *http.Response, error) {
+func (a *StreamsAPIService) GetStreamProcessorExecute(r GetStreamProcessorApiRequest) (*StreamsProcessorWithStats, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -3278,7 +3277,7 @@ func (a *StreamsApiService) GetStreamProcessorExecute(r GetStreamProcessorApiReq
 		localVarReturnValue *StreamsProcessorWithStats
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetStreamProcessor")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.GetStreamProcessor")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3352,7 +3351,7 @@ func (a *StreamsApiService) GetStreamProcessorExecute(r GetStreamProcessorApiReq
 
 type GetStreamProcessorsApiRequest struct {
 	ctx          context.Context
-	ApiService   StreamsApi
+	ApiService   StreamsAPI
 	groupId      string
 	tenantName   string
 	itemsPerPage *int
@@ -3368,7 +3367,7 @@ type GetStreamProcessorsApiParams struct {
 	IncludeCount *bool
 }
 
-func (a *StreamsApiService) GetStreamProcessorsWithParams(ctx context.Context, args *GetStreamProcessorsApiParams) GetStreamProcessorsApiRequest {
+func (a *StreamsAPIService) GetStreamProcessorsWithParams(ctx context.Context, args *GetStreamProcessorsApiParams) GetStreamProcessorsApiRequest {
 	return GetStreamProcessorsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -3412,7 +3411,7 @@ Returns all Stream Processors within the specified stream workspace, including i
 	@param tenantName Label that identifies the stream workspace.
 	@return GetStreamProcessorsApiRequest
 */
-func (a *StreamsApiService) GetStreamProcessors(ctx context.Context, groupId string, tenantName string) GetStreamProcessorsApiRequest {
+func (a *StreamsAPIService) GetStreamProcessors(ctx context.Context, groupId string, tenantName string) GetStreamProcessorsApiRequest {
 	return GetStreamProcessorsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3424,7 +3423,7 @@ func (a *StreamsApiService) GetStreamProcessors(ctx context.Context, groupId str
 // GetStreamProcessorsExecute executes the request
 //
 //	@return PaginatedApiStreamsStreamProcessorWithStats
-func (a *StreamsApiService) GetStreamProcessorsExecute(r GetStreamProcessorsApiRequest) (*PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error) {
+func (a *StreamsAPIService) GetStreamProcessorsExecute(r GetStreamProcessorsApiRequest) (*PaginatedApiStreamsStreamProcessorWithStats, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -3432,7 +3431,7 @@ func (a *StreamsApiService) GetStreamProcessorsExecute(r GetStreamProcessorsApiR
 		localVarReturnValue *PaginatedApiStreamsStreamProcessorWithStats
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetStreamProcessors")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.GetStreamProcessors")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3523,7 +3522,7 @@ func (a *StreamsApiService) GetStreamProcessorsExecute(r GetStreamProcessorsApiR
 
 type GetStreamWorkspaceApiRequest struct {
 	ctx                context.Context
-	ApiService         StreamsApi
+	ApiService         StreamsAPI
 	groupId            string
 	tenantName         string
 	includeConnections *bool
@@ -3535,7 +3534,7 @@ type GetStreamWorkspaceApiParams struct {
 	IncludeConnections *bool
 }
 
-func (a *StreamsApiService) GetStreamWorkspaceWithParams(ctx context.Context, args *GetStreamWorkspaceApiParams) GetStreamWorkspaceApiRequest {
+func (a *StreamsAPIService) GetStreamWorkspaceWithParams(ctx context.Context, args *GetStreamWorkspaceApiParams) GetStreamWorkspaceApiRequest {
 	return GetStreamWorkspaceApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -3565,7 +3564,7 @@ Returns the details of one stream workspace within the specified project.
 	@param tenantName Label that identifies the stream workspace to return.
 	@return GetStreamWorkspaceApiRequest
 */
-func (a *StreamsApiService) GetStreamWorkspace(ctx context.Context, groupId string, tenantName string) GetStreamWorkspaceApiRequest {
+func (a *StreamsAPIService) GetStreamWorkspace(ctx context.Context, groupId string, tenantName string) GetStreamWorkspaceApiRequest {
 	return GetStreamWorkspaceApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3577,7 +3576,7 @@ func (a *StreamsApiService) GetStreamWorkspace(ctx context.Context, groupId stri
 // GetStreamWorkspaceExecute executes the request
 //
 //	@return StreamsTenant
-func (a *StreamsApiService) GetStreamWorkspaceExecute(r GetStreamWorkspaceApiRequest) (*StreamsTenant, *http.Response, error) {
+func (a *StreamsAPIService) GetStreamWorkspaceExecute(r GetStreamWorkspaceApiRequest) (*StreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -3585,7 +3584,7 @@ func (a *StreamsApiService) GetStreamWorkspaceExecute(r GetStreamWorkspaceApiReq
 		localVarReturnValue *StreamsTenant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.GetStreamWorkspace")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.GetStreamWorkspace")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3658,7 +3657,7 @@ func (a *StreamsApiService) GetStreamWorkspaceExecute(r GetStreamWorkspaceApiReq
 
 type ListActivePeeringConnectionsApiRequest struct {
 	ctx          context.Context
-	ApiService   StreamsApi
+	ApiService   StreamsAPI
 	groupId      string
 	itemsPerPage *int
 	pageNum      *int
@@ -3670,7 +3669,7 @@ type ListActivePeeringConnectionsApiParams struct {
 	PageNum      *int
 }
 
-func (a *StreamsApiService) ListActivePeeringConnectionsWithParams(ctx context.Context, args *ListActivePeeringConnectionsApiParams) ListActivePeeringConnectionsApiRequest {
+func (a *StreamsAPIService) ListActivePeeringConnectionsWithParams(ctx context.Context, args *ListActivePeeringConnectionsApiParams) ListActivePeeringConnectionsApiRequest {
 	return ListActivePeeringConnectionsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -3705,7 +3704,7 @@ Returns a list of active incoming VPC Peering Connections.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListActivePeeringConnectionsApiRequest
 */
-func (a *StreamsApiService) ListActivePeeringConnections(ctx context.Context, groupId string) ListActivePeeringConnectionsApiRequest {
+func (a *StreamsAPIService) ListActivePeeringConnections(ctx context.Context, groupId string) ListActivePeeringConnectionsApiRequest {
 	return ListActivePeeringConnectionsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3716,7 +3715,7 @@ func (a *StreamsApiService) ListActivePeeringConnections(ctx context.Context, gr
 // ListActivePeeringConnectionsExecute executes the request
 //
 //	@return PaginatedApiStreamsVPCPeeringConnection
-func (a *StreamsApiService) ListActivePeeringConnectionsExecute(r ListActivePeeringConnectionsApiRequest) (*PaginatedApiStreamsVPCPeeringConnection, *http.Response, error) {
+func (a *StreamsAPIService) ListActivePeeringConnectionsExecute(r ListActivePeeringConnectionsApiRequest) (*PaginatedApiStreamsVPCPeeringConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -3724,7 +3723,7 @@ func (a *StreamsApiService) ListActivePeeringConnectionsExecute(r ListActivePeer
 		localVarReturnValue *PaginatedApiStreamsVPCPeeringConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.ListActivePeeringConnections")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.ListActivePeeringConnections")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3804,7 +3803,7 @@ func (a *StreamsApiService) ListActivePeeringConnectionsExecute(r ListActivePeer
 
 type ListFailoverConnectionsApiRequest struct {
 	ctx            context.Context
-	ApiService     StreamsApi
+	ApiService     StreamsAPI
 	groupId        string
 	tenantName     string
 	connectionName string
@@ -3820,7 +3819,7 @@ type ListFailoverConnectionsApiParams struct {
 	PageNum        *int
 }
 
-func (a *StreamsApiService) ListFailoverConnectionsWithParams(ctx context.Context, args *ListFailoverConnectionsApiParams) ListFailoverConnectionsApiRequest {
+func (a *StreamsAPIService) ListFailoverConnectionsWithParams(ctx context.Context, args *ListFailoverConnectionsApiParams) ListFailoverConnectionsApiRequest {
 	return ListFailoverConnectionsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -3859,7 +3858,7 @@ Returns all failover connections for the specified connection in a stream worksp
 	@param connectionName Label that identifies the stream connection.
 	@return ListFailoverConnectionsApiRequest
 */
-func (a *StreamsApiService) ListFailoverConnections(ctx context.Context, groupId string, tenantName string, connectionName string) ListFailoverConnectionsApiRequest {
+func (a *StreamsAPIService) ListFailoverConnections(ctx context.Context, groupId string, tenantName string, connectionName string) ListFailoverConnectionsApiRequest {
 	return ListFailoverConnectionsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -3872,7 +3871,7 @@ func (a *StreamsApiService) ListFailoverConnections(ctx context.Context, groupId
 // ListFailoverConnectionsExecute executes the request
 //
 //	@return PaginatedApiStreamsFailoverConnection
-func (a *StreamsApiService) ListFailoverConnectionsExecute(r ListFailoverConnectionsApiRequest) (*PaginatedApiStreamsFailoverConnection, *http.Response, error) {
+func (a *StreamsAPIService) ListFailoverConnectionsExecute(r ListFailoverConnectionsApiRequest) (*PaginatedApiStreamsFailoverConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -3880,7 +3879,7 @@ func (a *StreamsApiService) ListFailoverConnectionsExecute(r ListFailoverConnect
 		localVarReturnValue *PaginatedApiStreamsFailoverConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.ListFailoverConnections")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.ListFailoverConnections")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3968,7 +3967,7 @@ func (a *StreamsApiService) ListFailoverConnectionsExecute(r ListFailoverConnect
 
 type ListPrivateLinkConnectionsApiRequest struct {
 	ctx          context.Context
-	ApiService   StreamsApi
+	ApiService   StreamsAPI
 	groupId      string
 	itemsPerPage *int
 	pageNum      *int
@@ -3980,7 +3979,7 @@ type ListPrivateLinkConnectionsApiParams struct {
 	PageNum      *int
 }
 
-func (a *StreamsApiService) ListPrivateLinkConnectionsWithParams(ctx context.Context, args *ListPrivateLinkConnectionsApiParams) ListPrivateLinkConnectionsApiRequest {
+func (a *StreamsAPIService) ListPrivateLinkConnectionsWithParams(ctx context.Context, args *ListPrivateLinkConnectionsApiParams) ListPrivateLinkConnectionsApiRequest {
 	return ListPrivateLinkConnectionsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -4015,7 +4014,7 @@ Returns all Private Link connections for the specified project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListPrivateLinkConnectionsApiRequest
 */
-func (a *StreamsApiService) ListPrivateLinkConnections(ctx context.Context, groupId string) ListPrivateLinkConnectionsApiRequest {
+func (a *StreamsAPIService) ListPrivateLinkConnections(ctx context.Context, groupId string) ListPrivateLinkConnectionsApiRequest {
 	return ListPrivateLinkConnectionsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4026,7 +4025,7 @@ func (a *StreamsApiService) ListPrivateLinkConnections(ctx context.Context, grou
 // ListPrivateLinkConnectionsExecute executes the request
 //
 //	@return PaginatedApiStreamsPrivateLink
-func (a *StreamsApiService) ListPrivateLinkConnectionsExecute(r ListPrivateLinkConnectionsApiRequest) (*PaginatedApiStreamsPrivateLink, *http.Response, error) {
+func (a *StreamsAPIService) ListPrivateLinkConnectionsExecute(r ListPrivateLinkConnectionsApiRequest) (*PaginatedApiStreamsPrivateLink, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -4034,7 +4033,7 @@ func (a *StreamsApiService) ListPrivateLinkConnectionsExecute(r ListPrivateLinkC
 		localVarReturnValue *PaginatedApiStreamsPrivateLink
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.ListPrivateLinkConnections")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.ListPrivateLinkConnections")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4114,7 +4113,7 @@ func (a *StreamsApiService) ListPrivateLinkConnectionsExecute(r ListPrivateLinkC
 
 type ListStreamConnectionsApiRequest struct {
 	ctx          context.Context
-	ApiService   StreamsApi
+	ApiService   StreamsAPI
 	groupId      string
 	tenantName   string
 	itemsPerPage *int
@@ -4128,7 +4127,7 @@ type ListStreamConnectionsApiParams struct {
 	PageNum      *int
 }
 
-func (a *StreamsApiService) ListStreamConnectionsWithParams(ctx context.Context, args *ListStreamConnectionsApiParams) ListStreamConnectionsApiRequest {
+func (a *StreamsAPIService) ListStreamConnectionsWithParams(ctx context.Context, args *ListStreamConnectionsApiParams) ListStreamConnectionsApiRequest {
 	return ListStreamConnectionsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -4165,7 +4164,7 @@ Returns all connections of the stream workspace for the specified project.
 	@param tenantName Label that identifies the stream workspace.
 	@return ListStreamConnectionsApiRequest
 */
-func (a *StreamsApiService) ListStreamConnections(ctx context.Context, groupId string, tenantName string) ListStreamConnectionsApiRequest {
+func (a *StreamsAPIService) ListStreamConnections(ctx context.Context, groupId string, tenantName string) ListStreamConnectionsApiRequest {
 	return ListStreamConnectionsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4177,7 +4176,7 @@ func (a *StreamsApiService) ListStreamConnections(ctx context.Context, groupId s
 // ListStreamConnectionsExecute executes the request
 //
 //	@return PaginatedApiStreamsConnection
-func (a *StreamsApiService) ListStreamConnectionsExecute(r ListStreamConnectionsApiRequest) (*PaginatedApiStreamsConnection, *http.Response, error) {
+func (a *StreamsAPIService) ListStreamConnectionsExecute(r ListStreamConnectionsApiRequest) (*PaginatedApiStreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -4185,7 +4184,7 @@ func (a *StreamsApiService) ListStreamConnectionsExecute(r ListStreamConnections
 		localVarReturnValue *PaginatedApiStreamsConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.ListStreamConnections")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.ListStreamConnections")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4269,7 +4268,7 @@ func (a *StreamsApiService) ListStreamConnectionsExecute(r ListStreamConnections
 
 type ListStreamWorkspacesApiRequest struct {
 	ctx          context.Context
-	ApiService   StreamsApi
+	ApiService   StreamsAPI
 	groupId      string
 	itemsPerPage *int
 	pageNum      *int
@@ -4281,7 +4280,7 @@ type ListStreamWorkspacesApiParams struct {
 	PageNum      *int
 }
 
-func (a *StreamsApiService) ListStreamWorkspacesWithParams(ctx context.Context, args *ListStreamWorkspacesApiParams) ListStreamWorkspacesApiRequest {
+func (a *StreamsAPIService) ListStreamWorkspacesWithParams(ctx context.Context, args *ListStreamWorkspacesApiParams) ListStreamWorkspacesApiRequest {
 	return ListStreamWorkspacesApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -4316,7 +4315,7 @@ Returns all stream workspaces for the specified project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListStreamWorkspacesApiRequest
 */
-func (a *StreamsApiService) ListStreamWorkspaces(ctx context.Context, groupId string) ListStreamWorkspacesApiRequest {
+func (a *StreamsAPIService) ListStreamWorkspaces(ctx context.Context, groupId string) ListStreamWorkspacesApiRequest {
 	return ListStreamWorkspacesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4327,7 +4326,7 @@ func (a *StreamsApiService) ListStreamWorkspaces(ctx context.Context, groupId st
 // ListStreamWorkspacesExecute executes the request
 //
 //	@return PaginatedApiStreamsTenant
-func (a *StreamsApiService) ListStreamWorkspacesExecute(r ListStreamWorkspacesApiRequest) (*PaginatedApiStreamsTenant, *http.Response, error) {
+func (a *StreamsAPIService) ListStreamWorkspacesExecute(r ListStreamWorkspacesApiRequest) (*PaginatedApiStreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -4335,7 +4334,7 @@ func (a *StreamsApiService) ListStreamWorkspacesExecute(r ListStreamWorkspacesAp
 		localVarReturnValue *PaginatedApiStreamsTenant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.ListStreamWorkspaces")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.ListStreamWorkspaces")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4415,7 +4414,7 @@ func (a *StreamsApiService) ListStreamWorkspacesExecute(r ListStreamWorkspacesAp
 
 type ListVpcPeeringConnectionsApiRequest struct {
 	ctx                context.Context
-	ApiService         StreamsApi
+	ApiService         StreamsAPI
 	requesterAccountId *string
 	groupId            string
 	itemsPerPage       *int
@@ -4429,7 +4428,7 @@ type ListVpcPeeringConnectionsApiParams struct {
 	PageNum            *int
 }
 
-func (a *StreamsApiService) ListVpcPeeringConnectionsWithParams(ctx context.Context, args *ListVpcPeeringConnectionsApiParams) ListVpcPeeringConnectionsApiRequest {
+func (a *StreamsAPIService) ListVpcPeeringConnectionsWithParams(ctx context.Context, args *ListVpcPeeringConnectionsApiParams) ListVpcPeeringConnectionsApiRequest {
 	return ListVpcPeeringConnectionsApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -4471,7 +4470,7 @@ Returns a list of incoming VPC Peering Connections.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListVpcPeeringConnectionsApiRequest
 */
-func (a *StreamsApiService) ListVpcPeeringConnections(ctx context.Context, groupId string) ListVpcPeeringConnectionsApiRequest {
+func (a *StreamsAPIService) ListVpcPeeringConnections(ctx context.Context, groupId string) ListVpcPeeringConnectionsApiRequest {
 	return ListVpcPeeringConnectionsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4482,7 +4481,7 @@ func (a *StreamsApiService) ListVpcPeeringConnections(ctx context.Context, group
 // ListVpcPeeringConnectionsExecute executes the request
 //
 //	@return PaginatedApiStreamsVPCPeeringConnection
-func (a *StreamsApiService) ListVpcPeeringConnectionsExecute(r ListVpcPeeringConnectionsApiRequest) (*PaginatedApiStreamsVPCPeeringConnection, *http.Response, error) {
+func (a *StreamsAPIService) ListVpcPeeringConnectionsExecute(r ListVpcPeeringConnectionsApiRequest) (*PaginatedApiStreamsVPCPeeringConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -4490,7 +4489,7 @@ func (a *StreamsApiService) ListVpcPeeringConnectionsExecute(r ListVpcPeeringCon
 		localVarReturnValue *PaginatedApiStreamsVPCPeeringConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.ListVpcPeeringConnections")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.ListVpcPeeringConnections")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4574,7 +4573,7 @@ func (a *StreamsApiService) ListVpcPeeringConnectionsExecute(r ListVpcPeeringCon
 
 type RejectVpcPeeringConnectionApiRequest struct {
 	ctx        context.Context
-	ApiService StreamsApi
+	ApiService StreamsAPI
 	groupId    string
 	id         string
 }
@@ -4584,7 +4583,7 @@ type RejectVpcPeeringConnectionApiParams struct {
 	Id      string
 }
 
-func (a *StreamsApiService) RejectVpcPeeringConnectionWithParams(ctx context.Context, args *RejectVpcPeeringConnectionApiParams) RejectVpcPeeringConnectionApiRequest {
+func (a *StreamsAPIService) RejectVpcPeeringConnectionWithParams(ctx context.Context, args *RejectVpcPeeringConnectionApiParams) RejectVpcPeeringConnectionApiRequest {
 	return RejectVpcPeeringConnectionApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4607,7 +4606,7 @@ Requests the rejection of an incoming VPC Peering connection.
 	@param id The VPC Peering Connection id.
 	@return RejectVpcPeeringConnectionApiRequest
 */
-func (a *StreamsApiService) RejectVpcPeeringConnection(ctx context.Context, groupId string, id string) RejectVpcPeeringConnectionApiRequest {
+func (a *StreamsAPIService) RejectVpcPeeringConnection(ctx context.Context, groupId string, id string) RejectVpcPeeringConnectionApiRequest {
 	return RejectVpcPeeringConnectionApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -4617,14 +4616,14 @@ func (a *StreamsApiService) RejectVpcPeeringConnection(ctx context.Context, grou
 }
 
 // RejectVpcPeeringConnectionExecute executes the request
-func (a *StreamsApiService) RejectVpcPeeringConnectionExecute(r RejectVpcPeeringConnectionApiRequest) (*http.Response, error) {
+func (a *StreamsAPIService) RejectVpcPeeringConnectionExecute(r RejectVpcPeeringConnectionApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.RejectVpcPeeringConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.RejectVpcPeeringConnection")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4680,7 +4679,7 @@ func (a *StreamsApiService) RejectVpcPeeringConnectionExecute(r RejectVpcPeering
 
 type StartStreamProcessorApiRequest struct {
 	ctx           context.Context
-	ApiService    StreamsApi
+	ApiService    StreamsAPI
 	groupId       string
 	tenantName    string
 	processorName string
@@ -4692,7 +4691,7 @@ type StartStreamProcessorApiParams struct {
 	ProcessorName string
 }
 
-func (a *StreamsApiService) StartStreamProcessorWithParams(ctx context.Context, args *StartStreamProcessorApiParams) StartStreamProcessorApiRequest {
+func (a *StreamsAPIService) StartStreamProcessorWithParams(ctx context.Context, args *StartStreamProcessorApiParams) StartStreamProcessorApiRequest {
 	return StartStreamProcessorApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -4717,7 +4716,7 @@ Start a Stream Processor within the specified stream workspace.
 	@param processorName Label that identifies the stream processor.
 	@return StartStreamProcessorApiRequest
 */
-func (a *StreamsApiService) StartStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) StartStreamProcessorApiRequest {
+func (a *StreamsAPIService) StartStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) StartStreamProcessorApiRequest {
 	return StartStreamProcessorApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -4728,14 +4727,14 @@ func (a *StreamsApiService) StartStreamProcessor(ctx context.Context, groupId st
 }
 
 // StartStreamProcessorExecute executes the request
-func (a *StreamsApiService) StartStreamProcessorExecute(r StartStreamProcessorApiRequest) (*http.Response, error) {
+func (a *StreamsAPIService) StartStreamProcessorExecute(r StartStreamProcessorApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.StartStreamProcessor")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.StartStreamProcessor")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4795,7 +4794,7 @@ func (a *StreamsApiService) StartStreamProcessorExecute(r StartStreamProcessorAp
 
 type StartStreamProcessorWithApiRequest struct {
 	ctx                             context.Context
-	ApiService                      StreamsApi
+	ApiService                      StreamsAPI
 	groupId                         string
 	tenantName                      string
 	processorName                   string
@@ -4809,7 +4808,7 @@ type StartStreamProcessorWithApiParams struct {
 	StreamsStartStreamProcessorWith *StreamsStartStreamProcessorWith
 }
 
-func (a *StreamsApiService) StartStreamProcessorWithWithParams(ctx context.Context, args *StartStreamProcessorWithApiParams) StartStreamProcessorWithApiRequest {
+func (a *StreamsAPIService) StartStreamProcessorWithWithParams(ctx context.Context, args *StartStreamProcessorWithApiParams) StartStreamProcessorWithApiRequest {
 	return StartStreamProcessorWithApiRequest{
 		ApiService:                      a,
 		ctx:                             ctx,
@@ -4835,7 +4834,7 @@ Start a Stream Processor within the specified stream workspace.
 	@param processorName Label that identifies the stream processor.
 	@return StartStreamProcessorWithApiRequest
 */
-func (a *StreamsApiService) StartStreamProcessorWith(ctx context.Context, groupId string, tenantName string, processorName string, streamsStartStreamProcessorWith *StreamsStartStreamProcessorWith) StartStreamProcessorWithApiRequest {
+func (a *StreamsAPIService) StartStreamProcessorWith(ctx context.Context, groupId string, tenantName string, processorName string, streamsStartStreamProcessorWith *StreamsStartStreamProcessorWith) StartStreamProcessorWithApiRequest {
 	return StartStreamProcessorWithApiRequest{
 		ApiService:                      a,
 		ctx:                             ctx,
@@ -4847,14 +4846,14 @@ func (a *StreamsApiService) StartStreamProcessorWith(ctx context.Context, groupI
 }
 
 // StartStreamProcessorWithExecute executes the request
-func (a *StreamsApiService) StartStreamProcessorWithExecute(r StartStreamProcessorWithApiRequest) (*http.Response, error) {
+func (a *StreamsAPIService) StartStreamProcessorWithExecute(r StartStreamProcessorWithApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.StartStreamProcessorWith")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.StartStreamProcessorWith")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -4916,7 +4915,7 @@ func (a *StreamsApiService) StartStreamProcessorWithExecute(r StartStreamProcess
 
 type StopStreamProcessorApiRequest struct {
 	ctx           context.Context
-	ApiService    StreamsApi
+	ApiService    StreamsAPI
 	groupId       string
 	tenantName    string
 	processorName string
@@ -4928,7 +4927,7 @@ type StopStreamProcessorApiParams struct {
 	ProcessorName string
 }
 
-func (a *StreamsApiService) StopStreamProcessorWithParams(ctx context.Context, args *StopStreamProcessorApiParams) StopStreamProcessorApiRequest {
+func (a *StreamsAPIService) StopStreamProcessorWithParams(ctx context.Context, args *StopStreamProcessorApiParams) StopStreamProcessorApiRequest {
 	return StopStreamProcessorApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -4953,7 +4952,7 @@ Stop a Stream Processor within the specified stream workspace.
 	@param processorName Label that identifies the stream processor.
 	@return StopStreamProcessorApiRequest
 */
-func (a *StreamsApiService) StopStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) StopStreamProcessorApiRequest {
+func (a *StreamsAPIService) StopStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string) StopStreamProcessorApiRequest {
 	return StopStreamProcessorApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -4964,14 +4963,14 @@ func (a *StreamsApiService) StopStreamProcessor(ctx context.Context, groupId str
 }
 
 // StopStreamProcessorExecute executes the request
-func (a *StreamsApiService) StopStreamProcessorExecute(r StopStreamProcessorApiRequest) (*http.Response, error) {
+func (a *StreamsAPIService) StopStreamProcessorExecute(r StopStreamProcessorApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.StopStreamProcessor")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.StopStreamProcessor")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5031,7 +5030,7 @@ func (a *StreamsApiService) StopStreamProcessorExecute(r StopStreamProcessorApiR
 
 type UpdatePrivateLinkConnectionApiRequest struct {
 	ctx                                 context.Context
-	ApiService                          StreamsApi
+	ApiService                          StreamsAPI
 	groupId                             string
 	connectionId                        string
 	streamsPrivateLinkConnectionRequest *StreamsPrivateLinkConnectionRequest
@@ -5043,7 +5042,7 @@ type UpdatePrivateLinkConnectionApiParams struct {
 	StreamsPrivateLinkConnectionRequest *StreamsPrivateLinkConnectionRequest
 }
 
-func (a *StreamsApiService) UpdatePrivateLinkConnectionWithParams(ctx context.Context, args *UpdatePrivateLinkConnectionApiParams) UpdatePrivateLinkConnectionApiRequest {
+func (a *StreamsAPIService) UpdatePrivateLinkConnectionWithParams(ctx context.Context, args *UpdatePrivateLinkConnectionApiParams) UpdatePrivateLinkConnectionApiRequest {
 	return UpdatePrivateLinkConnectionApiRequest{
 		ApiService:                          a,
 		ctx:                                 ctx,
@@ -5067,7 +5066,7 @@ Updates one Private Link connection in the specified project.
 	@param connectionId Unique ID that identifies the Private Link connection.
 	@return UpdatePrivateLinkConnectionApiRequest
 */
-func (a *StreamsApiService) UpdatePrivateLinkConnection(ctx context.Context, groupId string, connectionId string, streamsPrivateLinkConnectionRequest *StreamsPrivateLinkConnectionRequest) UpdatePrivateLinkConnectionApiRequest {
+func (a *StreamsAPIService) UpdatePrivateLinkConnection(ctx context.Context, groupId string, connectionId string, streamsPrivateLinkConnectionRequest *StreamsPrivateLinkConnectionRequest) UpdatePrivateLinkConnectionApiRequest {
 	return UpdatePrivateLinkConnectionApiRequest{
 		ApiService:                          a,
 		ctx:                                 ctx,
@@ -5080,7 +5079,7 @@ func (a *StreamsApiService) UpdatePrivateLinkConnection(ctx context.Context, gro
 // UpdatePrivateLinkConnectionExecute executes the request
 //
 //	@return StreamsPrivateLinkConnection
-func (a *StreamsApiService) UpdatePrivateLinkConnectionExecute(r UpdatePrivateLinkConnectionApiRequest) (*StreamsPrivateLinkConnection, *http.Response, error) {
+func (a *StreamsAPIService) UpdatePrivateLinkConnectionExecute(r UpdatePrivateLinkConnectionApiRequest) (*StreamsPrivateLinkConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -5088,7 +5087,7 @@ func (a *StreamsApiService) UpdatePrivateLinkConnectionExecute(r UpdatePrivateLi
 		localVarReturnValue *StreamsPrivateLinkConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.UpdatePrivateLinkConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.UpdatePrivateLinkConnection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5163,7 +5162,7 @@ func (a *StreamsApiService) UpdatePrivateLinkConnectionExecute(r UpdatePrivateLi
 
 type UpdateStreamConnectionApiRequest struct {
 	ctx               context.Context
-	ApiService        StreamsApi
+	ApiService        StreamsAPI
 	groupId           string
 	tenantName        string
 	connectionName    string
@@ -5177,7 +5176,7 @@ type UpdateStreamConnectionApiParams struct {
 	StreamsConnection *StreamsConnection
 }
 
-func (a *StreamsApiService) UpdateStreamConnectionWithParams(ctx context.Context, args *UpdateStreamConnectionApiParams) UpdateStreamConnectionApiRequest {
+func (a *StreamsAPIService) UpdateStreamConnectionWithParams(ctx context.Context, args *UpdateStreamConnectionApiParams) UpdateStreamConnectionApiRequest {
 	return UpdateStreamConnectionApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -5203,7 +5202,7 @@ Update one connection for the specified stream workspace in the specified projec
 	@param connectionName Label that identifies the stream connection.
 	@return UpdateStreamConnectionApiRequest
 */
-func (a *StreamsApiService) UpdateStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsConnection *StreamsConnection) UpdateStreamConnectionApiRequest {
+func (a *StreamsAPIService) UpdateStreamConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsConnection *StreamsConnection) UpdateStreamConnectionApiRequest {
 	return UpdateStreamConnectionApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -5217,7 +5216,7 @@ func (a *StreamsApiService) UpdateStreamConnection(ctx context.Context, groupId 
 // UpdateStreamConnectionExecute executes the request
 //
 //	@return StreamsConnection
-func (a *StreamsApiService) UpdateStreamConnectionExecute(r UpdateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+func (a *StreamsAPIService) UpdateStreamConnectionExecute(r UpdateStreamConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -5225,7 +5224,7 @@ func (a *StreamsApiService) UpdateStreamConnectionExecute(r UpdateStreamConnecti
 		localVarReturnValue *StreamsConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.UpdateStreamConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.UpdateStreamConnection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5304,7 +5303,7 @@ func (a *StreamsApiService) UpdateStreamConnectionExecute(r UpdateStreamConnecti
 
 type UpdateStreamFailoverConnectionApiRequest struct {
 	ctx                  context.Context
-	ApiService           StreamsApi
+	ApiService           StreamsAPI
 	groupId              string
 	tenantName           string
 	connectionName       string
@@ -5320,7 +5319,7 @@ type UpdateStreamFailoverConnectionApiParams struct {
 	StreamsConnection    *StreamsConnection
 }
 
-func (a *StreamsApiService) UpdateStreamFailoverConnectionWithParams(ctx context.Context, args *UpdateStreamFailoverConnectionApiParams) UpdateStreamFailoverConnectionApiRequest {
+func (a *StreamsAPIService) UpdateStreamFailoverConnectionWithParams(ctx context.Context, args *UpdateStreamFailoverConnectionApiParams) UpdateStreamFailoverConnectionApiRequest {
 	return UpdateStreamFailoverConnectionApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -5348,7 +5347,7 @@ Update one failover connection of the specified stream workspace.
 	@param failoverConnectionId Label that identifies the stream failover connection id.
 	@return UpdateStreamFailoverConnectionApiRequest
 */
-func (a *StreamsApiService) UpdateStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string, streamsConnection *StreamsConnection) UpdateStreamFailoverConnectionApiRequest {
+func (a *StreamsAPIService) UpdateStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string, streamsConnection *StreamsConnection) UpdateStreamFailoverConnectionApiRequest {
 	return UpdateStreamFailoverConnectionApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -5363,7 +5362,7 @@ func (a *StreamsApiService) UpdateStreamFailoverConnection(ctx context.Context, 
 // UpdateStreamFailoverConnectionExecute executes the request
 //
 //	@return StreamsConnection
-func (a *StreamsApiService) UpdateStreamFailoverConnectionExecute(r UpdateStreamFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+func (a *StreamsAPIService) UpdateStreamFailoverConnectionExecute(r UpdateStreamFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -5371,7 +5370,7 @@ func (a *StreamsApiService) UpdateStreamFailoverConnectionExecute(r UpdateStream
 		localVarReturnValue *StreamsConnection
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.UpdateStreamFailoverConnection")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.UpdateStreamFailoverConnection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5454,7 +5453,7 @@ func (a *StreamsApiService) UpdateStreamFailoverConnectionExecute(r UpdateStream
 
 type UpdateStreamProcessorApiRequest struct {
 	ctx                          context.Context
-	ApiService                   StreamsApi
+	ApiService                   StreamsAPI
 	groupId                      string
 	tenantName                   string
 	processorName                string
@@ -5468,7 +5467,7 @@ type UpdateStreamProcessorApiParams struct {
 	StreamsModifyStreamProcessor *StreamsModifyStreamProcessor
 }
 
-func (a *StreamsApiService) UpdateStreamProcessorWithParams(ctx context.Context, args *UpdateStreamProcessorApiParams) UpdateStreamProcessorApiRequest {
+func (a *StreamsAPIService) UpdateStreamProcessorWithParams(ctx context.Context, args *UpdateStreamProcessorApiParams) UpdateStreamProcessorApiRequest {
 	return UpdateStreamProcessorApiRequest{
 		ApiService:                   a,
 		ctx:                          ctx,
@@ -5494,7 +5493,7 @@ Modify one existing Stream Processor within the specified stream workspace.
 	@param processorName Label that identifies the stream processor.
 	@return UpdateStreamProcessorApiRequest
 */
-func (a *StreamsApiService) UpdateStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string, streamsModifyStreamProcessor *StreamsModifyStreamProcessor) UpdateStreamProcessorApiRequest {
+func (a *StreamsAPIService) UpdateStreamProcessor(ctx context.Context, groupId string, tenantName string, processorName string, streamsModifyStreamProcessor *StreamsModifyStreamProcessor) UpdateStreamProcessorApiRequest {
 	return UpdateStreamProcessorApiRequest{
 		ApiService:                   a,
 		ctx:                          ctx,
@@ -5508,7 +5507,7 @@ func (a *StreamsApiService) UpdateStreamProcessor(ctx context.Context, groupId s
 // UpdateStreamProcessorExecute executes the request
 //
 //	@return StreamsProcessorWithStats
-func (a *StreamsApiService) UpdateStreamProcessorExecute(r UpdateStreamProcessorApiRequest) (*StreamsProcessorWithStats, *http.Response, error) {
+func (a *StreamsAPIService) UpdateStreamProcessorExecute(r UpdateStreamProcessorApiRequest) (*StreamsProcessorWithStats, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -5516,7 +5515,7 @@ func (a *StreamsApiService) UpdateStreamProcessorExecute(r UpdateStreamProcessor
 		localVarReturnValue *StreamsProcessorWithStats
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.UpdateStreamProcessor")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.UpdateStreamProcessor")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5595,7 +5594,7 @@ func (a *StreamsApiService) UpdateStreamProcessorExecute(r UpdateStreamProcessor
 
 type UpdateStreamWorkspaceApiRequest struct {
 	ctx                        context.Context
-	ApiService                 StreamsApi
+	ApiService                 StreamsAPI
 	groupId                    string
 	tenantName                 string
 	streamsTenantUpdateRequest *StreamsTenantUpdateRequest
@@ -5607,7 +5606,7 @@ type UpdateStreamWorkspaceApiParams struct {
 	StreamsTenantUpdateRequest *StreamsTenantUpdateRequest
 }
 
-func (a *StreamsApiService) UpdateStreamWorkspaceWithParams(ctx context.Context, args *UpdateStreamWorkspaceApiParams) UpdateStreamWorkspaceApiRequest {
+func (a *StreamsAPIService) UpdateStreamWorkspaceWithParams(ctx context.Context, args *UpdateStreamWorkspaceApiParams) UpdateStreamWorkspaceApiRequest {
 	return UpdateStreamWorkspaceApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
@@ -5631,7 +5630,7 @@ Update one stream workspace in the specified project.
 	@param tenantName Label that identifies the stream workspace to update.
 	@return UpdateStreamWorkspaceApiRequest
 */
-func (a *StreamsApiService) UpdateStreamWorkspace(ctx context.Context, groupId string, tenantName string, streamsTenantUpdateRequest *StreamsTenantUpdateRequest) UpdateStreamWorkspaceApiRequest {
+func (a *StreamsAPIService) UpdateStreamWorkspace(ctx context.Context, groupId string, tenantName string, streamsTenantUpdateRequest *StreamsTenantUpdateRequest) UpdateStreamWorkspaceApiRequest {
 	return UpdateStreamWorkspaceApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
@@ -5644,7 +5643,7 @@ func (a *StreamsApiService) UpdateStreamWorkspace(ctx context.Context, groupId s
 // UpdateStreamWorkspaceExecute executes the request
 //
 //	@return StreamsTenant
-func (a *StreamsApiService) UpdateStreamWorkspaceExecute(r UpdateStreamWorkspaceApiRequest) (*StreamsTenant, *http.Response, error) {
+func (a *StreamsAPIService) UpdateStreamWorkspaceExecute(r UpdateStreamWorkspaceApiRequest) (*StreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -5652,7 +5651,7 @@ func (a *StreamsApiService) UpdateStreamWorkspaceExecute(r UpdateStreamWorkspace
 		localVarReturnValue *StreamsTenant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.UpdateStreamWorkspace")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.UpdateStreamWorkspace")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -5727,7 +5726,7 @@ func (a *StreamsApiService) UpdateStreamWorkspaceExecute(r UpdateStreamWorkspace
 
 type WithStreamSampleConnectionsApiRequest struct {
 	ctx        context.Context
-	ApiService StreamsApi
+	ApiService StreamsAPI
 	groupId    string
 	body       *any
 }
@@ -5737,7 +5736,7 @@ type WithStreamSampleConnectionsApiParams struct {
 	Body    *any
 }
 
-func (a *StreamsApiService) WithStreamSampleConnectionsWithParams(ctx context.Context, args *WithStreamSampleConnectionsApiParams) WithStreamSampleConnectionsApiRequest {
+func (a *StreamsAPIService) WithStreamSampleConnectionsWithParams(ctx context.Context, args *WithStreamSampleConnectionsApiParams) WithStreamSampleConnectionsApiRequest {
 	return WithStreamSampleConnectionsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5759,7 +5758,7 @@ Creates one stream workspace in the specified project with sample connections.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return WithStreamSampleConnectionsApiRequest
 */
-func (a *StreamsApiService) WithStreamSampleConnections(ctx context.Context, groupId string, body *any) WithStreamSampleConnectionsApiRequest {
+func (a *StreamsAPIService) WithStreamSampleConnections(ctx context.Context, groupId string, body *any) WithStreamSampleConnectionsApiRequest {
 	return WithStreamSampleConnectionsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -5771,7 +5770,7 @@ func (a *StreamsApiService) WithStreamSampleConnections(ctx context.Context, gro
 // WithStreamSampleConnectionsExecute executes the request
 //
 //	@return StreamsTenant
-func (a *StreamsApiService) WithStreamSampleConnectionsExecute(r WithStreamSampleConnectionsApiRequest) (*StreamsTenant, *http.Response, error) {
+func (a *StreamsAPIService) WithStreamSampleConnectionsExecute(r WithStreamSampleConnectionsApiRequest) (*StreamsTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -5779,7 +5778,7 @@ func (a *StreamsApiService) WithStreamSampleConnectionsExecute(r WithStreamSampl
 		localVarReturnValue *StreamsTenant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsApiService.WithStreamSampleConnections")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.WithStreamSampleConnections")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

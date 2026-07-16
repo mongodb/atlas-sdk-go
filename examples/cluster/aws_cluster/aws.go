@@ -10,8 +10,8 @@ import (
 
 	"context"
 
-	"go.mongodb.org/atlas-sdk/v20250312021/admin"
-	"go.mongodb.org/atlas-sdk/v20250312021/examples"
+	"go.mongodb.org/atlas-sdk/v20250312022/admin"
+	"go.mongodb.org/atlas-sdk/v20250312022/examples"
 )
 
 /*
@@ -42,7 +42,7 @@ func main() {
 	examples.HandleErr(err, nil)
 
 	// -- 1. Get first project
-	request := sdk.ProjectsApi.ListGroupsWithParams(ctx,
+	request := sdk.ProjectsAPI.ListGroupsWithParams(ctx,
 		// 2. We passing struct with all parameters to the request
 		&admin.ListGroupsApiParams{
 			ItemsPerPage: admin.PtrInt(1),
@@ -62,13 +62,13 @@ func main() {
 
 	// -- 2. Create Cluster
 	cluster := createClusterRequest(projectId)
-	createdCluster, resp, err := sdk.ClustersApi.CreateCluster(ctx, projectId, cluster).Execute()
+	createdCluster, resp, err := sdk.ClustersAPI.CreateCluster(ctx, projectId, cluster).Execute()
 	examples.HandleErr(err, resp)
 
 	// -- 3. Create Database User
 	user := createDatabaseUserRequest(sdk, projectId)
 	if user != nil {
-		_, resp, err = sdk.DatabaseUsersApi.
+		_, resp, err = sdk.DatabaseUsersAPI.
 			CreateDatabaseUser(ctx, projectId, user).
 			Execute()
 		examples.HandleErr(err, resp)
@@ -77,7 +77,7 @@ func main() {
 	ipAddress := getIpAddress()
 	ipAddressEntry := []admin.NetworkPermissionEntry{{IpAddress: &ipAddress}}
 	// -- 4. Enable IP access
-	_, resp, err = sdk.ProjectIPAccessListApi.
+	_, resp, err = sdk.ProjectIPAccessListAPI.
 		CreateAccessListEntry(context.Background(), projectId, &ipAddressEntry).
 		Execute()
 	examples.HandleErr(err, resp)
@@ -91,7 +91,7 @@ func createDatabaseUserRequest(sdk *admin.APIClient, groupId string) *admin.Clou
 	username := "sdk-example"
 	databaseName := "admin"
 
-	currentUser, _, _ := sdk.DatabaseUsersApi.GetDatabaseUser(context.Background(),
+	currentUser, _, _ := sdk.DatabaseUsersAPI.GetDatabaseUser(context.Background(),
 		groupId, databaseName, username).Execute()
 
 	if currentUser != nil {

@@ -1,5 +1,4 @@
 // Code based on the AtlasAPI V2 OpenAPI file
-
 package admin
 
 import (
@@ -10,7 +9,7 @@ import (
 	"strings"
 )
 
-type CustomDatabaseRolesApi interface {
+type CustomDatabaseRolesAPI interface {
 
 	/*
 		CreateCustomDbRole Create One Custom Role
@@ -133,12 +132,12 @@ type CustomDatabaseRolesApi interface {
 	UpdateCustomDbRoleExecute(r UpdateCustomDbRoleApiRequest) (*UserCustomDBRole, *http.Response, error)
 }
 
-// CustomDatabaseRolesApiService CustomDatabaseRolesApi service
-type CustomDatabaseRolesApiService service
+// CustomDatabaseRolesAPIService CustomDatabaseRolesAPI service
+type CustomDatabaseRolesAPIService service
 
 type CreateCustomDbRoleApiRequest struct {
 	ctx              context.Context
-	ApiService       CustomDatabaseRolesApi
+	ApiService       CustomDatabaseRolesAPI
 	groupId          string
 	userCustomDBRole *UserCustomDBRole
 }
@@ -148,7 +147,7 @@ type CreateCustomDbRoleApiParams struct {
 	UserCustomDBRole *UserCustomDBRole
 }
 
-func (a *CustomDatabaseRolesApiService) CreateCustomDbRoleWithParams(ctx context.Context, args *CreateCustomDbRoleApiParams) CreateCustomDbRoleApiRequest {
+func (a *CustomDatabaseRolesAPIService) CreateCustomDbRoleWithParams(ctx context.Context, args *CreateCustomDbRoleApiParams) CreateCustomDbRoleApiRequest {
 	return CreateCustomDbRoleApiRequest{
 		ApiService:       a,
 		ctx:              ctx,
@@ -170,7 +169,7 @@ Creates one custom role in the specified project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateCustomDbRoleApiRequest
 */
-func (a *CustomDatabaseRolesApiService) CreateCustomDbRole(ctx context.Context, groupId string, userCustomDBRole *UserCustomDBRole) CreateCustomDbRoleApiRequest {
+func (a *CustomDatabaseRolesAPIService) CreateCustomDbRole(ctx context.Context, groupId string, userCustomDBRole *UserCustomDBRole) CreateCustomDbRoleApiRequest {
 	return CreateCustomDbRoleApiRequest{
 		ApiService:       a,
 		ctx:              ctx,
@@ -182,7 +181,7 @@ func (a *CustomDatabaseRolesApiService) CreateCustomDbRole(ctx context.Context, 
 // CreateCustomDbRoleExecute executes the request
 //
 //	@return UserCustomDBRole
-func (a *CustomDatabaseRolesApiService) CreateCustomDbRoleExecute(r CreateCustomDbRoleApiRequest) (*UserCustomDBRole, *http.Response, error) {
+func (a *CustomDatabaseRolesAPIService) CreateCustomDbRoleExecute(r CreateCustomDbRoleApiRequest) (*UserCustomDBRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -190,7 +189,7 @@ func (a *CustomDatabaseRolesApiService) CreateCustomDbRoleExecute(r CreateCustom
 		localVarReturnValue *UserCustomDBRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomDatabaseRolesApiService.CreateCustomDbRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomDatabaseRolesAPIService.CreateCustomDbRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -261,7 +260,7 @@ func (a *CustomDatabaseRolesApiService) CreateCustomDbRoleExecute(r CreateCustom
 
 type DeleteCustomDbRoleApiRequest struct {
 	ctx        context.Context
-	ApiService CustomDatabaseRolesApi
+	ApiService CustomDatabaseRolesAPI
 	groupId    string
 	roleName   string
 }
@@ -271,7 +270,7 @@ type DeleteCustomDbRoleApiParams struct {
 	RoleName string
 }
 
-func (a *CustomDatabaseRolesApiService) DeleteCustomDbRoleWithParams(ctx context.Context, args *DeleteCustomDbRoleApiParams) DeleteCustomDbRoleApiRequest {
+func (a *CustomDatabaseRolesAPIService) DeleteCustomDbRoleWithParams(ctx context.Context, args *DeleteCustomDbRoleApiParams) DeleteCustomDbRoleApiRequest {
 	return DeleteCustomDbRoleApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -294,7 +293,7 @@ Removes one custom role from the specified project. You can't remove a custom ro
 	@param roleName Human-readable label that identifies the role for the request. This name must be unique for this custom role in this project.
 	@return DeleteCustomDbRoleApiRequest
 */
-func (a *CustomDatabaseRolesApiService) DeleteCustomDbRole(ctx context.Context, groupId string, roleName string) DeleteCustomDbRoleApiRequest {
+func (a *CustomDatabaseRolesAPIService) DeleteCustomDbRole(ctx context.Context, groupId string, roleName string) DeleteCustomDbRoleApiRequest {
 	return DeleteCustomDbRoleApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -304,14 +303,14 @@ func (a *CustomDatabaseRolesApiService) DeleteCustomDbRole(ctx context.Context, 
 }
 
 // DeleteCustomDbRoleExecute executes the request
-func (a *CustomDatabaseRolesApiService) DeleteCustomDbRoleExecute(r DeleteCustomDbRoleApiRequest) (*http.Response, error) {
+func (a *CustomDatabaseRolesAPIService) DeleteCustomDbRoleExecute(r DeleteCustomDbRoleApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomDatabaseRolesApiService.DeleteCustomDbRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomDatabaseRolesAPIService.DeleteCustomDbRole")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -367,7 +366,7 @@ func (a *CustomDatabaseRolesApiService) DeleteCustomDbRoleExecute(r DeleteCustom
 
 type GetCustomDbRoleApiRequest struct {
 	ctx        context.Context
-	ApiService CustomDatabaseRolesApi
+	ApiService CustomDatabaseRolesAPI
 	groupId    string
 	roleName   string
 }
@@ -377,7 +376,7 @@ type GetCustomDbRoleApiParams struct {
 	RoleName string
 }
 
-func (a *CustomDatabaseRolesApiService) GetCustomDbRoleWithParams(ctx context.Context, args *GetCustomDbRoleApiParams) GetCustomDbRoleApiRequest {
+func (a *CustomDatabaseRolesAPIService) GetCustomDbRoleWithParams(ctx context.Context, args *GetCustomDbRoleApiParams) GetCustomDbRoleApiRequest {
 	return GetCustomDbRoleApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -400,7 +399,7 @@ Returns one custom role for the specified project.
 	@param roleName Human-readable label that identifies the role for the request. This name must be unique for this custom role in this project.
 	@return GetCustomDbRoleApiRequest
 */
-func (a *CustomDatabaseRolesApiService) GetCustomDbRole(ctx context.Context, groupId string, roleName string) GetCustomDbRoleApiRequest {
+func (a *CustomDatabaseRolesAPIService) GetCustomDbRole(ctx context.Context, groupId string, roleName string) GetCustomDbRoleApiRequest {
 	return GetCustomDbRoleApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -412,7 +411,7 @@ func (a *CustomDatabaseRolesApiService) GetCustomDbRole(ctx context.Context, gro
 // GetCustomDbRoleExecute executes the request
 //
 //	@return UserCustomDBRole
-func (a *CustomDatabaseRolesApiService) GetCustomDbRoleExecute(r GetCustomDbRoleApiRequest) (*UserCustomDBRole, *http.Response, error) {
+func (a *CustomDatabaseRolesAPIService) GetCustomDbRoleExecute(r GetCustomDbRoleApiRequest) (*UserCustomDBRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -420,7 +419,7 @@ func (a *CustomDatabaseRolesApiService) GetCustomDbRoleExecute(r GetCustomDbRole
 		localVarReturnValue *UserCustomDBRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomDatabaseRolesApiService.GetCustomDbRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomDatabaseRolesAPIService.GetCustomDbRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -490,7 +489,7 @@ func (a *CustomDatabaseRolesApiService) GetCustomDbRoleExecute(r GetCustomDbRole
 
 type ListCustomDbRolesApiRequest struct {
 	ctx        context.Context
-	ApiService CustomDatabaseRolesApi
+	ApiService CustomDatabaseRolesAPI
 	groupId    string
 }
 
@@ -498,7 +497,7 @@ type ListCustomDbRolesApiParams struct {
 	GroupId string
 }
 
-func (a *CustomDatabaseRolesApiService) ListCustomDbRolesWithParams(ctx context.Context, args *ListCustomDbRolesApiParams) ListCustomDbRolesApiRequest {
+func (a *CustomDatabaseRolesAPIService) ListCustomDbRolesWithParams(ctx context.Context, args *ListCustomDbRolesApiParams) ListCustomDbRolesApiRequest {
 	return ListCustomDbRolesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -519,7 +518,7 @@ Returns all custom roles for the specified project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListCustomDbRolesApiRequest
 */
-func (a *CustomDatabaseRolesApiService) ListCustomDbRoles(ctx context.Context, groupId string) ListCustomDbRolesApiRequest {
+func (a *CustomDatabaseRolesAPIService) ListCustomDbRoles(ctx context.Context, groupId string) ListCustomDbRolesApiRequest {
 	return ListCustomDbRolesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -530,7 +529,7 @@ func (a *CustomDatabaseRolesApiService) ListCustomDbRoles(ctx context.Context, g
 // ListCustomDbRolesExecute executes the request
 //
 //	@return []UserCustomDBRole
-func (a *CustomDatabaseRolesApiService) ListCustomDbRolesExecute(r ListCustomDbRolesApiRequest) ([]UserCustomDBRole, *http.Response, error) {
+func (a *CustomDatabaseRolesAPIService) ListCustomDbRolesExecute(r ListCustomDbRolesApiRequest) ([]UserCustomDBRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -538,7 +537,7 @@ func (a *CustomDatabaseRolesApiService) ListCustomDbRolesExecute(r ListCustomDbR
 		localVarReturnValue []UserCustomDBRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomDatabaseRolesApiService.ListCustomDbRoles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomDatabaseRolesAPIService.ListCustomDbRoles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -604,7 +603,7 @@ func (a *CustomDatabaseRolesApiService) ListCustomDbRolesExecute(r ListCustomDbR
 
 type UpdateCustomDbRoleApiRequest struct {
 	ctx                context.Context
-	ApiService         CustomDatabaseRolesApi
+	ApiService         CustomDatabaseRolesAPI
 	groupId            string
 	roleName           string
 	updateCustomDBRole *UpdateCustomDBRole
@@ -616,7 +615,7 @@ type UpdateCustomDbRoleApiParams struct {
 	UpdateCustomDBRole *UpdateCustomDBRole
 }
 
-func (a *CustomDatabaseRolesApiService) UpdateCustomDbRoleWithParams(ctx context.Context, args *UpdateCustomDbRoleApiParams) UpdateCustomDbRoleApiRequest {
+func (a *CustomDatabaseRolesAPIService) UpdateCustomDbRoleWithParams(ctx context.Context, args *UpdateCustomDbRoleApiParams) UpdateCustomDbRoleApiRequest {
 	return UpdateCustomDbRoleApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -640,7 +639,7 @@ Updates one custom role in the specified project.
 	@param roleName Human-readable label that identifies the role for the request. This name must be unique for this custom role in this project.
 	@return UpdateCustomDbRoleApiRequest
 */
-func (a *CustomDatabaseRolesApiService) UpdateCustomDbRole(ctx context.Context, groupId string, roleName string, updateCustomDBRole *UpdateCustomDBRole) UpdateCustomDbRoleApiRequest {
+func (a *CustomDatabaseRolesAPIService) UpdateCustomDbRole(ctx context.Context, groupId string, roleName string, updateCustomDBRole *UpdateCustomDBRole) UpdateCustomDbRoleApiRequest {
 	return UpdateCustomDbRoleApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -653,7 +652,7 @@ func (a *CustomDatabaseRolesApiService) UpdateCustomDbRole(ctx context.Context, 
 // UpdateCustomDbRoleExecute executes the request
 //
 //	@return UserCustomDBRole
-func (a *CustomDatabaseRolesApiService) UpdateCustomDbRoleExecute(r UpdateCustomDbRoleApiRequest) (*UserCustomDBRole, *http.Response, error) {
+func (a *CustomDatabaseRolesAPIService) UpdateCustomDbRoleExecute(r UpdateCustomDbRoleApiRequest) (*UserCustomDBRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -661,7 +660,7 @@ func (a *CustomDatabaseRolesApiService) UpdateCustomDbRoleExecute(r UpdateCustom
 		localVarReturnValue *UserCustomDBRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomDatabaseRolesApiService.UpdateCustomDbRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CustomDatabaseRolesAPIService.UpdateCustomDbRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

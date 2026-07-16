@@ -1,5 +1,4 @@
 // Code based on the AtlasAPI V2 OpenAPI file
-
 package admin
 
 import (
@@ -11,7 +10,7 @@ import (
 	"time"
 )
 
-type DataLakePipelinesApi interface {
+type DataLakePipelinesAPI interface {
 
 	/*
 		CreatePipeline Create One Data Lake Pipeline
@@ -23,7 +22,7 @@ type DataLakePipelinesApi interface {
 		@param dataLakeIngestionPipeline Creates one Data Lake Pipeline.
 		@return CreatePipelineApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	CreatePipeline(ctx context.Context, groupId string, dataLakeIngestionPipeline *DataLakeIngestionPipeline) CreatePipelineApiRequest
 	/*
@@ -34,7 +33,7 @@ type DataLakePipelinesApi interface {
 		@param CreatePipelineApiParams - Parameters for the request
 		@return CreatePipelineApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	CreatePipelineWithParams(ctx context.Context, args *CreatePipelineApiParams) CreatePipelineApiRequest
 
@@ -51,7 +50,7 @@ type DataLakePipelinesApi interface {
 		@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
 		@return DeletePipelineApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	DeletePipeline(ctx context.Context, groupId string, pipelineName string) DeletePipelineApiRequest
 	/*
@@ -62,7 +61,7 @@ type DataLakePipelinesApi interface {
 		@param DeletePipelineApiParams - Parameters for the request
 		@return DeletePipelineApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	DeletePipelineWithParams(ctx context.Context, args *DeletePipelineApiParams) DeletePipelineApiRequest
 
@@ -80,7 +79,7 @@ type DataLakePipelinesApi interface {
 		@param pipelineRunId Unique 24-hexadecimal character string that identifies a Data Lake Pipeline run.
 		@return DeletePipelineRunApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	DeletePipelineRun(ctx context.Context, groupId string, pipelineName string, pipelineRunId string) DeletePipelineRunApiRequest
 	/*
@@ -91,7 +90,7 @@ type DataLakePipelinesApi interface {
 		@param DeletePipelineRunApiParams - Parameters for the request
 		@return DeletePipelineRunApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	DeletePipelineRunWithParams(ctx context.Context, args *DeletePipelineRunApiParams) DeletePipelineRunApiRequest
 
@@ -108,7 +107,7 @@ type DataLakePipelinesApi interface {
 		@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
 		@return GetAvailablePipelineSchedulesApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	GetAvailablePipelineSchedules(ctx context.Context, groupId string, pipelineName string) GetAvailablePipelineSchedulesApiRequest
 	/*
@@ -119,7 +118,7 @@ type DataLakePipelinesApi interface {
 		@param GetAvailablePipelineSchedulesApiParams - Parameters for the request
 		@return GetAvailablePipelineSchedulesApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	GetAvailablePipelineSchedulesWithParams(ctx context.Context, args *GetAvailablePipelineSchedulesApiParams) GetAvailablePipelineSchedulesApiRequest
 
@@ -136,7 +135,7 @@ type DataLakePipelinesApi interface {
 		@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
 		@return GetAvailablePipelineSnapshotsApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	GetAvailablePipelineSnapshots(ctx context.Context, groupId string, pipelineName string) GetAvailablePipelineSnapshotsApiRequest
 	/*
@@ -147,7 +146,7 @@ type DataLakePipelinesApi interface {
 		@param GetAvailablePipelineSnapshotsApiParams - Parameters for the request
 		@return GetAvailablePipelineSnapshotsApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	GetAvailablePipelineSnapshotsWithParams(ctx context.Context, args *GetAvailablePipelineSnapshotsApiParams) GetAvailablePipelineSnapshotsApiRequest
 
@@ -164,7 +163,7 @@ type DataLakePipelinesApi interface {
 		@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
 		@return GetPipelineApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	GetPipeline(ctx context.Context, groupId string, pipelineName string) GetPipelineApiRequest
 	/*
@@ -175,7 +174,7 @@ type DataLakePipelinesApi interface {
 		@param GetPipelineApiParams - Parameters for the request
 		@return GetPipelineApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	GetPipelineWithParams(ctx context.Context, args *GetPipelineApiParams) GetPipelineApiRequest
 
@@ -193,7 +192,7 @@ type DataLakePipelinesApi interface {
 		@param pipelineRunId Unique 24-hexadecimal character string that identifies a Data Lake Pipeline run.
 		@return GetPipelineRunApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	GetPipelineRun(ctx context.Context, groupId string, pipelineName string, pipelineRunId string) GetPipelineRunApiRequest
 	/*
@@ -204,7 +203,7 @@ type DataLakePipelinesApi interface {
 		@param GetPipelineRunApiParams - Parameters for the request
 		@return GetPipelineRunApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	GetPipelineRunWithParams(ctx context.Context, args *GetPipelineRunApiParams) GetPipelineRunApiRequest
 
@@ -221,7 +220,7 @@ type DataLakePipelinesApi interface {
 		@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
 		@return ListPipelineRunsApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	ListPipelineRuns(ctx context.Context, groupId string, pipelineName string) ListPipelineRunsApiRequest
 	/*
@@ -232,7 +231,7 @@ type DataLakePipelinesApi interface {
 		@param ListPipelineRunsApiParams - Parameters for the request
 		@return ListPipelineRunsApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	ListPipelineRunsWithParams(ctx context.Context, args *ListPipelineRunsApiParams) ListPipelineRunsApiRequest
 
@@ -248,7 +247,7 @@ type DataLakePipelinesApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return ListPipelinesApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	ListPipelines(ctx context.Context, groupId string) ListPipelinesApiRequest
 	/*
@@ -259,7 +258,7 @@ type DataLakePipelinesApi interface {
 		@param ListPipelinesApiParams - Parameters for the request
 		@return ListPipelinesApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	ListPipelinesWithParams(ctx context.Context, args *ListPipelinesApiParams) ListPipelinesApiRequest
 
@@ -276,7 +275,7 @@ type DataLakePipelinesApi interface {
 		@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
 		@return PausePipelineApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	PausePipeline(ctx context.Context, groupId string, pipelineName string) PausePipelineApiRequest
 	/*
@@ -287,7 +286,7 @@ type DataLakePipelinesApi interface {
 		@param PausePipelineApiParams - Parameters for the request
 		@return PausePipelineApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	PausePipelineWithParams(ctx context.Context, args *PausePipelineApiParams) PausePipelineApiRequest
 
@@ -304,7 +303,7 @@ type DataLakePipelinesApi interface {
 		@param pipelineName Human-readable label that identifies the Data Lake Pipeline.
 		@return ResumePipelineApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	ResumePipeline(ctx context.Context, groupId string, pipelineName string) ResumePipelineApiRequest
 	/*
@@ -315,7 +314,7 @@ type DataLakePipelinesApi interface {
 		@param ResumePipelineApiParams - Parameters for the request
 		@return ResumePipelineApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	ResumePipelineWithParams(ctx context.Context, args *ResumePipelineApiParams) ResumePipelineApiRequest
 
@@ -333,7 +332,7 @@ type DataLakePipelinesApi interface {
 		@param triggerIngestionPipelineRequest Triggers a single ingestion run of a snapshot.
 		@return TriggerPipelineApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	TriggerPipeline(ctx context.Context, groupId string, pipelineName string, triggerIngestionPipelineRequest *TriggerIngestionPipelineRequest) TriggerPipelineApiRequest
 	/*
@@ -344,7 +343,7 @@ type DataLakePipelinesApi interface {
 		@param TriggerPipelineApiParams - Parameters for the request
 		@return TriggerPipelineApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	TriggerPipelineWithParams(ctx context.Context, args *TriggerPipelineApiParams) TriggerPipelineApiRequest
 
@@ -362,7 +361,7 @@ type DataLakePipelinesApi interface {
 		@param dataLakeIngestionPipeline Updates one Data Lake Pipeline.
 		@return UpdatePipelineApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	UpdatePipeline(ctx context.Context, groupId string, pipelineName string, dataLakeIngestionPipeline *DataLakeIngestionPipeline) UpdatePipelineApiRequest
 	/*
@@ -373,7 +372,7 @@ type DataLakePipelinesApi interface {
 		@param UpdatePipelineApiParams - Parameters for the request
 		@return UpdatePipelineApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for DataLakePipelinesAPI
 	*/
 	UpdatePipelineWithParams(ctx context.Context, args *UpdatePipelineApiParams) UpdatePipelineApiRequest
 
@@ -381,12 +380,12 @@ type DataLakePipelinesApi interface {
 	UpdatePipelineExecute(r UpdatePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error)
 }
 
-// DataLakePipelinesApiService DataLakePipelinesApi service
-type DataLakePipelinesApiService service
+// DataLakePipelinesAPIService DataLakePipelinesAPI service
+type DataLakePipelinesAPIService service
 
 type CreatePipelineApiRequest struct {
 	ctx                       context.Context
-	ApiService                DataLakePipelinesApi
+	ApiService                DataLakePipelinesAPI
 	groupId                   string
 	dataLakeIngestionPipeline *DataLakeIngestionPipeline
 }
@@ -396,7 +395,7 @@ type CreatePipelineApiParams struct {
 	DataLakeIngestionPipeline *DataLakeIngestionPipeline
 }
 
-func (a *DataLakePipelinesApiService) CreatePipelineWithParams(ctx context.Context, args *CreatePipelineApiParams) CreatePipelineApiRequest {
+func (a *DataLakePipelinesAPIService) CreatePipelineWithParams(ctx context.Context, args *CreatePipelineApiParams) CreatePipelineApiRequest {
 	return CreatePipelineApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -420,7 +419,7 @@ Creates one Data Lake Pipeline.
 
 Deprecated
 */
-func (a *DataLakePipelinesApiService) CreatePipeline(ctx context.Context, groupId string, dataLakeIngestionPipeline *DataLakeIngestionPipeline) CreatePipelineApiRequest {
+func (a *DataLakePipelinesAPIService) CreatePipeline(ctx context.Context, groupId string, dataLakeIngestionPipeline *DataLakeIngestionPipeline) CreatePipelineApiRequest {
 	return CreatePipelineApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -434,7 +433,7 @@ func (a *DataLakePipelinesApiService) CreatePipeline(ctx context.Context, groupI
 //	@return DataLakeIngestionPipeline
 //
 // Deprecated
-func (a *DataLakePipelinesApiService) CreatePipelineExecute(r CreatePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error) {
+func (a *DataLakePipelinesAPIService) CreatePipelineExecute(r CreatePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -442,7 +441,7 @@ func (a *DataLakePipelinesApiService) CreatePipelineExecute(r CreatePipelineApiR
 		localVarReturnValue *DataLakeIngestionPipeline
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.CreatePipeline")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesAPIService.CreatePipeline")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -513,7 +512,7 @@ func (a *DataLakePipelinesApiService) CreatePipelineExecute(r CreatePipelineApiR
 
 type DeletePipelineApiRequest struct {
 	ctx          context.Context
-	ApiService   DataLakePipelinesApi
+	ApiService   DataLakePipelinesAPI
 	groupId      string
 	pipelineName string
 }
@@ -523,7 +522,7 @@ type DeletePipelineApiParams struct {
 	PipelineName string
 }
 
-func (a *DataLakePipelinesApiService) DeletePipelineWithParams(ctx context.Context, args *DeletePipelineApiParams) DeletePipelineApiRequest {
+func (a *DataLakePipelinesAPIService) DeletePipelineWithParams(ctx context.Context, args *DeletePipelineApiParams) DeletePipelineApiRequest {
 	return DeletePipelineApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -548,7 +547,7 @@ Removes one Data Lake Pipeline.
 
 Deprecated
 */
-func (a *DataLakePipelinesApiService) DeletePipeline(ctx context.Context, groupId string, pipelineName string) DeletePipelineApiRequest {
+func (a *DataLakePipelinesAPIService) DeletePipeline(ctx context.Context, groupId string, pipelineName string) DeletePipelineApiRequest {
 	return DeletePipelineApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -559,14 +558,14 @@ func (a *DataLakePipelinesApiService) DeletePipeline(ctx context.Context, groupI
 
 // DeletePipelineExecute executes the request
 // Deprecated
-func (a *DataLakePipelinesApiService) DeletePipelineExecute(r DeletePipelineApiRequest) (*http.Response, error) {
+func (a *DataLakePipelinesAPIService) DeletePipelineExecute(r DeletePipelineApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.DeletePipeline")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesAPIService.DeletePipeline")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -622,7 +621,7 @@ func (a *DataLakePipelinesApiService) DeletePipelineExecute(r DeletePipelineApiR
 
 type DeletePipelineRunApiRequest struct {
 	ctx           context.Context
-	ApiService    DataLakePipelinesApi
+	ApiService    DataLakePipelinesAPI
 	groupId       string
 	pipelineName  string
 	pipelineRunId string
@@ -634,7 +633,7 @@ type DeletePipelineRunApiParams struct {
 	PipelineRunId string
 }
 
-func (a *DataLakePipelinesApiService) DeletePipelineRunWithParams(ctx context.Context, args *DeletePipelineRunApiParams) DeletePipelineRunApiRequest {
+func (a *DataLakePipelinesAPIService) DeletePipelineRunWithParams(ctx context.Context, args *DeletePipelineRunApiParams) DeletePipelineRunApiRequest {
 	return DeletePipelineRunApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -661,7 +660,7 @@ Deletes dataset that Atlas generated during the specified pipeline run.
 
 Deprecated
 */
-func (a *DataLakePipelinesApiService) DeletePipelineRun(ctx context.Context, groupId string, pipelineName string, pipelineRunId string) DeletePipelineRunApiRequest {
+func (a *DataLakePipelinesAPIService) DeletePipelineRun(ctx context.Context, groupId string, pipelineName string, pipelineRunId string) DeletePipelineRunApiRequest {
 	return DeletePipelineRunApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -676,7 +675,7 @@ func (a *DataLakePipelinesApiService) DeletePipelineRun(ctx context.Context, gro
 //	@return any
 //
 // Deprecated
-func (a *DataLakePipelinesApiService) DeletePipelineRunExecute(r DeletePipelineRunApiRequest) (any, *http.Response, error) {
+func (a *DataLakePipelinesAPIService) DeletePipelineRunExecute(r DeletePipelineRunApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
@@ -684,7 +683,7 @@ func (a *DataLakePipelinesApiService) DeletePipelineRunExecute(r DeletePipelineR
 		localVarReturnValue any
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.DeletePipelineRun")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesAPIService.DeletePipelineRun")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -758,7 +757,7 @@ func (a *DataLakePipelinesApiService) DeletePipelineRunExecute(r DeletePipelineR
 
 type GetAvailablePipelineSchedulesApiRequest struct {
 	ctx          context.Context
-	ApiService   DataLakePipelinesApi
+	ApiService   DataLakePipelinesAPI
 	groupId      string
 	pipelineName string
 }
@@ -768,7 +767,7 @@ type GetAvailablePipelineSchedulesApiParams struct {
 	PipelineName string
 }
 
-func (a *DataLakePipelinesApiService) GetAvailablePipelineSchedulesWithParams(ctx context.Context, args *GetAvailablePipelineSchedulesApiParams) GetAvailablePipelineSchedulesApiRequest {
+func (a *DataLakePipelinesAPIService) GetAvailablePipelineSchedulesWithParams(ctx context.Context, args *GetAvailablePipelineSchedulesApiParams) GetAvailablePipelineSchedulesApiRequest {
 	return GetAvailablePipelineSchedulesApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -793,7 +792,7 @@ Returns a list of backup schedule policy items that you can use as a Data Lake P
 
 Deprecated
 */
-func (a *DataLakePipelinesApiService) GetAvailablePipelineSchedules(ctx context.Context, groupId string, pipelineName string) GetAvailablePipelineSchedulesApiRequest {
+func (a *DataLakePipelinesAPIService) GetAvailablePipelineSchedules(ctx context.Context, groupId string, pipelineName string) GetAvailablePipelineSchedulesApiRequest {
 	return GetAvailablePipelineSchedulesApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -807,7 +806,7 @@ func (a *DataLakePipelinesApiService) GetAvailablePipelineSchedules(ctx context.
 //	@return []DiskBackupApiPolicyItem
 //
 // Deprecated
-func (a *DataLakePipelinesApiService) GetAvailablePipelineSchedulesExecute(r GetAvailablePipelineSchedulesApiRequest) ([]DiskBackupApiPolicyItem, *http.Response, error) {
+func (a *DataLakePipelinesAPIService) GetAvailablePipelineSchedulesExecute(r GetAvailablePipelineSchedulesApiRequest) ([]DiskBackupApiPolicyItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -815,7 +814,7 @@ func (a *DataLakePipelinesApiService) GetAvailablePipelineSchedulesExecute(r Get
 		localVarReturnValue []DiskBackupApiPolicyItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.GetAvailablePipelineSchedules")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesAPIService.GetAvailablePipelineSchedules")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -885,7 +884,7 @@ func (a *DataLakePipelinesApiService) GetAvailablePipelineSchedulesExecute(r Get
 
 type GetAvailablePipelineSnapshotsApiRequest struct {
 	ctx            context.Context
-	ApiService     DataLakePipelinesApi
+	ApiService     DataLakePipelinesAPI
 	groupId        string
 	pipelineName   string
 	includeCount   *bool
@@ -903,7 +902,7 @@ type GetAvailablePipelineSnapshotsApiParams struct {
 	CompletedAfter *time.Time
 }
 
-func (a *DataLakePipelinesApiService) GetAvailablePipelineSnapshotsWithParams(ctx context.Context, args *GetAvailablePipelineSnapshotsApiParams) GetAvailablePipelineSnapshotsApiRequest {
+func (a *DataLakePipelinesAPIService) GetAvailablePipelineSnapshotsWithParams(ctx context.Context, args *GetAvailablePipelineSnapshotsApiParams) GetAvailablePipelineSnapshotsApiRequest {
 	return GetAvailablePipelineSnapshotsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -956,7 +955,7 @@ Returns a list of backup snapshots that you can use to trigger an on demand pipe
 
 Deprecated
 */
-func (a *DataLakePipelinesApiService) GetAvailablePipelineSnapshots(ctx context.Context, groupId string, pipelineName string) GetAvailablePipelineSnapshotsApiRequest {
+func (a *DataLakePipelinesAPIService) GetAvailablePipelineSnapshots(ctx context.Context, groupId string, pipelineName string) GetAvailablePipelineSnapshotsApiRequest {
 	return GetAvailablePipelineSnapshotsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -970,7 +969,7 @@ func (a *DataLakePipelinesApiService) GetAvailablePipelineSnapshots(ctx context.
 //	@return PaginatedBackupSnapshot
 //
 // Deprecated
-func (a *DataLakePipelinesApiService) GetAvailablePipelineSnapshotsExecute(r GetAvailablePipelineSnapshotsApiRequest) (*PaginatedBackupSnapshot, *http.Response, error) {
+func (a *DataLakePipelinesAPIService) GetAvailablePipelineSnapshotsExecute(r GetAvailablePipelineSnapshotsApiRequest) (*PaginatedBackupSnapshot, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -978,7 +977,7 @@ func (a *DataLakePipelinesApiService) GetAvailablePipelineSnapshotsExecute(r Get
 		localVarReturnValue *PaginatedBackupSnapshot
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.GetAvailablePipelineSnapshots")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesAPIService.GetAvailablePipelineSnapshots")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1072,7 +1071,7 @@ func (a *DataLakePipelinesApiService) GetAvailablePipelineSnapshotsExecute(r Get
 
 type GetPipelineApiRequest struct {
 	ctx          context.Context
-	ApiService   DataLakePipelinesApi
+	ApiService   DataLakePipelinesAPI
 	groupId      string
 	pipelineName string
 }
@@ -1082,7 +1081,7 @@ type GetPipelineApiParams struct {
 	PipelineName string
 }
 
-func (a *DataLakePipelinesApiService) GetPipelineWithParams(ctx context.Context, args *GetPipelineApiParams) GetPipelineApiRequest {
+func (a *DataLakePipelinesAPIService) GetPipelineWithParams(ctx context.Context, args *GetPipelineApiParams) GetPipelineApiRequest {
 	return GetPipelineApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1107,7 +1106,7 @@ Returns the details of one Data Lake Pipeline within the specified project.
 
 Deprecated
 */
-func (a *DataLakePipelinesApiService) GetPipeline(ctx context.Context, groupId string, pipelineName string) GetPipelineApiRequest {
+func (a *DataLakePipelinesAPIService) GetPipeline(ctx context.Context, groupId string, pipelineName string) GetPipelineApiRequest {
 	return GetPipelineApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1121,7 +1120,7 @@ func (a *DataLakePipelinesApiService) GetPipeline(ctx context.Context, groupId s
 //	@return DataLakeIngestionPipeline
 //
 // Deprecated
-func (a *DataLakePipelinesApiService) GetPipelineExecute(r GetPipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error) {
+func (a *DataLakePipelinesAPIService) GetPipelineExecute(r GetPipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1129,7 +1128,7 @@ func (a *DataLakePipelinesApiService) GetPipelineExecute(r GetPipelineApiRequest
 		localVarReturnValue *DataLakeIngestionPipeline
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.GetPipeline")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesAPIService.GetPipeline")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1199,7 +1198,7 @@ func (a *DataLakePipelinesApiService) GetPipelineExecute(r GetPipelineApiRequest
 
 type GetPipelineRunApiRequest struct {
 	ctx           context.Context
-	ApiService    DataLakePipelinesApi
+	ApiService    DataLakePipelinesAPI
 	groupId       string
 	pipelineName  string
 	pipelineRunId string
@@ -1211,7 +1210,7 @@ type GetPipelineRunApiParams struct {
 	PipelineRunId string
 }
 
-func (a *DataLakePipelinesApiService) GetPipelineRunWithParams(ctx context.Context, args *GetPipelineRunApiParams) GetPipelineRunApiRequest {
+func (a *DataLakePipelinesAPIService) GetPipelineRunWithParams(ctx context.Context, args *GetPipelineRunApiParams) GetPipelineRunApiRequest {
 	return GetPipelineRunApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1238,7 +1237,7 @@ Returns the details of one Data Lake Pipeline run within the specified project.
 
 Deprecated
 */
-func (a *DataLakePipelinesApiService) GetPipelineRun(ctx context.Context, groupId string, pipelineName string, pipelineRunId string) GetPipelineRunApiRequest {
+func (a *DataLakePipelinesAPIService) GetPipelineRun(ctx context.Context, groupId string, pipelineName string, pipelineRunId string) GetPipelineRunApiRequest {
 	return GetPipelineRunApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1253,7 +1252,7 @@ func (a *DataLakePipelinesApiService) GetPipelineRun(ctx context.Context, groupI
 //	@return IngestionPipelineRun
 //
 // Deprecated
-func (a *DataLakePipelinesApiService) GetPipelineRunExecute(r GetPipelineRunApiRequest) (*IngestionPipelineRun, *http.Response, error) {
+func (a *DataLakePipelinesAPIService) GetPipelineRunExecute(r GetPipelineRunApiRequest) (*IngestionPipelineRun, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1261,7 +1260,7 @@ func (a *DataLakePipelinesApiService) GetPipelineRunExecute(r GetPipelineRunApiR
 		localVarReturnValue *IngestionPipelineRun
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.GetPipelineRun")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesAPIService.GetPipelineRun")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1335,7 +1334,7 @@ func (a *DataLakePipelinesApiService) GetPipelineRunExecute(r GetPipelineRunApiR
 
 type ListPipelineRunsApiRequest struct {
 	ctx           context.Context
-	ApiService    DataLakePipelinesApi
+	ApiService    DataLakePipelinesAPI
 	groupId       string
 	pipelineName  string
 	includeCount  *bool
@@ -1353,7 +1352,7 @@ type ListPipelineRunsApiParams struct {
 	CreatedBefore *time.Time
 }
 
-func (a *DataLakePipelinesApiService) ListPipelineRunsWithParams(ctx context.Context, args *ListPipelineRunsApiParams) ListPipelineRunsApiRequest {
+func (a *DataLakePipelinesAPIService) ListPipelineRunsWithParams(ctx context.Context, args *ListPipelineRunsApiParams) ListPipelineRunsApiRequest {
 	return ListPipelineRunsApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -1406,7 +1405,7 @@ Returns a list of past Data Lake Pipeline runs.
 
 Deprecated
 */
-func (a *DataLakePipelinesApiService) ListPipelineRuns(ctx context.Context, groupId string, pipelineName string) ListPipelineRunsApiRequest {
+func (a *DataLakePipelinesAPIService) ListPipelineRuns(ctx context.Context, groupId string, pipelineName string) ListPipelineRunsApiRequest {
 	return ListPipelineRunsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1420,7 +1419,7 @@ func (a *DataLakePipelinesApiService) ListPipelineRuns(ctx context.Context, grou
 //	@return PaginatedPipelineRun
 //
 // Deprecated
-func (a *DataLakePipelinesApiService) ListPipelineRunsExecute(r ListPipelineRunsApiRequest) (*PaginatedPipelineRun, *http.Response, error) {
+func (a *DataLakePipelinesAPIService) ListPipelineRunsExecute(r ListPipelineRunsApiRequest) (*PaginatedPipelineRun, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1428,7 +1427,7 @@ func (a *DataLakePipelinesApiService) ListPipelineRunsExecute(r ListPipelineRuns
 		localVarReturnValue *PaginatedPipelineRun
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.ListPipelineRuns")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesAPIService.ListPipelineRuns")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1522,7 +1521,7 @@ func (a *DataLakePipelinesApiService) ListPipelineRunsExecute(r ListPipelineRuns
 
 type ListPipelinesApiRequest struct {
 	ctx        context.Context
-	ApiService DataLakePipelinesApi
+	ApiService DataLakePipelinesAPI
 	groupId    string
 }
 
@@ -1530,7 +1529,7 @@ type ListPipelinesApiParams struct {
 	GroupId string
 }
 
-func (a *DataLakePipelinesApiService) ListPipelinesWithParams(ctx context.Context, args *ListPipelinesApiParams) ListPipelinesApiRequest {
+func (a *DataLakePipelinesAPIService) ListPipelinesWithParams(ctx context.Context, args *ListPipelinesApiParams) ListPipelinesApiRequest {
 	return ListPipelinesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1553,7 +1552,7 @@ Returns a list of Data Lake Pipelines.
 
 Deprecated
 */
-func (a *DataLakePipelinesApiService) ListPipelines(ctx context.Context, groupId string) ListPipelinesApiRequest {
+func (a *DataLakePipelinesAPIService) ListPipelines(ctx context.Context, groupId string) ListPipelinesApiRequest {
 	return ListPipelinesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1566,7 +1565,7 @@ func (a *DataLakePipelinesApiService) ListPipelines(ctx context.Context, groupId
 //	@return []DataLakeIngestionPipeline
 //
 // Deprecated
-func (a *DataLakePipelinesApiService) ListPipelinesExecute(r ListPipelinesApiRequest) ([]DataLakeIngestionPipeline, *http.Response, error) {
+func (a *DataLakePipelinesAPIService) ListPipelinesExecute(r ListPipelinesApiRequest) ([]DataLakeIngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1574,7 +1573,7 @@ func (a *DataLakePipelinesApiService) ListPipelinesExecute(r ListPipelinesApiReq
 		localVarReturnValue []DataLakeIngestionPipeline
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.ListPipelines")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesAPIService.ListPipelines")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1640,7 +1639,7 @@ func (a *DataLakePipelinesApiService) ListPipelinesExecute(r ListPipelinesApiReq
 
 type PausePipelineApiRequest struct {
 	ctx          context.Context
-	ApiService   DataLakePipelinesApi
+	ApiService   DataLakePipelinesAPI
 	groupId      string
 	pipelineName string
 }
@@ -1650,7 +1649,7 @@ type PausePipelineApiParams struct {
 	PipelineName string
 }
 
-func (a *DataLakePipelinesApiService) PausePipelineWithParams(ctx context.Context, args *PausePipelineApiParams) PausePipelineApiRequest {
+func (a *DataLakePipelinesAPIService) PausePipelineWithParams(ctx context.Context, args *PausePipelineApiParams) PausePipelineApiRequest {
 	return PausePipelineApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1675,7 +1674,7 @@ Pauses ingestion for a Data Lake Pipeline within the specified project.
 
 Deprecated
 */
-func (a *DataLakePipelinesApiService) PausePipeline(ctx context.Context, groupId string, pipelineName string) PausePipelineApiRequest {
+func (a *DataLakePipelinesAPIService) PausePipeline(ctx context.Context, groupId string, pipelineName string) PausePipelineApiRequest {
 	return PausePipelineApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1689,7 +1688,7 @@ func (a *DataLakePipelinesApiService) PausePipeline(ctx context.Context, groupId
 //	@return DataLakeIngestionPipeline
 //
 // Deprecated
-func (a *DataLakePipelinesApiService) PausePipelineExecute(r PausePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error) {
+func (a *DataLakePipelinesAPIService) PausePipelineExecute(r PausePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1697,7 +1696,7 @@ func (a *DataLakePipelinesApiService) PausePipelineExecute(r PausePipelineApiReq
 		localVarReturnValue *DataLakeIngestionPipeline
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.PausePipeline")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesAPIService.PausePipeline")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1767,7 +1766,7 @@ func (a *DataLakePipelinesApiService) PausePipelineExecute(r PausePipelineApiReq
 
 type ResumePipelineApiRequest struct {
 	ctx          context.Context
-	ApiService   DataLakePipelinesApi
+	ApiService   DataLakePipelinesAPI
 	groupId      string
 	pipelineName string
 }
@@ -1777,7 +1776,7 @@ type ResumePipelineApiParams struct {
 	PipelineName string
 }
 
-func (a *DataLakePipelinesApiService) ResumePipelineWithParams(ctx context.Context, args *ResumePipelineApiParams) ResumePipelineApiRequest {
+func (a *DataLakePipelinesAPIService) ResumePipelineWithParams(ctx context.Context, args *ResumePipelineApiParams) ResumePipelineApiRequest {
 	return ResumePipelineApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1802,7 +1801,7 @@ Resumes ingestion for a Data Lake Pipeline within the specified project.
 
 Deprecated
 */
-func (a *DataLakePipelinesApiService) ResumePipeline(ctx context.Context, groupId string, pipelineName string) ResumePipelineApiRequest {
+func (a *DataLakePipelinesAPIService) ResumePipeline(ctx context.Context, groupId string, pipelineName string) ResumePipelineApiRequest {
 	return ResumePipelineApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1816,7 +1815,7 @@ func (a *DataLakePipelinesApiService) ResumePipeline(ctx context.Context, groupI
 //	@return DataLakeIngestionPipeline
 //
 // Deprecated
-func (a *DataLakePipelinesApiService) ResumePipelineExecute(r ResumePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error) {
+func (a *DataLakePipelinesAPIService) ResumePipelineExecute(r ResumePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1824,7 +1823,7 @@ func (a *DataLakePipelinesApiService) ResumePipelineExecute(r ResumePipelineApiR
 		localVarReturnValue *DataLakeIngestionPipeline
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.ResumePipeline")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesAPIService.ResumePipeline")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1894,7 +1893,7 @@ func (a *DataLakePipelinesApiService) ResumePipelineExecute(r ResumePipelineApiR
 
 type TriggerPipelineApiRequest struct {
 	ctx                             context.Context
-	ApiService                      DataLakePipelinesApi
+	ApiService                      DataLakePipelinesAPI
 	groupId                         string
 	pipelineName                    string
 	triggerIngestionPipelineRequest *TriggerIngestionPipelineRequest
@@ -1906,7 +1905,7 @@ type TriggerPipelineApiParams struct {
 	TriggerIngestionPipelineRequest *TriggerIngestionPipelineRequest
 }
 
-func (a *DataLakePipelinesApiService) TriggerPipelineWithParams(ctx context.Context, args *TriggerPipelineApiParams) TriggerPipelineApiRequest {
+func (a *DataLakePipelinesAPIService) TriggerPipelineWithParams(ctx context.Context, args *TriggerPipelineApiParams) TriggerPipelineApiRequest {
 	return TriggerPipelineApiRequest{
 		ApiService:                      a,
 		ctx:                             ctx,
@@ -1932,7 +1931,7 @@ Triggers a Data Lake Pipeline ingestion of a specified snapshot.
 
 Deprecated
 */
-func (a *DataLakePipelinesApiService) TriggerPipeline(ctx context.Context, groupId string, pipelineName string, triggerIngestionPipelineRequest *TriggerIngestionPipelineRequest) TriggerPipelineApiRequest {
+func (a *DataLakePipelinesAPIService) TriggerPipeline(ctx context.Context, groupId string, pipelineName string, triggerIngestionPipelineRequest *TriggerIngestionPipelineRequest) TriggerPipelineApiRequest {
 	return TriggerPipelineApiRequest{
 		ApiService:                      a,
 		ctx:                             ctx,
@@ -1947,7 +1946,7 @@ func (a *DataLakePipelinesApiService) TriggerPipeline(ctx context.Context, group
 //	@return IngestionPipelineRun
 //
 // Deprecated
-func (a *DataLakePipelinesApiService) TriggerPipelineExecute(r TriggerPipelineApiRequest) (*IngestionPipelineRun, *http.Response, error) {
+func (a *DataLakePipelinesAPIService) TriggerPipelineExecute(r TriggerPipelineApiRequest) (*IngestionPipelineRun, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1955,7 +1954,7 @@ func (a *DataLakePipelinesApiService) TriggerPipelineExecute(r TriggerPipelineAp
 		localVarReturnValue *IngestionPipelineRun
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.TriggerPipeline")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesAPIService.TriggerPipeline")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2030,7 +2029,7 @@ func (a *DataLakePipelinesApiService) TriggerPipelineExecute(r TriggerPipelineAp
 
 type UpdatePipelineApiRequest struct {
 	ctx                       context.Context
-	ApiService                DataLakePipelinesApi
+	ApiService                DataLakePipelinesAPI
 	groupId                   string
 	pipelineName              string
 	dataLakeIngestionPipeline *DataLakeIngestionPipeline
@@ -2042,7 +2041,7 @@ type UpdatePipelineApiParams struct {
 	DataLakeIngestionPipeline *DataLakeIngestionPipeline
 }
 
-func (a *DataLakePipelinesApiService) UpdatePipelineWithParams(ctx context.Context, args *UpdatePipelineApiParams) UpdatePipelineApiRequest {
+func (a *DataLakePipelinesAPIService) UpdatePipelineWithParams(ctx context.Context, args *UpdatePipelineApiParams) UpdatePipelineApiRequest {
 	return UpdatePipelineApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -2068,7 +2067,7 @@ Updates one Data Lake Pipeline.
 
 Deprecated
 */
-func (a *DataLakePipelinesApiService) UpdatePipeline(ctx context.Context, groupId string, pipelineName string, dataLakeIngestionPipeline *DataLakeIngestionPipeline) UpdatePipelineApiRequest {
+func (a *DataLakePipelinesAPIService) UpdatePipeline(ctx context.Context, groupId string, pipelineName string, dataLakeIngestionPipeline *DataLakeIngestionPipeline) UpdatePipelineApiRequest {
 	return UpdatePipelineApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -2083,7 +2082,7 @@ func (a *DataLakePipelinesApiService) UpdatePipeline(ctx context.Context, groupI
 //	@return DataLakeIngestionPipeline
 //
 // Deprecated
-func (a *DataLakePipelinesApiService) UpdatePipelineExecute(r UpdatePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error) {
+func (a *DataLakePipelinesAPIService) UpdatePipelineExecute(r UpdatePipelineApiRequest) (*DataLakeIngestionPipeline, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -2091,7 +2090,7 @@ func (a *DataLakePipelinesApiService) UpdatePipelineExecute(r UpdatePipelineApiR
 		localVarReturnValue *DataLakeIngestionPipeline
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesApiService.UpdatePipeline")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataLakePipelinesAPIService.UpdatePipeline")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"go.mongodb.org/atlas-sdk/v20250312021/admin"
+	"go.mongodb.org/atlas-sdk/v20250312022/admin"
 )
 
 // Example for Service Account Management API
@@ -41,7 +41,7 @@ func main() {
 		log.Fatalf("Error: %v", err)
 	}
 	if orgID == "" {
-		orgs, _, err := sdk.OrganizationsApi.ListOrgs(ctx).Execute()
+		orgs, _, err := sdk.OrganizationsAPI.ListOrgs(ctx).Execute()
 		if err != nil {
 			log.Fatalf("Error: %v", err)
 		}
@@ -52,7 +52,7 @@ func main() {
 	}
 	const oneYearHours = 365 * 24
 	// 1. Create Service Account
-	request := sdk.ServiceAccountsApi.CreateOrgServiceAccount(
+	request := sdk.ServiceAccountsAPI.CreateOrgServiceAccount(
 		ctx,
 		orgID,
 		admin.NewOrgServiceAccountRequest(
@@ -69,7 +69,7 @@ func main() {
 	fmt.Println("Created new service account.")
 
 	// 2. Rotate secret
-	newSecret, _, err := sdk.ServiceAccountsApi.CreateOrgSecret(
+	newSecret, _, err := sdk.ServiceAccountsAPI.CreateOrgSecret(
 		ctx,
 		orgID,
 		sa.GetClientId(),
@@ -82,7 +82,7 @@ func main() {
 	}
 
 	// 3. Delete rotated secret
-	_, err = sdk.ServiceAccountsApi.DeleteOrgSecret(
+	_, err = sdk.ServiceAccountsAPI.DeleteOrgSecret(
 		ctx,
 		sa.GetClientId(),
 		sa.GetSecrets()[0].GetId(),
@@ -103,7 +103,7 @@ func main() {
 		log.Fatalf("Error: %v", err)
 	}
 	// 5. Make request using new Service Account
-	projects, _, err := newSDK.ProjectsApi.ListGroupsWithParams(
+	projects, _, err := newSDK.ProjectsAPI.ListGroupsWithParams(
 		ctx,
 		&admin.ListGroupsApiParams{},
 	).Execute()
@@ -114,6 +114,6 @@ func main() {
 	fmt.Printf("Projects size: %d\n", projects.GetTotalCount())
 
 	// 6. Remove created Service Account. We would not be able to use it afterward without access to Secret value.
-	sdk.ServiceAccountsApi.DeleteOrgServiceAccount(ctx, sa.GetClientId(), orgID)
+	sdk.ServiceAccountsAPI.DeleteOrgServiceAccount(ctx, sa.GetClientId(), orgID)
 	fmt.Println("Created service account was deleted.")
 }
