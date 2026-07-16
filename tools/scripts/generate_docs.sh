@@ -18,6 +18,11 @@ transformed_file="atlas-api-transformed.yaml"
 client_package="admin"
 openapiFileLocation="$OPENAPI_FOLDER/$transformed_file"
 
+# The spec has been growing by roughly 1KB/day; SnakeYAML's parser (bundled
+# with the generator) refuses YAML documents over 3MB by default. Raise that
+# ceiling well ahead of time so growth doesn't silently break generation.
+export JAVA_OPTS="${JAVA_OPTS:-} -DmaxYamlCodePoints=20000000"
+
 echo "# Running Client Generation"
 
 npm exec openapi-generator-cli -- generate \
@@ -33,3 +38,11 @@ mv "$DOC_FOLDER"/README.md "$DOC_FOLDER"/doc_last_reference.md
 
 # Replace default import prefix in examples so docs compile with this SDK.
 find "$DOC_FOLDER/docs" -name "*.md" -exec perl -pi -e "s/openapiclient/${client_package}/g" {} +
+
+# The Go generator names API doc files with an "Api" suffix (e.g. ThirdPartyIntegrationsApi.md)
+# but links/classnames use the Go type name, which has an "API" suffix (Go treats API as an
+# initialism). Rename the files to match rather than rewriting the links.
+for f in "$DOC_FOLDER/docs/"*Api.md; do
+  [ -e "$f" ] || continue
+  mv "$f" "${f%Api.md}API.md"
+done

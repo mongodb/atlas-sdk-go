@@ -24,6 +24,11 @@ cp "$OPENAPI_FOLDER/$OPENAPI_FILE_NAME" "$openapiFileLocation"
 npm install
 npm exec --prefix .. atlas-openapi-transformer -- transform --input "$openapiFileLocation" --output "$openapiFileLocation"
 
+# The spec has been growing by roughly 1KB/day; SnakeYAML's parser (bundled
+# with the generator) refuses YAML documents over 3MB by default. Raise that
+# ceiling well ahead of time so growth doesn't silently break generation.
+export JAVA_OPTS="${JAVA_OPTS:-} -DmaxYamlCodePoints=20000000"
+
 echo "# Running OpenAPI generator validation"
 npm exec openapi-generator-cli -- validate -i "$openapiFileLocation"
 
