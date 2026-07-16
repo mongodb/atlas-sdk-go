@@ -33,7 +33,7 @@ func main() {
 	examples.HandleErr(err, nil)
 
 	// -- 1. Get first project
-	projects, response, err := sdk.ProjectsApi.ListGroupsWithParams(ctx,
+	projects, response, err := sdk.ProjectsAPI.ListGroupsWithParams(ctx,
 		&admin.ListGroupsApiParams{
 			ItemsPerPage: admin.PtrInt(1),
 			IncludeCount: admin.PtrBool(true),
@@ -47,7 +47,7 @@ func main() {
 
 	projectId := projects.GetResults()[0].GetId()
 	providers := []string{"AWS", "GCP", "AZURE"}
-	regions, response, err := sdk.ClustersApi.ListClusterProviderRegions(ctx, projectId).Providers(providers).Execute()
+	regions, response, err := sdk.ClustersAPI.ListClusterProviderRegions(ctx, projectId).Providers(providers).Execute()
 	examples.HandleErr(err, response)
 	fmt.Println(regions)
 }

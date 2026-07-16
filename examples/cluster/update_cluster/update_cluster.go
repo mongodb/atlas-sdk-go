@@ -73,7 +73,7 @@ func main() {
 // changeClusterTierExample resizes all electable nodes to a new instance size.
 func changeClusterTierExample(ctx context.Context, sdk *admin.APIClient, projectID, clusterName string) {
 	// Step 1 - GET the current cluster configuration.
-	cluster, resp, err := sdk.ClustersApi.GetCluster(ctx, projectID, clusterName).Execute()
+	cluster, resp, err := sdk.ClustersAPI.GetCluster(ctx, projectID, clusterName).Execute()
 	examples.HandleErr(err, resp)
 
 	// Step 2 - Define the new cluster tier.
@@ -101,7 +101,7 @@ func changeClusterTierExample(ctx context.Context, sdk *admin.APIClient, project
 		ReplicationSpecs: cluster.ReplicationSpecs,
 	}
 
-	updatedCluster, resp, err := sdk.ClustersApi.UpdateCluster(ctx, projectID, clusterName, updatePayload).Execute()
+	updatedCluster, resp, err := sdk.ClustersAPI.UpdateCluster(ctx, projectID, clusterName, updatePayload).Execute()
 	examples.HandleErr(err, resp)
 
 	fmt.Printf("Cluster %q tier update initiated. Current state: %s\n",
