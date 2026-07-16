@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -9,7 +10,7 @@ import (
 	"strings"
 )
 
-type ServerlessInstancesAPI interface {
+type ServerlessInstancesApi interface {
 
 	/*
 			GetServerlessInstance Return One Serverless Instance from One Project
@@ -23,7 +24,7 @@ type ServerlessInstancesAPI interface {
 			@param name Human-readable label that identifies the serverless instance.
 			@return GetServerlessInstanceApiRequest
 
-			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesAPI
+			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesApi
 	*/
 	GetServerlessInstance(ctx context.Context, groupId string, name string) GetServerlessInstanceApiRequest
 	/*
@@ -34,7 +35,7 @@ type ServerlessInstancesAPI interface {
 		@param GetServerlessInstanceApiParams - Parameters for the request
 		@return GetServerlessInstanceApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesApi
 	*/
 	GetServerlessInstanceWithParams(ctx context.Context, args *GetServerlessInstanceApiParams) GetServerlessInstanceApiRequest
 
@@ -52,7 +53,7 @@ type ServerlessInstancesAPI interface {
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@return ListServerlessInstancesApiRequest
 
-			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesAPI
+			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesApi
 	*/
 	ListServerlessInstances(ctx context.Context, groupId string) ListServerlessInstancesApiRequest
 	/*
@@ -63,7 +64,7 @@ type ServerlessInstancesAPI interface {
 		@param ListServerlessInstancesApiParams - Parameters for the request
 		@return ListServerlessInstancesApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessInstancesApi
 	*/
 	ListServerlessInstancesWithParams(ctx context.Context, args *ListServerlessInstancesApiParams) ListServerlessInstancesApiRequest
 
@@ -71,12 +72,12 @@ type ServerlessInstancesAPI interface {
 	ListServerlessInstancesExecute(r ListServerlessInstancesApiRequest) (*PaginatedServerlessInstanceDescription, *http.Response, error)
 }
 
-// ServerlessInstancesAPIService ServerlessInstancesAPI service
-type ServerlessInstancesAPIService service
+// ServerlessInstancesApiService ServerlessInstancesApi service
+type ServerlessInstancesApiService service
 
 type GetServerlessInstanceApiRequest struct {
 	ctx        context.Context
-	ApiService ServerlessInstancesAPI
+	ApiService ServerlessInstancesApi
 	groupId    string
 	name       string
 }
@@ -86,7 +87,7 @@ type GetServerlessInstanceApiParams struct {
 	Name    string
 }
 
-func (a *ServerlessInstancesAPIService) GetServerlessInstanceWithParams(ctx context.Context, args *GetServerlessInstanceApiParams) GetServerlessInstanceApiRequest {
+func (a *ServerlessInstancesApiService) GetServerlessInstanceWithParams(ctx context.Context, args *GetServerlessInstanceApiParams) GetServerlessInstanceApiRequest {
 	return GetServerlessInstanceApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -113,7 +114,7 @@ This API can also be used on Flex clusters that were created with the [Create Se
 
 Deprecated
 */
-func (a *ServerlessInstancesAPIService) GetServerlessInstance(ctx context.Context, groupId string, name string) GetServerlessInstanceApiRequest {
+func (a *ServerlessInstancesApiService) GetServerlessInstance(ctx context.Context, groupId string, name string) GetServerlessInstanceApiRequest {
 	return GetServerlessInstanceApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -127,7 +128,7 @@ func (a *ServerlessInstancesAPIService) GetServerlessInstance(ctx context.Contex
 //	@return ServerlessInstanceDescription
 //
 // Deprecated
-func (a *ServerlessInstancesAPIService) GetServerlessInstanceExecute(r GetServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
+func (a *ServerlessInstancesApiService) GetServerlessInstanceExecute(r GetServerlessInstanceApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -135,7 +136,7 @@ func (a *ServerlessInstancesAPIService) GetServerlessInstanceExecute(r GetServer
 		localVarReturnValue *ServerlessInstanceDescription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesAPIService.GetServerlessInstance")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesApiService.GetServerlessInstance")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -205,7 +206,7 @@ func (a *ServerlessInstancesAPIService) GetServerlessInstanceExecute(r GetServer
 
 type ListServerlessInstancesApiRequest struct {
 	ctx          context.Context
-	ApiService   ServerlessInstancesAPI
+	ApiService   ServerlessInstancesApi
 	groupId      string
 	includeCount *bool
 	itemsPerPage *int
@@ -219,7 +220,7 @@ type ListServerlessInstancesApiParams struct {
 	PageNum      *int
 }
 
-func (a *ServerlessInstancesAPIService) ListServerlessInstancesWithParams(ctx context.Context, args *ListServerlessInstancesApiParams) ListServerlessInstancesApiRequest {
+func (a *ServerlessInstancesApiService) ListServerlessInstancesWithParams(ctx context.Context, args *ListServerlessInstancesApiParams) ListServerlessInstancesApiRequest {
 	return ListServerlessInstancesApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -265,7 +266,7 @@ This endpoint also lists Flex clusters that were created using the [Create Serve
 
 Deprecated
 */
-func (a *ServerlessInstancesAPIService) ListServerlessInstances(ctx context.Context, groupId string) ListServerlessInstancesApiRequest {
+func (a *ServerlessInstancesApiService) ListServerlessInstances(ctx context.Context, groupId string) ListServerlessInstancesApiRequest {
 	return ListServerlessInstancesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -278,7 +279,7 @@ func (a *ServerlessInstancesAPIService) ListServerlessInstances(ctx context.Cont
 //	@return PaginatedServerlessInstanceDescription
 //
 // Deprecated
-func (a *ServerlessInstancesAPIService) ListServerlessInstancesExecute(r ListServerlessInstancesApiRequest) (*PaginatedServerlessInstanceDescription, *http.Response, error) {
+func (a *ServerlessInstancesApiService) ListServerlessInstancesExecute(r ListServerlessInstancesApiRequest) (*PaginatedServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -286,7 +287,7 @@ func (a *ServerlessInstancesAPIService) ListServerlessInstancesExecute(r ListSer
 		localVarReturnValue *PaginatedServerlessInstanceDescription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesAPIService.ListServerlessInstances")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessInstancesApiService.ListServerlessInstances")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

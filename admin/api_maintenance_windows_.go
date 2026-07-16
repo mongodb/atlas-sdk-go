@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -9,7 +10,7 @@ import (
 	"strings"
 )
 
-type MaintenanceWindowsAPI interface {
+type MaintenanceWindowsApi interface {
 
 	/*
 		DeferMaintenanceWindow Defer One Maintenance Window for One Project
@@ -128,12 +129,12 @@ type MaintenanceWindowsAPI interface {
 	UpdateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (*http.Response, error)
 }
 
-// MaintenanceWindowsAPIService MaintenanceWindowsAPI service
-type MaintenanceWindowsAPIService service
+// MaintenanceWindowsApiService MaintenanceWindowsApi service
+type MaintenanceWindowsApiService service
 
 type DeferMaintenanceWindowApiRequest struct {
 	ctx        context.Context
-	ApiService MaintenanceWindowsAPI
+	ApiService MaintenanceWindowsApi
 	groupId    string
 }
 
@@ -141,7 +142,7 @@ type DeferMaintenanceWindowApiParams struct {
 	GroupId string
 }
 
-func (a *MaintenanceWindowsAPIService) DeferMaintenanceWindowWithParams(ctx context.Context, args *DeferMaintenanceWindowApiParams) DeferMaintenanceWindowApiRequest {
+func (a *MaintenanceWindowsApiService) DeferMaintenanceWindowWithParams(ctx context.Context, args *DeferMaintenanceWindowApiParams) DeferMaintenanceWindowApiRequest {
 	return DeferMaintenanceWindowApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -162,7 +163,7 @@ Defers the maintenance window for the specified project. Urgent maintenance acti
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return DeferMaintenanceWindowApiRequest
 */
-func (a *MaintenanceWindowsAPIService) DeferMaintenanceWindow(ctx context.Context, groupId string) DeferMaintenanceWindowApiRequest {
+func (a *MaintenanceWindowsApiService) DeferMaintenanceWindow(ctx context.Context, groupId string) DeferMaintenanceWindowApiRequest {
 	return DeferMaintenanceWindowApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -171,14 +172,14 @@ func (a *MaintenanceWindowsAPIService) DeferMaintenanceWindow(ctx context.Contex
 }
 
 // DeferMaintenanceWindowExecute executes the request
-func (a *MaintenanceWindowsAPIService) DeferMaintenanceWindowExecute(r DeferMaintenanceWindowApiRequest) (*http.Response, error) {
+func (a *MaintenanceWindowsApiService) DeferMaintenanceWindowExecute(r DeferMaintenanceWindowApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MaintenanceWindowsAPIService.DeferMaintenanceWindow")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MaintenanceWindowsApiService.DeferMaintenanceWindow")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -230,7 +231,7 @@ func (a *MaintenanceWindowsAPIService) DeferMaintenanceWindowExecute(r DeferMain
 
 type GetMaintenanceWindowApiRequest struct {
 	ctx        context.Context
-	ApiService MaintenanceWindowsAPI
+	ApiService MaintenanceWindowsApi
 	groupId    string
 }
 
@@ -238,7 +239,7 @@ type GetMaintenanceWindowApiParams struct {
 	GroupId string
 }
 
-func (a *MaintenanceWindowsAPIService) GetMaintenanceWindowWithParams(ctx context.Context, args *GetMaintenanceWindowApiParams) GetMaintenanceWindowApiRequest {
+func (a *MaintenanceWindowsApiService) GetMaintenanceWindowWithParams(ctx context.Context, args *GetMaintenanceWindowApiParams) GetMaintenanceWindowApiRequest {
 	return GetMaintenanceWindowApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -259,7 +260,7 @@ Returns the maintenance window for the specified project. MongoDB Cloud starts t
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetMaintenanceWindowApiRequest
 */
-func (a *MaintenanceWindowsAPIService) GetMaintenanceWindow(ctx context.Context, groupId string) GetMaintenanceWindowApiRequest {
+func (a *MaintenanceWindowsApiService) GetMaintenanceWindow(ctx context.Context, groupId string) GetMaintenanceWindowApiRequest {
 	return GetMaintenanceWindowApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -270,7 +271,7 @@ func (a *MaintenanceWindowsAPIService) GetMaintenanceWindow(ctx context.Context,
 // GetMaintenanceWindowExecute executes the request
 //
 //	@return GroupMaintenanceWindow
-func (a *MaintenanceWindowsAPIService) GetMaintenanceWindowExecute(r GetMaintenanceWindowApiRequest) (*GroupMaintenanceWindow, *http.Response, error) {
+func (a *MaintenanceWindowsApiService) GetMaintenanceWindowExecute(r GetMaintenanceWindowApiRequest) (*GroupMaintenanceWindow, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -278,7 +279,7 @@ func (a *MaintenanceWindowsAPIService) GetMaintenanceWindowExecute(r GetMaintena
 		localVarReturnValue *GroupMaintenanceWindow
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MaintenanceWindowsAPIService.GetMaintenanceWindow")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MaintenanceWindowsApiService.GetMaintenanceWindow")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -344,7 +345,7 @@ func (a *MaintenanceWindowsAPIService) GetMaintenanceWindowExecute(r GetMaintena
 
 type ResetMaintenanceWindowApiRequest struct {
 	ctx        context.Context
-	ApiService MaintenanceWindowsAPI
+	ApiService MaintenanceWindowsApi
 	groupId    string
 }
 
@@ -352,7 +353,7 @@ type ResetMaintenanceWindowApiParams struct {
 	GroupId string
 }
 
-func (a *MaintenanceWindowsAPIService) ResetMaintenanceWindowWithParams(ctx context.Context, args *ResetMaintenanceWindowApiParams) ResetMaintenanceWindowApiRequest {
+func (a *MaintenanceWindowsApiService) ResetMaintenanceWindowWithParams(ctx context.Context, args *ResetMaintenanceWindowApiParams) ResetMaintenanceWindowApiRequest {
 	return ResetMaintenanceWindowApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -373,7 +374,7 @@ Resets the maintenance window for the specified project. Urgent maintenance acti
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ResetMaintenanceWindowApiRequest
 */
-func (a *MaintenanceWindowsAPIService) ResetMaintenanceWindow(ctx context.Context, groupId string) ResetMaintenanceWindowApiRequest {
+func (a *MaintenanceWindowsApiService) ResetMaintenanceWindow(ctx context.Context, groupId string) ResetMaintenanceWindowApiRequest {
 	return ResetMaintenanceWindowApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -382,14 +383,14 @@ func (a *MaintenanceWindowsAPIService) ResetMaintenanceWindow(ctx context.Contex
 }
 
 // ResetMaintenanceWindowExecute executes the request
-func (a *MaintenanceWindowsAPIService) ResetMaintenanceWindowExecute(r ResetMaintenanceWindowApiRequest) (*http.Response, error) {
+func (a *MaintenanceWindowsApiService) ResetMaintenanceWindowExecute(r ResetMaintenanceWindowApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MaintenanceWindowsAPIService.ResetMaintenanceWindow")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MaintenanceWindowsApiService.ResetMaintenanceWindow")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -441,7 +442,7 @@ func (a *MaintenanceWindowsAPIService) ResetMaintenanceWindowExecute(r ResetMain
 
 type ToggleMaintenanceAutoDeferApiRequest struct {
 	ctx        context.Context
-	ApiService MaintenanceWindowsAPI
+	ApiService MaintenanceWindowsApi
 	groupId    string
 }
 
@@ -449,7 +450,7 @@ type ToggleMaintenanceAutoDeferApiParams struct {
 	GroupId string
 }
 
-func (a *MaintenanceWindowsAPIService) ToggleMaintenanceAutoDeferWithParams(ctx context.Context, args *ToggleMaintenanceAutoDeferApiParams) ToggleMaintenanceAutoDeferApiRequest {
+func (a *MaintenanceWindowsApiService) ToggleMaintenanceAutoDeferWithParams(ctx context.Context, args *ToggleMaintenanceAutoDeferApiParams) ToggleMaintenanceAutoDeferApiRequest {
 	return ToggleMaintenanceAutoDeferApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -470,7 +471,7 @@ Toggles automatic deferral of the maintenance window for the specified project. 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ToggleMaintenanceAutoDeferApiRequest
 */
-func (a *MaintenanceWindowsAPIService) ToggleMaintenanceAutoDefer(ctx context.Context, groupId string) ToggleMaintenanceAutoDeferApiRequest {
+func (a *MaintenanceWindowsApiService) ToggleMaintenanceAutoDefer(ctx context.Context, groupId string) ToggleMaintenanceAutoDeferApiRequest {
 	return ToggleMaintenanceAutoDeferApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -479,14 +480,14 @@ func (a *MaintenanceWindowsAPIService) ToggleMaintenanceAutoDefer(ctx context.Co
 }
 
 // ToggleMaintenanceAutoDeferExecute executes the request
-func (a *MaintenanceWindowsAPIService) ToggleMaintenanceAutoDeferExecute(r ToggleMaintenanceAutoDeferApiRequest) (*http.Response, error) {
+func (a *MaintenanceWindowsApiService) ToggleMaintenanceAutoDeferExecute(r ToggleMaintenanceAutoDeferApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MaintenanceWindowsAPIService.ToggleMaintenanceAutoDefer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MaintenanceWindowsApiService.ToggleMaintenanceAutoDefer")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -538,7 +539,7 @@ func (a *MaintenanceWindowsAPIService) ToggleMaintenanceAutoDeferExecute(r Toggl
 
 type UpdateMaintenanceWindowApiRequest struct {
 	ctx                    context.Context
-	ApiService             MaintenanceWindowsAPI
+	ApiService             MaintenanceWindowsApi
 	groupId                string
 	groupMaintenanceWindow *GroupMaintenanceWindow
 }
@@ -548,7 +549,7 @@ type UpdateMaintenanceWindowApiParams struct {
 	GroupMaintenanceWindow *GroupMaintenanceWindow
 }
 
-func (a *MaintenanceWindowsAPIService) UpdateMaintenanceWindowWithParams(ctx context.Context, args *UpdateMaintenanceWindowApiParams) UpdateMaintenanceWindowApiRequest {
+func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowWithParams(ctx context.Context, args *UpdateMaintenanceWindowApiParams) UpdateMaintenanceWindowApiRequest {
 	return UpdateMaintenanceWindowApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
@@ -570,7 +571,7 @@ Updates the maintenance window for the specified project. Urgent maintenance act
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpdateMaintenanceWindowApiRequest
 */
-func (a *MaintenanceWindowsAPIService) UpdateMaintenanceWindow(ctx context.Context, groupId string, groupMaintenanceWindow *GroupMaintenanceWindow) UpdateMaintenanceWindowApiRequest {
+func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindow(ctx context.Context, groupId string, groupMaintenanceWindow *GroupMaintenanceWindow) UpdateMaintenanceWindowApiRequest {
 	return UpdateMaintenanceWindowApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
@@ -580,14 +581,14 @@ func (a *MaintenanceWindowsAPIService) UpdateMaintenanceWindow(ctx context.Conte
 }
 
 // UpdateMaintenanceWindowExecute executes the request
-func (a *MaintenanceWindowsAPIService) UpdateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (*http.Response, error) {
+func (a *MaintenanceWindowsApiService) UpdateMaintenanceWindowExecute(r UpdateMaintenanceWindowApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPatch
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MaintenanceWindowsAPIService.UpdateMaintenanceWindow")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MaintenanceWindowsApiService.UpdateMaintenanceWindow")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -47,11 +47,11 @@ The Atlas Go SDK changes the API interface to differentiate APIs from other meth
 
 Each API method has an API suffix. For example:
 
-`sdk.Projects` will now `sdk.ProjectsAPI`
+`sdk.Projects` will now `sdk.ProjectsApi`
 
 Each method now explains the object that is created. For example:
 
-`sdk.Projects.create()` will become `sdk.ProjectsAPI.createProject(...)`
+`sdk.Projects.create()` will become `sdk.ProjectsApi.createProject(...)`
 
 To learn more, see the [Endpoint Documentation](https://github.com/mongodb/atlas-sdk-go/blob/main/docs/doc_last_reference.md).
 

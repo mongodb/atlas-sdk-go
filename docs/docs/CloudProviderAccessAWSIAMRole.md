@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ProviderName** | **string** | Human-readable label that identifies the cloud provider of the role. | 
 **AtlasAWSAccountArn** | Pointer to **string** | Amazon Resource Name that identifies the Amazon Web Services (AWS) user account that MongoDB Cloud uses when it assumes the Identity and Access Management (IAM) role. | [optional] [readonly] 
 **AtlasAssumedRoleExternalId** | Pointer to **string** | Unique external ID that MongoDB Cloud uses when it assumes the IAM role in your Amazon Web Services (AWS) account. | [optional] [readonly] 
 **AuthorizedDate** | Pointer to **time.Time** | Date and time when someone authorized this role for the specified cloud service provider. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
@@ -12,6 +11,7 @@ Name | Type | Description | Notes
 **FeatureUsages** | Pointer to [**[]CloudProviderAccessFeatureUsage**](CloudProviderAccessFeatureUsage.md) | List that contains application features associated with this Amazon Web Services (AWS) Identity and Access Management (IAM) role. | [optional] [readonly] 
 **IamAssumedRoleArn** | Pointer to **string** | Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account. | [optional] 
 **RoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the role. | [optional] [readonly] 
+**ProviderName** | **string** | Human-readable label that identifies the cloud provider of the role. | 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the role. | [optional] [readonly] 
 **AtlasAzureAppId** | Pointer to **string** | Azure Active Directory Application ID of Atlas. This field is optional and will be derived from the Azure subscription if not provided. | [optional] 
 **LastUpdatedDate** | Pointer to **time.Time** | Date and time when this Azure Service Principal was last updated. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
@@ -38,25 +38,6 @@ will change when the set of required properties is changed
 NewCloudProviderAccessAWSIAMRoleWithDefaults instantiates a new CloudProviderAccessAWSIAMRole object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
-
-### GetProviderName
-
-`func (o *CloudProviderAccessAWSIAMRole) GetProviderName() string`
-
-GetProviderName returns the ProviderName field if non-nil, zero value otherwise.
-
-### GetProviderNameOk
-
-`func (o *CloudProviderAccessAWSIAMRole) GetProviderNameOk() (*string, bool)`
-
-GetProviderNameOk returns a tuple with the ProviderName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetProviderName
-
-`func (o *CloudProviderAccessAWSIAMRole) SetProviderName(v string)`
-
-SetProviderName sets ProviderName field to given value.
 
 ### GetAtlasAWSAccountArn
 
@@ -226,6 +207,25 @@ SetRoleId sets RoleId field to given value.
 `func (o *CloudProviderAccessAWSIAMRole) HasRoleId() bool`
 
 HasRoleId returns a boolean if a field has been set.
+### GetProviderName
+
+`func (o *CloudProviderAccessAWSIAMRole) GetProviderName() string`
+
+GetProviderName returns the ProviderName field if non-nil, zero value otherwise.
+
+### GetProviderNameOk
+
+`func (o *CloudProviderAccessAWSIAMRole) GetProviderNameOk() (*string, bool)`
+
+GetProviderNameOk returns a tuple with the ProviderName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProviderName
+
+`func (o *CloudProviderAccessAWSIAMRole) SetProviderName(v string)`
+
+SetProviderName sets ProviderName field to given value.
+
 ### GetId
 
 `func (o *CloudProviderAccessAWSIAMRole) GetId() string`

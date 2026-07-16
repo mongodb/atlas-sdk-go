@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -9,7 +10,7 @@ import (
 	"strings"
 )
 
-type DataFederationAPI interface {
+type DataFederationApi interface {
 
 	/*
 		CreateDataFederation Create One Federated Database Instance in One Project
@@ -351,12 +352,12 @@ type DataFederationAPI interface {
 	UpdateDataFederationExecute(r UpdateDataFederationApiRequest) (*DataLakeTenant, *http.Response, error)
 }
 
-// DataFederationAPIService DataFederationAPI service
-type DataFederationAPIService service
+// DataFederationApiService DataFederationApi service
+type DataFederationApiService service
 
 type CreateDataFederationApiRequest struct {
 	ctx                context.Context
-	ApiService         DataFederationAPI
+	ApiService         DataFederationApi
 	groupId            string
 	dataLakeTenant     *DataLakeTenant
 	skipRoleValidation *bool
@@ -368,7 +369,7 @@ type CreateDataFederationApiParams struct {
 	SkipRoleValidation *bool
 }
 
-func (a *DataFederationAPIService) CreateDataFederationWithParams(ctx context.Context, args *CreateDataFederationApiParams) CreateDataFederationApiRequest {
+func (a *DataFederationApiService) CreateDataFederationWithParams(ctx context.Context, args *CreateDataFederationApiParams) CreateDataFederationApiRequest {
 	return CreateDataFederationApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -397,7 +398,7 @@ Creates one federated database instance in the specified project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateDataFederationApiRequest
 */
-func (a *DataFederationAPIService) CreateDataFederation(ctx context.Context, groupId string, dataLakeTenant *DataLakeTenant) CreateDataFederationApiRequest {
+func (a *DataFederationApiService) CreateDataFederation(ctx context.Context, groupId string, dataLakeTenant *DataLakeTenant) CreateDataFederationApiRequest {
 	return CreateDataFederationApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -409,7 +410,7 @@ func (a *DataFederationAPIService) CreateDataFederation(ctx context.Context, gro
 // CreateDataFederationExecute executes the request
 //
 //	@return DataLakeTenant
-func (a *DataFederationAPIService) CreateDataFederationExecute(r CreateDataFederationApiRequest) (*DataLakeTenant, *http.Response, error) {
+func (a *DataFederationApiService) CreateDataFederationExecute(r CreateDataFederationApiRequest) (*DataLakeTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -417,7 +418,7 @@ func (a *DataFederationAPIService) CreateDataFederationExecute(r CreateDataFeder
 		localVarReturnValue *DataLakeTenant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationAPIService.CreateDataFederation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.CreateDataFederation")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -495,7 +496,7 @@ func (a *DataFederationAPIService) CreateDataFederationExecute(r CreateDataFeder
 
 type CreatePrivateEndpointIdApiRequest struct {
 	ctx                           context.Context
-	ApiService                    DataFederationAPI
+	ApiService                    DataFederationApi
 	groupId                       string
 	privateNetworkEndpointIdEntry *PrivateNetworkEndpointIdEntry
 }
@@ -505,7 +506,7 @@ type CreatePrivateEndpointIdApiParams struct {
 	PrivateNetworkEndpointIdEntry *PrivateNetworkEndpointIdEntry
 }
 
-func (a *DataFederationAPIService) CreatePrivateEndpointIdWithParams(ctx context.Context, args *CreatePrivateEndpointIdApiParams) CreatePrivateEndpointIdApiRequest {
+func (a *DataFederationApiService) CreatePrivateEndpointIdWithParams(ctx context.Context, args *CreatePrivateEndpointIdApiParams) CreatePrivateEndpointIdApiRequest {
 	return CreatePrivateEndpointIdApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -527,7 +528,7 @@ Adds one private endpoint for Federated Database Instances and Online Archives t
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreatePrivateEndpointIdApiRequest
 */
-func (a *DataFederationAPIService) CreatePrivateEndpointId(ctx context.Context, groupId string, privateNetworkEndpointIdEntry *PrivateNetworkEndpointIdEntry) CreatePrivateEndpointIdApiRequest {
+func (a *DataFederationApiService) CreatePrivateEndpointId(ctx context.Context, groupId string, privateNetworkEndpointIdEntry *PrivateNetworkEndpointIdEntry) CreatePrivateEndpointIdApiRequest {
 	return CreatePrivateEndpointIdApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -539,7 +540,7 @@ func (a *DataFederationAPIService) CreatePrivateEndpointId(ctx context.Context, 
 // CreatePrivateEndpointIdExecute executes the request
 //
 //	@return PaginatedPrivateNetworkEndpointIdEntry
-func (a *DataFederationAPIService) CreatePrivateEndpointIdExecute(r CreatePrivateEndpointIdApiRequest) (*PaginatedPrivateNetworkEndpointIdEntry, *http.Response, error) {
+func (a *DataFederationApiService) CreatePrivateEndpointIdExecute(r CreatePrivateEndpointIdApiRequest) (*PaginatedPrivateNetworkEndpointIdEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -547,7 +548,7 @@ func (a *DataFederationAPIService) CreatePrivateEndpointIdExecute(r CreatePrivat
 		localVarReturnValue *PaginatedPrivateNetworkEndpointIdEntry
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationAPIService.CreatePrivateEndpointId")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.CreatePrivateEndpointId")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -618,7 +619,7 @@ func (a *DataFederationAPIService) CreatePrivateEndpointIdExecute(r CreatePrivat
 
 type DeleteDataFederationApiRequest struct {
 	ctx        context.Context
-	ApiService DataFederationAPI
+	ApiService DataFederationApi
 	groupId    string
 	tenantName string
 }
@@ -628,7 +629,7 @@ type DeleteDataFederationApiParams struct {
 	TenantName string
 }
 
-func (a *DataFederationAPIService) DeleteDataFederationWithParams(ctx context.Context, args *DeleteDataFederationApiParams) DeleteDataFederationApiRequest {
+func (a *DataFederationApiService) DeleteDataFederationWithParams(ctx context.Context, args *DeleteDataFederationApiParams) DeleteDataFederationApiRequest {
 	return DeleteDataFederationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -651,7 +652,7 @@ Removes one federated database instance from the specified project.
 	@param tenantName Human-readable label that identifies the federated database instance to remove.
 	@return DeleteDataFederationApiRequest
 */
-func (a *DataFederationAPIService) DeleteDataFederation(ctx context.Context, groupId string, tenantName string) DeleteDataFederationApiRequest {
+func (a *DataFederationApiService) DeleteDataFederation(ctx context.Context, groupId string, tenantName string) DeleteDataFederationApiRequest {
 	return DeleteDataFederationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -661,14 +662,14 @@ func (a *DataFederationAPIService) DeleteDataFederation(ctx context.Context, gro
 }
 
 // DeleteDataFederationExecute executes the request
-func (a *DataFederationAPIService) DeleteDataFederationExecute(r DeleteDataFederationApiRequest) (*http.Response, error) {
+func (a *DataFederationApiService) DeleteDataFederationExecute(r DeleteDataFederationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationAPIService.DeleteDataFederation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.DeleteDataFederation")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -724,7 +725,7 @@ func (a *DataFederationAPIService) DeleteDataFederationExecute(r DeleteDataFeder
 
 type DeleteDataFederationLimitApiRequest struct {
 	ctx        context.Context
-	ApiService DataFederationAPI
+	ApiService DataFederationApi
 	groupId    string
 	tenantName string
 	limitName  string
@@ -736,7 +737,7 @@ type DeleteDataFederationLimitApiParams struct {
 	LimitName  string
 }
 
-func (a *DataFederationAPIService) DeleteDataFederationLimitWithParams(ctx context.Context, args *DeleteDataFederationLimitApiParams) DeleteDataFederationLimitApiRequest {
+func (a *DataFederationApiService) DeleteDataFederationLimitWithParams(ctx context.Context, args *DeleteDataFederationLimitApiParams) DeleteDataFederationLimitApiRequest {
 	return DeleteDataFederationLimitApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -761,7 +762,7 @@ Deletes one query limit for one federated database instance.
 	@param limitName Human-readable label that identifies this data federation instance limit.  | Limit Name | Description | Default | | --- | --- | --- | | `bytesProcessed.query` | Limit on the number of bytes processed during a single data federation query | N/A | | `bytesProcessed.daily` | Limit on the number of bytes processed for the data federation instance for the current day | N/A | | `bytesProcessed.weekly` | Limit on the number of bytes processed for the data federation instance for the current week | N/A | | `bytesProcessed.monthly` | Limit on the number of bytes processed for the data federation instance for the current month | N/A |
 	@return DeleteDataFederationLimitApiRequest
 */
-func (a *DataFederationAPIService) DeleteDataFederationLimit(ctx context.Context, groupId string, tenantName string, limitName string) DeleteDataFederationLimitApiRequest {
+func (a *DataFederationApiService) DeleteDataFederationLimit(ctx context.Context, groupId string, tenantName string, limitName string) DeleteDataFederationLimitApiRequest {
 	return DeleteDataFederationLimitApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -772,14 +773,14 @@ func (a *DataFederationAPIService) DeleteDataFederationLimit(ctx context.Context
 }
 
 // DeleteDataFederationLimitExecute executes the request
-func (a *DataFederationAPIService) DeleteDataFederationLimitExecute(r DeleteDataFederationLimitApiRequest) (*http.Response, error) {
+func (a *DataFederationApiService) DeleteDataFederationLimitExecute(r DeleteDataFederationLimitApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationAPIService.DeleteDataFederationLimit")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.DeleteDataFederationLimit")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -839,7 +840,7 @@ func (a *DataFederationAPIService) DeleteDataFederationLimitExecute(r DeleteData
 
 type DeletePrivateEndpointIdApiRequest struct {
 	ctx        context.Context
-	ApiService DataFederationAPI
+	ApiService DataFederationApi
 	groupId    string
 	endpointId string
 }
@@ -849,7 +850,7 @@ type DeletePrivateEndpointIdApiParams struct {
 	EndpointId string
 }
 
-func (a *DataFederationAPIService) DeletePrivateEndpointIdWithParams(ctx context.Context, args *DeletePrivateEndpointIdApiParams) DeletePrivateEndpointIdApiRequest {
+func (a *DataFederationApiService) DeletePrivateEndpointIdWithParams(ctx context.Context, args *DeletePrivateEndpointIdApiParams) DeletePrivateEndpointIdApiRequest {
 	return DeletePrivateEndpointIdApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -872,7 +873,7 @@ Removes one private endpoint for Federated Database Instances and Online Archive
 	@param endpointId Unique 22-character alphanumeric string that identifies the private endpoint to remove. Atlas Data Federation supports AWS private endpoints using the AWS PrivateLink feature.
 	@return DeletePrivateEndpointIdApiRequest
 */
-func (a *DataFederationAPIService) DeletePrivateEndpointId(ctx context.Context, groupId string, endpointId string) DeletePrivateEndpointIdApiRequest {
+func (a *DataFederationApiService) DeletePrivateEndpointId(ctx context.Context, groupId string, endpointId string) DeletePrivateEndpointIdApiRequest {
 	return DeletePrivateEndpointIdApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -882,14 +883,14 @@ func (a *DataFederationAPIService) DeletePrivateEndpointId(ctx context.Context, 
 }
 
 // DeletePrivateEndpointIdExecute executes the request
-func (a *DataFederationAPIService) DeletePrivateEndpointIdExecute(r DeletePrivateEndpointIdApiRequest) (*http.Response, error) {
+func (a *DataFederationApiService) DeletePrivateEndpointIdExecute(r DeletePrivateEndpointIdApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationAPIService.DeletePrivateEndpointId")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.DeletePrivateEndpointId")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -945,7 +946,7 @@ func (a *DataFederationAPIService) DeletePrivateEndpointIdExecute(r DeletePrivat
 
 type DownloadFederationQueryLogsApiRequest struct {
 	ctx        context.Context
-	ApiService DataFederationAPI
+	ApiService DataFederationApi
 	groupId    string
 	tenantName string
 	endDate    *int64
@@ -959,7 +960,7 @@ type DownloadFederationQueryLogsApiParams struct {
 	StartDate  *int64
 }
 
-func (a *DataFederationAPIService) DownloadFederationQueryLogsWithParams(ctx context.Context, args *DownloadFederationQueryLogsApiParams) DownloadFederationQueryLogsApiRequest {
+func (a *DataFederationApiService) DownloadFederationQueryLogsWithParams(ctx context.Context, args *DownloadFederationQueryLogsApiParams) DownloadFederationQueryLogsApiRequest {
 	return DownloadFederationQueryLogsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -996,7 +997,7 @@ Downloads the query logs for the specified federated database instance. The API 
 	@param tenantName Human-readable label that identifies the federated database instance for which you want to download query logs.
 	@return DownloadFederationQueryLogsApiRequest
 */
-func (a *DataFederationAPIService) DownloadFederationQueryLogs(ctx context.Context, groupId string, tenantName string) DownloadFederationQueryLogsApiRequest {
+func (a *DataFederationApiService) DownloadFederationQueryLogs(ctx context.Context, groupId string, tenantName string) DownloadFederationQueryLogsApiRequest {
 	return DownloadFederationQueryLogsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1008,7 +1009,7 @@ func (a *DataFederationAPIService) DownloadFederationQueryLogs(ctx context.Conte
 // DownloadFederationQueryLogsExecute executes the request
 //
 //	@return io.ReadCloser
-func (a *DataFederationAPIService) DownloadFederationQueryLogsExecute(r DownloadFederationQueryLogsApiRequest) (io.ReadCloser, *http.Response, error) {
+func (a *DataFederationApiService) DownloadFederationQueryLogsExecute(r DownloadFederationQueryLogsApiRequest) (io.ReadCloser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1016,7 +1017,7 @@ func (a *DataFederationAPIService) DownloadFederationQueryLogsExecute(r Download
 		localVarReturnValue io.ReadCloser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationAPIService.DownloadFederationQueryLogs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.DownloadFederationQueryLogs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1092,7 +1093,7 @@ func (a *DataFederationAPIService) DownloadFederationQueryLogsExecute(r Download
 
 type GetDataFederationApiRequest struct {
 	ctx        context.Context
-	ApiService DataFederationAPI
+	ApiService DataFederationApi
 	groupId    string
 	tenantName string
 }
@@ -1102,7 +1103,7 @@ type GetDataFederationApiParams struct {
 	TenantName string
 }
 
-func (a *DataFederationAPIService) GetDataFederationWithParams(ctx context.Context, args *GetDataFederationApiParams) GetDataFederationApiRequest {
+func (a *DataFederationApiService) GetDataFederationWithParams(ctx context.Context, args *GetDataFederationApiParams) GetDataFederationApiRequest {
 	return GetDataFederationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1125,7 +1126,7 @@ Returns the details of one federated database instance within the specified proj
 	@param tenantName Human-readable label that identifies the Federated Database to return.
 	@return GetDataFederationApiRequest
 */
-func (a *DataFederationAPIService) GetDataFederation(ctx context.Context, groupId string, tenantName string) GetDataFederationApiRequest {
+func (a *DataFederationApiService) GetDataFederation(ctx context.Context, groupId string, tenantName string) GetDataFederationApiRequest {
 	return GetDataFederationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1137,7 +1138,7 @@ func (a *DataFederationAPIService) GetDataFederation(ctx context.Context, groupI
 // GetDataFederationExecute executes the request
 //
 //	@return DataLakeTenant
-func (a *DataFederationAPIService) GetDataFederationExecute(r GetDataFederationApiRequest) (*DataLakeTenant, *http.Response, error) {
+func (a *DataFederationApiService) GetDataFederationExecute(r GetDataFederationApiRequest) (*DataLakeTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1145,7 +1146,7 @@ func (a *DataFederationAPIService) GetDataFederationExecute(r GetDataFederationA
 		localVarReturnValue *DataLakeTenant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationAPIService.GetDataFederation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.GetDataFederation")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1215,7 +1216,7 @@ func (a *DataFederationAPIService) GetDataFederationExecute(r GetDataFederationA
 
 type GetDataFederationLimitApiRequest struct {
 	ctx        context.Context
-	ApiService DataFederationAPI
+	ApiService DataFederationApi
 	groupId    string
 	tenantName string
 	limitName  string
@@ -1227,7 +1228,7 @@ type GetDataFederationLimitApiParams struct {
 	LimitName  string
 }
 
-func (a *DataFederationAPIService) GetDataFederationLimitWithParams(ctx context.Context, args *GetDataFederationLimitApiParams) GetDataFederationLimitApiRequest {
+func (a *DataFederationApiService) GetDataFederationLimitWithParams(ctx context.Context, args *GetDataFederationLimitApiParams) GetDataFederationLimitApiRequest {
 	return GetDataFederationLimitApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1252,7 +1253,7 @@ Returns the details of one query limit for the specified federated database inst
 	@param limitName Human-readable label that identifies this data federation instance limit.  | Limit Name | Description | Default | | --- | --- | --- | | `bytesProcessed.query` | Limit on the number of bytes processed during a single data federation query | N/A | | `bytesProcessed.daily` | Limit on the number of bytes processed for the data federation instance for the current day | N/A | | `bytesProcessed.weekly` | Limit on the number of bytes processed for the data federation instance for the current week | N/A | | `bytesProcessed.monthly` | Limit on the number of bytes processed for the data federation instance for the current month | N/A |
 	@return GetDataFederationLimitApiRequest
 */
-func (a *DataFederationAPIService) GetDataFederationLimit(ctx context.Context, groupId string, tenantName string, limitName string) GetDataFederationLimitApiRequest {
+func (a *DataFederationApiService) GetDataFederationLimit(ctx context.Context, groupId string, tenantName string, limitName string) GetDataFederationLimitApiRequest {
 	return GetDataFederationLimitApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1265,7 +1266,7 @@ func (a *DataFederationAPIService) GetDataFederationLimit(ctx context.Context, g
 // GetDataFederationLimitExecute executes the request
 //
 //	@return DataFederationTenantQueryLimit
-func (a *DataFederationAPIService) GetDataFederationLimitExecute(r GetDataFederationLimitApiRequest) (*DataFederationTenantQueryLimit, *http.Response, error) {
+func (a *DataFederationApiService) GetDataFederationLimitExecute(r GetDataFederationLimitApiRequest) (*DataFederationTenantQueryLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1273,7 +1274,7 @@ func (a *DataFederationAPIService) GetDataFederationLimitExecute(r GetDataFedera
 		localVarReturnValue *DataFederationTenantQueryLimit
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationAPIService.GetDataFederationLimit")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.GetDataFederationLimit")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1347,7 +1348,7 @@ func (a *DataFederationAPIService) GetDataFederationLimitExecute(r GetDataFedera
 
 type GetPrivateEndpointIdApiRequest struct {
 	ctx        context.Context
-	ApiService DataFederationAPI
+	ApiService DataFederationApi
 	groupId    string
 	endpointId string
 }
@@ -1357,7 +1358,7 @@ type GetPrivateEndpointIdApiParams struct {
 	EndpointId string
 }
 
-func (a *DataFederationAPIService) GetPrivateEndpointIdWithParams(ctx context.Context, args *GetPrivateEndpointIdApiParams) GetPrivateEndpointIdApiRequest {
+func (a *DataFederationApiService) GetPrivateEndpointIdWithParams(ctx context.Context, args *GetPrivateEndpointIdApiParams) GetPrivateEndpointIdApiRequest {
 	return GetPrivateEndpointIdApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1380,7 +1381,7 @@ Returns the specified private endpoint for Federated Database Instances or Onlin
 	@param endpointId Unique 22-character alphanumeric string that identifies the private endpoint to return. Atlas Data Federation supports AWS private endpoints using the AWS PrivateLink feature.
 	@return GetPrivateEndpointIdApiRequest
 */
-func (a *DataFederationAPIService) GetPrivateEndpointId(ctx context.Context, groupId string, endpointId string) GetPrivateEndpointIdApiRequest {
+func (a *DataFederationApiService) GetPrivateEndpointId(ctx context.Context, groupId string, endpointId string) GetPrivateEndpointIdApiRequest {
 	return GetPrivateEndpointIdApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1392,7 +1393,7 @@ func (a *DataFederationAPIService) GetPrivateEndpointId(ctx context.Context, gro
 // GetPrivateEndpointIdExecute executes the request
 //
 //	@return PrivateNetworkEndpointIdEntry
-func (a *DataFederationAPIService) GetPrivateEndpointIdExecute(r GetPrivateEndpointIdApiRequest) (*PrivateNetworkEndpointIdEntry, *http.Response, error) {
+func (a *DataFederationApiService) GetPrivateEndpointIdExecute(r GetPrivateEndpointIdApiRequest) (*PrivateNetworkEndpointIdEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1400,7 +1401,7 @@ func (a *DataFederationAPIService) GetPrivateEndpointIdExecute(r GetPrivateEndpo
 		localVarReturnValue *PrivateNetworkEndpointIdEntry
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationAPIService.GetPrivateEndpointId")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.GetPrivateEndpointId")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1470,7 +1471,7 @@ func (a *DataFederationAPIService) GetPrivateEndpointIdExecute(r GetPrivateEndpo
 
 type ListDataFederationApiRequest struct {
 	ctx        context.Context
-	ApiService DataFederationAPI
+	ApiService DataFederationApi
 	groupId    string
 	type_      *string
 }
@@ -1480,7 +1481,7 @@ type ListDataFederationApiParams struct {
 	Type_   *string
 }
 
-func (a *DataFederationAPIService) ListDataFederationWithParams(ctx context.Context, args *ListDataFederationApiParams) ListDataFederationApiRequest {
+func (a *DataFederationApiService) ListDataFederationWithParams(ctx context.Context, args *ListDataFederationApiParams) ListDataFederationApiRequest {
 	return ListDataFederationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1508,7 +1509,7 @@ Returns the details of all federated database instances in the specified project
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListDataFederationApiRequest
 */
-func (a *DataFederationAPIService) ListDataFederation(ctx context.Context, groupId string) ListDataFederationApiRequest {
+func (a *DataFederationApiService) ListDataFederation(ctx context.Context, groupId string) ListDataFederationApiRequest {
 	return ListDataFederationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1519,7 +1520,7 @@ func (a *DataFederationAPIService) ListDataFederation(ctx context.Context, group
 // ListDataFederationExecute executes the request
 //
 //	@return []DataLakeTenant
-func (a *DataFederationAPIService) ListDataFederationExecute(r ListDataFederationApiRequest) ([]DataLakeTenant, *http.Response, error) {
+func (a *DataFederationApiService) ListDataFederationExecute(r ListDataFederationApiRequest) ([]DataLakeTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1527,7 +1528,7 @@ func (a *DataFederationAPIService) ListDataFederationExecute(r ListDataFederatio
 		localVarReturnValue []DataLakeTenant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationAPIService.ListDataFederation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.ListDataFederation")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1600,7 +1601,7 @@ func (a *DataFederationAPIService) ListDataFederationExecute(r ListDataFederatio
 
 type ListDataFederationLimitsApiRequest struct {
 	ctx        context.Context
-	ApiService DataFederationAPI
+	ApiService DataFederationApi
 	groupId    string
 	tenantName string
 }
@@ -1610,7 +1611,7 @@ type ListDataFederationLimitsApiParams struct {
 	TenantName string
 }
 
-func (a *DataFederationAPIService) ListDataFederationLimitsWithParams(ctx context.Context, args *ListDataFederationLimitsApiParams) ListDataFederationLimitsApiRequest {
+func (a *DataFederationApiService) ListDataFederationLimitsWithParams(ctx context.Context, args *ListDataFederationLimitsApiParams) ListDataFederationLimitsApiRequest {
 	return ListDataFederationLimitsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1633,7 +1634,7 @@ Returns query limits for a federated databases instance in the specified project
 	@param tenantName Human-readable label that identifies the federated database instance for which you want to retrieve query limits.
 	@return ListDataFederationLimitsApiRequest
 */
-func (a *DataFederationAPIService) ListDataFederationLimits(ctx context.Context, groupId string, tenantName string) ListDataFederationLimitsApiRequest {
+func (a *DataFederationApiService) ListDataFederationLimits(ctx context.Context, groupId string, tenantName string) ListDataFederationLimitsApiRequest {
 	return ListDataFederationLimitsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1645,7 +1646,7 @@ func (a *DataFederationAPIService) ListDataFederationLimits(ctx context.Context,
 // ListDataFederationLimitsExecute executes the request
 //
 //	@return []DataFederationTenantQueryLimit
-func (a *DataFederationAPIService) ListDataFederationLimitsExecute(r ListDataFederationLimitsApiRequest) ([]DataFederationTenantQueryLimit, *http.Response, error) {
+func (a *DataFederationApiService) ListDataFederationLimitsExecute(r ListDataFederationLimitsApiRequest) ([]DataFederationTenantQueryLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1653,7 +1654,7 @@ func (a *DataFederationAPIService) ListDataFederationLimitsExecute(r ListDataFed
 		localVarReturnValue []DataFederationTenantQueryLimit
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationAPIService.ListDataFederationLimits")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.ListDataFederationLimits")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1723,7 +1724,7 @@ func (a *DataFederationAPIService) ListDataFederationLimitsExecute(r ListDataFed
 
 type ListPrivateEndpointIdsApiRequest struct {
 	ctx          context.Context
-	ApiService   DataFederationAPI
+	ApiService   DataFederationApi
 	groupId      string
 	includeCount *bool
 	itemsPerPage *int
@@ -1737,7 +1738,7 @@ type ListPrivateEndpointIdsApiParams struct {
 	PageNum      *int
 }
 
-func (a *DataFederationAPIService) ListPrivateEndpointIdsWithParams(ctx context.Context, args *ListPrivateEndpointIdsApiParams) ListPrivateEndpointIdsApiRequest {
+func (a *DataFederationApiService) ListPrivateEndpointIdsWithParams(ctx context.Context, args *ListPrivateEndpointIdsApiParams) ListPrivateEndpointIdsApiRequest {
 	return ListPrivateEndpointIdsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1779,7 +1780,7 @@ Returns all private endpoints for Federated Database Instances and Online Archiv
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListPrivateEndpointIdsApiRequest
 */
-func (a *DataFederationAPIService) ListPrivateEndpointIds(ctx context.Context, groupId string) ListPrivateEndpointIdsApiRequest {
+func (a *DataFederationApiService) ListPrivateEndpointIds(ctx context.Context, groupId string) ListPrivateEndpointIdsApiRequest {
 	return ListPrivateEndpointIdsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1790,7 +1791,7 @@ func (a *DataFederationAPIService) ListPrivateEndpointIds(ctx context.Context, g
 // ListPrivateEndpointIdsExecute executes the request
 //
 //	@return PaginatedPrivateNetworkEndpointIdEntry
-func (a *DataFederationAPIService) ListPrivateEndpointIdsExecute(r ListPrivateEndpointIdsApiRequest) (*PaginatedPrivateNetworkEndpointIdEntry, *http.Response, error) {
+func (a *DataFederationApiService) ListPrivateEndpointIdsExecute(r ListPrivateEndpointIdsApiRequest) (*PaginatedPrivateNetworkEndpointIdEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1798,7 +1799,7 @@ func (a *DataFederationAPIService) ListPrivateEndpointIdsExecute(r ListPrivateEn
 		localVarReturnValue *PaginatedPrivateNetworkEndpointIdEntry
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationAPIService.ListPrivateEndpointIds")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.ListPrivateEndpointIds")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1885,7 +1886,7 @@ func (a *DataFederationAPIService) ListPrivateEndpointIdsExecute(r ListPrivateEn
 
 type SetDataFederationLimitApiRequest struct {
 	ctx                            context.Context
-	ApiService                     DataFederationAPI
+	ApiService                     DataFederationApi
 	groupId                        string
 	tenantName                     string
 	limitName                      string
@@ -1899,7 +1900,7 @@ type SetDataFederationLimitApiParams struct {
 	DataFederationTenantQueryLimit *DataFederationTenantQueryLimit
 }
 
-func (a *DataFederationAPIService) SetDataFederationLimitWithParams(ctx context.Context, args *SetDataFederationLimitApiParams) SetDataFederationLimitApiRequest {
+func (a *DataFederationApiService) SetDataFederationLimitWithParams(ctx context.Context, args *SetDataFederationLimitApiParams) SetDataFederationLimitApiRequest {
 	return SetDataFederationLimitApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
@@ -1925,7 +1926,7 @@ Creates or updates one query limit for one federated database instance.
 	@param limitName Human-readable label that identifies this data federation instance limit.  | Limit Name | Description | Default | | --- | --- | --- | | `bytesProcessed.query` | Limit on the number of bytes processed during a single data federation query | N/A | | `bytesProcessed.daily` | Limit on the number of bytes processed for the data federation instance for the current day | N/A | | `bytesProcessed.weekly` | Limit on the number of bytes processed for the data federation instance for the current week | N/A | | `bytesProcessed.monthly` | Limit on the number of bytes processed for the data federation instance for the current month | N/A |
 	@return SetDataFederationLimitApiRequest
 */
-func (a *DataFederationAPIService) SetDataFederationLimit(ctx context.Context, groupId string, tenantName string, limitName string, dataFederationTenantQueryLimit *DataFederationTenantQueryLimit) SetDataFederationLimitApiRequest {
+func (a *DataFederationApiService) SetDataFederationLimit(ctx context.Context, groupId string, tenantName string, limitName string, dataFederationTenantQueryLimit *DataFederationTenantQueryLimit) SetDataFederationLimitApiRequest {
 	return SetDataFederationLimitApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
@@ -1939,7 +1940,7 @@ func (a *DataFederationAPIService) SetDataFederationLimit(ctx context.Context, g
 // SetDataFederationLimitExecute executes the request
 //
 //	@return DataFederationTenantQueryLimit
-func (a *DataFederationAPIService) SetDataFederationLimitExecute(r SetDataFederationLimitApiRequest) (*DataFederationTenantQueryLimit, *http.Response, error) {
+func (a *DataFederationApiService) SetDataFederationLimitExecute(r SetDataFederationLimitApiRequest) (*DataFederationTenantQueryLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -1947,7 +1948,7 @@ func (a *DataFederationAPIService) SetDataFederationLimitExecute(r SetDataFedera
 		localVarReturnValue *DataFederationTenantQueryLimit
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationAPIService.SetDataFederationLimit")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.SetDataFederationLimit")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2026,7 +2027,7 @@ func (a *DataFederationAPIService) SetDataFederationLimitExecute(r SetDataFedera
 
 type UpdateDataFederationApiRequest struct {
 	ctx                context.Context
-	ApiService         DataFederationAPI
+	ApiService         DataFederationApi
 	groupId            string
 	tenantName         string
 	skipRoleValidation *bool
@@ -2040,7 +2041,7 @@ type UpdateDataFederationApiParams struct {
 	DataLakeTenant     *DataLakeTenant
 }
 
-func (a *DataFederationAPIService) UpdateDataFederationWithParams(ctx context.Context, args *UpdateDataFederationApiParams) UpdateDataFederationApiRequest {
+func (a *DataFederationApiService) UpdateDataFederationWithParams(ctx context.Context, args *UpdateDataFederationApiParams) UpdateDataFederationApiRequest {
 	return UpdateDataFederationApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -2071,7 +2072,7 @@ Updates the details of one federated database instance in the specified project.
 	@param tenantName Human-readable label that identifies the federated database instance to update.
 	@return UpdateDataFederationApiRequest
 */
-func (a *DataFederationAPIService) UpdateDataFederation(ctx context.Context, groupId string, tenantName string, dataLakeTenant *DataLakeTenant) UpdateDataFederationApiRequest {
+func (a *DataFederationApiService) UpdateDataFederation(ctx context.Context, groupId string, tenantName string, dataLakeTenant *DataLakeTenant) UpdateDataFederationApiRequest {
 	return UpdateDataFederationApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -2084,7 +2085,7 @@ func (a *DataFederationAPIService) UpdateDataFederation(ctx context.Context, gro
 // UpdateDataFederationExecute executes the request
 //
 //	@return DataLakeTenant
-func (a *DataFederationAPIService) UpdateDataFederationExecute(r UpdateDataFederationApiRequest) (*DataLakeTenant, *http.Response, error) {
+func (a *DataFederationApiService) UpdateDataFederationExecute(r UpdateDataFederationApiRequest) (*DataLakeTenant, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -2092,7 +2093,7 @@ func (a *DataFederationAPIService) UpdateDataFederationExecute(r UpdateDataFeder
 		localVarReturnValue *DataLakeTenant
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationAPIService.UpdateDataFederation")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DataFederationApiService.UpdateDataFederation")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -10,7 +11,7 @@ import (
 	"strings"
 )
 
-type ClustersAPI interface {
+type ClustersApi interface {
 
 	/*
 		AutoScalingConfiguration Return Auto Scaling Configuration for One Sharded Cluster
@@ -22,7 +23,7 @@ type ClustersAPI interface {
 		@param clusterName Human-readable label that identifies this cluster.
 		@return AutoScalingConfigurationApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	AutoScalingConfiguration(ctx context.Context, groupId string, clusterName string) AutoScalingConfigurationApiRequest
 	/*
@@ -33,7 +34,7 @@ type ClustersAPI interface {
 		@param AutoScalingConfigurationApiParams - Parameters for the request
 		@return AutoScalingConfigurationApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	AutoScalingConfigurationWithParams(ctx context.Context, args *AutoScalingConfigurationApiParams) AutoScalingConfigurationApiRequest
 
@@ -468,7 +469,7 @@ type ClustersAPI interface {
 			@param serverlessInstanceDescription Details of the shared-tier cluster upgrade in the specified project.
 			@return UpgradeClusterToServerlessApiRequest
 
-			Deprecated: this method has been deprecated. Please check the latest resource version for ClustersAPI
+			Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	UpgradeClusterToServerless(ctx context.Context, groupId string, serverlessInstanceDescription *ServerlessInstanceDescription) UpgradeClusterToServerlessApiRequest
 	/*
@@ -479,7 +480,7 @@ type ClustersAPI interface {
 		@param UpgradeClusterToServerlessApiParams - Parameters for the request
 		@return UpgradeClusterToServerlessApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ClustersApi
 	*/
 	UpgradeClusterToServerlessWithParams(ctx context.Context, args *UpgradeClusterToServerlessApiParams) UpgradeClusterToServerlessApiRequest
 
@@ -537,12 +538,12 @@ type ClustersAPI interface {
 	ValidateGroupClusterConfigurationsExecute(r ValidateGroupClusterConfigurationsApiRequest) (*ClusterConfigurationValidationResult, *http.Response, error)
 }
 
-// ClustersAPIService ClustersAPI service
-type ClustersAPIService service
+// ClustersApiService ClustersApi service
+type ClustersApiService service
 
 type AutoScalingConfigurationApiRequest struct {
 	ctx         context.Context
-	ApiService  ClustersAPI
+	ApiService  ClustersApi
 	groupId     string
 	clusterName string
 }
@@ -552,7 +553,7 @@ type AutoScalingConfigurationApiParams struct {
 	ClusterName string
 }
 
-func (a *ClustersAPIService) AutoScalingConfigurationWithParams(ctx context.Context, args *AutoScalingConfigurationApiParams) AutoScalingConfigurationApiRequest {
+func (a *ClustersApiService) AutoScalingConfigurationWithParams(ctx context.Context, args *AutoScalingConfigurationApiParams) AutoScalingConfigurationApiRequest {
 	return AutoScalingConfigurationApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -577,7 +578,7 @@ Returns the internal configuration of AutoScaling for sharded clusters. This end
 
 Deprecated
 */
-func (a *ClustersAPIService) AutoScalingConfiguration(ctx context.Context, groupId string, clusterName string) AutoScalingConfigurationApiRequest {
+func (a *ClustersApiService) AutoScalingConfiguration(ctx context.Context, groupId string, clusterName string) AutoScalingConfigurationApiRequest {
 	return AutoScalingConfigurationApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -591,7 +592,7 @@ func (a *ClustersAPIService) AutoScalingConfiguration(ctx context.Context, group
 //	@return ClusterDescriptionAutoScalingModeConfiguration
 //
 // Deprecated
-func (a *ClustersAPIService) AutoScalingConfigurationExecute(r AutoScalingConfigurationApiRequest) (*ClusterDescriptionAutoScalingModeConfiguration, *http.Response, error) {
+func (a *ClustersApiService) AutoScalingConfigurationExecute(r AutoScalingConfigurationApiRequest) (*ClusterDescriptionAutoScalingModeConfiguration, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -599,7 +600,7 @@ func (a *ClustersAPIService) AutoScalingConfigurationExecute(r AutoScalingConfig
 		localVarReturnValue *ClusterDescriptionAutoScalingModeConfiguration
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.AutoScalingConfiguration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.AutoScalingConfiguration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -669,7 +670,7 @@ func (a *ClustersAPIService) AutoScalingConfigurationExecute(r AutoScalingConfig
 
 type CreateClusterApiRequest struct {
 	ctx                                context.Context
-	ApiService                         ClustersAPI
+	ApiService                         ClustersApi
 	groupId                            string
 	clusterDescription20240805         *ClusterDescription20240805
 	useEffectiveInstanceFields         *bool
@@ -683,7 +684,7 @@ type CreateClusterApiParams struct {
 	UseEffectiveFieldsReplicationSpecs *bool
 }
 
-func (a *ClustersAPIService) CreateClusterWithParams(ctx context.Context, args *CreateClusterApiParams) CreateClusterApiRequest {
+func (a *ClustersApiService) CreateClusterWithParams(ctx context.Context, args *CreateClusterApiParams) CreateClusterApiRequest {
 	return CreateClusterApiRequest{
 		ApiService:                         a,
 		ctx:                                ctx,
@@ -721,7 +722,7 @@ Please note that using an `instanceSize` of M2 or M5 will create a Flex cluster 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateClusterApiRequest
 */
-func (a *ClustersAPIService) CreateCluster(ctx context.Context, groupId string, clusterDescription20240805 *ClusterDescription20240805) CreateClusterApiRequest {
+func (a *ClustersApiService) CreateCluster(ctx context.Context, groupId string, clusterDescription20240805 *ClusterDescription20240805) CreateClusterApiRequest {
 	return CreateClusterApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
@@ -733,7 +734,7 @@ func (a *ClustersAPIService) CreateCluster(ctx context.Context, groupId string, 
 // CreateClusterExecute executes the request
 //
 //	@return ClusterDescription20240805
-func (a *ClustersAPIService) CreateClusterExecute(r CreateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
+func (a *ClustersApiService) CreateClusterExecute(r CreateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -741,7 +742,7 @@ func (a *ClustersAPIService) CreateClusterExecute(r CreateClusterApiRequest) (*C
 		localVarReturnValue *ClusterDescription20240805
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.CreateCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.CreateCluster")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -818,7 +819,7 @@ func (a *ClustersAPIService) CreateClusterExecute(r CreateClusterApiRequest) (*C
 
 type DeleteClusterApiRequest struct {
 	ctx           context.Context
-	ApiService    ClustersAPI
+	ApiService    ClustersApi
 	groupId       string
 	clusterName   string
 	retainBackups *bool
@@ -830,7 +831,7 @@ type DeleteClusterApiParams struct {
 	RetainBackups *bool
 }
 
-func (a *ClustersAPIService) DeleteClusterWithParams(ctx context.Context, args *DeleteClusterApiParams) DeleteClusterApiRequest {
+func (a *ClustersApiService) DeleteClusterWithParams(ctx context.Context, args *DeleteClusterApiParams) DeleteClusterApiRequest {
 	return DeleteClusterApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -862,7 +863,7 @@ This endpoint can also be used on Flex clusters that were created using the [Cre
 	@param clusterName Human-readable label that identifies the cluster.
 	@return DeleteClusterApiRequest
 */
-func (a *ClustersAPIService) DeleteCluster(ctx context.Context, groupId string, clusterName string) DeleteClusterApiRequest {
+func (a *ClustersApiService) DeleteCluster(ctx context.Context, groupId string, clusterName string) DeleteClusterApiRequest {
 	return DeleteClusterApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -872,14 +873,14 @@ func (a *ClustersAPIService) DeleteCluster(ctx context.Context, groupId string, 
 }
 
 // DeleteClusterExecute executes the request
-func (a *ClustersAPIService) DeleteClusterExecute(r DeleteClusterApiRequest) (*http.Response, error) {
+func (a *ClustersApiService) DeleteClusterExecute(r DeleteClusterApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.DeleteCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.DeleteCluster")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -938,7 +939,7 @@ func (a *ClustersAPIService) DeleteClusterExecute(r DeleteClusterApiRequest) (*h
 
 type GetClusterApiRequest struct {
 	ctx                                context.Context
-	ApiService                         ClustersAPI
+	ApiService                         ClustersApi
 	groupId                            string
 	clusterName                        string
 	useEffectiveInstanceFields         *bool
@@ -952,7 +953,7 @@ type GetClusterApiParams struct {
 	UseEffectiveFieldsReplicationSpecs *bool
 }
 
-func (a *ClustersAPIService) GetClusterWithParams(ctx context.Context, args *GetClusterApiParams) GetClusterApiRequest {
+func (a *ClustersApiService) GetClusterWithParams(ctx context.Context, args *GetClusterApiParams) GetClusterApiRequest {
 	return GetClusterApiRequest{
 		ApiService:                         a,
 		ctx:                                ctx,
@@ -991,7 +992,7 @@ This endpoint can also be used on Flex clusters that were created using the [Cre
 	@param clusterName Human-readable label that identifies this cluster.
 	@return GetClusterApiRequest
 */
-func (a *ClustersAPIService) GetCluster(ctx context.Context, groupId string, clusterName string) GetClusterApiRequest {
+func (a *ClustersApiService) GetCluster(ctx context.Context, groupId string, clusterName string) GetClusterApiRequest {
 	return GetClusterApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -1003,7 +1004,7 @@ func (a *ClustersAPIService) GetCluster(ctx context.Context, groupId string, clu
 // GetClusterExecute executes the request
 //
 //	@return ClusterDescription20240805
-func (a *ClustersAPIService) GetClusterExecute(r GetClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
+func (a *ClustersApiService) GetClusterExecute(r GetClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1011,7 +1012,7 @@ func (a *ClustersAPIService) GetClusterExecute(r GetClusterApiRequest) (*Cluster
 		localVarReturnValue *ClusterDescription20240805
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.GetCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetCluster")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1087,7 +1088,7 @@ func (a *ClustersAPIService) GetClusterExecute(r GetClusterApiRequest) (*Cluster
 
 type GetClusterStatusApiRequest struct {
 	ctx         context.Context
-	ApiService  ClustersAPI
+	ApiService  ClustersApi
 	groupId     string
 	clusterName string
 }
@@ -1097,7 +1098,7 @@ type GetClusterStatusApiParams struct {
 	ClusterName string
 }
 
-func (a *ClustersAPIService) GetClusterStatusWithParams(ctx context.Context, args *GetClusterStatusApiParams) GetClusterStatusApiRequest {
+func (a *ClustersApiService) GetClusterStatusWithParams(ctx context.Context, args *GetClusterStatusApiParams) GetClusterStatusApiRequest {
 	return GetClusterStatusApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -1120,7 +1121,7 @@ Returns the status of all changes that you made to the specified cluster in the 
 	@param clusterName Human-readable label that identifies the cluster.
 	@return GetClusterStatusApiRequest
 */
-func (a *ClustersAPIService) GetClusterStatus(ctx context.Context, groupId string, clusterName string) GetClusterStatusApiRequest {
+func (a *ClustersApiService) GetClusterStatus(ctx context.Context, groupId string, clusterName string) GetClusterStatusApiRequest {
 	return GetClusterStatusApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -1132,7 +1133,7 @@ func (a *ClustersAPIService) GetClusterStatus(ctx context.Context, groupId strin
 // GetClusterStatusExecute executes the request
 //
 //	@return ClusterStatus
-func (a *ClustersAPIService) GetClusterStatusExecute(r GetClusterStatusApiRequest) (*ClusterStatus, *http.Response, error) {
+func (a *ClustersApiService) GetClusterStatusExecute(r GetClusterStatusApiRequest) (*ClusterStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1140,7 +1141,7 @@ func (a *ClustersAPIService) GetClusterStatusExecute(r GetClusterStatusApiReques
 		localVarReturnValue *ClusterStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.GetClusterStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetClusterStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1210,7 +1211,7 @@ func (a *ClustersAPIService) GetClusterStatusExecute(r GetClusterStatusApiReques
 
 type GetProcessArgsApiRequest struct {
 	ctx         context.Context
-	ApiService  ClustersAPI
+	ApiService  ClustersApi
 	groupId     string
 	clusterName string
 }
@@ -1220,7 +1221,7 @@ type GetProcessArgsApiParams struct {
 	ClusterName string
 }
 
-func (a *ClustersAPIService) GetProcessArgsWithParams(ctx context.Context, args *GetProcessArgsApiParams) GetProcessArgsApiRequest {
+func (a *ClustersApiService) GetProcessArgsWithParams(ctx context.Context, args *GetProcessArgsApiParams) GetProcessArgsApiRequest {
 	return GetProcessArgsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -1243,7 +1244,7 @@ Returns the advanced configuration details for one cluster in the specified proj
 	@param clusterName Human-readable label that identifies the cluster.
 	@return GetProcessArgsApiRequest
 */
-func (a *ClustersAPIService) GetProcessArgs(ctx context.Context, groupId string, clusterName string) GetProcessArgsApiRequest {
+func (a *ClustersApiService) GetProcessArgs(ctx context.Context, groupId string, clusterName string) GetProcessArgsApiRequest {
 	return GetProcessArgsApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -1255,7 +1256,7 @@ func (a *ClustersAPIService) GetProcessArgs(ctx context.Context, groupId string,
 // GetProcessArgsExecute executes the request
 //
 //	@return ClusterDescriptionProcessArgs20240805
-func (a *ClustersAPIService) GetProcessArgsExecute(r GetProcessArgsApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
+func (a *ClustersApiService) GetProcessArgsExecute(r GetProcessArgsApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1263,7 +1264,7 @@ func (a *ClustersAPIService) GetProcessArgsExecute(r GetProcessArgsApiRequest) (
 		localVarReturnValue *ClusterDescriptionProcessArgs20240805
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.GetProcessArgs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetProcessArgs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1333,7 +1334,7 @@ func (a *ClustersAPIService) GetProcessArgsExecute(r GetProcessArgsApiRequest) (
 
 type GetSampleDatasetLoadApiRequest struct {
 	ctx             context.Context
-	ApiService      ClustersAPI
+	ApiService      ClustersApi
 	groupId         string
 	sampleDatasetId string
 }
@@ -1343,7 +1344,7 @@ type GetSampleDatasetLoadApiParams struct {
 	SampleDatasetId string
 }
 
-func (a *ClustersAPIService) GetSampleDatasetLoadWithParams(ctx context.Context, args *GetSampleDatasetLoadApiParams) GetSampleDatasetLoadApiRequest {
+func (a *ClustersApiService) GetSampleDatasetLoadWithParams(ctx context.Context, args *GetSampleDatasetLoadApiParams) GetSampleDatasetLoadApiRequest {
 	return GetSampleDatasetLoadApiRequest{
 		ApiService:      a,
 		ctx:             ctx,
@@ -1366,7 +1367,7 @@ Checks the progress of loading the sample dataset into one cluster.
 	@param sampleDatasetId Unique 24-hexadecimal digit string that identifies the loaded sample dataset.
 	@return GetSampleDatasetLoadApiRequest
 */
-func (a *ClustersAPIService) GetSampleDatasetLoad(ctx context.Context, groupId string, sampleDatasetId string) GetSampleDatasetLoadApiRequest {
+func (a *ClustersApiService) GetSampleDatasetLoad(ctx context.Context, groupId string, sampleDatasetId string) GetSampleDatasetLoadApiRequest {
 	return GetSampleDatasetLoadApiRequest{
 		ApiService:      a,
 		ctx:             ctx,
@@ -1378,7 +1379,7 @@ func (a *ClustersAPIService) GetSampleDatasetLoad(ctx context.Context, groupId s
 // GetSampleDatasetLoadExecute executes the request
 //
 //	@return SampleDatasetStatus
-func (a *ClustersAPIService) GetSampleDatasetLoadExecute(r GetSampleDatasetLoadApiRequest) (*SampleDatasetStatus, *http.Response, error) {
+func (a *ClustersApiService) GetSampleDatasetLoadExecute(r GetSampleDatasetLoadApiRequest) (*SampleDatasetStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1386,7 +1387,7 @@ func (a *ClustersAPIService) GetSampleDatasetLoadExecute(r GetSampleDatasetLoadA
 		localVarReturnValue *SampleDatasetStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.GetSampleDatasetLoad")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GetSampleDatasetLoad")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1456,7 +1457,7 @@ func (a *ClustersAPIService) GetSampleDatasetLoadExecute(r GetSampleDatasetLoadA
 
 type GrantMongoEmployeeAccessApiRequest struct {
 	ctx                 context.Context
-	ApiService          ClustersAPI
+	ApiService          ClustersApi
 	groupId             string
 	clusterName         string
 	employeeAccessGrant *EmployeeAccessGrant
@@ -1468,7 +1469,7 @@ type GrantMongoEmployeeAccessApiParams struct {
 	EmployeeAccessGrant *EmployeeAccessGrant
 }
 
-func (a *ClustersAPIService) GrantMongoEmployeeAccessWithParams(ctx context.Context, args *GrantMongoEmployeeAccessApiParams) GrantMongoEmployeeAccessApiRequest {
+func (a *ClustersApiService) GrantMongoEmployeeAccessWithParams(ctx context.Context, args *GrantMongoEmployeeAccessApiParams) GrantMongoEmployeeAccessApiRequest {
 	return GrantMongoEmployeeAccessApiRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -1492,7 +1493,7 @@ Grants MongoDB employee cluster access for the given duration and at the specifi
 	@param clusterName Human-readable label that identifies this cluster.
 	@return GrantMongoEmployeeAccessApiRequest
 */
-func (a *ClustersAPIService) GrantMongoEmployeeAccess(ctx context.Context, groupId string, clusterName string, employeeAccessGrant *EmployeeAccessGrant) GrantMongoEmployeeAccessApiRequest {
+func (a *ClustersApiService) GrantMongoEmployeeAccess(ctx context.Context, groupId string, clusterName string, employeeAccessGrant *EmployeeAccessGrant) GrantMongoEmployeeAccessApiRequest {
 	return GrantMongoEmployeeAccessApiRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -1503,14 +1504,14 @@ func (a *ClustersAPIService) GrantMongoEmployeeAccess(ctx context.Context, group
 }
 
 // GrantMongoEmployeeAccessExecute executes the request
-func (a *ClustersAPIService) GrantMongoEmployeeAccessExecute(r GrantMongoEmployeeAccessApiRequest) (*http.Response, error) {
+func (a *ClustersApiService) GrantMongoEmployeeAccessExecute(r GrantMongoEmployeeAccessApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.GrantMongoEmployeeAccess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.GrantMongoEmployeeAccess")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1571,7 +1572,7 @@ func (a *ClustersAPIService) GrantMongoEmployeeAccessExecute(r GrantMongoEmploye
 
 type ListClusterDetailsApiRequest struct {
 	ctx          context.Context
-	ApiService   ClustersAPI
+	ApiService   ClustersApi
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
@@ -1583,7 +1584,7 @@ type ListClusterDetailsApiParams struct {
 	PageNum      *int
 }
 
-func (a *ClustersAPIService) ListClusterDetailsWithParams(ctx context.Context, args *ListClusterDetailsApiParams) ListClusterDetailsApiRequest {
+func (a *ClustersApiService) ListClusterDetailsWithParams(ctx context.Context, args *ListClusterDetailsApiParams) ListClusterDetailsApiRequest {
 	return ListClusterDetailsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1623,7 +1624,7 @@ Returns the details for all clusters in all projects to which you have access. C
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ListClusterDetailsApiRequest
 */
-func (a *ClustersAPIService) ListClusterDetails(ctx context.Context) ListClusterDetailsApiRequest {
+func (a *ClustersApiService) ListClusterDetails(ctx context.Context) ListClusterDetailsApiRequest {
 	return ListClusterDetailsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1633,7 +1634,7 @@ func (a *ClustersAPIService) ListClusterDetails(ctx context.Context) ListCluster
 // ListClusterDetailsExecute executes the request
 //
 //	@return PaginatedOrgGroup
-func (a *ClustersAPIService) ListClusterDetailsExecute(r ListClusterDetailsApiRequest) (*PaginatedOrgGroup, *http.Response, error) {
+func (a *ClustersApiService) ListClusterDetailsExecute(r ListClusterDetailsApiRequest) (*PaginatedOrgGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1641,7 +1642,7 @@ func (a *ClustersAPIService) ListClusterDetailsExecute(r ListClusterDetailsApiRe
 		localVarReturnValue *PaginatedOrgGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.ListClusterDetails")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.ListClusterDetails")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1724,7 +1725,7 @@ func (a *ClustersAPIService) ListClusterDetailsExecute(r ListClusterDetailsApiRe
 
 type ListClusterProviderRegionsApiRequest struct {
 	ctx          context.Context
-	ApiService   ClustersAPI
+	ApiService   ClustersApi
 	groupId      string
 	includeCount *bool
 	itemsPerPage *int
@@ -1742,7 +1743,7 @@ type ListClusterProviderRegionsApiParams struct {
 	Tier         *string
 }
 
-func (a *ClustersAPIService) ListClusterProviderRegionsWithParams(ctx context.Context, args *ListClusterProviderRegionsApiParams) ListClusterProviderRegionsApiRequest {
+func (a *ClustersApiService) ListClusterProviderRegionsWithParams(ctx context.Context, args *ListClusterProviderRegionsApiParams) ListClusterProviderRegionsApiRequest {
 	return ListClusterProviderRegionsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1798,7 +1799,7 @@ Returns the list of regions available for the specified cloud provider at the sp
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListClusterProviderRegionsApiRequest
 */
-func (a *ClustersAPIService) ListClusterProviderRegions(ctx context.Context, groupId string) ListClusterProviderRegionsApiRequest {
+func (a *ClustersApiService) ListClusterProviderRegions(ctx context.Context, groupId string) ListClusterProviderRegionsApiRequest {
 	return ListClusterProviderRegionsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1809,7 +1810,7 @@ func (a *ClustersAPIService) ListClusterProviderRegions(ctx context.Context, gro
 // ListClusterProviderRegionsExecute executes the request
 //
 //	@return PaginatedApiAtlasProviderRegions
-func (a *ClustersAPIService) ListClusterProviderRegionsExecute(r ListClusterProviderRegionsApiRequest) (*PaginatedApiAtlasProviderRegions, *http.Response, error) {
+func (a *ClustersApiService) ListClusterProviderRegionsExecute(r ListClusterProviderRegionsApiRequest) (*PaginatedApiAtlasProviderRegions, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1817,7 +1818,7 @@ func (a *ClustersAPIService) ListClusterProviderRegionsExecute(r ListClusterProv
 		localVarReturnValue *PaginatedApiAtlasProviderRegions
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.ListClusterProviderRegions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.ListClusterProviderRegions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1914,7 +1915,7 @@ func (a *ClustersAPIService) ListClusterProviderRegionsExecute(r ListClusterProv
 
 type ListClustersApiRequest struct {
 	ctx                               context.Context
-	ApiService                        ClustersAPI
+	ApiService                        ClustersApi
 	groupId                           string
 	includeCount                      *bool
 	itemsPerPage                      *int
@@ -1932,7 +1933,7 @@ type ListClustersApiParams struct {
 	UseEffectiveInstanceFields        *bool
 }
 
-func (a *ClustersAPIService) ListClustersWithParams(ctx context.Context, args *ListClustersApiParams) ListClustersApiRequest {
+func (a *ClustersApiService) ListClustersWithParams(ctx context.Context, args *ListClustersApiParams) ListClustersApiRequest {
 	return ListClustersApiRequest{
 		ApiService:                        a,
 		ctx:                               ctx,
@@ -1990,7 +1991,7 @@ This endpoint can also be used on Flex clusters that were created using the [Cre
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListClustersApiRequest
 */
-func (a *ClustersAPIService) ListClusters(ctx context.Context, groupId string) ListClustersApiRequest {
+func (a *ClustersApiService) ListClusters(ctx context.Context, groupId string) ListClustersApiRequest {
 	return ListClustersApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2001,7 +2002,7 @@ func (a *ClustersAPIService) ListClusters(ctx context.Context, groupId string) L
 // ListClustersExecute executes the request
 //
 //	@return PaginatedClusterDescription20240805
-func (a *ClustersAPIService) ListClustersExecute(r ListClustersApiRequest) (*PaginatedClusterDescription20240805, *http.Response, error) {
+func (a *ClustersApiService) ListClustersExecute(r ListClustersApiRequest) (*PaginatedClusterDescription20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2009,7 +2010,7 @@ func (a *ClustersAPIService) ListClustersExecute(r ListClustersApiRequest) (*Pag
 		localVarReturnValue *PaginatedClusterDescription20240805
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.ListClusters")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.ListClusters")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2106,7 +2107,7 @@ func (a *ClustersAPIService) ListClustersExecute(r ListClustersApiRequest) (*Pag
 
 type PinFeatureCompatibilityVersionApiRequest struct {
 	ctx         context.Context
-	ApiService  ClustersAPI
+	ApiService  ClustersApi
 	groupId     string
 	clusterName string
 	pinFCV      *PinFCV
@@ -2118,7 +2119,7 @@ type PinFeatureCompatibilityVersionApiParams struct {
 	PinFCV      *PinFCV
 }
 
-func (a *ClustersAPIService) PinFeatureCompatibilityVersionWithParams(ctx context.Context, args *PinFeatureCompatibilityVersionApiParams) PinFeatureCompatibilityVersionApiRequest {
+func (a *ClustersApiService) PinFeatureCompatibilityVersionWithParams(ctx context.Context, args *PinFeatureCompatibilityVersionApiParams) PinFeatureCompatibilityVersionApiRequest {
 	return PinFeatureCompatibilityVersionApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -2142,7 +2143,7 @@ Pins the Feature Compatibility Version (FCV) to the current MongoDB version and 
 	@param clusterName Human-readable label that identifies this cluster.
 	@return PinFeatureCompatibilityVersionApiRequest
 */
-func (a *ClustersAPIService) PinFeatureCompatibilityVersion(ctx context.Context, groupId string, clusterName string, pinFCV *PinFCV) PinFeatureCompatibilityVersionApiRequest {
+func (a *ClustersApiService) PinFeatureCompatibilityVersion(ctx context.Context, groupId string, clusterName string, pinFCV *PinFCV) PinFeatureCompatibilityVersionApiRequest {
 	return PinFeatureCompatibilityVersionApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -2153,14 +2154,14 @@ func (a *ClustersAPIService) PinFeatureCompatibilityVersion(ctx context.Context,
 }
 
 // PinFeatureCompatibilityVersionExecute executes the request
-func (a *ClustersAPIService) PinFeatureCompatibilityVersionExecute(r PinFeatureCompatibilityVersionApiRequest) (*http.Response, error) {
+func (a *ClustersApiService) PinFeatureCompatibilityVersionExecute(r PinFeatureCompatibilityVersionApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.PinFeatureCompatibilityVersion")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.PinFeatureCompatibilityVersion")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2218,7 +2219,7 @@ func (a *ClustersAPIService) PinFeatureCompatibilityVersionExecute(r PinFeatureC
 
 type RequestSampleDatasetLoadApiRequest struct {
 	ctx        context.Context
-	ApiService ClustersAPI
+	ApiService ClustersApi
 	groupId    string
 	name       string
 }
@@ -2228,7 +2229,7 @@ type RequestSampleDatasetLoadApiParams struct {
 	Name    string
 }
 
-func (a *ClustersAPIService) RequestSampleDatasetLoadWithParams(ctx context.Context, args *RequestSampleDatasetLoadApiParams) RequestSampleDatasetLoadApiRequest {
+func (a *ClustersApiService) RequestSampleDatasetLoadWithParams(ctx context.Context, args *RequestSampleDatasetLoadApiParams) RequestSampleDatasetLoadApiRequest {
 	return RequestSampleDatasetLoadApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2251,7 +2252,7 @@ Requests loading the MongoDB sample dataset into the specified cluster.
 	@param name Human-readable label that identifies the cluster into which you load the sample dataset.
 	@return RequestSampleDatasetLoadApiRequest
 */
-func (a *ClustersAPIService) RequestSampleDatasetLoad(ctx context.Context, groupId string, name string) RequestSampleDatasetLoadApiRequest {
+func (a *ClustersApiService) RequestSampleDatasetLoad(ctx context.Context, groupId string, name string) RequestSampleDatasetLoadApiRequest {
 	return RequestSampleDatasetLoadApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2263,7 +2264,7 @@ func (a *ClustersAPIService) RequestSampleDatasetLoad(ctx context.Context, group
 // RequestSampleDatasetLoadExecute executes the request
 //
 //	@return SampleDatasetStatus
-func (a *ClustersAPIService) RequestSampleDatasetLoadExecute(r RequestSampleDatasetLoadApiRequest) (*SampleDatasetStatus, *http.Response, error) {
+func (a *ClustersApiService) RequestSampleDatasetLoadExecute(r RequestSampleDatasetLoadApiRequest) (*SampleDatasetStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -2271,7 +2272,7 @@ func (a *ClustersAPIService) RequestSampleDatasetLoadExecute(r RequestSampleData
 		localVarReturnValue *SampleDatasetStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.RequestSampleDatasetLoad")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.RequestSampleDatasetLoad")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2341,7 +2342,7 @@ func (a *ClustersAPIService) RequestSampleDatasetLoadExecute(r RequestSampleData
 
 type RestartPrimariesApiRequest struct {
 	ctx         context.Context
-	ApiService  ClustersAPI
+	ApiService  ClustersApi
 	groupId     string
 	clusterName string
 }
@@ -2351,7 +2352,7 @@ type RestartPrimariesApiParams struct {
 	ClusterName string
 }
 
-func (a *ClustersAPIService) RestartPrimariesWithParams(ctx context.Context, args *RestartPrimariesApiParams) RestartPrimariesApiRequest {
+func (a *ClustersApiService) RestartPrimariesWithParams(ctx context.Context, args *RestartPrimariesApiParams) RestartPrimariesApiRequest {
 	return RestartPrimariesApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -2374,7 +2375,7 @@ Starts a failover test for the specified cluster in the specified project. Clust
 	@param clusterName Human-readable label that identifies the cluster.
 	@return RestartPrimariesApiRequest
 */
-func (a *ClustersAPIService) RestartPrimaries(ctx context.Context, groupId string, clusterName string) RestartPrimariesApiRequest {
+func (a *ClustersApiService) RestartPrimaries(ctx context.Context, groupId string, clusterName string) RestartPrimariesApiRequest {
 	return RestartPrimariesApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -2384,14 +2385,14 @@ func (a *ClustersAPIService) RestartPrimaries(ctx context.Context, groupId strin
 }
 
 // RestartPrimariesExecute executes the request
-func (a *ClustersAPIService) RestartPrimariesExecute(r RestartPrimariesApiRequest) (*http.Response, error) {
+func (a *ClustersApiService) RestartPrimariesExecute(r RestartPrimariesApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.RestartPrimaries")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.RestartPrimaries")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2447,7 +2448,7 @@ func (a *ClustersAPIService) RestartPrimariesExecute(r RestartPrimariesApiReques
 
 type RevokeMongoEmployeeAccessApiRequest struct {
 	ctx         context.Context
-	ApiService  ClustersAPI
+	ApiService  ClustersApi
 	groupId     string
 	clusterName string
 }
@@ -2457,7 +2458,7 @@ type RevokeMongoEmployeeAccessApiParams struct {
 	ClusterName string
 }
 
-func (a *ClustersAPIService) RevokeMongoEmployeeAccessWithParams(ctx context.Context, args *RevokeMongoEmployeeAccessApiParams) RevokeMongoEmployeeAccessApiRequest {
+func (a *ClustersApiService) RevokeMongoEmployeeAccessWithParams(ctx context.Context, args *RevokeMongoEmployeeAccessApiParams) RevokeMongoEmployeeAccessApiRequest {
 	return RevokeMongoEmployeeAccessApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -2480,7 +2481,7 @@ Revokes a previously granted MongoDB employee cluster access.
 	@param clusterName Human-readable label that identifies this cluster.
 	@return RevokeMongoEmployeeAccessApiRequest
 */
-func (a *ClustersAPIService) RevokeMongoEmployeeAccess(ctx context.Context, groupId string, clusterName string) RevokeMongoEmployeeAccessApiRequest {
+func (a *ClustersApiService) RevokeMongoEmployeeAccess(ctx context.Context, groupId string, clusterName string) RevokeMongoEmployeeAccessApiRequest {
 	return RevokeMongoEmployeeAccessApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -2490,14 +2491,14 @@ func (a *ClustersAPIService) RevokeMongoEmployeeAccess(ctx context.Context, grou
 }
 
 // RevokeMongoEmployeeAccessExecute executes the request
-func (a *ClustersAPIService) RevokeMongoEmployeeAccessExecute(r RevokeMongoEmployeeAccessApiRequest) (*http.Response, error) {
+func (a *ClustersApiService) RevokeMongoEmployeeAccessExecute(r RevokeMongoEmployeeAccessApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.RevokeMongoEmployeeAccess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.RevokeMongoEmployeeAccess")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2553,7 +2554,7 @@ func (a *ClustersAPIService) RevokeMongoEmployeeAccessExecute(r RevokeMongoEmplo
 
 type UnpinFeatureCompatibilityVersionApiRequest struct {
 	ctx         context.Context
-	ApiService  ClustersAPI
+	ApiService  ClustersApi
 	groupId     string
 	clusterName string
 }
@@ -2563,7 +2564,7 @@ type UnpinFeatureCompatibilityVersionApiParams struct {
 	ClusterName string
 }
 
-func (a *ClustersAPIService) UnpinFeatureCompatibilityVersionWithParams(ctx context.Context, args *UnpinFeatureCompatibilityVersionApiParams) UnpinFeatureCompatibilityVersionApiRequest {
+func (a *ClustersApiService) UnpinFeatureCompatibilityVersionWithParams(ctx context.Context, args *UnpinFeatureCompatibilityVersionApiParams) UnpinFeatureCompatibilityVersionApiRequest {
 	return UnpinFeatureCompatibilityVersionApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -2586,7 +2587,7 @@ Unpins the current fixed Feature Compatibility Version (FCV). This feature is no
 	@param clusterName Human-readable label that identifies this cluster.
 	@return UnpinFeatureCompatibilityVersionApiRequest
 */
-func (a *ClustersAPIService) UnpinFeatureCompatibilityVersion(ctx context.Context, groupId string, clusterName string) UnpinFeatureCompatibilityVersionApiRequest {
+func (a *ClustersApiService) UnpinFeatureCompatibilityVersion(ctx context.Context, groupId string, clusterName string) UnpinFeatureCompatibilityVersionApiRequest {
 	return UnpinFeatureCompatibilityVersionApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -2596,14 +2597,14 @@ func (a *ClustersAPIService) UnpinFeatureCompatibilityVersion(ctx context.Contex
 }
 
 // UnpinFeatureCompatibilityVersionExecute executes the request
-func (a *ClustersAPIService) UnpinFeatureCompatibilityVersionExecute(r UnpinFeatureCompatibilityVersionApiRequest) (*http.Response, error) {
+func (a *ClustersApiService) UnpinFeatureCompatibilityVersionExecute(r UnpinFeatureCompatibilityVersionApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.UnpinFeatureCompatibilityVersion")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UnpinFeatureCompatibilityVersion")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2659,7 +2660,7 @@ func (a *ClustersAPIService) UnpinFeatureCompatibilityVersionExecute(r UnpinFeat
 
 type UpdateClusterApiRequest struct {
 	ctx                                context.Context
-	ApiService                         ClustersAPI
+	ApiService                         ClustersApi
 	groupId                            string
 	clusterName                        string
 	clusterDescription20240805         *ClusterDescription20240805
@@ -2675,7 +2676,7 @@ type UpdateClusterApiParams struct {
 	UseEffectiveFieldsReplicationSpecs *bool
 }
 
-func (a *ClustersAPIService) UpdateClusterWithParams(ctx context.Context, args *UpdateClusterApiParams) UpdateClusterApiRequest {
+func (a *ClustersApiService) UpdateClusterWithParams(ctx context.Context, args *UpdateClusterApiParams) UpdateClusterApiRequest {
 	return UpdateClusterApiRequest{
 		ApiService:                         a,
 		ctx:                                ctx,
@@ -2713,7 +2714,7 @@ Updates the details for one cluster in the specified project. Clusters contain a
 	@param clusterName Human-readable label that identifies the cluster.
 	@return UpdateClusterApiRequest
 */
-func (a *ClustersAPIService) UpdateCluster(ctx context.Context, groupId string, clusterName string, clusterDescription20240805 *ClusterDescription20240805) UpdateClusterApiRequest {
+func (a *ClustersApiService) UpdateCluster(ctx context.Context, groupId string, clusterName string, clusterDescription20240805 *ClusterDescription20240805) UpdateClusterApiRequest {
 	return UpdateClusterApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
@@ -2726,7 +2727,7 @@ func (a *ClustersAPIService) UpdateCluster(ctx context.Context, groupId string, 
 // UpdateClusterExecute executes the request
 //
 //	@return ClusterDescription20240805
-func (a *ClustersAPIService) UpdateClusterExecute(r UpdateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
+func (a *ClustersApiService) UpdateClusterExecute(r UpdateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -2734,7 +2735,7 @@ func (a *ClustersAPIService) UpdateClusterExecute(r UpdateClusterApiRequest) (*C
 		localVarReturnValue *ClusterDescription20240805
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.UpdateCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UpdateCluster")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2815,7 +2816,7 @@ func (a *ClustersAPIService) UpdateClusterExecute(r UpdateClusterApiRequest) (*C
 
 type UpdateProcessArgsApiRequest struct {
 	ctx                                   context.Context
-	ApiService                            ClustersAPI
+	ApiService                            ClustersApi
 	groupId                               string
 	clusterName                           string
 	clusterDescriptionProcessArgs20240805 *ClusterDescriptionProcessArgs20240805
@@ -2827,7 +2828,7 @@ type UpdateProcessArgsApiParams struct {
 	ClusterDescriptionProcessArgs20240805 *ClusterDescriptionProcessArgs20240805
 }
 
-func (a *ClustersAPIService) UpdateProcessArgsWithParams(ctx context.Context, args *UpdateProcessArgsApiParams) UpdateProcessArgsApiRequest {
+func (a *ClustersApiService) UpdateProcessArgsWithParams(ctx context.Context, args *UpdateProcessArgsApiParams) UpdateProcessArgsApiRequest {
 	return UpdateProcessArgsApiRequest{
 		ApiService:                            a,
 		ctx:                                   ctx,
@@ -2851,7 +2852,7 @@ Updates the advanced configuration details for one cluster in the specified proj
 	@param clusterName Human-readable label that identifies the cluster.
 	@return UpdateProcessArgsApiRequest
 */
-func (a *ClustersAPIService) UpdateProcessArgs(ctx context.Context, groupId string, clusterName string, clusterDescriptionProcessArgs20240805 *ClusterDescriptionProcessArgs20240805) UpdateProcessArgsApiRequest {
+func (a *ClustersApiService) UpdateProcessArgs(ctx context.Context, groupId string, clusterName string, clusterDescriptionProcessArgs20240805 *ClusterDescriptionProcessArgs20240805) UpdateProcessArgsApiRequest {
 	return UpdateProcessArgsApiRequest{
 		ApiService:                            a,
 		ctx:                                   ctx,
@@ -2864,7 +2865,7 @@ func (a *ClustersAPIService) UpdateProcessArgs(ctx context.Context, groupId stri
 // UpdateProcessArgsExecute executes the request
 //
 //	@return ClusterDescriptionProcessArgs20240805
-func (a *ClustersAPIService) UpdateProcessArgsExecute(r UpdateProcessArgsApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
+func (a *ClustersApiService) UpdateProcessArgsExecute(r UpdateProcessArgsApiRequest) (*ClusterDescriptionProcessArgs20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -2872,7 +2873,7 @@ func (a *ClustersAPIService) UpdateProcessArgsExecute(r UpdateProcessArgsApiRequ
 		localVarReturnValue *ClusterDescriptionProcessArgs20240805
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.UpdateProcessArgs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UpdateProcessArgs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2947,7 +2948,7 @@ func (a *ClustersAPIService) UpdateProcessArgsExecute(r UpdateProcessArgsApiRequ
 
 type UpgradeClusterToServerlessApiRequest struct {
 	ctx                           context.Context
-	ApiService                    ClustersAPI
+	ApiService                    ClustersApi
 	groupId                       string
 	serverlessInstanceDescription *ServerlessInstanceDescription
 }
@@ -2957,7 +2958,7 @@ type UpgradeClusterToServerlessApiParams struct {
 	ServerlessInstanceDescription *ServerlessInstanceDescription
 }
 
-func (a *ClustersAPIService) UpgradeClusterToServerlessWithParams(ctx context.Context, args *UpgradeClusterToServerlessApiParams) UpgradeClusterToServerlessApiRequest {
+func (a *ClustersApiService) UpgradeClusterToServerlessWithParams(ctx context.Context, args *UpgradeClusterToServerlessApiParams) UpgradeClusterToServerlessApiRequest {
 	return UpgradeClusterToServerlessApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -2983,7 +2984,7 @@ This endpoint has been deprecated as of February 2025 as we no longer support th
 
 Deprecated
 */
-func (a *ClustersAPIService) UpgradeClusterToServerless(ctx context.Context, groupId string, serverlessInstanceDescription *ServerlessInstanceDescription) UpgradeClusterToServerlessApiRequest {
+func (a *ClustersApiService) UpgradeClusterToServerless(ctx context.Context, groupId string, serverlessInstanceDescription *ServerlessInstanceDescription) UpgradeClusterToServerlessApiRequest {
 	return UpgradeClusterToServerlessApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -2997,7 +2998,7 @@ func (a *ClustersAPIService) UpgradeClusterToServerless(ctx context.Context, gro
 //	@return ServerlessInstanceDescription
 //
 // Deprecated
-func (a *ClustersAPIService) UpgradeClusterToServerlessExecute(r UpgradeClusterToServerlessApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
+func (a *ClustersApiService) UpgradeClusterToServerlessExecute(r UpgradeClusterToServerlessApiRequest) (*ServerlessInstanceDescription, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -3005,7 +3006,7 @@ func (a *ClustersAPIService) UpgradeClusterToServerlessExecute(r UpgradeClusterT
 		localVarReturnValue *ServerlessInstanceDescription
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.UpgradeClusterToServerless")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UpgradeClusterToServerless")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3076,7 +3077,7 @@ func (a *ClustersAPIService) UpgradeClusterToServerlessExecute(r UpgradeClusterT
 
 type UpgradeTenantUpgradeApiRequest struct {
 	ctx                                    context.Context
-	ApiService                             ClustersAPI
+	ApiService                             ClustersApi
 	groupId                                string
 	legacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest
 }
@@ -3086,7 +3087,7 @@ type UpgradeTenantUpgradeApiParams struct {
 	LegacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest
 }
 
-func (a *ClustersAPIService) UpgradeTenantUpgradeWithParams(ctx context.Context, args *UpgradeTenantUpgradeApiParams) UpgradeTenantUpgradeApiRequest {
+func (a *ClustersApiService) UpgradeTenantUpgradeWithParams(ctx context.Context, args *UpgradeTenantUpgradeApiParams) UpgradeTenantUpgradeApiRequest {
 	return UpgradeTenantUpgradeApiRequest{
 		ApiService:                             a,
 		ctx:                                    ctx,
@@ -3110,7 +3111,7 @@ This endpoint can also be used to upgrade Flex clusters that were created using 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpgradeTenantUpgradeApiRequest
 */
-func (a *ClustersAPIService) UpgradeTenantUpgrade(ctx context.Context, groupId string, legacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest) UpgradeTenantUpgradeApiRequest {
+func (a *ClustersApiService) UpgradeTenantUpgrade(ctx context.Context, groupId string, legacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest) UpgradeTenantUpgradeApiRequest {
 	return UpgradeTenantUpgradeApiRequest{
 		ApiService:                             a,
 		ctx:                                    ctx,
@@ -3122,7 +3123,7 @@ func (a *ClustersAPIService) UpgradeTenantUpgrade(ctx context.Context, groupId s
 // UpgradeTenantUpgradeExecute executes the request
 //
 //	@return LegacyAtlasCluster
-func (a *ClustersAPIService) UpgradeTenantUpgradeExecute(r UpgradeTenantUpgradeApiRequest) (*LegacyAtlasCluster, *http.Response, error) {
+func (a *ClustersApiService) UpgradeTenantUpgradeExecute(r UpgradeTenantUpgradeApiRequest) (*LegacyAtlasCluster, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -3130,7 +3131,7 @@ func (a *ClustersAPIService) UpgradeTenantUpgradeExecute(r UpgradeTenantUpgradeA
 		localVarReturnValue *LegacyAtlasCluster
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.UpgradeTenantUpgrade")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.UpgradeTenantUpgrade")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3201,7 +3202,7 @@ func (a *ClustersAPIService) UpgradeTenantUpgradeExecute(r UpgradeTenantUpgradeA
 
 type ValidateGroupClusterConfigurationsApiRequest struct {
 	ctx                            context.Context
-	ApiService                     ClustersAPI
+	ApiService                     ClustersApi
 	groupId                        string
 	clusterConfigurationValidation *ClusterConfigurationValidation
 }
@@ -3211,7 +3212,7 @@ type ValidateGroupClusterConfigurationsApiParams struct {
 	ClusterConfigurationValidation *ClusterConfigurationValidation
 }
 
-func (a *ClustersAPIService) ValidateGroupClusterConfigurationsWithParams(ctx context.Context, args *ValidateGroupClusterConfigurationsApiParams) ValidateGroupClusterConfigurationsApiRequest {
+func (a *ClustersApiService) ValidateGroupClusterConfigurationsWithParams(ctx context.Context, args *ValidateGroupClusterConfigurationsApiParams) ValidateGroupClusterConfigurationsApiRequest {
 	return ValidateGroupClusterConfigurationsApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
@@ -3233,7 +3234,7 @@ Checks if the given cluster configuration is valid and ready to be used to creat
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ValidateGroupClusterConfigurationsApiRequest
 */
-func (a *ClustersAPIService) ValidateGroupClusterConfigurations(ctx context.Context, groupId string, clusterConfigurationValidation *ClusterConfigurationValidation) ValidateGroupClusterConfigurationsApiRequest {
+func (a *ClustersApiService) ValidateGroupClusterConfigurations(ctx context.Context, groupId string, clusterConfigurationValidation *ClusterConfigurationValidation) ValidateGroupClusterConfigurationsApiRequest {
 	return ValidateGroupClusterConfigurationsApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
@@ -3245,7 +3246,7 @@ func (a *ClustersAPIService) ValidateGroupClusterConfigurations(ctx context.Cont
 // ValidateGroupClusterConfigurationsExecute executes the request
 //
 //	@return ClusterConfigurationValidationResult
-func (a *ClustersAPIService) ValidateGroupClusterConfigurationsExecute(r ValidateGroupClusterConfigurationsApiRequest) (*ClusterConfigurationValidationResult, *http.Response, error) {
+func (a *ClustersApiService) ValidateGroupClusterConfigurationsExecute(r ValidateGroupClusterConfigurationsApiRequest) (*ClusterConfigurationValidationResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -3253,7 +3254,7 @@ func (a *ClustersAPIService) ValidateGroupClusterConfigurationsExecute(r Validat
 		localVarReturnValue *ClusterConfigurationValidationResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.ValidateGroupClusterConfigurations")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersApiService.ValidateGroupClusterConfigurations")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

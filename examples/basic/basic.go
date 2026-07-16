@@ -32,7 +32,7 @@ func main() {
 	examples.HandleErr(err, nil)
 
 	// -- 1. Get first project
-	request := sdk.ProjectsAPI.ListGroupsWithParams(ctx,
+	request := sdk.ProjectsApi.ListGroupsWithParams(ctx,
 		// 2. We are passing a struct with all parameters to the request
 		&admin.ListGroupsApiParams{
 			ItemsPerPage: admin.PtrInt(1),

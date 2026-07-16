@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -9,7 +10,7 @@ import (
 	"strings"
 )
 
-type RateLimitingAPI interface {
+type RateLimitingApi interface {
 
 	/*
 		GetRateLimit Return One Rate Limit
@@ -57,12 +58,12 @@ type RateLimitingAPI interface {
 	ListRateLimitsExecute(r ListRateLimitsApiRequest) (*PaginatedRateLimitEndpointSets, *http.Response, error)
 }
 
-// RateLimitingAPIService RateLimitingAPI service
-type RateLimitingAPIService service
+// RateLimitingApiService RateLimitingApi service
+type RateLimitingApiService service
 
 type GetRateLimitApiRequest struct {
 	ctx           context.Context
-	ApiService    RateLimitingAPI
+	ApiService    RateLimitingApi
 	endpointSetId string
 	groupId       *string
 	orgId         *string
@@ -78,7 +79,7 @@ type GetRateLimitApiParams struct {
 	IpAddress     *string
 }
 
-func (a *RateLimitingAPIService) GetRateLimitWithParams(ctx context.Context, args *GetRateLimitApiParams) GetRateLimitApiRequest {
+func (a *RateLimitingApiService) GetRateLimitWithParams(ctx context.Context, args *GetRateLimitApiParams) GetRateLimitApiRequest {
 	return GetRateLimitApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -127,7 +128,7 @@ Get one rate limit endpoint set.
 	@param endpointSetId The ID of the rate limit endpoint set.
 	@return GetRateLimitApiRequest
 */
-func (a *RateLimitingAPIService) GetRateLimit(ctx context.Context, endpointSetId string) GetRateLimitApiRequest {
+func (a *RateLimitingApiService) GetRateLimit(ctx context.Context, endpointSetId string) GetRateLimitApiRequest {
 	return GetRateLimitApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -138,7 +139,7 @@ func (a *RateLimitingAPIService) GetRateLimit(ctx context.Context, endpointSetId
 // GetRateLimitExecute executes the request
 //
 //	@return RateLimitEndpointSetResponse
-func (a *RateLimitingAPIService) GetRateLimitExecute(r GetRateLimitApiRequest) (*RateLimitEndpointSetResponse, *http.Response, error) {
+func (a *RateLimitingApiService) GetRateLimitExecute(r GetRateLimitApiRequest) (*RateLimitEndpointSetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -146,7 +147,7 @@ func (a *RateLimitingAPIService) GetRateLimitExecute(r GetRateLimitApiRequest) (
 		localVarReturnValue *RateLimitEndpointSetResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RateLimitingAPIService.GetRateLimit")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RateLimitingApiService.GetRateLimit")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -224,7 +225,7 @@ func (a *RateLimitingAPIService) GetRateLimitExecute(r GetRateLimitApiRequest) (
 
 type ListRateLimitsApiRequest struct {
 	ctx          context.Context
-	ApiService   RateLimitingAPI
+	ApiService   RateLimitingApi
 	itemsPerPage *int
 	pageNum      *int
 	groupId      *string
@@ -246,7 +247,7 @@ type ListRateLimitsApiParams struct {
 	EndpointPath *string
 }
 
-func (a *RateLimitingAPIService) ListRateLimitsWithParams(ctx context.Context, args *ListRateLimitsApiParams) ListRateLimitsApiRequest {
+func (a *RateLimitingApiService) ListRateLimitsWithParams(ctx context.Context, args *ListRateLimitsApiParams) ListRateLimitsApiRequest {
 	return ListRateLimitsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -321,7 +322,7 @@ Get all rate limits for all v2 Atlas Administration API endpoint sets.
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ListRateLimitsApiRequest
 */
-func (a *RateLimitingAPIService) ListRateLimits(ctx context.Context) ListRateLimitsApiRequest {
+func (a *RateLimitingApiService) ListRateLimits(ctx context.Context) ListRateLimitsApiRequest {
 	return ListRateLimitsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -331,7 +332,7 @@ func (a *RateLimitingAPIService) ListRateLimits(ctx context.Context) ListRateLim
 // ListRateLimitsExecute executes the request
 //
 //	@return PaginatedRateLimitEndpointSets
-func (a *RateLimitingAPIService) ListRateLimitsExecute(r ListRateLimitsApiRequest) (*PaginatedRateLimitEndpointSets, *http.Response, error) {
+func (a *RateLimitingApiService) ListRateLimitsExecute(r ListRateLimitsApiRequest) (*PaginatedRateLimitEndpointSets, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -339,7 +340,7 @@ func (a *RateLimitingAPIService) ListRateLimitsExecute(r ListRateLimitsApiReques
 		localVarReturnValue *PaginatedRateLimitEndpointSets
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RateLimitingAPIService.ListRateLimits")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RateLimitingApiService.ListRateLimits")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

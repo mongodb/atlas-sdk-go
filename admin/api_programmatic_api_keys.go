@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -9,7 +10,7 @@ import (
 	"strings"
 )
 
-type ProgrammaticAPIKeysAPI interface {
+type ProgrammaticAPIKeysApi interface {
 
 	/*
 		AddGroupApiKey Assign One Organization API Key to One Project
@@ -352,12 +353,12 @@ type ProgrammaticAPIKeysAPI interface {
 	UpdateOrgApiKeyExecute(r UpdateOrgApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error)
 }
 
-// ProgrammaticAPIKeysAPIService ProgrammaticAPIKeysAPI service
-type ProgrammaticAPIKeysAPIService service
+// ProgrammaticAPIKeysApiService ProgrammaticAPIKeysApi service
+type ProgrammaticAPIKeysApiService service
 
 type AddGroupApiKeyApiRequest struct {
 	ctx                      context.Context
-	ApiService               ProgrammaticAPIKeysAPI
+	ApiService               ProgrammaticAPIKeysApi
 	groupId                  string
 	apiUserId                string
 	userAccessRoleAssignment *[]UserAccessRoleAssignment
@@ -369,7 +370,7 @@ type AddGroupApiKeyApiParams struct {
 	UserAccessRoleAssignment *[]UserAccessRoleAssignment
 }
 
-func (a *ProgrammaticAPIKeysAPIService) AddGroupApiKeyWithParams(ctx context.Context, args *AddGroupApiKeyApiParams) AddGroupApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) AddGroupApiKeyWithParams(ctx context.Context, args *AddGroupApiKeyApiParams) AddGroupApiKeyApiRequest {
 	return AddGroupApiKeyApiRequest{
 		ApiService:               a,
 		ctx:                      ctx,
@@ -393,7 +394,7 @@ Assigns the specified organization API key to the specified project. Users with 
 	@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key that you want to assign to one project.
 	@return AddGroupApiKeyApiRequest
 */
-func (a *ProgrammaticAPIKeysAPIService) AddGroupApiKey(ctx context.Context, groupId string, apiUserId string, userAccessRoleAssignment *[]UserAccessRoleAssignment) AddGroupApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) AddGroupApiKey(ctx context.Context, groupId string, apiUserId string, userAccessRoleAssignment *[]UserAccessRoleAssignment) AddGroupApiKeyApiRequest {
 	return AddGroupApiKeyApiRequest{
 		ApiService:               a,
 		ctx:                      ctx,
@@ -404,14 +405,14 @@ func (a *ProgrammaticAPIKeysAPIService) AddGroupApiKey(ctx context.Context, grou
 }
 
 // AddGroupApiKeyExecute executes the request
-func (a *ProgrammaticAPIKeysAPIService) AddGroupApiKeyExecute(r AddGroupApiKeyApiRequest) (*http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) AddGroupApiKeyExecute(r AddGroupApiKeyApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysAPIService.AddGroupApiKey")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.AddGroupApiKey")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -472,7 +473,7 @@ func (a *ProgrammaticAPIKeysAPIService) AddGroupApiKeyExecute(r AddGroupApiKeyAp
 
 type CreateGroupApiKeyApiRequest struct {
 	ctx                      context.Context
-	ApiService               ProgrammaticAPIKeysAPI
+	ApiService               ProgrammaticAPIKeysApi
 	groupId                  string
 	createAtlasProjectApiKey *CreateAtlasProjectApiKey
 }
@@ -482,7 +483,7 @@ type CreateGroupApiKeyApiParams struct {
 	CreateAtlasProjectApiKey *CreateAtlasProjectApiKey
 }
 
-func (a *ProgrammaticAPIKeysAPIService) CreateGroupApiKeyWithParams(ctx context.Context, args *CreateGroupApiKeyApiParams) CreateGroupApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) CreateGroupApiKeyWithParams(ctx context.Context, args *CreateGroupApiKeyApiParams) CreateGroupApiKeyApiRequest {
 	return CreateGroupApiKeyApiRequest{
 		ApiService:               a,
 		ctx:                      ctx,
@@ -504,7 +505,7 @@ Creates and assigns the specified organization API key to the specified project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateGroupApiKeyApiRequest
 */
-func (a *ProgrammaticAPIKeysAPIService) CreateGroupApiKey(ctx context.Context, groupId string, createAtlasProjectApiKey *CreateAtlasProjectApiKey) CreateGroupApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) CreateGroupApiKey(ctx context.Context, groupId string, createAtlasProjectApiKey *CreateAtlasProjectApiKey) CreateGroupApiKeyApiRequest {
 	return CreateGroupApiKeyApiRequest{
 		ApiService:               a,
 		ctx:                      ctx,
@@ -516,7 +517,7 @@ func (a *ProgrammaticAPIKeysAPIService) CreateGroupApiKey(ctx context.Context, g
 // CreateGroupApiKeyExecute executes the request
 //
 //	@return ApiKeyUserDetails
-func (a *ProgrammaticAPIKeysAPIService) CreateGroupApiKeyExecute(r CreateGroupApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) CreateGroupApiKeyExecute(r CreateGroupApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -524,7 +525,7 @@ func (a *ProgrammaticAPIKeysAPIService) CreateGroupApiKeyExecute(r CreateGroupAp
 		localVarReturnValue *ApiKeyUserDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysAPIService.CreateGroupApiKey")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.CreateGroupApiKey")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -595,7 +596,7 @@ func (a *ProgrammaticAPIKeysAPIService) CreateGroupApiKeyExecute(r CreateGroupAp
 
 type CreateOrgAccessEntryApiRequest struct {
 	ctx                   context.Context
-	ApiService            ProgrammaticAPIKeysAPI
+	ApiService            ProgrammaticAPIKeysApi
 	orgId                 string
 	apiUserId             string
 	userAccessListRequest *[]UserAccessListRequest
@@ -613,7 +614,7 @@ type CreateOrgAccessEntryApiParams struct {
 	PageNum               *int
 }
 
-func (a *ProgrammaticAPIKeysAPIService) CreateOrgAccessEntryWithParams(ctx context.Context, args *CreateOrgAccessEntryApiParams) CreateOrgAccessEntryApiRequest {
+func (a *ProgrammaticAPIKeysApiService) CreateOrgAccessEntryWithParams(ctx context.Context, args *CreateOrgAccessEntryApiParams) CreateOrgAccessEntryApiRequest {
 	return CreateOrgAccessEntryApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -658,7 +659,7 @@ Creates the access list entries for the specified organization API key. Resource
 	@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key for which you want to create a new access list entry.
 	@return CreateOrgAccessEntryApiRequest
 */
-func (a *ProgrammaticAPIKeysAPIService) CreateOrgAccessEntry(ctx context.Context, orgId string, apiUserId string, userAccessListRequest *[]UserAccessListRequest) CreateOrgAccessEntryApiRequest {
+func (a *ProgrammaticAPIKeysApiService) CreateOrgAccessEntry(ctx context.Context, orgId string, apiUserId string, userAccessListRequest *[]UserAccessListRequest) CreateOrgAccessEntryApiRequest {
 	return CreateOrgAccessEntryApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -671,7 +672,7 @@ func (a *ProgrammaticAPIKeysAPIService) CreateOrgAccessEntry(ctx context.Context
 // CreateOrgAccessEntryExecute executes the request
 //
 //	@return PaginatedApiUserAccessListResponse
-func (a *ProgrammaticAPIKeysAPIService) CreateOrgAccessEntryExecute(r CreateOrgAccessEntryApiRequest) (*PaginatedApiUserAccessListResponse, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) CreateOrgAccessEntryExecute(r CreateOrgAccessEntryApiRequest) (*PaginatedApiUserAccessListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -679,7 +680,7 @@ func (a *ProgrammaticAPIKeysAPIService) CreateOrgAccessEntryExecute(r CreateOrgA
 		localVarReturnValue *PaginatedApiUserAccessListResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysAPIService.CreateOrgAccessEntry")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.CreateOrgAccessEntry")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -775,7 +776,7 @@ func (a *ProgrammaticAPIKeysAPIService) CreateOrgAccessEntryExecute(r CreateOrgA
 
 type CreateOrgApiKeyApiRequest struct {
 	ctx                           context.Context
-	ApiService                    ProgrammaticAPIKeysAPI
+	ApiService                    ProgrammaticAPIKeysApi
 	orgId                         string
 	createAtlasOrganizationApiKey *CreateAtlasOrganizationApiKey
 }
@@ -785,7 +786,7 @@ type CreateOrgApiKeyApiParams struct {
 	CreateAtlasOrganizationApiKey *CreateAtlasOrganizationApiKey
 }
 
-func (a *ProgrammaticAPIKeysAPIService) CreateOrgApiKeyWithParams(ctx context.Context, args *CreateOrgApiKeyApiParams) CreateOrgApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) CreateOrgApiKeyWithParams(ctx context.Context, args *CreateOrgApiKeyApiParams) CreateOrgApiKeyApiRequest {
 	return CreateOrgApiKeyApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -807,7 +808,7 @@ Creates one API key for the specified organization. An organization API key gran
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return CreateOrgApiKeyApiRequest
 */
-func (a *ProgrammaticAPIKeysAPIService) CreateOrgApiKey(ctx context.Context, orgId string, createAtlasOrganizationApiKey *CreateAtlasOrganizationApiKey) CreateOrgApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) CreateOrgApiKey(ctx context.Context, orgId string, createAtlasOrganizationApiKey *CreateAtlasOrganizationApiKey) CreateOrgApiKeyApiRequest {
 	return CreateOrgApiKeyApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -819,7 +820,7 @@ func (a *ProgrammaticAPIKeysAPIService) CreateOrgApiKey(ctx context.Context, org
 // CreateOrgApiKeyExecute executes the request
 //
 //	@return ApiKeyUserDetails
-func (a *ProgrammaticAPIKeysAPIService) CreateOrgApiKeyExecute(r CreateOrgApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) CreateOrgApiKeyExecute(r CreateOrgApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -827,7 +828,7 @@ func (a *ProgrammaticAPIKeysAPIService) CreateOrgApiKeyExecute(r CreateOrgApiKey
 		localVarReturnValue *ApiKeyUserDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysAPIService.CreateOrgApiKey")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.CreateOrgApiKey")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -898,7 +899,7 @@ func (a *ProgrammaticAPIKeysAPIService) CreateOrgApiKeyExecute(r CreateOrgApiKey
 
 type DeleteAccessEntryApiRequest struct {
 	ctx        context.Context
-	ApiService ProgrammaticAPIKeysAPI
+	ApiService ProgrammaticAPIKeysApi
 	orgId      string
 	apiUserId  string
 	ipAddress  string
@@ -910,7 +911,7 @@ type DeleteAccessEntryApiParams struct {
 	IpAddress string
 }
 
-func (a *ProgrammaticAPIKeysAPIService) DeleteAccessEntryWithParams(ctx context.Context, args *DeleteAccessEntryApiParams) DeleteAccessEntryApiRequest {
+func (a *ProgrammaticAPIKeysApiService) DeleteAccessEntryWithParams(ctx context.Context, args *DeleteAccessEntryApiParams) DeleteAccessEntryApiRequest {
 	return DeleteAccessEntryApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -935,7 +936,7 @@ Removes the specified access list entry from the specified organization API key.
 	@param ipAddress One IP address or multiple IP addresses represented as one CIDR block to limit requests to API resources in the specified organization. When adding a CIDR block with a subnet mask, such as 192.0.2.0/24, use the URL-encoded value %2F for the forward slash /.
 	@return DeleteAccessEntryApiRequest
 */
-func (a *ProgrammaticAPIKeysAPIService) DeleteAccessEntry(ctx context.Context, orgId string, apiUserId string, ipAddress string) DeleteAccessEntryApiRequest {
+func (a *ProgrammaticAPIKeysApiService) DeleteAccessEntry(ctx context.Context, orgId string, apiUserId string, ipAddress string) DeleteAccessEntryApiRequest {
 	return DeleteAccessEntryApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -946,14 +947,14 @@ func (a *ProgrammaticAPIKeysAPIService) DeleteAccessEntry(ctx context.Context, o
 }
 
 // DeleteAccessEntryExecute executes the request
-func (a *ProgrammaticAPIKeysAPIService) DeleteAccessEntryExecute(r DeleteAccessEntryApiRequest) (*http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) DeleteAccessEntryExecute(r DeleteAccessEntryApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysAPIService.DeleteAccessEntry")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.DeleteAccessEntry")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1013,7 +1014,7 @@ func (a *ProgrammaticAPIKeysAPIService) DeleteAccessEntryExecute(r DeleteAccessE
 
 type DeleteOrgApiKeyApiRequest struct {
 	ctx        context.Context
-	ApiService ProgrammaticAPIKeysAPI
+	ApiService ProgrammaticAPIKeysApi
 	orgId      string
 	apiUserId  string
 }
@@ -1023,7 +1024,7 @@ type DeleteOrgApiKeyApiParams struct {
 	ApiUserId string
 }
 
-func (a *ProgrammaticAPIKeysAPIService) DeleteOrgApiKeyWithParams(ctx context.Context, args *DeleteOrgApiKeyApiParams) DeleteOrgApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) DeleteOrgApiKeyWithParams(ctx context.Context, args *DeleteOrgApiKeyApiParams) DeleteOrgApiKeyApiRequest {
 	return DeleteOrgApiKeyApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1046,7 +1047,7 @@ Removes one organization API key from the specified organization. When you remov
 	@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key.
 	@return DeleteOrgApiKeyApiRequest
 */
-func (a *ProgrammaticAPIKeysAPIService) DeleteOrgApiKey(ctx context.Context, orgId string, apiUserId string) DeleteOrgApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) DeleteOrgApiKey(ctx context.Context, orgId string, apiUserId string) DeleteOrgApiKeyApiRequest {
 	return DeleteOrgApiKeyApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1056,14 +1057,14 @@ func (a *ProgrammaticAPIKeysAPIService) DeleteOrgApiKey(ctx context.Context, org
 }
 
 // DeleteOrgApiKeyExecute executes the request
-func (a *ProgrammaticAPIKeysAPIService) DeleteOrgApiKeyExecute(r DeleteOrgApiKeyApiRequest) (*http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) DeleteOrgApiKeyExecute(r DeleteOrgApiKeyApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysAPIService.DeleteOrgApiKey")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.DeleteOrgApiKey")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1119,7 +1120,7 @@ func (a *ProgrammaticAPIKeysAPIService) DeleteOrgApiKeyExecute(r DeleteOrgApiKey
 
 type GetOrgAccessEntryApiRequest struct {
 	ctx        context.Context
-	ApiService ProgrammaticAPIKeysAPI
+	ApiService ProgrammaticAPIKeysApi
 	orgId      string
 	ipAddress  string
 	apiUserId  string
@@ -1131,7 +1132,7 @@ type GetOrgAccessEntryApiParams struct {
 	ApiUserId string
 }
 
-func (a *ProgrammaticAPIKeysAPIService) GetOrgAccessEntryWithParams(ctx context.Context, args *GetOrgAccessEntryApiParams) GetOrgAccessEntryApiRequest {
+func (a *ProgrammaticAPIKeysApiService) GetOrgAccessEntryWithParams(ctx context.Context, args *GetOrgAccessEntryApiParams) GetOrgAccessEntryApiRequest {
 	return GetOrgAccessEntryApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1156,7 +1157,7 @@ Returns one access list entry for the specified organization API key. Resources 
 	@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key for  which you want to return access list entries.
 	@return GetOrgAccessEntryApiRequest
 */
-func (a *ProgrammaticAPIKeysAPIService) GetOrgAccessEntry(ctx context.Context, orgId string, ipAddress string, apiUserId string) GetOrgAccessEntryApiRequest {
+func (a *ProgrammaticAPIKeysApiService) GetOrgAccessEntry(ctx context.Context, orgId string, ipAddress string, apiUserId string) GetOrgAccessEntryApiRequest {
 	return GetOrgAccessEntryApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1169,7 +1170,7 @@ func (a *ProgrammaticAPIKeysAPIService) GetOrgAccessEntry(ctx context.Context, o
 // GetOrgAccessEntryExecute executes the request
 //
 //	@return UserAccessListResponse
-func (a *ProgrammaticAPIKeysAPIService) GetOrgAccessEntryExecute(r GetOrgAccessEntryApiRequest) (*UserAccessListResponse, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) GetOrgAccessEntryExecute(r GetOrgAccessEntryApiRequest) (*UserAccessListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1177,7 +1178,7 @@ func (a *ProgrammaticAPIKeysAPIService) GetOrgAccessEntryExecute(r GetOrgAccessE
 		localVarReturnValue *UserAccessListResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysAPIService.GetOrgAccessEntry")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.GetOrgAccessEntry")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1251,7 +1252,7 @@ func (a *ProgrammaticAPIKeysAPIService) GetOrgAccessEntryExecute(r GetOrgAccessE
 
 type GetOrgApiKeyApiRequest struct {
 	ctx        context.Context
-	ApiService ProgrammaticAPIKeysAPI
+	ApiService ProgrammaticAPIKeysApi
 	orgId      string
 	apiUserId  string
 }
@@ -1261,7 +1262,7 @@ type GetOrgApiKeyApiParams struct {
 	ApiUserId string
 }
 
-func (a *ProgrammaticAPIKeysAPIService) GetOrgApiKeyWithParams(ctx context.Context, args *GetOrgApiKeyApiParams) GetOrgApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) GetOrgApiKeyWithParams(ctx context.Context, args *GetOrgApiKeyApiParams) GetOrgApiKeyApiRequest {
 	return GetOrgApiKeyApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1284,7 +1285,7 @@ Returns one organization API key. The organization API keys grant programmatic a
 	@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key that  you want to update.
 	@return GetOrgApiKeyApiRequest
 */
-func (a *ProgrammaticAPIKeysAPIService) GetOrgApiKey(ctx context.Context, orgId string, apiUserId string) GetOrgApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) GetOrgApiKey(ctx context.Context, orgId string, apiUserId string) GetOrgApiKeyApiRequest {
 	return GetOrgApiKeyApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1296,7 +1297,7 @@ func (a *ProgrammaticAPIKeysAPIService) GetOrgApiKey(ctx context.Context, orgId 
 // GetOrgApiKeyExecute executes the request
 //
 //	@return ApiKeyUserDetails
-func (a *ProgrammaticAPIKeysAPIService) GetOrgApiKeyExecute(r GetOrgApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) GetOrgApiKeyExecute(r GetOrgApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1304,7 +1305,7 @@ func (a *ProgrammaticAPIKeysAPIService) GetOrgApiKeyExecute(r GetOrgApiKeyApiReq
 		localVarReturnValue *ApiKeyUserDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysAPIService.GetOrgApiKey")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.GetOrgApiKey")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1374,7 +1375,7 @@ func (a *ProgrammaticAPIKeysAPIService) GetOrgApiKeyExecute(r GetOrgApiKeyApiReq
 
 type ListGroupApiKeysApiRequest struct {
 	ctx          context.Context
-	ApiService   ProgrammaticAPIKeysAPI
+	ApiService   ProgrammaticAPIKeysApi
 	groupId      string
 	includeCount *bool
 	itemsPerPage *int
@@ -1388,7 +1389,7 @@ type ListGroupApiKeysApiParams struct {
 	PageNum      *int
 }
 
-func (a *ProgrammaticAPIKeysAPIService) ListGroupApiKeysWithParams(ctx context.Context, args *ListGroupApiKeysApiParams) ListGroupApiKeysApiRequest {
+func (a *ProgrammaticAPIKeysApiService) ListGroupApiKeysWithParams(ctx context.Context, args *ListGroupApiKeysApiParams) ListGroupApiKeysApiRequest {
 	return ListGroupApiKeysApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1430,7 +1431,7 @@ Returns all organization API keys that you assigned to the specified project. Us
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListGroupApiKeysApiRequest
 */
-func (a *ProgrammaticAPIKeysAPIService) ListGroupApiKeys(ctx context.Context, groupId string) ListGroupApiKeysApiRequest {
+func (a *ProgrammaticAPIKeysApiService) ListGroupApiKeys(ctx context.Context, groupId string) ListGroupApiKeysApiRequest {
 	return ListGroupApiKeysApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1441,7 +1442,7 @@ func (a *ProgrammaticAPIKeysAPIService) ListGroupApiKeys(ctx context.Context, gr
 // ListGroupApiKeysExecute executes the request
 //
 //	@return PaginatedApiApiUser
-func (a *ProgrammaticAPIKeysAPIService) ListGroupApiKeysExecute(r ListGroupApiKeysApiRequest) (*PaginatedApiApiUser, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) ListGroupApiKeysExecute(r ListGroupApiKeysApiRequest) (*PaginatedApiApiUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1449,7 +1450,7 @@ func (a *ProgrammaticAPIKeysAPIService) ListGroupApiKeysExecute(r ListGroupApiKe
 		localVarReturnValue *PaginatedApiApiUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysAPIService.ListGroupApiKeys")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.ListGroupApiKeys")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1536,7 +1537,7 @@ func (a *ProgrammaticAPIKeysAPIService) ListGroupApiKeysExecute(r ListGroupApiKe
 
 type ListOrgAccessEntriesApiRequest struct {
 	ctx          context.Context
-	ApiService   ProgrammaticAPIKeysAPI
+	ApiService   ProgrammaticAPIKeysApi
 	orgId        string
 	apiUserId    string
 	includeCount *bool
@@ -1552,7 +1553,7 @@ type ListOrgAccessEntriesApiParams struct {
 	PageNum      *int
 }
 
-func (a *ProgrammaticAPIKeysAPIService) ListOrgAccessEntriesWithParams(ctx context.Context, args *ListOrgAccessEntriesApiParams) ListOrgAccessEntriesApiRequest {
+func (a *ProgrammaticAPIKeysApiService) ListOrgAccessEntriesWithParams(ctx context.Context, args *ListOrgAccessEntriesApiParams) ListOrgAccessEntriesApiRequest {
 	return ListOrgAccessEntriesApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1596,7 +1597,7 @@ Returns all access list entries that you configured for the specified organizati
 	@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key for which you want to return access list entries.
 	@return ListOrgAccessEntriesApiRequest
 */
-func (a *ProgrammaticAPIKeysAPIService) ListOrgAccessEntries(ctx context.Context, orgId string, apiUserId string) ListOrgAccessEntriesApiRequest {
+func (a *ProgrammaticAPIKeysApiService) ListOrgAccessEntries(ctx context.Context, orgId string, apiUserId string) ListOrgAccessEntriesApiRequest {
 	return ListOrgAccessEntriesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1608,7 +1609,7 @@ func (a *ProgrammaticAPIKeysAPIService) ListOrgAccessEntries(ctx context.Context
 // ListOrgAccessEntriesExecute executes the request
 //
 //	@return PaginatedApiUserAccessListResponse
-func (a *ProgrammaticAPIKeysAPIService) ListOrgAccessEntriesExecute(r ListOrgAccessEntriesApiRequest) (*PaginatedApiUserAccessListResponse, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) ListOrgAccessEntriesExecute(r ListOrgAccessEntriesApiRequest) (*PaginatedApiUserAccessListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1616,7 +1617,7 @@ func (a *ProgrammaticAPIKeysAPIService) ListOrgAccessEntriesExecute(r ListOrgAcc
 		localVarReturnValue *PaginatedApiUserAccessListResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysAPIService.ListOrgAccessEntries")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.ListOrgAccessEntries")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1707,7 +1708,7 @@ func (a *ProgrammaticAPIKeysAPIService) ListOrgAccessEntriesExecute(r ListOrgAcc
 
 type ListOrgApiKeysApiRequest struct {
 	ctx          context.Context
-	ApiService   ProgrammaticAPIKeysAPI
+	ApiService   ProgrammaticAPIKeysApi
 	orgId        string
 	includeCount *bool
 	itemsPerPage *int
@@ -1721,7 +1722,7 @@ type ListOrgApiKeysApiParams struct {
 	PageNum      *int
 }
 
-func (a *ProgrammaticAPIKeysAPIService) ListOrgApiKeysWithParams(ctx context.Context, args *ListOrgApiKeysApiParams) ListOrgApiKeysApiRequest {
+func (a *ProgrammaticAPIKeysApiService) ListOrgApiKeysWithParams(ctx context.Context, args *ListOrgApiKeysApiParams) ListOrgApiKeysApiRequest {
 	return ListOrgApiKeysApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1763,7 +1764,7 @@ Returns all organization API keys for the specified organization. The organizati
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListOrgApiKeysApiRequest
 */
-func (a *ProgrammaticAPIKeysAPIService) ListOrgApiKeys(ctx context.Context, orgId string) ListOrgApiKeysApiRequest {
+func (a *ProgrammaticAPIKeysApiService) ListOrgApiKeys(ctx context.Context, orgId string) ListOrgApiKeysApiRequest {
 	return ListOrgApiKeysApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1774,7 +1775,7 @@ func (a *ProgrammaticAPIKeysAPIService) ListOrgApiKeys(ctx context.Context, orgI
 // ListOrgApiKeysExecute executes the request
 //
 //	@return PaginatedApiApiUser
-func (a *ProgrammaticAPIKeysAPIService) ListOrgApiKeysExecute(r ListOrgApiKeysApiRequest) (*PaginatedApiApiUser, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) ListOrgApiKeysExecute(r ListOrgApiKeysApiRequest) (*PaginatedApiApiUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1782,7 +1783,7 @@ func (a *ProgrammaticAPIKeysAPIService) ListOrgApiKeysExecute(r ListOrgApiKeysAp
 		localVarReturnValue *PaginatedApiApiUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysAPIService.ListOrgApiKeys")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.ListOrgApiKeys")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1869,7 +1870,7 @@ func (a *ProgrammaticAPIKeysAPIService) ListOrgApiKeysExecute(r ListOrgApiKeysAp
 
 type RemoveGroupApiKeyApiRequest struct {
 	ctx        context.Context
-	ApiService ProgrammaticAPIKeysAPI
+	ApiService ProgrammaticAPIKeysApi
 	groupId    string
 	apiUserId  string
 }
@@ -1879,7 +1880,7 @@ type RemoveGroupApiKeyApiParams struct {
 	ApiUserId string
 }
 
-func (a *ProgrammaticAPIKeysAPIService) RemoveGroupApiKeyWithParams(ctx context.Context, args *RemoveGroupApiKeyApiParams) RemoveGroupApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) RemoveGroupApiKeyWithParams(ctx context.Context, args *RemoveGroupApiKeyApiParams) RemoveGroupApiKeyApiRequest {
 	return RemoveGroupApiKeyApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1902,7 +1903,7 @@ Removes one organization API key from the specified project.
 	@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key that you want to unassign from one project.
 	@return RemoveGroupApiKeyApiRequest
 */
-func (a *ProgrammaticAPIKeysAPIService) RemoveGroupApiKey(ctx context.Context, groupId string, apiUserId string) RemoveGroupApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) RemoveGroupApiKey(ctx context.Context, groupId string, apiUserId string) RemoveGroupApiKeyApiRequest {
 	return RemoveGroupApiKeyApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1912,14 +1913,14 @@ func (a *ProgrammaticAPIKeysAPIService) RemoveGroupApiKey(ctx context.Context, g
 }
 
 // RemoveGroupApiKeyExecute executes the request
-func (a *ProgrammaticAPIKeysAPIService) RemoveGroupApiKeyExecute(r RemoveGroupApiKeyApiRequest) (*http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) RemoveGroupApiKeyExecute(r RemoveGroupApiKeyApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysAPIService.RemoveGroupApiKey")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.RemoveGroupApiKey")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1975,7 +1976,7 @@ func (a *ProgrammaticAPIKeysAPIService) RemoveGroupApiKeyExecute(r RemoveGroupAp
 
 type UpdateApiKeyRolesApiRequest struct {
 	ctx                      context.Context
-	ApiService               ProgrammaticAPIKeysAPI
+	ApiService               ProgrammaticAPIKeysApi
 	groupId                  string
 	apiUserId                string
 	updateAtlasProjectApiKey *UpdateAtlasProjectApiKey
@@ -1993,7 +1994,7 @@ type UpdateApiKeyRolesApiParams struct {
 	IncludeCount             *bool
 }
 
-func (a *ProgrammaticAPIKeysAPIService) UpdateApiKeyRolesWithParams(ctx context.Context, args *UpdateApiKeyRolesApiParams) UpdateApiKeyRolesApiRequest {
+func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyRolesWithParams(ctx context.Context, args *UpdateApiKeyRolesApiParams) UpdateApiKeyRolesApiRequest {
 	return UpdateApiKeyRolesApiRequest{
 		ApiService:               a,
 		ctx:                      ctx,
@@ -2038,7 +2039,7 @@ Updates the roles of the organization API key that you specify for the project t
 	@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key that you want to unassign from one project.
 	@return UpdateApiKeyRolesApiRequest
 */
-func (a *ProgrammaticAPIKeysAPIService) UpdateApiKeyRoles(ctx context.Context, groupId string, apiUserId string, updateAtlasProjectApiKey *UpdateAtlasProjectApiKey) UpdateApiKeyRolesApiRequest {
+func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyRoles(ctx context.Context, groupId string, apiUserId string, updateAtlasProjectApiKey *UpdateAtlasProjectApiKey) UpdateApiKeyRolesApiRequest {
 	return UpdateApiKeyRolesApiRequest{
 		ApiService:               a,
 		ctx:                      ctx,
@@ -2051,7 +2052,7 @@ func (a *ProgrammaticAPIKeysAPIService) UpdateApiKeyRoles(ctx context.Context, g
 // UpdateApiKeyRolesExecute executes the request
 //
 //	@return ApiKeyUserDetails
-func (a *ProgrammaticAPIKeysAPIService) UpdateApiKeyRolesExecute(r UpdateApiKeyRolesApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) UpdateApiKeyRolesExecute(r UpdateApiKeyRolesApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -2059,7 +2060,7 @@ func (a *ProgrammaticAPIKeysAPIService) UpdateApiKeyRolesExecute(r UpdateApiKeyR
 		localVarReturnValue *ApiKeyUserDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysAPIService.UpdateApiKeyRoles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.UpdateApiKeyRoles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2155,7 +2156,7 @@ func (a *ProgrammaticAPIKeysAPIService) UpdateApiKeyRolesExecute(r UpdateApiKeyR
 
 type UpdateOrgApiKeyApiRequest struct {
 	ctx                           context.Context
-	ApiService                    ProgrammaticAPIKeysAPI
+	ApiService                    ProgrammaticAPIKeysApi
 	orgId                         string
 	apiUserId                     string
 	updateAtlasOrganizationApiKey *UpdateAtlasOrganizationApiKey
@@ -2167,7 +2168,7 @@ type UpdateOrgApiKeyApiParams struct {
 	UpdateAtlasOrganizationApiKey *UpdateAtlasOrganizationApiKey
 }
 
-func (a *ProgrammaticAPIKeysAPIService) UpdateOrgApiKeyWithParams(ctx context.Context, args *UpdateOrgApiKeyApiParams) UpdateOrgApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) UpdateOrgApiKeyWithParams(ctx context.Context, args *UpdateOrgApiKeyApiParams) UpdateOrgApiKeyApiRequest {
 	return UpdateOrgApiKeyApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -2191,7 +2192,7 @@ Updates one organization API key in the specified organization. The organization
 	@param apiUserId Unique 24-hexadecimal digit string that identifies this organization API key you  want to update.
 	@return UpdateOrgApiKeyApiRequest
 */
-func (a *ProgrammaticAPIKeysAPIService) UpdateOrgApiKey(ctx context.Context, orgId string, apiUserId string, updateAtlasOrganizationApiKey *UpdateAtlasOrganizationApiKey) UpdateOrgApiKeyApiRequest {
+func (a *ProgrammaticAPIKeysApiService) UpdateOrgApiKey(ctx context.Context, orgId string, apiUserId string, updateAtlasOrganizationApiKey *UpdateAtlasOrganizationApiKey) UpdateOrgApiKeyApiRequest {
 	return UpdateOrgApiKeyApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -2204,7 +2205,7 @@ func (a *ProgrammaticAPIKeysAPIService) UpdateOrgApiKey(ctx context.Context, org
 // UpdateOrgApiKeyExecute executes the request
 //
 //	@return ApiKeyUserDetails
-func (a *ProgrammaticAPIKeysAPIService) UpdateOrgApiKeyExecute(r UpdateOrgApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
+func (a *ProgrammaticAPIKeysApiService) UpdateOrgApiKeyExecute(r UpdateOrgApiKeyApiRequest) (*ApiKeyUserDetails, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -2212,7 +2213,7 @@ func (a *ProgrammaticAPIKeysAPIService) UpdateOrgApiKeyExecute(r UpdateOrgApiKey
 		localVarReturnValue *ApiKeyUserDetails
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysAPIService.UpdateOrgApiKey")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProgrammaticAPIKeysApiService.UpdateOrgApiKey")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

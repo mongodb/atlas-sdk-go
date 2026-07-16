@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -9,7 +10,7 @@ import (
 	"strings"
 )
 
-type NetworkPeeringAPI interface {
+type NetworkPeeringApi interface {
 
 	/*
 		CreateGroupContainer Create One Network Peering Container
@@ -117,7 +118,7 @@ type NetworkPeeringAPI interface {
 		@param privateIPMode Disables Connect via Peering Only mode for the specified project.
 		@return DisablePeeringApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringApi
 	*/
 	DisablePeering(ctx context.Context, groupId string, privateIPMode *PrivateIPMode) DisablePeeringApiRequest
 	/*
@@ -128,7 +129,7 @@ type NetworkPeeringAPI interface {
 		@param DisablePeeringApiParams - Parameters for the request
 		@return DisablePeeringApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringApi
 	*/
 	DisablePeeringWithParams(ctx context.Context, args *DisablePeeringApiParams) DisablePeeringApiRequest
 
@@ -311,7 +312,7 @@ type NetworkPeeringAPI interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return VerifyPrivateIpModeApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringApi
 	*/
 	VerifyPrivateIpMode(ctx context.Context, groupId string) VerifyPrivateIpModeApiRequest
 	/*
@@ -322,7 +323,7 @@ type NetworkPeeringAPI interface {
 		@param VerifyPrivateIpModeApiParams - Parameters for the request
 		@return VerifyPrivateIpModeApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for NetworkPeeringApi
 	*/
 	VerifyPrivateIpModeWithParams(ctx context.Context, args *VerifyPrivateIpModeApiParams) VerifyPrivateIpModeApiRequest
 
@@ -330,12 +331,12 @@ type NetworkPeeringAPI interface {
 	VerifyPrivateIpModeExecute(r VerifyPrivateIpModeApiRequest) (*PrivateIPMode, *http.Response, error)
 }
 
-// NetworkPeeringAPIService NetworkPeeringAPI service
-type NetworkPeeringAPIService service
+// NetworkPeeringApiService NetworkPeeringApi service
+type NetworkPeeringApiService service
 
 type CreateGroupContainerApiRequest struct {
 	ctx                    context.Context
-	ApiService             NetworkPeeringAPI
+	ApiService             NetworkPeeringApi
 	groupId                string
 	cloudProviderContainer *CloudProviderContainer
 }
@@ -345,7 +346,7 @@ type CreateGroupContainerApiParams struct {
 	CloudProviderContainer *CloudProviderContainer
 }
 
-func (a *NetworkPeeringAPIService) CreateGroupContainerWithParams(ctx context.Context, args *CreateGroupContainerApiParams) CreateGroupContainerApiRequest {
+func (a *NetworkPeeringApiService) CreateGroupContainerWithParams(ctx context.Context, args *CreateGroupContainerApiParams) CreateGroupContainerApiRequest {
 	return CreateGroupContainerApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
@@ -367,7 +368,7 @@ Creates one new network peering container in the specified project. MongoDB Clou
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateGroupContainerApiRequest
 */
-func (a *NetworkPeeringAPIService) CreateGroupContainer(ctx context.Context, groupId string, cloudProviderContainer *CloudProviderContainer) CreateGroupContainerApiRequest {
+func (a *NetworkPeeringApiService) CreateGroupContainer(ctx context.Context, groupId string, cloudProviderContainer *CloudProviderContainer) CreateGroupContainerApiRequest {
 	return CreateGroupContainerApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
@@ -379,7 +380,7 @@ func (a *NetworkPeeringAPIService) CreateGroupContainer(ctx context.Context, gro
 // CreateGroupContainerExecute executes the request
 //
 //	@return CloudProviderContainer
-func (a *NetworkPeeringAPIService) CreateGroupContainerExecute(r CreateGroupContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
+func (a *NetworkPeeringApiService) CreateGroupContainerExecute(r CreateGroupContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -387,7 +388,7 @@ func (a *NetworkPeeringAPIService) CreateGroupContainerExecute(r CreateGroupCont
 		localVarReturnValue *CloudProviderContainer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringAPIService.CreateGroupContainer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.CreateGroupContainer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -458,7 +459,7 @@ func (a *NetworkPeeringAPIService) CreateGroupContainerExecute(r CreateGroupCont
 
 type CreateGroupPeerApiRequest struct {
 	ctx                                  context.Context
-	ApiService                           NetworkPeeringAPI
+	ApiService                           NetworkPeeringApi
 	groupId                              string
 	baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings
 }
@@ -468,7 +469,7 @@ type CreateGroupPeerApiParams struct {
 	BaseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings
 }
 
-func (a *NetworkPeeringAPIService) CreateGroupPeerWithParams(ctx context.Context, args *CreateGroupPeerApiParams) CreateGroupPeerApiRequest {
+func (a *NetworkPeeringApiService) CreateGroupPeerWithParams(ctx context.Context, args *CreateGroupPeerApiParams) CreateGroupPeerApiRequest {
 	return CreateGroupPeerApiRequest{
 		ApiService:                           a,
 		ctx:                                  ctx,
@@ -490,7 +491,7 @@ Creates one new network peering connection in the specified project. Network pee
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateGroupPeerApiRequest
 */
-func (a *NetworkPeeringAPIService) CreateGroupPeer(ctx context.Context, groupId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) CreateGroupPeerApiRequest {
+func (a *NetworkPeeringApiService) CreateGroupPeer(ctx context.Context, groupId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) CreateGroupPeerApiRequest {
 	return CreateGroupPeerApiRequest{
 		ApiService:                           a,
 		ctx:                                  ctx,
@@ -502,7 +503,7 @@ func (a *NetworkPeeringAPIService) CreateGroupPeer(ctx context.Context, groupId 
 // CreateGroupPeerExecute executes the request
 //
 //	@return BaseNetworkPeeringConnectionSettings
-func (a *NetworkPeeringAPIService) CreateGroupPeerExecute(r CreateGroupPeerApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
+func (a *NetworkPeeringApiService) CreateGroupPeerExecute(r CreateGroupPeerApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -510,7 +511,7 @@ func (a *NetworkPeeringAPIService) CreateGroupPeerExecute(r CreateGroupPeerApiRe
 		localVarReturnValue *BaseNetworkPeeringConnectionSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringAPIService.CreateGroupPeer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.CreateGroupPeer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -581,7 +582,7 @@ func (a *NetworkPeeringAPIService) CreateGroupPeerExecute(r CreateGroupPeerApiRe
 
 type DeleteGroupContainerApiRequest struct {
 	ctx         context.Context
-	ApiService  NetworkPeeringAPI
+	ApiService  NetworkPeeringApi
 	groupId     string
 	containerId string
 }
@@ -591,7 +592,7 @@ type DeleteGroupContainerApiParams struct {
 	ContainerId string
 }
 
-func (a *NetworkPeeringAPIService) DeleteGroupContainerWithParams(ctx context.Context, args *DeleteGroupContainerApiParams) DeleteGroupContainerApiRequest {
+func (a *NetworkPeeringApiService) DeleteGroupContainerWithParams(ctx context.Context, args *DeleteGroupContainerApiParams) DeleteGroupContainerApiRequest {
 	return DeleteGroupContainerApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -614,7 +615,7 @@ Removes one network peering container in the specified project.
 	@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
 	@return DeleteGroupContainerApiRequest
 */
-func (a *NetworkPeeringAPIService) DeleteGroupContainer(ctx context.Context, groupId string, containerId string) DeleteGroupContainerApiRequest {
+func (a *NetworkPeeringApiService) DeleteGroupContainer(ctx context.Context, groupId string, containerId string) DeleteGroupContainerApiRequest {
 	return DeleteGroupContainerApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -624,14 +625,14 @@ func (a *NetworkPeeringAPIService) DeleteGroupContainer(ctx context.Context, gro
 }
 
 // DeleteGroupContainerExecute executes the request
-func (a *NetworkPeeringAPIService) DeleteGroupContainerExecute(r DeleteGroupContainerApiRequest) (*http.Response, error) {
+func (a *NetworkPeeringApiService) DeleteGroupContainerExecute(r DeleteGroupContainerApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringAPIService.DeleteGroupContainer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.DeleteGroupContainer")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -687,7 +688,7 @@ func (a *NetworkPeeringAPIService) DeleteGroupContainerExecute(r DeleteGroupCont
 
 type DeleteGroupPeerApiRequest struct {
 	ctx        context.Context
-	ApiService NetworkPeeringAPI
+	ApiService NetworkPeeringApi
 	groupId    string
 	peerId     string
 }
@@ -697,7 +698,7 @@ type DeleteGroupPeerApiParams struct {
 	PeerId  string
 }
 
-func (a *NetworkPeeringAPIService) DeleteGroupPeerWithParams(ctx context.Context, args *DeleteGroupPeerApiParams) DeleteGroupPeerApiRequest {
+func (a *NetworkPeeringApiService) DeleteGroupPeerWithParams(ctx context.Context, args *DeleteGroupPeerApiParams) DeleteGroupPeerApiRequest {
 	return DeleteGroupPeerApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -720,7 +721,7 @@ Removes one network peering connection in the specified project. If you remove t
 	@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to delete.
 	@return DeleteGroupPeerApiRequest
 */
-func (a *NetworkPeeringAPIService) DeleteGroupPeer(ctx context.Context, groupId string, peerId string) DeleteGroupPeerApiRequest {
+func (a *NetworkPeeringApiService) DeleteGroupPeer(ctx context.Context, groupId string, peerId string) DeleteGroupPeerApiRequest {
 	return DeleteGroupPeerApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -732,7 +733,7 @@ func (a *NetworkPeeringAPIService) DeleteGroupPeer(ctx context.Context, groupId 
 // DeleteGroupPeerExecute executes the request
 //
 //	@return any
-func (a *NetworkPeeringAPIService) DeleteGroupPeerExecute(r DeleteGroupPeerApiRequest) (any, *http.Response, error) {
+func (a *NetworkPeeringApiService) DeleteGroupPeerExecute(r DeleteGroupPeerApiRequest) (any, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
@@ -740,7 +741,7 @@ func (a *NetworkPeeringAPIService) DeleteGroupPeerExecute(r DeleteGroupPeerApiRe
 		localVarReturnValue any
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringAPIService.DeleteGroupPeer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.DeleteGroupPeer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -810,7 +811,7 @@ func (a *NetworkPeeringAPIService) DeleteGroupPeerExecute(r DeleteGroupPeerApiRe
 
 type DisablePeeringApiRequest struct {
 	ctx           context.Context
-	ApiService    NetworkPeeringAPI
+	ApiService    NetworkPeeringApi
 	groupId       string
 	privateIPMode *PrivateIPMode
 }
@@ -820,7 +821,7 @@ type DisablePeeringApiParams struct {
 	PrivateIPMode *PrivateIPMode
 }
 
-func (a *NetworkPeeringAPIService) DisablePeeringWithParams(ctx context.Context, args *DisablePeeringApiParams) DisablePeeringApiRequest {
+func (a *NetworkPeeringApiService) DisablePeeringWithParams(ctx context.Context, args *DisablePeeringApiParams) DisablePeeringApiRequest {
 	return DisablePeeringApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -844,7 +845,7 @@ Disables Connect via Peering Only mode for the specified project.
 
 Deprecated
 */
-func (a *NetworkPeeringAPIService) DisablePeering(ctx context.Context, groupId string, privateIPMode *PrivateIPMode) DisablePeeringApiRequest {
+func (a *NetworkPeeringApiService) DisablePeering(ctx context.Context, groupId string, privateIPMode *PrivateIPMode) DisablePeeringApiRequest {
 	return DisablePeeringApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -858,7 +859,7 @@ func (a *NetworkPeeringAPIService) DisablePeering(ctx context.Context, groupId s
 //	@return PrivateIPMode
 //
 // Deprecated
-func (a *NetworkPeeringAPIService) DisablePeeringExecute(r DisablePeeringApiRequest) (*PrivateIPMode, *http.Response, error) {
+func (a *NetworkPeeringApiService) DisablePeeringExecute(r DisablePeeringApiRequest) (*PrivateIPMode, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -866,7 +867,7 @@ func (a *NetworkPeeringAPIService) DisablePeeringExecute(r DisablePeeringApiRequ
 		localVarReturnValue *PrivateIPMode
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringAPIService.DisablePeering")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.DisablePeering")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -937,7 +938,7 @@ func (a *NetworkPeeringAPIService) DisablePeeringExecute(r DisablePeeringApiRequ
 
 type GetGroupContainerApiRequest struct {
 	ctx         context.Context
-	ApiService  NetworkPeeringAPI
+	ApiService  NetworkPeeringApi
 	groupId     string
 	containerId string
 }
@@ -947,7 +948,7 @@ type GetGroupContainerApiParams struct {
 	ContainerId string
 }
 
-func (a *NetworkPeeringAPIService) GetGroupContainerWithParams(ctx context.Context, args *GetGroupContainerApiParams) GetGroupContainerApiRequest {
+func (a *NetworkPeeringApiService) GetGroupContainerWithParams(ctx context.Context, args *GetGroupContainerApiParams) GetGroupContainerApiRequest {
 	return GetGroupContainerApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -970,7 +971,7 @@ Returns details about one network peering container in one specified project. Ne
 	@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container.
 	@return GetGroupContainerApiRequest
 */
-func (a *NetworkPeeringAPIService) GetGroupContainer(ctx context.Context, groupId string, containerId string) GetGroupContainerApiRequest {
+func (a *NetworkPeeringApiService) GetGroupContainer(ctx context.Context, groupId string, containerId string) GetGroupContainerApiRequest {
 	return GetGroupContainerApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -982,7 +983,7 @@ func (a *NetworkPeeringAPIService) GetGroupContainer(ctx context.Context, groupI
 // GetGroupContainerExecute executes the request
 //
 //	@return CloudProviderContainer
-func (a *NetworkPeeringAPIService) GetGroupContainerExecute(r GetGroupContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
+func (a *NetworkPeeringApiService) GetGroupContainerExecute(r GetGroupContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -990,7 +991,7 @@ func (a *NetworkPeeringAPIService) GetGroupContainerExecute(r GetGroupContainerA
 		localVarReturnValue *CloudProviderContainer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringAPIService.GetGroupContainer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.GetGroupContainer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1060,7 +1061,7 @@ func (a *NetworkPeeringAPIService) GetGroupContainerExecute(r GetGroupContainerA
 
 type GetGroupPeerApiRequest struct {
 	ctx        context.Context
-	ApiService NetworkPeeringAPI
+	ApiService NetworkPeeringApi
 	groupId    string
 	peerId     string
 }
@@ -1070,7 +1071,7 @@ type GetGroupPeerApiParams struct {
 	PeerId  string
 }
 
-func (a *NetworkPeeringAPIService) GetGroupPeerWithParams(ctx context.Context, args *GetGroupPeerApiParams) GetGroupPeerApiRequest {
+func (a *NetworkPeeringApiService) GetGroupPeerWithParams(ctx context.Context, args *GetGroupPeerApiParams) GetGroupPeerApiRequest {
 	return GetGroupPeerApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1093,7 +1094,7 @@ Returns details about one specified network peering connection in the specified 
 	@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to retrieve.
 	@return GetGroupPeerApiRequest
 */
-func (a *NetworkPeeringAPIService) GetGroupPeer(ctx context.Context, groupId string, peerId string) GetGroupPeerApiRequest {
+func (a *NetworkPeeringApiService) GetGroupPeer(ctx context.Context, groupId string, peerId string) GetGroupPeerApiRequest {
 	return GetGroupPeerApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1105,7 +1106,7 @@ func (a *NetworkPeeringAPIService) GetGroupPeer(ctx context.Context, groupId str
 // GetGroupPeerExecute executes the request
 //
 //	@return BaseNetworkPeeringConnectionSettings
-func (a *NetworkPeeringAPIService) GetGroupPeerExecute(r GetGroupPeerApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
+func (a *NetworkPeeringApiService) GetGroupPeerExecute(r GetGroupPeerApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1113,7 +1114,7 @@ func (a *NetworkPeeringAPIService) GetGroupPeerExecute(r GetGroupPeerApiRequest)
 		localVarReturnValue *BaseNetworkPeeringConnectionSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringAPIService.GetGroupPeer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.GetGroupPeer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1183,7 +1184,7 @@ func (a *NetworkPeeringAPIService) GetGroupPeerExecute(r GetGroupPeerApiRequest)
 
 type ListGroupContainerAllApiRequest struct {
 	ctx          context.Context
-	ApiService   NetworkPeeringAPI
+	ApiService   NetworkPeeringApi
 	groupId      string
 	includeCount *bool
 	itemsPerPage *int
@@ -1197,7 +1198,7 @@ type ListGroupContainerAllApiParams struct {
 	PageNum      *int
 }
 
-func (a *NetworkPeeringAPIService) ListGroupContainerAllWithParams(ctx context.Context, args *ListGroupContainerAllApiParams) ListGroupContainerAllApiRequest {
+func (a *NetworkPeeringApiService) ListGroupContainerAllWithParams(ctx context.Context, args *ListGroupContainerAllApiParams) ListGroupContainerAllApiRequest {
 	return ListGroupContainerAllApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1239,7 +1240,7 @@ Returns details about all network peering containers in the specified project. N
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListGroupContainerAllApiRequest
 */
-func (a *NetworkPeeringAPIService) ListGroupContainerAll(ctx context.Context, groupId string) ListGroupContainerAllApiRequest {
+func (a *NetworkPeeringApiService) ListGroupContainerAll(ctx context.Context, groupId string) ListGroupContainerAllApiRequest {
 	return ListGroupContainerAllApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1250,7 +1251,7 @@ func (a *NetworkPeeringAPIService) ListGroupContainerAll(ctx context.Context, gr
 // ListGroupContainerAllExecute executes the request
 //
 //	@return PaginatedCloudProviderContainer
-func (a *NetworkPeeringAPIService) ListGroupContainerAllExecute(r ListGroupContainerAllApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
+func (a *NetworkPeeringApiService) ListGroupContainerAllExecute(r ListGroupContainerAllApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1258,7 +1259,7 @@ func (a *NetworkPeeringAPIService) ListGroupContainerAllExecute(r ListGroupConta
 		localVarReturnValue *PaginatedCloudProviderContainer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringAPIService.ListGroupContainerAll")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.ListGroupContainerAll")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1345,7 +1346,7 @@ func (a *NetworkPeeringAPIService) ListGroupContainerAllExecute(r ListGroupConta
 
 type ListGroupContainersApiRequest struct {
 	ctx          context.Context
-	ApiService   NetworkPeeringAPI
+	ApiService   NetworkPeeringApi
 	groupId      string
 	providerName *string
 	includeCount *bool
@@ -1361,7 +1362,7 @@ type ListGroupContainersApiParams struct {
 	PageNum      *int
 }
 
-func (a *NetworkPeeringAPIService) ListGroupContainersWithParams(ctx context.Context, args *ListGroupContainersApiParams) ListGroupContainersApiRequest {
+func (a *NetworkPeeringApiService) ListGroupContainersWithParams(ctx context.Context, args *ListGroupContainersApiParams) ListGroupContainersApiRequest {
 	return ListGroupContainersApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1410,7 +1411,7 @@ Returns details about all network peering containers in the specified project fo
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListGroupContainersApiRequest
 */
-func (a *NetworkPeeringAPIService) ListGroupContainers(ctx context.Context, groupId string) ListGroupContainersApiRequest {
+func (a *NetworkPeeringApiService) ListGroupContainers(ctx context.Context, groupId string) ListGroupContainersApiRequest {
 	return ListGroupContainersApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1421,7 +1422,7 @@ func (a *NetworkPeeringAPIService) ListGroupContainers(ctx context.Context, grou
 // ListGroupContainersExecute executes the request
 //
 //	@return PaginatedCloudProviderContainer
-func (a *NetworkPeeringAPIService) ListGroupContainersExecute(r ListGroupContainersApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
+func (a *NetworkPeeringApiService) ListGroupContainersExecute(r ListGroupContainersApiRequest) (*PaginatedCloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1429,7 +1430,7 @@ func (a *NetworkPeeringAPIService) ListGroupContainersExecute(r ListGroupContain
 		localVarReturnValue *PaginatedCloudProviderContainer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringAPIService.ListGroupContainers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.ListGroupContainers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1520,7 +1521,7 @@ func (a *NetworkPeeringAPIService) ListGroupContainersExecute(r ListGroupContain
 
 type ListGroupPeersApiRequest struct {
 	ctx          context.Context
-	ApiService   NetworkPeeringAPI
+	ApiService   NetworkPeeringApi
 	groupId      string
 	includeCount *bool
 	itemsPerPage *int
@@ -1536,7 +1537,7 @@ type ListGroupPeersApiParams struct {
 	ProviderName *string
 }
 
-func (a *NetworkPeeringAPIService) ListGroupPeersWithParams(ctx context.Context, args *ListGroupPeersApiParams) ListGroupPeersApiRequest {
+func (a *NetworkPeeringApiService) ListGroupPeersWithParams(ctx context.Context, args *ListGroupPeersApiParams) ListGroupPeersApiRequest {
 	return ListGroupPeersApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1585,7 +1586,7 @@ Returns details about all network peering connections in the specified project. 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListGroupPeersApiRequest
 */
-func (a *NetworkPeeringAPIService) ListGroupPeers(ctx context.Context, groupId string) ListGroupPeersApiRequest {
+func (a *NetworkPeeringApiService) ListGroupPeers(ctx context.Context, groupId string) ListGroupPeersApiRequest {
 	return ListGroupPeersApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1596,7 +1597,7 @@ func (a *NetworkPeeringAPIService) ListGroupPeers(ctx context.Context, groupId s
 // ListGroupPeersExecute executes the request
 //
 //	@return PaginatedContainerPeer
-func (a *NetworkPeeringAPIService) ListGroupPeersExecute(r ListGroupPeersApiRequest) (*PaginatedContainerPeer, *http.Response, error) {
+func (a *NetworkPeeringApiService) ListGroupPeersExecute(r ListGroupPeersApiRequest) (*PaginatedContainerPeer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1604,7 +1605,7 @@ func (a *NetworkPeeringAPIService) ListGroupPeersExecute(r ListGroupPeersApiRequ
 		localVarReturnValue *PaginatedContainerPeer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringAPIService.ListGroupPeers")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.ListGroupPeers")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1698,7 +1699,7 @@ func (a *NetworkPeeringAPIService) ListGroupPeersExecute(r ListGroupPeersApiRequ
 
 type UpdateGroupContainerApiRequest struct {
 	ctx                    context.Context
-	ApiService             NetworkPeeringAPI
+	ApiService             NetworkPeeringApi
 	groupId                string
 	containerId            string
 	cloudProviderContainer *CloudProviderContainer
@@ -1710,7 +1711,7 @@ type UpdateGroupContainerApiParams struct {
 	CloudProviderContainer *CloudProviderContainer
 }
 
-func (a *NetworkPeeringAPIService) UpdateGroupContainerWithParams(ctx context.Context, args *UpdateGroupContainerApiParams) UpdateGroupContainerApiRequest {
+func (a *NetworkPeeringApiService) UpdateGroupContainerWithParams(ctx context.Context, args *UpdateGroupContainerApiParams) UpdateGroupContainerApiRequest {
 	return UpdateGroupContainerApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
@@ -1734,7 +1735,7 @@ Updates the network details and labels of one specified network peering containe
 	@param containerId Unique 24-hexadecimal digit string that identifies the MongoDB Cloud network container that you want to remove.
 	@return UpdateGroupContainerApiRequest
 */
-func (a *NetworkPeeringAPIService) UpdateGroupContainer(ctx context.Context, groupId string, containerId string, cloudProviderContainer *CloudProviderContainer) UpdateGroupContainerApiRequest {
+func (a *NetworkPeeringApiService) UpdateGroupContainer(ctx context.Context, groupId string, containerId string, cloudProviderContainer *CloudProviderContainer) UpdateGroupContainerApiRequest {
 	return UpdateGroupContainerApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
@@ -1747,7 +1748,7 @@ func (a *NetworkPeeringAPIService) UpdateGroupContainer(ctx context.Context, gro
 // UpdateGroupContainerExecute executes the request
 //
 //	@return CloudProviderContainer
-func (a *NetworkPeeringAPIService) UpdateGroupContainerExecute(r UpdateGroupContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
+func (a *NetworkPeeringApiService) UpdateGroupContainerExecute(r UpdateGroupContainerApiRequest) (*CloudProviderContainer, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -1755,7 +1756,7 @@ func (a *NetworkPeeringAPIService) UpdateGroupContainerExecute(r UpdateGroupCont
 		localVarReturnValue *CloudProviderContainer
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringAPIService.UpdateGroupContainer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.UpdateGroupContainer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1830,7 +1831,7 @@ func (a *NetworkPeeringAPIService) UpdateGroupContainerExecute(r UpdateGroupCont
 
 type UpdateGroupPeerApiRequest struct {
 	ctx                                  context.Context
-	ApiService                           NetworkPeeringAPI
+	ApiService                           NetworkPeeringApi
 	groupId                              string
 	peerId                               string
 	baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings
@@ -1842,7 +1843,7 @@ type UpdateGroupPeerApiParams struct {
 	BaseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings
 }
 
-func (a *NetworkPeeringAPIService) UpdateGroupPeerWithParams(ctx context.Context, args *UpdateGroupPeerApiParams) UpdateGroupPeerApiRequest {
+func (a *NetworkPeeringApiService) UpdateGroupPeerWithParams(ctx context.Context, args *UpdateGroupPeerApiParams) UpdateGroupPeerApiRequest {
 	return UpdateGroupPeerApiRequest{
 		ApiService:                           a,
 		ctx:                                  ctx,
@@ -1866,7 +1867,7 @@ Updates one specified network peering connection in the specified project.
 	@param peerId Unique 24-hexadecimal digit string that identifies the network peering connection that you want to update.
 	@return UpdateGroupPeerApiRequest
 */
-func (a *NetworkPeeringAPIService) UpdateGroupPeer(ctx context.Context, groupId string, peerId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) UpdateGroupPeerApiRequest {
+func (a *NetworkPeeringApiService) UpdateGroupPeer(ctx context.Context, groupId string, peerId string, baseNetworkPeeringConnectionSettings *BaseNetworkPeeringConnectionSettings) UpdateGroupPeerApiRequest {
 	return UpdateGroupPeerApiRequest{
 		ApiService:                           a,
 		ctx:                                  ctx,
@@ -1879,7 +1880,7 @@ func (a *NetworkPeeringAPIService) UpdateGroupPeer(ctx context.Context, groupId 
 // UpdateGroupPeerExecute executes the request
 //
 //	@return BaseNetworkPeeringConnectionSettings
-func (a *NetworkPeeringAPIService) UpdateGroupPeerExecute(r UpdateGroupPeerApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
+func (a *NetworkPeeringApiService) UpdateGroupPeerExecute(r UpdateGroupPeerApiRequest) (*BaseNetworkPeeringConnectionSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -1887,7 +1888,7 @@ func (a *NetworkPeeringAPIService) UpdateGroupPeerExecute(r UpdateGroupPeerApiRe
 		localVarReturnValue *BaseNetworkPeeringConnectionSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringAPIService.UpdateGroupPeer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.UpdateGroupPeer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1962,7 +1963,7 @@ func (a *NetworkPeeringAPIService) UpdateGroupPeerExecute(r UpdateGroupPeerApiRe
 
 type VerifyPrivateIpModeApiRequest struct {
 	ctx        context.Context
-	ApiService NetworkPeeringAPI
+	ApiService NetworkPeeringApi
 	groupId    string
 }
 
@@ -1970,7 +1971,7 @@ type VerifyPrivateIpModeApiParams struct {
 	GroupId string
 }
 
-func (a *NetworkPeeringAPIService) VerifyPrivateIpModeWithParams(ctx context.Context, args *VerifyPrivateIpModeApiParams) VerifyPrivateIpModeApiRequest {
+func (a *NetworkPeeringApiService) VerifyPrivateIpModeWithParams(ctx context.Context, args *VerifyPrivateIpModeApiParams) VerifyPrivateIpModeApiRequest {
 	return VerifyPrivateIpModeApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1993,7 +1994,7 @@ Verifies if someone set the specified project to **Connect via Peering Only** mo
 
 Deprecated
 */
-func (a *NetworkPeeringAPIService) VerifyPrivateIpMode(ctx context.Context, groupId string) VerifyPrivateIpModeApiRequest {
+func (a *NetworkPeeringApiService) VerifyPrivateIpMode(ctx context.Context, groupId string) VerifyPrivateIpModeApiRequest {
 	return VerifyPrivateIpModeApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2006,7 +2007,7 @@ func (a *NetworkPeeringAPIService) VerifyPrivateIpMode(ctx context.Context, grou
 //	@return PrivateIPMode
 //
 // Deprecated
-func (a *NetworkPeeringAPIService) VerifyPrivateIpModeExecute(r VerifyPrivateIpModeApiRequest) (*PrivateIPMode, *http.Response, error) {
+func (a *NetworkPeeringApiService) VerifyPrivateIpModeExecute(r VerifyPrivateIpModeApiRequest) (*PrivateIPMode, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2014,7 +2015,7 @@ func (a *NetworkPeeringAPIService) VerifyPrivateIpModeExecute(r VerifyPrivateIpM
 		localVarReturnValue *PrivateIPMode
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringAPIService.VerifyPrivateIpMode")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NetworkPeeringApiService.VerifyPrivateIpMode")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

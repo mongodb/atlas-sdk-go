@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -9,7 +10,7 @@ import (
 	"strings"
 )
 
-type ServerlessPrivateEndpointsAPI interface {
+type ServerlessPrivateEndpointsApi interface {
 
 	/*
 			CreateServerlessPrivateEndpoint Create One Private Endpoint for One Serverless Instance
@@ -26,7 +27,7 @@ type ServerlessPrivateEndpointsAPI interface {
 			@param serverlessTenantCreateRequest Information about the Private Endpoint to create for the Serverless Instance.
 			@return CreateServerlessPrivateEndpointApiRequest
 
-			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsAPI
+			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, serverlessTenantCreateRequest *ServerlessTenantCreateRequest) CreateServerlessPrivateEndpointApiRequest
 	/*
@@ -37,7 +38,7 @@ type ServerlessPrivateEndpointsAPI interface {
 		@param CreateServerlessPrivateEndpointApiParams - Parameters for the request
 		@return CreateServerlessPrivateEndpointApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	CreateServerlessPrivateEndpointWithParams(ctx context.Context, args *CreateServerlessPrivateEndpointApiParams) CreateServerlessPrivateEndpointApiRequest
 
@@ -57,7 +58,7 @@ type ServerlessPrivateEndpointsAPI interface {
 			@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint which will be removed.
 			@return DeleteServerlessPrivateEndpointApiRequest
 
-			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsAPI
+			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	DeleteServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) DeleteServerlessPrivateEndpointApiRequest
 	/*
@@ -68,7 +69,7 @@ type ServerlessPrivateEndpointsAPI interface {
 		@param DeleteServerlessPrivateEndpointApiParams - Parameters for the request
 		@return DeleteServerlessPrivateEndpointApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	DeleteServerlessPrivateEndpointWithParams(ctx context.Context, args *DeleteServerlessPrivateEndpointApiParams) DeleteServerlessPrivateEndpointApiRequest
 
@@ -88,7 +89,7 @@ type ServerlessPrivateEndpointsAPI interface {
 			@param endpointId Unique 24-hexadecimal digit string that identifies the tenant endpoint.
 			@return GetServerlessPrivateEndpointApiRequest
 
-			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsAPI
+			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	GetServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) GetServerlessPrivateEndpointApiRequest
 	/*
@@ -99,7 +100,7 @@ type ServerlessPrivateEndpointsAPI interface {
 		@param GetServerlessPrivateEndpointApiParams - Parameters for the request
 		@return GetServerlessPrivateEndpointApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	GetServerlessPrivateEndpointWithParams(ctx context.Context, args *GetServerlessPrivateEndpointApiParams) GetServerlessPrivateEndpointApiRequest
 
@@ -118,7 +119,7 @@ type ServerlessPrivateEndpointsAPI interface {
 			@param instanceName Human-readable label that identifies the serverless instance associated with the tenant endpoint.
 			@return ListServerlessPrivateEndpointApiRequest
 
-			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsAPI
+			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	ListServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string) ListServerlessPrivateEndpointApiRequest
 	/*
@@ -129,7 +130,7 @@ type ServerlessPrivateEndpointsAPI interface {
 		@param ListServerlessPrivateEndpointApiParams - Parameters for the request
 		@return ListServerlessPrivateEndpointApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	ListServerlessPrivateEndpointWithParams(ctx context.Context, args *ListServerlessPrivateEndpointApiParams) ListServerlessPrivateEndpointApiRequest
 
@@ -150,7 +151,7 @@ type ServerlessPrivateEndpointsAPI interface {
 			@param serverlessTenantEndpointUpdate Object used for update.
 			@return UpdateServerlessPrivateEndpointApiRequest
 
-			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsAPI
+			Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	UpdateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string, serverlessTenantEndpointUpdate *ServerlessTenantEndpointUpdate) UpdateServerlessPrivateEndpointApiRequest
 	/*
@@ -161,7 +162,7 @@ type ServerlessPrivateEndpointsAPI interface {
 		@param UpdateServerlessPrivateEndpointApiParams - Parameters for the request
 		@return UpdateServerlessPrivateEndpointApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ServerlessPrivateEndpointsApi
 	*/
 	UpdateServerlessPrivateEndpointWithParams(ctx context.Context, args *UpdateServerlessPrivateEndpointApiParams) UpdateServerlessPrivateEndpointApiRequest
 
@@ -169,12 +170,12 @@ type ServerlessPrivateEndpointsAPI interface {
 	UpdateServerlessPrivateEndpointExecute(r UpdateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error)
 }
 
-// ServerlessPrivateEndpointsAPIService ServerlessPrivateEndpointsAPI service
-type ServerlessPrivateEndpointsAPIService service
+// ServerlessPrivateEndpointsApiService ServerlessPrivateEndpointsApi service
+type ServerlessPrivateEndpointsApiService service
 
 type CreateServerlessPrivateEndpointApiRequest struct {
 	ctx                           context.Context
-	ApiService                    ServerlessPrivateEndpointsAPI
+	ApiService                    ServerlessPrivateEndpointsApi
 	groupId                       string
 	instanceName                  string
 	serverlessTenantCreateRequest *ServerlessTenantCreateRequest
@@ -186,7 +187,7 @@ type CreateServerlessPrivateEndpointApiParams struct {
 	ServerlessTenantCreateRequest *ServerlessTenantCreateRequest
 }
 
-func (a *ServerlessPrivateEndpointsAPIService) CreateServerlessPrivateEndpointWithParams(ctx context.Context, args *CreateServerlessPrivateEndpointApiParams) CreateServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpointWithParams(ctx context.Context, args *CreateServerlessPrivateEndpointApiParams) CreateServerlessPrivateEndpointApiRequest {
 	return CreateServerlessPrivateEndpointApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -216,7 +217,7 @@ This feature does not work for Flex clusters. To continue using Private Endpoint
 
 Deprecated
 */
-func (a *ServerlessPrivateEndpointsAPIService) CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, serverlessTenantCreateRequest *ServerlessTenantCreateRequest) CreateServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, serverlessTenantCreateRequest *ServerlessTenantCreateRequest) CreateServerlessPrivateEndpointApiRequest {
 	return CreateServerlessPrivateEndpointApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -231,7 +232,7 @@ func (a *ServerlessPrivateEndpointsAPIService) CreateServerlessPrivateEndpoint(c
 //	@return ServerlessTenantEndpoint
 //
 // Deprecated
-func (a *ServerlessPrivateEndpointsAPIService) CreateServerlessPrivateEndpointExecute(r CreateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
+func (a *ServerlessPrivateEndpointsApiService) CreateServerlessPrivateEndpointExecute(r CreateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -239,7 +240,7 @@ func (a *ServerlessPrivateEndpointsAPIService) CreateServerlessPrivateEndpointEx
 		localVarReturnValue *ServerlessTenantEndpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsAPIService.CreateServerlessPrivateEndpoint")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsApiService.CreateServerlessPrivateEndpoint")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -314,7 +315,7 @@ func (a *ServerlessPrivateEndpointsAPIService) CreateServerlessPrivateEndpointEx
 
 type DeleteServerlessPrivateEndpointApiRequest struct {
 	ctx          context.Context
-	ApiService   ServerlessPrivateEndpointsAPI
+	ApiService   ServerlessPrivateEndpointsApi
 	groupId      string
 	instanceName string
 	endpointId   string
@@ -326,7 +327,7 @@ type DeleteServerlessPrivateEndpointApiParams struct {
 	EndpointId   string
 }
 
-func (a *ServerlessPrivateEndpointsAPIService) DeleteServerlessPrivateEndpointWithParams(ctx context.Context, args *DeleteServerlessPrivateEndpointApiParams) DeleteServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpointWithParams(ctx context.Context, args *DeleteServerlessPrivateEndpointApiParams) DeleteServerlessPrivateEndpointApiRequest {
 	return DeleteServerlessPrivateEndpointApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -355,7 +356,7 @@ This feature does not work for Flex clusters. To continue using Private Endpoint
 
 Deprecated
 */
-func (a *ServerlessPrivateEndpointsAPIService) DeleteServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) DeleteServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) DeleteServerlessPrivateEndpointApiRequest {
 	return DeleteServerlessPrivateEndpointApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -367,14 +368,14 @@ func (a *ServerlessPrivateEndpointsAPIService) DeleteServerlessPrivateEndpoint(c
 
 // DeleteServerlessPrivateEndpointExecute executes the request
 // Deprecated
-func (a *ServerlessPrivateEndpointsAPIService) DeleteServerlessPrivateEndpointExecute(r DeleteServerlessPrivateEndpointApiRequest) (*http.Response, error) {
+func (a *ServerlessPrivateEndpointsApiService) DeleteServerlessPrivateEndpointExecute(r DeleteServerlessPrivateEndpointApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsAPIService.DeleteServerlessPrivateEndpoint")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsApiService.DeleteServerlessPrivateEndpoint")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -434,7 +435,7 @@ func (a *ServerlessPrivateEndpointsAPIService) DeleteServerlessPrivateEndpointEx
 
 type GetServerlessPrivateEndpointApiRequest struct {
 	ctx          context.Context
-	ApiService   ServerlessPrivateEndpointsAPI
+	ApiService   ServerlessPrivateEndpointsApi
 	groupId      string
 	instanceName string
 	endpointId   string
@@ -446,7 +447,7 @@ type GetServerlessPrivateEndpointApiParams struct {
 	EndpointId   string
 }
 
-func (a *ServerlessPrivateEndpointsAPIService) GetServerlessPrivateEndpointWithParams(ctx context.Context, args *GetServerlessPrivateEndpointApiParams) GetServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpointWithParams(ctx context.Context, args *GetServerlessPrivateEndpointApiParams) GetServerlessPrivateEndpointApiRequest {
 	return GetServerlessPrivateEndpointApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -475,7 +476,7 @@ This feature does not work for Flex clusters. To continue using Private Endpoint
 
 Deprecated
 */
-func (a *ServerlessPrivateEndpointsAPIService) GetServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) GetServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string) GetServerlessPrivateEndpointApiRequest {
 	return GetServerlessPrivateEndpointApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -490,7 +491,7 @@ func (a *ServerlessPrivateEndpointsAPIService) GetServerlessPrivateEndpoint(ctx 
 //	@return ServerlessTenantEndpoint
 //
 // Deprecated
-func (a *ServerlessPrivateEndpointsAPIService) GetServerlessPrivateEndpointExecute(r GetServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
+func (a *ServerlessPrivateEndpointsApiService) GetServerlessPrivateEndpointExecute(r GetServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -498,7 +499,7 @@ func (a *ServerlessPrivateEndpointsAPIService) GetServerlessPrivateEndpointExecu
 		localVarReturnValue *ServerlessTenantEndpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsAPIService.GetServerlessPrivateEndpoint")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsApiService.GetServerlessPrivateEndpoint")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -572,7 +573,7 @@ func (a *ServerlessPrivateEndpointsAPIService) GetServerlessPrivateEndpointExecu
 
 type ListServerlessPrivateEndpointApiRequest struct {
 	ctx          context.Context
-	ApiService   ServerlessPrivateEndpointsAPI
+	ApiService   ServerlessPrivateEndpointsApi
 	groupId      string
 	instanceName string
 }
@@ -582,7 +583,7 @@ type ListServerlessPrivateEndpointApiParams struct {
 	InstanceName string
 }
 
-func (a *ServerlessPrivateEndpointsAPIService) ListServerlessPrivateEndpointWithParams(ctx context.Context, args *ListServerlessPrivateEndpointApiParams) ListServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointWithParams(ctx context.Context, args *ListServerlessPrivateEndpointApiParams) ListServerlessPrivateEndpointApiRequest {
 	return ListServerlessPrivateEndpointApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -609,7 +610,7 @@ This feature does not work for Flex clusters. To continue using Private Endpoint
 
 Deprecated
 */
-func (a *ServerlessPrivateEndpointsAPIService) ListServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string) ListServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string) ListServerlessPrivateEndpointApiRequest {
 	return ListServerlessPrivateEndpointApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -623,7 +624,7 @@ func (a *ServerlessPrivateEndpointsAPIService) ListServerlessPrivateEndpoint(ctx
 //	@return []ServerlessTenantEndpoint
 //
 // Deprecated
-func (a *ServerlessPrivateEndpointsAPIService) ListServerlessPrivateEndpointExecute(r ListServerlessPrivateEndpointApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error) {
+func (a *ServerlessPrivateEndpointsApiService) ListServerlessPrivateEndpointExecute(r ListServerlessPrivateEndpointApiRequest) ([]ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -631,7 +632,7 @@ func (a *ServerlessPrivateEndpointsAPIService) ListServerlessPrivateEndpointExec
 		localVarReturnValue []ServerlessTenantEndpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsAPIService.ListServerlessPrivateEndpoint")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsApiService.ListServerlessPrivateEndpoint")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -701,7 +702,7 @@ func (a *ServerlessPrivateEndpointsAPIService) ListServerlessPrivateEndpointExec
 
 type UpdateServerlessPrivateEndpointApiRequest struct {
 	ctx                            context.Context
-	ApiService                     ServerlessPrivateEndpointsAPI
+	ApiService                     ServerlessPrivateEndpointsApi
 	groupId                        string
 	instanceName                   string
 	endpointId                     string
@@ -715,7 +716,7 @@ type UpdateServerlessPrivateEndpointApiParams struct {
 	ServerlessTenantEndpointUpdate *ServerlessTenantEndpointUpdate
 }
 
-func (a *ServerlessPrivateEndpointsAPIService) UpdateServerlessPrivateEndpointWithParams(ctx context.Context, args *UpdateServerlessPrivateEndpointApiParams) UpdateServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpointWithParams(ctx context.Context, args *UpdateServerlessPrivateEndpointApiParams) UpdateServerlessPrivateEndpointApiRequest {
 	return UpdateServerlessPrivateEndpointApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
@@ -745,7 +746,7 @@ This feature does not work for Flex clusters. To continue using Private Endpoint
 
 Deprecated
 */
-func (a *ServerlessPrivateEndpointsAPIService) UpdateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string, serverlessTenantEndpointUpdate *ServerlessTenantEndpointUpdate) UpdateServerlessPrivateEndpointApiRequest {
+func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpoint(ctx context.Context, groupId string, instanceName string, endpointId string, serverlessTenantEndpointUpdate *ServerlessTenantEndpointUpdate) UpdateServerlessPrivateEndpointApiRequest {
 	return UpdateServerlessPrivateEndpointApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
@@ -761,7 +762,7 @@ func (a *ServerlessPrivateEndpointsAPIService) UpdateServerlessPrivateEndpoint(c
 //	@return ServerlessTenantEndpoint
 //
 // Deprecated
-func (a *ServerlessPrivateEndpointsAPIService) UpdateServerlessPrivateEndpointExecute(r UpdateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
+func (a *ServerlessPrivateEndpointsApiService) UpdateServerlessPrivateEndpointExecute(r UpdateServerlessPrivateEndpointApiRequest) (*ServerlessTenantEndpoint, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -769,7 +770,7 @@ func (a *ServerlessPrivateEndpointsAPIService) UpdateServerlessPrivateEndpointEx
 		localVarReturnValue *ServerlessTenantEndpoint
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsAPIService.UpdateServerlessPrivateEndpoint")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServerlessPrivateEndpointsApiService.UpdateServerlessPrivateEndpoint")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

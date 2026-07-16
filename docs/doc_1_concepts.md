@@ -7,13 +7,13 @@ The Atlas Go SDK is flexible because it accepts many different types of argument
 
 ## Fetching Data from the Back End
 
-To fetch data, you can execute the `{API}.{Operation}WithParams()` method:
+To fetch data, you can execute the `{Api}.{Operation}WithParams()` method:
 
 ```go 
 // Surrounding code omitted for brevity
 
 // 1. Calling API method
-request := sdk.ProjectsAPI.ListProjectsWithParams(ctx,
+request := sdk.ProjectsApi.ListProjectsWithParams(ctx,
     // 2. Passing a struct with all optional query parameters to the request
     &admin.ListProjectsApiParams{
         ItemsPerPage: admin.PtrInt(1),
@@ -32,7 +32,7 @@ Alternatively, you can use the shorter `{Operation}()` method with a builder pat
 ```go
 // Surrounding code omitted for brevity
 	
-projects, response, err := sdk.ProjectsAPI.ListProjects(ctx).ItemsPerPage(1).Execute()
+projects, response, err := sdk.ProjectsApi.ListProjects(ctx).ItemsPerPage(1).Execute()
 ```
 
 Note: The Atlas Go SDK requires path parameters and they must be provided directly in the `{Operation}()` method.
@@ -49,7 +49,7 @@ Use the `{Operation}()` method to perform modifications. For example:
 // Surrounding code omitted for brevity
 
 groupInvitationRequest := admin.NewGroupInvitationRequest() 
-resp, r, err := sdk.ProjectsAPI.CreateProjectInvitation(context.Background(), groupId, groupInvitationRequest).Execute()
+resp, r, err := sdk.ProjectsApi.CreateProjectInvitation(context.Background(), groupId, groupInvitationRequest).Execute()
 ```
 
 ## Read Only and Write Only Fields

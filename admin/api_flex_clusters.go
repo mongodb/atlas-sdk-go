@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -9,7 +10,7 @@ import (
 	"strings"
 )
 
-type FlexClustersAPI interface {
+type FlexClustersApi interface {
 
 	/*
 		CreateFlexCluster Create One Flex Cluster in One Project
@@ -156,12 +157,12 @@ type FlexClustersAPI interface {
 	UpdateFlexClusterExecute(r UpdateFlexClusterApiRequest) (*FlexClusterDescription20241113, *http.Response, error)
 }
 
-// FlexClustersAPIService FlexClustersAPI service
-type FlexClustersAPIService service
+// FlexClustersApiService FlexClustersApi service
+type FlexClustersApiService service
 
 type CreateFlexClusterApiRequest struct {
 	ctx                                  context.Context
-	ApiService                           FlexClustersAPI
+	ApiService                           FlexClustersApi
 	groupId                              string
 	flexClusterDescriptionCreate20241113 *FlexClusterDescriptionCreate20241113
 }
@@ -171,7 +172,7 @@ type CreateFlexClusterApiParams struct {
 	FlexClusterDescriptionCreate20241113 *FlexClusterDescriptionCreate20241113
 }
 
-func (a *FlexClustersAPIService) CreateFlexClusterWithParams(ctx context.Context, args *CreateFlexClusterApiParams) CreateFlexClusterApiRequest {
+func (a *FlexClustersApiService) CreateFlexClusterWithParams(ctx context.Context, args *CreateFlexClusterApiParams) CreateFlexClusterApiRequest {
 	return CreateFlexClusterApiRequest{
 		ApiService:                           a,
 		ctx:                                  ctx,
@@ -193,7 +194,7 @@ Creates one flex cluster in the specified project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateFlexClusterApiRequest
 */
-func (a *FlexClustersAPIService) CreateFlexCluster(ctx context.Context, groupId string, flexClusterDescriptionCreate20241113 *FlexClusterDescriptionCreate20241113) CreateFlexClusterApiRequest {
+func (a *FlexClustersApiService) CreateFlexCluster(ctx context.Context, groupId string, flexClusterDescriptionCreate20241113 *FlexClusterDescriptionCreate20241113) CreateFlexClusterApiRequest {
 	return CreateFlexClusterApiRequest{
 		ApiService:                           a,
 		ctx:                                  ctx,
@@ -205,7 +206,7 @@ func (a *FlexClustersAPIService) CreateFlexCluster(ctx context.Context, groupId 
 // CreateFlexClusterExecute executes the request
 //
 //	@return FlexClusterDescription20241113
-func (a *FlexClustersAPIService) CreateFlexClusterExecute(r CreateFlexClusterApiRequest) (*FlexClusterDescription20241113, *http.Response, error) {
+func (a *FlexClustersApiService) CreateFlexClusterExecute(r CreateFlexClusterApiRequest) (*FlexClusterDescription20241113, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -213,7 +214,7 @@ func (a *FlexClustersAPIService) CreateFlexClusterExecute(r CreateFlexClusterApi
 		localVarReturnValue *FlexClusterDescription20241113
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersAPIService.CreateFlexCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersApiService.CreateFlexCluster")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -284,7 +285,7 @@ func (a *FlexClustersAPIService) CreateFlexClusterExecute(r CreateFlexClusterApi
 
 type DeleteFlexClusterApiRequest struct {
 	ctx        context.Context
-	ApiService FlexClustersAPI
+	ApiService FlexClustersApi
 	groupId    string
 	name       string
 }
@@ -294,7 +295,7 @@ type DeleteFlexClusterApiParams struct {
 	Name    string
 }
 
-func (a *FlexClustersAPIService) DeleteFlexClusterWithParams(ctx context.Context, args *DeleteFlexClusterApiParams) DeleteFlexClusterApiRequest {
+func (a *FlexClustersApiService) DeleteFlexClusterWithParams(ctx context.Context, args *DeleteFlexClusterApiParams) DeleteFlexClusterApiRequest {
 	return DeleteFlexClusterApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -317,7 +318,7 @@ Removes one flex cluster from the specified project. The flex cluster must have 
 	@param name Human-readable label that identifies the flex cluster.
 	@return DeleteFlexClusterApiRequest
 */
-func (a *FlexClustersAPIService) DeleteFlexCluster(ctx context.Context, groupId string, name string) DeleteFlexClusterApiRequest {
+func (a *FlexClustersApiService) DeleteFlexCluster(ctx context.Context, groupId string, name string) DeleteFlexClusterApiRequest {
 	return DeleteFlexClusterApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -327,14 +328,14 @@ func (a *FlexClustersAPIService) DeleteFlexCluster(ctx context.Context, groupId 
 }
 
 // DeleteFlexClusterExecute executes the request
-func (a *FlexClustersAPIService) DeleteFlexClusterExecute(r DeleteFlexClusterApiRequest) (*http.Response, error) {
+func (a *FlexClustersApiService) DeleteFlexClusterExecute(r DeleteFlexClusterApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersAPIService.DeleteFlexCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersApiService.DeleteFlexCluster")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -390,7 +391,7 @@ func (a *FlexClustersAPIService) DeleteFlexClusterExecute(r DeleteFlexClusterApi
 
 type GetFlexClusterApiRequest struct {
 	ctx        context.Context
-	ApiService FlexClustersAPI
+	ApiService FlexClustersApi
 	groupId    string
 	name       string
 }
@@ -400,7 +401,7 @@ type GetFlexClusterApiParams struct {
 	Name    string
 }
 
-func (a *FlexClustersAPIService) GetFlexClusterWithParams(ctx context.Context, args *GetFlexClusterApiParams) GetFlexClusterApiRequest {
+func (a *FlexClustersApiService) GetFlexClusterWithParams(ctx context.Context, args *GetFlexClusterApiParams) GetFlexClusterApiRequest {
 	return GetFlexClusterApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -423,7 +424,7 @@ Returns details for one flex cluster in the specified project.
 	@param name Human-readable label that identifies the flex cluster.
 	@return GetFlexClusterApiRequest
 */
-func (a *FlexClustersAPIService) GetFlexCluster(ctx context.Context, groupId string, name string) GetFlexClusterApiRequest {
+func (a *FlexClustersApiService) GetFlexCluster(ctx context.Context, groupId string, name string) GetFlexClusterApiRequest {
 	return GetFlexClusterApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -435,7 +436,7 @@ func (a *FlexClustersAPIService) GetFlexCluster(ctx context.Context, groupId str
 // GetFlexClusterExecute executes the request
 //
 //	@return FlexClusterDescription20241113
-func (a *FlexClustersAPIService) GetFlexClusterExecute(r GetFlexClusterApiRequest) (*FlexClusterDescription20241113, *http.Response, error) {
+func (a *FlexClustersApiService) GetFlexClusterExecute(r GetFlexClusterApiRequest) (*FlexClusterDescription20241113, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -443,7 +444,7 @@ func (a *FlexClustersAPIService) GetFlexClusterExecute(r GetFlexClusterApiReques
 		localVarReturnValue *FlexClusterDescription20241113
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersAPIService.GetFlexCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersApiService.GetFlexCluster")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -513,7 +514,7 @@ func (a *FlexClustersAPIService) GetFlexClusterExecute(r GetFlexClusterApiReques
 
 type ListFlexClustersApiRequest struct {
 	ctx          context.Context
-	ApiService   FlexClustersAPI
+	ApiService   FlexClustersApi
 	groupId      string
 	includeCount *bool
 	itemsPerPage *int
@@ -527,7 +528,7 @@ type ListFlexClustersApiParams struct {
 	PageNum      *int
 }
 
-func (a *FlexClustersAPIService) ListFlexClustersWithParams(ctx context.Context, args *ListFlexClustersApiParams) ListFlexClustersApiRequest {
+func (a *FlexClustersApiService) ListFlexClustersWithParams(ctx context.Context, args *ListFlexClustersApiParams) ListFlexClustersApiRequest {
 	return ListFlexClustersApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -569,7 +570,7 @@ Returns details for all flex clusters in the specified project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListFlexClustersApiRequest
 */
-func (a *FlexClustersAPIService) ListFlexClusters(ctx context.Context, groupId string) ListFlexClustersApiRequest {
+func (a *FlexClustersApiService) ListFlexClusters(ctx context.Context, groupId string) ListFlexClustersApiRequest {
 	return ListFlexClustersApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -580,7 +581,7 @@ func (a *FlexClustersAPIService) ListFlexClusters(ctx context.Context, groupId s
 // ListFlexClustersExecute executes the request
 //
 //	@return PaginatedFlexClusters20241113
-func (a *FlexClustersAPIService) ListFlexClustersExecute(r ListFlexClustersApiRequest) (*PaginatedFlexClusters20241113, *http.Response, error) {
+func (a *FlexClustersApiService) ListFlexClustersExecute(r ListFlexClustersApiRequest) (*PaginatedFlexClusters20241113, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -588,7 +589,7 @@ func (a *FlexClustersAPIService) ListFlexClustersExecute(r ListFlexClustersApiRe
 		localVarReturnValue *PaginatedFlexClusters20241113
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersAPIService.ListFlexClusters")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersApiService.ListFlexClusters")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -675,7 +676,7 @@ func (a *FlexClustersAPIService) ListFlexClustersExecute(r ListFlexClustersApiRe
 
 type TenantUpgradeApiRequest struct {
 	ctx                                      context.Context
-	ApiService                               FlexClustersAPI
+	ApiService                               FlexClustersApi
 	groupId                                  string
 	atlasTenantClusterUpgradeRequest20240805 *AtlasTenantClusterUpgradeRequest20240805
 }
@@ -685,7 +686,7 @@ type TenantUpgradeApiParams struct {
 	AtlasTenantClusterUpgradeRequest20240805 *AtlasTenantClusterUpgradeRequest20240805
 }
 
-func (a *FlexClustersAPIService) TenantUpgradeWithParams(ctx context.Context, args *TenantUpgradeApiParams) TenantUpgradeApiRequest {
+func (a *FlexClustersApiService) TenantUpgradeWithParams(ctx context.Context, args *TenantUpgradeApiParams) TenantUpgradeApiRequest {
 	return TenantUpgradeApiRequest{
 		ApiService:                               a,
 		ctx:                                      ctx,
@@ -707,7 +708,7 @@ Upgrades a flex cluster to a dedicated cluster (M10+) in the specified project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return TenantUpgradeApiRequest
 */
-func (a *FlexClustersAPIService) TenantUpgrade(ctx context.Context, groupId string, atlasTenantClusterUpgradeRequest20240805 *AtlasTenantClusterUpgradeRequest20240805) TenantUpgradeApiRequest {
+func (a *FlexClustersApiService) TenantUpgrade(ctx context.Context, groupId string, atlasTenantClusterUpgradeRequest20240805 *AtlasTenantClusterUpgradeRequest20240805) TenantUpgradeApiRequest {
 	return TenantUpgradeApiRequest{
 		ApiService:                               a,
 		ctx:                                      ctx,
@@ -719,7 +720,7 @@ func (a *FlexClustersAPIService) TenantUpgrade(ctx context.Context, groupId stri
 // TenantUpgradeExecute executes the request
 //
 //	@return FlexClusterDescription20241113
-func (a *FlexClustersAPIService) TenantUpgradeExecute(r TenantUpgradeApiRequest) (*FlexClusterDescription20241113, *http.Response, error) {
+func (a *FlexClustersApiService) TenantUpgradeExecute(r TenantUpgradeApiRequest) (*FlexClusterDescription20241113, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -727,7 +728,7 @@ func (a *FlexClustersAPIService) TenantUpgradeExecute(r TenantUpgradeApiRequest)
 		localVarReturnValue *FlexClusterDescription20241113
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersAPIService.TenantUpgrade")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersApiService.TenantUpgrade")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -798,7 +799,7 @@ func (a *FlexClustersAPIService) TenantUpgradeExecute(r TenantUpgradeApiRequest)
 
 type UpdateFlexClusterApiRequest struct {
 	ctx                                  context.Context
-	ApiService                           FlexClustersAPI
+	ApiService                           FlexClustersApi
 	groupId                              string
 	name                                 string
 	flexClusterDescriptionUpdate20241113 *FlexClusterDescriptionUpdate20241113
@@ -810,7 +811,7 @@ type UpdateFlexClusterApiParams struct {
 	FlexClusterDescriptionUpdate20241113 *FlexClusterDescriptionUpdate20241113
 }
 
-func (a *FlexClustersAPIService) UpdateFlexClusterWithParams(ctx context.Context, args *UpdateFlexClusterApiParams) UpdateFlexClusterApiRequest {
+func (a *FlexClustersApiService) UpdateFlexClusterWithParams(ctx context.Context, args *UpdateFlexClusterApiParams) UpdateFlexClusterApiRequest {
 	return UpdateFlexClusterApiRequest{
 		ApiService:                           a,
 		ctx:                                  ctx,
@@ -834,7 +835,7 @@ Updates one flex cluster in the specified project.
 	@param name Human-readable label that identifies the flex cluster.
 	@return UpdateFlexClusterApiRequest
 */
-func (a *FlexClustersAPIService) UpdateFlexCluster(ctx context.Context, groupId string, name string, flexClusterDescriptionUpdate20241113 *FlexClusterDescriptionUpdate20241113) UpdateFlexClusterApiRequest {
+func (a *FlexClustersApiService) UpdateFlexCluster(ctx context.Context, groupId string, name string, flexClusterDescriptionUpdate20241113 *FlexClusterDescriptionUpdate20241113) UpdateFlexClusterApiRequest {
 	return UpdateFlexClusterApiRequest{
 		ApiService:                           a,
 		ctx:                                  ctx,
@@ -847,7 +848,7 @@ func (a *FlexClustersAPIService) UpdateFlexCluster(ctx context.Context, groupId 
 // UpdateFlexClusterExecute executes the request
 //
 //	@return FlexClusterDescription20241113
-func (a *FlexClustersAPIService) UpdateFlexClusterExecute(r UpdateFlexClusterApiRequest) (*FlexClusterDescription20241113, *http.Response, error) {
+func (a *FlexClustersApiService) UpdateFlexClusterExecute(r UpdateFlexClusterApiRequest) (*FlexClusterDescription20241113, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -855,7 +856,7 @@ func (a *FlexClustersAPIService) UpdateFlexClusterExecute(r UpdateFlexClusterApi
 		localVarReturnValue *FlexClusterDescription20241113
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersAPIService.UpdateFlexCluster")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexClustersApiService.UpdateFlexCluster")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -9,7 +10,7 @@ import (
 	"strings"
 )
 
-type AuditingAPI interface {
+type AuditingApi interface {
 
 	/*
 		GetGroupAuditLog Return Auditing Configuration for One Project
@@ -59,12 +60,12 @@ type AuditingAPI interface {
 	UpdateAuditLogExecute(r UpdateAuditLogApiRequest) (*AuditLog, *http.Response, error)
 }
 
-// AuditingAPIService AuditingAPI service
-type AuditingAPIService service
+// AuditingApiService AuditingApi service
+type AuditingApiService service
 
 type GetGroupAuditLogApiRequest struct {
 	ctx        context.Context
-	ApiService AuditingAPI
+	ApiService AuditingApi
 	groupId    string
 }
 
@@ -72,7 +73,7 @@ type GetGroupAuditLogApiParams struct {
 	GroupId string
 }
 
-func (a *AuditingAPIService) GetGroupAuditLogWithParams(ctx context.Context, args *GetGroupAuditLogApiParams) GetGroupAuditLogApiRequest {
+func (a *AuditingApiService) GetGroupAuditLogWithParams(ctx context.Context, args *GetGroupAuditLogApiParams) GetGroupAuditLogApiRequest {
 	return GetGroupAuditLogApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -93,7 +94,7 @@ Returns the auditing configuration for the specified project. The auditing confi
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetGroupAuditLogApiRequest
 */
-func (a *AuditingAPIService) GetGroupAuditLog(ctx context.Context, groupId string) GetGroupAuditLogApiRequest {
+func (a *AuditingApiService) GetGroupAuditLog(ctx context.Context, groupId string) GetGroupAuditLogApiRequest {
 	return GetGroupAuditLogApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -104,7 +105,7 @@ func (a *AuditingAPIService) GetGroupAuditLog(ctx context.Context, groupId strin
 // GetGroupAuditLogExecute executes the request
 //
 //	@return AuditLog
-func (a *AuditingAPIService) GetGroupAuditLogExecute(r GetGroupAuditLogApiRequest) (*AuditLog, *http.Response, error) {
+func (a *AuditingApiService) GetGroupAuditLogExecute(r GetGroupAuditLogApiRequest) (*AuditLog, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -112,7 +113,7 @@ func (a *AuditingAPIService) GetGroupAuditLogExecute(r GetGroupAuditLogApiReques
 		localVarReturnValue *AuditLog
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuditingAPIService.GetGroupAuditLog")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuditingApiService.GetGroupAuditLog")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -178,7 +179,7 @@ func (a *AuditingAPIService) GetGroupAuditLogExecute(r GetGroupAuditLogApiReques
 
 type UpdateAuditLogApiRequest struct {
 	ctx        context.Context
-	ApiService AuditingAPI
+	ApiService AuditingApi
 	groupId    string
 	auditLog   *AuditLog
 }
@@ -188,7 +189,7 @@ type UpdateAuditLogApiParams struct {
 	AuditLog *AuditLog
 }
 
-func (a *AuditingAPIService) UpdateAuditLogWithParams(ctx context.Context, args *UpdateAuditLogApiParams) UpdateAuditLogApiRequest {
+func (a *AuditingApiService) UpdateAuditLogWithParams(ctx context.Context, args *UpdateAuditLogApiParams) UpdateAuditLogApiRequest {
 	return UpdateAuditLogApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -210,7 +211,7 @@ Updates the auditing configuration for the specified project. The auditing confi
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpdateAuditLogApiRequest
 */
-func (a *AuditingAPIService) UpdateAuditLog(ctx context.Context, groupId string, auditLog *AuditLog) UpdateAuditLogApiRequest {
+func (a *AuditingApiService) UpdateAuditLog(ctx context.Context, groupId string, auditLog *AuditLog) UpdateAuditLogApiRequest {
 	return UpdateAuditLogApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -222,7 +223,7 @@ func (a *AuditingAPIService) UpdateAuditLog(ctx context.Context, groupId string,
 // UpdateAuditLogExecute executes the request
 //
 //	@return AuditLog
-func (a *AuditingAPIService) UpdateAuditLogExecute(r UpdateAuditLogApiRequest) (*AuditLog, *http.Response, error) {
+func (a *AuditingApiService) UpdateAuditLogExecute(r UpdateAuditLogApiRequest) (*AuditLog, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -230,7 +231,7 @@ func (a *AuditingAPIService) UpdateAuditLogExecute(r UpdateAuditLogApiRequest) (
 		localVarReturnValue *AuditLog
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuditingAPIService.UpdateAuditLog")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuditingApiService.UpdateAuditLog")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

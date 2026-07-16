@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -9,7 +10,7 @@ import (
 	"strings"
 )
 
-type FlexSnapshotsAPI interface {
+type FlexSnapshotsApi interface {
 
 	/*
 		DownloadFlexBackup Download One Flex Cluster Snapshot
@@ -86,12 +87,12 @@ type FlexSnapshotsAPI interface {
 	ListFlexBackupSnapshotsExecute(r ListFlexBackupSnapshotsApiRequest) (*PaginatedApiAtlasFlexBackupSnapshot20241113, *http.Response, error)
 }
 
-// FlexSnapshotsAPIService FlexSnapshotsAPI service
-type FlexSnapshotsAPIService service
+// FlexSnapshotsApiService FlexSnapshotsApi service
+type FlexSnapshotsApiService service
 
 type DownloadFlexBackupApiRequest struct {
 	ctx                                      context.Context
-	ApiService                               FlexSnapshotsAPI
+	ApiService                               FlexSnapshotsApi
 	name                                     string
 	groupId                                  string
 	flexBackupSnapshotDownloadCreate20241113 *FlexBackupSnapshotDownloadCreate20241113
@@ -103,7 +104,7 @@ type DownloadFlexBackupApiParams struct {
 	FlexBackupSnapshotDownloadCreate20241113 *FlexBackupSnapshotDownloadCreate20241113
 }
 
-func (a *FlexSnapshotsAPIService) DownloadFlexBackupWithParams(ctx context.Context, args *DownloadFlexBackupApiParams) DownloadFlexBackupApiRequest {
+func (a *FlexSnapshotsApiService) DownloadFlexBackupWithParams(ctx context.Context, args *DownloadFlexBackupApiParams) DownloadFlexBackupApiRequest {
 	return DownloadFlexBackupApiRequest{
 		ApiService:                               a,
 		ctx:                                      ctx,
@@ -127,7 +128,7 @@ Requests one snapshot for the specified flex cluster. This resource returns a `s
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return DownloadFlexBackupApiRequest
 */
-func (a *FlexSnapshotsAPIService) DownloadFlexBackup(ctx context.Context, name string, groupId string, flexBackupSnapshotDownloadCreate20241113 *FlexBackupSnapshotDownloadCreate20241113) DownloadFlexBackupApiRequest {
+func (a *FlexSnapshotsApiService) DownloadFlexBackup(ctx context.Context, name string, groupId string, flexBackupSnapshotDownloadCreate20241113 *FlexBackupSnapshotDownloadCreate20241113) DownloadFlexBackupApiRequest {
 	return DownloadFlexBackupApiRequest{
 		ApiService:                               a,
 		ctx:                                      ctx,
@@ -140,7 +141,7 @@ func (a *FlexSnapshotsAPIService) DownloadFlexBackup(ctx context.Context, name s
 // DownloadFlexBackupExecute executes the request
 //
 //	@return FlexBackupRestoreJob20241113
-func (a *FlexSnapshotsAPIService) DownloadFlexBackupExecute(r DownloadFlexBackupApiRequest) (*FlexBackupRestoreJob20241113, *http.Response, error) {
+func (a *FlexSnapshotsApiService) DownloadFlexBackupExecute(r DownloadFlexBackupApiRequest) (*FlexBackupRestoreJob20241113, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -148,7 +149,7 @@ func (a *FlexSnapshotsAPIService) DownloadFlexBackupExecute(r DownloadFlexBackup
 		localVarReturnValue *FlexBackupRestoreJob20241113
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexSnapshotsAPIService.DownloadFlexBackup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexSnapshotsApiService.DownloadFlexBackup")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -223,7 +224,7 @@ func (a *FlexSnapshotsAPIService) DownloadFlexBackupExecute(r DownloadFlexBackup
 
 type GetFlexBackupSnapshotApiRequest struct {
 	ctx        context.Context
-	ApiService FlexSnapshotsAPI
+	ApiService FlexSnapshotsApi
 	groupId    string
 	name       string
 	snapshotId string
@@ -235,7 +236,7 @@ type GetFlexBackupSnapshotApiParams struct {
 	SnapshotId string
 }
 
-func (a *FlexSnapshotsAPIService) GetFlexBackupSnapshotWithParams(ctx context.Context, args *GetFlexBackupSnapshotApiParams) GetFlexBackupSnapshotApiRequest {
+func (a *FlexSnapshotsApiService) GetFlexBackupSnapshotWithParams(ctx context.Context, args *GetFlexBackupSnapshotApiParams) GetFlexBackupSnapshotApiRequest {
 	return GetFlexBackupSnapshotApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -260,7 +261,7 @@ Returns one snapshot of one flex cluster from the specified project.
 	@param snapshotId Unique 24-hexadecimal digit string that identifies the desired snapshot.
 	@return GetFlexBackupSnapshotApiRequest
 */
-func (a *FlexSnapshotsAPIService) GetFlexBackupSnapshot(ctx context.Context, groupId string, name string, snapshotId string) GetFlexBackupSnapshotApiRequest {
+func (a *FlexSnapshotsApiService) GetFlexBackupSnapshot(ctx context.Context, groupId string, name string, snapshotId string) GetFlexBackupSnapshotApiRequest {
 	return GetFlexBackupSnapshotApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -273,7 +274,7 @@ func (a *FlexSnapshotsAPIService) GetFlexBackupSnapshot(ctx context.Context, gro
 // GetFlexBackupSnapshotExecute executes the request
 //
 //	@return FlexBackupSnapshot20241113
-func (a *FlexSnapshotsAPIService) GetFlexBackupSnapshotExecute(r GetFlexBackupSnapshotApiRequest) (*FlexBackupSnapshot20241113, *http.Response, error) {
+func (a *FlexSnapshotsApiService) GetFlexBackupSnapshotExecute(r GetFlexBackupSnapshotApiRequest) (*FlexBackupSnapshot20241113, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -281,7 +282,7 @@ func (a *FlexSnapshotsAPIService) GetFlexBackupSnapshotExecute(r GetFlexBackupSn
 		localVarReturnValue *FlexBackupSnapshot20241113
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexSnapshotsAPIService.GetFlexBackupSnapshot")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexSnapshotsApiService.GetFlexBackupSnapshot")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -355,7 +356,7 @@ func (a *FlexSnapshotsAPIService) GetFlexBackupSnapshotExecute(r GetFlexBackupSn
 
 type ListFlexBackupSnapshotsApiRequest struct {
 	ctx          context.Context
-	ApiService   FlexSnapshotsAPI
+	ApiService   FlexSnapshotsApi
 	groupId      string
 	name         string
 	includeCount *bool
@@ -371,7 +372,7 @@ type ListFlexBackupSnapshotsApiParams struct {
 	PageNum      *int
 }
 
-func (a *FlexSnapshotsAPIService) ListFlexBackupSnapshotsWithParams(ctx context.Context, args *ListFlexBackupSnapshotsApiParams) ListFlexBackupSnapshotsApiRequest {
+func (a *FlexSnapshotsApiService) ListFlexBackupSnapshotsWithParams(ctx context.Context, args *ListFlexBackupSnapshotsApiParams) ListFlexBackupSnapshotsApiRequest {
 	return ListFlexBackupSnapshotsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -415,7 +416,7 @@ Returns all snapshots of one flex cluster from the specified project.
 	@param name Human-readable label that identifies the flex cluster.
 	@return ListFlexBackupSnapshotsApiRequest
 */
-func (a *FlexSnapshotsAPIService) ListFlexBackupSnapshots(ctx context.Context, groupId string, name string) ListFlexBackupSnapshotsApiRequest {
+func (a *FlexSnapshotsApiService) ListFlexBackupSnapshots(ctx context.Context, groupId string, name string) ListFlexBackupSnapshotsApiRequest {
 	return ListFlexBackupSnapshotsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -427,7 +428,7 @@ func (a *FlexSnapshotsAPIService) ListFlexBackupSnapshots(ctx context.Context, g
 // ListFlexBackupSnapshotsExecute executes the request
 //
 //	@return PaginatedApiAtlasFlexBackupSnapshot20241113
-func (a *FlexSnapshotsAPIService) ListFlexBackupSnapshotsExecute(r ListFlexBackupSnapshotsApiRequest) (*PaginatedApiAtlasFlexBackupSnapshot20241113, *http.Response, error) {
+func (a *FlexSnapshotsApiService) ListFlexBackupSnapshotsExecute(r ListFlexBackupSnapshotsApiRequest) (*PaginatedApiAtlasFlexBackupSnapshot20241113, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -435,7 +436,7 @@ func (a *FlexSnapshotsAPIService) ListFlexBackupSnapshotsExecute(r ListFlexBacku
 		localVarReturnValue *PaginatedApiAtlasFlexBackupSnapshot20241113
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexSnapshotsAPIService.ListFlexBackupSnapshots")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FlexSnapshotsApiService.ListFlexBackupSnapshots")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

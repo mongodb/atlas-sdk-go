@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -9,7 +10,7 @@ import (
 	"strings"
 )
 
-type OrganizationsAPI interface {
+type OrganizationsApi interface {
 
 	/*
 		CreateOrg Create One Organization
@@ -46,7 +47,7 @@ type OrganizationsAPI interface {
 			@param organizationInvitationRequest Invites one MongoDB Cloud user to join the specified organization.
 			@return CreateOrgInviteApiRequest
 
-			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	CreateOrgInvite(ctx context.Context, orgId string, organizationInvitationRequest *OrganizationInvitationRequest) CreateOrgInviteApiRequest
 	/*
@@ -57,7 +58,7 @@ type OrganizationsAPI interface {
 		@param CreateOrgInviteApiParams - Parameters for the request
 		@return CreateOrgInviteApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	CreateOrgInviteWithParams(ctx context.Context, args *CreateOrgInviteApiParams) CreateOrgInviteApiRequest
 
@@ -102,7 +103,7 @@ type OrganizationsAPI interface {
 			@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 			@return DeleteOrgInviteApiRequest
 
-			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	DeleteOrgInvite(ctx context.Context, orgId string, invitationId string) DeleteOrgInviteApiRequest
 	/*
@@ -113,7 +114,7 @@ type OrganizationsAPI interface {
 		@param DeleteOrgInviteApiParams - Parameters for the request
 		@return DeleteOrgInviteApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	DeleteOrgInviteWithParams(ctx context.Context, args *DeleteOrgInviteApiParams) DeleteOrgInviteApiRequest
 
@@ -142,6 +143,29 @@ type OrganizationsAPI interface {
 
 	// Method available only for mocking purposes
 	GetOrgExecute(r GetOrgApiRequest) (*AtlasOrganization, *http.Response, error)
+
+	/*
+		GetOrgDelegationSettings Return Delegation Settings for One Organization
+
+		Returns the delegation settings for the specified organization.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@return GetOrgDelegationSettingsApiRequest
+	*/
+	GetOrgDelegationSettings(ctx context.Context, orgId string) GetOrgDelegationSettingsApiRequest
+	/*
+		GetOrgDelegationSettings Return Delegation Settings for One Organization
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetOrgDelegationSettingsApiParams - Parameters for the request
+		@return GetOrgDelegationSettingsApiRequest
+	*/
+	GetOrgDelegationSettingsWithParams(ctx context.Context, args *GetOrgDelegationSettingsApiParams) GetOrgDelegationSettingsApiRequest
+
+	// Method available only for mocking purposes
+	GetOrgDelegationSettingsExecute(r GetOrgDelegationSettingsApiRequest) (*OrgDelegationSettingsResponse, *http.Response, error)
 
 	/*
 			GetOrgGroups Return All Projects in One Organization
@@ -183,7 +207,7 @@ type OrganizationsAPI interface {
 			@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 			@return GetOrgInviteApiRequest
 
-			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	GetOrgInvite(ctx context.Context, orgId string, invitationId string) GetOrgInviteApiRequest
 	/*
@@ -194,7 +218,7 @@ type OrganizationsAPI interface {
 		@param GetOrgInviteApiParams - Parameters for the request
 		@return GetOrgInviteApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	GetOrgInviteWithParams(ctx context.Context, args *GetOrgInviteApiParams) GetOrgInviteApiRequest
 
@@ -235,7 +259,7 @@ type OrganizationsAPI interface {
 			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 			@return ListOrgInvitesApiRequest
 
-			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	ListOrgInvites(ctx context.Context, orgId string) ListOrgInvitesApiRequest
 	/*
@@ -246,7 +270,7 @@ type OrganizationsAPI interface {
 		@param ListOrgInvitesApiParams - Parameters for the request
 		@return ListOrgInvitesApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	ListOrgInvitesWithParams(ctx context.Context, args *ListOrgInvitesApiParams) ListOrgInvitesApiRequest
 
@@ -300,6 +324,30 @@ type OrganizationsAPI interface {
 	UpdateOrgExecute(r UpdateOrgApiRequest) (*AtlasOrganization, *http.Response, error)
 
 	/*
+		UpdateOrgDelegationSettings Update Delegation Settings for One Organization
+
+		Updates the delegation settings for the specified organization. Only fields present in the request body are updated; omitted fields retain their current values.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param orgDelegationSettingsUpdateRequest Delegation settings to update.
+		@return UpdateOrgDelegationSettingsApiRequest
+	*/
+	UpdateOrgDelegationSettings(ctx context.Context, orgId string, orgDelegationSettingsUpdateRequest *OrgDelegationSettingsUpdateRequest) UpdateOrgDelegationSettingsApiRequest
+	/*
+		UpdateOrgDelegationSettings Update Delegation Settings for One Organization
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdateOrgDelegationSettingsApiParams - Parameters for the request
+		@return UpdateOrgDelegationSettingsApiRequest
+	*/
+	UpdateOrgDelegationSettingsWithParams(ctx context.Context, args *UpdateOrgDelegationSettingsApiParams) UpdateOrgDelegationSettingsApiRequest
+
+	// Method available only for mocking purposes
+	UpdateOrgDelegationSettingsExecute(r UpdateOrgDelegationSettingsApiRequest) (*OrgDelegationSettingsResponse, *http.Response, error)
+
+	/*
 			UpdateOrgInviteById Update One Invitation in One Organization by Invitation ID
 
 			Updates the details of one pending invitation to the specified organization. To specify which invitation, provide the unique identification string for that invitation. Use the Return All Organization Invitations endpoint to retrieve IDs for all pending organization invitations.
@@ -312,7 +360,7 @@ type OrganizationsAPI interface {
 			@param organizationInvitationUpdateRequest Updates the details of one pending invitation to the specified organization.
 			@return UpdateOrgInviteByIdApiRequest
 
-			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	UpdateOrgInviteById(ctx context.Context, orgId string, invitationId string, organizationInvitationUpdateRequest *OrganizationInvitationUpdateRequest) UpdateOrgInviteByIdApiRequest
 	/*
@@ -323,7 +371,7 @@ type OrganizationsAPI interface {
 		@param UpdateOrgInviteByIdApiParams - Parameters for the request
 		@return UpdateOrgInviteByIdApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	UpdateOrgInviteByIdWithParams(ctx context.Context, args *UpdateOrgInviteByIdApiParams) UpdateOrgInviteByIdApiRequest
 
@@ -342,7 +390,7 @@ type OrganizationsAPI interface {
 			@param organizationInvitationRequest Updates the details of one pending invitation to the specified organization.
 			@return UpdateOrgInvitesApiRequest
 
-			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	UpdateOrgInvites(ctx context.Context, orgId string, organizationInvitationRequest *OrganizationInvitationRequest) UpdateOrgInvitesApiRequest
 	/*
@@ -353,7 +401,7 @@ type OrganizationsAPI interface {
 		@param UpdateOrgInvitesApiParams - Parameters for the request
 		@return UpdateOrgInvitesApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	UpdateOrgInvitesWithParams(ctx context.Context, args *UpdateOrgInvitesApiParams) UpdateOrgInvitesApiRequest
 
@@ -395,7 +443,7 @@ type OrganizationsAPI interface {
 		@param updateOrgRolesForUser Roles to update for the specified user.
 		@return UpdateOrgUserRolesApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	UpdateOrgUserRoles(ctx context.Context, orgId string, userId string, updateOrgRolesForUser *UpdateOrgRolesForUser) UpdateOrgUserRolesApiRequest
 	/*
@@ -406,7 +454,7 @@ type OrganizationsAPI interface {
 		@param UpdateOrgUserRolesApiParams - Parameters for the request
 		@return UpdateOrgUserRolesApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsApi
 	*/
 	UpdateOrgUserRolesWithParams(ctx context.Context, args *UpdateOrgUserRolesApiParams) UpdateOrgUserRolesApiRequest
 
@@ -414,12 +462,12 @@ type OrganizationsAPI interface {
 	UpdateOrgUserRolesExecute(r UpdateOrgUserRolesApiRequest) (*UpdateOrgRolesForUser, *http.Response, error)
 }
 
-// OrganizationsAPIService OrganizationsAPI service
-type OrganizationsAPIService service
+// OrganizationsApiService OrganizationsApi service
+type OrganizationsApiService service
 
 type CreateOrgApiRequest struct {
 	ctx                       context.Context
-	ApiService                OrganizationsAPI
+	ApiService                OrganizationsApi
 	createOrganizationRequest *CreateOrganizationRequest
 }
 
@@ -427,7 +475,7 @@ type CreateOrgApiParams struct {
 	CreateOrganizationRequest *CreateOrganizationRequest
 }
 
-func (a *OrganizationsAPIService) CreateOrgWithParams(ctx context.Context, args *CreateOrgApiParams) CreateOrgApiRequest {
+func (a *OrganizationsApiService) CreateOrgWithParams(ctx context.Context, args *CreateOrgApiParams) CreateOrgApiRequest {
 	return CreateOrgApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -447,7 +495,7 @@ Creates one organization in MongoDB Cloud and links it to the requesting Service
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return CreateOrgApiRequest
 */
-func (a *OrganizationsAPIService) CreateOrg(ctx context.Context, createOrganizationRequest *CreateOrganizationRequest) CreateOrgApiRequest {
+func (a *OrganizationsApiService) CreateOrg(ctx context.Context, createOrganizationRequest *CreateOrganizationRequest) CreateOrgApiRequest {
 	return CreateOrgApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -458,7 +506,7 @@ func (a *OrganizationsAPIService) CreateOrg(ctx context.Context, createOrganizat
 // CreateOrgExecute executes the request
 //
 //	@return CreateOrganizationResponse
-func (a *OrganizationsAPIService) CreateOrgExecute(r CreateOrgApiRequest) (*CreateOrganizationResponse, *http.Response, error) {
+func (a *OrganizationsApiService) CreateOrgExecute(r CreateOrgApiRequest) (*CreateOrganizationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -466,7 +514,7 @@ func (a *OrganizationsAPIService) CreateOrgExecute(r CreateOrgApiRequest) (*Crea
 		localVarReturnValue *CreateOrganizationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.CreateOrg")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.CreateOrg")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -533,7 +581,7 @@ func (a *OrganizationsAPIService) CreateOrgExecute(r CreateOrgApiRequest) (*Crea
 
 type CreateOrgInviteApiRequest struct {
 	ctx                           context.Context
-	ApiService                    OrganizationsAPI
+	ApiService                    OrganizationsApi
 	orgId                         string
 	organizationInvitationRequest *OrganizationInvitationRequest
 }
@@ -543,7 +591,7 @@ type CreateOrgInviteApiParams struct {
 	OrganizationInvitationRequest *OrganizationInvitationRequest
 }
 
-func (a *OrganizationsAPIService) CreateOrgInviteWithParams(ctx context.Context, args *CreateOrgInviteApiParams) CreateOrgInviteApiRequest {
+func (a *OrganizationsApiService) CreateOrgInviteWithParams(ctx context.Context, args *CreateOrgInviteApiParams) CreateOrgInviteApiRequest {
 	return CreateOrgInviteApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -569,7 +617,7 @@ Invites one MongoDB Cloud user to join the specified organization. The user must
 
 Deprecated
 */
-func (a *OrganizationsAPIService) CreateOrgInvite(ctx context.Context, orgId string, organizationInvitationRequest *OrganizationInvitationRequest) CreateOrgInviteApiRequest {
+func (a *OrganizationsApiService) CreateOrgInvite(ctx context.Context, orgId string, organizationInvitationRequest *OrganizationInvitationRequest) CreateOrgInviteApiRequest {
 	return CreateOrgInviteApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -583,7 +631,7 @@ func (a *OrganizationsAPIService) CreateOrgInvite(ctx context.Context, orgId str
 //	@return OrganizationInvitation
 //
 // Deprecated
-func (a *OrganizationsAPIService) CreateOrgInviteExecute(r CreateOrgInviteApiRequest) (*OrganizationInvitation, *http.Response, error) {
+func (a *OrganizationsApiService) CreateOrgInviteExecute(r CreateOrgInviteApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -591,7 +639,7 @@ func (a *OrganizationsAPIService) CreateOrgInviteExecute(r CreateOrgInviteApiReq
 		localVarReturnValue *OrganizationInvitation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.CreateOrgInvite")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.CreateOrgInvite")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -662,7 +710,7 @@ func (a *OrganizationsAPIService) CreateOrgInviteExecute(r CreateOrgInviteApiReq
 
 type DeleteOrgApiRequest struct {
 	ctx        context.Context
-	ApiService OrganizationsAPI
+	ApiService OrganizationsApi
 	orgId      string
 }
 
@@ -670,7 +718,7 @@ type DeleteOrgApiParams struct {
 	OrgId string
 }
 
-func (a *OrganizationsAPIService) DeleteOrgWithParams(ctx context.Context, args *DeleteOrgApiParams) DeleteOrgApiRequest {
+func (a *OrganizationsApiService) DeleteOrgWithParams(ctx context.Context, args *DeleteOrgApiParams) DeleteOrgApiRequest {
 	return DeleteOrgApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -695,7 +743,7 @@ Removes one specified organization. MongoDB Cloud imposes the following limits o
     @param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
     @return DeleteOrgApiRequest
 */
-func (a *OrganizationsAPIService) DeleteOrg(ctx context.Context, orgId string) DeleteOrgApiRequest {
+func (a *OrganizationsApiService) DeleteOrg(ctx context.Context, orgId string) DeleteOrgApiRequest {
 	return DeleteOrgApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -704,14 +752,14 @@ func (a *OrganizationsAPIService) DeleteOrg(ctx context.Context, orgId string) D
 }
 
 // DeleteOrgExecute executes the request
-func (a *OrganizationsAPIService) DeleteOrgExecute(r DeleteOrgApiRequest) (*http.Response, error) {
+func (a *OrganizationsApiService) DeleteOrgExecute(r DeleteOrgApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.DeleteOrg")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.DeleteOrg")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -763,7 +811,7 @@ func (a *OrganizationsAPIService) DeleteOrgExecute(r DeleteOrgApiRequest) (*http
 
 type DeleteOrgInviteApiRequest struct {
 	ctx          context.Context
-	ApiService   OrganizationsAPI
+	ApiService   OrganizationsApi
 	orgId        string
 	invitationId string
 }
@@ -773,7 +821,7 @@ type DeleteOrgInviteApiParams struct {
 	InvitationId string
 }
 
-func (a *OrganizationsAPIService) DeleteOrgInviteWithParams(ctx context.Context, args *DeleteOrgInviteApiParams) DeleteOrgInviteApiRequest {
+func (a *OrganizationsApiService) DeleteOrgInviteWithParams(ctx context.Context, args *DeleteOrgInviteApiParams) DeleteOrgInviteApiRequest {
 	return DeleteOrgInviteApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -800,7 +848,7 @@ Cancels one pending invitation sent to the specified MongoDB Cloud user to join 
 
 Deprecated
 */
-func (a *OrganizationsAPIService) DeleteOrgInvite(ctx context.Context, orgId string, invitationId string) DeleteOrgInviteApiRequest {
+func (a *OrganizationsApiService) DeleteOrgInvite(ctx context.Context, orgId string, invitationId string) DeleteOrgInviteApiRequest {
 	return DeleteOrgInviteApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -811,14 +859,14 @@ func (a *OrganizationsAPIService) DeleteOrgInvite(ctx context.Context, orgId str
 
 // DeleteOrgInviteExecute executes the request
 // Deprecated
-func (a *OrganizationsAPIService) DeleteOrgInviteExecute(r DeleteOrgInviteApiRequest) (*http.Response, error) {
+func (a *OrganizationsApiService) DeleteOrgInviteExecute(r DeleteOrgInviteApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.DeleteOrgInvite")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.DeleteOrgInvite")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -874,7 +922,7 @@ func (a *OrganizationsAPIService) DeleteOrgInviteExecute(r DeleteOrgInviteApiReq
 
 type GetOrgApiRequest struct {
 	ctx        context.Context
-	ApiService OrganizationsAPI
+	ApiService OrganizationsApi
 	orgId      string
 }
 
@@ -882,7 +930,7 @@ type GetOrgApiParams struct {
 	OrgId string
 }
 
-func (a *OrganizationsAPIService) GetOrgWithParams(ctx context.Context, args *GetOrgApiParams) GetOrgApiRequest {
+func (a *OrganizationsApiService) GetOrgWithParams(ctx context.Context, args *GetOrgApiParams) GetOrgApiRequest {
 	return GetOrgApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -903,7 +951,7 @@ Returns one organization to which the requesting Service Account or API Key has 
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return GetOrgApiRequest
 */
-func (a *OrganizationsAPIService) GetOrg(ctx context.Context, orgId string) GetOrgApiRequest {
+func (a *OrganizationsApiService) GetOrg(ctx context.Context, orgId string) GetOrgApiRequest {
 	return GetOrgApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -914,7 +962,7 @@ func (a *OrganizationsAPIService) GetOrg(ctx context.Context, orgId string) GetO
 // GetOrgExecute executes the request
 //
 //	@return AtlasOrganization
-func (a *OrganizationsAPIService) GetOrgExecute(r GetOrgApiRequest) (*AtlasOrganization, *http.Response, error) {
+func (a *OrganizationsApiService) GetOrgExecute(r GetOrgApiRequest) (*AtlasOrganization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -922,7 +970,7 @@ func (a *OrganizationsAPIService) GetOrgExecute(r GetOrgApiRequest) (*AtlasOrgan
 		localVarReturnValue *AtlasOrganization
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.GetOrg")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.GetOrg")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -986,9 +1034,123 @@ func (a *OrganizationsAPIService) GetOrgExecute(r GetOrgApiRequest) (*AtlasOrgan
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type GetOrgDelegationSettingsApiRequest struct {
+	ctx        context.Context
+	ApiService OrganizationsApi
+	orgId      string
+}
+
+type GetOrgDelegationSettingsApiParams struct {
+	OrgId string
+}
+
+func (a *OrganizationsApiService) GetOrgDelegationSettingsWithParams(ctx context.Context, args *GetOrgDelegationSettingsApiParams) GetOrgDelegationSettingsApiRequest {
+	return GetOrgDelegationSettingsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      args.OrgId,
+	}
+}
+
+func (r GetOrgDelegationSettingsApiRequest) Execute() (*OrgDelegationSettingsResponse, *http.Response, error) {
+	return r.ApiService.GetOrgDelegationSettingsExecute(r)
+}
+
+/*
+GetOrgDelegationSettings Return Delegation Settings for One Organization
+
+Returns the delegation settings for the specified organization.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return GetOrgDelegationSettingsApiRequest
+*/
+func (a *OrganizationsApiService) GetOrgDelegationSettings(ctx context.Context, orgId string) GetOrgDelegationSettingsApiRequest {
+	return GetOrgDelegationSettingsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+	}
+}
+
+// GetOrgDelegationSettingsExecute executes the request
+//
+//	@return OrgDelegationSettingsResponse
+func (a *OrganizationsApiService) GetOrgDelegationSettingsExecute(r GetOrgDelegationSettingsApiRequest) (*OrgDelegationSettingsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *OrgDelegationSettingsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.GetOrgDelegationSettings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/delegationSettings"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type GetOrgGroupsApiRequest struct {
 	ctx          context.Context
-	ApiService   OrganizationsAPI
+	ApiService   OrganizationsApi
 	orgId        string
 	includeCount *bool
 	itemsPerPage *int
@@ -1004,7 +1166,7 @@ type GetOrgGroupsApiParams struct {
 	Name         *string
 }
 
-func (a *OrganizationsAPIService) GetOrgGroupsWithParams(ctx context.Context, args *GetOrgGroupsApiParams) GetOrgGroupsApiRequest {
+func (a *OrganizationsApiService) GetOrgGroupsWithParams(ctx context.Context, args *GetOrgGroupsApiParams) GetOrgGroupsApiRequest {
 	return GetOrgGroupsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1058,7 +1220,7 @@ Returns multiple projects in the specified organization. Each organization can h
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return GetOrgGroupsApiRequest
 */
-func (a *OrganizationsAPIService) GetOrgGroups(ctx context.Context, orgId string) GetOrgGroupsApiRequest {
+func (a *OrganizationsApiService) GetOrgGroups(ctx context.Context, orgId string) GetOrgGroupsApiRequest {
 	return GetOrgGroupsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1069,7 +1231,7 @@ func (a *OrganizationsAPIService) GetOrgGroups(ctx context.Context, orgId string
 // GetOrgGroupsExecute executes the request
 //
 //	@return PaginatedAtlasGroup
-func (a *OrganizationsAPIService) GetOrgGroupsExecute(r GetOrgGroupsApiRequest) (*PaginatedAtlasGroup, *http.Response, error) {
+func (a *OrganizationsApiService) GetOrgGroupsExecute(r GetOrgGroupsApiRequest) (*PaginatedAtlasGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1077,7 +1239,7 @@ func (a *OrganizationsAPIService) GetOrgGroupsExecute(r GetOrgGroupsApiRequest) 
 		localVarReturnValue *PaginatedAtlasGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.GetOrgGroups")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.GetOrgGroups")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1167,7 +1329,7 @@ func (a *OrganizationsAPIService) GetOrgGroupsExecute(r GetOrgGroupsApiRequest) 
 
 type GetOrgInviteApiRequest struct {
 	ctx          context.Context
-	ApiService   OrganizationsAPI
+	ApiService   OrganizationsApi
 	orgId        string
 	invitationId string
 }
@@ -1177,7 +1339,7 @@ type GetOrgInviteApiParams struct {
 	InvitationId string
 }
 
-func (a *OrganizationsAPIService) GetOrgInviteWithParams(ctx context.Context, args *GetOrgInviteApiParams) GetOrgInviteApiRequest {
+func (a *OrganizationsApiService) GetOrgInviteWithParams(ctx context.Context, args *GetOrgInviteApiParams) GetOrgInviteApiRequest {
 	return GetOrgInviteApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1204,7 +1366,7 @@ Returns the details of one pending invitation to the specified organization.
 
 Deprecated
 */
-func (a *OrganizationsAPIService) GetOrgInvite(ctx context.Context, orgId string, invitationId string) GetOrgInviteApiRequest {
+func (a *OrganizationsApiService) GetOrgInvite(ctx context.Context, orgId string, invitationId string) GetOrgInviteApiRequest {
 	return GetOrgInviteApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1218,7 +1380,7 @@ func (a *OrganizationsAPIService) GetOrgInvite(ctx context.Context, orgId string
 //	@return OrganizationInvitation
 //
 // Deprecated
-func (a *OrganizationsAPIService) GetOrgInviteExecute(r GetOrgInviteApiRequest) (*OrganizationInvitation, *http.Response, error) {
+func (a *OrganizationsApiService) GetOrgInviteExecute(r GetOrgInviteApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1226,7 +1388,7 @@ func (a *OrganizationsAPIService) GetOrgInviteExecute(r GetOrgInviteApiRequest) 
 		localVarReturnValue *OrganizationInvitation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.GetOrgInvite")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.GetOrgInvite")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1296,7 +1458,7 @@ func (a *OrganizationsAPIService) GetOrgInviteExecute(r GetOrgInviteApiRequest) 
 
 type GetOrgSettingsApiRequest struct {
 	ctx        context.Context
-	ApiService OrganizationsAPI
+	ApiService OrganizationsApi
 	orgId      string
 }
 
@@ -1304,7 +1466,7 @@ type GetOrgSettingsApiParams struct {
 	OrgId string
 }
 
-func (a *OrganizationsAPIService) GetOrgSettingsWithParams(ctx context.Context, args *GetOrgSettingsApiParams) GetOrgSettingsApiRequest {
+func (a *OrganizationsApiService) GetOrgSettingsWithParams(ctx context.Context, args *GetOrgSettingsApiParams) GetOrgSettingsApiRequest {
 	return GetOrgSettingsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1325,7 +1487,7 @@ Returns details about the specified organization's settings.
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return GetOrgSettingsApiRequest
 */
-func (a *OrganizationsAPIService) GetOrgSettings(ctx context.Context, orgId string) GetOrgSettingsApiRequest {
+func (a *OrganizationsApiService) GetOrgSettings(ctx context.Context, orgId string) GetOrgSettingsApiRequest {
 	return GetOrgSettingsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1336,7 +1498,7 @@ func (a *OrganizationsAPIService) GetOrgSettings(ctx context.Context, orgId stri
 // GetOrgSettingsExecute executes the request
 //
 //	@return OrganizationSettings
-func (a *OrganizationsAPIService) GetOrgSettingsExecute(r GetOrgSettingsApiRequest) (*OrganizationSettings, *http.Response, error) {
+func (a *OrganizationsApiService) GetOrgSettingsExecute(r GetOrgSettingsApiRequest) (*OrganizationSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1344,7 +1506,7 @@ func (a *OrganizationsAPIService) GetOrgSettingsExecute(r GetOrgSettingsApiReque
 		localVarReturnValue *OrganizationSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.GetOrgSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.GetOrgSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1410,7 +1572,7 @@ func (a *OrganizationsAPIService) GetOrgSettingsExecute(r GetOrgSettingsApiReque
 
 type ListOrgInvitesApiRequest struct {
 	ctx        context.Context
-	ApiService OrganizationsAPI
+	ApiService OrganizationsApi
 	orgId      string
 	username   *string
 }
@@ -1420,7 +1582,7 @@ type ListOrgInvitesApiParams struct {
 	Username *string
 }
 
-func (a *OrganizationsAPIService) ListOrgInvitesWithParams(ctx context.Context, args *ListOrgInvitesApiParams) ListOrgInvitesApiRequest {
+func (a *OrganizationsApiService) ListOrgInvitesWithParams(ctx context.Context, args *ListOrgInvitesApiParams) ListOrgInvitesApiRequest {
 	return ListOrgInvitesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1452,7 +1614,7 @@ Returns all pending invitations to the specified organization.
 
 Deprecated
 */
-func (a *OrganizationsAPIService) ListOrgInvites(ctx context.Context, orgId string) ListOrgInvitesApiRequest {
+func (a *OrganizationsApiService) ListOrgInvites(ctx context.Context, orgId string) ListOrgInvitesApiRequest {
 	return ListOrgInvitesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1465,7 +1627,7 @@ func (a *OrganizationsAPIService) ListOrgInvites(ctx context.Context, orgId stri
 //	@return []OrganizationInvitation
 //
 // Deprecated
-func (a *OrganizationsAPIService) ListOrgInvitesExecute(r ListOrgInvitesApiRequest) ([]OrganizationInvitation, *http.Response, error) {
+func (a *OrganizationsApiService) ListOrgInvitesExecute(r ListOrgInvitesApiRequest) ([]OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1473,7 +1635,7 @@ func (a *OrganizationsAPIService) ListOrgInvitesExecute(r ListOrgInvitesApiReque
 		localVarReturnValue []OrganizationInvitation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.ListOrgInvites")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.ListOrgInvites")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1542,7 +1704,7 @@ func (a *OrganizationsAPIService) ListOrgInvitesExecute(r ListOrgInvitesApiReque
 
 type ListOrgsApiRequest struct {
 	ctx          context.Context
-	ApiService   OrganizationsAPI
+	ApiService   OrganizationsApi
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
@@ -1556,7 +1718,7 @@ type ListOrgsApiParams struct {
 	Name         *string
 }
 
-func (a *OrganizationsAPIService) ListOrgsWithParams(ctx context.Context, args *ListOrgsApiParams) ListOrgsApiRequest {
+func (a *OrganizationsApiService) ListOrgsWithParams(ctx context.Context, args *ListOrgsApiParams) ListOrgsApiRequest {
 	return ListOrgsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1603,7 +1765,7 @@ Returns all organizations to which the requesting Service Account or API Key has
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ListOrgsApiRequest
 */
-func (a *OrganizationsAPIService) ListOrgs(ctx context.Context) ListOrgsApiRequest {
+func (a *OrganizationsApiService) ListOrgs(ctx context.Context) ListOrgsApiRequest {
 	return ListOrgsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1613,7 +1775,7 @@ func (a *OrganizationsAPIService) ListOrgs(ctx context.Context) ListOrgsApiReque
 // ListOrgsExecute executes the request
 //
 //	@return PaginatedOrganization
-func (a *OrganizationsAPIService) ListOrgsExecute(r ListOrgsApiRequest) (*PaginatedOrganization, *http.Response, error) {
+func (a *OrganizationsApiService) ListOrgsExecute(r ListOrgsApiRequest) (*PaginatedOrganization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1621,7 +1783,7 @@ func (a *OrganizationsAPIService) ListOrgsExecute(r ListOrgsApiRequest) (*Pagina
 		localVarReturnValue *PaginatedOrganization
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.ListOrgs")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.ListOrgs")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1707,7 +1869,7 @@ func (a *OrganizationsAPIService) ListOrgsExecute(r ListOrgsApiRequest) (*Pagina
 
 type UpdateOrgApiRequest struct {
 	ctx               context.Context
-	ApiService        OrganizationsAPI
+	ApiService        OrganizationsApi
 	orgId             string
 	atlasOrganization *AtlasOrganization
 }
@@ -1717,7 +1879,7 @@ type UpdateOrgApiParams struct {
 	AtlasOrganization *AtlasOrganization
 }
 
-func (a *OrganizationsAPIService) UpdateOrgWithParams(ctx context.Context, args *UpdateOrgApiParams) UpdateOrgApiRequest {
+func (a *OrganizationsApiService) UpdateOrgWithParams(ctx context.Context, args *UpdateOrgApiParams) UpdateOrgApiRequest {
 	return UpdateOrgApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1739,7 +1901,7 @@ Updates one organization.
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return UpdateOrgApiRequest
 */
-func (a *OrganizationsAPIService) UpdateOrg(ctx context.Context, orgId string, atlasOrganization *AtlasOrganization) UpdateOrgApiRequest {
+func (a *OrganizationsApiService) UpdateOrg(ctx context.Context, orgId string, atlasOrganization *AtlasOrganization) UpdateOrgApiRequest {
 	return UpdateOrgApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1751,7 +1913,7 @@ func (a *OrganizationsAPIService) UpdateOrg(ctx context.Context, orgId string, a
 // UpdateOrgExecute executes the request
 //
 //	@return AtlasOrganization
-func (a *OrganizationsAPIService) UpdateOrgExecute(r UpdateOrgApiRequest) (*AtlasOrganization, *http.Response, error) {
+func (a *OrganizationsApiService) UpdateOrgExecute(r UpdateOrgApiRequest) (*AtlasOrganization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -1759,7 +1921,7 @@ func (a *OrganizationsAPIService) UpdateOrgExecute(r UpdateOrgApiRequest) (*Atla
 		localVarReturnValue *AtlasOrganization
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.UpdateOrg")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.UpdateOrg")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1828,9 +1990,132 @@ func (a *OrganizationsAPIService) UpdateOrgExecute(r UpdateOrgApiRequest) (*Atla
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type UpdateOrgDelegationSettingsApiRequest struct {
+	ctx                                context.Context
+	ApiService                         OrganizationsApi
+	orgId                              string
+	orgDelegationSettingsUpdateRequest *OrgDelegationSettingsUpdateRequest
+}
+
+type UpdateOrgDelegationSettingsApiParams struct {
+	OrgId                              string
+	OrgDelegationSettingsUpdateRequest *OrgDelegationSettingsUpdateRequest
+}
+
+func (a *OrganizationsApiService) UpdateOrgDelegationSettingsWithParams(ctx context.Context, args *UpdateOrgDelegationSettingsApiParams) UpdateOrgDelegationSettingsApiRequest {
+	return UpdateOrgDelegationSettingsApiRequest{
+		ApiService:                         a,
+		ctx:                                ctx,
+		orgId:                              args.OrgId,
+		orgDelegationSettingsUpdateRequest: args.OrgDelegationSettingsUpdateRequest,
+	}
+}
+
+func (r UpdateOrgDelegationSettingsApiRequest) Execute() (*OrgDelegationSettingsResponse, *http.Response, error) {
+	return r.ApiService.UpdateOrgDelegationSettingsExecute(r)
+}
+
+/*
+UpdateOrgDelegationSettings Update Delegation Settings for One Organization
+
+Updates the delegation settings for the specified organization. Only fields present in the request body are updated; omitted fields retain their current values.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return UpdateOrgDelegationSettingsApiRequest
+*/
+func (a *OrganizationsApiService) UpdateOrgDelegationSettings(ctx context.Context, orgId string, orgDelegationSettingsUpdateRequest *OrgDelegationSettingsUpdateRequest) UpdateOrgDelegationSettingsApiRequest {
+	return UpdateOrgDelegationSettingsApiRequest{
+		ApiService:                         a,
+		ctx:                                ctx,
+		orgId:                              orgId,
+		orgDelegationSettingsUpdateRequest: orgDelegationSettingsUpdateRequest,
+	}
+}
+
+// UpdateOrgDelegationSettingsExecute executes the request
+//
+//	@return OrgDelegationSettingsResponse
+func (a *OrganizationsApiService) UpdateOrgDelegationSettingsExecute(r UpdateOrgDelegationSettingsApiRequest) (*OrgDelegationSettingsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *OrgDelegationSettingsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.UpdateOrgDelegationSettings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/delegationSettings"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.orgDelegationSettingsUpdateRequest == nil {
+		return localVarReturnValue, nil, reportError("orgDelegationSettingsUpdateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.orgDelegationSettingsUpdateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type UpdateOrgInviteByIdApiRequest struct {
 	ctx                                 context.Context
-	ApiService                          OrganizationsAPI
+	ApiService                          OrganizationsApi
 	orgId                               string
 	invitationId                        string
 	organizationInvitationUpdateRequest *OrganizationInvitationUpdateRequest
@@ -1842,7 +2127,7 @@ type UpdateOrgInviteByIdApiParams struct {
 	OrganizationInvitationUpdateRequest *OrganizationInvitationUpdateRequest
 }
 
-func (a *OrganizationsAPIService) UpdateOrgInviteByIdWithParams(ctx context.Context, args *UpdateOrgInviteByIdApiParams) UpdateOrgInviteByIdApiRequest {
+func (a *OrganizationsApiService) UpdateOrgInviteByIdWithParams(ctx context.Context, args *UpdateOrgInviteByIdApiParams) UpdateOrgInviteByIdApiRequest {
 	return UpdateOrgInviteByIdApiRequest{
 		ApiService:                          a,
 		ctx:                                 ctx,
@@ -1870,7 +2155,7 @@ Updates the details of one pending invitation to the specified organization. To 
 
 Deprecated
 */
-func (a *OrganizationsAPIService) UpdateOrgInviteById(ctx context.Context, orgId string, invitationId string, organizationInvitationUpdateRequest *OrganizationInvitationUpdateRequest) UpdateOrgInviteByIdApiRequest {
+func (a *OrganizationsApiService) UpdateOrgInviteById(ctx context.Context, orgId string, invitationId string, organizationInvitationUpdateRequest *OrganizationInvitationUpdateRequest) UpdateOrgInviteByIdApiRequest {
 	return UpdateOrgInviteByIdApiRequest{
 		ApiService:                          a,
 		ctx:                                 ctx,
@@ -1885,7 +2170,7 @@ func (a *OrganizationsAPIService) UpdateOrgInviteById(ctx context.Context, orgId
 //	@return OrganizationInvitation
 //
 // Deprecated
-func (a *OrganizationsAPIService) UpdateOrgInviteByIdExecute(r UpdateOrgInviteByIdApiRequest) (*OrganizationInvitation, *http.Response, error) {
+func (a *OrganizationsApiService) UpdateOrgInviteByIdExecute(r UpdateOrgInviteByIdApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -1893,7 +2178,7 @@ func (a *OrganizationsAPIService) UpdateOrgInviteByIdExecute(r UpdateOrgInviteBy
 		localVarReturnValue *OrganizationInvitation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.UpdateOrgInviteById")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.UpdateOrgInviteById")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1968,7 +2253,7 @@ func (a *OrganizationsAPIService) UpdateOrgInviteByIdExecute(r UpdateOrgInviteBy
 
 type UpdateOrgInvitesApiRequest struct {
 	ctx                           context.Context
-	ApiService                    OrganizationsAPI
+	ApiService                    OrganizationsApi
 	orgId                         string
 	organizationInvitationRequest *OrganizationInvitationRequest
 }
@@ -1978,7 +2263,7 @@ type UpdateOrgInvitesApiParams struct {
 	OrganizationInvitationRequest *OrganizationInvitationRequest
 }
 
-func (a *OrganizationsAPIService) UpdateOrgInvitesWithParams(ctx context.Context, args *UpdateOrgInvitesApiParams) UpdateOrgInvitesApiRequest {
+func (a *OrganizationsApiService) UpdateOrgInvitesWithParams(ctx context.Context, args *UpdateOrgInvitesApiParams) UpdateOrgInvitesApiRequest {
 	return UpdateOrgInvitesApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -2004,7 +2289,7 @@ Updates the details of one pending invitation to the specified organization. To 
 
 Deprecated
 */
-func (a *OrganizationsAPIService) UpdateOrgInvites(ctx context.Context, orgId string, organizationInvitationRequest *OrganizationInvitationRequest) UpdateOrgInvitesApiRequest {
+func (a *OrganizationsApiService) UpdateOrgInvites(ctx context.Context, orgId string, organizationInvitationRequest *OrganizationInvitationRequest) UpdateOrgInvitesApiRequest {
 	return UpdateOrgInvitesApiRequest{
 		ApiService:                    a,
 		ctx:                           ctx,
@@ -2018,7 +2303,7 @@ func (a *OrganizationsAPIService) UpdateOrgInvites(ctx context.Context, orgId st
 //	@return OrganizationInvitation
 //
 // Deprecated
-func (a *OrganizationsAPIService) UpdateOrgInvitesExecute(r UpdateOrgInvitesApiRequest) (*OrganizationInvitation, *http.Response, error) {
+func (a *OrganizationsApiService) UpdateOrgInvitesExecute(r UpdateOrgInvitesApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -2026,7 +2311,7 @@ func (a *OrganizationsAPIService) UpdateOrgInvitesExecute(r UpdateOrgInvitesApiR
 		localVarReturnValue *OrganizationInvitation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.UpdateOrgInvites")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.UpdateOrgInvites")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2097,7 +2382,7 @@ func (a *OrganizationsAPIService) UpdateOrgInvitesExecute(r UpdateOrgInvitesApiR
 
 type UpdateOrgSettingsApiRequest struct {
 	ctx                  context.Context
-	ApiService           OrganizationsAPI
+	ApiService           OrganizationsApi
 	orgId                string
 	organizationSettings *OrganizationSettings
 }
@@ -2107,7 +2392,7 @@ type UpdateOrgSettingsApiParams struct {
 	OrganizationSettings *OrganizationSettings
 }
 
-func (a *OrganizationsAPIService) UpdateOrgSettingsWithParams(ctx context.Context, args *UpdateOrgSettingsApiParams) UpdateOrgSettingsApiRequest {
+func (a *OrganizationsApiService) UpdateOrgSettingsWithParams(ctx context.Context, args *UpdateOrgSettingsApiParams) UpdateOrgSettingsApiRequest {
 	return UpdateOrgSettingsApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -2129,7 +2414,7 @@ Updates the organization's settings.
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return UpdateOrgSettingsApiRequest
 */
-func (a *OrganizationsAPIService) UpdateOrgSettings(ctx context.Context, orgId string, organizationSettings *OrganizationSettings) UpdateOrgSettingsApiRequest {
+func (a *OrganizationsApiService) UpdateOrgSettings(ctx context.Context, orgId string, organizationSettings *OrganizationSettings) UpdateOrgSettingsApiRequest {
 	return UpdateOrgSettingsApiRequest{
 		ApiService:           a,
 		ctx:                  ctx,
@@ -2141,7 +2426,7 @@ func (a *OrganizationsAPIService) UpdateOrgSettings(ctx context.Context, orgId s
 // UpdateOrgSettingsExecute executes the request
 //
 //	@return OrganizationSettings
-func (a *OrganizationsAPIService) UpdateOrgSettingsExecute(r UpdateOrgSettingsApiRequest) (*OrganizationSettings, *http.Response, error) {
+func (a *OrganizationsApiService) UpdateOrgSettingsExecute(r UpdateOrgSettingsApiRequest) (*OrganizationSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -2149,7 +2434,7 @@ func (a *OrganizationsAPIService) UpdateOrgSettingsExecute(r UpdateOrgSettingsAp
 		localVarReturnValue *OrganizationSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.UpdateOrgSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.UpdateOrgSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2220,7 +2505,7 @@ func (a *OrganizationsAPIService) UpdateOrgSettingsExecute(r UpdateOrgSettingsAp
 
 type UpdateOrgUserRolesApiRequest struct {
 	ctx                   context.Context
-	ApiService            OrganizationsAPI
+	ApiService            OrganizationsApi
 	orgId                 string
 	userId                string
 	updateOrgRolesForUser *UpdateOrgRolesForUser
@@ -2232,7 +2517,7 @@ type UpdateOrgUserRolesApiParams struct {
 	UpdateOrgRolesForUser *UpdateOrgRolesForUser
 }
 
-func (a *OrganizationsAPIService) UpdateOrgUserRolesWithParams(ctx context.Context, args *UpdateOrgUserRolesApiParams) UpdateOrgUserRolesApiRequest {
+func (a *OrganizationsApiService) UpdateOrgUserRolesWithParams(ctx context.Context, args *UpdateOrgUserRolesApiParams) UpdateOrgUserRolesApiRequest {
 	return UpdateOrgUserRolesApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -2258,7 +2543,7 @@ Updates the roles of the specified user in the specified organization. To specif
 
 Deprecated
 */
-func (a *OrganizationsAPIService) UpdateOrgUserRoles(ctx context.Context, orgId string, userId string, updateOrgRolesForUser *UpdateOrgRolesForUser) UpdateOrgUserRolesApiRequest {
+func (a *OrganizationsApiService) UpdateOrgUserRoles(ctx context.Context, orgId string, userId string, updateOrgRolesForUser *UpdateOrgRolesForUser) UpdateOrgUserRolesApiRequest {
 	return UpdateOrgUserRolesApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -2273,7 +2558,7 @@ func (a *OrganizationsAPIService) UpdateOrgUserRoles(ctx context.Context, orgId 
 //	@return UpdateOrgRolesForUser
 //
 // Deprecated
-func (a *OrganizationsAPIService) UpdateOrgUserRolesExecute(r UpdateOrgUserRolesApiRequest) (*UpdateOrgRolesForUser, *http.Response, error) {
+func (a *OrganizationsApiService) UpdateOrgUserRolesExecute(r UpdateOrgUserRolesApiRequest) (*UpdateOrgRolesForUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    any
@@ -2281,7 +2566,7 @@ func (a *OrganizationsAPIService) UpdateOrgUserRolesExecute(r UpdateOrgUserRoles
 		localVarReturnValue *UpdateOrgRolesForUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.UpdateOrgUserRoles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsApiService.UpdateOrgUserRoles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

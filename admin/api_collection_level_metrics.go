@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -11,7 +12,7 @@ import (
 	"time"
 )
 
-type CollectionLevelMetricsAPI interface {
+type CollectionLevelMetricsApi interface {
 
 	/*
 		GetClusterNamespaces Return Ranked Namespaces from One Cluster
@@ -238,12 +239,12 @@ type CollectionLevelMetricsAPI interface {
 	UpdatePinnedNamespacesExecute(r UpdatePinnedNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error)
 }
 
-// CollectionLevelMetricsAPIService CollectionLevelMetricsAPI service
-type CollectionLevelMetricsAPIService service
+// CollectionLevelMetricsApiService CollectionLevelMetricsApi service
+type CollectionLevelMetricsApiService service
 
 type GetClusterNamespacesApiRequest struct {
 	ctx         context.Context
-	ApiService  CollectionLevelMetricsAPI
+	ApiService  CollectionLevelMetricsApi
 	groupId     string
 	clusterName string
 	clusterView string
@@ -261,7 +262,7 @@ type GetClusterNamespacesApiParams struct {
 	Period      *string
 }
 
-func (a *CollectionLevelMetricsAPIService) GetClusterNamespacesWithParams(ctx context.Context, args *GetClusterNamespacesApiParams) GetClusterNamespacesApiRequest {
+func (a *CollectionLevelMetricsApiService) GetClusterNamespacesWithParams(ctx context.Context, args *GetClusterNamespacesApiParams) GetClusterNamespacesApiRequest {
 	return GetClusterNamespacesApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -307,7 +308,7 @@ Return the subset of namespaces from the given cluster sorted by highest total e
 	@param clusterView Human-readable label that identifies the cluster topology to retrieve metrics for.
 	@return GetClusterNamespacesApiRequest
 */
-func (a *CollectionLevelMetricsAPIService) GetClusterNamespaces(ctx context.Context, groupId string, clusterName string, clusterView string) GetClusterNamespacesApiRequest {
+func (a *CollectionLevelMetricsApiService) GetClusterNamespaces(ctx context.Context, groupId string, clusterName string, clusterView string) GetClusterNamespacesApiRequest {
 	return GetClusterNamespacesApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -320,7 +321,7 @@ func (a *CollectionLevelMetricsAPIService) GetClusterNamespaces(ctx context.Cont
 // GetClusterNamespacesExecute executes the request
 //
 //	@return CollStatsRankedNamespaces
-func (a *CollectionLevelMetricsAPIService) GetClusterNamespacesExecute(r GetClusterNamespacesApiRequest) (*CollStatsRankedNamespaces, *http.Response, error) {
+func (a *CollectionLevelMetricsApiService) GetClusterNamespacesExecute(r GetClusterNamespacesApiRequest) (*CollStatsRankedNamespaces, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -328,7 +329,7 @@ func (a *CollectionLevelMetricsAPIService) GetClusterNamespacesExecute(r GetClus
 		localVarReturnValue *CollStatsRankedNamespaces
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsAPIService.GetClusterNamespaces")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.GetClusterNamespaces")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -411,7 +412,7 @@ func (a *CollectionLevelMetricsAPIService) GetClusterNamespacesExecute(r GetClus
 
 type GetProcessNamespacesApiRequest struct {
 	ctx        context.Context
-	ApiService CollectionLevelMetricsAPI
+	ApiService CollectionLevelMetricsApi
 	groupId    string
 	processId  string
 	start      *time.Time
@@ -427,7 +428,7 @@ type GetProcessNamespacesApiParams struct {
 	Period    *string
 }
 
-func (a *CollectionLevelMetricsAPIService) GetProcessNamespacesWithParams(ctx context.Context, args *GetProcessNamespacesApiParams) GetProcessNamespacesApiRequest {
+func (a *CollectionLevelMetricsApiService) GetProcessNamespacesWithParams(ctx context.Context, args *GetProcessNamespacesApiParams) GetProcessNamespacesApiRequest {
 	return GetProcessNamespacesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -471,7 +472,7 @@ Return the subset of namespaces from the given process ranked by highest total e
 	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
 	@return GetProcessNamespacesApiRequest
 */
-func (a *CollectionLevelMetricsAPIService) GetProcessNamespaces(ctx context.Context, groupId string, processId string) GetProcessNamespacesApiRequest {
+func (a *CollectionLevelMetricsApiService) GetProcessNamespaces(ctx context.Context, groupId string, processId string) GetProcessNamespacesApiRequest {
 	return GetProcessNamespacesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -483,7 +484,7 @@ func (a *CollectionLevelMetricsAPIService) GetProcessNamespaces(ctx context.Cont
 // GetProcessNamespacesExecute executes the request
 //
 //	@return CollStatsRankedNamespaces
-func (a *CollectionLevelMetricsAPIService) GetProcessNamespacesExecute(r GetProcessNamespacesApiRequest) (*CollStatsRankedNamespaces, *http.Response, error) {
+func (a *CollectionLevelMetricsApiService) GetProcessNamespacesExecute(r GetProcessNamespacesApiRequest) (*CollStatsRankedNamespaces, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -491,7 +492,7 @@ func (a *CollectionLevelMetricsAPIService) GetProcessNamespacesExecute(r GetProc
 		localVarReturnValue *CollStatsRankedNamespaces
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsAPIService.GetProcessNamespaces")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.GetProcessNamespaces")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -570,7 +571,7 @@ func (a *CollectionLevelMetricsAPIService) GetProcessNamespacesExecute(r GetProc
 
 type ListCollStatMeasurementsApiRequest struct {
 	ctx            context.Context
-	ApiService     CollectionLevelMetricsAPI
+	ApiService     CollectionLevelMetricsApi
 	groupId        string
 	clusterName    string
 	clusterView    string
@@ -594,7 +595,7 @@ type ListCollStatMeasurementsApiParams struct {
 	Period         *string
 }
 
-func (a *CollectionLevelMetricsAPIService) ListCollStatMeasurementsWithParams(ctx context.Context, args *ListCollStatMeasurementsApiParams) ListCollStatMeasurementsApiRequest {
+func (a *CollectionLevelMetricsApiService) ListCollStatMeasurementsWithParams(ctx context.Context, args *ListCollStatMeasurementsApiParams) ListCollStatMeasurementsApiRequest {
 	return ListCollStatMeasurementsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -651,7 +652,7 @@ Get a list of the Coll Stats Latency cluster-level measurements for the given na
 	@param collectionName Human-readable label that identifies the collection.
 	@return ListCollStatMeasurementsApiRequest
 */
-func (a *CollectionLevelMetricsAPIService) ListCollStatMeasurements(ctx context.Context, groupId string, clusterName string, clusterView string, databaseName string, collectionName string) ListCollStatMeasurementsApiRequest {
+func (a *CollectionLevelMetricsApiService) ListCollStatMeasurements(ctx context.Context, groupId string, clusterName string, clusterView string, databaseName string, collectionName string) ListCollStatMeasurementsApiRequest {
 	return ListCollStatMeasurementsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -666,7 +667,7 @@ func (a *CollectionLevelMetricsAPIService) ListCollStatMeasurements(ctx context.
 // ListCollStatMeasurementsExecute executes the request
 //
 //	@return MeasurementsCollStatsLatencyCluster
-func (a *CollectionLevelMetricsAPIService) ListCollStatMeasurementsExecute(r ListCollStatMeasurementsApiRequest) (*MeasurementsCollStatsLatencyCluster, *http.Response, error) {
+func (a *CollectionLevelMetricsApiService) ListCollStatMeasurementsExecute(r ListCollStatMeasurementsApiRequest) (*MeasurementsCollStatsLatencyCluster, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -674,7 +675,7 @@ func (a *CollectionLevelMetricsAPIService) ListCollStatMeasurementsExecute(r Lis
 		localVarReturnValue *MeasurementsCollStatsLatencyCluster
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsAPIService.ListCollStatMeasurements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.ListCollStatMeasurements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -772,7 +773,7 @@ func (a *CollectionLevelMetricsAPIService) ListCollStatMeasurementsExecute(r Lis
 
 type ListCollStatMetricsApiRequest struct {
 	ctx        context.Context
-	ApiService CollectionLevelMetricsAPI
+	ApiService CollectionLevelMetricsApi
 	groupId    string
 }
 
@@ -780,7 +781,7 @@ type ListCollStatMetricsApiParams struct {
 	GroupId string
 }
 
-func (a *CollectionLevelMetricsAPIService) ListCollStatMetricsWithParams(ctx context.Context, args *ListCollStatMetricsApiParams) ListCollStatMetricsApiRequest {
+func (a *CollectionLevelMetricsApiService) ListCollStatMetricsWithParams(ctx context.Context, args *ListCollStatMetricsApiParams) ListCollStatMetricsApiRequest {
 	return ListCollStatMetricsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -801,7 +802,7 @@ Returns all available Coll Stats Latency metric names and their respective units
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListCollStatMetricsApiRequest
 */
-func (a *CollectionLevelMetricsAPIService) ListCollStatMetrics(ctx context.Context, groupId string) ListCollStatMetricsApiRequest {
+func (a *CollectionLevelMetricsApiService) ListCollStatMetrics(ctx context.Context, groupId string) ListCollStatMetricsApiRequest {
 	return ListCollStatMetricsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -812,7 +813,7 @@ func (a *CollectionLevelMetricsAPIService) ListCollStatMetrics(ctx context.Conte
 // ListCollStatMetricsExecute executes the request
 //
 //	@return CollStatsLatencyNamespaceMetrics
-func (a *CollectionLevelMetricsAPIService) ListCollStatMetricsExecute(r ListCollStatMetricsApiRequest) (*CollStatsLatencyNamespaceMetrics, *http.Response, error) {
+func (a *CollectionLevelMetricsApiService) ListCollStatMetricsExecute(r ListCollStatMetricsApiRequest) (*CollStatsLatencyNamespaceMetrics, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -820,7 +821,7 @@ func (a *CollectionLevelMetricsAPIService) ListCollStatMetricsExecute(r ListColl
 		localVarReturnValue *CollStatsLatencyNamespaceMetrics
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsAPIService.ListCollStatMetrics")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.ListCollStatMetrics")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -886,7 +887,7 @@ func (a *CollectionLevelMetricsAPIService) ListCollStatMetricsExecute(r ListColl
 
 type ListPinnedNamespacesApiRequest struct {
 	ctx         context.Context
-	ApiService  CollectionLevelMetricsAPI
+	ApiService  CollectionLevelMetricsApi
 	groupId     string
 	clusterName string
 }
@@ -896,7 +897,7 @@ type ListPinnedNamespacesApiParams struct {
 	ClusterName string
 }
 
-func (a *CollectionLevelMetricsAPIService) ListPinnedNamespacesWithParams(ctx context.Context, args *ListPinnedNamespacesApiParams) ListPinnedNamespacesApiRequest {
+func (a *CollectionLevelMetricsApiService) ListPinnedNamespacesWithParams(ctx context.Context, args *ListPinnedNamespacesApiParams) ListPinnedNamespacesApiRequest {
 	return ListPinnedNamespacesApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -919,7 +920,7 @@ Returns a list of given cluster's pinned namespaces, a set of namespaces manuall
 	@param clusterName Human-readable label that identifies the cluster to retrieve pinned namespaces for.
 	@return ListPinnedNamespacesApiRequest
 */
-func (a *CollectionLevelMetricsAPIService) ListPinnedNamespaces(ctx context.Context, groupId string, clusterName string) ListPinnedNamespacesApiRequest {
+func (a *CollectionLevelMetricsApiService) ListPinnedNamespaces(ctx context.Context, groupId string, clusterName string) ListPinnedNamespacesApiRequest {
 	return ListPinnedNamespacesApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -931,7 +932,7 @@ func (a *CollectionLevelMetricsAPIService) ListPinnedNamespaces(ctx context.Cont
 // ListPinnedNamespacesExecute executes the request
 //
 //	@return PinnedNamespaces
-func (a *CollectionLevelMetricsAPIService) ListPinnedNamespacesExecute(r ListPinnedNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error) {
+func (a *CollectionLevelMetricsApiService) ListPinnedNamespacesExecute(r ListPinnedNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -939,7 +940,7 @@ func (a *CollectionLevelMetricsAPIService) ListPinnedNamespacesExecute(r ListPin
 		localVarReturnValue *PinnedNamespaces
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsAPIService.ListPinnedNamespaces")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.ListPinnedNamespaces")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1009,7 +1010,7 @@ func (a *CollectionLevelMetricsAPIService) ListPinnedNamespacesExecute(r ListPin
 
 type ListProcessMeasurementsApiRequest struct {
 	ctx            context.Context
-	ApiService     CollectionLevelMetricsAPI
+	ApiService     CollectionLevelMetricsApi
 	groupId        string
 	processId      string
 	databaseName   string
@@ -1031,7 +1032,7 @@ type ListProcessMeasurementsApiParams struct {
 	Period         *string
 }
 
-func (a *CollectionLevelMetricsAPIService) ListProcessMeasurementsWithParams(ctx context.Context, args *ListProcessMeasurementsApiParams) ListProcessMeasurementsApiRequest {
+func (a *CollectionLevelMetricsApiService) ListProcessMeasurementsWithParams(ctx context.Context, args *ListProcessMeasurementsApiParams) ListProcessMeasurementsApiRequest {
 	return ListProcessMeasurementsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1086,7 +1087,7 @@ Get a list of the Coll Stats Latency process-level measurements for the given na
 	@param collectionName Human-readable label that identifies the collection.
 	@return ListProcessMeasurementsApiRequest
 */
-func (a *CollectionLevelMetricsAPIService) ListProcessMeasurements(ctx context.Context, groupId string, processId string, databaseName string, collectionName string) ListProcessMeasurementsApiRequest {
+func (a *CollectionLevelMetricsApiService) ListProcessMeasurements(ctx context.Context, groupId string, processId string, databaseName string, collectionName string) ListProcessMeasurementsApiRequest {
 	return ListProcessMeasurementsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -1100,7 +1101,7 @@ func (a *CollectionLevelMetricsAPIService) ListProcessMeasurements(ctx context.C
 // ListProcessMeasurementsExecute executes the request
 //
 //	@return MeasurementsCollStatsLatencyHost
-func (a *CollectionLevelMetricsAPIService) ListProcessMeasurementsExecute(r ListProcessMeasurementsApiRequest) (*MeasurementsCollStatsLatencyHost, *http.Response, error) {
+func (a *CollectionLevelMetricsApiService) ListProcessMeasurementsExecute(r ListProcessMeasurementsApiRequest) (*MeasurementsCollStatsLatencyHost, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1108,7 +1109,7 @@ func (a *CollectionLevelMetricsAPIService) ListProcessMeasurementsExecute(r List
 		localVarReturnValue *MeasurementsCollStatsLatencyHost
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsAPIService.ListProcessMeasurements")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.ListProcessMeasurements")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1202,7 +1203,7 @@ func (a *CollectionLevelMetricsAPIService) ListProcessMeasurementsExecute(r List
 
 type PinNamespacesApiRequest struct {
 	ctx               context.Context
-	ApiService        CollectionLevelMetricsAPI
+	ApiService        CollectionLevelMetricsApi
 	groupId           string
 	clusterName       string
 	namespacesRequest *NamespacesRequest
@@ -1214,7 +1215,7 @@ type PinNamespacesApiParams struct {
 	NamespacesRequest *NamespacesRequest
 }
 
-func (a *CollectionLevelMetricsAPIService) PinNamespacesWithParams(ctx context.Context, args *PinNamespacesApiParams) PinNamespacesApiRequest {
+func (a *CollectionLevelMetricsApiService) PinNamespacesWithParams(ctx context.Context, args *PinNamespacesApiParams) PinNamespacesApiRequest {
 	return PinNamespacesApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1238,7 +1239,7 @@ Pin provided list of namespaces for collection-level latency metrics collection 
 	@param clusterName Human-readable label that identifies the cluster to pin namespaces to.
 	@return PinNamespacesApiRequest
 */
-func (a *CollectionLevelMetricsAPIService) PinNamespaces(ctx context.Context, groupId string, clusterName string, namespacesRequest *NamespacesRequest) PinNamespacesApiRequest {
+func (a *CollectionLevelMetricsApiService) PinNamespaces(ctx context.Context, groupId string, clusterName string, namespacesRequest *NamespacesRequest) PinNamespacesApiRequest {
 	return PinNamespacesApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1251,7 +1252,7 @@ func (a *CollectionLevelMetricsAPIService) PinNamespaces(ctx context.Context, gr
 // PinNamespacesExecute executes the request
 //
 //	@return PinnedNamespaces
-func (a *CollectionLevelMetricsAPIService) PinNamespacesExecute(r PinNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error) {
+func (a *CollectionLevelMetricsApiService) PinNamespacesExecute(r PinNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    any
@@ -1259,7 +1260,7 @@ func (a *CollectionLevelMetricsAPIService) PinNamespacesExecute(r PinNamespacesA
 		localVarReturnValue *PinnedNamespaces
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsAPIService.PinNamespaces")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.PinNamespaces")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1334,7 +1335,7 @@ func (a *CollectionLevelMetricsAPIService) PinNamespacesExecute(r PinNamespacesA
 
 type UnpinNamespacesApiRequest struct {
 	ctx               context.Context
-	ApiService        CollectionLevelMetricsAPI
+	ApiService        CollectionLevelMetricsApi
 	groupId           string
 	clusterName       string
 	namespacesRequest *NamespacesRequest
@@ -1346,7 +1347,7 @@ type UnpinNamespacesApiParams struct {
 	NamespacesRequest *NamespacesRequest
 }
 
-func (a *CollectionLevelMetricsAPIService) UnpinNamespacesWithParams(ctx context.Context, args *UnpinNamespacesApiParams) UnpinNamespacesApiRequest {
+func (a *CollectionLevelMetricsApiService) UnpinNamespacesWithParams(ctx context.Context, args *UnpinNamespacesApiParams) UnpinNamespacesApiRequest {
 	return UnpinNamespacesApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1370,7 +1371,7 @@ Unpin provided list of namespaces for collection-level latency metrics collectio
 	@param clusterName Human-readable label that identifies the cluster to unpin namespaces from.
 	@return UnpinNamespacesApiRequest
 */
-func (a *CollectionLevelMetricsAPIService) UnpinNamespaces(ctx context.Context, groupId string, clusterName string, namespacesRequest *NamespacesRequest) UnpinNamespacesApiRequest {
+func (a *CollectionLevelMetricsApiService) UnpinNamespaces(ctx context.Context, groupId string, clusterName string, namespacesRequest *NamespacesRequest) UnpinNamespacesApiRequest {
 	return UnpinNamespacesApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1383,7 +1384,7 @@ func (a *CollectionLevelMetricsAPIService) UnpinNamespaces(ctx context.Context, 
 // UnpinNamespacesExecute executes the request
 //
 //	@return PinnedNamespaces
-func (a *CollectionLevelMetricsAPIService) UnpinNamespacesExecute(r UnpinNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error) {
+func (a *CollectionLevelMetricsApiService) UnpinNamespacesExecute(r UnpinNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -1391,7 +1392,7 @@ func (a *CollectionLevelMetricsAPIService) UnpinNamespacesExecute(r UnpinNamespa
 		localVarReturnValue *PinnedNamespaces
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsAPIService.UnpinNamespaces")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.UnpinNamespaces")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1466,7 +1467,7 @@ func (a *CollectionLevelMetricsAPIService) UnpinNamespacesExecute(r UnpinNamespa
 
 type UpdatePinnedNamespacesApiRequest struct {
 	ctx               context.Context
-	ApiService        CollectionLevelMetricsAPI
+	ApiService        CollectionLevelMetricsApi
 	groupId           string
 	clusterName       string
 	namespacesRequest *NamespacesRequest
@@ -1478,7 +1479,7 @@ type UpdatePinnedNamespacesApiParams struct {
 	NamespacesRequest *NamespacesRequest
 }
 
-func (a *CollectionLevelMetricsAPIService) UpdatePinnedNamespacesWithParams(ctx context.Context, args *UpdatePinnedNamespacesApiParams) UpdatePinnedNamespacesApiRequest {
+func (a *CollectionLevelMetricsApiService) UpdatePinnedNamespacesWithParams(ctx context.Context, args *UpdatePinnedNamespacesApiParams) UpdatePinnedNamespacesApiRequest {
 	return UpdatePinnedNamespacesApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1502,7 +1503,7 @@ Add provided list of namespaces to existing pinned namespaces list for collectio
 	@param clusterName Human-readable label that identifies the cluster to pin namespaces to.
 	@return UpdatePinnedNamespacesApiRequest
 */
-func (a *CollectionLevelMetricsAPIService) UpdatePinnedNamespaces(ctx context.Context, groupId string, clusterName string, namespacesRequest *NamespacesRequest) UpdatePinnedNamespacesApiRequest {
+func (a *CollectionLevelMetricsApiService) UpdatePinnedNamespaces(ctx context.Context, groupId string, clusterName string, namespacesRequest *NamespacesRequest) UpdatePinnedNamespacesApiRequest {
 	return UpdatePinnedNamespacesApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -1515,7 +1516,7 @@ func (a *CollectionLevelMetricsAPIService) UpdatePinnedNamespaces(ctx context.Co
 // UpdatePinnedNamespacesExecute executes the request
 //
 //	@return PinnedNamespaces
-func (a *CollectionLevelMetricsAPIService) UpdatePinnedNamespacesExecute(r UpdatePinnedNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error) {
+func (a *CollectionLevelMetricsApiService) UpdatePinnedNamespacesExecute(r UpdatePinnedNamespacesApiRequest) (*PinnedNamespaces, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -1523,7 +1524,7 @@ func (a *CollectionLevelMetricsAPIService) UpdatePinnedNamespacesExecute(r Updat
 		localVarReturnValue *PinnedNamespaces
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsAPIService.UpdatePinnedNamespaces")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CollectionLevelMetricsApiService.UpdatePinnedNamespaces")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

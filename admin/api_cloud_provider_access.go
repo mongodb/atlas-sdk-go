@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -9,7 +10,7 @@ import (
 	"strings"
 )
 
-type CloudProviderAccessAPI interface {
+type CloudProviderAccessApi interface {
 
 	/*
 		AuthorizeProviderAccessRole Authorize One Cloud Provider Access Role
@@ -133,12 +134,12 @@ type CloudProviderAccessAPI interface {
 	ListCloudProviderAccessExecute(r ListCloudProviderAccessApiRequest) (*CloudProviderAccessRoles, *http.Response, error)
 }
 
-// CloudProviderAccessAPIService CloudProviderAccessAPI service
-type CloudProviderAccessAPIService service
+// CloudProviderAccessApiService CloudProviderAccessApi service
+type CloudProviderAccessApiService service
 
 type AuthorizeProviderAccessRoleApiRequest struct {
 	ctx                                  context.Context
-	ApiService                           CloudProviderAccessAPI
+	ApiService                           CloudProviderAccessApi
 	groupId                              string
 	roleId                               string
 	cloudProviderAccessRoleRequestUpdate *CloudProviderAccessRoleRequestUpdate
@@ -150,7 +151,7 @@ type AuthorizeProviderAccessRoleApiParams struct {
 	CloudProviderAccessRoleRequestUpdate *CloudProviderAccessRoleRequestUpdate
 }
 
-func (a *CloudProviderAccessAPIService) AuthorizeProviderAccessRoleWithParams(ctx context.Context, args *AuthorizeProviderAccessRoleApiParams) AuthorizeProviderAccessRoleApiRequest {
+func (a *CloudProviderAccessApiService) AuthorizeProviderAccessRoleWithParams(ctx context.Context, args *AuthorizeProviderAccessRoleApiParams) AuthorizeProviderAccessRoleApiRequest {
 	return AuthorizeProviderAccessRoleApiRequest{
 		ApiService:                           a,
 		ctx:                                  ctx,
@@ -174,7 +175,7 @@ Grants access to the specified project for the specified access role. This API e
 	@param roleId Unique 24-hexadecimal digit string that identifies the role.
 	@return AuthorizeProviderAccessRoleApiRequest
 */
-func (a *CloudProviderAccessAPIService) AuthorizeProviderAccessRole(ctx context.Context, groupId string, roleId string, cloudProviderAccessRoleRequestUpdate *CloudProviderAccessRoleRequestUpdate) AuthorizeProviderAccessRoleApiRequest {
+func (a *CloudProviderAccessApiService) AuthorizeProviderAccessRole(ctx context.Context, groupId string, roleId string, cloudProviderAccessRoleRequestUpdate *CloudProviderAccessRoleRequestUpdate) AuthorizeProviderAccessRoleApiRequest {
 	return AuthorizeProviderAccessRoleApiRequest{
 		ApiService:                           a,
 		ctx:                                  ctx,
@@ -187,7 +188,7 @@ func (a *CloudProviderAccessAPIService) AuthorizeProviderAccessRole(ctx context.
 // AuthorizeProviderAccessRoleExecute executes the request
 //
 //	@return CloudProviderAccessRole
-func (a *CloudProviderAccessAPIService) AuthorizeProviderAccessRoleExecute(r AuthorizeProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
+func (a *CloudProviderAccessApiService) AuthorizeProviderAccessRoleExecute(r AuthorizeProviderAccessRoleApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -195,7 +196,7 @@ func (a *CloudProviderAccessAPIService) AuthorizeProviderAccessRoleExecute(r Aut
 		localVarReturnValue *CloudProviderAccessRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessAPIService.AuthorizeProviderAccessRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.AuthorizeProviderAccessRole")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -270,7 +271,7 @@ func (a *CloudProviderAccessAPIService) AuthorizeProviderAccessRoleExecute(r Aut
 
 type CreateCloudProviderAccessApiRequest struct {
 	ctx                            context.Context
-	ApiService                     CloudProviderAccessAPI
+	ApiService                     CloudProviderAccessApi
 	groupId                        string
 	cloudProviderAccessRoleRequest *CloudProviderAccessRoleRequest
 }
@@ -280,7 +281,7 @@ type CreateCloudProviderAccessApiParams struct {
 	CloudProviderAccessRoleRequest *CloudProviderAccessRoleRequest
 }
 
-func (a *CloudProviderAccessAPIService) CreateCloudProviderAccessWithParams(ctx context.Context, args *CreateCloudProviderAccessApiParams) CreateCloudProviderAccessApiRequest {
+func (a *CloudProviderAccessApiService) CreateCloudProviderAccessWithParams(ctx context.Context, args *CreateCloudProviderAccessApiParams) CreateCloudProviderAccessApiRequest {
 	return CreateCloudProviderAccessApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
@@ -302,7 +303,7 @@ Creates one access role for the specified cloud provider. Some MongoDB Cloud fea
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateCloudProviderAccessApiRequest
 */
-func (a *CloudProviderAccessAPIService) CreateCloudProviderAccess(ctx context.Context, groupId string, cloudProviderAccessRoleRequest *CloudProviderAccessRoleRequest) CreateCloudProviderAccessApiRequest {
+func (a *CloudProviderAccessApiService) CreateCloudProviderAccess(ctx context.Context, groupId string, cloudProviderAccessRoleRequest *CloudProviderAccessRoleRequest) CreateCloudProviderAccessApiRequest {
 	return CreateCloudProviderAccessApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
@@ -314,7 +315,7 @@ func (a *CloudProviderAccessAPIService) CreateCloudProviderAccess(ctx context.Co
 // CreateCloudProviderAccessExecute executes the request
 //
 //	@return CloudProviderAccessRole
-func (a *CloudProviderAccessAPIService) CreateCloudProviderAccessExecute(r CreateCloudProviderAccessApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
+func (a *CloudProviderAccessApiService) CreateCloudProviderAccessExecute(r CreateCloudProviderAccessApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -322,7 +323,7 @@ func (a *CloudProviderAccessAPIService) CreateCloudProviderAccessExecute(r Creat
 		localVarReturnValue *CloudProviderAccessRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessAPIService.CreateCloudProviderAccess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.CreateCloudProviderAccess")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -393,7 +394,7 @@ func (a *CloudProviderAccessAPIService) CreateCloudProviderAccessExecute(r Creat
 
 type DeauthorizeProviderAccessRoleApiRequest struct {
 	ctx           context.Context
-	ApiService    CloudProviderAccessAPI
+	ApiService    CloudProviderAccessApi
 	groupId       string
 	cloudProvider string
 	roleId        string
@@ -405,7 +406,7 @@ type DeauthorizeProviderAccessRoleApiParams struct {
 	RoleId        string
 }
 
-func (a *CloudProviderAccessAPIService) DeauthorizeProviderAccessRoleWithParams(ctx context.Context, args *DeauthorizeProviderAccessRoleApiParams) DeauthorizeProviderAccessRoleApiRequest {
+func (a *CloudProviderAccessApiService) DeauthorizeProviderAccessRoleWithParams(ctx context.Context, args *DeauthorizeProviderAccessRoleApiParams) DeauthorizeProviderAccessRoleApiRequest {
 	return DeauthorizeProviderAccessRoleApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -430,7 +431,7 @@ Revokes access to the specified project for the specified access role.
 	@param roleId Unique 24-hexadecimal digit string that identifies the role.
 	@return DeauthorizeProviderAccessRoleApiRequest
 */
-func (a *CloudProviderAccessAPIService) DeauthorizeProviderAccessRole(ctx context.Context, groupId string, cloudProvider string, roleId string) DeauthorizeProviderAccessRoleApiRequest {
+func (a *CloudProviderAccessApiService) DeauthorizeProviderAccessRole(ctx context.Context, groupId string, cloudProvider string, roleId string) DeauthorizeProviderAccessRoleApiRequest {
 	return DeauthorizeProviderAccessRoleApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -441,14 +442,14 @@ func (a *CloudProviderAccessAPIService) DeauthorizeProviderAccessRole(ctx contex
 }
 
 // DeauthorizeProviderAccessRoleExecute executes the request
-func (a *CloudProviderAccessAPIService) DeauthorizeProviderAccessRoleExecute(r DeauthorizeProviderAccessRoleApiRequest) (*http.Response, error) {
+func (a *CloudProviderAccessApiService) DeauthorizeProviderAccessRoleExecute(r DeauthorizeProviderAccessRoleApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessAPIService.DeauthorizeProviderAccessRole")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.DeauthorizeProviderAccessRole")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -508,7 +509,7 @@ func (a *CloudProviderAccessAPIService) DeauthorizeProviderAccessRoleExecute(r D
 
 type GetCloudProviderAccessApiRequest struct {
 	ctx        context.Context
-	ApiService CloudProviderAccessAPI
+	ApiService CloudProviderAccessApi
 	groupId    string
 	roleId     string
 }
@@ -518,7 +519,7 @@ type GetCloudProviderAccessApiParams struct {
 	RoleId  string
 }
 
-func (a *CloudProviderAccessAPIService) GetCloudProviderAccessWithParams(ctx context.Context, args *GetCloudProviderAccessApiParams) GetCloudProviderAccessApiRequest {
+func (a *CloudProviderAccessApiService) GetCloudProviderAccessWithParams(ctx context.Context, args *GetCloudProviderAccessApiParams) GetCloudProviderAccessApiRequest {
 	return GetCloudProviderAccessApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -541,7 +542,7 @@ Returns the access role with the specified id and with access to the specified p
 	@param roleId Unique 24-hexadecimal digit string that identifies the role.
 	@return GetCloudProviderAccessApiRequest
 */
-func (a *CloudProviderAccessAPIService) GetCloudProviderAccess(ctx context.Context, groupId string, roleId string) GetCloudProviderAccessApiRequest {
+func (a *CloudProviderAccessApiService) GetCloudProviderAccess(ctx context.Context, groupId string, roleId string) GetCloudProviderAccessApiRequest {
 	return GetCloudProviderAccessApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -553,7 +554,7 @@ func (a *CloudProviderAccessAPIService) GetCloudProviderAccess(ctx context.Conte
 // GetCloudProviderAccessExecute executes the request
 //
 //	@return CloudProviderAccessRole
-func (a *CloudProviderAccessAPIService) GetCloudProviderAccessExecute(r GetCloudProviderAccessApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
+func (a *CloudProviderAccessApiService) GetCloudProviderAccessExecute(r GetCloudProviderAccessApiRequest) (*CloudProviderAccessRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -561,7 +562,7 @@ func (a *CloudProviderAccessAPIService) GetCloudProviderAccessExecute(r GetCloud
 		localVarReturnValue *CloudProviderAccessRole
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessAPIService.GetCloudProviderAccess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.GetCloudProviderAccess")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -631,7 +632,7 @@ func (a *CloudProviderAccessAPIService) GetCloudProviderAccessExecute(r GetCloud
 
 type ListCloudProviderAccessApiRequest struct {
 	ctx        context.Context
-	ApiService CloudProviderAccessAPI
+	ApiService CloudProviderAccessApi
 	groupId    string
 }
 
@@ -639,7 +640,7 @@ type ListCloudProviderAccessApiParams struct {
 	GroupId string
 }
 
-func (a *CloudProviderAccessAPIService) ListCloudProviderAccessWithParams(ctx context.Context, args *ListCloudProviderAccessApiParams) ListCloudProviderAccessApiRequest {
+func (a *CloudProviderAccessApiService) ListCloudProviderAccessWithParams(ctx context.Context, args *ListCloudProviderAccessApiParams) ListCloudProviderAccessApiRequest {
 	return ListCloudProviderAccessApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -660,7 +661,7 @@ Returns all cloud provider access roles with access to the specified project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListCloudProviderAccessApiRequest
 */
-func (a *CloudProviderAccessAPIService) ListCloudProviderAccess(ctx context.Context, groupId string) ListCloudProviderAccessApiRequest {
+func (a *CloudProviderAccessApiService) ListCloudProviderAccess(ctx context.Context, groupId string) ListCloudProviderAccessApiRequest {
 	return ListCloudProviderAccessApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -671,7 +672,7 @@ func (a *CloudProviderAccessAPIService) ListCloudProviderAccess(ctx context.Cont
 // ListCloudProviderAccessExecute executes the request
 //
 //	@return CloudProviderAccessRoles
-func (a *CloudProviderAccessAPIService) ListCloudProviderAccessExecute(r ListCloudProviderAccessApiRequest) (*CloudProviderAccessRoles, *http.Response, error) {
+func (a *CloudProviderAccessApiService) ListCloudProviderAccessExecute(r ListCloudProviderAccessApiRequest) (*CloudProviderAccessRoles, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -679,7 +680,7 @@ func (a *CloudProviderAccessAPIService) ListCloudProviderAccessExecute(r ListClo
 		localVarReturnValue *CloudProviderAccessRoles
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessAPIService.ListCloudProviderAccess")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAccessApiService.ListCloudProviderAccess")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

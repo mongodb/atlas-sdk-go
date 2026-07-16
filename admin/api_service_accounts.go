@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -9,7 +10,7 @@ import (
 	"strings"
 )
 
-type ServiceAccountsAPI interface {
+type ServiceAccountsApi interface {
 
 	/*
 		CreateAccessList Add Access List Entries for One Project Service Account
@@ -431,7 +432,7 @@ type ServiceAccountsAPI interface {
 	/*
 		ListGroupServiceAccounts Return All Project Service Accounts
 
-		Returns all Service Accounts for the specified Project.
+		Returns all Service Accounts for the specified Project. By default, system-managed Service Accounts are excluded. Set `includeSystemManaged=true` to include them.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -478,7 +479,7 @@ type ServiceAccountsAPI interface {
 	/*
 		ListOrgServiceAccounts Return All Organization Service Accounts
 
-		Returns all Service Accounts for the specified Organization.
+		Returns all Service Accounts for the specified Organization. By default, system-managed Service Accounts are excluded. Set `includeSystemManaged=true` to include them.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -549,12 +550,12 @@ type ServiceAccountsAPI interface {
 	UpdateOrgServiceAccountExecute(r UpdateOrgServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error)
 }
 
-// ServiceAccountsAPIService ServiceAccountsAPI service
-type ServiceAccountsAPIService service
+// ServiceAccountsApiService ServiceAccountsApi service
+type ServiceAccountsApiService service
 
 type CreateAccessListApiRequest struct {
 	ctx                             context.Context
-	ApiService                      ServiceAccountsAPI
+	ApiService                      ServiceAccountsApi
 	groupId                         string
 	clientId                        string
 	serviceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry
@@ -572,7 +573,7 @@ type CreateAccessListApiParams struct {
 	PageNum                         *int
 }
 
-func (a *ServiceAccountsAPIService) CreateAccessListWithParams(ctx context.Context, args *CreateAccessListApiParams) CreateAccessListApiRequest {
+func (a *ServiceAccountsApiService) CreateAccessListWithParams(ctx context.Context, args *CreateAccessListApiParams) CreateAccessListApiRequest {
 	return CreateAccessListApiRequest{
 		ApiService:                      a,
 		ctx:                             ctx,
@@ -617,7 +618,7 @@ Add Access List Entries for the specified Service Account for the project. Resou
 	@param clientId The Client ID of the Service Account.
 	@return CreateAccessListApiRequest
 */
-func (a *ServiceAccountsAPIService) CreateAccessList(ctx context.Context, groupId string, clientId string, serviceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry) CreateAccessListApiRequest {
+func (a *ServiceAccountsApiService) CreateAccessList(ctx context.Context, groupId string, clientId string, serviceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry) CreateAccessListApiRequest {
 	return CreateAccessListApiRequest{
 		ApiService:                      a,
 		ctx:                             ctx,
@@ -630,7 +631,7 @@ func (a *ServiceAccountsAPIService) CreateAccessList(ctx context.Context, groupI
 // CreateAccessListExecute executes the request
 //
 //	@return PaginatedServiceAccountIPAccessEntry
-func (a *ServiceAccountsAPIService) CreateAccessListExecute(r CreateAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
+func (a *ServiceAccountsApiService) CreateAccessListExecute(r CreateAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -638,7 +639,7 @@ func (a *ServiceAccountsAPIService) CreateAccessListExecute(r CreateAccessListAp
 		localVarReturnValue *PaginatedServiceAccountIPAccessEntry
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.CreateAccessList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateAccessList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -734,7 +735,7 @@ func (a *ServiceAccountsAPIService) CreateAccessListExecute(r CreateAccessListAp
 
 type CreateGroupSecretApiRequest struct {
 	ctx                         context.Context
-	ApiService                  ServiceAccountsAPI
+	ApiService                  ServiceAccountsApi
 	groupId                     string
 	clientId                    string
 	serviceAccountSecretRequest *ServiceAccountSecretRequest
@@ -746,7 +747,7 @@ type CreateGroupSecretApiParams struct {
 	ServiceAccountSecretRequest *ServiceAccountSecretRequest
 }
 
-func (a *ServiceAccountsAPIService) CreateGroupSecretWithParams(ctx context.Context, args *CreateGroupSecretApiParams) CreateGroupSecretApiRequest {
+func (a *ServiceAccountsApiService) CreateGroupSecretWithParams(ctx context.Context, args *CreateGroupSecretApiParams) CreateGroupSecretApiRequest {
 	return CreateGroupSecretApiRequest{
 		ApiService:                  a,
 		ctx:                         ctx,
@@ -770,7 +771,7 @@ Create a secret for the specified Service Account in the specified Project.
 	@param clientId The Client ID of the Service Account.
 	@return CreateGroupSecretApiRequest
 */
-func (a *ServiceAccountsAPIService) CreateGroupSecret(ctx context.Context, groupId string, clientId string, serviceAccountSecretRequest *ServiceAccountSecretRequest) CreateGroupSecretApiRequest {
+func (a *ServiceAccountsApiService) CreateGroupSecret(ctx context.Context, groupId string, clientId string, serviceAccountSecretRequest *ServiceAccountSecretRequest) CreateGroupSecretApiRequest {
 	return CreateGroupSecretApiRequest{
 		ApiService:                  a,
 		ctx:                         ctx,
@@ -783,7 +784,7 @@ func (a *ServiceAccountsAPIService) CreateGroupSecret(ctx context.Context, group
 // CreateGroupSecretExecute executes the request
 //
 //	@return ServiceAccountSecret
-func (a *ServiceAccountsAPIService) CreateGroupSecretExecute(r CreateGroupSecretApiRequest) (*ServiceAccountSecret, *http.Response, error) {
+func (a *ServiceAccountsApiService) CreateGroupSecretExecute(r CreateGroupSecretApiRequest) (*ServiceAccountSecret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -791,7 +792,7 @@ func (a *ServiceAccountsAPIService) CreateGroupSecretExecute(r CreateGroupSecret
 		localVarReturnValue *ServiceAccountSecret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.CreateGroupSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateGroupSecret")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -866,7 +867,7 @@ func (a *ServiceAccountsAPIService) CreateGroupSecretExecute(r CreateGroupSecret
 
 type CreateGroupServiceAccountApiRequest struct {
 	ctx                        context.Context
-	ApiService                 ServiceAccountsAPI
+	ApiService                 ServiceAccountsApi
 	groupId                    string
 	groupServiceAccountRequest *GroupServiceAccountRequest
 }
@@ -876,7 +877,7 @@ type CreateGroupServiceAccountApiParams struct {
 	GroupServiceAccountRequest *GroupServiceAccountRequest
 }
 
-func (a *ServiceAccountsAPIService) CreateGroupServiceAccountWithParams(ctx context.Context, args *CreateGroupServiceAccountApiParams) CreateGroupServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) CreateGroupServiceAccountWithParams(ctx context.Context, args *CreateGroupServiceAccountApiParams) CreateGroupServiceAccountApiRequest {
 	return CreateGroupServiceAccountApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
@@ -898,7 +899,7 @@ Creates one Service Account for the specified Project. The Service Account will 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateGroupServiceAccountApiRequest
 */
-func (a *ServiceAccountsAPIService) CreateGroupServiceAccount(ctx context.Context, groupId string, groupServiceAccountRequest *GroupServiceAccountRequest) CreateGroupServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) CreateGroupServiceAccount(ctx context.Context, groupId string, groupServiceAccountRequest *GroupServiceAccountRequest) CreateGroupServiceAccountApiRequest {
 	return CreateGroupServiceAccountApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
@@ -910,7 +911,7 @@ func (a *ServiceAccountsAPIService) CreateGroupServiceAccount(ctx context.Contex
 // CreateGroupServiceAccountExecute executes the request
 //
 //	@return GroupServiceAccount
-func (a *ServiceAccountsAPIService) CreateGroupServiceAccountExecute(r CreateGroupServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error) {
+func (a *ServiceAccountsApiService) CreateGroupServiceAccountExecute(r CreateGroupServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -918,7 +919,7 @@ func (a *ServiceAccountsAPIService) CreateGroupServiceAccountExecute(r CreateGro
 		localVarReturnValue *GroupServiceAccount
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.CreateGroupServiceAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateGroupServiceAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -989,7 +990,7 @@ func (a *ServiceAccountsAPIService) CreateGroupServiceAccountExecute(r CreateGro
 
 type CreateOrgAccessListApiRequest struct {
 	ctx                             context.Context
-	ApiService                      ServiceAccountsAPI
+	ApiService                      ServiceAccountsApi
 	orgId                           string
 	clientId                        string
 	serviceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry
@@ -1007,7 +1008,7 @@ type CreateOrgAccessListApiParams struct {
 	PageNum                         *int
 }
 
-func (a *ServiceAccountsAPIService) CreateOrgAccessListWithParams(ctx context.Context, args *CreateOrgAccessListApiParams) CreateOrgAccessListApiRequest {
+func (a *ServiceAccountsApiService) CreateOrgAccessListWithParams(ctx context.Context, args *CreateOrgAccessListApiParams) CreateOrgAccessListApiRequest {
 	return CreateOrgAccessListApiRequest{
 		ApiService:                      a,
 		ctx:                             ctx,
@@ -1052,7 +1053,7 @@ Add Access List Entries for the specified Service Account for the organization. 
 	@param clientId The Client ID of the Service Account.
 	@return CreateOrgAccessListApiRequest
 */
-func (a *ServiceAccountsAPIService) CreateOrgAccessList(ctx context.Context, orgId string, clientId string, serviceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry) CreateOrgAccessListApiRequest {
+func (a *ServiceAccountsApiService) CreateOrgAccessList(ctx context.Context, orgId string, clientId string, serviceAccountIPAccessListEntry *[]ServiceAccountIPAccessListEntry) CreateOrgAccessListApiRequest {
 	return CreateOrgAccessListApiRequest{
 		ApiService:                      a,
 		ctx:                             ctx,
@@ -1065,7 +1066,7 @@ func (a *ServiceAccountsAPIService) CreateOrgAccessList(ctx context.Context, org
 // CreateOrgAccessListExecute executes the request
 //
 //	@return PaginatedServiceAccountIPAccessEntry
-func (a *ServiceAccountsAPIService) CreateOrgAccessListExecute(r CreateOrgAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
+func (a *ServiceAccountsApiService) CreateOrgAccessListExecute(r CreateOrgAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1073,7 +1074,7 @@ func (a *ServiceAccountsAPIService) CreateOrgAccessListExecute(r CreateOrgAccess
 		localVarReturnValue *PaginatedServiceAccountIPAccessEntry
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.CreateOrgAccessList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateOrgAccessList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1169,7 +1170,7 @@ func (a *ServiceAccountsAPIService) CreateOrgAccessListExecute(r CreateOrgAccess
 
 type CreateOrgSecretApiRequest struct {
 	ctx                         context.Context
-	ApiService                  ServiceAccountsAPI
+	ApiService                  ServiceAccountsApi
 	orgId                       string
 	clientId                    string
 	serviceAccountSecretRequest *ServiceAccountSecretRequest
@@ -1181,7 +1182,7 @@ type CreateOrgSecretApiParams struct {
 	ServiceAccountSecretRequest *ServiceAccountSecretRequest
 }
 
-func (a *ServiceAccountsAPIService) CreateOrgSecretWithParams(ctx context.Context, args *CreateOrgSecretApiParams) CreateOrgSecretApiRequest {
+func (a *ServiceAccountsApiService) CreateOrgSecretWithParams(ctx context.Context, args *CreateOrgSecretApiParams) CreateOrgSecretApiRequest {
 	return CreateOrgSecretApiRequest{
 		ApiService:                  a,
 		ctx:                         ctx,
@@ -1205,7 +1206,7 @@ Create a secret for the specified Service Account.
 	@param clientId The Client ID of the Service Account.
 	@return CreateOrgSecretApiRequest
 */
-func (a *ServiceAccountsAPIService) CreateOrgSecret(ctx context.Context, orgId string, clientId string, serviceAccountSecretRequest *ServiceAccountSecretRequest) CreateOrgSecretApiRequest {
+func (a *ServiceAccountsApiService) CreateOrgSecret(ctx context.Context, orgId string, clientId string, serviceAccountSecretRequest *ServiceAccountSecretRequest) CreateOrgSecretApiRequest {
 	return CreateOrgSecretApiRequest{
 		ApiService:                  a,
 		ctx:                         ctx,
@@ -1218,7 +1219,7 @@ func (a *ServiceAccountsAPIService) CreateOrgSecret(ctx context.Context, orgId s
 // CreateOrgSecretExecute executes the request
 //
 //	@return ServiceAccountSecret
-func (a *ServiceAccountsAPIService) CreateOrgSecretExecute(r CreateOrgSecretApiRequest) (*ServiceAccountSecret, *http.Response, error) {
+func (a *ServiceAccountsApiService) CreateOrgSecretExecute(r CreateOrgSecretApiRequest) (*ServiceAccountSecret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1226,7 +1227,7 @@ func (a *ServiceAccountsAPIService) CreateOrgSecretExecute(r CreateOrgSecretApiR
 		localVarReturnValue *ServiceAccountSecret
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.CreateOrgSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateOrgSecret")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1301,7 +1302,7 @@ func (a *ServiceAccountsAPIService) CreateOrgSecretExecute(r CreateOrgSecretApiR
 
 type CreateOrgServiceAccountApiRequest struct {
 	ctx                      context.Context
-	ApiService               ServiceAccountsAPI
+	ApiService               ServiceAccountsApi
 	orgId                    string
 	orgServiceAccountRequest *OrgServiceAccountRequest
 }
@@ -1311,7 +1312,7 @@ type CreateOrgServiceAccountApiParams struct {
 	OrgServiceAccountRequest *OrgServiceAccountRequest
 }
 
-func (a *ServiceAccountsAPIService) CreateOrgServiceAccountWithParams(ctx context.Context, args *CreateOrgServiceAccountApiParams) CreateOrgServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) CreateOrgServiceAccountWithParams(ctx context.Context, args *CreateOrgServiceAccountApiParams) CreateOrgServiceAccountApiRequest {
 	return CreateOrgServiceAccountApiRequest{
 		ApiService:               a,
 		ctx:                      ctx,
@@ -1333,7 +1334,7 @@ Creates one Service Account for the specified Organization.
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return CreateOrgServiceAccountApiRequest
 */
-func (a *ServiceAccountsAPIService) CreateOrgServiceAccount(ctx context.Context, orgId string, orgServiceAccountRequest *OrgServiceAccountRequest) CreateOrgServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) CreateOrgServiceAccount(ctx context.Context, orgId string, orgServiceAccountRequest *OrgServiceAccountRequest) CreateOrgServiceAccountApiRequest {
 	return CreateOrgServiceAccountApiRequest{
 		ApiService:               a,
 		ctx:                      ctx,
@@ -1345,7 +1346,7 @@ func (a *ServiceAccountsAPIService) CreateOrgServiceAccount(ctx context.Context,
 // CreateOrgServiceAccountExecute executes the request
 //
 //	@return OrgServiceAccount
-func (a *ServiceAccountsAPIService) CreateOrgServiceAccountExecute(r CreateOrgServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error) {
+func (a *ServiceAccountsApiService) CreateOrgServiceAccountExecute(r CreateOrgServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -1353,7 +1354,7 @@ func (a *ServiceAccountsAPIService) CreateOrgServiceAccountExecute(r CreateOrgSe
 		localVarReturnValue *OrgServiceAccount
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.CreateOrgServiceAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.CreateOrgServiceAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1424,7 +1425,7 @@ func (a *ServiceAccountsAPIService) CreateOrgServiceAccountExecute(r CreateOrgSe
 
 type DeleteGroupAccessEntryApiRequest struct {
 	ctx        context.Context
-	ApiService ServiceAccountsAPI
+	ApiService ServiceAccountsApi
 	groupId    string
 	clientId   string
 	ipAddress  string
@@ -1436,7 +1437,7 @@ type DeleteGroupAccessEntryApiParams struct {
 	IpAddress string
 }
 
-func (a *ServiceAccountsAPIService) DeleteGroupAccessEntryWithParams(ctx context.Context, args *DeleteGroupAccessEntryApiParams) DeleteGroupAccessEntryApiRequest {
+func (a *ServiceAccountsApiService) DeleteGroupAccessEntryWithParams(ctx context.Context, args *DeleteGroupAccessEntryApiParams) DeleteGroupAccessEntryApiRequest {
 	return DeleteGroupAccessEntryApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1461,7 +1462,7 @@ Removes the specified access list entry from the specified Service Account for t
 	@param ipAddress One IP address or multiple IP addresses represented as one CIDR block. When specifying a CIDR block with a subnet mask, such as 192.0.2.0/24, use the URL-encoded value %2F for the forward slash /.
 	@return DeleteGroupAccessEntryApiRequest
 */
-func (a *ServiceAccountsAPIService) DeleteGroupAccessEntry(ctx context.Context, groupId string, clientId string, ipAddress string) DeleteGroupAccessEntryApiRequest {
+func (a *ServiceAccountsApiService) DeleteGroupAccessEntry(ctx context.Context, groupId string, clientId string, ipAddress string) DeleteGroupAccessEntryApiRequest {
 	return DeleteGroupAccessEntryApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1472,14 +1473,14 @@ func (a *ServiceAccountsAPIService) DeleteGroupAccessEntry(ctx context.Context, 
 }
 
 // DeleteGroupAccessEntryExecute executes the request
-func (a *ServiceAccountsAPIService) DeleteGroupAccessEntryExecute(r DeleteGroupAccessEntryApiRequest) (*http.Response, error) {
+func (a *ServiceAccountsApiService) DeleteGroupAccessEntryExecute(r DeleteGroupAccessEntryApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.DeleteGroupAccessEntry")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteGroupAccessEntry")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1539,7 +1540,7 @@ func (a *ServiceAccountsAPIService) DeleteGroupAccessEntryExecute(r DeleteGroupA
 
 type DeleteGroupSecretApiRequest struct {
 	ctx        context.Context
-	ApiService ServiceAccountsAPI
+	ApiService ServiceAccountsApi
 	clientId   string
 	secretId   string
 	groupId    string
@@ -1551,7 +1552,7 @@ type DeleteGroupSecretApiParams struct {
 	GroupId  string
 }
 
-func (a *ServiceAccountsAPIService) DeleteGroupSecretWithParams(ctx context.Context, args *DeleteGroupSecretApiParams) DeleteGroupSecretApiRequest {
+func (a *ServiceAccountsApiService) DeleteGroupSecretWithParams(ctx context.Context, args *DeleteGroupSecretApiParams) DeleteGroupSecretApiRequest {
 	return DeleteGroupSecretApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1576,7 +1577,7 @@ Deletes the specified Service Account secret.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return DeleteGroupSecretApiRequest
 */
-func (a *ServiceAccountsAPIService) DeleteGroupSecret(ctx context.Context, clientId string, secretId string, groupId string) DeleteGroupSecretApiRequest {
+func (a *ServiceAccountsApiService) DeleteGroupSecret(ctx context.Context, clientId string, secretId string, groupId string) DeleteGroupSecretApiRequest {
 	return DeleteGroupSecretApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1587,14 +1588,14 @@ func (a *ServiceAccountsAPIService) DeleteGroupSecret(ctx context.Context, clien
 }
 
 // DeleteGroupSecretExecute executes the request
-func (a *ServiceAccountsAPIService) DeleteGroupSecretExecute(r DeleteGroupSecretApiRequest) (*http.Response, error) {
+func (a *ServiceAccountsApiService) DeleteGroupSecretExecute(r DeleteGroupSecretApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.DeleteGroupSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteGroupSecret")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1654,7 +1655,7 @@ func (a *ServiceAccountsAPIService) DeleteGroupSecretExecute(r DeleteGroupSecret
 
 type DeleteGroupServiceAccountApiRequest struct {
 	ctx        context.Context
-	ApiService ServiceAccountsAPI
+	ApiService ServiceAccountsApi
 	clientId   string
 	groupId    string
 }
@@ -1664,7 +1665,7 @@ type DeleteGroupServiceAccountApiParams struct {
 	GroupId  string
 }
 
-func (a *ServiceAccountsAPIService) DeleteGroupServiceAccountWithParams(ctx context.Context, args *DeleteGroupServiceAccountApiParams) DeleteGroupServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) DeleteGroupServiceAccountWithParams(ctx context.Context, args *DeleteGroupServiceAccountApiParams) DeleteGroupServiceAccountApiRequest {
 	return DeleteGroupServiceAccountApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1687,7 +1688,7 @@ Removes the specified Service Account from the specified project. The Service Ac
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return DeleteGroupServiceAccountApiRequest
 */
-func (a *ServiceAccountsAPIService) DeleteGroupServiceAccount(ctx context.Context, clientId string, groupId string) DeleteGroupServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) DeleteGroupServiceAccount(ctx context.Context, clientId string, groupId string) DeleteGroupServiceAccountApiRequest {
 	return DeleteGroupServiceAccountApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1697,14 +1698,14 @@ func (a *ServiceAccountsAPIService) DeleteGroupServiceAccount(ctx context.Contex
 }
 
 // DeleteGroupServiceAccountExecute executes the request
-func (a *ServiceAccountsAPIService) DeleteGroupServiceAccountExecute(r DeleteGroupServiceAccountApiRequest) (*http.Response, error) {
+func (a *ServiceAccountsApiService) DeleteGroupServiceAccountExecute(r DeleteGroupServiceAccountApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.DeleteGroupServiceAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteGroupServiceAccount")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1760,7 +1761,7 @@ func (a *ServiceAccountsAPIService) DeleteGroupServiceAccountExecute(r DeleteGro
 
 type DeleteOrgAccessEntryApiRequest struct {
 	ctx        context.Context
-	ApiService ServiceAccountsAPI
+	ApiService ServiceAccountsApi
 	orgId      string
 	clientId   string
 	ipAddress  string
@@ -1772,7 +1773,7 @@ type DeleteOrgAccessEntryApiParams struct {
 	IpAddress string
 }
 
-func (a *ServiceAccountsAPIService) DeleteOrgAccessEntryWithParams(ctx context.Context, args *DeleteOrgAccessEntryApiParams) DeleteOrgAccessEntryApiRequest {
+func (a *ServiceAccountsApiService) DeleteOrgAccessEntryWithParams(ctx context.Context, args *DeleteOrgAccessEntryApiParams) DeleteOrgAccessEntryApiRequest {
 	return DeleteOrgAccessEntryApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1797,7 +1798,7 @@ Removes the specified access list entry from the specified Service Account for t
 	@param ipAddress One IP address or multiple IP addresses represented as one CIDR block. When specifying a CIDR block with a subnet mask, such as 192.0.2.0/24, use the URL-encoded value %2F for the forward slash /.
 	@return DeleteOrgAccessEntryApiRequest
 */
-func (a *ServiceAccountsAPIService) DeleteOrgAccessEntry(ctx context.Context, orgId string, clientId string, ipAddress string) DeleteOrgAccessEntryApiRequest {
+func (a *ServiceAccountsApiService) DeleteOrgAccessEntry(ctx context.Context, orgId string, clientId string, ipAddress string) DeleteOrgAccessEntryApiRequest {
 	return DeleteOrgAccessEntryApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1808,14 +1809,14 @@ func (a *ServiceAccountsAPIService) DeleteOrgAccessEntry(ctx context.Context, or
 }
 
 // DeleteOrgAccessEntryExecute executes the request
-func (a *ServiceAccountsAPIService) DeleteOrgAccessEntryExecute(r DeleteOrgAccessEntryApiRequest) (*http.Response, error) {
+func (a *ServiceAccountsApiService) DeleteOrgAccessEntryExecute(r DeleteOrgAccessEntryApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.DeleteOrgAccessEntry")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteOrgAccessEntry")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1875,7 +1876,7 @@ func (a *ServiceAccountsAPIService) DeleteOrgAccessEntryExecute(r DeleteOrgAcces
 
 type DeleteOrgSecretApiRequest struct {
 	ctx        context.Context
-	ApiService ServiceAccountsAPI
+	ApiService ServiceAccountsApi
 	clientId   string
 	secretId   string
 	orgId      string
@@ -1887,7 +1888,7 @@ type DeleteOrgSecretApiParams struct {
 	OrgId    string
 }
 
-func (a *ServiceAccountsAPIService) DeleteOrgSecretWithParams(ctx context.Context, args *DeleteOrgSecretApiParams) DeleteOrgSecretApiRequest {
+func (a *ServiceAccountsApiService) DeleteOrgSecretWithParams(ctx context.Context, args *DeleteOrgSecretApiParams) DeleteOrgSecretApiRequest {
 	return DeleteOrgSecretApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1912,7 +1913,7 @@ Deletes the specified Service Account secret.
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return DeleteOrgSecretApiRequest
 */
-func (a *ServiceAccountsAPIService) DeleteOrgSecret(ctx context.Context, clientId string, secretId string, orgId string) DeleteOrgSecretApiRequest {
+func (a *ServiceAccountsApiService) DeleteOrgSecret(ctx context.Context, clientId string, secretId string, orgId string) DeleteOrgSecretApiRequest {
 	return DeleteOrgSecretApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1923,14 +1924,14 @@ func (a *ServiceAccountsAPIService) DeleteOrgSecret(ctx context.Context, clientI
 }
 
 // DeleteOrgSecretExecute executes the request
-func (a *ServiceAccountsAPIService) DeleteOrgSecretExecute(r DeleteOrgSecretApiRequest) (*http.Response, error) {
+func (a *ServiceAccountsApiService) DeleteOrgSecretExecute(r DeleteOrgSecretApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.DeleteOrgSecret")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteOrgSecret")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1990,7 +1991,7 @@ func (a *ServiceAccountsAPIService) DeleteOrgSecretExecute(r DeleteOrgSecretApiR
 
 type DeleteOrgServiceAccountApiRequest struct {
 	ctx        context.Context
-	ApiService ServiceAccountsAPI
+	ApiService ServiceAccountsApi
 	clientId   string
 	orgId      string
 }
@@ -2000,7 +2001,7 @@ type DeleteOrgServiceAccountApiParams struct {
 	OrgId    string
 }
 
-func (a *ServiceAccountsAPIService) DeleteOrgServiceAccountWithParams(ctx context.Context, args *DeleteOrgServiceAccountApiParams) DeleteOrgServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) DeleteOrgServiceAccountWithParams(ctx context.Context, args *DeleteOrgServiceAccountApiParams) DeleteOrgServiceAccountApiRequest {
 	return DeleteOrgServiceAccountApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2023,7 +2024,7 @@ Deletes the specified Service Account.
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return DeleteOrgServiceAccountApiRequest
 */
-func (a *ServiceAccountsAPIService) DeleteOrgServiceAccount(ctx context.Context, clientId string, orgId string) DeleteOrgServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) DeleteOrgServiceAccount(ctx context.Context, clientId string, orgId string) DeleteOrgServiceAccountApiRequest {
 	return DeleteOrgServiceAccountApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2033,14 +2034,14 @@ func (a *ServiceAccountsAPIService) DeleteOrgServiceAccount(ctx context.Context,
 }
 
 // DeleteOrgServiceAccountExecute executes the request
-func (a *ServiceAccountsAPIService) DeleteOrgServiceAccountExecute(r DeleteOrgServiceAccountApiRequest) (*http.Response, error) {
+func (a *ServiceAccountsApiService) DeleteOrgServiceAccountExecute(r DeleteOrgServiceAccountApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.DeleteOrgServiceAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.DeleteOrgServiceAccount")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2096,7 +2097,7 @@ func (a *ServiceAccountsAPIService) DeleteOrgServiceAccountExecute(r DeleteOrgSe
 
 type GetGroupServiceAccountApiRequest struct {
 	ctx        context.Context
-	ApiService ServiceAccountsAPI
+	ApiService ServiceAccountsApi
 	groupId    string
 	clientId   string
 }
@@ -2106,7 +2107,7 @@ type GetGroupServiceAccountApiParams struct {
 	ClientId string
 }
 
-func (a *ServiceAccountsAPIService) GetGroupServiceAccountWithParams(ctx context.Context, args *GetGroupServiceAccountApiParams) GetGroupServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) GetGroupServiceAccountWithParams(ctx context.Context, args *GetGroupServiceAccountApiParams) GetGroupServiceAccountApiRequest {
 	return GetGroupServiceAccountApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2129,7 +2130,7 @@ Returns one Service Account in the specified Project.
 	@param clientId The Client ID of the Service Account.
 	@return GetGroupServiceAccountApiRequest
 */
-func (a *ServiceAccountsAPIService) GetGroupServiceAccount(ctx context.Context, groupId string, clientId string) GetGroupServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) GetGroupServiceAccount(ctx context.Context, groupId string, clientId string) GetGroupServiceAccountApiRequest {
 	return GetGroupServiceAccountApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2141,7 +2142,7 @@ func (a *ServiceAccountsAPIService) GetGroupServiceAccount(ctx context.Context, 
 // GetGroupServiceAccountExecute executes the request
 //
 //	@return GroupServiceAccount
-func (a *ServiceAccountsAPIService) GetGroupServiceAccountExecute(r GetGroupServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error) {
+func (a *ServiceAccountsApiService) GetGroupServiceAccountExecute(r GetGroupServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2149,7 +2150,7 @@ func (a *ServiceAccountsAPIService) GetGroupServiceAccountExecute(r GetGroupServ
 		localVarReturnValue *GroupServiceAccount
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.GetGroupServiceAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.GetGroupServiceAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2219,7 +2220,7 @@ func (a *ServiceAccountsAPIService) GetGroupServiceAccountExecute(r GetGroupServ
 
 type GetOrgServiceAccountApiRequest struct {
 	ctx        context.Context
-	ApiService ServiceAccountsAPI
+	ApiService ServiceAccountsApi
 	orgId      string
 	clientId   string
 }
@@ -2229,7 +2230,7 @@ type GetOrgServiceAccountApiParams struct {
 	ClientId string
 }
 
-func (a *ServiceAccountsAPIService) GetOrgServiceAccountWithParams(ctx context.Context, args *GetOrgServiceAccountApiParams) GetOrgServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) GetOrgServiceAccountWithParams(ctx context.Context, args *GetOrgServiceAccountApiParams) GetOrgServiceAccountApiRequest {
 	return GetOrgServiceAccountApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2252,7 +2253,7 @@ Returns the specified Service Account.
 	@param clientId The Client ID of the Service Account.
 	@return GetOrgServiceAccountApiRequest
 */
-func (a *ServiceAccountsAPIService) GetOrgServiceAccount(ctx context.Context, orgId string, clientId string) GetOrgServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) GetOrgServiceAccount(ctx context.Context, orgId string, clientId string) GetOrgServiceAccountApiRequest {
 	return GetOrgServiceAccountApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2264,7 +2265,7 @@ func (a *ServiceAccountsAPIService) GetOrgServiceAccount(ctx context.Context, or
 // GetOrgServiceAccountExecute executes the request
 //
 //	@return OrgServiceAccount
-func (a *ServiceAccountsAPIService) GetOrgServiceAccountExecute(r GetOrgServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error) {
+func (a *ServiceAccountsApiService) GetOrgServiceAccountExecute(r GetOrgServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2272,7 +2273,7 @@ func (a *ServiceAccountsAPIService) GetOrgServiceAccountExecute(r GetOrgServiceA
 		localVarReturnValue *OrgServiceAccount
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.GetOrgServiceAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.GetOrgServiceAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2342,7 +2343,7 @@ func (a *ServiceAccountsAPIService) GetOrgServiceAccountExecute(r GetOrgServiceA
 
 type GetServiceAccountGroupsApiRequest struct {
 	ctx          context.Context
-	ApiService   ServiceAccountsAPI
+	ApiService   ServiceAccountsApi
 	orgId        string
 	clientId     string
 	itemsPerPage *int
@@ -2356,7 +2357,7 @@ type GetServiceAccountGroupsApiParams struct {
 	PageNum      *int
 }
 
-func (a *ServiceAccountsAPIService) GetServiceAccountGroupsWithParams(ctx context.Context, args *GetServiceAccountGroupsApiParams) GetServiceAccountGroupsApiRequest {
+func (a *ServiceAccountsApiService) GetServiceAccountGroupsWithParams(ctx context.Context, args *GetServiceAccountGroupsApiParams) GetServiceAccountGroupsApiRequest {
 	return GetServiceAccountGroupsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -2393,7 +2394,7 @@ Returns a list of all projects the specified Service Account is a part of.
 	@param clientId The Client ID of the Service Account.
 	@return GetServiceAccountGroupsApiRequest
 */
-func (a *ServiceAccountsAPIService) GetServiceAccountGroups(ctx context.Context, orgId string, clientId string) GetServiceAccountGroupsApiRequest {
+func (a *ServiceAccountsApiService) GetServiceAccountGroups(ctx context.Context, orgId string, clientId string) GetServiceAccountGroupsApiRequest {
 	return GetServiceAccountGroupsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2405,7 +2406,7 @@ func (a *ServiceAccountsAPIService) GetServiceAccountGroups(ctx context.Context,
 // GetServiceAccountGroupsExecute executes the request
 //
 //	@return PaginatedServiceAccountGroup
-func (a *ServiceAccountsAPIService) GetServiceAccountGroupsExecute(r GetServiceAccountGroupsApiRequest) (*PaginatedServiceAccountGroup, *http.Response, error) {
+func (a *ServiceAccountsApiService) GetServiceAccountGroupsExecute(r GetServiceAccountGroupsApiRequest) (*PaginatedServiceAccountGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2413,7 +2414,7 @@ func (a *ServiceAccountsAPIService) GetServiceAccountGroupsExecute(r GetServiceA
 		localVarReturnValue *PaginatedServiceAccountGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.GetServiceAccountGroups")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.GetServiceAccountGroups")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2497,7 +2498,7 @@ func (a *ServiceAccountsAPIService) GetServiceAccountGroupsExecute(r GetServiceA
 
 type InviteGroupServiceAccountApiRequest struct {
 	ctx                               context.Context
-	ApiService                        ServiceAccountsAPI
+	ApiService                        ServiceAccountsApi
 	clientId                          string
 	groupId                           string
 	groupServiceAccountRoleAssignment *GroupServiceAccountRoleAssignment
@@ -2509,7 +2510,7 @@ type InviteGroupServiceAccountApiParams struct {
 	GroupServiceAccountRoleAssignment *GroupServiceAccountRoleAssignment
 }
 
-func (a *ServiceAccountsAPIService) InviteGroupServiceAccountWithParams(ctx context.Context, args *InviteGroupServiceAccountApiParams) InviteGroupServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) InviteGroupServiceAccountWithParams(ctx context.Context, args *InviteGroupServiceAccountApiParams) InviteGroupServiceAccountApiRequest {
 	return InviteGroupServiceAccountApiRequest{
 		ApiService:                        a,
 		ctx:                               ctx,
@@ -2533,7 +2534,7 @@ Assigns the specified Service Account to the specified Project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return InviteGroupServiceAccountApiRequest
 */
-func (a *ServiceAccountsAPIService) InviteGroupServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *GroupServiceAccountRoleAssignment) InviteGroupServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) InviteGroupServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountRoleAssignment *GroupServiceAccountRoleAssignment) InviteGroupServiceAccountApiRequest {
 	return InviteGroupServiceAccountApiRequest{
 		ApiService:                        a,
 		ctx:                               ctx,
@@ -2546,7 +2547,7 @@ func (a *ServiceAccountsAPIService) InviteGroupServiceAccount(ctx context.Contex
 // InviteGroupServiceAccountExecute executes the request
 //
 //	@return GroupServiceAccount
-func (a *ServiceAccountsAPIService) InviteGroupServiceAccountExecute(r InviteGroupServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error) {
+func (a *ServiceAccountsApiService) InviteGroupServiceAccountExecute(r InviteGroupServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -2554,7 +2555,7 @@ func (a *ServiceAccountsAPIService) InviteGroupServiceAccountExecute(r InviteGro
 		localVarReturnValue *GroupServiceAccount
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.InviteGroupServiceAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.InviteGroupServiceAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2629,7 +2630,7 @@ func (a *ServiceAccountsAPIService) InviteGroupServiceAccountExecute(r InviteGro
 
 type ListAccessListApiRequest struct {
 	ctx          context.Context
-	ApiService   ServiceAccountsAPI
+	ApiService   ServiceAccountsApi
 	groupId      string
 	clientId     string
 	includeCount *bool
@@ -2645,7 +2646,7 @@ type ListAccessListApiParams struct {
 	PageNum      *int
 }
 
-func (a *ServiceAccountsAPIService) ListAccessListWithParams(ctx context.Context, args *ListAccessListApiParams) ListAccessListApiRequest {
+func (a *ServiceAccountsApiService) ListAccessListWithParams(ctx context.Context, args *ListAccessListApiParams) ListAccessListApiRequest {
 	return ListAccessListApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -2689,7 +2690,7 @@ Returns all access list entries that you configured for the specified Service Ac
 	@param clientId The Client ID of the Service Account.
 	@return ListAccessListApiRequest
 */
-func (a *ServiceAccountsAPIService) ListAccessList(ctx context.Context, groupId string, clientId string) ListAccessListApiRequest {
+func (a *ServiceAccountsApiService) ListAccessList(ctx context.Context, groupId string, clientId string) ListAccessListApiRequest {
 	return ListAccessListApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2701,7 +2702,7 @@ func (a *ServiceAccountsAPIService) ListAccessList(ctx context.Context, groupId 
 // ListAccessListExecute executes the request
 //
 //	@return PaginatedServiceAccountIPAccessEntry
-func (a *ServiceAccountsAPIService) ListAccessListExecute(r ListAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
+func (a *ServiceAccountsApiService) ListAccessListExecute(r ListAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2709,7 +2710,7 @@ func (a *ServiceAccountsAPIService) ListAccessListExecute(r ListAccessListApiReq
 		localVarReturnValue *PaginatedServiceAccountIPAccessEntry
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.ListAccessList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ListAccessList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2799,26 +2800,29 @@ func (a *ServiceAccountsAPIService) ListAccessListExecute(r ListAccessListApiReq
 }
 
 type ListGroupServiceAccountsApiRequest struct {
-	ctx          context.Context
-	ApiService   ServiceAccountsAPI
-	groupId      string
-	itemsPerPage *int
-	pageNum      *int
+	ctx                  context.Context
+	ApiService           ServiceAccountsApi
+	groupId              string
+	itemsPerPage         *int
+	pageNum              *int
+	includeSystemManaged *bool
 }
 
 type ListGroupServiceAccountsApiParams struct {
-	GroupId      string
-	ItemsPerPage *int
-	PageNum      *int
+	GroupId              string
+	ItemsPerPage         *int
+	PageNum              *int
+	IncludeSystemManaged *bool
 }
 
-func (a *ServiceAccountsAPIService) ListGroupServiceAccountsWithParams(ctx context.Context, args *ListGroupServiceAccountsApiParams) ListGroupServiceAccountsApiRequest {
+func (a *ServiceAccountsApiService) ListGroupServiceAccountsWithParams(ctx context.Context, args *ListGroupServiceAccountsApiParams) ListGroupServiceAccountsApiRequest {
 	return ListGroupServiceAccountsApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		groupId:      args.GroupId,
-		itemsPerPage: args.ItemsPerPage,
-		pageNum:      args.PageNum,
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              args.GroupId,
+		itemsPerPage:         args.ItemsPerPage,
+		pageNum:              args.PageNum,
+		includeSystemManaged: args.IncludeSystemManaged,
 	}
 }
 
@@ -2834,6 +2838,12 @@ func (r ListGroupServiceAccountsApiRequest) PageNum(pageNum int) ListGroupServic
 	return r
 }
 
+// Flag that indicates whether system-managed Service Accounts (such as those used for MCP ingress/egress integrations) are included in the response. When false, only user-managed Service Accounts are returned.
+func (r ListGroupServiceAccountsApiRequest) IncludeSystemManaged(includeSystemManaged bool) ListGroupServiceAccountsApiRequest {
+	r.includeSystemManaged = &includeSystemManaged
+	return r
+}
+
 func (r ListGroupServiceAccountsApiRequest) Execute() (*PaginatedGroupServiceAccounts, *http.Response, error) {
 	return r.ApiService.ListGroupServiceAccountsExecute(r)
 }
@@ -2841,13 +2851,13 @@ func (r ListGroupServiceAccountsApiRequest) Execute() (*PaginatedGroupServiceAcc
 /*
 ListGroupServiceAccounts Return All Project Service Accounts
 
-Returns all Service Accounts for the specified Project.
+Returns all Service Accounts for the specified Project. By default, system-managed Service Accounts are excluded. Set `includeSystemManaged=true` to include them.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListGroupServiceAccountsApiRequest
 */
-func (a *ServiceAccountsAPIService) ListGroupServiceAccounts(ctx context.Context, groupId string) ListGroupServiceAccountsApiRequest {
+func (a *ServiceAccountsApiService) ListGroupServiceAccounts(ctx context.Context, groupId string) ListGroupServiceAccountsApiRequest {
 	return ListGroupServiceAccountsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2858,7 +2868,7 @@ func (a *ServiceAccountsAPIService) ListGroupServiceAccounts(ctx context.Context
 // ListGroupServiceAccountsExecute executes the request
 //
 //	@return PaginatedGroupServiceAccounts
-func (a *ServiceAccountsAPIService) ListGroupServiceAccountsExecute(r ListGroupServiceAccountsApiRequest) (*PaginatedGroupServiceAccounts, *http.Response, error) {
+func (a *ServiceAccountsApiService) ListGroupServiceAccountsExecute(r ListGroupServiceAccountsApiRequest) (*PaginatedGroupServiceAccounts, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2866,7 +2876,7 @@ func (a *ServiceAccountsAPIService) ListGroupServiceAccountsExecute(r ListGroupS
 		localVarReturnValue *PaginatedGroupServiceAccounts
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.ListGroupServiceAccounts")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ListGroupServiceAccounts")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2894,6 +2904,13 @@ func (a *ServiceAccountsAPIService) ListGroupServiceAccountsExecute(r ListGroupS
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.includeSystemManaged != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeSystemManaged", r.includeSystemManaged, "")
+	} else {
+		var defaultValue bool = false
+		r.includeSystemManaged = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeSystemManaged", r.includeSystemManaged, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2946,7 +2963,7 @@ func (a *ServiceAccountsAPIService) ListGroupServiceAccountsExecute(r ListGroupS
 
 type ListOrgAccessListApiRequest struct {
 	ctx          context.Context
-	ApiService   ServiceAccountsAPI
+	ApiService   ServiceAccountsApi
 	orgId        string
 	clientId     string
 	includeCount *bool
@@ -2962,7 +2979,7 @@ type ListOrgAccessListApiParams struct {
 	PageNum      *int
 }
 
-func (a *ServiceAccountsAPIService) ListOrgAccessListWithParams(ctx context.Context, args *ListOrgAccessListApiParams) ListOrgAccessListApiRequest {
+func (a *ServiceAccountsApiService) ListOrgAccessListWithParams(ctx context.Context, args *ListOrgAccessListApiParams) ListOrgAccessListApiRequest {
 	return ListOrgAccessListApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -3006,7 +3023,7 @@ Returns all access list entries that you configured for the specified Service Ac
 	@param clientId The Client ID of the Service Account.
 	@return ListOrgAccessListApiRequest
 */
-func (a *ServiceAccountsAPIService) ListOrgAccessList(ctx context.Context, orgId string, clientId string) ListOrgAccessListApiRequest {
+func (a *ServiceAccountsApiService) ListOrgAccessList(ctx context.Context, orgId string, clientId string) ListOrgAccessListApiRequest {
 	return ListOrgAccessListApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3018,7 +3035,7 @@ func (a *ServiceAccountsAPIService) ListOrgAccessList(ctx context.Context, orgId
 // ListOrgAccessListExecute executes the request
 //
 //	@return PaginatedServiceAccountIPAccessEntry
-func (a *ServiceAccountsAPIService) ListOrgAccessListExecute(r ListOrgAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
+func (a *ServiceAccountsApiService) ListOrgAccessListExecute(r ListOrgAccessListApiRequest) (*PaginatedServiceAccountIPAccessEntry, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -3026,7 +3043,7 @@ func (a *ServiceAccountsAPIService) ListOrgAccessListExecute(r ListOrgAccessList
 		localVarReturnValue *PaginatedServiceAccountIPAccessEntry
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.ListOrgAccessList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ListOrgAccessList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3116,26 +3133,29 @@ func (a *ServiceAccountsAPIService) ListOrgAccessListExecute(r ListOrgAccessList
 }
 
 type ListOrgServiceAccountsApiRequest struct {
-	ctx          context.Context
-	ApiService   ServiceAccountsAPI
-	orgId        string
-	itemsPerPage *int
-	pageNum      *int
+	ctx                  context.Context
+	ApiService           ServiceAccountsApi
+	orgId                string
+	itemsPerPage         *int
+	pageNum              *int
+	includeSystemManaged *bool
 }
 
 type ListOrgServiceAccountsApiParams struct {
-	OrgId        string
-	ItemsPerPage *int
-	PageNum      *int
+	OrgId                string
+	ItemsPerPage         *int
+	PageNum              *int
+	IncludeSystemManaged *bool
 }
 
-func (a *ServiceAccountsAPIService) ListOrgServiceAccountsWithParams(ctx context.Context, args *ListOrgServiceAccountsApiParams) ListOrgServiceAccountsApiRequest {
+func (a *ServiceAccountsApiService) ListOrgServiceAccountsWithParams(ctx context.Context, args *ListOrgServiceAccountsApiParams) ListOrgServiceAccountsApiRequest {
 	return ListOrgServiceAccountsApiRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		orgId:        args.OrgId,
-		itemsPerPage: args.ItemsPerPage,
-		pageNum:      args.PageNum,
+		ApiService:           a,
+		ctx:                  ctx,
+		orgId:                args.OrgId,
+		itemsPerPage:         args.ItemsPerPage,
+		pageNum:              args.PageNum,
+		includeSystemManaged: args.IncludeSystemManaged,
 	}
 }
 
@@ -3151,6 +3171,12 @@ func (r ListOrgServiceAccountsApiRequest) PageNum(pageNum int) ListOrgServiceAcc
 	return r
 }
 
+// Flag that indicates whether system-managed Service Accounts (such as those used for MCP ingress/egress integrations) are included in the response. When false, only user-managed Service Accounts are returned.
+func (r ListOrgServiceAccountsApiRequest) IncludeSystemManaged(includeSystemManaged bool) ListOrgServiceAccountsApiRequest {
+	r.includeSystemManaged = &includeSystemManaged
+	return r
+}
+
 func (r ListOrgServiceAccountsApiRequest) Execute() (*PaginatedOrgServiceAccounts, *http.Response, error) {
 	return r.ApiService.ListOrgServiceAccountsExecute(r)
 }
@@ -3158,13 +3184,13 @@ func (r ListOrgServiceAccountsApiRequest) Execute() (*PaginatedOrgServiceAccount
 /*
 ListOrgServiceAccounts Return All Organization Service Accounts
 
-Returns all Service Accounts for the specified Organization.
+Returns all Service Accounts for the specified Organization. By default, system-managed Service Accounts are excluded. Set `includeSystemManaged=true` to include them.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListOrgServiceAccountsApiRequest
 */
-func (a *ServiceAccountsAPIService) ListOrgServiceAccounts(ctx context.Context, orgId string) ListOrgServiceAccountsApiRequest {
+func (a *ServiceAccountsApiService) ListOrgServiceAccounts(ctx context.Context, orgId string) ListOrgServiceAccountsApiRequest {
 	return ListOrgServiceAccountsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -3175,7 +3201,7 @@ func (a *ServiceAccountsAPIService) ListOrgServiceAccounts(ctx context.Context, 
 // ListOrgServiceAccountsExecute executes the request
 //
 //	@return PaginatedOrgServiceAccounts
-func (a *ServiceAccountsAPIService) ListOrgServiceAccountsExecute(r ListOrgServiceAccountsApiRequest) (*PaginatedOrgServiceAccounts, *http.Response, error) {
+func (a *ServiceAccountsApiService) ListOrgServiceAccountsExecute(r ListOrgServiceAccountsApiRequest) (*PaginatedOrgServiceAccounts, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -3183,7 +3209,7 @@ func (a *ServiceAccountsAPIService) ListOrgServiceAccountsExecute(r ListOrgServi
 		localVarReturnValue *PaginatedOrgServiceAccounts
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.ListOrgServiceAccounts")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.ListOrgServiceAccounts")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3211,6 +3237,13 @@ func (a *ServiceAccountsAPIService) ListOrgServiceAccountsExecute(r ListOrgServi
 		var defaultValue int = 1
 		r.pageNum = &defaultValue
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.includeSystemManaged != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeSystemManaged", r.includeSystemManaged, "")
+	} else {
+		var defaultValue bool = false
+		r.includeSystemManaged = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeSystemManaged", r.includeSystemManaged, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -3263,7 +3296,7 @@ func (a *ServiceAccountsAPIService) ListOrgServiceAccountsExecute(r ListOrgServi
 
 type UpdateGroupServiceAccountApiRequest struct {
 	ctx                              context.Context
-	ApiService                       ServiceAccountsAPI
+	ApiService                       ServiceAccountsApi
 	clientId                         string
 	groupId                          string
 	groupServiceAccountUpdateRequest *GroupServiceAccountUpdateRequest
@@ -3275,7 +3308,7 @@ type UpdateGroupServiceAccountApiParams struct {
 	GroupServiceAccountUpdateRequest *GroupServiceAccountUpdateRequest
 }
 
-func (a *ServiceAccountsAPIService) UpdateGroupServiceAccountWithParams(ctx context.Context, args *UpdateGroupServiceAccountApiParams) UpdateGroupServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) UpdateGroupServiceAccountWithParams(ctx context.Context, args *UpdateGroupServiceAccountApiParams) UpdateGroupServiceAccountApiRequest {
 	return UpdateGroupServiceAccountApiRequest{
 		ApiService:                       a,
 		ctx:                              ctx,
@@ -3299,7 +3332,7 @@ Updates one Service Account in the specified Project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpdateGroupServiceAccountApiRequest
 */
-func (a *ServiceAccountsAPIService) UpdateGroupServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountUpdateRequest *GroupServiceAccountUpdateRequest) UpdateGroupServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) UpdateGroupServiceAccount(ctx context.Context, clientId string, groupId string, groupServiceAccountUpdateRequest *GroupServiceAccountUpdateRequest) UpdateGroupServiceAccountApiRequest {
 	return UpdateGroupServiceAccountApiRequest{
 		ApiService:                       a,
 		ctx:                              ctx,
@@ -3312,7 +3345,7 @@ func (a *ServiceAccountsAPIService) UpdateGroupServiceAccount(ctx context.Contex
 // UpdateGroupServiceAccountExecute executes the request
 //
 //	@return GroupServiceAccount
-func (a *ServiceAccountsAPIService) UpdateGroupServiceAccountExecute(r UpdateGroupServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error) {
+func (a *ServiceAccountsApiService) UpdateGroupServiceAccountExecute(r UpdateGroupServiceAccountApiRequest) (*GroupServiceAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -3320,7 +3353,7 @@ func (a *ServiceAccountsAPIService) UpdateGroupServiceAccountExecute(r UpdateGro
 		localVarReturnValue *GroupServiceAccount
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.UpdateGroupServiceAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.UpdateGroupServiceAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3395,7 +3428,7 @@ func (a *ServiceAccountsAPIService) UpdateGroupServiceAccountExecute(r UpdateGro
 
 type UpdateOrgServiceAccountApiRequest struct {
 	ctx                            context.Context
-	ApiService                     ServiceAccountsAPI
+	ApiService                     ServiceAccountsApi
 	clientId                       string
 	orgId                          string
 	orgServiceAccountUpdateRequest *OrgServiceAccountUpdateRequest
@@ -3407,7 +3440,7 @@ type UpdateOrgServiceAccountApiParams struct {
 	OrgServiceAccountUpdateRequest *OrgServiceAccountUpdateRequest
 }
 
-func (a *ServiceAccountsAPIService) UpdateOrgServiceAccountWithParams(ctx context.Context, args *UpdateOrgServiceAccountApiParams) UpdateOrgServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) UpdateOrgServiceAccountWithParams(ctx context.Context, args *UpdateOrgServiceAccountApiParams) UpdateOrgServiceAccountApiRequest {
 	return UpdateOrgServiceAccountApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
@@ -3431,7 +3464,7 @@ Updates the specified Service Account in the specified Organization.
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return UpdateOrgServiceAccountApiRequest
 */
-func (a *ServiceAccountsAPIService) UpdateOrgServiceAccount(ctx context.Context, clientId string, orgId string, orgServiceAccountUpdateRequest *OrgServiceAccountUpdateRequest) UpdateOrgServiceAccountApiRequest {
+func (a *ServiceAccountsApiService) UpdateOrgServiceAccount(ctx context.Context, clientId string, orgId string, orgServiceAccountUpdateRequest *OrgServiceAccountUpdateRequest) UpdateOrgServiceAccountApiRequest {
 	return UpdateOrgServiceAccountApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
@@ -3444,7 +3477,7 @@ func (a *ServiceAccountsAPIService) UpdateOrgServiceAccount(ctx context.Context,
 // UpdateOrgServiceAccountExecute executes the request
 //
 //	@return OrgServiceAccount
-func (a *ServiceAccountsAPIService) UpdateOrgServiceAccountExecute(r UpdateOrgServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error) {
+func (a *ServiceAccountsApiService) UpdateOrgServiceAccountExecute(r UpdateOrgServiceAccountApiRequest) (*OrgServiceAccount, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -3452,7 +3485,7 @@ func (a *ServiceAccountsAPIService) UpdateOrgServiceAccountExecute(r UpdateOrgSe
 		localVarReturnValue *OrgServiceAccount
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsAPIService.UpdateOrgServiceAccount")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ServiceAccountsApiService.UpdateOrgServiceAccount")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

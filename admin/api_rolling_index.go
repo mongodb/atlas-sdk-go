@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -8,7 +9,7 @@ import (
 	"strings"
 )
 
-type RollingIndexAPI interface {
+type RollingIndexApi interface {
 
 	/*
 		CreateRollingIndex Create One Rolling Index
@@ -36,12 +37,12 @@ type RollingIndexAPI interface {
 	CreateRollingIndexExecute(r CreateRollingIndexApiRequest) (*http.Response, error)
 }
 
-// RollingIndexAPIService RollingIndexAPI service
-type RollingIndexAPIService service
+// RollingIndexApiService RollingIndexApi service
+type RollingIndexApiService service
 
 type CreateRollingIndexApiRequest struct {
 	ctx                         context.Context
-	ApiService                  RollingIndexAPI
+	ApiService                  RollingIndexApi
 	groupId                     string
 	clusterName                 string
 	databaseRollingIndexRequest *DatabaseRollingIndexRequest
@@ -53,7 +54,7 @@ type CreateRollingIndexApiParams struct {
 	DatabaseRollingIndexRequest *DatabaseRollingIndexRequest
 }
 
-func (a *RollingIndexAPIService) CreateRollingIndexWithParams(ctx context.Context, args *CreateRollingIndexApiParams) CreateRollingIndexApiRequest {
+func (a *RollingIndexApiService) CreateRollingIndexWithParams(ctx context.Context, args *CreateRollingIndexApiParams) CreateRollingIndexApiRequest {
 	return CreateRollingIndexApiRequest{
 		ApiService:                  a,
 		ctx:                         ctx,
@@ -77,7 +78,7 @@ Creates an index on the cluster identified by its name in a rolling manner. Crea
 	@param clusterName Human-readable label that identifies the cluster on which MongoDB Cloud creates an index.
 	@return CreateRollingIndexApiRequest
 */
-func (a *RollingIndexAPIService) CreateRollingIndex(ctx context.Context, groupId string, clusterName string, databaseRollingIndexRequest *DatabaseRollingIndexRequest) CreateRollingIndexApiRequest {
+func (a *RollingIndexApiService) CreateRollingIndex(ctx context.Context, groupId string, clusterName string, databaseRollingIndexRequest *DatabaseRollingIndexRequest) CreateRollingIndexApiRequest {
 	return CreateRollingIndexApiRequest{
 		ApiService:                  a,
 		ctx:                         ctx,
@@ -88,14 +89,14 @@ func (a *RollingIndexAPIService) CreateRollingIndex(ctx context.Context, groupId
 }
 
 // CreateRollingIndexExecute executes the request
-func (a *RollingIndexAPIService) CreateRollingIndexExecute(r CreateRollingIndexApiRequest) (*http.Response, error) {
+func (a *RollingIndexApiService) CreateRollingIndexExecute(r CreateRollingIndexApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RollingIndexAPIService.CreateRollingIndex")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RollingIndexApiService.CreateRollingIndex")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

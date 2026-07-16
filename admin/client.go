@@ -40,107 +40,111 @@ type APIClient struct {
 
 	// API Services
 
-	AWSClustersDNSAPI AWSClustersDNSAPI
+	AIModelAPIKeysApi AIModelAPIKeysApi
 
-	AccessTrackingAPI AccessTrackingAPI
+	AIModelRateLimitsApi AIModelRateLimitsApi
 
-	ActivityFeedAPI ActivityFeedAPI
+	AWSClustersDNSApi AWSClustersDNSApi
 
-	AlertConfigurationsAPI AlertConfigurationsAPI
+	AccessTrackingApi AccessTrackingApi
 
-	AlertsAPI AlertsAPI
+	ActivityFeedApi ActivityFeedApi
 
-	AtlasSearchAPI AtlasSearchAPI
+	AlertConfigurationsApi AlertConfigurationsApi
 
-	AuditingAPI AuditingAPI
+	AlertsApi AlertsApi
 
-	CloudBackupsAPI CloudBackupsAPI
+	AtlasSearchApi AtlasSearchApi
 
-	CloudMigrationServiceAPI CloudMigrationServiceAPI
+	AuditingApi AuditingApi
 
-	CloudProviderAccessAPI CloudProviderAccessAPI
+	CloudBackupsApi CloudBackupsApi
 
-	ClusterOutageSimulationAPI ClusterOutageSimulationAPI
+	CloudMigrationServiceApi CloudMigrationServiceApi
 
-	ClustersAPI ClustersAPI
+	CloudProviderAccessApi CloudProviderAccessApi
 
-	CollectionLevelMetricsAPI CollectionLevelMetricsAPI
+	ClusterOutageSimulationApi ClusterOutageSimulationApi
 
-	CustomDatabaseRolesAPI CustomDatabaseRolesAPI
+	ClustersApi ClustersApi
 
-	DataFederationAPI DataFederationAPI
+	CollectionLevelMetricsApi CollectionLevelMetricsApi
 
-	DataLakePipelinesAPI DataLakePipelinesAPI
+	CustomDatabaseRolesApi CustomDatabaseRolesApi
 
-	DatabaseUsersAPI DatabaseUsersAPI
+	DataFederationApi DataFederationApi
 
-	EncryptionAtRestUsingCustomerKeyManagementAPI EncryptionAtRestUsingCustomerKeyManagementAPI
+	DataLakePipelinesApi DataLakePipelinesApi
 
-	EventsAPI EventsAPI
+	DatabaseUsersApi DatabaseUsersApi
 
-	FederatedAuthenticationAPI FederatedAuthenticationAPI
+	EncryptionAtRestUsingCustomerKeyManagementApi EncryptionAtRestUsingCustomerKeyManagementApi
 
-	FlexClustersAPI FlexClustersAPI
+	EventsApi EventsApi
 
-	FlexRestoreJobsAPI FlexRestoreJobsAPI
+	FederatedAuthenticationApi FederatedAuthenticationApi
 
-	FlexSnapshotsAPI FlexSnapshotsAPI
+	FlexClustersApi FlexClustersApi
 
-	GlobalClustersAPI GlobalClustersAPI
+	FlexRestoreJobsApi FlexRestoreJobsApi
 
-	InvoicesAPI InvoicesAPI
+	FlexSnapshotsApi FlexSnapshotsApi
 
-	LDAPConfigurationAPI LDAPConfigurationAPI
+	GlobalClustersApi GlobalClustersApi
 
-	LegacyBackupAPI LegacyBackupAPI
+	InvoicesApi InvoicesApi
 
-	MaintenanceWindowsAPI MaintenanceWindowsAPI
+	LDAPConfigurationApi LDAPConfigurationApi
 
-	MongoDBCloudUsersAPI MongoDBCloudUsersAPI
+	LegacyBackupApi LegacyBackupApi
 
-	MonitoringAndLogsAPI MonitoringAndLogsAPI
+	MaintenanceWindowsApi MaintenanceWindowsApi
 
-	NetworkPeeringAPI NetworkPeeringAPI
+	MongoDBCloudUsersApi MongoDBCloudUsersApi
 
-	OnlineArchiveAPI OnlineArchiveAPI
+	MonitoringAndLogsApi MonitoringAndLogsApi
 
-	OrganizationsAPI OrganizationsAPI
+	NetworkPeeringApi NetworkPeeringApi
 
-	PerformanceAdvisorAPI PerformanceAdvisorAPI
+	OnlineArchiveApi OnlineArchiveApi
 
-	PrivateEndpointServicesAPI PrivateEndpointServicesAPI
+	OrganizationsApi OrganizationsApi
 
-	ProgrammaticAPIKeysAPI ProgrammaticAPIKeysAPI
+	PerformanceAdvisorApi PerformanceAdvisorApi
 
-	ProjectIPAccessListAPI ProjectIPAccessListAPI
+	PrivateEndpointServicesApi PrivateEndpointServicesApi
 
-	ProjectsAPI ProjectsAPI
+	ProgrammaticAPIKeysApi ProgrammaticAPIKeysApi
 
-	PushBasedLogExportAPI PushBasedLogExportAPI
+	ProjectIPAccessListApi ProjectIPAccessListApi
 
-	QueryShapeInsightsAPI QueryShapeInsightsAPI
+	ProjectsApi ProjectsApi
 
-	RateLimitingAPI RateLimitingAPI
+	PushBasedLogExportApi PushBasedLogExportApi
 
-	ResourcePoliciesAPI ResourcePoliciesAPI
+	QueryShapeInsightsApi QueryShapeInsightsApi
 
-	RollingIndexAPI RollingIndexAPI
+	RateLimitingApi RateLimitingApi
 
-	RootAPI RootAPI
+	ResourcePoliciesApi ResourcePoliciesApi
 
-	ServerlessInstancesAPI ServerlessInstancesAPI
+	RollingIndexApi RollingIndexApi
 
-	ServerlessPrivateEndpointsAPI ServerlessPrivateEndpointsAPI
+	RootApi RootApi
 
-	ServiceAccountsAPI ServiceAccountsAPI
+	ServerlessInstancesApi ServerlessInstancesApi
 
-	StreamsAPI StreamsAPI
+	ServerlessPrivateEndpointsApi ServerlessPrivateEndpointsApi
 
-	TeamsAPI TeamsAPI
+	ServiceAccountsApi ServiceAccountsApi
 
-	ThirdPartyIntegrationsAPI ThirdPartyIntegrationsAPI
+	StreamsApi StreamsApi
 
-	X509AuthenticationAPI X509AuthenticationAPI
+	TeamsApi TeamsApi
+
+	ThirdPartyIntegrationsApi ThirdPartyIntegrationsApi
+
+	X509AuthenticationApi X509AuthenticationApi
 }
 
 type service struct {
@@ -160,57 +164,59 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.UntypedClient.client = c
 
 	// API Services
-	c.AWSClustersDNSAPI = (*AWSClustersDNSAPIService)(&c.common)
-	c.AccessTrackingAPI = (*AccessTrackingAPIService)(&c.common)
-	c.ActivityFeedAPI = (*ActivityFeedAPIService)(&c.common)
-	c.AlertConfigurationsAPI = (*AlertConfigurationsAPIService)(&c.common)
-	c.AlertsAPI = (*AlertsAPIService)(&c.common)
-	c.AtlasSearchAPI = (*AtlasSearchAPIService)(&c.common)
-	c.AuditingAPI = (*AuditingAPIService)(&c.common)
-	c.CloudBackupsAPI = (*CloudBackupsAPIService)(&c.common)
-	c.CloudMigrationServiceAPI = (*CloudMigrationServiceAPIService)(&c.common)
-	c.CloudProviderAccessAPI = (*CloudProviderAccessAPIService)(&c.common)
-	c.ClusterOutageSimulationAPI = (*ClusterOutageSimulationAPIService)(&c.common)
-	c.ClustersAPI = (*ClustersAPIService)(&c.common)
-	c.CollectionLevelMetricsAPI = (*CollectionLevelMetricsAPIService)(&c.common)
-	c.CustomDatabaseRolesAPI = (*CustomDatabaseRolesAPIService)(&c.common)
-	c.DataFederationAPI = (*DataFederationAPIService)(&c.common)
-	c.DataLakePipelinesAPI = (*DataLakePipelinesAPIService)(&c.common)
-	c.DatabaseUsersAPI = (*DatabaseUsersAPIService)(&c.common)
-	c.EncryptionAtRestUsingCustomerKeyManagementAPI = (*EncryptionAtRestUsingCustomerKeyManagementAPIService)(&c.common)
-	c.EventsAPI = (*EventsAPIService)(&c.common)
-	c.FederatedAuthenticationAPI = (*FederatedAuthenticationAPIService)(&c.common)
-	c.FlexClustersAPI = (*FlexClustersAPIService)(&c.common)
-	c.FlexRestoreJobsAPI = (*FlexRestoreJobsAPIService)(&c.common)
-	c.FlexSnapshotsAPI = (*FlexSnapshotsAPIService)(&c.common)
-	c.GlobalClustersAPI = (*GlobalClustersAPIService)(&c.common)
-	c.InvoicesAPI = (*InvoicesAPIService)(&c.common)
-	c.LDAPConfigurationAPI = (*LDAPConfigurationAPIService)(&c.common)
-	c.LegacyBackupAPI = (*LegacyBackupAPIService)(&c.common)
-	c.MaintenanceWindowsAPI = (*MaintenanceWindowsAPIService)(&c.common)
-	c.MongoDBCloudUsersAPI = (*MongoDBCloudUsersAPIService)(&c.common)
-	c.MonitoringAndLogsAPI = (*MonitoringAndLogsAPIService)(&c.common)
-	c.NetworkPeeringAPI = (*NetworkPeeringAPIService)(&c.common)
-	c.OnlineArchiveAPI = (*OnlineArchiveAPIService)(&c.common)
-	c.OrganizationsAPI = (*OrganizationsAPIService)(&c.common)
-	c.PerformanceAdvisorAPI = (*PerformanceAdvisorAPIService)(&c.common)
-	c.PrivateEndpointServicesAPI = (*PrivateEndpointServicesAPIService)(&c.common)
-	c.ProgrammaticAPIKeysAPI = (*ProgrammaticAPIKeysAPIService)(&c.common)
-	c.ProjectIPAccessListAPI = (*ProjectIPAccessListAPIService)(&c.common)
-	c.ProjectsAPI = (*ProjectsAPIService)(&c.common)
-	c.PushBasedLogExportAPI = (*PushBasedLogExportAPIService)(&c.common)
-	c.QueryShapeInsightsAPI = (*QueryShapeInsightsAPIService)(&c.common)
-	c.RateLimitingAPI = (*RateLimitingAPIService)(&c.common)
-	c.ResourcePoliciesAPI = (*ResourcePoliciesAPIService)(&c.common)
-	c.RollingIndexAPI = (*RollingIndexAPIService)(&c.common)
-	c.RootAPI = (*RootAPIService)(&c.common)
-	c.ServerlessInstancesAPI = (*ServerlessInstancesAPIService)(&c.common)
-	c.ServerlessPrivateEndpointsAPI = (*ServerlessPrivateEndpointsAPIService)(&c.common)
-	c.ServiceAccountsAPI = (*ServiceAccountsAPIService)(&c.common)
-	c.StreamsAPI = (*StreamsAPIService)(&c.common)
-	c.TeamsAPI = (*TeamsAPIService)(&c.common)
-	c.ThirdPartyIntegrationsAPI = (*ThirdPartyIntegrationsAPIService)(&c.common)
-	c.X509AuthenticationAPI = (*X509AuthenticationAPIService)(&c.common)
+	c.AIModelAPIKeysApi = (*AIModelAPIKeysApiService)(&c.common)
+	c.AIModelRateLimitsApi = (*AIModelRateLimitsApiService)(&c.common)
+	c.AWSClustersDNSApi = (*AWSClustersDNSApiService)(&c.common)
+	c.AccessTrackingApi = (*AccessTrackingApiService)(&c.common)
+	c.ActivityFeedApi = (*ActivityFeedApiService)(&c.common)
+	c.AlertConfigurationsApi = (*AlertConfigurationsApiService)(&c.common)
+	c.AlertsApi = (*AlertsApiService)(&c.common)
+	c.AtlasSearchApi = (*AtlasSearchApiService)(&c.common)
+	c.AuditingApi = (*AuditingApiService)(&c.common)
+	c.CloudBackupsApi = (*CloudBackupsApiService)(&c.common)
+	c.CloudMigrationServiceApi = (*CloudMigrationServiceApiService)(&c.common)
+	c.CloudProviderAccessApi = (*CloudProviderAccessApiService)(&c.common)
+	c.ClusterOutageSimulationApi = (*ClusterOutageSimulationApiService)(&c.common)
+	c.ClustersApi = (*ClustersApiService)(&c.common)
+	c.CollectionLevelMetricsApi = (*CollectionLevelMetricsApiService)(&c.common)
+	c.CustomDatabaseRolesApi = (*CustomDatabaseRolesApiService)(&c.common)
+	c.DataFederationApi = (*DataFederationApiService)(&c.common)
+	c.DataLakePipelinesApi = (*DataLakePipelinesApiService)(&c.common)
+	c.DatabaseUsersApi = (*DatabaseUsersApiService)(&c.common)
+	c.EncryptionAtRestUsingCustomerKeyManagementApi = (*EncryptionAtRestUsingCustomerKeyManagementApiService)(&c.common)
+	c.EventsApi = (*EventsApiService)(&c.common)
+	c.FederatedAuthenticationApi = (*FederatedAuthenticationApiService)(&c.common)
+	c.FlexClustersApi = (*FlexClustersApiService)(&c.common)
+	c.FlexRestoreJobsApi = (*FlexRestoreJobsApiService)(&c.common)
+	c.FlexSnapshotsApi = (*FlexSnapshotsApiService)(&c.common)
+	c.GlobalClustersApi = (*GlobalClustersApiService)(&c.common)
+	c.InvoicesApi = (*InvoicesApiService)(&c.common)
+	c.LDAPConfigurationApi = (*LDAPConfigurationApiService)(&c.common)
+	c.LegacyBackupApi = (*LegacyBackupApiService)(&c.common)
+	c.MaintenanceWindowsApi = (*MaintenanceWindowsApiService)(&c.common)
+	c.MongoDBCloudUsersApi = (*MongoDBCloudUsersApiService)(&c.common)
+	c.MonitoringAndLogsApi = (*MonitoringAndLogsApiService)(&c.common)
+	c.NetworkPeeringApi = (*NetworkPeeringApiService)(&c.common)
+	c.OnlineArchiveApi = (*OnlineArchiveApiService)(&c.common)
+	c.OrganizationsApi = (*OrganizationsApiService)(&c.common)
+	c.PerformanceAdvisorApi = (*PerformanceAdvisorApiService)(&c.common)
+	c.PrivateEndpointServicesApi = (*PrivateEndpointServicesApiService)(&c.common)
+	c.ProgrammaticAPIKeysApi = (*ProgrammaticAPIKeysApiService)(&c.common)
+	c.ProjectIPAccessListApi = (*ProjectIPAccessListApiService)(&c.common)
+	c.ProjectsApi = (*ProjectsApiService)(&c.common)
+	c.PushBasedLogExportApi = (*PushBasedLogExportApiService)(&c.common)
+	c.QueryShapeInsightsApi = (*QueryShapeInsightsApiService)(&c.common)
+	c.RateLimitingApi = (*RateLimitingApiService)(&c.common)
+	c.ResourcePoliciesApi = (*ResourcePoliciesApiService)(&c.common)
+	c.RollingIndexApi = (*RollingIndexApiService)(&c.common)
+	c.RootApi = (*RootApiService)(&c.common)
+	c.ServerlessInstancesApi = (*ServerlessInstancesApiService)(&c.common)
+	c.ServerlessPrivateEndpointsApi = (*ServerlessPrivateEndpointsApiService)(&c.common)
+	c.ServiceAccountsApi = (*ServiceAccountsApiService)(&c.common)
+	c.StreamsApi = (*StreamsApiService)(&c.common)
+	c.TeamsApi = (*TeamsApiService)(&c.common)
+	c.ThirdPartyIntegrationsApi = (*ThirdPartyIntegrationsApiService)(&c.common)
+	c.X509AuthenticationApi = (*X509AuthenticationApiService)(&c.common)
 
 	return c
 }

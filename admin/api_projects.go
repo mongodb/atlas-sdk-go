@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -9,7 +10,7 @@ import (
 	"strings"
 )
 
-type ProjectsAPI interface {
+type ProjectsApi interface {
 
 	/*
 		AddGroupUser Add One MongoDB Cloud User to One Project
@@ -21,7 +22,7 @@ type ProjectsAPI interface {
 		@param groupInvitationRequest Adds one MongoDB Cloud user to the specified project.
 		@return AddGroupUserApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	AddGroupUser(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) AddGroupUserApiRequest
 	/*
@@ -32,7 +33,7 @@ type ProjectsAPI interface {
 		@param AddGroupUserApiParams - Parameters for the request
 		@return AddGroupUserApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	AddGroupUserWithParams(ctx context.Context, args *AddGroupUserApiParams) AddGroupUserApiRequest
 
@@ -72,7 +73,7 @@ type ProjectsAPI interface {
 		@param groupInvitationRequest Invites one MongoDB Cloud user to join the specified project.
 		@return CreateGroupInviteApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	CreateGroupInvite(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) CreateGroupInviteApiRequest
 	/*
@@ -83,7 +84,7 @@ type ProjectsAPI interface {
 		@param CreateGroupInviteApiParams - Parameters for the request
 		@return CreateGroupInviteApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	CreateGroupInviteWithParams(ctx context.Context, args *CreateGroupInviteApiParams) CreateGroupInviteApiRequest
 
@@ -123,7 +124,7 @@ type ProjectsAPI interface {
 		@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 		@return DeleteGroupInviteApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	DeleteGroupInvite(ctx context.Context, groupId string, invitationId string) DeleteGroupInviteApiRequest
 	/*
@@ -134,7 +135,7 @@ type ProjectsAPI interface {
 		@param DeleteGroupInviteApiParams - Parameters for the request
 		@return DeleteGroupInviteApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	DeleteGroupInviteWithParams(ctx context.Context, args *DeleteGroupInviteApiParams) DeleteGroupInviteApiRequest
 
@@ -221,7 +222,7 @@ type ProjectsAPI interface {
 		@param invitationId Unique 24-hexadecimal digit string that identifies the invitation.
 		@return GetGroupInviteApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	GetGroupInvite(ctx context.Context, groupId string, invitationId string) GetGroupInviteApiRequest
 	/*
@@ -232,7 +233,7 @@ type ProjectsAPI interface {
 		@param GetGroupInviteApiParams - Parameters for the request
 		@return GetGroupInviteApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	GetGroupInviteWithParams(ctx context.Context, args *GetGroupInviteApiParams) GetGroupInviteApiRequest
 
@@ -341,7 +342,7 @@ type ProjectsAPI interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return ListGroupInvitesApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	ListGroupInvites(ctx context.Context, groupId string) ListGroupInvitesApiRequest
 	/*
@@ -352,7 +353,7 @@ type ProjectsAPI interface {
 		@param ListGroupInvitesApiParams - Parameters for the request
 		@return ListGroupInvitesApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	ListGroupInvitesWithParams(ctx context.Context, args *ListGroupInvitesApiParams) ListGroupInvitesApiRequest
 
@@ -489,7 +490,7 @@ type ProjectsAPI interface {
 		@param groupInvitationRequest Updates the details of one pending invitation to the specified project.
 		@return UpdateGroupInvitesApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	UpdateGroupInvites(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) UpdateGroupInvitesApiRequest
 	/*
@@ -500,7 +501,7 @@ type ProjectsAPI interface {
 		@param UpdateGroupInvitesApiParams - Parameters for the request
 		@return UpdateGroupInvitesApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	UpdateGroupInvitesWithParams(ctx context.Context, args *UpdateGroupInvitesApiParams) UpdateGroupInvitesApiRequest
 
@@ -542,7 +543,7 @@ type ProjectsAPI interface {
 		@param updateGroupRolesForUser Roles to update for the specified user.
 		@return UpdateGroupUserRolesApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	UpdateGroupUserRoles(ctx context.Context, groupId string, userId string, updateGroupRolesForUser *UpdateGroupRolesForUser) UpdateGroupUserRolesApiRequest
 	/*
@@ -553,7 +554,7 @@ type ProjectsAPI interface {
 		@param UpdateGroupUserRolesApiParams - Parameters for the request
 		@return UpdateGroupUserRolesApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	UpdateGroupUserRolesWithParams(ctx context.Context, args *UpdateGroupUserRolesApiParams) UpdateGroupUserRolesApiRequest
 
@@ -571,7 +572,7 @@ type ProjectsAPI interface {
 		@param groupInvitationUpdateRequest Updates the details of one pending invitation to the specified project.
 		@return UpdateInviteByIdApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	UpdateInviteById(ctx context.Context, groupId string, invitationId string, groupInvitationUpdateRequest *GroupInvitationUpdateRequest) UpdateInviteByIdApiRequest
 	/*
@@ -582,7 +583,7 @@ type ProjectsAPI interface {
 		@param UpdateInviteByIdApiParams - Parameters for the request
 		@return UpdateInviteByIdApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsAPI
+		Deprecated: this method has been deprecated. Please check the latest resource version for ProjectsApi
 	*/
 	UpdateInviteByIdWithParams(ctx context.Context, args *UpdateInviteByIdApiParams) UpdateInviteByIdApiRequest
 
@@ -590,12 +591,12 @@ type ProjectsAPI interface {
 	UpdateInviteByIdExecute(r UpdateInviteByIdApiRequest) (*GroupInvitation, *http.Response, error)
 }
 
-// ProjectsAPIService ProjectsAPI service
-type ProjectsAPIService service
+// ProjectsApiService ProjectsApi service
+type ProjectsApiService service
 
 type AddGroupUserApiRequest struct {
 	ctx                    context.Context
-	ApiService             ProjectsAPI
+	ApiService             ProjectsApi
 	groupId                string
 	groupInvitationRequest *GroupInvitationRequest
 }
@@ -605,7 +606,7 @@ type AddGroupUserApiParams struct {
 	GroupInvitationRequest *GroupInvitationRequest
 }
 
-func (a *ProjectsAPIService) AddGroupUserWithParams(ctx context.Context, args *AddGroupUserApiParams) AddGroupUserApiRequest {
+func (a *ProjectsApiService) AddGroupUserWithParams(ctx context.Context, args *AddGroupUserApiParams) AddGroupUserApiRequest {
 	return AddGroupUserApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
@@ -629,7 +630,7 @@ Adds one MongoDB Cloud user to the specified project. If the MongoDB Cloud user 
 
 Deprecated
 */
-func (a *ProjectsAPIService) AddGroupUser(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) AddGroupUserApiRequest {
+func (a *ProjectsApiService) AddGroupUser(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) AddGroupUserApiRequest {
 	return AddGroupUserApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
@@ -643,7 +644,7 @@ func (a *ProjectsAPIService) AddGroupUser(ctx context.Context, groupId string, g
 //	@return OrganizationInvitation
 //
 // Deprecated
-func (a *ProjectsAPIService) AddGroupUserExecute(r AddGroupUserApiRequest) (*OrganizationInvitation, *http.Response, error) {
+func (a *ProjectsApiService) AddGroupUserExecute(r AddGroupUserApiRequest) (*OrganizationInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -651,7 +652,7 @@ func (a *ProjectsAPIService) AddGroupUserExecute(r AddGroupUserApiRequest) (*Org
 		localVarReturnValue *OrganizationInvitation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.AddGroupUser")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.AddGroupUser")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -722,7 +723,7 @@ func (a *ProjectsAPIService) AddGroupUserExecute(r AddGroupUserApiRequest) (*Org
 
 type CreateGroupApiRequest struct {
 	ctx            context.Context
-	ApiService     ProjectsAPI
+	ApiService     ProjectsApi
 	group          *Group
 	projectOwnerId *string
 }
@@ -732,7 +733,7 @@ type CreateGroupApiParams struct {
 	ProjectOwnerId *string
 }
 
-func (a *ProjectsAPIService) CreateGroupWithParams(ctx context.Context, args *CreateGroupApiParams) CreateGroupApiRequest {
+func (a *ProjectsApiService) CreateGroupWithParams(ctx context.Context, args *CreateGroupApiParams) CreateGroupApiRequest {
 	return CreateGroupApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -759,7 +760,7 @@ Creates one project. Projects group clusters into logical collections that suppo
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return CreateGroupApiRequest
 */
-func (a *ProjectsAPIService) CreateGroup(ctx context.Context, group *Group) CreateGroupApiRequest {
+func (a *ProjectsApiService) CreateGroup(ctx context.Context, group *Group) CreateGroupApiRequest {
 	return CreateGroupApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -770,7 +771,7 @@ func (a *ProjectsAPIService) CreateGroup(ctx context.Context, group *Group) Crea
 // CreateGroupExecute executes the request
 //
 //	@return Group
-func (a *ProjectsAPIService) CreateGroupExecute(r CreateGroupApiRequest) (*Group, *http.Response, error) {
+func (a *ProjectsApiService) CreateGroupExecute(r CreateGroupApiRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -778,7 +779,7 @@ func (a *ProjectsAPIService) CreateGroupExecute(r CreateGroupApiRequest) (*Group
 		localVarReturnValue *Group
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.CreateGroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.CreateGroup")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -848,7 +849,7 @@ func (a *ProjectsAPIService) CreateGroupExecute(r CreateGroupApiRequest) (*Group
 
 type CreateGroupInviteApiRequest struct {
 	ctx                    context.Context
-	ApiService             ProjectsAPI
+	ApiService             ProjectsApi
 	groupId                string
 	groupInvitationRequest *GroupInvitationRequest
 }
@@ -858,7 +859,7 @@ type CreateGroupInviteApiParams struct {
 	GroupInvitationRequest *GroupInvitationRequest
 }
 
-func (a *ProjectsAPIService) CreateGroupInviteWithParams(ctx context.Context, args *CreateGroupInviteApiParams) CreateGroupInviteApiRequest {
+func (a *ProjectsApiService) CreateGroupInviteWithParams(ctx context.Context, args *CreateGroupInviteApiParams) CreateGroupInviteApiRequest {
 	return CreateGroupInviteApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
@@ -882,7 +883,7 @@ Invites one MongoDB Cloud user to join the specified project. The MongoDB Cloud 
 
 Deprecated
 */
-func (a *ProjectsAPIService) CreateGroupInvite(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) CreateGroupInviteApiRequest {
+func (a *ProjectsApiService) CreateGroupInvite(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) CreateGroupInviteApiRequest {
 	return CreateGroupInviteApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
@@ -896,7 +897,7 @@ func (a *ProjectsAPIService) CreateGroupInvite(ctx context.Context, groupId stri
 //	@return GroupInvitation
 //
 // Deprecated
-func (a *ProjectsAPIService) CreateGroupInviteExecute(r CreateGroupInviteApiRequest) (*GroupInvitation, *http.Response, error) {
+func (a *ProjectsApiService) CreateGroupInviteExecute(r CreateGroupInviteApiRequest) (*GroupInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -904,7 +905,7 @@ func (a *ProjectsAPIService) CreateGroupInviteExecute(r CreateGroupInviteApiRequ
 		localVarReturnValue *GroupInvitation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.CreateGroupInvite")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.CreateGroupInvite")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -975,7 +976,7 @@ func (a *ProjectsAPIService) CreateGroupInviteExecute(r CreateGroupInviteApiRequ
 
 type DeleteGroupApiRequest struct {
 	ctx        context.Context
-	ApiService ProjectsAPI
+	ApiService ProjectsApi
 	groupId    string
 }
 
@@ -983,7 +984,7 @@ type DeleteGroupApiParams struct {
 	GroupId string
 }
 
-func (a *ProjectsAPIService) DeleteGroupWithParams(ctx context.Context, args *DeleteGroupApiParams) DeleteGroupApiRequest {
+func (a *ProjectsApiService) DeleteGroupWithParams(ctx context.Context, args *DeleteGroupApiParams) DeleteGroupApiRequest {
 	return DeleteGroupApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1004,7 +1005,7 @@ Removes the specified project. Projects group clusters into logical collections 
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return DeleteGroupApiRequest
 */
-func (a *ProjectsAPIService) DeleteGroup(ctx context.Context, groupId string) DeleteGroupApiRequest {
+func (a *ProjectsApiService) DeleteGroup(ctx context.Context, groupId string) DeleteGroupApiRequest {
 	return DeleteGroupApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1013,14 +1014,14 @@ func (a *ProjectsAPIService) DeleteGroup(ctx context.Context, groupId string) De
 }
 
 // DeleteGroupExecute executes the request
-func (a *ProjectsAPIService) DeleteGroupExecute(r DeleteGroupApiRequest) (*http.Response, error) {
+func (a *ProjectsApiService) DeleteGroupExecute(r DeleteGroupApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.DeleteGroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.DeleteGroup")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1072,7 +1073,7 @@ func (a *ProjectsAPIService) DeleteGroupExecute(r DeleteGroupApiRequest) (*http.
 
 type DeleteGroupInviteApiRequest struct {
 	ctx          context.Context
-	ApiService   ProjectsAPI
+	ApiService   ProjectsApi
 	groupId      string
 	invitationId string
 }
@@ -1082,7 +1083,7 @@ type DeleteGroupInviteApiParams struct {
 	InvitationId string
 }
 
-func (a *ProjectsAPIService) DeleteGroupInviteWithParams(ctx context.Context, args *DeleteGroupInviteApiParams) DeleteGroupInviteApiRequest {
+func (a *ProjectsApiService) DeleteGroupInviteWithParams(ctx context.Context, args *DeleteGroupInviteApiParams) DeleteGroupInviteApiRequest {
 	return DeleteGroupInviteApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1107,7 +1108,7 @@ Cancels one pending invitation sent to the specified MongoDB Cloud user to join 
 
 Deprecated
 */
-func (a *ProjectsAPIService) DeleteGroupInvite(ctx context.Context, groupId string, invitationId string) DeleteGroupInviteApiRequest {
+func (a *ProjectsApiService) DeleteGroupInvite(ctx context.Context, groupId string, invitationId string) DeleteGroupInviteApiRequest {
 	return DeleteGroupInviteApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1118,14 +1119,14 @@ func (a *ProjectsAPIService) DeleteGroupInvite(ctx context.Context, groupId stri
 
 // DeleteGroupInviteExecute executes the request
 // Deprecated
-func (a *ProjectsAPIService) DeleteGroupInviteExecute(r DeleteGroupInviteApiRequest) (*http.Response, error) {
+func (a *ProjectsApiService) DeleteGroupInviteExecute(r DeleteGroupInviteApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.DeleteGroupInvite")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.DeleteGroupInvite")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1181,7 +1182,7 @@ func (a *ProjectsAPIService) DeleteGroupInviteExecute(r DeleteGroupInviteApiRequ
 
 type DeleteGroupLimitApiRequest struct {
 	ctx        context.Context
-	ApiService ProjectsAPI
+	ApiService ProjectsApi
 	limitName  string
 	groupId    string
 }
@@ -1191,7 +1192,7 @@ type DeleteGroupLimitApiParams struct {
 	GroupId   string
 }
 
-func (a *ProjectsAPIService) DeleteGroupLimitWithParams(ctx context.Context, args *DeleteGroupLimitApiParams) DeleteGroupLimitApiRequest {
+func (a *ProjectsApiService) DeleteGroupLimitWithParams(ctx context.Context, args *DeleteGroupLimitApiParams) DeleteGroupLimitApiRequest {
 	return DeleteGroupLimitApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1214,7 +1215,7 @@ Removes the specified project limit. Depending on the limit, Atlas either resets
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return DeleteGroupLimitApiRequest
 */
-func (a *ProjectsAPIService) DeleteGroupLimit(ctx context.Context, limitName string, groupId string) DeleteGroupLimitApiRequest {
+func (a *ProjectsApiService) DeleteGroupLimit(ctx context.Context, limitName string, groupId string) DeleteGroupLimitApiRequest {
 	return DeleteGroupLimitApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1224,14 +1225,14 @@ func (a *ProjectsAPIService) DeleteGroupLimit(ctx context.Context, limitName str
 }
 
 // DeleteGroupLimitExecute executes the request
-func (a *ProjectsAPIService) DeleteGroupLimitExecute(r DeleteGroupLimitApiRequest) (*http.Response, error) {
+func (a *ProjectsApiService) DeleteGroupLimitExecute(r DeleteGroupLimitApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.DeleteGroupLimit")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.DeleteGroupLimit")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1287,7 +1288,7 @@ func (a *ProjectsAPIService) DeleteGroupLimitExecute(r DeleteGroupLimitApiReques
 
 type GetGroupApiRequest struct {
 	ctx        context.Context
-	ApiService ProjectsAPI
+	ApiService ProjectsApi
 	groupId    string
 }
 
@@ -1295,7 +1296,7 @@ type GetGroupApiParams struct {
 	GroupId string
 }
 
-func (a *ProjectsAPIService) GetGroupWithParams(ctx context.Context, args *GetGroupApiParams) GetGroupApiRequest {
+func (a *ProjectsApiService) GetGroupWithParams(ctx context.Context, args *GetGroupApiParams) GetGroupApiRequest {
 	return GetGroupApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1316,7 +1317,7 @@ Returns details about the specified project. Projects group clusters into logica
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetGroupApiRequest
 */
-func (a *ProjectsAPIService) GetGroup(ctx context.Context, groupId string) GetGroupApiRequest {
+func (a *ProjectsApiService) GetGroup(ctx context.Context, groupId string) GetGroupApiRequest {
 	return GetGroupApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1327,7 +1328,7 @@ func (a *ProjectsAPIService) GetGroup(ctx context.Context, groupId string) GetGr
 // GetGroupExecute executes the request
 //
 //	@return Group
-func (a *ProjectsAPIService) GetGroupExecute(r GetGroupApiRequest) (*Group, *http.Response, error) {
+func (a *ProjectsApiService) GetGroupExecute(r GetGroupApiRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1335,7 +1336,7 @@ func (a *ProjectsAPIService) GetGroupExecute(r GetGroupApiRequest) (*Group, *htt
 		localVarReturnValue *Group
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.GetGroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.GetGroup")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1401,7 +1402,7 @@ func (a *ProjectsAPIService) GetGroupExecute(r GetGroupApiRequest) (*Group, *htt
 
 type GetGroupByNameApiRequest struct {
 	ctx        context.Context
-	ApiService ProjectsAPI
+	ApiService ProjectsApi
 	groupName  string
 }
 
@@ -1409,7 +1410,7 @@ type GetGroupByNameApiParams struct {
 	GroupName string
 }
 
-func (a *ProjectsAPIService) GetGroupByNameWithParams(ctx context.Context, args *GetGroupByNameApiParams) GetGroupByNameApiRequest {
+func (a *ProjectsApiService) GetGroupByNameWithParams(ctx context.Context, args *GetGroupByNameApiParams) GetGroupByNameApiRequest {
 	return GetGroupByNameApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1430,7 +1431,7 @@ Returns details about the specified project. Projects group clusters into logica
 	@param groupName Human-readable label that identifies this project.
 	@return GetGroupByNameApiRequest
 */
-func (a *ProjectsAPIService) GetGroupByName(ctx context.Context, groupName string) GetGroupByNameApiRequest {
+func (a *ProjectsApiService) GetGroupByName(ctx context.Context, groupName string) GetGroupByNameApiRequest {
 	return GetGroupByNameApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1441,7 +1442,7 @@ func (a *ProjectsAPIService) GetGroupByName(ctx context.Context, groupName strin
 // GetGroupByNameExecute executes the request
 //
 //	@return Group
-func (a *ProjectsAPIService) GetGroupByNameExecute(r GetGroupByNameApiRequest) (*Group, *http.Response, error) {
+func (a *ProjectsApiService) GetGroupByNameExecute(r GetGroupByNameApiRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1449,7 +1450,7 @@ func (a *ProjectsAPIService) GetGroupByNameExecute(r GetGroupByNameApiRequest) (
 		localVarReturnValue *Group
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.GetGroupByName")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.GetGroupByName")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1515,7 +1516,7 @@ func (a *ProjectsAPIService) GetGroupByNameExecute(r GetGroupByNameApiRequest) (
 
 type GetGroupInviteApiRequest struct {
 	ctx          context.Context
-	ApiService   ProjectsAPI
+	ApiService   ProjectsApi
 	groupId      string
 	invitationId string
 }
@@ -1525,7 +1526,7 @@ type GetGroupInviteApiParams struct {
 	InvitationId string
 }
 
-func (a *ProjectsAPIService) GetGroupInviteWithParams(ctx context.Context, args *GetGroupInviteApiParams) GetGroupInviteApiRequest {
+func (a *ProjectsApiService) GetGroupInviteWithParams(ctx context.Context, args *GetGroupInviteApiParams) GetGroupInviteApiRequest {
 	return GetGroupInviteApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1550,7 +1551,7 @@ Returns the details of one pending invitation to the specified project.
 
 Deprecated
 */
-func (a *ProjectsAPIService) GetGroupInvite(ctx context.Context, groupId string, invitationId string) GetGroupInviteApiRequest {
+func (a *ProjectsApiService) GetGroupInvite(ctx context.Context, groupId string, invitationId string) GetGroupInviteApiRequest {
 	return GetGroupInviteApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -1564,7 +1565,7 @@ func (a *ProjectsAPIService) GetGroupInvite(ctx context.Context, groupId string,
 //	@return GroupInvitation
 //
 // Deprecated
-func (a *ProjectsAPIService) GetGroupInviteExecute(r GetGroupInviteApiRequest) (*GroupInvitation, *http.Response, error) {
+func (a *ProjectsApiService) GetGroupInviteExecute(r GetGroupInviteApiRequest) (*GroupInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1572,7 +1573,7 @@ func (a *ProjectsAPIService) GetGroupInviteExecute(r GetGroupInviteApiRequest) (
 		localVarReturnValue *GroupInvitation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.GetGroupInvite")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.GetGroupInvite")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1642,7 +1643,7 @@ func (a *ProjectsAPIService) GetGroupInviteExecute(r GetGroupInviteApiRequest) (
 
 type GetGroupIpAddressesApiRequest struct {
 	ctx        context.Context
-	ApiService ProjectsAPI
+	ApiService ProjectsApi
 	groupId    string
 }
 
@@ -1650,7 +1651,7 @@ type GetGroupIpAddressesApiParams struct {
 	GroupId string
 }
 
-func (a *ProjectsAPIService) GetGroupIpAddressesWithParams(ctx context.Context, args *GetGroupIpAddressesApiParams) GetGroupIpAddressesApiRequest {
+func (a *ProjectsApiService) GetGroupIpAddressesWithParams(ctx context.Context, args *GetGroupIpAddressesApiParams) GetGroupIpAddressesApiRequest {
 	return GetGroupIpAddressesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1671,7 +1672,7 @@ Returns all IP addresses for this project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetGroupIpAddressesApiRequest
 */
-func (a *ProjectsAPIService) GetGroupIpAddresses(ctx context.Context, groupId string) GetGroupIpAddressesApiRequest {
+func (a *ProjectsApiService) GetGroupIpAddresses(ctx context.Context, groupId string) GetGroupIpAddressesApiRequest {
 	return GetGroupIpAddressesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1682,7 +1683,7 @@ func (a *ProjectsAPIService) GetGroupIpAddresses(ctx context.Context, groupId st
 // GetGroupIpAddressesExecute executes the request
 //
 //	@return GroupIPAddresses
-func (a *ProjectsAPIService) GetGroupIpAddressesExecute(r GetGroupIpAddressesApiRequest) (*GroupIPAddresses, *http.Response, error) {
+func (a *ProjectsApiService) GetGroupIpAddressesExecute(r GetGroupIpAddressesApiRequest) (*GroupIPAddresses, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1690,7 +1691,7 @@ func (a *ProjectsAPIService) GetGroupIpAddressesExecute(r GetGroupIpAddressesApi
 		localVarReturnValue *GroupIPAddresses
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.GetGroupIpAddresses")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.GetGroupIpAddresses")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1756,7 +1757,7 @@ func (a *ProjectsAPIService) GetGroupIpAddressesExecute(r GetGroupIpAddressesApi
 
 type GetGroupLimitApiRequest struct {
 	ctx        context.Context
-	ApiService ProjectsAPI
+	ApiService ProjectsApi
 	limitName  string
 	groupId    string
 }
@@ -1766,7 +1767,7 @@ type GetGroupLimitApiParams struct {
 	GroupId   string
 }
 
-func (a *ProjectsAPIService) GetGroupLimitWithParams(ctx context.Context, args *GetGroupLimitApiParams) GetGroupLimitApiRequest {
+func (a *ProjectsApiService) GetGroupLimitWithParams(ctx context.Context, args *GetGroupLimitApiParams) GetGroupLimitApiRequest {
 	return GetGroupLimitApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1789,7 +1790,7 @@ Returns the specified limit for the specified project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetGroupLimitApiRequest
 */
-func (a *ProjectsAPIService) GetGroupLimit(ctx context.Context, limitName string, groupId string) GetGroupLimitApiRequest {
+func (a *ProjectsApiService) GetGroupLimit(ctx context.Context, limitName string, groupId string) GetGroupLimitApiRequest {
 	return GetGroupLimitApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1801,7 +1802,7 @@ func (a *ProjectsAPIService) GetGroupLimit(ctx context.Context, limitName string
 // GetGroupLimitExecute executes the request
 //
 //	@return DataFederationLimit
-func (a *ProjectsAPIService) GetGroupLimitExecute(r GetGroupLimitApiRequest) (*DataFederationLimit, *http.Response, error) {
+func (a *ProjectsApiService) GetGroupLimitExecute(r GetGroupLimitApiRequest) (*DataFederationLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1809,7 +1810,7 @@ func (a *ProjectsAPIService) GetGroupLimitExecute(r GetGroupLimitApiRequest) (*D
 		localVarReturnValue *DataFederationLimit
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.GetGroupLimit")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.GetGroupLimit")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1879,7 +1880,7 @@ func (a *ProjectsAPIService) GetGroupLimitExecute(r GetGroupLimitApiRequest) (*D
 
 type GetGroupSettingsApiRequest struct {
 	ctx        context.Context
-	ApiService ProjectsAPI
+	ApiService ProjectsApi
 	groupId    string
 }
 
@@ -1887,7 +1888,7 @@ type GetGroupSettingsApiParams struct {
 	GroupId string
 }
 
-func (a *ProjectsAPIService) GetGroupSettingsWithParams(ctx context.Context, args *GetGroupSettingsApiParams) GetGroupSettingsApiRequest {
+func (a *ProjectsApiService) GetGroupSettingsWithParams(ctx context.Context, args *GetGroupSettingsApiParams) GetGroupSettingsApiRequest {
 	return GetGroupSettingsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1908,7 +1909,7 @@ Returns details about the specified project's settings.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetGroupSettingsApiRequest
 */
-func (a *ProjectsAPIService) GetGroupSettings(ctx context.Context, groupId string) GetGroupSettingsApiRequest {
+func (a *ProjectsApiService) GetGroupSettings(ctx context.Context, groupId string) GetGroupSettingsApiRequest {
 	return GetGroupSettingsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1919,7 +1920,7 @@ func (a *ProjectsAPIService) GetGroupSettings(ctx context.Context, groupId strin
 // GetGroupSettingsExecute executes the request
 //
 //	@return GroupSettings
-func (a *ProjectsAPIService) GetGroupSettingsExecute(r GetGroupSettingsApiRequest) (*GroupSettings, *http.Response, error) {
+func (a *ProjectsApiService) GetGroupSettingsExecute(r GetGroupSettingsApiRequest) (*GroupSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1927,7 +1928,7 @@ func (a *ProjectsAPIService) GetGroupSettingsExecute(r GetGroupSettingsApiReques
 		localVarReturnValue *GroupSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.GetGroupSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.GetGroupSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1993,7 +1994,7 @@ func (a *ProjectsAPIService) GetGroupSettingsExecute(r GetGroupSettingsApiReques
 
 type GetMongoDbVersionsApiRequest struct {
 	ctx           context.Context
-	ApiService    ProjectsAPI
+	ApiService    ProjectsApi
 	groupId       string
 	cloudProvider *string
 	instanceSize  *string
@@ -2011,7 +2012,7 @@ type GetMongoDbVersionsApiParams struct {
 	PageNum       *int
 }
 
-func (a *ProjectsAPIService) GetMongoDbVersionsWithParams(ctx context.Context, args *GetMongoDbVersionsApiParams) GetMongoDbVersionsApiRequest {
+func (a *ProjectsApiService) GetMongoDbVersionsWithParams(ctx context.Context, args *GetMongoDbVersionsApiParams) GetMongoDbVersionsApiRequest {
 	return GetMongoDbVersionsApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -2067,7 +2068,7 @@ Returns the MongoDB Long Term Support Major Versions available to new clusters i
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetMongoDbVersionsApiRequest
 */
-func (a *ProjectsAPIService) GetMongoDbVersions(ctx context.Context, groupId string) GetMongoDbVersionsApiRequest {
+func (a *ProjectsApiService) GetMongoDbVersions(ctx context.Context, groupId string) GetMongoDbVersionsApiRequest {
 	return GetMongoDbVersionsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2078,7 +2079,7 @@ func (a *ProjectsAPIService) GetMongoDbVersions(ctx context.Context, groupId str
 // GetMongoDbVersionsExecute executes the request
 //
 //	@return PaginatedAvailableVersion
-func (a *ProjectsAPIService) GetMongoDbVersionsExecute(r GetMongoDbVersionsApiRequest) (*PaginatedAvailableVersion, *http.Response, error) {
+func (a *ProjectsApiService) GetMongoDbVersionsExecute(r GetMongoDbVersionsApiRequest) (*PaginatedAvailableVersion, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2086,7 +2087,7 @@ func (a *ProjectsAPIService) GetMongoDbVersionsExecute(r GetMongoDbVersionsApiRe
 		localVarReturnValue *PaginatedAvailableVersion
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.GetMongoDbVersions")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.GetMongoDbVersions")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2175,7 +2176,7 @@ func (a *ProjectsAPIService) GetMongoDbVersionsExecute(r GetMongoDbVersionsApiRe
 
 type ListGroupInvitesApiRequest struct {
 	ctx        context.Context
-	ApiService ProjectsAPI
+	ApiService ProjectsApi
 	groupId    string
 	username   *string
 }
@@ -2185,7 +2186,7 @@ type ListGroupInvitesApiParams struct {
 	Username *string
 }
 
-func (a *ProjectsAPIService) ListGroupInvitesWithParams(ctx context.Context, args *ListGroupInvitesApiParams) ListGroupInvitesApiRequest {
+func (a *ProjectsApiService) ListGroupInvitesWithParams(ctx context.Context, args *ListGroupInvitesApiParams) ListGroupInvitesApiRequest {
 	return ListGroupInvitesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2215,7 +2216,7 @@ Returns all pending invitations to the specified project.
 
 Deprecated
 */
-func (a *ProjectsAPIService) ListGroupInvites(ctx context.Context, groupId string) ListGroupInvitesApiRequest {
+func (a *ProjectsApiService) ListGroupInvites(ctx context.Context, groupId string) ListGroupInvitesApiRequest {
 	return ListGroupInvitesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2228,7 +2229,7 @@ func (a *ProjectsAPIService) ListGroupInvites(ctx context.Context, groupId strin
 //	@return []GroupInvitation
 //
 // Deprecated
-func (a *ProjectsAPIService) ListGroupInvitesExecute(r ListGroupInvitesApiRequest) ([]GroupInvitation, *http.Response, error) {
+func (a *ProjectsApiService) ListGroupInvitesExecute(r ListGroupInvitesApiRequest) ([]GroupInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2236,7 +2237,7 @@ func (a *ProjectsAPIService) ListGroupInvitesExecute(r ListGroupInvitesApiReques
 		localVarReturnValue []GroupInvitation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.ListGroupInvites")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ListGroupInvites")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2305,7 +2306,7 @@ func (a *ProjectsAPIService) ListGroupInvitesExecute(r ListGroupInvitesApiReques
 
 type ListGroupLimitsApiRequest struct {
 	ctx        context.Context
-	ApiService ProjectsAPI
+	ApiService ProjectsApi
 	groupId    string
 }
 
@@ -2313,7 +2314,7 @@ type ListGroupLimitsApiParams struct {
 	GroupId string
 }
 
-func (a *ProjectsAPIService) ListGroupLimitsWithParams(ctx context.Context, args *ListGroupLimitsApiParams) ListGroupLimitsApiRequest {
+func (a *ProjectsApiService) ListGroupLimitsWithParams(ctx context.Context, args *ListGroupLimitsApiParams) ListGroupLimitsApiRequest {
 	return ListGroupLimitsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2334,7 +2335,7 @@ Returns all the limits for the specified project.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListGroupLimitsApiRequest
 */
-func (a *ProjectsAPIService) ListGroupLimits(ctx context.Context, groupId string) ListGroupLimitsApiRequest {
+func (a *ProjectsApiService) ListGroupLimits(ctx context.Context, groupId string) ListGroupLimitsApiRequest {
 	return ListGroupLimitsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2345,7 +2346,7 @@ func (a *ProjectsAPIService) ListGroupLimits(ctx context.Context, groupId string
 // ListGroupLimitsExecute executes the request
 //
 //	@return []DataFederationLimit
-func (a *ProjectsAPIService) ListGroupLimitsExecute(r ListGroupLimitsApiRequest) ([]DataFederationLimit, *http.Response, error) {
+func (a *ProjectsApiService) ListGroupLimitsExecute(r ListGroupLimitsApiRequest) ([]DataFederationLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2353,7 +2354,7 @@ func (a *ProjectsAPIService) ListGroupLimitsExecute(r ListGroupLimitsApiRequest)
 		localVarReturnValue []DataFederationLimit
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.ListGroupLimits")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ListGroupLimits")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2419,7 +2420,7 @@ func (a *ProjectsAPIService) ListGroupLimitsExecute(r ListGroupLimitsApiRequest)
 
 type ListGroupsApiRequest struct {
 	ctx          context.Context
-	ApiService   ProjectsAPI
+	ApiService   ProjectsApi
 	includeCount *bool
 	itemsPerPage *int
 	pageNum      *int
@@ -2431,7 +2432,7 @@ type ListGroupsApiParams struct {
 	PageNum      *int
 }
 
-func (a *ProjectsAPIService) ListGroupsWithParams(ctx context.Context, args *ListGroupsApiParams) ListGroupsApiRequest {
+func (a *ProjectsApiService) ListGroupsWithParams(ctx context.Context, args *ListGroupsApiParams) ListGroupsApiRequest {
 	return ListGroupsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -2471,7 +2472,7 @@ Returns details about all projects. Projects group clusters into logical collect
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ListGroupsApiRequest
 */
-func (a *ProjectsAPIService) ListGroups(ctx context.Context) ListGroupsApiRequest {
+func (a *ProjectsApiService) ListGroups(ctx context.Context) ListGroupsApiRequest {
 	return ListGroupsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -2481,7 +2482,7 @@ func (a *ProjectsAPIService) ListGroups(ctx context.Context) ListGroupsApiReques
 // ListGroupsExecute executes the request
 //
 //	@return PaginatedAtlasGroup
-func (a *ProjectsAPIService) ListGroupsExecute(r ListGroupsApiRequest) (*PaginatedAtlasGroup, *http.Response, error) {
+func (a *ProjectsApiService) ListGroupsExecute(r ListGroupsApiRequest) (*PaginatedAtlasGroup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -2489,7 +2490,7 @@ func (a *ProjectsAPIService) ListGroupsExecute(r ListGroupsApiRequest) (*Paginat
 		localVarReturnValue *PaginatedAtlasGroup
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.ListGroups")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ListGroups")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2572,7 +2573,7 @@ func (a *ProjectsAPIService) ListGroupsExecute(r ListGroupsApiRequest) (*Paginat
 
 type MigrateGroupApiRequest struct {
 	ctx                   context.Context
-	ApiService            ProjectsAPI
+	ApiService            ProjectsApi
 	groupId               string
 	groupMigrationRequest *GroupMigrationRequest
 }
@@ -2582,7 +2583,7 @@ type MigrateGroupApiParams struct {
 	GroupMigrationRequest *GroupMigrationRequest
 }
 
-func (a *ProjectsAPIService) MigrateGroupWithParams(ctx context.Context, args *MigrateGroupApiParams) MigrateGroupApiRequest {
+func (a *ProjectsApiService) MigrateGroupWithParams(ctx context.Context, args *MigrateGroupApiParams) MigrateGroupApiRequest {
 	return MigrateGroupApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -2604,7 +2605,7 @@ Migrates a project from its current organization to another organization. All pr
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return MigrateGroupApiRequest
 */
-func (a *ProjectsAPIService) MigrateGroup(ctx context.Context, groupId string, groupMigrationRequest *GroupMigrationRequest) MigrateGroupApiRequest {
+func (a *ProjectsApiService) MigrateGroup(ctx context.Context, groupId string, groupMigrationRequest *GroupMigrationRequest) MigrateGroupApiRequest {
 	return MigrateGroupApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -2616,7 +2617,7 @@ func (a *ProjectsAPIService) MigrateGroup(ctx context.Context, groupId string, g
 // MigrateGroupExecute executes the request
 //
 //	@return Group
-func (a *ProjectsAPIService) MigrateGroupExecute(r MigrateGroupApiRequest) (*Group, *http.Response, error) {
+func (a *ProjectsApiService) MigrateGroupExecute(r MigrateGroupApiRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -2624,7 +2625,7 @@ func (a *ProjectsAPIService) MigrateGroupExecute(r MigrateGroupApiRequest) (*Gro
 		localVarReturnValue *Group
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.MigrateGroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.MigrateGroup")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2695,7 +2696,7 @@ func (a *ProjectsAPIService) MigrateGroupExecute(r MigrateGroupApiRequest) (*Gro
 
 type SetGroupLimitApiRequest struct {
 	ctx                 context.Context
-	ApiService          ProjectsAPI
+	ApiService          ProjectsApi
 	limitName           string
 	groupId             string
 	dataFederationLimit *DataFederationLimit
@@ -2707,7 +2708,7 @@ type SetGroupLimitApiParams struct {
 	DataFederationLimit *DataFederationLimit
 }
 
-func (a *ProjectsAPIService) SetGroupLimitWithParams(ctx context.Context, args *SetGroupLimitApiParams) SetGroupLimitApiRequest {
+func (a *ProjectsApiService) SetGroupLimitWithParams(ctx context.Context, args *SetGroupLimitApiParams) SetGroupLimitApiRequest {
 	return SetGroupLimitApiRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -2733,7 +2734,7 @@ Sets the specified project limit.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return SetGroupLimitApiRequest
 */
-func (a *ProjectsAPIService) SetGroupLimit(ctx context.Context, limitName string, groupId string, dataFederationLimit *DataFederationLimit) SetGroupLimitApiRequest {
+func (a *ProjectsApiService) SetGroupLimit(ctx context.Context, limitName string, groupId string, dataFederationLimit *DataFederationLimit) SetGroupLimitApiRequest {
 	return SetGroupLimitApiRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -2746,7 +2747,7 @@ func (a *ProjectsAPIService) SetGroupLimit(ctx context.Context, limitName string
 // SetGroupLimitExecute executes the request
 //
 //	@return DataFederationLimit
-func (a *ProjectsAPIService) SetGroupLimitExecute(r SetGroupLimitApiRequest) (*DataFederationLimit, *http.Response, error) {
+func (a *ProjectsApiService) SetGroupLimitExecute(r SetGroupLimitApiRequest) (*DataFederationLimit, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -2754,7 +2755,7 @@ func (a *ProjectsAPIService) SetGroupLimitExecute(r SetGroupLimitApiRequest) (*D
 		localVarReturnValue *DataFederationLimit
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.SetGroupLimit")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.SetGroupLimit")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2829,7 +2830,7 @@ func (a *ProjectsAPIService) SetGroupLimitExecute(r SetGroupLimitApiRequest) (*D
 
 type UpdateGroupApiRequest struct {
 	ctx         context.Context
-	ApiService  ProjectsAPI
+	ApiService  ProjectsApi
 	groupId     string
 	groupUpdate *GroupUpdate
 }
@@ -2839,7 +2840,7 @@ type UpdateGroupApiParams struct {
 	GroupUpdate *GroupUpdate
 }
 
-func (a *ProjectsAPIService) UpdateGroupWithParams(ctx context.Context, args *UpdateGroupApiParams) UpdateGroupApiRequest {
+func (a *ProjectsApiService) UpdateGroupWithParams(ctx context.Context, args *UpdateGroupApiParams) UpdateGroupApiRequest {
 	return UpdateGroupApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -2861,7 +2862,7 @@ Updates the human-readable label that identifies the specified project, or the t
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpdateGroupApiRequest
 */
-func (a *ProjectsAPIService) UpdateGroup(ctx context.Context, groupId string, groupUpdate *GroupUpdate) UpdateGroupApiRequest {
+func (a *ProjectsApiService) UpdateGroup(ctx context.Context, groupId string, groupUpdate *GroupUpdate) UpdateGroupApiRequest {
 	return UpdateGroupApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -2873,7 +2874,7 @@ func (a *ProjectsAPIService) UpdateGroup(ctx context.Context, groupId string, gr
 // UpdateGroupExecute executes the request
 //
 //	@return Group
-func (a *ProjectsAPIService) UpdateGroupExecute(r UpdateGroupApiRequest) (*Group, *http.Response, error) {
+func (a *ProjectsApiService) UpdateGroupExecute(r UpdateGroupApiRequest) (*Group, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -2881,7 +2882,7 @@ func (a *ProjectsAPIService) UpdateGroupExecute(r UpdateGroupApiRequest) (*Group
 		localVarReturnValue *Group
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.UpdateGroup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.UpdateGroup")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -2952,7 +2953,7 @@ func (a *ProjectsAPIService) UpdateGroupExecute(r UpdateGroupApiRequest) (*Group
 
 type UpdateGroupInvitesApiRequest struct {
 	ctx                    context.Context
-	ApiService             ProjectsAPI
+	ApiService             ProjectsApi
 	groupId                string
 	groupInvitationRequest *GroupInvitationRequest
 }
@@ -2962,7 +2963,7 @@ type UpdateGroupInvitesApiParams struct {
 	GroupInvitationRequest *GroupInvitationRequest
 }
 
-func (a *ProjectsAPIService) UpdateGroupInvitesWithParams(ctx context.Context, args *UpdateGroupInvitesApiParams) UpdateGroupInvitesApiRequest {
+func (a *ProjectsApiService) UpdateGroupInvitesWithParams(ctx context.Context, args *UpdateGroupInvitesApiParams) UpdateGroupInvitesApiRequest {
 	return UpdateGroupInvitesApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
@@ -2986,7 +2987,7 @@ Updates the details of one pending invitation to the specified project. To speci
 
 Deprecated
 */
-func (a *ProjectsAPIService) UpdateGroupInvites(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) UpdateGroupInvitesApiRequest {
+func (a *ProjectsApiService) UpdateGroupInvites(ctx context.Context, groupId string, groupInvitationRequest *GroupInvitationRequest) UpdateGroupInvitesApiRequest {
 	return UpdateGroupInvitesApiRequest{
 		ApiService:             a,
 		ctx:                    ctx,
@@ -3000,7 +3001,7 @@ func (a *ProjectsAPIService) UpdateGroupInvites(ctx context.Context, groupId str
 //	@return GroupInvitation
 //
 // Deprecated
-func (a *ProjectsAPIService) UpdateGroupInvitesExecute(r UpdateGroupInvitesApiRequest) (*GroupInvitation, *http.Response, error) {
+func (a *ProjectsApiService) UpdateGroupInvitesExecute(r UpdateGroupInvitesApiRequest) (*GroupInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -3008,7 +3009,7 @@ func (a *ProjectsAPIService) UpdateGroupInvitesExecute(r UpdateGroupInvitesApiRe
 		localVarReturnValue *GroupInvitation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.UpdateGroupInvites")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.UpdateGroupInvites")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3079,7 +3080,7 @@ func (a *ProjectsAPIService) UpdateGroupInvitesExecute(r UpdateGroupInvitesApiRe
 
 type UpdateGroupSettingsApiRequest struct {
 	ctx           context.Context
-	ApiService    ProjectsAPI
+	ApiService    ProjectsApi
 	groupId       string
 	groupSettings *GroupSettings
 }
@@ -3089,7 +3090,7 @@ type UpdateGroupSettingsApiParams struct {
 	GroupSettings *GroupSettings
 }
 
-func (a *ProjectsAPIService) UpdateGroupSettingsWithParams(ctx context.Context, args *UpdateGroupSettingsApiParams) UpdateGroupSettingsApiRequest {
+func (a *ProjectsApiService) UpdateGroupSettingsWithParams(ctx context.Context, args *UpdateGroupSettingsApiParams) UpdateGroupSettingsApiRequest {
 	return UpdateGroupSettingsApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -3111,7 +3112,7 @@ Updates the settings of the specified project. You can update any of the options
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpdateGroupSettingsApiRequest
 */
-func (a *ProjectsAPIService) UpdateGroupSettings(ctx context.Context, groupId string, groupSettings *GroupSettings) UpdateGroupSettingsApiRequest {
+func (a *ProjectsApiService) UpdateGroupSettings(ctx context.Context, groupId string, groupSettings *GroupSettings) UpdateGroupSettingsApiRequest {
 	return UpdateGroupSettingsApiRequest{
 		ApiService:    a,
 		ctx:           ctx,
@@ -3123,7 +3124,7 @@ func (a *ProjectsAPIService) UpdateGroupSettings(ctx context.Context, groupId st
 // UpdateGroupSettingsExecute executes the request
 //
 //	@return GroupSettings
-func (a *ProjectsAPIService) UpdateGroupSettingsExecute(r UpdateGroupSettingsApiRequest) (*GroupSettings, *http.Response, error) {
+func (a *ProjectsApiService) UpdateGroupSettingsExecute(r UpdateGroupSettingsApiRequest) (*GroupSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -3131,7 +3132,7 @@ func (a *ProjectsAPIService) UpdateGroupSettingsExecute(r UpdateGroupSettingsApi
 		localVarReturnValue *GroupSettings
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.UpdateGroupSettings")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.UpdateGroupSettings")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3202,7 +3203,7 @@ func (a *ProjectsAPIService) UpdateGroupSettingsExecute(r UpdateGroupSettingsApi
 
 type UpdateGroupUserRolesApiRequest struct {
 	ctx                     context.Context
-	ApiService              ProjectsAPI
+	ApiService              ProjectsApi
 	groupId                 string
 	userId                  string
 	updateGroupRolesForUser *UpdateGroupRolesForUser
@@ -3214,7 +3215,7 @@ type UpdateGroupUserRolesApiParams struct {
 	UpdateGroupRolesForUser *UpdateGroupRolesForUser
 }
 
-func (a *ProjectsAPIService) UpdateGroupUserRolesWithParams(ctx context.Context, args *UpdateGroupUserRolesApiParams) UpdateGroupUserRolesApiRequest {
+func (a *ProjectsApiService) UpdateGroupUserRolesWithParams(ctx context.Context, args *UpdateGroupUserRolesApiParams) UpdateGroupUserRolesApiRequest {
 	return UpdateGroupUserRolesApiRequest{
 		ApiService:              a,
 		ctx:                     ctx,
@@ -3240,7 +3241,7 @@ Updates the roles of the specified user in the specified project. To specify the
 
 Deprecated
 */
-func (a *ProjectsAPIService) UpdateGroupUserRoles(ctx context.Context, groupId string, userId string, updateGroupRolesForUser *UpdateGroupRolesForUser) UpdateGroupUserRolesApiRequest {
+func (a *ProjectsApiService) UpdateGroupUserRoles(ctx context.Context, groupId string, userId string, updateGroupRolesForUser *UpdateGroupRolesForUser) UpdateGroupUserRolesApiRequest {
 	return UpdateGroupUserRolesApiRequest{
 		ApiService:              a,
 		ctx:                     ctx,
@@ -3255,7 +3256,7 @@ func (a *ProjectsAPIService) UpdateGroupUserRoles(ctx context.Context, groupId s
 //	@return UpdateGroupRolesForUser
 //
 // Deprecated
-func (a *ProjectsAPIService) UpdateGroupUserRolesExecute(r UpdateGroupUserRolesApiRequest) (*UpdateGroupRolesForUser, *http.Response, error) {
+func (a *ProjectsApiService) UpdateGroupUserRolesExecute(r UpdateGroupUserRolesApiRequest) (*UpdateGroupRolesForUser, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    any
@@ -3263,7 +3264,7 @@ func (a *ProjectsAPIService) UpdateGroupUserRolesExecute(r UpdateGroupUserRolesA
 		localVarReturnValue *UpdateGroupRolesForUser
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.UpdateGroupUserRoles")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.UpdateGroupUserRoles")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -3338,7 +3339,7 @@ func (a *ProjectsAPIService) UpdateGroupUserRolesExecute(r UpdateGroupUserRolesA
 
 type UpdateInviteByIdApiRequest struct {
 	ctx                          context.Context
-	ApiService                   ProjectsAPI
+	ApiService                   ProjectsApi
 	groupId                      string
 	invitationId                 string
 	groupInvitationUpdateRequest *GroupInvitationUpdateRequest
@@ -3350,7 +3351,7 @@ type UpdateInviteByIdApiParams struct {
 	GroupInvitationUpdateRequest *GroupInvitationUpdateRequest
 }
 
-func (a *ProjectsAPIService) UpdateInviteByIdWithParams(ctx context.Context, args *UpdateInviteByIdApiParams) UpdateInviteByIdApiRequest {
+func (a *ProjectsApiService) UpdateInviteByIdWithParams(ctx context.Context, args *UpdateInviteByIdApiParams) UpdateInviteByIdApiRequest {
 	return UpdateInviteByIdApiRequest{
 		ApiService:                   a,
 		ctx:                          ctx,
@@ -3376,7 +3377,7 @@ Updates the details of one pending invitation to the specified project. To speci
 
 Deprecated
 */
-func (a *ProjectsAPIService) UpdateInviteById(ctx context.Context, groupId string, invitationId string, groupInvitationUpdateRequest *GroupInvitationUpdateRequest) UpdateInviteByIdApiRequest {
+func (a *ProjectsApiService) UpdateInviteById(ctx context.Context, groupId string, invitationId string, groupInvitationUpdateRequest *GroupInvitationUpdateRequest) UpdateInviteByIdApiRequest {
 	return UpdateInviteByIdApiRequest{
 		ApiService:                   a,
 		ctx:                          ctx,
@@ -3391,7 +3392,7 @@ func (a *ProjectsAPIService) UpdateInviteById(ctx context.Context, groupId strin
 //	@return GroupInvitation
 //
 // Deprecated
-func (a *ProjectsAPIService) UpdateInviteByIdExecute(r UpdateInviteByIdApiRequest) (*GroupInvitation, *http.Response, error) {
+func (a *ProjectsApiService) UpdateInviteByIdExecute(r UpdateInviteByIdApiRequest) (*GroupInvitation, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -3399,7 +3400,7 @@ func (a *ProjectsAPIService) UpdateInviteByIdExecute(r UpdateInviteByIdApiReques
 		localVarReturnValue *GroupInvitation
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.UpdateInviteById")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.UpdateInviteById")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

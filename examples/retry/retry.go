@@ -52,7 +52,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	request := sdk.ProjectsAPI.ListGroupsWithParams(ctx,
+	request := sdk.ProjectsApi.ListGroupsWithParams(ctx,
 		&admin.ListGroupsApiParams{
 			ItemsPerPage: admin.PtrInt(1),
 			IncludeCount: admin.PtrBool(true),

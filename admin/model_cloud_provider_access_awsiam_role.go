@@ -6,10 +6,8 @@ import (
 	"time"
 )
 
-// CloudProviderAccessAWSIAMRole struct for CloudProviderAccessAWSIAMRole
+// CloudProviderAccessAWSIAMRole Details that describe the features linked to the Amazon Web Services (AWS) Identity and Access Management (IAM) role.
 type CloudProviderAccessAWSIAMRole struct {
-	// Human-readable label that identifies the cloud provider of the role.
-	ProviderName string `json:"providerName"`
 	// Amazon Resource Name that identifies the Amazon Web Services (AWS) user account that MongoDB Cloud uses when it assumes the Identity and Access Management (IAM) role.
 	// Read only field.
 	AtlasAWSAccountArn *string `json:"atlasAWSAccountArn,omitempty"`
@@ -30,6 +28,8 @@ type CloudProviderAccessAWSIAMRole struct {
 	// Unique 24-hexadecimal digit string that identifies the role.
 	// Read only field.
 	RoleId *string `json:"roleId,omitempty"`
+	// Human-readable label that identifies the cloud provider of the role.
+	ProviderName string `json:"providerName"`
 	// Unique 24-hexadecimal digit string that identifies the role.
 	// Read only field.
 	Id *string `json:"_id,omitempty"`
@@ -65,30 +65,6 @@ func NewCloudProviderAccessAWSIAMRole(providerName string) *CloudProviderAccessA
 func NewCloudProviderAccessAWSIAMRoleWithDefaults() *CloudProviderAccessAWSIAMRole {
 	this := CloudProviderAccessAWSIAMRole{}
 	return &this
-}
-
-// GetProviderName returns the ProviderName field value
-func (o *CloudProviderAccessAWSIAMRole) GetProviderName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ProviderName
-}
-
-// GetProviderNameOk returns a tuple with the ProviderName field value
-// and a boolean to check if the value has been set.
-func (o *CloudProviderAccessAWSIAMRole) GetProviderNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ProviderName, true
-}
-
-// SetProviderName sets field value
-func (o *CloudProviderAccessAWSIAMRole) SetProviderName(v string) {
-	o.ProviderName = v
 }
 
 // GetAtlasAWSAccountArn returns the AtlasAWSAccountArn field value if set, zero value otherwise
@@ -320,6 +296,30 @@ func (o *CloudProviderAccessAWSIAMRole) HasRoleId() bool {
 // SetRoleId gets a reference to the given string and assigns it to the RoleId field.
 func (o *CloudProviderAccessAWSIAMRole) SetRoleId(v string) {
 	o.RoleId = &v
+}
+
+// GetProviderName returns the ProviderName field value
+func (o *CloudProviderAccessAWSIAMRole) GetProviderName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ProviderName
+}
+
+// GetProviderNameOk returns a tuple with the ProviderName field value
+// and a boolean to check if the value has been set.
+func (o *CloudProviderAccessAWSIAMRole) GetProviderNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ProviderName, true
+}
+
+// SetProviderName sets field value
+func (o *CloudProviderAccessAWSIAMRole) SetProviderName(v string) {
+	o.ProviderName = v
 }
 
 // GetId returns the Id field value if set, zero value otherwise

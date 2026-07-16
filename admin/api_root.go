@@ -1,4 +1,5 @@
 // Code based on the AtlasAPI V2 OpenAPI file
+
 package admin
 
 import (
@@ -8,7 +9,7 @@ import (
 	"net/url"
 )
 
-type RootAPI interface {
+type RootApi interface {
 
 	/*
 		GetSystemStatus Return the Status of This MongoDB Application
@@ -55,18 +56,18 @@ type RootAPI interface {
 	ListControlPlaneAddressesExecute(r ListControlPlaneAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error)
 }
 
-// RootAPIService RootAPI service
-type RootAPIService service
+// RootApiService RootApi service
+type RootApiService service
 
 type GetSystemStatusApiRequest struct {
 	ctx        context.Context
-	ApiService RootAPI
+	ApiService RootApi
 }
 
 type GetSystemStatusApiParams struct {
 }
 
-func (a *RootAPIService) GetSystemStatusWithParams(ctx context.Context, args *GetSystemStatusApiParams) GetSystemStatusApiRequest {
+func (a *RootApiService) GetSystemStatusWithParams(ctx context.Context, args *GetSystemStatusApiParams) GetSystemStatusApiRequest {
 	return GetSystemStatusApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -85,7 +86,7 @@ This resource returns information about the MongoDB application along with API k
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return GetSystemStatusApiRequest
 */
-func (a *RootAPIService) GetSystemStatus(ctx context.Context) GetSystemStatusApiRequest {
+func (a *RootApiService) GetSystemStatus(ctx context.Context) GetSystemStatusApiRequest {
 	return GetSystemStatusApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -95,7 +96,7 @@ func (a *RootAPIService) GetSystemStatus(ctx context.Context) GetSystemStatusApi
 // GetSystemStatusExecute executes the request
 //
 //	@return SystemStatus
-func (a *RootAPIService) GetSystemStatusExecute(r GetSystemStatusApiRequest) (*SystemStatus, *http.Response, error) {
+func (a *RootApiService) GetSystemStatusExecute(r GetSystemStatusApiRequest) (*SystemStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -103,7 +104,7 @@ func (a *RootAPIService) GetSystemStatusExecute(r GetSystemStatusApiRequest) (*S
 		localVarReturnValue *SystemStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RootAPIService.GetSystemStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RootApiService.GetSystemStatus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -165,13 +166,13 @@ func (a *RootAPIService) GetSystemStatusExecute(r GetSystemStatusApiRequest) (*S
 
 type ListControlPlaneAddressesApiRequest struct {
 	ctx        context.Context
-	ApiService RootAPI
+	ApiService RootApi
 }
 
 type ListControlPlaneAddressesApiParams struct {
 }
 
-func (a *RootAPIService) ListControlPlaneAddressesWithParams(ctx context.Context, args *ListControlPlaneAddressesApiParams) ListControlPlaneAddressesApiRequest {
+func (a *RootApiService) ListControlPlaneAddressesWithParams(ctx context.Context, args *ListControlPlaneAddressesApiParams) ListControlPlaneAddressesApiRequest {
 	return ListControlPlaneAddressesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -190,7 +191,7 @@ Returns all control plane IP addresses.
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ListControlPlaneAddressesApiRequest
 */
-func (a *RootAPIService) ListControlPlaneAddresses(ctx context.Context) ListControlPlaneAddressesApiRequest {
+func (a *RootApiService) ListControlPlaneAddresses(ctx context.Context) ListControlPlaneAddressesApiRequest {
 	return ListControlPlaneAddressesApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -200,7 +201,7 @@ func (a *RootAPIService) ListControlPlaneAddresses(ctx context.Context) ListCont
 // ListControlPlaneAddressesExecute executes the request
 //
 //	@return ControlPlaneIPAddresses
-func (a *RootAPIService) ListControlPlaneAddressesExecute(r ListControlPlaneAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error) {
+func (a *RootApiService) ListControlPlaneAddressesExecute(r ListControlPlaneAddressesApiRequest) (*ControlPlaneIPAddresses, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -208,7 +209,7 @@ func (a *RootAPIService) ListControlPlaneAddressesExecute(r ListControlPlaneAddr
 		localVarReturnValue *ControlPlaneIPAddresses
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RootAPIService.ListControlPlaneAddresses")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RootApiService.ListControlPlaneAddresses")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
