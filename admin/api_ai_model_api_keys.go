@@ -1,5 +1,4 @@
 // Code based on the AtlasAPI V2 OpenAPI file
-
 package admin
 
 import (
@@ -10,7 +9,7 @@ import (
 	"strings"
 )
 
-type AIModelAPIKeysApi interface {
+type AIModelAPIKeysAPI interface {
 
 	/*
 		CreateGroupModelKey Create New AI Model API Key
@@ -180,12 +179,12 @@ type AIModelAPIKeysApi interface {
 	UpdateGroupModelKeyExecute(r UpdateGroupModelKeyApiRequest) (*AiModelApiKeyResponse, *http.Response, error)
 }
 
-// AIModelAPIKeysApiService AIModelAPIKeysApi service
-type AIModelAPIKeysApiService service
+// AIModelAPIKeysAPIService AIModelAPIKeysAPI service
+type AIModelAPIKeysAPIService service
 
 type CreateGroupModelKeyApiRequest struct {
 	ctx                        context.Context
-	ApiService                 AIModelAPIKeysApi
+	ApiService                 AIModelAPIKeysAPI
 	groupId                    string
 	aiModelApiKeyCreateRequest *AiModelApiKeyCreateRequest
 }
@@ -195,7 +194,7 @@ type CreateGroupModelKeyApiParams struct {
 	AiModelApiKeyCreateRequest *AiModelApiKeyCreateRequest
 }
 
-func (a *AIModelAPIKeysApiService) CreateGroupModelKeyWithParams(ctx context.Context, args *CreateGroupModelKeyApiParams) CreateGroupModelKeyApiRequest {
+func (a *AIModelAPIKeysAPIService) CreateGroupModelKeyWithParams(ctx context.Context, args *CreateGroupModelKeyApiParams) CreateGroupModelKeyApiRequest {
 	return CreateGroupModelKeyApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
@@ -217,7 +216,7 @@ Create a new AI model API key for the given group.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateGroupModelKeyApiRequest
 */
-func (a *AIModelAPIKeysApiService) CreateGroupModelKey(ctx context.Context, groupId string, aiModelApiKeyCreateRequest *AiModelApiKeyCreateRequest) CreateGroupModelKeyApiRequest {
+func (a *AIModelAPIKeysAPIService) CreateGroupModelKey(ctx context.Context, groupId string, aiModelApiKeyCreateRequest *AiModelApiKeyCreateRequest) CreateGroupModelKeyApiRequest {
 	return CreateGroupModelKeyApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
@@ -229,7 +228,7 @@ func (a *AIModelAPIKeysApiService) CreateGroupModelKey(ctx context.Context, grou
 // CreateGroupModelKeyExecute executes the request
 //
 //	@return AiModelApiKeyResponse
-func (a *AIModelAPIKeysApiService) CreateGroupModelKeyExecute(r CreateGroupModelKeyApiRequest) (*AiModelApiKeyResponse, *http.Response, error) {
+func (a *AIModelAPIKeysAPIService) CreateGroupModelKeyExecute(r CreateGroupModelKeyApiRequest) (*AiModelApiKeyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -237,7 +236,7 @@ func (a *AIModelAPIKeysApiService) CreateGroupModelKeyExecute(r CreateGroupModel
 		localVarReturnValue *AiModelApiKeyResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysApiService.CreateGroupModelKey")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysAPIService.CreateGroupModelKey")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -308,7 +307,7 @@ func (a *AIModelAPIKeysApiService) CreateGroupModelKeyExecute(r CreateGroupModel
 
 type DeleteGroupModelKeyApiRequest struct {
 	ctx        context.Context
-	ApiService AIModelAPIKeysApi
+	ApiService AIModelAPIKeysAPI
 	groupId    string
 	apiKeyId   string
 }
@@ -318,7 +317,7 @@ type DeleteGroupModelKeyApiParams struct {
 	ApiKeyId string
 }
 
-func (a *AIModelAPIKeysApiService) DeleteGroupModelKeyWithParams(ctx context.Context, args *DeleteGroupModelKeyApiParams) DeleteGroupModelKeyApiRequest {
+func (a *AIModelAPIKeysAPIService) DeleteGroupModelKeyWithParams(ctx context.Context, args *DeleteGroupModelKeyApiParams) DeleteGroupModelKeyApiRequest {
 	return DeleteGroupModelKeyApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -341,7 +340,7 @@ Delete an existing AI model API key in the given group.
 	@param apiKeyId The id of the API key to be deleted.
 	@return DeleteGroupModelKeyApiRequest
 */
-func (a *AIModelAPIKeysApiService) DeleteGroupModelKey(ctx context.Context, groupId string, apiKeyId string) DeleteGroupModelKeyApiRequest {
+func (a *AIModelAPIKeysAPIService) DeleteGroupModelKey(ctx context.Context, groupId string, apiKeyId string) DeleteGroupModelKeyApiRequest {
 	return DeleteGroupModelKeyApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -351,14 +350,14 @@ func (a *AIModelAPIKeysApiService) DeleteGroupModelKey(ctx context.Context, grou
 }
 
 // DeleteGroupModelKeyExecute executes the request
-func (a *AIModelAPIKeysApiService) DeleteGroupModelKeyExecute(r DeleteGroupModelKeyApiRequest) (*http.Response, error) {
+func (a *AIModelAPIKeysAPIService) DeleteGroupModelKeyExecute(r DeleteGroupModelKeyApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysApiService.DeleteGroupModelKey")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysAPIService.DeleteGroupModelKey")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -414,7 +413,7 @@ func (a *AIModelAPIKeysApiService) DeleteGroupModelKeyExecute(r DeleteGroupModel
 
 type GetGroupModelKeyApiRequest struct {
 	ctx        context.Context
-	ApiService AIModelAPIKeysApi
+	ApiService AIModelAPIKeysAPI
 	groupId    string
 	apiKeyId   string
 }
@@ -424,7 +423,7 @@ type GetGroupModelKeyApiParams struct {
 	ApiKeyId string
 }
 
-func (a *AIModelAPIKeysApiService) GetGroupModelKeyWithParams(ctx context.Context, args *GetGroupModelKeyApiParams) GetGroupModelKeyApiRequest {
+func (a *AIModelAPIKeysAPIService) GetGroupModelKeyWithParams(ctx context.Context, args *GetGroupModelKeyApiParams) GetGroupModelKeyApiRequest {
 	return GetGroupModelKeyApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -447,7 +446,7 @@ Retrieve a single AI model API key for the given group.
 	@param apiKeyId The id of the API key to be retrieved.
 	@return GetGroupModelKeyApiRequest
 */
-func (a *AIModelAPIKeysApiService) GetGroupModelKey(ctx context.Context, groupId string, apiKeyId string) GetGroupModelKeyApiRequest {
+func (a *AIModelAPIKeysAPIService) GetGroupModelKey(ctx context.Context, groupId string, apiKeyId string) GetGroupModelKeyApiRequest {
 	return GetGroupModelKeyApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -459,7 +458,7 @@ func (a *AIModelAPIKeysApiService) GetGroupModelKey(ctx context.Context, groupId
 // GetGroupModelKeyExecute executes the request
 //
 //	@return AiModelApiKeyResponse
-func (a *AIModelAPIKeysApiService) GetGroupModelKeyExecute(r GetGroupModelKeyApiRequest) (*AiModelApiKeyResponse, *http.Response, error) {
+func (a *AIModelAPIKeysAPIService) GetGroupModelKeyExecute(r GetGroupModelKeyApiRequest) (*AiModelApiKeyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -467,7 +466,7 @@ func (a *AIModelAPIKeysApiService) GetGroupModelKeyExecute(r GetGroupModelKeyApi
 		localVarReturnValue *AiModelApiKeyResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysApiService.GetGroupModelKey")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysAPIService.GetGroupModelKey")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -537,7 +536,7 @@ func (a *AIModelAPIKeysApiService) GetGroupModelKeyExecute(r GetGroupModelKeyApi
 
 type GetOrgModelKeyApiRequest struct {
 	ctx        context.Context
-	ApiService AIModelAPIKeysApi
+	ApiService AIModelAPIKeysAPI
 	orgId      string
 	apiKeyId   string
 }
@@ -547,7 +546,7 @@ type GetOrgModelKeyApiParams struct {
 	ApiKeyId string
 }
 
-func (a *AIModelAPIKeysApiService) GetOrgModelKeyWithParams(ctx context.Context, args *GetOrgModelKeyApiParams) GetOrgModelKeyApiRequest {
+func (a *AIModelAPIKeysAPIService) GetOrgModelKeyWithParams(ctx context.Context, args *GetOrgModelKeyApiParams) GetOrgModelKeyApiRequest {
 	return GetOrgModelKeyApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -570,7 +569,7 @@ Retrieve a single AI model API key for the given organization.
 	@param apiKeyId The id of the API key to be retrieved.
 	@return GetOrgModelKeyApiRequest
 */
-func (a *AIModelAPIKeysApiService) GetOrgModelKey(ctx context.Context, orgId string, apiKeyId string) GetOrgModelKeyApiRequest {
+func (a *AIModelAPIKeysAPIService) GetOrgModelKey(ctx context.Context, orgId string, apiKeyId string) GetOrgModelKeyApiRequest {
 	return GetOrgModelKeyApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -582,7 +581,7 @@ func (a *AIModelAPIKeysApiService) GetOrgModelKey(ctx context.Context, orgId str
 // GetOrgModelKeyExecute executes the request
 //
 //	@return AiModelApiKeyResponse
-func (a *AIModelAPIKeysApiService) GetOrgModelKeyExecute(r GetOrgModelKeyApiRequest) (*AiModelApiKeyResponse, *http.Response, error) {
+func (a *AIModelAPIKeysAPIService) GetOrgModelKeyExecute(r GetOrgModelKeyApiRequest) (*AiModelApiKeyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -590,7 +589,7 @@ func (a *AIModelAPIKeysApiService) GetOrgModelKeyExecute(r GetOrgModelKeyApiRequ
 		localVarReturnValue *AiModelApiKeyResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysApiService.GetOrgModelKey")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysAPIService.GetOrgModelKey")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -660,7 +659,7 @@ func (a *AIModelAPIKeysApiService) GetOrgModelKeyExecute(r GetOrgModelKeyApiRequ
 
 type ListGroupModelKeysApiRequest struct {
 	ctx          context.Context
-	ApiService   AIModelAPIKeysApi
+	ApiService   AIModelAPIKeysAPI
 	groupId      string
 	itemsPerPage *int
 	pageNum      *int
@@ -672,7 +671,7 @@ type ListGroupModelKeysApiParams struct {
 	PageNum      *int
 }
 
-func (a *AIModelAPIKeysApiService) ListGroupModelKeysWithParams(ctx context.Context, args *ListGroupModelKeysApiParams) ListGroupModelKeysApiRequest {
+func (a *AIModelAPIKeysAPIService) ListGroupModelKeysWithParams(ctx context.Context, args *ListGroupModelKeysApiParams) ListGroupModelKeysApiRequest {
 	return ListGroupModelKeysApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -707,7 +706,7 @@ Retrieve AI model API keys for the given group.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListGroupModelKeysApiRequest
 */
-func (a *AIModelAPIKeysApiService) ListGroupModelKeys(ctx context.Context, groupId string) ListGroupModelKeysApiRequest {
+func (a *AIModelAPIKeysAPIService) ListGroupModelKeys(ctx context.Context, groupId string) ListGroupModelKeysApiRequest {
 	return ListGroupModelKeysApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -718,7 +717,7 @@ func (a *AIModelAPIKeysApiService) ListGroupModelKeys(ctx context.Context, group
 // ListGroupModelKeysExecute executes the request
 //
 //	@return PaginatedAtlasAiModelApiKeysResponse
-func (a *AIModelAPIKeysApiService) ListGroupModelKeysExecute(r ListGroupModelKeysApiRequest) (*PaginatedAtlasAiModelApiKeysResponse, *http.Response, error) {
+func (a *AIModelAPIKeysAPIService) ListGroupModelKeysExecute(r ListGroupModelKeysApiRequest) (*PaginatedAtlasAiModelApiKeysResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -726,7 +725,7 @@ func (a *AIModelAPIKeysApiService) ListGroupModelKeysExecute(r ListGroupModelKey
 		localVarReturnValue *PaginatedAtlasAiModelApiKeysResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysApiService.ListGroupModelKeys")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysAPIService.ListGroupModelKeys")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -806,7 +805,7 @@ func (a *AIModelAPIKeysApiService) ListGroupModelKeysExecute(r ListGroupModelKey
 
 type ListOrgModelKeysApiRequest struct {
 	ctx          context.Context
-	ApiService   AIModelAPIKeysApi
+	ApiService   AIModelAPIKeysAPI
 	orgId        string
 	itemsPerPage *int
 	pageNum      *int
@@ -818,7 +817,7 @@ type ListOrgModelKeysApiParams struct {
 	PageNum      *int
 }
 
-func (a *AIModelAPIKeysApiService) ListOrgModelKeysWithParams(ctx context.Context, args *ListOrgModelKeysApiParams) ListOrgModelKeysApiRequest {
+func (a *AIModelAPIKeysAPIService) ListOrgModelKeysWithParams(ctx context.Context, args *ListOrgModelKeysApiParams) ListOrgModelKeysApiRequest {
 	return ListOrgModelKeysApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -853,7 +852,7 @@ Retrieve AI model API keys for the given organization.
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListOrgModelKeysApiRequest
 */
-func (a *AIModelAPIKeysApiService) ListOrgModelKeys(ctx context.Context, orgId string) ListOrgModelKeysApiRequest {
+func (a *AIModelAPIKeysAPIService) ListOrgModelKeys(ctx context.Context, orgId string) ListOrgModelKeysApiRequest {
 	return ListOrgModelKeysApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -864,7 +863,7 @@ func (a *AIModelAPIKeysApiService) ListOrgModelKeys(ctx context.Context, orgId s
 // ListOrgModelKeysExecute executes the request
 //
 //	@return PaginatedAtlasAiModelApiKeysResponse
-func (a *AIModelAPIKeysApiService) ListOrgModelKeysExecute(r ListOrgModelKeysApiRequest) (*PaginatedAtlasAiModelApiKeysResponse, *http.Response, error) {
+func (a *AIModelAPIKeysAPIService) ListOrgModelKeysExecute(r ListOrgModelKeysApiRequest) (*PaginatedAtlasAiModelApiKeysResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -872,7 +871,7 @@ func (a *AIModelAPIKeysApiService) ListOrgModelKeysExecute(r ListOrgModelKeysApi
 		localVarReturnValue *PaginatedAtlasAiModelApiKeysResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysApiService.ListOrgModelKeys")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysAPIService.ListOrgModelKeys")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -952,7 +951,7 @@ func (a *AIModelAPIKeysApiService) ListOrgModelKeysExecute(r ListOrgModelKeysApi
 
 type UpdateGroupModelKeyApiRequest struct {
 	ctx                        context.Context
-	ApiService                 AIModelAPIKeysApi
+	ApiService                 AIModelAPIKeysAPI
 	groupId                    string
 	apiKeyId                   string
 	aiModelApiKeyUpdateRequest *AiModelApiKeyUpdateRequest
@@ -964,7 +963,7 @@ type UpdateGroupModelKeyApiParams struct {
 	AiModelApiKeyUpdateRequest *AiModelApiKeyUpdateRequest
 }
 
-func (a *AIModelAPIKeysApiService) UpdateGroupModelKeyWithParams(ctx context.Context, args *UpdateGroupModelKeyApiParams) UpdateGroupModelKeyApiRequest {
+func (a *AIModelAPIKeysAPIService) UpdateGroupModelKeyWithParams(ctx context.Context, args *UpdateGroupModelKeyApiParams) UpdateGroupModelKeyApiRequest {
 	return UpdateGroupModelKeyApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
@@ -988,7 +987,7 @@ Update an existing AI model API key in the given group. Only the name can be upd
 	@param apiKeyId The id of the API key to be updated.
 	@return UpdateGroupModelKeyApiRequest
 */
-func (a *AIModelAPIKeysApiService) UpdateGroupModelKey(ctx context.Context, groupId string, apiKeyId string, aiModelApiKeyUpdateRequest *AiModelApiKeyUpdateRequest) UpdateGroupModelKeyApiRequest {
+func (a *AIModelAPIKeysAPIService) UpdateGroupModelKey(ctx context.Context, groupId string, apiKeyId string, aiModelApiKeyUpdateRequest *AiModelApiKeyUpdateRequest) UpdateGroupModelKeyApiRequest {
 	return UpdateGroupModelKeyApiRequest{
 		ApiService:                 a,
 		ctx:                        ctx,
@@ -1001,7 +1000,7 @@ func (a *AIModelAPIKeysApiService) UpdateGroupModelKey(ctx context.Context, grou
 // UpdateGroupModelKeyExecute executes the request
 //
 //	@return AiModelApiKeyResponse
-func (a *AIModelAPIKeysApiService) UpdateGroupModelKeyExecute(r UpdateGroupModelKeyApiRequest) (*AiModelApiKeyResponse, *http.Response, error) {
+func (a *AIModelAPIKeysAPIService) UpdateGroupModelKeyExecute(r UpdateGroupModelKeyApiRequest) (*AiModelApiKeyResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -1009,7 +1008,7 @@ func (a *AIModelAPIKeysApiService) UpdateGroupModelKeyExecute(r UpdateGroupModel
 		localVarReturnValue *AiModelApiKeyResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysApiService.UpdateGroupModelKey")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysAPIService.UpdateGroupModelKey")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

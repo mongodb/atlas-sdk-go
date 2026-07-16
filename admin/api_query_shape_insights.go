@@ -1,5 +1,4 @@
 // Code based on the AtlasAPI V2 OpenAPI file
-
 package admin
 
 import (
@@ -11,7 +10,7 @@ import (
 	"strings"
 )
 
-type QueryShapeInsightsApi interface {
+type QueryShapeInsightsAPI interface {
 
 	/*
 		GetClusterQueryShape Return One Query Shape
@@ -138,12 +137,12 @@ type QueryShapeInsightsApi interface {
 	UpdateClusterQueryShapeExecute(r UpdateClusterQueryShapeApiRequest) (*QueryShapeResponse, *http.Response, error)
 }
 
-// QueryShapeInsightsApiService QueryShapeInsightsApi service
-type QueryShapeInsightsApiService service
+// QueryShapeInsightsAPIService QueryShapeInsightsAPI service
+type QueryShapeInsightsAPIService service
 
 type GetClusterQueryShapeApiRequest struct {
 	ctx            context.Context
-	ApiService     QueryShapeInsightsApi
+	ApiService     QueryShapeInsightsAPI
 	groupId        string
 	clusterName    string
 	queryShapeHash string
@@ -155,7 +154,7 @@ type GetClusterQueryShapeApiParams struct {
 	QueryShapeHash string
 }
 
-func (a *QueryShapeInsightsApiService) GetClusterQueryShapeWithParams(ctx context.Context, args *GetClusterQueryShapeApiParams) GetClusterQueryShapeApiRequest {
+func (a *QueryShapeInsightsAPIService) GetClusterQueryShapeWithParams(ctx context.Context, args *GetClusterQueryShapeApiParams) GetClusterQueryShapeApiRequest {
 	return GetClusterQueryShapeApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -180,7 +179,7 @@ Returns the details for a single query shape. This endpoint only returns query s
 	@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like `$queryStats` and `$explain` or slow query logs.
 	@return GetClusterQueryShapeApiRequest
 */
-func (a *QueryShapeInsightsApiService) GetClusterQueryShape(ctx context.Context, groupId string, clusterName string, queryShapeHash string) GetClusterQueryShapeApiRequest {
+func (a *QueryShapeInsightsAPIService) GetClusterQueryShape(ctx context.Context, groupId string, clusterName string, queryShapeHash string) GetClusterQueryShapeApiRequest {
 	return GetClusterQueryShapeApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -193,7 +192,7 @@ func (a *QueryShapeInsightsApiService) GetClusterQueryShape(ctx context.Context,
 // GetClusterQueryShapeExecute executes the request
 //
 //	@return QueryShapeResponse
-func (a *QueryShapeInsightsApiService) GetClusterQueryShapeExecute(r GetClusterQueryShapeApiRequest) (*QueryShapeResponse, *http.Response, error) {
+func (a *QueryShapeInsightsAPIService) GetClusterQueryShapeExecute(r GetClusterQueryShapeApiRequest) (*QueryShapeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -201,7 +200,7 @@ func (a *QueryShapeInsightsApiService) GetClusterQueryShapeExecute(r GetClusterQ
 		localVarReturnValue *QueryShapeResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "QueryShapeInsightsApiService.GetClusterQueryShape")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "QueryShapeInsightsAPIService.GetClusterQueryShape")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -275,7 +274,7 @@ func (a *QueryShapeInsightsApiService) GetClusterQueryShapeExecute(r GetClusterQ
 
 type GetQueryShapeDetailsApiRequest struct {
 	ctx            context.Context
-	ApiService     QueryShapeInsightsApi
+	ApiService     QueryShapeInsightsAPI
 	groupId        string
 	clusterName    string
 	queryShapeHash string
@@ -293,7 +292,7 @@ type GetQueryShapeDetailsApiParams struct {
 	ProcessIds     *[]string
 }
 
-func (a *QueryShapeInsightsApiService) GetQueryShapeDetailsWithParams(ctx context.Context, args *GetQueryShapeDetailsApiParams) GetQueryShapeDetailsApiRequest {
+func (a *QueryShapeInsightsAPIService) GetQueryShapeDetailsWithParams(ctx context.Context, args *GetQueryShapeDetailsApiParams) GetQueryShapeDetailsApiRequest {
 	return GetQueryShapeDetailsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -339,7 +338,7 @@ Returns the metadata and statistics summary for a given query shape hash.
 	@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like `$queryStats` and `$explain` or slow query logs.
 	@return GetQueryShapeDetailsApiRequest
 */
-func (a *QueryShapeInsightsApiService) GetQueryShapeDetails(ctx context.Context, groupId string, clusterName string, queryShapeHash string) GetQueryShapeDetailsApiRequest {
+func (a *QueryShapeInsightsAPIService) GetQueryShapeDetails(ctx context.Context, groupId string, clusterName string, queryShapeHash string) GetQueryShapeDetailsApiRequest {
 	return GetQueryShapeDetailsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -352,7 +351,7 @@ func (a *QueryShapeInsightsApiService) GetQueryShapeDetails(ctx context.Context,
 // GetQueryShapeDetailsExecute executes the request
 //
 //	@return QueryStatsDetailsResponse
-func (a *QueryShapeInsightsApiService) GetQueryShapeDetailsExecute(r GetQueryShapeDetailsApiRequest) (*QueryStatsDetailsResponse, *http.Response, error) {
+func (a *QueryShapeInsightsAPIService) GetQueryShapeDetailsExecute(r GetQueryShapeDetailsApiRequest) (*QueryStatsDetailsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -360,7 +359,7 @@ func (a *QueryShapeInsightsApiService) GetQueryShapeDetailsExecute(r GetQuerySha
 		localVarReturnValue *QueryStatsDetailsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "QueryShapeInsightsApiService.GetQueryShapeDetails")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "QueryShapeInsightsAPIService.GetQueryShapeDetails")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -447,7 +446,7 @@ func (a *QueryShapeInsightsApiService) GetQueryShapeDetailsExecute(r GetQuerySha
 
 type ListClusterQueryShapesApiRequest struct {
 	ctx          context.Context
-	ApiService   QueryShapeInsightsApi
+	ApiService   QueryShapeInsightsAPI
 	groupId      string
 	clusterName  string
 	status       *string
@@ -465,7 +464,7 @@ type ListClusterQueryShapesApiParams struct {
 	PageNum      *int
 }
 
-func (a *QueryShapeInsightsApiService) ListClusterQueryShapesWithParams(ctx context.Context, args *ListClusterQueryShapesApiParams) ListClusterQueryShapesApiRequest {
+func (a *QueryShapeInsightsAPIService) ListClusterQueryShapesWithParams(ctx context.Context, args *ListClusterQueryShapesApiParams) ListClusterQueryShapesApiRequest {
 	return ListClusterQueryShapesApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -516,7 +515,7 @@ Returns a list of query shapes for one cluster. Query shapes may be filtered by 
 	@param clusterName Human-readable label that identifies the cluster.
 	@return ListClusterQueryShapesApiRequest
 */
-func (a *QueryShapeInsightsApiService) ListClusterQueryShapes(ctx context.Context, groupId string, clusterName string) ListClusterQueryShapesApiRequest {
+func (a *QueryShapeInsightsAPIService) ListClusterQueryShapes(ctx context.Context, groupId string, clusterName string) ListClusterQueryShapesApiRequest {
 	return ListClusterQueryShapesApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -528,7 +527,7 @@ func (a *QueryShapeInsightsApiService) ListClusterQueryShapes(ctx context.Contex
 // ListClusterQueryShapesExecute executes the request
 //
 //	@return PaginatedQueryShapes
-func (a *QueryShapeInsightsApiService) ListClusterQueryShapesExecute(r ListClusterQueryShapesApiRequest) (*PaginatedQueryShapes, *http.Response, error) {
+func (a *QueryShapeInsightsAPIService) ListClusterQueryShapesExecute(r ListClusterQueryShapesApiRequest) (*PaginatedQueryShapes, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -536,7 +535,7 @@ func (a *QueryShapeInsightsApiService) ListClusterQueryShapesExecute(r ListClust
 		localVarReturnValue *PaginatedQueryShapes
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "QueryShapeInsightsApiService.ListClusterQueryShapes")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "QueryShapeInsightsAPIService.ListClusterQueryShapes")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -634,7 +633,7 @@ func (a *QueryShapeInsightsApiService) ListClusterQueryShapesExecute(r ListClust
 
 type ListQueryShapeSummariesApiRequest struct {
 	ctx              context.Context
-	ApiService       QueryShapeInsightsApi
+	ApiService       QueryShapeInsightsAPI
 	groupId          string
 	clusterName      string
 	since            *int64
@@ -660,7 +659,7 @@ type ListQueryShapeSummariesApiParams struct {
 	QueryShapeHashes *[]string
 }
 
-func (a *QueryShapeInsightsApiService) ListQueryShapeSummariesWithParams(ctx context.Context, args *ListQueryShapeSummariesApiParams) ListQueryShapeSummariesApiRequest {
+func (a *QueryShapeInsightsAPIService) ListQueryShapeSummariesWithParams(ctx context.Context, args *ListQueryShapeSummariesApiParams) ListQueryShapeSummariesApiRequest {
 	return ListQueryShapeSummariesApiRequest{
 		ApiService:       a,
 		ctx:              ctx,
@@ -739,7 +738,7 @@ Returns a list of query shape statistics summaries for a given cluster. Query sh
 	@param clusterName Human-readable label that identifies the cluster.
 	@return ListQueryShapeSummariesApiRequest
 */
-func (a *QueryShapeInsightsApiService) ListQueryShapeSummaries(ctx context.Context, groupId string, clusterName string) ListQueryShapeSummariesApiRequest {
+func (a *QueryShapeInsightsAPIService) ListQueryShapeSummaries(ctx context.Context, groupId string, clusterName string) ListQueryShapeSummariesApiRequest {
 	return ListQueryShapeSummariesApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -751,7 +750,7 @@ func (a *QueryShapeInsightsApiService) ListQueryShapeSummaries(ctx context.Conte
 // ListQueryShapeSummariesExecute executes the request
 //
 //	@return QueryStatsSummaryListResponse
-func (a *QueryShapeInsightsApiService) ListQueryShapeSummariesExecute(r ListQueryShapeSummariesApiRequest) (*QueryStatsSummaryListResponse, *http.Response, error) {
+func (a *QueryShapeInsightsAPIService) ListQueryShapeSummariesExecute(r ListQueryShapeSummariesApiRequest) (*QueryStatsSummaryListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -759,7 +758,7 @@ func (a *QueryShapeInsightsApiService) ListQueryShapeSummariesExecute(r ListQuer
 		localVarReturnValue *QueryStatsSummaryListResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "QueryShapeInsightsApiService.ListQueryShapeSummaries")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "QueryShapeInsightsAPIService.ListQueryShapeSummaries")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -877,7 +876,7 @@ func (a *QueryShapeInsightsApiService) ListQueryShapeSummariesExecute(r ListQuer
 
 type UpdateClusterQueryShapeApiRequest struct {
 	ctx                     context.Context
-	ApiService              QueryShapeInsightsApi
+	ApiService              QueryShapeInsightsAPI
 	groupId                 string
 	clusterName             string
 	queryShapeHash          string
@@ -891,7 +890,7 @@ type UpdateClusterQueryShapeApiParams struct {
 	QueryShapeUpdateRequest *QueryShapeUpdateRequest
 }
 
-func (a *QueryShapeInsightsApiService) UpdateClusterQueryShapeWithParams(ctx context.Context, args *UpdateClusterQueryShapeApiParams) UpdateClusterQueryShapeApiRequest {
+func (a *QueryShapeInsightsAPIService) UpdateClusterQueryShapeWithParams(ctx context.Context, args *UpdateClusterQueryShapeApiParams) UpdateClusterQueryShapeApiRequest {
 	return UpdateClusterQueryShapeApiRequest{
 		ApiService:              a,
 		ctx:                     ctx,
@@ -917,7 +916,7 @@ Updates the rejection status of a query shape. Use this endpoint to reject a que
 	@param queryShapeHash A SHA256 hash of a query shape, output by MongoDB commands like `$queryStats` and `$explain` or slow query logs.
 	@return UpdateClusterQueryShapeApiRequest
 */
-func (a *QueryShapeInsightsApiService) UpdateClusterQueryShape(ctx context.Context, groupId string, clusterName string, queryShapeHash string, queryShapeUpdateRequest *QueryShapeUpdateRequest) UpdateClusterQueryShapeApiRequest {
+func (a *QueryShapeInsightsAPIService) UpdateClusterQueryShape(ctx context.Context, groupId string, clusterName string, queryShapeHash string, queryShapeUpdateRequest *QueryShapeUpdateRequest) UpdateClusterQueryShapeApiRequest {
 	return UpdateClusterQueryShapeApiRequest{
 		ApiService:              a,
 		ctx:                     ctx,
@@ -931,7 +930,7 @@ func (a *QueryShapeInsightsApiService) UpdateClusterQueryShape(ctx context.Conte
 // UpdateClusterQueryShapeExecute executes the request
 //
 //	@return QueryShapeResponse
-func (a *QueryShapeInsightsApiService) UpdateClusterQueryShapeExecute(r UpdateClusterQueryShapeApiRequest) (*QueryShapeResponse, *http.Response, error) {
+func (a *QueryShapeInsightsAPIService) UpdateClusterQueryShapeExecute(r UpdateClusterQueryShapeApiRequest) (*QueryShapeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -939,7 +938,7 @@ func (a *QueryShapeInsightsApiService) UpdateClusterQueryShapeExecute(r UpdateCl
 		localVarReturnValue *QueryShapeResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "QueryShapeInsightsApiService.UpdateClusterQueryShape")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "QueryShapeInsightsAPIService.UpdateClusterQueryShape")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

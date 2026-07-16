@@ -1,5 +1,4 @@
 // Code based on the AtlasAPI V2 OpenAPI file
-
 package admin
 
 import (
@@ -12,7 +11,7 @@ import (
 	"time"
 )
 
-type ActivityFeedApi interface {
+type ActivityFeedAPI interface {
 
 	/*
 		GetGroupActivityFeed Return Pre-Filtered Activity Feed Link for One Project
@@ -61,12 +60,12 @@ type ActivityFeedApi interface {
 	GetOrgActivityFeedExecute(r GetOrgActivityFeedApiRequest) (*ActivityFeedLinkResponse, *http.Response, error)
 }
 
-// ActivityFeedApiService ActivityFeedApi service
-type ActivityFeedApiService service
+// ActivityFeedAPIService ActivityFeedAPI service
+type ActivityFeedAPIService service
 
 type GetGroupActivityFeedApiRequest struct {
 	ctx         context.Context
-	ApiService  ActivityFeedApi
+	ApiService  ActivityFeedAPI
 	groupId     string
 	eventType   *[]string
 	maxDate     *time.Time
@@ -82,7 +81,7 @@ type GetGroupActivityFeedApiParams struct {
 	ClusterName *[]string
 }
 
-func (a *ActivityFeedApiService) GetGroupActivityFeedWithParams(ctx context.Context, args *GetGroupActivityFeedApiParams) GetGroupActivityFeedApiRequest {
+func (a *ActivityFeedAPIService) GetGroupActivityFeedWithParams(ctx context.Context, args *GetGroupActivityFeedApiParams) GetGroupActivityFeedApiRequest {
 	return GetGroupActivityFeedApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -131,7 +130,7 @@ Returns a pre-filtered activity feed link for the specified project based on the
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetGroupActivityFeedApiRequest
 */
-func (a *ActivityFeedApiService) GetGroupActivityFeed(ctx context.Context, groupId string) GetGroupActivityFeedApiRequest {
+func (a *ActivityFeedAPIService) GetGroupActivityFeed(ctx context.Context, groupId string) GetGroupActivityFeedApiRequest {
 	return GetGroupActivityFeedApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -142,7 +141,7 @@ func (a *ActivityFeedApiService) GetGroupActivityFeed(ctx context.Context, group
 // GetGroupActivityFeedExecute executes the request
 //
 //	@return ActivityFeedLinkResponse
-func (a *ActivityFeedApiService) GetGroupActivityFeedExecute(r GetGroupActivityFeedApiRequest) (*ActivityFeedLinkResponse, *http.Response, error) {
+func (a *ActivityFeedAPIService) GetGroupActivityFeedExecute(r GetGroupActivityFeedApiRequest) (*ActivityFeedLinkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -150,7 +149,7 @@ func (a *ActivityFeedApiService) GetGroupActivityFeedExecute(r GetGroupActivityF
 		localVarReturnValue *ActivityFeedLinkResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActivityFeedApiService.GetGroupActivityFeed")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActivityFeedAPIService.GetGroupActivityFeed")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -236,7 +235,7 @@ func (a *ActivityFeedApiService) GetGroupActivityFeedExecute(r GetGroupActivityF
 
 type GetOrgActivityFeedApiRequest struct {
 	ctx        context.Context
-	ApiService ActivityFeedApi
+	ApiService ActivityFeedAPI
 	orgId      string
 	eventType  *[]string
 	maxDate    *time.Time
@@ -250,7 +249,7 @@ type GetOrgActivityFeedApiParams struct {
 	MinDate   *time.Time
 }
 
-func (a *ActivityFeedApiService) GetOrgActivityFeedWithParams(ctx context.Context, args *GetOrgActivityFeedApiParams) GetOrgActivityFeedApiRequest {
+func (a *ActivityFeedAPIService) GetOrgActivityFeedWithParams(ctx context.Context, args *GetOrgActivityFeedApiParams) GetOrgActivityFeedApiRequest {
 	return GetOrgActivityFeedApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -292,7 +291,7 @@ Returns a pre-filtered activity feed link for the specified organization based o
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return GetOrgActivityFeedApiRequest
 */
-func (a *ActivityFeedApiService) GetOrgActivityFeed(ctx context.Context, orgId string) GetOrgActivityFeedApiRequest {
+func (a *ActivityFeedAPIService) GetOrgActivityFeed(ctx context.Context, orgId string) GetOrgActivityFeedApiRequest {
 	return GetOrgActivityFeedApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -303,7 +302,7 @@ func (a *ActivityFeedApiService) GetOrgActivityFeed(ctx context.Context, orgId s
 // GetOrgActivityFeedExecute executes the request
 //
 //	@return ActivityFeedLinkResponse
-func (a *ActivityFeedApiService) GetOrgActivityFeedExecute(r GetOrgActivityFeedApiRequest) (*ActivityFeedLinkResponse, *http.Response, error) {
+func (a *ActivityFeedAPIService) GetOrgActivityFeedExecute(r GetOrgActivityFeedApiRequest) (*ActivityFeedLinkResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -311,7 +310,7 @@ func (a *ActivityFeedApiService) GetOrgActivityFeedExecute(r GetOrgActivityFeedA
 		localVarReturnValue *ActivityFeedLinkResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActivityFeedApiService.GetOrgActivityFeed")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ActivityFeedAPIService.GetOrgActivityFeed")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

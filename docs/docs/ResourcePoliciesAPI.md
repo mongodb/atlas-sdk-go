@@ -1,0 +1,588 @@
+# \ResourcePoliciesAPI
+
+All URIs are relative to *https://cloud.mongodb.com*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**CreateOrgResourcePolicy**](ResourcePoliciesAPI.md#CreateOrgResourcePolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Create One Atlas Resource Policy
+[**DeleteOrgResourcePolicy**](ResourcePoliciesAPI.md#DeleteOrgResourcePolicy) | **Delete** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Delete One Atlas Resource Policy
+[**GetNonCompliantResources**](ResourcePoliciesAPI.md#GetNonCompliantResources) | **Get** /api/atlas/v2/orgs/{orgId}/nonCompliantResources | Return All Non-Compliant Resources
+[**GetOrgResourcePolicy**](ResourcePoliciesAPI.md#GetOrgResourcePolicy) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Return One Atlas Resource Policy
+[**ListOrgResourcePolicies**](ResourcePoliciesAPI.md#ListOrgResourcePolicies) | **Get** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Return All Atlas Resource Policies
+[**UpdateOrgResourcePolicy**](ResourcePoliciesAPI.md#UpdateOrgResourcePolicy) | **Patch** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Update One Atlas Resource Policy
+[**ValidateResourcePolicies**](ResourcePoliciesAPI.md#ValidateResourcePolicies) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies:validate | Validate One Atlas Resource Policy
+
+
+
+## CreateOrgResourcePolicy
+
+> ApiAtlasResourcePolicy CreateOrgResourcePolicy(ctx, orgId, apiAtlasResourcePolicyCreate ApiAtlasResourcePolicyCreate).Execute()
+
+Create One Atlas Resource Policy
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    apiAtlasResourcePolicyCreate := *admin.NewApiAtlasResourcePolicyCreate("Name_example", []admin.ApiAtlasPolicyCreate{*admin.NewApiAtlasPolicyCreate("  forbid (     principal,     action == cloud::Action::\"cluster.createEdit\",     resource   ) when {    context.cluster.regions.contains(cloud::region::\"aws:us-east-1\")   }; ")}) // ApiAtlasResourcePolicyCreate | 
+
+    resp, r, err := sdk.ResourcePoliciesAPI.CreateOrgResourcePolicy(context.Background(), orgId, &apiAtlasResourcePolicyCreate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesAPI.CreateOrgResourcePolicy`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `CreateOrgResourcePolicy`: ApiAtlasResourcePolicy
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesAPI.CreateOrgResourcePolicy`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateOrgResourcePolicyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **apiAtlasResourcePolicyCreate** | [**ApiAtlasResourcePolicyCreate**](ApiAtlasResourcePolicyCreate.md) | Atlas Resource Policy to create. | 
+
+### Return type
+
+[**ApiAtlasResourcePolicy**](ApiAtlasResourcePolicy.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2024-08-05+json
+- **Accept**: application/vnd.atlas.2024-08-05+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteOrgResourcePolicy
+
+> DeleteOrgResourcePolicy(ctx, orgId, resourcePolicyId).Execute()
+
+Delete One Atlas Resource Policy
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    resourcePolicyId := "32b6e34b3d91647abb20e7b8" // string | 
+
+    r, err := sdk.ResourcePoliciesAPI.DeleteOrgResourcePolicy(context.Background(), orgId, resourcePolicyId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesAPI.DeleteOrgResourcePolicy`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**resourcePolicyId** | **string** | Unique 24-hexadecimal digit string that identifies an atlas resource policy. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteOrgResourcePolicyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-08-05+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetNonCompliantResources
+
+> []ApiAtlasNonCompliantResource GetNonCompliantResources(ctx, orgId).Execute()
+
+Return All Non-Compliant Resources
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+
+    resp, r, err := sdk.ResourcePoliciesAPI.GetNonCompliantResources(context.Background(), orgId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesAPI.GetNonCompliantResources`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetNonCompliantResources`: []ApiAtlasNonCompliantResource
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesAPI.GetNonCompliantResources`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetNonCompliantResourcesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]ApiAtlasNonCompliantResource**](ApiAtlasNonCompliantResource.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-08-05+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetOrgResourcePolicy
+
+> ApiAtlasResourcePolicy GetOrgResourcePolicy(ctx, orgId, resourcePolicyId).Execute()
+
+Return One Atlas Resource Policy
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    resourcePolicyId := "32b6e34b3d91647abb20e7b8" // string | 
+
+    resp, r, err := sdk.ResourcePoliciesAPI.GetOrgResourcePolicy(context.Background(), orgId, resourcePolicyId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesAPI.GetOrgResourcePolicy`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetOrgResourcePolicy`: ApiAtlasResourcePolicy
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesAPI.GetOrgResourcePolicy`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**resourcePolicyId** | **string** | Unique 24-hexadecimal digit string that identifies an atlas resource policy. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOrgResourcePolicyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**ApiAtlasResourcePolicy**](ApiAtlasResourcePolicy.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-08-05+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListOrgResourcePolicies
+
+> []ApiAtlasResourcePolicy ListOrgResourcePolicies(ctx, orgId).Execute()
+
+Return All Atlas Resource Policies
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+
+    resp, r, err := sdk.ResourcePoliciesAPI.ListOrgResourcePolicies(context.Background(), orgId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesAPI.ListOrgResourcePolicies`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListOrgResourcePolicies`: []ApiAtlasResourcePolicy
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesAPI.ListOrgResourcePolicies`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListOrgResourcePoliciesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]ApiAtlasResourcePolicy**](ApiAtlasResourcePolicy.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2024-08-05+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateOrgResourcePolicy
+
+> ApiAtlasResourcePolicy UpdateOrgResourcePolicy(ctx, orgId, resourcePolicyId, apiAtlasResourcePolicyEdit ApiAtlasResourcePolicyEdit).Execute()
+
+Update One Atlas Resource Policy
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    resourcePolicyId := "32b6e34b3d91647abb20e7b8" // string | 
+    apiAtlasResourcePolicyEdit := *admin.NewApiAtlasResourcePolicyEdit() // ApiAtlasResourcePolicyEdit | 
+
+    resp, r, err := sdk.ResourcePoliciesAPI.UpdateOrgResourcePolicy(context.Background(), orgId, resourcePolicyId, &apiAtlasResourcePolicyEdit).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesAPI.UpdateOrgResourcePolicy`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `UpdateOrgResourcePolicy`: ApiAtlasResourcePolicy
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesAPI.UpdateOrgResourcePolicy`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**resourcePolicyId** | **string** | Unique 24-hexadecimal digit string that identifies an atlas resource policy. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateOrgResourcePolicyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **apiAtlasResourcePolicyEdit** | [**ApiAtlasResourcePolicyEdit**](ApiAtlasResourcePolicyEdit.md) | Atlas Resource Policy to update. | 
+
+### Return type
+
+[**ApiAtlasResourcePolicy**](ApiAtlasResourcePolicy.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2024-08-05+json
+- **Accept**: application/vnd.atlas.2024-08-05+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ValidateResourcePolicies
+
+> ApiAtlasResourcePolicy ValidateResourcePolicies(ctx, orgId, apiAtlasResourcePolicyCreate ApiAtlasResourcePolicyCreate).Execute()
+
+Validate One Atlas Resource Policy
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312021/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    apiAtlasResourcePolicyCreate := *admin.NewApiAtlasResourcePolicyCreate("Name_example", []admin.ApiAtlasPolicyCreate{*admin.NewApiAtlasPolicyCreate("  forbid (     principal,     action == cloud::Action::\"cluster.createEdit\",     resource   ) when {    context.cluster.regions.contains(cloud::region::\"aws:us-east-1\")   }; ")}) // ApiAtlasResourcePolicyCreate | 
+
+    resp, r, err := sdk.ResourcePoliciesAPI.ValidateResourcePolicies(context.Background(), orgId, &apiAtlasResourcePolicyCreate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ResourcePoliciesAPI.ValidateResourcePolicies`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ValidateResourcePolicies`: ApiAtlasResourcePolicy
+    fmt.Fprintf(os.Stdout, "Response from `ResourcePoliciesAPI.ValidateResourcePolicies`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiValidateResourcePoliciesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **apiAtlasResourcePolicyCreate** | [**ApiAtlasResourcePolicyCreate**](ApiAtlasResourcePolicyCreate.md) | Atlas Resource Policy to create. | 
+
+### Return type
+
+[**ApiAtlasResourcePolicy**](ApiAtlasResourcePolicy.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2024-08-05+json
+- **Accept**: application/vnd.atlas.2024-08-05+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+

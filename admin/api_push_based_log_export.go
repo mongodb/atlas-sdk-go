@@ -1,5 +1,4 @@
 // Code based on the AtlasAPI V2 OpenAPI file
-
 package admin
 
 import (
@@ -10,7 +9,7 @@ import (
 	"strings"
 )
 
-type PushBasedLogExportApi interface {
+type PushBasedLogExportAPI interface {
 
 	/*
 		CreateGroupLogIntegration Create One Log Integration
@@ -46,7 +45,7 @@ type PushBasedLogExportApi interface {
 		@param createPushBasedLogExportProjectRequest The project configuration details. The S3 bucket name, IAM role ID, and prefix path fields are required.
 		@return CreateLogExportApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	CreateLogExport(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest) CreateLogExportApiRequest
 	/*
@@ -57,7 +56,7 @@ type PushBasedLogExportApi interface {
 		@param CreateLogExportApiParams - Parameters for the request
 		@return CreateLogExportApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	CreateLogExportWithParams(ctx context.Context, args *CreateLogExportApiParams) CreateLogExportApiRequest
 
@@ -97,7 +96,7 @@ type PushBasedLogExportApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return DeleteLogExportApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	DeleteLogExport(ctx context.Context, groupId string) DeleteLogExportApiRequest
 	/*
@@ -108,7 +107,7 @@ type PushBasedLogExportApi interface {
 		@param DeleteLogExportApiParams - Parameters for the request
 		@return DeleteLogExportApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	DeleteLogExportWithParams(ctx context.Context, args *DeleteLogExportApiParams) DeleteLogExportApiRequest
 
@@ -148,7 +147,7 @@ type PushBasedLogExportApi interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return GetLogExportApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	GetLogExport(ctx context.Context, groupId string) GetLogExportApiRequest
 	/*
@@ -159,7 +158,7 @@ type PushBasedLogExportApi interface {
 		@param GetLogExportApiParams - Parameters for the request
 		@return GetLogExportApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	GetLogExportWithParams(ctx context.Context, args *GetLogExportApiParams) GetLogExportApiRequest
 
@@ -224,7 +223,7 @@ type PushBasedLogExportApi interface {
 		@param pushBasedLogExportProject The project configuration details. The S3 bucket name, IAM role ID, and prefix path fields are the only fields that may be specified. Fields left unspecified will not be modified.
 		@return UpdateLogExportApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	UpdateLogExport(ctx context.Context, groupId string, pushBasedLogExportProject *PushBasedLogExportProject) UpdateLogExportApiRequest
 	/*
@@ -235,7 +234,7 @@ type PushBasedLogExportApi interface {
 		@param UpdateLogExportApiParams - Parameters for the request
 		@return UpdateLogExportApiRequest
 
-		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportApi
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	UpdateLogExportWithParams(ctx context.Context, args *UpdateLogExportApiParams) UpdateLogExportApiRequest
 
@@ -243,12 +242,12 @@ type PushBasedLogExportApi interface {
 	UpdateLogExportExecute(r UpdateLogExportApiRequest) (*http.Response, error)
 }
 
-// PushBasedLogExportApiService PushBasedLogExportApi service
-type PushBasedLogExportApiService service
+// PushBasedLogExportAPIService PushBasedLogExportAPI service
+type PushBasedLogExportAPIService service
 
 type CreateGroupLogIntegrationApiRequest struct {
 	ctx                   context.Context
-	ApiService            PushBasedLogExportApi
+	ApiService            PushBasedLogExportAPI
 	groupId               string
 	logIntegrationRequest *LogIntegrationRequest
 }
@@ -258,7 +257,7 @@ type CreateGroupLogIntegrationApiParams struct {
 	LogIntegrationRequest *LogIntegrationRequest
 }
 
-func (a *PushBasedLogExportApiService) CreateGroupLogIntegrationWithParams(ctx context.Context, args *CreateGroupLogIntegrationApiParams) CreateGroupLogIntegrationApiRequest {
+func (a *PushBasedLogExportAPIService) CreateGroupLogIntegrationWithParams(ctx context.Context, args *CreateGroupLogIntegrationApiParams) CreateGroupLogIntegrationApiRequest {
 	return CreateGroupLogIntegrationApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -280,7 +279,7 @@ Creates a new log integration configuration identified by a unique ID.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateGroupLogIntegrationApiRequest
 */
-func (a *PushBasedLogExportApiService) CreateGroupLogIntegration(ctx context.Context, groupId string, logIntegrationRequest *LogIntegrationRequest) CreateGroupLogIntegrationApiRequest {
+func (a *PushBasedLogExportAPIService) CreateGroupLogIntegration(ctx context.Context, groupId string, logIntegrationRequest *LogIntegrationRequest) CreateGroupLogIntegrationApiRequest {
 	return CreateGroupLogIntegrationApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -292,7 +291,7 @@ func (a *PushBasedLogExportApiService) CreateGroupLogIntegration(ctx context.Con
 // CreateGroupLogIntegrationExecute executes the request
 //
 //	@return LogIntegrationResponse
-func (a *PushBasedLogExportApiService) CreateGroupLogIntegrationExecute(r CreateGroupLogIntegrationApiRequest) (*LogIntegrationResponse, *http.Response, error) {
+func (a *PushBasedLogExportAPIService) CreateGroupLogIntegrationExecute(r CreateGroupLogIntegrationApiRequest) (*LogIntegrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -300,7 +299,7 @@ func (a *PushBasedLogExportApiService) CreateGroupLogIntegrationExecute(r Create
 		localVarReturnValue *LogIntegrationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportApiService.CreateGroupLogIntegration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportAPIService.CreateGroupLogIntegration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -371,7 +370,7 @@ func (a *PushBasedLogExportApiService) CreateGroupLogIntegrationExecute(r Create
 
 type CreateLogExportApiRequest struct {
 	ctx                                    context.Context
-	ApiService                             PushBasedLogExportApi
+	ApiService                             PushBasedLogExportAPI
 	groupId                                string
 	createPushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest
 }
@@ -381,7 +380,7 @@ type CreateLogExportApiParams struct {
 	CreatePushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest
 }
 
-func (a *PushBasedLogExportApiService) CreateLogExportWithParams(ctx context.Context, args *CreateLogExportApiParams) CreateLogExportApiRequest {
+func (a *PushBasedLogExportAPIService) CreateLogExportWithParams(ctx context.Context, args *CreateLogExportApiParams) CreateLogExportApiRequest {
 	return CreateLogExportApiRequest{
 		ApiService:                             a,
 		ctx:                                    ctx,
@@ -405,7 +404,7 @@ Configures the project level settings for the push-based log export feature.
 
 Deprecated
 */
-func (a *PushBasedLogExportApiService) CreateLogExport(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest) CreateLogExportApiRequest {
+func (a *PushBasedLogExportAPIService) CreateLogExport(ctx context.Context, groupId string, createPushBasedLogExportProjectRequest *CreatePushBasedLogExportProjectRequest) CreateLogExportApiRequest {
 	return CreateLogExportApiRequest{
 		ApiService:                             a,
 		ctx:                                    ctx,
@@ -416,14 +415,14 @@ func (a *PushBasedLogExportApiService) CreateLogExport(ctx context.Context, grou
 
 // CreateLogExportExecute executes the request
 // Deprecated
-func (a *PushBasedLogExportApiService) CreateLogExportExecute(r CreateLogExportApiRequest) (*http.Response, error) {
+func (a *PushBasedLogExportAPIService) CreateLogExportExecute(r CreateLogExportApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportApiService.CreateLogExport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportAPIService.CreateLogExport")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -480,7 +479,7 @@ func (a *PushBasedLogExportApiService) CreateLogExportExecute(r CreateLogExportA
 
 type DeleteGroupLogIntegrationApiRequest struct {
 	ctx        context.Context
-	ApiService PushBasedLogExportApi
+	ApiService PushBasedLogExportAPI
 	groupId    string
 	id         string
 }
@@ -490,7 +489,7 @@ type DeleteGroupLogIntegrationApiParams struct {
 	Id      string
 }
 
-func (a *PushBasedLogExportApiService) DeleteGroupLogIntegrationWithParams(ctx context.Context, args *DeleteGroupLogIntegrationApiParams) DeleteGroupLogIntegrationApiRequest {
+func (a *PushBasedLogExportAPIService) DeleteGroupLogIntegrationWithParams(ctx context.Context, args *DeleteGroupLogIntegrationApiParams) DeleteGroupLogIntegrationApiRequest {
 	return DeleteGroupLogIntegrationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -513,7 +512,7 @@ Removes the configuration for one log integration identified by its unique ID.
 	@param id Unique identifier of the log integration configuration.
 	@return DeleteGroupLogIntegrationApiRequest
 */
-func (a *PushBasedLogExportApiService) DeleteGroupLogIntegration(ctx context.Context, groupId string, id string) DeleteGroupLogIntegrationApiRequest {
+func (a *PushBasedLogExportAPIService) DeleteGroupLogIntegration(ctx context.Context, groupId string, id string) DeleteGroupLogIntegrationApiRequest {
 	return DeleteGroupLogIntegrationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -523,14 +522,14 @@ func (a *PushBasedLogExportApiService) DeleteGroupLogIntegration(ctx context.Con
 }
 
 // DeleteGroupLogIntegrationExecute executes the request
-func (a *PushBasedLogExportApiService) DeleteGroupLogIntegrationExecute(r DeleteGroupLogIntegrationApiRequest) (*http.Response, error) {
+func (a *PushBasedLogExportAPIService) DeleteGroupLogIntegrationExecute(r DeleteGroupLogIntegrationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportApiService.DeleteGroupLogIntegration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportAPIService.DeleteGroupLogIntegration")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -586,7 +585,7 @@ func (a *PushBasedLogExportApiService) DeleteGroupLogIntegrationExecute(r Delete
 
 type DeleteLogExportApiRequest struct {
 	ctx        context.Context
-	ApiService PushBasedLogExportApi
+	ApiService PushBasedLogExportAPI
 	groupId    string
 }
 
@@ -594,7 +593,7 @@ type DeleteLogExportApiParams struct {
 	GroupId string
 }
 
-func (a *PushBasedLogExportApiService) DeleteLogExportWithParams(ctx context.Context, args *DeleteLogExportApiParams) DeleteLogExportApiRequest {
+func (a *PushBasedLogExportAPIService) DeleteLogExportWithParams(ctx context.Context, args *DeleteLogExportApiParams) DeleteLogExportApiRequest {
 	return DeleteLogExportApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -617,7 +616,7 @@ Disables the push-based log export feature by resetting the project level settin
 
 Deprecated
 */
-func (a *PushBasedLogExportApiService) DeleteLogExport(ctx context.Context, groupId string) DeleteLogExportApiRequest {
+func (a *PushBasedLogExportAPIService) DeleteLogExport(ctx context.Context, groupId string) DeleteLogExportApiRequest {
 	return DeleteLogExportApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -627,14 +626,14 @@ func (a *PushBasedLogExportApiService) DeleteLogExport(ctx context.Context, grou
 
 // DeleteLogExportExecute executes the request
 // Deprecated
-func (a *PushBasedLogExportApiService) DeleteLogExportExecute(r DeleteLogExportApiRequest) (*http.Response, error) {
+func (a *PushBasedLogExportAPIService) DeleteLogExportExecute(r DeleteLogExportApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportApiService.DeleteLogExport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportAPIService.DeleteLogExport")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -686,7 +685,7 @@ func (a *PushBasedLogExportApiService) DeleteLogExportExecute(r DeleteLogExportA
 
 type GetGroupLogIntegrationApiRequest struct {
 	ctx        context.Context
-	ApiService PushBasedLogExportApi
+	ApiService PushBasedLogExportAPI
 	groupId    string
 	id         string
 }
@@ -696,7 +695,7 @@ type GetGroupLogIntegrationApiParams struct {
 	Id      string
 }
 
-func (a *PushBasedLogExportApiService) GetGroupLogIntegrationWithParams(ctx context.Context, args *GetGroupLogIntegrationApiParams) GetGroupLogIntegrationApiRequest {
+func (a *PushBasedLogExportAPIService) GetGroupLogIntegrationWithParams(ctx context.Context, args *GetGroupLogIntegrationApiParams) GetGroupLogIntegrationApiRequest {
 	return GetGroupLogIntegrationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -719,7 +718,7 @@ Returns the configuration for one log integration identified by its unique ID.
 	@param id Unique identifier of the log integration configuration.
 	@return GetGroupLogIntegrationApiRequest
 */
-func (a *PushBasedLogExportApiService) GetGroupLogIntegration(ctx context.Context, groupId string, id string) GetGroupLogIntegrationApiRequest {
+func (a *PushBasedLogExportAPIService) GetGroupLogIntegration(ctx context.Context, groupId string, id string) GetGroupLogIntegrationApiRequest {
 	return GetGroupLogIntegrationApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -731,7 +730,7 @@ func (a *PushBasedLogExportApiService) GetGroupLogIntegration(ctx context.Contex
 // GetGroupLogIntegrationExecute executes the request
 //
 //	@return LogIntegrationResponse
-func (a *PushBasedLogExportApiService) GetGroupLogIntegrationExecute(r GetGroupLogIntegrationApiRequest) (*LogIntegrationResponse, *http.Response, error) {
+func (a *PushBasedLogExportAPIService) GetGroupLogIntegrationExecute(r GetGroupLogIntegrationApiRequest) (*LogIntegrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -739,7 +738,7 @@ func (a *PushBasedLogExportApiService) GetGroupLogIntegrationExecute(r GetGroupL
 		localVarReturnValue *LogIntegrationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportApiService.GetGroupLogIntegration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportAPIService.GetGroupLogIntegration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -809,7 +808,7 @@ func (a *PushBasedLogExportApiService) GetGroupLogIntegrationExecute(r GetGroupL
 
 type GetLogExportApiRequest struct {
 	ctx        context.Context
-	ApiService PushBasedLogExportApi
+	ApiService PushBasedLogExportAPI
 	groupId    string
 }
 
@@ -817,7 +816,7 @@ type GetLogExportApiParams struct {
 	GroupId string
 }
 
-func (a *PushBasedLogExportApiService) GetLogExportWithParams(ctx context.Context, args *GetLogExportApiParams) GetLogExportApiRequest {
+func (a *PushBasedLogExportAPIService) GetLogExportWithParams(ctx context.Context, args *GetLogExportApiParams) GetLogExportApiRequest {
 	return GetLogExportApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -840,7 +839,7 @@ Fetches the current project level settings for the push-based log export feature
 
 Deprecated
 */
-func (a *PushBasedLogExportApiService) GetLogExport(ctx context.Context, groupId string) GetLogExportApiRequest {
+func (a *PushBasedLogExportAPIService) GetLogExport(ctx context.Context, groupId string) GetLogExportApiRequest {
 	return GetLogExportApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -853,7 +852,7 @@ func (a *PushBasedLogExportApiService) GetLogExport(ctx context.Context, groupId
 //	@return PushBasedLogExportProject
 //
 // Deprecated
-func (a *PushBasedLogExportApiService) GetLogExportExecute(r GetLogExportApiRequest) (*PushBasedLogExportProject, *http.Response, error) {
+func (a *PushBasedLogExportAPIService) GetLogExportExecute(r GetLogExportApiRequest) (*PushBasedLogExportProject, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -861,7 +860,7 @@ func (a *PushBasedLogExportApiService) GetLogExportExecute(r GetLogExportApiRequ
 		localVarReturnValue *PushBasedLogExportProject
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportApiService.GetLogExport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportAPIService.GetLogExport")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -927,7 +926,7 @@ func (a *PushBasedLogExportApiService) GetLogExportExecute(r GetLogExportApiRequ
 
 type ListGroupLogIntegrationsApiRequest struct {
 	ctx             context.Context
-	ApiService      PushBasedLogExportApi
+	ApiService      PushBasedLogExportAPI
 	groupId         string
 	includeCount    *bool
 	itemsPerPage    *int
@@ -943,7 +942,7 @@ type ListGroupLogIntegrationsApiParams struct {
 	IntegrationType *string
 }
 
-func (a *PushBasedLogExportApiService) ListGroupLogIntegrationsWithParams(ctx context.Context, args *ListGroupLogIntegrationsApiParams) ListGroupLogIntegrationsApiRequest {
+func (a *PushBasedLogExportAPIService) ListGroupLogIntegrationsWithParams(ctx context.Context, args *ListGroupLogIntegrationsApiParams) ListGroupLogIntegrationsApiRequest {
 	return ListGroupLogIntegrationsApiRequest{
 		ApiService:      a,
 		ctx:             ctx,
@@ -992,7 +991,7 @@ Returns all log integration configurations for the project. Optionally filter by
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListGroupLogIntegrationsApiRequest
 */
-func (a *PushBasedLogExportApiService) ListGroupLogIntegrations(ctx context.Context, groupId string) ListGroupLogIntegrationsApiRequest {
+func (a *PushBasedLogExportAPIService) ListGroupLogIntegrations(ctx context.Context, groupId string) ListGroupLogIntegrationsApiRequest {
 	return ListGroupLogIntegrationsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -1003,7 +1002,7 @@ func (a *PushBasedLogExportApiService) ListGroupLogIntegrations(ctx context.Cont
 // ListGroupLogIntegrationsExecute executes the request
 //
 //	@return PaginatedLogIntegrationResponse
-func (a *PushBasedLogExportApiService) ListGroupLogIntegrationsExecute(r ListGroupLogIntegrationsApiRequest) (*PaginatedLogIntegrationResponse, *http.Response, error) {
+func (a *PushBasedLogExportAPIService) ListGroupLogIntegrationsExecute(r ListGroupLogIntegrationsApiRequest) (*PaginatedLogIntegrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -1011,7 +1010,7 @@ func (a *PushBasedLogExportApiService) ListGroupLogIntegrationsExecute(r ListGro
 		localVarReturnValue *PaginatedLogIntegrationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportApiService.ListGroupLogIntegrations")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportAPIService.ListGroupLogIntegrations")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1101,7 +1100,7 @@ func (a *PushBasedLogExportApiService) ListGroupLogIntegrationsExecute(r ListGro
 
 type UpdateGroupLogIntegrationApiRequest struct {
 	ctx                   context.Context
-	ApiService            PushBasedLogExportApi
+	ApiService            PushBasedLogExportAPI
 	groupId               string
 	id                    string
 	logIntegrationRequest *LogIntegrationRequest
@@ -1113,7 +1112,7 @@ type UpdateGroupLogIntegrationApiParams struct {
 	LogIntegrationRequest *LogIntegrationRequest
 }
 
-func (a *PushBasedLogExportApiService) UpdateGroupLogIntegrationWithParams(ctx context.Context, args *UpdateGroupLogIntegrationApiParams) UpdateGroupLogIntegrationApiRequest {
+func (a *PushBasedLogExportAPIService) UpdateGroupLogIntegrationWithParams(ctx context.Context, args *UpdateGroupLogIntegrationApiParams) UpdateGroupLogIntegrationApiRequest {
 	return UpdateGroupLogIntegrationApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -1137,7 +1136,7 @@ Updates the configuration for one log integration identified by its unique ID.
 	@param id Unique identifier of the log integration configuration.
 	@return UpdateGroupLogIntegrationApiRequest
 */
-func (a *PushBasedLogExportApiService) UpdateGroupLogIntegration(ctx context.Context, groupId string, id string, logIntegrationRequest *LogIntegrationRequest) UpdateGroupLogIntegrationApiRequest {
+func (a *PushBasedLogExportAPIService) UpdateGroupLogIntegration(ctx context.Context, groupId string, id string, logIntegrationRequest *LogIntegrationRequest) UpdateGroupLogIntegrationApiRequest {
 	return UpdateGroupLogIntegrationApiRequest{
 		ApiService:            a,
 		ctx:                   ctx,
@@ -1150,7 +1149,7 @@ func (a *PushBasedLogExportApiService) UpdateGroupLogIntegration(ctx context.Con
 // UpdateGroupLogIntegrationExecute executes the request
 //
 //	@return LogIntegrationResponse
-func (a *PushBasedLogExportApiService) UpdateGroupLogIntegrationExecute(r UpdateGroupLogIntegrationApiRequest) (*LogIntegrationResponse, *http.Response, error) {
+func (a *PushBasedLogExportAPIService) UpdateGroupLogIntegrationExecute(r UpdateGroupLogIntegrationApiRequest) (*LogIntegrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    any
@@ -1158,7 +1157,7 @@ func (a *PushBasedLogExportApiService) UpdateGroupLogIntegrationExecute(r Update
 		localVarReturnValue *LogIntegrationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportApiService.UpdateGroupLogIntegration")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportAPIService.UpdateGroupLogIntegration")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1233,7 +1232,7 @@ func (a *PushBasedLogExportApiService) UpdateGroupLogIntegrationExecute(r Update
 
 type UpdateLogExportApiRequest struct {
 	ctx                       context.Context
-	ApiService                PushBasedLogExportApi
+	ApiService                PushBasedLogExportAPI
 	groupId                   string
 	pushBasedLogExportProject *PushBasedLogExportProject
 }
@@ -1243,7 +1242,7 @@ type UpdateLogExportApiParams struct {
 	PushBasedLogExportProject *PushBasedLogExportProject
 }
 
-func (a *PushBasedLogExportApiService) UpdateLogExportWithParams(ctx context.Context, args *UpdateLogExportApiParams) UpdateLogExportApiRequest {
+func (a *PushBasedLogExportAPIService) UpdateLogExportWithParams(ctx context.Context, args *UpdateLogExportApiParams) UpdateLogExportApiRequest {
 	return UpdateLogExportApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -1267,7 +1266,7 @@ Updates the project level settings for the push-based log export feature.
 
 Deprecated
 */
-func (a *PushBasedLogExportApiService) UpdateLogExport(ctx context.Context, groupId string, pushBasedLogExportProject *PushBasedLogExportProject) UpdateLogExportApiRequest {
+func (a *PushBasedLogExportAPIService) UpdateLogExport(ctx context.Context, groupId string, pushBasedLogExportProject *PushBasedLogExportProject) UpdateLogExportApiRequest {
 	return UpdateLogExportApiRequest{
 		ApiService:                a,
 		ctx:                       ctx,
@@ -1278,14 +1277,14 @@ func (a *PushBasedLogExportApiService) UpdateLogExport(ctx context.Context, grou
 
 // UpdateLogExportExecute executes the request
 // Deprecated
-func (a *PushBasedLogExportApiService) UpdateLogExportExecute(r UpdateLogExportApiRequest) (*http.Response, error) {
+func (a *PushBasedLogExportAPIService) UpdateLogExportExecute(r UpdateLogExportApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodPatch
 		localVarPostBody   any
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportApiService.UpdateLogExport")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportAPIService.UpdateLogExport")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -1,5 +1,4 @@
 // Code based on the AtlasAPI V2 OpenAPI file
-
 package admin
 
 import (
@@ -10,7 +9,7 @@ import (
 	"strings"
 )
 
-type AIModelRateLimitsApi interface {
+type AIModelRateLimitsAPI interface {
 
 	/*
 		GetGroupModelLimits Return AI Model Rate Limits for One Group
@@ -187,12 +186,12 @@ type AIModelRateLimitsApi interface {
 	UpdateGroupRateLimitsExecute(r UpdateGroupRateLimitsApiRequest) (*AiModelRateLimitResponse, *http.Response, error)
 }
 
-// AIModelRateLimitsApiService AIModelRateLimitsApi service
-type AIModelRateLimitsApiService service
+// AIModelRateLimitsAPIService AIModelRateLimitsAPI service
+type AIModelRateLimitsAPIService service
 
 type GetGroupModelLimitsApiRequest struct {
 	ctx          context.Context
-	ApiService   AIModelRateLimitsApi
+	ApiService   AIModelRateLimitsAPI
 	groupId      string
 	itemsPerPage *int
 	pageNum      *int
@@ -204,7 +203,7 @@ type GetGroupModelLimitsApiParams struct {
 	PageNum      *int
 }
 
-func (a *AIModelRateLimitsApiService) GetGroupModelLimitsWithParams(ctx context.Context, args *GetGroupModelLimitsApiParams) GetGroupModelLimitsApiRequest {
+func (a *AIModelRateLimitsAPIService) GetGroupModelLimitsWithParams(ctx context.Context, args *GetGroupModelLimitsApiParams) GetGroupModelLimitsApiRequest {
 	return GetGroupModelLimitsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -239,7 +238,7 @@ Retrieve AI model rate limits for the given group.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetGroupModelLimitsApiRequest
 */
-func (a *AIModelRateLimitsApiService) GetGroupModelLimits(ctx context.Context, groupId string) GetGroupModelLimitsApiRequest {
+func (a *AIModelRateLimitsAPIService) GetGroupModelLimits(ctx context.Context, groupId string) GetGroupModelLimitsApiRequest {
 	return GetGroupModelLimitsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -250,7 +249,7 @@ func (a *AIModelRateLimitsApiService) GetGroupModelLimits(ctx context.Context, g
 // GetGroupModelLimitsExecute executes the request
 //
 //	@return PaginatedAtlasAiModelRateLimitsResponse
-func (a *AIModelRateLimitsApiService) GetGroupModelLimitsExecute(r GetGroupModelLimitsApiRequest) (*PaginatedAtlasAiModelRateLimitsResponse, *http.Response, error) {
+func (a *AIModelRateLimitsAPIService) GetGroupModelLimitsExecute(r GetGroupModelLimitsApiRequest) (*PaginatedAtlasAiModelRateLimitsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -258,7 +257,7 @@ func (a *AIModelRateLimitsApiService) GetGroupModelLimitsExecute(r GetGroupModel
 		localVarReturnValue *PaginatedAtlasAiModelRateLimitsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelRateLimitsApiService.GetGroupModelLimits")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelRateLimitsAPIService.GetGroupModelLimits")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -338,7 +337,7 @@ func (a *AIModelRateLimitsApiService) GetGroupModelLimitsExecute(r GetGroupModel
 
 type GetGroupRateLimitsApiRequest struct {
 	ctx            context.Context
-	ApiService     AIModelRateLimitsApi
+	ApiService     AIModelRateLimitsAPI
 	groupId        string
 	cloud          string
 	geography      string
@@ -352,7 +351,7 @@ type GetGroupRateLimitsApiParams struct {
 	ModelGroupName string
 }
 
-func (a *AIModelRateLimitsApiService) GetGroupRateLimitsWithParams(ctx context.Context, args *GetGroupRateLimitsApiParams) GetGroupRateLimitsApiRequest {
+func (a *AIModelRateLimitsAPIService) GetGroupRateLimitsWithParams(ctx context.Context, args *GetGroupRateLimitsApiParams) GetGroupRateLimitsApiRequest {
 	return GetGroupRateLimitsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -379,7 +378,7 @@ Retrieve a single scoped AI model rate limit for the given group.
 	@param modelGroupName The name of the model group to be retrieved.
 	@return GetGroupRateLimitsApiRequest
 */
-func (a *AIModelRateLimitsApiService) GetGroupRateLimits(ctx context.Context, groupId string, cloud string, geography string, modelGroupName string) GetGroupRateLimitsApiRequest {
+func (a *AIModelRateLimitsAPIService) GetGroupRateLimits(ctx context.Context, groupId string, cloud string, geography string, modelGroupName string) GetGroupRateLimitsApiRequest {
 	return GetGroupRateLimitsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -393,7 +392,7 @@ func (a *AIModelRateLimitsApiService) GetGroupRateLimits(ctx context.Context, gr
 // GetGroupRateLimitsExecute executes the request
 //
 //	@return AiModelRateLimitResponse
-func (a *AIModelRateLimitsApiService) GetGroupRateLimitsExecute(r GetGroupRateLimitsApiRequest) (*AiModelRateLimitResponse, *http.Response, error) {
+func (a *AIModelRateLimitsAPIService) GetGroupRateLimitsExecute(r GetGroupRateLimitsApiRequest) (*AiModelRateLimitResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -401,7 +400,7 @@ func (a *AIModelRateLimitsApiService) GetGroupRateLimitsExecute(r GetGroupRateLi
 		localVarReturnValue *AiModelRateLimitResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelRateLimitsApiService.GetGroupRateLimits")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelRateLimitsAPIService.GetGroupRateLimits")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -479,7 +478,7 @@ func (a *AIModelRateLimitsApiService) GetGroupRateLimitsExecute(r GetGroupRateLi
 
 type GetOrgModelLimitsApiRequest struct {
 	ctx          context.Context
-	ApiService   AIModelRateLimitsApi
+	ApiService   AIModelRateLimitsAPI
 	orgId        string
 	itemsPerPage *int
 	pageNum      *int
@@ -491,7 +490,7 @@ type GetOrgModelLimitsApiParams struct {
 	PageNum      *int
 }
 
-func (a *AIModelRateLimitsApiService) GetOrgModelLimitsWithParams(ctx context.Context, args *GetOrgModelLimitsApiParams) GetOrgModelLimitsApiRequest {
+func (a *AIModelRateLimitsAPIService) GetOrgModelLimitsWithParams(ctx context.Context, args *GetOrgModelLimitsApiParams) GetOrgModelLimitsApiRequest {
 	return GetOrgModelLimitsApiRequest{
 		ApiService:   a,
 		ctx:          ctx,
@@ -526,7 +525,7 @@ Retrieve AI model rate limits for the given organization.
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return GetOrgModelLimitsApiRequest
 */
-func (a *AIModelRateLimitsApiService) GetOrgModelLimits(ctx context.Context, orgId string) GetOrgModelLimitsApiRequest {
+func (a *AIModelRateLimitsAPIService) GetOrgModelLimits(ctx context.Context, orgId string) GetOrgModelLimitsApiRequest {
 	return GetOrgModelLimitsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -537,7 +536,7 @@ func (a *AIModelRateLimitsApiService) GetOrgModelLimits(ctx context.Context, org
 // GetOrgModelLimitsExecute executes the request
 //
 //	@return PaginatedAtlasAiModelRateLimitsResponse
-func (a *AIModelRateLimitsApiService) GetOrgModelLimitsExecute(r GetOrgModelLimitsApiRequest) (*PaginatedAtlasAiModelRateLimitsResponse, *http.Response, error) {
+func (a *AIModelRateLimitsAPIService) GetOrgModelLimitsExecute(r GetOrgModelLimitsApiRequest) (*PaginatedAtlasAiModelRateLimitsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -545,7 +544,7 @@ func (a *AIModelRateLimitsApiService) GetOrgModelLimitsExecute(r GetOrgModelLimi
 		localVarReturnValue *PaginatedAtlasAiModelRateLimitsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelRateLimitsApiService.GetOrgModelLimits")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelRateLimitsAPIService.GetOrgModelLimits")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -625,7 +624,7 @@ func (a *AIModelRateLimitsApiService) GetOrgModelLimitsExecute(r GetOrgModelLimi
 
 type GetOrgRateLimitsApiRequest struct {
 	ctx            context.Context
-	ApiService     AIModelRateLimitsApi
+	ApiService     AIModelRateLimitsAPI
 	orgId          string
 	cloud          string
 	geography      string
@@ -639,7 +638,7 @@ type GetOrgRateLimitsApiParams struct {
 	ModelGroupName string
 }
 
-func (a *AIModelRateLimitsApiService) GetOrgRateLimitsWithParams(ctx context.Context, args *GetOrgRateLimitsApiParams) GetOrgRateLimitsApiRequest {
+func (a *AIModelRateLimitsAPIService) GetOrgRateLimitsWithParams(ctx context.Context, args *GetOrgRateLimitsApiParams) GetOrgRateLimitsApiRequest {
 	return GetOrgRateLimitsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -666,7 +665,7 @@ Retrieve a single scoped AI model rate limit for the given organization.
 	@param modelGroupName The name of the model group to be retrieved.
 	@return GetOrgRateLimitsApiRequest
 */
-func (a *AIModelRateLimitsApiService) GetOrgRateLimits(ctx context.Context, orgId string, cloud string, geography string, modelGroupName string) GetOrgRateLimitsApiRequest {
+func (a *AIModelRateLimitsAPIService) GetOrgRateLimits(ctx context.Context, orgId string, cloud string, geography string, modelGroupName string) GetOrgRateLimitsApiRequest {
 	return GetOrgRateLimitsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -680,7 +679,7 @@ func (a *AIModelRateLimitsApiService) GetOrgRateLimits(ctx context.Context, orgI
 // GetOrgRateLimitsExecute executes the request
 //
 //	@return AiModelRateLimitResponse
-func (a *AIModelRateLimitsApiService) GetOrgRateLimitsExecute(r GetOrgRateLimitsApiRequest) (*AiModelRateLimitResponse, *http.Response, error) {
+func (a *AIModelRateLimitsAPIService) GetOrgRateLimitsExecute(r GetOrgRateLimitsApiRequest) (*AiModelRateLimitResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -688,7 +687,7 @@ func (a *AIModelRateLimitsApiService) GetOrgRateLimitsExecute(r GetOrgRateLimits
 		localVarReturnValue *AiModelRateLimitResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelRateLimitsApiService.GetOrgRateLimits")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelRateLimitsAPIService.GetOrgRateLimits")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -766,7 +765,7 @@ func (a *AIModelRateLimitsApiService) GetOrgRateLimitsExecute(r GetOrgRateLimits
 
 type ResetGroupModelLimitsApiRequest struct {
 	ctx            context.Context
-	ApiService     AIModelRateLimitsApi
+	ApiService     AIModelRateLimitsAPI
 	groupId        string
 	cloud          string
 	geography      string
@@ -780,7 +779,7 @@ type ResetGroupModelLimitsApiParams struct {
 	ModelGroupName string
 }
 
-func (a *AIModelRateLimitsApiService) ResetGroupModelLimitsWithParams(ctx context.Context, args *ResetGroupModelLimitsApiParams) ResetGroupModelLimitsApiRequest {
+func (a *AIModelRateLimitsAPIService) ResetGroupModelLimitsWithParams(ctx context.Context, args *ResetGroupModelLimitsApiParams) ResetGroupModelLimitsApiRequest {
 	return ResetGroupModelLimitsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -807,7 +806,7 @@ Reset the scoped AI model rate limit for the given model group to default values
 	@param modelGroupName The name of the model group to be reset to default rate limits.
 	@return ResetGroupModelLimitsApiRequest
 */
-func (a *AIModelRateLimitsApiService) ResetGroupModelLimits(ctx context.Context, groupId string, cloud string, geography string, modelGroupName string) ResetGroupModelLimitsApiRequest {
+func (a *AIModelRateLimitsAPIService) ResetGroupModelLimits(ctx context.Context, groupId string, cloud string, geography string, modelGroupName string) ResetGroupModelLimitsApiRequest {
 	return ResetGroupModelLimitsApiRequest{
 		ApiService:     a,
 		ctx:            ctx,
@@ -821,7 +820,7 @@ func (a *AIModelRateLimitsApiService) ResetGroupModelLimits(ctx context.Context,
 // ResetGroupModelLimitsExecute executes the request
 //
 //	@return AiModelRateLimitResponse
-func (a *AIModelRateLimitsApiService) ResetGroupModelLimitsExecute(r ResetGroupModelLimitsApiRequest) (*AiModelRateLimitResponse, *http.Response, error) {
+func (a *AIModelRateLimitsAPIService) ResetGroupModelLimitsExecute(r ResetGroupModelLimitsApiRequest) (*AiModelRateLimitResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -829,7 +828,7 @@ func (a *AIModelRateLimitsApiService) ResetGroupModelLimitsExecute(r ResetGroupM
 		localVarReturnValue *AiModelRateLimitResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelRateLimitsApiService.ResetGroupModelLimits")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelRateLimitsAPIService.ResetGroupModelLimits")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -907,7 +906,7 @@ func (a *AIModelRateLimitsApiService) ResetGroupModelLimitsExecute(r ResetGroupM
 
 type ResetGroupRateLimitsApiRequest struct {
 	ctx        context.Context
-	ApiService AIModelRateLimitsApi
+	ApiService AIModelRateLimitsAPI
 	groupId    string
 }
 
@@ -915,7 +914,7 @@ type ResetGroupRateLimitsApiParams struct {
 	GroupId string
 }
 
-func (a *AIModelRateLimitsApiService) ResetGroupRateLimitsWithParams(ctx context.Context, args *ResetGroupRateLimitsApiParams) ResetGroupRateLimitsApiRequest {
+func (a *AIModelRateLimitsAPIService) ResetGroupRateLimitsWithParams(ctx context.Context, args *ResetGroupRateLimitsApiParams) ResetGroupRateLimitsApiRequest {
 	return ResetGroupRateLimitsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -936,7 +935,7 @@ Reset the AI Model rate limits for the given group to default values.
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ResetGroupRateLimitsApiRequest
 */
-func (a *AIModelRateLimitsApiService) ResetGroupRateLimits(ctx context.Context, groupId string) ResetGroupRateLimitsApiRequest {
+func (a *AIModelRateLimitsAPIService) ResetGroupRateLimits(ctx context.Context, groupId string) ResetGroupRateLimitsApiRequest {
 	return ResetGroupRateLimitsApiRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -947,7 +946,7 @@ func (a *AIModelRateLimitsApiService) ResetGroupRateLimits(ctx context.Context, 
 // ResetGroupRateLimitsExecute executes the request
 //
 //	@return PaginatedAtlasAiModelRateLimitsResponse
-func (a *AIModelRateLimitsApiService) ResetGroupRateLimitsExecute(r ResetGroupRateLimitsApiRequest) (*PaginatedAtlasAiModelRateLimitsResponse, *http.Response, error) {
+func (a *AIModelRateLimitsAPIService) ResetGroupRateLimitsExecute(r ResetGroupRateLimitsApiRequest) (*PaginatedAtlasAiModelRateLimitsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -955,7 +954,7 @@ func (a *AIModelRateLimitsApiService) ResetGroupRateLimitsExecute(r ResetGroupRa
 		localVarReturnValue *PaginatedAtlasAiModelRateLimitsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelRateLimitsApiService.ResetGroupRateLimits")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelRateLimitsAPIService.ResetGroupRateLimits")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1021,7 +1020,7 @@ func (a *AIModelRateLimitsApiService) ResetGroupRateLimitsExecute(r ResetGroupRa
 
 type UpdateGroupRateLimitsApiRequest struct {
 	ctx                            context.Context
-	ApiService                     AIModelRateLimitsApi
+	ApiService                     AIModelRateLimitsAPI
 	groupId                        string
 	cloud                          string
 	geography                      string
@@ -1037,7 +1036,7 @@ type UpdateGroupRateLimitsApiParams struct {
 	AiModelsRateLimitUpdateRequest *AiModelsRateLimitUpdateRequest
 }
 
-func (a *AIModelRateLimitsApiService) UpdateGroupRateLimitsWithParams(ctx context.Context, args *UpdateGroupRateLimitsApiParams) UpdateGroupRateLimitsApiRequest {
+func (a *AIModelRateLimitsAPIService) UpdateGroupRateLimitsWithParams(ctx context.Context, args *UpdateGroupRateLimitsApiParams) UpdateGroupRateLimitsApiRequest {
 	return UpdateGroupRateLimitsApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
@@ -1065,7 +1064,7 @@ Update a scoped AI model rate limit for the given model group.
 	@param modelGroupName The name of the model group to be updated.
 	@return UpdateGroupRateLimitsApiRequest
 */
-func (a *AIModelRateLimitsApiService) UpdateGroupRateLimits(ctx context.Context, groupId string, cloud string, geography string, modelGroupName string, aiModelsRateLimitUpdateRequest *AiModelsRateLimitUpdateRequest) UpdateGroupRateLimitsApiRequest {
+func (a *AIModelRateLimitsAPIService) UpdateGroupRateLimits(ctx context.Context, groupId string, cloud string, geography string, modelGroupName string, aiModelsRateLimitUpdateRequest *AiModelsRateLimitUpdateRequest) UpdateGroupRateLimitsApiRequest {
 	return UpdateGroupRateLimitsApiRequest{
 		ApiService:                     a,
 		ctx:                            ctx,
@@ -1080,7 +1079,7 @@ func (a *AIModelRateLimitsApiService) UpdateGroupRateLimits(ctx context.Context,
 // UpdateGroupRateLimitsExecute executes the request
 //
 //	@return AiModelRateLimitResponse
-func (a *AIModelRateLimitsApiService) UpdateGroupRateLimitsExecute(r UpdateGroupRateLimitsApiRequest) (*AiModelRateLimitResponse, *http.Response, error) {
+func (a *AIModelRateLimitsAPIService) UpdateGroupRateLimitsExecute(r UpdateGroupRateLimitsApiRequest) (*AiModelRateLimitResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
@@ -1088,7 +1087,7 @@ func (a *AIModelRateLimitsApiService) UpdateGroupRateLimitsExecute(r UpdateGroup
 		localVarReturnValue *AiModelRateLimitResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelRateLimitsApiService.UpdateGroupRateLimits")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelRateLimitsAPIService.UpdateGroupRateLimits")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
