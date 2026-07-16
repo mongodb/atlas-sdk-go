@@ -1,0 +1,520 @@
+# \EncryptionAtRestUsingCustomerKeyManagementAPI
+
+All URIs are relative to *https://cloud.mongodb.com*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**CreateRestPrivateEndpoint**](EncryptionAtRestUsingCustomerKeyManagementAPI.md#CreateRestPrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints | Create One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
+[**GetEncryptionAtRest**](EncryptionAtRestUsingCustomerKeyManagementAPI.md#GetEncryptionAtRest) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Return One Configuration for Encryption at Rest Using Customer-Managed Keys for One Project
+[**GetRestPrivateEndpoint**](EncryptionAtRestUsingCustomerKeyManagementAPI.md#GetRestPrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId} | Return One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
+[**ListRestPrivateEndpoints**](EncryptionAtRestUsingCustomerKeyManagementAPI.md#ListRestPrivateEndpoints) | **Get** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints | Return Private Endpoints for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
+[**RequestPrivateEndpointDeletion**](EncryptionAtRestUsingCustomerKeyManagementAPI.md#RequestPrivateEndpointDeletion) | **Delete** /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId} | Delete One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider from One Project
+[**UpdateEncryptionAtRest**](EncryptionAtRestUsingCustomerKeyManagementAPI.md#UpdateEncryptionAtRest) | **Patch** /api/atlas/v2/groups/{groupId}/encryptionAtRest | Update Encryption at Rest Configuration in One Project
+
+
+
+## CreateRestPrivateEndpoint
+
+> EARPrivateEndpoint CreateRestPrivateEndpoint(ctx, groupId, cloudProvider, eARPrivateEndpoint EARPrivateEndpoint).Execute()
+
+Create One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    cloudProvider := "cloudProvider_example" // string | 
+    eARPrivateEndpoint := *admin.NewEARPrivateEndpoint() // EARPrivateEndpoint | 
+
+    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementAPI.CreateRestPrivateEndpoint(context.Background(), groupId, cloudProvider, &eARPrivateEndpoint).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementAPI.CreateRestPrivateEndpoint`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `CreateRestPrivateEndpoint`: EARPrivateEndpoint
+    fmt.Fprintf(os.Stdout, "Response from `EncryptionAtRestUsingCustomerKeyManagementAPI.CreateRestPrivateEndpoint`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**cloudProvider** | **string** | Human-readable label that identifies the cloud provider for the private endpoint to create. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateRestPrivateEndpointRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **eARPrivateEndpoint** | [**EARPrivateEndpoint**](EARPrivateEndpoint.md) | Creates a private endpoint in the specified region. | 
+
+### Return type
+
+[**EARPrivateEndpoint**](EARPrivateEndpoint.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2023-01-01+json
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetEncryptionAtRest
+
+> EncryptionAtRest GetEncryptionAtRest(ctx, groupId).Execute()
+
+Return One Configuration for Encryption at Rest Using Customer-Managed Keys for One Project
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+
+    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementAPI.GetEncryptionAtRest(context.Background(), groupId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementAPI.GetEncryptionAtRest`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetEncryptionAtRest`: EncryptionAtRest
+    fmt.Fprintf(os.Stdout, "Response from `EncryptionAtRestUsingCustomerKeyManagementAPI.GetEncryptionAtRest`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetEncryptionAtRestRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**EncryptionAtRest**](EncryptionAtRest.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetRestPrivateEndpoint
+
+> EARPrivateEndpoint GetRestPrivateEndpoint(ctx, groupId, cloudProvider, endpointId).Execute()
+
+Return One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    cloudProvider := "cloudProvider_example" // string | 
+    endpointId := "endpointId_example" // string | 
+
+    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementAPI.GetRestPrivateEndpoint(context.Background(), groupId, cloudProvider, endpointId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementAPI.GetRestPrivateEndpoint`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetRestPrivateEndpoint`: EARPrivateEndpoint
+    fmt.Fprintf(os.Stdout, "Response from `EncryptionAtRestUsingCustomerKeyManagementAPI.GetRestPrivateEndpoint`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**cloudProvider** | **string** | Human-readable label that identifies the cloud provider of the private endpoint. | 
+**endpointId** | **string** | Unique 24-hexadecimal digit string that identifies the private endpoint. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetRestPrivateEndpointRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**EARPrivateEndpoint**](EARPrivateEndpoint.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListRestPrivateEndpoints
+
+> PaginatedApiAtlasEARPrivateEndpoint ListRestPrivateEndpoints(ctx, groupId, cloudProvider).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+
+Return Private Endpoints for Encryption at Rest Using Customer Key Management for One Cloud Provider in One Project
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    cloudProvider := "cloudProvider_example" // string | 
+    includeCount := true // bool |  (optional) (default to true)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
+
+    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementAPI.ListRestPrivateEndpoints(context.Background(), groupId, cloudProvider).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementAPI.ListRestPrivateEndpoints`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListRestPrivateEndpoints`: PaginatedApiAtlasEARPrivateEndpoint
+    fmt.Fprintf(os.Stdout, "Response from `EncryptionAtRestUsingCustomerKeyManagementAPI.ListRestPrivateEndpoints`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**cloudProvider** | **string** | Human-readable label that identifies the cloud provider for the private endpoints to return. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListRestPrivateEndpointsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+
+### Return type
+
+[**PaginatedApiAtlasEARPrivateEndpoint**](PaginatedApiAtlasEARPrivateEndpoint.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RequestPrivateEndpointDeletion
+
+> RequestPrivateEndpointDeletion(ctx, groupId, cloudProvider, endpointId).Execute()
+
+Delete One Private Endpoint for Encryption at Rest Using Customer Key Management for One Cloud Provider from One Project
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    cloudProvider := "cloudProvider_example" // string | 
+    endpointId := "endpointId_example" // string | 
+
+    r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementAPI.RequestPrivateEndpointDeletion(context.Background(), groupId, cloudProvider, endpointId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementAPI.RequestPrivateEndpointDeletion`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**cloudProvider** | **string** | Human-readable label that identifies the cloud provider of the private endpoint to delete. | 
+**endpointId** | **string** | Unique 24-hexadecimal digit string that identifies the private endpoint to delete. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRequestPrivateEndpointDeletionRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateEncryptionAtRest
+
+> EncryptionAtRest UpdateEncryptionAtRest(ctx, groupId, encryptionAtRest EncryptionAtRest).Execute()
+
+Update Encryption at Rest Configuration in One Project
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    encryptionAtRest := *admin.NewEncryptionAtRest() // EncryptionAtRest | 
+
+    resp, r, err := sdk.EncryptionAtRestUsingCustomerKeyManagementAPI.UpdateEncryptionAtRest(context.Background(), groupId, &encryptionAtRest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EncryptionAtRestUsingCustomerKeyManagementAPI.UpdateEncryptionAtRest`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `UpdateEncryptionAtRest`: EncryptionAtRest
+    fmt.Fprintf(os.Stdout, "Response from `EncryptionAtRestUsingCustomerKeyManagementAPI.UpdateEncryptionAtRest`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateEncryptionAtRestRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **encryptionAtRest** | [**EncryptionAtRest**](EncryptionAtRest.md) | Required parameters depend on whether someone has enabled Encryption at Rest using Customer Key Management:  If you have enabled Encryption at Rest using Customer Key Management (CMK), Atlas requires all of the parameters for the desired encryption provider.  - To use AWS Key Management Service (KMS), MongoDB Cloud requires all the fields in the &#x60;awsKms&#x60; object. - To use Azure Key Vault, MongoDB Cloud requires all the fields in the &#x60;azureKeyVault&#x60; object. - To use Google Cloud Key Management Service (KMS), MongoDB Cloud requires all the fields in the &#x60;googleCloudKms&#x60; object For authentication, you must provide either &#x60;serviceAccountKey&#x60; (static credentials) or &#x60;roleId&#x60; (service-account–based authentication) Once &#x60;roleId&#x60; is configured, &#x60;serviceAccountKey&#x60; is no longer supported.  If you enabled Encryption at Rest using Customer Key Management, administrators can pass only the changed fields for the &#x60;awsKms&#x60;, &#x60;azureKeyVault&#x60;, or &#x60;googleCloudKms&#x60; object to update the configuration to this endpoint. | 
+
+### Return type
+
+[**EncryptionAtRest**](EncryptionAtRest.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2023-01-01+json
+- **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+

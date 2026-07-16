@@ -7,8 +7,8 @@ import (
 
 	"context"
 
-	"go.mongodb.org/atlas-sdk/v20250312021/admin"
-	"go.mongodb.org/atlas-sdk/v20250312021/examples"
+	"go.mongodb.org/atlas-sdk/v20250312022/admin"
+	"go.mongodb.org/atlas-sdk/v20250312022/examples"
 )
 
 func main() {
@@ -30,7 +30,7 @@ func main() {
 		admin.UseOAuthAuth(ctx, clientID, clientSecret))
 	examples.HandleErr(err, nil)
 
-	invoice, response, err := sdk.InvoicesApi.GetInvoice(ctx, orgID, invoiceID).Execute()
+	invoice, response, err := sdk.InvoicesAPI.GetInvoice(ctx, orgID, invoiceID).Execute()
 	examples.HandleErr(err, response)
 
 	fmt.Printf("Content-Type: %v\n", response.Header.Get("Content-Type"))

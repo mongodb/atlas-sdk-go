@@ -9,7 +9,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.mongodb.org/atlas-sdk/v20250312021/admin"
+	"go.mongodb.org/atlas-sdk/v20250312022/admin"
 )
 
 // TestDecodePreservesLargeIntegers verifies that integers above 2^53 in dynamic
@@ -31,7 +31,7 @@ func TestDecodePreservesLargeIntegers(t *testing.T) {
 	)
 	require.NoError(t, err)
 
-	proc, httpResp, err := sdk.StreamsApi.GetStreamProcessor(t.Context(), "groupId", "tenantName", "test-proc").Execute()
+	proc, httpResp, err := sdk.StreamsAPI.GetStreamProcessor(t.Context(), "groupId", "tenantName", "test-proc").Execute()
 	if httpResp != nil {
 		defer httpResp.Body.Close()
 	}

@@ -1,12 +1,12 @@
-module go.mongodb.org/atlas-sdk/v20250312021/examples
+module go.mongodb.org/atlas-sdk/v20250312022/examples
 
 go 1.25.0
 
-replace go.mongodb.org/atlas-sdk/v20250312021 => ../
+replace go.mongodb.org/atlas-sdk/v20250312022 => ../
 
 require (
 	github.com/hashicorp/go-retryablehttp v0.7.8
-	go.mongodb.org/atlas-sdk/v20250312021 v20250312021.2.0
+	go.mongodb.org/atlas-sdk/v20250312022 v20250312022.2.0
 )
 
 require github.com/mongodb-forks/digest v1.1.0 // indirect

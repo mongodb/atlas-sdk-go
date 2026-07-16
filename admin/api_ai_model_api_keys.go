@@ -1,0 +1,1082 @@
+// Code based on the AtlasAPI V2 OpenAPI file
+package admin
+
+import (
+	"context"
+	"io"
+	"net/http"
+	"net/url"
+	"strings"
+)
+
+type AIModelAPIKeysAPI interface {
+
+	/*
+		CreateGroupModelKey Create New AI Model API Key
+
+		Create a new AI model API key for the given group.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param aiModelApiKeyCreateRequest A request containing the name, cloud, and geography of the new API key.
+		@return CreateGroupModelKeyApiRequest
+	*/
+	CreateGroupModelKey(ctx context.Context, groupId string, aiModelApiKeyCreateRequest *AiModelApiKeyCreateRequest) CreateGroupModelKeyApiRequest
+	/*
+		CreateGroupModelKey Create New AI Model API Key
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param CreateGroupModelKeyApiParams - Parameters for the request
+		@return CreateGroupModelKeyApiRequest
+	*/
+	CreateGroupModelKeyWithParams(ctx context.Context, args *CreateGroupModelKeyApiParams) CreateGroupModelKeyApiRequest
+
+	// Method available only for mocking purposes
+	CreateGroupModelKeyExecute(r CreateGroupModelKeyApiRequest) (*AiModelApiKeyResponse, *http.Response, error)
+
+	/*
+		DeleteGroupModelKey Delete Existing AI Model API Key
+
+		Delete an existing AI model API key in the given group.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param apiKeyId The id of the API key to be deleted.
+		@return DeleteGroupModelKeyApiRequest
+	*/
+	DeleteGroupModelKey(ctx context.Context, groupId string, apiKeyId string) DeleteGroupModelKeyApiRequest
+	/*
+		DeleteGroupModelKey Delete Existing AI Model API Key
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeleteGroupModelKeyApiParams - Parameters for the request
+		@return DeleteGroupModelKeyApiRequest
+	*/
+	DeleteGroupModelKeyWithParams(ctx context.Context, args *DeleteGroupModelKeyApiParams) DeleteGroupModelKeyApiRequest
+
+	// Method available only for mocking purposes
+	DeleteGroupModelKeyExecute(r DeleteGroupModelKeyApiRequest) (*http.Response, error)
+
+	/*
+		GetGroupModelKey Return Single AI Model API Key for One Group
+
+		Retrieve a single AI model API key for the given group.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param apiKeyId The id of the API key to be retrieved.
+		@return GetGroupModelKeyApiRequest
+	*/
+	GetGroupModelKey(ctx context.Context, groupId string, apiKeyId string) GetGroupModelKeyApiRequest
+	/*
+		GetGroupModelKey Return Single AI Model API Key for One Group
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetGroupModelKeyApiParams - Parameters for the request
+		@return GetGroupModelKeyApiRequest
+	*/
+	GetGroupModelKeyWithParams(ctx context.Context, args *GetGroupModelKeyApiParams) GetGroupModelKeyApiRequest
+
+	// Method available only for mocking purposes
+	GetGroupModelKeyExecute(r GetGroupModelKeyApiRequest) (*AiModelApiKeyResponse, *http.Response, error)
+
+	/*
+		GetOrgModelKey Return Single AI Model API Key for One Organization
+
+		Retrieve a single AI model API key for the given organization.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@param apiKeyId The id of the API key to be retrieved.
+		@return GetOrgModelKeyApiRequest
+	*/
+	GetOrgModelKey(ctx context.Context, orgId string, apiKeyId string) GetOrgModelKeyApiRequest
+	/*
+		GetOrgModelKey Return Single AI Model API Key for One Organization
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetOrgModelKeyApiParams - Parameters for the request
+		@return GetOrgModelKeyApiRequest
+	*/
+	GetOrgModelKeyWithParams(ctx context.Context, args *GetOrgModelKeyApiParams) GetOrgModelKeyApiRequest
+
+	// Method available only for mocking purposes
+	GetOrgModelKeyExecute(r GetOrgModelKeyApiRequest) (*AiModelApiKeyResponse, *http.Response, error)
+
+	/*
+		ListGroupModelKeys Return AI Model API Keys for One Group
+
+		Retrieve AI model API keys for the given group.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return ListGroupModelKeysApiRequest
+	*/
+	ListGroupModelKeys(ctx context.Context, groupId string) ListGroupModelKeysApiRequest
+	/*
+		ListGroupModelKeys Return AI Model API Keys for One Group
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListGroupModelKeysApiParams - Parameters for the request
+		@return ListGroupModelKeysApiRequest
+	*/
+	ListGroupModelKeysWithParams(ctx context.Context, args *ListGroupModelKeysApiParams) ListGroupModelKeysApiRequest
+
+	// Method available only for mocking purposes
+	ListGroupModelKeysExecute(r ListGroupModelKeysApiRequest) (*PaginatedAtlasAiModelApiKeysResponse, *http.Response, error)
+
+	/*
+		ListOrgModelKeys Return AI Model API Keys for One Organization
+
+		Retrieve AI model API keys for the given organization.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+		@return ListOrgModelKeysApiRequest
+	*/
+	ListOrgModelKeys(ctx context.Context, orgId string) ListOrgModelKeysApiRequest
+	/*
+		ListOrgModelKeys Return AI Model API Keys for One Organization
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListOrgModelKeysApiParams - Parameters for the request
+		@return ListOrgModelKeysApiRequest
+	*/
+	ListOrgModelKeysWithParams(ctx context.Context, args *ListOrgModelKeysApiParams) ListOrgModelKeysApiRequest
+
+	// Method available only for mocking purposes
+	ListOrgModelKeysExecute(r ListOrgModelKeysApiRequest) (*PaginatedAtlasAiModelApiKeysResponse, *http.Response, error)
+
+	/*
+		UpdateGroupModelKey Update Existing AI Model API Key
+
+		Update an existing AI model API key in the given group. Only the name can be updated; scope is immutable after creation.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param apiKeyId The id of the API key to be updated.
+		@param aiModelApiKeyUpdateRequest A request containing the new name for the API key.
+		@return UpdateGroupModelKeyApiRequest
+	*/
+	UpdateGroupModelKey(ctx context.Context, groupId string, apiKeyId string, aiModelApiKeyUpdateRequest *AiModelApiKeyUpdateRequest) UpdateGroupModelKeyApiRequest
+	/*
+		UpdateGroupModelKey Update Existing AI Model API Key
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdateGroupModelKeyApiParams - Parameters for the request
+		@return UpdateGroupModelKeyApiRequest
+	*/
+	UpdateGroupModelKeyWithParams(ctx context.Context, args *UpdateGroupModelKeyApiParams) UpdateGroupModelKeyApiRequest
+
+	// Method available only for mocking purposes
+	UpdateGroupModelKeyExecute(r UpdateGroupModelKeyApiRequest) (*AiModelApiKeyResponse, *http.Response, error)
+}
+
+// AIModelAPIKeysAPIService AIModelAPIKeysAPI service
+type AIModelAPIKeysAPIService service
+
+type CreateGroupModelKeyApiRequest struct {
+	ctx                        context.Context
+	ApiService                 AIModelAPIKeysAPI
+	groupId                    string
+	aiModelApiKeyCreateRequest *AiModelApiKeyCreateRequest
+}
+
+type CreateGroupModelKeyApiParams struct {
+	GroupId                    string
+	AiModelApiKeyCreateRequest *AiModelApiKeyCreateRequest
+}
+
+func (a *AIModelAPIKeysAPIService) CreateGroupModelKeyWithParams(ctx context.Context, args *CreateGroupModelKeyApiParams) CreateGroupModelKeyApiRequest {
+	return CreateGroupModelKeyApiRequest{
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    args.GroupId,
+		aiModelApiKeyCreateRequest: args.AiModelApiKeyCreateRequest,
+	}
+}
+
+func (r CreateGroupModelKeyApiRequest) Execute() (*AiModelApiKeyResponse, *http.Response, error) {
+	return r.ApiService.CreateGroupModelKeyExecute(r)
+}
+
+/*
+CreateGroupModelKey Create New AI Model API Key
+
+Create a new AI model API key for the given group.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return CreateGroupModelKeyApiRequest
+*/
+func (a *AIModelAPIKeysAPIService) CreateGroupModelKey(ctx context.Context, groupId string, aiModelApiKeyCreateRequest *AiModelApiKeyCreateRequest) CreateGroupModelKeyApiRequest {
+	return CreateGroupModelKeyApiRequest{
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    groupId,
+		aiModelApiKeyCreateRequest: aiModelApiKeyCreateRequest,
+	}
+}
+
+// CreateGroupModelKeyExecute executes the request
+//
+//	@return AiModelApiKeyResponse
+func (a *AIModelAPIKeysAPIService) CreateGroupModelKeyExecute(r CreateGroupModelKeyApiRequest) (*AiModelApiKeyResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *AiModelApiKeyResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysAPIService.CreateGroupModelKey")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/aiModelApiKeys"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.aiModelApiKeyCreateRequest == nil {
+		return localVarReturnValue, nil, reportError("aiModelApiKeyCreateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.aiModelApiKeyCreateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type DeleteGroupModelKeyApiRequest struct {
+	ctx        context.Context
+	ApiService AIModelAPIKeysAPI
+	groupId    string
+	apiKeyId   string
+}
+
+type DeleteGroupModelKeyApiParams struct {
+	GroupId  string
+	ApiKeyId string
+}
+
+func (a *AIModelAPIKeysAPIService) DeleteGroupModelKeyWithParams(ctx context.Context, args *DeleteGroupModelKeyApiParams) DeleteGroupModelKeyApiRequest {
+	return DeleteGroupModelKeyApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		apiKeyId:   args.ApiKeyId,
+	}
+}
+
+func (r DeleteGroupModelKeyApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteGroupModelKeyExecute(r)
+}
+
+/*
+DeleteGroupModelKey Delete Existing AI Model API Key
+
+Delete an existing AI model API key in the given group.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param apiKeyId The id of the API key to be deleted.
+	@return DeleteGroupModelKeyApiRequest
+*/
+func (a *AIModelAPIKeysAPIService) DeleteGroupModelKey(ctx context.Context, groupId string, apiKeyId string) DeleteGroupModelKeyApiRequest {
+	return DeleteGroupModelKeyApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		apiKeyId:   apiKeyId,
+	}
+}
+
+// DeleteGroupModelKeyExecute executes the request
+func (a *AIModelAPIKeysAPIService) DeleteGroupModelKeyExecute(r DeleteGroupModelKeyApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysAPIService.DeleteGroupModelKey")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.apiKeyId == "" {
+		return nil, reportError("apiKeyId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"apiKeyId"+"}", url.PathEscape(r.apiKeyId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type GetGroupModelKeyApiRequest struct {
+	ctx        context.Context
+	ApiService AIModelAPIKeysAPI
+	groupId    string
+	apiKeyId   string
+}
+
+type GetGroupModelKeyApiParams struct {
+	GroupId  string
+	ApiKeyId string
+}
+
+func (a *AIModelAPIKeysAPIService) GetGroupModelKeyWithParams(ctx context.Context, args *GetGroupModelKeyApiParams) GetGroupModelKeyApiRequest {
+	return GetGroupModelKeyApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		apiKeyId:   args.ApiKeyId,
+	}
+}
+
+func (r GetGroupModelKeyApiRequest) Execute() (*AiModelApiKeyResponse, *http.Response, error) {
+	return r.ApiService.GetGroupModelKeyExecute(r)
+}
+
+/*
+GetGroupModelKey Return Single AI Model API Key for One Group
+
+Retrieve a single AI model API key for the given group.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param apiKeyId The id of the API key to be retrieved.
+	@return GetGroupModelKeyApiRequest
+*/
+func (a *AIModelAPIKeysAPIService) GetGroupModelKey(ctx context.Context, groupId string, apiKeyId string) GetGroupModelKeyApiRequest {
+	return GetGroupModelKeyApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		apiKeyId:   apiKeyId,
+	}
+}
+
+// GetGroupModelKeyExecute executes the request
+//
+//	@return AiModelApiKeyResponse
+func (a *AIModelAPIKeysAPIService) GetGroupModelKeyExecute(r GetGroupModelKeyApiRequest) (*AiModelApiKeyResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *AiModelApiKeyResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysAPIService.GetGroupModelKey")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.apiKeyId == "" {
+		return localVarReturnValue, nil, reportError("apiKeyId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"apiKeyId"+"}", url.PathEscape(r.apiKeyId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetOrgModelKeyApiRequest struct {
+	ctx        context.Context
+	ApiService AIModelAPIKeysAPI
+	orgId      string
+	apiKeyId   string
+}
+
+type GetOrgModelKeyApiParams struct {
+	OrgId    string
+	ApiKeyId string
+}
+
+func (a *AIModelAPIKeysAPIService) GetOrgModelKeyWithParams(ctx context.Context, args *GetOrgModelKeyApiParams) GetOrgModelKeyApiRequest {
+	return GetOrgModelKeyApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      args.OrgId,
+		apiKeyId:   args.ApiKeyId,
+	}
+}
+
+func (r GetOrgModelKeyApiRequest) Execute() (*AiModelApiKeyResponse, *http.Response, error) {
+	return r.ApiService.GetOrgModelKeyExecute(r)
+}
+
+/*
+GetOrgModelKey Return Single AI Model API Key for One Organization
+
+Retrieve a single AI model API key for the given organization.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param apiKeyId The id of the API key to be retrieved.
+	@return GetOrgModelKeyApiRequest
+*/
+func (a *AIModelAPIKeysAPIService) GetOrgModelKey(ctx context.Context, orgId string, apiKeyId string) GetOrgModelKeyApiRequest {
+	return GetOrgModelKeyApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+		apiKeyId:   apiKeyId,
+	}
+}
+
+// GetOrgModelKeyExecute executes the request
+//
+//	@return AiModelApiKeyResponse
+func (a *AIModelAPIKeysAPIService) GetOrgModelKeyExecute(r GetOrgModelKeyApiRequest) (*AiModelApiKeyResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *AiModelApiKeyResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysAPIService.GetOrgModelKey")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/aiModelApiKeys/{apiKeyId}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.apiKeyId == "" {
+		return localVarReturnValue, nil, reportError("apiKeyId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"apiKeyId"+"}", url.PathEscape(r.apiKeyId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListGroupModelKeysApiRequest struct {
+	ctx          context.Context
+	ApiService   AIModelAPIKeysAPI
+	groupId      string
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListGroupModelKeysApiParams struct {
+	GroupId      string
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *AIModelAPIKeysAPIService) ListGroupModelKeysWithParams(ctx context.Context, args *ListGroupModelKeysApiParams) ListGroupModelKeysApiRequest {
+	return ListGroupModelKeysApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Number of items that the response returns per page.
+func (r ListGroupModelKeysApiRequest) ItemsPerPage(itemsPerPage int) ListGroupModelKeysApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListGroupModelKeysApiRequest) PageNum(pageNum int) ListGroupModelKeysApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListGroupModelKeysApiRequest) Execute() (*PaginatedAtlasAiModelApiKeysResponse, *http.Response, error) {
+	return r.ApiService.ListGroupModelKeysExecute(r)
+}
+
+/*
+ListGroupModelKeys Return AI Model API Keys for One Group
+
+Retrieve AI model API keys for the given group.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListGroupModelKeysApiRequest
+*/
+func (a *AIModelAPIKeysAPIService) ListGroupModelKeys(ctx context.Context, groupId string) ListGroupModelKeysApiRequest {
+	return ListGroupModelKeysApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+	}
+}
+
+// ListGroupModelKeysExecute executes the request
+//
+//	@return PaginatedAtlasAiModelApiKeysResponse
+func (a *AIModelAPIKeysAPIService) ListGroupModelKeysExecute(r ListGroupModelKeysApiRequest) (*PaginatedAtlasAiModelApiKeysResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedAtlasAiModelApiKeysResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysAPIService.ListGroupModelKeys")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/aiModelApiKeys"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListOrgModelKeysApiRequest struct {
+	ctx          context.Context
+	ApiService   AIModelAPIKeysAPI
+	orgId        string
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListOrgModelKeysApiParams struct {
+	OrgId        string
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *AIModelAPIKeysAPIService) ListOrgModelKeysWithParams(ctx context.Context, args *ListOrgModelKeysApiParams) ListOrgModelKeysApiRequest {
+	return ListOrgModelKeysApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		orgId:        args.OrgId,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Number of items that the response returns per page.
+func (r ListOrgModelKeysApiRequest) ItemsPerPage(itemsPerPage int) ListOrgModelKeysApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListOrgModelKeysApiRequest) PageNum(pageNum int) ListOrgModelKeysApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListOrgModelKeysApiRequest) Execute() (*PaginatedAtlasAiModelApiKeysResponse, *http.Response, error) {
+	return r.ApiService.ListOrgModelKeysExecute(r)
+}
+
+/*
+ListOrgModelKeys Return AI Model API Keys for One Organization
+
+Retrieve AI model API keys for the given organization.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return ListOrgModelKeysApiRequest
+*/
+func (a *AIModelAPIKeysAPIService) ListOrgModelKeys(ctx context.Context, orgId string) ListOrgModelKeysApiRequest {
+	return ListOrgModelKeysApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+	}
+}
+
+// ListOrgModelKeysExecute executes the request
+//
+//	@return PaginatedAtlasAiModelApiKeysResponse
+func (a *AIModelAPIKeysAPIService) ListOrgModelKeysExecute(r ListOrgModelKeysApiRequest) (*PaginatedAtlasAiModelApiKeysResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedAtlasAiModelApiKeysResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysAPIService.ListOrgModelKeys")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/aiModelApiKeys"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UpdateGroupModelKeyApiRequest struct {
+	ctx                        context.Context
+	ApiService                 AIModelAPIKeysAPI
+	groupId                    string
+	apiKeyId                   string
+	aiModelApiKeyUpdateRequest *AiModelApiKeyUpdateRequest
+}
+
+type UpdateGroupModelKeyApiParams struct {
+	GroupId                    string
+	ApiKeyId                   string
+	AiModelApiKeyUpdateRequest *AiModelApiKeyUpdateRequest
+}
+
+func (a *AIModelAPIKeysAPIService) UpdateGroupModelKeyWithParams(ctx context.Context, args *UpdateGroupModelKeyApiParams) UpdateGroupModelKeyApiRequest {
+	return UpdateGroupModelKeyApiRequest{
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    args.GroupId,
+		apiKeyId:                   args.ApiKeyId,
+		aiModelApiKeyUpdateRequest: args.AiModelApiKeyUpdateRequest,
+	}
+}
+
+func (r UpdateGroupModelKeyApiRequest) Execute() (*AiModelApiKeyResponse, *http.Response, error) {
+	return r.ApiService.UpdateGroupModelKeyExecute(r)
+}
+
+/*
+UpdateGroupModelKey Update Existing AI Model API Key
+
+Update an existing AI model API key in the given group. Only the name can be updated; scope is immutable after creation.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param apiKeyId The id of the API key to be updated.
+	@return UpdateGroupModelKeyApiRequest
+*/
+func (a *AIModelAPIKeysAPIService) UpdateGroupModelKey(ctx context.Context, groupId string, apiKeyId string, aiModelApiKeyUpdateRequest *AiModelApiKeyUpdateRequest) UpdateGroupModelKeyApiRequest {
+	return UpdateGroupModelKeyApiRequest{
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    groupId,
+		apiKeyId:                   apiKeyId,
+		aiModelApiKeyUpdateRequest: aiModelApiKeyUpdateRequest,
+	}
+}
+
+// UpdateGroupModelKeyExecute executes the request
+//
+//	@return AiModelApiKeyResponse
+func (a *AIModelAPIKeysAPIService) UpdateGroupModelKeyExecute(r UpdateGroupModelKeyApiRequest) (*AiModelApiKeyResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *AiModelApiKeyResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AIModelAPIKeysAPIService.UpdateGroupModelKey")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.apiKeyId == "" {
+		return localVarReturnValue, nil, reportError("apiKeyId is empty and must be specified")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"apiKeyId"+"}", url.PathEscape(r.apiKeyId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.aiModelApiKeyUpdateRequest == nil {
+		return localVarReturnValue, nil, reportError("aiModelApiKeyUpdateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.aiModelApiKeyUpdateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}

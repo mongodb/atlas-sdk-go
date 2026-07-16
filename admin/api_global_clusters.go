@@ -1,5 +1,4 @@
 // Code based on the AtlasAPI V2 OpenAPI file
-
 package admin
 
 import (
@@ -10,7 +9,7 @@ import (
 	"strings"
 )
 
-type GlobalClustersApi interface {
+type GlobalClustersAPI interface {
 
 	/*
 		CreateCustomZoneMapping Add One Custom Zone Mapping to One Global Cluster
@@ -135,12 +134,12 @@ type GlobalClustersApi interface {
 	GetClusterGlobalWritesExecute(r GetClusterGlobalWritesApiRequest) (*GeoSharding20240805, *http.Response, error)
 }
 
-// GlobalClustersApiService GlobalClustersApi service
-type GlobalClustersApiService service
+// GlobalClustersAPIService GlobalClustersAPI service
+type GlobalClustersAPIService service
 
 type CreateCustomZoneMappingApiRequest struct {
 	ctx                context.Context
-	ApiService         GlobalClustersApi
+	ApiService         GlobalClustersAPI
 	groupId            string
 	clusterName        string
 	customZoneMappings *CustomZoneMappings
@@ -152,7 +151,7 @@ type CreateCustomZoneMappingApiParams struct {
 	CustomZoneMappings *CustomZoneMappings
 }
 
-func (a *GlobalClustersApiService) CreateCustomZoneMappingWithParams(ctx context.Context, args *CreateCustomZoneMappingApiParams) CreateCustomZoneMappingApiRequest {
+func (a *GlobalClustersAPIService) CreateCustomZoneMappingWithParams(ctx context.Context, args *CreateCustomZoneMappingApiParams) CreateCustomZoneMappingApiRequest {
 	return CreateCustomZoneMappingApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -176,7 +175,7 @@ Creates one custom zone mapping for the specified global cluster. A custom zone 
 	@param clusterName Human-readable label that identifies this cluster.
 	@return CreateCustomZoneMappingApiRequest
 */
-func (a *GlobalClustersApiService) CreateCustomZoneMapping(ctx context.Context, groupId string, clusterName string, customZoneMappings *CustomZoneMappings) CreateCustomZoneMappingApiRequest {
+func (a *GlobalClustersAPIService) CreateCustomZoneMapping(ctx context.Context, groupId string, clusterName string, customZoneMappings *CustomZoneMappings) CreateCustomZoneMappingApiRequest {
 	return CreateCustomZoneMappingApiRequest{
 		ApiService:         a,
 		ctx:                ctx,
@@ -189,7 +188,7 @@ func (a *GlobalClustersApiService) CreateCustomZoneMapping(ctx context.Context, 
 // CreateCustomZoneMappingExecute executes the request
 //
 //	@return GeoSharding20240805
-func (a *GlobalClustersApiService) CreateCustomZoneMappingExecute(r CreateCustomZoneMappingApiRequest) (*GeoSharding20240805, *http.Response, error) {
+func (a *GlobalClustersAPIService) CreateCustomZoneMappingExecute(r CreateCustomZoneMappingApiRequest) (*GeoSharding20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -197,7 +196,7 @@ func (a *GlobalClustersApiService) CreateCustomZoneMappingExecute(r CreateCustom
 		localVarReturnValue *GeoSharding20240805
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalClustersApiService.CreateCustomZoneMapping")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalClustersAPIService.CreateCustomZoneMapping")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -272,7 +271,7 @@ func (a *GlobalClustersApiService) CreateCustomZoneMappingExecute(r CreateCustom
 
 type CreateManagedNamespaceApiRequest struct {
 	ctx               context.Context
-	ApiService        GlobalClustersApi
+	ApiService        GlobalClustersAPI
 	groupId           string
 	clusterName       string
 	managedNamespaces *ManagedNamespaces
@@ -284,7 +283,7 @@ type CreateManagedNamespaceApiParams struct {
 	ManagedNamespaces *ManagedNamespaces
 }
 
-func (a *GlobalClustersApiService) CreateManagedNamespaceWithParams(ctx context.Context, args *CreateManagedNamespaceApiParams) CreateManagedNamespaceApiRequest {
+func (a *GlobalClustersAPIService) CreateManagedNamespaceWithParams(ctx context.Context, args *CreateManagedNamespaceApiParams) CreateManagedNamespaceApiRequest {
 	return CreateManagedNamespaceApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -308,7 +307,7 @@ Creates one managed namespace within the specified global cluster. A managed nam
 	@param clusterName Human-readable label that identifies this cluster.
 	@return CreateManagedNamespaceApiRequest
 */
-func (a *GlobalClustersApiService) CreateManagedNamespace(ctx context.Context, groupId string, clusterName string, managedNamespaces *ManagedNamespaces) CreateManagedNamespaceApiRequest {
+func (a *GlobalClustersAPIService) CreateManagedNamespace(ctx context.Context, groupId string, clusterName string, managedNamespaces *ManagedNamespaces) CreateManagedNamespaceApiRequest {
 	return CreateManagedNamespaceApiRequest{
 		ApiService:        a,
 		ctx:               ctx,
@@ -321,7 +320,7 @@ func (a *GlobalClustersApiService) CreateManagedNamespace(ctx context.Context, g
 // CreateManagedNamespaceExecute executes the request
 //
 //	@return GeoSharding20240805
-func (a *GlobalClustersApiService) CreateManagedNamespaceExecute(r CreateManagedNamespaceApiRequest) (*GeoSharding20240805, *http.Response, error) {
+func (a *GlobalClustersAPIService) CreateManagedNamespaceExecute(r CreateManagedNamespaceApiRequest) (*GeoSharding20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
@@ -329,7 +328,7 @@ func (a *GlobalClustersApiService) CreateManagedNamespaceExecute(r CreateManaged
 		localVarReturnValue *GeoSharding20240805
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalClustersApiService.CreateManagedNamespace")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalClustersAPIService.CreateManagedNamespace")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -404,7 +403,7 @@ func (a *GlobalClustersApiService) CreateManagedNamespaceExecute(r CreateManaged
 
 type DeleteCustomZoneMappingApiRequest struct {
 	ctx         context.Context
-	ApiService  GlobalClustersApi
+	ApiService  GlobalClustersAPI
 	groupId     string
 	clusterName string
 }
@@ -414,7 +413,7 @@ type DeleteCustomZoneMappingApiParams struct {
 	ClusterName string
 }
 
-func (a *GlobalClustersApiService) DeleteCustomZoneMappingWithParams(ctx context.Context, args *DeleteCustomZoneMappingApiParams) DeleteCustomZoneMappingApiRequest {
+func (a *GlobalClustersAPIService) DeleteCustomZoneMappingWithParams(ctx context.Context, args *DeleteCustomZoneMappingApiParams) DeleteCustomZoneMappingApiRequest {
 	return DeleteCustomZoneMappingApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -437,7 +436,7 @@ Removes all custom zone mappings for the specified global cluster. A custom zone
 	@param clusterName Human-readable label that identifies this cluster.
 	@return DeleteCustomZoneMappingApiRequest
 */
-func (a *GlobalClustersApiService) DeleteCustomZoneMapping(ctx context.Context, groupId string, clusterName string) DeleteCustomZoneMappingApiRequest {
+func (a *GlobalClustersAPIService) DeleteCustomZoneMapping(ctx context.Context, groupId string, clusterName string) DeleteCustomZoneMappingApiRequest {
 	return DeleteCustomZoneMappingApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -449,7 +448,7 @@ func (a *GlobalClustersApiService) DeleteCustomZoneMapping(ctx context.Context, 
 // DeleteCustomZoneMappingExecute executes the request
 //
 //	@return GeoSharding20240805
-func (a *GlobalClustersApiService) DeleteCustomZoneMappingExecute(r DeleteCustomZoneMappingApiRequest) (*GeoSharding20240805, *http.Response, error) {
+func (a *GlobalClustersAPIService) DeleteCustomZoneMappingExecute(r DeleteCustomZoneMappingApiRequest) (*GeoSharding20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
@@ -457,7 +456,7 @@ func (a *GlobalClustersApiService) DeleteCustomZoneMappingExecute(r DeleteCustom
 		localVarReturnValue *GeoSharding20240805
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalClustersApiService.DeleteCustomZoneMapping")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalClustersAPIService.DeleteCustomZoneMapping")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -527,7 +526,7 @@ func (a *GlobalClustersApiService) DeleteCustomZoneMappingExecute(r DeleteCustom
 
 type DeleteManagedNamespacesApiRequest struct {
 	ctx         context.Context
-	ApiService  GlobalClustersApi
+	ApiService  GlobalClustersAPI
 	clusterName string
 	groupId     string
 	db          *string
@@ -541,7 +540,7 @@ type DeleteManagedNamespacesApiParams struct {
 	Collection  *string
 }
 
-func (a *GlobalClustersApiService) DeleteManagedNamespacesWithParams(ctx context.Context, args *DeleteManagedNamespacesApiParams) DeleteManagedNamespacesApiRequest {
+func (a *GlobalClustersAPIService) DeleteManagedNamespacesWithParams(ctx context.Context, args *DeleteManagedNamespacesApiParams) DeleteManagedNamespacesApiRequest {
 	return DeleteManagedNamespacesApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -578,7 +577,7 @@ Removes one managed namespace within the specified global cluster. A managed nam
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return DeleteManagedNamespacesApiRequest
 */
-func (a *GlobalClustersApiService) DeleteManagedNamespaces(ctx context.Context, clusterName string, groupId string) DeleteManagedNamespacesApiRequest {
+func (a *GlobalClustersAPIService) DeleteManagedNamespaces(ctx context.Context, clusterName string, groupId string) DeleteManagedNamespacesApiRequest {
 	return DeleteManagedNamespacesApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -590,7 +589,7 @@ func (a *GlobalClustersApiService) DeleteManagedNamespaces(ctx context.Context, 
 // DeleteManagedNamespacesExecute executes the request
 //
 //	@return GeoSharding20240805
-func (a *GlobalClustersApiService) DeleteManagedNamespacesExecute(r DeleteManagedNamespacesApiRequest) (*GeoSharding20240805, *http.Response, error) {
+func (a *GlobalClustersAPIService) DeleteManagedNamespacesExecute(r DeleteManagedNamespacesApiRequest) (*GeoSharding20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodDelete
 		localVarPostBody    any
@@ -598,7 +597,7 @@ func (a *GlobalClustersApiService) DeleteManagedNamespacesExecute(r DeleteManage
 		localVarReturnValue *GeoSharding20240805
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalClustersApiService.DeleteManagedNamespaces")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalClustersAPIService.DeleteManagedNamespaces")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -674,7 +673,7 @@ func (a *GlobalClustersApiService) DeleteManagedNamespacesExecute(r DeleteManage
 
 type GetClusterGlobalWritesApiRequest struct {
 	ctx         context.Context
-	ApiService  GlobalClustersApi
+	ApiService  GlobalClustersAPI
 	groupId     string
 	clusterName string
 }
@@ -684,7 +683,7 @@ type GetClusterGlobalWritesApiParams struct {
 	ClusterName string
 }
 
-func (a *GlobalClustersApiService) GetClusterGlobalWritesWithParams(ctx context.Context, args *GetClusterGlobalWritesApiParams) GetClusterGlobalWritesApiRequest {
+func (a *GlobalClustersAPIService) GetClusterGlobalWritesWithParams(ctx context.Context, args *GetClusterGlobalWritesApiParams) GetClusterGlobalWritesApiRequest {
 	return GetClusterGlobalWritesApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -707,7 +706,7 @@ Returns one managed namespace within the specified global cluster. A managed nam
 	@param clusterName Human-readable label that identifies this cluster.
 	@return GetClusterGlobalWritesApiRequest
 */
-func (a *GlobalClustersApiService) GetClusterGlobalWrites(ctx context.Context, groupId string, clusterName string) GetClusterGlobalWritesApiRequest {
+func (a *GlobalClustersAPIService) GetClusterGlobalWrites(ctx context.Context, groupId string, clusterName string) GetClusterGlobalWritesApiRequest {
 	return GetClusterGlobalWritesApiRequest{
 		ApiService:  a,
 		ctx:         ctx,
@@ -719,7 +718,7 @@ func (a *GlobalClustersApiService) GetClusterGlobalWrites(ctx context.Context, g
 // GetClusterGlobalWritesExecute executes the request
 //
 //	@return GeoSharding20240805
-func (a *GlobalClustersApiService) GetClusterGlobalWritesExecute(r GetClusterGlobalWritesApiRequest) (*GeoSharding20240805, *http.Response, error) {
+func (a *GlobalClustersAPIService) GetClusterGlobalWritesExecute(r GetClusterGlobalWritesApiRequest) (*GeoSharding20240805, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
@@ -727,7 +726,7 @@ func (a *GlobalClustersApiService) GetClusterGlobalWritesExecute(r GetClusterGlo
 		localVarReturnValue *GeoSharding20240805
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalClustersApiService.GetClusterGlobalWrites")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GlobalClustersAPIService.GetClusterGlobalWrites")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

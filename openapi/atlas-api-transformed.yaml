@@ -555,6 +555,165 @@ components:
       required:
         - policyItems
       type: object
+    AiModelApiKeyCreateRequest:
+      properties:
+        cloud:
+          description: Cloud provider scope for this API key. Must be "ANY". Additional cloud values will be supported in future API versions.
+          example: ANY
+          minLength: 1
+          pattern: ANY
+          type: string
+          writeOnly: true
+        geography:
+          description: Geography scope for this API key. Must be "ANY". Additional geography values will be supported in future API versions.
+          example: ANY
+          minLength: 1
+          pattern: ANY
+          type: string
+          writeOnly: true
+        name:
+          description: A name for the new API key that will be created.
+          maxLength: 250
+          minLength: 1
+          type: string
+      required:
+        - cloud
+        - geography
+        - name
+      type: object
+    AiModelApiKeyResponse:
+      properties:
+        apiKeyId:
+          description: Identifier used to reference this API key in admin API calls.
+          example: a86r5kwrfsk5r5ku5tgvhmpj
+          readOnly: true
+          type: string
+        cloud:
+          description: Cloud provider scope for this API key. Use "ANY" for cloud-agnostic scope.
+          example: ANY
+          readOnly: true
+          type: string
+        createdAt:
+          description: UTC date when the API key was created. This parameter is formatted as an ISO 8601 timestamp.
+          example: 2026-01-15T16:47:49.855000+00:00
+          readOnly: true
+          type: string
+        createdBy:
+          description: Name of the user that created this API key. If no user name is available, the user ID is returned.
+          example: John Doe
+          readOnly: true
+          type: string
+        endpoint:
+          description: Server-computed endpoint hostname derived from cloud and geography. This field is read-only and must not be supplied in request bodies.
+          example: ai.mongodb.com
+          readOnly: true
+          type: string
+        geography:
+          description: Geography scope for this API key. Use "ANY" for geography-agnostic scope.
+          example: ANY
+          readOnly: true
+          type: string
+        groupId:
+          description: ID of the Atlas group this API key belongs to.
+          example: 69681d39c9e8cfd375386316
+          readOnly: true
+          type: string
+        lastUsedAt:
+          description: UTC date when the API key was last used. This parameter is formatted as an ISO 8601 timestamp.
+          example: 2026-01-15T16:47:49.855000+00:00
+          readOnly: true
+          type: string
+        maskedSecret:
+          description: A partially obfuscated version of the API key secret returned when the API key was created.
+          example: al-****odu2
+          readOnly: true
+          type: string
+        name:
+          description: Arbitrary string identifier assigned to this API key for convenient identification.
+          example: Production key
+          maxLength: 250
+          minLength: 1
+          type: string
+        secret:
+          description: "The full API key secret used for interacting with the embedding / reranking service. Note: this will only be fully populated in the response to a create API key request. Responses to get, list, and update requests will not include the secret."
+          example: al-jZsluhPMzPM9CFXepRWwMwvpZDDra6tZMgoAZKdodu2
+          format: password
+          readOnly: true
+          type: string
+        status:
+          description: A string describing the current status of the API key.
+          example: ACTIVE
+          readOnly: true
+          type: string
+      type: object
+    AiModelApiKeyUpdateRequest:
+      properties:
+        name:
+          description: A new name for the API key.
+          maxLength: 250
+          minLength: 1
+          type: string
+      required:
+        - name
+      type: object
+    AiModelRateLimitResponse:
+      properties:
+        cloud:
+          description: Cloud provider scope for this rate limit. Use "any" for cloud-agnostic scope.
+          example: ANY
+          readOnly: true
+          type: string
+        endpoint:
+          description: Server-computed endpoint hostname derived from cloud and geography. This field is read-only and must not be supplied in request bodies.
+          example: ai.mongodb.com
+          readOnly: true
+          type: string
+        geography:
+          description: Geography scope for this rate limit. Use "any" for geography-agnostic scope.
+          example: ANY
+          readOnly: true
+          type: string
+        modelGroupName:
+          description: Identifier used to reference this model group.
+          example: embed_large
+          readOnly: true
+          type: string
+        modelNames:
+          description: List of embedding model names included in this model group.
+          items:
+            type: string
+          maxItems: 100
+          readOnly: true
+          type: array
+        requestsPerMinuteLimit:
+          description: The number of requests per minute allowed for this model group. Must be a positive integer. Cannot be more than the organization level limit for this group model.
+          example: 2000
+          format: int32
+          minimum: 1
+          type: integer
+        tokensPerMinuteLimit:
+          description: The number of tokens per minute allowed for this model group. Must be a positive integer. Cannot be more than the organization level limit for this group model.
+          example: 3000000
+          format: int32
+          minimum: 1
+          type: integer
+      type: object
+    AiModelsRateLimitUpdateRequest:
+      properties:
+        requestsPerMinuteLimit:
+          description: The number of requests per minute allowed for this model group. Must be a positive integer. Cannot be more than the organization level limit for this group model.
+          format: int32
+          minimum: 1
+          type: integer
+        tokensPerMinuteLimit:
+          description: The number of tokens per minute allowed for this model group. Must be a positive integer. Cannot be more than the organization level limit for this group model.
+          format: int32
+          minimum: 1
+          type: integer
+      required:
+        - requestsPerMinuteLimit
+        - tokensPerMinuteLimit
+      type: object
     AlertViewForNdsGroup:
       type: object
       properties:
@@ -898,6 +1057,14 @@ components:
           description: 'Routing key that MongoDB Cloud needs to send alert notifications to Splunk On-Call. The resource requires this parameter when `"notifications.[n].typeName" : "VICTOR_OPS"`. If the key later becomes invalid, MongoDB Cloud sends an email to the project owners. If the key remains invalid, MongoDB Cloud removes it.'
           example: test routing
           type: string
+        webhookBodyTemplate:
+          description: Template, using ${field} interpolation, that renders the HTTP body MongoDB Cloud sends with each webhook notification. Must render valid JSON. When unset, MongoDB Cloud sends its default JSON payload.
+          format: password
+          type: string
+        webhookHeadersTemplate:
+          description: Template, using ${field} interpolation, that renders the HTTP headers MongoDB Cloud sends with each webhook notification. Must render a JSON object mapping header name to header value. The webhook secret and the signature header are NOT exposed to templates.
+          format: password
+          type: string
         webhookSecret:
           description: |-
             Authentication secret for a webhook-based alert.
@@ -933,6 +1100,219 @@ components:
           description: Flag that indicates whether to enable or disable the specified alert configuration in the specified project.
           type: boolean
       title: Toggle Request
+      type: object
+    ApiAtlasCollectionRestoreCollectionStateResponse:
+      description: Collection-level state within a collection restore job.
+      properties:
+        effectiveTargetNamespace:
+          description: Actual target namespace after restore (e.g. after conflict rename).
+          readOnly: true
+          type: string
+        indexStatus:
+          $ref: "#/components/schemas/ApiAtlasCollectionRestoreIndexStatus"
+        restoredDocuments:
+          description: Number of documents restored so far.
+          format: int64
+          readOnly: true
+          type: integer
+        sourceNamespace:
+          description: Source namespace that was requested to restore.
+          readOnly: true
+          type: string
+        state:
+          description: Current state of this collection within the restore job.
+          readOnly: true
+          type: string
+        targetNamespace:
+          description: Requested target namespace for the restored collection.
+          readOnly: true
+          type: string
+        totalDocuments:
+          description: Total document count for this collection.
+          format: int64
+          readOnly: true
+          type: integer
+      type: object
+    ApiAtlasCollectionRestoreIndexStatus:
+      description: Index build status for a collection within a restore job.
+      properties:
+        errorMessage:
+          description: Error message if index build failed.
+          type: string
+        failedIndexes:
+          description: List of index specifications that failed to build (up to 64 items).
+          items:
+            additionalProperties: true
+            description: Index specification with arbitrary fields (e.g. name, key, unique).
+            type: object
+          maxItems: 64
+          type: array
+        state:
+          description: Index build state indicating the status of index creation during or after a restore operation.
+          type: string
+      readOnly: true
+      type: object
+    ApiAtlasCollectionRestoreJobIndexStatus:
+      description: Overall index build status for a collection restore job.
+      properties:
+        failedCollectionCount:
+          description: Number of collections that failed to build indexes.
+          format: int32
+          minimum: 0
+          type: integer
+        state:
+          description: Index build state indicating the status of index creation during or after a restore operation.
+          type: string
+      readOnly: true
+      type: object
+    ApiAtlasCollectionRestoreJobRequest:
+      description: Request body for creating a collection restore job.
+      properties:
+        collectionSuffix:
+          description: Optional suffix applied to restored collection names.
+          type: string
+        collections:
+          description: List of collections to restore (up to 100 items).
+          items:
+            $ref: "#/components/schemas/ApiAtlasRestoreNamespace"
+          maxItems: 100
+          type: array
+        databaseSuffix:
+          description: Optional suffix applied to restored database names.
+          type: string
+        databases:
+          description: List of databases to restore (up to 100 items).
+          items:
+            $ref: "#/components/schemas/ApiAtlasRestoreNamespace"
+          maxItems: 100
+          type: array
+        indexStrategy:
+          description: Strategy for restoring indexes (all, none, or all except TTL).
+          type: string
+        oplogInc:
+          description: Oplog increment for point-in-time restore.
+          format: int32
+          type: integer
+        oplogTs:
+          description: Oplog timestamp (seconds part) for point-in-time restore.
+          format: int32
+          type: integer
+        pointInTimeUtcSeconds:
+          description: Point-in-time restore time in seconds since UNIX epoch.
+          format: int32
+          type: integer
+        snapshotId:
+          description: ID of the snapshot to restore.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          type: string
+        targetClusterName:
+          description: Target cluster name.
+          type: string
+        targetGroupId:
+          description: Unique 24-hexadecimal digit string that identifies the target group.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          type: string
+        writeStrategy:
+          description: Strategy for writing data on the target (create as new or overwrite existing). With `OVERWRITE_EXISTING`, any writes to the affected databases or collections during the restore will be lost when the existing namespaces are dropped and replaced. To avoid data loss, stop writes to the affected namespaces before starting the restore.
+          type: string
+      required:
+        - indexStrategy
+        - targetClusterName
+        - targetGroupId
+        - writeStrategy
+      type: object
+    ApiAtlasCollectionRestoreJobResponse:
+      description: Collection restore job summary including the list of databases and collections in the restore scope (up to 100 items each).
+      properties:
+        collectionSuffix:
+          description: Suffix applied to restored collection names.
+          type: string
+        collections:
+          description: List of collections in the restore scope (up to 100 items).
+          items:
+            $ref: "#/components/schemas/ApiAtlasRestoreNamespace"
+          maxItems: 100
+          type: array
+        createdAt:
+          description: Date and time when the restore job was created (ISO 8601 format in UTC).
+          format: date-time
+          readOnly: true
+          type: string
+        databaseSuffix:
+          description: Suffix applied to restored database names.
+          type: string
+        databases:
+          description: List of databases in the restore scope (up to 100 items).
+          items:
+            $ref: "#/components/schemas/ApiAtlasRestoreNamespace"
+          maxItems: 100
+          type: array
+        errorMessage:
+          description: Error message when the job has failed or been canceled.
+          readOnly: true
+          type: string
+        finishedAt:
+          description: Date and time when the restore job finished (ISO 8601 format in UTC).
+          format: date-time
+          readOnly: true
+          type: string
+        id:
+          description: Unique 24-hexadecimal digit string that identifies the collection restore job.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+          type: string
+        indexStatus:
+          $ref: "#/components/schemas/ApiAtlasCollectionRestoreJobIndexStatus"
+        indexStrategy:
+          description: Strategy for restoring indexes (all, none, or all except TTL).
+          type: string
+        oplogInc:
+          description: Oplog increment for point-in-time restore.
+          format: int32
+          type: integer
+        oplogTs:
+          description: Oplog timestamp (seconds part) for point-in-time restore.
+          format: int32
+          type: integer
+        pointInTimeUtcSeconds:
+          description: Point-in-time restore time in seconds since UNIX epoch.
+          format: int32
+          type: integer
+        restoredDocuments:
+          description: Number of documents restored so far across all supported collections.
+          format: int64
+          minimum: 0
+          readOnly: true
+          type: integer
+        snapshotId:
+          description: Unique 24-hexadecimal digit string that identifies the snapshot being restored.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          type: string
+        state:
+          description: Current state of the collection restore job.
+          readOnly: true
+          type: string
+        targetClusterName:
+          description: Human-readable label that identifies the target cluster.
+          type: string
+        targetGroupId:
+          description: Unique 24-hexadecimal digit string that identifies the target group.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          type: string
+        totalDocuments:
+          description: Total number of documents across all supported collections in the restore job. This value may initially reflect an estimate based on collection metadata and can change as accurate document counts become available during the restore.
+          format: int64
+          minimum: 0
+          readOnly: true
+          type: integer
+        writeStrategy:
+          description: Strategy for writing data on the target (create as new or overwrite existing). With `OVERWRITE_EXISTING`, any writes to the affected databases or collections during the restore will be lost when the existing namespaces are dropped and replaced. To avoid data loss, stop writes to the affected namespaces before starting the restore.
+          type: string
       type: object
     ApiError:
       properties:
@@ -2377,7 +2757,7 @@ components:
           type: string
         vnetName:
           description: Human-readable label that identifies the VNet that you want to peer with the MongoDB Cloud VNet.
-          pattern: ^([-\w._()])$
+          pattern: ^([-\w._()])+$
           type: string
         errorMessage:
           description: Details of the error returned when requesting a GCP network peering resource. The resource returns `null` if the request succeeded.
@@ -3635,7 +4015,7 @@ components:
           type: string
         vnetName:
           description: Unique string that identifies the Azure VNet in which MongoDB Cloud clusters in this network peering container exist. The response returns **null** if no clusters exist in this network peering container.
-          pattern: ^([-\w._()])$
+          pattern: ^([-\w._()])+$
           readOnly: true
           type: string
         gcpProjectId:
@@ -4874,6 +5254,9 @@ components:
           description: Legacy 20-hexadecimal digit string that identifies the UI access identity provider that this connected organization configuration is associated with. This id can be found within the Federation Management Console > Identity Providers tab by clicking the info icon in the IdP ID row of a configured identity provider.
           pattern: ^([a-f0-9]{20})$
           type: string
+        instantUserProvisioningDisabled:
+          description: Flag that indicates whether instant user provisioning is disabled for this connected organization.
+          type: boolean
         orgId:
           description: Unique 24-hexadecimal digit string that identifies the connected organization configuration.
           example: 32b6e34b3d91647abb20e7b8
@@ -6154,6 +6537,24 @@ components:
         - retentionUnit
         - retentionValue
       type: object
+    DiskBackupCollectionResponse:
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        name:
+          description: Human-readable label that identifies the collection in the database within the snapshot.
+          readOnly: true
+          type: string
+      required:
+        - name
+      type: object
     DiskBackupCopyPolicyItem:
       description: Specifications for one copy policy item.
       properties:
@@ -6260,6 +6661,24 @@ components:
           type: string
       required:
         - zoneId
+      type: object
+    DiskBackupDatabaseResponse:
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        name:
+          description: Human-readable label that identifies the database within the snapshot.
+          readOnly: true
+          type: string
+      required:
+        - name
       type: object
     DiskBackupExportJob:
       properties:
@@ -9129,7 +9548,9 @@ components:
         secretExpiresAfterHours:
           description: The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization's settings.
           example: 8
+          exclusiveMinimum: true
           format: int32
+          minimum: 0
           type: integer
       required:
         - description
@@ -11714,6 +12135,48 @@ components:
               - endMinute
               - startHour
               - startMinute
+    OrgDelegationSettingsResponse:
+      properties:
+        delegatedMcpAccess:
+          description: Policy that controls how MCP (Model Context Protocol) delegated access is permitted within this organization. Possible values are `DISALLOWED`, `READ_ONLY`, and `READ_WRITE`. Defaults to `DISALLOWED`.
+          type: string
+        delegatedPartnerAccess:
+          description: Policy that controls whether partner delegated access is permitted within this organization. Possible values are `DISALLOWED` and `READ_WRITE`. Defaults to `DISALLOWED`.
+          type: string
+        idleRefreshTokenLifetime:
+          description: Maximum number of seconds a refresh token may be idle before it expires. When not set, the system default applies.
+          format: int64
+          maximum: 31536000
+          minimum: 1
+          type: integer
+        maximumRefreshTokenLifetime:
+          description: Maximum lifetime of a refresh token in seconds, regardless of activity. When not set, the system default applies.
+          format: int64
+          maximum: 31536000
+          minimum: 1
+          type: integer
+      type: object
+    OrgDelegationSettingsUpdateRequest:
+      properties:
+        delegatedMcpAccess:
+          description: Policy that controls how MCP (Model Context Protocol) delegated access is permitted within this organization. Possible values are `DISALLOWED`, `READ_ONLY`, and `READ_WRITE`. Defaults to `DISALLOWED`.
+          type: string
+        delegatedPartnerAccess:
+          description: Policy that controls whether partner delegated access is permitted within this organization. Possible values are `DISALLOWED` and `READ_WRITE`. Defaults to `DISALLOWED`.
+          type: string
+        idleRefreshTokenLifetime:
+          description: Maximum number of seconds a refresh token may be idle before it expires. Omit to leave unchanged; set to null to reset to the system default. Must be between 1 and 31536000 (1 year) when provided.
+          format: int64
+          maximum: 31536000
+          minimum: 1
+          type: integer
+        maximumRefreshTokenLifetime:
+          description: Maximum lifetime of a refresh token in seconds, regardless of activity. Omit to leave unchanged; set to null to reset to the system default. Must be between 1 and 31536000 (1 year) when provided.
+          format: int64
+          maximum: 31536000
+          minimum: 1
+          type: integer
+      type: object
     OrgFederationSettings:
       description: Details that define how to connect one MongoDB Cloud organization to one federated authentication service.
       properties:
@@ -11838,7 +12301,9 @@ components:
         secretExpiresAfterHours:
           description: The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization's settings.
           example: 8
+          exclusiveMinimum: true
           format: int32
+          minimum: 0
           type: integer
       required:
         - description
@@ -12213,6 +12678,9 @@ components:
         multiFactorAuthRequired:
           description: "Flag that indicates whether to require users to set up Multi-Factor Authentication (MFA) before accessing the specified organization. To learn more, see: https://www.mongodb.com/docs/atlas/security-multi-factor-authentication/."
           type: boolean
+        operationsContact:
+          description: String that specifies a distribution list email address for the specified organization to receive proactive notifications about its infrastructure. The operations contact is used for notifications only and is not authorized to make decisions or approvals. Passing an explicit null clears the existing operations contact (if any). An empty string is invalid and is rejected with a validation error.
+          type: string
         restrictEmployeeAccess:
           description: "Flag that indicates whether to block MongoDB Support from accessing Atlas infrastructure and cluster logs for any deployment in the specified organization without explicit permission. Once this setting is turned on, you can grant MongoDB Support a 24-hour bypass access to the Atlas deployment to resolve support issues. To learn more, see: https://www.mongodb.com/docs/atlas/security-restrict-support-access/."
           type: boolean
@@ -12280,6 +12748,60 @@ components:
           description: List of returned documents that MongoDB Cloud provides when completing this request.
           items:
             $ref: "#/components/schemas/StreamsConnection"
+          readOnly: true
+          type: array
+        totalCount:
+          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
+      required:
+        - results
+      type: object
+    PaginatedAtlasAiModelApiKeysResponse:
+      description: List response for AI Model API keys at the organization and project level.
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        results:
+          description: List of returned documents that MongoDB Cloud provides when completing this request.
+          items:
+            $ref: "#/components/schemas/AiModelApiKeyResponse"
+          readOnly: true
+          type: array
+        totalCount:
+          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
+      required:
+        - results
+      type: object
+    PaginatedAtlasAiModelRateLimitsResponse:
+      description: List response for AI Model rate limits at the organization and project level.
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        results:
+          description: List of returned documents that MongoDB Cloud provides when completing this request.
+          items:
+            $ref: "#/components/schemas/AiModelRateLimitResponse"
           readOnly: true
           type: array
         totalCount:
@@ -14923,6 +15445,13 @@ components:
       required:
         - provider
       type: object
+    StreamsPrivateLinkConnectionRequest:
+      description: Request body for updating a Private Link connection.
+      properties:
+        dnsDomain:
+          description: The domain hostname for the AWS Confluent Serverless Private Link connection. Allowed only when no domain is currently set, or when the connection is in `IDLE` state.
+          type: string
+      type: object
     StreamsProcessor:
       description: An atlas stream processor.
       properties:
@@ -15501,6 +16030,16 @@ components:
           description: Routing key associated with your Splunk On-Call account.
           example: test routing
           type: string
+        bodyTemplate:
+          description: "HTTP body template for a webhook-based alert. The rendered output MUST be valid JSON — MongoDB Cloud sends the rendered body with `Content-Type: application/json`. If the template fails to render, exceeds the 16 KB limit, or renders non-JSON output, MongoDB Cloud sends the webhook with its default JSON payload instead."
+          example: '{"alert":"${id}","severity":"${severity}"}'
+          format: password
+          type: string
+        headersTemplate:
+          description: 'HTTP headers template for a webhook-based alert. The rendered output MUST be a JSON object mapping header name to header value (e.g. `{"X-Custom-Header": "static-value", "X-Alert-Id": "${id}"}`). Placeholders may reference any alert-view field plus `${eventType}`; the webhook secret and the signature header are NOT exposed to templates. If the template fails to render, exceeds the 4 KB limit, or renders output that is not a valid JSON name→value object, MongoDB Cloud sends the webhook with its default set of headers instead.'
+          example: '{"X-Alert-Id":"${id}","X-Event-Type":"${eventType}"}'
+          format: password
+          type: string
         secret:
           description: |-
             An optional field returned if your webhook is configured with a secret.
@@ -15610,6 +16149,8 @@ components:
               - apiKey
           WEBHOOK:
             properties:
+              - bodyTemplate
+              - headersTemplate
               - secret
               - url
             required:
@@ -16714,6 +17255,18 @@ components:
           readOnly: true
           type: string
       type: object
+    ApiAtlasRestoreNamespace:
+      description: Source and optional target namespace for a restore.
+      properties:
+        sourceNamespace:
+          description: Namespace requested to restore (e.g. database name or `database.collection`).
+          type: string
+        targetNamespace:
+          description: Requested target namespace for the restored data; if empty, source namespace is used.
+          type: string
+      required:
+        - sourceNamespace
+      type: object
     ApiAtlasSnapshotSchedule:
       properties:
         clusterCheckpointIntervalMin:
@@ -17319,6 +17872,58 @@ components:
       required:
         - results
       type: object
+    PaginatedApiAtlasCollectionRestoreCollectionState:
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        results:
+          description: List of returned documents that MongoDB Cloud provides when completing this request.
+          items:
+            $ref: "#/components/schemas/ApiAtlasCollectionRestoreCollectionStateResponse"
+          readOnly: true
+          type: array
+        totalCount:
+          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
+      required:
+        - results
+      type: object
+    PaginatedApiAtlasCollectionRestoreJob:
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        results:
+          description: List of returned documents that MongoDB Cloud provides when completing this request.
+          items:
+            $ref: "#/components/schemas/ApiAtlasCollectionRestoreJobResponse"
+          readOnly: true
+          type: array
+        totalCount:
+          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
+      required:
+        - results
+      type: object
     PaginatedApiAtlasDatabaseUser:
       description: List of MongoDB Database users granted access to databases in the specified project.
       properties:
@@ -17335,6 +17940,58 @@ components:
           description: List of returned documents that MongoDB Cloud provides when completing this request.
           items:
             $ref: "#/components/schemas/CloudDatabaseUser"
+          readOnly: true
+          type: array
+        totalCount:
+          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
+      required:
+        - results
+      type: object
+    PaginatedApiAtlasDiskBackupCollection:
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        results:
+          description: List of returned documents that MongoDB Cloud provides when completing this request.
+          items:
+            $ref: "#/components/schemas/DiskBackupCollectionResponse"
+          readOnly: true
+          type: array
+        totalCount:
+          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
+      required:
+        - results
+      type: object
+    PaginatedApiAtlasDiskBackupDatabase:
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        results:
+          description: List of returned documents that MongoDB Cloud provides when completing this request.
+          items:
+            $ref: "#/components/schemas/DiskBackupDatabaseResponse"
           readOnly: true
           type: array
         totalCount:
@@ -18859,7 +19516,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: d7345909d9e80107344a3bbee72fc3e2f4d9bfec
+  x-xgen-sha: ea98120e2058406298ef8c53fedb5f5f639e1cd5
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -21859,6 +22516,925 @@ paths:
       x-rolesRequirements:
         - Project Read Only
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Activity-Feed/operation/getGroupActivityFeed
+  /api/atlas/v2/groups/{groupId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits:
+    get:
+      description: Retrieve a single scoped AI model rate limit for the given group.
+      operationId: getGroupRateLimits
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Cloud provider scope. Must be "ANY". Additional values will be supported in future API versions.
+          in: path
+          name: cloud
+          required: true
+          schema:
+            type: string
+        - description: Geography scope. Must be "ANY". Additional values will be supported in future API versions.
+          in: path
+          name: geography
+          required: true
+          schema:
+            type: string
+        - description: The name of the model group to be retrieved.
+          in: path
+          name: modelGroupName
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/AiModelRateLimitResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Single AI Model Rate Limit for One Group
+      tags:
+        - AI Model Rate Limits
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api aiModelRateLimits getGroupRateLimits --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsApiParams{}
+            	sdkResp, httpResp, err := client.AIModelRateLimitsApi.
+            		GetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits?pretty=true"
+      x-rolesRequirements:
+        - Project Read Only
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/AI-Model-Rate-Limits/operation/getGroupAiModelApiCloudGeographyModelGroupNameRateLimits
+    patch:
+      description: Update a scoped AI model rate limit for the given model group.
+      operationId: updateGroupRateLimits
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Cloud provider scope. Must be "ANY". Additional values will be supported in future API versions.
+          in: path
+          name: cloud
+          required: true
+          schema:
+            type: string
+        - description: Geography scope. Must be "ANY". Additional values will be supported in future API versions.
+          in: path
+          name: geography
+          required: true
+          schema:
+            type: string
+        - description: The name of the model group to be updated.
+          in: path
+          name: modelGroupName
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/AiModelsRateLimitUpdateRequest"
+            x-xgen-version: 2025-03-12
+        description: A request containing the new rate limits for the given model group.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/AiModelRateLimitResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Update AI Model Rate Limit
+      tags:
+        - AI Model Rate Limits
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api aiModelRateLimits updateGroupRateLimits --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsApiParams{}
+            	sdkResp, httpResp, err := client.AIModelRateLimitsApi.
+            		UpdateGroupAiModelApiCloudGeographyModelGroupNameRateLimitsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Project Model Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/AI-Model-Rate-Limits/operation/updateGroupAiModelApiCloudGeographyModelGroupNameRateLimits
+  /api/atlas/v2/groups/{groupId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits:reset:
+    post:
+      description: Reset the scoped AI model rate limit for the given model group to default values.
+      operationId: resetGroupModelLimits
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Cloud provider scope. Must be "ANY". Additional values will be supported in future API versions.
+          in: path
+          name: cloud
+          required: true
+          schema:
+            type: string
+        - description: Geography scope. Must be "ANY". Additional values will be supported in future API versions.
+          in: path
+          name: geography
+          required: true
+          schema:
+            type: string
+        - description: The name of the model group to be reset to default rate limits.
+          in: path
+          name: modelGroupName
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/AiModelRateLimitResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Reset AI Model Rate Limit for One Model Group
+      tags:
+        - AI Model Rate Limits
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api aiModelRateLimits resetGroupModelLimits --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsApiParams{}
+            	sdkResp, httpResp, err := client.AIModelRateLimitsApi.
+            		ResetGroupAiModelApiCloudGeographyModelGroupNameRateLimitsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits:reset" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits:reset" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Project Model Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/AI-Model-Rate-Limits/operation/resetGroupAiModelApiCloudGeographyModelGroupNameRateLimits
+  /api/atlas/v2/groups/{groupId}/aiModelApiKeys:
+    get:
+      description: Retrieve AI model API keys for the given group.
+      operationId: listGroupModelKeys
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedAtlasAiModelApiKeysResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return AI Model API Keys for One Group
+      tags:
+        - AI Model API Keys
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api aiModelApiKeys listGroupModelKeys --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListGroupAiModelApiKeysApiParams{}
+            	sdkResp, httpResp, err := client.AIModelAPIKeysApi.
+            		ListGroupAiModelApiKeysWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiKeys?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiKeys?pretty=true"
+      x-rolesRequirements:
+        - Project Read Only
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/AI-Model-API-Keys/operation/listGroupAiModelApiKeys
+    post:
+      description: Create a new AI model API key for the given group.
+      operationId: createGroupModelKey
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/AiModelApiKeyCreateRequest"
+            x-xgen-version: 2025-03-12
+        description: A request containing the name, cloud, and geography of the new API key.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/AiModelApiKeyResponse"
+              x-xgen-version: 2025-03-12
+          description: Created
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create New AI Model API Key
+      tags:
+        - AI Model API Keys
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api aiModelApiKeys createGroupModelKey --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.CreateGroupAiModelApiKeyApiParams{}
+            	sdkResp, httpResp, err := client.AIModelAPIKeysApi.
+            		CreateGroupAiModelApiKeyWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiKeys" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiKeys" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Project Model Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/AI-Model-API-Keys/operation/createGroupAiModelApiKey
+  /api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId}:
+    delete:
+      description: Delete an existing AI model API key in the given group.
+      operationId: deleteGroupModelKey
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: The id of the API key to be deleted.
+          in: path
+          name: apiKeyId
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              x-xgen-version: 2025-03-12
+          description: No Content
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Delete Existing AI Model API Key
+      tags:
+        - AI Model API Keys
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api aiModelApiKeys deleteGroupModelKey --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.DeleteGroupAiModelApiKeyApiParams{}
+            	httpResp, err := client.AIModelAPIKeysApi.
+            		DeleteGroupAiModelApiKeyWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId}"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId}"
+      x-rolesRequirements:
+        - Project Model Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/AI-Model-API-Keys/operation/deleteGroupAiModelApiKey
+    get:
+      description: Retrieve a single AI model API key for the given group.
+      operationId: getGroupModelKey
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: The id of the API key to be retrieved.
+          in: path
+          name: apiKeyId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/AiModelApiKeyResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Single AI Model API Key for One Group
+      tags:
+        - AI Model API Keys
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api aiModelApiKeys getGroupModelKey --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetGroupAiModelApiKeyApiParams{}
+            	sdkResp, httpResp, err := client.AIModelAPIKeysApi.
+            		GetGroupAiModelApiKeyWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId}?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId}?pretty=true"
+      x-rolesRequirements:
+        - Project Read Only
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/AI-Model-API-Keys/operation/getGroupAiModelApiKey
+    patch:
+      description: Update an existing AI model API key in the given group. Only the name can be updated; scope is immutable after creation.
+      operationId: updateGroupModelKey
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: The id of the API key to be updated.
+          in: path
+          name: apiKeyId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/AiModelApiKeyUpdateRequest"
+            x-xgen-version: 2025-03-12
+        description: A request containing the new name for the API key.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/AiModelApiKeyResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Update Existing AI Model API Key
+      tags:
+        - AI Model API Keys
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api aiModelApiKeys updateGroupModelKey --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.UpdateGroupAiModelApiKeyApiParams{}
+            	sdkResp, httpResp, err := client.AIModelAPIKeysApi.
+            		UpdateGroupAiModelApiKeyWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId}" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiKeys/{apiKeyId}" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Project Model Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/AI-Model-API-Keys/operation/updateGroupAiModelApiKey
+  /api/atlas/v2/groups/{groupId}/aiModelApiRateLimits:
+    get:
+      description: Retrieve AI model rate limits for the given group.
+      operationId: getGroupModelLimits
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedAtlasAiModelRateLimitsResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return AI Model Rate Limits for One Group
+      tags:
+        - AI Model Rate Limits
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api aiModelRateLimits getGroupModelLimits --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetGroupAiModelApiRateLimitsApiParams{}
+            	sdkResp, httpResp, err := client.AIModelRateLimitsApi.
+            		GetGroupAiModelApiRateLimitsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiRateLimits?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiRateLimits?pretty=true"
+      x-rolesRequirements:
+        - Project Read Only
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/AI-Model-Rate-Limits/operation/getGroupAiModelApiRateLimits
+  /api/atlas/v2/groups/{groupId}/aiModelApiRateLimits:reset:
+    post:
+      description: Reset the AI Model rate limits for the given group to default values.
+      operationId: resetGroupRateLimits
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedAtlasAiModelRateLimitsResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Reset AI Model Rate Limits for Group
+      tags:
+        - AI Model Rate Limits
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api aiModelRateLimits resetGroupRateLimits --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ResetGroupAiModelApiRateLimitsApiParams{}
+            	sdkResp, httpResp, err := client.AIModelRateLimitsApi.
+            		ResetGroupAiModelApiRateLimitsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiRateLimits:reset" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/aiModelApiRateLimits:reset" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Project Model Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/AI-Model-Rate-Limits/operation/resetGroupAiModelApiRateLimits
+      x-xgen-method-verb-override:
+        customMethod: "True"
+        verb: reset
   /api/atlas/v2/groups/{groupId}/alertConfigs:
     get:
       description: |-
@@ -24970,7 +26546,7 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/cloudProviderAccess?pretty=true"
       x-rolesRequirements:
-        - Project Owner
+        - Project Read Only
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Provider-Access/operation/listGroupCloudProviderAccess
     post:
       description: Creates one access role for the specified cloud provider. Some MongoDB Cloud features use these cloud provider access roles for authentication. For the GCP provider, if the project folder is not yet provisioned, Atlas will now create the role asynchronously. An intermediate role with status `IN_PROGRESS` will be returned, and the final service account will be provisioned. Once the GCP project is set up, subsequent requests will create the service account synchronously.
@@ -25243,7 +26819,7 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/cloudProviderAccess/{roleId}?pretty=true"
       x-rolesRequirements:
-        - Project Owner
+        - Project Read Only
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Provider-Access/operation/getGroupCloudProviderAccess
     patch:
       description: Grants access to the specified project for the specified access role. This API endpoint is one step in a procedure to create unified access for MongoDB Cloud services. This is not required for GCP service account access.
@@ -27804,6 +29380,412 @@ paths:
       x-rolesRequirements:
         - Project Backup Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/updateGroupClusterBackupSnapshot
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases:
+    get:
+      description: Returns the list of databases that exist in the specified snapshot. Use this to discover namespaces before creating a collection restore job.
+      operationId: listBackupSnapshotDatabases
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            type: string
+        - description: Unique 24-hexadecimal digit string that identifies the desired snapshot.
+          in: path
+          name: snapshotId
+          required: true
+          schema:
+            pattern: ^([a-f0-9]{24})$
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiAtlasDiskBackupDatabase"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Databases in One Snapshot
+      tags:
+        - Cloud Backups
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api cloudBackups listBackupSnapshotDatabases --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListGroupClusterBackupSnapshotDatabasesApiParams{}
+            	sdkResp, httpResp, err := client.CloudBackupsApi.
+            		ListGroupClusterBackupSnapshotDatabasesWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases?pretty=true"
+      x-rolesRequirements:
+        - Project Backup Manager
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/listGroupClusterBackupSnapshotDatabases
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}:
+    get:
+      description: Returns one database that exists in the specified snapshot. Use this to confirm a known database exists before referencing it in a collection restore job.
+      operationId: getBackupSnapshotDatabase
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            type: string
+        - description: Unique 24-hexadecimal digit string that identifies the desired snapshot.
+          in: path
+          name: snapshotId
+          required: true
+          schema:
+            pattern: ^([a-f0-9]{24})$
+            type: string
+        - description: Human-readable label that identifies the database.
+          in: path
+          name: databaseName
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/DiskBackupDatabaseResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One Database in One Snapshot
+      tags:
+        - Cloud Backups
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api cloudBackups getBackupSnapshotDatabase --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetGroupClusterBackupSnapshotDatabaseApiParams{}
+            	sdkResp, httpResp, err := client.CloudBackupsApi.
+            		GetGroupClusterBackupSnapshotDatabaseWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}?pretty=true"
+      x-rolesRequirements:
+        - Project Backup Manager
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/getGroupClusterBackupSnapshotDatabase
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections:
+    get:
+      description: Returns the list of collections in the specified database that exist in the snapshot. Use this to discover namespaces before creating a collection restore job.
+      operationId: listSnapshotDatabaseCollections
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            type: string
+        - description: Unique 24-hexadecimal digit string that identifies the desired snapshot.
+          in: path
+          name: snapshotId
+          required: true
+          schema:
+            pattern: ^([a-f0-9]{24})$
+            type: string
+        - description: Human-readable label that identifies the database.
+          in: path
+          name: databaseName
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiAtlasDiskBackupCollection"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Collections in One Database in One Snapshot
+      tags:
+        - Cloud Backups
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api cloudBackups listSnapshotDatabaseCollections --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListGroupClusterBackupSnapshotDatabaseCollectionsApiParams{}
+            	sdkResp, httpResp, err := client.CloudBackupsApi.
+            		ListGroupClusterBackupSnapshotDatabaseCollectionsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections?pretty=true"
+      x-rolesRequirements:
+        - Project Backup Manager
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/listGroupClusterBackupSnapshotDatabaseCollections
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections/{collectionName}:
+    get:
+      description: Returns one collection that exists in the specified database in the snapshot. Use this to confirm a known collection exists before referencing it in a collection restore job.
+      operationId: getSnapshotDatabaseCollection
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            type: string
+        - description: Unique 24-hexadecimal digit string that identifies the desired snapshot.
+          in: path
+          name: snapshotId
+          required: true
+          schema:
+            pattern: ^([a-f0-9]{24})$
+            type: string
+        - description: Human-readable label that identifies the database.
+          in: path
+          name: databaseName
+          required: true
+          schema:
+            type: string
+        - description: Human-readable label that identifies the collection.
+          in: path
+          name: collectionName
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/DiskBackupCollectionResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One Collection in One Database in One Snapshot
+      tags:
+        - Cloud Backups
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api cloudBackups getSnapshotDatabaseCollection --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetGroupClusterBackupSnapshotDatabaseCollectionApiParams{}
+            	sdkResp, httpResp, err := client.CloudBackupsApi.
+            		GetGroupClusterBackupSnapshotDatabaseCollectionWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections/{collectionName}?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections/{collectionName}?pretty=true"
+      x-rolesRequirements:
+        - Project Backup Manager
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/getGroupClusterBackupSnapshotDatabaseCollection
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId}:
     delete:
       description: Removes one snapshot of one sharded cluster from the specified project.
@@ -28682,6 +30664,506 @@ paths:
       x-xgen-method-verb-override:
         customMethod: "True"
         verb: unpinNamespaces
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs:
+    get:
+      description: Returns all collection restore jobs for one cluster from the specified project.
+      operationId: listCollectionRestoreJobs
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+        - description: Human-readable label that identifies the cluster with the collection restore jobs you want to return.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiAtlasCollectionRestoreJob"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Collection Restore Jobs for One Cluster
+      tags:
+        - Cloud Backups
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api cloudBackups listCollectionRestoreJobs --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListGroupClusterCollectionRestoreJobsApiParams{}
+            	sdkResp, httpResp, err := client.CloudBackupsApi.
+            		ListGroupClusterCollectionRestoreJobsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs?pretty=true"
+      x-rolesRequirements:
+        - Project Backup Manager
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/listGroupClusterCollectionRestoreJobs
+    post:
+      description: Creates one collection-level restore job for one cluster from the specified project. Collection-level restores allow restoring specific databases or collections from a snapshot or point-in-time.
+      operationId: createCollectionRestoreJob
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the source cluster for the restore.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/ApiAtlasCollectionRestoreJobRequest"
+            x-xgen-version: 2025-03-12
+        description: Creates one collection-level restore job for one cluster from the specified project.
+        required: true
+      responses:
+        "201":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/ApiAtlasCollectionRestoreJobResponse"
+              x-xgen-version: 2025-03-12
+          description: Created
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create One Collection Restore Job
+      tags:
+        - Cloud Backups
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api cloudBackups createCollectionRestoreJob --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.CreateGroupClusterCollectionRestoreJobApiParams{}
+            	sdkResp, httpResp, err := client.CloudBackupsApi.
+            		CreateGroupClusterCollectionRestoreJobWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Project Backup Recovery Operator
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/createGroupClusterCollectionRestoreJob
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}:
+    get:
+      description: Returns one collection restore job for one cluster from the specified project.
+      operationId: getCollectionRestoreJob
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster with the collection restore jobs you want to return.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            type: string
+        - description: Unique 24-hexadecimal digit string that identifies the collection restore job to return.
+          in: path
+          name: jobId
+          required: true
+          schema:
+            pattern: ^([a-f0-9]{24})$
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/ApiAtlasCollectionRestoreJobResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One Collection Restore Job for One Cluster
+      tags:
+        - Cloud Backups
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api cloudBackups getCollectionRestoreJob --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetGroupClusterCollectionRestoreJobApiParams{}
+            	sdkResp, httpResp, err := client.CloudBackupsApi.
+            		GetGroupClusterCollectionRestoreJobWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}?pretty=true"
+      x-rolesRequirements:
+        - Project Backup Manager
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/getGroupClusterCollectionRestoreJob
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections:
+    get:
+      description: "Returns all collection-level restore states for one collection restore job from the specified project. Note: If the restore job is in the INITIALIZING state, this endpoint returns an empty list because collection-level states have not yet been created."
+      operationId: listRestoreJobCollections
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+        - description: Human-readable label that identifies the cluster with the collection restore job you want to return.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            type: string
+        - description: Unique 24-hexadecimal digit string that identifies the collection restore job.
+          in: path
+          name: jobId
+          required: true
+          schema:
+            pattern: ^([a-f0-9]{24})$
+            type: string
+        - description: Collection-level state to filter by.
+          in: query
+          name: state
+          schema:
+            description: Current state of this collection within the restore job.
+            type: string
+        - description: Source namespace to filter by (e.g. `db.collection`).
+          in: query
+          name: sourceNamespace
+          schema:
+            type: string
+        - description: Target namespace to filter by (e.g. `db.collection`).
+          in: query
+          name: targetNamespace
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedApiAtlasCollectionRestoreCollectionState"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Collection States for One Collection Restore Job
+      tags:
+        - Cloud Backups
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api cloudBackups listRestoreJobCollections --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListGroupClusterCollectionRestoreJobCollectionsApiParams{}
+            	sdkResp, httpResp, err := client.CloudBackupsApi.
+            		ListGroupClusterCollectionRestoreJobCollectionsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections?pretty=true"
+      x-rolesRequirements:
+        - Project Backup Manager
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/listGroupClusterCollectionRestoreJobCollections
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections/{sourceNamespace}:
+    get:
+      description: Returns one collection-level restore state for one collection restore job from the specified project.
+      operationId: getRestoreJobCollection
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster with the collection restore job you want to return.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            pattern: ^[a-zA-Z0-9][a-zA-Z0-9-]*$
+            type: string
+        - description: Unique 24-hexadecimal digit string that identifies the collection restore job.
+          in: path
+          name: jobId
+          required: true
+          schema:
+            pattern: ^([a-f0-9]{24})$
+            type: string
+        - description: Source namespace that identifies the collection to return (e.g. `db.collection`).
+          in: path
+          name: sourceNamespace
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/ApiAtlasCollectionRestoreCollectionStateResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One Collection State for One Collection Restore Job
+      tags:
+        - Cloud Backups
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api cloudBackups getRestoreJobCollection --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetGroupClusterCollectionRestoreJobCollectionApiParams{}
+            	sdkResp, httpResp, err := client.CloudBackupsApi.
+            		GetGroupClusterCollectionRestoreJobCollectionWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections/{sourceNamespace}?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections/{sourceNamespace}?pretty=true"
+      x-rolesRequirements:
+        - Project Backup Manager
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Backups/operation/getGroupClusterCollectionRestoreJobCollection
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/fts/indexes:
     post:
       deprecated: true
@@ -50360,12 +52842,18 @@ paths:
         verb: getInstance
   /api/atlas/v2/groups/{groupId}/serviceAccounts:
     get:
-      description: Returns all Service Accounts for the specified Project.
+      description: Returns all Service Accounts for the specified Project. By default, system-managed Service Accounts are excluded. Set `includeSystemManaged=true` to include them.
       operationId: listGroupServiceAccounts
       parameters:
         - $ref: "#/components/parameters/groupId"
         - $ref: "#/components/parameters/itemsPerPage"
         - $ref: "#/components/parameters/pageNum"
+        - description: Flag that indicates whether system-managed Service Accounts (such as those used for MCP ingress/egress integrations) are included in the response. When false, only user-managed Service Accounts are returned.
+          in: query
+          name: includeSystemManaged
+          schema:
+            default: false
+            type: boolean
       responses:
         "200":
           content:
@@ -54565,6 +57053,106 @@ paths:
       x-xgen-changelog:
         2024-10-02: The MongoDB Atlas Streams Processing Private Link API is now exposed as part of private preview, but is subject to change until GA.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/getGroupStreamPrivateLinkConnection
+    patch:
+      description: Updates one Private Link connection in the specified project.
+      operationId: updatePrivateLinkConnection
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique ID that identifies the Private Link connection.
+          in: path
+          name: connectionId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/StreamsPrivateLinkConnectionRequest"
+        description: The fields to update on the Private Link connection.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/StreamsPrivateLinkConnection"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Update One Private Link Connection
+      tags:
+        - Streams
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api streams updatePrivateLinkConnection --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.UpdateGroupStreamPrivateLinkConnectionApiParams{}
+            	sdkResp, httpResp, err := client.StreamsApi.
+            		UpdateGroupStreamPrivateLinkConnectionWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Organization Stream Processing Admin
+        - Project Stream Processing Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/updateGroupStreamPrivateLinkConnection
   /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections:
     get:
       description: Returns a list of incoming VPC Peering Connections.
@@ -56125,6 +58713,7 @@ paths:
         - If the user has a pending invitation to join the project's organization, MongoDB Cloud modifies it and grants project access. 
         - If the user doesn't have an invitation to join the organization, MongoDB Cloud sends a new invitation that grants the user organization and project access. 
         - If the user is already active in the project's organization, MongoDB Cloud grants access to the project. 
+        - Replaces `INVITATION_EXPIRED` and `INVITATION_REJECTED` user with the same email. A conflict, if and only if, there is an existing `PENDING` or `ACTIVE` user. 
       operationId: addGroupUsers
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -57466,6 +60055,352 @@ paths:
       x-rolesRequirements:
         - Organization Member
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Activity-Feed/operation/getOrgActivityFeed
+  /api/atlas/v2/orgs/{orgId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits:
+    get:
+      description: Retrieve a single scoped AI model rate limit for the given organization.
+      operationId: getOrgRateLimits
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: Cloud provider scope. Must be "ANY". Additional values will be supported in future API versions.
+          in: path
+          name: cloud
+          required: true
+          schema:
+            type: string
+        - description: Geography scope. Must be "ANY". Additional values will be supported in future API versions.
+          in: path
+          name: geography
+          required: true
+          schema:
+            type: string
+        - description: The name of the model group to be retrieved.
+          in: path
+          name: modelGroupName
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/AiModelRateLimitResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Single AI Model Rate Limit for One Organization
+      tags:
+        - AI Model Rate Limits
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api aiModelRateLimits getOrgRateLimits --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsApiParams{}
+            	sdkResp, httpResp, err := client.AIModelRateLimitsApi.
+            		GetOrgAiModelApiCloudGeographyModelGroupNameRateLimitsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/aiModelApiClouds/{cloud}/geographies/{geography}/modelGroupNames/{modelGroupName}/rateLimits?pretty=true"
+      x-rolesRequirements:
+        - Organization Read Only
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/AI-Model-Rate-Limits/operation/getOrgAiModelApiCloudGeographyModelGroupNameRateLimits
+  /api/atlas/v2/orgs/{orgId}/aiModelApiKeys:
+    get:
+      description: Retrieve AI model API keys for the given organization.
+      operationId: listOrgModelKeys
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedAtlasAiModelApiKeysResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return AI Model API Keys for One Organization
+      tags:
+        - AI Model API Keys
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api aiModelApiKeys listOrgModelKeys --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListOrgAiModelApiKeysApiParams{}
+            	sdkResp, httpResp, err := client.AIModelAPIKeysApi.
+            		ListOrgAiModelApiKeysWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/aiModelApiKeys?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/aiModelApiKeys?pretty=true"
+      x-rolesRequirements:
+        - Organization Read Only
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/AI-Model-API-Keys/operation/listOrgAiModelApiKeys
+  /api/atlas/v2/orgs/{orgId}/aiModelApiKeys/{apiKeyId}:
+    get:
+      description: Retrieve a single AI model API key for the given organization.
+      operationId: getOrgModelKey
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - description: The id of the API key to be retrieved.
+          in: path
+          name: apiKeyId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/AiModelApiKeyResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Single AI Model API Key for One Organization
+      tags:
+        - AI Model API Keys
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api aiModelApiKeys getOrgModelKey --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetOrgAiModelApiKeyApiParams{}
+            	sdkResp, httpResp, err := client.AIModelAPIKeysApi.
+            		GetOrgAiModelApiKeyWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/aiModelApiKeys/{apiKeyId}?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/aiModelApiKeys/{apiKeyId}?pretty=true"
+      x-rolesRequirements:
+        - Organization Read Only
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/AI-Model-API-Keys/operation/getOrgAiModelApiKey
+  /api/atlas/v2/orgs/{orgId}/aiModelApiRateLimits:
+    get:
+      description: Retrieve AI model rate limits for the given organization.
+      operationId: getOrgModelLimits
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedAtlasAiModelRateLimitsResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return AI Model Rate Limits for One Organization
+      tags:
+        - AI Model Rate Limits
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api aiModelRateLimits getOrgModelLimits --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetOrgAiModelApiRateLimitsApiParams{}
+            	sdkResp, httpResp, err := client.AIModelRateLimitsApi.
+            		GetOrgAiModelApiRateLimitsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/aiModelApiRateLimits?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/aiModelApiRateLimits?pretty=true"
+      x-rolesRequirements:
+        - Organization Read Only
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/AI-Model-Rate-Limits/operation/getOrgAiModelApiRateLimits
   /api/atlas/v2/orgs/{orgId}/apiKeys:
     get:
       description: Returns all organization API keys for the specified organization. The organization API keys grant programmatic access to an organization. You can't use the API key to log into MongoDB Cloud through the console.
@@ -58518,6 +61453,177 @@ paths:
       x-rolesRequirements:
         - Organization Billing Viewer
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Invoices/operation/getOrgBillingCostExplorerUsage
+  /api/atlas/v2/orgs/{orgId}/delegationSettings:
+    get:
+      description: Returns the delegation settings for the specified organization.
+      operationId: getOrgDelegationSettings
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/OrgDelegationSettingsResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Delegation Settings for One Organization
+      tags:
+        - Organizations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api organizations getOrgDelegationSettings --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetOrgDelegationSettingsApiParams{}
+            	sdkResp, httpResp, err := client.OrganizationsApi.
+            		GetOrgDelegationSettingsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/delegationSettings?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/delegationSettings?pretty=true"
+      x-rolesRequirements:
+        - Organization Member
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/getOrgDelegationSettings
+    patch:
+      description: Updates the delegation settings for the specified organization. Only fields present in the request body are updated; omitted fields retain their current values.
+      operationId: updateOrgDelegationSettings
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/OrgDelegationSettingsUpdateRequest"
+            x-xgen-version: 2025-03-12
+        description: Delegation settings to update.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/OrgDelegationSettingsResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Update Delegation Settings for One Organization
+      tags:
+        - Organizations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api organizations updateOrgDelegationSettings --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.UpdateOrgDelegationSettingsApiParams{}
+            	sdkResp, httpResp, err := client.OrganizationsApi.
+            		UpdateOrgDelegationSettingsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/delegationSettings" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/delegationSettings" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Organization Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/updateOrgDelegationSettings
   /api/atlas/v2/orgs/{orgId}/events:
     get:
       description: |-
@@ -60923,12 +64029,18 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Resource-Policies/operation/validateOrgResourcePolicies
   /api/atlas/v2/orgs/{orgId}/serviceAccounts:
     get:
-      description: Returns all Service Accounts for the specified Organization.
+      description: Returns all Service Accounts for the specified Organization. By default, system-managed Service Accounts are excluded. Set `includeSystemManaged=true` to include them.
       operationId: listOrgServiceAccounts
       parameters:
         - $ref: "#/components/parameters/orgId"
         - $ref: "#/components/parameters/itemsPerPage"
         - $ref: "#/components/parameters/pageNum"
+        - description: Flag that indicates whether system-managed Service Accounts (such as those used for MCP ingress/egress integrations) are included in the response. When false, only user-managed Service Accounts are returned.
+          in: query
+          name: includeSystemManaged
+          schema:
+            default: false
+            type: boolean
       responses:
         "200":
           content:
@@ -62926,7 +66038,9 @@ paths:
       description: |-
         Adds one MongoDB Cloud user to one team. You can add an active user or a user that has not yet accepted the invitation to join the organization. 
 
-        **Note**: This resource cannot be used to add a user invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint.
+        **Note**: This resource cannot be used to add a user invited via the deprecated Invite One MongoDB Cloud User to Join One Project endpoint. 
+
+        A user whose only organization invitation has `EXPIRED` or been `REJECTED` is treated as not belonging to the organization (`USER_NOT_IN_ORG`); re-invite them to the organization first (which creates a new pending invitation), then add them to the team.
       externalDocs:
         description: "Deprecated: Invite One MongoDB Cloud User to Join One Project endpoint"
         url: https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Projects/operation/updateProjectInvitation
@@ -63338,7 +66452,9 @@ paths:
       description: |-
         Invites one new or existing MongoDB Cloud user to join the organization. The invitation to join the organization will be sent to the username provided and must be accepted within 30 days. 
 
-        **Note**: If the user does not have an existing MongoDB Cloud account, they will be prompted to finish setting up an account upon accepting the invitation. If the user already has an account, they will still receive an invitation to access the organization.
+        **Note**: If the user does not have an existing MongoDB Cloud account, they will be prompted to finish setting up an account upon accepting the invitation. If the user already has an account, they will still receive an invitation to access the organization. 
+
+        Replaces `INVITATION_EXPIRED` and `INVITATION_REJECTED` user with the same email. A conflict, if and only if, there is an existing `PENDING` or `ACTIVE` user.
       operationId: createOrgUser
       parameters:
         - $ref: "#/components/parameters/orgId"
@@ -64354,7 +67470,8 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/skus?pretty=true"
       x-rolesRequirements:
-        - Organization Billing Viewer
+        - Organization Member
+        - Project Read Only
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Invoices/operation/listSkus
   /api/atlas/v2/skus/{skuId}:
     get:
@@ -64439,7 +67556,8 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/skus/{skuId}?pretty=true"
       x-rolesRequirements:
-        - Organization Billing Viewer
+        - Organization Member
+        - Project Read Only
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Invoices/operation/getSku
   /api/atlas/v2/unauth/controlPlaneIPAddresses:
     get:
@@ -64790,6 +67908,10 @@ tags:
     name: Access Tracking
   - description: Returns pre-filtered activity feed links for projects and organizations. The returned links can be shared and opened to view the activity feed with the specified filters applied.
     name: Activity Feed
+  - description: Returns, adds, edits, and removes API Keys for your AI Models.
+    name: AI Model API Keys
+  - description: Returns, adds, edits, and removes Rate Limits for your AI Models.
+    name: AI Model Rate Limits
   - description: Returns and edits the conditions that trigger alerts and how MongoDB Cloud notifies users. This collection remains under revision and may change.
     name: Alert Configurations
   - description: Returns and acknowledges alerts that MongoDB Cloud triggers based on the alert conditions that you define. This collection remains under revision and may change.
