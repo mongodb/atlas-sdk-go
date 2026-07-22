@@ -9,6 +9,15 @@ type NumberMetricValue struct {
 	Number *float64 `json:"number,omitempty"`
 	// Element used to express the quantity. This can be an element of time, storage capacity, and the like.
 	Units *string `json:"units,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *NumberMetricValue) MarshalJSON() ([]byte, error) {
+	type noMethod NumberMetricValue
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewNumberMetricValue instantiates a new NumberMetricValue object
@@ -59,6 +68,13 @@ func (o *NumberMetricValue) HasNumber() bool {
 // SetNumber gets a reference to the given float64 and assigns it to the Number field.
 func (o *NumberMetricValue) SetNumber(v float64) {
 	o.Number = &v
+	o.NullFields = removeNullField(o.NullFields, "Number")
+}
+
+// SetNumberNil sets Number to an explicit JSON null when marshaled.
+func (o *NumberMetricValue) SetNumberNil() {
+	o.Number = nil
+	o.NullFields = addNullField(o.NullFields, "Number")
 }
 
 // GetUnits returns the Units field value if set, zero value otherwise
@@ -92,4 +108,11 @@ func (o *NumberMetricValue) HasUnits() bool {
 // SetUnits gets a reference to the given string and assigns it to the Units field.
 func (o *NumberMetricValue) SetUnits(v string) {
 	o.Units = &v
+	o.NullFields = removeNullField(o.NullFields, "Units")
+}
+
+// SetUnitsNil sets Units to an explicit JSON null when marshaled.
+func (o *NumberMetricValue) SetUnitsNil() {
+	o.Units = nil
+	o.NullFields = addNullField(o.NullFields, "Units")
 }

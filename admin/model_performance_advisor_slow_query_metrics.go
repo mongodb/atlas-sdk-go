@@ -37,6 +37,15 @@ type PerformanceAdvisorSlowQueryMetrics struct {
 	// The length in bytes of the operation's result document.
 	// Read only field.
 	ResponseLength *int64 `json:"responseLength,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PerformanceAdvisorSlowQueryMetrics) MarshalJSON() ([]byte, error) {
+	type noMethod PerformanceAdvisorSlowQueryMetrics
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPerformanceAdvisorSlowQueryMetrics instantiates a new PerformanceAdvisorSlowQueryMetrics object
@@ -87,6 +96,13 @@ func (o *PerformanceAdvisorSlowQueryMetrics) HasDocsExamined() bool {
 // SetDocsExamined gets a reference to the given int64 and assigns it to the DocsExamined field.
 func (o *PerformanceAdvisorSlowQueryMetrics) SetDocsExamined(v int64) {
 	o.DocsExamined = &v
+	o.NullFields = removeNullField(o.NullFields, "DocsExamined")
+}
+
+// SetDocsExaminedNil sets DocsExamined to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorSlowQueryMetrics) SetDocsExaminedNil() {
+	o.DocsExamined = nil
+	o.NullFields = addNullField(o.NullFields, "DocsExamined")
 }
 
 // GetDocsExaminedReturnedRatio returns the DocsExaminedReturnedRatio field value if set, zero value otherwise
@@ -120,6 +136,13 @@ func (o *PerformanceAdvisorSlowQueryMetrics) HasDocsExaminedReturnedRatio() bool
 // SetDocsExaminedReturnedRatio gets a reference to the given float64 and assigns it to the DocsExaminedReturnedRatio field.
 func (o *PerformanceAdvisorSlowQueryMetrics) SetDocsExaminedReturnedRatio(v float64) {
 	o.DocsExaminedReturnedRatio = &v
+	o.NullFields = removeNullField(o.NullFields, "DocsExaminedReturnedRatio")
+}
+
+// SetDocsExaminedReturnedRatioNil sets DocsExaminedReturnedRatio to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorSlowQueryMetrics) SetDocsExaminedReturnedRatioNil() {
+	o.DocsExaminedReturnedRatio = nil
+	o.NullFields = addNullField(o.NullFields, "DocsExaminedReturnedRatio")
 }
 
 // GetDocsReturned returns the DocsReturned field value if set, zero value otherwise
@@ -153,6 +176,13 @@ func (o *PerformanceAdvisorSlowQueryMetrics) HasDocsReturned() bool {
 // SetDocsReturned gets a reference to the given int64 and assigns it to the DocsReturned field.
 func (o *PerformanceAdvisorSlowQueryMetrics) SetDocsReturned(v int64) {
 	o.DocsReturned = &v
+	o.NullFields = removeNullField(o.NullFields, "DocsReturned")
+}
+
+// SetDocsReturnedNil sets DocsReturned to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorSlowQueryMetrics) SetDocsReturnedNil() {
+	o.DocsReturned = nil
+	o.NullFields = addNullField(o.NullFields, "DocsReturned")
 }
 
 // GetFromUserConnection returns the FromUserConnection field value if set, zero value otherwise
@@ -186,6 +216,13 @@ func (o *PerformanceAdvisorSlowQueryMetrics) HasFromUserConnection() bool {
 // SetFromUserConnection gets a reference to the given bool and assigns it to the FromUserConnection field.
 func (o *PerformanceAdvisorSlowQueryMetrics) SetFromUserConnection(v bool) {
 	o.FromUserConnection = &v
+	o.NullFields = removeNullField(o.NullFields, "FromUserConnection")
+}
+
+// SetFromUserConnectionNil sets FromUserConnection to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorSlowQueryMetrics) SetFromUserConnectionNil() {
+	o.FromUserConnection = nil
+	o.NullFields = addNullField(o.NullFields, "FromUserConnection")
 }
 
 // GetHasIndexCoverage returns the HasIndexCoverage field value if set, zero value otherwise
@@ -219,6 +256,13 @@ func (o *PerformanceAdvisorSlowQueryMetrics) HasHasIndexCoverage() bool {
 // SetHasIndexCoverage gets a reference to the given bool and assigns it to the HasIndexCoverage field.
 func (o *PerformanceAdvisorSlowQueryMetrics) SetHasIndexCoverage(v bool) {
 	o.HasIndexCoverage = &v
+	o.NullFields = removeNullField(o.NullFields, "HasIndexCoverage")
+}
+
+// SetHasIndexCoverageNil sets HasIndexCoverage to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorSlowQueryMetrics) SetHasIndexCoverageNil() {
+	o.HasIndexCoverage = nil
+	o.NullFields = addNullField(o.NullFields, "HasIndexCoverage")
 }
 
 // GetHasSort returns the HasSort field value if set, zero value otherwise
@@ -252,6 +296,13 @@ func (o *PerformanceAdvisorSlowQueryMetrics) HasHasSort() bool {
 // SetHasSort gets a reference to the given bool and assigns it to the HasSort field.
 func (o *PerformanceAdvisorSlowQueryMetrics) SetHasSort(v bool) {
 	o.HasSort = &v
+	o.NullFields = removeNullField(o.NullFields, "HasSort")
+}
+
+// SetHasSortNil sets HasSort to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorSlowQueryMetrics) SetHasSortNil() {
+	o.HasSort = nil
+	o.NullFields = addNullField(o.NullFields, "HasSort")
 }
 
 // GetKeysExamined returns the KeysExamined field value if set, zero value otherwise
@@ -285,6 +336,13 @@ func (o *PerformanceAdvisorSlowQueryMetrics) HasKeysExamined() bool {
 // SetKeysExamined gets a reference to the given int64 and assigns it to the KeysExamined field.
 func (o *PerformanceAdvisorSlowQueryMetrics) SetKeysExamined(v int64) {
 	o.KeysExamined = &v
+	o.NullFields = removeNullField(o.NullFields, "KeysExamined")
+}
+
+// SetKeysExaminedNil sets KeysExamined to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorSlowQueryMetrics) SetKeysExaminedNil() {
+	o.KeysExamined = nil
+	o.NullFields = addNullField(o.NullFields, "KeysExamined")
 }
 
 // GetKeysExaminedReturnedRatio returns the KeysExaminedReturnedRatio field value if set, zero value otherwise
@@ -318,6 +376,13 @@ func (o *PerformanceAdvisorSlowQueryMetrics) HasKeysExaminedReturnedRatio() bool
 // SetKeysExaminedReturnedRatio gets a reference to the given float64 and assigns it to the KeysExaminedReturnedRatio field.
 func (o *PerformanceAdvisorSlowQueryMetrics) SetKeysExaminedReturnedRatio(v float64) {
 	o.KeysExaminedReturnedRatio = &v
+	o.NullFields = removeNullField(o.NullFields, "KeysExaminedReturnedRatio")
+}
+
+// SetKeysExaminedReturnedRatioNil sets KeysExaminedReturnedRatio to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorSlowQueryMetrics) SetKeysExaminedReturnedRatioNil() {
+	o.KeysExaminedReturnedRatio = nil
+	o.NullFields = addNullField(o.NullFields, "KeysExaminedReturnedRatio")
 }
 
 // GetNumYields returns the NumYields field value if set, zero value otherwise
@@ -351,6 +416,13 @@ func (o *PerformanceAdvisorSlowQueryMetrics) HasNumYields() bool {
 // SetNumYields gets a reference to the given int64 and assigns it to the NumYields field.
 func (o *PerformanceAdvisorSlowQueryMetrics) SetNumYields(v int64) {
 	o.NumYields = &v
+	o.NullFields = removeNullField(o.NullFields, "NumYields")
+}
+
+// SetNumYieldsNil sets NumYields to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorSlowQueryMetrics) SetNumYieldsNil() {
+	o.NumYields = nil
+	o.NullFields = addNullField(o.NullFields, "NumYields")
 }
 
 // GetOperationExecutionTime returns the OperationExecutionTime field value if set, zero value otherwise
@@ -384,6 +456,13 @@ func (o *PerformanceAdvisorSlowQueryMetrics) HasOperationExecutionTime() bool {
 // SetOperationExecutionTime gets a reference to the given int64 and assigns it to the OperationExecutionTime field.
 func (o *PerformanceAdvisorSlowQueryMetrics) SetOperationExecutionTime(v int64) {
 	o.OperationExecutionTime = &v
+	o.NullFields = removeNullField(o.NullFields, "OperationExecutionTime")
+}
+
+// SetOperationExecutionTimeNil sets OperationExecutionTime to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorSlowQueryMetrics) SetOperationExecutionTimeNil() {
+	o.OperationExecutionTime = nil
+	o.NullFields = addNullField(o.NullFields, "OperationExecutionTime")
 }
 
 // GetResponseLength returns the ResponseLength field value if set, zero value otherwise
@@ -417,4 +496,11 @@ func (o *PerformanceAdvisorSlowQueryMetrics) HasResponseLength() bool {
 // SetResponseLength gets a reference to the given int64 and assigns it to the ResponseLength field.
 func (o *PerformanceAdvisorSlowQueryMetrics) SetResponseLength(v int64) {
 	o.ResponseLength = &v
+	o.NullFields = removeNullField(o.NullFields, "ResponseLength")
+}
+
+// SetResponseLengthNil sets ResponseLength to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorSlowQueryMetrics) SetResponseLengthNil() {
+	o.ResponseLength = nil
+	o.NullFields = addNullField(o.NullFields, "ResponseLength")
 }

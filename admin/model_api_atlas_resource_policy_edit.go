@@ -10,6 +10,15 @@ type ApiAtlasResourcePolicyEdit struct {
 	Name *string `json:"name,omitempty"`
 	// List of policies that make up the atlas resource policy.
 	Policies *[]ApiAtlasPolicyCreate `json:"policies,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiAtlasResourcePolicyEdit) MarshalJSON() ([]byte, error) {
+	type noMethod ApiAtlasResourcePolicyEdit
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasResourcePolicyEdit instantiates a new ApiAtlasResourcePolicyEdit object
@@ -60,6 +69,13 @@ func (o *ApiAtlasResourcePolicyEdit) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *ApiAtlasResourcePolicyEdit) SetDescription(v string) {
 	o.Description = &v
+	o.NullFields = removeNullField(o.NullFields, "Description")
+}
+
+// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
+func (o *ApiAtlasResourcePolicyEdit) SetDescriptionNil() {
+	o.Description = nil
+	o.NullFields = addNullField(o.NullFields, "Description")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -93,6 +109,13 @@ func (o *ApiAtlasResourcePolicyEdit) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ApiAtlasResourcePolicyEdit) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *ApiAtlasResourcePolicyEdit) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }
 
 // GetPolicies returns the Policies field value if set, zero value otherwise
@@ -126,4 +149,11 @@ func (o *ApiAtlasResourcePolicyEdit) HasPolicies() bool {
 // SetPolicies gets a reference to the given []ApiAtlasPolicyCreate and assigns it to the Policies field.
 func (o *ApiAtlasResourcePolicyEdit) SetPolicies(v []ApiAtlasPolicyCreate) {
 	o.Policies = &v
+	o.NullFields = removeNullField(o.NullFields, "Policies")
+}
+
+// SetPoliciesNil sets Policies to an explicit JSON null when marshaled.
+func (o *ApiAtlasResourcePolicyEdit) SetPoliciesNil() {
+	o.Policies = nil
+	o.NullFields = addNullField(o.NullFields, "Policies")
 }

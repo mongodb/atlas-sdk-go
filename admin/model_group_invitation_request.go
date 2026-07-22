@@ -8,6 +8,15 @@ type GroupInvitationRequest struct {
 	Roles *[]string `json:"roles,omitempty"`
 	// Email address of the MongoDB Cloud user invited to the specified project.
 	Username *string `json:"username,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *GroupInvitationRequest) MarshalJSON() ([]byte, error) {
+	type noMethod GroupInvitationRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGroupInvitationRequest instantiates a new GroupInvitationRequest object
@@ -58,6 +67,13 @@ func (o *GroupInvitationRequest) HasRoles() bool {
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *GroupInvitationRequest) SetRoles(v []string) {
 	o.Roles = &v
+	o.NullFields = removeNullField(o.NullFields, "Roles")
+}
+
+// SetRolesNil sets Roles to an explicit JSON null when marshaled.
+func (o *GroupInvitationRequest) SetRolesNil() {
+	o.Roles = nil
+	o.NullFields = addNullField(o.NullFields, "Roles")
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *GroupInvitationRequest) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *GroupInvitationRequest) SetUsername(v string) {
 	o.Username = &v
+	o.NullFields = removeNullField(o.NullFields, "Username")
+}
+
+// SetUsernameNil sets Username to an explicit JSON null when marshaled.
+func (o *GroupInvitationRequest) SetUsernameNil() {
+	o.Username = nil
+	o.NullFields = addNullField(o.NullFields, "Username")
 }

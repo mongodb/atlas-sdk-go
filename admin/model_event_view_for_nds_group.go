@@ -13,7 +13,8 @@ type EventViewForNdsGroup struct {
 	ApiKeyId *string `json:"apiKeyId,omitempty"`
 	// Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
-	Created *time.Time `json:"created,omitempty"`
+	Created           *time.Time `json:"created,omitempty"`
+	DelegatePrincipal *Principal `json:"delegatePrincipal,omitempty"`
 	// Unique identifier of event type.
 	EventTypeName *string `json:"eventTypeName,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The `eventId` identifies the specific event.
@@ -119,6 +120,12 @@ type EventViewForNdsGroup struct {
 	// Name of the stream processing workspace associated with the event.
 	// Read only field.
 	InstanceName *string `json:"instanceName,omitempty"`
+	// Tier the stream processor scaled from.
+	// Read only field.
+	FromTier *string `json:"fromTier,omitempty"`
+	// Username of the user who modified the stream processor.
+	// Read only field.
+	ModifiedBy *string `json:"modifiedBy,omitempty"`
 	// Error message linked to the stream processor associated with the event.
 	// Read only field.
 	ProcessorErrorMsg *string `json:"processorErrorMsg,omitempty"`
@@ -128,6 +135,12 @@ type EventViewForNdsGroup struct {
 	// State of the stream processor associated with the event.
 	// Read only field.
 	ProcessorState *string `json:"processorState,omitempty"`
+	// Reason for the autoscale event.
+	// Read only field.
+	Reason *string `json:"reason,omitempty"`
+	// Tier the stream processor scaled to.
+	// Read only field.
+	ToTier *string `json:"toTier,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the resource policy.
 	// Read only field.
 	ResourcePolicyId *string `json:"resourcePolicyId,omitempty"`
@@ -136,6 +149,15 @@ type EventViewForNdsGroup struct {
 	// Resource policy action taken by the user and evaluated against the currently active policies.
 	// Read only field.
 	ViolationAction *string `json:"violationAction,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *EventViewForNdsGroup) MarshalJSON() ([]byte, error) {
+	type noMethod EventViewForNdsGroup
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewEventViewForNdsGroup instantiates a new EventViewForNdsGroup object
@@ -186,6 +208,13 @@ func (o *EventViewForNdsGroup) HasApiKeyId() bool {
 // SetApiKeyId gets a reference to the given string and assigns it to the ApiKeyId field.
 func (o *EventViewForNdsGroup) SetApiKeyId(v string) {
 	o.ApiKeyId = &v
+	o.NullFields = removeNullField(o.NullFields, "ApiKeyId")
+}
+
+// SetApiKeyIdNil sets ApiKeyId to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetApiKeyIdNil() {
+	o.ApiKeyId = nil
+	o.NullFields = addNullField(o.NullFields, "ApiKeyId")
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise
@@ -219,6 +248,53 @@ func (o *EventViewForNdsGroup) HasCreated() bool {
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *EventViewForNdsGroup) SetCreated(v time.Time) {
 	o.Created = &v
+	o.NullFields = removeNullField(o.NullFields, "Created")
+}
+
+// SetCreatedNil sets Created to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetCreatedNil() {
+	o.Created = nil
+	o.NullFields = addNullField(o.NullFields, "Created")
+}
+
+// GetDelegatePrincipal returns the DelegatePrincipal field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetDelegatePrincipal() Principal {
+	if o == nil || IsNil(o.DelegatePrincipal) {
+		var ret Principal
+		return ret
+	}
+	return *o.DelegatePrincipal
+}
+
+// GetDelegatePrincipalOk returns a tuple with the DelegatePrincipal field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetDelegatePrincipalOk() (*Principal, bool) {
+	if o == nil || IsNil(o.DelegatePrincipal) {
+		return nil, false
+	}
+
+	return o.DelegatePrincipal, true
+}
+
+// HasDelegatePrincipal returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasDelegatePrincipal() bool {
+	if o != nil && !IsNil(o.DelegatePrincipal) {
+		return true
+	}
+
+	return false
+}
+
+// SetDelegatePrincipal gets a reference to the given Principal and assigns it to the DelegatePrincipal field.
+func (o *EventViewForNdsGroup) SetDelegatePrincipal(v Principal) {
+	o.DelegatePrincipal = &v
+	o.NullFields = removeNullField(o.NullFields, "DelegatePrincipal")
+}
+
+// SetDelegatePrincipalNil sets DelegatePrincipal to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetDelegatePrincipalNil() {
+	o.DelegatePrincipal = nil
+	o.NullFields = addNullField(o.NullFields, "DelegatePrincipal")
 }
 
 // GetEventTypeName returns the EventTypeName field value if set, zero value otherwise
@@ -252,6 +328,13 @@ func (o *EventViewForNdsGroup) HasEventTypeName() bool {
 // SetEventTypeName gets a reference to the given string and assigns it to the EventTypeName field.
 func (o *EventViewForNdsGroup) SetEventTypeName(v string) {
 	o.EventTypeName = &v
+	o.NullFields = removeNullField(o.NullFields, "EventTypeName")
+}
+
+// SetEventTypeNameNil sets EventTypeName to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetEventTypeNameNil() {
+	o.EventTypeName = nil
+	o.NullFields = addNullField(o.NullFields, "EventTypeName")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -285,6 +368,13 @@ func (o *EventViewForNdsGroup) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *EventViewForNdsGroup) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -318,6 +408,13 @@ func (o *EventViewForNdsGroup) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *EventViewForNdsGroup) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetIsGlobalAdmin returns the IsGlobalAdmin field value if set, zero value otherwise
@@ -351,6 +448,13 @@ func (o *EventViewForNdsGroup) HasIsGlobalAdmin() bool {
 // SetIsGlobalAdmin gets a reference to the given bool and assigns it to the IsGlobalAdmin field.
 func (o *EventViewForNdsGroup) SetIsGlobalAdmin(v bool) {
 	o.IsGlobalAdmin = &v
+	o.NullFields = removeNullField(o.NullFields, "IsGlobalAdmin")
+}
+
+// SetIsGlobalAdminNil sets IsGlobalAdmin to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetIsGlobalAdminNil() {
+	o.IsGlobalAdmin = nil
+	o.NullFields = addNullField(o.NullFields, "IsGlobalAdmin")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -384,6 +488,13 @@ func (o *EventViewForNdsGroup) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *EventViewForNdsGroup) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetOrgId returns the OrgId field value if set, zero value otherwise
@@ -417,6 +528,13 @@ func (o *EventViewForNdsGroup) HasOrgId() bool {
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *EventViewForNdsGroup) SetOrgId(v string) {
 	o.OrgId = &v
+	o.NullFields = removeNullField(o.NullFields, "OrgId")
+}
+
+// SetOrgIdNil sets OrgId to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetOrgIdNil() {
+	o.OrgId = nil
+	o.NullFields = addNullField(o.NullFields, "OrgId")
 }
 
 // GetPublicKey returns the PublicKey field value if set, zero value otherwise
@@ -450,6 +568,13 @@ func (o *EventViewForNdsGroup) HasPublicKey() bool {
 // SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
 func (o *EventViewForNdsGroup) SetPublicKey(v string) {
 	o.PublicKey = &v
+	o.NullFields = removeNullField(o.NullFields, "PublicKey")
+}
+
+// SetPublicKeyNil sets PublicKey to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetPublicKeyNil() {
+	o.PublicKey = nil
+	o.NullFields = addNullField(o.NullFields, "PublicKey")
 }
 
 // GetRaw returns the Raw field value if set, zero value otherwise
@@ -483,6 +608,13 @@ func (o *EventViewForNdsGroup) HasRaw() bool {
 // SetRaw gets a reference to the given Raw and assigns it to the Raw field.
 func (o *EventViewForNdsGroup) SetRaw(v Raw) {
 	o.Raw = &v
+	o.NullFields = removeNullField(o.NullFields, "Raw")
+}
+
+// SetRawNil sets Raw to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetRawNil() {
+	o.Raw = nil
+	o.NullFields = addNullField(o.NullFields, "Raw")
 }
 
 // GetRemoteAddress returns the RemoteAddress field value if set, zero value otherwise
@@ -516,6 +648,13 @@ func (o *EventViewForNdsGroup) HasRemoteAddress() bool {
 // SetRemoteAddress gets a reference to the given string and assigns it to the RemoteAddress field.
 func (o *EventViewForNdsGroup) SetRemoteAddress(v string) {
 	o.RemoteAddress = &v
+	o.NullFields = removeNullField(o.NullFields, "RemoteAddress")
+}
+
+// SetRemoteAddressNil sets RemoteAddress to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetRemoteAddressNil() {
+	o.RemoteAddress = nil
+	o.NullFields = addNullField(o.NullFields, "RemoteAddress")
 }
 
 // GetUserId returns the UserId field value if set, zero value otherwise
@@ -549,6 +688,13 @@ func (o *EventViewForNdsGroup) HasUserId() bool {
 // SetUserId gets a reference to the given string and assigns it to the UserId field.
 func (o *EventViewForNdsGroup) SetUserId(v string) {
 	o.UserId = &v
+	o.NullFields = removeNullField(o.NullFields, "UserId")
+}
+
+// SetUserIdNil sets UserId to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetUserIdNil() {
+	o.UserId = nil
+	o.NullFields = addNullField(o.NullFields, "UserId")
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise
@@ -582,6 +728,13 @@ func (o *EventViewForNdsGroup) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *EventViewForNdsGroup) SetUsername(v string) {
 	o.Username = &v
+	o.NullFields = removeNullField(o.NullFields, "Username")
+}
+
+// SetUsernameNil sets Username to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetUsernameNil() {
+	o.Username = nil
+	o.NullFields = addNullField(o.NullFields, "Username")
 }
 
 // GetAlertId returns the AlertId field value if set, zero value otherwise
@@ -615,6 +768,13 @@ func (o *EventViewForNdsGroup) HasAlertId() bool {
 // SetAlertId gets a reference to the given string and assigns it to the AlertId field.
 func (o *EventViewForNdsGroup) SetAlertId(v string) {
 	o.AlertId = &v
+	o.NullFields = removeNullField(o.NullFields, "AlertId")
+}
+
+// SetAlertIdNil sets AlertId to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetAlertIdNil() {
+	o.AlertId = nil
+	o.NullFields = addNullField(o.NullFields, "AlertId")
 }
 
 // GetAlertConfigId returns the AlertConfigId field value if set, zero value otherwise
@@ -648,6 +808,13 @@ func (o *EventViewForNdsGroup) HasAlertConfigId() bool {
 // SetAlertConfigId gets a reference to the given string and assigns it to the AlertConfigId field.
 func (o *EventViewForNdsGroup) SetAlertConfigId(v string) {
 	o.AlertConfigId = &v
+	o.NullFields = removeNullField(o.NullFields, "AlertConfigId")
+}
+
+// SetAlertConfigIdNil sets AlertConfigId to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetAlertConfigIdNil() {
+	o.AlertConfigId = nil
+	o.NullFields = addNullField(o.NullFields, "AlertConfigId")
 }
 
 // GetTargetPublicKey returns the TargetPublicKey field value if set, zero value otherwise
@@ -681,6 +848,13 @@ func (o *EventViewForNdsGroup) HasTargetPublicKey() bool {
 // SetTargetPublicKey gets a reference to the given string and assigns it to the TargetPublicKey field.
 func (o *EventViewForNdsGroup) SetTargetPublicKey(v string) {
 	o.TargetPublicKey = &v
+	o.NullFields = removeNullField(o.NullFields, "TargetPublicKey")
+}
+
+// SetTargetPublicKeyNil sets TargetPublicKey to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetTargetPublicKeyNil() {
+	o.TargetPublicKey = nil
+	o.NullFields = addNullField(o.NullFields, "TargetPublicKey")
 }
 
 // GetWhitelistEntry returns the WhitelistEntry field value if set, zero value otherwise
@@ -714,6 +888,13 @@ func (o *EventViewForNdsGroup) HasWhitelistEntry() bool {
 // SetWhitelistEntry gets a reference to the given string and assigns it to the WhitelistEntry field.
 func (o *EventViewForNdsGroup) SetWhitelistEntry(v string) {
 	o.WhitelistEntry = &v
+	o.NullFields = removeNullField(o.NullFields, "WhitelistEntry")
+}
+
+// SetWhitelistEntryNil sets WhitelistEntry to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetWhitelistEntryNil() {
+	o.WhitelistEntry = nil
+	o.NullFields = addNullField(o.NullFields, "WhitelistEntry")
 }
 
 // GetInvoiceId returns the InvoiceId field value if set, zero value otherwise
@@ -747,6 +928,13 @@ func (o *EventViewForNdsGroup) HasInvoiceId() bool {
 // SetInvoiceId gets a reference to the given string and assigns it to the InvoiceId field.
 func (o *EventViewForNdsGroup) SetInvoiceId(v string) {
 	o.InvoiceId = &v
+	o.NullFields = removeNullField(o.NullFields, "InvoiceId")
+}
+
+// SetInvoiceIdNil sets InvoiceId to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetInvoiceIdNil() {
+	o.InvoiceId = nil
+	o.NullFields = addNullField(o.NullFields, "InvoiceId")
 }
 
 // GetPaymentId returns the PaymentId field value if set, zero value otherwise
@@ -780,6 +968,13 @@ func (o *EventViewForNdsGroup) HasPaymentId() bool {
 // SetPaymentId gets a reference to the given string and assigns it to the PaymentId field.
 func (o *EventViewForNdsGroup) SetPaymentId(v string) {
 	o.PaymentId = &v
+	o.NullFields = removeNullField(o.NullFields, "PaymentId")
+}
+
+// SetPaymentIdNil sets PaymentId to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetPaymentIdNil() {
+	o.PaymentId = nil
+	o.NullFields = addNullField(o.NullFields, "PaymentId")
 }
 
 // GetShardName returns the ShardName field value if set, zero value otherwise
@@ -813,6 +1008,13 @@ func (o *EventViewForNdsGroup) HasShardName() bool {
 // SetShardName gets a reference to the given string and assigns it to the ShardName field.
 func (o *EventViewForNdsGroup) SetShardName(v string) {
 	o.ShardName = &v
+	o.NullFields = removeNullField(o.NullFields, "ShardName")
+}
+
+// SetShardNameNil sets ShardName to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetShardNameNil() {
+	o.ShardName = nil
+	o.NullFields = addNullField(o.NullFields, "ShardName")
 }
 
 // GetCollection returns the Collection field value if set, zero value otherwise
@@ -846,6 +1048,13 @@ func (o *EventViewForNdsGroup) HasCollection() bool {
 // SetCollection gets a reference to the given string and assigns it to the Collection field.
 func (o *EventViewForNdsGroup) SetCollection(v string) {
 	o.Collection = &v
+	o.NullFields = removeNullField(o.NullFields, "Collection")
+}
+
+// SetCollectionNil sets Collection to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetCollectionNil() {
+	o.Collection = nil
+	o.NullFields = addNullField(o.NullFields, "Collection")
 }
 
 // GetDatabase returns the Database field value if set, zero value otherwise
@@ -879,6 +1088,13 @@ func (o *EventViewForNdsGroup) HasDatabase() bool {
 // SetDatabase gets a reference to the given string and assigns it to the Database field.
 func (o *EventViewForNdsGroup) SetDatabase(v string) {
 	o.Database = &v
+	o.NullFields = removeNullField(o.NullFields, "Database")
+}
+
+// SetDatabaseNil sets Database to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetDatabaseNil() {
+	o.Database = nil
+	o.NullFields = addNullField(o.NullFields, "Database")
 }
 
 // GetOpType returns the OpType field value if set, zero value otherwise
@@ -912,6 +1128,13 @@ func (o *EventViewForNdsGroup) HasOpType() bool {
 // SetOpType gets a reference to the given string and assigns it to the OpType field.
 func (o *EventViewForNdsGroup) SetOpType(v string) {
 	o.OpType = &v
+	o.NullFields = removeNullField(o.NullFields, "OpType")
+}
+
+// SetOpTypeNil sets OpType to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetOpTypeNil() {
+	o.OpType = nil
+	o.NullFields = addNullField(o.NullFields, "OpType")
 }
 
 // GetSessionId returns the SessionId field value if set, zero value otherwise
@@ -945,6 +1168,13 @@ func (o *EventViewForNdsGroup) HasSessionId() bool {
 // SetSessionId gets a reference to the given string and assigns it to the SessionId field.
 func (o *EventViewForNdsGroup) SetSessionId(v string) {
 	o.SessionId = &v
+	o.NullFields = removeNullField(o.NullFields, "SessionId")
+}
+
+// SetSessionIdNil sets SessionId to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetSessionIdNil() {
+	o.SessionId = nil
+	o.NullFields = addNullField(o.NullFields, "SessionId")
 }
 
 // GetDeskLocation returns the DeskLocation field value if set, zero value otherwise
@@ -978,6 +1208,13 @@ func (o *EventViewForNdsGroup) HasDeskLocation() bool {
 // SetDeskLocation gets a reference to the given string and assigns it to the DeskLocation field.
 func (o *EventViewForNdsGroup) SetDeskLocation(v string) {
 	o.DeskLocation = &v
+	o.NullFields = removeNullField(o.NullFields, "DeskLocation")
+}
+
+// SetDeskLocationNil sets DeskLocation to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetDeskLocationNil() {
+	o.DeskLocation = nil
+	o.NullFields = addNullField(o.NullFields, "DeskLocation")
 }
 
 // GetEmployeeIdentifier returns the EmployeeIdentifier field value if set, zero value otherwise
@@ -1011,6 +1248,13 @@ func (o *EventViewForNdsGroup) HasEmployeeIdentifier() bool {
 // SetEmployeeIdentifier gets a reference to the given string and assigns it to the EmployeeIdentifier field.
 func (o *EventViewForNdsGroup) SetEmployeeIdentifier(v string) {
 	o.EmployeeIdentifier = &v
+	o.NullFields = removeNullField(o.NullFields, "EmployeeIdentifier")
+}
+
+// SetEmployeeIdentifierNil sets EmployeeIdentifier to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetEmployeeIdentifierNil() {
+	o.EmployeeIdentifier = nil
+	o.NullFields = addNullField(o.NullFields, "EmployeeIdentifier")
 }
 
 // GetPort returns the Port field value if set, zero value otherwise
@@ -1044,6 +1288,13 @@ func (o *EventViewForNdsGroup) HasPort() bool {
 // SetPort gets a reference to the given int and assigns it to the Port field.
 func (o *EventViewForNdsGroup) SetPort(v int) {
 	o.Port = &v
+	o.NullFields = removeNullField(o.NullFields, "Port")
+}
+
+// SetPortNil sets Port to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetPortNil() {
+	o.Port = nil
+	o.NullFields = addNullField(o.NullFields, "Port")
 }
 
 // GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise
@@ -1077,6 +1328,13 @@ func (o *EventViewForNdsGroup) HasReplicaSetName() bool {
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
 func (o *EventViewForNdsGroup) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
+	o.NullFields = removeNullField(o.NullFields, "ReplicaSetName")
+}
+
+// SetReplicaSetNameNil sets ReplicaSetName to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetReplicaSetNameNil() {
+	o.ReplicaSetName = nil
+	o.NullFields = addNullField(o.NullFields, "ReplicaSetName")
 }
 
 // GetCurrentValue returns the CurrentValue field value if set, zero value otherwise
@@ -1110,6 +1368,13 @@ func (o *EventViewForNdsGroup) HasCurrentValue() bool {
 // SetCurrentValue gets a reference to the given NumberMetricValue and assigns it to the CurrentValue field.
 func (o *EventViewForNdsGroup) SetCurrentValue(v NumberMetricValue) {
 	o.CurrentValue = &v
+	o.NullFields = removeNullField(o.NullFields, "CurrentValue")
+}
+
+// SetCurrentValueNil sets CurrentValue to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetCurrentValueNil() {
+	o.CurrentValue = nil
+	o.NullFields = addNullField(o.NullFields, "CurrentValue")
 }
 
 // GetMetricName returns the MetricName field value if set, zero value otherwise
@@ -1143,6 +1408,13 @@ func (o *EventViewForNdsGroup) HasMetricName() bool {
 // SetMetricName gets a reference to the given string and assigns it to the MetricName field.
 func (o *EventViewForNdsGroup) SetMetricName(v string) {
 	o.MetricName = &v
+	o.NullFields = removeNullField(o.NullFields, "MetricName")
+}
+
+// SetMetricNameNil sets MetricName to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetMetricNameNil() {
+	o.MetricName = nil
+	o.NullFields = addNullField(o.NullFields, "MetricName")
 }
 
 // GetDbUserUsername returns the DbUserUsername field value if set, zero value otherwise
@@ -1176,6 +1448,13 @@ func (o *EventViewForNdsGroup) HasDbUserUsername() bool {
 // SetDbUserUsername gets a reference to the given string and assigns it to the DbUserUsername field.
 func (o *EventViewForNdsGroup) SetDbUserUsername(v string) {
 	o.DbUserUsername = &v
+	o.NullFields = removeNullField(o.NullFields, "DbUserUsername")
+}
+
+// SetDbUserUsernameNil sets DbUserUsername to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetDbUserUsernameNil() {
+	o.DbUserUsername = nil
+	o.NullFields = addNullField(o.NullFields, "DbUserUsername")
 }
 
 // GetEndpointId returns the EndpointId field value if set, zero value otherwise
@@ -1209,6 +1488,13 @@ func (o *EventViewForNdsGroup) HasEndpointId() bool {
 // SetEndpointId gets a reference to the given string and assigns it to the EndpointId field.
 func (o *EventViewForNdsGroup) SetEndpointId(v string) {
 	o.EndpointId = &v
+	o.NullFields = removeNullField(o.NullFields, "EndpointId")
+}
+
+// SetEndpointIdNil sets EndpointId to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetEndpointIdNil() {
+	o.EndpointId = nil
+	o.NullFields = addNullField(o.NullFields, "EndpointId")
 }
 
 // GetProviderEndpointId returns the ProviderEndpointId field value if set, zero value otherwise
@@ -1242,6 +1528,13 @@ func (o *EventViewForNdsGroup) HasProviderEndpointId() bool {
 // SetProviderEndpointId gets a reference to the given string and assigns it to the ProviderEndpointId field.
 func (o *EventViewForNdsGroup) SetProviderEndpointId(v string) {
 	o.ProviderEndpointId = &v
+	o.NullFields = removeNullField(o.NullFields, "ProviderEndpointId")
+}
+
+// SetProviderEndpointIdNil sets ProviderEndpointId to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetProviderEndpointIdNil() {
+	o.ProviderEndpointId = nil
+	o.NullFields = addNullField(o.NullFields, "ProviderEndpointId")
 }
 
 // GetHostname returns the Hostname field value if set, zero value otherwise
@@ -1275,6 +1568,13 @@ func (o *EventViewForNdsGroup) HasHostname() bool {
 // SetHostname gets a reference to the given string and assigns it to the Hostname field.
 func (o *EventViewForNdsGroup) SetHostname(v string) {
 	o.Hostname = &v
+	o.NullFields = removeNullField(o.NullFields, "Hostname")
+}
+
+// SetHostnameNil sets Hostname to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetHostnameNil() {
+	o.Hostname = nil
+	o.NullFields = addNullField(o.NullFields, "Hostname")
 }
 
 // GetTeamId returns the TeamId field value if set, zero value otherwise
@@ -1308,6 +1608,13 @@ func (o *EventViewForNdsGroup) HasTeamId() bool {
 // SetTeamId gets a reference to the given string and assigns it to the TeamId field.
 func (o *EventViewForNdsGroup) SetTeamId(v string) {
 	o.TeamId = &v
+	o.NullFields = removeNullField(o.NullFields, "TeamId")
+}
+
+// SetTeamIdNil sets TeamId to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetTeamIdNil() {
+	o.TeamId = nil
+	o.NullFields = addNullField(o.NullFields, "TeamId")
 }
 
 // GetTargetUsername returns the TargetUsername field value if set, zero value otherwise
@@ -1341,6 +1648,13 @@ func (o *EventViewForNdsGroup) HasTargetUsername() bool {
 // SetTargetUsername gets a reference to the given string and assigns it to the TargetUsername field.
 func (o *EventViewForNdsGroup) SetTargetUsername(v string) {
 	o.TargetUsername = &v
+	o.NullFields = removeNullField(o.NullFields, "TargetUsername")
+}
+
+// SetTargetUsernameNil sets TargetUsername to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetTargetUsernameNil() {
+	o.TargetUsername = nil
+	o.NullFields = addNullField(o.NullFields, "TargetUsername")
 }
 
 // GetResourceId returns the ResourceId field value if set, zero value otherwise
@@ -1374,6 +1688,13 @@ func (o *EventViewForNdsGroup) HasResourceId() bool {
 // SetResourceId gets a reference to the given string and assigns it to the ResourceId field.
 func (o *EventViewForNdsGroup) SetResourceId(v string) {
 	o.ResourceId = &v
+	o.NullFields = removeNullField(o.NullFields, "ResourceId")
+}
+
+// SetResourceIdNil sets ResourceId to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetResourceIdNil() {
+	o.ResourceId = nil
+	o.NullFields = addNullField(o.NullFields, "ResourceId")
 }
 
 // GetResourceType returns the ResourceType field value if set, zero value otherwise
@@ -1407,6 +1728,13 @@ func (o *EventViewForNdsGroup) HasResourceType() bool {
 // SetResourceType gets a reference to the given string and assigns it to the ResourceType field.
 func (o *EventViewForNdsGroup) SetResourceType(v string) {
 	o.ResourceType = &v
+	o.NullFields = removeNullField(o.NullFields, "ResourceType")
+}
+
+// SetResourceTypeNil sets ResourceType to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetResourceTypeNil() {
+	o.ResourceType = nil
+	o.NullFields = addNullField(o.NullFields, "ResourceType")
 }
 
 // GetInstanceName returns the InstanceName field value if set, zero value otherwise
@@ -1440,6 +1768,93 @@ func (o *EventViewForNdsGroup) HasInstanceName() bool {
 // SetInstanceName gets a reference to the given string and assigns it to the InstanceName field.
 func (o *EventViewForNdsGroup) SetInstanceName(v string) {
 	o.InstanceName = &v
+	o.NullFields = removeNullField(o.NullFields, "InstanceName")
+}
+
+// SetInstanceNameNil sets InstanceName to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetInstanceNameNil() {
+	o.InstanceName = nil
+	o.NullFields = addNullField(o.NullFields, "InstanceName")
+}
+
+// GetFromTier returns the FromTier field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetFromTier() string {
+	if o == nil || IsNil(o.FromTier) {
+		var ret string
+		return ret
+	}
+	return *o.FromTier
+}
+
+// GetFromTierOk returns a tuple with the FromTier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetFromTierOk() (*string, bool) {
+	if o == nil || IsNil(o.FromTier) {
+		return nil, false
+	}
+
+	return o.FromTier, true
+}
+
+// HasFromTier returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasFromTier() bool {
+	if o != nil && !IsNil(o.FromTier) {
+		return true
+	}
+
+	return false
+}
+
+// SetFromTier gets a reference to the given string and assigns it to the FromTier field.
+func (o *EventViewForNdsGroup) SetFromTier(v string) {
+	o.FromTier = &v
+	o.NullFields = removeNullField(o.NullFields, "FromTier")
+}
+
+// SetFromTierNil sets FromTier to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetFromTierNil() {
+	o.FromTier = nil
+	o.NullFields = addNullField(o.NullFields, "FromTier")
+}
+
+// GetModifiedBy returns the ModifiedBy field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetModifiedBy() string {
+	if o == nil || IsNil(o.ModifiedBy) {
+		var ret string
+		return ret
+	}
+	return *o.ModifiedBy
+}
+
+// GetModifiedByOk returns a tuple with the ModifiedBy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetModifiedByOk() (*string, bool) {
+	if o == nil || IsNil(o.ModifiedBy) {
+		return nil, false
+	}
+
+	return o.ModifiedBy, true
+}
+
+// HasModifiedBy returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasModifiedBy() bool {
+	if o != nil && !IsNil(o.ModifiedBy) {
+		return true
+	}
+
+	return false
+}
+
+// SetModifiedBy gets a reference to the given string and assigns it to the ModifiedBy field.
+func (o *EventViewForNdsGroup) SetModifiedBy(v string) {
+	o.ModifiedBy = &v
+	o.NullFields = removeNullField(o.NullFields, "ModifiedBy")
+}
+
+// SetModifiedByNil sets ModifiedBy to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetModifiedByNil() {
+	o.ModifiedBy = nil
+	o.NullFields = addNullField(o.NullFields, "ModifiedBy")
 }
 
 // GetProcessorErrorMsg returns the ProcessorErrorMsg field value if set, zero value otherwise
@@ -1473,6 +1888,13 @@ func (o *EventViewForNdsGroup) HasProcessorErrorMsg() bool {
 // SetProcessorErrorMsg gets a reference to the given string and assigns it to the ProcessorErrorMsg field.
 func (o *EventViewForNdsGroup) SetProcessorErrorMsg(v string) {
 	o.ProcessorErrorMsg = &v
+	o.NullFields = removeNullField(o.NullFields, "ProcessorErrorMsg")
+}
+
+// SetProcessorErrorMsgNil sets ProcessorErrorMsg to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetProcessorErrorMsgNil() {
+	o.ProcessorErrorMsg = nil
+	o.NullFields = addNullField(o.NullFields, "ProcessorErrorMsg")
 }
 
 // GetProcessorName returns the ProcessorName field value if set, zero value otherwise
@@ -1506,6 +1928,13 @@ func (o *EventViewForNdsGroup) HasProcessorName() bool {
 // SetProcessorName gets a reference to the given string and assigns it to the ProcessorName field.
 func (o *EventViewForNdsGroup) SetProcessorName(v string) {
 	o.ProcessorName = &v
+	o.NullFields = removeNullField(o.NullFields, "ProcessorName")
+}
+
+// SetProcessorNameNil sets ProcessorName to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetProcessorNameNil() {
+	o.ProcessorName = nil
+	o.NullFields = addNullField(o.NullFields, "ProcessorName")
 }
 
 // GetProcessorState returns the ProcessorState field value if set, zero value otherwise
@@ -1539,6 +1968,93 @@ func (o *EventViewForNdsGroup) HasProcessorState() bool {
 // SetProcessorState gets a reference to the given string and assigns it to the ProcessorState field.
 func (o *EventViewForNdsGroup) SetProcessorState(v string) {
 	o.ProcessorState = &v
+	o.NullFields = removeNullField(o.NullFields, "ProcessorState")
+}
+
+// SetProcessorStateNil sets ProcessorState to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetProcessorStateNil() {
+	o.ProcessorState = nil
+	o.NullFields = addNullField(o.NullFields, "ProcessorState")
+}
+
+// GetReason returns the Reason field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetReason() string {
+	if o == nil || IsNil(o.Reason) {
+		var ret string
+		return ret
+	}
+	return *o.Reason
+}
+
+// GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetReasonOk() (*string, bool) {
+	if o == nil || IsNil(o.Reason) {
+		return nil, false
+	}
+
+	return o.Reason, true
+}
+
+// HasReason returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasReason() bool {
+	if o != nil && !IsNil(o.Reason) {
+		return true
+	}
+
+	return false
+}
+
+// SetReason gets a reference to the given string and assigns it to the Reason field.
+func (o *EventViewForNdsGroup) SetReason(v string) {
+	o.Reason = &v
+	o.NullFields = removeNullField(o.NullFields, "Reason")
+}
+
+// SetReasonNil sets Reason to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetReasonNil() {
+	o.Reason = nil
+	o.NullFields = addNullField(o.NullFields, "Reason")
+}
+
+// GetToTier returns the ToTier field value if set, zero value otherwise
+func (o *EventViewForNdsGroup) GetToTier() string {
+	if o == nil || IsNil(o.ToTier) {
+		var ret string
+		return ret
+	}
+	return *o.ToTier
+}
+
+// GetToTierOk returns a tuple with the ToTier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EventViewForNdsGroup) GetToTierOk() (*string, bool) {
+	if o == nil || IsNil(o.ToTier) {
+		return nil, false
+	}
+
+	return o.ToTier, true
+}
+
+// HasToTier returns a boolean if a field has been set.
+func (o *EventViewForNdsGroup) HasToTier() bool {
+	if o != nil && !IsNil(o.ToTier) {
+		return true
+	}
+
+	return false
+}
+
+// SetToTier gets a reference to the given string and assigns it to the ToTier field.
+func (o *EventViewForNdsGroup) SetToTier(v string) {
+	o.ToTier = &v
+	o.NullFields = removeNullField(o.NullFields, "ToTier")
+}
+
+// SetToTierNil sets ToTier to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetToTierNil() {
+	o.ToTier = nil
+	o.NullFields = addNullField(o.NullFields, "ToTier")
 }
 
 // GetResourcePolicyId returns the ResourcePolicyId field value if set, zero value otherwise
@@ -1572,6 +2088,13 @@ func (o *EventViewForNdsGroup) HasResourcePolicyId() bool {
 // SetResourcePolicyId gets a reference to the given string and assigns it to the ResourcePolicyId field.
 func (o *EventViewForNdsGroup) SetResourcePolicyId(v string) {
 	o.ResourcePolicyId = &v
+	o.NullFields = removeNullField(o.NullFields, "ResourcePolicyId")
+}
+
+// SetResourcePolicyIdNil sets ResourcePolicyId to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetResourcePolicyIdNil() {
+	o.ResourcePolicyId = nil
+	o.NullFields = addNullField(o.NullFields, "ResourcePolicyId")
 }
 
 // GetViolatedPolicies returns the ViolatedPolicies field value if set, zero value otherwise
@@ -1605,6 +2128,13 @@ func (o *EventViewForNdsGroup) HasViolatedPolicies() bool {
 // SetViolatedPolicies gets a reference to the given []string and assigns it to the ViolatedPolicies field.
 func (o *EventViewForNdsGroup) SetViolatedPolicies(v []string) {
 	o.ViolatedPolicies = &v
+	o.NullFields = removeNullField(o.NullFields, "ViolatedPolicies")
+}
+
+// SetViolatedPoliciesNil sets ViolatedPolicies to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetViolatedPoliciesNil() {
+	o.ViolatedPolicies = nil
+	o.NullFields = addNullField(o.NullFields, "ViolatedPolicies")
 }
 
 // GetViolationAction returns the ViolationAction field value if set, zero value otherwise
@@ -1638,4 +2168,11 @@ func (o *EventViewForNdsGroup) HasViolationAction() bool {
 // SetViolationAction gets a reference to the given string and assigns it to the ViolationAction field.
 func (o *EventViewForNdsGroup) SetViolationAction(v string) {
 	o.ViolationAction = &v
+	o.NullFields = removeNullField(o.NullFields, "ViolationAction")
+}
+
+// SetViolationActionNil sets ViolationAction to an explicit JSON null when marshaled.
+func (o *EventViewForNdsGroup) SetViolationActionNil() {
+	o.ViolationAction = nil
+	o.NullFields = addNullField(o.NullFields, "ViolationAction")
 }

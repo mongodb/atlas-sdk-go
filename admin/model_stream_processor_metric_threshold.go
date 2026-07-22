@@ -14,6 +14,15 @@ type StreamProcessorMetricThreshold struct {
 	Threshold *float64 `json:"threshold,omitempty"`
 	// Element used to express the quantity. This can be an element of time, storage capacity, and the like.
 	Units *string `json:"units,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamProcessorMetricThreshold) MarshalJSON() ([]byte, error) {
+	type noMethod StreamProcessorMetricThreshold
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamProcessorMetricThreshold instantiates a new StreamProcessorMetricThreshold object
@@ -68,6 +77,13 @@ func (o *StreamProcessorMetricThreshold) HasMetricName() bool {
 // SetMetricName gets a reference to the given string and assigns it to the MetricName field.
 func (o *StreamProcessorMetricThreshold) SetMetricName(v string) {
 	o.MetricName = &v
+	o.NullFields = removeNullField(o.NullFields, "MetricName")
+}
+
+// SetMetricNameNil sets MetricName to an explicit JSON null when marshaled.
+func (o *StreamProcessorMetricThreshold) SetMetricNameNil() {
+	o.MetricName = nil
+	o.NullFields = addNullField(o.NullFields, "MetricName")
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise
@@ -101,6 +117,13 @@ func (o *StreamProcessorMetricThreshold) HasMode() bool {
 // SetMode gets a reference to the given string and assigns it to the Mode field.
 func (o *StreamProcessorMetricThreshold) SetMode(v string) {
 	o.Mode = &v
+	o.NullFields = removeNullField(o.NullFields, "Mode")
+}
+
+// SetModeNil sets Mode to an explicit JSON null when marshaled.
+func (o *StreamProcessorMetricThreshold) SetModeNil() {
+	o.Mode = nil
+	o.NullFields = addNullField(o.NullFields, "Mode")
 }
 
 // GetOperator returns the Operator field value if set, zero value otherwise
@@ -134,6 +157,13 @@ func (o *StreamProcessorMetricThreshold) HasOperator() bool {
 // SetOperator gets a reference to the given string and assigns it to the Operator field.
 func (o *StreamProcessorMetricThreshold) SetOperator(v string) {
 	o.Operator = &v
+	o.NullFields = removeNullField(o.NullFields, "Operator")
+}
+
+// SetOperatorNil sets Operator to an explicit JSON null when marshaled.
+func (o *StreamProcessorMetricThreshold) SetOperatorNil() {
+	o.Operator = nil
+	o.NullFields = addNullField(o.NullFields, "Operator")
 }
 
 // GetThreshold returns the Threshold field value if set, zero value otherwise
@@ -167,6 +197,13 @@ func (o *StreamProcessorMetricThreshold) HasThreshold() bool {
 // SetThreshold gets a reference to the given float64 and assigns it to the Threshold field.
 func (o *StreamProcessorMetricThreshold) SetThreshold(v float64) {
 	o.Threshold = &v
+	o.NullFields = removeNullField(o.NullFields, "Threshold")
+}
+
+// SetThresholdNil sets Threshold to an explicit JSON null when marshaled.
+func (o *StreamProcessorMetricThreshold) SetThresholdNil() {
+	o.Threshold = nil
+	o.NullFields = addNullField(o.NullFields, "Threshold")
 }
 
 // GetUnits returns the Units field value if set, zero value otherwise
@@ -200,4 +237,11 @@ func (o *StreamProcessorMetricThreshold) HasUnits() bool {
 // SetUnits gets a reference to the given string and assigns it to the Units field.
 func (o *StreamProcessorMetricThreshold) SetUnits(v string) {
 	o.Units = &v
+	o.NullFields = removeNullField(o.NullFields, "Units")
+}
+
+// SetUnitsNil sets Units to an explicit JSON null when marshaled.
+func (o *StreamProcessorMetricThreshold) SetUnitsNil() {
+	o.Units = nil
+	o.NullFields = addNullField(o.NullFields, "Units")
 }

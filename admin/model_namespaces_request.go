@@ -7,6 +7,15 @@ type NamespacesRequest struct {
 	// List of namespace strings (combination of database and collection) on the specified host or cluster.
 	// Write only field.
 	Namespaces *[]string `json:"namespaces,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *NamespacesRequest) MarshalJSON() ([]byte, error) {
+	type noMethod NamespacesRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewNamespacesRequest instantiates a new NamespacesRequest object
@@ -57,4 +66,11 @@ func (o *NamespacesRequest) HasNamespaces() bool {
 // SetNamespaces gets a reference to the given []string and assigns it to the Namespaces field.
 func (o *NamespacesRequest) SetNamespaces(v []string) {
 	o.Namespaces = &v
+	o.NullFields = removeNullField(o.NullFields, "Namespaces")
+}
+
+// SetNamespacesNil sets Namespaces to an explicit JSON null when marshaled.
+func (o *NamespacesRequest) SetNamespacesNil() {
+	o.Namespaces = nil
+	o.NullFields = addNullField(o.NullFields, "Namespaces")
 }

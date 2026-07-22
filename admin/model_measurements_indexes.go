@@ -38,6 +38,15 @@ type MeasurementsIndexes struct {
 	// Date and time that specifies when to start retrieving measurements. If you set **start**, you must set **end**. You can't set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Start *time.Time `json:"start,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *MeasurementsIndexes) MarshalJSON() ([]byte, error) {
+	type noMethod MeasurementsIndexes
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewMeasurementsIndexes instantiates a new MeasurementsIndexes object
@@ -88,6 +97,13 @@ func (o *MeasurementsIndexes) HasCollectionName() bool {
 // SetCollectionName gets a reference to the given string and assigns it to the CollectionName field.
 func (o *MeasurementsIndexes) SetCollectionName(v string) {
 	o.CollectionName = &v
+	o.NullFields = removeNullField(o.NullFields, "CollectionName")
+}
+
+// SetCollectionNameNil sets CollectionName to an explicit JSON null when marshaled.
+func (o *MeasurementsIndexes) SetCollectionNameNil() {
+	o.CollectionName = nil
+	o.NullFields = addNullField(o.NullFields, "CollectionName")
 }
 
 // GetDatabaseName returns the DatabaseName field value if set, zero value otherwise
@@ -121,6 +137,13 @@ func (o *MeasurementsIndexes) HasDatabaseName() bool {
 // SetDatabaseName gets a reference to the given string and assigns it to the DatabaseName field.
 func (o *MeasurementsIndexes) SetDatabaseName(v string) {
 	o.DatabaseName = &v
+	o.NullFields = removeNullField(o.NullFields, "DatabaseName")
+}
+
+// SetDatabaseNameNil sets DatabaseName to an explicit JSON null when marshaled.
+func (o *MeasurementsIndexes) SetDatabaseNameNil() {
+	o.DatabaseName = nil
+	o.NullFields = addNullField(o.NullFields, "DatabaseName")
 }
 
 // GetEnd returns the End field value if set, zero value otherwise
@@ -154,6 +177,13 @@ func (o *MeasurementsIndexes) HasEnd() bool {
 // SetEnd gets a reference to the given time.Time and assigns it to the End field.
 func (o *MeasurementsIndexes) SetEnd(v time.Time) {
 	o.End = &v
+	o.NullFields = removeNullField(o.NullFields, "End")
+}
+
+// SetEndNil sets End to an explicit JSON null when marshaled.
+func (o *MeasurementsIndexes) SetEndNil() {
+	o.End = nil
+	o.NullFields = addNullField(o.NullFields, "End")
 }
 
 // GetGranularity returns the Granularity field value if set, zero value otherwise
@@ -187,6 +217,13 @@ func (o *MeasurementsIndexes) HasGranularity() bool {
 // SetGranularity gets a reference to the given string and assigns it to the Granularity field.
 func (o *MeasurementsIndexes) SetGranularity(v string) {
 	o.Granularity = &v
+	o.NullFields = removeNullField(o.NullFields, "Granularity")
+}
+
+// SetGranularityNil sets Granularity to an explicit JSON null when marshaled.
+func (o *MeasurementsIndexes) SetGranularityNil() {
+	o.Granularity = nil
+	o.NullFields = addNullField(o.NullFields, "Granularity")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -220,6 +257,13 @@ func (o *MeasurementsIndexes) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *MeasurementsIndexes) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *MeasurementsIndexes) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetIndexIds returns the IndexIds field value if set, zero value otherwise
@@ -253,6 +297,13 @@ func (o *MeasurementsIndexes) HasIndexIds() bool {
 // SetIndexIds gets a reference to the given []string and assigns it to the IndexIds field.
 func (o *MeasurementsIndexes) SetIndexIds(v []string) {
 	o.IndexIds = &v
+	o.NullFields = removeNullField(o.NullFields, "IndexIds")
+}
+
+// SetIndexIdsNil sets IndexIds to an explicit JSON null when marshaled.
+func (o *MeasurementsIndexes) SetIndexIdsNil() {
+	o.IndexIds = nil
+	o.NullFields = addNullField(o.NullFields, "IndexIds")
 }
 
 // GetIndexStatsMeasurements returns the IndexStatsMeasurements field value if set, zero value otherwise
@@ -286,6 +337,13 @@ func (o *MeasurementsIndexes) HasIndexStatsMeasurements() bool {
 // SetIndexStatsMeasurements gets a reference to the given []MetricsMeasurement and assigns it to the IndexStatsMeasurements field.
 func (o *MeasurementsIndexes) SetIndexStatsMeasurements(v []MetricsMeasurement) {
 	o.IndexStatsMeasurements = &v
+	o.NullFields = removeNullField(o.NullFields, "IndexStatsMeasurements")
+}
+
+// SetIndexStatsMeasurementsNil sets IndexStatsMeasurements to an explicit JSON null when marshaled.
+func (o *MeasurementsIndexes) SetIndexStatsMeasurementsNil() {
+	o.IndexStatsMeasurements = nil
+	o.NullFields = addNullField(o.NullFields, "IndexStatsMeasurements")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -319,6 +377,13 @@ func (o *MeasurementsIndexes) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *MeasurementsIndexes) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *MeasurementsIndexes) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetProcessId returns the ProcessId field value if set, zero value otherwise
@@ -352,6 +417,13 @@ func (o *MeasurementsIndexes) HasProcessId() bool {
 // SetProcessId gets a reference to the given string and assigns it to the ProcessId field.
 func (o *MeasurementsIndexes) SetProcessId(v string) {
 	o.ProcessId = &v
+	o.NullFields = removeNullField(o.NullFields, "ProcessId")
+}
+
+// SetProcessIdNil sets ProcessId to an explicit JSON null when marshaled.
+func (o *MeasurementsIndexes) SetProcessIdNil() {
+	o.ProcessId = nil
+	o.NullFields = addNullField(o.NullFields, "ProcessId")
 }
 
 // GetStart returns the Start field value if set, zero value otherwise
@@ -385,4 +457,11 @@ func (o *MeasurementsIndexes) HasStart() bool {
 // SetStart gets a reference to the given time.Time and assigns it to the Start field.
 func (o *MeasurementsIndexes) SetStart(v time.Time) {
 	o.Start = &v
+	o.NullFields = removeNullField(o.NullFields, "Start")
+}
+
+// SetStartNil sets Start to an explicit JSON null when marshaled.
+func (o *MeasurementsIndexes) SetStartNil() {
+	o.Start = nil
+	o.NullFields = addNullField(o.NullFields, "Start")
 }

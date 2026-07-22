@@ -11,6 +11,15 @@ type StreamsDataProcessRegion struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Name of the cloud provider region hosting Atlas Stream Processing.
 	Region string `json:"region"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamsDataProcessRegion) MarshalJSON() ([]byte, error) {
+	type noMethod StreamsDataProcessRegion
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsDataProcessRegion instantiates a new StreamsDataProcessRegion object
@@ -87,6 +96,13 @@ func (o *StreamsDataProcessRegion) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsDataProcessRegion) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *StreamsDataProcessRegion) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetRegion returns the Region field value

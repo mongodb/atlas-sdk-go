@@ -47,6 +47,15 @@ type CloudProviderAccessRole struct {
 	// Provision status of the service account.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CloudProviderAccessRole) MarshalJSON() ([]byte, error) {
+	type noMethod CloudProviderAccessRole
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudProviderAccessRole instantiates a new CloudProviderAccessRole object
@@ -122,6 +131,13 @@ func (o *CloudProviderAccessRole) HasAtlasAWSAccountArn() bool {
 // SetAtlasAWSAccountArn gets a reference to the given string and assigns it to the AtlasAWSAccountArn field.
 func (o *CloudProviderAccessRole) SetAtlasAWSAccountArn(v string) {
 	o.AtlasAWSAccountArn = &v
+	o.NullFields = removeNullField(o.NullFields, "AtlasAWSAccountArn")
+}
+
+// SetAtlasAWSAccountArnNil sets AtlasAWSAccountArn to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessRole) SetAtlasAWSAccountArnNil() {
+	o.AtlasAWSAccountArn = nil
+	o.NullFields = addNullField(o.NullFields, "AtlasAWSAccountArn")
 }
 
 // GetAtlasAssumedRoleExternalId returns the AtlasAssumedRoleExternalId field value if set, zero value otherwise
@@ -155,6 +171,13 @@ func (o *CloudProviderAccessRole) HasAtlasAssumedRoleExternalId() bool {
 // SetAtlasAssumedRoleExternalId gets a reference to the given string and assigns it to the AtlasAssumedRoleExternalId field.
 func (o *CloudProviderAccessRole) SetAtlasAssumedRoleExternalId(v string) {
 	o.AtlasAssumedRoleExternalId = &v
+	o.NullFields = removeNullField(o.NullFields, "AtlasAssumedRoleExternalId")
+}
+
+// SetAtlasAssumedRoleExternalIdNil sets AtlasAssumedRoleExternalId to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessRole) SetAtlasAssumedRoleExternalIdNil() {
+	o.AtlasAssumedRoleExternalId = nil
+	o.NullFields = addNullField(o.NullFields, "AtlasAssumedRoleExternalId")
 }
 
 // GetAuthorizedDate returns the AuthorizedDate field value if set, zero value otherwise
@@ -188,6 +211,13 @@ func (o *CloudProviderAccessRole) HasAuthorizedDate() bool {
 // SetAuthorizedDate gets a reference to the given time.Time and assigns it to the AuthorizedDate field.
 func (o *CloudProviderAccessRole) SetAuthorizedDate(v time.Time) {
 	o.AuthorizedDate = &v
+	o.NullFields = removeNullField(o.NullFields, "AuthorizedDate")
+}
+
+// SetAuthorizedDateNil sets AuthorizedDate to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessRole) SetAuthorizedDateNil() {
+	o.AuthorizedDate = nil
+	o.NullFields = addNullField(o.NullFields, "AuthorizedDate")
 }
 
 // GetCreatedDate returns the CreatedDate field value if set, zero value otherwise
@@ -221,6 +251,13 @@ func (o *CloudProviderAccessRole) HasCreatedDate() bool {
 // SetCreatedDate gets a reference to the given time.Time and assigns it to the CreatedDate field.
 func (o *CloudProviderAccessRole) SetCreatedDate(v time.Time) {
 	o.CreatedDate = &v
+	o.NullFields = removeNullField(o.NullFields, "CreatedDate")
+}
+
+// SetCreatedDateNil sets CreatedDate to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessRole) SetCreatedDateNil() {
+	o.CreatedDate = nil
+	o.NullFields = addNullField(o.NullFields, "CreatedDate")
 }
 
 // GetFeatureUsages returns the FeatureUsages field value if set, zero value otherwise
@@ -254,6 +291,13 @@ func (o *CloudProviderAccessRole) HasFeatureUsages() bool {
 // SetFeatureUsages gets a reference to the given []CloudProviderAccessFeatureUsage and assigns it to the FeatureUsages field.
 func (o *CloudProviderAccessRole) SetFeatureUsages(v []CloudProviderAccessFeatureUsage) {
 	o.FeatureUsages = &v
+	o.NullFields = removeNullField(o.NullFields, "FeatureUsages")
+}
+
+// SetFeatureUsagesNil sets FeatureUsages to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessRole) SetFeatureUsagesNil() {
+	o.FeatureUsages = nil
+	o.NullFields = addNullField(o.NullFields, "FeatureUsages")
 }
 
 // GetIamAssumedRoleArn returns the IamAssumedRoleArn field value if set, zero value otherwise
@@ -287,6 +331,13 @@ func (o *CloudProviderAccessRole) HasIamAssumedRoleArn() bool {
 // SetIamAssumedRoleArn gets a reference to the given string and assigns it to the IamAssumedRoleArn field.
 func (o *CloudProviderAccessRole) SetIamAssumedRoleArn(v string) {
 	o.IamAssumedRoleArn = &v
+	o.NullFields = removeNullField(o.NullFields, "IamAssumedRoleArn")
+}
+
+// SetIamAssumedRoleArnNil sets IamAssumedRoleArn to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessRole) SetIamAssumedRoleArnNil() {
+	o.IamAssumedRoleArn = nil
+	o.NullFields = addNullField(o.NullFields, "IamAssumedRoleArn")
 }
 
 // GetRoleId returns the RoleId field value if set, zero value otherwise
@@ -320,6 +371,13 @@ func (o *CloudProviderAccessRole) HasRoleId() bool {
 // SetRoleId gets a reference to the given string and assigns it to the RoleId field.
 func (o *CloudProviderAccessRole) SetRoleId(v string) {
 	o.RoleId = &v
+	o.NullFields = removeNullField(o.NullFields, "RoleId")
+}
+
+// SetRoleIdNil sets RoleId to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessRole) SetRoleIdNil() {
+	o.RoleId = nil
+	o.NullFields = addNullField(o.NullFields, "RoleId")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -353,6 +411,13 @@ func (o *CloudProviderAccessRole) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *CloudProviderAccessRole) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessRole) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetAtlasAzureAppId returns the AtlasAzureAppId field value if set, zero value otherwise
@@ -386,6 +451,13 @@ func (o *CloudProviderAccessRole) HasAtlasAzureAppId() bool {
 // SetAtlasAzureAppId gets a reference to the given string and assigns it to the AtlasAzureAppId field.
 func (o *CloudProviderAccessRole) SetAtlasAzureAppId(v string) {
 	o.AtlasAzureAppId = &v
+	o.NullFields = removeNullField(o.NullFields, "AtlasAzureAppId")
+}
+
+// SetAtlasAzureAppIdNil sets AtlasAzureAppId to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessRole) SetAtlasAzureAppIdNil() {
+	o.AtlasAzureAppId = nil
+	o.NullFields = addNullField(o.NullFields, "AtlasAzureAppId")
 }
 
 // GetLastUpdatedDate returns the LastUpdatedDate field value if set, zero value otherwise
@@ -419,6 +491,13 @@ func (o *CloudProviderAccessRole) HasLastUpdatedDate() bool {
 // SetLastUpdatedDate gets a reference to the given time.Time and assigns it to the LastUpdatedDate field.
 func (o *CloudProviderAccessRole) SetLastUpdatedDate(v time.Time) {
 	o.LastUpdatedDate = &v
+	o.NullFields = removeNullField(o.NullFields, "LastUpdatedDate")
+}
+
+// SetLastUpdatedDateNil sets LastUpdatedDate to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessRole) SetLastUpdatedDateNil() {
+	o.LastUpdatedDate = nil
+	o.NullFields = addNullField(o.NullFields, "LastUpdatedDate")
 }
 
 // GetServicePrincipalId returns the ServicePrincipalId field value if set, zero value otherwise
@@ -452,6 +531,13 @@ func (o *CloudProviderAccessRole) HasServicePrincipalId() bool {
 // SetServicePrincipalId gets a reference to the given string and assigns it to the ServicePrincipalId field.
 func (o *CloudProviderAccessRole) SetServicePrincipalId(v string) {
 	o.ServicePrincipalId = &v
+	o.NullFields = removeNullField(o.NullFields, "ServicePrincipalId")
+}
+
+// SetServicePrincipalIdNil sets ServicePrincipalId to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessRole) SetServicePrincipalIdNil() {
+	o.ServicePrincipalId = nil
+	o.NullFields = addNullField(o.NullFields, "ServicePrincipalId")
 }
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise
@@ -485,6 +571,13 @@ func (o *CloudProviderAccessRole) HasTenantId() bool {
 // SetTenantId gets a reference to the given string and assigns it to the TenantId field.
 func (o *CloudProviderAccessRole) SetTenantId(v string) {
 	o.TenantId = &v
+	o.NullFields = removeNullField(o.NullFields, "TenantId")
+}
+
+// SetTenantIdNil sets TenantId to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessRole) SetTenantIdNil() {
+	o.TenantId = nil
+	o.NullFields = addNullField(o.NullFields, "TenantId")
 }
 
 // GetGcpServiceAccountForAtlas returns the GcpServiceAccountForAtlas field value if set, zero value otherwise
@@ -518,6 +611,13 @@ func (o *CloudProviderAccessRole) HasGcpServiceAccountForAtlas() bool {
 // SetGcpServiceAccountForAtlas gets a reference to the given string and assigns it to the GcpServiceAccountForAtlas field.
 func (o *CloudProviderAccessRole) SetGcpServiceAccountForAtlas(v string) {
 	o.GcpServiceAccountForAtlas = &v
+	o.NullFields = removeNullField(o.NullFields, "GcpServiceAccountForAtlas")
+}
+
+// SetGcpServiceAccountForAtlasNil sets GcpServiceAccountForAtlas to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessRole) SetGcpServiceAccountForAtlasNil() {
+	o.GcpServiceAccountForAtlas = nil
+	o.NullFields = addNullField(o.NullFields, "GcpServiceAccountForAtlas")
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
@@ -551,4 +651,11 @@ func (o *CloudProviderAccessRole) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *CloudProviderAccessRole) SetStatus(v string) {
 	o.Status = &v
+	o.NullFields = removeNullField(o.NullFields, "Status")
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessRole) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = addNullField(o.NullFields, "Status")
 }

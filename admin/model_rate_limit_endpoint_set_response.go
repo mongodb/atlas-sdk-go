@@ -15,6 +15,15 @@ type RateLimitEndpointSetResponse struct {
 	RefillRate            *RateLimitEndpointSetRefillRate            `json:"refillRate,omitempty"`
 	// The scope of the endpoint set.
 	Scope *string `json:"scope,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *RateLimitEndpointSetResponse) MarshalJSON() ([]byte, error) {
+	type noMethod RateLimitEndpointSetResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewRateLimitEndpointSetResponse instantiates a new RateLimitEndpointSetResponse object
@@ -65,6 +74,13 @@ func (o *RateLimitEndpointSetResponse) HasCapacity() bool {
 // SetCapacity gets a reference to the given RateLimitEndpointSetCapacity and assigns it to the Capacity field.
 func (o *RateLimitEndpointSetResponse) SetCapacity(v RateLimitEndpointSetCapacity) {
 	o.Capacity = &v
+	o.NullFields = removeNullField(o.NullFields, "Capacity")
+}
+
+// SetCapacityNil sets Capacity to an explicit JSON null when marshaled.
+func (o *RateLimitEndpointSetResponse) SetCapacityNil() {
+	o.Capacity = nil
+	o.NullFields = addNullField(o.NullFields, "Capacity")
 }
 
 // GetEndpointSetId returns the EndpointSetId field value if set, zero value otherwise
@@ -98,6 +114,13 @@ func (o *RateLimitEndpointSetResponse) HasEndpointSetId() bool {
 // SetEndpointSetId gets a reference to the given string and assigns it to the EndpointSetId field.
 func (o *RateLimitEndpointSetResponse) SetEndpointSetId(v string) {
 	o.EndpointSetId = &v
+	o.NullFields = removeNullField(o.NullFields, "EndpointSetId")
+}
+
+// SetEndpointSetIdNil sets EndpointSetId to an explicit JSON null when marshaled.
+func (o *RateLimitEndpointSetResponse) SetEndpointSetIdNil() {
+	o.EndpointSetId = nil
+	o.NullFields = addNullField(o.NullFields, "EndpointSetId")
 }
 
 // GetEndpointSetName returns the EndpointSetName field value if set, zero value otherwise
@@ -131,6 +154,13 @@ func (o *RateLimitEndpointSetResponse) HasEndpointSetName() bool {
 // SetEndpointSetName gets a reference to the given string and assigns it to the EndpointSetName field.
 func (o *RateLimitEndpointSetResponse) SetEndpointSetName(v string) {
 	o.EndpointSetName = &v
+	o.NullFields = removeNullField(o.NullFields, "EndpointSetName")
+}
+
+// SetEndpointSetNameNil sets EndpointSetName to an explicit JSON null when marshaled.
+func (o *RateLimitEndpointSetResponse) SetEndpointSetNameNil() {
+	o.EndpointSetName = nil
+	o.NullFields = addNullField(o.NullFields, "EndpointSetName")
 }
 
 // GetEndpoints returns the Endpoints field value if set, zero value otherwise
@@ -164,6 +194,13 @@ func (o *RateLimitEndpointSetResponse) HasEndpoints() bool {
 // SetEndpoints gets a reference to the given []RateLimitEndpointSetEndpoint and assigns it to the Endpoints field.
 func (o *RateLimitEndpointSetResponse) SetEndpoints(v []RateLimitEndpointSetEndpoint) {
 	o.Endpoints = &v
+	o.NullFields = removeNullField(o.NullFields, "Endpoints")
+}
+
+// SetEndpointsNil sets Endpoints to an explicit JSON null when marshaled.
+func (o *RateLimitEndpointSetResponse) SetEndpointsNil() {
+	o.Endpoints = nil
+	o.NullFields = addNullField(o.NullFields, "Endpoints")
 }
 
 // GetRefillDurationSeconds returns the RefillDurationSeconds field value if set, zero value otherwise
@@ -197,6 +234,13 @@ func (o *RateLimitEndpointSetResponse) HasRefillDurationSeconds() bool {
 // SetRefillDurationSeconds gets a reference to the given RateLimitEndpointSetRefillDurationSeconds and assigns it to the RefillDurationSeconds field.
 func (o *RateLimitEndpointSetResponse) SetRefillDurationSeconds(v RateLimitEndpointSetRefillDurationSeconds) {
 	o.RefillDurationSeconds = &v
+	o.NullFields = removeNullField(o.NullFields, "RefillDurationSeconds")
+}
+
+// SetRefillDurationSecondsNil sets RefillDurationSeconds to an explicit JSON null when marshaled.
+func (o *RateLimitEndpointSetResponse) SetRefillDurationSecondsNil() {
+	o.RefillDurationSeconds = nil
+	o.NullFields = addNullField(o.NullFields, "RefillDurationSeconds")
 }
 
 // GetRefillRate returns the RefillRate field value if set, zero value otherwise
@@ -230,6 +274,13 @@ func (o *RateLimitEndpointSetResponse) HasRefillRate() bool {
 // SetRefillRate gets a reference to the given RateLimitEndpointSetRefillRate and assigns it to the RefillRate field.
 func (o *RateLimitEndpointSetResponse) SetRefillRate(v RateLimitEndpointSetRefillRate) {
 	o.RefillRate = &v
+	o.NullFields = removeNullField(o.NullFields, "RefillRate")
+}
+
+// SetRefillRateNil sets RefillRate to an explicit JSON null when marshaled.
+func (o *RateLimitEndpointSetResponse) SetRefillRateNil() {
+	o.RefillRate = nil
+	o.NullFields = addNullField(o.NullFields, "RefillRate")
 }
 
 // GetScope returns the Scope field value if set, zero value otherwise
@@ -263,4 +314,11 @@ func (o *RateLimitEndpointSetResponse) HasScope() bool {
 // SetScope gets a reference to the given string and assigns it to the Scope field.
 func (o *RateLimitEndpointSetResponse) SetScope(v string) {
 	o.Scope = &v
+	o.NullFields = removeNullField(o.NullFields, "Scope")
+}
+
+// SetScopeNil sets Scope to an explicit JSON null when marshaled.
+func (o *RateLimitEndpointSetResponse) SetScopeNil() {
+	o.Scope = nil
+	o.NullFields = addNullField(o.NullFields, "Scope")
 }

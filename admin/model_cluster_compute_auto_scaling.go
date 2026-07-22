@@ -8,6 +8,15 @@ type ClusterComputeAutoScaling struct {
 	Enabled *bool `json:"enabled,omitempty"`
 	// Flag that indicates whether the cluster tier can scale down via reactive auto-scaling. This is required if `autoScaling.compute.enabled` is `true`. If you enable this option, specify a value for `providerSettings.autoScaling.compute.minInstanceSize`.
 	ScaleDownEnabled *bool `json:"scaleDownEnabled,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ClusterComputeAutoScaling) MarshalJSON() ([]byte, error) {
+	type noMethod ClusterComputeAutoScaling
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterComputeAutoScaling instantiates a new ClusterComputeAutoScaling object
@@ -66,6 +75,13 @@ func (o *ClusterComputeAutoScaling) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *ClusterComputeAutoScaling) SetEnabled(v bool) {
 	o.Enabled = &v
+	o.NullFields = removeNullField(o.NullFields, "Enabled")
+}
+
+// SetEnabledNil sets Enabled to an explicit JSON null when marshaled.
+func (o *ClusterComputeAutoScaling) SetEnabledNil() {
+	o.Enabled = nil
+	o.NullFields = addNullField(o.NullFields, "Enabled")
 }
 
 // GetScaleDownEnabled returns the ScaleDownEnabled field value if set, zero value otherwise
@@ -99,4 +115,11 @@ func (o *ClusterComputeAutoScaling) HasScaleDownEnabled() bool {
 // SetScaleDownEnabled gets a reference to the given bool and assigns it to the ScaleDownEnabled field.
 func (o *ClusterComputeAutoScaling) SetScaleDownEnabled(v bool) {
 	o.ScaleDownEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "ScaleDownEnabled")
+}
+
+// SetScaleDownEnabledNil sets ScaleDownEnabled to an explicit JSON null when marshaled.
+func (o *ClusterComputeAutoScaling) SetScaleDownEnabledNil() {
+	o.ScaleDownEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "ScaleDownEnabled")
 }

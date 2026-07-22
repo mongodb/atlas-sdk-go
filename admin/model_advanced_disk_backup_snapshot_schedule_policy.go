@@ -8,6 +8,15 @@ type AdvancedDiskBackupSnapshotSchedulePolicy struct {
 	Id *string `json:"id,omitempty"`
 	// List that contains the specifications for one policy.
 	PolicyItems []DiskBackupApiPolicyItem `json:"policyItems"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AdvancedDiskBackupSnapshotSchedulePolicy) MarshalJSON() ([]byte, error) {
+	type noMethod AdvancedDiskBackupSnapshotSchedulePolicy
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAdvancedDiskBackupSnapshotSchedulePolicy instantiates a new AdvancedDiskBackupSnapshotSchedulePolicy object
@@ -59,6 +68,13 @@ func (o *AdvancedDiskBackupSnapshotSchedulePolicy) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *AdvancedDiskBackupSnapshotSchedulePolicy) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *AdvancedDiskBackupSnapshotSchedulePolicy) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetPolicyItems returns the PolicyItems field value

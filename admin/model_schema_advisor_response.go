@@ -2,11 +2,20 @@
 
 package admin
 
-// SchemaAdvisorResponse struct for SchemaAdvisorResponse
+// SchemaAdvisorResponse Response that contains Performance Advisor schema suggestions.
 type SchemaAdvisorResponse struct {
 	// List that contains the documents with information about the schema advice that Performance Advisor suggests.
 	// Read only field.
 	Recommendations *[]SchemaAdvisorItemRecommendation `json:"recommendations,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *SchemaAdvisorResponse) MarshalJSON() ([]byte, error) {
+	type noMethod SchemaAdvisorResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSchemaAdvisorResponse instantiates a new SchemaAdvisorResponse object
@@ -57,4 +66,11 @@ func (o *SchemaAdvisorResponse) HasRecommendations() bool {
 // SetRecommendations gets a reference to the given []SchemaAdvisorItemRecommendation and assigns it to the Recommendations field.
 func (o *SchemaAdvisorResponse) SetRecommendations(v []SchemaAdvisorItemRecommendation) {
 	o.Recommendations = &v
+	o.NullFields = removeNullField(o.NullFields, "Recommendations")
+}
+
+// SetRecommendationsNil sets Recommendations to an explicit JSON null when marshaled.
+func (o *SchemaAdvisorResponse) SetRecommendationsNil() {
+	o.Recommendations = nil
+	o.NullFields = addNullField(o.NullFields, "Recommendations")
 }

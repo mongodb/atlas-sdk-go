@@ -8,6 +8,15 @@ type AutoExportPolicy struct {
 	ExportBucketId *string `json:"exportBucketId,omitempty"`
 	// Human-readable label that indicates the rate at which the export policy item occurs.
 	FrequencyType *string `json:"frequencyType,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AutoExportPolicy) MarshalJSON() ([]byte, error) {
+	type noMethod AutoExportPolicy
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAutoExportPolicy instantiates a new AutoExportPolicy object
@@ -58,6 +67,13 @@ func (o *AutoExportPolicy) HasExportBucketId() bool {
 // SetExportBucketId gets a reference to the given string and assigns it to the ExportBucketId field.
 func (o *AutoExportPolicy) SetExportBucketId(v string) {
 	o.ExportBucketId = &v
+	o.NullFields = removeNullField(o.NullFields, "ExportBucketId")
+}
+
+// SetExportBucketIdNil sets ExportBucketId to an explicit JSON null when marshaled.
+func (o *AutoExportPolicy) SetExportBucketIdNil() {
+	o.ExportBucketId = nil
+	o.NullFields = addNullField(o.NullFields, "ExportBucketId")
 }
 
 // GetFrequencyType returns the FrequencyType field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *AutoExportPolicy) HasFrequencyType() bool {
 // SetFrequencyType gets a reference to the given string and assigns it to the FrequencyType field.
 func (o *AutoExportPolicy) SetFrequencyType(v string) {
 	o.FrequencyType = &v
+	o.NullFields = removeNullField(o.NullFields, "FrequencyType")
+}
+
+// SetFrequencyTypeNil sets FrequencyType to an explicit JSON null when marshaled.
+func (o *AutoExportPolicy) SetFrequencyTypeNil() {
+	o.FrequencyType = nil
+	o.NullFields = addNullField(o.NullFields, "FrequencyType")
 }

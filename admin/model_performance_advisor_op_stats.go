@@ -16,6 +16,15 @@ type PerformanceAdvisorOpStats struct {
 	// Date and time from which the query retrieves the suggested indexes. This parameter expresses its value in the number of seconds that have elapsed since the UNIX epoch. This parameter relates to the **since** query parameter.
 	// Read only field.
 	Ts *int64 `json:"ts,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PerformanceAdvisorOpStats) MarshalJSON() ([]byte, error) {
+	type noMethod PerformanceAdvisorOpStats
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPerformanceAdvisorOpStats instantiates a new PerformanceAdvisorOpStats object
@@ -66,6 +75,13 @@ func (o *PerformanceAdvisorOpStats) HasMs() bool {
 // SetMs gets a reference to the given int64 and assigns it to the Ms field.
 func (o *PerformanceAdvisorOpStats) SetMs(v int64) {
 	o.Ms = &v
+	o.NullFields = removeNullField(o.NullFields, "Ms")
+}
+
+// SetMsNil sets Ms to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorOpStats) SetMsNil() {
+	o.Ms = nil
+	o.NullFields = addNullField(o.NullFields, "Ms")
 }
 
 // GetNReturned returns the NReturned field value if set, zero value otherwise
@@ -99,6 +115,13 @@ func (o *PerformanceAdvisorOpStats) HasNReturned() bool {
 // SetNReturned gets a reference to the given int64 and assigns it to the NReturned field.
 func (o *PerformanceAdvisorOpStats) SetNReturned(v int64) {
 	o.NReturned = &v
+	o.NullFields = removeNullField(o.NullFields, "NReturned")
+}
+
+// SetNReturnedNil sets NReturned to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorOpStats) SetNReturnedNil() {
+	o.NReturned = nil
+	o.NullFields = addNullField(o.NullFields, "NReturned")
 }
 
 // GetNScanned returns the NScanned field value if set, zero value otherwise
@@ -132,6 +155,13 @@ func (o *PerformanceAdvisorOpStats) HasNScanned() bool {
 // SetNScanned gets a reference to the given int64 and assigns it to the NScanned field.
 func (o *PerformanceAdvisorOpStats) SetNScanned(v int64) {
 	o.NScanned = &v
+	o.NullFields = removeNullField(o.NullFields, "NScanned")
+}
+
+// SetNScannedNil sets NScanned to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorOpStats) SetNScannedNil() {
+	o.NScanned = nil
+	o.NullFields = addNullField(o.NullFields, "NScanned")
 }
 
 // GetTs returns the Ts field value if set, zero value otherwise
@@ -165,4 +195,11 @@ func (o *PerformanceAdvisorOpStats) HasTs() bool {
 // SetTs gets a reference to the given int64 and assigns it to the Ts field.
 func (o *PerformanceAdvisorOpStats) SetTs(v int64) {
 	o.Ts = &v
+	o.NullFields = removeNullField(o.NullFields, "Ts")
+}
+
+// SetTsNil sets Ts to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorOpStats) SetTsNil() {
+	o.Ts = nil
+	o.NullFields = addNullField(o.NullFields, "Ts")
 }

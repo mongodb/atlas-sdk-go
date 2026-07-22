@@ -10,6 +10,15 @@ type ClusterCloudProviderInstanceSize struct {
 	// Human-readable label that identifies the instance size or cluster tier.
 	// Read only field.
 	Name *string `json:"name,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ClusterCloudProviderInstanceSize) MarshalJSON() ([]byte, error) {
+	type noMethod ClusterCloudProviderInstanceSize
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterCloudProviderInstanceSize instantiates a new ClusterCloudProviderInstanceSize object
@@ -60,6 +69,13 @@ func (o *ClusterCloudProviderInstanceSize) HasAvailableRegions() bool {
 // SetAvailableRegions gets a reference to the given []AvailableCloudProviderRegion and assigns it to the AvailableRegions field.
 func (o *ClusterCloudProviderInstanceSize) SetAvailableRegions(v []AvailableCloudProviderRegion) {
 	o.AvailableRegions = &v
+	o.NullFields = removeNullField(o.NullFields, "AvailableRegions")
+}
+
+// SetAvailableRegionsNil sets AvailableRegions to an explicit JSON null when marshaled.
+func (o *ClusterCloudProviderInstanceSize) SetAvailableRegionsNil() {
+	o.AvailableRegions = nil
+	o.NullFields = addNullField(o.NullFields, "AvailableRegions")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -93,4 +109,11 @@ func (o *ClusterCloudProviderInstanceSize) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ClusterCloudProviderInstanceSize) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *ClusterCloudProviderInstanceSize) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }

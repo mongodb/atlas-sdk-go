@@ -13,6 +13,15 @@ type DeleteCopiedBackups20240805 struct {
 	// Unique 24-hexadecimal digit string that identifies the zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica set clusters, there is only one zone in the cluster. To find the Zone Id, do a GET request to Return One Cluster from One Project and consult the `replicationSpecs` array.
 	// Write only field.
 	ZoneId *string `json:"zoneId,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DeleteCopiedBackups20240805) MarshalJSON() ([]byte, error) {
+	type noMethod DeleteCopiedBackups20240805
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDeleteCopiedBackups20240805 instantiates a new DeleteCopiedBackups20240805 object
@@ -63,6 +72,13 @@ func (o *DeleteCopiedBackups20240805) HasCloudProvider() bool {
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *DeleteCopiedBackups20240805) SetCloudProvider(v string) {
 	o.CloudProvider = &v
+	o.NullFields = removeNullField(o.NullFields, "CloudProvider")
+}
+
+// SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled.
+func (o *DeleteCopiedBackups20240805) SetCloudProviderNil() {
+	o.CloudProvider = nil
+	o.NullFields = addNullField(o.NullFields, "CloudProvider")
 }
 
 // GetRegionName returns the RegionName field value if set, zero value otherwise
@@ -96,6 +112,13 @@ func (o *DeleteCopiedBackups20240805) HasRegionName() bool {
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *DeleteCopiedBackups20240805) SetRegionName(v string) {
 	o.RegionName = &v
+	o.NullFields = removeNullField(o.NullFields, "RegionName")
+}
+
+// SetRegionNameNil sets RegionName to an explicit JSON null when marshaled.
+func (o *DeleteCopiedBackups20240805) SetRegionNameNil() {
+	o.RegionName = nil
+	o.NullFields = addNullField(o.NullFields, "RegionName")
 }
 
 // GetZoneId returns the ZoneId field value if set, zero value otherwise
@@ -129,4 +152,11 @@ func (o *DeleteCopiedBackups20240805) HasZoneId() bool {
 // SetZoneId gets a reference to the given string and assigns it to the ZoneId field.
 func (o *DeleteCopiedBackups20240805) SetZoneId(v string) {
 	o.ZoneId = &v
+	o.NullFields = removeNullField(o.NullFields, "ZoneId")
+}
+
+// SetZoneIdNil sets ZoneId to an explicit JSON null when marshaled.
+func (o *DeleteCopiedBackups20240805) SetZoneIdNil() {
+	o.ZoneId = nil
+	o.NullFields = addNullField(o.NullFields, "ZoneId")
 }

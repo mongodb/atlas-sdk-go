@@ -10,6 +10,15 @@ type UserToDNMapping struct {
 	Match string `json:"match"`
 	// Lightweight Directory Access Protocol (LDAP) Distinguished Name (DN) template that converts the LDAP username that matches regular expression in the *match* parameter into an LDAP Distinguished Name (DN).
 	Substitution *string `json:"substitution,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *UserToDNMapping) MarshalJSON() ([]byte, error) {
+	type noMethod UserToDNMapping
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewUserToDNMapping instantiates a new UserToDNMapping object
@@ -61,6 +70,13 @@ func (o *UserToDNMapping) HasLdapQuery() bool {
 // SetLdapQuery gets a reference to the given string and assigns it to the LdapQuery field.
 func (o *UserToDNMapping) SetLdapQuery(v string) {
 	o.LdapQuery = &v
+	o.NullFields = removeNullField(o.NullFields, "LdapQuery")
+}
+
+// SetLdapQueryNil sets LdapQuery to an explicit JSON null when marshaled.
+func (o *UserToDNMapping) SetLdapQueryNil() {
+	o.LdapQuery = nil
+	o.NullFields = addNullField(o.NullFields, "LdapQuery")
 }
 
 // GetMatch returns the Match field value
@@ -118,4 +134,11 @@ func (o *UserToDNMapping) HasSubstitution() bool {
 // SetSubstitution gets a reference to the given string and assigns it to the Substitution field.
 func (o *UserToDNMapping) SetSubstitution(v string) {
 	o.Substitution = &v
+	o.NullFields = removeNullField(o.NullFields, "Substitution")
+}
+
+// SetSubstitutionNil sets Substitution to an explicit JSON null when marshaled.
+func (o *UserToDNMapping) SetSubstitutionNil() {
+	o.Substitution = nil
+	o.NullFields = addNullField(o.NullFields, "Substitution")
 }

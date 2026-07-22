@@ -30,6 +30,15 @@ type Group struct {
 	Tags *[]ResourceTag `json:"tags,omitempty"`
 	// Flag that indicates whether to create the project with default alert settings.
 	WithDefaultAlertsSettings *bool `json:"withDefaultAlertsSettings,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *Group) MarshalJSON() ([]byte, error) {
+	type noMethod Group
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGroup instantiates a new Group object
@@ -140,6 +149,13 @@ func (o *Group) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *Group) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *Group) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -173,6 +189,13 @@ func (o *Group) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *Group) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *Group) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetName returns the Name field value
@@ -254,6 +277,13 @@ func (o *Group) HasRegionUsageRestrictions() bool {
 // SetRegionUsageRestrictions gets a reference to the given string and assigns it to the RegionUsageRestrictions field.
 func (o *Group) SetRegionUsageRestrictions(v string) {
 	o.RegionUsageRestrictions = &v
+	o.NullFields = removeNullField(o.NullFields, "RegionUsageRestrictions")
+}
+
+// SetRegionUsageRestrictionsNil sets RegionUsageRestrictions to an explicit JSON null when marshaled.
+func (o *Group) SetRegionUsageRestrictionsNil() {
+	o.RegionUsageRestrictions = nil
+	o.NullFields = addNullField(o.NullFields, "RegionUsageRestrictions")
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise
@@ -287,6 +317,13 @@ func (o *Group) HasTags() bool {
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
 func (o *Group) SetTags(v []ResourceTag) {
 	o.Tags = &v
+	o.NullFields = removeNullField(o.NullFields, "Tags")
+}
+
+// SetTagsNil sets Tags to an explicit JSON null when marshaled.
+func (o *Group) SetTagsNil() {
+	o.Tags = nil
+	o.NullFields = addNullField(o.NullFields, "Tags")
 }
 
 // GetWithDefaultAlertsSettings returns the WithDefaultAlertsSettings field value if set, zero value otherwise
@@ -320,4 +357,11 @@ func (o *Group) HasWithDefaultAlertsSettings() bool {
 // SetWithDefaultAlertsSettings gets a reference to the given bool and assigns it to the WithDefaultAlertsSettings field.
 func (o *Group) SetWithDefaultAlertsSettings(v bool) {
 	o.WithDefaultAlertsSettings = &v
+	o.NullFields = removeNullField(o.NullFields, "WithDefaultAlertsSettings")
+}
+
+// SetWithDefaultAlertsSettingsNil sets WithDefaultAlertsSettings to an explicit JSON null when marshaled.
+func (o *Group) SetWithDefaultAlertsSettingsNil() {
+	o.WithDefaultAlertsSettings = nil
+	o.NullFields = addNullField(o.NullFields, "WithDefaultAlertsSettings")
 }

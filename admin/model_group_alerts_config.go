@@ -35,6 +35,15 @@ type GroupAlertsConfig struct {
 	Updated         *time.Time                      `json:"updated,omitempty"`
 	MetricThreshold *StreamProcessorMetricThreshold `json:"metricThreshold,omitempty"`
 	Threshold       *StreamProcessorMetricThreshold `json:"threshold,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *GroupAlertsConfig) MarshalJSON() ([]byte, error) {
+	type noMethod GroupAlertsConfig
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGroupAlertsConfig instantiates a new GroupAlertsConfig object
@@ -89,6 +98,13 @@ func (o *GroupAlertsConfig) HasCreated() bool {
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *GroupAlertsConfig) SetCreated(v time.Time) {
 	o.Created = &v
+	o.NullFields = removeNullField(o.NullFields, "Created")
+}
+
+// SetCreatedNil sets Created to an explicit JSON null when marshaled.
+func (o *GroupAlertsConfig) SetCreatedNil() {
+	o.Created = nil
+	o.NullFields = addNullField(o.NullFields, "Created")
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise
@@ -122,6 +138,13 @@ func (o *GroupAlertsConfig) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *GroupAlertsConfig) SetEnabled(v bool) {
 	o.Enabled = &v
+	o.NullFields = removeNullField(o.NullFields, "Enabled")
+}
+
+// SetEnabledNil sets Enabled to an explicit JSON null when marshaled.
+func (o *GroupAlertsConfig) SetEnabledNil() {
+	o.Enabled = nil
+	o.NullFields = addNullField(o.NullFields, "Enabled")
 }
 
 // GetEventTypeName returns the EventTypeName field value if set, zero value otherwise
@@ -155,6 +178,13 @@ func (o *GroupAlertsConfig) HasEventTypeName() bool {
 // SetEventTypeName gets a reference to the given string and assigns it to the EventTypeName field.
 func (o *GroupAlertsConfig) SetEventTypeName(v string) {
 	o.EventTypeName = &v
+	o.NullFields = removeNullField(o.NullFields, "EventTypeName")
+}
+
+// SetEventTypeNameNil sets EventTypeName to an explicit JSON null when marshaled.
+func (o *GroupAlertsConfig) SetEventTypeNameNil() {
+	o.EventTypeName = nil
+	o.NullFields = addNullField(o.NullFields, "EventTypeName")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -188,6 +218,13 @@ func (o *GroupAlertsConfig) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *GroupAlertsConfig) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *GroupAlertsConfig) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -221,6 +258,13 @@ func (o *GroupAlertsConfig) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *GroupAlertsConfig) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *GroupAlertsConfig) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -254,6 +298,13 @@ func (o *GroupAlertsConfig) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *GroupAlertsConfig) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *GroupAlertsConfig) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetMatchers returns the Matchers field value if set, zero value otherwise
@@ -287,6 +338,13 @@ func (o *GroupAlertsConfig) HasMatchers() bool {
 // SetMatchers gets a reference to the given []StreamsMatcher and assigns it to the Matchers field.
 func (o *GroupAlertsConfig) SetMatchers(v []StreamsMatcher) {
 	o.Matchers = &v
+	o.NullFields = removeNullField(o.NullFields, "Matchers")
+}
+
+// SetMatchersNil sets Matchers to an explicit JSON null when marshaled.
+func (o *GroupAlertsConfig) SetMatchersNil() {
+	o.Matchers = nil
+	o.NullFields = addNullField(o.NullFields, "Matchers")
 }
 
 // GetNotifications returns the Notifications field value if set, zero value otherwise
@@ -320,6 +378,13 @@ func (o *GroupAlertsConfig) HasNotifications() bool {
 // SetNotifications gets a reference to the given []AlertsNotificationRootForGroup and assigns it to the Notifications field.
 func (o *GroupAlertsConfig) SetNotifications(v []AlertsNotificationRootForGroup) {
 	o.Notifications = &v
+	o.NullFields = removeNullField(o.NullFields, "Notifications")
+}
+
+// SetNotificationsNil sets Notifications to an explicit JSON null when marshaled.
+func (o *GroupAlertsConfig) SetNotificationsNil() {
+	o.Notifications = nil
+	o.NullFields = addNullField(o.NullFields, "Notifications")
 }
 
 // GetSeverityOverride returns the SeverityOverride field value if set, zero value otherwise
@@ -353,6 +418,13 @@ func (o *GroupAlertsConfig) HasSeverityOverride() bool {
 // SetSeverityOverride gets a reference to the given string and assigns it to the SeverityOverride field.
 func (o *GroupAlertsConfig) SetSeverityOverride(v string) {
 	o.SeverityOverride = &v
+	o.NullFields = removeNullField(o.NullFields, "SeverityOverride")
+}
+
+// SetSeverityOverrideNil sets SeverityOverride to an explicit JSON null when marshaled.
+func (o *GroupAlertsConfig) SetSeverityOverrideNil() {
+	o.SeverityOverride = nil
+	o.NullFields = addNullField(o.NullFields, "SeverityOverride")
 }
 
 // GetUpdated returns the Updated field value if set, zero value otherwise
@@ -386,6 +458,13 @@ func (o *GroupAlertsConfig) HasUpdated() bool {
 // SetUpdated gets a reference to the given time.Time and assigns it to the Updated field.
 func (o *GroupAlertsConfig) SetUpdated(v time.Time) {
 	o.Updated = &v
+	o.NullFields = removeNullField(o.NullFields, "Updated")
+}
+
+// SetUpdatedNil sets Updated to an explicit JSON null when marshaled.
+func (o *GroupAlertsConfig) SetUpdatedNil() {
+	o.Updated = nil
+	o.NullFields = addNullField(o.NullFields, "Updated")
 }
 
 // GetMetricThreshold returns the MetricThreshold field value if set, zero value otherwise
@@ -419,6 +498,13 @@ func (o *GroupAlertsConfig) HasMetricThreshold() bool {
 // SetMetricThreshold gets a reference to the given StreamProcessorMetricThreshold and assigns it to the MetricThreshold field.
 func (o *GroupAlertsConfig) SetMetricThreshold(v StreamProcessorMetricThreshold) {
 	o.MetricThreshold = &v
+	o.NullFields = removeNullField(o.NullFields, "MetricThreshold")
+}
+
+// SetMetricThresholdNil sets MetricThreshold to an explicit JSON null when marshaled.
+func (o *GroupAlertsConfig) SetMetricThresholdNil() {
+	o.MetricThreshold = nil
+	o.NullFields = addNullField(o.NullFields, "MetricThreshold")
 }
 
 // GetThreshold returns the Threshold field value if set, zero value otherwise
@@ -452,4 +538,11 @@ func (o *GroupAlertsConfig) HasThreshold() bool {
 // SetThreshold gets a reference to the given StreamProcessorMetricThreshold and assigns it to the Threshold field.
 func (o *GroupAlertsConfig) SetThreshold(v StreamProcessorMetricThreshold) {
 	o.Threshold = &v
+	o.NullFields = removeNullField(o.NullFields, "Threshold")
+}
+
+// SetThresholdNil sets Threshold to an explicit JSON null when marshaled.
+func (o *GroupAlertsConfig) SetThresholdNil() {
+	o.Threshold = nil
+	o.NullFields = addNullField(o.NullFields, "Threshold")
 }

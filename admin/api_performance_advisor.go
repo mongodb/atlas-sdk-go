@@ -131,7 +131,7 @@ type PerformanceAdvisorAPI interface {
 	ListClusterSuggestedIndexesWithParams(ctx context.Context, args *ListClusterSuggestedIndexesApiParams) ListClusterSuggestedIndexesApiRequest
 
 	// Method available only for mocking purposes
-	ListClusterSuggestedIndexesExecute(r ListClusterSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error)
+	ListClusterSuggestedIndexesExecute(r ListClusterSuggestedIndexesApiRequest) (*EnvelopedPerformanceAdvisorResponse, *http.Response, error)
 
 	/*
 		ListDropIndexSuggestions Return All Suggested Indexes to Drop
@@ -155,7 +155,7 @@ type PerformanceAdvisorAPI interface {
 	ListDropIndexSuggestionsWithParams(ctx context.Context, args *ListDropIndexSuggestionsApiParams) ListDropIndexSuggestionsApiRequest
 
 	// Method available only for mocking purposes
-	ListDropIndexSuggestionsExecute(r ListDropIndexSuggestionsApiRequest) (*DropIndexSuggestionsResponse, *http.Response, error)
+	ListDropIndexSuggestionsExecute(r ListDropIndexSuggestionsApiRequest) (*EnvelopedDropIndexSuggestionsResponse, *http.Response, error)
 
 	/*
 		ListPerformanceAdvisorNamespaces Return All Namespaces for One Host
@@ -203,7 +203,7 @@ type PerformanceAdvisorAPI interface {
 	ListSchemaAdviceWithParams(ctx context.Context, args *ListSchemaAdviceApiParams) ListSchemaAdviceApiRequest
 
 	// Method available only for mocking purposes
-	ListSchemaAdviceExecute(r ListSchemaAdviceApiRequest) (*SchemaAdvisorResponse, *http.Response, error)
+	ListSchemaAdviceExecute(r ListSchemaAdviceApiRequest) (*EnvelopedSchemaAdvisorResponse, *http.Response, error)
 
 	/*
 		ListSlowQueryLogs Return Slow Queries
@@ -725,6 +725,7 @@ type ListClusterSuggestedIndexesApiRequest struct {
 	ApiService  PerformanceAdvisorAPI
 	groupId     string
 	clusterName string
+	envelope    *bool
 	processIds  *[]string
 	namespaces  *[]string
 	since       *int64
@@ -734,6 +735,7 @@ type ListClusterSuggestedIndexesApiRequest struct {
 type ListClusterSuggestedIndexesApiParams struct {
 	GroupId     string
 	ClusterName string
+	Envelope    *bool
 	ProcessIds  *[]string
 	Namespaces  *[]string
 	Since       *int64
@@ -746,11 +748,18 @@ func (a *PerformanceAdvisorAPIService) ListClusterSuggestedIndexesWithParams(ctx
 		ctx:         ctx,
 		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
+		envelope:    args.Envelope,
 		processIds:  args.ProcessIds,
 		namespaces:  args.Namespaces,
 		since:       args.Since,
 		until:       args.Until,
 	}
+}
+
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListClusterSuggestedIndexesApiRequest) Envelope(envelope bool) ListClusterSuggestedIndexesApiRequest {
+	r.envelope = &envelope
+	return r
 }
 
 // Process IDs from which to retrieve suggested indexes. A &#x60;processId&#x60; is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple &#x60;processIds&#x60;, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each &#x60;processId&#x60;.
@@ -777,7 +786,7 @@ func (r ListClusterSuggestedIndexesApiRequest) Until(until int64) ListClusterSug
 	return r
 }
 
-func (r ListClusterSuggestedIndexesApiRequest) Execute() (*PerformanceAdvisorResponse, *http.Response, error) {
+func (r ListClusterSuggestedIndexesApiRequest) Execute() (*EnvelopedPerformanceAdvisorResponse, *http.Response, error) {
 	return r.ApiService.ListClusterSuggestedIndexesExecute(r)
 }
 
@@ -802,13 +811,13 @@ func (a *PerformanceAdvisorAPIService) ListClusterSuggestedIndexes(ctx context.C
 
 // ListClusterSuggestedIndexesExecute executes the request
 //
-//	@return PerformanceAdvisorResponse
-func (a *PerformanceAdvisorAPIService) ListClusterSuggestedIndexesExecute(r ListClusterSuggestedIndexesApiRequest) (*PerformanceAdvisorResponse, *http.Response, error) {
+//	@return EnvelopedPerformanceAdvisorResponse
+func (a *PerformanceAdvisorAPIService) ListClusterSuggestedIndexesExecute(r ListClusterSuggestedIndexesApiRequest) (*EnvelopedPerformanceAdvisorResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *PerformanceAdvisorResponse
+		localVarReturnValue *EnvelopedPerformanceAdvisorResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.ListClusterSuggestedIndexes")
@@ -830,6 +839,13 @@ func (a *PerformanceAdvisorAPIService) ListClusterSuggestedIndexesExecute(r List
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = true
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	if r.processIds != nil {
 		t := *r.processIds
 		// Workaround for unused import
@@ -904,11 +920,13 @@ type ListDropIndexSuggestionsApiRequest struct {
 	ApiService  PerformanceAdvisorAPI
 	groupId     string
 	clusterName string
+	envelope    *bool
 }
 
 type ListDropIndexSuggestionsApiParams struct {
 	GroupId     string
 	ClusterName string
+	Envelope    *bool
 }
 
 func (a *PerformanceAdvisorAPIService) ListDropIndexSuggestionsWithParams(ctx context.Context, args *ListDropIndexSuggestionsApiParams) ListDropIndexSuggestionsApiRequest {
@@ -917,10 +935,17 @@ func (a *PerformanceAdvisorAPIService) ListDropIndexSuggestionsWithParams(ctx co
 		ctx:         ctx,
 		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
+		envelope:    args.Envelope,
 	}
 }
 
-func (r ListDropIndexSuggestionsApiRequest) Execute() (*DropIndexSuggestionsResponse, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListDropIndexSuggestionsApiRequest) Envelope(envelope bool) ListDropIndexSuggestionsApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+func (r ListDropIndexSuggestionsApiRequest) Execute() (*EnvelopedDropIndexSuggestionsResponse, *http.Response, error) {
 	return r.ApiService.ListDropIndexSuggestionsExecute(r)
 }
 
@@ -945,13 +970,13 @@ func (a *PerformanceAdvisorAPIService) ListDropIndexSuggestions(ctx context.Cont
 
 // ListDropIndexSuggestionsExecute executes the request
 //
-//	@return DropIndexSuggestionsResponse
-func (a *PerformanceAdvisorAPIService) ListDropIndexSuggestionsExecute(r ListDropIndexSuggestionsApiRequest) (*DropIndexSuggestionsResponse, *http.Response, error) {
+//	@return EnvelopedDropIndexSuggestionsResponse
+func (a *PerformanceAdvisorAPIService) ListDropIndexSuggestionsExecute(r ListDropIndexSuggestionsApiRequest) (*EnvelopedDropIndexSuggestionsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *DropIndexSuggestionsResponse
+		localVarReturnValue *EnvelopedDropIndexSuggestionsResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.ListDropIndexSuggestions")
@@ -973,6 +998,13 @@ func (a *PerformanceAdvisorAPIService) ListDropIndexSuggestionsExecute(r ListDro
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = true
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1174,11 +1206,13 @@ type ListSchemaAdviceApiRequest struct {
 	ApiService  PerformanceAdvisorAPI
 	groupId     string
 	clusterName string
+	envelope    *bool
 }
 
 type ListSchemaAdviceApiParams struct {
 	GroupId     string
 	ClusterName string
+	Envelope    *bool
 }
 
 func (a *PerformanceAdvisorAPIService) ListSchemaAdviceWithParams(ctx context.Context, args *ListSchemaAdviceApiParams) ListSchemaAdviceApiRequest {
@@ -1187,10 +1221,17 @@ func (a *PerformanceAdvisorAPIService) ListSchemaAdviceWithParams(ctx context.Co
 		ctx:         ctx,
 		groupId:     args.GroupId,
 		clusterName: args.ClusterName,
+		envelope:    args.Envelope,
 	}
 }
 
-func (r ListSchemaAdviceApiRequest) Execute() (*SchemaAdvisorResponse, *http.Response, error) {
+// Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body.
+func (r ListSchemaAdviceApiRequest) Envelope(envelope bool) ListSchemaAdviceApiRequest {
+	r.envelope = &envelope
+	return r
+}
+
+func (r ListSchemaAdviceApiRequest) Execute() (*EnvelopedSchemaAdvisorResponse, *http.Response, error) {
 	return r.ApiService.ListSchemaAdviceExecute(r)
 }
 
@@ -1215,13 +1256,13 @@ func (a *PerformanceAdvisorAPIService) ListSchemaAdvice(ctx context.Context, gro
 
 // ListSchemaAdviceExecute executes the request
 //
-//	@return SchemaAdvisorResponse
-func (a *PerformanceAdvisorAPIService) ListSchemaAdviceExecute(r ListSchemaAdviceApiRequest) (*SchemaAdvisorResponse, *http.Response, error) {
+//	@return EnvelopedSchemaAdvisorResponse
+func (a *PerformanceAdvisorAPIService) ListSchemaAdviceExecute(r ListSchemaAdviceApiRequest) (*EnvelopedSchemaAdvisorResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *SchemaAdvisorResponse
+		localVarReturnValue *EnvelopedSchemaAdvisorResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PerformanceAdvisorAPIService.ListSchemaAdvice")
@@ -1243,6 +1284,13 @@ func (a *PerformanceAdvisorAPIService) ListSchemaAdviceExecute(r ListSchemaAdvic
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.envelope != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	} else {
+		var defaultValue bool = true
+		r.envelope = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "envelope", r.envelope, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

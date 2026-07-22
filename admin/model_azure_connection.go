@@ -14,6 +14,15 @@ type AzureConnection struct {
 	ServicePrincipalId *string `json:"servicePrincipalId,omitempty"`
 	// Name of the Azure Storage Account to connect to.
 	StorageAccountName *string `json:"storageAccountName,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AzureConnection) MarshalJSON() ([]byte, error) {
+	type noMethod AzureConnection
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAzureConnection instantiates a new AzureConnection object
@@ -64,6 +73,13 @@ func (o *AzureConnection) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *AzureConnection) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *AzureConnection) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise
@@ -100,6 +116,13 @@ func (o *AzureConnection) HasRegion() bool {
 // Deprecated
 func (o *AzureConnection) SetRegion(v string) {
 	o.Region = &v
+	o.NullFields = removeNullField(o.NullFields, "Region")
+}
+
+// SetRegionNil sets Region to an explicit JSON null when marshaled.
+func (o *AzureConnection) SetRegionNil() {
+	o.Region = nil
+	o.NullFields = addNullField(o.NullFields, "Region")
 }
 
 // GetServicePrincipalId returns the ServicePrincipalId field value if set, zero value otherwise
@@ -133,6 +156,13 @@ func (o *AzureConnection) HasServicePrincipalId() bool {
 // SetServicePrincipalId gets a reference to the given string and assigns it to the ServicePrincipalId field.
 func (o *AzureConnection) SetServicePrincipalId(v string) {
 	o.ServicePrincipalId = &v
+	o.NullFields = removeNullField(o.NullFields, "ServicePrincipalId")
+}
+
+// SetServicePrincipalIdNil sets ServicePrincipalId to an explicit JSON null when marshaled.
+func (o *AzureConnection) SetServicePrincipalIdNil() {
+	o.ServicePrincipalId = nil
+	o.NullFields = addNullField(o.NullFields, "ServicePrincipalId")
 }
 
 // GetStorageAccountName returns the StorageAccountName field value if set, zero value otherwise
@@ -166,4 +196,11 @@ func (o *AzureConnection) HasStorageAccountName() bool {
 // SetStorageAccountName gets a reference to the given string and assigns it to the StorageAccountName field.
 func (o *AzureConnection) SetStorageAccountName(v string) {
 	o.StorageAccountName = &v
+	o.NullFields = removeNullField(o.NullFields, "StorageAccountName")
+}
+
+// SetStorageAccountNameNil sets StorageAccountName to an explicit JSON null when marshaled.
+func (o *AzureConnection) SetStorageAccountNameNil() {
+	o.StorageAccountName = nil
+	o.NullFields = addNullField(o.NullFields, "StorageAccountName")
 }

@@ -11,6 +11,15 @@ type OrgUserRequest struct {
 	// Email address that represents the username of the MongoDB Cloud user.
 	// Write only field.
 	Username string `json:"username"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *OrgUserRequest) MarshalJSON() ([]byte, error) {
+	type noMethod OrgUserRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewOrgUserRequest instantiates a new OrgUserRequest object
@@ -87,6 +96,13 @@ func (o *OrgUserRequest) HasTeamIds() bool {
 // SetTeamIds gets a reference to the given []string and assigns it to the TeamIds field.
 func (o *OrgUserRequest) SetTeamIds(v []string) {
 	o.TeamIds = &v
+	o.NullFields = removeNullField(o.NullFields, "TeamIds")
+}
+
+// SetTeamIdsNil sets TeamIds to an explicit JSON null when marshaled.
+func (o *OrgUserRequest) SetTeamIdsNil() {
+	o.TeamIds = nil
+	o.NullFields = addNullField(o.NullFields, "TeamIds")
 }
 
 // GetUsername returns the Username field value

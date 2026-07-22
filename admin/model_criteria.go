@@ -14,6 +14,15 @@ type Criteria struct {
 	DateFormat *string `json:"dateFormat,omitempty"`
 	// Number of days after the value in the `criteria.dateField` when MongoDB Cloud archives data in the specified cluster. Set this parameter when you set `\"criteria.type\" : \"DATE\"`.
 	ExpireAfterDays *int `json:"expireAfterDays,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *Criteria) MarshalJSON() ([]byte, error) {
+	type noMethod Criteria
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCriteria instantiates a new Criteria object
@@ -68,6 +77,13 @@ func (o *Criteria) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *Criteria) SetType(v string) {
 	o.Type = &v
+	o.NullFields = removeNullField(o.NullFields, "Type")
+}
+
+// SetTypeNil sets Type to an explicit JSON null when marshaled.
+func (o *Criteria) SetTypeNil() {
+	o.Type = nil
+	o.NullFields = addNullField(o.NullFields, "Type")
 }
 
 // GetQuery returns the Query field value if set, zero value otherwise
@@ -101,6 +117,13 @@ func (o *Criteria) HasQuery() bool {
 // SetQuery gets a reference to the given string and assigns it to the Query field.
 func (o *Criteria) SetQuery(v string) {
 	o.Query = &v
+	o.NullFields = removeNullField(o.NullFields, "Query")
+}
+
+// SetQueryNil sets Query to an explicit JSON null when marshaled.
+func (o *Criteria) SetQueryNil() {
+	o.Query = nil
+	o.NullFields = addNullField(o.NullFields, "Query")
 }
 
 // GetDateField returns the DateField field value if set, zero value otherwise
@@ -134,6 +157,13 @@ func (o *Criteria) HasDateField() bool {
 // SetDateField gets a reference to the given string and assigns it to the DateField field.
 func (o *Criteria) SetDateField(v string) {
 	o.DateField = &v
+	o.NullFields = removeNullField(o.NullFields, "DateField")
+}
+
+// SetDateFieldNil sets DateField to an explicit JSON null when marshaled.
+func (o *Criteria) SetDateFieldNil() {
+	o.DateField = nil
+	o.NullFields = addNullField(o.NullFields, "DateField")
 }
 
 // GetDateFormat returns the DateFormat field value if set, zero value otherwise
@@ -167,6 +197,13 @@ func (o *Criteria) HasDateFormat() bool {
 // SetDateFormat gets a reference to the given string and assigns it to the DateFormat field.
 func (o *Criteria) SetDateFormat(v string) {
 	o.DateFormat = &v
+	o.NullFields = removeNullField(o.NullFields, "DateFormat")
+}
+
+// SetDateFormatNil sets DateFormat to an explicit JSON null when marshaled.
+func (o *Criteria) SetDateFormatNil() {
+	o.DateFormat = nil
+	o.NullFields = addNullField(o.NullFields, "DateFormat")
 }
 
 // GetExpireAfterDays returns the ExpireAfterDays field value if set, zero value otherwise
@@ -200,4 +237,11 @@ func (o *Criteria) HasExpireAfterDays() bool {
 // SetExpireAfterDays gets a reference to the given int and assigns it to the ExpireAfterDays field.
 func (o *Criteria) SetExpireAfterDays(v int) {
 	o.ExpireAfterDays = &v
+	o.NullFields = removeNullField(o.NullFields, "ExpireAfterDays")
+}
+
+// SetExpireAfterDaysNil sets ExpireAfterDays to an explicit JSON null when marshaled.
+func (o *Criteria) SetExpireAfterDaysNil() {
+	o.ExpireAfterDays = nil
+	o.NullFields = addNullField(o.NullFields, "ExpireAfterDays")
 }

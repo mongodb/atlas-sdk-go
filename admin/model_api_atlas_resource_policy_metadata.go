@@ -13,6 +13,15 @@ type ApiAtlasResourcePolicyMetadata struct {
 	// Human-readable label that describes the atlas resource policy.
 	// Read only field.
 	ResourcePolicyName *string `json:"resourcePolicyName,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiAtlasResourcePolicyMetadata) MarshalJSON() ([]byte, error) {
+	type noMethod ApiAtlasResourcePolicyMetadata
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasResourcePolicyMetadata instantiates a new ApiAtlasResourcePolicyMetadata object
@@ -63,6 +72,13 @@ func (o *ApiAtlasResourcePolicyMetadata) HasPoliciesCausingNonCompliance() bool 
 // SetPoliciesCausingNonCompliance gets a reference to the given []ApiAtlasPolicyMetadata and assigns it to the PoliciesCausingNonCompliance field.
 func (o *ApiAtlasResourcePolicyMetadata) SetPoliciesCausingNonCompliance(v []ApiAtlasPolicyMetadata) {
 	o.PoliciesCausingNonCompliance = &v
+	o.NullFields = removeNullField(o.NullFields, "PoliciesCausingNonCompliance")
+}
+
+// SetPoliciesCausingNonComplianceNil sets PoliciesCausingNonCompliance to an explicit JSON null when marshaled.
+func (o *ApiAtlasResourcePolicyMetadata) SetPoliciesCausingNonComplianceNil() {
+	o.PoliciesCausingNonCompliance = nil
+	o.NullFields = addNullField(o.NullFields, "PoliciesCausingNonCompliance")
 }
 
 // GetResourcePolicyId returns the ResourcePolicyId field value if set, zero value otherwise
@@ -96,6 +112,13 @@ func (o *ApiAtlasResourcePolicyMetadata) HasResourcePolicyId() bool {
 // SetResourcePolicyId gets a reference to the given string and assigns it to the ResourcePolicyId field.
 func (o *ApiAtlasResourcePolicyMetadata) SetResourcePolicyId(v string) {
 	o.ResourcePolicyId = &v
+	o.NullFields = removeNullField(o.NullFields, "ResourcePolicyId")
+}
+
+// SetResourcePolicyIdNil sets ResourcePolicyId to an explicit JSON null when marshaled.
+func (o *ApiAtlasResourcePolicyMetadata) SetResourcePolicyIdNil() {
+	o.ResourcePolicyId = nil
+	o.NullFields = addNullField(o.NullFields, "ResourcePolicyId")
 }
 
 // GetResourcePolicyName returns the ResourcePolicyName field value if set, zero value otherwise
@@ -129,4 +152,11 @@ func (o *ApiAtlasResourcePolicyMetadata) HasResourcePolicyName() bool {
 // SetResourcePolicyName gets a reference to the given string and assigns it to the ResourcePolicyName field.
 func (o *ApiAtlasResourcePolicyMetadata) SetResourcePolicyName(v string) {
 	o.ResourcePolicyName = &v
+	o.NullFields = removeNullField(o.NullFields, "ResourcePolicyName")
+}
+
+// SetResourcePolicyNameNil sets ResourcePolicyName to an explicit JSON null when marshaled.
+func (o *ApiAtlasResourcePolicyMetadata) SetResourcePolicyNameNil() {
+	o.ResourcePolicyName = nil
+	o.NullFields = addNullField(o.NullFields, "ResourcePolicyName")
 }

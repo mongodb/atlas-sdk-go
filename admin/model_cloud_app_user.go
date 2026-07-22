@@ -41,6 +41,15 @@ type CloudAppUser struct {
 	TeamIds *[]string `json:"teamIds,omitempty"`
 	// Email address that represents the username of the MongoDB Cloud user.
 	Username string `json:"username"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CloudAppUser) MarshalJSON() ([]byte, error) {
+	type noMethod CloudAppUser
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudAppUser instantiates a new CloudAppUser object
@@ -123,6 +132,13 @@ func (o *CloudAppUser) HasCreatedAt() bool {
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *CloudAppUser) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
+	o.NullFields = removeNullField(o.NullFields, "CreatedAt")
+}
+
+// SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled.
+func (o *CloudAppUser) SetCreatedAtNil() {
+	o.CreatedAt = nil
+	o.NullFields = addNullField(o.NullFields, "CreatedAt")
 }
 
 // GetEmailAddress returns the EmailAddress field value
@@ -207,6 +223,13 @@ func (o *CloudAppUser) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *CloudAppUser) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *CloudAppUser) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetLastAuth returns the LastAuth field value if set, zero value otherwise
@@ -240,6 +263,13 @@ func (o *CloudAppUser) HasLastAuth() bool {
 // SetLastAuth gets a reference to the given time.Time and assigns it to the LastAuth field.
 func (o *CloudAppUser) SetLastAuth(v time.Time) {
 	o.LastAuth = &v
+	o.NullFields = removeNullField(o.NullFields, "LastAuth")
+}
+
+// SetLastAuthNil sets LastAuth to an explicit JSON null when marshaled.
+func (o *CloudAppUser) SetLastAuthNil() {
+	o.LastAuth = nil
+	o.NullFields = addNullField(o.NullFields, "LastAuth")
 }
 
 // GetLastName returns the LastName field value
@@ -297,6 +327,13 @@ func (o *CloudAppUser) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *CloudAppUser) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *CloudAppUser) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetMobileNumber returns the MobileNumber field value
@@ -402,6 +439,13 @@ func (o *CloudAppUser) HasTeamIds() bool {
 // SetTeamIds gets a reference to the given []string and assigns it to the TeamIds field.
 func (o *CloudAppUser) SetTeamIds(v []string) {
 	o.TeamIds = &v
+	o.NullFields = removeNullField(o.NullFields, "TeamIds")
+}
+
+// SetTeamIdsNil sets TeamIds to an explicit JSON null when marshaled.
+func (o *CloudAppUser) SetTeamIdsNil() {
+	o.TeamIds = nil
+	o.NullFields = addNullField(o.NullFields, "TeamIds")
 }
 
 // GetUsername returns the Username field value

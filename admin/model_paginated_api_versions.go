@@ -2,39 +2,48 @@
 
 package admin
 
-// PaginatedPipelineRun struct for PaginatedPipelineRun
-type PaginatedPipelineRun struct {
+// PaginatedApiVersions struct for PaginatedApiVersions
+type PaginatedApiVersions struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results []IngestionPipelineRun `json:"results"`
+	Results []ApiVersion `json:"results"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
 }
 
-// NewPaginatedPipelineRun instantiates a new PaginatedPipelineRun object
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PaginatedApiVersions) MarshalJSON() ([]byte, error) {
+	type noMethod PaginatedApiVersions
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
+}
+
+// NewPaginatedApiVersions instantiates a new PaginatedApiVersions object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedPipelineRun(results []IngestionPipelineRun) *PaginatedPipelineRun {
-	this := PaginatedPipelineRun{}
+func NewPaginatedApiVersions(results []ApiVersion) *PaginatedApiVersions {
+	this := PaginatedApiVersions{}
 	this.Results = results
 	return &this
 }
 
-// NewPaginatedPipelineRunWithDefaults instantiates a new PaginatedPipelineRun object
+// NewPaginatedApiVersionsWithDefaults instantiates a new PaginatedApiVersions object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPaginatedPipelineRunWithDefaults() *PaginatedPipelineRun {
-	this := PaginatedPipelineRun{}
+func NewPaginatedApiVersionsWithDefaults() *PaginatedApiVersions {
+	this := PaginatedApiVersions{}
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
-func (o *PaginatedPipelineRun) GetLinks() []Link {
+func (o *PaginatedApiVersions) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -44,7 +53,7 @@ func (o *PaginatedPipelineRun) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedPipelineRun) GetLinksOk() (*[]Link, bool) {
+func (o *PaginatedApiVersions) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -53,7 +62,7 @@ func (o *PaginatedPipelineRun) GetLinksOk() (*[]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *PaginatedPipelineRun) HasLinks() bool {
+func (o *PaginatedApiVersions) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -62,14 +71,21 @@ func (o *PaginatedPipelineRun) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *PaginatedPipelineRun) SetLinks(v []Link) {
+func (o *PaginatedApiVersions) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *PaginatedApiVersions) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetResults returns the Results field value
-func (o *PaginatedPipelineRun) GetResults() []IngestionPipelineRun {
+func (o *PaginatedApiVersions) GetResults() []ApiVersion {
 	if o == nil {
-		var ret []IngestionPipelineRun
+		var ret []ApiVersion
 		return ret
 	}
 
@@ -78,7 +94,7 @@ func (o *PaginatedPipelineRun) GetResults() []IngestionPipelineRun {
 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedPipelineRun) GetResultsOk() (*[]IngestionPipelineRun, bool) {
+func (o *PaginatedApiVersions) GetResultsOk() (*[]ApiVersion, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -86,12 +102,12 @@ func (o *PaginatedPipelineRun) GetResultsOk() (*[]IngestionPipelineRun, bool) {
 }
 
 // SetResults sets field value
-func (o *PaginatedPipelineRun) SetResults(v []IngestionPipelineRun) {
+func (o *PaginatedApiVersions) SetResults(v []ApiVersion) {
 	o.Results = v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise
-func (o *PaginatedPipelineRun) GetTotalCount() int {
+func (o *PaginatedApiVersions) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
 		return ret
@@ -101,7 +117,7 @@ func (o *PaginatedPipelineRun) GetTotalCount() int {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedPipelineRun) GetTotalCountOk() (*int, bool) {
+func (o *PaginatedApiVersions) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -110,7 +126,7 @@ func (o *PaginatedPipelineRun) GetTotalCountOk() (*int, bool) {
 }
 
 // HasTotalCount returns a boolean if a field has been set.
-func (o *PaginatedPipelineRun) HasTotalCount() bool {
+func (o *PaginatedApiVersions) HasTotalCount() bool {
 	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
@@ -119,6 +135,13 @@ func (o *PaginatedPipelineRun) HasTotalCount() bool {
 }
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
-func (o *PaginatedPipelineRun) SetTotalCount(v int) {
+func (o *PaginatedApiVersions) SetTotalCount(v int) {
 	o.TotalCount = &v
+	o.NullFields = removeNullField(o.NullFields, "TotalCount")
+}
+
+// SetTotalCountNil sets TotalCount to an explicit JSON null when marshaled.
+func (o *PaginatedApiVersions) SetTotalCountNil() {
+	o.TotalCount = nil
+	o.NullFields = addNullField(o.NullFields, "TotalCount")
 }
