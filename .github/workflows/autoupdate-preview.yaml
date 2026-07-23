@@ -67,8 +67,9 @@ jobs:
             > [!WARNING]
             > **This preview SDK is not officially supported and is not production ready.**
             > It is generated from the `dev` OpenAPI spec and additionally merges the
-            > preview delta (`openapi-preview.yaml`, media type
-            > `application/vnd.atlas.preview+json`) on top of it. It includes in-progress,
+            > public preview delta (`openapi-preview.yaml`) and every active private
+            > preview delta (`openapi/v2/private/*`), all using media type
+            > `application/vnd.atlas.preview+json`, on top of it. It includes in-progress,
             > unstable API endpoints and fields that may change or be removed at any time
             > without notice. Use it only for early development against pre-release Atlas
             > features, never in production.

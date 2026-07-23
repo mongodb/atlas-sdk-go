@@ -74,11 +74,19 @@ yargs(hideBin(process.argv))
   )
   .command(
     "merge-preview",
-    "Merge a preview delta spec onto a full base spec",
+    "Merge one or more preview delta specs onto a full base spec",
     (y) =>
       y
         .option("base", { alias: "b", type: "string", demandOption: true })
-        .option("preview", { alias: "p", type: "string", demandOption: true })
+        .option("preview", {
+          alias: "p",
+          type: "array",
+          demandOption: true,
+          describe:
+            "Preview delta file. Repeat --preview to layer multiple deltas " +
+            "(e.g. the public preview spec plus one or more private preview " +
+            "specs) on top of the base, applied in the order given.",
+        })
         .option("output", { alias: "o", type: "string", demandOption: true })
         .option("log-level", { type: "string" }),
     async (args) => {
@@ -86,9 +94,11 @@ yargs(hideBin(process.argv))
       const originalConsole = global.console;
       global.console = log;
       try {
-        const base = getAPI([args.base]).doc;
-        const preview = getAPI([args.preview]).doc;
-        const out = mergePreview(base, preview);
+        let out = getAPI([args.base]).doc;
+        for (const previewFile of args.preview) {
+          const preview = getAPI([previewFile]).doc;
+          out = mergePreview(out, preview);
+        }
         writeOutput({ doc: out, output: args.output });
       } finally {
         global.console = originalConsole;
