@@ -16,6 +16,15 @@ type RestoreJobFileHash struct {
 	// Human-readable label that identifies the hashing algorithm used to compute the hash value.
 	// Read only field.
 	TypeName *string `json:"typeName,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *RestoreJobFileHash) MarshalJSON() ([]byte, error) {
+	type noMethod RestoreJobFileHash
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewRestoreJobFileHash instantiates a new RestoreJobFileHash object
@@ -66,6 +75,13 @@ func (o *RestoreJobFileHash) HasFileName() bool {
 // SetFileName gets a reference to the given string and assigns it to the FileName field.
 func (o *RestoreJobFileHash) SetFileName(v string) {
 	o.FileName = &v
+	o.NullFields = removeNullField(o.NullFields, "FileName")
+}
+
+// SetFileNameNil sets FileName to an explicit JSON null when marshaled.
+func (o *RestoreJobFileHash) SetFileNameNil() {
+	o.FileName = nil
+	o.NullFields = addNullField(o.NullFields, "FileName")
 }
 
 // GetHash returns the Hash field value if set, zero value otherwise
@@ -99,6 +115,13 @@ func (o *RestoreJobFileHash) HasHash() bool {
 // SetHash gets a reference to the given string and assigns it to the Hash field.
 func (o *RestoreJobFileHash) SetHash(v string) {
 	o.Hash = &v
+	o.NullFields = removeNullField(o.NullFields, "Hash")
+}
+
+// SetHashNil sets Hash to an explicit JSON null when marshaled.
+func (o *RestoreJobFileHash) SetHashNil() {
+	o.Hash = nil
+	o.NullFields = addNullField(o.NullFields, "Hash")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -132,6 +155,13 @@ func (o *RestoreJobFileHash) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *RestoreJobFileHash) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *RestoreJobFileHash) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetTypeName returns the TypeName field value if set, zero value otherwise
@@ -165,4 +195,11 @@ func (o *RestoreJobFileHash) HasTypeName() bool {
 // SetTypeName gets a reference to the given string and assigns it to the TypeName field.
 func (o *RestoreJobFileHash) SetTypeName(v string) {
 	o.TypeName = &v
+	o.NullFields = removeNullField(o.NullFields, "TypeName")
+}
+
+// SetTypeNameNil sets TypeName to an explicit JSON null when marshaled.
+func (o *RestoreJobFileHash) SetTypeNameNil() {
+	o.TypeName = nil
+	o.NullFields = addNullField(o.NullFields, "TypeName")
 }

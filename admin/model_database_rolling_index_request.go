@@ -15,6 +15,15 @@ type DatabaseRollingIndexRequest struct {
 	// Write only field.
 	Keys    []map[string]string `json:"keys"`
 	Options *IndexOptions       `json:"options,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DatabaseRollingIndexRequest) MarshalJSON() ([]byte, error) {
+	type noMethod DatabaseRollingIndexRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDatabaseRollingIndexRequest instantiates a new DatabaseRollingIndexRequest object
@@ -68,6 +77,13 @@ func (o *DatabaseRollingIndexRequest) HasCollation() bool {
 // SetCollation gets a reference to the given Collation and assigns it to the Collation field.
 func (o *DatabaseRollingIndexRequest) SetCollation(v Collation) {
 	o.Collation = &v
+	o.NullFields = removeNullField(o.NullFields, "Collation")
+}
+
+// SetCollationNil sets Collation to an explicit JSON null when marshaled.
+func (o *DatabaseRollingIndexRequest) SetCollationNil() {
+	o.Collation = nil
+	o.NullFields = addNullField(o.NullFields, "Collation")
 }
 
 // GetCollection returns the Collection field value
@@ -173,4 +189,11 @@ func (o *DatabaseRollingIndexRequest) HasOptions() bool {
 // SetOptions gets a reference to the given IndexOptions and assigns it to the Options field.
 func (o *DatabaseRollingIndexRequest) SetOptions(v IndexOptions) {
 	o.Options = &v
+	o.NullFields = removeNullField(o.NullFields, "Options")
+}
+
+// SetOptionsNil sets Options to an explicit JSON null when marshaled.
+func (o *DatabaseRollingIndexRequest) SetOptionsNil() {
+	o.Options = nil
+	o.NullFields = addNullField(o.NullFields, "Options")
 }

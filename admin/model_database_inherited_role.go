@@ -8,6 +8,15 @@ type DatabaseInheritedRole struct {
 	Db string `json:"db"`
 	// Human-readable label that identifies the role inherited. Set this value to `admin` for every role except `read` or `readWrite`.
 	Role string `json:"role"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DatabaseInheritedRole) MarshalJSON() ([]byte, error) {
+	type noMethod DatabaseInheritedRole
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDatabaseInheritedRole instantiates a new DatabaseInheritedRole object

@@ -20,6 +20,15 @@ type ApiKeyUserDetails struct {
 	PublicKey *string `json:"publicKey,omitempty"`
 	// List that contains the roles that the API key needs to have. All roles you provide must be valid for the specified project or organization. Each request must include a minimum of one valid role. The resource returns all project and organization roles assigned to the API key.
 	Roles *[]CloudAccessRoleAssignment `json:"roles,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiKeyUserDetails) MarshalJSON() ([]byte, error) {
+	type noMethod ApiKeyUserDetails
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiKeyUserDetails instantiates a new ApiKeyUserDetails object
@@ -70,6 +79,13 @@ func (o *ApiKeyUserDetails) HasDesc() bool {
 // SetDesc gets a reference to the given string and assigns it to the Desc field.
 func (o *ApiKeyUserDetails) SetDesc(v string) {
 	o.Desc = &v
+	o.NullFields = removeNullField(o.NullFields, "Desc")
+}
+
+// SetDescNil sets Desc to an explicit JSON null when marshaled.
+func (o *ApiKeyUserDetails) SetDescNil() {
+	o.Desc = nil
+	o.NullFields = addNullField(o.NullFields, "Desc")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -103,6 +119,13 @@ func (o *ApiKeyUserDetails) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApiKeyUserDetails) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *ApiKeyUserDetails) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -136,6 +159,13 @@ func (o *ApiKeyUserDetails) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *ApiKeyUserDetails) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *ApiKeyUserDetails) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetPrivateKey returns the PrivateKey field value if set, zero value otherwise
@@ -169,6 +199,13 @@ func (o *ApiKeyUserDetails) HasPrivateKey() bool {
 // SetPrivateKey gets a reference to the given string and assigns it to the PrivateKey field.
 func (o *ApiKeyUserDetails) SetPrivateKey(v string) {
 	o.PrivateKey = &v
+	o.NullFields = removeNullField(o.NullFields, "PrivateKey")
+}
+
+// SetPrivateKeyNil sets PrivateKey to an explicit JSON null when marshaled.
+func (o *ApiKeyUserDetails) SetPrivateKeyNil() {
+	o.PrivateKey = nil
+	o.NullFields = addNullField(o.NullFields, "PrivateKey")
 }
 
 // GetPublicKey returns the PublicKey field value if set, zero value otherwise
@@ -202,6 +239,13 @@ func (o *ApiKeyUserDetails) HasPublicKey() bool {
 // SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
 func (o *ApiKeyUserDetails) SetPublicKey(v string) {
 	o.PublicKey = &v
+	o.NullFields = removeNullField(o.NullFields, "PublicKey")
+}
+
+// SetPublicKeyNil sets PublicKey to an explicit JSON null when marshaled.
+func (o *ApiKeyUserDetails) SetPublicKeyNil() {
+	o.PublicKey = nil
+	o.NullFields = addNullField(o.NullFields, "PublicKey")
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise
@@ -235,4 +279,11 @@ func (o *ApiKeyUserDetails) HasRoles() bool {
 // SetRoles gets a reference to the given []CloudAccessRoleAssignment and assigns it to the Roles field.
 func (o *ApiKeyUserDetails) SetRoles(v []CloudAccessRoleAssignment) {
 	o.Roles = &v
+	o.NullFields = removeNullField(o.NullFields, "Roles")
+}
+
+// SetRolesNil sets Roles to an explicit JSON null when marshaled.
+func (o *ApiKeyUserDetails) SetRolesNil() {
+	o.Roles = nil
+	o.NullFields = addNullField(o.NullFields, "Roles")
 }

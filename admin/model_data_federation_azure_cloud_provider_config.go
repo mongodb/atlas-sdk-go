@@ -15,6 +15,15 @@ type DataFederationAzureCloudProviderConfig struct {
 	// The Azure Active Directory / Entra ID tenant ID associated with the Service Principal.
 	// Read only field.
 	TenantId *string `json:"tenantId,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DataFederationAzureCloudProviderConfig) MarshalJSON() ([]byte, error) {
+	type noMethod DataFederationAzureCloudProviderConfig
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataFederationAzureCloudProviderConfig instantiates a new DataFederationAzureCloudProviderConfig object
@@ -66,6 +75,13 @@ func (o *DataFederationAzureCloudProviderConfig) HasAtlasAppId() bool {
 // SetAtlasAppId gets a reference to the given string and assigns it to the AtlasAppId field.
 func (o *DataFederationAzureCloudProviderConfig) SetAtlasAppId(v string) {
 	o.AtlasAppId = &v
+	o.NullFields = removeNullField(o.NullFields, "AtlasAppId")
+}
+
+// SetAtlasAppIdNil sets AtlasAppId to an explicit JSON null when marshaled.
+func (o *DataFederationAzureCloudProviderConfig) SetAtlasAppIdNil() {
+	o.AtlasAppId = nil
+	o.NullFields = addNullField(o.NullFields, "AtlasAppId")
 }
 
 // GetRoleId returns the RoleId field value
@@ -123,6 +139,13 @@ func (o *DataFederationAzureCloudProviderConfig) HasServicePrincipalId() bool {
 // SetServicePrincipalId gets a reference to the given string and assigns it to the ServicePrincipalId field.
 func (o *DataFederationAzureCloudProviderConfig) SetServicePrincipalId(v string) {
 	o.ServicePrincipalId = &v
+	o.NullFields = removeNullField(o.NullFields, "ServicePrincipalId")
+}
+
+// SetServicePrincipalIdNil sets ServicePrincipalId to an explicit JSON null when marshaled.
+func (o *DataFederationAzureCloudProviderConfig) SetServicePrincipalIdNil() {
+	o.ServicePrincipalId = nil
+	o.NullFields = addNullField(o.NullFields, "ServicePrincipalId")
 }
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise
@@ -156,4 +179,11 @@ func (o *DataFederationAzureCloudProviderConfig) HasTenantId() bool {
 // SetTenantId gets a reference to the given string and assigns it to the TenantId field.
 func (o *DataFederationAzureCloudProviderConfig) SetTenantId(v string) {
 	o.TenantId = &v
+	o.NullFields = removeNullField(o.NullFields, "TenantId")
+}
+
+// SetTenantIdNil sets TenantId to an explicit JSON null when marshaled.
+func (o *DataFederationAzureCloudProviderConfig) SetTenantIdNil() {
+	o.TenantId = nil
+	o.NullFields = addNullField(o.NullFields, "TenantId")
 }

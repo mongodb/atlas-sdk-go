@@ -2,39 +2,48 @@
 
 package admin
 
-// PaginatedBackupSnapshot struct for PaginatedBackupSnapshot
-type PaginatedBackupSnapshot struct {
+// PaginatedOrgMcpConfig struct for PaginatedOrgMcpConfig
+type PaginatedOrgMcpConfig struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results []DiskBackupSnapshot `json:"results"`
+	Results []OrgMcpConfigResponse `json:"results"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
 }
 
-// NewPaginatedBackupSnapshot instantiates a new PaginatedBackupSnapshot object
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PaginatedOrgMcpConfig) MarshalJSON() ([]byte, error) {
+	type noMethod PaginatedOrgMcpConfig
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
+}
+
+// NewPaginatedOrgMcpConfig instantiates a new PaginatedOrgMcpConfig object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedBackupSnapshot(results []DiskBackupSnapshot) *PaginatedBackupSnapshot {
-	this := PaginatedBackupSnapshot{}
+func NewPaginatedOrgMcpConfig(results []OrgMcpConfigResponse) *PaginatedOrgMcpConfig {
+	this := PaginatedOrgMcpConfig{}
 	this.Results = results
 	return &this
 }
 
-// NewPaginatedBackupSnapshotWithDefaults instantiates a new PaginatedBackupSnapshot object
+// NewPaginatedOrgMcpConfigWithDefaults instantiates a new PaginatedOrgMcpConfig object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPaginatedBackupSnapshotWithDefaults() *PaginatedBackupSnapshot {
-	this := PaginatedBackupSnapshot{}
+func NewPaginatedOrgMcpConfigWithDefaults() *PaginatedOrgMcpConfig {
+	this := PaginatedOrgMcpConfig{}
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
-func (o *PaginatedBackupSnapshot) GetLinks() []Link {
+func (o *PaginatedOrgMcpConfig) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -44,7 +53,7 @@ func (o *PaginatedBackupSnapshot) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedBackupSnapshot) GetLinksOk() (*[]Link, bool) {
+func (o *PaginatedOrgMcpConfig) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -53,7 +62,7 @@ func (o *PaginatedBackupSnapshot) GetLinksOk() (*[]Link, bool) {
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *PaginatedBackupSnapshot) HasLinks() bool {
+func (o *PaginatedOrgMcpConfig) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -62,14 +71,21 @@ func (o *PaginatedBackupSnapshot) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *PaginatedBackupSnapshot) SetLinks(v []Link) {
+func (o *PaginatedOrgMcpConfig) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *PaginatedOrgMcpConfig) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetResults returns the Results field value
-func (o *PaginatedBackupSnapshot) GetResults() []DiskBackupSnapshot {
+func (o *PaginatedOrgMcpConfig) GetResults() []OrgMcpConfigResponse {
 	if o == nil {
-		var ret []DiskBackupSnapshot
+		var ret []OrgMcpConfigResponse
 		return ret
 	}
 
@@ -78,7 +94,7 @@ func (o *PaginatedBackupSnapshot) GetResults() []DiskBackupSnapshot {
 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedBackupSnapshot) GetResultsOk() (*[]DiskBackupSnapshot, bool) {
+func (o *PaginatedOrgMcpConfig) GetResultsOk() (*[]OrgMcpConfigResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -86,12 +102,12 @@ func (o *PaginatedBackupSnapshot) GetResultsOk() (*[]DiskBackupSnapshot, bool) {
 }
 
 // SetResults sets field value
-func (o *PaginatedBackupSnapshot) SetResults(v []DiskBackupSnapshot) {
+func (o *PaginatedOrgMcpConfig) SetResults(v []OrgMcpConfigResponse) {
 	o.Results = v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise
-func (o *PaginatedBackupSnapshot) GetTotalCount() int {
+func (o *PaginatedOrgMcpConfig) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
 		return ret
@@ -101,7 +117,7 @@ func (o *PaginatedBackupSnapshot) GetTotalCount() int {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedBackupSnapshot) GetTotalCountOk() (*int, bool) {
+func (o *PaginatedOrgMcpConfig) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -110,7 +126,7 @@ func (o *PaginatedBackupSnapshot) GetTotalCountOk() (*int, bool) {
 }
 
 // HasTotalCount returns a boolean if a field has been set.
-func (o *PaginatedBackupSnapshot) HasTotalCount() bool {
+func (o *PaginatedOrgMcpConfig) HasTotalCount() bool {
 	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
@@ -119,6 +135,13 @@ func (o *PaginatedBackupSnapshot) HasTotalCount() bool {
 }
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
-func (o *PaginatedBackupSnapshot) SetTotalCount(v int) {
+func (o *PaginatedOrgMcpConfig) SetTotalCount(v int) {
 	o.TotalCount = &v
+	o.NullFields = removeNullField(o.NullFields, "TotalCount")
+}
+
+// SetTotalCountNil sets TotalCount to an explicit JSON null when marshaled.
+func (o *PaginatedOrgMcpConfig) SetTotalCountNil() {
+	o.TotalCount = nil
+	o.NullFields = addNullField(o.NullFields, "TotalCount")
 }

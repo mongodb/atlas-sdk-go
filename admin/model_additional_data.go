@@ -10,6 +10,15 @@ type AdditionalData struct {
 	ProcessorName *string `json:"processorName,omitempty"`
 	// Workspace associated with the line item.
 	Workspace *string `json:"workspace,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AdditionalData) MarshalJSON() ([]byte, error) {
+	type noMethod AdditionalData
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAdditionalData instantiates a new AdditionalData object
@@ -60,6 +69,13 @@ func (o *AdditionalData) HasProcessorId() bool {
 // SetProcessorId gets a reference to the given string and assigns it to the ProcessorId field.
 func (o *AdditionalData) SetProcessorId(v string) {
 	o.ProcessorId = &v
+	o.NullFields = removeNullField(o.NullFields, "ProcessorId")
+}
+
+// SetProcessorIdNil sets ProcessorId to an explicit JSON null when marshaled.
+func (o *AdditionalData) SetProcessorIdNil() {
+	o.ProcessorId = nil
+	o.NullFields = addNullField(o.NullFields, "ProcessorId")
 }
 
 // GetProcessorName returns the ProcessorName field value if set, zero value otherwise
@@ -93,6 +109,13 @@ func (o *AdditionalData) HasProcessorName() bool {
 // SetProcessorName gets a reference to the given string and assigns it to the ProcessorName field.
 func (o *AdditionalData) SetProcessorName(v string) {
 	o.ProcessorName = &v
+	o.NullFields = removeNullField(o.NullFields, "ProcessorName")
+}
+
+// SetProcessorNameNil sets ProcessorName to an explicit JSON null when marshaled.
+func (o *AdditionalData) SetProcessorNameNil() {
+	o.ProcessorName = nil
+	o.NullFields = addNullField(o.NullFields, "ProcessorName")
 }
 
 // GetWorkspace returns the Workspace field value if set, zero value otherwise
@@ -126,4 +149,11 @@ func (o *AdditionalData) HasWorkspace() bool {
 // SetWorkspace gets a reference to the given string and assigns it to the Workspace field.
 func (o *AdditionalData) SetWorkspace(v string) {
 	o.Workspace = &v
+	o.NullFields = removeNullField(o.NullFields, "Workspace")
+}
+
+// SetWorkspaceNil sets Workspace to an explicit JSON null when marshaled.
+func (o *AdditionalData) SetWorkspaceNil() {
+	o.Workspace = nil
+	o.NullFields = addNullField(o.NullFields, "Workspace")
 }

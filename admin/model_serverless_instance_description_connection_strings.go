@@ -10,6 +10,15 @@ type ServerlessInstanceDescriptionConnectionStrings struct {
 	// Public connection string that you can use to connect to this serverless instance. This connection string uses the `mongodb+srv://` protocol.
 	// Read only field.
 	StandardSrv *string `json:"standardSrv,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ServerlessInstanceDescriptionConnectionStrings) MarshalJSON() ([]byte, error) {
+	type noMethod ServerlessInstanceDescriptionConnectionStrings
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewServerlessInstanceDescriptionConnectionStrings instantiates a new ServerlessInstanceDescriptionConnectionStrings object
@@ -60,6 +69,13 @@ func (o *ServerlessInstanceDescriptionConnectionStrings) HasPrivateEndpoint() bo
 // SetPrivateEndpoint gets a reference to the given []ServerlessConnectionStringsPrivateEndpointList and assigns it to the PrivateEndpoint field.
 func (o *ServerlessInstanceDescriptionConnectionStrings) SetPrivateEndpoint(v []ServerlessConnectionStringsPrivateEndpointList) {
 	o.PrivateEndpoint = &v
+	o.NullFields = removeNullField(o.NullFields, "PrivateEndpoint")
+}
+
+// SetPrivateEndpointNil sets PrivateEndpoint to an explicit JSON null when marshaled.
+func (o *ServerlessInstanceDescriptionConnectionStrings) SetPrivateEndpointNil() {
+	o.PrivateEndpoint = nil
+	o.NullFields = addNullField(o.NullFields, "PrivateEndpoint")
 }
 
 // GetStandardSrv returns the StandardSrv field value if set, zero value otherwise
@@ -93,4 +109,11 @@ func (o *ServerlessInstanceDescriptionConnectionStrings) HasStandardSrv() bool {
 // SetStandardSrv gets a reference to the given string and assigns it to the StandardSrv field.
 func (o *ServerlessInstanceDescriptionConnectionStrings) SetStandardSrv(v string) {
 	o.StandardSrv = &v
+	o.NullFields = removeNullField(o.NullFields, "StandardSrv")
+}
+
+// SetStandardSrvNil sets StandardSrv to an explicit JSON null when marshaled.
+func (o *ServerlessInstanceDescriptionConnectionStrings) SetStandardSrvNil() {
+	o.StandardSrv = nil
+	o.NullFields = addNullField(o.NullFields, "StandardSrv")
 }

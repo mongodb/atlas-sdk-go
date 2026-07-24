@@ -12,6 +12,15 @@ type ApiAtlasClusterAdvancedConfiguration struct {
 	MinimumEnabledTlsProtocol *string `json:"minimumEnabledTlsProtocol,omitempty"`
 	// The TLS cipher suite configuration mode. The default mode uses the default cipher suites. The custom mode allows you to specify custom cipher suites for both TLS 1.2 and TLS 1.3.
 	TlsCipherConfigMode *string `json:"tlsCipherConfigMode,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiAtlasClusterAdvancedConfiguration) MarshalJSON() ([]byte, error) {
+	type noMethod ApiAtlasClusterAdvancedConfiguration
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasClusterAdvancedConfiguration instantiates a new ApiAtlasClusterAdvancedConfiguration object
@@ -62,6 +71,13 @@ func (o *ApiAtlasClusterAdvancedConfiguration) HasCustomOpensslCipherConfigTls12
 // SetCustomOpensslCipherConfigTls12 gets a reference to the given []string and assigns it to the CustomOpensslCipherConfigTls12 field.
 func (o *ApiAtlasClusterAdvancedConfiguration) SetCustomOpensslCipherConfigTls12(v []string) {
 	o.CustomOpensslCipherConfigTls12 = &v
+	o.NullFields = removeNullField(o.NullFields, "CustomOpensslCipherConfigTls12")
+}
+
+// SetCustomOpensslCipherConfigTls12Nil sets CustomOpensslCipherConfigTls12 to an explicit JSON null when marshaled.
+func (o *ApiAtlasClusterAdvancedConfiguration) SetCustomOpensslCipherConfigTls12Nil() {
+	o.CustomOpensslCipherConfigTls12 = nil
+	o.NullFields = addNullField(o.NullFields, "CustomOpensslCipherConfigTls12")
 }
 
 // GetCustomOpensslCipherConfigTls13 returns the CustomOpensslCipherConfigTls13 field value if set, zero value otherwise
@@ -95,6 +111,13 @@ func (o *ApiAtlasClusterAdvancedConfiguration) HasCustomOpensslCipherConfigTls13
 // SetCustomOpensslCipherConfigTls13 gets a reference to the given []string and assigns it to the CustomOpensslCipherConfigTls13 field.
 func (o *ApiAtlasClusterAdvancedConfiguration) SetCustomOpensslCipherConfigTls13(v []string) {
 	o.CustomOpensslCipherConfigTls13 = &v
+	o.NullFields = removeNullField(o.NullFields, "CustomOpensslCipherConfigTls13")
+}
+
+// SetCustomOpensslCipherConfigTls13Nil sets CustomOpensslCipherConfigTls13 to an explicit JSON null when marshaled.
+func (o *ApiAtlasClusterAdvancedConfiguration) SetCustomOpensslCipherConfigTls13Nil() {
+	o.CustomOpensslCipherConfigTls13 = nil
+	o.NullFields = addNullField(o.NullFields, "CustomOpensslCipherConfigTls13")
 }
 
 // GetMinimumEnabledTlsProtocol returns the MinimumEnabledTlsProtocol field value if set, zero value otherwise
@@ -128,6 +151,13 @@ func (o *ApiAtlasClusterAdvancedConfiguration) HasMinimumEnabledTlsProtocol() bo
 // SetMinimumEnabledTlsProtocol gets a reference to the given string and assigns it to the MinimumEnabledTlsProtocol field.
 func (o *ApiAtlasClusterAdvancedConfiguration) SetMinimumEnabledTlsProtocol(v string) {
 	o.MinimumEnabledTlsProtocol = &v
+	o.NullFields = removeNullField(o.NullFields, "MinimumEnabledTlsProtocol")
+}
+
+// SetMinimumEnabledTlsProtocolNil sets MinimumEnabledTlsProtocol to an explicit JSON null when marshaled.
+func (o *ApiAtlasClusterAdvancedConfiguration) SetMinimumEnabledTlsProtocolNil() {
+	o.MinimumEnabledTlsProtocol = nil
+	o.NullFields = addNullField(o.NullFields, "MinimumEnabledTlsProtocol")
 }
 
 // GetTlsCipherConfigMode returns the TlsCipherConfigMode field value if set, zero value otherwise
@@ -161,4 +191,11 @@ func (o *ApiAtlasClusterAdvancedConfiguration) HasTlsCipherConfigMode() bool {
 // SetTlsCipherConfigMode gets a reference to the given string and assigns it to the TlsCipherConfigMode field.
 func (o *ApiAtlasClusterAdvancedConfiguration) SetTlsCipherConfigMode(v string) {
 	o.TlsCipherConfigMode = &v
+	o.NullFields = removeNullField(o.NullFields, "TlsCipherConfigMode")
+}
+
+// SetTlsCipherConfigModeNil sets TlsCipherConfigMode to an explicit JSON null when marshaled.
+func (o *ApiAtlasClusterAdvancedConfiguration) SetTlsCipherConfigModeNil() {
+	o.TlsCipherConfigMode = nil
+	o.NullFields = addNullField(o.NullFields, "TlsCipherConfigMode")
 }

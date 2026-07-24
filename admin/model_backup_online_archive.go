@@ -37,6 +37,15 @@ type BackupOnlineArchive struct {
 	// Phase of the process to create this online archive when you made this request.  | State       | Indication | |-------------|------------| | `PENDING`   | MongoDB Cloud has queued documents for archive. Archiving hasn't started. | | `ARCHIVING` | MongoDB Cloud started archiving documents that meet the archival criteria. | | `IDLE`      | MongoDB Cloud waits to start the next archival job. | | `PAUSING`   | Someone chose to stop archiving. MongoDB Cloud finishes the running archival job then changes the state to `PAUSED` when that job completes. | | `PAUSED`    | MongoDB Cloud has stopped archiving. Archived documents can be queried. The specified archiving operation on the active cluster cannot archive additional documents. You can resume archiving for paused archives at any time. | | `ORPHANED`  | Someone has deleted the collection associated with an active or paused archive. MongoDB Cloud doesn't delete the archived data. You must manually delete the online archives associated with the deleted collection. | | `DELETED`   | Someone has deleted the archive was deleted. When someone deletes an online archive, MongoDB Cloud removes all associated archived documents from the cloud object storage. |
 	// Read only field.
 	State *string `json:"state,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *BackupOnlineArchive) MarshalJSON() ([]byte, error) {
+	type noMethod BackupOnlineArchive
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewBackupOnlineArchive instantiates a new BackupOnlineArchive object
@@ -87,6 +96,13 @@ func (o *BackupOnlineArchive) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *BackupOnlineArchive) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *BackupOnlineArchive) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetClusterName returns the ClusterName field value if set, zero value otherwise
@@ -120,6 +136,13 @@ func (o *BackupOnlineArchive) HasClusterName() bool {
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *BackupOnlineArchive) SetClusterName(v string) {
 	o.ClusterName = &v
+	o.NullFields = removeNullField(o.NullFields, "ClusterName")
+}
+
+// SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled.
+func (o *BackupOnlineArchive) SetClusterNameNil() {
+	o.ClusterName = nil
+	o.NullFields = addNullField(o.NullFields, "ClusterName")
 }
 
 // GetCollName returns the CollName field value if set, zero value otherwise
@@ -153,6 +176,13 @@ func (o *BackupOnlineArchive) HasCollName() bool {
 // SetCollName gets a reference to the given string and assigns it to the CollName field.
 func (o *BackupOnlineArchive) SetCollName(v string) {
 	o.CollName = &v
+	o.NullFields = removeNullField(o.NullFields, "CollName")
+}
+
+// SetCollNameNil sets CollName to an explicit JSON null when marshaled.
+func (o *BackupOnlineArchive) SetCollNameNil() {
+	o.CollName = nil
+	o.NullFields = addNullField(o.NullFields, "CollName")
 }
 
 // GetCollectionType returns the CollectionType field value if set, zero value otherwise
@@ -186,6 +216,13 @@ func (o *BackupOnlineArchive) HasCollectionType() bool {
 // SetCollectionType gets a reference to the given string and assigns it to the CollectionType field.
 func (o *BackupOnlineArchive) SetCollectionType(v string) {
 	o.CollectionType = &v
+	o.NullFields = removeNullField(o.NullFields, "CollectionType")
+}
+
+// SetCollectionTypeNil sets CollectionType to an explicit JSON null when marshaled.
+func (o *BackupOnlineArchive) SetCollectionTypeNil() {
+	o.CollectionType = nil
+	o.NullFields = addNullField(o.NullFields, "CollectionType")
 }
 
 // GetCriteria returns the Criteria field value if set, zero value otherwise
@@ -219,6 +256,13 @@ func (o *BackupOnlineArchive) HasCriteria() bool {
 // SetCriteria gets a reference to the given Criteria and assigns it to the Criteria field.
 func (o *BackupOnlineArchive) SetCriteria(v Criteria) {
 	o.Criteria = &v
+	o.NullFields = removeNullField(o.NullFields, "Criteria")
+}
+
+// SetCriteriaNil sets Criteria to an explicit JSON null when marshaled.
+func (o *BackupOnlineArchive) SetCriteriaNil() {
+	o.Criteria = nil
+	o.NullFields = addNullField(o.NullFields, "Criteria")
 }
 
 // GetDataExpirationRule returns the DataExpirationRule field value if set, zero value otherwise
@@ -252,6 +296,13 @@ func (o *BackupOnlineArchive) HasDataExpirationRule() bool {
 // SetDataExpirationRule gets a reference to the given DataExpirationRule and assigns it to the DataExpirationRule field.
 func (o *BackupOnlineArchive) SetDataExpirationRule(v DataExpirationRule) {
 	o.DataExpirationRule = &v
+	o.NullFields = removeNullField(o.NullFields, "DataExpirationRule")
+}
+
+// SetDataExpirationRuleNil sets DataExpirationRule to an explicit JSON null when marshaled.
+func (o *BackupOnlineArchive) SetDataExpirationRuleNil() {
+	o.DataExpirationRule = nil
+	o.NullFields = addNullField(o.NullFields, "DataExpirationRule")
 }
 
 // GetDataProcessRegion returns the DataProcessRegion field value if set, zero value otherwise
@@ -285,6 +336,13 @@ func (o *BackupOnlineArchive) HasDataProcessRegion() bool {
 // SetDataProcessRegion gets a reference to the given DataProcessRegion and assigns it to the DataProcessRegion field.
 func (o *BackupOnlineArchive) SetDataProcessRegion(v DataProcessRegion) {
 	o.DataProcessRegion = &v
+	o.NullFields = removeNullField(o.NullFields, "DataProcessRegion")
+}
+
+// SetDataProcessRegionNil sets DataProcessRegion to an explicit JSON null when marshaled.
+func (o *BackupOnlineArchive) SetDataProcessRegionNil() {
+	o.DataProcessRegion = nil
+	o.NullFields = addNullField(o.NullFields, "DataProcessRegion")
 }
 
 // GetDataSetName returns the DataSetName field value if set, zero value otherwise
@@ -318,6 +376,13 @@ func (o *BackupOnlineArchive) HasDataSetName() bool {
 // SetDataSetName gets a reference to the given string and assigns it to the DataSetName field.
 func (o *BackupOnlineArchive) SetDataSetName(v string) {
 	o.DataSetName = &v
+	o.NullFields = removeNullField(o.NullFields, "DataSetName")
+}
+
+// SetDataSetNameNil sets DataSetName to an explicit JSON null when marshaled.
+func (o *BackupOnlineArchive) SetDataSetNameNil() {
+	o.DataSetName = nil
+	o.NullFields = addNullField(o.NullFields, "DataSetName")
 }
 
 // GetDbName returns the DbName field value if set, zero value otherwise
@@ -351,6 +416,13 @@ func (o *BackupOnlineArchive) HasDbName() bool {
 // SetDbName gets a reference to the given string and assigns it to the DbName field.
 func (o *BackupOnlineArchive) SetDbName(v string) {
 	o.DbName = &v
+	o.NullFields = removeNullField(o.NullFields, "DbName")
+}
+
+// SetDbNameNil sets DbName to an explicit JSON null when marshaled.
+func (o *BackupOnlineArchive) SetDbNameNil() {
+	o.DbName = nil
+	o.NullFields = addNullField(o.NullFields, "DbName")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -384,6 +456,13 @@ func (o *BackupOnlineArchive) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *BackupOnlineArchive) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *BackupOnlineArchive) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetPartitionFields returns the PartitionFields field value if set, zero value otherwise
@@ -417,6 +496,13 @@ func (o *BackupOnlineArchive) HasPartitionFields() bool {
 // SetPartitionFields gets a reference to the given []PartitionField and assigns it to the PartitionFields field.
 func (o *BackupOnlineArchive) SetPartitionFields(v []PartitionField) {
 	o.PartitionFields = &v
+	o.NullFields = removeNullField(o.NullFields, "PartitionFields")
+}
+
+// SetPartitionFieldsNil sets PartitionFields to an explicit JSON null when marshaled.
+func (o *BackupOnlineArchive) SetPartitionFieldsNil() {
+	o.PartitionFields = nil
+	o.NullFields = addNullField(o.NullFields, "PartitionFields")
 }
 
 // GetPaused returns the Paused field value if set, zero value otherwise
@@ -450,6 +536,13 @@ func (o *BackupOnlineArchive) HasPaused() bool {
 // SetPaused gets a reference to the given bool and assigns it to the Paused field.
 func (o *BackupOnlineArchive) SetPaused(v bool) {
 	o.Paused = &v
+	o.NullFields = removeNullField(o.NullFields, "Paused")
+}
+
+// SetPausedNil sets Paused to an explicit JSON null when marshaled.
+func (o *BackupOnlineArchive) SetPausedNil() {
+	o.Paused = nil
+	o.NullFields = addNullField(o.NullFields, "Paused")
 }
 
 // GetSchedule returns the Schedule field value if set, zero value otherwise
@@ -483,6 +576,13 @@ func (o *BackupOnlineArchive) HasSchedule() bool {
 // SetSchedule gets a reference to the given OnlineArchiveSchedule and assigns it to the Schedule field.
 func (o *BackupOnlineArchive) SetSchedule(v OnlineArchiveSchedule) {
 	o.Schedule = &v
+	o.NullFields = removeNullField(o.NullFields, "Schedule")
+}
+
+// SetScheduleNil sets Schedule to an explicit JSON null when marshaled.
+func (o *BackupOnlineArchive) SetScheduleNil() {
+	o.Schedule = nil
+	o.NullFields = addNullField(o.NullFields, "Schedule")
 }
 
 // GetState returns the State field value if set, zero value otherwise
@@ -516,4 +616,11 @@ func (o *BackupOnlineArchive) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *BackupOnlineArchive) SetState(v string) {
 	o.State = &v
+	o.NullFields = removeNullField(o.NullFields, "State")
+}
+
+// SetStateNil sets State to an explicit JSON null when marshaled.
+func (o *BackupOnlineArchive) SetStateNil() {
+	o.State = nil
+	o.NullFields = addNullField(o.NullFields, "State")
 }

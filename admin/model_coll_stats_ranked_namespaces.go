@@ -13,6 +13,15 @@ type CollStatsRankedNamespaces struct {
 	// Ordered list of the hottest namespaces, highest value first.
 	// Read only field.
 	RankedNamespaces []string `json:"rankedNamespaces"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CollStatsRankedNamespaces) MarshalJSON() ([]byte, error) {
+	type noMethod CollStatsRankedNamespaces
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCollStatsRankedNamespaces instantiates a new CollStatsRankedNamespaces object
@@ -64,6 +73,13 @@ func (o *CollStatsRankedNamespaces) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *CollStatsRankedNamespaces) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *CollStatsRankedNamespaces) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetIdentifierId returns the IdentifierId field value if set, zero value otherwise
@@ -97,6 +113,13 @@ func (o *CollStatsRankedNamespaces) HasIdentifierId() bool {
 // SetIdentifierId gets a reference to the given string and assigns it to the IdentifierId field.
 func (o *CollStatsRankedNamespaces) SetIdentifierId(v string) {
 	o.IdentifierId = &v
+	o.NullFields = removeNullField(o.NullFields, "IdentifierId")
+}
+
+// SetIdentifierIdNil sets IdentifierId to an explicit JSON null when marshaled.
+func (o *CollStatsRankedNamespaces) SetIdentifierIdNil() {
+	o.IdentifierId = nil
+	o.NullFields = addNullField(o.NullFields, "IdentifierId")
 }
 
 // GetRankedNamespaces returns the RankedNamespaces field value

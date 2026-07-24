@@ -74,11 +74,11 @@ type APIClient struct {
 
 	DataFederationAPI DataFederationAPI
 
-	DataLakePipelinesAPI DataLakePipelinesAPI
-
 	DatabaseUsersAPI DatabaseUsersAPI
 
 	EncryptionAtRestUsingCustomerKeyManagementAPI EncryptionAtRestUsingCustomerKeyManagementAPI
+
+	EphemeralClustersAPI EphemeralClustersAPI
 
 	EventsAPI EventsAPI
 
@@ -98,6 +98,8 @@ type APIClient struct {
 
 	LegacyBackupAPI LegacyBackupAPI
 
+	LimitDescriptionAPI LimitDescriptionAPI
+
 	MaintenanceWindowsAPI MaintenanceWindowsAPI
 
 	MongoDBCloudUsersAPI MongoDBCloudUsersAPI
@@ -107,6 +109,8 @@ type APIClient struct {
 	NetworkPeeringAPI NetworkPeeringAPI
 
 	OnlineArchiveAPI OnlineArchiveAPI
+
+	OpenAPIAPI OpenAPIAPI
 
 	OrganizationsAPI OrganizationsAPI
 
@@ -125,6 +129,8 @@ type APIClient struct {
 	QueryShapeInsightsAPI QueryShapeInsightsAPI
 
 	RateLimitingAPI RateLimitingAPI
+
+	RemoteMCPConfigurationsAPI RemoteMCPConfigurationsAPI
 
 	ResourcePoliciesAPI ResourcePoliciesAPI
 
@@ -181,9 +187,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CollectionLevelMetricsAPI = (*CollectionLevelMetricsAPIService)(&c.common)
 	c.CustomDatabaseRolesAPI = (*CustomDatabaseRolesAPIService)(&c.common)
 	c.DataFederationAPI = (*DataFederationAPIService)(&c.common)
-	c.DataLakePipelinesAPI = (*DataLakePipelinesAPIService)(&c.common)
 	c.DatabaseUsersAPI = (*DatabaseUsersAPIService)(&c.common)
 	c.EncryptionAtRestUsingCustomerKeyManagementAPI = (*EncryptionAtRestUsingCustomerKeyManagementAPIService)(&c.common)
+	c.EphemeralClustersAPI = (*EphemeralClustersAPIService)(&c.common)
 	c.EventsAPI = (*EventsAPIService)(&c.common)
 	c.FederatedAuthenticationAPI = (*FederatedAuthenticationAPIService)(&c.common)
 	c.FlexClustersAPI = (*FlexClustersAPIService)(&c.common)
@@ -193,11 +199,13 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.InvoicesAPI = (*InvoicesAPIService)(&c.common)
 	c.LDAPConfigurationAPI = (*LDAPConfigurationAPIService)(&c.common)
 	c.LegacyBackupAPI = (*LegacyBackupAPIService)(&c.common)
+	c.LimitDescriptionAPI = (*LimitDescriptionAPIService)(&c.common)
 	c.MaintenanceWindowsAPI = (*MaintenanceWindowsAPIService)(&c.common)
 	c.MongoDBCloudUsersAPI = (*MongoDBCloudUsersAPIService)(&c.common)
 	c.MonitoringAndLogsAPI = (*MonitoringAndLogsAPIService)(&c.common)
 	c.NetworkPeeringAPI = (*NetworkPeeringAPIService)(&c.common)
 	c.OnlineArchiveAPI = (*OnlineArchiveAPIService)(&c.common)
+	c.OpenAPIAPI = (*OpenAPIAPIService)(&c.common)
 	c.OrganizationsAPI = (*OrganizationsAPIService)(&c.common)
 	c.PerformanceAdvisorAPI = (*PerformanceAdvisorAPIService)(&c.common)
 	c.PrivateEndpointServicesAPI = (*PrivateEndpointServicesAPIService)(&c.common)
@@ -207,6 +215,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PushBasedLogExportAPI = (*PushBasedLogExportAPIService)(&c.common)
 	c.QueryShapeInsightsAPI = (*QueryShapeInsightsAPIService)(&c.common)
 	c.RateLimitingAPI = (*RateLimitingAPIService)(&c.common)
+	c.RemoteMCPConfigurationsAPI = (*RemoteMCPConfigurationsAPIService)(&c.common)
 	c.ResourcePoliciesAPI = (*ResourcePoliciesAPIService)(&c.common)
 	c.RollingIndexAPI = (*RollingIndexAPIService)(&c.common)
 	c.RootAPI = (*RootAPIService)(&c.common)

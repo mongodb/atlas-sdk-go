@@ -33,6 +33,15 @@ type Raw struct {
 	OrgName *string `json:"orgName,omitempty"`
 	// Severity of the event.
 	Severity *string `json:"severity,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *Raw) MarshalJSON() ([]byte, error) {
+	type noMethod Raw
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewRaw instantiates a new Raw object
@@ -83,6 +92,13 @@ func (o *Raw) HasT() bool {
 // SetT gets a reference to the given string and assigns it to the T field.
 func (o *Raw) SetT(v string) {
 	o.T = &v
+	o.NullFields = removeNullField(o.NullFields, "T")
+}
+
+// SetTNil sets T to an explicit JSON null when marshaled.
+func (o *Raw) SetTNil() {
+	o.T = nil
+	o.NullFields = addNullField(o.NullFields, "T")
 }
 
 // GetAlertConfigId returns the AlertConfigId field value if set, zero value otherwise
@@ -116,6 +132,13 @@ func (o *Raw) HasAlertConfigId() bool {
 // SetAlertConfigId gets a reference to the given string and assigns it to the AlertConfigId field.
 func (o *Raw) SetAlertConfigId(v string) {
 	o.AlertConfigId = &v
+	o.NullFields = removeNullField(o.NullFields, "AlertConfigId")
+}
+
+// SetAlertConfigIdNil sets AlertConfigId to an explicit JSON null when marshaled.
+func (o *Raw) SetAlertConfigIdNil() {
+	o.AlertConfigId = nil
+	o.NullFields = addNullField(o.NullFields, "AlertConfigId")
 }
 
 // GetCid returns the Cid field value if set, zero value otherwise
@@ -149,6 +172,13 @@ func (o *Raw) HasCid() bool {
 // SetCid gets a reference to the given string and assigns it to the Cid field.
 func (o *Raw) SetCid(v string) {
 	o.Cid = &v
+	o.NullFields = removeNullField(o.NullFields, "Cid")
+}
+
+// SetCidNil sets Cid to an explicit JSON null when marshaled.
+func (o *Raw) SetCidNil() {
+	o.Cid = nil
+	o.NullFields = addNullField(o.NullFields, "Cid")
 }
 
 // GetCre returns the Cre field value if set, zero value otherwise
@@ -182,6 +212,13 @@ func (o *Raw) HasCre() bool {
 // SetCre gets a reference to the given time.Time and assigns it to the Cre field.
 func (o *Raw) SetCre(v time.Time) {
 	o.Cre = &v
+	o.NullFields = removeNullField(o.NullFields, "Cre")
+}
+
+// SetCreNil sets Cre to an explicit JSON null when marshaled.
+func (o *Raw) SetCreNil() {
+	o.Cre = nil
+	o.NullFields = addNullField(o.NullFields, "Cre")
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise
@@ -215,6 +252,13 @@ func (o *Raw) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *Raw) SetDescription(v string) {
 	o.Description = &v
+	o.NullFields = removeNullField(o.NullFields, "Description")
+}
+
+// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
+func (o *Raw) SetDescriptionNil() {
+	o.Description = nil
+	o.NullFields = addNullField(o.NullFields, "Description")
 }
 
 // GetGn returns the Gn field value if set, zero value otherwise
@@ -248,6 +292,13 @@ func (o *Raw) HasGn() bool {
 // SetGn gets a reference to the given string and assigns it to the Gn field.
 func (o *Raw) SetGn(v string) {
 	o.Gn = &v
+	o.NullFields = removeNullField(o.NullFields, "Gn")
+}
+
+// SetGnNil sets Gn to an explicit JSON null when marshaled.
+func (o *Raw) SetGnNil() {
+	o.Gn = nil
+	o.NullFields = addNullField(o.NullFields, "Gn")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -281,6 +332,13 @@ func (o *Raw) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *Raw) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *Raw) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetOrgId returns the OrgId field value if set, zero value otherwise
@@ -314,6 +372,13 @@ func (o *Raw) HasOrgId() bool {
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *Raw) SetOrgId(v string) {
 	o.OrgId = &v
+	o.NullFields = removeNullField(o.NullFields, "OrgId")
+}
+
+// SetOrgIdNil sets OrgId to an explicit JSON null when marshaled.
+func (o *Raw) SetOrgIdNil() {
+	o.OrgId = nil
+	o.NullFields = addNullField(o.NullFields, "OrgId")
 }
 
 // GetOrgName returns the OrgName field value if set, zero value otherwise
@@ -347,6 +412,13 @@ func (o *Raw) HasOrgName() bool {
 // SetOrgName gets a reference to the given string and assigns it to the OrgName field.
 func (o *Raw) SetOrgName(v string) {
 	o.OrgName = &v
+	o.NullFields = removeNullField(o.NullFields, "OrgName")
+}
+
+// SetOrgNameNil sets OrgName to an explicit JSON null when marshaled.
+func (o *Raw) SetOrgNameNil() {
+	o.OrgName = nil
+	o.NullFields = addNullField(o.NullFields, "OrgName")
 }
 
 // GetSeverity returns the Severity field value if set, zero value otherwise
@@ -380,4 +452,11 @@ func (o *Raw) HasSeverity() bool {
 // SetSeverity gets a reference to the given string and assigns it to the Severity field.
 func (o *Raw) SetSeverity(v string) {
 	o.Severity = &v
+	o.NullFields = removeNullField(o.NullFields, "Severity")
+}
+
+// SetSeverityNil sets Severity to an explicit JSON null when marshaled.
+func (o *Raw) SetSeverityNil() {
+	o.Severity = nil
+	o.NullFields = addNullField(o.NullFields, "Severity")
 }

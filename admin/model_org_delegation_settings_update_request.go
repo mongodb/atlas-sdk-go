@@ -12,6 +12,15 @@ type OrgDelegationSettingsUpdateRequest struct {
 	IdleRefreshTokenLifetime *int64 `json:"idleRefreshTokenLifetime,omitempty"`
 	// Maximum lifetime of a refresh token in seconds, regardless of activity. Omit to leave unchanged; set to null to reset to the system default. Must be between 1 and 31536000 (1 year) when provided.
 	MaximumRefreshTokenLifetime *int64 `json:"maximumRefreshTokenLifetime,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *OrgDelegationSettingsUpdateRequest) MarshalJSON() ([]byte, error) {
+	type noMethod OrgDelegationSettingsUpdateRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewOrgDelegationSettingsUpdateRequest instantiates a new OrgDelegationSettingsUpdateRequest object
@@ -62,6 +71,13 @@ func (o *OrgDelegationSettingsUpdateRequest) HasDelegatedMcpAccess() bool {
 // SetDelegatedMcpAccess gets a reference to the given string and assigns it to the DelegatedMcpAccess field.
 func (o *OrgDelegationSettingsUpdateRequest) SetDelegatedMcpAccess(v string) {
 	o.DelegatedMcpAccess = &v
+	o.NullFields = removeNullField(o.NullFields, "DelegatedMcpAccess")
+}
+
+// SetDelegatedMcpAccessNil sets DelegatedMcpAccess to an explicit JSON null when marshaled.
+func (o *OrgDelegationSettingsUpdateRequest) SetDelegatedMcpAccessNil() {
+	o.DelegatedMcpAccess = nil
+	o.NullFields = addNullField(o.NullFields, "DelegatedMcpAccess")
 }
 
 // GetDelegatedPartnerAccess returns the DelegatedPartnerAccess field value if set, zero value otherwise
@@ -95,6 +111,13 @@ func (o *OrgDelegationSettingsUpdateRequest) HasDelegatedPartnerAccess() bool {
 // SetDelegatedPartnerAccess gets a reference to the given string and assigns it to the DelegatedPartnerAccess field.
 func (o *OrgDelegationSettingsUpdateRequest) SetDelegatedPartnerAccess(v string) {
 	o.DelegatedPartnerAccess = &v
+	o.NullFields = removeNullField(o.NullFields, "DelegatedPartnerAccess")
+}
+
+// SetDelegatedPartnerAccessNil sets DelegatedPartnerAccess to an explicit JSON null when marshaled.
+func (o *OrgDelegationSettingsUpdateRequest) SetDelegatedPartnerAccessNil() {
+	o.DelegatedPartnerAccess = nil
+	o.NullFields = addNullField(o.NullFields, "DelegatedPartnerAccess")
 }
 
 // GetIdleRefreshTokenLifetime returns the IdleRefreshTokenLifetime field value if set, zero value otherwise
@@ -128,6 +151,13 @@ func (o *OrgDelegationSettingsUpdateRequest) HasIdleRefreshTokenLifetime() bool 
 // SetIdleRefreshTokenLifetime gets a reference to the given int64 and assigns it to the IdleRefreshTokenLifetime field.
 func (o *OrgDelegationSettingsUpdateRequest) SetIdleRefreshTokenLifetime(v int64) {
 	o.IdleRefreshTokenLifetime = &v
+	o.NullFields = removeNullField(o.NullFields, "IdleRefreshTokenLifetime")
+}
+
+// SetIdleRefreshTokenLifetimeNil sets IdleRefreshTokenLifetime to an explicit JSON null when marshaled.
+func (o *OrgDelegationSettingsUpdateRequest) SetIdleRefreshTokenLifetimeNil() {
+	o.IdleRefreshTokenLifetime = nil
+	o.NullFields = addNullField(o.NullFields, "IdleRefreshTokenLifetime")
 }
 
 // GetMaximumRefreshTokenLifetime returns the MaximumRefreshTokenLifetime field value if set, zero value otherwise
@@ -161,4 +191,11 @@ func (o *OrgDelegationSettingsUpdateRequest) HasMaximumRefreshTokenLifetime() bo
 // SetMaximumRefreshTokenLifetime gets a reference to the given int64 and assigns it to the MaximumRefreshTokenLifetime field.
 func (o *OrgDelegationSettingsUpdateRequest) SetMaximumRefreshTokenLifetime(v int64) {
 	o.MaximumRefreshTokenLifetime = &v
+	o.NullFields = removeNullField(o.NullFields, "MaximumRefreshTokenLifetime")
+}
+
+// SetMaximumRefreshTokenLifetimeNil sets MaximumRefreshTokenLifetime to an explicit JSON null when marshaled.
+func (o *OrgDelegationSettingsUpdateRequest) SetMaximumRefreshTokenLifetimeNil() {
+	o.MaximumRefreshTokenLifetime = nil
+	o.NullFields = addNullField(o.NullFields, "MaximumRefreshTokenLifetime")
 }

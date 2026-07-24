@@ -8,6 +8,15 @@ type ApiAtlasRestoreNamespace struct {
 	SourceNamespace string `json:"sourceNamespace"`
 	// Requested target namespace for the restored data; if empty, source namespace is used.
 	TargetNamespace *string `json:"targetNamespace,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiAtlasRestoreNamespace) MarshalJSON() ([]byte, error) {
+	type noMethod ApiAtlasRestoreNamespace
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasRestoreNamespace instantiates a new ApiAtlasRestoreNamespace object
@@ -83,4 +92,11 @@ func (o *ApiAtlasRestoreNamespace) HasTargetNamespace() bool {
 // SetTargetNamespace gets a reference to the given string and assigns it to the TargetNamespace field.
 func (o *ApiAtlasRestoreNamespace) SetTargetNamespace(v string) {
 	o.TargetNamespace = &v
+	o.NullFields = removeNullField(o.NullFields, "TargetNamespace")
+}
+
+// SetTargetNamespaceNil sets TargetNamespace to an explicit JSON null when marshaled.
+func (o *ApiAtlasRestoreNamespace) SetTargetNamespaceNil() {
+	o.TargetNamespace = nil
+	o.NullFields = addNullField(o.NullFields, "TargetNamespace")
 }

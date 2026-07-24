@@ -13,6 +13,15 @@ type StreamsProcessorStatus struct {
 	Region *string `json:"region,omitempty"`
 	// Represents the desired action to apply to stream processors within a workspace, such as starting all processors, stopping all processors, or performing a bulk regional failover.
 	Status string `json:"status"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamsProcessorStatus) MarshalJSON() ([]byte, error) {
+	type noMethod StreamsProcessorStatus
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsProcessorStatus instantiates a new StreamsProcessorStatus object
@@ -64,6 +73,13 @@ func (o *StreamsProcessorStatus) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsProcessorStatus) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *StreamsProcessorStatus) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise
@@ -97,6 +113,13 @@ func (o *StreamsProcessorStatus) HasMode() bool {
 // SetMode gets a reference to the given string and assigns it to the Mode field.
 func (o *StreamsProcessorStatus) SetMode(v string) {
 	o.Mode = &v
+	o.NullFields = removeNullField(o.NullFields, "Mode")
+}
+
+// SetModeNil sets Mode to an explicit JSON null when marshaled.
+func (o *StreamsProcessorStatus) SetModeNil() {
+	o.Mode = nil
+	o.NullFields = addNullField(o.NullFields, "Mode")
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise
@@ -130,6 +153,13 @@ func (o *StreamsProcessorStatus) HasRegion() bool {
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *StreamsProcessorStatus) SetRegion(v string) {
 	o.Region = &v
+	o.NullFields = removeNullField(o.NullFields, "Region")
+}
+
+// SetRegionNil sets Region to an explicit JSON null when marshaled.
+func (o *StreamsProcessorStatus) SetRegionNil() {
+	o.Region = nil
+	o.NullFields = addNullField(o.NullFields, "Region")
 }
 
 // GetStatus returns the Status field value

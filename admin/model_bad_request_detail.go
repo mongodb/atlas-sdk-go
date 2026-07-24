@@ -6,6 +6,15 @@ package admin
 type BadRequestDetail struct {
 	// Describes all violations in a client request.
 	Fields *[]FieldViolation `json:"fields,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *BadRequestDetail) MarshalJSON() ([]byte, error) {
+	type noMethod BadRequestDetail
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewBadRequestDetail instantiates a new BadRequestDetail object
@@ -56,4 +65,11 @@ func (o *BadRequestDetail) HasFields() bool {
 // SetFields gets a reference to the given []FieldViolation and assigns it to the Fields field.
 func (o *BadRequestDetail) SetFields(v []FieldViolation) {
 	o.Fields = &v
+	o.NullFields = removeNullField(o.NullFields, "Fields")
+}
+
+// SetFieldsNil sets Fields to an explicit JSON null when marshaled.
+func (o *BadRequestDetail) SetFieldsNil() {
+	o.Fields = nil
+	o.NullFields = addNullField(o.NullFields, "Fields")
 }

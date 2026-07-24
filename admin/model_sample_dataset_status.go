@@ -26,6 +26,15 @@ type SampleDatasetStatus struct {
 	// Status of the sample dataset load job.
 	// Read only field.
 	State *string `json:"state,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *SampleDatasetStatus) MarshalJSON() ([]byte, error) {
+	type noMethod SampleDatasetStatus
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSampleDatasetStatus instantiates a new SampleDatasetStatus object
@@ -76,6 +85,13 @@ func (o *SampleDatasetStatus) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *SampleDatasetStatus) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *SampleDatasetStatus) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetClusterName returns the ClusterName field value if set, zero value otherwise
@@ -109,6 +125,13 @@ func (o *SampleDatasetStatus) HasClusterName() bool {
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *SampleDatasetStatus) SetClusterName(v string) {
 	o.ClusterName = &v
+	o.NullFields = removeNullField(o.NullFields, "ClusterName")
+}
+
+// SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled.
+func (o *SampleDatasetStatus) SetClusterNameNil() {
+	o.ClusterName = nil
+	o.NullFields = addNullField(o.NullFields, "ClusterName")
 }
 
 // GetCompleteDate returns the CompleteDate field value if set, zero value otherwise
@@ -142,6 +165,13 @@ func (o *SampleDatasetStatus) HasCompleteDate() bool {
 // SetCompleteDate gets a reference to the given time.Time and assigns it to the CompleteDate field.
 func (o *SampleDatasetStatus) SetCompleteDate(v time.Time) {
 	o.CompleteDate = &v
+	o.NullFields = removeNullField(o.NullFields, "CompleteDate")
+}
+
+// SetCompleteDateNil sets CompleteDate to an explicit JSON null when marshaled.
+func (o *SampleDatasetStatus) SetCompleteDateNil() {
+	o.CompleteDate = nil
+	o.NullFields = addNullField(o.NullFields, "CompleteDate")
 }
 
 // GetCreateDate returns the CreateDate field value if set, zero value otherwise
@@ -175,6 +205,13 @@ func (o *SampleDatasetStatus) HasCreateDate() bool {
 // SetCreateDate gets a reference to the given time.Time and assigns it to the CreateDate field.
 func (o *SampleDatasetStatus) SetCreateDate(v time.Time) {
 	o.CreateDate = &v
+	o.NullFields = removeNullField(o.NullFields, "CreateDate")
+}
+
+// SetCreateDateNil sets CreateDate to an explicit JSON null when marshaled.
+func (o *SampleDatasetStatus) SetCreateDateNil() {
+	o.CreateDate = nil
+	o.NullFields = addNullField(o.NullFields, "CreateDate")
 }
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise
@@ -208,6 +245,13 @@ func (o *SampleDatasetStatus) HasErrorMessage() bool {
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *SampleDatasetStatus) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
+	o.NullFields = removeNullField(o.NullFields, "ErrorMessage")
+}
+
+// SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled.
+func (o *SampleDatasetStatus) SetErrorMessageNil() {
+	o.ErrorMessage = nil
+	o.NullFields = addNullField(o.NullFields, "ErrorMessage")
 }
 
 // GetState returns the State field value if set, zero value otherwise
@@ -241,4 +285,11 @@ func (o *SampleDatasetStatus) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *SampleDatasetStatus) SetState(v string) {
 	o.State = &v
+	o.NullFields = removeNullField(o.NullFields, "State")
+}
+
+// SetStateNil sets State to an explicit JSON null when marshaled.
+func (o *SampleDatasetStatus) SetStateNil() {
+	o.State = nil
+	o.NullFields = addNullField(o.NullFields, "State")
 }

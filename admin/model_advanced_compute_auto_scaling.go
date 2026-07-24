@@ -14,6 +14,15 @@ type AdvancedComputeAutoScaling struct {
 	MinInstanceSize *string `json:"minInstanceSize,omitempty"`
 	// Flag that indicates whether the instance size may scale down via reactive auto-scaling. MongoDB Cloud requires this parameter if `replicationSpecs[n].regionConfigs[m].autoScaling.compute.enabled` is `true`. If you enable this option, specify a value for `replicationSpecs[n].regionConfigs[m].autoScaling.compute.minInstanceSize`.
 	ScaleDownEnabled *bool `json:"scaleDownEnabled,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AdvancedComputeAutoScaling) MarshalJSON() ([]byte, error) {
+	type noMethod AdvancedComputeAutoScaling
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAdvancedComputeAutoScaling instantiates a new AdvancedComputeAutoScaling object
@@ -64,6 +73,13 @@ func (o *AdvancedComputeAutoScaling) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *AdvancedComputeAutoScaling) SetEnabled(v bool) {
 	o.Enabled = &v
+	o.NullFields = removeNullField(o.NullFields, "Enabled")
+}
+
+// SetEnabledNil sets Enabled to an explicit JSON null when marshaled.
+func (o *AdvancedComputeAutoScaling) SetEnabledNil() {
+	o.Enabled = nil
+	o.NullFields = addNullField(o.NullFields, "Enabled")
 }
 
 // GetMaxInstanceSize returns the MaxInstanceSize field value if set, zero value otherwise
@@ -97,6 +113,13 @@ func (o *AdvancedComputeAutoScaling) HasMaxInstanceSize() bool {
 // SetMaxInstanceSize gets a reference to the given string and assigns it to the MaxInstanceSize field.
 func (o *AdvancedComputeAutoScaling) SetMaxInstanceSize(v string) {
 	o.MaxInstanceSize = &v
+	o.NullFields = removeNullField(o.NullFields, "MaxInstanceSize")
+}
+
+// SetMaxInstanceSizeNil sets MaxInstanceSize to an explicit JSON null when marshaled.
+func (o *AdvancedComputeAutoScaling) SetMaxInstanceSizeNil() {
+	o.MaxInstanceSize = nil
+	o.NullFields = addNullField(o.NullFields, "MaxInstanceSize")
 }
 
 // GetMinInstanceSize returns the MinInstanceSize field value if set, zero value otherwise
@@ -130,6 +153,13 @@ func (o *AdvancedComputeAutoScaling) HasMinInstanceSize() bool {
 // SetMinInstanceSize gets a reference to the given string and assigns it to the MinInstanceSize field.
 func (o *AdvancedComputeAutoScaling) SetMinInstanceSize(v string) {
 	o.MinInstanceSize = &v
+	o.NullFields = removeNullField(o.NullFields, "MinInstanceSize")
+}
+
+// SetMinInstanceSizeNil sets MinInstanceSize to an explicit JSON null when marshaled.
+func (o *AdvancedComputeAutoScaling) SetMinInstanceSizeNil() {
+	o.MinInstanceSize = nil
+	o.NullFields = addNullField(o.NullFields, "MinInstanceSize")
 }
 
 // GetScaleDownEnabled returns the ScaleDownEnabled field value if set, zero value otherwise
@@ -163,4 +193,11 @@ func (o *AdvancedComputeAutoScaling) HasScaleDownEnabled() bool {
 // SetScaleDownEnabled gets a reference to the given bool and assigns it to the ScaleDownEnabled field.
 func (o *AdvancedComputeAutoScaling) SetScaleDownEnabled(v bool) {
 	o.ScaleDownEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "ScaleDownEnabled")
+}
+
+// SetScaleDownEnabledNil sets ScaleDownEnabled to an explicit JSON null when marshaled.
+func (o *AdvancedComputeAutoScaling) SetScaleDownEnabledNil() {
+	o.ScaleDownEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "ScaleDownEnabled")
 }

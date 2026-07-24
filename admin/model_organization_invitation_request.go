@@ -12,6 +12,15 @@ type OrganizationInvitationRequest struct {
 	TeamIds *[]string `json:"teamIds,omitempty"`
 	// Email address that belongs to the desired MongoDB Cloud user.
 	Username *string `json:"username,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *OrganizationInvitationRequest) MarshalJSON() ([]byte, error) {
+	type noMethod OrganizationInvitationRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewOrganizationInvitationRequest instantiates a new OrganizationInvitationRequest object
@@ -62,6 +71,13 @@ func (o *OrganizationInvitationRequest) HasGroupRoleAssignments() bool {
 // SetGroupRoleAssignments gets a reference to the given []OrganizationInvitationGroupRoleAssignmentsRequest and assigns it to the GroupRoleAssignments field.
 func (o *OrganizationInvitationRequest) SetGroupRoleAssignments(v []OrganizationInvitationGroupRoleAssignmentsRequest) {
 	o.GroupRoleAssignments = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupRoleAssignments")
+}
+
+// SetGroupRoleAssignmentsNil sets GroupRoleAssignments to an explicit JSON null when marshaled.
+func (o *OrganizationInvitationRequest) SetGroupRoleAssignmentsNil() {
+	o.GroupRoleAssignments = nil
+	o.NullFields = addNullField(o.NullFields, "GroupRoleAssignments")
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise
@@ -95,6 +111,13 @@ func (o *OrganizationInvitationRequest) HasRoles() bool {
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *OrganizationInvitationRequest) SetRoles(v []string) {
 	o.Roles = &v
+	o.NullFields = removeNullField(o.NullFields, "Roles")
+}
+
+// SetRolesNil sets Roles to an explicit JSON null when marshaled.
+func (o *OrganizationInvitationRequest) SetRolesNil() {
+	o.Roles = nil
+	o.NullFields = addNullField(o.NullFields, "Roles")
 }
 
 // GetTeamIds returns the TeamIds field value if set, zero value otherwise
@@ -128,6 +151,13 @@ func (o *OrganizationInvitationRequest) HasTeamIds() bool {
 // SetTeamIds gets a reference to the given []string and assigns it to the TeamIds field.
 func (o *OrganizationInvitationRequest) SetTeamIds(v []string) {
 	o.TeamIds = &v
+	o.NullFields = removeNullField(o.NullFields, "TeamIds")
+}
+
+// SetTeamIdsNil sets TeamIds to an explicit JSON null when marshaled.
+func (o *OrganizationInvitationRequest) SetTeamIdsNil() {
+	o.TeamIds = nil
+	o.NullFields = addNullField(o.NullFields, "TeamIds")
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise
@@ -161,4 +191,11 @@ func (o *OrganizationInvitationRequest) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *OrganizationInvitationRequest) SetUsername(v string) {
 	o.Username = &v
+	o.NullFields = removeNullField(o.NullFields, "Username")
+}
+
+// SetUsernameNil sets Username to an explicit JSON null when marshaled.
+func (o *OrganizationInvitationRequest) SetUsernameNil() {
+	o.Username = nil
+	o.NullFields = addNullField(o.NullFields, "Username")
 }

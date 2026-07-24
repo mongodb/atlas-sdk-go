@@ -23,6 +23,15 @@ type AccountDetails struct {
 	GcpProjectId *string `json:"gcpProjectId,omitempty"`
 	// The name of the VPC network.
 	VpcNetworkName *string `json:"vpcNetworkName,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AccountDetails) MarshalJSON() ([]byte, error) {
+	type noMethod AccountDetails
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAccountDetails instantiates a new AccountDetails object
@@ -73,6 +82,13 @@ func (o *AccountDetails) HasAwsAccountId() bool {
 // SetAwsAccountId gets a reference to the given string and assigns it to the AwsAccountId field.
 func (o *AccountDetails) SetAwsAccountId(v string) {
 	o.AwsAccountId = &v
+	o.NullFields = removeNullField(o.NullFields, "AwsAccountId")
+}
+
+// SetAwsAccountIdNil sets AwsAccountId to an explicit JSON null when marshaled.
+func (o *AccountDetails) SetAwsAccountIdNil() {
+	o.AwsAccountId = nil
+	o.NullFields = addNullField(o.NullFields, "AwsAccountId")
 }
 
 // GetCidrBlock returns the CidrBlock field value if set, zero value otherwise
@@ -106,6 +122,13 @@ func (o *AccountDetails) HasCidrBlock() bool {
 // SetCidrBlock gets a reference to the given string and assigns it to the CidrBlock field.
 func (o *AccountDetails) SetCidrBlock(v string) {
 	o.CidrBlock = &v
+	o.NullFields = removeNullField(o.NullFields, "CidrBlock")
+}
+
+// SetCidrBlockNil sets CidrBlock to an explicit JSON null when marshaled.
+func (o *AccountDetails) SetCidrBlockNil() {
+	o.CidrBlock = nil
+	o.NullFields = addNullField(o.NullFields, "CidrBlock")
 }
 
 // GetCloudProvider returns the CloudProvider field value if set, zero value otherwise
@@ -139,6 +162,13 @@ func (o *AccountDetails) HasCloudProvider() bool {
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *AccountDetails) SetCloudProvider(v string) {
 	o.CloudProvider = &v
+	o.NullFields = removeNullField(o.NullFields, "CloudProvider")
+}
+
+// SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled.
+func (o *AccountDetails) SetCloudProviderNil() {
+	o.CloudProvider = nil
+	o.NullFields = addNullField(o.NullFields, "CloudProvider")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -172,6 +202,13 @@ func (o *AccountDetails) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *AccountDetails) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *AccountDetails) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetVpcId returns the VpcId field value if set, zero value otherwise
@@ -205,6 +242,13 @@ func (o *AccountDetails) HasVpcId() bool {
 // SetVpcId gets a reference to the given string and assigns it to the VpcId field.
 func (o *AccountDetails) SetVpcId(v string) {
 	o.VpcId = &v
+	o.NullFields = removeNullField(o.NullFields, "VpcId")
+}
+
+// SetVpcIdNil sets VpcId to an explicit JSON null when marshaled.
+func (o *AccountDetails) SetVpcIdNil() {
+	o.VpcId = nil
+	o.NullFields = addNullField(o.NullFields, "VpcId")
 }
 
 // GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise
@@ -238,6 +282,13 @@ func (o *AccountDetails) HasAzureSubscriptionId() bool {
 // SetAzureSubscriptionId gets a reference to the given string and assigns it to the AzureSubscriptionId field.
 func (o *AccountDetails) SetAzureSubscriptionId(v string) {
 	o.AzureSubscriptionId = &v
+	o.NullFields = removeNullField(o.NullFields, "AzureSubscriptionId")
+}
+
+// SetAzureSubscriptionIdNil sets AzureSubscriptionId to an explicit JSON null when marshaled.
+func (o *AccountDetails) SetAzureSubscriptionIdNil() {
+	o.AzureSubscriptionId = nil
+	o.NullFields = addNullField(o.NullFields, "AzureSubscriptionId")
 }
 
 // GetVirtualNetworkName returns the VirtualNetworkName field value if set, zero value otherwise
@@ -271,6 +322,13 @@ func (o *AccountDetails) HasVirtualNetworkName() bool {
 // SetVirtualNetworkName gets a reference to the given string and assigns it to the VirtualNetworkName field.
 func (o *AccountDetails) SetVirtualNetworkName(v string) {
 	o.VirtualNetworkName = &v
+	o.NullFields = removeNullField(o.NullFields, "VirtualNetworkName")
+}
+
+// SetVirtualNetworkNameNil sets VirtualNetworkName to an explicit JSON null when marshaled.
+func (o *AccountDetails) SetVirtualNetworkNameNil() {
+	o.VirtualNetworkName = nil
+	o.NullFields = addNullField(o.NullFields, "VirtualNetworkName")
 }
 
 // GetGcpProjectId returns the GcpProjectId field value if set, zero value otherwise
@@ -304,6 +362,13 @@ func (o *AccountDetails) HasGcpProjectId() bool {
 // SetGcpProjectId gets a reference to the given string and assigns it to the GcpProjectId field.
 func (o *AccountDetails) SetGcpProjectId(v string) {
 	o.GcpProjectId = &v
+	o.NullFields = removeNullField(o.NullFields, "GcpProjectId")
+}
+
+// SetGcpProjectIdNil sets GcpProjectId to an explicit JSON null when marshaled.
+func (o *AccountDetails) SetGcpProjectIdNil() {
+	o.GcpProjectId = nil
+	o.NullFields = addNullField(o.NullFields, "GcpProjectId")
 }
 
 // GetVpcNetworkName returns the VpcNetworkName field value if set, zero value otherwise
@@ -337,4 +402,11 @@ func (o *AccountDetails) HasVpcNetworkName() bool {
 // SetVpcNetworkName gets a reference to the given string and assigns it to the VpcNetworkName field.
 func (o *AccountDetails) SetVpcNetworkName(v string) {
 	o.VpcNetworkName = &v
+	o.NullFields = removeNullField(o.NullFields, "VpcNetworkName")
+}
+
+// SetVpcNetworkNameNil sets VpcNetworkName to an explicit JSON null when marshaled.
+func (o *AccountDetails) SetVpcNetworkNameNil() {
+	o.VpcNetworkName = nil
+	o.NullFields = addNullField(o.NullFields, "VpcNetworkName")
 }

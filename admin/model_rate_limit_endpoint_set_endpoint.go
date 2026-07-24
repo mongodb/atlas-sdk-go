@@ -8,6 +8,15 @@ type RateLimitEndpointSetEndpoint struct {
 	Method *string `json:"method,omitempty"`
 	// The URL path of the endpoint.
 	Path *string `json:"path,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *RateLimitEndpointSetEndpoint) MarshalJSON() ([]byte, error) {
+	type noMethod RateLimitEndpointSetEndpoint
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewRateLimitEndpointSetEndpoint instantiates a new RateLimitEndpointSetEndpoint object
@@ -58,6 +67,13 @@ func (o *RateLimitEndpointSetEndpoint) HasMethod() bool {
 // SetMethod gets a reference to the given string and assigns it to the Method field.
 func (o *RateLimitEndpointSetEndpoint) SetMethod(v string) {
 	o.Method = &v
+	o.NullFields = removeNullField(o.NullFields, "Method")
+}
+
+// SetMethodNil sets Method to an explicit JSON null when marshaled.
+func (o *RateLimitEndpointSetEndpoint) SetMethodNil() {
+	o.Method = nil
+	o.NullFields = addNullField(o.NullFields, "Method")
 }
 
 // GetPath returns the Path field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *RateLimitEndpointSetEndpoint) HasPath() bool {
 // SetPath gets a reference to the given string and assigns it to the Path field.
 func (o *RateLimitEndpointSetEndpoint) SetPath(v string) {
 	o.Path = &v
+	o.NullFields = removeNullField(o.NullFields, "Path")
+}
+
+// SetPathNil sets Path to an explicit JSON null when marshaled.
+func (o *RateLimitEndpointSetEndpoint) SetPathNil() {
+	o.Path = nil
+	o.NullFields = addNullField(o.NullFields, "Path")
 }

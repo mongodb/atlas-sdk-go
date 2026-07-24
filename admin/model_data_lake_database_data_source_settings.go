@@ -30,6 +30,15 @@ type DataLakeDatabaseDataSourceSettings struct {
 	TrimLevel *int `json:"trimLevel,omitempty"`
 	// URLs of the publicly accessible data files. You can't specify URLs that require authentication. Atlas Data Lake creates a partition for each URL. If empty or omitted, Data Lake uses the URLs from the store specified in the **dataSources.storeName** parameter.
 	Urls *[]string `json:"urls,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DataLakeDatabaseDataSourceSettings) MarshalJSON() ([]byte, error) {
+	type noMethod DataLakeDatabaseDataSourceSettings
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataLakeDatabaseDataSourceSettings instantiates a new DataLakeDatabaseDataSourceSettings object
@@ -84,6 +93,13 @@ func (o *DataLakeDatabaseDataSourceSettings) HasAllowInsecure() bool {
 // SetAllowInsecure gets a reference to the given bool and assigns it to the AllowInsecure field.
 func (o *DataLakeDatabaseDataSourceSettings) SetAllowInsecure(v bool) {
 	o.AllowInsecure = &v
+	o.NullFields = removeNullField(o.NullFields, "AllowInsecure")
+}
+
+// SetAllowInsecureNil sets AllowInsecure to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseDataSourceSettings) SetAllowInsecureNil() {
+	o.AllowInsecure = nil
+	o.NullFields = addNullField(o.NullFields, "AllowInsecure")
 }
 
 // GetCollection returns the Collection field value if set, zero value otherwise
@@ -117,6 +133,13 @@ func (o *DataLakeDatabaseDataSourceSettings) HasCollection() bool {
 // SetCollection gets a reference to the given string and assigns it to the Collection field.
 func (o *DataLakeDatabaseDataSourceSettings) SetCollection(v string) {
 	o.Collection = &v
+	o.NullFields = removeNullField(o.NullFields, "Collection")
+}
+
+// SetCollectionNil sets Collection to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseDataSourceSettings) SetCollectionNil() {
+	o.Collection = nil
+	o.NullFields = addNullField(o.NullFields, "Collection")
 }
 
 // GetCollectionRegex returns the CollectionRegex field value if set, zero value otherwise
@@ -150,6 +173,13 @@ func (o *DataLakeDatabaseDataSourceSettings) HasCollectionRegex() bool {
 // SetCollectionRegex gets a reference to the given string and assigns it to the CollectionRegex field.
 func (o *DataLakeDatabaseDataSourceSettings) SetCollectionRegex(v string) {
 	o.CollectionRegex = &v
+	o.NullFields = removeNullField(o.NullFields, "CollectionRegex")
+}
+
+// SetCollectionRegexNil sets CollectionRegex to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseDataSourceSettings) SetCollectionRegexNil() {
+	o.CollectionRegex = nil
+	o.NullFields = addNullField(o.NullFields, "CollectionRegex")
 }
 
 // GetDatabase returns the Database field value if set, zero value otherwise
@@ -183,6 +213,13 @@ func (o *DataLakeDatabaseDataSourceSettings) HasDatabase() bool {
 // SetDatabase gets a reference to the given string and assigns it to the Database field.
 func (o *DataLakeDatabaseDataSourceSettings) SetDatabase(v string) {
 	o.Database = &v
+	o.NullFields = removeNullField(o.NullFields, "Database")
+}
+
+// SetDatabaseNil sets Database to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseDataSourceSettings) SetDatabaseNil() {
+	o.Database = nil
+	o.NullFields = addNullField(o.NullFields, "Database")
 }
 
 // GetDatabaseRegex returns the DatabaseRegex field value if set, zero value otherwise
@@ -216,6 +253,13 @@ func (o *DataLakeDatabaseDataSourceSettings) HasDatabaseRegex() bool {
 // SetDatabaseRegex gets a reference to the given string and assigns it to the DatabaseRegex field.
 func (o *DataLakeDatabaseDataSourceSettings) SetDatabaseRegex(v string) {
 	o.DatabaseRegex = &v
+	o.NullFields = removeNullField(o.NullFields, "DatabaseRegex")
+}
+
+// SetDatabaseRegexNil sets DatabaseRegex to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseDataSourceSettings) SetDatabaseRegexNil() {
+	o.DatabaseRegex = nil
+	o.NullFields = addNullField(o.NullFields, "DatabaseRegex")
 }
 
 // GetDatasetName returns the DatasetName field value if set, zero value otherwise
@@ -249,6 +293,13 @@ func (o *DataLakeDatabaseDataSourceSettings) HasDatasetName() bool {
 // SetDatasetName gets a reference to the given string and assigns it to the DatasetName field.
 func (o *DataLakeDatabaseDataSourceSettings) SetDatasetName(v string) {
 	o.DatasetName = &v
+	o.NullFields = removeNullField(o.NullFields, "DatasetName")
+}
+
+// SetDatasetNameNil sets DatasetName to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseDataSourceSettings) SetDatasetNameNil() {
+	o.DatasetName = nil
+	o.NullFields = addNullField(o.NullFields, "DatasetName")
 }
 
 // GetDatasetPrefix returns the DatasetPrefix field value if set, zero value otherwise
@@ -282,6 +333,13 @@ func (o *DataLakeDatabaseDataSourceSettings) HasDatasetPrefix() bool {
 // SetDatasetPrefix gets a reference to the given string and assigns it to the DatasetPrefix field.
 func (o *DataLakeDatabaseDataSourceSettings) SetDatasetPrefix(v string) {
 	o.DatasetPrefix = &v
+	o.NullFields = removeNullField(o.NullFields, "DatasetPrefix")
+}
+
+// SetDatasetPrefixNil sets DatasetPrefix to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseDataSourceSettings) SetDatasetPrefixNil() {
+	o.DatasetPrefix = nil
+	o.NullFields = addNullField(o.NullFields, "DatasetPrefix")
 }
 
 // GetDefaultFormat returns the DefaultFormat field value if set, zero value otherwise
@@ -315,6 +373,13 @@ func (o *DataLakeDatabaseDataSourceSettings) HasDefaultFormat() bool {
 // SetDefaultFormat gets a reference to the given string and assigns it to the DefaultFormat field.
 func (o *DataLakeDatabaseDataSourceSettings) SetDefaultFormat(v string) {
 	o.DefaultFormat = &v
+	o.NullFields = removeNullField(o.NullFields, "DefaultFormat")
+}
+
+// SetDefaultFormatNil sets DefaultFormat to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseDataSourceSettings) SetDefaultFormatNil() {
+	o.DefaultFormat = nil
+	o.NullFields = addNullField(o.NullFields, "DefaultFormat")
 }
 
 // GetPath returns the Path field value if set, zero value otherwise
@@ -348,6 +413,13 @@ func (o *DataLakeDatabaseDataSourceSettings) HasPath() bool {
 // SetPath gets a reference to the given string and assigns it to the Path field.
 func (o *DataLakeDatabaseDataSourceSettings) SetPath(v string) {
 	o.Path = &v
+	o.NullFields = removeNullField(o.NullFields, "Path")
+}
+
+// SetPathNil sets Path to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseDataSourceSettings) SetPathNil() {
+	o.Path = nil
+	o.NullFields = addNullField(o.NullFields, "Path")
 }
 
 // GetProvenanceFieldName returns the ProvenanceFieldName field value if set, zero value otherwise
@@ -381,6 +453,13 @@ func (o *DataLakeDatabaseDataSourceSettings) HasProvenanceFieldName() bool {
 // SetProvenanceFieldName gets a reference to the given string and assigns it to the ProvenanceFieldName field.
 func (o *DataLakeDatabaseDataSourceSettings) SetProvenanceFieldName(v string) {
 	o.ProvenanceFieldName = &v
+	o.NullFields = removeNullField(o.NullFields, "ProvenanceFieldName")
+}
+
+// SetProvenanceFieldNameNil sets ProvenanceFieldName to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseDataSourceSettings) SetProvenanceFieldNameNil() {
+	o.ProvenanceFieldName = nil
+	o.NullFields = addNullField(o.NullFields, "ProvenanceFieldName")
 }
 
 // GetStoreName returns the StoreName field value if set, zero value otherwise
@@ -414,6 +493,13 @@ func (o *DataLakeDatabaseDataSourceSettings) HasStoreName() bool {
 // SetStoreName gets a reference to the given string and assigns it to the StoreName field.
 func (o *DataLakeDatabaseDataSourceSettings) SetStoreName(v string) {
 	o.StoreName = &v
+	o.NullFields = removeNullField(o.NullFields, "StoreName")
+}
+
+// SetStoreNameNil sets StoreName to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseDataSourceSettings) SetStoreNameNil() {
+	o.StoreName = nil
+	o.NullFields = addNullField(o.NullFields, "StoreName")
 }
 
 // GetTrimLevel returns the TrimLevel field value if set, zero value otherwise
@@ -447,6 +533,13 @@ func (o *DataLakeDatabaseDataSourceSettings) HasTrimLevel() bool {
 // SetTrimLevel gets a reference to the given int and assigns it to the TrimLevel field.
 func (o *DataLakeDatabaseDataSourceSettings) SetTrimLevel(v int) {
 	o.TrimLevel = &v
+	o.NullFields = removeNullField(o.NullFields, "TrimLevel")
+}
+
+// SetTrimLevelNil sets TrimLevel to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseDataSourceSettings) SetTrimLevelNil() {
+	o.TrimLevel = nil
+	o.NullFields = addNullField(o.NullFields, "TrimLevel")
 }
 
 // GetUrls returns the Urls field value if set, zero value otherwise
@@ -480,4 +573,11 @@ func (o *DataLakeDatabaseDataSourceSettings) HasUrls() bool {
 // SetUrls gets a reference to the given []string and assigns it to the Urls field.
 func (o *DataLakeDatabaseDataSourceSettings) SetUrls(v []string) {
 	o.Urls = &v
+	o.NullFields = removeNullField(o.NullFields, "Urls")
+}
+
+// SetUrlsNil sets Urls to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseDataSourceSettings) SetUrlsNil() {
+	o.Urls = nil
+	o.NullFields = addNullField(o.NullFields, "Urls")
 }

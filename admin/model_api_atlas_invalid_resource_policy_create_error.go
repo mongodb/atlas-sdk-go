@@ -9,6 +9,15 @@ type ApiAtlasInvalidResourcePolicyCreateError struct {
 	// List of invalid policies containing details of their validation errors.
 	// Read only field.
 	InvalidPolicies *[]ApiAtlasInvalidPolicy `json:"invalidPolicies,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiAtlasInvalidResourcePolicyCreateError) MarshalJSON() ([]byte, error) {
+	type noMethod ApiAtlasInvalidResourcePolicyCreateError
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasInvalidResourcePolicyCreateError instantiates a new ApiAtlasInvalidResourcePolicyCreateError object
@@ -59,6 +68,13 @@ func (o *ApiAtlasInvalidResourcePolicyCreateError) HasErrorType() bool {
 // SetErrorType gets a reference to the given string and assigns it to the ErrorType field.
 func (o *ApiAtlasInvalidResourcePolicyCreateError) SetErrorType(v string) {
 	o.ErrorType = &v
+	o.NullFields = removeNullField(o.NullFields, "ErrorType")
+}
+
+// SetErrorTypeNil sets ErrorType to an explicit JSON null when marshaled.
+func (o *ApiAtlasInvalidResourcePolicyCreateError) SetErrorTypeNil() {
+	o.ErrorType = nil
+	o.NullFields = addNullField(o.NullFields, "ErrorType")
 }
 
 // GetInvalidPolicies returns the InvalidPolicies field value if set, zero value otherwise
@@ -92,4 +108,11 @@ func (o *ApiAtlasInvalidResourcePolicyCreateError) HasInvalidPolicies() bool {
 // SetInvalidPolicies gets a reference to the given []ApiAtlasInvalidPolicy and assigns it to the InvalidPolicies field.
 func (o *ApiAtlasInvalidResourcePolicyCreateError) SetInvalidPolicies(v []ApiAtlasInvalidPolicy) {
 	o.InvalidPolicies = &v
+	o.NullFields = removeNullField(o.NullFields, "InvalidPolicies")
+}
+
+// SetInvalidPoliciesNil sets InvalidPolicies to an explicit JSON null when marshaled.
+func (o *ApiAtlasInvalidResourcePolicyCreateError) SetInvalidPoliciesNil() {
+	o.InvalidPolicies = nil
+	o.NullFields = addNullField(o.NullFields, "InvalidPolicies")
 }

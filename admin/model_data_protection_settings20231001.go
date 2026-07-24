@@ -39,6 +39,15 @@ type DataProtectionSettings20231001 struct {
 	// Email address that identifies the user who updated the Backup Compliance Policy settings. MongoDB Cloud ignores this email setting when you enable or update the Backup Compliance Policy settings.
 	// Read only field.
 	UpdatedUser *string `json:"updatedUser,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DataProtectionSettings20231001) MarshalJSON() ([]byte, error) {
+	type noMethod DataProtectionSettings20231001
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataProtectionSettings20231001 instantiates a new DataProtectionSettings20231001 object
@@ -176,6 +185,13 @@ func (o *DataProtectionSettings20231001) HasCopyProtectionEnabled() bool {
 // SetCopyProtectionEnabled gets a reference to the given bool and assigns it to the CopyProtectionEnabled field.
 func (o *DataProtectionSettings20231001) SetCopyProtectionEnabled(v bool) {
 	o.CopyProtectionEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "CopyProtectionEnabled")
+}
+
+// SetCopyProtectionEnabledNil sets CopyProtectionEnabled to an explicit JSON null when marshaled.
+func (o *DataProtectionSettings20231001) SetCopyProtectionEnabledNil() {
+	o.CopyProtectionEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "CopyProtectionEnabled")
 }
 
 // GetDeletable returns the Deletable field value if set, zero value otherwise
@@ -209,6 +225,13 @@ func (o *DataProtectionSettings20231001) HasDeletable() bool {
 // SetDeletable gets a reference to the given bool and assigns it to the Deletable field.
 func (o *DataProtectionSettings20231001) SetDeletable(v bool) {
 	o.Deletable = &v
+	o.NullFields = removeNullField(o.NullFields, "Deletable")
+}
+
+// SetDeletableNil sets Deletable to an explicit JSON null when marshaled.
+func (o *DataProtectionSettings20231001) SetDeletableNil() {
+	o.Deletable = nil
+	o.NullFields = addNullField(o.NullFields, "Deletable")
 }
 
 // GetEncryptionAtRestEnabled returns the EncryptionAtRestEnabled field value if set, zero value otherwise
@@ -242,6 +265,13 @@ func (o *DataProtectionSettings20231001) HasEncryptionAtRestEnabled() bool {
 // SetEncryptionAtRestEnabled gets a reference to the given bool and assigns it to the EncryptionAtRestEnabled field.
 func (o *DataProtectionSettings20231001) SetEncryptionAtRestEnabled(v bool) {
 	o.EncryptionAtRestEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "EncryptionAtRestEnabled")
+}
+
+// SetEncryptionAtRestEnabledNil sets EncryptionAtRestEnabled to an explicit JSON null when marshaled.
+func (o *DataProtectionSettings20231001) SetEncryptionAtRestEnabledNil() {
+	o.EncryptionAtRestEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "EncryptionAtRestEnabled")
 }
 
 // GetOnDemandPolicyItem returns the OnDemandPolicyItem field value if set, zero value otherwise
@@ -275,6 +305,13 @@ func (o *DataProtectionSettings20231001) HasOnDemandPolicyItem() bool {
 // SetOnDemandPolicyItem gets a reference to the given BackupComplianceOnDemandPolicyItem and assigns it to the OnDemandPolicyItem field.
 func (o *DataProtectionSettings20231001) SetOnDemandPolicyItem(v BackupComplianceOnDemandPolicyItem) {
 	o.OnDemandPolicyItem = &v
+	o.NullFields = removeNullField(o.NullFields, "OnDemandPolicyItem")
+}
+
+// SetOnDemandPolicyItemNil sets OnDemandPolicyItem to an explicit JSON null when marshaled.
+func (o *DataProtectionSettings20231001) SetOnDemandPolicyItemNil() {
+	o.OnDemandPolicyItem = nil
+	o.NullFields = addNullField(o.NullFields, "OnDemandPolicyItem")
 }
 
 // GetPitEnabled returns the PitEnabled field value if set, zero value otherwise
@@ -308,6 +345,13 @@ func (o *DataProtectionSettings20231001) HasPitEnabled() bool {
 // SetPitEnabled gets a reference to the given bool and assigns it to the PitEnabled field.
 func (o *DataProtectionSettings20231001) SetPitEnabled(v bool) {
 	o.PitEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "PitEnabled")
+}
+
+// SetPitEnabledNil sets PitEnabled to an explicit JSON null when marshaled.
+func (o *DataProtectionSettings20231001) SetPitEnabledNil() {
+	o.PitEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "PitEnabled")
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise
@@ -341,6 +385,13 @@ func (o *DataProtectionSettings20231001) HasProjectId() bool {
 // SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
 func (o *DataProtectionSettings20231001) SetProjectId(v string) {
 	o.ProjectId = &v
+	o.NullFields = removeNullField(o.NullFields, "ProjectId")
+}
+
+// SetProjectIdNil sets ProjectId to an explicit JSON null when marshaled.
+func (o *DataProtectionSettings20231001) SetProjectIdNil() {
+	o.ProjectId = nil
+	o.NullFields = addNullField(o.NullFields, "ProjectId")
 }
 
 // GetRestoreWindowDays returns the RestoreWindowDays field value if set, zero value otherwise
@@ -374,6 +425,13 @@ func (o *DataProtectionSettings20231001) HasRestoreWindowDays() bool {
 // SetRestoreWindowDays gets a reference to the given int and assigns it to the RestoreWindowDays field.
 func (o *DataProtectionSettings20231001) SetRestoreWindowDays(v int) {
 	o.RestoreWindowDays = &v
+	o.NullFields = removeNullField(o.NullFields, "RestoreWindowDays")
+}
+
+// SetRestoreWindowDaysNil sets RestoreWindowDays to an explicit JSON null when marshaled.
+func (o *DataProtectionSettings20231001) SetRestoreWindowDaysNil() {
+	o.RestoreWindowDays = nil
+	o.NullFields = addNullField(o.NullFields, "RestoreWindowDays")
 }
 
 // GetScheduledPolicyItems returns the ScheduledPolicyItems field value if set, zero value otherwise
@@ -407,6 +465,13 @@ func (o *DataProtectionSettings20231001) HasScheduledPolicyItems() bool {
 // SetScheduledPolicyItems gets a reference to the given []BackupComplianceScheduledPolicyItem and assigns it to the ScheduledPolicyItems field.
 func (o *DataProtectionSettings20231001) SetScheduledPolicyItems(v []BackupComplianceScheduledPolicyItem) {
 	o.ScheduledPolicyItems = &v
+	o.NullFields = removeNullField(o.NullFields, "ScheduledPolicyItems")
+}
+
+// SetScheduledPolicyItemsNil sets ScheduledPolicyItems to an explicit JSON null when marshaled.
+func (o *DataProtectionSettings20231001) SetScheduledPolicyItemsNil() {
+	o.ScheduledPolicyItems = nil
+	o.NullFields = addNullField(o.NullFields, "ScheduledPolicyItems")
 }
 
 // GetState returns the State field value if set, zero value otherwise
@@ -440,6 +505,13 @@ func (o *DataProtectionSettings20231001) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *DataProtectionSettings20231001) SetState(v string) {
 	o.State = &v
+	o.NullFields = removeNullField(o.NullFields, "State")
+}
+
+// SetStateNil sets State to an explicit JSON null when marshaled.
+func (o *DataProtectionSettings20231001) SetStateNil() {
+	o.State = nil
+	o.NullFields = addNullField(o.NullFields, "State")
 }
 
 // GetUpdatedDate returns the UpdatedDate field value if set, zero value otherwise
@@ -473,6 +545,13 @@ func (o *DataProtectionSettings20231001) HasUpdatedDate() bool {
 // SetUpdatedDate gets a reference to the given time.Time and assigns it to the UpdatedDate field.
 func (o *DataProtectionSettings20231001) SetUpdatedDate(v time.Time) {
 	o.UpdatedDate = &v
+	o.NullFields = removeNullField(o.NullFields, "UpdatedDate")
+}
+
+// SetUpdatedDateNil sets UpdatedDate to an explicit JSON null when marshaled.
+func (o *DataProtectionSettings20231001) SetUpdatedDateNil() {
+	o.UpdatedDate = nil
+	o.NullFields = addNullField(o.NullFields, "UpdatedDate")
 }
 
 // GetUpdatedUser returns the UpdatedUser field value if set, zero value otherwise
@@ -506,4 +585,11 @@ func (o *DataProtectionSettings20231001) HasUpdatedUser() bool {
 // SetUpdatedUser gets a reference to the given string and assigns it to the UpdatedUser field.
 func (o *DataProtectionSettings20231001) SetUpdatedUser(v string) {
 	o.UpdatedUser = &v
+	o.NullFields = removeNullField(o.NullFields, "UpdatedUser")
+}
+
+// SetUpdatedUserNil sets UpdatedUser to an explicit JSON null when marshaled.
+func (o *DataProtectionSettings20231001) SetUpdatedUserNil() {
+	o.UpdatedUser = nil
+	o.NullFields = addNullField(o.NullFields, "UpdatedUser")
 }

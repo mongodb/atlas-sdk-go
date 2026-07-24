@@ -8,6 +8,15 @@ type LinkAtlas struct {
 	Href *string `json:"href,omitempty"`
 	// Uniform Resource Locator (URL) that defines the semantic relationship between this resource and another API resource. This URL often begins with `https://cloud.mongodb.com/api/atlas`.
 	Rel *string `json:"rel,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *LinkAtlas) MarshalJSON() ([]byte, error) {
+	type noMethod LinkAtlas
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewLinkAtlas instantiates a new LinkAtlas object
@@ -58,6 +67,13 @@ func (o *LinkAtlas) HasHref() bool {
 // SetHref gets a reference to the given string and assigns it to the Href field.
 func (o *LinkAtlas) SetHref(v string) {
 	o.Href = &v
+	o.NullFields = removeNullField(o.NullFields, "Href")
+}
+
+// SetHrefNil sets Href to an explicit JSON null when marshaled.
+func (o *LinkAtlas) SetHrefNil() {
+	o.Href = nil
+	o.NullFields = addNullField(o.NullFields, "Href")
 }
 
 // GetRel returns the Rel field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *LinkAtlas) HasRel() bool {
 // SetRel gets a reference to the given string and assigns it to the Rel field.
 func (o *LinkAtlas) SetRel(v string) {
 	o.Rel = &v
+	o.NullFields = removeNullField(o.NullFields, "Rel")
+}
+
+// SetRelNil sets Rel to an explicit JSON null when marshaled.
+func (o *LinkAtlas) SetRelNil() {
+	o.Rel = nil
+	o.NullFields = addNullField(o.NullFields, "Rel")
 }
