@@ -16,7 +16,7 @@
     "prettier": "3.9.5"
   },
   "overrides": {
-    "shell-quote": ">=1.9.0"
+    "shell-quote": "^1.9.0"
   },
   "scripts": {
     "format": "prettier --write .",
