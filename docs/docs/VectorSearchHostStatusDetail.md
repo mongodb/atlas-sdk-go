@@ -53,6 +53,13 @@ SetHostname sets Hostname field to given value.
 `func (o *VectorSearchHostStatusDetail) HasHostname() bool`
 
 HasHostname returns a boolean if a field has been set.
+
+### SetHostnameNil
+
+`func (o *VectorSearchHostStatusDetail) SetHostnameNil()`
+
+SetHostnameNil sets Hostname to an explicit JSON null when marshaled, overriding any value previously set with SetHostname. Calling SetHostname again clears the null override.
+
 ### GetMainIndex
 
 `func (o *VectorSearchHostStatusDetail) GetMainIndex() VectorSearchIndexStatusDetail`
@@ -77,6 +84,13 @@ SetMainIndex sets MainIndex field to given value.
 `func (o *VectorSearchHostStatusDetail) HasMainIndex() bool`
 
 HasMainIndex returns a boolean if a field has been set.
+
+### SetMainIndexNil
+
+`func (o *VectorSearchHostStatusDetail) SetMainIndexNil()`
+
+SetMainIndexNil sets MainIndex to an explicit JSON null when marshaled, overriding any value previously set with SetMainIndex. Calling SetMainIndex again clears the null override.
+
 ### GetQueryable
 
 `func (o *VectorSearchHostStatusDetail) GetQueryable() bool`
@@ -101,6 +115,13 @@ SetQueryable sets Queryable field to given value.
 `func (o *VectorSearchHostStatusDetail) HasQueryable() bool`
 
 HasQueryable returns a boolean if a field has been set.
+
+### SetQueryableNil
+
+`func (o *VectorSearchHostStatusDetail) SetQueryableNil()`
+
+SetQueryableNil sets Queryable to an explicit JSON null when marshaled, overriding any value previously set with SetQueryable. Calling SetQueryable again clears the null override.
+
 ### GetStagedIndex
 
 `func (o *VectorSearchHostStatusDetail) GetStagedIndex() VectorSearchIndexStatusDetail`
@@ -125,6 +146,13 @@ SetStagedIndex sets StagedIndex field to given value.
 `func (o *VectorSearchHostStatusDetail) HasStagedIndex() bool`
 
 HasStagedIndex returns a boolean if a field has been set.
+
+### SetStagedIndexNil
+
+`func (o *VectorSearchHostStatusDetail) SetStagedIndexNil()`
+
+SetStagedIndexNil sets StagedIndex to an explicit JSON null when marshaled, overriding any value previously set with SetStagedIndex. Calling SetStagedIndex again clears the null override.
+
 ### GetStatus
 
 `func (o *VectorSearchHostStatusDetail) GetStatus() string`
@@ -149,6 +177,13 @@ SetStatus sets Status field to given value.
 `func (o *VectorSearchHostStatusDetail) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *VectorSearchHostStatusDetail) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

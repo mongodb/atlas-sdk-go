@@ -60,6 +60,13 @@ SetId sets Id field to given value.
 `func (o *CloudProviderContainer) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *CloudProviderContainer) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetProviderName
 
 `func (o *CloudProviderContainer) GetProviderName() string`
@@ -84,6 +91,13 @@ SetProviderName sets ProviderName field to given value.
 `func (o *CloudProviderContainer) HasProviderName() bool`
 
 HasProviderName returns a boolean if a field has been set.
+
+### SetProviderNameNil
+
+`func (o *CloudProviderContainer) SetProviderNameNil()`
+
+SetProviderNameNil sets ProviderName to an explicit JSON null when marshaled, overriding any value previously set with SetProviderName. Calling SetProviderName again clears the null override.
+
 ### GetProvisioned
 
 `func (o *CloudProviderContainer) GetProvisioned() bool`
@@ -108,6 +122,13 @@ SetProvisioned sets Provisioned field to given value.
 `func (o *CloudProviderContainer) HasProvisioned() bool`
 
 HasProvisioned returns a boolean if a field has been set.
+
+### SetProvisionedNil
+
+`func (o *CloudProviderContainer) SetProvisionedNil()`
+
+SetProvisionedNil sets Provisioned to an explicit JSON null when marshaled, overriding any value previously set with SetProvisioned. Calling SetProvisioned again clears the null override.
+
 ### GetAtlasCidrBlock
 
 `func (o *CloudProviderContainer) GetAtlasCidrBlock() string`
@@ -132,6 +153,13 @@ SetAtlasCidrBlock sets AtlasCidrBlock field to given value.
 `func (o *CloudProviderContainer) HasAtlasCidrBlock() bool`
 
 HasAtlasCidrBlock returns a boolean if a field has been set.
+
+### SetAtlasCidrBlockNil
+
+`func (o *CloudProviderContainer) SetAtlasCidrBlockNil()`
+
+SetAtlasCidrBlockNil sets AtlasCidrBlock to an explicit JSON null when marshaled, overriding any value previously set with SetAtlasCidrBlock. Calling SetAtlasCidrBlock again clears the null override.
+
 ### GetAzureSubscriptionId
 
 `func (o *CloudProviderContainer) GetAzureSubscriptionId() string`
@@ -156,6 +184,13 @@ SetAzureSubscriptionId sets AzureSubscriptionId field to given value.
 `func (o *CloudProviderContainer) HasAzureSubscriptionId() bool`
 
 HasAzureSubscriptionId returns a boolean if a field has been set.
+
+### SetAzureSubscriptionIdNil
+
+`func (o *CloudProviderContainer) SetAzureSubscriptionIdNil()`
+
+SetAzureSubscriptionIdNil sets AzureSubscriptionId to an explicit JSON null when marshaled, overriding any value previously set with SetAzureSubscriptionId. Calling SetAzureSubscriptionId again clears the null override.
+
 ### GetRegion
 
 `func (o *CloudProviderContainer) GetRegion() string`
@@ -180,6 +215,13 @@ SetRegion sets Region field to given value.
 `func (o *CloudProviderContainer) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *CloudProviderContainer) SetRegionNil()`
+
+SetRegionNil sets Region to an explicit JSON null when marshaled, overriding any value previously set with SetRegion. Calling SetRegion again clears the null override.
+
 ### GetVnetName
 
 `func (o *CloudProviderContainer) GetVnetName() string`
@@ -204,6 +246,13 @@ SetVnetName sets VnetName field to given value.
 `func (o *CloudProviderContainer) HasVnetName() bool`
 
 HasVnetName returns a boolean if a field has been set.
+
+### SetVnetNameNil
+
+`func (o *CloudProviderContainer) SetVnetNameNil()`
+
+SetVnetNameNil sets VnetName to an explicit JSON null when marshaled, overriding any value previously set with SetVnetName. Calling SetVnetName again clears the null override.
+
 ### GetGcpProjectId
 
 `func (o *CloudProviderContainer) GetGcpProjectId() string`
@@ -228,6 +277,13 @@ SetGcpProjectId sets GcpProjectId field to given value.
 `func (o *CloudProviderContainer) HasGcpProjectId() bool`
 
 HasGcpProjectId returns a boolean if a field has been set.
+
+### SetGcpProjectIdNil
+
+`func (o *CloudProviderContainer) SetGcpProjectIdNil()`
+
+SetGcpProjectIdNil sets GcpProjectId to an explicit JSON null when marshaled, overriding any value previously set with SetGcpProjectId. Calling SetGcpProjectId again clears the null override.
+
 ### GetNetworkName
 
 `func (o *CloudProviderContainer) GetNetworkName() string`
@@ -252,6 +308,13 @@ SetNetworkName sets NetworkName field to given value.
 `func (o *CloudProviderContainer) HasNetworkName() bool`
 
 HasNetworkName returns a boolean if a field has been set.
+
+### SetNetworkNameNil
+
+`func (o *CloudProviderContainer) SetNetworkNameNil()`
+
+SetNetworkNameNil sets NetworkName to an explicit JSON null when marshaled, overriding any value previously set with SetNetworkName. Calling SetNetworkName again clears the null override.
+
 ### GetRegions
 
 `func (o *CloudProviderContainer) GetRegions() []string`
@@ -276,6 +339,13 @@ SetRegions sets Regions field to given value.
 `func (o *CloudProviderContainer) HasRegions() bool`
 
 HasRegions returns a boolean if a field has been set.
+
+### SetRegionsNil
+
+`func (o *CloudProviderContainer) SetRegionsNil()`
+
+SetRegionsNil sets Regions to an explicit JSON null when marshaled, overriding any value previously set with SetRegions. Calling SetRegions again clears the null override.
+
 ### GetRegionName
 
 `func (o *CloudProviderContainer) GetRegionName() string`
@@ -300,6 +370,13 @@ SetRegionName sets RegionName field to given value.
 `func (o *CloudProviderContainer) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
+
+### SetRegionNameNil
+
+`func (o *CloudProviderContainer) SetRegionNameNil()`
+
+SetRegionNameNil sets RegionName to an explicit JSON null when marshaled, overriding any value previously set with SetRegionName. Calling SetRegionName again clears the null override.
+
 ### GetVpcId
 
 `func (o *CloudProviderContainer) GetVpcId() string`
@@ -324,6 +401,13 @@ SetVpcId sets VpcId field to given value.
 `func (o *CloudProviderContainer) HasVpcId() bool`
 
 HasVpcId returns a boolean if a field has been set.
+
+### SetVpcIdNil
+
+`func (o *CloudProviderContainer) SetVpcIdNil()`
+
+SetVpcIdNil sets VpcId to an explicit JSON null when marshaled, overriding any value previously set with SetVpcId. Calling SetVpcId again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

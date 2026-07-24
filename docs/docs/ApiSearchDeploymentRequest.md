@@ -50,6 +50,13 @@ SetDefaultNodeCount sets DefaultNodeCount field to given value.
 `func (o *ApiSearchDeploymentRequest) HasDefaultNodeCount() bool`
 
 HasDefaultNodeCount returns a boolean if a field has been set.
+
+### SetDefaultNodeCountNil
+
+`func (o *ApiSearchDeploymentRequest) SetDefaultNodeCountNil()`
+
+SetDefaultNodeCountNil sets DefaultNodeCount to an explicit JSON null when marshaled, overriding any value previously set with SetDefaultNodeCount. Calling SetDefaultNodeCount again clears the null override.
+
 ### GetSpecs
 
 `func (o *ApiSearchDeploymentRequest) GetSpecs() []ApiSearchDeploymentRequestSpec`

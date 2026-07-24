@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **ClientSecret** | Pointer to **string** | OIDC client secret for authentication to the Kafka cluster. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Mechanism** | Pointer to **string** | Style of authentication. Can be one of PLAIN, SCRAM-256, SCRAM-512, or OAUTHBEARER. | [optional] 
-**Method** | Pointer to **string** | SASL OAUTHBEARER authentication method. Can only be OIDC currently. | [optional] 
+**Method** | Pointer to **string** | SASL OAUTHBEARER authentication method. Currently, only OIDC is supported. | [optional] 
 **Password** | Pointer to **string** | Password of the account to connect to the Kafka cluster. | [optional] 
 **SaslOauthbearerExtensions** | Pointer to **string** | SASL OAUTHBEARER extensions parameter for additional OAuth2 configuration. | [optional] 
 **Scope** | Pointer to **string** | OIDC scope parameter defining the access permissions requested. | [optional] 
@@ -61,6 +61,13 @@ SetClientId sets ClientId field to given value.
 `func (o *StreamsKafkaAuthentication) HasClientId() bool`
 
 HasClientId returns a boolean if a field has been set.
+
+### SetClientIdNil
+
+`func (o *StreamsKafkaAuthentication) SetClientIdNil()`
+
+SetClientIdNil sets ClientId to an explicit JSON null when marshaled, overriding any value previously set with SetClientId. Calling SetClientId again clears the null override.
+
 ### GetClientSecret
 
 `func (o *StreamsKafkaAuthentication) GetClientSecret() string`
@@ -85,6 +92,13 @@ SetClientSecret sets ClientSecret field to given value.
 `func (o *StreamsKafkaAuthentication) HasClientSecret() bool`
 
 HasClientSecret returns a boolean if a field has been set.
+
+### SetClientSecretNil
+
+`func (o *StreamsKafkaAuthentication) SetClientSecretNil()`
+
+SetClientSecretNil sets ClientSecret to an explicit JSON null when marshaled, overriding any value previously set with SetClientSecret. Calling SetClientSecret again clears the null override.
+
 ### GetLinks
 
 `func (o *StreamsKafkaAuthentication) GetLinks() []Link`
@@ -109,6 +123,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsKafkaAuthentication) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsKafkaAuthentication) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetMechanism
 
 `func (o *StreamsKafkaAuthentication) GetMechanism() string`
@@ -133,6 +154,13 @@ SetMechanism sets Mechanism field to given value.
 `func (o *StreamsKafkaAuthentication) HasMechanism() bool`
 
 HasMechanism returns a boolean if a field has been set.
+
+### SetMechanismNil
+
+`func (o *StreamsKafkaAuthentication) SetMechanismNil()`
+
+SetMechanismNil sets Mechanism to an explicit JSON null when marshaled, overriding any value previously set with SetMechanism. Calling SetMechanism again clears the null override.
+
 ### GetMethod
 
 `func (o *StreamsKafkaAuthentication) GetMethod() string`
@@ -157,6 +185,13 @@ SetMethod sets Method field to given value.
 `func (o *StreamsKafkaAuthentication) HasMethod() bool`
 
 HasMethod returns a boolean if a field has been set.
+
+### SetMethodNil
+
+`func (o *StreamsKafkaAuthentication) SetMethodNil()`
+
+SetMethodNil sets Method to an explicit JSON null when marshaled, overriding any value previously set with SetMethod. Calling SetMethod again clears the null override.
+
 ### GetPassword
 
 `func (o *StreamsKafkaAuthentication) GetPassword() string`
@@ -181,6 +216,13 @@ SetPassword sets Password field to given value.
 `func (o *StreamsKafkaAuthentication) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
+
+### SetPasswordNil
+
+`func (o *StreamsKafkaAuthentication) SetPasswordNil()`
+
+SetPasswordNil sets Password to an explicit JSON null when marshaled, overriding any value previously set with SetPassword. Calling SetPassword again clears the null override.
+
 ### GetSaslOauthbearerExtensions
 
 `func (o *StreamsKafkaAuthentication) GetSaslOauthbearerExtensions() string`
@@ -205,6 +247,13 @@ SetSaslOauthbearerExtensions sets SaslOauthbearerExtensions field to given value
 `func (o *StreamsKafkaAuthentication) HasSaslOauthbearerExtensions() bool`
 
 HasSaslOauthbearerExtensions returns a boolean if a field has been set.
+
+### SetSaslOauthbearerExtensionsNil
+
+`func (o *StreamsKafkaAuthentication) SetSaslOauthbearerExtensionsNil()`
+
+SetSaslOauthbearerExtensionsNil sets SaslOauthbearerExtensions to an explicit JSON null when marshaled, overriding any value previously set with SetSaslOauthbearerExtensions. Calling SetSaslOauthbearerExtensions again clears the null override.
+
 ### GetScope
 
 `func (o *StreamsKafkaAuthentication) GetScope() string`
@@ -229,6 +278,13 @@ SetScope sets Scope field to given value.
 `func (o *StreamsKafkaAuthentication) HasScope() bool`
 
 HasScope returns a boolean if a field has been set.
+
+### SetScopeNil
+
+`func (o *StreamsKafkaAuthentication) SetScopeNil()`
+
+SetScopeNil sets Scope to an explicit JSON null when marshaled, overriding any value previously set with SetScope. Calling SetScope again clears the null override.
+
 ### GetSslCertificate
 
 `func (o *StreamsKafkaAuthentication) GetSslCertificate() string`
@@ -253,6 +309,13 @@ SetSslCertificate sets SslCertificate field to given value.
 `func (o *StreamsKafkaAuthentication) HasSslCertificate() bool`
 
 HasSslCertificate returns a boolean if a field has been set.
+
+### SetSslCertificateNil
+
+`func (o *StreamsKafkaAuthentication) SetSslCertificateNil()`
+
+SetSslCertificateNil sets SslCertificate to an explicit JSON null when marshaled, overriding any value previously set with SetSslCertificate. Calling SetSslCertificate again clears the null override.
+
 ### GetSslKey
 
 `func (o *StreamsKafkaAuthentication) GetSslKey() string`
@@ -277,6 +340,13 @@ SetSslKey sets SslKey field to given value.
 `func (o *StreamsKafkaAuthentication) HasSslKey() bool`
 
 HasSslKey returns a boolean if a field has been set.
+
+### SetSslKeyNil
+
+`func (o *StreamsKafkaAuthentication) SetSslKeyNil()`
+
+SetSslKeyNil sets SslKey to an explicit JSON null when marshaled, overriding any value previously set with SetSslKey. Calling SetSslKey again clears the null override.
+
 ### GetSslKeyPassword
 
 `func (o *StreamsKafkaAuthentication) GetSslKeyPassword() string`
@@ -301,6 +371,13 @@ SetSslKeyPassword sets SslKeyPassword field to given value.
 `func (o *StreamsKafkaAuthentication) HasSslKeyPassword() bool`
 
 HasSslKeyPassword returns a boolean if a field has been set.
+
+### SetSslKeyPasswordNil
+
+`func (o *StreamsKafkaAuthentication) SetSslKeyPasswordNil()`
+
+SetSslKeyPasswordNil sets SslKeyPassword to an explicit JSON null when marshaled, overriding any value previously set with SetSslKeyPassword. Calling SetSslKeyPassword again clears the null override.
+
 ### GetTokenEndpointUrl
 
 `func (o *StreamsKafkaAuthentication) GetTokenEndpointUrl() string`
@@ -325,6 +402,13 @@ SetTokenEndpointUrl sets TokenEndpointUrl field to given value.
 `func (o *StreamsKafkaAuthentication) HasTokenEndpointUrl() bool`
 
 HasTokenEndpointUrl returns a boolean if a field has been set.
+
+### SetTokenEndpointUrlNil
+
+`func (o *StreamsKafkaAuthentication) SetTokenEndpointUrlNil()`
+
+SetTokenEndpointUrlNil sets TokenEndpointUrl to an explicit JSON null when marshaled, overriding any value previously set with SetTokenEndpointUrl. Calling SetTokenEndpointUrl again clears the null override.
+
 ### GetUsername
 
 `func (o *StreamsKafkaAuthentication) GetUsername() string`
@@ -349,6 +433,13 @@ SetUsername sets Username field to given value.
 `func (o *StreamsKafkaAuthentication) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
+
+### SetUsernameNil
+
+`func (o *StreamsKafkaAuthentication) SetUsernameNil()`
+
+SetUsernameNil sets Username to an explicit JSON null when marshaled, overriding any value previously set with SetUsername. Calling SetUsername again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

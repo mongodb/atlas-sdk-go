@@ -50,6 +50,13 @@ SetDetail sets Detail field to given value.
 
 HasDetail returns a boolean if a field has been set.
 
+### SetDetailNil
+
+`func (o *ApiAtlasInvalidPolicyErrorDetail) SetDetailNil()`
+
+SetDetailNil sets Detail to an explicit JSON null when marshaled, overriding any value previously set with SetDetail. Calling SetDetail again clears the null override.
+
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

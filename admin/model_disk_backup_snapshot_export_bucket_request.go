@@ -22,6 +22,15 @@ type DiskBackupSnapshotExportBucketRequest struct {
 	// UUID that identifies the Azure Active Directory Tenant ID. Deprecated: this field is ignored; the `tenantId` of the Cloud Provider Access role (from `roleId`) is used.
 	// Deprecated
 	TenantId *string `json:"tenantId,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DiskBackupSnapshotExportBucketRequest) MarshalJSON() ([]byte, error) {
+	type noMethod DiskBackupSnapshotExportBucketRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupSnapshotExportBucketRequest instantiates a new DiskBackupSnapshotExportBucketRequest object
@@ -97,6 +106,13 @@ func (o *DiskBackupSnapshotExportBucketRequest) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupSnapshotExportBucketRequest) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotExportBucketRequest) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetBucketName returns the BucketName field value if set, zero value otherwise
@@ -130,6 +146,13 @@ func (o *DiskBackupSnapshotExportBucketRequest) HasBucketName() bool {
 // SetBucketName gets a reference to the given string and assigns it to the BucketName field.
 func (o *DiskBackupSnapshotExportBucketRequest) SetBucketName(v string) {
 	o.BucketName = &v
+	o.NullFields = removeNullField(o.NullFields, "BucketName")
+}
+
+// SetBucketNameNil sets BucketName to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotExportBucketRequest) SetBucketNameNil() {
+	o.BucketName = nil
+	o.NullFields = addNullField(o.NullFields, "BucketName")
 }
 
 // GetIamRoleId returns the IamRoleId field value if set, zero value otherwise
@@ -163,6 +186,13 @@ func (o *DiskBackupSnapshotExportBucketRequest) HasIamRoleId() bool {
 // SetIamRoleId gets a reference to the given string and assigns it to the IamRoleId field.
 func (o *DiskBackupSnapshotExportBucketRequest) SetIamRoleId(v string) {
 	o.IamRoleId = &v
+	o.NullFields = removeNullField(o.NullFields, "IamRoleId")
+}
+
+// SetIamRoleIdNil sets IamRoleId to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotExportBucketRequest) SetIamRoleIdNil() {
+	o.IamRoleId = nil
+	o.NullFields = addNullField(o.NullFields, "IamRoleId")
 }
 
 // GetRequirePrivateNetworking returns the RequirePrivateNetworking field value if set, zero value otherwise
@@ -196,6 +226,13 @@ func (o *DiskBackupSnapshotExportBucketRequest) HasRequirePrivateNetworking() bo
 // SetRequirePrivateNetworking gets a reference to the given bool and assigns it to the RequirePrivateNetworking field.
 func (o *DiskBackupSnapshotExportBucketRequest) SetRequirePrivateNetworking(v bool) {
 	o.RequirePrivateNetworking = &v
+	o.NullFields = removeNullField(o.NullFields, "RequirePrivateNetworking")
+}
+
+// SetRequirePrivateNetworkingNil sets RequirePrivateNetworking to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotExportBucketRequest) SetRequirePrivateNetworkingNil() {
+	o.RequirePrivateNetworking = nil
+	o.NullFields = addNullField(o.NullFields, "RequirePrivateNetworking")
 }
 
 // GetRoleId returns the RoleId field value if set, zero value otherwise
@@ -229,6 +266,13 @@ func (o *DiskBackupSnapshotExportBucketRequest) HasRoleId() bool {
 // SetRoleId gets a reference to the given string and assigns it to the RoleId field.
 func (o *DiskBackupSnapshotExportBucketRequest) SetRoleId(v string) {
 	o.RoleId = &v
+	o.NullFields = removeNullField(o.NullFields, "RoleId")
+}
+
+// SetRoleIdNil sets RoleId to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotExportBucketRequest) SetRoleIdNil() {
+	o.RoleId = nil
+	o.NullFields = addNullField(o.NullFields, "RoleId")
 }
 
 // GetServiceUrl returns the ServiceUrl field value if set, zero value otherwise
@@ -262,6 +306,13 @@ func (o *DiskBackupSnapshotExportBucketRequest) HasServiceUrl() bool {
 // SetServiceUrl gets a reference to the given string and assigns it to the ServiceUrl field.
 func (o *DiskBackupSnapshotExportBucketRequest) SetServiceUrl(v string) {
 	o.ServiceUrl = &v
+	o.NullFields = removeNullField(o.NullFields, "ServiceUrl")
+}
+
+// SetServiceUrlNil sets ServiceUrl to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotExportBucketRequest) SetServiceUrlNil() {
+	o.ServiceUrl = nil
+	o.NullFields = addNullField(o.NullFields, "ServiceUrl")
 }
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise
@@ -298,4 +349,11 @@ func (o *DiskBackupSnapshotExportBucketRequest) HasTenantId() bool {
 // Deprecated
 func (o *DiskBackupSnapshotExportBucketRequest) SetTenantId(v string) {
 	o.TenantId = &v
+	o.NullFields = removeNullField(o.NullFields, "TenantId")
+}
+
+// SetTenantIdNil sets TenantId to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotExportBucketRequest) SetTenantIdNil() {
+	o.TenantId = nil
+	o.NullFields = addNullField(o.NullFields, "TenantId")
 }

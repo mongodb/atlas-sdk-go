@@ -55,6 +55,13 @@ SetCaCertificatePath sets CaCertificatePath field to given value.
 `func (o *Source) HasCaCertificatePath() bool`
 
 HasCaCertificatePath returns a boolean if a field has been set.
+
+### SetCaCertificatePathNil
+
+`func (o *Source) SetCaCertificatePathNil()`
+
+SetCaCertificatePathNil sets CaCertificatePath to an explicit JSON null when marshaled, overriding any value previously set with SetCaCertificatePath. Calling SetCaCertificatePath again clears the null override.
+
 ### GetClusterName
 
 `func (o *Source) GetClusterName() string`
@@ -136,6 +143,13 @@ SetPassword sets Password field to given value.
 `func (o *Source) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
+
+### SetPasswordNil
+
+`func (o *Source) SetPasswordNil()`
+
+SetPasswordNil sets Password to an explicit JSON null when marshaled, overriding any value previously set with SetPassword. Calling SetPassword again clears the null override.
+
 ### GetSsl
 
 `func (o *Source) GetSsl() bool`
@@ -179,6 +193,13 @@ SetUsername sets Username field to given value.
 `func (o *Source) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
+
+### SetUsernameNil
+
+`func (o *Source) SetUsernameNil()`
+
+SetUsernameNil sets Username to an explicit JSON null when marshaled, overriding any value previously set with SetUsername. Calling SetUsername again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -53,6 +53,13 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *MdbAvailableVersion) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
+
+### SetCloudProviderNil
+
+`func (o *MdbAvailableVersion) SetCloudProviderNil()`
+
+SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProvider. Calling SetCloudProvider again clears the null override.
+
 ### GetDefaultStatus
 
 `func (o *MdbAvailableVersion) GetDefaultStatus() string`
@@ -77,6 +84,13 @@ SetDefaultStatus sets DefaultStatus field to given value.
 `func (o *MdbAvailableVersion) HasDefaultStatus() bool`
 
 HasDefaultStatus returns a boolean if a field has been set.
+
+### SetDefaultStatusNil
+
+`func (o *MdbAvailableVersion) SetDefaultStatusNil()`
+
+SetDefaultStatusNil sets DefaultStatus to an explicit JSON null when marshaled, overriding any value previously set with SetDefaultStatus. Calling SetDefaultStatus again clears the null override.
+
 ### GetInstanceSize
 
 `func (o *MdbAvailableVersion) GetInstanceSize() string`
@@ -101,6 +115,13 @@ SetInstanceSize sets InstanceSize field to given value.
 `func (o *MdbAvailableVersion) HasInstanceSize() bool`
 
 HasInstanceSize returns a boolean if a field has been set.
+
+### SetInstanceSizeNil
+
+`func (o *MdbAvailableVersion) SetInstanceSizeNil()`
+
+SetInstanceSizeNil sets InstanceSize to an explicit JSON null when marshaled, overriding any value previously set with SetInstanceSize. Calling SetInstanceSize again clears the null override.
+
 ### GetLinks
 
 `func (o *MdbAvailableVersion) GetLinks() []Link`
@@ -125,6 +146,13 @@ SetLinks sets Links field to given value.
 `func (o *MdbAvailableVersion) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *MdbAvailableVersion) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetVersion
 
 `func (o *MdbAvailableVersion) GetVersion() string`
@@ -149,6 +177,13 @@ SetVersion sets Version field to given value.
 `func (o *MdbAvailableVersion) HasVersion() bool`
 
 HasVersion returns a boolean if a field has been set.
+
+### SetVersionNil
+
+`func (o *MdbAvailableVersion) SetVersionNil()`
+
+SetVersionNil sets Version to an explicit JSON null when marshaled, overriding any value previously set with SetVersion. Calling SetVersion again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -604,7 +604,7 @@ components:
           readOnly: true
           type: string
         endpoint:
-          description: Server-computed endpoint hostname derived from cloud and geography. This field is read-only and must not be supplied in request bodies.
+          description: Server-computed endpoint hostname derived from `cloud` and `geography`. This field is read-only and must not be supplied in request bodies.
           example: ai.mongodb.com
           readOnly: true
           type: string
@@ -659,17 +659,17 @@ components:
     AiModelRateLimitResponse:
       properties:
         cloud:
-          description: Cloud provider scope for this rate limit. Use "any" for cloud-agnostic scope.
+          description: Cloud provider scope for this rate limit. Use "ANY" for cloud-agnostic scope.
           example: ANY
           readOnly: true
           type: string
         endpoint:
-          description: Server-computed endpoint hostname derived from cloud and geography. This field is read-only and must not be supplied in request bodies.
+          description: Server-computed endpoint hostname derived from `cloud` and `geography`. This field is read-only and must not be supplied in request bodies.
           example: ai.mongodb.com
           readOnly: true
           type: string
         geography:
-          description: Geography scope for this rate limit. Use "any" for geography-agnostic scope.
+          description: Geography scope for this rate limit. Use "ANY" for geography-agnostic scope.
           example: ANY
           readOnly: true
           type: string
@@ -5570,7 +5570,7 @@ components:
         - customZoneMappings
       type: object
     DBRoleToExecute:
-      description: The name of a Built in or Custom DB Role to connect to an Atlas Cluster.
+      description: The name of a built-in or custom DB Role to connect to an Atlas Cluster.
       externalDocs:
         description: Built-in Roles
         url: https://www.mongodb.com/docs/atlas/mongodb-users-roles-and-privileges/#mongodb-atlasrole-atlasAdmin
@@ -5935,68 +5935,6 @@ components:
             $ref: "#/components/schemas/DataLakeApiBase"
           type: array
       type: object
-    DataLakeIngestionPipeline:
-      description: Details of a Data Lake Pipeline.
-      properties:
-        _id:
-          description: Unique 24-hexadecimal digit string that identifies the Data Lake Pipeline.
-          example: 32b6e34b3d91647abb20e7b8
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-          type: string
-        createdDate:
-          description: Timestamp that indicates when the Data Lake Pipeline was created. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-          format: date-time
-          readOnly: true
-          type: string
-        datasetRetentionPolicy:
-          $ref: "#/components/schemas/DatasetRetentionPolicy"
-        groupId:
-          description: Unique 24-hexadecimal digit string that identifies the group.
-          example: 32b6e34b3d91647abb20e7b8
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-          type: string
-        lastUpdatedDate:
-          description: Timestamp that indicates the last time that the Data Lake Pipeline was updated. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-          format: date-time
-          readOnly: true
-          type: string
-        name:
-          description: Name of this Data Lake Pipeline.
-          type: string
-        sink:
-          $ref: "#/components/schemas/IngestionSink"
-        source:
-          $ref: "#/components/schemas/IngestionSource"
-        state:
-          description: State of this Data Lake Pipeline.
-          readOnly: true
-          type: string
-        transformations:
-          description: Fields to be excluded for this Data Lake Pipeline.
-          items:
-            $ref: "#/components/schemas/FieldTransformation"
-          type: array
-      title: Data Lake Pipeline
-      type: object
-    DataLakePipelinesPartitionField:
-      description: Partition Field in the Data Lake Storage provider for a Data Lake Pipeline.
-      properties:
-        fieldName:
-          description: Human-readable label that identifies the field name used to partition data.
-          maxLength: 700
-          type: string
-        order:
-          default: 0
-          description: Sequence in which MongoDB Cloud slices the collection data to create partitions. The resource expresses this sequence starting with zero.
-          format: int32
-          type: integer
-      required:
-        - fieldName
-        - order
-      title: Partition Field
-      type: object
     DataLakeStorage:
       description: Configuration information for each data store and its mapping to MongoDB Cloud databases.
       properties:
@@ -6357,27 +6295,6 @@ components:
         - databaseName
         - roleName
       title: Database User Role
-      type: object
-    DatasetRetentionPolicy:
-      description: Dataset Retention Policy for a Scheduled Data Lake Pipeline.
-      properties:
-        lastModifiedDate:
-          description: Date when retention policy was last modified. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-          format: date-time
-          readOnly: true
-          type: string
-        units:
-          description: Quantity of time in which the Data Lake Pipeline measures dataset retention.
-          type: string
-        value:
-          description: Number that indicates the amount of days, weeks, or months that the Data Lake Pipeline will retain datasets.
-          format: int32
-          minimum: 1
-          type: integer
-      required:
-        - units
-        - value
-      title: Dataset Retention Policy
       type: object
     DedicatedHardwareSpec20240805:
       description: The current hardware specifications for read only nodes in the region.
@@ -8554,17 +8471,6 @@ components:
             type: string
           type: array
       type: object
-    FieldTransformation:
-      description: Field Transformations during ingestion of a Data Lake Pipeline.
-      properties:
-        field:
-          description: Key in the document.
-          type: string
-        type:
-          description: Type of transformation applied during the export of the namespace in a Data Lake Pipeline.
-          type: string
-      title: Field Transformation
-      type: object
     FieldViolation:
       properties:
         description:
@@ -10022,146 +9928,6 @@ components:
           type: object
       type: object
       writeOnly: true
-    IngestionPipelineRun:
-      description: Run details of a Data Lake Pipeline.
-      properties:
-        _id:
-          description: Unique 24-hexadecimal character string that identifies a Data Lake Pipeline run.
-          example: 32b6e34b3d91647abb20e7b8
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-          type: string
-        backupFrequencyType:
-          description: Backup schedule interval of the Data Lake Pipeline.
-          readOnly: true
-          type: string
-        createdDate:
-          description: Timestamp that indicates when the pipeline run was created. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-          format: date-time
-          readOnly: true
-          type: string
-        datasetName:
-          description: Human-readable label that identifies the dataset that Atlas generates during this pipeline run. You can use this dataset as a `dataSource` in a Federated Database collection.
-          example: v1$atlas$snapshot$Cluster0$myDatabase$myCollection$19700101T000000Z
-          readOnly: true
-          type: string
-        datasetRetentionPolicy:
-          $ref: "#/components/schemas/DatasetRetentionPolicy"
-        groupId:
-          description: Unique 24-hexadecimal character string that identifies the project.
-          example: 32b6e34b3d91647abb20e7b8
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-          type: string
-        lastUpdatedDate:
-          description: Timestamp that indicates the last time that the pipeline run was updated. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-          format: date-time
-          readOnly: true
-          type: string
-        phase:
-          description: Processing phase of the Data Lake Pipeline.
-          readOnly: true
-          type: string
-        pipelineId:
-          description: Unique 24-hexadecimal character string that identifies a Data Lake Pipeline.
-          example: 32b6e34b3d91647abb20e7b8
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-          type: string
-        scheduledDeletionDate:
-          description: Timestamp that indicates when the pipeline run will expire and its dataset will be deleted. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-          format: date-time
-          readOnly: true
-          type: string
-        snapshotId:
-          description: Unique 24-hexadecimal character string that identifies the snapshot of a cluster.
-          example: 32b6e34b3d91647abb20e7b8
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-          type: string
-        state:
-          description: State of the pipeline run.
-          readOnly: true
-          type: string
-        stats:
-          $ref: "#/components/schemas/PipelineRunStats"
-      title: Data Lake Pipeline Run
-      type: object
-    IngestionSink:
-      description: Ingestion destination of a Data Lake Pipeline.
-      properties:
-        type:
-          description: Type of ingestion destination of this Data Lake Pipeline.
-          readOnly: true
-          type: string
-        metadataProvider:
-          description: Target cloud provider for this Data Lake Pipeline.
-          type: string
-        metadataRegion:
-          description: Target cloud provider region for this Data Lake Pipeline.
-          externalDocs:
-            description: Supported cloud provider regions
-            url: https://www.mongodb.com/docs/datalake/limitations
-          type: string
-        partitionFields:
-          description: Ordered fields used to physically organize data in the destination.
-          items:
-            $ref: "#/components/schemas/DataLakePipelinesPartitionField"
-          type: array
-      title: Ingestion Destination
-      type: object
-      x-xgen-discriminator:
-        propertyName: type
-        mapping:
-          DLS:
-            properties:
-              - metadataProvider
-              - metadataRegion
-              - partitionFields
-    IngestionSource:
-      description: Ingestion Source of a Data Lake Pipeline.
-      properties:
-        type:
-          description: Type of ingestion source of this Data Lake Pipeline.
-          type: string
-        clusterName:
-          description: Human-readable name that identifies the cluster.
-          type: string
-        collectionName:
-          description: Human-readable name that identifies the collection.
-          type: string
-        databaseName:
-          description: Human-readable name that identifies the database.
-          type: string
-        groupId:
-          description: Unique 24-hexadecimal character string that identifies the project.
-          example: 32b6e34b3d91647abb20e7b8
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-          type: string
-        policyItemId:
-          description: Unique 24-hexadecimal character string that identifies a policy item.
-          example: 32b6e34b3d91647abb20e7b8
-          pattern: ^([a-f0-9]{24})$
-          type: string
-      title: Ingestion Source
-      type: object
-      x-xgen-discriminator:
-        propertyName: type
-        mapping:
-          ON_DEMAND_CPS:
-            properties:
-              - clusterName
-              - collectionName
-              - databaseName
-              - groupId
-          PERIODIC_CPS:
-            properties:
-              - clusterName
-              - collectionName
-              - databaseName
-              - groupId
-              - policyItemId
     InvoiceLineItem:
       description: One service included in this invoice.
       properties:
@@ -13364,22 +13130,6 @@ components:
       required:
         - pinnedNamespaces
       type: object
-    PipelineRunStats:
-      description: Runtime statistics for this Data Lake Pipeline run.
-      properties:
-        bytesExported:
-          description: Total data size in bytes exported for this pipeline run.
-          format: int64
-          readOnly: true
-          type: integer
-        numDocs:
-          description: Number of docs ingested for a this pipeline run.
-          format: int64
-          readOnly: true
-          type: integer
-      readOnly: true
-      title: Data Lake Pipeline Run Statistics
-      type: object
     PrivateEndpointHostname:
       description: Set of Private endpoint and hostnames.
       properties:
@@ -14957,17 +14707,17 @@ components:
           readOnly: true
           type: array
         name:
-          description: Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source.
+          description: Human-readable label that identifies the stream connection. For the Sample type, this is the name of the sample source.
           type: string
         region:
-          description: The connection's region.
+          description: The connection region.
           type: string
         state:
-          description: The state of the connection.
+          description: The connection state.
           readOnly: true
           type: string
         type:
-          description: Type of the connection.
+          description: The connection type.
           type: string
         clusterGroupId:
           description: Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting.
@@ -15162,7 +14912,7 @@ components:
           description: Style of authentication. Can be one of PLAIN, SCRAM-256, SCRAM-512, or OAUTHBEARER.
           type: string
         method:
-          description: SASL OAUTHBEARER authentication method. Can only be OIDC currently.
+          description: SASL OAUTHBEARER authentication method. Currently, only OIDC is supported.
           type: string
         password:
           description: Password of the account to connect to the Kafka cluster.
@@ -15180,10 +14930,12 @@ components:
           type: string
         sslKey:
           description: SSL key for client authentication to Kafka.
+          format: password
           type: string
           writeOnly: true
         sslKeyPassword:
           description: Password for the SSL key, if it is password protected.
+          format: password
           type: string
           writeOnly: true
         tokenEndpointUrl:
@@ -16155,19 +15907,6 @@ components:
               - url
             required:
               - url
-    TriggerIngestionPipelineRequest:
-      properties:
-        datasetRetentionPolicy:
-          $ref: "#/components/schemas/DatasetRetentionPolicy"
-        snapshotId:
-          description: Unique 24-hexadecimal character string that identifies the snapshot.
-          example: 32b6e34b3d91647abb20e7b8
-          pattern: ^([a-f0-9]{24})$
-          type: string
-          writeOnly: true
-      required:
-        - snapshotId
-      type: object
     UpdateAtlasOrganizationApiKey:
       properties:
         desc:
@@ -18523,32 +18262,6 @@ components:
       required:
         - results
       type: object
-    PaginatedBackupSnapshot:
-      properties:
-        links:
-          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: "#/components/schemas/Link"
-          readOnly: true
-          type: array
-        results:
-          description: List of returned documents that MongoDB Cloud provides when completing this request.
-          items:
-            $ref: "#/components/schemas/DiskBackupSnapshot"
-          readOnly: true
-          type: array
-        totalCount:
-          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
-          format: int32
-          minimum: 0
-          readOnly: true
-          type: integer
-      required:
-        - results
-      type: object
     PaginatedCloudBackupReplicaSet:
       properties:
         links:
@@ -18931,32 +18644,6 @@ components:
           description: List of returned documents that MongoDB Cloud provides when completing this request.
           items:
             $ref: "#/components/schemas/AtlasOrganization"
-          readOnly: true
-          type: array
-        totalCount:
-          description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
-          format: int32
-          minimum: 0
-          readOnly: true
-          type: integer
-      required:
-        - results
-      type: object
-    PaginatedPipelineRun:
-      properties:
-        links:
-          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
-          externalDocs:
-            description: Web Linking Specification (RFC 5988)
-            url: https://datatracker.ietf.org/doc/html/rfc5988
-          items:
-            $ref: "#/components/schemas/Link"
-          readOnly: true
-          type: array
-        results:
-          description: List of returned documents that MongoDB Cloud provides when completing this request.
-          items:
-            $ref: "#/components/schemas/IngestionPipelineRun"
           readOnly: true
           type: array
         totalCount:
@@ -19516,7 +19203,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: ea98120e2058406298ef8c53fedb5f5f639e1cd5
+  x-xgen-sha: b4e7f51fdf3287a3290faa4ccdb637c0be2d3f6e
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -40854,7 +40541,7 @@ paths:
               --header "Accept: application/vnd.atlas.2025-03-12+json" \
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/encryptionAtRest?pretty=true"
       x-rolesRequirements:
-        - Project Owner
+        - Project Read Only
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Encryption-at-Rest-using-Customer-Key-Management/operation/getGroupEncryptionAtRest
     patch:
       description: |-
@@ -46730,1244 +46417,6 @@ paths:
       x-rolesRequirements:
         - Project Network Access Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Network-Peering/operation/updateGroupPeer
-  /api/atlas/v2/groups/{groupId}/pipelines:
-    get:
-      deprecated: true
-      description: Returns a list of Data Lake Pipelines.
-      operationId: listPipelines
-      parameters:
-        - $ref: "#/components/parameters/groupId"
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-01-01+json:
-              schema:
-                items:
-                  $ref: "#/components/schemas/DataLakeIngestionPipeline"
-                type: array
-              x-xgen-version: 2023-01-01
-          description: OK
-          headers:
-            RateLimit-Limit:
-              $ref: "#/components/headers/HeaderRateLimitLimit"
-            RateLimit-Remaining:
-              $ref: "#/components/headers/HeaderRateLimitRemaining"
-        "400":
-          $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "429":
-          $ref: "#/components/responses/tooManyRequests"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      summary: Return All Data Lake Pipelines in One Project
-      tags:
-        - Data Lake Pipelines
-      x-codeSamples:
-        - label: Atlas CLI
-          lang: cURL
-          source: atlas api dataLakePipelines listPipelines --help
-        - label: Go
-          lang: go
-          source: |
-            import (
-            	"os"
-            	"context"
-            	"log"
-            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
-            )
-
-            func main() {
-            	ctx := context.Background()
-            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
-            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
-
-            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
-            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
-
-            	if err != nil {
-            		log.Fatalf("Error: %v", err)
-            	}
-
-            	params = &sdk.ListGroupPipelinesApiParams{}
-            	sdkResp, httpResp, err := client.DataLakePipelinesApi.
-            		ListGroupPipelinesWithParams(ctx, params).
-            		Execute()
-            }
-        - label: curl (Service Accounts)
-          lang: cURL
-          source: |-
-            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines?pretty=true"
-        - label: curl (Digest)
-          lang: cURL
-          source: |-
-            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
-              --digest --include \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines?pretty=true"
-      x-rolesRequirements:
-        - Project Read Only
-      x-sunset: 2025-09-30
-      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/listGroupPipelines
-    post:
-      deprecated: true
-      description: Creates one Data Lake Pipeline.
-      externalDocs:
-        description: Data Lake Pipelines are deprecated. Please see Data Lake Deprecation Guide.
-        url: https://dochub.mongodb.org/core/data-lake-deprecation
-      operationId: createPipeline
-      parameters:
-        - $ref: "#/components/parameters/groupId"
-      requestBody:
-        content:
-          application/vnd.atlas.2023-01-01+json:
-            schema:
-              $ref: "#/components/schemas/DataLakeIngestionPipeline"
-        description: Creates one Data Lake Pipeline.
-        required: true
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-01-01+json:
-              schema:
-                $ref: "#/components/schemas/DataLakeIngestionPipeline"
-              x-xgen-version: 2023-01-01
-          description: OK
-          headers:
-            RateLimit-Limit:
-              $ref: "#/components/headers/HeaderRateLimitLimit"
-            RateLimit-Remaining:
-              $ref: "#/components/headers/HeaderRateLimitRemaining"
-        "400":
-          $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "429":
-          $ref: "#/components/responses/tooManyRequests"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      summary: Create One Data Lake Pipeline
-      tags:
-        - Data Lake Pipelines
-      x-codeSamples:
-        - label: Atlas CLI
-          lang: cURL
-          source: atlas api dataLakePipelines createPipeline --help
-        - label: Go
-          lang: go
-          source: |
-            import (
-            	"os"
-            	"context"
-            	"log"
-            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
-            )
-
-            func main() {
-            	ctx := context.Background()
-            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
-            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
-
-            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
-            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
-
-            	if err != nil {
-            		log.Fatalf("Error: %v", err)
-            	}
-
-            	params = &sdk.CreateGroupPipelineApiParams{}
-            	sdkResp, httpResp, err := client.DataLakePipelinesApi.
-            		CreateGroupPipelineWithParams(ctx, params).
-            		Execute()
-            }
-        - label: curl (Service Accounts)
-          lang: cURL
-          source: |-
-            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              --header "Content-Type: application/json" \
-              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines" \
-              -d '{ <Payload> }'
-        - label: curl (Digest)
-          lang: cURL
-          source: |-
-            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
-              --digest --include \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              --header "Content-Type: application/json" \
-              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines" \
-              -d '{ <Payload> }'
-      x-rolesRequirements:
-        - Project Owner
-      x-sunset: 2025-09-30
-      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/createGroupPipeline
-  /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}:
-    delete:
-      deprecated: true
-      description: Removes one Data Lake Pipeline.
-      operationId: deletePipeline
-      parameters:
-        - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies the Data Lake Pipeline.
-          in: path
-          name: pipelineName
-          required: true
-          schema:
-            pattern: ^[^/\\ "$]{1,64}$
-            type: string
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-01-01+json:
-              x-xgen-version: 2023-01-01
-          description: OK
-          headers:
-            RateLimit-Limit:
-              $ref: "#/components/headers/HeaderRateLimitLimit"
-            RateLimit-Remaining:
-              $ref: "#/components/headers/HeaderRateLimitRemaining"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "429":
-          $ref: "#/components/responses/tooManyRequests"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      summary: Remove One Data Lake Pipeline
-      tags:
-        - Data Lake Pipelines
-      x-codeSamples:
-        - label: Atlas CLI
-          lang: cURL
-          source: atlas api dataLakePipelines deletePipeline --help
-        - label: Go
-          lang: go
-          source: |
-            import (
-            	"os"
-            	"context"
-            	"log"
-            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
-            )
-
-            func main() {
-            	ctx := context.Background()
-            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
-            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
-
-            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
-            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
-
-            	if err != nil {
-            		log.Fatalf("Error: %v", err)
-            	}
-
-            	params = &sdk.DeleteGroupPipelineApiParams{}
-            	httpResp, err := client.DataLakePipelinesApi.
-            		DeleteGroupPipelineWithParams(ctx, params).
-            		Execute()
-            }
-        - label: curl (Service Accounts)
-          lang: cURL
-          source: |-
-            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}"
-        - label: curl (Digest)
-          lang: cURL
-          source: |-
-            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
-              --digest --include \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}"
-      x-rolesRequirements:
-        - Project Owner
-      x-sunset: 2025-09-30
-      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/deleteGroupPipeline
-    get:
-      deprecated: true
-      description: Returns the details of one Data Lake Pipeline within the specified project.
-      operationId: getPipeline
-      parameters:
-        - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies the Data Lake Pipeline.
-          in: path
-          name: pipelineName
-          required: true
-          schema:
-            pattern: ^[^/\\ "$]{1,64}$
-            type: string
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-01-01+json:
-              schema:
-                $ref: "#/components/schemas/DataLakeIngestionPipeline"
-              x-xgen-version: 2023-01-01
-          description: OK
-          headers:
-            RateLimit-Limit:
-              $ref: "#/components/headers/HeaderRateLimitLimit"
-            RateLimit-Remaining:
-              $ref: "#/components/headers/HeaderRateLimitRemaining"
-        "400":
-          $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "429":
-          $ref: "#/components/responses/tooManyRequests"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      summary: Return One Data Lake Pipeline
-      tags:
-        - Data Lake Pipelines
-      x-codeSamples:
-        - label: Atlas CLI
-          lang: cURL
-          source: atlas api dataLakePipelines getPipeline --help
-        - label: Go
-          lang: go
-          source: |
-            import (
-            	"os"
-            	"context"
-            	"log"
-            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
-            )
-
-            func main() {
-            	ctx := context.Background()
-            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
-            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
-
-            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
-            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
-
-            	if err != nil {
-            		log.Fatalf("Error: %v", err)
-            	}
-
-            	params = &sdk.GetGroupPipelineApiParams{}
-            	sdkResp, httpResp, err := client.DataLakePipelinesApi.
-            		GetGroupPipelineWithParams(ctx, params).
-            		Execute()
-            }
-        - label: curl (Service Accounts)
-          lang: cURL
-          source: |-
-            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}?pretty=true"
-        - label: curl (Digest)
-          lang: cURL
-          source: |-
-            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
-              --digest --include \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}?pretty=true"
-      x-rolesRequirements:
-        - Project Read Only
-      x-sunset: 2025-09-30
-      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/getGroupPipeline
-    patch:
-      deprecated: true
-      description: Updates one Data Lake Pipeline.
-      operationId: updatePipeline
-      parameters:
-        - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies the Data Lake Pipeline.
-          in: path
-          name: pipelineName
-          required: true
-          schema:
-            pattern: ^[^/\\ "$]{1,64}$
-            type: string
-      requestBody:
-        content:
-          application/vnd.atlas.2023-01-01+json:
-            schema:
-              $ref: "#/components/schemas/DataLakeIngestionPipeline"
-        description: Updates one Data Lake Pipeline.
-        required: true
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-01-01+json:
-              schema:
-                $ref: "#/components/schemas/DataLakeIngestionPipeline"
-              x-xgen-version: 2023-01-01
-          description: OK
-          headers:
-            RateLimit-Limit:
-              $ref: "#/components/headers/HeaderRateLimitLimit"
-            RateLimit-Remaining:
-              $ref: "#/components/headers/HeaderRateLimitRemaining"
-        "400":
-          $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "409":
-          $ref: "#/components/responses/conflict"
-        "429":
-          $ref: "#/components/responses/tooManyRequests"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      summary: Update One Data Lake Pipeline
-      tags:
-        - Data Lake Pipelines
-      x-codeSamples:
-        - label: Atlas CLI
-          lang: cURL
-          source: atlas api dataLakePipelines updatePipeline --help
-        - label: Go
-          lang: go
-          source: |
-            import (
-            	"os"
-            	"context"
-            	"log"
-            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
-            )
-
-            func main() {
-            	ctx := context.Background()
-            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
-            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
-
-            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
-            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
-
-            	if err != nil {
-            		log.Fatalf("Error: %v", err)
-            	}
-
-            	params = &sdk.UpdateGroupPipelineApiParams{}
-            	sdkResp, httpResp, err := client.DataLakePipelinesApi.
-            		UpdateGroupPipelineWithParams(ctx, params).
-            		Execute()
-            }
-        - label: curl (Service Accounts)
-          lang: cURL
-          source: |-
-            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              --header "Content-Type: application/json" \
-              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}" \
-              -d '{ <Payload> }'
-        - label: curl (Digest)
-          lang: cURL
-          source: |-
-            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
-              --digest --include \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              --header "Content-Type: application/json" \
-              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}" \
-              -d '{ <Payload> }'
-      x-rolesRequirements:
-        - Project Owner
-      x-sunset: 2025-09-30
-      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/updateGroupPipeline
-  /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSchedules:
-    get:
-      deprecated: true
-      description: Returns a list of backup schedule policy items that you can use as a Data Lake Pipeline source.
-      operationId: getAvailablePipelineSchedules
-      parameters:
-        - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies the Data Lake Pipeline.
-          in: path
-          name: pipelineName
-          required: true
-          schema:
-            pattern: ^[^/\\ "$]{1,64}$
-            type: string
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-01-01+json:
-              schema:
-                items:
-                  $ref: "#/components/schemas/DiskBackupApiPolicyItem"
-                type: array
-              x-xgen-version: 2023-01-01
-          description: OK
-          headers:
-            RateLimit-Limit:
-              $ref: "#/components/headers/HeaderRateLimitLimit"
-            RateLimit-Remaining:
-              $ref: "#/components/headers/HeaderRateLimitRemaining"
-        "400":
-          $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "429":
-          $ref: "#/components/responses/tooManyRequests"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      summary: Return All Ingestion Schedules for One Data Lake Pipeline
-      tags:
-        - Data Lake Pipelines
-      x-codeSamples:
-        - label: Atlas CLI
-          lang: cURL
-          source: atlas api dataLakePipelines getAvailablePipelineSchedules --help
-        - label: Go
-          lang: go
-          source: |
-            import (
-            	"os"
-            	"context"
-            	"log"
-            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
-            )
-
-            func main() {
-            	ctx := context.Background()
-            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
-            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
-
-            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
-            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
-
-            	if err != nil {
-            		log.Fatalf("Error: %v", err)
-            	}
-
-            	params = &sdk.GetGroupPipelineAvailableSchedulesApiParams{}
-            	sdkResp, httpResp, err := client.DataLakePipelinesApi.
-            		GetGroupPipelineAvailableSchedulesWithParams(ctx, params).
-            		Execute()
-            }
-        - label: curl (Service Accounts)
-          lang: cURL
-          source: |-
-            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSchedules?pretty=true"
-        - label: curl (Digest)
-          lang: cURL
-          source: |-
-            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
-              --digest --include \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSchedules?pretty=true"
-      x-rolesRequirements:
-        - Project Read Only
-      x-sunset: 2025-09-30
-      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/getGroupPipelineAvailableSchedules
-  /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSnapshots:
-    get:
-      deprecated: true
-      description: Returns a list of backup snapshots that you can use to trigger an on demand pipeline run.
-      operationId: getAvailablePipelineSnapshots
-      parameters:
-        - $ref: "#/components/parameters/groupId"
-        - $ref: "#/components/parameters/includeCount"
-        - $ref: "#/components/parameters/itemsPerPage"
-        - $ref: "#/components/parameters/pageNum"
-        - description: Date and time after which MongoDB Cloud created the snapshot. If specified, MongoDB Cloud returns available backup snapshots created after this time and date only. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
-          in: query
-          name: completedAfter
-          schema:
-            format: date-time
-            type: string
-        - description: Human-readable label that identifies the Data Lake Pipeline.
-          in: path
-          name: pipelineName
-          required: true
-          schema:
-            pattern: ^[^/\\ "$]{1,64}$
-            type: string
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-01-01+json:
-              schema:
-                $ref: "#/components/schemas/PaginatedBackupSnapshot"
-              x-xgen-version: 2023-01-01
-          description: OK
-          headers:
-            RateLimit-Limit:
-              $ref: "#/components/headers/HeaderRateLimitLimit"
-            RateLimit-Remaining:
-              $ref: "#/components/headers/HeaderRateLimitRemaining"
-        "400":
-          $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "429":
-          $ref: "#/components/responses/tooManyRequests"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      summary: Return All Backup Snapshots for One Data Lake Pipeline
-      tags:
-        - Data Lake Pipelines
-      x-codeSamples:
-        - label: Atlas CLI
-          lang: cURL
-          source: atlas api dataLakePipelines getAvailablePipelineSnapshots --help
-        - label: Go
-          lang: go
-          source: |
-            import (
-            	"os"
-            	"context"
-            	"log"
-            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
-            )
-
-            func main() {
-            	ctx := context.Background()
-            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
-            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
-
-            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
-            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
-
-            	if err != nil {
-            		log.Fatalf("Error: %v", err)
-            	}
-
-            	params = &sdk.GetGroupPipelineAvailableSnapshotsApiParams{}
-            	sdkResp, httpResp, err := client.DataLakePipelinesApi.
-            		GetGroupPipelineAvailableSnapshotsWithParams(ctx, params).
-            		Execute()
-            }
-        - label: curl (Service Accounts)
-          lang: cURL
-          source: |-
-            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSnapshots?pretty=true"
-        - label: curl (Digest)
-          lang: cURL
-          source: |-
-            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
-              --digest --include \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSnapshots?pretty=true"
-      x-rolesRequirements:
-        - Project Read Only
-      x-sunset: 2025-09-30
-      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/getGroupPipelineAvailableSnapshots
-  /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/pause:
-    post:
-      deprecated: true
-      description: Pauses ingestion for a Data Lake Pipeline within the specified project.
-      operationId: pausePipeline
-      parameters:
-        - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies the Data Lake Pipeline.
-          in: path
-          name: pipelineName
-          required: true
-          schema:
-            pattern: ^[^/\\ "$]{1,64}$
-            type: string
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-01-01+json:
-              schema:
-                $ref: "#/components/schemas/DataLakeIngestionPipeline"
-              x-xgen-version: 2023-01-01
-          description: OK
-          headers:
-            RateLimit-Limit:
-              $ref: "#/components/headers/HeaderRateLimitLimit"
-            RateLimit-Remaining:
-              $ref: "#/components/headers/HeaderRateLimitRemaining"
-        "400":
-          $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "429":
-          $ref: "#/components/responses/tooManyRequests"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      summary: Pause One Data Lake Pipeline
-      tags:
-        - Data Lake Pipelines
-      x-codeSamples:
-        - label: Atlas CLI
-          lang: cURL
-          source: atlas api dataLakePipelines pausePipeline --help
-        - label: Go
-          lang: go
-          source: |
-            import (
-            	"os"
-            	"context"
-            	"log"
-            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
-            )
-
-            func main() {
-            	ctx := context.Background()
-            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
-            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
-
-            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
-            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
-
-            	if err != nil {
-            		log.Fatalf("Error: %v", err)
-            	}
-
-            	params = &sdk.PauseGroupPipelineApiParams{}
-            	sdkResp, httpResp, err := client.DataLakePipelinesApi.
-            		PauseGroupPipelineWithParams(ctx, params).
-            		Execute()
-            }
-        - label: curl (Service Accounts)
-          lang: cURL
-          source: |-
-            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              --header "Content-Type: application/json" \
-              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/pause" \
-              -d '{ <Payload> }'
-        - label: curl (Digest)
-          lang: cURL
-          source: |-
-            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
-              --digest --include \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              --header "Content-Type: application/json" \
-              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/pause" \
-              -d '{ <Payload> }'
-      x-rolesRequirements:
-        - Project Owner
-      x-sunset: 2025-09-30
-      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/pauseGroupPipeline
-      x-xgen-method-verb-override:
-        customMethod: "True"
-  /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/resume:
-    post:
-      deprecated: true
-      description: Resumes ingestion for a Data Lake Pipeline within the specified project.
-      operationId: resumePipeline
-      parameters:
-        - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies the Data Lake Pipeline.
-          in: path
-          name: pipelineName
-          required: true
-          schema:
-            pattern: ^[^/\\ "$]{1,64}$
-            type: string
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-01-01+json:
-              schema:
-                $ref: "#/components/schemas/DataLakeIngestionPipeline"
-              x-xgen-version: 2023-01-01
-          description: OK
-          headers:
-            RateLimit-Limit:
-              $ref: "#/components/headers/HeaderRateLimitLimit"
-            RateLimit-Remaining:
-              $ref: "#/components/headers/HeaderRateLimitRemaining"
-        "400":
-          $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "429":
-          $ref: "#/components/responses/tooManyRequests"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      summary: Resume One Data Lake Pipeline
-      tags:
-        - Data Lake Pipelines
-      x-codeSamples:
-        - label: Atlas CLI
-          lang: cURL
-          source: atlas api dataLakePipelines resumePipeline --help
-        - label: Go
-          lang: go
-          source: |
-            import (
-            	"os"
-            	"context"
-            	"log"
-            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
-            )
-
-            func main() {
-            	ctx := context.Background()
-            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
-            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
-
-            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
-            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
-
-            	if err != nil {
-            		log.Fatalf("Error: %v", err)
-            	}
-
-            	params = &sdk.ResumeGroupPipelineApiParams{}
-            	sdkResp, httpResp, err := client.DataLakePipelinesApi.
-            		ResumeGroupPipelineWithParams(ctx, params).
-            		Execute()
-            }
-        - label: curl (Service Accounts)
-          lang: cURL
-          source: |-
-            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              --header "Content-Type: application/json" \
-              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/resume" \
-              -d '{ <Payload> }'
-        - label: curl (Digest)
-          lang: cURL
-          source: |-
-            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
-              --digest --include \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              --header "Content-Type: application/json" \
-              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/resume" \
-              -d '{ <Payload> }'
-      x-rolesRequirements:
-        - Project Owner
-      x-sunset: 2025-09-30
-      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/resumeGroupPipeline
-      x-xgen-method-verb-override:
-        customMethod: "True"
-  /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs:
-    get:
-      deprecated: true
-      description: Returns a list of past Data Lake Pipeline runs.
-      operationId: listPipelineRuns
-      parameters:
-        - $ref: "#/components/parameters/groupId"
-        - $ref: "#/components/parameters/includeCount"
-        - $ref: "#/components/parameters/itemsPerPage"
-        - $ref: "#/components/parameters/pageNum"
-        - description: If specified, Atlas returns only Data Lake Pipeline runs initiated before this time and date.
-          in: query
-          name: createdBefore
-          schema:
-            format: date-time
-            type: string
-        - description: Human-readable label that identifies the Data Lake Pipeline.
-          in: path
-          name: pipelineName
-          required: true
-          schema:
-            pattern: ^[^/\\ "$]{1,64}$
-            type: string
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-01-01+json:
-              schema:
-                $ref: "#/components/schemas/PaginatedPipelineRun"
-              x-xgen-version: 2023-01-01
-          description: OK
-          headers:
-            RateLimit-Limit:
-              $ref: "#/components/headers/HeaderRateLimitLimit"
-            RateLimit-Remaining:
-              $ref: "#/components/headers/HeaderRateLimitRemaining"
-        "400":
-          $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "429":
-          $ref: "#/components/responses/tooManyRequests"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      summary: Return All Data Lake Pipeline Runs in One Project
-      tags:
-        - Data Lake Pipelines
-      x-codeSamples:
-        - label: Atlas CLI
-          lang: cURL
-          source: atlas api dataLakePipelines listPipelineRuns --help
-        - label: Go
-          lang: go
-          source: |
-            import (
-            	"os"
-            	"context"
-            	"log"
-            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
-            )
-
-            func main() {
-            	ctx := context.Background()
-            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
-            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
-
-            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
-            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
-
-            	if err != nil {
-            		log.Fatalf("Error: %v", err)
-            	}
-
-            	params = &sdk.ListGroupPipelineRunsApiParams{}
-            	sdkResp, httpResp, err := client.DataLakePipelinesApi.
-            		ListGroupPipelineRunsWithParams(ctx, params).
-            		Execute()
-            }
-        - label: curl (Service Accounts)
-          lang: cURL
-          source: |-
-            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs?pretty=true"
-        - label: curl (Digest)
-          lang: cURL
-          source: |-
-            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
-              --digest --include \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs?pretty=true"
-      x-rolesRequirements:
-        - Project Read Only
-      x-sunset: 2025-09-30
-      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/listGroupPipelineRuns
-  /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId}:
-    delete:
-      deprecated: true
-      description: Deletes dataset that Atlas generated during the specified pipeline run.
-      operationId: deletePipelineRun
-      parameters:
-        - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies the Data Lake Pipeline.
-          in: path
-          name: pipelineName
-          required: true
-          schema:
-            pattern: ^[^/\\ "$]{1,64}$
-            type: string
-        - description: Unique 24-hexadecimal character string that identifies a Data Lake Pipeline run.
-          in: path
-          name: pipelineRunId
-          required: true
-          schema:
-            example: 32b6e34b3d91647abb20e7b8
-            pattern: ^([a-f0-9]{24})$
-            type: string
-      responses:
-        "202":
-          content:
-            application/vnd.atlas.2023-01-01+json:
-              schema:
-                $ref: "#/components/schemas/RequestAccepted"
-              x-xgen-version: 2023-01-01
-          description: Accepted
-          headers:
-            RateLimit-Limit:
-              $ref: "#/components/headers/HeaderRateLimitLimit"
-            RateLimit-Remaining:
-              $ref: "#/components/headers/HeaderRateLimitRemaining"
-        "400":
-          $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "429":
-          $ref: "#/components/responses/tooManyRequests"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      summary: Delete One Pipeline Run Dataset
-      tags:
-        - Data Lake Pipelines
-      x-codeSamples:
-        - label: Atlas CLI
-          lang: cURL
-          source: atlas api dataLakePipelines deletePipelineRun --help
-        - label: Go
-          lang: go
-          source: |
-            import (
-            	"os"
-            	"context"
-            	"log"
-            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
-            )
-
-            func main() {
-            	ctx := context.Background()
-            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
-            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
-
-            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
-            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
-
-            	if err != nil {
-            		log.Fatalf("Error: %v", err)
-            	}
-
-            	params = &sdk.DeleteGroupPipelineRunApiParams{}
-            	httpResp, err := client.DataLakePipelinesApi.
-            		DeleteGroupPipelineRunWithParams(ctx, params).
-            		Execute()
-            }
-        - label: curl (Service Accounts)
-          lang: cURL
-          source: |-
-            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId}"
-        - label: curl (Digest)
-          lang: cURL
-          source: |-
-            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
-              --digest --include \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId}"
-      x-rolesRequirements:
-        - Project Owner
-      x-sunset: 2025-09-30
-      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/deleteGroupPipelineRun
-    get:
-      deprecated: true
-      description: Returns the details of one Data Lake Pipeline run within the specified project.
-      operationId: getPipelineRun
-      parameters:
-        - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies the Data Lake Pipeline.
-          in: path
-          name: pipelineName
-          required: true
-          schema:
-            pattern: ^[^/\\ "$]{1,64}$
-            type: string
-        - description: Unique 24-hexadecimal character string that identifies a Data Lake Pipeline run.
-          in: path
-          name: pipelineRunId
-          required: true
-          schema:
-            example: 32b6e34b3d91647abb20e7b8
-            pattern: ^([a-f0-9]{24})$
-            type: string
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-01-01+json:
-              schema:
-                $ref: "#/components/schemas/IngestionPipelineRun"
-              x-xgen-version: 2023-01-01
-          description: OK
-          headers:
-            RateLimit-Limit:
-              $ref: "#/components/headers/HeaderRateLimitLimit"
-            RateLimit-Remaining:
-              $ref: "#/components/headers/HeaderRateLimitRemaining"
-        "400":
-          $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "429":
-          $ref: "#/components/responses/tooManyRequests"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      summary: Return One Data Lake Pipeline Run
-      tags:
-        - Data Lake Pipelines
-      x-codeSamples:
-        - label: Atlas CLI
-          lang: cURL
-          source: atlas api dataLakePipelines getPipelineRun --help
-        - label: Go
-          lang: go
-          source: |
-            import (
-            	"os"
-            	"context"
-            	"log"
-            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
-            )
-
-            func main() {
-            	ctx := context.Background()
-            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
-            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
-
-            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
-            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
-
-            	if err != nil {
-            		log.Fatalf("Error: %v", err)
-            	}
-
-            	params = &sdk.GetGroupPipelineRunApiParams{}
-            	sdkResp, httpResp, err := client.DataLakePipelinesApi.
-            		GetGroupPipelineRunWithParams(ctx, params).
-            		Execute()
-            }
-        - label: curl (Service Accounts)
-          lang: cURL
-          source: |-
-            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId}?pretty=true"
-        - label: curl (Digest)
-          lang: cURL
-          source: |-
-            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
-              --digest --include \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId}?pretty=true"
-      x-rolesRequirements:
-        - Project Read Only
-      x-sunset: 2025-09-30
-      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/getGroupPipelineRun
-  /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/trigger:
-    post:
-      deprecated: true
-      description: Triggers a Data Lake Pipeline ingestion of a specified snapshot.
-      operationId: triggerPipeline
-      parameters:
-        - $ref: "#/components/parameters/groupId"
-        - description: Human-readable label that identifies the Data Lake Pipeline.
-          in: path
-          name: pipelineName
-          required: true
-          schema:
-            pattern: ^[^/\\ "$]{1,64}$
-            type: string
-      requestBody:
-        content:
-          application/vnd.atlas.2023-01-01+json:
-            schema:
-              $ref: "#/components/schemas/TriggerIngestionPipelineRequest"
-        description: Triggers a single ingestion run of a snapshot.
-        required: true
-      responses:
-        "200":
-          content:
-            application/vnd.atlas.2023-01-01+json:
-              schema:
-                $ref: "#/components/schemas/IngestionPipelineRun"
-              x-xgen-version: 2023-01-01
-          description: OK
-          headers:
-            RateLimit-Limit:
-              $ref: "#/components/headers/HeaderRateLimitLimit"
-            RateLimit-Remaining:
-              $ref: "#/components/headers/HeaderRateLimitRemaining"
-        "400":
-          $ref: "#/components/responses/badRequest"
-        "401":
-          $ref: "#/components/responses/unauthorized"
-        "403":
-          $ref: "#/components/responses/forbidden"
-        "404":
-          $ref: "#/components/responses/notFound"
-        "429":
-          $ref: "#/components/responses/tooManyRequests"
-        "500":
-          $ref: "#/components/responses/internalServerError"
-      summary: Trigger On-Demand Snapshot Ingestion
-      tags:
-        - Data Lake Pipelines
-      x-codeSamples:
-        - label: Atlas CLI
-          lang: cURL
-          source: atlas api dataLakePipelines triggerPipeline --help
-        - label: Go
-          lang: go
-          source: |
-            import (
-            	"os"
-            	"context"
-            	"log"
-            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
-            )
-
-            func main() {
-            	ctx := context.Background()
-            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
-            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
-
-            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
-            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
-
-            	if err != nil {
-            		log.Fatalf("Error: %v", err)
-            	}
-
-            	params = &sdk.TriggerGroupPipelineApiParams{}
-            	sdkResp, httpResp, err := client.DataLakePipelinesApi.
-            		TriggerGroupPipelineWithParams(ctx, params).
-            		Execute()
-            }
-        - label: curl (Service Accounts)
-          lang: cURL
-          source: |-
-            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              --header "Content-Type: application/json" \
-              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/trigger" \
-              -d '{ <Payload> }'
-        - label: curl (Digest)
-          lang: cURL
-          source: |-
-            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
-              --digest --include \
-              --header "Accept: application/vnd.atlas.2025-03-12+json" \
-              --header "Content-Type: application/json" \
-              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/trigger" \
-              -d '{ <Payload> }'
-      x-rolesRequirements:
-        - Project Owner
-      x-sunset: 2025-09-30
-      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Data-Lake-Pipelines/operation/triggerGroupPipeline
-      x-xgen-method-verb-override:
-        customMethod: "True"
   /api/atlas/v2/groups/{groupId}/privateEndpoint/{cloudProvider}/endpointService:
     get:
       description: Returns the name, interfaces, and state of all private endpoint services for the specified cloud service provider. This cloud service provider manages the private endpoint service for the project.
@@ -54221,7 +52670,7 @@ paths:
       x-rolesRequirements:
         - Organization Stream Processing Admin
         - Project Data Access Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of private preview, but is subject to change until GA.
         2026-05-07: Updated NO_PAYMENT_INFORMATION_FOUND error message to include a link for users to add a payment method when no payment info is found.
@@ -54312,7 +52761,7 @@ paths:
       x-rolesRequirements:
         - Organization Stream Processing Admin
         - Project Data Access Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of private preview, but is subject to change until GA.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/deleteGroupStreamWorkspace
@@ -54412,7 +52861,7 @@ paths:
         - Project Data Access Admin
         - Project Data Access Read Only
         - Project Data Access Read Write
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of private preview, but is subject to change until GA.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/getGroupStreamWorkspace
@@ -54516,7 +52965,7 @@ paths:
       x-rolesRequirements:
         - Organization Stream Processing Admin
         - Project Data Access Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of private preview, but is subject to change until GA.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/updateGroupStreamWorkspace
@@ -54639,7 +53088,7 @@ paths:
         - Project Data Access Admin
         - Project Data Access Read Only
         - Project Data Access Read Write
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/downloadGroupStreamAuditLogs
       x-xgen-method-verb-override:
         customMethod: "True"
@@ -54733,7 +53182,7 @@ paths:
         - Project Data Access Admin
         - Project Data Access Read Only
         - Project Data Access Read Write
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of private preview, but is subject to change until GA.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/listGroupStreamConnections
@@ -54835,7 +53284,7 @@ paths:
               -d '{ <Payload> }'
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of private preview, but is subject to change until GA.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/createGroupStreamConnection
@@ -54929,7 +53378,7 @@ paths:
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}"
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/deleteGroupStreamConnection
     get:
       description: Returns the details of one stream connection within the specified stream workspace.
@@ -55127,7 +53576,7 @@ paths:
               -d '{ <Payload> }'
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of private preview, but is subject to change until GA.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/updateGroupStreamConnection
@@ -55225,7 +53674,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections?pretty=true"
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/listGroupStreamConnectionFailoverConnections
     post:
       description: Creates one failover connection for a stream workspace in the specified project.
@@ -55332,7 +53781,7 @@ paths:
               -d '{ <Payload> }'
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/createGroupStreamConnectionFailoverConnection
   /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId}:
     delete:
@@ -55428,7 +53877,7 @@ paths:
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId}"
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/deleteGroupStreamConnectionFailoverConnection
     get:
       description: Get one failover connection of the specified stream workspace.
@@ -55525,7 +53974,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId}?pretty=true"
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/getGroupStreamConnectionFailoverConnection
     patch:
       description: Update one failover connection of the specified stream workspace.
@@ -55633,7 +54082,7 @@ paths:
               -d '{ <Payload> }'
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/updateGroupStreamConnectionFailoverConnection
   /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor:
     post:
@@ -55734,7 +54183,7 @@ paths:
               -d '{ <Payload> }'
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/createGroupStreamProcessor
   /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:
     delete:
@@ -55824,7 +54273,7 @@ paths:
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}"
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/deleteGroupStreamProcessor
     get:
       description: Get one Stream Processor within the specified stream workspace.
@@ -55917,7 +54366,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}?pretty=true"
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/getGroupStreamProcessor
     patch:
       description: Modify one existing Stream Processor within the specified stream workspace.
@@ -56021,7 +54470,7 @@ paths:
               -d '{ <Payload> }'
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/updateGroupStreamProcessor
   /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start:
     post:
@@ -56115,7 +54564,7 @@ paths:
               -d '{ <Payload> }'
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/startGroupStreamProcessor
   /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:startWith:
     post:
@@ -56218,7 +54667,7 @@ paths:
               -d '{ <Payload> }'
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/startGroupStreamProcessorWith
   /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:stop:
     post:
@@ -56312,7 +54761,7 @@ paths:
               -d '{ <Payload> }'
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/stopGroupStreamProcessor
   /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors:
     get:
@@ -56403,7 +54852,7 @@ paths:
               -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors?pretty=true"
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/getGroupStreamProcessors
   /api/atlas/v2/groups/{groupId}/streams/{tenantName}:downloadOperationalLogs:
     get:
@@ -56522,7 +54971,7 @@ paths:
         - Project Data Access Admin
         - Project Data Access Read Only
         - Project Data Access Read Write
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/downloadGroupStreamOperationalLogs
       x-xgen-method-verb-override:
         customMethod: "True"
@@ -56877,7 +55326,7 @@ paths:
               -d '{ <Payload> }'
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-changelog:
         2024-10-02: The MongoDB Atlas Streams Processing Private Link API is now exposed as part of private preview, but is subject to change until GA.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/createGroupStreamPrivateLinkConnection
@@ -56963,7 +55412,7 @@ paths:
               -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}"
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-changelog:
         2024-10-02: The MongoDB Atlas Streams Processing Private Link API is now exposed as part of private preview, but is subject to change until GA.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/deleteGroupStreamPrivateLinkConnection
@@ -57151,7 +55600,7 @@ paths:
               -d '{ <Payload> }'
       x-rolesRequirements:
         - Organization Stream Processing Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/updateGroupStreamPrivateLinkConnection
   /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections:
     get:
@@ -57599,7 +56048,7 @@ paths:
       x-rolesRequirements:
         - Organization Stream Processing Admin
         - Project Data Access Admin
-        - Project Stream Processing Owner
+        - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/withGroupStreamSampleConnections
   /api/atlas/v2/groups/{groupId}/teams:
     get:
@@ -67938,11 +66387,6 @@ tags:
     name: Custom Database Roles
   - description: Returns, adds, edits, and removes Federated Database Instances. This resource requires your project ID. Changes to federated database instance configurations can affect costs.
     name: Data Federation
-  - description: Returns, edits, and removes Atlas Data Lake Pipelines and associated runs.
-    externalDocs:
-      description: Data Lake Pipelines are deprecated. Please see Data Lake Deprecation Guide.
-      url: https://dochub.mongodb.org/core/data-lake-deprecation
-    name: Data Lake Pipelines
   - description: Returns, adds, edits, and removes database users.
     name: Database Users
   - description: Returns and edits the Encryption at Rest using Customer Key Management configuration. MongoDB Cloud encrypts all storage whether or not you use your own key management.

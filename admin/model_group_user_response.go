@@ -47,6 +47,15 @@ type GroupUserResponse struct {
 	// Mobile phone number that belongs to the MongoDB Cloud user.
 	// Read only field.
 	MobileNumber *string `json:"mobileNumber,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *GroupUserResponse) MarshalJSON() ([]byte, error) {
+	type noMethod GroupUserResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGroupUserResponse instantiates a new GroupUserResponse object
@@ -197,6 +206,13 @@ func (o *GroupUserResponse) HasInvitationCreatedAt() bool {
 // SetInvitationCreatedAt gets a reference to the given time.Time and assigns it to the InvitationCreatedAt field.
 func (o *GroupUserResponse) SetInvitationCreatedAt(v time.Time) {
 	o.InvitationCreatedAt = &v
+	o.NullFields = removeNullField(o.NullFields, "InvitationCreatedAt")
+}
+
+// SetInvitationCreatedAtNil sets InvitationCreatedAt to an explicit JSON null when marshaled.
+func (o *GroupUserResponse) SetInvitationCreatedAtNil() {
+	o.InvitationCreatedAt = nil
+	o.NullFields = addNullField(o.NullFields, "InvitationCreatedAt")
 }
 
 // GetInvitationExpiresAt returns the InvitationExpiresAt field value if set, zero value otherwise
@@ -230,6 +246,13 @@ func (o *GroupUserResponse) HasInvitationExpiresAt() bool {
 // SetInvitationExpiresAt gets a reference to the given time.Time and assigns it to the InvitationExpiresAt field.
 func (o *GroupUserResponse) SetInvitationExpiresAt(v time.Time) {
 	o.InvitationExpiresAt = &v
+	o.NullFields = removeNullField(o.NullFields, "InvitationExpiresAt")
+}
+
+// SetInvitationExpiresAtNil sets InvitationExpiresAt to an explicit JSON null when marshaled.
+func (o *GroupUserResponse) SetInvitationExpiresAtNil() {
+	o.InvitationExpiresAt = nil
+	o.NullFields = addNullField(o.NullFields, "InvitationExpiresAt")
 }
 
 // GetInviterUsername returns the InviterUsername field value if set, zero value otherwise
@@ -263,6 +286,13 @@ func (o *GroupUserResponse) HasInviterUsername() bool {
 // SetInviterUsername gets a reference to the given string and assigns it to the InviterUsername field.
 func (o *GroupUserResponse) SetInviterUsername(v string) {
 	o.InviterUsername = &v
+	o.NullFields = removeNullField(o.NullFields, "InviterUsername")
+}
+
+// SetInviterUsernameNil sets InviterUsername to an explicit JSON null when marshaled.
+func (o *GroupUserResponse) SetInviterUsernameNil() {
+	o.InviterUsername = nil
+	o.NullFields = addNullField(o.NullFields, "InviterUsername")
 }
 
 // GetCountry returns the Country field value if set, zero value otherwise
@@ -296,6 +326,13 @@ func (o *GroupUserResponse) HasCountry() bool {
 // SetCountry gets a reference to the given string and assigns it to the Country field.
 func (o *GroupUserResponse) SetCountry(v string) {
 	o.Country = &v
+	o.NullFields = removeNullField(o.NullFields, "Country")
+}
+
+// SetCountryNil sets Country to an explicit JSON null when marshaled.
+func (o *GroupUserResponse) SetCountryNil() {
+	o.Country = nil
+	o.NullFields = addNullField(o.NullFields, "Country")
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
@@ -329,6 +366,13 @@ func (o *GroupUserResponse) HasCreatedAt() bool {
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *GroupUserResponse) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
+	o.NullFields = removeNullField(o.NullFields, "CreatedAt")
+}
+
+// SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled.
+func (o *GroupUserResponse) SetCreatedAtNil() {
+	o.CreatedAt = nil
+	o.NullFields = addNullField(o.NullFields, "CreatedAt")
 }
 
 // GetFirstName returns the FirstName field value if set, zero value otherwise
@@ -362,6 +406,13 @@ func (o *GroupUserResponse) HasFirstName() bool {
 // SetFirstName gets a reference to the given string and assigns it to the FirstName field.
 func (o *GroupUserResponse) SetFirstName(v string) {
 	o.FirstName = &v
+	o.NullFields = removeNullField(o.NullFields, "FirstName")
+}
+
+// SetFirstNameNil sets FirstName to an explicit JSON null when marshaled.
+func (o *GroupUserResponse) SetFirstNameNil() {
+	o.FirstName = nil
+	o.NullFields = addNullField(o.NullFields, "FirstName")
 }
 
 // GetLastAuth returns the LastAuth field value if set, zero value otherwise
@@ -395,6 +446,13 @@ func (o *GroupUserResponse) HasLastAuth() bool {
 // SetLastAuth gets a reference to the given time.Time and assigns it to the LastAuth field.
 func (o *GroupUserResponse) SetLastAuth(v time.Time) {
 	o.LastAuth = &v
+	o.NullFields = removeNullField(o.NullFields, "LastAuth")
+}
+
+// SetLastAuthNil sets LastAuth to an explicit JSON null when marshaled.
+func (o *GroupUserResponse) SetLastAuthNil() {
+	o.LastAuth = nil
+	o.NullFields = addNullField(o.NullFields, "LastAuth")
 }
 
 // GetLastName returns the LastName field value if set, zero value otherwise
@@ -428,6 +486,13 @@ func (o *GroupUserResponse) HasLastName() bool {
 // SetLastName gets a reference to the given string and assigns it to the LastName field.
 func (o *GroupUserResponse) SetLastName(v string) {
 	o.LastName = &v
+	o.NullFields = removeNullField(o.NullFields, "LastName")
+}
+
+// SetLastNameNil sets LastName to an explicit JSON null when marshaled.
+func (o *GroupUserResponse) SetLastNameNil() {
+	o.LastName = nil
+	o.NullFields = addNullField(o.NullFields, "LastName")
 }
 
 // GetMobileNumber returns the MobileNumber field value if set, zero value otherwise
@@ -461,4 +526,11 @@ func (o *GroupUserResponse) HasMobileNumber() bool {
 // SetMobileNumber gets a reference to the given string and assigns it to the MobileNumber field.
 func (o *GroupUserResponse) SetMobileNumber(v string) {
 	o.MobileNumber = &v
+	o.NullFields = removeNullField(o.NullFields, "MobileNumber")
+}
+
+// SetMobileNumberNil sets MobileNumber to an explicit JSON null when marshaled.
+func (o *GroupUserResponse) SetMobileNumberNil() {
+	o.MobileNumber = nil
+	o.NullFields = addNullField(o.NullFields, "MobileNumber")
 }

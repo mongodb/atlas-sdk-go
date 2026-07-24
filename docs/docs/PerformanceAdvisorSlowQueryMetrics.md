@@ -59,6 +59,13 @@ SetDocsExamined sets DocsExamined field to given value.
 `func (o *PerformanceAdvisorSlowQueryMetrics) HasDocsExamined() bool`
 
 HasDocsExamined returns a boolean if a field has been set.
+
+### SetDocsExaminedNil
+
+`func (o *PerformanceAdvisorSlowQueryMetrics) SetDocsExaminedNil()`
+
+SetDocsExaminedNil sets DocsExamined to an explicit JSON null when marshaled, overriding any value previously set with SetDocsExamined. Calling SetDocsExamined again clears the null override.
+
 ### GetDocsExaminedReturnedRatio
 
 `func (o *PerformanceAdvisorSlowQueryMetrics) GetDocsExaminedReturnedRatio() float64`
@@ -83,6 +90,13 @@ SetDocsExaminedReturnedRatio sets DocsExaminedReturnedRatio field to given value
 `func (o *PerformanceAdvisorSlowQueryMetrics) HasDocsExaminedReturnedRatio() bool`
 
 HasDocsExaminedReturnedRatio returns a boolean if a field has been set.
+
+### SetDocsExaminedReturnedRatioNil
+
+`func (o *PerformanceAdvisorSlowQueryMetrics) SetDocsExaminedReturnedRatioNil()`
+
+SetDocsExaminedReturnedRatioNil sets DocsExaminedReturnedRatio to an explicit JSON null when marshaled, overriding any value previously set with SetDocsExaminedReturnedRatio. Calling SetDocsExaminedReturnedRatio again clears the null override.
+
 ### GetDocsReturned
 
 `func (o *PerformanceAdvisorSlowQueryMetrics) GetDocsReturned() int64`
@@ -107,6 +121,13 @@ SetDocsReturned sets DocsReturned field to given value.
 `func (o *PerformanceAdvisorSlowQueryMetrics) HasDocsReturned() bool`
 
 HasDocsReturned returns a boolean if a field has been set.
+
+### SetDocsReturnedNil
+
+`func (o *PerformanceAdvisorSlowQueryMetrics) SetDocsReturnedNil()`
+
+SetDocsReturnedNil sets DocsReturned to an explicit JSON null when marshaled, overriding any value previously set with SetDocsReturned. Calling SetDocsReturned again clears the null override.
+
 ### GetFromUserConnection
 
 `func (o *PerformanceAdvisorSlowQueryMetrics) GetFromUserConnection() bool`
@@ -131,6 +152,13 @@ SetFromUserConnection sets FromUserConnection field to given value.
 `func (o *PerformanceAdvisorSlowQueryMetrics) HasFromUserConnection() bool`
 
 HasFromUserConnection returns a boolean if a field has been set.
+
+### SetFromUserConnectionNil
+
+`func (o *PerformanceAdvisorSlowQueryMetrics) SetFromUserConnectionNil()`
+
+SetFromUserConnectionNil sets FromUserConnection to an explicit JSON null when marshaled, overriding any value previously set with SetFromUserConnection. Calling SetFromUserConnection again clears the null override.
+
 ### GetHasIndexCoverage
 
 `func (o *PerformanceAdvisorSlowQueryMetrics) GetHasIndexCoverage() bool`
@@ -155,6 +183,13 @@ SetHasIndexCoverage sets HasIndexCoverage field to given value.
 `func (o *PerformanceAdvisorSlowQueryMetrics) HasHasIndexCoverage() bool`
 
 HasHasIndexCoverage returns a boolean if a field has been set.
+
+### SetHasIndexCoverageNil
+
+`func (o *PerformanceAdvisorSlowQueryMetrics) SetHasIndexCoverageNil()`
+
+SetHasIndexCoverageNil sets HasIndexCoverage to an explicit JSON null when marshaled, overriding any value previously set with SetHasIndexCoverage. Calling SetHasIndexCoverage again clears the null override.
+
 ### GetHasSort
 
 `func (o *PerformanceAdvisorSlowQueryMetrics) GetHasSort() bool`
@@ -179,6 +214,13 @@ SetHasSort sets HasSort field to given value.
 `func (o *PerformanceAdvisorSlowQueryMetrics) HasHasSort() bool`
 
 HasHasSort returns a boolean if a field has been set.
+
+### SetHasSortNil
+
+`func (o *PerformanceAdvisorSlowQueryMetrics) SetHasSortNil()`
+
+SetHasSortNil sets HasSort to an explicit JSON null when marshaled, overriding any value previously set with SetHasSort. Calling SetHasSort again clears the null override.
+
 ### GetKeysExamined
 
 `func (o *PerformanceAdvisorSlowQueryMetrics) GetKeysExamined() int64`
@@ -203,6 +245,13 @@ SetKeysExamined sets KeysExamined field to given value.
 `func (o *PerformanceAdvisorSlowQueryMetrics) HasKeysExamined() bool`
 
 HasKeysExamined returns a boolean if a field has been set.
+
+### SetKeysExaminedNil
+
+`func (o *PerformanceAdvisorSlowQueryMetrics) SetKeysExaminedNil()`
+
+SetKeysExaminedNil sets KeysExamined to an explicit JSON null when marshaled, overriding any value previously set with SetKeysExamined. Calling SetKeysExamined again clears the null override.
+
 ### GetKeysExaminedReturnedRatio
 
 `func (o *PerformanceAdvisorSlowQueryMetrics) GetKeysExaminedReturnedRatio() float64`
@@ -227,6 +276,13 @@ SetKeysExaminedReturnedRatio sets KeysExaminedReturnedRatio field to given value
 `func (o *PerformanceAdvisorSlowQueryMetrics) HasKeysExaminedReturnedRatio() bool`
 
 HasKeysExaminedReturnedRatio returns a boolean if a field has been set.
+
+### SetKeysExaminedReturnedRatioNil
+
+`func (o *PerformanceAdvisorSlowQueryMetrics) SetKeysExaminedReturnedRatioNil()`
+
+SetKeysExaminedReturnedRatioNil sets KeysExaminedReturnedRatio to an explicit JSON null when marshaled, overriding any value previously set with SetKeysExaminedReturnedRatio. Calling SetKeysExaminedReturnedRatio again clears the null override.
+
 ### GetNumYields
 
 `func (o *PerformanceAdvisorSlowQueryMetrics) GetNumYields() int64`
@@ -251,6 +307,13 @@ SetNumYields sets NumYields field to given value.
 `func (o *PerformanceAdvisorSlowQueryMetrics) HasNumYields() bool`
 
 HasNumYields returns a boolean if a field has been set.
+
+### SetNumYieldsNil
+
+`func (o *PerformanceAdvisorSlowQueryMetrics) SetNumYieldsNil()`
+
+SetNumYieldsNil sets NumYields to an explicit JSON null when marshaled, overriding any value previously set with SetNumYields. Calling SetNumYields again clears the null override.
+
 ### GetOperationExecutionTime
 
 `func (o *PerformanceAdvisorSlowQueryMetrics) GetOperationExecutionTime() int64`
@@ -275,6 +338,13 @@ SetOperationExecutionTime sets OperationExecutionTime field to given value.
 `func (o *PerformanceAdvisorSlowQueryMetrics) HasOperationExecutionTime() bool`
 
 HasOperationExecutionTime returns a boolean if a field has been set.
+
+### SetOperationExecutionTimeNil
+
+`func (o *PerformanceAdvisorSlowQueryMetrics) SetOperationExecutionTimeNil()`
+
+SetOperationExecutionTimeNil sets OperationExecutionTime to an explicit JSON null when marshaled, overriding any value previously set with SetOperationExecutionTime. Calling SetOperationExecutionTime again clears the null override.
+
 ### GetResponseLength
 
 `func (o *PerformanceAdvisorSlowQueryMetrics) GetResponseLength() int64`
@@ -299,6 +369,13 @@ SetResponseLength sets ResponseLength field to given value.
 `func (o *PerformanceAdvisorSlowQueryMetrics) HasResponseLength() bool`
 
 HasResponseLength returns a boolean if a field has been set.
+
+### SetResponseLengthNil
+
+`func (o *PerformanceAdvisorSlowQueryMetrics) SetResponseLengthNil()`
+
+SetResponseLengthNil sets ResponseLength to an explicit JSON null when marshaled, overriding any value previously set with SetResponseLength. Calling SetResponseLength again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

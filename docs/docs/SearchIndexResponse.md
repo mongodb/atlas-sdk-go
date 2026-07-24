@@ -60,6 +60,13 @@ SetCollectionName sets CollectionName field to given value.
 `func (o *SearchIndexResponse) HasCollectionName() bool`
 
 HasCollectionName returns a boolean if a field has been set.
+
+### SetCollectionNameNil
+
+`func (o *SearchIndexResponse) SetCollectionNameNil()`
+
+SetCollectionNameNil sets CollectionName to an explicit JSON null when marshaled, overriding any value previously set with SetCollectionName. Calling SetCollectionName again clears the null override.
+
 ### GetDatabase
 
 `func (o *SearchIndexResponse) GetDatabase() string`
@@ -84,6 +91,13 @@ SetDatabase sets Database field to given value.
 `func (o *SearchIndexResponse) HasDatabase() bool`
 
 HasDatabase returns a boolean if a field has been set.
+
+### SetDatabaseNil
+
+`func (o *SearchIndexResponse) SetDatabaseNil()`
+
+SetDatabaseNil sets Database to an explicit JSON null when marshaled, overriding any value previously set with SetDatabase. Calling SetDatabase again clears the null override.
+
 ### GetIndexID
 
 `func (o *SearchIndexResponse) GetIndexID() string`
@@ -108,6 +122,13 @@ SetIndexID sets IndexID field to given value.
 `func (o *SearchIndexResponse) HasIndexID() bool`
 
 HasIndexID returns a boolean if a field has been set.
+
+### SetIndexIDNil
+
+`func (o *SearchIndexResponse) SetIndexIDNil()`
+
+SetIndexIDNil sets IndexID to an explicit JSON null when marshaled, overriding any value previously set with SetIndexID. Calling SetIndexID again clears the null override.
+
 ### GetLatestDefinition
 
 `func (o *SearchIndexResponse) GetLatestDefinition() BaseSearchIndexResponseLatestDefinition`
@@ -132,6 +153,13 @@ SetLatestDefinition sets LatestDefinition field to given value.
 `func (o *SearchIndexResponse) HasLatestDefinition() bool`
 
 HasLatestDefinition returns a boolean if a field has been set.
+
+### SetLatestDefinitionNil
+
+`func (o *SearchIndexResponse) SetLatestDefinitionNil()`
+
+SetLatestDefinitionNil sets LatestDefinition to an explicit JSON null when marshaled, overriding any value previously set with SetLatestDefinition. Calling SetLatestDefinition again clears the null override.
+
 ### GetLatestDefinitionVersion
 
 `func (o *SearchIndexResponse) GetLatestDefinitionVersion() SearchIndexDefinitionVersion`
@@ -156,6 +184,13 @@ SetLatestDefinitionVersion sets LatestDefinitionVersion field to given value.
 `func (o *SearchIndexResponse) HasLatestDefinitionVersion() bool`
 
 HasLatestDefinitionVersion returns a boolean if a field has been set.
+
+### SetLatestDefinitionVersionNil
+
+`func (o *SearchIndexResponse) SetLatestDefinitionVersionNil()`
+
+SetLatestDefinitionVersionNil sets LatestDefinitionVersion to an explicit JSON null when marshaled, overriding any value previously set with SetLatestDefinitionVersion. Calling SetLatestDefinitionVersion again clears the null override.
+
 ### GetName
 
 `func (o *SearchIndexResponse) GetName() string`
@@ -180,6 +215,13 @@ SetName sets Name field to given value.
 `func (o *SearchIndexResponse) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *SearchIndexResponse) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetQueryable
 
 `func (o *SearchIndexResponse) GetQueryable() bool`
@@ -204,6 +246,13 @@ SetQueryable sets Queryable field to given value.
 `func (o *SearchIndexResponse) HasQueryable() bool`
 
 HasQueryable returns a boolean if a field has been set.
+
+### SetQueryableNil
+
+`func (o *SearchIndexResponse) SetQueryableNil()`
+
+SetQueryableNil sets Queryable to an explicit JSON null when marshaled, overriding any value previously set with SetQueryable. Calling SetQueryable again clears the null override.
+
 ### GetStatus
 
 `func (o *SearchIndexResponse) GetStatus() string`
@@ -228,6 +277,13 @@ SetStatus sets Status field to given value.
 `func (o *SearchIndexResponse) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *SearchIndexResponse) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 ### GetStatusDetail
 
 `func (o *SearchIndexResponse) GetStatusDetail() []VectorSearchHostStatusDetail`
@@ -252,6 +308,13 @@ SetStatusDetail sets StatusDetail field to given value.
 `func (o *SearchIndexResponse) HasStatusDetail() bool`
 
 HasStatusDetail returns a boolean if a field has been set.
+
+### SetStatusDetailNil
+
+`func (o *SearchIndexResponse) SetStatusDetailNil()`
+
+SetStatusDetailNil sets StatusDetail to an explicit JSON null when marshaled, overriding any value previously set with SetStatusDetail. Calling SetStatusDetail again clears the null override.
+
 ### GetType
 
 `func (o *SearchIndexResponse) GetType() string`
@@ -276,6 +339,13 @@ SetType sets Type field to given value.
 `func (o *SearchIndexResponse) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *SearchIndexResponse) SetTypeNil()`
+
+SetTypeNil sets Type to an explicit JSON null when marshaled, overriding any value previously set with SetType. Calling SetType again clears the null override.
+
 ### GetSynonymMappingStatus
 
 `func (o *SearchIndexResponse) GetSynonymMappingStatus() string`
@@ -300,6 +370,13 @@ SetSynonymMappingStatus sets SynonymMappingStatus field to given value.
 `func (o *SearchIndexResponse) HasSynonymMappingStatus() bool`
 
 HasSynonymMappingStatus returns a boolean if a field has been set.
+
+### SetSynonymMappingStatusNil
+
+`func (o *SearchIndexResponse) SetSynonymMappingStatusNil()`
+
+SetSynonymMappingStatusNil sets SynonymMappingStatus to an explicit JSON null when marshaled, overriding any value previously set with SetSynonymMappingStatus. Calling SetSynonymMappingStatus again clears the null override.
+
 ### GetSynonymMappingStatusDetail
 
 `func (o *SearchIndexResponse) GetSynonymMappingStatusDetail() []map[string]SynonymMappingStatusDetail`
@@ -324,6 +401,13 @@ SetSynonymMappingStatusDetail sets SynonymMappingStatusDetail field to given val
 `func (o *SearchIndexResponse) HasSynonymMappingStatusDetail() bool`
 
 HasSynonymMappingStatusDetail returns a boolean if a field has been set.
+
+### SetSynonymMappingStatusDetailNil
+
+`func (o *SearchIndexResponse) SetSynonymMappingStatusDetailNil()`
+
+SetSynonymMappingStatusDetailNil sets SynonymMappingStatusDetail to an explicit JSON null when marshaled, overriding any value previously set with SetSynonymMappingStatusDetail. Calling SetSynonymMappingStatusDetail again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

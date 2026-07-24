@@ -70,6 +70,13 @@ SetPassword sets Password field to given value.
 `func (o *SchemaRegistryAuthentication) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
+
+### SetPasswordNil
+
+`func (o *SchemaRegistryAuthentication) SetPasswordNil()`
+
+SetPasswordNil sets Password to an explicit JSON null when marshaled, overriding any value previously set with SetPassword. Calling SetPassword again clears the null override.
+
 ### GetUsername
 
 `func (o *SchemaRegistryAuthentication) GetUsername() string`
@@ -94,6 +101,13 @@ SetUsername sets Username field to given value.
 `func (o *SchemaRegistryAuthentication) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
+
+### SetUsernameNil
+
+`func (o *SchemaRegistryAuthentication) SetUsernameNil()`
+
+SetUsernameNil sets Username to an explicit JSON null when marshaled, overriding any value previously set with SetUsername. Calling SetUsername again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

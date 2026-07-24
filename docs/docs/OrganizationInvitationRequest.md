@@ -52,6 +52,13 @@ SetGroupRoleAssignments sets GroupRoleAssignments field to given value.
 `func (o *OrganizationInvitationRequest) HasGroupRoleAssignments() bool`
 
 HasGroupRoleAssignments returns a boolean if a field has been set.
+
+### SetGroupRoleAssignmentsNil
+
+`func (o *OrganizationInvitationRequest) SetGroupRoleAssignmentsNil()`
+
+SetGroupRoleAssignmentsNil sets GroupRoleAssignments to an explicit JSON null when marshaled, overriding any value previously set with SetGroupRoleAssignments. Calling SetGroupRoleAssignments again clears the null override.
+
 ### GetRoles
 
 `func (o *OrganizationInvitationRequest) GetRoles() []string`
@@ -76,6 +83,13 @@ SetRoles sets Roles field to given value.
 `func (o *OrganizationInvitationRequest) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
+
+### SetRolesNil
+
+`func (o *OrganizationInvitationRequest) SetRolesNil()`
+
+SetRolesNil sets Roles to an explicit JSON null when marshaled, overriding any value previously set with SetRoles. Calling SetRoles again clears the null override.
+
 ### GetTeamIds
 
 `func (o *OrganizationInvitationRequest) GetTeamIds() []string`
@@ -100,6 +114,13 @@ SetTeamIds sets TeamIds field to given value.
 `func (o *OrganizationInvitationRequest) HasTeamIds() bool`
 
 HasTeamIds returns a boolean if a field has been set.
+
+### SetTeamIdsNil
+
+`func (o *OrganizationInvitationRequest) SetTeamIdsNil()`
+
+SetTeamIdsNil sets TeamIds to an explicit JSON null when marshaled, overriding any value previously set with SetTeamIds. Calling SetTeamIds again clears the null override.
+
 ### GetUsername
 
 `func (o *OrganizationInvitationRequest) GetUsername() string`
@@ -124,6 +145,13 @@ SetUsername sets Username field to given value.
 `func (o *OrganizationInvitationRequest) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
+
+### SetUsernameNil
+
+`func (o *OrganizationInvitationRequest) SetUsernameNil()`
+
+SetUsernameNil sets Username to an explicit JSON null when marshaled, overriding any value previously set with SetUsername. Calling SetUsername again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

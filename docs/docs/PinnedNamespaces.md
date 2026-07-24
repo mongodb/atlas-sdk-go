@@ -51,6 +51,13 @@ SetClusterId sets ClusterId field to given value.
 `func (o *PinnedNamespaces) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
+
+### SetClusterIdNil
+
+`func (o *PinnedNamespaces) SetClusterIdNil()`
+
+SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled, overriding any value previously set with SetClusterId. Calling SetClusterId again clears the null override.
+
 ### GetGroupId
 
 `func (o *PinnedNamespaces) GetGroupId() string`
@@ -75,6 +82,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *PinnedNamespaces) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *PinnedNamespaces) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetPinnedNamespaces
 
 `func (o *PinnedNamespaces) GetPinnedNamespaces() []string`

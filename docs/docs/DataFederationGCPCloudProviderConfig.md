@@ -50,6 +50,13 @@ SetGcpServiceAccount sets GcpServiceAccount field to given value.
 `func (o *DataFederationGCPCloudProviderConfig) HasGcpServiceAccount() bool`
 
 HasGcpServiceAccount returns a boolean if a field has been set.
+
+### SetGcpServiceAccountNil
+
+`func (o *DataFederationGCPCloudProviderConfig) SetGcpServiceAccountNil()`
+
+SetGcpServiceAccountNil sets GcpServiceAccount to an explicit JSON null when marshaled, overriding any value previously set with SetGcpServiceAccount. Calling SetGcpServiceAccount again clears the null override.
+
 ### GetRoleId
 
 `func (o *DataFederationGCPCloudProviderConfig) GetRoleId() string`

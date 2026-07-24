@@ -67,6 +67,13 @@ SetBatchId sets BatchId field to given value.
 `func (o *BackupRestoreJob) HasBatchId() bool`
 
 HasBatchId returns a boolean if a field has been set.
+
+### SetBatchIdNil
+
+`func (o *BackupRestoreJob) SetBatchIdNil()`
+
+SetBatchIdNil sets BatchId to an explicit JSON null when marshaled, overriding any value previously set with SetBatchId. Calling SetBatchId again clears the null override.
+
 ### GetCheckpointId
 
 `func (o *BackupRestoreJob) GetCheckpointId() string`
@@ -91,6 +98,13 @@ SetCheckpointId sets CheckpointId field to given value.
 `func (o *BackupRestoreJob) HasCheckpointId() bool`
 
 HasCheckpointId returns a boolean if a field has been set.
+
+### SetCheckpointIdNil
+
+`func (o *BackupRestoreJob) SetCheckpointIdNil()`
+
+SetCheckpointIdNil sets CheckpointId to an explicit JSON null when marshaled, overriding any value previously set with SetCheckpointId. Calling SetCheckpointId again clears the null override.
+
 ### GetClusterId
 
 `func (o *BackupRestoreJob) GetClusterId() string`
@@ -115,6 +129,13 @@ SetClusterId sets ClusterId field to given value.
 `func (o *BackupRestoreJob) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
+
+### SetClusterIdNil
+
+`func (o *BackupRestoreJob) SetClusterIdNil()`
+
+SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled, overriding any value previously set with SetClusterId. Calling SetClusterId again clears the null override.
+
 ### GetClusterName
 
 `func (o *BackupRestoreJob) GetClusterName() string`
@@ -139,6 +160,13 @@ SetClusterName sets ClusterName field to given value.
 `func (o *BackupRestoreJob) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+
+### SetClusterNameNil
+
+`func (o *BackupRestoreJob) SetClusterNameNil()`
+
+SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled, overriding any value previously set with SetClusterName. Calling SetClusterName again clears the null override.
+
 ### GetCreated
 
 `func (o *BackupRestoreJob) GetCreated() time.Time`
@@ -163,6 +191,13 @@ SetCreated sets Created field to given value.
 `func (o *BackupRestoreJob) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
+
+### SetCreatedNil
+
+`func (o *BackupRestoreJob) SetCreatedNil()`
+
+SetCreatedNil sets Created to an explicit JSON null when marshaled, overriding any value previously set with SetCreated. Calling SetCreated again clears the null override.
+
 ### GetDelivery
 
 `func (o *BackupRestoreJob) GetDelivery() BackupRestoreJobDelivery`
@@ -206,6 +241,13 @@ SetDeploymentJobId sets DeploymentJobId field to given value.
 `func (o *BackupRestoreJob) HasDeploymentJobId() bool`
 
 HasDeploymentJobId returns a boolean if a field has been set.
+
+### SetDeploymentJobIdNil
+
+`func (o *BackupRestoreJob) SetDeploymentJobIdNil()`
+
+SetDeploymentJobIdNil sets DeploymentJobId to an explicit JSON null when marshaled, overriding any value previously set with SetDeploymentJobId. Calling SetDeploymentJobId again clears the null override.
+
 ### GetEncryptionEnabled
 
 `func (o *BackupRestoreJob) GetEncryptionEnabled() bool`
@@ -230,6 +272,13 @@ SetEncryptionEnabled sets EncryptionEnabled field to given value.
 `func (o *BackupRestoreJob) HasEncryptionEnabled() bool`
 
 HasEncryptionEnabled returns a boolean if a field has been set.
+
+### SetEncryptionEnabledNil
+
+`func (o *BackupRestoreJob) SetEncryptionEnabledNil()`
+
+SetEncryptionEnabledNil sets EncryptionEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetEncryptionEnabled. Calling SetEncryptionEnabled again clears the null override.
+
 ### GetGroupId
 
 `func (o *BackupRestoreJob) GetGroupId() string`
@@ -254,6 +303,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *BackupRestoreJob) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *BackupRestoreJob) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetHashes
 
 `func (o *BackupRestoreJob) GetHashes() []RestoreJobFileHash`
@@ -278,6 +334,13 @@ SetHashes sets Hashes field to given value.
 `func (o *BackupRestoreJob) HasHashes() bool`
 
 HasHashes returns a boolean if a field has been set.
+
+### SetHashesNil
+
+`func (o *BackupRestoreJob) SetHashesNil()`
+
+SetHashesNil sets Hashes to an explicit JSON null when marshaled, overriding any value previously set with SetHashes. Calling SetHashes again clears the null override.
+
 ### GetId
 
 `func (o *BackupRestoreJob) GetId() string`
@@ -302,6 +365,13 @@ SetId sets Id field to given value.
 `func (o *BackupRestoreJob) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *BackupRestoreJob) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLinks
 
 `func (o *BackupRestoreJob) GetLinks() []Link`
@@ -326,6 +396,13 @@ SetLinks sets Links field to given value.
 `func (o *BackupRestoreJob) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *BackupRestoreJob) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetMasterKeyUUID
 
 `func (o *BackupRestoreJob) GetMasterKeyUUID() string`
@@ -350,6 +427,13 @@ SetMasterKeyUUID sets MasterKeyUUID field to given value.
 `func (o *BackupRestoreJob) HasMasterKeyUUID() bool`
 
 HasMasterKeyUUID returns a boolean if a field has been set.
+
+### SetMasterKeyUUIDNil
+
+`func (o *BackupRestoreJob) SetMasterKeyUUIDNil()`
+
+SetMasterKeyUUIDNil sets MasterKeyUUID to an explicit JSON null when marshaled, overriding any value previously set with SetMasterKeyUUID. Calling SetMasterKeyUUID again clears the null override.
+
 ### GetOplogInc
 
 `func (o *BackupRestoreJob) GetOplogInc() int`
@@ -374,6 +458,13 @@ SetOplogInc sets OplogInc field to given value.
 `func (o *BackupRestoreJob) HasOplogInc() bool`
 
 HasOplogInc returns a boolean if a field has been set.
+
+### SetOplogIncNil
+
+`func (o *BackupRestoreJob) SetOplogIncNil()`
+
+SetOplogIncNil sets OplogInc to an explicit JSON null when marshaled, overriding any value previously set with SetOplogInc. Calling SetOplogInc again clears the null override.
+
 ### GetOplogTs
 
 `func (o *BackupRestoreJob) GetOplogTs() string`
@@ -398,6 +489,13 @@ SetOplogTs sets OplogTs field to given value.
 `func (o *BackupRestoreJob) HasOplogTs() bool`
 
 HasOplogTs returns a boolean if a field has been set.
+
+### SetOplogTsNil
+
+`func (o *BackupRestoreJob) SetOplogTsNil()`
+
+SetOplogTsNil sets OplogTs to an explicit JSON null when marshaled, overriding any value previously set with SetOplogTs. Calling SetOplogTs again clears the null override.
+
 ### GetPointInTimeUTCMillis
 
 `func (o *BackupRestoreJob) GetPointInTimeUTCMillis() int64`
@@ -422,6 +520,13 @@ SetPointInTimeUTCMillis sets PointInTimeUTCMillis field to given value.
 `func (o *BackupRestoreJob) HasPointInTimeUTCMillis() bool`
 
 HasPointInTimeUTCMillis returns a boolean if a field has been set.
+
+### SetPointInTimeUTCMillisNil
+
+`func (o *BackupRestoreJob) SetPointInTimeUTCMillisNil()`
+
+SetPointInTimeUTCMillisNil sets PointInTimeUTCMillis to an explicit JSON null when marshaled, overriding any value previously set with SetPointInTimeUTCMillis. Calling SetPointInTimeUTCMillis again clears the null override.
+
 ### GetSnapshotId
 
 `func (o *BackupRestoreJob) GetSnapshotId() string`
@@ -446,6 +551,13 @@ SetSnapshotId sets SnapshotId field to given value.
 `func (o *BackupRestoreJob) HasSnapshotId() bool`
 
 HasSnapshotId returns a boolean if a field has been set.
+
+### SetSnapshotIdNil
+
+`func (o *BackupRestoreJob) SetSnapshotIdNil()`
+
+SetSnapshotIdNil sets SnapshotId to an explicit JSON null when marshaled, overriding any value previously set with SetSnapshotId. Calling SetSnapshotId again clears the null override.
+
 ### GetStatusName
 
 `func (o *BackupRestoreJob) GetStatusName() string`
@@ -470,6 +582,13 @@ SetStatusName sets StatusName field to given value.
 `func (o *BackupRestoreJob) HasStatusName() bool`
 
 HasStatusName returns a boolean if a field has been set.
+
+### SetStatusNameNil
+
+`func (o *BackupRestoreJob) SetStatusNameNil()`
+
+SetStatusNameNil sets StatusName to an explicit JSON null when marshaled, overriding any value previously set with SetStatusName. Calling SetStatusName again clears the null override.
+
 ### GetTimestamp
 
 `func (o *BackupRestoreJob) GetTimestamp() ApiBSONTimestamp`
@@ -494,6 +613,13 @@ SetTimestamp sets Timestamp field to given value.
 `func (o *BackupRestoreJob) HasTimestamp() bool`
 
 HasTimestamp returns a boolean if a field has been set.
+
+### SetTimestampNil
+
+`func (o *BackupRestoreJob) SetTimestampNil()`
+
+SetTimestampNil sets Timestamp to an explicit JSON null when marshaled, overriding any value previously set with SetTimestamp. Calling SetTimestamp again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

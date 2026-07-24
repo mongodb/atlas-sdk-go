@@ -92,6 +92,13 @@ SetAcceptDataRisksAndForceReplicaSetReconfig sets AcceptDataRisksAndForceReplica
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasAcceptDataRisksAndForceReplicaSetReconfig() bool`
 
 HasAcceptDataRisksAndForceReplicaSetReconfig returns a boolean if a field has been set.
+
+### SetAcceptDataRisksAndForceReplicaSetReconfigNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetAcceptDataRisksAndForceReplicaSetReconfigNil()`
+
+SetAcceptDataRisksAndForceReplicaSetReconfigNil sets AcceptDataRisksAndForceReplicaSetReconfig to an explicit JSON null when marshaled, overriding any value previously set with SetAcceptDataRisksAndForceReplicaSetReconfig. Calling SetAcceptDataRisksAndForceReplicaSetReconfig again clears the null override.
+
 ### GetAdvancedConfiguration
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetAdvancedConfiguration() ApiAtlasClusterAdvancedConfiguration`
@@ -116,6 +123,13 @@ SetAdvancedConfiguration sets AdvancedConfiguration field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasAdvancedConfiguration() bool`
 
 HasAdvancedConfiguration returns a boolean if a field has been set.
+
+### SetAdvancedConfigurationNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetAdvancedConfigurationNil()`
+
+SetAdvancedConfigurationNil sets AdvancedConfiguration to an explicit JSON null when marshaled, overriding any value previously set with SetAdvancedConfiguration. Calling SetAdvancedConfiguration again clears the null override.
+
 ### GetAutoScaling
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetAutoScaling() ClusterAutoScalingSettings`
@@ -140,6 +154,13 @@ SetAutoScaling sets AutoScaling field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasAutoScaling() bool`
 
 HasAutoScaling returns a boolean if a field has been set.
+
+### SetAutoScalingNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetAutoScalingNil()`
+
+SetAutoScalingNil sets AutoScaling to an explicit JSON null when marshaled, overriding any value previously set with SetAutoScaling. Calling SetAutoScaling again clears the null override.
+
 ### GetBackupEnabled
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetBackupEnabled() bool`
@@ -164,6 +185,13 @@ SetBackupEnabled sets BackupEnabled field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasBackupEnabled() bool`
 
 HasBackupEnabled returns a boolean if a field has been set.
+
+### SetBackupEnabledNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetBackupEnabledNil()`
+
+SetBackupEnabledNil sets BackupEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetBackupEnabled. Calling SetBackupEnabled again clears the null override.
+
 ### GetBiConnector
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetBiConnector() BiConnector`
@@ -188,6 +216,13 @@ SetBiConnector sets BiConnector field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasBiConnector() bool`
 
 HasBiConnector returns a boolean if a field has been set.
+
+### SetBiConnectorNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetBiConnectorNil()`
+
+SetBiConnectorNil sets BiConnector to an explicit JSON null when marshaled, overriding any value previously set with SetBiConnector. Calling SetBiConnector again clears the null override.
+
 ### GetClusterType
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetClusterType() string`
@@ -212,6 +247,13 @@ SetClusterType sets ClusterType field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasClusterType() bool`
 
 HasClusterType returns a boolean if a field has been set.
+
+### SetClusterTypeNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetClusterTypeNil()`
+
+SetClusterTypeNil sets ClusterType to an explicit JSON null when marshaled, overriding any value previously set with SetClusterType. Calling SetClusterType again clears the null override.
+
 ### GetConfigServerManagementMode
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetConfigServerManagementMode() string`
@@ -236,6 +278,13 @@ SetConfigServerManagementMode sets ConfigServerManagementMode field to given val
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasConfigServerManagementMode() bool`
 
 HasConfigServerManagementMode returns a boolean if a field has been set.
+
+### SetConfigServerManagementModeNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetConfigServerManagementModeNil()`
+
+SetConfigServerManagementModeNil sets ConfigServerManagementMode to an explicit JSON null when marshaled, overriding any value previously set with SetConfigServerManagementMode. Calling SetConfigServerManagementMode again clears the null override.
+
 ### GetConfigServerType
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetConfigServerType() string`
@@ -260,6 +309,13 @@ SetConfigServerType sets ConfigServerType field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasConfigServerType() bool`
 
 HasConfigServerType returns a boolean if a field has been set.
+
+### SetConfigServerTypeNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetConfigServerTypeNil()`
+
+SetConfigServerTypeNil sets ConfigServerType to an explicit JSON null when marshaled, overriding any value previously set with SetConfigServerType. Calling SetConfigServerType again clears the null override.
+
 ### GetConnectionStrings
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetConnectionStrings() ClusterConnectionStrings`
@@ -284,6 +340,13 @@ SetConnectionStrings sets ConnectionStrings field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasConnectionStrings() bool`
 
 HasConnectionStrings returns a boolean if a field has been set.
+
+### SetConnectionStringsNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetConnectionStringsNil()`
+
+SetConnectionStringsNil sets ConnectionStrings to an explicit JSON null when marshaled, overriding any value previously set with SetConnectionStrings. Calling SetConnectionStrings again clears the null override.
+
 ### GetCreateDate
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetCreateDate() time.Time`
@@ -308,6 +371,13 @@ SetCreateDate sets CreateDate field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasCreateDate() bool`
 
 HasCreateDate returns a boolean if a field has been set.
+
+### SetCreateDateNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetCreateDateNil()`
+
+SetCreateDateNil sets CreateDate to an explicit JSON null when marshaled, overriding any value previously set with SetCreateDate. Calling SetCreateDate again clears the null override.
+
 ### GetDeleteAfterCreationHours
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetDeleteAfterCreationHours() int`
@@ -332,6 +402,13 @@ SetDeleteAfterCreationHours sets DeleteAfterCreationHours field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasDeleteAfterCreationHours() bool`
 
 HasDeleteAfterCreationHours returns a boolean if a field has been set.
+
+### SetDeleteAfterCreationHoursNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetDeleteAfterCreationHoursNil()`
+
+SetDeleteAfterCreationHoursNil sets DeleteAfterCreationHours to an explicit JSON null when marshaled, overriding any value previously set with SetDeleteAfterCreationHours. Calling SetDeleteAfterCreationHours again clears the null override.
+
 ### GetDeleteAfterDate
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetDeleteAfterDate() time.Time`
@@ -356,6 +433,13 @@ SetDeleteAfterDate sets DeleteAfterDate field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasDeleteAfterDate() bool`
 
 HasDeleteAfterDate returns a boolean if a field has been set.
+
+### SetDeleteAfterDateNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetDeleteAfterDateNil()`
+
+SetDeleteAfterDateNil sets DeleteAfterDate to an explicit JSON null when marshaled, overriding any value previously set with SetDeleteAfterDate. Calling SetDeleteAfterDate again clears the null override.
+
 ### GetDiskSizeGB
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetDiskSizeGB() float64`
@@ -380,6 +464,13 @@ SetDiskSizeGB sets DiskSizeGB field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasDiskSizeGB() bool`
 
 HasDiskSizeGB returns a boolean if a field has been set.
+
+### SetDiskSizeGBNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetDiskSizeGBNil()`
+
+SetDiskSizeGBNil sets DiskSizeGB to an explicit JSON null when marshaled, overriding any value previously set with SetDiskSizeGB. Calling SetDiskSizeGB again clears the null override.
+
 ### GetDiskWarmingMode
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetDiskWarmingMode() string`
@@ -404,6 +495,13 @@ SetDiskWarmingMode sets DiskWarmingMode field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasDiskWarmingMode() bool`
 
 HasDiskWarmingMode returns a boolean if a field has been set.
+
+### SetDiskWarmingModeNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetDiskWarmingModeNil()`
+
+SetDiskWarmingModeNil sets DiskWarmingMode to an explicit JSON null when marshaled, overriding any value previously set with SetDiskWarmingMode. Calling SetDiskWarmingMode again clears the null override.
+
 ### GetEncryptionAtRestProvider
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetEncryptionAtRestProvider() string`
@@ -428,6 +526,13 @@ SetEncryptionAtRestProvider sets EncryptionAtRestProvider field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasEncryptionAtRestProvider() bool`
 
 HasEncryptionAtRestProvider returns a boolean if a field has been set.
+
+### SetEncryptionAtRestProviderNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetEncryptionAtRestProviderNil()`
+
+SetEncryptionAtRestProviderNil sets EncryptionAtRestProvider to an explicit JSON null when marshaled, overriding any value previously set with SetEncryptionAtRestProvider. Calling SetEncryptionAtRestProvider again clears the null override.
+
 ### GetFeatureCompatibilityVersion
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetFeatureCompatibilityVersion() string`
@@ -452,6 +557,13 @@ SetFeatureCompatibilityVersion sets FeatureCompatibilityVersion field to given v
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasFeatureCompatibilityVersion() bool`
 
 HasFeatureCompatibilityVersion returns a boolean if a field has been set.
+
+### SetFeatureCompatibilityVersionNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetFeatureCompatibilityVersionNil()`
+
+SetFeatureCompatibilityVersionNil sets FeatureCompatibilityVersion to an explicit JSON null when marshaled, overriding any value previously set with SetFeatureCompatibilityVersion. Calling SetFeatureCompatibilityVersion again clears the null override.
+
 ### GetFeatureCompatibilityVersionExpirationDate
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetFeatureCompatibilityVersionExpirationDate() time.Time`
@@ -476,6 +588,13 @@ SetFeatureCompatibilityVersionExpirationDate sets FeatureCompatibilityVersionExp
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasFeatureCompatibilityVersionExpirationDate() bool`
 
 HasFeatureCompatibilityVersionExpirationDate returns a boolean if a field has been set.
+
+### SetFeatureCompatibilityVersionExpirationDateNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetFeatureCompatibilityVersionExpirationDateNil()`
+
+SetFeatureCompatibilityVersionExpirationDateNil sets FeatureCompatibilityVersionExpirationDate to an explicit JSON null when marshaled, overriding any value previously set with SetFeatureCompatibilityVersionExpirationDate. Calling SetFeatureCompatibilityVersionExpirationDate again clears the null override.
+
 ### GetGlobalClusterSelfManagedSharding
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetGlobalClusterSelfManagedSharding() bool`
@@ -500,6 +619,13 @@ SetGlobalClusterSelfManagedSharding sets GlobalClusterSelfManagedSharding field 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasGlobalClusterSelfManagedSharding() bool`
 
 HasGlobalClusterSelfManagedSharding returns a boolean if a field has been set.
+
+### SetGlobalClusterSelfManagedShardingNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetGlobalClusterSelfManagedShardingNil()`
+
+SetGlobalClusterSelfManagedShardingNil sets GlobalClusterSelfManagedSharding to an explicit JSON null when marshaled, overriding any value previously set with SetGlobalClusterSelfManagedSharding. Calling SetGlobalClusterSelfManagedSharding again clears the null override.
+
 ### GetGroupId
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetGroupId() string`
@@ -524,6 +650,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetId
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetId() string`
@@ -548,6 +681,13 @@ SetId sets Id field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLabels
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetLabels() []ComponentLabel`
@@ -572,6 +712,13 @@ SetLabels sets Labels field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasLabels() bool`
 
 HasLabels returns a boolean if a field has been set.
+
+### SetLabelsNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetLabelsNil()`
+
+SetLabelsNil sets Labels to an explicit JSON null when marshaled, overriding any value previously set with SetLabels. Calling SetLabels again clears the null override.
+
 ### GetLinks
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetLinks() []Link`
@@ -596,6 +743,13 @@ SetLinks sets Links field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetMongoDBEmployeeAccessGrant
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetMongoDBEmployeeAccessGrant() EmployeeAccessGrant`
@@ -620,6 +774,13 @@ SetMongoDBEmployeeAccessGrant sets MongoDBEmployeeAccessGrant field to given val
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasMongoDBEmployeeAccessGrant() bool`
 
 HasMongoDBEmployeeAccessGrant returns a boolean if a field has been set.
+
+### SetMongoDBEmployeeAccessGrantNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetMongoDBEmployeeAccessGrantNil()`
+
+SetMongoDBEmployeeAccessGrantNil sets MongoDBEmployeeAccessGrant to an explicit JSON null when marshaled, overriding any value previously set with SetMongoDBEmployeeAccessGrant. Calling SetMongoDBEmployeeAccessGrant again clears the null override.
+
 ### GetMongoDBMajorVersion
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetMongoDBMajorVersion() string`
@@ -644,6 +805,13 @@ SetMongoDBMajorVersion sets MongoDBMajorVersion field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasMongoDBMajorVersion() bool`
 
 HasMongoDBMajorVersion returns a boolean if a field has been set.
+
+### SetMongoDBMajorVersionNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetMongoDBMajorVersionNil()`
+
+SetMongoDBMajorVersionNil sets MongoDBMajorVersion to an explicit JSON null when marshaled, overriding any value previously set with SetMongoDBMajorVersion. Calling SetMongoDBMajorVersion again clears the null override.
+
 ### GetMongoDBVersion
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetMongoDBVersion() string`
@@ -668,6 +836,13 @@ SetMongoDBVersion sets MongoDBVersion field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasMongoDBVersion() bool`
 
 HasMongoDBVersion returns a boolean if a field has been set.
+
+### SetMongoDBVersionNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetMongoDBVersionNil()`
+
+SetMongoDBVersionNil sets MongoDBVersion to an explicit JSON null when marshaled, overriding any value previously set with SetMongoDBVersion. Calling SetMongoDBVersion again clears the null override.
+
 ### GetMongoURI
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetMongoURI() string`
@@ -692,6 +867,13 @@ SetMongoURI sets MongoURI field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasMongoURI() bool`
 
 HasMongoURI returns a boolean if a field has been set.
+
+### SetMongoURINil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetMongoURINil()`
+
+SetMongoURINil sets MongoURI to an explicit JSON null when marshaled, overriding any value previously set with SetMongoURI. Calling SetMongoURI again clears the null override.
+
 ### GetMongoURIUpdated
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetMongoURIUpdated() time.Time`
@@ -716,6 +898,13 @@ SetMongoURIUpdated sets MongoURIUpdated field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasMongoURIUpdated() bool`
 
 HasMongoURIUpdated returns a boolean if a field has been set.
+
+### SetMongoURIUpdatedNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetMongoURIUpdatedNil()`
+
+SetMongoURIUpdatedNil sets MongoURIUpdated to an explicit JSON null when marshaled, overriding any value previously set with SetMongoURIUpdated. Calling SetMongoURIUpdated again clears the null override.
+
 ### GetMongoURIWithOptions
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetMongoURIWithOptions() string`
@@ -740,6 +929,13 @@ SetMongoURIWithOptions sets MongoURIWithOptions field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasMongoURIWithOptions() bool`
 
 HasMongoURIWithOptions returns a boolean if a field has been set.
+
+### SetMongoURIWithOptionsNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetMongoURIWithOptionsNil()`
+
+SetMongoURIWithOptionsNil sets MongoURIWithOptions to an explicit JSON null when marshaled, overriding any value previously set with SetMongoURIWithOptions. Calling SetMongoURIWithOptions again clears the null override.
+
 ### GetName
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetName() string`
@@ -783,6 +979,13 @@ SetNumShards sets NumShards field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasNumShards() bool`
 
 HasNumShards returns a boolean if a field has been set.
+
+### SetNumShardsNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetNumShardsNil()`
+
+SetNumShardsNil sets NumShards to an explicit JSON null when marshaled, overriding any value previously set with SetNumShards. Calling SetNumShards again clears the null override.
+
 ### GetPaused
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetPaused() bool`
@@ -807,6 +1010,13 @@ SetPaused sets Paused field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasPaused() bool`
 
 HasPaused returns a boolean if a field has been set.
+
+### SetPausedNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetPausedNil()`
+
+SetPausedNil sets Paused to an explicit JSON null when marshaled, overriding any value previously set with SetPaused. Calling SetPaused again clears the null override.
+
 ### GetPitEnabled
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetPitEnabled() bool`
@@ -831,6 +1041,13 @@ SetPitEnabled sets PitEnabled field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasPitEnabled() bool`
 
 HasPitEnabled returns a boolean if a field has been set.
+
+### SetPitEnabledNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetPitEnabledNil()`
+
+SetPitEnabledNil sets PitEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetPitEnabled. Calling SetPitEnabled again clears the null override.
+
 ### GetProviderBackupEnabled
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetProviderBackupEnabled() bool`
@@ -855,6 +1072,13 @@ SetProviderBackupEnabled sets ProviderBackupEnabled field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasProviderBackupEnabled() bool`
 
 HasProviderBackupEnabled returns a boolean if a field has been set.
+
+### SetProviderBackupEnabledNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetProviderBackupEnabledNil()`
+
+SetProviderBackupEnabledNil sets ProviderBackupEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetProviderBackupEnabled. Calling SetProviderBackupEnabled again clears the null override.
+
 ### GetProviderSettings
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetProviderSettings() ClusterProviderSettings`
@@ -879,6 +1103,13 @@ SetProviderSettings sets ProviderSettings field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasProviderSettings() bool`
 
 HasProviderSettings returns a boolean if a field has been set.
+
+### SetProviderSettingsNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetProviderSettingsNil()`
+
+SetProviderSettingsNil sets ProviderSettings to an explicit JSON null when marshaled, overriding any value previously set with SetProviderSettings. Calling SetProviderSettings again clears the null override.
+
 ### GetReplicaSetScalingStrategy
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetReplicaSetScalingStrategy() string`
@@ -903,6 +1134,13 @@ SetReplicaSetScalingStrategy sets ReplicaSetScalingStrategy field to given value
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasReplicaSetScalingStrategy() bool`
 
 HasReplicaSetScalingStrategy returns a boolean if a field has been set.
+
+### SetReplicaSetScalingStrategyNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetReplicaSetScalingStrategyNil()`
+
+SetReplicaSetScalingStrategyNil sets ReplicaSetScalingStrategy to an explicit JSON null when marshaled, overriding any value previously set with SetReplicaSetScalingStrategy. Calling SetReplicaSetScalingStrategy again clears the null override.
+
 ### GetReplicationFactor
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetReplicationFactor() int`
@@ -927,6 +1165,13 @@ SetReplicationFactor sets ReplicationFactor field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasReplicationFactor() bool`
 
 HasReplicationFactor returns a boolean if a field has been set.
+
+### SetReplicationFactorNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetReplicationFactorNil()`
+
+SetReplicationFactorNil sets ReplicationFactor to an explicit JSON null when marshaled, overriding any value previously set with SetReplicationFactor. Calling SetReplicationFactor again clears the null override.
+
 ### GetReplicationSpec
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetReplicationSpec() map[string]RegionSpec`
@@ -951,6 +1196,13 @@ SetReplicationSpec sets ReplicationSpec field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasReplicationSpec() bool`
 
 HasReplicationSpec returns a boolean if a field has been set.
+
+### SetReplicationSpecNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetReplicationSpecNil()`
+
+SetReplicationSpecNil sets ReplicationSpec to an explicit JSON null when marshaled, overriding any value previously set with SetReplicationSpec. Calling SetReplicationSpec again clears the null override.
+
 ### GetReplicationSpecs
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetReplicationSpecs() []LegacyReplicationSpec`
@@ -975,6 +1227,13 @@ SetReplicationSpecs sets ReplicationSpecs field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasReplicationSpecs() bool`
 
 HasReplicationSpecs returns a boolean if a field has been set.
+
+### SetReplicationSpecsNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetReplicationSpecsNil()`
+
+SetReplicationSpecsNil sets ReplicationSpecs to an explicit JSON null when marshaled, overriding any value previously set with SetReplicationSpecs. Calling SetReplicationSpecs again clears the null override.
+
 ### GetRootCertType
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetRootCertType() string`
@@ -999,6 +1258,13 @@ SetRootCertType sets RootCertType field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasRootCertType() bool`
 
 HasRootCertType returns a boolean if a field has been set.
+
+### SetRootCertTypeNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetRootCertTypeNil()`
+
+SetRootCertTypeNil sets RootCertType to an explicit JSON null when marshaled, overriding any value previously set with SetRootCertType. Calling SetRootCertType again clears the null override.
+
 ### GetSrvAddress
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetSrvAddress() string`
@@ -1023,6 +1289,13 @@ SetSrvAddress sets SrvAddress field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasSrvAddress() bool`
 
 HasSrvAddress returns a boolean if a field has been set.
+
+### SetSrvAddressNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetSrvAddressNil()`
+
+SetSrvAddressNil sets SrvAddress to an explicit JSON null when marshaled, overriding any value previously set with SetSrvAddress. Calling SetSrvAddress again clears the null override.
+
 ### GetStateName
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetStateName() string`
@@ -1047,6 +1320,13 @@ SetStateName sets StateName field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasStateName() bool`
 
 HasStateName returns a boolean if a field has been set.
+
+### SetStateNameNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetStateNameNil()`
+
+SetStateNameNil sets StateName to an explicit JSON null when marshaled, overriding any value previously set with SetStateName. Calling SetStateName again clears the null override.
+
 ### GetTags
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetTags() []ResourceTag`
@@ -1071,6 +1351,13 @@ SetTags sets Tags field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### SetTagsNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetTagsNil()`
+
+SetTagsNil sets Tags to an explicit JSON null when marshaled, overriding any value previously set with SetTags. Calling SetTags again clears the null override.
+
 ### GetTerminationProtectionEnabled
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetTerminationProtectionEnabled() bool`
@@ -1095,6 +1382,13 @@ SetTerminationProtectionEnabled sets TerminationProtectionEnabled field to given
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasTerminationProtectionEnabled() bool`
 
 HasTerminationProtectionEnabled returns a boolean if a field has been set.
+
+### SetTerminationProtectionEnabledNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetTerminationProtectionEnabledNil()`
+
+SetTerminationProtectionEnabledNil sets TerminationProtectionEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetTerminationProtectionEnabled. Calling SetTerminationProtectionEnabled again clears the null override.
+
 ### GetVersionReleaseSystem
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetVersionReleaseSystem() string`
@@ -1119,6 +1413,13 @@ SetVersionReleaseSystem sets VersionReleaseSystem field to given value.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) HasVersionReleaseSystem() bool`
 
 HasVersionReleaseSystem returns a boolean if a field has been set.
+
+### SetVersionReleaseSystemNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetVersionReleaseSystemNil()`
+
+SetVersionReleaseSystemNil sets VersionReleaseSystem to an explicit JSON null when marshaled, overriding any value previously set with SetVersionReleaseSystem. Calling SetVersionReleaseSystem again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

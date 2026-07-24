@@ -50,6 +50,13 @@ SetAccess sets Access field to given value.
 `func (o *StreamsPublicPrivateLinkNetworking) HasAccess() bool`
 
 HasAccess returns a boolean if a field has been set.
+
+### SetAccessNil
+
+`func (o *StreamsPublicPrivateLinkNetworking) SetAccessNil()`
+
+SetAccessNil sets Access to an explicit JSON null when marshaled, overriding any value previously set with SetAccess. Calling SetAccess again clears the null override.
+
 ### GetLinks
 
 `func (o *StreamsPublicPrivateLinkNetworking) GetLinks() []Link`
@@ -74,6 +81,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsPublicPrivateLinkNetworking) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsPublicPrivateLinkNetworking) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

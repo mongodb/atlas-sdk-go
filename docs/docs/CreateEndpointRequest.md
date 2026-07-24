@@ -54,6 +54,13 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *CreateEndpointRequest) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
+
+### SetCloudProviderNil
+
+`func (o *CreateEndpointRequest) SetCloudProviderNil()`
+
+SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProvider. Calling SetCloudProvider again clears the null override.
+
 ### GetId
 
 `func (o *CreateEndpointRequest) GetId() string`
@@ -78,6 +85,13 @@ SetId sets Id field to given value.
 `func (o *CreateEndpointRequest) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *CreateEndpointRequest) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetPrivateEndpointIPAddress
 
 `func (o *CreateEndpointRequest) GetPrivateEndpointIPAddress() string`
@@ -102,6 +116,13 @@ SetPrivateEndpointIPAddress sets PrivateEndpointIPAddress field to given value.
 `func (o *CreateEndpointRequest) HasPrivateEndpointIPAddress() bool`
 
 HasPrivateEndpointIPAddress returns a boolean if a field has been set.
+
+### SetPrivateEndpointIPAddressNil
+
+`func (o *CreateEndpointRequest) SetPrivateEndpointIPAddressNil()`
+
+SetPrivateEndpointIPAddressNil sets PrivateEndpointIPAddress to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateEndpointIPAddress. Calling SetPrivateEndpointIPAddress again clears the null override.
+
 ### GetEndpointGroupName
 
 `func (o *CreateEndpointRequest) GetEndpointGroupName() string`
@@ -126,6 +147,13 @@ SetEndpointGroupName sets EndpointGroupName field to given value.
 `func (o *CreateEndpointRequest) HasEndpointGroupName() bool`
 
 HasEndpointGroupName returns a boolean if a field has been set.
+
+### SetEndpointGroupNameNil
+
+`func (o *CreateEndpointRequest) SetEndpointGroupNameNil()`
+
+SetEndpointGroupNameNil sets EndpointGroupName to an explicit JSON null when marshaled, overriding any value previously set with SetEndpointGroupName. Calling SetEndpointGroupName again clears the null override.
+
 ### GetEndpoints
 
 `func (o *CreateEndpointRequest) GetEndpoints() []CreateGCPForwardingRuleRequest`
@@ -150,6 +178,13 @@ SetEndpoints sets Endpoints field to given value.
 `func (o *CreateEndpointRequest) HasEndpoints() bool`
 
 HasEndpoints returns a boolean if a field has been set.
+
+### SetEndpointsNil
+
+`func (o *CreateEndpointRequest) SetEndpointsNil()`
+
+SetEndpointsNil sets Endpoints to an explicit JSON null when marshaled, overriding any value previously set with SetEndpoints. Calling SetEndpoints again clears the null override.
+
 ### GetGcpProjectId
 
 `func (o *CreateEndpointRequest) GetGcpProjectId() string`
@@ -174,6 +209,13 @@ SetGcpProjectId sets GcpProjectId field to given value.
 `func (o *CreateEndpointRequest) HasGcpProjectId() bool`
 
 HasGcpProjectId returns a boolean if a field has been set.
+
+### SetGcpProjectIdNil
+
+`func (o *CreateEndpointRequest) SetGcpProjectIdNil()`
+
+SetGcpProjectIdNil sets GcpProjectId to an explicit JSON null when marshaled, overriding any value previously set with SetGcpProjectId. Calling SetGcpProjectId again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -29,6 +29,15 @@ type UserCert struct {
 	// Subject Alternative Name associated with this certificate. This parameter expresses its value as a distinguished name as defined in RFC 2253.
 	// Read only field.
 	Subject *string `json:"subject,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *UserCert) MarshalJSON() ([]byte, error) {
+	type noMethod UserCert
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewUserCert instantiates a new UserCert object
@@ -83,6 +92,13 @@ func (o *UserCert) HasId() bool {
 // SetId gets a reference to the given int64 and assigns it to the Id field.
 func (o *UserCert) SetId(v int64) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *UserCert) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
@@ -116,6 +132,13 @@ func (o *UserCert) HasCreatedAt() bool {
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *UserCert) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
+	o.NullFields = removeNullField(o.NullFields, "CreatedAt")
+}
+
+// SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled.
+func (o *UserCert) SetCreatedAtNil() {
+	o.CreatedAt = nil
+	o.NullFields = addNullField(o.NullFields, "CreatedAt")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -149,6 +172,13 @@ func (o *UserCert) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *UserCert) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *UserCert) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -182,6 +212,13 @@ func (o *UserCert) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UserCert) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *UserCert) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetMonthsUntilExpiration returns the MonthsUntilExpiration field value if set, zero value otherwise
@@ -215,6 +252,13 @@ func (o *UserCert) HasMonthsUntilExpiration() bool {
 // SetMonthsUntilExpiration gets a reference to the given int and assigns it to the MonthsUntilExpiration field.
 func (o *UserCert) SetMonthsUntilExpiration(v int) {
 	o.MonthsUntilExpiration = &v
+	o.NullFields = removeNullField(o.NullFields, "MonthsUntilExpiration")
+}
+
+// SetMonthsUntilExpirationNil sets MonthsUntilExpiration to an explicit JSON null when marshaled.
+func (o *UserCert) SetMonthsUntilExpirationNil() {
+	o.MonthsUntilExpiration = nil
+	o.NullFields = addNullField(o.NullFields, "MonthsUntilExpiration")
 }
 
 // GetNotAfter returns the NotAfter field value if set, zero value otherwise
@@ -248,6 +292,13 @@ func (o *UserCert) HasNotAfter() bool {
 // SetNotAfter gets a reference to the given time.Time and assigns it to the NotAfter field.
 func (o *UserCert) SetNotAfter(v time.Time) {
 	o.NotAfter = &v
+	o.NullFields = removeNullField(o.NullFields, "NotAfter")
+}
+
+// SetNotAfterNil sets NotAfter to an explicit JSON null when marshaled.
+func (o *UserCert) SetNotAfterNil() {
+	o.NotAfter = nil
+	o.NullFields = addNullField(o.NullFields, "NotAfter")
 }
 
 // GetSubject returns the Subject field value if set, zero value otherwise
@@ -281,4 +332,11 @@ func (o *UserCert) HasSubject() bool {
 // SetSubject gets a reference to the given string and assigns it to the Subject field.
 func (o *UserCert) SetSubject(v string) {
 	o.Subject = &v
+	o.NullFields = removeNullField(o.NullFields, "Subject")
+}
+
+// SetSubjectNil sets Subject to an explicit JSON null when marshaled.
+func (o *UserCert) SetSubjectNil() {
+	o.Subject = nil
+	o.NullFields = addNullField(o.NullFields, "Subject")
 }

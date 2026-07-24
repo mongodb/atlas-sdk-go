@@ -57,6 +57,13 @@ SetClusterId sets ClusterId field to given value.
 `func (o *ApiAtlasCheckpoint) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
+
+### SetClusterIdNil
+
+`func (o *ApiAtlasCheckpoint) SetClusterIdNil()`
+
+SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled, overriding any value previously set with SetClusterId. Calling SetClusterId again clears the null override.
+
 ### GetCompleted
 
 `func (o *ApiAtlasCheckpoint) GetCompleted() time.Time`
@@ -81,6 +88,13 @@ SetCompleted sets Completed field to given value.
 `func (o *ApiAtlasCheckpoint) HasCompleted() bool`
 
 HasCompleted returns a boolean if a field has been set.
+
+### SetCompletedNil
+
+`func (o *ApiAtlasCheckpoint) SetCompletedNil()`
+
+SetCompletedNil sets Completed to an explicit JSON null when marshaled, overriding any value previously set with SetCompleted. Calling SetCompleted again clears the null override.
+
 ### GetGroupId
 
 `func (o *ApiAtlasCheckpoint) GetGroupId() string`
@@ -105,6 +119,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *ApiAtlasCheckpoint) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *ApiAtlasCheckpoint) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetId
 
 `func (o *ApiAtlasCheckpoint) GetId() string`
@@ -129,6 +150,13 @@ SetId sets Id field to given value.
 `func (o *ApiAtlasCheckpoint) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *ApiAtlasCheckpoint) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLinks
 
 `func (o *ApiAtlasCheckpoint) GetLinks() []Link`
@@ -153,6 +181,13 @@ SetLinks sets Links field to given value.
 `func (o *ApiAtlasCheckpoint) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *ApiAtlasCheckpoint) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetParts
 
 `func (o *ApiAtlasCheckpoint) GetParts() []ApiCheckpointPart`
@@ -177,6 +212,13 @@ SetParts sets Parts field to given value.
 `func (o *ApiAtlasCheckpoint) HasParts() bool`
 
 HasParts returns a boolean if a field has been set.
+
+### SetPartsNil
+
+`func (o *ApiAtlasCheckpoint) SetPartsNil()`
+
+SetPartsNil sets Parts to an explicit JSON null when marshaled, overriding any value previously set with SetParts. Calling SetParts again clears the null override.
+
 ### GetRestorable
 
 `func (o *ApiAtlasCheckpoint) GetRestorable() bool`
@@ -201,6 +243,13 @@ SetRestorable sets Restorable field to given value.
 `func (o *ApiAtlasCheckpoint) HasRestorable() bool`
 
 HasRestorable returns a boolean if a field has been set.
+
+### SetRestorableNil
+
+`func (o *ApiAtlasCheckpoint) SetRestorableNil()`
+
+SetRestorableNil sets Restorable to an explicit JSON null when marshaled, overriding any value previously set with SetRestorable. Calling SetRestorable again clears the null override.
+
 ### GetStarted
 
 `func (o *ApiAtlasCheckpoint) GetStarted() time.Time`
@@ -225,6 +274,13 @@ SetStarted sets Started field to given value.
 `func (o *ApiAtlasCheckpoint) HasStarted() bool`
 
 HasStarted returns a boolean if a field has been set.
+
+### SetStartedNil
+
+`func (o *ApiAtlasCheckpoint) SetStartedNil()`
+
+SetStartedNil sets Started to an explicit JSON null when marshaled, overriding any value previously set with SetStarted. Calling SetStarted again clears the null override.
+
 ### GetTimestamp
 
 `func (o *ApiAtlasCheckpoint) GetTimestamp() time.Time`
@@ -249,6 +305,13 @@ SetTimestamp sets Timestamp field to given value.
 `func (o *ApiAtlasCheckpoint) HasTimestamp() bool`
 
 HasTimestamp returns a boolean if a field has been set.
+
+### SetTimestampNil
+
+`func (o *ApiAtlasCheckpoint) SetTimestampNil()`
+
+SetTimestampNil sets Timestamp to an explicit JSON null when marshaled, overriding any value previously set with SetTimestamp. Calling SetTimestamp again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -10,6 +10,15 @@ type CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId struct {
 	// Unique 24-hexadecimal digit string that identifies your project.
 	// Read only field.
 	GroupId *string `json:"groupId,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) MarshalJSON() ([]byte, error) {
+	type noMethod CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudProviderAccessFeatureUsagePushBasedLogExportFeatureId instantiates a new CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId object
@@ -60,6 +69,13 @@ func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) HasBucketNa
 // SetBucketName gets a reference to the given string and assigns it to the BucketName field.
 func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) SetBucketName(v string) {
 	o.BucketName = &v
+	o.NullFields = removeNullField(o.NullFields, "BucketName")
+}
+
+// SetBucketNameNil sets BucketName to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) SetBucketNameNil() {
+	o.BucketName = nil
+	o.NullFields = addNullField(o.NullFields, "BucketName")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -93,4 +109,11 @@ func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) HasGroupId(
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }

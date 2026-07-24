@@ -39,6 +39,15 @@ type CloudDatabaseUser struct {
 	Username string `json:"username"`
 	// X.509 method that MongoDB Cloud uses to authenticate the database user.  - For application-managed X.509, specify `MANAGED`. - For self-managed X.509, specify `CUSTOMER`.  Users created with the `CUSTOMER` method require a Common Name (CN) in the **username** parameter. You must create externally authenticated users on the `$external` database.
 	X509Type *string `json:"x509Type,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CloudDatabaseUser) MarshalJSON() ([]byte, error) {
+	type noMethod CloudDatabaseUser
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudDatabaseUser instantiates a new CloudDatabaseUser object
@@ -111,6 +120,13 @@ func (o *CloudDatabaseUser) HasAwsIAMType() bool {
 // SetAwsIAMType gets a reference to the given string and assigns it to the AwsIAMType field.
 func (o *CloudDatabaseUser) SetAwsIAMType(v string) {
 	o.AwsIAMType = &v
+	o.NullFields = removeNullField(o.NullFields, "AwsIAMType")
+}
+
+// SetAwsIAMTypeNil sets AwsIAMType to an explicit JSON null when marshaled.
+func (o *CloudDatabaseUser) SetAwsIAMTypeNil() {
+	o.AwsIAMType = nil
+	o.NullFields = addNullField(o.NullFields, "AwsIAMType")
 }
 
 // GetDatabaseName returns the DatabaseName field value
@@ -168,6 +184,13 @@ func (o *CloudDatabaseUser) HasDeleteAfterDate() bool {
 // SetDeleteAfterDate gets a reference to the given time.Time and assigns it to the DeleteAfterDate field.
 func (o *CloudDatabaseUser) SetDeleteAfterDate(v time.Time) {
 	o.DeleteAfterDate = &v
+	o.NullFields = removeNullField(o.NullFields, "DeleteAfterDate")
+}
+
+// SetDeleteAfterDateNil sets DeleteAfterDate to an explicit JSON null when marshaled.
+func (o *CloudDatabaseUser) SetDeleteAfterDateNil() {
+	o.DeleteAfterDate = nil
+	o.NullFields = addNullField(o.NullFields, "DeleteAfterDate")
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise
@@ -201,6 +224,13 @@ func (o *CloudDatabaseUser) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *CloudDatabaseUser) SetDescription(v string) {
 	o.Description = &v
+	o.NullFields = removeNullField(o.NullFields, "Description")
+}
+
+// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
+func (o *CloudDatabaseUser) SetDescriptionNil() {
+	o.Description = nil
+	o.NullFields = addNullField(o.NullFields, "Description")
 }
 
 // GetGroupId returns the GroupId field value
@@ -258,6 +288,13 @@ func (o *CloudDatabaseUser) HasLabels() bool {
 // SetLabels gets a reference to the given []ComponentLabel and assigns it to the Labels field.
 func (o *CloudDatabaseUser) SetLabels(v []ComponentLabel) {
 	o.Labels = &v
+	o.NullFields = removeNullField(o.NullFields, "Labels")
+}
+
+// SetLabelsNil sets Labels to an explicit JSON null when marshaled.
+func (o *CloudDatabaseUser) SetLabelsNil() {
+	o.Labels = nil
+	o.NullFields = addNullField(o.NullFields, "Labels")
 }
 
 // GetLdapAuthType returns the LdapAuthType field value if set, zero value otherwise
@@ -291,6 +328,13 @@ func (o *CloudDatabaseUser) HasLdapAuthType() bool {
 // SetLdapAuthType gets a reference to the given string and assigns it to the LdapAuthType field.
 func (o *CloudDatabaseUser) SetLdapAuthType(v string) {
 	o.LdapAuthType = &v
+	o.NullFields = removeNullField(o.NullFields, "LdapAuthType")
+}
+
+// SetLdapAuthTypeNil sets LdapAuthType to an explicit JSON null when marshaled.
+func (o *CloudDatabaseUser) SetLdapAuthTypeNil() {
+	o.LdapAuthType = nil
+	o.NullFields = addNullField(o.NullFields, "LdapAuthType")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -324,6 +368,13 @@ func (o *CloudDatabaseUser) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *CloudDatabaseUser) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *CloudDatabaseUser) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetOidcAuthType returns the OidcAuthType field value if set, zero value otherwise
@@ -357,6 +408,13 @@ func (o *CloudDatabaseUser) HasOidcAuthType() bool {
 // SetOidcAuthType gets a reference to the given string and assigns it to the OidcAuthType field.
 func (o *CloudDatabaseUser) SetOidcAuthType(v string) {
 	o.OidcAuthType = &v
+	o.NullFields = removeNullField(o.NullFields, "OidcAuthType")
+}
+
+// SetOidcAuthTypeNil sets OidcAuthType to an explicit JSON null when marshaled.
+func (o *CloudDatabaseUser) SetOidcAuthTypeNil() {
+	o.OidcAuthType = nil
+	o.NullFields = addNullField(o.NullFields, "OidcAuthType")
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise
@@ -390,6 +448,13 @@ func (o *CloudDatabaseUser) HasPassword() bool {
 // SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *CloudDatabaseUser) SetPassword(v string) {
 	o.Password = &v
+	o.NullFields = removeNullField(o.NullFields, "Password")
+}
+
+// SetPasswordNil sets Password to an explicit JSON null when marshaled.
+func (o *CloudDatabaseUser) SetPasswordNil() {
+	o.Password = nil
+	o.NullFields = addNullField(o.NullFields, "Password")
 }
 
 // GetRoles returns the Roles field value
@@ -447,6 +512,13 @@ func (o *CloudDatabaseUser) HasScopes() bool {
 // SetScopes gets a reference to the given []UserScope and assigns it to the Scopes field.
 func (o *CloudDatabaseUser) SetScopes(v []UserScope) {
 	o.Scopes = &v
+	o.NullFields = removeNullField(o.NullFields, "Scopes")
+}
+
+// SetScopesNil sets Scopes to an explicit JSON null when marshaled.
+func (o *CloudDatabaseUser) SetScopesNil() {
+	o.Scopes = nil
+	o.NullFields = addNullField(o.NullFields, "Scopes")
 }
 
 // GetUsername returns the Username field value
@@ -504,4 +576,11 @@ func (o *CloudDatabaseUser) HasX509Type() bool {
 // SetX509Type gets a reference to the given string and assigns it to the X509Type field.
 func (o *CloudDatabaseUser) SetX509Type(v string) {
 	o.X509Type = &v
+	o.NullFields = removeNullField(o.NullFields, "X509Type")
+}
+
+// SetX509TypeNil sets X509Type to an explicit JSON null when marshaled.
+func (o *CloudDatabaseUser) SetX509TypeNil() {
+	o.X509Type = nil
+	o.NullFields = addNullField(o.NullFields, "X509Type")
 }

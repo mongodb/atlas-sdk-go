@@ -50,6 +50,13 @@ SetClusters sets Clusters field to given value.
 
 HasClusters returns a boolean if a field has been set.
 
+### SetClustersNil
+
+`func (o *GroupService) SetClustersNil()`
+
+SetClustersNil sets Clusters to an explicit JSON null when marshaled, overriding any value previously set with SetClusters. Calling SetClusters again clears the null override.
+
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

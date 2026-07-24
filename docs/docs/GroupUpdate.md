@@ -51,6 +51,13 @@ SetName sets Name field to given value.
 `func (o *GroupUpdate) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *GroupUpdate) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetTags
 
 `func (o *GroupUpdate) GetTags() []ResourceTag`
@@ -75,6 +82,13 @@ SetTags sets Tags field to given value.
 `func (o *GroupUpdate) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### SetTagsNil
+
+`func (o *GroupUpdate) SetTagsNil()`
+
+SetTagsNil sets Tags to an explicit JSON null when marshaled, overriding any value previously set with SetTags. Calling SetTags again clears the null override.
+
 ### GetWithDefaultAlertsSettings
 
 `func (o *GroupUpdate) GetWithDefaultAlertsSettings() bool`
@@ -99,6 +113,13 @@ SetWithDefaultAlertsSettings sets WithDefaultAlertsSettings field to given value
 `func (o *GroupUpdate) HasWithDefaultAlertsSettings() bool`
 
 HasWithDefaultAlertsSettings returns a boolean if a field has been set.
+
+### SetWithDefaultAlertsSettingsNil
+
+`func (o *GroupUpdate) SetWithDefaultAlertsSettingsNil()`
+
+SetWithDefaultAlertsSettingsNil sets WithDefaultAlertsSettings to an explicit JSON null when marshaled, overriding any value previously set with SetWithDefaultAlertsSettings. Calling SetWithDefaultAlertsSettings again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

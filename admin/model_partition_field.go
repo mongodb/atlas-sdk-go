@@ -11,6 +11,15 @@ type PartitionField struct {
 	FieldType *string `json:"fieldType,omitempty"`
 	// Sequence in which MongoDB Cloud slices the collection data to create partitions. The resource expresses this sequence starting with zero. The value of the `criteria.dateField` parameter defaults as the first item in the partition sequence.
 	Order int `json:"order"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PartitionField) MarshalJSON() ([]byte, error) {
+	type noMethod PartitionField
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPartitionField instantiates a new PartitionField object
@@ -89,6 +98,13 @@ func (o *PartitionField) HasFieldType() bool {
 // SetFieldType gets a reference to the given string and assigns it to the FieldType field.
 func (o *PartitionField) SetFieldType(v string) {
 	o.FieldType = &v
+	o.NullFields = removeNullField(o.NullFields, "FieldType")
+}
+
+// SetFieldTypeNil sets FieldType to an explicit JSON null when marshaled.
+func (o *PartitionField) SetFieldTypeNil() {
+	o.FieldType = nil
+	o.NullFields = addNullField(o.NullFields, "FieldType")
 }
 
 // GetOrder returns the Order field value

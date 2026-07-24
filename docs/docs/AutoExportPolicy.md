@@ -50,6 +50,13 @@ SetExportBucketId sets ExportBucketId field to given value.
 `func (o *AutoExportPolicy) HasExportBucketId() bool`
 
 HasExportBucketId returns a boolean if a field has been set.
+
+### SetExportBucketIdNil
+
+`func (o *AutoExportPolicy) SetExportBucketIdNil()`
+
+SetExportBucketIdNil sets ExportBucketId to an explicit JSON null when marshaled, overriding any value previously set with SetExportBucketId. Calling SetExportBucketId again clears the null override.
+
 ### GetFrequencyType
 
 `func (o *AutoExportPolicy) GetFrequencyType() string`
@@ -74,6 +81,13 @@ SetFrequencyType sets FrequencyType field to given value.
 `func (o *AutoExportPolicy) HasFrequencyType() bool`
 
 HasFrequencyType returns a boolean if a field has been set.
+
+### SetFrequencyTypeNil
+
+`func (o *AutoExportPolicy) SetFrequencyTypeNil()`
+
+SetFrequencyTypeNil sets FrequencyType to an explicit JSON null when marshaled, overriding any value previously set with SetFrequencyType. Calling SetFrequencyType again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

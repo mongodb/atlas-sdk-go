@@ -19,6 +19,15 @@ type ApiError struct {
 	// Application error message returned with this error.
 	// Read only field.
 	Reason *string `json:"reason,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiError) MarshalJSON() ([]byte, error) {
+	type noMethod ApiError
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiError instantiates a new ApiError object
@@ -71,6 +80,13 @@ func (o *ApiError) HasBadRequestDetail() bool {
 // SetBadRequestDetail gets a reference to the given BadRequestDetail and assigns it to the BadRequestDetail field.
 func (o *ApiError) SetBadRequestDetail(v BadRequestDetail) {
 	o.BadRequestDetail = &v
+	o.NullFields = removeNullField(o.NullFields, "BadRequestDetail")
+}
+
+// SetBadRequestDetailNil sets BadRequestDetail to an explicit JSON null when marshaled.
+func (o *ApiError) SetBadRequestDetailNil() {
+	o.BadRequestDetail = nil
+	o.NullFields = addNullField(o.NullFields, "BadRequestDetail")
 }
 
 // GetDetail returns the Detail field value if set, zero value otherwise
@@ -104,6 +120,13 @@ func (o *ApiError) HasDetail() bool {
 // SetDetail gets a reference to the given string and assigns it to the Detail field.
 func (o *ApiError) SetDetail(v string) {
 	o.Detail = &v
+	o.NullFields = removeNullField(o.NullFields, "Detail")
+}
+
+// SetDetailNil sets Detail to an explicit JSON null when marshaled.
+func (o *ApiError) SetDetailNil() {
+	o.Detail = nil
+	o.NullFields = addNullField(o.NullFields, "Detail")
 }
 
 // GetError returns the Error field value
@@ -185,6 +208,13 @@ func (o *ApiError) HasParameters() bool {
 // SetParameters gets a reference to the given []any and assigns it to the Parameters field.
 func (o *ApiError) SetParameters(v []any) {
 	o.Parameters = &v
+	o.NullFields = removeNullField(o.NullFields, "Parameters")
+}
+
+// SetParametersNil sets Parameters to an explicit JSON null when marshaled.
+func (o *ApiError) SetParametersNil() {
+	o.Parameters = nil
+	o.NullFields = addNullField(o.NullFields, "Parameters")
 }
 
 // GetReason returns the Reason field value if set, zero value otherwise
@@ -218,4 +248,11 @@ func (o *ApiError) HasReason() bool {
 // SetReason gets a reference to the given string and assigns it to the Reason field.
 func (o *ApiError) SetReason(v string) {
 	o.Reason = &v
+	o.NullFields = removeNullField(o.NullFields, "Reason")
+}
+
+// SetReasonNil sets Reason to an explicit JSON null when marshaled.
+func (o *ApiError) SetReasonNil() {
+	o.Reason = nil
+	o.NullFields = addNullField(o.NullFields, "Reason")
 }

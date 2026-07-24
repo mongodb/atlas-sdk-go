@@ -50,6 +50,13 @@ SetDate sets Date field to given value.
 `func (o *ApiBSONTimestamp) HasDate() bool`
 
 HasDate returns a boolean if a field has been set.
+
+### SetDateNil
+
+`func (o *ApiBSONTimestamp) SetDateNil()`
+
+SetDateNil sets Date to an explicit JSON null when marshaled, overriding any value previously set with SetDate. Calling SetDate again clears the null override.
+
 ### GetIncrement
 
 `func (o *ApiBSONTimestamp) GetIncrement() int`
@@ -74,6 +81,13 @@ SetIncrement sets Increment field to given value.
 `func (o *ApiBSONTimestamp) HasIncrement() bool`
 
 HasIncrement returns a boolean if a field has been set.
+
+### SetIncrementNil
+
+`func (o *ApiBSONTimestamp) SetIncrementNil()`
+
+SetIncrementNil sets Increment to an explicit JSON null when marshaled, overriding any value previously set with SetIncrement. Calling SetIncrement again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

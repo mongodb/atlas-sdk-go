@@ -51,6 +51,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *CloudAccessRoleAssignment) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *CloudAccessRoleAssignment) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetOrgId
 
 `func (o *CloudAccessRoleAssignment) GetOrgId() string`
@@ -75,6 +82,13 @@ SetOrgId sets OrgId field to given value.
 `func (o *CloudAccessRoleAssignment) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
+
+### SetOrgIdNil
+
+`func (o *CloudAccessRoleAssignment) SetOrgIdNil()`
+
+SetOrgIdNil sets OrgId to an explicit JSON null when marshaled, overriding any value previously set with SetOrgId. Calling SetOrgId again clears the null override.
+
 ### GetRoleName
 
 `func (o *CloudAccessRoleAssignment) GetRoleName() string`
@@ -99,6 +113,13 @@ SetRoleName sets RoleName field to given value.
 `func (o *CloudAccessRoleAssignment) HasRoleName() bool`
 
 HasRoleName returns a boolean if a field has been set.
+
+### SetRoleNameNil
+
+`func (o *CloudAccessRoleAssignment) SetRoleNameNil()`
+
+SetRoleNameNil sets RoleName to an explicit JSON null when marshaled, overriding any value previously set with SetRoleName. Calling SetRoleName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

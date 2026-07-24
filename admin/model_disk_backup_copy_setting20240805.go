@@ -19,6 +19,15 @@ type DiskBackupCopySetting20240805 struct {
 	ShouldCopyOplogs *bool `json:"shouldCopyOplogs,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the zone in a cluster. For global clusters, there can be multiple zones to choose from. For sharded clusters and replica set clusters, there is only one zone in the cluster. To find the Zone Id, do a GET request to Return One Cluster from One Project and consult the `replicationSpecs` array.
 	ZoneId string `json:"zoneId"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DiskBackupCopySetting20240805) MarshalJSON() ([]byte, error) {
+	type noMethod DiskBackupCopySetting20240805
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupCopySetting20240805 instantiates a new DiskBackupCopySetting20240805 object
@@ -70,6 +79,13 @@ func (o *DiskBackupCopySetting20240805) HasCloudProvider() bool {
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *DiskBackupCopySetting20240805) SetCloudProvider(v string) {
 	o.CloudProvider = &v
+	o.NullFields = removeNullField(o.NullFields, "CloudProvider")
+}
+
+// SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled.
+func (o *DiskBackupCopySetting20240805) SetCloudProviderNil() {
+	o.CloudProvider = nil
+	o.NullFields = addNullField(o.NullFields, "CloudProvider")
 }
 
 // GetCopyPolicyItems returns the CopyPolicyItems field value if set, zero value otherwise
@@ -103,6 +119,13 @@ func (o *DiskBackupCopySetting20240805) HasCopyPolicyItems() bool {
 // SetCopyPolicyItems gets a reference to the given []DiskBackupCopyPolicyItem and assigns it to the CopyPolicyItems field.
 func (o *DiskBackupCopySetting20240805) SetCopyPolicyItems(v []DiskBackupCopyPolicyItem) {
 	o.CopyPolicyItems = &v
+	o.NullFields = removeNullField(o.NullFields, "CopyPolicyItems")
+}
+
+// SetCopyPolicyItemsNil sets CopyPolicyItems to an explicit JSON null when marshaled.
+func (o *DiskBackupCopySetting20240805) SetCopyPolicyItemsNil() {
+	o.CopyPolicyItems = nil
+	o.NullFields = addNullField(o.NullFields, "CopyPolicyItems")
 }
 
 // GetFrequencies returns the Frequencies field value if set, zero value otherwise
@@ -139,6 +162,13 @@ func (o *DiskBackupCopySetting20240805) HasFrequencies() bool {
 // Deprecated
 func (o *DiskBackupCopySetting20240805) SetFrequencies(v []string) {
 	o.Frequencies = &v
+	o.NullFields = removeNullField(o.NullFields, "Frequencies")
+}
+
+// SetFrequenciesNil sets Frequencies to an explicit JSON null when marshaled.
+func (o *DiskBackupCopySetting20240805) SetFrequenciesNil() {
+	o.Frequencies = nil
+	o.NullFields = addNullField(o.NullFields, "Frequencies")
 }
 
 // GetLastNumberOfSnapshots returns the LastNumberOfSnapshots field value if set, zero value otherwise
@@ -172,6 +202,13 @@ func (o *DiskBackupCopySetting20240805) HasLastNumberOfSnapshots() bool {
 // SetLastNumberOfSnapshots gets a reference to the given int and assigns it to the LastNumberOfSnapshots field.
 func (o *DiskBackupCopySetting20240805) SetLastNumberOfSnapshots(v int) {
 	o.LastNumberOfSnapshots = &v
+	o.NullFields = removeNullField(o.NullFields, "LastNumberOfSnapshots")
+}
+
+// SetLastNumberOfSnapshotsNil sets LastNumberOfSnapshots to an explicit JSON null when marshaled.
+func (o *DiskBackupCopySetting20240805) SetLastNumberOfSnapshotsNil() {
+	o.LastNumberOfSnapshots = nil
+	o.NullFields = addNullField(o.NullFields, "LastNumberOfSnapshots")
 }
 
 // GetRegionName returns the RegionName field value if set, zero value otherwise
@@ -205,6 +242,13 @@ func (o *DiskBackupCopySetting20240805) HasRegionName() bool {
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *DiskBackupCopySetting20240805) SetRegionName(v string) {
 	o.RegionName = &v
+	o.NullFields = removeNullField(o.NullFields, "RegionName")
+}
+
+// SetRegionNameNil sets RegionName to an explicit JSON null when marshaled.
+func (o *DiskBackupCopySetting20240805) SetRegionNameNil() {
+	o.RegionName = nil
+	o.NullFields = addNullField(o.NullFields, "RegionName")
 }
 
 // GetShouldCopyOplogs returns the ShouldCopyOplogs field value if set, zero value otherwise
@@ -238,6 +282,13 @@ func (o *DiskBackupCopySetting20240805) HasShouldCopyOplogs() bool {
 // SetShouldCopyOplogs gets a reference to the given bool and assigns it to the ShouldCopyOplogs field.
 func (o *DiskBackupCopySetting20240805) SetShouldCopyOplogs(v bool) {
 	o.ShouldCopyOplogs = &v
+	o.NullFields = removeNullField(o.NullFields, "ShouldCopyOplogs")
+}
+
+// SetShouldCopyOplogsNil sets ShouldCopyOplogs to an explicit JSON null when marshaled.
+func (o *DiskBackupCopySetting20240805) SetShouldCopyOplogsNil() {
+	o.ShouldCopyOplogs = nil
+	o.NullFields = addNullField(o.NullFields, "ShouldCopyOplogs")
 }
 
 // GetZoneId returns the ZoneId field value

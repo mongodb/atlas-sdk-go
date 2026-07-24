@@ -55,6 +55,13 @@ SetEffectiveTargetNamespace sets EffectiveTargetNamespace field to given value.
 `func (o *ApiAtlasCollectionRestoreCollectionStateResponse) HasEffectiveTargetNamespace() bool`
 
 HasEffectiveTargetNamespace returns a boolean if a field has been set.
+
+### SetEffectiveTargetNamespaceNil
+
+`func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetEffectiveTargetNamespaceNil()`
+
+SetEffectiveTargetNamespaceNil sets EffectiveTargetNamespace to an explicit JSON null when marshaled, overriding any value previously set with SetEffectiveTargetNamespace. Calling SetEffectiveTargetNamespace again clears the null override.
+
 ### GetIndexStatus
 
 `func (o *ApiAtlasCollectionRestoreCollectionStateResponse) GetIndexStatus() ApiAtlasCollectionRestoreIndexStatus`
@@ -79,6 +86,13 @@ SetIndexStatus sets IndexStatus field to given value.
 `func (o *ApiAtlasCollectionRestoreCollectionStateResponse) HasIndexStatus() bool`
 
 HasIndexStatus returns a boolean if a field has been set.
+
+### SetIndexStatusNil
+
+`func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetIndexStatusNil()`
+
+SetIndexStatusNil sets IndexStatus to an explicit JSON null when marshaled, overriding any value previously set with SetIndexStatus. Calling SetIndexStatus again clears the null override.
+
 ### GetRestoredDocuments
 
 `func (o *ApiAtlasCollectionRestoreCollectionStateResponse) GetRestoredDocuments() int64`
@@ -103,6 +117,13 @@ SetRestoredDocuments sets RestoredDocuments field to given value.
 `func (o *ApiAtlasCollectionRestoreCollectionStateResponse) HasRestoredDocuments() bool`
 
 HasRestoredDocuments returns a boolean if a field has been set.
+
+### SetRestoredDocumentsNil
+
+`func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetRestoredDocumentsNil()`
+
+SetRestoredDocumentsNil sets RestoredDocuments to an explicit JSON null when marshaled, overriding any value previously set with SetRestoredDocuments. Calling SetRestoredDocuments again clears the null override.
+
 ### GetSourceNamespace
 
 `func (o *ApiAtlasCollectionRestoreCollectionStateResponse) GetSourceNamespace() string`
@@ -127,6 +148,13 @@ SetSourceNamespace sets SourceNamespace field to given value.
 `func (o *ApiAtlasCollectionRestoreCollectionStateResponse) HasSourceNamespace() bool`
 
 HasSourceNamespace returns a boolean if a field has been set.
+
+### SetSourceNamespaceNil
+
+`func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetSourceNamespaceNil()`
+
+SetSourceNamespaceNil sets SourceNamespace to an explicit JSON null when marshaled, overriding any value previously set with SetSourceNamespace. Calling SetSourceNamespace again clears the null override.
+
 ### GetState
 
 `func (o *ApiAtlasCollectionRestoreCollectionStateResponse) GetState() string`
@@ -151,6 +179,13 @@ SetState sets State field to given value.
 `func (o *ApiAtlasCollectionRestoreCollectionStateResponse) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### SetStateNil
+
+`func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetStateNil()`
+
+SetStateNil sets State to an explicit JSON null when marshaled, overriding any value previously set with SetState. Calling SetState again clears the null override.
+
 ### GetTargetNamespace
 
 `func (o *ApiAtlasCollectionRestoreCollectionStateResponse) GetTargetNamespace() string`
@@ -175,6 +210,13 @@ SetTargetNamespace sets TargetNamespace field to given value.
 `func (o *ApiAtlasCollectionRestoreCollectionStateResponse) HasTargetNamespace() bool`
 
 HasTargetNamespace returns a boolean if a field has been set.
+
+### SetTargetNamespaceNil
+
+`func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetTargetNamespaceNil()`
+
+SetTargetNamespaceNil sets TargetNamespace to an explicit JSON null when marshaled, overriding any value previously set with SetTargetNamespace. Calling SetTargetNamespace again clears the null override.
+
 ### GetTotalDocuments
 
 `func (o *ApiAtlasCollectionRestoreCollectionStateResponse) GetTotalDocuments() int64`
@@ -199,6 +241,13 @@ SetTotalDocuments sets TotalDocuments field to given value.
 `func (o *ApiAtlasCollectionRestoreCollectionStateResponse) HasTotalDocuments() bool`
 
 HasTotalDocuments returns a boolean if a field has been set.
+
+### SetTotalDocumentsNil
+
+`func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetTotalDocumentsNil()`
+
+SetTotalDocumentsNil sets TotalDocuments to an explicit JSON null when marshaled, overriding any value previously set with SetTotalDocuments. Calling SetTotalDocuments again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

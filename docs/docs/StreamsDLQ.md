@@ -52,6 +52,13 @@ SetColl sets Coll field to given value.
 `func (o *StreamsDLQ) HasColl() bool`
 
 HasColl returns a boolean if a field has been set.
+
+### SetCollNil
+
+`func (o *StreamsDLQ) SetCollNil()`
+
+SetCollNil sets Coll to an explicit JSON null when marshaled, overriding any value previously set with SetColl. Calling SetColl again clears the null override.
+
 ### GetConnectionName
 
 `func (o *StreamsDLQ) GetConnectionName() string`
@@ -76,6 +83,13 @@ SetConnectionName sets ConnectionName field to given value.
 `func (o *StreamsDLQ) HasConnectionName() bool`
 
 HasConnectionName returns a boolean if a field has been set.
+
+### SetConnectionNameNil
+
+`func (o *StreamsDLQ) SetConnectionNameNil()`
+
+SetConnectionNameNil sets ConnectionName to an explicit JSON null when marshaled, overriding any value previously set with SetConnectionName. Calling SetConnectionName again clears the null override.
+
 ### GetDb
 
 `func (o *StreamsDLQ) GetDb() string`
@@ -100,6 +114,13 @@ SetDb sets Db field to given value.
 `func (o *StreamsDLQ) HasDb() bool`
 
 HasDb returns a boolean if a field has been set.
+
+### SetDbNil
+
+`func (o *StreamsDLQ) SetDbNil()`
+
+SetDbNil sets Db to an explicit JSON null when marshaled, overriding any value previously set with SetDb. Calling SetDb again clears the null override.
+
 ### GetLinks
 
 `func (o *StreamsDLQ) GetLinks() []Link`
@@ -124,6 +145,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsDLQ) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsDLQ) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

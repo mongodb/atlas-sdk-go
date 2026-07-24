@@ -72,6 +72,13 @@ SetHasRoleMappings sets HasRoleMappings field to given value.
 `func (o *OrgFederationSettings) HasHasRoleMappings() bool`
 
 HasHasRoleMappings returns a boolean if a field has been set.
+
+### SetHasRoleMappingsNil
+
+`func (o *OrgFederationSettings) SetHasRoleMappingsNil()`
+
+SetHasRoleMappingsNil sets HasRoleMappings to an explicit JSON null when marshaled, overriding any value previously set with SetHasRoleMappings. Calling SetHasRoleMappings again clears the null override.
+
 ### GetId
 
 `func (o *OrgFederationSettings) GetId() string`
@@ -96,6 +103,13 @@ SetId sets Id field to given value.
 `func (o *OrgFederationSettings) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *OrgFederationSettings) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetIdentityProviderId
 
 `func (o *OrgFederationSettings) GetIdentityProviderId() string`
@@ -120,6 +134,13 @@ SetIdentityProviderId sets IdentityProviderId field to given value.
 `func (o *OrgFederationSettings) HasIdentityProviderId() bool`
 
 HasIdentityProviderId returns a boolean if a field has been set.
+
+### SetIdentityProviderIdNil
+
+`func (o *OrgFederationSettings) SetIdentityProviderIdNil()`
+
+SetIdentityProviderIdNil sets IdentityProviderId to an explicit JSON null when marshaled, overriding any value previously set with SetIdentityProviderId. Calling SetIdentityProviderId again clears the null override.
+
 ### GetIdentityProviderStatus
 
 `func (o *OrgFederationSettings) GetIdentityProviderStatus() string`
@@ -144,6 +165,13 @@ SetIdentityProviderStatus sets IdentityProviderStatus field to given value.
 `func (o *OrgFederationSettings) HasIdentityProviderStatus() bool`
 
 HasIdentityProviderStatus returns a boolean if a field has been set.
+
+### SetIdentityProviderStatusNil
+
+`func (o *OrgFederationSettings) SetIdentityProviderStatusNil()`
+
+SetIdentityProviderStatusNil sets IdentityProviderStatus to an explicit JSON null when marshaled, overriding any value previously set with SetIdentityProviderStatus. Calling SetIdentityProviderStatus again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

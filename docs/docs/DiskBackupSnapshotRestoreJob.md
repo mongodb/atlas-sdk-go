@@ -67,6 +67,13 @@ SetCancelled sets Cancelled field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasCancelled() bool`
 
 HasCancelled returns a boolean if a field has been set.
+
+### SetCancelledNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetCancelledNil()`
+
+SetCancelledNil sets Cancelled to an explicit JSON null when marshaled, overriding any value previously set with SetCancelled. Calling SetCancelled again clears the null override.
+
 ### GetComponents
 
 `func (o *DiskBackupSnapshotRestoreJob) GetComponents() []DiskBackupRestoreMember`
@@ -91,6 +98,13 @@ SetComponents sets Components field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasComponents() bool`
 
 HasComponents returns a boolean if a field has been set.
+
+### SetComponentsNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetComponentsNil()`
+
+SetComponentsNil sets Components to an explicit JSON null when marshaled, overriding any value previously set with SetComponents. Calling SetComponents again clears the null override.
+
 ### GetDeliveryType
 
 `func (o *DiskBackupSnapshotRestoreJob) GetDeliveryType() string`
@@ -134,6 +148,13 @@ SetDeliveryUrl sets DeliveryUrl field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasDeliveryUrl() bool`
 
 HasDeliveryUrl returns a boolean if a field has been set.
+
+### SetDeliveryUrlNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetDeliveryUrlNil()`
+
+SetDeliveryUrlNil sets DeliveryUrl to an explicit JSON null when marshaled, overriding any value previously set with SetDeliveryUrl. Calling SetDeliveryUrl again clears the null override.
+
 ### GetDesiredTimestamp
 
 `func (o *DiskBackupSnapshotRestoreJob) GetDesiredTimestamp() ApiBSONTimestamp`
@@ -158,6 +179,13 @@ SetDesiredTimestamp sets DesiredTimestamp field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasDesiredTimestamp() bool`
 
 HasDesiredTimestamp returns a boolean if a field has been set.
+
+### SetDesiredTimestampNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetDesiredTimestampNil()`
+
+SetDesiredTimestampNil sets DesiredTimestamp to an explicit JSON null when marshaled, overriding any value previously set with SetDesiredTimestamp. Calling SetDesiredTimestamp again clears the null override.
+
 ### GetExpired
 
 `func (o *DiskBackupSnapshotRestoreJob) GetExpired() bool`
@@ -182,6 +210,13 @@ SetExpired sets Expired field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasExpired() bool`
 
 HasExpired returns a boolean if a field has been set.
+
+### SetExpiredNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetExpiredNil()`
+
+SetExpiredNil sets Expired to an explicit JSON null when marshaled, overriding any value previously set with SetExpired. Calling SetExpired again clears the null override.
+
 ### GetExpiresAt
 
 `func (o *DiskBackupSnapshotRestoreJob) GetExpiresAt() time.Time`
@@ -206,6 +241,13 @@ SetExpiresAt sets ExpiresAt field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasExpiresAt() bool`
 
 HasExpiresAt returns a boolean if a field has been set.
+
+### SetExpiresAtNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetExpiresAtNil()`
+
+SetExpiresAtNil sets ExpiresAt to an explicit JSON null when marshaled, overriding any value previously set with SetExpiresAt. Calling SetExpiresAt again clears the null override.
+
 ### GetFailed
 
 `func (o *DiskBackupSnapshotRestoreJob) GetFailed() bool`
@@ -230,6 +272,13 @@ SetFailed sets Failed field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasFailed() bool`
 
 HasFailed returns a boolean if a field has been set.
+
+### SetFailedNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetFailedNil()`
+
+SetFailedNil sets Failed to an explicit JSON null when marshaled, overriding any value previously set with SetFailed. Calling SetFailed again clears the null override.
+
 ### GetFinishedAt
 
 `func (o *DiskBackupSnapshotRestoreJob) GetFinishedAt() time.Time`
@@ -254,6 +303,13 @@ SetFinishedAt sets FinishedAt field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasFinishedAt() bool`
 
 HasFinishedAt returns a boolean if a field has been set.
+
+### SetFinishedAtNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetFinishedAtNil()`
+
+SetFinishedAtNil sets FinishedAt to an explicit JSON null when marshaled, overriding any value previously set with SetFinishedAt. Calling SetFinishedAt again clears the null override.
+
 ### GetId
 
 `func (o *DiskBackupSnapshotRestoreJob) GetId() string`
@@ -278,6 +334,13 @@ SetId sets Id field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLinks
 
 `func (o *DiskBackupSnapshotRestoreJob) GetLinks() []Link`
@@ -302,6 +365,13 @@ SetLinks sets Links field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetOplogInc
 
 `func (o *DiskBackupSnapshotRestoreJob) GetOplogInc() int`
@@ -326,6 +396,13 @@ SetOplogInc sets OplogInc field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasOplogInc() bool`
 
 HasOplogInc returns a boolean if a field has been set.
+
+### SetOplogIncNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetOplogIncNil()`
+
+SetOplogIncNil sets OplogInc to an explicit JSON null when marshaled, overriding any value previously set with SetOplogInc. Calling SetOplogInc again clears the null override.
+
 ### GetOplogTs
 
 `func (o *DiskBackupSnapshotRestoreJob) GetOplogTs() int`
@@ -350,6 +427,13 @@ SetOplogTs sets OplogTs field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasOplogTs() bool`
 
 HasOplogTs returns a boolean if a field has been set.
+
+### SetOplogTsNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetOplogTsNil()`
+
+SetOplogTsNil sets OplogTs to an explicit JSON null when marshaled, overriding any value previously set with SetOplogTs. Calling SetOplogTs again clears the null override.
+
 ### GetPointInTimeUTCSeconds
 
 `func (o *DiskBackupSnapshotRestoreJob) GetPointInTimeUTCSeconds() int`
@@ -374,6 +458,13 @@ SetPointInTimeUTCSeconds sets PointInTimeUTCSeconds field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasPointInTimeUTCSeconds() bool`
 
 HasPointInTimeUTCSeconds returns a boolean if a field has been set.
+
+### SetPointInTimeUTCSecondsNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetPointInTimeUTCSecondsNil()`
+
+SetPointInTimeUTCSecondsNil sets PointInTimeUTCSeconds to an explicit JSON null when marshaled, overriding any value previously set with SetPointInTimeUTCSeconds. Calling SetPointInTimeUTCSeconds again clears the null override.
+
 ### GetPrivateDownloadDeliveryUrls
 
 `func (o *DiskBackupSnapshotRestoreJob) GetPrivateDownloadDeliveryUrls() []ApiPrivateDownloadDeliveryUrl`
@@ -398,6 +489,13 @@ SetPrivateDownloadDeliveryUrls sets PrivateDownloadDeliveryUrls field to given v
 `func (o *DiskBackupSnapshotRestoreJob) HasPrivateDownloadDeliveryUrls() bool`
 
 HasPrivateDownloadDeliveryUrls returns a boolean if a field has been set.
+
+### SetPrivateDownloadDeliveryUrlsNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetPrivateDownloadDeliveryUrlsNil()`
+
+SetPrivateDownloadDeliveryUrlsNil sets PrivateDownloadDeliveryUrls to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateDownloadDeliveryUrls. Calling SetPrivateDownloadDeliveryUrls again clears the null override.
+
 ### GetSnapshotId
 
 `func (o *DiskBackupSnapshotRestoreJob) GetSnapshotId() string`
@@ -422,6 +520,13 @@ SetSnapshotId sets SnapshotId field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasSnapshotId() bool`
 
 HasSnapshotId returns a boolean if a field has been set.
+
+### SetSnapshotIdNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetSnapshotIdNil()`
+
+SetSnapshotIdNil sets SnapshotId to an explicit JSON null when marshaled, overriding any value previously set with SetSnapshotId. Calling SetSnapshotId again clears the null override.
+
 ### GetTargetClusterName
 
 `func (o *DiskBackupSnapshotRestoreJob) GetTargetClusterName() string`
@@ -446,6 +551,13 @@ SetTargetClusterName sets TargetClusterName field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasTargetClusterName() bool`
 
 HasTargetClusterName returns a boolean if a field has been set.
+
+### SetTargetClusterNameNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetTargetClusterNameNil()`
+
+SetTargetClusterNameNil sets TargetClusterName to an explicit JSON null when marshaled, overriding any value previously set with SetTargetClusterName. Calling SetTargetClusterName again clears the null override.
+
 ### GetTargetGroupId
 
 `func (o *DiskBackupSnapshotRestoreJob) GetTargetGroupId() string`
@@ -470,6 +582,13 @@ SetTargetGroupId sets TargetGroupId field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasTargetGroupId() bool`
 
 HasTargetGroupId returns a boolean if a field has been set.
+
+### SetTargetGroupIdNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetTargetGroupIdNil()`
+
+SetTargetGroupIdNil sets TargetGroupId to an explicit JSON null when marshaled, overriding any value previously set with SetTargetGroupId. Calling SetTargetGroupId again clears the null override.
+
 ### GetTimestamp
 
 `func (o *DiskBackupSnapshotRestoreJob) GetTimestamp() time.Time`
@@ -494,6 +613,13 @@ SetTimestamp sets Timestamp field to given value.
 `func (o *DiskBackupSnapshotRestoreJob) HasTimestamp() bool`
 
 HasTimestamp returns a boolean if a field has been set.
+
+### SetTimestampNil
+
+`func (o *DiskBackupSnapshotRestoreJob) SetTimestampNil()`
+
+SetTimestampNil sets Timestamp to an explicit JSON null when marshaled, overriding any value previously set with SetTimestamp. Calling SetTimestamp again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -51,6 +51,13 @@ SetDlq sets Dlq field to given value.
 `func (o *StreamsModifyStreamProcessorOptions) HasDlq() bool`
 
 HasDlq returns a boolean if a field has been set.
+
+### SetDlqNil
+
+`func (o *StreamsModifyStreamProcessorOptions) SetDlqNil()`
+
+SetDlqNil sets Dlq to an explicit JSON null when marshaled, overriding any value previously set with SetDlq. Calling SetDlq again clears the null override.
+
 ### GetLinks
 
 `func (o *StreamsModifyStreamProcessorOptions) GetLinks() []Link`
@@ -75,6 +82,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsModifyStreamProcessorOptions) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsModifyStreamProcessorOptions) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetResumeFromCheckpoint
 
 `func (o *StreamsModifyStreamProcessorOptions) GetResumeFromCheckpoint() bool`
@@ -99,6 +113,13 @@ SetResumeFromCheckpoint sets ResumeFromCheckpoint field to given value.
 `func (o *StreamsModifyStreamProcessorOptions) HasResumeFromCheckpoint() bool`
 
 HasResumeFromCheckpoint returns a boolean if a field has been set.
+
+### SetResumeFromCheckpointNil
+
+`func (o *StreamsModifyStreamProcessorOptions) SetResumeFromCheckpointNil()`
+
+SetResumeFromCheckpointNil sets ResumeFromCheckpoint to an explicit JSON null when marshaled, overriding any value previously set with SetResumeFromCheckpoint. Calling SetResumeFromCheckpoint again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

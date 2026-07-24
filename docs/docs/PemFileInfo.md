@@ -50,6 +50,13 @@ SetCertificates sets Certificates field to given value.
 `func (o *PemFileInfo) HasCertificates() bool`
 
 HasCertificates returns a boolean if a field has been set.
+
+### SetCertificatesNil
+
+`func (o *PemFileInfo) SetCertificatesNil()`
+
+SetCertificatesNil sets Certificates to an explicit JSON null when marshaled, overriding any value previously set with SetCertificates. Calling SetCertificates again clears the null override.
+
 ### GetFileName
 
 `func (o *PemFileInfo) GetFileName() string`
@@ -74,6 +81,13 @@ SetFileName sets FileName field to given value.
 `func (o *PemFileInfo) HasFileName() bool`
 
 HasFileName returns a boolean if a field has been set.
+
+### SetFileNameNil
+
+`func (o *PemFileInfo) SetFileNameNil()`
+
+SetFileNameNil sets FileName to an explicit JSON null when marshaled, overriding any value previously set with SetFileName. Calling SetFileName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

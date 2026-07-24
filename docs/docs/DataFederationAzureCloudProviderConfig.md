@@ -52,6 +52,13 @@ SetAtlasAppId sets AtlasAppId field to given value.
 `func (o *DataFederationAzureCloudProviderConfig) HasAtlasAppId() bool`
 
 HasAtlasAppId returns a boolean if a field has been set.
+
+### SetAtlasAppIdNil
+
+`func (o *DataFederationAzureCloudProviderConfig) SetAtlasAppIdNil()`
+
+SetAtlasAppIdNil sets AtlasAppId to an explicit JSON null when marshaled, overriding any value previously set with SetAtlasAppId. Calling SetAtlasAppId again clears the null override.
+
 ### GetRoleId
 
 `func (o *DataFederationAzureCloudProviderConfig) GetRoleId() string`
@@ -95,6 +102,13 @@ SetServicePrincipalId sets ServicePrincipalId field to given value.
 `func (o *DataFederationAzureCloudProviderConfig) HasServicePrincipalId() bool`
 
 HasServicePrincipalId returns a boolean if a field has been set.
+
+### SetServicePrincipalIdNil
+
+`func (o *DataFederationAzureCloudProviderConfig) SetServicePrincipalIdNil()`
+
+SetServicePrincipalIdNil sets ServicePrincipalId to an explicit JSON null when marshaled, overriding any value previously set with SetServicePrincipalId. Calling SetServicePrincipalId again clears the null override.
+
 ### GetTenantId
 
 `func (o *DataFederationAzureCloudProviderConfig) GetTenantId() string`
@@ -119,6 +133,13 @@ SetTenantId sets TenantId field to given value.
 `func (o *DataFederationAzureCloudProviderConfig) HasTenantId() bool`
 
 HasTenantId returns a boolean if a field has been set.
+
+### SetTenantIdNil
+
+`func (o *DataFederationAzureCloudProviderConfig) SetTenantIdNil()`
+
+SetTenantIdNil sets TenantId to an explicit JSON null when marshaled, overriding any value previously set with SetTenantId. Calling SetTenantId again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

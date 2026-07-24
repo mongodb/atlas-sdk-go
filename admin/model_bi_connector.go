@@ -8,6 +8,15 @@ type BiConnector struct {
 	Enabled *bool `json:"enabled,omitempty"`
 	// Data source node designated for the MongoDB Connector for Business Intelligence on MongoDB Cloud. The MongoDB Connector for Business Intelligence on MongoDB Cloud reads data from the primary, secondary, or analytics node based on your read preferences. Defaults to `ANALYTICS` node, or `SECONDARY` if there are no `ANALYTICS` nodes.
 	ReadPreference *string `json:"readPreference,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *BiConnector) MarshalJSON() ([]byte, error) {
+	type noMethod BiConnector
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewBiConnector instantiates a new BiConnector object
@@ -58,6 +67,13 @@ func (o *BiConnector) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *BiConnector) SetEnabled(v bool) {
 	o.Enabled = &v
+	o.NullFields = removeNullField(o.NullFields, "Enabled")
+}
+
+// SetEnabledNil sets Enabled to an explicit JSON null when marshaled.
+func (o *BiConnector) SetEnabledNil() {
+	o.Enabled = nil
+	o.NullFields = addNullField(o.NullFields, "Enabled")
 }
 
 // GetReadPreference returns the ReadPreference field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *BiConnector) HasReadPreference() bool {
 // SetReadPreference gets a reference to the given string and assigns it to the ReadPreference field.
 func (o *BiConnector) SetReadPreference(v string) {
 	o.ReadPreference = &v
+	o.NullFields = removeNullField(o.NullFields, "ReadPreference")
+}
+
+// SetReadPreferenceNil sets ReadPreference to an explicit JSON null when marshaled.
+func (o *BiConnector) SetReadPreferenceNil() {
+	o.ReadPreference = nil
+	o.NullFields = addNullField(o.NullFields, "ReadPreference")
 }

@@ -8,6 +8,15 @@ type GroupIPAddresses struct {
 	// Read only field.
 	GroupId  *string       `json:"groupId,omitempty"`
 	Services *GroupService `json:"services,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *GroupIPAddresses) MarshalJSON() ([]byte, error) {
+	type noMethod GroupIPAddresses
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGroupIPAddresses instantiates a new GroupIPAddresses object
@@ -58,6 +67,13 @@ func (o *GroupIPAddresses) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *GroupIPAddresses) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *GroupIPAddresses) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetServices returns the Services field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *GroupIPAddresses) HasServices() bool {
 // SetServices gets a reference to the given GroupService and assigns it to the Services field.
 func (o *GroupIPAddresses) SetServices(v GroupService) {
 	o.Services = &v
+	o.NullFields = removeNullField(o.NullFields, "Services")
+}
+
+// SetServicesNil sets Services to an explicit JSON null when marshaled.
+func (o *GroupIPAddresses) SetServicesNil() {
+	o.Services = nil
+	o.NullFields = addNullField(o.NullFields, "Services")
 }

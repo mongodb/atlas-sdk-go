@@ -55,6 +55,13 @@ SetAwsPrivateLink sets AwsPrivateLink field to given value.
 `func (o *ClusterConnectionStrings) HasAwsPrivateLink() bool`
 
 HasAwsPrivateLink returns a boolean if a field has been set.
+
+### SetAwsPrivateLinkNil
+
+`func (o *ClusterConnectionStrings) SetAwsPrivateLinkNil()`
+
+SetAwsPrivateLinkNil sets AwsPrivateLink to an explicit JSON null when marshaled, overriding any value previously set with SetAwsPrivateLink. Calling SetAwsPrivateLink again clears the null override.
+
 ### GetAwsPrivateLinkSrv
 
 `func (o *ClusterConnectionStrings) GetAwsPrivateLinkSrv() map[string]string`
@@ -79,6 +86,13 @@ SetAwsPrivateLinkSrv sets AwsPrivateLinkSrv field to given value.
 `func (o *ClusterConnectionStrings) HasAwsPrivateLinkSrv() bool`
 
 HasAwsPrivateLinkSrv returns a boolean if a field has been set.
+
+### SetAwsPrivateLinkSrvNil
+
+`func (o *ClusterConnectionStrings) SetAwsPrivateLinkSrvNil()`
+
+SetAwsPrivateLinkSrvNil sets AwsPrivateLinkSrv to an explicit JSON null when marshaled, overriding any value previously set with SetAwsPrivateLinkSrv. Calling SetAwsPrivateLinkSrv again clears the null override.
+
 ### GetPrivate
 
 `func (o *ClusterConnectionStrings) GetPrivate() string`
@@ -103,6 +117,13 @@ SetPrivate sets Private field to given value.
 `func (o *ClusterConnectionStrings) HasPrivate() bool`
 
 HasPrivate returns a boolean if a field has been set.
+
+### SetPrivateNil
+
+`func (o *ClusterConnectionStrings) SetPrivateNil()`
+
+SetPrivateNil sets Private to an explicit JSON null when marshaled, overriding any value previously set with SetPrivate. Calling SetPrivate again clears the null override.
+
 ### GetPrivateEndpoint
 
 `func (o *ClusterConnectionStrings) GetPrivateEndpoint() []ClusterDescriptionConnectionStringsPrivateEndpoint`
@@ -127,6 +148,13 @@ SetPrivateEndpoint sets PrivateEndpoint field to given value.
 `func (o *ClusterConnectionStrings) HasPrivateEndpoint() bool`
 
 HasPrivateEndpoint returns a boolean if a field has been set.
+
+### SetPrivateEndpointNil
+
+`func (o *ClusterConnectionStrings) SetPrivateEndpointNil()`
+
+SetPrivateEndpointNil sets PrivateEndpoint to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateEndpoint. Calling SetPrivateEndpoint again clears the null override.
+
 ### GetPrivateSrv
 
 `func (o *ClusterConnectionStrings) GetPrivateSrv() string`
@@ -151,6 +179,13 @@ SetPrivateSrv sets PrivateSrv field to given value.
 `func (o *ClusterConnectionStrings) HasPrivateSrv() bool`
 
 HasPrivateSrv returns a boolean if a field has been set.
+
+### SetPrivateSrvNil
+
+`func (o *ClusterConnectionStrings) SetPrivateSrvNil()`
+
+SetPrivateSrvNil sets PrivateSrv to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateSrv. Calling SetPrivateSrv again clears the null override.
+
 ### GetStandard
 
 `func (o *ClusterConnectionStrings) GetStandard() string`
@@ -175,6 +210,13 @@ SetStandard sets Standard field to given value.
 `func (o *ClusterConnectionStrings) HasStandard() bool`
 
 HasStandard returns a boolean if a field has been set.
+
+### SetStandardNil
+
+`func (o *ClusterConnectionStrings) SetStandardNil()`
+
+SetStandardNil sets Standard to an explicit JSON null when marshaled, overriding any value previously set with SetStandard. Calling SetStandard again clears the null override.
+
 ### GetStandardSrv
 
 `func (o *ClusterConnectionStrings) GetStandardSrv() string`
@@ -199,6 +241,13 @@ SetStandardSrv sets StandardSrv field to given value.
 `func (o *ClusterConnectionStrings) HasStandardSrv() bool`
 
 HasStandardSrv returns a boolean if a field has been set.
+
+### SetStandardSrvNil
+
+`func (o *ClusterConnectionStrings) SetStandardSrvNil()`
+
+SetStandardSrvNil sets StandardSrv to an explicit JSON null when marshaled, overriding any value previously set with SetStandardSrv. Calling SetStandardSrv again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

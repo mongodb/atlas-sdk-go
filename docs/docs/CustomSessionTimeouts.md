@@ -50,6 +50,13 @@ SetAbsoluteSessionTimeoutInSeconds sets AbsoluteSessionTimeoutInSeconds field to
 `func (o *CustomSessionTimeouts) HasAbsoluteSessionTimeoutInSeconds() bool`
 
 HasAbsoluteSessionTimeoutInSeconds returns a boolean if a field has been set.
+
+### SetAbsoluteSessionTimeoutInSecondsNil
+
+`func (o *CustomSessionTimeouts) SetAbsoluteSessionTimeoutInSecondsNil()`
+
+SetAbsoluteSessionTimeoutInSecondsNil sets AbsoluteSessionTimeoutInSeconds to an explicit JSON null when marshaled, overriding any value previously set with SetAbsoluteSessionTimeoutInSeconds. Calling SetAbsoluteSessionTimeoutInSeconds again clears the null override.
+
 ### GetIdleSessionTimeoutInSeconds
 
 `func (o *CustomSessionTimeouts) GetIdleSessionTimeoutInSeconds() int`
@@ -74,6 +81,13 @@ SetIdleSessionTimeoutInSeconds sets IdleSessionTimeoutInSeconds field to given v
 `func (o *CustomSessionTimeouts) HasIdleSessionTimeoutInSeconds() bool`
 
 HasIdleSessionTimeoutInSeconds returns a boolean if a field has been set.
+
+### SetIdleSessionTimeoutInSecondsNil
+
+`func (o *CustomSessionTimeouts) SetIdleSessionTimeoutInSecondsNil()`
+
+SetIdleSessionTimeoutInSecondsNil sets IdleSessionTimeoutInSeconds to an explicit JSON null when marshaled, overriding any value previously set with SetIdleSessionTimeoutInSeconds. Calling SetIdleSessionTimeoutInSeconds again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

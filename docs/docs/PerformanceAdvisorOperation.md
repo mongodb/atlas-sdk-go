@@ -50,6 +50,13 @@ SetPredicates sets Predicates field to given value.
 `func (o *PerformanceAdvisorOperation) HasPredicates() bool`
 
 HasPredicates returns a boolean if a field has been set.
+
+### SetPredicatesNil
+
+`func (o *PerformanceAdvisorOperation) SetPredicatesNil()`
+
+SetPredicatesNil sets Predicates to an explicit JSON null when marshaled, overriding any value previously set with SetPredicates. Calling SetPredicates again clears the null override.
+
 ### GetStats
 
 `func (o *PerformanceAdvisorOperation) GetStats() PerformanceAdvisorOpStats`
@@ -74,6 +81,13 @@ SetStats sets Stats field to given value.
 `func (o *PerformanceAdvisorOperation) HasStats() bool`
 
 HasStats returns a boolean if a field has been set.
+
+### SetStatsNil
+
+`func (o *PerformanceAdvisorOperation) SetStatsNil()`
+
+SetStatsNil sets Stats to an explicit JSON null when marshaled, overriding any value previously set with SetStats. Calling SetStats again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

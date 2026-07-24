@@ -52,6 +52,13 @@ SetPortMappingEnabled sets PortMappingEnabled field to given value.
 `func (o *CloudProviderEndpointServiceRequest) HasPortMappingEnabled() bool`
 
 HasPortMappingEnabled returns a boolean if a field has been set.
+
+### SetPortMappingEnabledNil
+
+`func (o *CloudProviderEndpointServiceRequest) SetPortMappingEnabledNil()`
+
+SetPortMappingEnabledNil sets PortMappingEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetPortMappingEnabled. Calling SetPortMappingEnabled again clears the null override.
+
 ### GetProviderName
 
 `func (o *CloudProviderEndpointServiceRequest) GetProviderName() string`
@@ -114,6 +121,13 @@ SetSupportedRemoteRegions sets SupportedRemoteRegions field to given value.
 `func (o *CloudProviderEndpointServiceRequest) HasSupportedRemoteRegions() bool`
 
 HasSupportedRemoteRegions returns a boolean if a field has been set.
+
+### SetSupportedRemoteRegionsNil
+
+`func (o *CloudProviderEndpointServiceRequest) SetSupportedRemoteRegionsNil()`
+
+SetSupportedRemoteRegionsNil sets SupportedRemoteRegions to an explicit JSON null when marshaled, overriding any value previously set with SetSupportedRemoteRegions. Calling SetSupportedRemoteRegions again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -13,6 +13,15 @@ type DiskBackupShardedClusterSnapshotMember struct {
 	// Human-readable label that identifies the shard or config host from which MongoDB Cloud took this snapshot.
 	// Read only field.
 	ReplicaSetName string `json:"replicaSetName"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DiskBackupShardedClusterSnapshotMember) MarshalJSON() ([]byte, error) {
+	type noMethod DiskBackupShardedClusterSnapshotMember
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupShardedClusterSnapshotMember instantiates a new DiskBackupShardedClusterSnapshotMember object

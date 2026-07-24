@@ -6,6 +6,15 @@ package admin
 type ServiceAccountSecretRequest struct {
 	// The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization's settings.
 	SecretExpiresAfterHours int `json:"secretExpiresAfterHours"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ServiceAccountSecretRequest) MarshalJSON() ([]byte, error) {
+	type noMethod ServiceAccountSecretRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewServiceAccountSecretRequest instantiates a new ServiceAccountSecretRequest object

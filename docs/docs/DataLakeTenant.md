@@ -56,6 +56,13 @@ SetCloudProviderConfig sets CloudProviderConfig field to given value.
 `func (o *DataLakeTenant) HasCloudProviderConfig() bool`
 
 HasCloudProviderConfig returns a boolean if a field has been set.
+
+### SetCloudProviderConfigNil
+
+`func (o *DataLakeTenant) SetCloudProviderConfigNil()`
+
+SetCloudProviderConfigNil sets CloudProviderConfig to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProviderConfig. Calling SetCloudProviderConfig again clears the null override.
+
 ### GetDataProcessRegion
 
 `func (o *DataLakeTenant) GetDataProcessRegion() DataLakeDataProcessRegion`
@@ -80,6 +87,13 @@ SetDataProcessRegion sets DataProcessRegion field to given value.
 `func (o *DataLakeTenant) HasDataProcessRegion() bool`
 
 HasDataProcessRegion returns a boolean if a field has been set.
+
+### SetDataProcessRegionNil
+
+`func (o *DataLakeTenant) SetDataProcessRegionNil()`
+
+SetDataProcessRegionNil sets DataProcessRegion to an explicit JSON null when marshaled, overriding any value previously set with SetDataProcessRegion. Calling SetDataProcessRegion again clears the null override.
+
 ### GetGroupId
 
 `func (o *DataLakeTenant) GetGroupId() string`
@@ -104,6 +118,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *DataLakeTenant) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *DataLakeTenant) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetHostnames
 
 `func (o *DataLakeTenant) GetHostnames() []string`
@@ -128,6 +149,13 @@ SetHostnames sets Hostnames field to given value.
 `func (o *DataLakeTenant) HasHostnames() bool`
 
 HasHostnames returns a boolean if a field has been set.
+
+### SetHostnamesNil
+
+`func (o *DataLakeTenant) SetHostnamesNil()`
+
+SetHostnamesNil sets Hostnames to an explicit JSON null when marshaled, overriding any value previously set with SetHostnames. Calling SetHostnames again clears the null override.
+
 ### GetName
 
 `func (o *DataLakeTenant) GetName() string`
@@ -152,6 +180,13 @@ SetName sets Name field to given value.
 `func (o *DataLakeTenant) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *DataLakeTenant) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetPrivateEndpointHostnames
 
 `func (o *DataLakeTenant) GetPrivateEndpointHostnames() []PrivateEndpointHostname`
@@ -176,6 +211,13 @@ SetPrivateEndpointHostnames sets PrivateEndpointHostnames field to given value.
 `func (o *DataLakeTenant) HasPrivateEndpointHostnames() bool`
 
 HasPrivateEndpointHostnames returns a boolean if a field has been set.
+
+### SetPrivateEndpointHostnamesNil
+
+`func (o *DataLakeTenant) SetPrivateEndpointHostnamesNil()`
+
+SetPrivateEndpointHostnamesNil sets PrivateEndpointHostnames to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateEndpointHostnames. Calling SetPrivateEndpointHostnames again clears the null override.
+
 ### GetState
 
 `func (o *DataLakeTenant) GetState() string`
@@ -200,6 +242,13 @@ SetState sets State field to given value.
 `func (o *DataLakeTenant) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### SetStateNil
+
+`func (o *DataLakeTenant) SetStateNil()`
+
+SetStateNil sets State to an explicit JSON null when marshaled, overriding any value previously set with SetState. Calling SetState again clears the null override.
+
 ### GetStorage
 
 `func (o *DataLakeTenant) GetStorage() DataLakeStorage`
@@ -224,6 +273,13 @@ SetStorage sets Storage field to given value.
 `func (o *DataLakeTenant) HasStorage() bool`
 
 HasStorage returns a boolean if a field has been set.
+
+### SetStorageNil
+
+`func (o *DataLakeTenant) SetStorageNil()`
+
+SetStorageNil sets Storage to an explicit JSON null when marshaled, overriding any value previously set with SetStorage. Calling SetStorage again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

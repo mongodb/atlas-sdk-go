@@ -55,6 +55,13 @@ SetClusterName sets ClusterName field to given value.
 `func (o *ClusterOutageSimulation) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+
+### SetClusterNameNil
+
+`func (o *ClusterOutageSimulation) SetClusterNameNil()`
+
+SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled, overriding any value previously set with SetClusterName. Calling SetClusterName again clears the null override.
+
 ### GetExpirationDate
 
 `func (o *ClusterOutageSimulation) GetExpirationDate() time.Time`
@@ -79,6 +86,13 @@ SetExpirationDate sets ExpirationDate field to given value.
 `func (o *ClusterOutageSimulation) HasExpirationDate() bool`
 
 HasExpirationDate returns a boolean if a field has been set.
+
+### SetExpirationDateNil
+
+`func (o *ClusterOutageSimulation) SetExpirationDateNil()`
+
+SetExpirationDateNil sets ExpirationDate to an explicit JSON null when marshaled, overriding any value previously set with SetExpirationDate. Calling SetExpirationDate again clears the null override.
+
 ### GetGroupId
 
 `func (o *ClusterOutageSimulation) GetGroupId() string`
@@ -103,6 +117,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *ClusterOutageSimulation) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *ClusterOutageSimulation) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetId
 
 `func (o *ClusterOutageSimulation) GetId() string`
@@ -127,6 +148,13 @@ SetId sets Id field to given value.
 `func (o *ClusterOutageSimulation) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *ClusterOutageSimulation) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetOutageFilters
 
 `func (o *ClusterOutageSimulation) GetOutageFilters() []AtlasClusterOutageSimulationOutageFilter`
@@ -151,6 +179,13 @@ SetOutageFilters sets OutageFilters field to given value.
 `func (o *ClusterOutageSimulation) HasOutageFilters() bool`
 
 HasOutageFilters returns a boolean if a field has been set.
+
+### SetOutageFiltersNil
+
+`func (o *ClusterOutageSimulation) SetOutageFiltersNil()`
+
+SetOutageFiltersNil sets OutageFilters to an explicit JSON null when marshaled, overriding any value previously set with SetOutageFilters. Calling SetOutageFilters again clears the null override.
+
 ### GetStartRequestDate
 
 `func (o *ClusterOutageSimulation) GetStartRequestDate() time.Time`
@@ -175,6 +210,13 @@ SetStartRequestDate sets StartRequestDate field to given value.
 `func (o *ClusterOutageSimulation) HasStartRequestDate() bool`
 
 HasStartRequestDate returns a boolean if a field has been set.
+
+### SetStartRequestDateNil
+
+`func (o *ClusterOutageSimulation) SetStartRequestDateNil()`
+
+SetStartRequestDateNil sets StartRequestDate to an explicit JSON null when marshaled, overriding any value previously set with SetStartRequestDate. Calling SetStartRequestDate again clears the null override.
+
 ### GetState
 
 `func (o *ClusterOutageSimulation) GetState() string`
@@ -199,6 +241,13 @@ SetState sets State field to given value.
 `func (o *ClusterOutageSimulation) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### SetStateNil
+
+`func (o *ClusterOutageSimulation) SetStateNil()`
+
+SetStateNil sets State to an explicit JSON null when marshaled, overriding any value previously set with SetState. Calling SetState again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

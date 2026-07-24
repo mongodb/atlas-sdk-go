@@ -50,6 +50,13 @@ SetDefaultValue sets DefaultValue field to given value.
 `func (o *RateLimitEndpointSetRefillRate) HasDefaultValue() bool`
 
 HasDefaultValue returns a boolean if a field has been set.
+
+### SetDefaultValueNil
+
+`func (o *RateLimitEndpointSetRefillRate) SetDefaultValueNil()`
+
+SetDefaultValueNil sets DefaultValue to an explicit JSON null when marshaled, overriding any value previously set with SetDefaultValue. Calling SetDefaultValue again clears the null override.
+
 ### GetValue
 
 `func (o *RateLimitEndpointSetRefillRate) GetValue() int64`
@@ -74,6 +81,13 @@ SetValue sets Value field to given value.
 `func (o *RateLimitEndpointSetRefillRate) HasValue() bool`
 
 HasValue returns a boolean if a field has been set.
+
+### SetValueNil
+
+`func (o *RateLimitEndpointSetRefillRate) SetValueNil()`
+
+SetValueNil sets Value to an explicit JSON null when marshaled, overriding any value previously set with SetValue. Calling SetValue again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

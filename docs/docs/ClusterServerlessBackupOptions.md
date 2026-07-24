@@ -50,6 +50,13 @@ SetServerlessContinuousBackupEnabled sets ServerlessContinuousBackupEnabled fiel
 
 HasServerlessContinuousBackupEnabled returns a boolean if a field has been set.
 
+### SetServerlessContinuousBackupEnabledNil
+
+`func (o *ClusterServerlessBackupOptions) SetServerlessContinuousBackupEnabledNil()`
+
+SetServerlessContinuousBackupEnabledNil sets ServerlessContinuousBackupEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetServerlessContinuousBackupEnabled. Calling SetServerlessContinuousBackupEnabled again clears the null override.
+
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

@@ -11,6 +11,15 @@ type StreamsAWSConnectionConfig struct {
 	RoleArn *string `json:"roleArn,omitempty"`
 	// The name of an S3 bucket used to check authorization of the passed-in IAM role ARN.
 	TestBucket *string `json:"testBucket,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamsAWSConnectionConfig) MarshalJSON() ([]byte, error) {
+	type noMethod StreamsAWSConnectionConfig
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsAWSConnectionConfig instantiates a new StreamsAWSConnectionConfig object
@@ -61,6 +70,13 @@ func (o *StreamsAWSConnectionConfig) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsAWSConnectionConfig) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *StreamsAWSConnectionConfig) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetRoleArn returns the RoleArn field value if set, zero value otherwise
@@ -94,6 +110,13 @@ func (o *StreamsAWSConnectionConfig) HasRoleArn() bool {
 // SetRoleArn gets a reference to the given string and assigns it to the RoleArn field.
 func (o *StreamsAWSConnectionConfig) SetRoleArn(v string) {
 	o.RoleArn = &v
+	o.NullFields = removeNullField(o.NullFields, "RoleArn")
+}
+
+// SetRoleArnNil sets RoleArn to an explicit JSON null when marshaled.
+func (o *StreamsAWSConnectionConfig) SetRoleArnNil() {
+	o.RoleArn = nil
+	o.NullFields = addNullField(o.NullFields, "RoleArn")
 }
 
 // GetTestBucket returns the TestBucket field value if set, zero value otherwise
@@ -127,4 +150,11 @@ func (o *StreamsAWSConnectionConfig) HasTestBucket() bool {
 // SetTestBucket gets a reference to the given string and assigns it to the TestBucket field.
 func (o *StreamsAWSConnectionConfig) SetTestBucket(v string) {
 	o.TestBucket = &v
+	o.NullFields = removeNullField(o.NullFields, "TestBucket")
+}
+
+// SetTestBucketNil sets TestBucket to an explicit JSON null when marshaled.
+func (o *StreamsAWSConnectionConfig) SetTestBucketNil() {
+	o.TestBucket = nil
+	o.NullFields = addNullField(o.NullFields, "TestBucket")
 }

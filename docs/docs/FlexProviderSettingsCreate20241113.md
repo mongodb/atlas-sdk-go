@@ -71,6 +71,13 @@ SetDiskSizeGB sets DiskSizeGB field to given value.
 `func (o *FlexProviderSettingsCreate20241113) HasDiskSizeGB() bool`
 
 HasDiskSizeGB returns a boolean if a field has been set.
+
+### SetDiskSizeGBNil
+
+`func (o *FlexProviderSettingsCreate20241113) SetDiskSizeGBNil()`
+
+SetDiskSizeGBNil sets DiskSizeGB to an explicit JSON null when marshaled, overriding any value previously set with SetDiskSizeGB. Calling SetDiskSizeGB again clears the null override.
+
 ### GetProviderName
 
 `func (o *FlexProviderSettingsCreate20241113) GetProviderName() string`
@@ -95,6 +102,13 @@ SetProviderName sets ProviderName field to given value.
 `func (o *FlexProviderSettingsCreate20241113) HasProviderName() bool`
 
 HasProviderName returns a boolean if a field has been set.
+
+### SetProviderNameNil
+
+`func (o *FlexProviderSettingsCreate20241113) SetProviderNameNil()`
+
+SetProviderNameNil sets ProviderName to an explicit JSON null when marshaled, overriding any value previously set with SetProviderName. Calling SetProviderName again clears the null override.
+
 ### GetRegionName
 
 `func (o *FlexProviderSettingsCreate20241113) GetRegionName() string`

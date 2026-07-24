@@ -50,6 +50,13 @@ SetNamespaces sets Namespaces field to given value.
 
 HasNamespaces returns a boolean if a field has been set.
 
+### SetNamespacesNil
+
+`func (o *Namespaces) SetNamespacesNil()`
+
+SetNamespacesNil sets Namespaces to an explicit JSON null when marshaled, overriding any value previously set with SetNamespaces. Calling SetNamespaces again clears the null override.
+
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

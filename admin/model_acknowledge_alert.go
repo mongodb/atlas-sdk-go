@@ -17,6 +17,15 @@ type AcknowledgeAlert struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Flag that indicates to unacknowledge a previously acknowledged alert. By default this value is set to false. If set to true, it will override the `acknowledgedUntil` parameter.
 	UnacknowledgeAlert *bool `json:"unacknowledgeAlert,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AcknowledgeAlert) MarshalJSON() ([]byte, error) {
+	type noMethod AcknowledgeAlert
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAcknowledgeAlert instantiates a new AcknowledgeAlert object
@@ -67,6 +76,13 @@ func (o *AcknowledgeAlert) HasAcknowledgedUntil() bool {
 // SetAcknowledgedUntil gets a reference to the given time.Time and assigns it to the AcknowledgedUntil field.
 func (o *AcknowledgeAlert) SetAcknowledgedUntil(v time.Time) {
 	o.AcknowledgedUntil = &v
+	o.NullFields = removeNullField(o.NullFields, "AcknowledgedUntil")
+}
+
+// SetAcknowledgedUntilNil sets AcknowledgedUntil to an explicit JSON null when marshaled.
+func (o *AcknowledgeAlert) SetAcknowledgedUntilNil() {
+	o.AcknowledgedUntil = nil
+	o.NullFields = addNullField(o.NullFields, "AcknowledgedUntil")
 }
 
 // GetAcknowledgementComment returns the AcknowledgementComment field value if set, zero value otherwise
@@ -100,6 +116,13 @@ func (o *AcknowledgeAlert) HasAcknowledgementComment() bool {
 // SetAcknowledgementComment gets a reference to the given string and assigns it to the AcknowledgementComment field.
 func (o *AcknowledgeAlert) SetAcknowledgementComment(v string) {
 	o.AcknowledgementComment = &v
+	o.NullFields = removeNullField(o.NullFields, "AcknowledgementComment")
+}
+
+// SetAcknowledgementCommentNil sets AcknowledgementComment to an explicit JSON null when marshaled.
+func (o *AcknowledgeAlert) SetAcknowledgementCommentNil() {
+	o.AcknowledgementComment = nil
+	o.NullFields = addNullField(o.NullFields, "AcknowledgementComment")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -133,6 +156,13 @@ func (o *AcknowledgeAlert) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *AcknowledgeAlert) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *AcknowledgeAlert) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetUnacknowledgeAlert returns the UnacknowledgeAlert field value if set, zero value otherwise
@@ -166,4 +196,11 @@ func (o *AcknowledgeAlert) HasUnacknowledgeAlert() bool {
 // SetUnacknowledgeAlert gets a reference to the given bool and assigns it to the UnacknowledgeAlert field.
 func (o *AcknowledgeAlert) SetUnacknowledgeAlert(v bool) {
 	o.UnacknowledgeAlert = &v
+	o.NullFields = removeNullField(o.NullFields, "UnacknowledgeAlert")
+}
+
+// SetUnacknowledgeAlertNil sets UnacknowledgeAlert to an explicit JSON null when marshaled.
+func (o *AcknowledgeAlert) SetUnacknowledgeAlertNil() {
+	o.UnacknowledgeAlert = nil
+	o.NullFields = addNullField(o.NullFields, "UnacknowledgeAlert")
 }

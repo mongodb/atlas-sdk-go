@@ -61,6 +61,13 @@ SetAllowInsecure sets AllowInsecure field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasAllowInsecure() bool`
 
 HasAllowInsecure returns a boolean if a field has been set.
+
+### SetAllowInsecureNil
+
+`func (o *DataLakeDatabaseDataSourceSettings) SetAllowInsecureNil()`
+
+SetAllowInsecureNil sets AllowInsecure to an explicit JSON null when marshaled, overriding any value previously set with SetAllowInsecure. Calling SetAllowInsecure again clears the null override.
+
 ### GetCollection
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetCollection() string`
@@ -85,6 +92,13 @@ SetCollection sets Collection field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasCollection() bool`
 
 HasCollection returns a boolean if a field has been set.
+
+### SetCollectionNil
+
+`func (o *DataLakeDatabaseDataSourceSettings) SetCollectionNil()`
+
+SetCollectionNil sets Collection to an explicit JSON null when marshaled, overriding any value previously set with SetCollection. Calling SetCollection again clears the null override.
+
 ### GetCollectionRegex
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetCollectionRegex() string`
@@ -109,6 +123,13 @@ SetCollectionRegex sets CollectionRegex field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasCollectionRegex() bool`
 
 HasCollectionRegex returns a boolean if a field has been set.
+
+### SetCollectionRegexNil
+
+`func (o *DataLakeDatabaseDataSourceSettings) SetCollectionRegexNil()`
+
+SetCollectionRegexNil sets CollectionRegex to an explicit JSON null when marshaled, overriding any value previously set with SetCollectionRegex. Calling SetCollectionRegex again clears the null override.
+
 ### GetDatabase
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetDatabase() string`
@@ -133,6 +154,13 @@ SetDatabase sets Database field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasDatabase() bool`
 
 HasDatabase returns a boolean if a field has been set.
+
+### SetDatabaseNil
+
+`func (o *DataLakeDatabaseDataSourceSettings) SetDatabaseNil()`
+
+SetDatabaseNil sets Database to an explicit JSON null when marshaled, overriding any value previously set with SetDatabase. Calling SetDatabase again clears the null override.
+
 ### GetDatabaseRegex
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetDatabaseRegex() string`
@@ -157,6 +185,13 @@ SetDatabaseRegex sets DatabaseRegex field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasDatabaseRegex() bool`
 
 HasDatabaseRegex returns a boolean if a field has been set.
+
+### SetDatabaseRegexNil
+
+`func (o *DataLakeDatabaseDataSourceSettings) SetDatabaseRegexNil()`
+
+SetDatabaseRegexNil sets DatabaseRegex to an explicit JSON null when marshaled, overriding any value previously set with SetDatabaseRegex. Calling SetDatabaseRegex again clears the null override.
+
 ### GetDatasetName
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetDatasetName() string`
@@ -181,6 +216,13 @@ SetDatasetName sets DatasetName field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasDatasetName() bool`
 
 HasDatasetName returns a boolean if a field has been set.
+
+### SetDatasetNameNil
+
+`func (o *DataLakeDatabaseDataSourceSettings) SetDatasetNameNil()`
+
+SetDatasetNameNil sets DatasetName to an explicit JSON null when marshaled, overriding any value previously set with SetDatasetName. Calling SetDatasetName again clears the null override.
+
 ### GetDatasetPrefix
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetDatasetPrefix() string`
@@ -205,6 +247,13 @@ SetDatasetPrefix sets DatasetPrefix field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasDatasetPrefix() bool`
 
 HasDatasetPrefix returns a boolean if a field has been set.
+
+### SetDatasetPrefixNil
+
+`func (o *DataLakeDatabaseDataSourceSettings) SetDatasetPrefixNil()`
+
+SetDatasetPrefixNil sets DatasetPrefix to an explicit JSON null when marshaled, overriding any value previously set with SetDatasetPrefix. Calling SetDatasetPrefix again clears the null override.
+
 ### GetDefaultFormat
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetDefaultFormat() string`
@@ -229,6 +278,13 @@ SetDefaultFormat sets DefaultFormat field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasDefaultFormat() bool`
 
 HasDefaultFormat returns a boolean if a field has been set.
+
+### SetDefaultFormatNil
+
+`func (o *DataLakeDatabaseDataSourceSettings) SetDefaultFormatNil()`
+
+SetDefaultFormatNil sets DefaultFormat to an explicit JSON null when marshaled, overriding any value previously set with SetDefaultFormat. Calling SetDefaultFormat again clears the null override.
+
 ### GetPath
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetPath() string`
@@ -253,6 +309,13 @@ SetPath sets Path field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasPath() bool`
 
 HasPath returns a boolean if a field has been set.
+
+### SetPathNil
+
+`func (o *DataLakeDatabaseDataSourceSettings) SetPathNil()`
+
+SetPathNil sets Path to an explicit JSON null when marshaled, overriding any value previously set with SetPath. Calling SetPath again clears the null override.
+
 ### GetProvenanceFieldName
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetProvenanceFieldName() string`
@@ -277,6 +340,13 @@ SetProvenanceFieldName sets ProvenanceFieldName field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasProvenanceFieldName() bool`
 
 HasProvenanceFieldName returns a boolean if a field has been set.
+
+### SetProvenanceFieldNameNil
+
+`func (o *DataLakeDatabaseDataSourceSettings) SetProvenanceFieldNameNil()`
+
+SetProvenanceFieldNameNil sets ProvenanceFieldName to an explicit JSON null when marshaled, overriding any value previously set with SetProvenanceFieldName. Calling SetProvenanceFieldName again clears the null override.
+
 ### GetStoreName
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetStoreName() string`
@@ -301,6 +371,13 @@ SetStoreName sets StoreName field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasStoreName() bool`
 
 HasStoreName returns a boolean if a field has been set.
+
+### SetStoreNameNil
+
+`func (o *DataLakeDatabaseDataSourceSettings) SetStoreNameNil()`
+
+SetStoreNameNil sets StoreName to an explicit JSON null when marshaled, overriding any value previously set with SetStoreName. Calling SetStoreName again clears the null override.
+
 ### GetTrimLevel
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetTrimLevel() int`
@@ -325,6 +402,13 @@ SetTrimLevel sets TrimLevel field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasTrimLevel() bool`
 
 HasTrimLevel returns a boolean if a field has been set.
+
+### SetTrimLevelNil
+
+`func (o *DataLakeDatabaseDataSourceSettings) SetTrimLevelNil()`
+
+SetTrimLevelNil sets TrimLevel to an explicit JSON null when marshaled, overriding any value previously set with SetTrimLevel. Calling SetTrimLevel again clears the null override.
+
 ### GetUrls
 
 `func (o *DataLakeDatabaseDataSourceSettings) GetUrls() []string`
@@ -349,6 +433,13 @@ SetUrls sets Urls field to given value.
 `func (o *DataLakeDatabaseDataSourceSettings) HasUrls() bool`
 
 HasUrls returns a boolean if a field has been set.
+
+### SetUrlsNil
+
+`func (o *DataLakeDatabaseDataSourceSettings) SetUrlsNil()`
+
+SetUrlsNil sets Urls to an explicit JSON null when marshaled, overriding any value previously set with SetUrls. Calling SetUrls again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

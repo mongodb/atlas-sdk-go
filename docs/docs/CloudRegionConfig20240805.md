@@ -60,6 +60,13 @@ SetElectableSpecs sets ElectableSpecs field to given value.
 `func (o *CloudRegionConfig20240805) HasElectableSpecs() bool`
 
 HasElectableSpecs returns a boolean if a field has been set.
+
+### SetElectableSpecsNil
+
+`func (o *CloudRegionConfig20240805) SetElectableSpecsNil()`
+
+SetElectableSpecsNil sets ElectableSpecs to an explicit JSON null when marshaled, overriding any value previously set with SetElectableSpecs. Calling SetElectableSpecs again clears the null override.
+
 ### GetPriority
 
 `func (o *CloudRegionConfig20240805) GetPriority() int`
@@ -84,6 +91,13 @@ SetPriority sets Priority field to given value.
 `func (o *CloudRegionConfig20240805) HasPriority() bool`
 
 HasPriority returns a boolean if a field has been set.
+
+### SetPriorityNil
+
+`func (o *CloudRegionConfig20240805) SetPriorityNil()`
+
+SetPriorityNil sets Priority to an explicit JSON null when marshaled, overriding any value previously set with SetPriority. Calling SetPriority again clears the null override.
+
 ### GetProviderName
 
 `func (o *CloudRegionConfig20240805) GetProviderName() string`
@@ -108,6 +122,13 @@ SetProviderName sets ProviderName field to given value.
 `func (o *CloudRegionConfig20240805) HasProviderName() bool`
 
 HasProviderName returns a boolean if a field has been set.
+
+### SetProviderNameNil
+
+`func (o *CloudRegionConfig20240805) SetProviderNameNil()`
+
+SetProviderNameNil sets ProviderName to an explicit JSON null when marshaled, overriding any value previously set with SetProviderName. Calling SetProviderName again clears the null override.
+
 ### GetRegionName
 
 `func (o *CloudRegionConfig20240805) GetRegionName() string`
@@ -132,6 +153,13 @@ SetRegionName sets RegionName field to given value.
 `func (o *CloudRegionConfig20240805) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
+
+### SetRegionNameNil
+
+`func (o *CloudRegionConfig20240805) SetRegionNameNil()`
+
+SetRegionNameNil sets RegionName to an explicit JSON null when marshaled, overriding any value previously set with SetRegionName. Calling SetRegionName again clears the null override.
+
 ### GetAnalyticsAutoScaling
 
 `func (o *CloudRegionConfig20240805) GetAnalyticsAutoScaling() AdvancedAutoScalingSettings`
@@ -156,6 +184,13 @@ SetAnalyticsAutoScaling sets AnalyticsAutoScaling field to given value.
 `func (o *CloudRegionConfig20240805) HasAnalyticsAutoScaling() bool`
 
 HasAnalyticsAutoScaling returns a boolean if a field has been set.
+
+### SetAnalyticsAutoScalingNil
+
+`func (o *CloudRegionConfig20240805) SetAnalyticsAutoScalingNil()`
+
+SetAnalyticsAutoScalingNil sets AnalyticsAutoScaling to an explicit JSON null when marshaled, overriding any value previously set with SetAnalyticsAutoScaling. Calling SetAnalyticsAutoScaling again clears the null override.
+
 ### GetAnalyticsSpecs
 
 `func (o *CloudRegionConfig20240805) GetAnalyticsSpecs() DedicatedHardwareSpec20240805`
@@ -180,6 +215,13 @@ SetAnalyticsSpecs sets AnalyticsSpecs field to given value.
 `func (o *CloudRegionConfig20240805) HasAnalyticsSpecs() bool`
 
 HasAnalyticsSpecs returns a boolean if a field has been set.
+
+### SetAnalyticsSpecsNil
+
+`func (o *CloudRegionConfig20240805) SetAnalyticsSpecsNil()`
+
+SetAnalyticsSpecsNil sets AnalyticsSpecs to an explicit JSON null when marshaled, overriding any value previously set with SetAnalyticsSpecs. Calling SetAnalyticsSpecs again clears the null override.
+
 ### GetAutoScaling
 
 `func (o *CloudRegionConfig20240805) GetAutoScaling() AdvancedAutoScalingSettings`
@@ -204,6 +246,13 @@ SetAutoScaling sets AutoScaling field to given value.
 `func (o *CloudRegionConfig20240805) HasAutoScaling() bool`
 
 HasAutoScaling returns a boolean if a field has been set.
+
+### SetAutoScalingNil
+
+`func (o *CloudRegionConfig20240805) SetAutoScalingNil()`
+
+SetAutoScalingNil sets AutoScaling to an explicit JSON null when marshaled, overriding any value previously set with SetAutoScaling. Calling SetAutoScaling again clears the null override.
+
 ### GetEffectiveAnalyticsSpecs
 
 `func (o *CloudRegionConfig20240805) GetEffectiveAnalyticsSpecs() DedicatedHardwareSpec20240805`
@@ -228,6 +277,13 @@ SetEffectiveAnalyticsSpecs sets EffectiveAnalyticsSpecs field to given value.
 `func (o *CloudRegionConfig20240805) HasEffectiveAnalyticsSpecs() bool`
 
 HasEffectiveAnalyticsSpecs returns a boolean if a field has been set.
+
+### SetEffectiveAnalyticsSpecsNil
+
+`func (o *CloudRegionConfig20240805) SetEffectiveAnalyticsSpecsNil()`
+
+SetEffectiveAnalyticsSpecsNil sets EffectiveAnalyticsSpecs to an explicit JSON null when marshaled, overriding any value previously set with SetEffectiveAnalyticsSpecs. Calling SetEffectiveAnalyticsSpecs again clears the null override.
+
 ### GetEffectiveElectableSpecs
 
 `func (o *CloudRegionConfig20240805) GetEffectiveElectableSpecs() DedicatedHardwareSpec20240805`
@@ -252,6 +308,13 @@ SetEffectiveElectableSpecs sets EffectiveElectableSpecs field to given value.
 `func (o *CloudRegionConfig20240805) HasEffectiveElectableSpecs() bool`
 
 HasEffectiveElectableSpecs returns a boolean if a field has been set.
+
+### SetEffectiveElectableSpecsNil
+
+`func (o *CloudRegionConfig20240805) SetEffectiveElectableSpecsNil()`
+
+SetEffectiveElectableSpecsNil sets EffectiveElectableSpecs to an explicit JSON null when marshaled, overriding any value previously set with SetEffectiveElectableSpecs. Calling SetEffectiveElectableSpecs again clears the null override.
+
 ### GetEffectiveReadOnlySpecs
 
 `func (o *CloudRegionConfig20240805) GetEffectiveReadOnlySpecs() DedicatedHardwareSpec20240805`
@@ -276,6 +339,13 @@ SetEffectiveReadOnlySpecs sets EffectiveReadOnlySpecs field to given value.
 `func (o *CloudRegionConfig20240805) HasEffectiveReadOnlySpecs() bool`
 
 HasEffectiveReadOnlySpecs returns a boolean if a field has been set.
+
+### SetEffectiveReadOnlySpecsNil
+
+`func (o *CloudRegionConfig20240805) SetEffectiveReadOnlySpecsNil()`
+
+SetEffectiveReadOnlySpecsNil sets EffectiveReadOnlySpecs to an explicit JSON null when marshaled, overriding any value previously set with SetEffectiveReadOnlySpecs. Calling SetEffectiveReadOnlySpecs again clears the null override.
+
 ### GetReadOnlySpecs
 
 `func (o *CloudRegionConfig20240805) GetReadOnlySpecs() DedicatedHardwareSpec20240805`
@@ -300,6 +370,13 @@ SetReadOnlySpecs sets ReadOnlySpecs field to given value.
 `func (o *CloudRegionConfig20240805) HasReadOnlySpecs() bool`
 
 HasReadOnlySpecs returns a boolean if a field has been set.
+
+### SetReadOnlySpecsNil
+
+`func (o *CloudRegionConfig20240805) SetReadOnlySpecsNil()`
+
+SetReadOnlySpecsNil sets ReadOnlySpecs to an explicit JSON null when marshaled, overriding any value previously set with SetReadOnlySpecs. Calling SetReadOnlySpecs again clears the null override.
+
 ### GetBackingProviderName
 
 `func (o *CloudRegionConfig20240805) GetBackingProviderName() string`
@@ -324,6 +401,13 @@ SetBackingProviderName sets BackingProviderName field to given value.
 `func (o *CloudRegionConfig20240805) HasBackingProviderName() bool`
 
 HasBackingProviderName returns a boolean if a field has been set.
+
+### SetBackingProviderNameNil
+
+`func (o *CloudRegionConfig20240805) SetBackingProviderNameNil()`
+
+SetBackingProviderNameNil sets BackingProviderName to an explicit JSON null when marshaled, overriding any value previously set with SetBackingProviderName. Calling SetBackingProviderName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

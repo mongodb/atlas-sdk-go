@@ -50,6 +50,13 @@ SetErrorCode sets ErrorCode field to given value.
 `func (o *StateReason) HasErrorCode() bool`
 
 HasErrorCode returns a boolean if a field has been set.
+
+### SetErrorCodeNil
+
+`func (o *StateReason) SetErrorCodeNil()`
+
+SetErrorCodeNil sets ErrorCode to an explicit JSON null when marshaled, overriding any value previously set with SetErrorCode. Calling SetErrorCode again clears the null override.
+
 ### GetMessage
 
 `func (o *StateReason) GetMessage() string`
@@ -74,6 +81,13 @@ SetMessage sets Message field to given value.
 `func (o *StateReason) HasMessage() bool`
 
 HasMessage returns a boolean if a field has been set.
+
+### SetMessageNil
+
+`func (o *StateReason) SetMessageNil()`
+
+SetMessageNil sets Message to an explicit JSON null when marshaled, overriding any value previously set with SetMessage. Calling SetMessage again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

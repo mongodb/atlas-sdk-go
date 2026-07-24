@@ -54,6 +54,13 @@ SetClientId sets ClientId field to given value.
 `func (o *GroupServiceAccount) HasClientId() bool`
 
 HasClientId returns a boolean if a field has been set.
+
+### SetClientIdNil
+
+`func (o *GroupServiceAccount) SetClientIdNil()`
+
+SetClientIdNil sets ClientId to an explicit JSON null when marshaled, overriding any value previously set with SetClientId. Calling SetClientId again clears the null override.
+
 ### GetCreatedAt
 
 `func (o *GroupServiceAccount) GetCreatedAt() time.Time`
@@ -78,6 +85,13 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *GroupServiceAccount) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
+
+### SetCreatedAtNil
+
+`func (o *GroupServiceAccount) SetCreatedAtNil()`
+
+SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled, overriding any value previously set with SetCreatedAt. Calling SetCreatedAt again clears the null override.
+
 ### GetDescription
 
 `func (o *GroupServiceAccount) GetDescription() string`
@@ -102,6 +116,13 @@ SetDescription sets Description field to given value.
 `func (o *GroupServiceAccount) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *GroupServiceAccount) SetDescriptionNil()`
+
+SetDescriptionNil sets Description to an explicit JSON null when marshaled, overriding any value previously set with SetDescription. Calling SetDescription again clears the null override.
+
 ### GetName
 
 `func (o *GroupServiceAccount) GetName() string`
@@ -126,6 +147,13 @@ SetName sets Name field to given value.
 `func (o *GroupServiceAccount) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *GroupServiceAccount) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetRoles
 
 `func (o *GroupServiceAccount) GetRoles() []string`
@@ -150,6 +178,13 @@ SetRoles sets Roles field to given value.
 `func (o *GroupServiceAccount) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
+
+### SetRolesNil
+
+`func (o *GroupServiceAccount) SetRolesNil()`
+
+SetRolesNil sets Roles to an explicit JSON null when marshaled, overriding any value previously set with SetRoles. Calling SetRoles again clears the null override.
+
 ### GetSecrets
 
 `func (o *GroupServiceAccount) GetSecrets() []ServiceAccountSecret`
@@ -174,6 +209,13 @@ SetSecrets sets Secrets field to given value.
 `func (o *GroupServiceAccount) HasSecrets() bool`
 
 HasSecrets returns a boolean if a field has been set.
+
+### SetSecretsNil
+
+`func (o *GroupServiceAccount) SetSecretsNil()`
+
+SetSecretsNil sets Secrets to an explicit JSON null when marshaled, overriding any value previously set with SetSecrets. Calling SetSecrets again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

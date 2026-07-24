@@ -23,6 +23,15 @@ type PushBasedLogExportProject struct {
 	// Describes whether or not the feature is enabled and what status it is in.
 	// Read only field.
 	State *string `json:"state,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PushBasedLogExportProject) MarshalJSON() ([]byte, error) {
+	type noMethod PushBasedLogExportProject
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPushBasedLogExportProject instantiates a new PushBasedLogExportProject object
@@ -73,6 +82,13 @@ func (o *PushBasedLogExportProject) HasBucketName() bool {
 // SetBucketName gets a reference to the given string and assigns it to the BucketName field.
 func (o *PushBasedLogExportProject) SetBucketName(v string) {
 	o.BucketName = &v
+	o.NullFields = removeNullField(o.NullFields, "BucketName")
+}
+
+// SetBucketNameNil sets BucketName to an explicit JSON null when marshaled.
+func (o *PushBasedLogExportProject) SetBucketNameNil() {
+	o.BucketName = nil
+	o.NullFields = addNullField(o.NullFields, "BucketName")
 }
 
 // GetCreateDate returns the CreateDate field value if set, zero value otherwise
@@ -106,6 +122,13 @@ func (o *PushBasedLogExportProject) HasCreateDate() bool {
 // SetCreateDate gets a reference to the given time.Time and assigns it to the CreateDate field.
 func (o *PushBasedLogExportProject) SetCreateDate(v time.Time) {
 	o.CreateDate = &v
+	o.NullFields = removeNullField(o.NullFields, "CreateDate")
+}
+
+// SetCreateDateNil sets CreateDate to an explicit JSON null when marshaled.
+func (o *PushBasedLogExportProject) SetCreateDateNil() {
+	o.CreateDate = nil
+	o.NullFields = addNullField(o.NullFields, "CreateDate")
 }
 
 // GetIamRoleId returns the IamRoleId field value if set, zero value otherwise
@@ -139,6 +162,13 @@ func (o *PushBasedLogExportProject) HasIamRoleId() bool {
 // SetIamRoleId gets a reference to the given string and assigns it to the IamRoleId field.
 func (o *PushBasedLogExportProject) SetIamRoleId(v string) {
 	o.IamRoleId = &v
+	o.NullFields = removeNullField(o.NullFields, "IamRoleId")
+}
+
+// SetIamRoleIdNil sets IamRoleId to an explicit JSON null when marshaled.
+func (o *PushBasedLogExportProject) SetIamRoleIdNil() {
+	o.IamRoleId = nil
+	o.NullFields = addNullField(o.NullFields, "IamRoleId")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -172,6 +202,13 @@ func (o *PushBasedLogExportProject) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PushBasedLogExportProject) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *PushBasedLogExportProject) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetPrefixPath returns the PrefixPath field value if set, zero value otherwise
@@ -205,6 +242,13 @@ func (o *PushBasedLogExportProject) HasPrefixPath() bool {
 // SetPrefixPath gets a reference to the given string and assigns it to the PrefixPath field.
 func (o *PushBasedLogExportProject) SetPrefixPath(v string) {
 	o.PrefixPath = &v
+	o.NullFields = removeNullField(o.NullFields, "PrefixPath")
+}
+
+// SetPrefixPathNil sets PrefixPath to an explicit JSON null when marshaled.
+func (o *PushBasedLogExportProject) SetPrefixPathNil() {
+	o.PrefixPath = nil
+	o.NullFields = addNullField(o.NullFields, "PrefixPath")
 }
 
 // GetState returns the State field value if set, zero value otherwise
@@ -238,4 +282,11 @@ func (o *PushBasedLogExportProject) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *PushBasedLogExportProject) SetState(v string) {
 	o.State = &v
+	o.NullFields = removeNullField(o.NullFields, "State")
+}
+
+// SetStateNil sets State to an explicit JSON null when marshaled.
+func (o *PushBasedLogExportProject) SetStateNil() {
+	o.State = nil
+	o.NullFields = addNullField(o.NullFields, "State")
 }

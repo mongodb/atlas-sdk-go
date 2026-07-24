@@ -23,6 +23,15 @@ type OrgGroup struct {
 	// List of human-readable labels that categorize the specified project. MongoDB Cloud returns an empty array.
 	// Read only field.
 	Tags *[]string `json:"tags,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *OrgGroup) MarshalJSON() ([]byte, error) {
+	type noMethod OrgGroup
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewOrgGroup instantiates a new OrgGroup object
@@ -73,6 +82,13 @@ func (o *OrgGroup) HasClusters() bool {
 // SetClusters gets a reference to the given []CloudCluster and assigns it to the Clusters field.
 func (o *OrgGroup) SetClusters(v []CloudCluster) {
 	o.Clusters = &v
+	o.NullFields = removeNullField(o.NullFields, "Clusters")
+}
+
+// SetClustersNil sets Clusters to an explicit JSON null when marshaled.
+func (o *OrgGroup) SetClustersNil() {
+	o.Clusters = nil
+	o.NullFields = addNullField(o.NullFields, "Clusters")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -106,6 +122,13 @@ func (o *OrgGroup) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *OrgGroup) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *OrgGroup) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetGroupName returns the GroupName field value if set, zero value otherwise
@@ -139,6 +162,13 @@ func (o *OrgGroup) HasGroupName() bool {
 // SetGroupName gets a reference to the given string and assigns it to the GroupName field.
 func (o *OrgGroup) SetGroupName(v string) {
 	o.GroupName = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupName")
+}
+
+// SetGroupNameNil sets GroupName to an explicit JSON null when marshaled.
+func (o *OrgGroup) SetGroupNameNil() {
+	o.GroupName = nil
+	o.NullFields = addNullField(o.NullFields, "GroupName")
 }
 
 // GetOrgId returns the OrgId field value if set, zero value otherwise
@@ -172,6 +202,13 @@ func (o *OrgGroup) HasOrgId() bool {
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *OrgGroup) SetOrgId(v string) {
 	o.OrgId = &v
+	o.NullFields = removeNullField(o.NullFields, "OrgId")
+}
+
+// SetOrgIdNil sets OrgId to an explicit JSON null when marshaled.
+func (o *OrgGroup) SetOrgIdNil() {
+	o.OrgId = nil
+	o.NullFields = addNullField(o.NullFields, "OrgId")
 }
 
 // GetOrgName returns the OrgName field value if set, zero value otherwise
@@ -205,6 +242,13 @@ func (o *OrgGroup) HasOrgName() bool {
 // SetOrgName gets a reference to the given string and assigns it to the OrgName field.
 func (o *OrgGroup) SetOrgName(v string) {
 	o.OrgName = &v
+	o.NullFields = removeNullField(o.NullFields, "OrgName")
+}
+
+// SetOrgNameNil sets OrgName to an explicit JSON null when marshaled.
+func (o *OrgGroup) SetOrgNameNil() {
+	o.OrgName = nil
+	o.NullFields = addNullField(o.NullFields, "OrgName")
 }
 
 // GetPlanType returns the PlanType field value if set, zero value otherwise
@@ -238,6 +282,13 @@ func (o *OrgGroup) HasPlanType() bool {
 // SetPlanType gets a reference to the given string and assigns it to the PlanType field.
 func (o *OrgGroup) SetPlanType(v string) {
 	o.PlanType = &v
+	o.NullFields = removeNullField(o.NullFields, "PlanType")
+}
+
+// SetPlanTypeNil sets PlanType to an explicit JSON null when marshaled.
+func (o *OrgGroup) SetPlanTypeNil() {
+	o.PlanType = nil
+	o.NullFields = addNullField(o.NullFields, "PlanType")
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise
@@ -271,4 +322,11 @@ func (o *OrgGroup) HasTags() bool {
 // SetTags gets a reference to the given []string and assigns it to the Tags field.
 func (o *OrgGroup) SetTags(v []string) {
 	o.Tags = &v
+	o.NullFields = removeNullField(o.NullFields, "Tags")
+}
+
+// SetTagsNil sets Tags to an explicit JSON null when marshaled.
+func (o *OrgGroup) SetTagsNil() {
+	o.Tags = nil
+	o.NullFields = addNullField(o.NullFields, "Tags")
 }

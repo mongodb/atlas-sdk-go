@@ -56,6 +56,13 @@ SetEnd sets End field to given value.
 `func (o *MeasurementsNonIndex) HasEnd() bool`
 
 HasEnd returns a boolean if a field has been set.
+
+### SetEndNil
+
+`func (o *MeasurementsNonIndex) SetEndNil()`
+
+SetEndNil sets End to an explicit JSON null when marshaled, overriding any value previously set with SetEnd. Calling SetEnd again clears the null override.
+
 ### GetGranularity
 
 `func (o *MeasurementsNonIndex) GetGranularity() string`
@@ -80,6 +87,13 @@ SetGranularity sets Granularity field to given value.
 `func (o *MeasurementsNonIndex) HasGranularity() bool`
 
 HasGranularity returns a boolean if a field has been set.
+
+### SetGranularityNil
+
+`func (o *MeasurementsNonIndex) SetGranularityNil()`
+
+SetGranularityNil sets Granularity to an explicit JSON null when marshaled, overriding any value previously set with SetGranularity. Calling SetGranularity again clears the null override.
+
 ### GetGroupId
 
 `func (o *MeasurementsNonIndex) GetGroupId() string`
@@ -104,6 +118,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *MeasurementsNonIndex) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *MeasurementsNonIndex) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetHardwareMeasurements
 
 `func (o *MeasurementsNonIndex) GetHardwareMeasurements() []MetricsMeasurement`
@@ -128,6 +149,13 @@ SetHardwareMeasurements sets HardwareMeasurements field to given value.
 `func (o *MeasurementsNonIndex) HasHardwareMeasurements() bool`
 
 HasHardwareMeasurements returns a boolean if a field has been set.
+
+### SetHardwareMeasurementsNil
+
+`func (o *MeasurementsNonIndex) SetHardwareMeasurementsNil()`
+
+SetHardwareMeasurementsNil sets HardwareMeasurements to an explicit JSON null when marshaled, overriding any value previously set with SetHardwareMeasurements. Calling SetHardwareMeasurements again clears the null override.
+
 ### GetLinks
 
 `func (o *MeasurementsNonIndex) GetLinks() []Link`
@@ -152,6 +180,13 @@ SetLinks sets Links field to given value.
 `func (o *MeasurementsNonIndex) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *MeasurementsNonIndex) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetProcessId
 
 `func (o *MeasurementsNonIndex) GetProcessId() string`
@@ -176,6 +211,13 @@ SetProcessId sets ProcessId field to given value.
 `func (o *MeasurementsNonIndex) HasProcessId() bool`
 
 HasProcessId returns a boolean if a field has been set.
+
+### SetProcessIdNil
+
+`func (o *MeasurementsNonIndex) SetProcessIdNil()`
+
+SetProcessIdNil sets ProcessId to an explicit JSON null when marshaled, overriding any value previously set with SetProcessId. Calling SetProcessId again clears the null override.
+
 ### GetStart
 
 `func (o *MeasurementsNonIndex) GetStart() time.Time`
@@ -200,6 +242,13 @@ SetStart sets Start field to given value.
 `func (o *MeasurementsNonIndex) HasStart() bool`
 
 HasStart returns a boolean if a field has been set.
+
+### SetStartNil
+
+`func (o *MeasurementsNonIndex) SetStartNil()`
+
+SetStartNil sets Start to an explicit JSON null when marshaled, overriding any value previously set with SetStart. Calling SetStart again clears the null override.
+
 ### GetStatusMeasurements
 
 `func (o *MeasurementsNonIndex) GetStatusMeasurements() []MetricsMeasurement`
@@ -224,6 +273,13 @@ SetStatusMeasurements sets StatusMeasurements field to given value.
 `func (o *MeasurementsNonIndex) HasStatusMeasurements() bool`
 
 HasStatusMeasurements returns a boolean if a field has been set.
+
+### SetStatusMeasurementsNil
+
+`func (o *MeasurementsNonIndex) SetStatusMeasurementsNil()`
+
+SetStatusMeasurementsNil sets StatusMeasurements to an explicit JSON null when marshaled, overriding any value previously set with SetStatusMeasurements. Calling SetStatusMeasurements again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -17,6 +17,15 @@ type AtlasOrganization struct {
 	Name string `json:"name"`
 	// Disables automatic alert creation. When set to true, no organization level alerts will be created automatically.
 	SkipDefaultAlertsSettings *bool `json:"skipDefaultAlertsSettings,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AtlasOrganization) MarshalJSON() ([]byte, error) {
+	type noMethod AtlasOrganization
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAtlasOrganization instantiates a new AtlasOrganization object
@@ -72,6 +81,13 @@ func (o *AtlasOrganization) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *AtlasOrganization) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *AtlasOrganization) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetIsDeleted returns the IsDeleted field value if set, zero value otherwise
@@ -105,6 +121,13 @@ func (o *AtlasOrganization) HasIsDeleted() bool {
 // SetIsDeleted gets a reference to the given bool and assigns it to the IsDeleted field.
 func (o *AtlasOrganization) SetIsDeleted(v bool) {
 	o.IsDeleted = &v
+	o.NullFields = removeNullField(o.NullFields, "IsDeleted")
+}
+
+// SetIsDeletedNil sets IsDeleted to an explicit JSON null when marshaled.
+func (o *AtlasOrganization) SetIsDeletedNil() {
+	o.IsDeleted = nil
+	o.NullFields = addNullField(o.NullFields, "IsDeleted")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -138,6 +161,13 @@ func (o *AtlasOrganization) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *AtlasOrganization) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *AtlasOrganization) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetName returns the Name field value
@@ -195,4 +225,11 @@ func (o *AtlasOrganization) HasSkipDefaultAlertsSettings() bool {
 // SetSkipDefaultAlertsSettings gets a reference to the given bool and assigns it to the SkipDefaultAlertsSettings field.
 func (o *AtlasOrganization) SetSkipDefaultAlertsSettings(v bool) {
 	o.SkipDefaultAlertsSettings = &v
+	o.NullFields = removeNullField(o.NullFields, "SkipDefaultAlertsSettings")
+}
+
+// SetSkipDefaultAlertsSettingsNil sets SkipDefaultAlertsSettings to an explicit JSON null when marshaled.
+func (o *AtlasOrganization) SetSkipDefaultAlertsSettingsNil() {
+	o.SkipDefaultAlertsSettings = nil
+	o.NullFields = addNullField(o.NullFields, "SkipDefaultAlertsSettings")
 }

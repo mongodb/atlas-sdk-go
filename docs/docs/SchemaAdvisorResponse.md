@@ -50,6 +50,13 @@ SetRecommendations sets Recommendations field to given value.
 
 HasRecommendations returns a boolean if a field has been set.
 
+### SetRecommendationsNil
+
+`func (o *SchemaAdvisorResponse) SetRecommendationsNil()`
+
+SetRecommendationsNil sets Recommendations to an explicit JSON null when marshaled, overriding any value previously set with SetRecommendations. Calling SetRecommendations again clears the null override.
+
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

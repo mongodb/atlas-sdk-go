@@ -51,6 +51,13 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *ApiAtlasCollectionRestoreIndexStatus) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
+
+### SetErrorMessageNil
+
+`func (o *ApiAtlasCollectionRestoreIndexStatus) SetErrorMessageNil()`
+
+SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled, overriding any value previously set with SetErrorMessage. Calling SetErrorMessage again clears the null override.
+
 ### GetFailedIndexes
 
 `func (o *ApiAtlasCollectionRestoreIndexStatus) GetFailedIndexes() []map[string]any`
@@ -75,6 +82,13 @@ SetFailedIndexes sets FailedIndexes field to given value.
 `func (o *ApiAtlasCollectionRestoreIndexStatus) HasFailedIndexes() bool`
 
 HasFailedIndexes returns a boolean if a field has been set.
+
+### SetFailedIndexesNil
+
+`func (o *ApiAtlasCollectionRestoreIndexStatus) SetFailedIndexesNil()`
+
+SetFailedIndexesNil sets FailedIndexes to an explicit JSON null when marshaled, overriding any value previously set with SetFailedIndexes. Calling SetFailedIndexes again clears the null override.
+
 ### GetState
 
 `func (o *ApiAtlasCollectionRestoreIndexStatus) GetState() string`
@@ -99,6 +113,13 @@ SetState sets State field to given value.
 `func (o *ApiAtlasCollectionRestoreIndexStatus) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### SetStateNil
+
+`func (o *ApiAtlasCollectionRestoreIndexStatus) SetStateNil()`
+
+SetStateNil sets State to an explicit JSON null when marshaled, overriding any value previously set with SetState. Calling SetState again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

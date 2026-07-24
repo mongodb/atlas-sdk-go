@@ -51,6 +51,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamConfig) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamConfig) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetMaxTierSize
 
 `func (o *StreamConfig) GetMaxTierSize() string`
@@ -75,6 +82,13 @@ SetMaxTierSize sets MaxTierSize field to given value.
 `func (o *StreamConfig) HasMaxTierSize() bool`
 
 HasMaxTierSize returns a boolean if a field has been set.
+
+### SetMaxTierSizeNil
+
+`func (o *StreamConfig) SetMaxTierSizeNil()`
+
+SetMaxTierSizeNil sets MaxTierSize to an explicit JSON null when marshaled, overriding any value previously set with SetMaxTierSize. Calling SetMaxTierSize again clears the null override.
+
 ### GetTier
 
 `func (o *StreamConfig) GetTier() string`
@@ -99,6 +113,13 @@ SetTier sets Tier field to given value.
 `func (o *StreamConfig) HasTier() bool`
 
 HasTier returns a boolean if a field has been set.
+
+### SetTierNil
+
+`func (o *StreamConfig) SetTierNil()`
+
+SetTierNil sets Tier to an explicit JSON null when marshaled, overriding any value previously set with SetTier. Calling SetTier again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

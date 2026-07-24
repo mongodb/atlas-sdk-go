@@ -51,6 +51,13 @@ SetBrokerPublicCertificate sets BrokerPublicCertificate field to given value.
 `func (o *StreamsKafkaSecurity) HasBrokerPublicCertificate() bool`
 
 HasBrokerPublicCertificate returns a boolean if a field has been set.
+
+### SetBrokerPublicCertificateNil
+
+`func (o *StreamsKafkaSecurity) SetBrokerPublicCertificateNil()`
+
+SetBrokerPublicCertificateNil sets BrokerPublicCertificate to an explicit JSON null when marshaled, overriding any value previously set with SetBrokerPublicCertificate. Calling SetBrokerPublicCertificate again clears the null override.
+
 ### GetLinks
 
 `func (o *StreamsKafkaSecurity) GetLinks() []Link`
@@ -75,6 +82,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsKafkaSecurity) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsKafkaSecurity) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetProtocol
 
 `func (o *StreamsKafkaSecurity) GetProtocol() string`
@@ -99,6 +113,13 @@ SetProtocol sets Protocol field to given value.
 `func (o *StreamsKafkaSecurity) HasProtocol() bool`
 
 HasProtocol returns a boolean if a field has been set.
+
+### SetProtocolNil
+
+`func (o *StreamsKafkaSecurity) SetProtocolNil()`
+
+SetProtocolNil sets Protocol to an explicit JSON null when marshaled, overriding any value previously set with SetProtocol. Calling SetProtocol again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

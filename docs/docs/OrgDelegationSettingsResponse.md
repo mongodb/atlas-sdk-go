@@ -52,6 +52,13 @@ SetDelegatedMcpAccess sets DelegatedMcpAccess field to given value.
 `func (o *OrgDelegationSettingsResponse) HasDelegatedMcpAccess() bool`
 
 HasDelegatedMcpAccess returns a boolean if a field has been set.
+
+### SetDelegatedMcpAccessNil
+
+`func (o *OrgDelegationSettingsResponse) SetDelegatedMcpAccessNil()`
+
+SetDelegatedMcpAccessNil sets DelegatedMcpAccess to an explicit JSON null when marshaled, overriding any value previously set with SetDelegatedMcpAccess. Calling SetDelegatedMcpAccess again clears the null override.
+
 ### GetDelegatedPartnerAccess
 
 `func (o *OrgDelegationSettingsResponse) GetDelegatedPartnerAccess() string`
@@ -76,6 +83,13 @@ SetDelegatedPartnerAccess sets DelegatedPartnerAccess field to given value.
 `func (o *OrgDelegationSettingsResponse) HasDelegatedPartnerAccess() bool`
 
 HasDelegatedPartnerAccess returns a boolean if a field has been set.
+
+### SetDelegatedPartnerAccessNil
+
+`func (o *OrgDelegationSettingsResponse) SetDelegatedPartnerAccessNil()`
+
+SetDelegatedPartnerAccessNil sets DelegatedPartnerAccess to an explicit JSON null when marshaled, overriding any value previously set with SetDelegatedPartnerAccess. Calling SetDelegatedPartnerAccess again clears the null override.
+
 ### GetIdleRefreshTokenLifetime
 
 `func (o *OrgDelegationSettingsResponse) GetIdleRefreshTokenLifetime() int64`
@@ -100,6 +114,13 @@ SetIdleRefreshTokenLifetime sets IdleRefreshTokenLifetime field to given value.
 `func (o *OrgDelegationSettingsResponse) HasIdleRefreshTokenLifetime() bool`
 
 HasIdleRefreshTokenLifetime returns a boolean if a field has been set.
+
+### SetIdleRefreshTokenLifetimeNil
+
+`func (o *OrgDelegationSettingsResponse) SetIdleRefreshTokenLifetimeNil()`
+
+SetIdleRefreshTokenLifetimeNil sets IdleRefreshTokenLifetime to an explicit JSON null when marshaled, overriding any value previously set with SetIdleRefreshTokenLifetime. Calling SetIdleRefreshTokenLifetime again clears the null override.
+
 ### GetMaximumRefreshTokenLifetime
 
 `func (o *OrgDelegationSettingsResponse) GetMaximumRefreshTokenLifetime() int64`
@@ -124,6 +145,13 @@ SetMaximumRefreshTokenLifetime sets MaximumRefreshTokenLifetime field to given v
 `func (o *OrgDelegationSettingsResponse) HasMaximumRefreshTokenLifetime() bool`
 
 HasMaximumRefreshTokenLifetime returns a boolean if a field has been set.
+
+### SetMaximumRefreshTokenLifetimeNil
+
+`func (o *OrgDelegationSettingsResponse) SetMaximumRefreshTokenLifetimeNil()`
+
+SetMaximumRefreshTokenLifetimeNil sets MaximumRefreshTokenLifetime to an explicit JSON null when marshaled, overriding any value previously set with SetMaximumRefreshTokenLifetime. Calling SetMaximumRefreshTokenLifetime again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

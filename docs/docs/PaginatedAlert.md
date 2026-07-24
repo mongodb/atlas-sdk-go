@@ -51,6 +51,13 @@ SetLinks sets Links field to given value.
 `func (o *PaginatedAlert) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *PaginatedAlert) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetResults
 
 `func (o *PaginatedAlert) GetResults() []AlertViewForNdsGroup`
@@ -94,6 +101,13 @@ SetTotalCount sets TotalCount field to given value.
 `func (o *PaginatedAlert) HasTotalCount() bool`
 
 HasTotalCount returns a boolean if a field has been set.
+
+### SetTotalCountNil
+
+`func (o *PaginatedAlert) SetTotalCountNil()`
+
+SetTotalCountNil sets TotalCount to an explicit JSON null when marshaled, overriding any value previously set with SetTotalCount. Calling SetTotalCount again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

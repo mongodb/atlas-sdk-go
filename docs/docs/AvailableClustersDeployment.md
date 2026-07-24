@@ -59,6 +59,13 @@ SetAgentVersion sets AgentVersion field to given value.
 `func (o *AvailableClustersDeployment) HasAgentVersion() bool`
 
 HasAgentVersion returns a boolean if a field has been set.
+
+### SetAgentVersionNil
+
+`func (o *AvailableClustersDeployment) SetAgentVersionNil()`
+
+SetAgentVersionNil sets AgentVersion to an explicit JSON null when marshaled, overriding any value previously set with SetAgentVersion. Calling SetAgentVersion again clears the null override.
+
 ### GetClusterId
 
 `func (o *AvailableClustersDeployment) GetClusterId() string`
@@ -83,6 +90,13 @@ SetClusterId sets ClusterId field to given value.
 `func (o *AvailableClustersDeployment) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
+
+### SetClusterIdNil
+
+`func (o *AvailableClustersDeployment) SetClusterIdNil()`
+
+SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled, overriding any value previously set with SetClusterId. Calling SetClusterId again clears the null override.
+
 ### GetDbSizeBytes
 
 `func (o *AvailableClustersDeployment) GetDbSizeBytes() int64`
@@ -107,6 +121,13 @@ SetDbSizeBytes sets DbSizeBytes field to given value.
 `func (o *AvailableClustersDeployment) HasDbSizeBytes() bool`
 
 HasDbSizeBytes returns a boolean if a field has been set.
+
+### SetDbSizeBytesNil
+
+`func (o *AvailableClustersDeployment) SetDbSizeBytesNil()`
+
+SetDbSizeBytesNil sets DbSizeBytes to an explicit JSON null when marshaled, overriding any value previously set with SetDbSizeBytes. Calling SetDbSizeBytes again clears the null override.
+
 ### GetFeatureCompatibilityVersion
 
 `func (o *AvailableClustersDeployment) GetFeatureCompatibilityVersion() string`
@@ -207,6 +228,13 @@ SetOplogSizeMB sets OplogSizeMB field to given value.
 `func (o *AvailableClustersDeployment) HasOplogSizeMB() bool`
 
 HasOplogSizeMB returns a boolean if a field has been set.
+
+### SetOplogSizeMBNil
+
+`func (o *AvailableClustersDeployment) SetOplogSizeMBNil()`
+
+SetOplogSizeMBNil sets OplogSizeMB to an explicit JSON null when marshaled, overriding any value previously set with SetOplogSizeMB. Calling SetOplogSizeMB again clears the null override.
+
 ### GetSharded
 
 `func (o *AvailableClustersDeployment) GetSharded() bool`
@@ -250,6 +278,13 @@ SetShardsSize sets ShardsSize field to given value.
 `func (o *AvailableClustersDeployment) HasShardsSize() bool`
 
 HasShardsSize returns a boolean if a field has been set.
+
+### SetShardsSizeNil
+
+`func (o *AvailableClustersDeployment) SetShardsSizeNil()`
+
+SetShardsSizeNil sets ShardsSize to an explicit JSON null when marshaled, overriding any value previously set with SetShardsSize. Calling SetShardsSize again clears the null override.
+
 ### GetTlsEnabled
 
 `func (o *AvailableClustersDeployment) GetTlsEnabled() bool`

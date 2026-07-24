@@ -62,6 +62,13 @@ SetId sets Id field to given value.
 `func (o *VPCPeeringConnection) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *VPCPeeringConnection) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetAccepterAccountId
 
 `func (o *VPCPeeringConnection) GetAccepterAccountId() string`
@@ -86,6 +93,13 @@ SetAccepterAccountId sets AccepterAccountId field to given value.
 `func (o *VPCPeeringConnection) HasAccepterAccountId() bool`
 
 HasAccepterAccountId returns a boolean if a field has been set.
+
+### SetAccepterAccountIdNil
+
+`func (o *VPCPeeringConnection) SetAccepterAccountIdNil()`
+
+SetAccepterAccountIdNil sets AccepterAccountId to an explicit JSON null when marshaled, overriding any value previously set with SetAccepterAccountId. Calling SetAccepterAccountId again clears the null override.
+
 ### GetAccepterCidr
 
 `func (o *VPCPeeringConnection) GetAccepterCidr() string`
@@ -110,6 +124,13 @@ SetAccepterCidr sets AccepterCidr field to given value.
 `func (o *VPCPeeringConnection) HasAccepterCidr() bool`
 
 HasAccepterCidr returns a boolean if a field has been set.
+
+### SetAccepterCidrNil
+
+`func (o *VPCPeeringConnection) SetAccepterCidrNil()`
+
+SetAccepterCidrNil sets AccepterCidr to an explicit JSON null when marshaled, overriding any value previously set with SetAccepterCidr. Calling SetAccepterCidr again clears the null override.
+
 ### GetAccepterVpcId
 
 `func (o *VPCPeeringConnection) GetAccepterVpcId() string`
@@ -134,6 +155,13 @@ SetAccepterVpcId sets AccepterVpcId field to given value.
 `func (o *VPCPeeringConnection) HasAccepterVpcId() bool`
 
 HasAccepterVpcId returns a boolean if a field has been set.
+
+### SetAccepterVpcIdNil
+
+`func (o *VPCPeeringConnection) SetAccepterVpcIdNil()`
+
+SetAccepterVpcIdNil sets AccepterVpcId to an explicit JSON null when marshaled, overriding any value previously set with SetAccepterVpcId. Calling SetAccepterVpcId again clears the null override.
+
 ### GetCloudStatus
 
 `func (o *VPCPeeringConnection) GetCloudStatus() string`
@@ -158,6 +186,13 @@ SetCloudStatus sets CloudStatus field to given value.
 `func (o *VPCPeeringConnection) HasCloudStatus() bool`
 
 HasCloudStatus returns a boolean if a field has been set.
+
+### SetCloudStatusNil
+
+`func (o *VPCPeeringConnection) SetCloudStatusNil()`
+
+SetCloudStatusNil sets CloudStatus to an explicit JSON null when marshaled, overriding any value previously set with SetCloudStatus. Calling SetCloudStatus again clears the null override.
+
 ### GetExpirationTime
 
 `func (o *VPCPeeringConnection) GetExpirationTime() time.Time`
@@ -182,6 +217,13 @@ SetExpirationTime sets ExpirationTime field to given value.
 `func (o *VPCPeeringConnection) HasExpirationTime() bool`
 
 HasExpirationTime returns a boolean if a field has been set.
+
+### SetExpirationTimeNil
+
+`func (o *VPCPeeringConnection) SetExpirationTimeNil()`
+
+SetExpirationTimeNil sets ExpirationTime to an explicit JSON null when marshaled, overriding any value previously set with SetExpirationTime. Calling SetExpirationTime again clears the null override.
+
 ### GetGroupId
 
 `func (o *VPCPeeringConnection) GetGroupId() string`
@@ -206,6 +248,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *VPCPeeringConnection) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *VPCPeeringConnection) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetLinks
 
 `func (o *VPCPeeringConnection) GetLinks() []Link`
@@ -230,6 +279,13 @@ SetLinks sets Links field to given value.
 `func (o *VPCPeeringConnection) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *VPCPeeringConnection) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetLocalStatus
 
 `func (o *VPCPeeringConnection) GetLocalStatus() string`
@@ -254,6 +310,13 @@ SetLocalStatus sets LocalStatus field to given value.
 `func (o *VPCPeeringConnection) HasLocalStatus() bool`
 
 HasLocalStatus returns a boolean if a field has been set.
+
+### SetLocalStatusNil
+
+`func (o *VPCPeeringConnection) SetLocalStatusNil()`
+
+SetLocalStatusNil sets LocalStatus to an explicit JSON null when marshaled, overriding any value previously set with SetLocalStatus. Calling SetLocalStatus again clears the null override.
+
 ### GetName
 
 `func (o *VPCPeeringConnection) GetName() string`
@@ -278,6 +341,13 @@ SetName sets Name field to given value.
 `func (o *VPCPeeringConnection) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *VPCPeeringConnection) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetRequesterAccountId
 
 `func (o *VPCPeeringConnection) GetRequesterAccountId() string`
@@ -302,6 +372,13 @@ SetRequesterAccountId sets RequesterAccountId field to given value.
 `func (o *VPCPeeringConnection) HasRequesterAccountId() bool`
 
 HasRequesterAccountId returns a boolean if a field has been set.
+
+### SetRequesterAccountIdNil
+
+`func (o *VPCPeeringConnection) SetRequesterAccountIdNil()`
+
+SetRequesterAccountIdNil sets RequesterAccountId to an explicit JSON null when marshaled, overriding any value previously set with SetRequesterAccountId. Calling SetRequesterAccountId again clears the null override.
+
 ### GetRequesterCidr
 
 `func (o *VPCPeeringConnection) GetRequesterCidr() string`
@@ -326,6 +403,13 @@ SetRequesterCidr sets RequesterCidr field to given value.
 `func (o *VPCPeeringConnection) HasRequesterCidr() bool`
 
 HasRequesterCidr returns a boolean if a field has been set.
+
+### SetRequesterCidrNil
+
+`func (o *VPCPeeringConnection) SetRequesterCidrNil()`
+
+SetRequesterCidrNil sets RequesterCidr to an explicit JSON null when marshaled, overriding any value previously set with SetRequesterCidr. Calling SetRequesterCidr again clears the null override.
+
 ### GetRequesterVpcId
 
 `func (o *VPCPeeringConnection) GetRequesterVpcId() string`
@@ -350,6 +434,13 @@ SetRequesterVpcId sets RequesterVpcId field to given value.
 `func (o *VPCPeeringConnection) HasRequesterVpcId() bool`
 
 HasRequesterVpcId returns a boolean if a field has been set.
+
+### SetRequesterVpcIdNil
+
+`func (o *VPCPeeringConnection) SetRequesterVpcIdNil()`
+
+SetRequesterVpcIdNil sets RequesterVpcId to an explicit JSON null when marshaled, overriding any value previously set with SetRequesterVpcId. Calling SetRequesterVpcId again clears the null override.
+
 ### GetStatusMessage
 
 `func (o *VPCPeeringConnection) GetStatusMessage() string`
@@ -374,6 +465,13 @@ SetStatusMessage sets StatusMessage field to given value.
 `func (o *VPCPeeringConnection) HasStatusMessage() bool`
 
 HasStatusMessage returns a boolean if a field has been set.
+
+### SetStatusMessageNil
+
+`func (o *VPCPeeringConnection) SetStatusMessageNil()`
+
+SetStatusMessageNil sets StatusMessage to an explicit JSON null when marshaled, overriding any value previously set with SetStatusMessage. Calling SetStatusMessage again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -9,6 +9,15 @@ type UpdateOrgRolesForUser struct {
 	Links *[]Link `json:"links,omitempty"`
 	// One or more organization level roles to assign to the MongoDB Cloud user.
 	OrgRoles *[]string `json:"orgRoles,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *UpdateOrgRolesForUser) MarshalJSON() ([]byte, error) {
+	type noMethod UpdateOrgRolesForUser
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewUpdateOrgRolesForUser instantiates a new UpdateOrgRolesForUser object
@@ -59,6 +68,13 @@ func (o *UpdateOrgRolesForUser) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UpdateOrgRolesForUser) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *UpdateOrgRolesForUser) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetOrgRoles returns the OrgRoles field value if set, zero value otherwise
@@ -92,4 +108,11 @@ func (o *UpdateOrgRolesForUser) HasOrgRoles() bool {
 // SetOrgRoles gets a reference to the given []string and assigns it to the OrgRoles field.
 func (o *UpdateOrgRolesForUser) SetOrgRoles(v []string) {
 	o.OrgRoles = &v
+	o.NullFields = removeNullField(o.NullFields, "OrgRoles")
+}
+
+// SetOrgRolesNil sets OrgRoles to an explicit JSON null when marshaled.
+func (o *UpdateOrgRolesForUser) SetOrgRolesNil() {
+	o.OrgRoles = nil
+	o.NullFields = addNullField(o.NullFields, "OrgRoles")
 }

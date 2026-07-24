@@ -57,6 +57,13 @@ SetId sets Id field to given value.
 `func (o *ServerlessTenantEndpoint) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *ServerlessTenantEndpoint) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetCloudProviderEndpointId
 
 `func (o *ServerlessTenantEndpoint) GetCloudProviderEndpointId() string`
@@ -81,6 +88,13 @@ SetCloudProviderEndpointId sets CloudProviderEndpointId field to given value.
 `func (o *ServerlessTenantEndpoint) HasCloudProviderEndpointId() bool`
 
 HasCloudProviderEndpointId returns a boolean if a field has been set.
+
+### SetCloudProviderEndpointIdNil
+
+`func (o *ServerlessTenantEndpoint) SetCloudProviderEndpointIdNil()`
+
+SetCloudProviderEndpointIdNil sets CloudProviderEndpointId to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProviderEndpointId. Calling SetCloudProviderEndpointId again clears the null override.
+
 ### GetComment
 
 `func (o *ServerlessTenantEndpoint) GetComment() string`
@@ -105,6 +119,13 @@ SetComment sets Comment field to given value.
 `func (o *ServerlessTenantEndpoint) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### SetCommentNil
+
+`func (o *ServerlessTenantEndpoint) SetCommentNil()`
+
+SetCommentNil sets Comment to an explicit JSON null when marshaled, overriding any value previously set with SetComment. Calling SetComment again clears the null override.
+
 ### GetEndpointServiceName
 
 `func (o *ServerlessTenantEndpoint) GetEndpointServiceName() string`
@@ -129,6 +150,13 @@ SetEndpointServiceName sets EndpointServiceName field to given value.
 `func (o *ServerlessTenantEndpoint) HasEndpointServiceName() bool`
 
 HasEndpointServiceName returns a boolean if a field has been set.
+
+### SetEndpointServiceNameNil
+
+`func (o *ServerlessTenantEndpoint) SetEndpointServiceNameNil()`
+
+SetEndpointServiceNameNil sets EndpointServiceName to an explicit JSON null when marshaled, overriding any value previously set with SetEndpointServiceName. Calling SetEndpointServiceName again clears the null override.
+
 ### GetErrorMessage
 
 `func (o *ServerlessTenantEndpoint) GetErrorMessage() string`
@@ -153,6 +181,13 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *ServerlessTenantEndpoint) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
+
+### SetErrorMessageNil
+
+`func (o *ServerlessTenantEndpoint) SetErrorMessageNil()`
+
+SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled, overriding any value previously set with SetErrorMessage. Calling SetErrorMessage again clears the null override.
+
 ### GetStatus
 
 `func (o *ServerlessTenantEndpoint) GetStatus() string`
@@ -177,6 +212,13 @@ SetStatus sets Status field to given value.
 `func (o *ServerlessTenantEndpoint) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *ServerlessTenantEndpoint) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 ### GetProviderName
 
 `func (o *ServerlessTenantEndpoint) GetProviderName() string`
@@ -201,6 +243,13 @@ SetProviderName sets ProviderName field to given value.
 `func (o *ServerlessTenantEndpoint) HasProviderName() bool`
 
 HasProviderName returns a boolean if a field has been set.
+
+### SetProviderNameNil
+
+`func (o *ServerlessTenantEndpoint) SetProviderNameNil()`
+
+SetProviderNameNil sets ProviderName to an explicit JSON null when marshaled, overriding any value previously set with SetProviderName. Calling SetProviderName again clears the null override.
+
 ### GetPrivateEndpointIpAddress
 
 `func (o *ServerlessTenantEndpoint) GetPrivateEndpointIpAddress() string`
@@ -225,6 +274,13 @@ SetPrivateEndpointIpAddress sets PrivateEndpointIpAddress field to given value.
 `func (o *ServerlessTenantEndpoint) HasPrivateEndpointIpAddress() bool`
 
 HasPrivateEndpointIpAddress returns a boolean if a field has been set.
+
+### SetPrivateEndpointIpAddressNil
+
+`func (o *ServerlessTenantEndpoint) SetPrivateEndpointIpAddressNil()`
+
+SetPrivateEndpointIpAddressNil sets PrivateEndpointIpAddress to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateEndpointIpAddress. Calling SetPrivateEndpointIpAddress again clears the null override.
+
 ### GetPrivateLinkServiceResourceId
 
 `func (o *ServerlessTenantEndpoint) GetPrivateLinkServiceResourceId() string`
@@ -249,6 +305,13 @@ SetPrivateLinkServiceResourceId sets PrivateLinkServiceResourceId field to given
 `func (o *ServerlessTenantEndpoint) HasPrivateLinkServiceResourceId() bool`
 
 HasPrivateLinkServiceResourceId returns a boolean if a field has been set.
+
+### SetPrivateLinkServiceResourceIdNil
+
+`func (o *ServerlessTenantEndpoint) SetPrivateLinkServiceResourceIdNil()`
+
+SetPrivateLinkServiceResourceIdNil sets PrivateLinkServiceResourceId to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateLinkServiceResourceId. Calling SetPrivateLinkServiceResourceId again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -119,6 +119,13 @@ SetTeamIds sets TeamIds field to given value.
 `func (o *OrgUserResponse) HasTeamIds() bool`
 
 HasTeamIds returns a boolean if a field has been set.
+
+### SetTeamIdsNil
+
+`func (o *OrgUserResponse) SetTeamIdsNil()`
+
+SetTeamIdsNil sets TeamIds to an explicit JSON null when marshaled, overriding any value previously set with SetTeamIds. Calling SetTeamIds again clears the null override.
+
 ### GetUsername
 
 `func (o *OrgUserResponse) GetUsername() string`
@@ -162,6 +169,13 @@ SetInvitationCreatedAt sets InvitationCreatedAt field to given value.
 `func (o *OrgUserResponse) HasInvitationCreatedAt() bool`
 
 HasInvitationCreatedAt returns a boolean if a field has been set.
+
+### SetInvitationCreatedAtNil
+
+`func (o *OrgUserResponse) SetInvitationCreatedAtNil()`
+
+SetInvitationCreatedAtNil sets InvitationCreatedAt to an explicit JSON null when marshaled, overriding any value previously set with SetInvitationCreatedAt. Calling SetInvitationCreatedAt again clears the null override.
+
 ### GetInvitationExpiresAt
 
 `func (o *OrgUserResponse) GetInvitationExpiresAt() time.Time`
@@ -186,6 +200,13 @@ SetInvitationExpiresAt sets InvitationExpiresAt field to given value.
 `func (o *OrgUserResponse) HasInvitationExpiresAt() bool`
 
 HasInvitationExpiresAt returns a boolean if a field has been set.
+
+### SetInvitationExpiresAtNil
+
+`func (o *OrgUserResponse) SetInvitationExpiresAtNil()`
+
+SetInvitationExpiresAtNil sets InvitationExpiresAt to an explicit JSON null when marshaled, overriding any value previously set with SetInvitationExpiresAt. Calling SetInvitationExpiresAt again clears the null override.
+
 ### GetInviterUsername
 
 `func (o *OrgUserResponse) GetInviterUsername() string`
@@ -210,6 +231,13 @@ SetInviterUsername sets InviterUsername field to given value.
 `func (o *OrgUserResponse) HasInviterUsername() bool`
 
 HasInviterUsername returns a boolean if a field has been set.
+
+### SetInviterUsernameNil
+
+`func (o *OrgUserResponse) SetInviterUsernameNil()`
+
+SetInviterUsernameNil sets InviterUsername to an explicit JSON null when marshaled, overriding any value previously set with SetInviterUsername. Calling SetInviterUsername again clears the null override.
+
 ### GetCountry
 
 `func (o *OrgUserResponse) GetCountry() string`
@@ -234,6 +262,13 @@ SetCountry sets Country field to given value.
 `func (o *OrgUserResponse) HasCountry() bool`
 
 HasCountry returns a boolean if a field has been set.
+
+### SetCountryNil
+
+`func (o *OrgUserResponse) SetCountryNil()`
+
+SetCountryNil sets Country to an explicit JSON null when marshaled, overriding any value previously set with SetCountry. Calling SetCountry again clears the null override.
+
 ### GetCreatedAt
 
 `func (o *OrgUserResponse) GetCreatedAt() time.Time`
@@ -258,6 +293,13 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *OrgUserResponse) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
+
+### SetCreatedAtNil
+
+`func (o *OrgUserResponse) SetCreatedAtNil()`
+
+SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled, overriding any value previously set with SetCreatedAt. Calling SetCreatedAt again clears the null override.
+
 ### GetFirstName
 
 `func (o *OrgUserResponse) GetFirstName() string`
@@ -282,6 +324,13 @@ SetFirstName sets FirstName field to given value.
 `func (o *OrgUserResponse) HasFirstName() bool`
 
 HasFirstName returns a boolean if a field has been set.
+
+### SetFirstNameNil
+
+`func (o *OrgUserResponse) SetFirstNameNil()`
+
+SetFirstNameNil sets FirstName to an explicit JSON null when marshaled, overriding any value previously set with SetFirstName. Calling SetFirstName again clears the null override.
+
 ### GetLastAuth
 
 `func (o *OrgUserResponse) GetLastAuth() time.Time`
@@ -306,6 +355,13 @@ SetLastAuth sets LastAuth field to given value.
 `func (o *OrgUserResponse) HasLastAuth() bool`
 
 HasLastAuth returns a boolean if a field has been set.
+
+### SetLastAuthNil
+
+`func (o *OrgUserResponse) SetLastAuthNil()`
+
+SetLastAuthNil sets LastAuth to an explicit JSON null when marshaled, overriding any value previously set with SetLastAuth. Calling SetLastAuth again clears the null override.
+
 ### GetLastName
 
 `func (o *OrgUserResponse) GetLastName() string`
@@ -330,6 +386,13 @@ SetLastName sets LastName field to given value.
 `func (o *OrgUserResponse) HasLastName() bool`
 
 HasLastName returns a boolean if a field has been set.
+
+### SetLastNameNil
+
+`func (o *OrgUserResponse) SetLastNameNil()`
+
+SetLastNameNil sets LastName to an explicit JSON null when marshaled, overriding any value previously set with SetLastName. Calling SetLastName again clears the null override.
+
 ### GetMobileNumber
 
 `func (o *OrgUserResponse) GetMobileNumber() string`
@@ -354,6 +417,13 @@ SetMobileNumber sets MobileNumber field to given value.
 `func (o *OrgUserResponse) HasMobileNumber() bool`
 
 HasMobileNumber returns a boolean if a field has been set.
+
+### SetMobileNumberNil
+
+`func (o *OrgUserResponse) SetMobileNumberNil()`
+
+SetMobileNumberNil sets MobileNumber to an explicit JSON null when marshaled, overriding any value previously set with SetMobileNumber. Calling SetMobileNumber again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

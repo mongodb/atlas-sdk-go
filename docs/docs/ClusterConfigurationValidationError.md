@@ -50,6 +50,13 @@ SetErrorCode sets ErrorCode field to given value.
 `func (o *ClusterConfigurationValidationError) HasErrorCode() bool`
 
 HasErrorCode returns a boolean if a field has been set.
+
+### SetErrorCodeNil
+
+`func (o *ClusterConfigurationValidationError) SetErrorCodeNil()`
+
+SetErrorCodeNil sets ErrorCode to an explicit JSON null when marshaled, overriding any value previously set with SetErrorCode. Calling SetErrorCode again clears the null override.
+
 ### GetValidationIssue
 
 `func (o *ClusterConfigurationValidationError) GetValidationIssue() string`
@@ -74,6 +81,13 @@ SetValidationIssue sets ValidationIssue field to given value.
 `func (o *ClusterConfigurationValidationError) HasValidationIssue() bool`
 
 HasValidationIssue returns a boolean if a field has been set.
+
+### SetValidationIssueNil
+
+`func (o *ClusterConfigurationValidationError) SetValidationIssueNil()`
+
+SetValidationIssueNil sets ValidationIssue to an explicit JSON null when marshaled, overriding any value previously set with SetValidationIssue. Calling SetValidationIssue again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -42,6 +42,15 @@ type FlexClusterDescription20241113 struct {
 	// Method by which the cluster maintains the MongoDB versions.
 	// Read only field.
 	VersionReleaseSystem *string `json:"versionReleaseSystem,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *FlexClusterDescription20241113) MarshalJSON() ([]byte, error) {
+	type noMethod FlexClusterDescription20241113
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFlexClusterDescription20241113 instantiates a new FlexClusterDescription20241113 object
@@ -97,6 +106,13 @@ func (o *FlexClusterDescription20241113) HasBackupSettings() bool {
 // SetBackupSettings gets a reference to the given FlexBackupSettings20241113 and assigns it to the BackupSettings field.
 func (o *FlexClusterDescription20241113) SetBackupSettings(v FlexBackupSettings20241113) {
 	o.BackupSettings = &v
+	o.NullFields = removeNullField(o.NullFields, "BackupSettings")
+}
+
+// SetBackupSettingsNil sets BackupSettings to an explicit JSON null when marshaled.
+func (o *FlexClusterDescription20241113) SetBackupSettingsNil() {
+	o.BackupSettings = nil
+	o.NullFields = addNullField(o.NullFields, "BackupSettings")
 }
 
 // GetClusterType returns the ClusterType field value if set, zero value otherwise
@@ -130,6 +146,13 @@ func (o *FlexClusterDescription20241113) HasClusterType() bool {
 // SetClusterType gets a reference to the given string and assigns it to the ClusterType field.
 func (o *FlexClusterDescription20241113) SetClusterType(v string) {
 	o.ClusterType = &v
+	o.NullFields = removeNullField(o.NullFields, "ClusterType")
+}
+
+// SetClusterTypeNil sets ClusterType to an explicit JSON null when marshaled.
+func (o *FlexClusterDescription20241113) SetClusterTypeNil() {
+	o.ClusterType = nil
+	o.NullFields = addNullField(o.NullFields, "ClusterType")
 }
 
 // GetConnectionStrings returns the ConnectionStrings field value if set, zero value otherwise
@@ -163,6 +186,13 @@ func (o *FlexClusterDescription20241113) HasConnectionStrings() bool {
 // SetConnectionStrings gets a reference to the given FlexConnectionStrings20241113 and assigns it to the ConnectionStrings field.
 func (o *FlexClusterDescription20241113) SetConnectionStrings(v FlexConnectionStrings20241113) {
 	o.ConnectionStrings = &v
+	o.NullFields = removeNullField(o.NullFields, "ConnectionStrings")
+}
+
+// SetConnectionStringsNil sets ConnectionStrings to an explicit JSON null when marshaled.
+func (o *FlexClusterDescription20241113) SetConnectionStringsNil() {
+	o.ConnectionStrings = nil
+	o.NullFields = addNullField(o.NullFields, "ConnectionStrings")
 }
 
 // GetCreateDate returns the CreateDate field value if set, zero value otherwise
@@ -196,6 +226,13 @@ func (o *FlexClusterDescription20241113) HasCreateDate() bool {
 // SetCreateDate gets a reference to the given time.Time and assigns it to the CreateDate field.
 func (o *FlexClusterDescription20241113) SetCreateDate(v time.Time) {
 	o.CreateDate = &v
+	o.NullFields = removeNullField(o.NullFields, "CreateDate")
+}
+
+// SetCreateDateNil sets CreateDate to an explicit JSON null when marshaled.
+func (o *FlexClusterDescription20241113) SetCreateDateNil() {
+	o.CreateDate = nil
+	o.NullFields = addNullField(o.NullFields, "CreateDate")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -229,6 +266,13 @@ func (o *FlexClusterDescription20241113) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *FlexClusterDescription20241113) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *FlexClusterDescription20241113) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -262,6 +306,13 @@ func (o *FlexClusterDescription20241113) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *FlexClusterDescription20241113) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *FlexClusterDescription20241113) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -295,6 +346,13 @@ func (o *FlexClusterDescription20241113) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *FlexClusterDescription20241113) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *FlexClusterDescription20241113) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetMongoDBVersion returns the MongoDBVersion field value if set, zero value otherwise
@@ -328,6 +386,13 @@ func (o *FlexClusterDescription20241113) HasMongoDBVersion() bool {
 // SetMongoDBVersion gets a reference to the given string and assigns it to the MongoDBVersion field.
 func (o *FlexClusterDescription20241113) SetMongoDBVersion(v string) {
 	o.MongoDBVersion = &v
+	o.NullFields = removeNullField(o.NullFields, "MongoDBVersion")
+}
+
+// SetMongoDBVersionNil sets MongoDBVersion to an explicit JSON null when marshaled.
+func (o *FlexClusterDescription20241113) SetMongoDBVersionNil() {
+	o.MongoDBVersion = nil
+	o.NullFields = addNullField(o.NullFields, "MongoDBVersion")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -361,6 +426,13 @@ func (o *FlexClusterDescription20241113) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *FlexClusterDescription20241113) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *FlexClusterDescription20241113) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }
 
 // GetProviderSettings returns the ProviderSettings field value
@@ -418,6 +490,13 @@ func (o *FlexClusterDescription20241113) HasStateName() bool {
 // SetStateName gets a reference to the given string and assigns it to the StateName field.
 func (o *FlexClusterDescription20241113) SetStateName(v string) {
 	o.StateName = &v
+	o.NullFields = removeNullField(o.NullFields, "StateName")
+}
+
+// SetStateNameNil sets StateName to an explicit JSON null when marshaled.
+func (o *FlexClusterDescription20241113) SetStateNameNil() {
+	o.StateName = nil
+	o.NullFields = addNullField(o.NullFields, "StateName")
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise
@@ -451,6 +530,13 @@ func (o *FlexClusterDescription20241113) HasTags() bool {
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
 func (o *FlexClusterDescription20241113) SetTags(v []ResourceTag) {
 	o.Tags = &v
+	o.NullFields = removeNullField(o.NullFields, "Tags")
+}
+
+// SetTagsNil sets Tags to an explicit JSON null when marshaled.
+func (o *FlexClusterDescription20241113) SetTagsNil() {
+	o.Tags = nil
+	o.NullFields = addNullField(o.NullFields, "Tags")
 }
 
 // GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise
@@ -484,6 +570,13 @@ func (o *FlexClusterDescription20241113) HasTerminationProtectionEnabled() bool 
 // SetTerminationProtectionEnabled gets a reference to the given bool and assigns it to the TerminationProtectionEnabled field.
 func (o *FlexClusterDescription20241113) SetTerminationProtectionEnabled(v bool) {
 	o.TerminationProtectionEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "TerminationProtectionEnabled")
+}
+
+// SetTerminationProtectionEnabledNil sets TerminationProtectionEnabled to an explicit JSON null when marshaled.
+func (o *FlexClusterDescription20241113) SetTerminationProtectionEnabledNil() {
+	o.TerminationProtectionEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "TerminationProtectionEnabled")
 }
 
 // GetVersionReleaseSystem returns the VersionReleaseSystem field value if set, zero value otherwise
@@ -517,4 +610,11 @@ func (o *FlexClusterDescription20241113) HasVersionReleaseSystem() bool {
 // SetVersionReleaseSystem gets a reference to the given string and assigns it to the VersionReleaseSystem field.
 func (o *FlexClusterDescription20241113) SetVersionReleaseSystem(v string) {
 	o.VersionReleaseSystem = &v
+	o.NullFields = removeNullField(o.NullFields, "VersionReleaseSystem")
+}
+
+// SetVersionReleaseSystemNil sets VersionReleaseSystem to an explicit JSON null when marshaled.
+func (o *FlexClusterDescription20241113) SetVersionReleaseSystemNil() {
+	o.VersionReleaseSystem = nil
+	o.NullFields = addNullField(o.NullFields, "VersionReleaseSystem")
 }

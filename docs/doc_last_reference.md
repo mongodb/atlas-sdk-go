@@ -167,19 +167,6 @@ Class        | Method        | HTTP request  | Description   |
 *DataFederationAPI* | [ListPrivateEndpointIds](./docs/DataFederationAPI.md#listprivateendpointids) | **Get** /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds | Return All Federated Database Instance and Online Archive Private Endpoints in One Project |
 *DataFederationAPI* | [SetDataFederationLimit](./docs/DataFederationAPI.md#setdatafederationlimit) | **Patch** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName} | Configure One Query Limit for One Federated Database Instance |
 *DataFederationAPI* | [UpdateDataFederation](./docs/DataFederationAPI.md#updatedatafederation) | **Patch** /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName} | Update One Federated Database Instance in One Project |
-*DataLakePipelinesAPI* | [CreatePipeline](./docs/DataLakePipelinesAPI.md#createpipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines | Create One Data Lake Pipeline |
-*DataLakePipelinesAPI* | [DeletePipeline](./docs/DataLakePipelinesAPI.md#deletepipeline) | **Delete** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName} | Remove One Data Lake Pipeline |
-*DataLakePipelinesAPI* | [DeletePipelineRun](./docs/DataLakePipelinesAPI.md#deletepipelinerun) | **Delete** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId} | Delete One Pipeline Run Dataset |
-*DataLakePipelinesAPI* | [GetAvailablePipelineSchedules](./docs/DataLakePipelinesAPI.md#getavailablepipelineschedules) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSchedules | Return All Ingestion Schedules for One Data Lake Pipeline |
-*DataLakePipelinesAPI* | [GetAvailablePipelineSnapshots](./docs/DataLakePipelinesAPI.md#getavailablepipelinesnapshots) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/availableSnapshots | Return All Backup Snapshots for One Data Lake Pipeline |
-*DataLakePipelinesAPI* | [GetPipeline](./docs/DataLakePipelinesAPI.md#getpipeline) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName} | Return One Data Lake Pipeline |
-*DataLakePipelinesAPI* | [GetPipelineRun](./docs/DataLakePipelinesAPI.md#getpipelinerun) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs/{pipelineRunId} | Return One Data Lake Pipeline Run |
-*DataLakePipelinesAPI* | [ListPipelineRuns](./docs/DataLakePipelinesAPI.md#listpipelineruns) | **Get** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/runs | Return All Data Lake Pipeline Runs in One Project |
-*DataLakePipelinesAPI* | [ListPipelines](./docs/DataLakePipelinesAPI.md#listpipelines) | **Get** /api/atlas/v2/groups/{groupId}/pipelines | Return All Data Lake Pipelines in One Project |
-*DataLakePipelinesAPI* | [PausePipeline](./docs/DataLakePipelinesAPI.md#pausepipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/pause | Pause One Data Lake Pipeline |
-*DataLakePipelinesAPI* | [ResumePipeline](./docs/DataLakePipelinesAPI.md#resumepipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/resume | Resume One Data Lake Pipeline |
-*DataLakePipelinesAPI* | [TriggerPipeline](./docs/DataLakePipelinesAPI.md#triggerpipeline) | **Post** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName}/trigger | Trigger On-Demand Snapshot Ingestion |
-*DataLakePipelinesAPI* | [UpdatePipeline](./docs/DataLakePipelinesAPI.md#updatepipeline) | **Patch** /api/atlas/v2/groups/{groupId}/pipelines/{pipelineName} | Update One Data Lake Pipeline |
 *DatabaseUsersAPI* | [CreateDatabaseUser](./docs/DatabaseUsersAPI.md#createdatabaseuser) | **Post** /api/atlas/v2/groups/{groupId}/databaseUsers | Create One Database User in One Project |
 *DatabaseUsersAPI* | [DeleteDatabaseUser](./docs/DatabaseUsersAPI.md#deletedatabaseuser) | **Delete** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Remove One Database User from One Project |
 *DatabaseUsersAPI* | [GetDatabaseUser](./docs/DatabaseUsersAPI.md#getdatabaseuser) | **Get** /api/atlas/v2/groups/{groupId}/databaseUsers/{databaseName}/{username} | Return One Database User from One Project |
@@ -676,8 +663,6 @@ Class        | Method        | HTTP request  | Description   |
  - [DataLakeDatabaseCollection](./docs/DataLakeDatabaseCollection.md)
  - [DataLakeDatabaseDataSourceSettings](./docs/DataLakeDatabaseDataSourceSettings.md)
  - [DataLakeDatabaseInstance](./docs/DataLakeDatabaseInstance.md)
- - [DataLakeIngestionPipeline](./docs/DataLakeIngestionPipeline.md)
- - [DataLakePipelinesPartitionField](./docs/DataLakePipelinesPartitionField.md)
  - [DataLakeStorage](./docs/DataLakeStorage.md)
  - [DataLakeStoreSettings](./docs/DataLakeStoreSettings.md)
  - [DataLakeTenant](./docs/DataLakeTenant.md)
@@ -688,7 +673,6 @@ Class        | Method        | HTTP request  | Description   |
  - [DatabasePrivilegeAction](./docs/DatabasePrivilegeAction.md)
  - [DatabaseRollingIndexRequest](./docs/DatabaseRollingIndexRequest.md)
  - [DatabaseUserRole](./docs/DatabaseUserRole.md)
- - [DatasetRetentionPolicy](./docs/DatasetRetentionPolicy.md)
  - [DedicatedHardwareSpec20240805](./docs/DedicatedHardwareSpec20240805.md)
  - [DeleteCopiedBackups20240805](./docs/DeleteCopiedBackups20240805.md)
  - [Destination](./docs/Destination.md)
@@ -729,7 +713,6 @@ Class        | Method        | HTTP request  | Description   |
  - [FederationIdentityProviderUpdate](./docs/FederationIdentityProviderUpdate.md)
  - [FederationOidcIdentityProvider](./docs/FederationOidcIdentityProvider.md)
  - [FederationOidcIdentityProviderUpdate](./docs/FederationOidcIdentityProviderUpdate.md)
- - [FieldTransformation](./docs/FieldTransformation.md)
  - [FieldViolation](./docs/FieldViolation.md)
  - [FlexBackupRestoreJob20241113](./docs/FlexBackupRestoreJob20241113.md)
  - [FlexBackupRestoreJobCreate20241113](./docs/FlexBackupRestoreJobCreate20241113.md)
@@ -770,9 +753,6 @@ Class        | Method        | HTTP request  | Description   |
  - [Header](./docs/Header.md)
  - [InboundControlPlaneCloudProviderIPAddresses](./docs/InboundControlPlaneCloudProviderIPAddresses.md)
  - [IndexOptions](./docs/IndexOptions.md)
- - [IngestionPipelineRun](./docs/IngestionPipelineRun.md)
- - [IngestionSink](./docs/IngestionSink.md)
- - [IngestionSource](./docs/IngestionSource.md)
  - [InvoiceLineItem](./docs/InvoiceLineItem.md)
  - [LDAPSecuritySettings](./docs/LDAPSecuritySettings.md)
  - [LDAPVerifyConnectivityJobRequest](./docs/LDAPVerifyConnectivityJobRequest.md)
@@ -863,7 +843,6 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedAtlasAiModelRateLimitsResponse](./docs/PaginatedAtlasAiModelRateLimitsResponse.md)
  - [PaginatedAtlasGroup](./docs/PaginatedAtlasGroup.md)
  - [PaginatedAvailableVersion](./docs/PaginatedAvailableVersion.md)
- - [PaginatedBackupSnapshot](./docs/PaginatedBackupSnapshot.md)
  - [PaginatedBackupSnapshotExportBuckets](./docs/PaginatedBackupSnapshotExportBuckets.md)
  - [PaginatedCloudBackupReplicaSet](./docs/PaginatedCloudBackupReplicaSet.md)
  - [PaginatedCloudBackupRestoreJob](./docs/PaginatedCloudBackupRestoreJob.md)
@@ -888,7 +867,6 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedOrgServiceAccounts](./docs/PaginatedOrgServiceAccounts.md)
  - [PaginatedOrgUser](./docs/PaginatedOrgUser.md)
  - [PaginatedOrganization](./docs/PaginatedOrganization.md)
- - [PaginatedPipelineRun](./docs/PaginatedPipelineRun.md)
  - [PaginatedPrivateNetworkEndpointIdEntry](./docs/PaginatedPrivateNetworkEndpointIdEntry.md)
  - [PaginatedPublicApiUsageDetailsLineItem](./docs/PaginatedPublicApiUsageDetailsLineItem.md)
  - [PaginatedQueryShapes](./docs/PaginatedQueryShapes.md)
@@ -915,7 +893,6 @@ Class        | Method        | HTTP request  | Description   |
  - [PerformanceAdvisorSlowQueryMetrics](./docs/PerformanceAdvisorSlowQueryMetrics.md)
  - [PinFCV](./docs/PinFCV.md)
  - [PinnedNamespaces](./docs/PinnedNamespaces.md)
- - [PipelineRunStats](./docs/PipelineRunStats.md)
  - [PrivateEndpointHostname](./docs/PrivateEndpointHostname.md)
  - [PrivateIPMode](./docs/PrivateIPMode.md)
  - [PrivateLinkEndpoint](./docs/PrivateLinkEndpoint.md)
@@ -1011,7 +988,6 @@ Class        | Method        | HTTP request  | Description   |
  - [TeamRole](./docs/TeamRole.md)
  - [TeamUpdate](./docs/TeamUpdate.md)
  - [ThirdPartyIntegration](./docs/ThirdPartyIntegration.md)
- - [TriggerIngestionPipelineRequest](./docs/TriggerIngestionPipelineRequest.md)
  - [UpdateAtlasOrganizationApiKey](./docs/UpdateAtlasOrganizationApiKey.md)
  - [UpdateAtlasProjectApiKey](./docs/UpdateAtlasProjectApiKey.md)
  - [UpdateCustomDBRole](./docs/UpdateCustomDBRole.md)

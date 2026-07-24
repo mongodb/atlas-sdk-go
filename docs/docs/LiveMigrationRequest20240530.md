@@ -55,6 +55,13 @@ SetId sets Id field to given value.
 `func (o *LiveMigrationRequest20240530) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *LiveMigrationRequest20240530) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetDestination
 
 `func (o *LiveMigrationRequest20240530) GetDestination() Destination`
@@ -98,6 +105,13 @@ SetDropDestinationData sets DropDestinationData field to given value.
 `func (o *LiveMigrationRequest20240530) HasDropDestinationData() bool`
 
 HasDropDestinationData returns a boolean if a field has been set.
+
+### SetDropDestinationDataNil
+
+`func (o *LiveMigrationRequest20240530) SetDropDestinationDataNil()`
+
+SetDropDestinationDataNil sets DropDestinationData to an explicit JSON null when marshaled, overriding any value previously set with SetDropDestinationData. Calling SetDropDestinationData again clears the null override.
+
 ### GetLinks
 
 `func (o *LiveMigrationRequest20240530) GetLinks() []Link`
@@ -122,6 +136,13 @@ SetLinks sets Links field to given value.
 `func (o *LiveMigrationRequest20240530) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *LiveMigrationRequest20240530) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetMigrationHosts
 
 `func (o *LiveMigrationRequest20240530) GetMigrationHosts() []string`
@@ -165,6 +186,13 @@ SetSharding sets Sharding field to given value.
 `func (o *LiveMigrationRequest20240530) HasSharding() bool`
 
 HasSharding returns a boolean if a field has been set.
+
+### SetShardingNil
+
+`func (o *LiveMigrationRequest20240530) SetShardingNil()`
+
+SetShardingNil sets Sharding to an explicit JSON null when marshaled, overriding any value previously set with SetSharding. Calling SetSharding again clears the null override.
+
 ### GetSource
 
 `func (o *LiveMigrationRequest20240530) GetSource() Source`

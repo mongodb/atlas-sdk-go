@@ -70,6 +70,13 @@ SetFieldType sets FieldType field to given value.
 `func (o *PartitionField) HasFieldType() bool`
 
 HasFieldType returns a boolean if a field has been set.
+
+### SetFieldTypeNil
+
+`func (o *PartitionField) SetFieldTypeNil()`
+
+SetFieldTypeNil sets FieldType to an explicit JSON null when marshaled, overriding any value previously set with SetFieldType. Calling SetFieldType again clears the null override.
+
 ### GetOrder
 
 `func (o *PartitionField) GetOrder() int`

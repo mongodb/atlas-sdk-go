@@ -50,6 +50,13 @@ SetLinks sets Links field to given value.
 `func (o *FlexBackupSnapshotDownloadCreate20241113) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *FlexBackupSnapshotDownloadCreate20241113) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetSnapshotId
 
 `func (o *FlexBackupSnapshotDownloadCreate20241113) GetSnapshotId() string`

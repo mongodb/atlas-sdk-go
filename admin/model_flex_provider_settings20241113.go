@@ -16,6 +16,15 @@ type FlexProviderSettings20241113 struct {
 	// Human-readable label that identifies the geographic location of your MongoDB flex cluster. The region you choose can affect network latency for clients accessing your databases. For a complete list of region names, see [AWS](https://docs.atlas.mongodb.com/reference/amazon-aws/#std-label-amazon-aws), [GCP](https://docs.atlas.mongodb.com/reference/google-gcp/), and [Azure](https://docs.atlas.mongodb.com/reference/microsoft-azure/).
 	// Read only field.
 	RegionName *string `json:"regionName,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *FlexProviderSettings20241113) MarshalJSON() ([]byte, error) {
+	type noMethod FlexProviderSettings20241113
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFlexProviderSettings20241113 instantiates a new FlexProviderSettings20241113 object
@@ -66,6 +75,13 @@ func (o *FlexProviderSettings20241113) HasBackingProviderName() bool {
 // SetBackingProviderName gets a reference to the given string and assigns it to the BackingProviderName field.
 func (o *FlexProviderSettings20241113) SetBackingProviderName(v string) {
 	o.BackingProviderName = &v
+	o.NullFields = removeNullField(o.NullFields, "BackingProviderName")
+}
+
+// SetBackingProviderNameNil sets BackingProviderName to an explicit JSON null when marshaled.
+func (o *FlexProviderSettings20241113) SetBackingProviderNameNil() {
+	o.BackingProviderName = nil
+	o.NullFields = addNullField(o.NullFields, "BackingProviderName")
 }
 
 // GetDiskSizeGB returns the DiskSizeGB field value if set, zero value otherwise
@@ -99,6 +115,13 @@ func (o *FlexProviderSettings20241113) HasDiskSizeGB() bool {
 // SetDiskSizeGB gets a reference to the given float64 and assigns it to the DiskSizeGB field.
 func (o *FlexProviderSettings20241113) SetDiskSizeGB(v float64) {
 	o.DiskSizeGB = &v
+	o.NullFields = removeNullField(o.NullFields, "DiskSizeGB")
+}
+
+// SetDiskSizeGBNil sets DiskSizeGB to an explicit JSON null when marshaled.
+func (o *FlexProviderSettings20241113) SetDiskSizeGBNil() {
+	o.DiskSizeGB = nil
+	o.NullFields = addNullField(o.NullFields, "DiskSizeGB")
 }
 
 // GetProviderName returns the ProviderName field value if set, zero value otherwise
@@ -132,6 +155,13 @@ func (o *FlexProviderSettings20241113) HasProviderName() bool {
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *FlexProviderSettings20241113) SetProviderName(v string) {
 	o.ProviderName = &v
+	o.NullFields = removeNullField(o.NullFields, "ProviderName")
+}
+
+// SetProviderNameNil sets ProviderName to an explicit JSON null when marshaled.
+func (o *FlexProviderSettings20241113) SetProviderNameNil() {
+	o.ProviderName = nil
+	o.NullFields = addNullField(o.NullFields, "ProviderName")
 }
 
 // GetRegionName returns the RegionName field value if set, zero value otherwise
@@ -165,4 +195,11 @@ func (o *FlexProviderSettings20241113) HasRegionName() bool {
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *FlexProviderSettings20241113) SetRegionName(v string) {
 	o.RegionName = &v
+	o.NullFields = removeNullField(o.NullFields, "RegionName")
+}
+
+// SetRegionNameNil sets RegionName to an explicit JSON null when marshaled.
+func (o *FlexProviderSettings20241113) SetRegionNameNil() {
+	o.RegionName = nil
+	o.NullFields = addNullField(o.NullFields, "RegionName")
 }

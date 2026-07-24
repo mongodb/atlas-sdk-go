@@ -6,6 +6,15 @@ package admin
 type QueryStatsSummaryListResponse struct {
 	// List of query shape statistic summaries from Query Shape Insights.
 	Summaries *[]QueryStatsSummary `json:"summaries,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *QueryStatsSummaryListResponse) MarshalJSON() ([]byte, error) {
+	type noMethod QueryStatsSummaryListResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewQueryStatsSummaryListResponse instantiates a new QueryStatsSummaryListResponse object
@@ -56,4 +65,11 @@ func (o *QueryStatsSummaryListResponse) HasSummaries() bool {
 // SetSummaries gets a reference to the given []QueryStatsSummary and assigns it to the Summaries field.
 func (o *QueryStatsSummaryListResponse) SetSummaries(v []QueryStatsSummary) {
 	o.Summaries = &v
+	o.NullFields = removeNullField(o.NullFields, "Summaries")
+}
+
+// SetSummariesNil sets Summaries to an explicit JSON null when marshaled.
+func (o *QueryStatsSummaryListResponse) SetSummariesNil() {
+	o.Summaries = nil
+	o.NullFields = addNullField(o.NullFields, "Summaries")
 }

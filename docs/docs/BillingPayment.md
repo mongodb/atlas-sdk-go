@@ -58,6 +58,13 @@ SetAmountBilledCents sets AmountBilledCents field to given value.
 `func (o *BillingPayment) HasAmountBilledCents() bool`
 
 HasAmountBilledCents returns a boolean if a field has been set.
+
+### SetAmountBilledCentsNil
+
+`func (o *BillingPayment) SetAmountBilledCentsNil()`
+
+SetAmountBilledCentsNil sets AmountBilledCents to an explicit JSON null when marshaled, overriding any value previously set with SetAmountBilledCents. Calling SetAmountBilledCents again clears the null override.
+
 ### GetAmountPaidCents
 
 `func (o *BillingPayment) GetAmountPaidCents() int64`
@@ -82,6 +89,13 @@ SetAmountPaidCents sets AmountPaidCents field to given value.
 `func (o *BillingPayment) HasAmountPaidCents() bool`
 
 HasAmountPaidCents returns a boolean if a field has been set.
+
+### SetAmountPaidCentsNil
+
+`func (o *BillingPayment) SetAmountPaidCentsNil()`
+
+SetAmountPaidCentsNil sets AmountPaidCents to an explicit JSON null when marshaled, overriding any value previously set with SetAmountPaidCents. Calling SetAmountPaidCents again clears the null override.
+
 ### GetCreated
 
 `func (o *BillingPayment) GetCreated() time.Time`
@@ -106,6 +120,13 @@ SetCreated sets Created field to given value.
 `func (o *BillingPayment) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
+
+### SetCreatedNil
+
+`func (o *BillingPayment) SetCreatedNil()`
+
+SetCreatedNil sets Created to an explicit JSON null when marshaled, overriding any value previously set with SetCreated. Calling SetCreated again clears the null override.
+
 ### GetCurrency
 
 `func (o *BillingPayment) GetCurrency() string`
@@ -130,6 +151,13 @@ SetCurrency sets Currency field to given value.
 `func (o *BillingPayment) HasCurrency() bool`
 
 HasCurrency returns a boolean if a field has been set.
+
+### SetCurrencyNil
+
+`func (o *BillingPayment) SetCurrencyNil()`
+
+SetCurrencyNil sets Currency to an explicit JSON null when marshaled, overriding any value previously set with SetCurrency. Calling SetCurrency again clears the null override.
+
 ### GetId
 
 `func (o *BillingPayment) GetId() string`
@@ -154,6 +182,13 @@ SetId sets Id field to given value.
 `func (o *BillingPayment) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *BillingPayment) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetSalesTaxCents
 
 `func (o *BillingPayment) GetSalesTaxCents() int64`
@@ -178,6 +213,13 @@ SetSalesTaxCents sets SalesTaxCents field to given value.
 `func (o *BillingPayment) HasSalesTaxCents() bool`
 
 HasSalesTaxCents returns a boolean if a field has been set.
+
+### SetSalesTaxCentsNil
+
+`func (o *BillingPayment) SetSalesTaxCentsNil()`
+
+SetSalesTaxCentsNil sets SalesTaxCents to an explicit JSON null when marshaled, overriding any value previously set with SetSalesTaxCents. Calling SetSalesTaxCents again clears the null override.
+
 ### GetStatusName
 
 `func (o *BillingPayment) GetStatusName() string`
@@ -202,6 +244,13 @@ SetStatusName sets StatusName field to given value.
 `func (o *BillingPayment) HasStatusName() bool`
 
 HasStatusName returns a boolean if a field has been set.
+
+### SetStatusNameNil
+
+`func (o *BillingPayment) SetStatusNameNil()`
+
+SetStatusNameNil sets StatusName to an explicit JSON null when marshaled, overriding any value previously set with SetStatusName. Calling SetStatusName again clears the null override.
+
 ### GetSubtotalCents
 
 `func (o *BillingPayment) GetSubtotalCents() int64`
@@ -226,6 +275,13 @@ SetSubtotalCents sets SubtotalCents field to given value.
 `func (o *BillingPayment) HasSubtotalCents() bool`
 
 HasSubtotalCents returns a boolean if a field has been set.
+
+### SetSubtotalCentsNil
+
+`func (o *BillingPayment) SetSubtotalCentsNil()`
+
+SetSubtotalCentsNil sets SubtotalCents to an explicit JSON null when marshaled, overriding any value previously set with SetSubtotalCents. Calling SetSubtotalCents again clears the null override.
+
 ### GetUnitPrice
 
 `func (o *BillingPayment) GetUnitPrice() string`
@@ -250,6 +306,13 @@ SetUnitPrice sets UnitPrice field to given value.
 `func (o *BillingPayment) HasUnitPrice() bool`
 
 HasUnitPrice returns a boolean if a field has been set.
+
+### SetUnitPriceNil
+
+`func (o *BillingPayment) SetUnitPriceNil()`
+
+SetUnitPriceNil sets UnitPrice to an explicit JSON null when marshaled, overriding any value previously set with SetUnitPrice. Calling SetUnitPrice again clears the null override.
+
 ### GetUpdated
 
 `func (o *BillingPayment) GetUpdated() time.Time`
@@ -274,6 +337,13 @@ SetUpdated sets Updated field to given value.
 `func (o *BillingPayment) HasUpdated() bool`
 
 HasUpdated returns a boolean if a field has been set.
+
+### SetUpdatedNil
+
+`func (o *BillingPayment) SetUpdatedNil()`
+
+SetUpdatedNil sets Updated to an explicit JSON null when marshaled, overriding any value previously set with SetUpdated. Calling SetUpdated again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -8,6 +8,15 @@ type ProtectedHours struct {
 	EndHourOfDay *int `json:"endHourOfDay,omitempty"`
 	// Zero-based integer that represents the beginning hour of the of the day that the maintenance will not begin in.
 	StartHourOfDay *int `json:"startHourOfDay,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ProtectedHours) MarshalJSON() ([]byte, error) {
+	type noMethod ProtectedHours
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewProtectedHours instantiates a new ProtectedHours object
@@ -58,6 +67,13 @@ func (o *ProtectedHours) HasEndHourOfDay() bool {
 // SetEndHourOfDay gets a reference to the given int and assigns it to the EndHourOfDay field.
 func (o *ProtectedHours) SetEndHourOfDay(v int) {
 	o.EndHourOfDay = &v
+	o.NullFields = removeNullField(o.NullFields, "EndHourOfDay")
+}
+
+// SetEndHourOfDayNil sets EndHourOfDay to an explicit JSON null when marshaled.
+func (o *ProtectedHours) SetEndHourOfDayNil() {
+	o.EndHourOfDay = nil
+	o.NullFields = addNullField(o.NullFields, "EndHourOfDay")
 }
 
 // GetStartHourOfDay returns the StartHourOfDay field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *ProtectedHours) HasStartHourOfDay() bool {
 // SetStartHourOfDay gets a reference to the given int and assigns it to the StartHourOfDay field.
 func (o *ProtectedHours) SetStartHourOfDay(v int) {
 	o.StartHourOfDay = &v
+	o.NullFields = removeNullField(o.NullFields, "StartHourOfDay")
+}
+
+// SetStartHourOfDayNil sets StartHourOfDay to an explicit JSON null when marshaled.
+func (o *ProtectedHours) SetStartHourOfDayNil() {
+	o.StartHourOfDay = nil
+	o.NullFields = addNullField(o.NullFields, "StartHourOfDay")
 }

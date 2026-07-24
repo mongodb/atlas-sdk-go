@@ -57,6 +57,13 @@ SetDataAccessIdentityProviderIds sets DataAccessIdentityProviderIds field to giv
 `func (o *ConnectedOrgConfig) HasDataAccessIdentityProviderIds() bool`
 
 HasDataAccessIdentityProviderIds returns a boolean if a field has been set.
+
+### SetDataAccessIdentityProviderIdsNil
+
+`func (o *ConnectedOrgConfig) SetDataAccessIdentityProviderIdsNil()`
+
+SetDataAccessIdentityProviderIdsNil sets DataAccessIdentityProviderIds to an explicit JSON null when marshaled, overriding any value previously set with SetDataAccessIdentityProviderIds. Calling SetDataAccessIdentityProviderIds again clears the null override.
+
 ### GetDomainAllowList
 
 `func (o *ConnectedOrgConfig) GetDomainAllowList() []string`
@@ -81,6 +88,13 @@ SetDomainAllowList sets DomainAllowList field to given value.
 `func (o *ConnectedOrgConfig) HasDomainAllowList() bool`
 
 HasDomainAllowList returns a boolean if a field has been set.
+
+### SetDomainAllowListNil
+
+`func (o *ConnectedOrgConfig) SetDomainAllowListNil()`
+
+SetDomainAllowListNil sets DomainAllowList to an explicit JSON null when marshaled, overriding any value previously set with SetDomainAllowList. Calling SetDomainAllowList again clears the null override.
+
 ### GetDomainRestrictionEnabled
 
 `func (o *ConnectedOrgConfig) GetDomainRestrictionEnabled() bool`
@@ -124,6 +138,13 @@ SetIdentityProviderId sets IdentityProviderId field to given value.
 `func (o *ConnectedOrgConfig) HasIdentityProviderId() bool`
 
 HasIdentityProviderId returns a boolean if a field has been set.
+
+### SetIdentityProviderIdNil
+
+`func (o *ConnectedOrgConfig) SetIdentityProviderIdNil()`
+
+SetIdentityProviderIdNil sets IdentityProviderId to an explicit JSON null when marshaled, overriding any value previously set with SetIdentityProviderId. Calling SetIdentityProviderId again clears the null override.
+
 ### GetInstantUserProvisioningDisabled
 
 `func (o *ConnectedOrgConfig) GetInstantUserProvisioningDisabled() bool`
@@ -148,6 +169,13 @@ SetInstantUserProvisioningDisabled sets InstantUserProvisioningDisabled field to
 `func (o *ConnectedOrgConfig) HasInstantUserProvisioningDisabled() bool`
 
 HasInstantUserProvisioningDisabled returns a boolean if a field has been set.
+
+### SetInstantUserProvisioningDisabledNil
+
+`func (o *ConnectedOrgConfig) SetInstantUserProvisioningDisabledNil()`
+
+SetInstantUserProvisioningDisabledNil sets InstantUserProvisioningDisabled to an explicit JSON null when marshaled, overriding any value previously set with SetInstantUserProvisioningDisabled. Calling SetInstantUserProvisioningDisabled again clears the null override.
+
 ### GetOrgId
 
 `func (o *ConnectedOrgConfig) GetOrgId() string`
@@ -191,6 +219,13 @@ SetPostAuthRoleGrants sets PostAuthRoleGrants field to given value.
 `func (o *ConnectedOrgConfig) HasPostAuthRoleGrants() bool`
 
 HasPostAuthRoleGrants returns a boolean if a field has been set.
+
+### SetPostAuthRoleGrantsNil
+
+`func (o *ConnectedOrgConfig) SetPostAuthRoleGrantsNil()`
+
+SetPostAuthRoleGrantsNil sets PostAuthRoleGrants to an explicit JSON null when marshaled, overriding any value previously set with SetPostAuthRoleGrants. Calling SetPostAuthRoleGrants again clears the null override.
+
 ### GetRoleMappings
 
 `func (o *ConnectedOrgConfig) GetRoleMappings() []AuthFederationRoleMapping`
@@ -215,6 +250,13 @@ SetRoleMappings sets RoleMappings field to given value.
 `func (o *ConnectedOrgConfig) HasRoleMappings() bool`
 
 HasRoleMappings returns a boolean if a field has been set.
+
+### SetRoleMappingsNil
+
+`func (o *ConnectedOrgConfig) SetRoleMappingsNil()`
+
+SetRoleMappingsNil sets RoleMappings to an explicit JSON null when marshaled, overriding any value previously set with SetRoleMappings. Calling SetRoleMappings again clears the null override.
+
 ### GetUserConflicts
 
 `func (o *ConnectedOrgConfig) GetUserConflicts() []FederatedUser`
@@ -239,6 +281,13 @@ SetUserConflicts sets UserConflicts field to given value.
 `func (o *ConnectedOrgConfig) HasUserConflicts() bool`
 
 HasUserConflicts returns a boolean if a field has been set.
+
+### SetUserConflictsNil
+
+`func (o *ConnectedOrgConfig) SetUserConflictsNil()`
+
+SetUserConflictsNil sets UserConflicts to an explicit JSON null when marshaled, overriding any value previously set with SetUserConflicts. Calling SetUserConflicts again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

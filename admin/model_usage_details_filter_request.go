@@ -20,6 +20,15 @@ type UsageDetailsFilterRequest struct {
 	UsageEndDate *string `json:"usageEndDate,omitempty"`
 	// The inclusive usage start date for usage details filter.
 	UsageStartDate *string `json:"usageStartDate,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *UsageDetailsFilterRequest) MarshalJSON() ([]byte, error) {
+	type noMethod UsageDetailsFilterRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewUsageDetailsFilterRequest instantiates a new UsageDetailsFilterRequest object
@@ -70,6 +79,13 @@ func (o *UsageDetailsFilterRequest) HasBillEndDate() bool {
 // SetBillEndDate gets a reference to the given string and assigns it to the BillEndDate field.
 func (o *UsageDetailsFilterRequest) SetBillEndDate(v string) {
 	o.BillEndDate = &v
+	o.NullFields = removeNullField(o.NullFields, "BillEndDate")
+}
+
+// SetBillEndDateNil sets BillEndDate to an explicit JSON null when marshaled.
+func (o *UsageDetailsFilterRequest) SetBillEndDateNil() {
+	o.BillEndDate = nil
+	o.NullFields = addNullField(o.NullFields, "BillEndDate")
 }
 
 // GetBillStartDate returns the BillStartDate field value if set, zero value otherwise
@@ -103,6 +119,13 @@ func (o *UsageDetailsFilterRequest) HasBillStartDate() bool {
 // SetBillStartDate gets a reference to the given string and assigns it to the BillStartDate field.
 func (o *UsageDetailsFilterRequest) SetBillStartDate(v string) {
 	o.BillStartDate = &v
+	o.NullFields = removeNullField(o.NullFields, "BillStartDate")
+}
+
+// SetBillStartDateNil sets BillStartDate to an explicit JSON null when marshaled.
+func (o *UsageDetailsFilterRequest) SetBillStartDateNil() {
+	o.BillStartDate = nil
+	o.NullFields = addNullField(o.NullFields, "BillStartDate")
 }
 
 // GetClusterIds returns the ClusterIds field value if set, zero value otherwise
@@ -136,6 +159,13 @@ func (o *UsageDetailsFilterRequest) HasClusterIds() bool {
 // SetClusterIds gets a reference to the given []string and assigns it to the ClusterIds field.
 func (o *UsageDetailsFilterRequest) SetClusterIds(v []string) {
 	o.ClusterIds = &v
+	o.NullFields = removeNullField(o.NullFields, "ClusterIds")
+}
+
+// SetClusterIdsNil sets ClusterIds to an explicit JSON null when marshaled.
+func (o *UsageDetailsFilterRequest) SetClusterIdsNil() {
+	o.ClusterIds = nil
+	o.NullFields = addNullField(o.NullFields, "ClusterIds")
 }
 
 // GetGroupIds returns the GroupIds field value if set, zero value otherwise
@@ -169,6 +199,13 @@ func (o *UsageDetailsFilterRequest) HasGroupIds() bool {
 // SetGroupIds gets a reference to the given []string and assigns it to the GroupIds field.
 func (o *UsageDetailsFilterRequest) SetGroupIds(v []string) {
 	o.GroupIds = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupIds")
+}
+
+// SetGroupIdsNil sets GroupIds to an explicit JSON null when marshaled.
+func (o *UsageDetailsFilterRequest) SetGroupIdsNil() {
+	o.GroupIds = nil
+	o.NullFields = addNullField(o.NullFields, "GroupIds")
 }
 
 // GetIncludeZeroCentLineItems returns the IncludeZeroCentLineItems field value if set, zero value otherwise
@@ -202,6 +239,13 @@ func (o *UsageDetailsFilterRequest) HasIncludeZeroCentLineItems() bool {
 // SetIncludeZeroCentLineItems gets a reference to the given bool and assigns it to the IncludeZeroCentLineItems field.
 func (o *UsageDetailsFilterRequest) SetIncludeZeroCentLineItems(v bool) {
 	o.IncludeZeroCentLineItems = &v
+	o.NullFields = removeNullField(o.NullFields, "IncludeZeroCentLineItems")
+}
+
+// SetIncludeZeroCentLineItemsNil sets IncludeZeroCentLineItems to an explicit JSON null when marshaled.
+func (o *UsageDetailsFilterRequest) SetIncludeZeroCentLineItemsNil() {
+	o.IncludeZeroCentLineItems = nil
+	o.NullFields = addNullField(o.NullFields, "IncludeZeroCentLineItems")
 }
 
 // GetSkuServices returns the SkuServices field value if set, zero value otherwise
@@ -235,6 +279,13 @@ func (o *UsageDetailsFilterRequest) HasSkuServices() bool {
 // SetSkuServices gets a reference to the given []string and assigns it to the SkuServices field.
 func (o *UsageDetailsFilterRequest) SetSkuServices(v []string) {
 	o.SkuServices = &v
+	o.NullFields = removeNullField(o.NullFields, "SkuServices")
+}
+
+// SetSkuServicesNil sets SkuServices to an explicit JSON null when marshaled.
+func (o *UsageDetailsFilterRequest) SetSkuServicesNil() {
+	o.SkuServices = nil
+	o.NullFields = addNullField(o.NullFields, "SkuServices")
 }
 
 // GetUsageEndDate returns the UsageEndDate field value if set, zero value otherwise
@@ -268,6 +319,13 @@ func (o *UsageDetailsFilterRequest) HasUsageEndDate() bool {
 // SetUsageEndDate gets a reference to the given string and assigns it to the UsageEndDate field.
 func (o *UsageDetailsFilterRequest) SetUsageEndDate(v string) {
 	o.UsageEndDate = &v
+	o.NullFields = removeNullField(o.NullFields, "UsageEndDate")
+}
+
+// SetUsageEndDateNil sets UsageEndDate to an explicit JSON null when marshaled.
+func (o *UsageDetailsFilterRequest) SetUsageEndDateNil() {
+	o.UsageEndDate = nil
+	o.NullFields = addNullField(o.NullFields, "UsageEndDate")
 }
 
 // GetUsageStartDate returns the UsageStartDate field value if set, zero value otherwise
@@ -301,4 +359,11 @@ func (o *UsageDetailsFilterRequest) HasUsageStartDate() bool {
 // SetUsageStartDate gets a reference to the given string and assigns it to the UsageStartDate field.
 func (o *UsageDetailsFilterRequest) SetUsageStartDate(v string) {
 	o.UsageStartDate = &v
+	o.NullFields = removeNullField(o.NullFields, "UsageStartDate")
+}
+
+// SetUsageStartDateNil sets UsageStartDate to an explicit JSON null when marshaled.
+func (o *UsageDetailsFilterRequest) SetUsageStartDateNil() {
+	o.UsageStartDate = nil
+	o.NullFields = addNullField(o.NullFields, "UsageStartDate")
 }

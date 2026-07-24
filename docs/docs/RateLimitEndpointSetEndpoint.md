@@ -50,6 +50,13 @@ SetMethod sets Method field to given value.
 `func (o *RateLimitEndpointSetEndpoint) HasMethod() bool`
 
 HasMethod returns a boolean if a field has been set.
+
+### SetMethodNil
+
+`func (o *RateLimitEndpointSetEndpoint) SetMethodNil()`
+
+SetMethodNil sets Method to an explicit JSON null when marshaled, overriding any value previously set with SetMethod. Calling SetMethod again clears the null override.
+
 ### GetPath
 
 `func (o *RateLimitEndpointSetEndpoint) GetPath() string`
@@ -74,6 +81,13 @@ SetPath sets Path field to given value.
 `func (o *RateLimitEndpointSetEndpoint) HasPath() bool`
 
 HasPath returns a boolean if a field has been set.
+
+### SetPathNil
+
+`func (o *RateLimitEndpointSetEndpoint) SetPathNil()`
+
+SetPathNil sets Path to an explicit JSON null when marshaled, overriding any value previously set with SetPath. Calling SetPath again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

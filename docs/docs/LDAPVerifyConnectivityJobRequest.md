@@ -54,6 +54,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *LDAPVerifyConnectivityJobRequest) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *LDAPVerifyConnectivityJobRequest) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetLinks
 
 `func (o *LDAPVerifyConnectivityJobRequest) GetLinks() []Link`
@@ -78,6 +85,13 @@ SetLinks sets Links field to given value.
 `func (o *LDAPVerifyConnectivityJobRequest) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *LDAPVerifyConnectivityJobRequest) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetRequest
 
 `func (o *LDAPVerifyConnectivityJobRequest) GetRequest() LDAPVerifyConnectivityJobRequestParams`
@@ -102,6 +116,13 @@ SetRequest sets Request field to given value.
 `func (o *LDAPVerifyConnectivityJobRequest) HasRequest() bool`
 
 HasRequest returns a boolean if a field has been set.
+
+### SetRequestNil
+
+`func (o *LDAPVerifyConnectivityJobRequest) SetRequestNil()`
+
+SetRequestNil sets Request to an explicit JSON null when marshaled, overriding any value previously set with SetRequest. Calling SetRequest again clears the null override.
+
 ### GetRequestId
 
 `func (o *LDAPVerifyConnectivityJobRequest) GetRequestId() string`
@@ -126,6 +147,13 @@ SetRequestId sets RequestId field to given value.
 `func (o *LDAPVerifyConnectivityJobRequest) HasRequestId() bool`
 
 HasRequestId returns a boolean if a field has been set.
+
+### SetRequestIdNil
+
+`func (o *LDAPVerifyConnectivityJobRequest) SetRequestIdNil()`
+
+SetRequestIdNil sets RequestId to an explicit JSON null when marshaled, overriding any value previously set with SetRequestId. Calling SetRequestId again clears the null override.
+
 ### GetStatus
 
 `func (o *LDAPVerifyConnectivityJobRequest) GetStatus() string`
@@ -150,6 +178,13 @@ SetStatus sets Status field to given value.
 `func (o *LDAPVerifyConnectivityJobRequest) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *LDAPVerifyConnectivityJobRequest) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 ### GetValidations
 
 `func (o *LDAPVerifyConnectivityJobRequest) GetValidations() []LDAPVerifyConnectivityJobRequestValidation`
@@ -174,6 +209,13 @@ SetValidations sets Validations field to given value.
 `func (o *LDAPVerifyConnectivityJobRequest) HasValidations() bool`
 
 HasValidations returns a boolean if a field has been set.
+
+### SetValidationsNil
+
+`func (o *LDAPVerifyConnectivityJobRequest) SetValidationsNil()`
+
+SetValidationsNil sets Validations to an explicit JSON null when marshaled, overriding any value previously set with SetValidations. Calling SetValidations again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

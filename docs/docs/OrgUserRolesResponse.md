@@ -50,6 +50,13 @@ SetGroupRoleAssignments sets GroupRoleAssignments field to given value.
 `func (o *OrgUserRolesResponse) HasGroupRoleAssignments() bool`
 
 HasGroupRoleAssignments returns a boolean if a field has been set.
+
+### SetGroupRoleAssignmentsNil
+
+`func (o *OrgUserRolesResponse) SetGroupRoleAssignmentsNil()`
+
+SetGroupRoleAssignmentsNil sets GroupRoleAssignments to an explicit JSON null when marshaled, overriding any value previously set with SetGroupRoleAssignments. Calling SetGroupRoleAssignments again clears the null override.
+
 ### GetOrgRoles
 
 `func (o *OrgUserRolesResponse) GetOrgRoles() []string`
@@ -74,6 +81,13 @@ SetOrgRoles sets OrgRoles field to given value.
 `func (o *OrgUserRolesResponse) HasOrgRoles() bool`
 
 HasOrgRoles returns a boolean if a field has been set.
+
+### SetOrgRolesNil
+
+`func (o *OrgUserRolesResponse) SetOrgRolesNil()`
+
+SetOrgRolesNil sets OrgRoles to an explicit JSON null when marshaled, overriding any value previously set with SetOrgRoles. Calling SetOrgRoles again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

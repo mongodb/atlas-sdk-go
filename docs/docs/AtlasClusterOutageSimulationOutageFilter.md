@@ -51,6 +51,13 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *AtlasClusterOutageSimulationOutageFilter) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
+
+### SetCloudProviderNil
+
+`func (o *AtlasClusterOutageSimulationOutageFilter) SetCloudProviderNil()`
+
+SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProvider. Calling SetCloudProvider again clears the null override.
+
 ### GetRegionName
 
 `func (o *AtlasClusterOutageSimulationOutageFilter) GetRegionName() string`
@@ -75,6 +82,13 @@ SetRegionName sets RegionName field to given value.
 `func (o *AtlasClusterOutageSimulationOutageFilter) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
+
+### SetRegionNameNil
+
+`func (o *AtlasClusterOutageSimulationOutageFilter) SetRegionNameNil()`
+
+SetRegionNameNil sets RegionName to an explicit JSON null when marshaled, overriding any value previously set with SetRegionName. Calling SetRegionName again clears the null override.
+
 ### GetType
 
 `func (o *AtlasClusterOutageSimulationOutageFilter) GetType() string`
@@ -99,6 +113,13 @@ SetType sets Type field to given value.
 `func (o *AtlasClusterOutageSimulationOutageFilter) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *AtlasClusterOutageSimulationOutageFilter) SetTypeNil()`
+
+SetTypeNil sets Type to an explicit JSON null when marshaled, overriding any value previously set with SetType. Calling SetType again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -54,6 +54,13 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *StreamsTenantUpdateRequest) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
+
+### SetCloudProviderNil
+
+`func (o *StreamsTenantUpdateRequest) SetCloudProviderNil()`
+
+SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProvider. Calling SetCloudProvider again clears the null override.
+
 ### GetFailoverRegions
 
 `func (o *StreamsTenantUpdateRequest) GetFailoverRegions() []StreamsDataProcessRegion`
@@ -78,6 +85,13 @@ SetFailoverRegions sets FailoverRegions field to given value.
 `func (o *StreamsTenantUpdateRequest) HasFailoverRegions() bool`
 
 HasFailoverRegions returns a boolean if a field has been set.
+
+### SetFailoverRegionsNil
+
+`func (o *StreamsTenantUpdateRequest) SetFailoverRegionsNil()`
+
+SetFailoverRegionsNil sets FailoverRegions to an explicit JSON null when marshaled, overriding any value previously set with SetFailoverRegions. Calling SetFailoverRegions again clears the null override.
+
 ### GetLinks
 
 `func (o *StreamsTenantUpdateRequest) GetLinks() []Link`
@@ -102,6 +116,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsTenantUpdateRequest) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsTenantUpdateRequest) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetProcessorStatus
 
 `func (o *StreamsTenantUpdateRequest) GetProcessorStatus() StreamsProcessorStatus`
@@ -126,6 +147,13 @@ SetProcessorStatus sets ProcessorStatus field to given value.
 `func (o *StreamsTenantUpdateRequest) HasProcessorStatus() bool`
 
 HasProcessorStatus returns a boolean if a field has been set.
+
+### SetProcessorStatusNil
+
+`func (o *StreamsTenantUpdateRequest) SetProcessorStatusNil()`
+
+SetProcessorStatusNil sets ProcessorStatus to an explicit JSON null when marshaled, overriding any value previously set with SetProcessorStatus. Calling SetProcessorStatus again clears the null override.
+
 ### GetRegion
 
 `func (o *StreamsTenantUpdateRequest) GetRegion() string`
@@ -150,6 +178,13 @@ SetRegion sets Region field to given value.
 `func (o *StreamsTenantUpdateRequest) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *StreamsTenantUpdateRequest) SetRegionNil()`
+
+SetRegionNil sets Region to an explicit JSON null when marshaled, overriding any value previously set with SetRegion. Calling SetRegion again clears the null override.
+
 ### GetStreamConfig
 
 `func (o *StreamsTenantUpdateRequest) GetStreamConfig() StreamConfig`
@@ -174,6 +209,13 @@ SetStreamConfig sets StreamConfig field to given value.
 `func (o *StreamsTenantUpdateRequest) HasStreamConfig() bool`
 
 HasStreamConfig returns a boolean if a field has been set.
+
+### SetStreamConfigNil
+
+`func (o *StreamsTenantUpdateRequest) SetStreamConfigNil()`
+
+SetStreamConfigNil sets StreamConfig to an explicit JSON null when marshaled, overriding any value previously set with SetStreamConfig. Calling SetStreamConfig again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

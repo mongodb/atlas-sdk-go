@@ -45,6 +45,15 @@ type StreamsPrivateLinkConnection struct {
 	State *string `json:"state,omitempty"`
 	// Vendor that manages the cloud service. The list of supported vendor values is: - AWS -- `MSK` for AWS MSK Kafka clusters -- `CONFLUENT` for Confluent Kafka clusters on AWS -- `KINESIS` for AWS Kinesis Data Streams  - Azure -- `EVENTHUB` for Azure EventHub. -- `CONFLUENT` for Confluent Kafka clusters on Azure -- `AZURE_BLOB_STORAGE` for Azure Blob Storage  - GCP -- `CONFLUENT` for Confluent Kafka clusters on GCP -- `PUBSUB` for Google Cloud Pub/Sub  **NOTE** Omitting the vendor field will default to using the GENERIC vendor.
 	Vendor *string `json:"vendor,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamsPrivateLinkConnection) MarshalJSON() ([]byte, error) {
+	type noMethod StreamsPrivateLinkConnection
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsPrivateLinkConnection instantiates a new StreamsPrivateLinkConnection object
@@ -96,6 +105,13 @@ func (o *StreamsPrivateLinkConnection) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *StreamsPrivateLinkConnection) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *StreamsPrivateLinkConnection) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetArn returns the Arn field value if set, zero value otherwise
@@ -129,6 +145,13 @@ func (o *StreamsPrivateLinkConnection) HasArn() bool {
 // SetArn gets a reference to the given string and assigns it to the Arn field.
 func (o *StreamsPrivateLinkConnection) SetArn(v string) {
 	o.Arn = &v
+	o.NullFields = removeNullField(o.NullFields, "Arn")
+}
+
+// SetArnNil sets Arn to an explicit JSON null when marshaled.
+func (o *StreamsPrivateLinkConnection) SetArnNil() {
+	o.Arn = nil
+	o.NullFields = addNullField(o.NullFields, "Arn")
 }
 
 // GetAzureResourceIds returns the AzureResourceIds field value if set, zero value otherwise
@@ -162,6 +185,13 @@ func (o *StreamsPrivateLinkConnection) HasAzureResourceIds() bool {
 // SetAzureResourceIds gets a reference to the given []string and assigns it to the AzureResourceIds field.
 func (o *StreamsPrivateLinkConnection) SetAzureResourceIds(v []string) {
 	o.AzureResourceIds = &v
+	o.NullFields = removeNullField(o.NullFields, "AzureResourceIds")
+}
+
+// SetAzureResourceIdsNil sets AzureResourceIds to an explicit JSON null when marshaled.
+func (o *StreamsPrivateLinkConnection) SetAzureResourceIdsNil() {
+	o.AzureResourceIds = nil
+	o.NullFields = addNullField(o.NullFields, "AzureResourceIds")
 }
 
 // GetDnsDomain returns the DnsDomain field value if set, zero value otherwise
@@ -195,6 +225,13 @@ func (o *StreamsPrivateLinkConnection) HasDnsDomain() bool {
 // SetDnsDomain gets a reference to the given string and assigns it to the DnsDomain field.
 func (o *StreamsPrivateLinkConnection) SetDnsDomain(v string) {
 	o.DnsDomain = &v
+	o.NullFields = removeNullField(o.NullFields, "DnsDomain")
+}
+
+// SetDnsDomainNil sets DnsDomain to an explicit JSON null when marshaled.
+func (o *StreamsPrivateLinkConnection) SetDnsDomainNil() {
+	o.DnsDomain = nil
+	o.NullFields = addNullField(o.NullFields, "DnsDomain")
 }
 
 // GetDnsSubDomain returns the DnsSubDomain field value if set, zero value otherwise
@@ -228,6 +265,13 @@ func (o *StreamsPrivateLinkConnection) HasDnsSubDomain() bool {
 // SetDnsSubDomain gets a reference to the given []string and assigns it to the DnsSubDomain field.
 func (o *StreamsPrivateLinkConnection) SetDnsSubDomain(v []string) {
 	o.DnsSubDomain = &v
+	o.NullFields = removeNullField(o.NullFields, "DnsSubDomain")
+}
+
+// SetDnsSubDomainNil sets DnsSubDomain to an explicit JSON null when marshaled.
+func (o *StreamsPrivateLinkConnection) SetDnsSubDomainNil() {
+	o.DnsSubDomain = nil
+	o.NullFields = addNullField(o.NullFields, "DnsSubDomain")
 }
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise
@@ -261,6 +305,13 @@ func (o *StreamsPrivateLinkConnection) HasErrorMessage() bool {
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *StreamsPrivateLinkConnection) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
+	o.NullFields = removeNullField(o.NullFields, "ErrorMessage")
+}
+
+// SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled.
+func (o *StreamsPrivateLinkConnection) SetErrorMessageNil() {
+	o.ErrorMessage = nil
+	o.NullFields = addNullField(o.NullFields, "ErrorMessage")
 }
 
 // GetGcpConnectionIds returns the GcpConnectionIds field value if set, zero value otherwise
@@ -294,6 +345,13 @@ func (o *StreamsPrivateLinkConnection) HasGcpConnectionIds() bool {
 // SetGcpConnectionIds gets a reference to the given []string and assigns it to the GcpConnectionIds field.
 func (o *StreamsPrivateLinkConnection) SetGcpConnectionIds(v []string) {
 	o.GcpConnectionIds = &v
+	o.NullFields = removeNullField(o.NullFields, "GcpConnectionIds")
+}
+
+// SetGcpConnectionIdsNil sets GcpConnectionIds to an explicit JSON null when marshaled.
+func (o *StreamsPrivateLinkConnection) SetGcpConnectionIdsNil() {
+	o.GcpConnectionIds = nil
+	o.NullFields = addNullField(o.NullFields, "GcpConnectionIds")
 }
 
 // GetGcpServiceAttachmentUris returns the GcpServiceAttachmentUris field value if set, zero value otherwise
@@ -327,6 +385,13 @@ func (o *StreamsPrivateLinkConnection) HasGcpServiceAttachmentUris() bool {
 // SetGcpServiceAttachmentUris gets a reference to the given []string and assigns it to the GcpServiceAttachmentUris field.
 func (o *StreamsPrivateLinkConnection) SetGcpServiceAttachmentUris(v []string) {
 	o.GcpServiceAttachmentUris = &v
+	o.NullFields = removeNullField(o.NullFields, "GcpServiceAttachmentUris")
+}
+
+// SetGcpServiceAttachmentUrisNil sets GcpServiceAttachmentUris to an explicit JSON null when marshaled.
+func (o *StreamsPrivateLinkConnection) SetGcpServiceAttachmentUrisNil() {
+	o.GcpServiceAttachmentUris = nil
+	o.NullFields = addNullField(o.NullFields, "GcpServiceAttachmentUris")
 }
 
 // GetInterfaceEndpointId returns the InterfaceEndpointId field value if set, zero value otherwise
@@ -360,6 +425,13 @@ func (o *StreamsPrivateLinkConnection) HasInterfaceEndpointId() bool {
 // SetInterfaceEndpointId gets a reference to the given string and assigns it to the InterfaceEndpointId field.
 func (o *StreamsPrivateLinkConnection) SetInterfaceEndpointId(v string) {
 	o.InterfaceEndpointId = &v
+	o.NullFields = removeNullField(o.NullFields, "InterfaceEndpointId")
+}
+
+// SetInterfaceEndpointIdNil sets InterfaceEndpointId to an explicit JSON null when marshaled.
+func (o *StreamsPrivateLinkConnection) SetInterfaceEndpointIdNil() {
+	o.InterfaceEndpointId = nil
+	o.NullFields = addNullField(o.NullFields, "InterfaceEndpointId")
 }
 
 // GetInterfaceEndpointName returns the InterfaceEndpointName field value if set, zero value otherwise
@@ -393,6 +465,13 @@ func (o *StreamsPrivateLinkConnection) HasInterfaceEndpointName() bool {
 // SetInterfaceEndpointName gets a reference to the given string and assigns it to the InterfaceEndpointName field.
 func (o *StreamsPrivateLinkConnection) SetInterfaceEndpointName(v string) {
 	o.InterfaceEndpointName = &v
+	o.NullFields = removeNullField(o.NullFields, "InterfaceEndpointName")
+}
+
+// SetInterfaceEndpointNameNil sets InterfaceEndpointName to an explicit JSON null when marshaled.
+func (o *StreamsPrivateLinkConnection) SetInterfaceEndpointNameNil() {
+	o.InterfaceEndpointName = nil
+	o.NullFields = addNullField(o.NullFields, "InterfaceEndpointName")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -426,6 +505,13 @@ func (o *StreamsPrivateLinkConnection) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsPrivateLinkConnection) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *StreamsPrivateLinkConnection) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetProvider returns the Provider field value
@@ -483,6 +569,13 @@ func (o *StreamsPrivateLinkConnection) HasProviderAccountId() bool {
 // SetProviderAccountId gets a reference to the given string and assigns it to the ProviderAccountId field.
 func (o *StreamsPrivateLinkConnection) SetProviderAccountId(v string) {
 	o.ProviderAccountId = &v
+	o.NullFields = removeNullField(o.NullFields, "ProviderAccountId")
+}
+
+// SetProviderAccountIdNil sets ProviderAccountId to an explicit JSON null when marshaled.
+func (o *StreamsPrivateLinkConnection) SetProviderAccountIdNil() {
+	o.ProviderAccountId = nil
+	o.NullFields = addNullField(o.NullFields, "ProviderAccountId")
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise
@@ -516,6 +609,13 @@ func (o *StreamsPrivateLinkConnection) HasRegion() bool {
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *StreamsPrivateLinkConnection) SetRegion(v string) {
 	o.Region = &v
+	o.NullFields = removeNullField(o.NullFields, "Region")
+}
+
+// SetRegionNil sets Region to an explicit JSON null when marshaled.
+func (o *StreamsPrivateLinkConnection) SetRegionNil() {
+	o.Region = nil
+	o.NullFields = addNullField(o.NullFields, "Region")
 }
 
 // GetServiceEndpointId returns the ServiceEndpointId field value if set, zero value otherwise
@@ -549,6 +649,13 @@ func (o *StreamsPrivateLinkConnection) HasServiceEndpointId() bool {
 // SetServiceEndpointId gets a reference to the given string and assigns it to the ServiceEndpointId field.
 func (o *StreamsPrivateLinkConnection) SetServiceEndpointId(v string) {
 	o.ServiceEndpointId = &v
+	o.NullFields = removeNullField(o.NullFields, "ServiceEndpointId")
+}
+
+// SetServiceEndpointIdNil sets ServiceEndpointId to an explicit JSON null when marshaled.
+func (o *StreamsPrivateLinkConnection) SetServiceEndpointIdNil() {
+	o.ServiceEndpointId = nil
+	o.NullFields = addNullField(o.NullFields, "ServiceEndpointId")
 }
 
 // GetState returns the State field value if set, zero value otherwise
@@ -582,6 +689,13 @@ func (o *StreamsPrivateLinkConnection) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *StreamsPrivateLinkConnection) SetState(v string) {
 	o.State = &v
+	o.NullFields = removeNullField(o.NullFields, "State")
+}
+
+// SetStateNil sets State to an explicit JSON null when marshaled.
+func (o *StreamsPrivateLinkConnection) SetStateNil() {
+	o.State = nil
+	o.NullFields = addNullField(o.NullFields, "State")
 }
 
 // GetVendor returns the Vendor field value if set, zero value otherwise
@@ -615,4 +729,11 @@ func (o *StreamsPrivateLinkConnection) HasVendor() bool {
 // SetVendor gets a reference to the given string and assigns it to the Vendor field.
 func (o *StreamsPrivateLinkConnection) SetVendor(v string) {
 	o.Vendor = &v
+	o.NullFields = removeNullField(o.NullFields, "Vendor")
+}
+
+// SetVendorNil sets Vendor to an explicit JSON null when marshaled.
+func (o *StreamsPrivateLinkConnection) SetVendorNil() {
+	o.Vendor = nil
+	o.NullFields = addNullField(o.NullFields, "Vendor")
 }

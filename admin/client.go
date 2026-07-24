@@ -74,8 +74,6 @@ type APIClient struct {
 
 	DataFederationAPI DataFederationAPI
 
-	DataLakePipelinesAPI DataLakePipelinesAPI
-
 	DatabaseUsersAPI DatabaseUsersAPI
 
 	EncryptionAtRestUsingCustomerKeyManagementAPI EncryptionAtRestUsingCustomerKeyManagementAPI
@@ -181,7 +179,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CollectionLevelMetricsAPI = (*CollectionLevelMetricsAPIService)(&c.common)
 	c.CustomDatabaseRolesAPI = (*CustomDatabaseRolesAPIService)(&c.common)
 	c.DataFederationAPI = (*DataFederationAPIService)(&c.common)
-	c.DataLakePipelinesAPI = (*DataLakePipelinesAPIService)(&c.common)
 	c.DatabaseUsersAPI = (*DatabaseUsersAPIService)(&c.common)
 	c.EncryptionAtRestUsingCustomerKeyManagementAPI = (*EncryptionAtRestUsingCustomerKeyManagementAPIService)(&c.common)
 	c.EventsAPI = (*EventsAPIService)(&c.common)

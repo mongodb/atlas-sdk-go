@@ -50,6 +50,13 @@ SetFrequencyType sets FrequencyType field to given value.
 `func (o *ExtraRetentionSetting) HasFrequencyType() bool`
 
 HasFrequencyType returns a boolean if a field has been set.
+
+### SetFrequencyTypeNil
+
+`func (o *ExtraRetentionSetting) SetFrequencyTypeNil()`
+
+SetFrequencyTypeNil sets FrequencyType to an explicit JSON null when marshaled, overriding any value previously set with SetFrequencyType. Calling SetFrequencyType again clears the null override.
+
 ### GetRetentionDays
 
 `func (o *ExtraRetentionSetting) GetRetentionDays() int`
@@ -74,6 +81,13 @@ SetRetentionDays sets RetentionDays field to given value.
 `func (o *ExtraRetentionSetting) HasRetentionDays() bool`
 
 HasRetentionDays returns a boolean if a field has been set.
+
+### SetRetentionDaysNil
+
+`func (o *ExtraRetentionSetting) SetRetentionDaysNil()`
+
+SetRetentionDaysNil sets RetentionDays to an explicit JSON null when marshaled, overriding any value previously set with SetRetentionDays. Calling SetRetentionDays again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -51,6 +51,13 @@ SetAlertable sets Alertable field to given value.
 `func (o *EventTypeDetails) HasAlertable() bool`
 
 HasAlertable returns a boolean if a field has been set.
+
+### SetAlertableNil
+
+`func (o *EventTypeDetails) SetAlertableNil()`
+
+SetAlertableNil sets Alertable to an explicit JSON null when marshaled, overriding any value previously set with SetAlertable. Calling SetAlertable again clears the null override.
+
 ### GetDescription
 
 `func (o *EventTypeDetails) GetDescription() string`
@@ -75,6 +82,13 @@ SetDescription sets Description field to given value.
 `func (o *EventTypeDetails) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *EventTypeDetails) SetDescriptionNil()`
+
+SetDescriptionNil sets Description to an explicit JSON null when marshaled, overriding any value previously set with SetDescription. Calling SetDescription again clears the null override.
+
 ### GetEventType
 
 `func (o *EventTypeDetails) GetEventType() string`
@@ -99,6 +113,13 @@ SetEventType sets EventType field to given value.
 `func (o *EventTypeDetails) HasEventType() bool`
 
 HasEventType returns a boolean if a field has been set.
+
+### SetEventTypeNil
+
+`func (o *EventTypeDetails) SetEventTypeNil()`
+
+SetEventTypeNil sets EventType to an explicit JSON null when marshaled, overriding any value previously set with SetEventType. Calling SetEventType again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

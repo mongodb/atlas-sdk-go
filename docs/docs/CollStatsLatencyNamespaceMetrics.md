@@ -70,6 +70,13 @@ SetLinks sets Links field to given value.
 `func (o *CollStatsLatencyNamespaceMetrics) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *CollStatsLatencyNamespaceMetrics) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetMetrics
 
 `func (o *CollStatsLatencyNamespaceMetrics) GetMetrics() []CollStatsLatencyNamespaceMetric`

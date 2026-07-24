@@ -35,6 +35,15 @@ type ApiAtlasCheckpoint struct {
 	// Date and time to which the checkpoint restores. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Timestamp *time.Time `json:"timestamp,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiAtlasCheckpoint) MarshalJSON() ([]byte, error) {
+	type noMethod ApiAtlasCheckpoint
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasCheckpoint instantiates a new ApiAtlasCheckpoint object
@@ -85,6 +94,13 @@ func (o *ApiAtlasCheckpoint) HasClusterId() bool {
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
 func (o *ApiAtlasCheckpoint) SetClusterId(v string) {
 	o.ClusterId = &v
+	o.NullFields = removeNullField(o.NullFields, "ClusterId")
+}
+
+// SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled.
+func (o *ApiAtlasCheckpoint) SetClusterIdNil() {
+	o.ClusterId = nil
+	o.NullFields = addNullField(o.NullFields, "ClusterId")
 }
 
 // GetCompleted returns the Completed field value if set, zero value otherwise
@@ -118,6 +134,13 @@ func (o *ApiAtlasCheckpoint) HasCompleted() bool {
 // SetCompleted gets a reference to the given time.Time and assigns it to the Completed field.
 func (o *ApiAtlasCheckpoint) SetCompleted(v time.Time) {
 	o.Completed = &v
+	o.NullFields = removeNullField(o.NullFields, "Completed")
+}
+
+// SetCompletedNil sets Completed to an explicit JSON null when marshaled.
+func (o *ApiAtlasCheckpoint) SetCompletedNil() {
+	o.Completed = nil
+	o.NullFields = addNullField(o.NullFields, "Completed")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -151,6 +174,13 @@ func (o *ApiAtlasCheckpoint) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *ApiAtlasCheckpoint) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *ApiAtlasCheckpoint) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -184,6 +214,13 @@ func (o *ApiAtlasCheckpoint) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApiAtlasCheckpoint) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *ApiAtlasCheckpoint) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -217,6 +254,13 @@ func (o *ApiAtlasCheckpoint) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *ApiAtlasCheckpoint) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *ApiAtlasCheckpoint) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetParts returns the Parts field value if set, zero value otherwise
@@ -250,6 +294,13 @@ func (o *ApiAtlasCheckpoint) HasParts() bool {
 // SetParts gets a reference to the given []ApiCheckpointPart and assigns it to the Parts field.
 func (o *ApiAtlasCheckpoint) SetParts(v []ApiCheckpointPart) {
 	o.Parts = &v
+	o.NullFields = removeNullField(o.NullFields, "Parts")
+}
+
+// SetPartsNil sets Parts to an explicit JSON null when marshaled.
+func (o *ApiAtlasCheckpoint) SetPartsNil() {
+	o.Parts = nil
+	o.NullFields = addNullField(o.NullFields, "Parts")
 }
 
 // GetRestorable returns the Restorable field value if set, zero value otherwise
@@ -283,6 +334,13 @@ func (o *ApiAtlasCheckpoint) HasRestorable() bool {
 // SetRestorable gets a reference to the given bool and assigns it to the Restorable field.
 func (o *ApiAtlasCheckpoint) SetRestorable(v bool) {
 	o.Restorable = &v
+	o.NullFields = removeNullField(o.NullFields, "Restorable")
+}
+
+// SetRestorableNil sets Restorable to an explicit JSON null when marshaled.
+func (o *ApiAtlasCheckpoint) SetRestorableNil() {
+	o.Restorable = nil
+	o.NullFields = addNullField(o.NullFields, "Restorable")
 }
 
 // GetStarted returns the Started field value if set, zero value otherwise
@@ -316,6 +374,13 @@ func (o *ApiAtlasCheckpoint) HasStarted() bool {
 // SetStarted gets a reference to the given time.Time and assigns it to the Started field.
 func (o *ApiAtlasCheckpoint) SetStarted(v time.Time) {
 	o.Started = &v
+	o.NullFields = removeNullField(o.NullFields, "Started")
+}
+
+// SetStartedNil sets Started to an explicit JSON null when marshaled.
+func (o *ApiAtlasCheckpoint) SetStartedNil() {
+	o.Started = nil
+	o.NullFields = addNullField(o.NullFields, "Started")
 }
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise
@@ -349,4 +414,11 @@ func (o *ApiAtlasCheckpoint) HasTimestamp() bool {
 // SetTimestamp gets a reference to the given time.Time and assigns it to the Timestamp field.
 func (o *ApiAtlasCheckpoint) SetTimestamp(v time.Time) {
 	o.Timestamp = &v
+	o.NullFields = removeNullField(o.NullFields, "Timestamp")
+}
+
+// SetTimestampNil sets Timestamp to an explicit JSON null when marshaled.
+func (o *ApiAtlasCheckpoint) SetTimestampNil() {
+	o.Timestamp = nil
+	o.NullFields = addNullField(o.NullFields, "Timestamp")
 }

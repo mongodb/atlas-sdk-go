@@ -50,6 +50,13 @@ SetInbound sets Inbound field to given value.
 `func (o *ControlPlaneIPAddresses) HasInbound() bool`
 
 HasInbound returns a boolean if a field has been set.
+
+### SetInboundNil
+
+`func (o *ControlPlaneIPAddresses) SetInboundNil()`
+
+SetInboundNil sets Inbound to an explicit JSON null when marshaled, overriding any value previously set with SetInbound. Calling SetInbound again clears the null override.
+
 ### GetOutbound
 
 `func (o *ControlPlaneIPAddresses) GetOutbound() OutboundControlPlaneCloudProviderIPAddresses`
@@ -74,6 +81,13 @@ SetOutbound sets Outbound field to given value.
 `func (o *ControlPlaneIPAddresses) HasOutbound() bool`
 
 HasOutbound returns a boolean if a field has been set.
+
+### SetOutboundNil
+
+`func (o *ControlPlaneIPAddresses) SetOutboundNil()`
+
+SetOutboundNil sets Outbound to an explicit JSON null when marshaled, overriding any value previously set with SetOutbound. Calling SetOutbound again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

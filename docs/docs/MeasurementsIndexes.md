@@ -58,6 +58,13 @@ SetCollectionName sets CollectionName field to given value.
 `func (o *MeasurementsIndexes) HasCollectionName() bool`
 
 HasCollectionName returns a boolean if a field has been set.
+
+### SetCollectionNameNil
+
+`func (o *MeasurementsIndexes) SetCollectionNameNil()`
+
+SetCollectionNameNil sets CollectionName to an explicit JSON null when marshaled, overriding any value previously set with SetCollectionName. Calling SetCollectionName again clears the null override.
+
 ### GetDatabaseName
 
 `func (o *MeasurementsIndexes) GetDatabaseName() string`
@@ -82,6 +89,13 @@ SetDatabaseName sets DatabaseName field to given value.
 `func (o *MeasurementsIndexes) HasDatabaseName() bool`
 
 HasDatabaseName returns a boolean if a field has been set.
+
+### SetDatabaseNameNil
+
+`func (o *MeasurementsIndexes) SetDatabaseNameNil()`
+
+SetDatabaseNameNil sets DatabaseName to an explicit JSON null when marshaled, overriding any value previously set with SetDatabaseName. Calling SetDatabaseName again clears the null override.
+
 ### GetEnd
 
 `func (o *MeasurementsIndexes) GetEnd() time.Time`
@@ -106,6 +120,13 @@ SetEnd sets End field to given value.
 `func (o *MeasurementsIndexes) HasEnd() bool`
 
 HasEnd returns a boolean if a field has been set.
+
+### SetEndNil
+
+`func (o *MeasurementsIndexes) SetEndNil()`
+
+SetEndNil sets End to an explicit JSON null when marshaled, overriding any value previously set with SetEnd. Calling SetEnd again clears the null override.
+
 ### GetGranularity
 
 `func (o *MeasurementsIndexes) GetGranularity() string`
@@ -130,6 +151,13 @@ SetGranularity sets Granularity field to given value.
 `func (o *MeasurementsIndexes) HasGranularity() bool`
 
 HasGranularity returns a boolean if a field has been set.
+
+### SetGranularityNil
+
+`func (o *MeasurementsIndexes) SetGranularityNil()`
+
+SetGranularityNil sets Granularity to an explicit JSON null when marshaled, overriding any value previously set with SetGranularity. Calling SetGranularity again clears the null override.
+
 ### GetGroupId
 
 `func (o *MeasurementsIndexes) GetGroupId() string`
@@ -154,6 +182,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *MeasurementsIndexes) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *MeasurementsIndexes) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetIndexIds
 
 `func (o *MeasurementsIndexes) GetIndexIds() []string`
@@ -178,6 +213,13 @@ SetIndexIds sets IndexIds field to given value.
 `func (o *MeasurementsIndexes) HasIndexIds() bool`
 
 HasIndexIds returns a boolean if a field has been set.
+
+### SetIndexIdsNil
+
+`func (o *MeasurementsIndexes) SetIndexIdsNil()`
+
+SetIndexIdsNil sets IndexIds to an explicit JSON null when marshaled, overriding any value previously set with SetIndexIds. Calling SetIndexIds again clears the null override.
+
 ### GetIndexStatsMeasurements
 
 `func (o *MeasurementsIndexes) GetIndexStatsMeasurements() []MetricsMeasurement`
@@ -202,6 +244,13 @@ SetIndexStatsMeasurements sets IndexStatsMeasurements field to given value.
 `func (o *MeasurementsIndexes) HasIndexStatsMeasurements() bool`
 
 HasIndexStatsMeasurements returns a boolean if a field has been set.
+
+### SetIndexStatsMeasurementsNil
+
+`func (o *MeasurementsIndexes) SetIndexStatsMeasurementsNil()`
+
+SetIndexStatsMeasurementsNil sets IndexStatsMeasurements to an explicit JSON null when marshaled, overriding any value previously set with SetIndexStatsMeasurements. Calling SetIndexStatsMeasurements again clears the null override.
+
 ### GetLinks
 
 `func (o *MeasurementsIndexes) GetLinks() []Link`
@@ -226,6 +275,13 @@ SetLinks sets Links field to given value.
 `func (o *MeasurementsIndexes) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *MeasurementsIndexes) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetProcessId
 
 `func (o *MeasurementsIndexes) GetProcessId() string`
@@ -250,6 +306,13 @@ SetProcessId sets ProcessId field to given value.
 `func (o *MeasurementsIndexes) HasProcessId() bool`
 
 HasProcessId returns a boolean if a field has been set.
+
+### SetProcessIdNil
+
+`func (o *MeasurementsIndexes) SetProcessIdNil()`
+
+SetProcessIdNil sets ProcessId to an explicit JSON null when marshaled, overriding any value previously set with SetProcessId. Calling SetProcessId again clears the null override.
+
 ### GetStart
 
 `func (o *MeasurementsIndexes) GetStart() time.Time`
@@ -274,6 +337,13 @@ SetStart sets Start field to given value.
 `func (o *MeasurementsIndexes) HasStart() bool`
 
 HasStart returns a boolean if a field has been set.
+
+### SetStartNil
+
+`func (o *MeasurementsIndexes) SetStartNil()`
+
+SetStartNil sets Start to an explicit JSON null when marshaled, overriding any value previously set with SetStart. Calling SetStart again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -62,6 +62,13 @@ SetClusterId sets ClusterId field to given value.
 `func (o *BackupSnapshotPart) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
+
+### SetClusterIdNil
+
+`func (o *BackupSnapshotPart) SetClusterIdNil()`
+
+SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled, overriding any value previously set with SetClusterId. Calling SetClusterId again clears the null override.
+
 ### GetCompletedTime
 
 `func (o *BackupSnapshotPart) GetCompletedTime() time.Time`
@@ -86,6 +93,13 @@ SetCompletedTime sets CompletedTime field to given value.
 `func (o *BackupSnapshotPart) HasCompletedTime() bool`
 
 HasCompletedTime returns a boolean if a field has been set.
+
+### SetCompletedTimeNil
+
+`func (o *BackupSnapshotPart) SetCompletedTimeNil()`
+
+SetCompletedTimeNil sets CompletedTime to an explicit JSON null when marshaled, overriding any value previously set with SetCompletedTime. Calling SetCompletedTime again clears the null override.
+
 ### GetCompressionSetting
 
 `func (o *BackupSnapshotPart) GetCompressionSetting() string`
@@ -110,6 +124,13 @@ SetCompressionSetting sets CompressionSetting field to given value.
 `func (o *BackupSnapshotPart) HasCompressionSetting() bool`
 
 HasCompressionSetting returns a boolean if a field has been set.
+
+### SetCompressionSettingNil
+
+`func (o *BackupSnapshotPart) SetCompressionSettingNil()`
+
+SetCompressionSettingNil sets CompressionSetting to an explicit JSON null when marshaled, overriding any value previously set with SetCompressionSetting. Calling SetCompressionSetting again clears the null override.
+
 ### GetDataSizeBytes
 
 `func (o *BackupSnapshotPart) GetDataSizeBytes() int64`
@@ -134,6 +155,13 @@ SetDataSizeBytes sets DataSizeBytes field to given value.
 `func (o *BackupSnapshotPart) HasDataSizeBytes() bool`
 
 HasDataSizeBytes returns a boolean if a field has been set.
+
+### SetDataSizeBytesNil
+
+`func (o *BackupSnapshotPart) SetDataSizeBytesNil()`
+
+SetDataSizeBytesNil sets DataSizeBytes to an explicit JSON null when marshaled, overriding any value previously set with SetDataSizeBytes. Calling SetDataSizeBytes again clears the null override.
+
 ### GetEncryptionEnabled
 
 `func (o *BackupSnapshotPart) GetEncryptionEnabled() bool`
@@ -158,6 +186,13 @@ SetEncryptionEnabled sets EncryptionEnabled field to given value.
 `func (o *BackupSnapshotPart) HasEncryptionEnabled() bool`
 
 HasEncryptionEnabled returns a boolean if a field has been set.
+
+### SetEncryptionEnabledNil
+
+`func (o *BackupSnapshotPart) SetEncryptionEnabledNil()`
+
+SetEncryptionEnabledNil sets EncryptionEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetEncryptionEnabled. Calling SetEncryptionEnabled again clears the null override.
+
 ### GetFcv
 
 `func (o *BackupSnapshotPart) GetFcv() string`
@@ -182,6 +217,13 @@ SetFcv sets Fcv field to given value.
 `func (o *BackupSnapshotPart) HasFcv() bool`
 
 HasFcv returns a boolean if a field has been set.
+
+### SetFcvNil
+
+`func (o *BackupSnapshotPart) SetFcvNil()`
+
+SetFcvNil sets Fcv to an explicit JSON null when marshaled, overriding any value previously set with SetFcv. Calling SetFcv again clears the null override.
+
 ### GetFileSizeBytes
 
 `func (o *BackupSnapshotPart) GetFileSizeBytes() int64`
@@ -206,6 +248,13 @@ SetFileSizeBytes sets FileSizeBytes field to given value.
 `func (o *BackupSnapshotPart) HasFileSizeBytes() bool`
 
 HasFileSizeBytes returns a boolean if a field has been set.
+
+### SetFileSizeBytesNil
+
+`func (o *BackupSnapshotPart) SetFileSizeBytesNil()`
+
+SetFileSizeBytesNil sets FileSizeBytes to an explicit JSON null when marshaled, overriding any value previously set with SetFileSizeBytes. Calling SetFileSizeBytes again clears the null override.
+
 ### GetMachineId
 
 `func (o *BackupSnapshotPart) GetMachineId() string`
@@ -230,6 +279,13 @@ SetMachineId sets MachineId field to given value.
 `func (o *BackupSnapshotPart) HasMachineId() bool`
 
 HasMachineId returns a boolean if a field has been set.
+
+### SetMachineIdNil
+
+`func (o *BackupSnapshotPart) SetMachineIdNil()`
+
+SetMachineIdNil sets MachineId to an explicit JSON null when marshaled, overriding any value previously set with SetMachineId. Calling SetMachineId again clears the null override.
+
 ### GetMasterKeyUUID
 
 `func (o *BackupSnapshotPart) GetMasterKeyUUID() string`
@@ -254,6 +310,13 @@ SetMasterKeyUUID sets MasterKeyUUID field to given value.
 `func (o *BackupSnapshotPart) HasMasterKeyUUID() bool`
 
 HasMasterKeyUUID returns a boolean if a field has been set.
+
+### SetMasterKeyUUIDNil
+
+`func (o *BackupSnapshotPart) SetMasterKeyUUIDNil()`
+
+SetMasterKeyUUIDNil sets MasterKeyUUID to an explicit JSON null when marshaled, overriding any value previously set with SetMasterKeyUUID. Calling SetMasterKeyUUID again clears the null override.
+
 ### GetMongodVersion
 
 `func (o *BackupSnapshotPart) GetMongodVersion() string`
@@ -278,6 +341,13 @@ SetMongodVersion sets MongodVersion field to given value.
 `func (o *BackupSnapshotPart) HasMongodVersion() bool`
 
 HasMongodVersion returns a boolean if a field has been set.
+
+### SetMongodVersionNil
+
+`func (o *BackupSnapshotPart) SetMongodVersionNil()`
+
+SetMongodVersionNil sets MongodVersion to an explicit JSON null when marshaled, overriding any value previously set with SetMongodVersion. Calling SetMongodVersion again clears the null override.
+
 ### GetReplicaSetName
 
 `func (o *BackupSnapshotPart) GetReplicaSetName() string`
@@ -302,6 +372,13 @@ SetReplicaSetName sets ReplicaSetName field to given value.
 `func (o *BackupSnapshotPart) HasReplicaSetName() bool`
 
 HasReplicaSetName returns a boolean if a field has been set.
+
+### SetReplicaSetNameNil
+
+`func (o *BackupSnapshotPart) SetReplicaSetNameNil()`
+
+SetReplicaSetNameNil sets ReplicaSetName to an explicit JSON null when marshaled, overriding any value previously set with SetReplicaSetName. Calling SetReplicaSetName again clears the null override.
+
 ### GetReplicaState
 
 `func (o *BackupSnapshotPart) GetReplicaState() string`
@@ -326,6 +403,13 @@ SetReplicaState sets ReplicaState field to given value.
 `func (o *BackupSnapshotPart) HasReplicaState() bool`
 
 HasReplicaState returns a boolean if a field has been set.
+
+### SetReplicaStateNil
+
+`func (o *BackupSnapshotPart) SetReplicaStateNil()`
+
+SetReplicaStateNil sets ReplicaState to an explicit JSON null when marshaled, overriding any value previously set with SetReplicaState. Calling SetReplicaState again clears the null override.
+
 ### GetStorageSizeBytes
 
 `func (o *BackupSnapshotPart) GetStorageSizeBytes() int64`
@@ -350,6 +434,13 @@ SetStorageSizeBytes sets StorageSizeBytes field to given value.
 `func (o *BackupSnapshotPart) HasStorageSizeBytes() bool`
 
 HasStorageSizeBytes returns a boolean if a field has been set.
+
+### SetStorageSizeBytesNil
+
+`func (o *BackupSnapshotPart) SetStorageSizeBytesNil()`
+
+SetStorageSizeBytesNil sets StorageSizeBytes to an explicit JSON null when marshaled, overriding any value previously set with SetStorageSizeBytes. Calling SetStorageSizeBytes again clears the null override.
+
 ### GetTypeName
 
 `func (o *BackupSnapshotPart) GetTypeName() string`
@@ -374,6 +465,13 @@ SetTypeName sets TypeName field to given value.
 `func (o *BackupSnapshotPart) HasTypeName() bool`
 
 HasTypeName returns a boolean if a field has been set.
+
+### SetTypeNameNil
+
+`func (o *BackupSnapshotPart) SetTypeNameNil()`
+
+SetTypeNameNil sets TypeName to an explicit JSON null when marshaled, overriding any value previously set with SetTypeName. Calling SetTypeName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

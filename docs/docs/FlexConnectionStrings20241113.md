@@ -50,6 +50,13 @@ SetStandard sets Standard field to given value.
 `func (o *FlexConnectionStrings20241113) HasStandard() bool`
 
 HasStandard returns a boolean if a field has been set.
+
+### SetStandardNil
+
+`func (o *FlexConnectionStrings20241113) SetStandardNil()`
+
+SetStandardNil sets Standard to an explicit JSON null when marshaled, overriding any value previously set with SetStandard. Calling SetStandard again clears the null override.
+
 ### GetStandardSrv
 
 `func (o *FlexConnectionStrings20241113) GetStandardSrv() string`
@@ -74,6 +81,13 @@ SetStandardSrv sets StandardSrv field to given value.
 `func (o *FlexConnectionStrings20241113) HasStandardSrv() bool`
 
 HasStandardSrv returns a boolean if a field has been set.
+
+### SetStandardSrvNil
+
+`func (o *FlexConnectionStrings20241113) SetStandardSrvNil()`
+
+SetStandardSrvNil sets StandardSrv to an explicit JSON null when marshaled, overriding any value previously set with SetStandardSrv. Calling SetStandardSrv again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

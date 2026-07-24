@@ -53,6 +53,13 @@ SetFailoverEnabled sets FailoverEnabled field to given value.
 `func (o *StreamsModifyStreamProcessor) HasFailoverEnabled() bool`
 
 HasFailoverEnabled returns a boolean if a field has been set.
+
+### SetFailoverEnabledNil
+
+`func (o *StreamsModifyStreamProcessor) SetFailoverEnabledNil()`
+
+SetFailoverEnabledNil sets FailoverEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetFailoverEnabled. Calling SetFailoverEnabled again clears the null override.
+
 ### GetLinks
 
 `func (o *StreamsModifyStreamProcessor) GetLinks() []Link`
@@ -77,6 +84,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsModifyStreamProcessor) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsModifyStreamProcessor) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetName
 
 `func (o *StreamsModifyStreamProcessor) GetName() string`
@@ -101,6 +115,13 @@ SetName sets Name field to given value.
 `func (o *StreamsModifyStreamProcessor) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *StreamsModifyStreamProcessor) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetOptions
 
 `func (o *StreamsModifyStreamProcessor) GetOptions() StreamsModifyStreamProcessorOptions`
@@ -125,6 +146,13 @@ SetOptions sets Options field to given value.
 `func (o *StreamsModifyStreamProcessor) HasOptions() bool`
 
 HasOptions returns a boolean if a field has been set.
+
+### SetOptionsNil
+
+`func (o *StreamsModifyStreamProcessor) SetOptionsNil()`
+
+SetOptionsNil sets Options to an explicit JSON null when marshaled, overriding any value previously set with SetOptions. Calling SetOptions again clears the null override.
+
 ### GetPipeline
 
 `func (o *StreamsModifyStreamProcessor) GetPipeline() []any`
@@ -149,6 +177,13 @@ SetPipeline sets Pipeline field to given value.
 `func (o *StreamsModifyStreamProcessor) HasPipeline() bool`
 
 HasPipeline returns a boolean if a field has been set.
+
+### SetPipelineNil
+
+`func (o *StreamsModifyStreamProcessor) SetPipelineNil()`
+
+SetPipelineNil sets Pipeline to an explicit JSON null when marshaled, overriding any value previously set with SetPipeline. Calling SetPipeline again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

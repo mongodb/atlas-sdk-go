@@ -50,6 +50,13 @@ SetDeliveryUrl sets DeliveryUrl field to given value.
 `func (o *ApiPrivateDownloadDeliveryUrl) HasDeliveryUrl() bool`
 
 HasDeliveryUrl returns a boolean if a field has been set.
+
+### SetDeliveryUrlNil
+
+`func (o *ApiPrivateDownloadDeliveryUrl) SetDeliveryUrlNil()`
+
+SetDeliveryUrlNil sets DeliveryUrl to an explicit JSON null when marshaled, overriding any value previously set with SetDeliveryUrl. Calling SetDeliveryUrl again clears the null override.
+
 ### GetEndpointId
 
 `func (o *ApiPrivateDownloadDeliveryUrl) GetEndpointId() string`
@@ -74,6 +81,13 @@ SetEndpointId sets EndpointId field to given value.
 `func (o *ApiPrivateDownloadDeliveryUrl) HasEndpointId() bool`
 
 HasEndpointId returns a boolean if a field has been set.
+
+### SetEndpointIdNil
+
+`func (o *ApiPrivateDownloadDeliveryUrl) SetEndpointIdNil()`
+
+SetEndpointIdNil sets EndpointId to an explicit JSON null when marshaled, overriding any value previously set with SetEndpointId. Calling SetEndpointId again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

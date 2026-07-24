@@ -51,6 +51,13 @@ SetEndpointId sets EndpointId field to given value.
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) HasEndpointId() bool`
 
 HasEndpointId returns a boolean if a field has been set.
+
+### SetEndpointIdNil
+
+`func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) SetEndpointIdNil()`
+
+SetEndpointIdNil sets EndpointId to an explicit JSON null when marshaled, overriding any value previously set with SetEndpointId. Calling SetEndpointId again clears the null override.
+
 ### GetProviderName
 
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) GetProviderName() string`
@@ -75,6 +82,13 @@ SetProviderName sets ProviderName field to given value.
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) HasProviderName() bool`
 
 HasProviderName returns a boolean if a field has been set.
+
+### SetProviderNameNil
+
+`func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) SetProviderNameNil()`
+
+SetProviderNameNil sets ProviderName to an explicit JSON null when marshaled, overriding any value previously set with SetProviderName. Calling SetProviderName again clears the null override.
+
 ### GetRegion
 
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) GetRegion() string`
@@ -99,6 +113,13 @@ SetRegion sets Region field to given value.
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *ClusterDescriptionConnectionStringsPrivateEndpointEndpoint) SetRegionNil()`
+
+SetRegionNil sets Region to an explicit JSON null when marshaled, overriding any value previously set with SetRegion. Calling SetRegion again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

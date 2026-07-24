@@ -60,6 +60,13 @@ SetComponents sets Components field to given value.
 `func (o *DiskBackupExportJob) HasComponents() bool`
 
 HasComponents returns a boolean if a field has been set.
+
+### SetComponentsNil
+
+`func (o *DiskBackupExportJob) SetComponentsNil()`
+
+SetComponentsNil sets Components to an explicit JSON null when marshaled, overriding any value previously set with SetComponents. Calling SetComponents again clears the null override.
+
 ### GetCreatedAt
 
 `func (o *DiskBackupExportJob) GetCreatedAt() time.Time`
@@ -84,6 +91,13 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *DiskBackupExportJob) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
+
+### SetCreatedAtNil
+
+`func (o *DiskBackupExportJob) SetCreatedAtNil()`
+
+SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled, overriding any value previously set with SetCreatedAt. Calling SetCreatedAt again clears the null override.
+
 ### GetCustomData
 
 `func (o *DiskBackupExportJob) GetCustomData() []BackupLabel`
@@ -108,6 +122,13 @@ SetCustomData sets CustomData field to given value.
 `func (o *DiskBackupExportJob) HasCustomData() bool`
 
 HasCustomData returns a boolean if a field has been set.
+
+### SetCustomDataNil
+
+`func (o *DiskBackupExportJob) SetCustomDataNil()`
+
+SetCustomDataNil sets CustomData to an explicit JSON null when marshaled, overriding any value previously set with SetCustomData. Calling SetCustomData again clears the null override.
+
 ### GetExportBucketId
 
 `func (o *DiskBackupExportJob) GetExportBucketId() string`
@@ -151,6 +172,13 @@ SetExportStatus sets ExportStatus field to given value.
 `func (o *DiskBackupExportJob) HasExportStatus() bool`
 
 HasExportStatus returns a boolean if a field has been set.
+
+### SetExportStatusNil
+
+`func (o *DiskBackupExportJob) SetExportStatusNil()`
+
+SetExportStatusNil sets ExportStatus to an explicit JSON null when marshaled, overriding any value previously set with SetExportStatus. Calling SetExportStatus again clears the null override.
+
 ### GetFinishedAt
 
 `func (o *DiskBackupExportJob) GetFinishedAt() time.Time`
@@ -175,6 +203,13 @@ SetFinishedAt sets FinishedAt field to given value.
 `func (o *DiskBackupExportJob) HasFinishedAt() bool`
 
 HasFinishedAt returns a boolean if a field has been set.
+
+### SetFinishedAtNil
+
+`func (o *DiskBackupExportJob) SetFinishedAtNil()`
+
+SetFinishedAtNil sets FinishedAt to an explicit JSON null when marshaled, overriding any value previously set with SetFinishedAt. Calling SetFinishedAt again clears the null override.
+
 ### GetId
 
 `func (o *DiskBackupExportJob) GetId() string`
@@ -199,6 +234,13 @@ SetId sets Id field to given value.
 `func (o *DiskBackupExportJob) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *DiskBackupExportJob) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLinks
 
 `func (o *DiskBackupExportJob) GetLinks() []Link`
@@ -223,6 +265,13 @@ SetLinks sets Links field to given value.
 `func (o *DiskBackupExportJob) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *DiskBackupExportJob) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetPrefix
 
 `func (o *DiskBackupExportJob) GetPrefix() string`
@@ -247,6 +296,13 @@ SetPrefix sets Prefix field to given value.
 `func (o *DiskBackupExportJob) HasPrefix() bool`
 
 HasPrefix returns a boolean if a field has been set.
+
+### SetPrefixNil
+
+`func (o *DiskBackupExportJob) SetPrefixNil()`
+
+SetPrefixNil sets Prefix to an explicit JSON null when marshaled, overriding any value previously set with SetPrefix. Calling SetPrefix again clears the null override.
+
 ### GetSnapshotId
 
 `func (o *DiskBackupExportJob) GetSnapshotId() string`
@@ -271,6 +327,13 @@ SetSnapshotId sets SnapshotId field to given value.
 `func (o *DiskBackupExportJob) HasSnapshotId() bool`
 
 HasSnapshotId returns a boolean if a field has been set.
+
+### SetSnapshotIdNil
+
+`func (o *DiskBackupExportJob) SetSnapshotIdNil()`
+
+SetSnapshotIdNil sets SnapshotId to an explicit JSON null when marshaled, overriding any value previously set with SetSnapshotId. Calling SetSnapshotId again clears the null override.
+
 ### GetState
 
 `func (o *DiskBackupExportJob) GetState() string`
@@ -295,6 +358,13 @@ SetState sets State field to given value.
 `func (o *DiskBackupExportJob) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### SetStateNil
+
+`func (o *DiskBackupExportJob) SetStateNil()`
+
+SetStateNil sets State to an explicit JSON null when marshaled, overriding any value previously set with SetState. Calling SetState again clears the null override.
+
 ### GetStateReason
 
 `func (o *DiskBackupExportJob) GetStateReason() StateReason`
@@ -319,6 +389,13 @@ SetStateReason sets StateReason field to given value.
 `func (o *DiskBackupExportJob) HasStateReason() bool`
 
 HasStateReason returns a boolean if a field has been set.
+
+### SetStateReasonNil
+
+`func (o *DiskBackupExportJob) SetStateReasonNil()`
+
+SetStateReasonNil sets StateReason to an explicit JSON null when marshaled, overriding any value previously set with SetStateReason. Calling SetStateReason again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

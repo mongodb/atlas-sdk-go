@@ -53,6 +53,13 @@ SetId sets Id field to given value.
 `func (o *LiveMigrationResponse) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *LiveMigrationResponse) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLagTimeSeconds
 
 `func (o *LiveMigrationResponse) GetLagTimeSeconds() int64`
@@ -77,6 +84,13 @@ SetLagTimeSeconds sets LagTimeSeconds field to given value.
 `func (o *LiveMigrationResponse) HasLagTimeSeconds() bool`
 
 HasLagTimeSeconds returns a boolean if a field has been set.
+
+### SetLagTimeSecondsNil
+
+`func (o *LiveMigrationResponse) SetLagTimeSecondsNil()`
+
+SetLagTimeSecondsNil sets LagTimeSeconds to an explicit JSON null when marshaled, overriding any value previously set with SetLagTimeSeconds. Calling SetLagTimeSeconds again clears the null override.
+
 ### GetMigrationHosts
 
 `func (o *LiveMigrationResponse) GetMigrationHosts() []string`
@@ -101,6 +115,13 @@ SetMigrationHosts sets MigrationHosts field to given value.
 `func (o *LiveMigrationResponse) HasMigrationHosts() bool`
 
 HasMigrationHosts returns a boolean if a field has been set.
+
+### SetMigrationHostsNil
+
+`func (o *LiveMigrationResponse) SetMigrationHostsNil()`
+
+SetMigrationHostsNil sets MigrationHosts to an explicit JSON null when marshaled, overriding any value previously set with SetMigrationHosts. Calling SetMigrationHosts again clears the null override.
+
 ### GetReadyForCutover
 
 `func (o *LiveMigrationResponse) GetReadyForCutover() bool`
@@ -125,6 +146,13 @@ SetReadyForCutover sets ReadyForCutover field to given value.
 `func (o *LiveMigrationResponse) HasReadyForCutover() bool`
 
 HasReadyForCutover returns a boolean if a field has been set.
+
+### SetReadyForCutoverNil
+
+`func (o *LiveMigrationResponse) SetReadyForCutoverNil()`
+
+SetReadyForCutoverNil sets ReadyForCutover to an explicit JSON null when marshaled, overriding any value previously set with SetReadyForCutover. Calling SetReadyForCutover again clears the null override.
+
 ### GetStatus
 
 `func (o *LiveMigrationResponse) GetStatus() string`
@@ -149,6 +177,13 @@ SetStatus sets Status field to given value.
 `func (o *LiveMigrationResponse) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *LiveMigrationResponse) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

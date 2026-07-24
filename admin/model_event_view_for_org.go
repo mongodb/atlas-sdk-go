@@ -79,6 +79,15 @@ type EventViewForOrg struct {
 	// Unique 24-hexadecimal character string that identifies the resource policy.
 	// Read only field.
 	ResourcePolicyId *string `json:"resourcePolicyId,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *EventViewForOrg) MarshalJSON() ([]byte, error) {
+	type noMethod EventViewForOrg
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewEventViewForOrg instantiates a new EventViewForOrg object
@@ -129,6 +138,13 @@ func (o *EventViewForOrg) HasApiKeyId() bool {
 // SetApiKeyId gets a reference to the given string and assigns it to the ApiKeyId field.
 func (o *EventViewForOrg) SetApiKeyId(v string) {
 	o.ApiKeyId = &v
+	o.NullFields = removeNullField(o.NullFields, "ApiKeyId")
+}
+
+// SetApiKeyIdNil sets ApiKeyId to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetApiKeyIdNil() {
+	o.ApiKeyId = nil
+	o.NullFields = addNullField(o.NullFields, "ApiKeyId")
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise
@@ -162,6 +178,13 @@ func (o *EventViewForOrg) HasCreated() bool {
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *EventViewForOrg) SetCreated(v time.Time) {
 	o.Created = &v
+	o.NullFields = removeNullField(o.NullFields, "Created")
+}
+
+// SetCreatedNil sets Created to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetCreatedNil() {
+	o.Created = nil
+	o.NullFields = addNullField(o.NullFields, "Created")
 }
 
 // GetEventTypeName returns the EventTypeName field value if set, zero value otherwise
@@ -195,6 +218,13 @@ func (o *EventViewForOrg) HasEventTypeName() bool {
 // SetEventTypeName gets a reference to the given string and assigns it to the EventTypeName field.
 func (o *EventViewForOrg) SetEventTypeName(v string) {
 	o.EventTypeName = &v
+	o.NullFields = removeNullField(o.NullFields, "EventTypeName")
+}
+
+// SetEventTypeNameNil sets EventTypeName to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetEventTypeNameNil() {
+	o.EventTypeName = nil
+	o.NullFields = addNullField(o.NullFields, "EventTypeName")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -228,6 +258,13 @@ func (o *EventViewForOrg) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *EventViewForOrg) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -261,6 +298,13 @@ func (o *EventViewForOrg) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *EventViewForOrg) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetIsGlobalAdmin returns the IsGlobalAdmin field value if set, zero value otherwise
@@ -294,6 +338,13 @@ func (o *EventViewForOrg) HasIsGlobalAdmin() bool {
 // SetIsGlobalAdmin gets a reference to the given bool and assigns it to the IsGlobalAdmin field.
 func (o *EventViewForOrg) SetIsGlobalAdmin(v bool) {
 	o.IsGlobalAdmin = &v
+	o.NullFields = removeNullField(o.NullFields, "IsGlobalAdmin")
+}
+
+// SetIsGlobalAdminNil sets IsGlobalAdmin to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetIsGlobalAdminNil() {
+	o.IsGlobalAdmin = nil
+	o.NullFields = addNullField(o.NullFields, "IsGlobalAdmin")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -327,6 +378,13 @@ func (o *EventViewForOrg) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *EventViewForOrg) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetOrgId returns the OrgId field value if set, zero value otherwise
@@ -360,6 +418,13 @@ func (o *EventViewForOrg) HasOrgId() bool {
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *EventViewForOrg) SetOrgId(v string) {
 	o.OrgId = &v
+	o.NullFields = removeNullField(o.NullFields, "OrgId")
+}
+
+// SetOrgIdNil sets OrgId to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetOrgIdNil() {
+	o.OrgId = nil
+	o.NullFields = addNullField(o.NullFields, "OrgId")
 }
 
 // GetPublicKey returns the PublicKey field value if set, zero value otherwise
@@ -393,6 +458,13 @@ func (o *EventViewForOrg) HasPublicKey() bool {
 // SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
 func (o *EventViewForOrg) SetPublicKey(v string) {
 	o.PublicKey = &v
+	o.NullFields = removeNullField(o.NullFields, "PublicKey")
+}
+
+// SetPublicKeyNil sets PublicKey to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetPublicKeyNil() {
+	o.PublicKey = nil
+	o.NullFields = addNullField(o.NullFields, "PublicKey")
 }
 
 // GetRaw returns the Raw field value if set, zero value otherwise
@@ -426,6 +498,13 @@ func (o *EventViewForOrg) HasRaw() bool {
 // SetRaw gets a reference to the given Raw and assigns it to the Raw field.
 func (o *EventViewForOrg) SetRaw(v Raw) {
 	o.Raw = &v
+	o.NullFields = removeNullField(o.NullFields, "Raw")
+}
+
+// SetRawNil sets Raw to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetRawNil() {
+	o.Raw = nil
+	o.NullFields = addNullField(o.NullFields, "Raw")
 }
 
 // GetRemoteAddress returns the RemoteAddress field value if set, zero value otherwise
@@ -459,6 +538,13 @@ func (o *EventViewForOrg) HasRemoteAddress() bool {
 // SetRemoteAddress gets a reference to the given string and assigns it to the RemoteAddress field.
 func (o *EventViewForOrg) SetRemoteAddress(v string) {
 	o.RemoteAddress = &v
+	o.NullFields = removeNullField(o.NullFields, "RemoteAddress")
+}
+
+// SetRemoteAddressNil sets RemoteAddress to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetRemoteAddressNil() {
+	o.RemoteAddress = nil
+	o.NullFields = addNullField(o.NullFields, "RemoteAddress")
 }
 
 // GetUserId returns the UserId field value if set, zero value otherwise
@@ -492,6 +578,13 @@ func (o *EventViewForOrg) HasUserId() bool {
 // SetUserId gets a reference to the given string and assigns it to the UserId field.
 func (o *EventViewForOrg) SetUserId(v string) {
 	o.UserId = &v
+	o.NullFields = removeNullField(o.NullFields, "UserId")
+}
+
+// SetUserIdNil sets UserId to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetUserIdNil() {
+	o.UserId = nil
+	o.NullFields = addNullField(o.NullFields, "UserId")
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise
@@ -525,6 +618,13 @@ func (o *EventViewForOrg) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *EventViewForOrg) SetUsername(v string) {
 	o.Username = &v
+	o.NullFields = removeNullField(o.NullFields, "Username")
+}
+
+// SetUsernameNil sets Username to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetUsernameNil() {
+	o.Username = nil
+	o.NullFields = addNullField(o.NullFields, "Username")
 }
 
 // GetAlertId returns the AlertId field value if set, zero value otherwise
@@ -558,6 +658,13 @@ func (o *EventViewForOrg) HasAlertId() bool {
 // SetAlertId gets a reference to the given string and assigns it to the AlertId field.
 func (o *EventViewForOrg) SetAlertId(v string) {
 	o.AlertId = &v
+	o.NullFields = removeNullField(o.NullFields, "AlertId")
+}
+
+// SetAlertIdNil sets AlertId to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetAlertIdNil() {
+	o.AlertId = nil
+	o.NullFields = addNullField(o.NullFields, "AlertId")
 }
 
 // GetAlertConfigId returns the AlertConfigId field value if set, zero value otherwise
@@ -591,6 +698,13 @@ func (o *EventViewForOrg) HasAlertConfigId() bool {
 // SetAlertConfigId gets a reference to the given string and assigns it to the AlertConfigId field.
 func (o *EventViewForOrg) SetAlertConfigId(v string) {
 	o.AlertConfigId = &v
+	o.NullFields = removeNullField(o.NullFields, "AlertConfigId")
+}
+
+// SetAlertConfigIdNil sets AlertConfigId to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetAlertConfigIdNil() {
+	o.AlertConfigId = nil
+	o.NullFields = addNullField(o.NullFields, "AlertConfigId")
 }
 
 // GetTargetPublicKey returns the TargetPublicKey field value if set, zero value otherwise
@@ -624,6 +738,13 @@ func (o *EventViewForOrg) HasTargetPublicKey() bool {
 // SetTargetPublicKey gets a reference to the given string and assigns it to the TargetPublicKey field.
 func (o *EventViewForOrg) SetTargetPublicKey(v string) {
 	o.TargetPublicKey = &v
+	o.NullFields = removeNullField(o.NullFields, "TargetPublicKey")
+}
+
+// SetTargetPublicKeyNil sets TargetPublicKey to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetTargetPublicKeyNil() {
+	o.TargetPublicKey = nil
+	o.NullFields = addNullField(o.NullFields, "TargetPublicKey")
 }
 
 // GetWhitelistEntry returns the WhitelistEntry field value if set, zero value otherwise
@@ -657,6 +778,13 @@ func (o *EventViewForOrg) HasWhitelistEntry() bool {
 // SetWhitelistEntry gets a reference to the given string and assigns it to the WhitelistEntry field.
 func (o *EventViewForOrg) SetWhitelistEntry(v string) {
 	o.WhitelistEntry = &v
+	o.NullFields = removeNullField(o.NullFields, "WhitelistEntry")
+}
+
+// SetWhitelistEntryNil sets WhitelistEntry to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetWhitelistEntryNil() {
+	o.WhitelistEntry = nil
+	o.NullFields = addNullField(o.NullFields, "WhitelistEntry")
 }
 
 // GetInvoiceId returns the InvoiceId field value if set, zero value otherwise
@@ -690,6 +818,13 @@ func (o *EventViewForOrg) HasInvoiceId() bool {
 // SetInvoiceId gets a reference to the given string and assigns it to the InvoiceId field.
 func (o *EventViewForOrg) SetInvoiceId(v string) {
 	o.InvoiceId = &v
+	o.NullFields = removeNullField(o.NullFields, "InvoiceId")
+}
+
+// SetInvoiceIdNil sets InvoiceId to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetInvoiceIdNil() {
+	o.InvoiceId = nil
+	o.NullFields = addNullField(o.NullFields, "InvoiceId")
 }
 
 // GetPaymentId returns the PaymentId field value if set, zero value otherwise
@@ -723,6 +858,13 @@ func (o *EventViewForOrg) HasPaymentId() bool {
 // SetPaymentId gets a reference to the given string and assigns it to the PaymentId field.
 func (o *EventViewForOrg) SetPaymentId(v string) {
 	o.PaymentId = &v
+	o.NullFields = removeNullField(o.NullFields, "PaymentId")
+}
+
+// SetPaymentIdNil sets PaymentId to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetPaymentIdNil() {
+	o.PaymentId = nil
+	o.NullFields = addNullField(o.NullFields, "PaymentId")
 }
 
 // GetDbUserUsername returns the DbUserUsername field value if set, zero value otherwise
@@ -756,6 +898,13 @@ func (o *EventViewForOrg) HasDbUserUsername() bool {
 // SetDbUserUsername gets a reference to the given string and assigns it to the DbUserUsername field.
 func (o *EventViewForOrg) SetDbUserUsername(v string) {
 	o.DbUserUsername = &v
+	o.NullFields = removeNullField(o.NullFields, "DbUserUsername")
+}
+
+// SetDbUserUsernameNil sets DbUserUsername to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetDbUserUsernameNil() {
+	o.DbUserUsername = nil
+	o.NullFields = addNullField(o.NullFields, "DbUserUsername")
 }
 
 // GetTeamId returns the TeamId field value if set, zero value otherwise
@@ -789,6 +938,13 @@ func (o *EventViewForOrg) HasTeamId() bool {
 // SetTeamId gets a reference to the given string and assigns it to the TeamId field.
 func (o *EventViewForOrg) SetTeamId(v string) {
 	o.TeamId = &v
+	o.NullFields = removeNullField(o.NullFields, "TeamId")
+}
+
+// SetTeamIdNil sets TeamId to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetTeamIdNil() {
+	o.TeamId = nil
+	o.NullFields = addNullField(o.NullFields, "TeamId")
 }
 
 // GetTargetUsername returns the TargetUsername field value if set, zero value otherwise
@@ -822,6 +978,13 @@ func (o *EventViewForOrg) HasTargetUsername() bool {
 // SetTargetUsername gets a reference to the given string and assigns it to the TargetUsername field.
 func (o *EventViewForOrg) SetTargetUsername(v string) {
 	o.TargetUsername = &v
+	o.NullFields = removeNullField(o.NullFields, "TargetUsername")
+}
+
+// SetTargetUsernameNil sets TargetUsername to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetTargetUsernameNil() {
+	o.TargetUsername = nil
+	o.NullFields = addNullField(o.NullFields, "TargetUsername")
 }
 
 // GetResourceId returns the ResourceId field value if set, zero value otherwise
@@ -855,6 +1018,13 @@ func (o *EventViewForOrg) HasResourceId() bool {
 // SetResourceId gets a reference to the given string and assigns it to the ResourceId field.
 func (o *EventViewForOrg) SetResourceId(v string) {
 	o.ResourceId = &v
+	o.NullFields = removeNullField(o.NullFields, "ResourceId")
+}
+
+// SetResourceIdNil sets ResourceId to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetResourceIdNil() {
+	o.ResourceId = nil
+	o.NullFields = addNullField(o.NullFields, "ResourceId")
 }
 
 // GetResourceType returns the ResourceType field value if set, zero value otherwise
@@ -888,6 +1058,13 @@ func (o *EventViewForOrg) HasResourceType() bool {
 // SetResourceType gets a reference to the given string and assigns it to the ResourceType field.
 func (o *EventViewForOrg) SetResourceType(v string) {
 	o.ResourceType = &v
+	o.NullFields = removeNullField(o.NullFields, "ResourceType")
+}
+
+// SetResourceTypeNil sets ResourceType to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetResourceTypeNil() {
+	o.ResourceType = nil
+	o.NullFields = addNullField(o.NullFields, "ResourceType")
 }
 
 // GetResourcePolicyId returns the ResourcePolicyId field value if set, zero value otherwise
@@ -921,4 +1098,11 @@ func (o *EventViewForOrg) HasResourcePolicyId() bool {
 // SetResourcePolicyId gets a reference to the given string and assigns it to the ResourcePolicyId field.
 func (o *EventViewForOrg) SetResourcePolicyId(v string) {
 	o.ResourcePolicyId = &v
+	o.NullFields = removeNullField(o.NullFields, "ResourcePolicyId")
+}
+
+// SetResourcePolicyIdNil sets ResourcePolicyId to an explicit JSON null when marshaled.
+func (o *EventViewForOrg) SetResourcePolicyIdNil() {
+	o.ResourcePolicyId = nil
+	o.NullFields = addNullField(o.NullFields, "ResourcePolicyId")
 }

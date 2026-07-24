@@ -50,6 +50,13 @@ SetDatabases sets Databases field to given value.
 `func (o *DataLakeStorage) HasDatabases() bool`
 
 HasDatabases returns a boolean if a field has been set.
+
+### SetDatabasesNil
+
+`func (o *DataLakeStorage) SetDatabasesNil()`
+
+SetDatabasesNil sets Databases to an explicit JSON null when marshaled, overriding any value previously set with SetDatabases. Calling SetDatabases again clears the null override.
+
 ### GetStores
 
 `func (o *DataLakeStorage) GetStores() []DataLakeStoreSettings`
@@ -74,6 +81,13 @@ SetStores sets Stores field to given value.
 `func (o *DataLakeStorage) HasStores() bool`
 
 HasStores returns a boolean if a field has been set.
+
+### SetStoresNil
+
+`func (o *DataLakeStorage) SetStoresNil()`
+
+SetStoresNil sets Stores to an explicit JSON null when marshaled, overriding any value previously set with SetStores. Calling SetStores again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

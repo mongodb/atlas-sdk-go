@@ -8,6 +8,15 @@ type StreamsOptions struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamsOptions) MarshalJSON() ([]byte, error) {
+	type noMethod StreamsOptions
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsOptions instantiates a new StreamsOptions object
@@ -58,6 +67,13 @@ func (o *StreamsOptions) HasDlq() bool {
 // SetDlq gets a reference to the given StreamsDLQ and assigns it to the Dlq field.
 func (o *StreamsOptions) SetDlq(v StreamsDLQ) {
 	o.Dlq = &v
+	o.NullFields = removeNullField(o.NullFields, "Dlq")
+}
+
+// SetDlqNil sets Dlq to an explicit JSON null when marshaled.
+func (o *StreamsOptions) SetDlqNil() {
+	o.Dlq = nil
+	o.NullFields = addNullField(o.NullFields, "Dlq")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *StreamsOptions) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsOptions) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *StreamsOptions) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }

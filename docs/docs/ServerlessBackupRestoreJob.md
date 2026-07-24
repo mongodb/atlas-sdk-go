@@ -65,6 +65,13 @@ SetCancelled sets Cancelled field to given value.
 `func (o *ServerlessBackupRestoreJob) HasCancelled() bool`
 
 HasCancelled returns a boolean if a field has been set.
+
+### SetCancelledNil
+
+`func (o *ServerlessBackupRestoreJob) SetCancelledNil()`
+
+SetCancelledNil sets Cancelled to an explicit JSON null when marshaled, overriding any value previously set with SetCancelled. Calling SetCancelled again clears the null override.
+
 ### GetDeliveryType
 
 `func (o *ServerlessBackupRestoreJob) GetDeliveryType() string`
@@ -108,6 +115,13 @@ SetDeliveryUrl sets DeliveryUrl field to given value.
 `func (o *ServerlessBackupRestoreJob) HasDeliveryUrl() bool`
 
 HasDeliveryUrl returns a boolean if a field has been set.
+
+### SetDeliveryUrlNil
+
+`func (o *ServerlessBackupRestoreJob) SetDeliveryUrlNil()`
+
+SetDeliveryUrlNil sets DeliveryUrl to an explicit JSON null when marshaled, overriding any value previously set with SetDeliveryUrl. Calling SetDeliveryUrl again clears the null override.
+
 ### GetDesiredTimestamp
 
 `func (o *ServerlessBackupRestoreJob) GetDesiredTimestamp() ApiBSONTimestamp`
@@ -132,6 +146,13 @@ SetDesiredTimestamp sets DesiredTimestamp field to given value.
 `func (o *ServerlessBackupRestoreJob) HasDesiredTimestamp() bool`
 
 HasDesiredTimestamp returns a boolean if a field has been set.
+
+### SetDesiredTimestampNil
+
+`func (o *ServerlessBackupRestoreJob) SetDesiredTimestampNil()`
+
+SetDesiredTimestampNil sets DesiredTimestamp to an explicit JSON null when marshaled, overriding any value previously set with SetDesiredTimestamp. Calling SetDesiredTimestamp again clears the null override.
+
 ### GetExpired
 
 `func (o *ServerlessBackupRestoreJob) GetExpired() bool`
@@ -156,6 +177,13 @@ SetExpired sets Expired field to given value.
 `func (o *ServerlessBackupRestoreJob) HasExpired() bool`
 
 HasExpired returns a boolean if a field has been set.
+
+### SetExpiredNil
+
+`func (o *ServerlessBackupRestoreJob) SetExpiredNil()`
+
+SetExpiredNil sets Expired to an explicit JSON null when marshaled, overriding any value previously set with SetExpired. Calling SetExpired again clears the null override.
+
 ### GetExpiresAt
 
 `func (o *ServerlessBackupRestoreJob) GetExpiresAt() time.Time`
@@ -180,6 +208,13 @@ SetExpiresAt sets ExpiresAt field to given value.
 `func (o *ServerlessBackupRestoreJob) HasExpiresAt() bool`
 
 HasExpiresAt returns a boolean if a field has been set.
+
+### SetExpiresAtNil
+
+`func (o *ServerlessBackupRestoreJob) SetExpiresAtNil()`
+
+SetExpiresAtNil sets ExpiresAt to an explicit JSON null when marshaled, overriding any value previously set with SetExpiresAt. Calling SetExpiresAt again clears the null override.
+
 ### GetFailed
 
 `func (o *ServerlessBackupRestoreJob) GetFailed() bool`
@@ -204,6 +239,13 @@ SetFailed sets Failed field to given value.
 `func (o *ServerlessBackupRestoreJob) HasFailed() bool`
 
 HasFailed returns a boolean if a field has been set.
+
+### SetFailedNil
+
+`func (o *ServerlessBackupRestoreJob) SetFailedNil()`
+
+SetFailedNil sets Failed to an explicit JSON null when marshaled, overriding any value previously set with SetFailed. Calling SetFailed again clears the null override.
+
 ### GetFinishedAt
 
 `func (o *ServerlessBackupRestoreJob) GetFinishedAt() time.Time`
@@ -228,6 +270,13 @@ SetFinishedAt sets FinishedAt field to given value.
 `func (o *ServerlessBackupRestoreJob) HasFinishedAt() bool`
 
 HasFinishedAt returns a boolean if a field has been set.
+
+### SetFinishedAtNil
+
+`func (o *ServerlessBackupRestoreJob) SetFinishedAtNil()`
+
+SetFinishedAtNil sets FinishedAt to an explicit JSON null when marshaled, overriding any value previously set with SetFinishedAt. Calling SetFinishedAt again clears the null override.
+
 ### GetId
 
 `func (o *ServerlessBackupRestoreJob) GetId() string`
@@ -252,6 +301,13 @@ SetId sets Id field to given value.
 `func (o *ServerlessBackupRestoreJob) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *ServerlessBackupRestoreJob) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLinks
 
 `func (o *ServerlessBackupRestoreJob) GetLinks() []Link`
@@ -276,6 +332,13 @@ SetLinks sets Links field to given value.
 `func (o *ServerlessBackupRestoreJob) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *ServerlessBackupRestoreJob) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetOplogInc
 
 `func (o *ServerlessBackupRestoreJob) GetOplogInc() int`
@@ -300,6 +363,13 @@ SetOplogInc sets OplogInc field to given value.
 `func (o *ServerlessBackupRestoreJob) HasOplogInc() bool`
 
 HasOplogInc returns a boolean if a field has been set.
+
+### SetOplogIncNil
+
+`func (o *ServerlessBackupRestoreJob) SetOplogIncNil()`
+
+SetOplogIncNil sets OplogInc to an explicit JSON null when marshaled, overriding any value previously set with SetOplogInc. Calling SetOplogInc again clears the null override.
+
 ### GetOplogTs
 
 `func (o *ServerlessBackupRestoreJob) GetOplogTs() int`
@@ -324,6 +394,13 @@ SetOplogTs sets OplogTs field to given value.
 `func (o *ServerlessBackupRestoreJob) HasOplogTs() bool`
 
 HasOplogTs returns a boolean if a field has been set.
+
+### SetOplogTsNil
+
+`func (o *ServerlessBackupRestoreJob) SetOplogTsNil()`
+
+SetOplogTsNil sets OplogTs to an explicit JSON null when marshaled, overriding any value previously set with SetOplogTs. Calling SetOplogTs again clears the null override.
+
 ### GetPointInTimeUTCSeconds
 
 `func (o *ServerlessBackupRestoreJob) GetPointInTimeUTCSeconds() int`
@@ -348,6 +425,13 @@ SetPointInTimeUTCSeconds sets PointInTimeUTCSeconds field to given value.
 `func (o *ServerlessBackupRestoreJob) HasPointInTimeUTCSeconds() bool`
 
 HasPointInTimeUTCSeconds returns a boolean if a field has been set.
+
+### SetPointInTimeUTCSecondsNil
+
+`func (o *ServerlessBackupRestoreJob) SetPointInTimeUTCSecondsNil()`
+
+SetPointInTimeUTCSecondsNil sets PointInTimeUTCSeconds to an explicit JSON null when marshaled, overriding any value previously set with SetPointInTimeUTCSeconds. Calling SetPointInTimeUTCSeconds again clears the null override.
+
 ### GetSnapshotId
 
 `func (o *ServerlessBackupRestoreJob) GetSnapshotId() string`
@@ -372,6 +456,13 @@ SetSnapshotId sets SnapshotId field to given value.
 `func (o *ServerlessBackupRestoreJob) HasSnapshotId() bool`
 
 HasSnapshotId returns a boolean if a field has been set.
+
+### SetSnapshotIdNil
+
+`func (o *ServerlessBackupRestoreJob) SetSnapshotIdNil()`
+
+SetSnapshotIdNil sets SnapshotId to an explicit JSON null when marshaled, overriding any value previously set with SetSnapshotId. Calling SetSnapshotId again clears the null override.
+
 ### GetTargetClusterName
 
 `func (o *ServerlessBackupRestoreJob) GetTargetClusterName() string`
@@ -434,6 +525,13 @@ SetTimestamp sets Timestamp field to given value.
 `func (o *ServerlessBackupRestoreJob) HasTimestamp() bool`
 
 HasTimestamp returns a boolean if a field has been set.
+
+### SetTimestampNil
+
+`func (o *ServerlessBackupRestoreJob) SetTimestampNil()`
+
+SetTimestampNil sets Timestamp to an explicit JSON null when marshaled, overriding any value previously set with SetTimestamp. Calling SetTimestamp again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -51,6 +51,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsAWSConnectionConfig) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsAWSConnectionConfig) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetRoleArn
 
 `func (o *StreamsAWSConnectionConfig) GetRoleArn() string`
@@ -75,6 +82,13 @@ SetRoleArn sets RoleArn field to given value.
 `func (o *StreamsAWSConnectionConfig) HasRoleArn() bool`
 
 HasRoleArn returns a boolean if a field has been set.
+
+### SetRoleArnNil
+
+`func (o *StreamsAWSConnectionConfig) SetRoleArnNil()`
+
+SetRoleArnNil sets RoleArn to an explicit JSON null when marshaled, overriding any value previously set with SetRoleArn. Calling SetRoleArn again clears the null override.
+
 ### GetTestBucket
 
 `func (o *StreamsAWSConnectionConfig) GetTestBucket() string`
@@ -99,6 +113,13 @@ SetTestBucket sets TestBucket field to given value.
 `func (o *StreamsAWSConnectionConfig) HasTestBucket() bool`
 
 HasTestBucket returns a boolean if a field has been set.
+
+### SetTestBucketNil
+
+`func (o *StreamsAWSConnectionConfig) SetTestBucketNil()`
+
+SetTestBucketNil sets TestBucket to an explicit JSON null when marshaled, overriding any value previously set with SetTestBucket. Calling SetTestBucket again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

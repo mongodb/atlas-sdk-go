@@ -26,7 +26,7 @@ import (
 	"runtime"
 	"strings"
 
-	"go.mongodb.org/atlas-sdk/v20250312022/internal/core"
+	"go.mongodb.org/atlas-sdk/v20250312023/internal/core"
 )
 
 const defaultBaseURL = "https://cloud.mongodb.com/"
