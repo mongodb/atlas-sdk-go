@@ -11,6 +11,15 @@ type ApiAtlasFTSAnalyzers struct {
 	// Filter that performs operations such as:  - Stemming, which reduces related words, such as \"talking\", \"talked\", and \"talks\" to their root word \"talk\".  - Redaction, the removal of sensitive information from public documents.
 	TokenFilters *[]any                        `json:"tokenFilters,omitempty"`
 	Tokenizer    ApiAtlasFTSAnalyzersTokenizer `json:"tokenizer"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiAtlasFTSAnalyzers) MarshalJSON() ([]byte, error) {
+	type noMethod ApiAtlasFTSAnalyzers
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasFTSAnalyzers instantiates a new ApiAtlasFTSAnalyzers object
@@ -63,6 +72,13 @@ func (o *ApiAtlasFTSAnalyzers) HasCharFilters() bool {
 // SetCharFilters gets a reference to the given []any and assigns it to the CharFilters field.
 func (o *ApiAtlasFTSAnalyzers) SetCharFilters(v []any) {
 	o.CharFilters = &v
+	o.NullFields = removeNullField(o.NullFields, "CharFilters")
+}
+
+// SetCharFiltersNil sets CharFilters to an explicit JSON null when marshaled.
+func (o *ApiAtlasFTSAnalyzers) SetCharFiltersNil() {
+	o.CharFilters = nil
+	o.NullFields = addNullField(o.NullFields, "CharFilters")
 }
 
 // GetName returns the Name field value
@@ -120,6 +136,13 @@ func (o *ApiAtlasFTSAnalyzers) HasTokenFilters() bool {
 // SetTokenFilters gets a reference to the given []any and assigns it to the TokenFilters field.
 func (o *ApiAtlasFTSAnalyzers) SetTokenFilters(v []any) {
 	o.TokenFilters = &v
+	o.NullFields = removeNullField(o.NullFields, "TokenFilters")
+}
+
+// SetTokenFiltersNil sets TokenFilters to an explicit JSON null when marshaled.
+func (o *ApiAtlasFTSAnalyzers) SetTokenFiltersNil() {
+	o.TokenFilters = nil
+	o.NullFields = addNullField(o.NullFields, "TokenFilters")
 }
 
 // GetTokenizer returns the Tokenizer field value

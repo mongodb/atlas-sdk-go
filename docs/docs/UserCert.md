@@ -55,6 +55,13 @@ SetId sets Id field to given value.
 `func (o *UserCert) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *UserCert) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetCreatedAt
 
 `func (o *UserCert) GetCreatedAt() time.Time`
@@ -79,6 +86,13 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *UserCert) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
+
+### SetCreatedAtNil
+
+`func (o *UserCert) SetCreatedAtNil()`
+
+SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled, overriding any value previously set with SetCreatedAt. Calling SetCreatedAt again clears the null override.
+
 ### GetGroupId
 
 `func (o *UserCert) GetGroupId() string`
@@ -103,6 +117,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *UserCert) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *UserCert) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetLinks
 
 `func (o *UserCert) GetLinks() []Link`
@@ -127,6 +148,13 @@ SetLinks sets Links field to given value.
 `func (o *UserCert) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *UserCert) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetMonthsUntilExpiration
 
 `func (o *UserCert) GetMonthsUntilExpiration() int`
@@ -151,6 +179,13 @@ SetMonthsUntilExpiration sets MonthsUntilExpiration field to given value.
 `func (o *UserCert) HasMonthsUntilExpiration() bool`
 
 HasMonthsUntilExpiration returns a boolean if a field has been set.
+
+### SetMonthsUntilExpirationNil
+
+`func (o *UserCert) SetMonthsUntilExpirationNil()`
+
+SetMonthsUntilExpirationNil sets MonthsUntilExpiration to an explicit JSON null when marshaled, overriding any value previously set with SetMonthsUntilExpiration. Calling SetMonthsUntilExpiration again clears the null override.
+
 ### GetNotAfter
 
 `func (o *UserCert) GetNotAfter() time.Time`
@@ -175,6 +210,13 @@ SetNotAfter sets NotAfter field to given value.
 `func (o *UserCert) HasNotAfter() bool`
 
 HasNotAfter returns a boolean if a field has been set.
+
+### SetNotAfterNil
+
+`func (o *UserCert) SetNotAfterNil()`
+
+SetNotAfterNil sets NotAfter to an explicit JSON null when marshaled, overriding any value previously set with SetNotAfter. Calling SetNotAfter again clears the null override.
+
 ### GetSubject
 
 `func (o *UserCert) GetSubject() string`
@@ -199,6 +241,13 @@ SetSubject sets Subject field to given value.
 `func (o *UserCert) HasSubject() bool`
 
 HasSubject returns a boolean if a field has been set.
+
+### SetSubjectNil
+
+`func (o *UserCert) SetSubjectNil()`
+
+SetSubjectNil sets Subject to an explicit JSON null when marshaled, overriding any value previously set with SetSubject. Calling SetSubject again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -8,6 +8,15 @@ type StreamsPublicPrivateLinkNetworking struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamsPublicPrivateLinkNetworking) MarshalJSON() ([]byte, error) {
+	type noMethod StreamsPublicPrivateLinkNetworking
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsPublicPrivateLinkNetworking instantiates a new StreamsPublicPrivateLinkNetworking object
@@ -58,6 +67,13 @@ func (o *StreamsPublicPrivateLinkNetworking) HasAccess() bool {
 // SetAccess gets a reference to the given StreamsPublicPrivateLinkNetworkingAccess and assigns it to the Access field.
 func (o *StreamsPublicPrivateLinkNetworking) SetAccess(v StreamsPublicPrivateLinkNetworkingAccess) {
 	o.Access = &v
+	o.NullFields = removeNullField(o.NullFields, "Access")
+}
+
+// SetAccessNil sets Access to an explicit JSON null when marshaled.
+func (o *StreamsPublicPrivateLinkNetworking) SetAccessNil() {
+	o.Access = nil
+	o.NullFields = addNullField(o.NullFields, "Access")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *StreamsPublicPrivateLinkNetworking) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsPublicPrivateLinkNetworking) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *StreamsPublicPrivateLinkNetworking) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }

@@ -8,6 +8,15 @@ type ExtraRetentionSetting struct {
 	FrequencyType *string `json:"frequencyType,omitempty"`
 	// The number of extra retention days for the cluster.
 	RetentionDays *int `json:"retentionDays,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ExtraRetentionSetting) MarshalJSON() ([]byte, error) {
+	type noMethod ExtraRetentionSetting
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewExtraRetentionSetting instantiates a new ExtraRetentionSetting object
@@ -58,6 +67,13 @@ func (o *ExtraRetentionSetting) HasFrequencyType() bool {
 // SetFrequencyType gets a reference to the given string and assigns it to the FrequencyType field.
 func (o *ExtraRetentionSetting) SetFrequencyType(v string) {
 	o.FrequencyType = &v
+	o.NullFields = removeNullField(o.NullFields, "FrequencyType")
+}
+
+// SetFrequencyTypeNil sets FrequencyType to an explicit JSON null when marshaled.
+func (o *ExtraRetentionSetting) SetFrequencyTypeNil() {
+	o.FrequencyType = nil
+	o.NullFields = addNullField(o.NullFields, "FrequencyType")
 }
 
 // GetRetentionDays returns the RetentionDays field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *ExtraRetentionSetting) HasRetentionDays() bool {
 // SetRetentionDays gets a reference to the given int and assigns it to the RetentionDays field.
 func (o *ExtraRetentionSetting) SetRetentionDays(v int) {
 	o.RetentionDays = &v
+	o.NullFields = removeNullField(o.NullFields, "RetentionDays")
+}
+
+// SetRetentionDaysNil sets RetentionDays to an explicit JSON null when marshaled.
+func (o *ExtraRetentionSetting) SetRetentionDaysNil() {
+	o.RetentionDays = nil
+	o.NullFields = addNullField(o.NullFields, "RetentionDays")
 }

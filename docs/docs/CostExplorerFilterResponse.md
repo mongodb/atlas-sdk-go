@@ -50,6 +50,13 @@ SetToken sets Token field to given value.
 
 HasToken returns a boolean if a field has been set.
 
+### SetTokenNil
+
+`func (o *CostExplorerFilterResponse) SetTokenNil()`
+
+SetTokenNil sets Token to an explicit JSON null when marshaled, overriding any value previously set with SetToken. Calling SetToken again clears the null override.
+
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

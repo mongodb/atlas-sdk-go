@@ -80,6 +80,13 @@ SetAtlasAWSAccountArn sets AtlasAWSAccountArn field to given value.
 `func (o *CloudProviderAccessRoleRequestUpdate) HasAtlasAWSAccountArn() bool`
 
 HasAtlasAWSAccountArn returns a boolean if a field has been set.
+
+### SetAtlasAWSAccountArnNil
+
+`func (o *CloudProviderAccessRoleRequestUpdate) SetAtlasAWSAccountArnNil()`
+
+SetAtlasAWSAccountArnNil sets AtlasAWSAccountArn to an explicit JSON null when marshaled, overriding any value previously set with SetAtlasAWSAccountArn. Calling SetAtlasAWSAccountArn again clears the null override.
+
 ### GetAtlasAssumedRoleExternalId
 
 `func (o *CloudProviderAccessRoleRequestUpdate) GetAtlasAssumedRoleExternalId() string`
@@ -104,6 +111,13 @@ SetAtlasAssumedRoleExternalId sets AtlasAssumedRoleExternalId field to given val
 `func (o *CloudProviderAccessRoleRequestUpdate) HasAtlasAssumedRoleExternalId() bool`
 
 HasAtlasAssumedRoleExternalId returns a boolean if a field has been set.
+
+### SetAtlasAssumedRoleExternalIdNil
+
+`func (o *CloudProviderAccessRoleRequestUpdate) SetAtlasAssumedRoleExternalIdNil()`
+
+SetAtlasAssumedRoleExternalIdNil sets AtlasAssumedRoleExternalId to an explicit JSON null when marshaled, overriding any value previously set with SetAtlasAssumedRoleExternalId. Calling SetAtlasAssumedRoleExternalId again clears the null override.
+
 ### GetAuthorizedDate
 
 `func (o *CloudProviderAccessRoleRequestUpdate) GetAuthorizedDate() time.Time`
@@ -128,6 +142,13 @@ SetAuthorizedDate sets AuthorizedDate field to given value.
 `func (o *CloudProviderAccessRoleRequestUpdate) HasAuthorizedDate() bool`
 
 HasAuthorizedDate returns a boolean if a field has been set.
+
+### SetAuthorizedDateNil
+
+`func (o *CloudProviderAccessRoleRequestUpdate) SetAuthorizedDateNil()`
+
+SetAuthorizedDateNil sets AuthorizedDate to an explicit JSON null when marshaled, overriding any value previously set with SetAuthorizedDate. Calling SetAuthorizedDate again clears the null override.
+
 ### GetCreatedDate
 
 `func (o *CloudProviderAccessRoleRequestUpdate) GetCreatedDate() time.Time`
@@ -152,6 +173,13 @@ SetCreatedDate sets CreatedDate field to given value.
 `func (o *CloudProviderAccessRoleRequestUpdate) HasCreatedDate() bool`
 
 HasCreatedDate returns a boolean if a field has been set.
+
+### SetCreatedDateNil
+
+`func (o *CloudProviderAccessRoleRequestUpdate) SetCreatedDateNil()`
+
+SetCreatedDateNil sets CreatedDate to an explicit JSON null when marshaled, overriding any value previously set with SetCreatedDate. Calling SetCreatedDate again clears the null override.
+
 ### GetFeatureUsages
 
 `func (o *CloudProviderAccessRoleRequestUpdate) GetFeatureUsages() []CloudProviderAccessFeatureUsage`
@@ -176,6 +204,13 @@ SetFeatureUsages sets FeatureUsages field to given value.
 `func (o *CloudProviderAccessRoleRequestUpdate) HasFeatureUsages() bool`
 
 HasFeatureUsages returns a boolean if a field has been set.
+
+### SetFeatureUsagesNil
+
+`func (o *CloudProviderAccessRoleRequestUpdate) SetFeatureUsagesNil()`
+
+SetFeatureUsagesNil sets FeatureUsages to an explicit JSON null when marshaled, overriding any value previously set with SetFeatureUsages. Calling SetFeatureUsages again clears the null override.
+
 ### GetIamAssumedRoleArn
 
 `func (o *CloudProviderAccessRoleRequestUpdate) GetIamAssumedRoleArn() string`
@@ -200,6 +235,13 @@ SetIamAssumedRoleArn sets IamAssumedRoleArn field to given value.
 `func (o *CloudProviderAccessRoleRequestUpdate) HasIamAssumedRoleArn() bool`
 
 HasIamAssumedRoleArn returns a boolean if a field has been set.
+
+### SetIamAssumedRoleArnNil
+
+`func (o *CloudProviderAccessRoleRequestUpdate) SetIamAssumedRoleArnNil()`
+
+SetIamAssumedRoleArnNil sets IamAssumedRoleArn to an explicit JSON null when marshaled, overriding any value previously set with SetIamAssumedRoleArn. Calling SetIamAssumedRoleArn again clears the null override.
+
 ### GetRoleId
 
 `func (o *CloudProviderAccessRoleRequestUpdate) GetRoleId() string`
@@ -224,6 +266,13 @@ SetRoleId sets RoleId field to given value.
 `func (o *CloudProviderAccessRoleRequestUpdate) HasRoleId() bool`
 
 HasRoleId returns a boolean if a field has been set.
+
+### SetRoleIdNil
+
+`func (o *CloudProviderAccessRoleRequestUpdate) SetRoleIdNil()`
+
+SetRoleIdNil sets RoleId to an explicit JSON null when marshaled, overriding any value previously set with SetRoleId. Calling SetRoleId again clears the null override.
+
 ### GetId
 
 `func (o *CloudProviderAccessRoleRequestUpdate) GetId() string`
@@ -248,6 +297,13 @@ SetId sets Id field to given value.
 `func (o *CloudProviderAccessRoleRequestUpdate) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *CloudProviderAccessRoleRequestUpdate) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetAtlasAzureAppId
 
 `func (o *CloudProviderAccessRoleRequestUpdate) GetAtlasAzureAppId() string`
@@ -272,6 +328,13 @@ SetAtlasAzureAppId sets AtlasAzureAppId field to given value.
 `func (o *CloudProviderAccessRoleRequestUpdate) HasAtlasAzureAppId() bool`
 
 HasAtlasAzureAppId returns a boolean if a field has been set.
+
+### SetAtlasAzureAppIdNil
+
+`func (o *CloudProviderAccessRoleRequestUpdate) SetAtlasAzureAppIdNil()`
+
+SetAtlasAzureAppIdNil sets AtlasAzureAppId to an explicit JSON null when marshaled, overriding any value previously set with SetAtlasAzureAppId. Calling SetAtlasAzureAppId again clears the null override.
+
 ### GetLastUpdatedDate
 
 `func (o *CloudProviderAccessRoleRequestUpdate) GetLastUpdatedDate() time.Time`
@@ -296,6 +359,13 @@ SetLastUpdatedDate sets LastUpdatedDate field to given value.
 `func (o *CloudProviderAccessRoleRequestUpdate) HasLastUpdatedDate() bool`
 
 HasLastUpdatedDate returns a boolean if a field has been set.
+
+### SetLastUpdatedDateNil
+
+`func (o *CloudProviderAccessRoleRequestUpdate) SetLastUpdatedDateNil()`
+
+SetLastUpdatedDateNil sets LastUpdatedDate to an explicit JSON null when marshaled, overriding any value previously set with SetLastUpdatedDate. Calling SetLastUpdatedDate again clears the null override.
+
 ### GetServicePrincipalId
 
 `func (o *CloudProviderAccessRoleRequestUpdate) GetServicePrincipalId() string`
@@ -320,6 +390,13 @@ SetServicePrincipalId sets ServicePrincipalId field to given value.
 `func (o *CloudProviderAccessRoleRequestUpdate) HasServicePrincipalId() bool`
 
 HasServicePrincipalId returns a boolean if a field has been set.
+
+### SetServicePrincipalIdNil
+
+`func (o *CloudProviderAccessRoleRequestUpdate) SetServicePrincipalIdNil()`
+
+SetServicePrincipalIdNil sets ServicePrincipalId to an explicit JSON null when marshaled, overriding any value previously set with SetServicePrincipalId. Calling SetServicePrincipalId again clears the null override.
+
 ### GetTenantId
 
 `func (o *CloudProviderAccessRoleRequestUpdate) GetTenantId() string`
@@ -344,6 +421,13 @@ SetTenantId sets TenantId field to given value.
 `func (o *CloudProviderAccessRoleRequestUpdate) HasTenantId() bool`
 
 HasTenantId returns a boolean if a field has been set.
+
+### SetTenantIdNil
+
+`func (o *CloudProviderAccessRoleRequestUpdate) SetTenantIdNil()`
+
+SetTenantIdNil sets TenantId to an explicit JSON null when marshaled, overriding any value previously set with SetTenantId. Calling SetTenantId again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

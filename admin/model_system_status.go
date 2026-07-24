@@ -17,6 +17,15 @@ type SystemStatus struct {
 	// Flag that indicates whether someone enabled throttling on this service.
 	// Read only field.
 	Throttling bool `json:"throttling"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *SystemStatus) MarshalJSON() ([]byte, error) {
+	type noMethod SystemStatus
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSystemStatus instantiates a new SystemStatus object
@@ -143,6 +152,13 @@ func (o *SystemStatus) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *SystemStatus) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *SystemStatus) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetThrottling returns the Throttling field value

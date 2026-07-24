@@ -62,6 +62,13 @@ SetId sets Id field to given value.
 `func (o *BackupOnlineArchive) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *BackupOnlineArchive) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetClusterName
 
 `func (o *BackupOnlineArchive) GetClusterName() string`
@@ -86,6 +93,13 @@ SetClusterName sets ClusterName field to given value.
 `func (o *BackupOnlineArchive) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+
+### SetClusterNameNil
+
+`func (o *BackupOnlineArchive) SetClusterNameNil()`
+
+SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled, overriding any value previously set with SetClusterName. Calling SetClusterName again clears the null override.
+
 ### GetCollName
 
 `func (o *BackupOnlineArchive) GetCollName() string`
@@ -110,6 +124,13 @@ SetCollName sets CollName field to given value.
 `func (o *BackupOnlineArchive) HasCollName() bool`
 
 HasCollName returns a boolean if a field has been set.
+
+### SetCollNameNil
+
+`func (o *BackupOnlineArchive) SetCollNameNil()`
+
+SetCollNameNil sets CollName to an explicit JSON null when marshaled, overriding any value previously set with SetCollName. Calling SetCollName again clears the null override.
+
 ### GetCollectionType
 
 `func (o *BackupOnlineArchive) GetCollectionType() string`
@@ -134,6 +155,13 @@ SetCollectionType sets CollectionType field to given value.
 `func (o *BackupOnlineArchive) HasCollectionType() bool`
 
 HasCollectionType returns a boolean if a field has been set.
+
+### SetCollectionTypeNil
+
+`func (o *BackupOnlineArchive) SetCollectionTypeNil()`
+
+SetCollectionTypeNil sets CollectionType to an explicit JSON null when marshaled, overriding any value previously set with SetCollectionType. Calling SetCollectionType again clears the null override.
+
 ### GetCriteria
 
 `func (o *BackupOnlineArchive) GetCriteria() Criteria`
@@ -158,6 +186,13 @@ SetCriteria sets Criteria field to given value.
 `func (o *BackupOnlineArchive) HasCriteria() bool`
 
 HasCriteria returns a boolean if a field has been set.
+
+### SetCriteriaNil
+
+`func (o *BackupOnlineArchive) SetCriteriaNil()`
+
+SetCriteriaNil sets Criteria to an explicit JSON null when marshaled, overriding any value previously set with SetCriteria. Calling SetCriteria again clears the null override.
+
 ### GetDataExpirationRule
 
 `func (o *BackupOnlineArchive) GetDataExpirationRule() DataExpirationRule`
@@ -182,6 +217,13 @@ SetDataExpirationRule sets DataExpirationRule field to given value.
 `func (o *BackupOnlineArchive) HasDataExpirationRule() bool`
 
 HasDataExpirationRule returns a boolean if a field has been set.
+
+### SetDataExpirationRuleNil
+
+`func (o *BackupOnlineArchive) SetDataExpirationRuleNil()`
+
+SetDataExpirationRuleNil sets DataExpirationRule to an explicit JSON null when marshaled, overriding any value previously set with SetDataExpirationRule. Calling SetDataExpirationRule again clears the null override.
+
 ### GetDataProcessRegion
 
 `func (o *BackupOnlineArchive) GetDataProcessRegion() DataProcessRegion`
@@ -206,6 +248,13 @@ SetDataProcessRegion sets DataProcessRegion field to given value.
 `func (o *BackupOnlineArchive) HasDataProcessRegion() bool`
 
 HasDataProcessRegion returns a boolean if a field has been set.
+
+### SetDataProcessRegionNil
+
+`func (o *BackupOnlineArchive) SetDataProcessRegionNil()`
+
+SetDataProcessRegionNil sets DataProcessRegion to an explicit JSON null when marshaled, overriding any value previously set with SetDataProcessRegion. Calling SetDataProcessRegion again clears the null override.
+
 ### GetDataSetName
 
 `func (o *BackupOnlineArchive) GetDataSetName() string`
@@ -230,6 +279,13 @@ SetDataSetName sets DataSetName field to given value.
 `func (o *BackupOnlineArchive) HasDataSetName() bool`
 
 HasDataSetName returns a boolean if a field has been set.
+
+### SetDataSetNameNil
+
+`func (o *BackupOnlineArchive) SetDataSetNameNil()`
+
+SetDataSetNameNil sets DataSetName to an explicit JSON null when marshaled, overriding any value previously set with SetDataSetName. Calling SetDataSetName again clears the null override.
+
 ### GetDbName
 
 `func (o *BackupOnlineArchive) GetDbName() string`
@@ -254,6 +310,13 @@ SetDbName sets DbName field to given value.
 `func (o *BackupOnlineArchive) HasDbName() bool`
 
 HasDbName returns a boolean if a field has been set.
+
+### SetDbNameNil
+
+`func (o *BackupOnlineArchive) SetDbNameNil()`
+
+SetDbNameNil sets DbName to an explicit JSON null when marshaled, overriding any value previously set with SetDbName. Calling SetDbName again clears the null override.
+
 ### GetGroupId
 
 `func (o *BackupOnlineArchive) GetGroupId() string`
@@ -278,6 +341,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *BackupOnlineArchive) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *BackupOnlineArchive) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetPartitionFields
 
 `func (o *BackupOnlineArchive) GetPartitionFields() []PartitionField`
@@ -302,6 +372,13 @@ SetPartitionFields sets PartitionFields field to given value.
 `func (o *BackupOnlineArchive) HasPartitionFields() bool`
 
 HasPartitionFields returns a boolean if a field has been set.
+
+### SetPartitionFieldsNil
+
+`func (o *BackupOnlineArchive) SetPartitionFieldsNil()`
+
+SetPartitionFieldsNil sets PartitionFields to an explicit JSON null when marshaled, overriding any value previously set with SetPartitionFields. Calling SetPartitionFields again clears the null override.
+
 ### GetPaused
 
 `func (o *BackupOnlineArchive) GetPaused() bool`
@@ -326,6 +403,13 @@ SetPaused sets Paused field to given value.
 `func (o *BackupOnlineArchive) HasPaused() bool`
 
 HasPaused returns a boolean if a field has been set.
+
+### SetPausedNil
+
+`func (o *BackupOnlineArchive) SetPausedNil()`
+
+SetPausedNil sets Paused to an explicit JSON null when marshaled, overriding any value previously set with SetPaused. Calling SetPaused again clears the null override.
+
 ### GetSchedule
 
 `func (o *BackupOnlineArchive) GetSchedule() OnlineArchiveSchedule`
@@ -350,6 +434,13 @@ SetSchedule sets Schedule field to given value.
 `func (o *BackupOnlineArchive) HasSchedule() bool`
 
 HasSchedule returns a boolean if a field has been set.
+
+### SetScheduleNil
+
+`func (o *BackupOnlineArchive) SetScheduleNil()`
+
+SetScheduleNil sets Schedule to an explicit JSON null when marshaled, overriding any value previously set with SetSchedule. Calling SetSchedule again clears the null override.
+
 ### GetState
 
 `func (o *BackupOnlineArchive) GetState() string`
@@ -374,6 +465,13 @@ SetState sets State field to given value.
 `func (o *BackupOnlineArchive) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### SetStateNil
+
+`func (o *BackupOnlineArchive) SetStateNil()`
+
+SetStateNil sets State to an explicit JSON null when marshaled, overriding any value previously set with SetState. Calling SetState again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

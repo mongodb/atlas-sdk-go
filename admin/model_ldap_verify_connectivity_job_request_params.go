@@ -21,6 +21,15 @@ type LDAPVerifyConnectivityJobRequestParams struct {
 	Links *[]Link `json:"links,omitempty"`
 	// IANA port to which the Lightweight Directory Access Protocol (LDAP) host listens for client connections.
 	Port int `json:"port"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *LDAPVerifyConnectivityJobRequestParams) MarshalJSON() ([]byte, error) {
+	type noMethod LDAPVerifyConnectivityJobRequestParams
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewLDAPVerifyConnectivityJobRequestParams instantiates a new LDAPVerifyConnectivityJobRequestParams object
@@ -81,6 +90,13 @@ func (o *LDAPVerifyConnectivityJobRequestParams) HasAuthzQueryTemplate() bool {
 // SetAuthzQueryTemplate gets a reference to the given string and assigns it to the AuthzQueryTemplate field.
 func (o *LDAPVerifyConnectivityJobRequestParams) SetAuthzQueryTemplate(v string) {
 	o.AuthzQueryTemplate = &v
+	o.NullFields = removeNullField(o.NullFields, "AuthzQueryTemplate")
+}
+
+// SetAuthzQueryTemplateNil sets AuthzQueryTemplate to an explicit JSON null when marshaled.
+func (o *LDAPVerifyConnectivityJobRequestParams) SetAuthzQueryTemplateNil() {
+	o.AuthzQueryTemplate = nil
+	o.NullFields = addNullField(o.NullFields, "AuthzQueryTemplate")
 }
 
 // GetBindPassword returns the BindPassword field value
@@ -162,6 +178,13 @@ func (o *LDAPVerifyConnectivityJobRequestParams) HasCaCertificate() bool {
 // SetCaCertificate gets a reference to the given string and assigns it to the CaCertificate field.
 func (o *LDAPVerifyConnectivityJobRequestParams) SetCaCertificate(v string) {
 	o.CaCertificate = &v
+	o.NullFields = removeNullField(o.NullFields, "CaCertificate")
+}
+
+// SetCaCertificateNil sets CaCertificate to an explicit JSON null when marshaled.
+func (o *LDAPVerifyConnectivityJobRequestParams) SetCaCertificateNil() {
+	o.CaCertificate = nil
+	o.NullFields = addNullField(o.NullFields, "CaCertificate")
 }
 
 // GetHostname returns the Hostname field value
@@ -219,6 +242,13 @@ func (o *LDAPVerifyConnectivityJobRequestParams) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *LDAPVerifyConnectivityJobRequestParams) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *LDAPVerifyConnectivityJobRequestParams) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetPort returns the Port field value

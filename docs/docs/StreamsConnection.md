@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Unique identifier of the connection. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Name** | Pointer to **string** | Human-readable label that identifies the stream connection. In the case of the Sample type, this is the name of the sample source. | [optional] 
-**Region** | Pointer to **string** | The connection&#39;s region. | [optional] 
-**State** | Pointer to **string** | The state of the connection. | [optional] [readonly] 
-**Type** | Pointer to **string** | Type of the connection. | [optional] 
+**Name** | Pointer to **string** | Human-readable label that identifies the stream connection. For the Sample type, this is the name of the sample source. | [optional] 
+**Region** | Pointer to **string** | The connection region. | [optional] 
+**State** | Pointer to **string** | The connection state. | [optional] [readonly] 
+**Type** | Pointer to **string** | The connection type. | [optional] 
 **ClusterGroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting. | [optional] 
 **ClusterName** | Pointer to **string** | Name of the cluster configured for this connection. | [optional] 
 **DbRoleToExecute** | Pointer to [**DBRoleToExecute**](DBRoleToExecute.md) |  | [optional] 
@@ -71,6 +71,13 @@ SetId sets Id field to given value.
 `func (o *StreamsConnection) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *StreamsConnection) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLinks
 
 `func (o *StreamsConnection) GetLinks() []Link`
@@ -95,6 +102,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsConnection) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsConnection) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetName
 
 `func (o *StreamsConnection) GetName() string`
@@ -119,6 +133,13 @@ SetName sets Name field to given value.
 `func (o *StreamsConnection) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *StreamsConnection) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetRegion
 
 `func (o *StreamsConnection) GetRegion() string`
@@ -143,6 +164,13 @@ SetRegion sets Region field to given value.
 `func (o *StreamsConnection) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *StreamsConnection) SetRegionNil()`
+
+SetRegionNil sets Region to an explicit JSON null when marshaled, overriding any value previously set with SetRegion. Calling SetRegion again clears the null override.
+
 ### GetState
 
 `func (o *StreamsConnection) GetState() string`
@@ -167,6 +195,13 @@ SetState sets State field to given value.
 `func (o *StreamsConnection) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### SetStateNil
+
+`func (o *StreamsConnection) SetStateNil()`
+
+SetStateNil sets State to an explicit JSON null when marshaled, overriding any value previously set with SetState. Calling SetState again clears the null override.
+
 ### GetType
 
 `func (o *StreamsConnection) GetType() string`
@@ -191,6 +226,13 @@ SetType sets Type field to given value.
 `func (o *StreamsConnection) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *StreamsConnection) SetTypeNil()`
+
+SetTypeNil sets Type to an explicit JSON null when marshaled, overriding any value previously set with SetType. Calling SetType again clears the null override.
+
 ### GetClusterGroupId
 
 `func (o *StreamsConnection) GetClusterGroupId() string`
@@ -215,6 +257,13 @@ SetClusterGroupId sets ClusterGroupId field to given value.
 `func (o *StreamsConnection) HasClusterGroupId() bool`
 
 HasClusterGroupId returns a boolean if a field has been set.
+
+### SetClusterGroupIdNil
+
+`func (o *StreamsConnection) SetClusterGroupIdNil()`
+
+SetClusterGroupIdNil sets ClusterGroupId to an explicit JSON null when marshaled, overriding any value previously set with SetClusterGroupId. Calling SetClusterGroupId again clears the null override.
+
 ### GetClusterName
 
 `func (o *StreamsConnection) GetClusterName() string`
@@ -239,6 +288,13 @@ SetClusterName sets ClusterName field to given value.
 `func (o *StreamsConnection) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+
+### SetClusterNameNil
+
+`func (o *StreamsConnection) SetClusterNameNil()`
+
+SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled, overriding any value previously set with SetClusterName. Calling SetClusterName again clears the null override.
+
 ### GetDbRoleToExecute
 
 `func (o *StreamsConnection) GetDbRoleToExecute() DBRoleToExecute`
@@ -263,6 +319,13 @@ SetDbRoleToExecute sets DbRoleToExecute field to given value.
 `func (o *StreamsConnection) HasDbRoleToExecute() bool`
 
 HasDbRoleToExecute returns a boolean if a field has been set.
+
+### SetDbRoleToExecuteNil
+
+`func (o *StreamsConnection) SetDbRoleToExecuteNil()`
+
+SetDbRoleToExecuteNil sets DbRoleToExecute to an explicit JSON null when marshaled, overriding any value previously set with SetDbRoleToExecute. Calling SetDbRoleToExecute again clears the null override.
+
 ### GetAuthentication
 
 `func (o *StreamsConnection) GetAuthentication() StreamsKafkaAuthentication`
@@ -287,6 +350,13 @@ SetAuthentication sets Authentication field to given value.
 `func (o *StreamsConnection) HasAuthentication() bool`
 
 HasAuthentication returns a boolean if a field has been set.
+
+### SetAuthenticationNil
+
+`func (o *StreamsConnection) SetAuthenticationNil()`
+
+SetAuthenticationNil sets Authentication to an explicit JSON null when marshaled, overriding any value previously set with SetAuthentication. Calling SetAuthentication again clears the null override.
+
 ### GetBootstrapServers
 
 `func (o *StreamsConnection) GetBootstrapServers() string`
@@ -311,6 +381,13 @@ SetBootstrapServers sets BootstrapServers field to given value.
 `func (o *StreamsConnection) HasBootstrapServers() bool`
 
 HasBootstrapServers returns a boolean if a field has been set.
+
+### SetBootstrapServersNil
+
+`func (o *StreamsConnection) SetBootstrapServersNil()`
+
+SetBootstrapServersNil sets BootstrapServers to an explicit JSON null when marshaled, overriding any value previously set with SetBootstrapServers. Calling SetBootstrapServers again clears the null override.
+
 ### GetConfig
 
 `func (o *StreamsConnection) GetConfig() map[string]string`
@@ -335,6 +412,13 @@ SetConfig sets Config field to given value.
 `func (o *StreamsConnection) HasConfig() bool`
 
 HasConfig returns a boolean if a field has been set.
+
+### SetConfigNil
+
+`func (o *StreamsConnection) SetConfigNil()`
+
+SetConfigNil sets Config to an explicit JSON null when marshaled, overriding any value previously set with SetConfig. Calling SetConfig again clears the null override.
+
 ### GetNetworking
 
 `func (o *StreamsConnection) GetNetworking() StreamsKafkaNetworking`
@@ -359,6 +443,13 @@ SetNetworking sets Networking field to given value.
 `func (o *StreamsConnection) HasNetworking() bool`
 
 HasNetworking returns a boolean if a field has been set.
+
+### SetNetworkingNil
+
+`func (o *StreamsConnection) SetNetworkingNil()`
+
+SetNetworkingNil sets Networking to an explicit JSON null when marshaled, overriding any value previously set with SetNetworking. Calling SetNetworking again clears the null override.
+
 ### GetSecurity
 
 `func (o *StreamsConnection) GetSecurity() StreamsKafkaSecurity`
@@ -383,6 +474,13 @@ SetSecurity sets Security field to given value.
 `func (o *StreamsConnection) HasSecurity() bool`
 
 HasSecurity returns a boolean if a field has been set.
+
+### SetSecurityNil
+
+`func (o *StreamsConnection) SetSecurityNil()`
+
+SetSecurityNil sets Security to an explicit JSON null when marshaled, overriding any value previously set with SetSecurity. Calling SetSecurity again clears the null override.
+
 ### GetHeaders
 
 `func (o *StreamsConnection) GetHeaders() map[string]string`
@@ -407,6 +505,13 @@ SetHeaders sets Headers field to given value.
 `func (o *StreamsConnection) HasHeaders() bool`
 
 HasHeaders returns a boolean if a field has been set.
+
+### SetHeadersNil
+
+`func (o *StreamsConnection) SetHeadersNil()`
+
+SetHeadersNil sets Headers to an explicit JSON null when marshaled, overriding any value previously set with SetHeaders. Calling SetHeaders again clears the null override.
+
 ### GetUrl
 
 `func (o *StreamsConnection) GetUrl() string`
@@ -431,6 +536,13 @@ SetUrl sets Url field to given value.
 `func (o *StreamsConnection) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
+
+### SetUrlNil
+
+`func (o *StreamsConnection) SetUrlNil()`
+
+SetUrlNil sets Url to an explicit JSON null when marshaled, overriding any value previously set with SetUrl. Calling SetUrl again clears the null override.
+
 ### GetAws
 
 `func (o *StreamsConnection) GetAws() StreamsAWSConnectionConfig`
@@ -455,6 +567,13 @@ SetAws sets Aws field to given value.
 `func (o *StreamsConnection) HasAws() bool`
 
 HasAws returns a boolean if a field has been set.
+
+### SetAwsNil
+
+`func (o *StreamsConnection) SetAwsNil()`
+
+SetAwsNil sets Aws to an explicit JSON null when marshaled, overriding any value previously set with SetAws. Calling SetAws again clears the null override.
+
 ### GetProvider
 
 `func (o *StreamsConnection) GetProvider() string`
@@ -479,6 +598,13 @@ SetProvider sets Provider field to given value.
 `func (o *StreamsConnection) HasProvider() bool`
 
 HasProvider returns a boolean if a field has been set.
+
+### SetProviderNil
+
+`func (o *StreamsConnection) SetProviderNil()`
+
+SetProviderNil sets Provider to an explicit JSON null when marshaled, overriding any value previously set with SetProvider. Calling SetProvider again clears the null override.
+
 ### GetSchemaRegistryAuthentication
 
 `func (o *StreamsConnection) GetSchemaRegistryAuthentication() SchemaRegistryAuthentication`
@@ -503,6 +629,13 @@ SetSchemaRegistryAuthentication sets SchemaRegistryAuthentication field to given
 `func (o *StreamsConnection) HasSchemaRegistryAuthentication() bool`
 
 HasSchemaRegistryAuthentication returns a boolean if a field has been set.
+
+### SetSchemaRegistryAuthenticationNil
+
+`func (o *StreamsConnection) SetSchemaRegistryAuthenticationNil()`
+
+SetSchemaRegistryAuthenticationNil sets SchemaRegistryAuthentication to an explicit JSON null when marshaled, overriding any value previously set with SetSchemaRegistryAuthentication. Calling SetSchemaRegistryAuthentication again clears the null override.
+
 ### GetSchemaRegistryUrls
 
 `func (o *StreamsConnection) GetSchemaRegistryUrls() []string`
@@ -527,6 +660,13 @@ SetSchemaRegistryUrls sets SchemaRegistryUrls field to given value.
 `func (o *StreamsConnection) HasSchemaRegistryUrls() bool`
 
 HasSchemaRegistryUrls returns a boolean if a field has been set.
+
+### SetSchemaRegistryUrlsNil
+
+`func (o *StreamsConnection) SetSchemaRegistryUrlsNil()`
+
+SetSchemaRegistryUrlsNil sets SchemaRegistryUrls to an explicit JSON null when marshaled, overriding any value previously set with SetSchemaRegistryUrls. Calling SetSchemaRegistryUrls again clears the null override.
+
 ### GetAzure
 
 `func (o *StreamsConnection) GetAzure() AzureConnection`
@@ -551,6 +691,13 @@ SetAzure sets Azure field to given value.
 `func (o *StreamsConnection) HasAzure() bool`
 
 HasAzure returns a boolean if a field has been set.
+
+### SetAzureNil
+
+`func (o *StreamsConnection) SetAzureNil()`
+
+SetAzureNil sets Azure to an explicit JSON null when marshaled, overriding any value previously set with SetAzure. Calling SetAzure again clears the null override.
+
 ### GetPublicPrivateNetworking
 
 `func (o *StreamsConnection) GetPublicPrivateNetworking() StreamsPublicPrivateLinkNetworking`
@@ -575,6 +722,13 @@ SetPublicPrivateNetworking sets PublicPrivateNetworking field to given value.
 `func (o *StreamsConnection) HasPublicPrivateNetworking() bool`
 
 HasPublicPrivateNetworking returns a boolean if a field has been set.
+
+### SetPublicPrivateNetworkingNil
+
+`func (o *StreamsConnection) SetPublicPrivateNetworkingNil()`
+
+SetPublicPrivateNetworkingNil sets PublicPrivateNetworking to an explicit JSON null when marshaled, overriding any value previously set with SetPublicPrivateNetworking. Calling SetPublicPrivateNetworking again clears the null override.
+
 ### GetGcp
 
 `func (o *StreamsConnection) GetGcp() StreamsGCPConnectionConfig`
@@ -599,6 +753,13 @@ SetGcp sets Gcp field to given value.
 `func (o *StreamsConnection) HasGcp() bool`
 
 HasGcp returns a boolean if a field has been set.
+
+### SetGcpNil
+
+`func (o *StreamsConnection) SetGcpNil()`
+
+SetGcpNil sets Gcp to an explicit JSON null when marshaled, overriding any value previously set with SetGcp. Calling SetGcp again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -13,6 +13,15 @@ type ServerlessConnectionStringsPrivateEndpointList struct {
 	// MongoDB process type to which your application connects.
 	// Read only field.
 	Type *string `json:"type,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ServerlessConnectionStringsPrivateEndpointList) MarshalJSON() ([]byte, error) {
+	type noMethod ServerlessConnectionStringsPrivateEndpointList
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewServerlessConnectionStringsPrivateEndpointList instantiates a new ServerlessConnectionStringsPrivateEndpointList object
@@ -63,6 +72,13 @@ func (o *ServerlessConnectionStringsPrivateEndpointList) HasEndpoints() bool {
 // SetEndpoints gets a reference to the given []ServerlessConnectionStringsPrivateEndpointItem and assigns it to the Endpoints field.
 func (o *ServerlessConnectionStringsPrivateEndpointList) SetEndpoints(v []ServerlessConnectionStringsPrivateEndpointItem) {
 	o.Endpoints = &v
+	o.NullFields = removeNullField(o.NullFields, "Endpoints")
+}
+
+// SetEndpointsNil sets Endpoints to an explicit JSON null when marshaled.
+func (o *ServerlessConnectionStringsPrivateEndpointList) SetEndpointsNil() {
+	o.Endpoints = nil
+	o.NullFields = addNullField(o.NullFields, "Endpoints")
 }
 
 // GetSrvConnectionString returns the SrvConnectionString field value if set, zero value otherwise
@@ -96,6 +112,13 @@ func (o *ServerlessConnectionStringsPrivateEndpointList) HasSrvConnectionString(
 // SetSrvConnectionString gets a reference to the given string and assigns it to the SrvConnectionString field.
 func (o *ServerlessConnectionStringsPrivateEndpointList) SetSrvConnectionString(v string) {
 	o.SrvConnectionString = &v
+	o.NullFields = removeNullField(o.NullFields, "SrvConnectionString")
+}
+
+// SetSrvConnectionStringNil sets SrvConnectionString to an explicit JSON null when marshaled.
+func (o *ServerlessConnectionStringsPrivateEndpointList) SetSrvConnectionStringNil() {
+	o.SrvConnectionString = nil
+	o.NullFields = addNullField(o.NullFields, "SrvConnectionString")
 }
 
 // GetType returns the Type field value if set, zero value otherwise
@@ -129,4 +152,11 @@ func (o *ServerlessConnectionStringsPrivateEndpointList) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *ServerlessConnectionStringsPrivateEndpointList) SetType(v string) {
 	o.Type = &v
+	o.NullFields = removeNullField(o.NullFields, "Type")
+}
+
+// SetTypeNil sets Type to an explicit JSON null when marshaled.
+func (o *ServerlessConnectionStringsPrivateEndpointList) SetTypeNil() {
+	o.Type = nil
+	o.NullFields = addNullField(o.NullFields, "Type")
 }

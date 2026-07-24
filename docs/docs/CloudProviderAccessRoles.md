@@ -51,6 +51,13 @@ SetAwsIamRoles sets AwsIamRoles field to given value.
 `func (o *CloudProviderAccessRoles) HasAwsIamRoles() bool`
 
 HasAwsIamRoles returns a boolean if a field has been set.
+
+### SetAwsIamRolesNil
+
+`func (o *CloudProviderAccessRoles) SetAwsIamRolesNil()`
+
+SetAwsIamRolesNil sets AwsIamRoles to an explicit JSON null when marshaled, overriding any value previously set with SetAwsIamRoles. Calling SetAwsIamRoles again clears the null override.
+
 ### GetAzureServicePrincipals
 
 `func (o *CloudProviderAccessRoles) GetAzureServicePrincipals() []CloudProviderAccessAzureServicePrincipal`
@@ -75,6 +82,13 @@ SetAzureServicePrincipals sets AzureServicePrincipals field to given value.
 `func (o *CloudProviderAccessRoles) HasAzureServicePrincipals() bool`
 
 HasAzureServicePrincipals returns a boolean if a field has been set.
+
+### SetAzureServicePrincipalsNil
+
+`func (o *CloudProviderAccessRoles) SetAzureServicePrincipalsNil()`
+
+SetAzureServicePrincipalsNil sets AzureServicePrincipals to an explicit JSON null when marshaled, overriding any value previously set with SetAzureServicePrincipals. Calling SetAzureServicePrincipals again clears the null override.
+
 ### GetGcpServiceAccounts
 
 `func (o *CloudProviderAccessRoles) GetGcpServiceAccounts() []CloudProviderAccessGCPServiceAccount`
@@ -99,6 +113,13 @@ SetGcpServiceAccounts sets GcpServiceAccounts field to given value.
 `func (o *CloudProviderAccessRoles) HasGcpServiceAccounts() bool`
 
 HasGcpServiceAccounts returns a boolean if a field has been set.
+
+### SetGcpServiceAccountsNil
+
+`func (o *CloudProviderAccessRoles) SetGcpServiceAccountsNil()`
+
+SetGcpServiceAccountsNil sets GcpServiceAccounts to an explicit JSON null when marshaled, overriding any value previously set with SetGcpServiceAccounts. Calling SetGcpServiceAccounts again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

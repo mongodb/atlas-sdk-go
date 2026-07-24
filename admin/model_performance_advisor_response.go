@@ -10,6 +10,15 @@ type PerformanceAdvisorResponse struct {
 	// List that contains the documents with information about the indexes that the Performance Advisor suggests.
 	// Read only field.
 	SuggestedIndexes *[]PerformanceAdvisorIndex `json:"suggestedIndexes,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PerformanceAdvisorResponse) MarshalJSON() ([]byte, error) {
+	type noMethod PerformanceAdvisorResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPerformanceAdvisorResponse instantiates a new PerformanceAdvisorResponse object
@@ -60,6 +69,13 @@ func (o *PerformanceAdvisorResponse) HasShapes() bool {
 // SetShapes gets a reference to the given []PerformanceAdvisorShape and assigns it to the Shapes field.
 func (o *PerformanceAdvisorResponse) SetShapes(v []PerformanceAdvisorShape) {
 	o.Shapes = &v
+	o.NullFields = removeNullField(o.NullFields, "Shapes")
+}
+
+// SetShapesNil sets Shapes to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorResponse) SetShapesNil() {
+	o.Shapes = nil
+	o.NullFields = addNullField(o.NullFields, "Shapes")
 }
 
 // GetSuggestedIndexes returns the SuggestedIndexes field value if set, zero value otherwise
@@ -93,4 +109,11 @@ func (o *PerformanceAdvisorResponse) HasSuggestedIndexes() bool {
 // SetSuggestedIndexes gets a reference to the given []PerformanceAdvisorIndex and assigns it to the SuggestedIndexes field.
 func (o *PerformanceAdvisorResponse) SetSuggestedIndexes(v []PerformanceAdvisorIndex) {
 	o.SuggestedIndexes = &v
+	o.NullFields = removeNullField(o.NullFields, "SuggestedIndexes")
+}
+
+// SetSuggestedIndexesNil sets SuggestedIndexes to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorResponse) SetSuggestedIndexesNil() {
+	o.SuggestedIndexes = nil
+	o.NullFields = addNullField(o.NullFields, "SuggestedIndexes")
 }

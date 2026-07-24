@@ -28,6 +28,15 @@ type ApiAtlasCollectionRestoreJobRequest struct {
 	TargetGroupId string `json:"targetGroupId"`
 	// Strategy for writing data on the target (create as new or overwrite existing). With `OVERWRITE_EXISTING`, any writes to the affected databases or collections during the restore will be lost when the existing namespaces are dropped and replaced. To avoid data loss, stop writes to the affected namespaces before starting the restore.
 	WriteStrategy string `json:"writeStrategy"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiAtlasCollectionRestoreJobRequest) MarshalJSON() ([]byte, error) {
+	type noMethod ApiAtlasCollectionRestoreJobRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasCollectionRestoreJobRequest instantiates a new ApiAtlasCollectionRestoreJobRequest object
@@ -82,6 +91,13 @@ func (o *ApiAtlasCollectionRestoreJobRequest) HasCollectionSuffix() bool {
 // SetCollectionSuffix gets a reference to the given string and assigns it to the CollectionSuffix field.
 func (o *ApiAtlasCollectionRestoreJobRequest) SetCollectionSuffix(v string) {
 	o.CollectionSuffix = &v
+	o.NullFields = removeNullField(o.NullFields, "CollectionSuffix")
+}
+
+// SetCollectionSuffixNil sets CollectionSuffix to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreJobRequest) SetCollectionSuffixNil() {
+	o.CollectionSuffix = nil
+	o.NullFields = addNullField(o.NullFields, "CollectionSuffix")
 }
 
 // GetCollections returns the Collections field value if set, zero value otherwise
@@ -115,6 +131,13 @@ func (o *ApiAtlasCollectionRestoreJobRequest) HasCollections() bool {
 // SetCollections gets a reference to the given []ApiAtlasRestoreNamespace and assigns it to the Collections field.
 func (o *ApiAtlasCollectionRestoreJobRequest) SetCollections(v []ApiAtlasRestoreNamespace) {
 	o.Collections = &v
+	o.NullFields = removeNullField(o.NullFields, "Collections")
+}
+
+// SetCollectionsNil sets Collections to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreJobRequest) SetCollectionsNil() {
+	o.Collections = nil
+	o.NullFields = addNullField(o.NullFields, "Collections")
 }
 
 // GetDatabaseSuffix returns the DatabaseSuffix field value if set, zero value otherwise
@@ -148,6 +171,13 @@ func (o *ApiAtlasCollectionRestoreJobRequest) HasDatabaseSuffix() bool {
 // SetDatabaseSuffix gets a reference to the given string and assigns it to the DatabaseSuffix field.
 func (o *ApiAtlasCollectionRestoreJobRequest) SetDatabaseSuffix(v string) {
 	o.DatabaseSuffix = &v
+	o.NullFields = removeNullField(o.NullFields, "DatabaseSuffix")
+}
+
+// SetDatabaseSuffixNil sets DatabaseSuffix to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreJobRequest) SetDatabaseSuffixNil() {
+	o.DatabaseSuffix = nil
+	o.NullFields = addNullField(o.NullFields, "DatabaseSuffix")
 }
 
 // GetDatabases returns the Databases field value if set, zero value otherwise
@@ -181,6 +211,13 @@ func (o *ApiAtlasCollectionRestoreJobRequest) HasDatabases() bool {
 // SetDatabases gets a reference to the given []ApiAtlasRestoreNamespace and assigns it to the Databases field.
 func (o *ApiAtlasCollectionRestoreJobRequest) SetDatabases(v []ApiAtlasRestoreNamespace) {
 	o.Databases = &v
+	o.NullFields = removeNullField(o.NullFields, "Databases")
+}
+
+// SetDatabasesNil sets Databases to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreJobRequest) SetDatabasesNil() {
+	o.Databases = nil
+	o.NullFields = addNullField(o.NullFields, "Databases")
 }
 
 // GetIndexStrategy returns the IndexStrategy field value
@@ -238,6 +275,13 @@ func (o *ApiAtlasCollectionRestoreJobRequest) HasOplogInc() bool {
 // SetOplogInc gets a reference to the given int and assigns it to the OplogInc field.
 func (o *ApiAtlasCollectionRestoreJobRequest) SetOplogInc(v int) {
 	o.OplogInc = &v
+	o.NullFields = removeNullField(o.NullFields, "OplogInc")
+}
+
+// SetOplogIncNil sets OplogInc to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreJobRequest) SetOplogIncNil() {
+	o.OplogInc = nil
+	o.NullFields = addNullField(o.NullFields, "OplogInc")
 }
 
 // GetOplogTs returns the OplogTs field value if set, zero value otherwise
@@ -271,6 +315,13 @@ func (o *ApiAtlasCollectionRestoreJobRequest) HasOplogTs() bool {
 // SetOplogTs gets a reference to the given int and assigns it to the OplogTs field.
 func (o *ApiAtlasCollectionRestoreJobRequest) SetOplogTs(v int) {
 	o.OplogTs = &v
+	o.NullFields = removeNullField(o.NullFields, "OplogTs")
+}
+
+// SetOplogTsNil sets OplogTs to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreJobRequest) SetOplogTsNil() {
+	o.OplogTs = nil
+	o.NullFields = addNullField(o.NullFields, "OplogTs")
 }
 
 // GetPointInTimeUtcSeconds returns the PointInTimeUtcSeconds field value if set, zero value otherwise
@@ -304,6 +355,13 @@ func (o *ApiAtlasCollectionRestoreJobRequest) HasPointInTimeUtcSeconds() bool {
 // SetPointInTimeUtcSeconds gets a reference to the given int and assigns it to the PointInTimeUtcSeconds field.
 func (o *ApiAtlasCollectionRestoreJobRequest) SetPointInTimeUtcSeconds(v int) {
 	o.PointInTimeUtcSeconds = &v
+	o.NullFields = removeNullField(o.NullFields, "PointInTimeUtcSeconds")
+}
+
+// SetPointInTimeUtcSecondsNil sets PointInTimeUtcSeconds to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreJobRequest) SetPointInTimeUtcSecondsNil() {
+	o.PointInTimeUtcSeconds = nil
+	o.NullFields = addNullField(o.NullFields, "PointInTimeUtcSeconds")
 }
 
 // GetSnapshotId returns the SnapshotId field value if set, zero value otherwise
@@ -337,6 +395,13 @@ func (o *ApiAtlasCollectionRestoreJobRequest) HasSnapshotId() bool {
 // SetSnapshotId gets a reference to the given string and assigns it to the SnapshotId field.
 func (o *ApiAtlasCollectionRestoreJobRequest) SetSnapshotId(v string) {
 	o.SnapshotId = &v
+	o.NullFields = removeNullField(o.NullFields, "SnapshotId")
+}
+
+// SetSnapshotIdNil sets SnapshotId to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreJobRequest) SetSnapshotIdNil() {
+	o.SnapshotId = nil
+	o.NullFields = addNullField(o.NullFields, "SnapshotId")
 }
 
 // GetTargetClusterName returns the TargetClusterName field value

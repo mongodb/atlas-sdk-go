@@ -12,6 +12,15 @@ type LegacyReplicationSpec struct {
 	RegionsConfig *map[string]RegionSpec `json:"regionsConfig,omitempty"`
 	// Human-readable label that identifies the zone in a Global Cluster. Provide this value only if `clusterType` is `GEOSHARDED`.
 	ZoneName *string `json:"zoneName,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *LegacyReplicationSpec) MarshalJSON() ([]byte, error) {
+	type noMethod LegacyReplicationSpec
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewLegacyReplicationSpec instantiates a new LegacyReplicationSpec object
@@ -66,6 +75,13 @@ func (o *LegacyReplicationSpec) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *LegacyReplicationSpec) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *LegacyReplicationSpec) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetNumShards returns the NumShards field value if set, zero value otherwise
@@ -99,6 +115,13 @@ func (o *LegacyReplicationSpec) HasNumShards() bool {
 // SetNumShards gets a reference to the given int and assigns it to the NumShards field.
 func (o *LegacyReplicationSpec) SetNumShards(v int) {
 	o.NumShards = &v
+	o.NullFields = removeNullField(o.NullFields, "NumShards")
+}
+
+// SetNumShardsNil sets NumShards to an explicit JSON null when marshaled.
+func (o *LegacyReplicationSpec) SetNumShardsNil() {
+	o.NumShards = nil
+	o.NullFields = addNullField(o.NullFields, "NumShards")
 }
 
 // GetRegionsConfig returns the RegionsConfig field value if set, zero value otherwise
@@ -132,6 +155,13 @@ func (o *LegacyReplicationSpec) HasRegionsConfig() bool {
 // SetRegionsConfig gets a reference to the given map[string]RegionSpec and assigns it to the RegionsConfig field.
 func (o *LegacyReplicationSpec) SetRegionsConfig(v map[string]RegionSpec) {
 	o.RegionsConfig = &v
+	o.NullFields = removeNullField(o.NullFields, "RegionsConfig")
+}
+
+// SetRegionsConfigNil sets RegionsConfig to an explicit JSON null when marshaled.
+func (o *LegacyReplicationSpec) SetRegionsConfigNil() {
+	o.RegionsConfig = nil
+	o.NullFields = addNullField(o.NullFields, "RegionsConfig")
 }
 
 // GetZoneName returns the ZoneName field value if set, zero value otherwise
@@ -165,4 +195,11 @@ func (o *LegacyReplicationSpec) HasZoneName() bool {
 // SetZoneName gets a reference to the given string and assigns it to the ZoneName field.
 func (o *LegacyReplicationSpec) SetZoneName(v string) {
 	o.ZoneName = &v
+	o.NullFields = removeNullField(o.NullFields, "ZoneName")
+}
+
+// SetZoneNameNil sets ZoneName to an explicit JSON null when marshaled.
+func (o *LegacyReplicationSpec) SetZoneNameNil() {
+	o.ZoneName = nil
+	o.NullFields = addNullField(o.NullFields, "ZoneName")
 }

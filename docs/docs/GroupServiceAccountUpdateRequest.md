@@ -51,6 +51,13 @@ SetDescription sets Description field to given value.
 `func (o *GroupServiceAccountUpdateRequest) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *GroupServiceAccountUpdateRequest) SetDescriptionNil()`
+
+SetDescriptionNil sets Description to an explicit JSON null when marshaled, overriding any value previously set with SetDescription. Calling SetDescription again clears the null override.
+
 ### GetName
 
 `func (o *GroupServiceAccountUpdateRequest) GetName() string`
@@ -75,6 +82,13 @@ SetName sets Name field to given value.
 `func (o *GroupServiceAccountUpdateRequest) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *GroupServiceAccountUpdateRequest) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetRoles
 
 `func (o *GroupServiceAccountUpdateRequest) GetRoles() []string`
@@ -99,6 +113,13 @@ SetRoles sets Roles field to given value.
 `func (o *GroupServiceAccountUpdateRequest) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
+
+### SetRolesNil
+
+`func (o *GroupServiceAccountUpdateRequest) SetRolesNil()`
+
+SetRolesNil sets Roles to an explicit JSON null when marshaled, overriding any value previously set with SetRoles. Calling SetRoles again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

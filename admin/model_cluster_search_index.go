@@ -35,6 +35,15 @@ type ClusterSearchIndex struct {
 	Fields *[]any `json:"fields,omitempty"`
 	// Top-level path to the array that contains vector fields. When provided, vector fields under this path are treated as nested.
 	NestedRoot *string `json:"nestedRoot,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ClusterSearchIndex) MarshalJSON() ([]byte, error) {
+	type noMethod ClusterSearchIndex
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterSearchIndex instantiates a new ClusterSearchIndex object
@@ -148,6 +157,13 @@ func (o *ClusterSearchIndex) HasIndexID() bool {
 // SetIndexID gets a reference to the given string and assigns it to the IndexID field.
 func (o *ClusterSearchIndex) SetIndexID(v string) {
 	o.IndexID = &v
+	o.NullFields = removeNullField(o.NullFields, "IndexID")
+}
+
+// SetIndexIDNil sets IndexID to an explicit JSON null when marshaled.
+func (o *ClusterSearchIndex) SetIndexIDNil() {
+	o.IndexID = nil
+	o.NullFields = addNullField(o.NullFields, "IndexID")
 }
 
 // GetName returns the Name field value
@@ -205,6 +221,13 @@ func (o *ClusterSearchIndex) HasNumPartitions() bool {
 // SetNumPartitions gets a reference to the given int and assigns it to the NumPartitions field.
 func (o *ClusterSearchIndex) SetNumPartitions(v int) {
 	o.NumPartitions = &v
+	o.NullFields = removeNullField(o.NullFields, "NumPartitions")
+}
+
+// SetNumPartitionsNil sets NumPartitions to an explicit JSON null when marshaled.
+func (o *ClusterSearchIndex) SetNumPartitionsNil() {
+	o.NumPartitions = nil
+	o.NullFields = addNullField(o.NullFields, "NumPartitions")
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
@@ -238,6 +261,13 @@ func (o *ClusterSearchIndex) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *ClusterSearchIndex) SetStatus(v string) {
 	o.Status = &v
+	o.NullFields = removeNullField(o.NullFields, "Status")
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *ClusterSearchIndex) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = addNullField(o.NullFields, "Status")
 }
 
 // GetStoredSource returns the StoredSource field value if set, zero value otherwise
@@ -272,6 +302,13 @@ func (o *ClusterSearchIndex) HasStoredSource() bool {
 // SetStoredSource gets a reference to the given any and assigns it to the StoredSource field.
 func (o *ClusterSearchIndex) SetStoredSource(v any) {
 	o.StoredSource = v
+	o.NullFields = removeNullField(o.NullFields, "StoredSource")
+}
+
+// SetStoredSourceNil sets StoredSource to an explicit JSON null when marshaled.
+func (o *ClusterSearchIndex) SetStoredSourceNil() {
+	o.StoredSource = nil
+	o.NullFields = addNullField(o.NullFields, "StoredSource")
 }
 
 // GetType returns the Type field value if set, zero value otherwise
@@ -305,6 +342,13 @@ func (o *ClusterSearchIndex) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *ClusterSearchIndex) SetType(v string) {
 	o.Type = &v
+	o.NullFields = removeNullField(o.NullFields, "Type")
+}
+
+// SetTypeNil sets Type to an explicit JSON null when marshaled.
+func (o *ClusterSearchIndex) SetTypeNil() {
+	o.Type = nil
+	o.NullFields = addNullField(o.NullFields, "Type")
 }
 
 // GetAnalyzer returns the Analyzer field value if set, zero value otherwise
@@ -338,6 +382,13 @@ func (o *ClusterSearchIndex) HasAnalyzer() bool {
 // SetAnalyzer gets a reference to the given string and assigns it to the Analyzer field.
 func (o *ClusterSearchIndex) SetAnalyzer(v string) {
 	o.Analyzer = &v
+	o.NullFields = removeNullField(o.NullFields, "Analyzer")
+}
+
+// SetAnalyzerNil sets Analyzer to an explicit JSON null when marshaled.
+func (o *ClusterSearchIndex) SetAnalyzerNil() {
+	o.Analyzer = nil
+	o.NullFields = addNullField(o.NullFields, "Analyzer")
 }
 
 // GetAnalyzers returns the Analyzers field value if set, zero value otherwise
@@ -371,6 +422,13 @@ func (o *ClusterSearchIndex) HasAnalyzers() bool {
 // SetAnalyzers gets a reference to the given []ApiAtlasFTSAnalyzers and assigns it to the Analyzers field.
 func (o *ClusterSearchIndex) SetAnalyzers(v []ApiAtlasFTSAnalyzers) {
 	o.Analyzers = &v
+	o.NullFields = removeNullField(o.NullFields, "Analyzers")
+}
+
+// SetAnalyzersNil sets Analyzers to an explicit JSON null when marshaled.
+func (o *ClusterSearchIndex) SetAnalyzersNil() {
+	o.Analyzers = nil
+	o.NullFields = addNullField(o.NullFields, "Analyzers")
 }
 
 // GetMappings returns the Mappings field value if set, zero value otherwise
@@ -404,6 +462,13 @@ func (o *ClusterSearchIndex) HasMappings() bool {
 // SetMappings gets a reference to the given ApiAtlasFTSMappings and assigns it to the Mappings field.
 func (o *ClusterSearchIndex) SetMappings(v ApiAtlasFTSMappings) {
 	o.Mappings = &v
+	o.NullFields = removeNullField(o.NullFields, "Mappings")
+}
+
+// SetMappingsNil sets Mappings to an explicit JSON null when marshaled.
+func (o *ClusterSearchIndex) SetMappingsNil() {
+	o.Mappings = nil
+	o.NullFields = addNullField(o.NullFields, "Mappings")
 }
 
 // GetSearchAnalyzer returns the SearchAnalyzer field value if set, zero value otherwise
@@ -437,6 +502,13 @@ func (o *ClusterSearchIndex) HasSearchAnalyzer() bool {
 // SetSearchAnalyzer gets a reference to the given string and assigns it to the SearchAnalyzer field.
 func (o *ClusterSearchIndex) SetSearchAnalyzer(v string) {
 	o.SearchAnalyzer = &v
+	o.NullFields = removeNullField(o.NullFields, "SearchAnalyzer")
+}
+
+// SetSearchAnalyzerNil sets SearchAnalyzer to an explicit JSON null when marshaled.
+func (o *ClusterSearchIndex) SetSearchAnalyzerNil() {
+	o.SearchAnalyzer = nil
+	o.NullFields = addNullField(o.NullFields, "SearchAnalyzer")
 }
 
 // GetSynonyms returns the Synonyms field value if set, zero value otherwise
@@ -470,6 +542,13 @@ func (o *ClusterSearchIndex) HasSynonyms() bool {
 // SetSynonyms gets a reference to the given []SearchSynonymMappingDefinition and assigns it to the Synonyms field.
 func (o *ClusterSearchIndex) SetSynonyms(v []SearchSynonymMappingDefinition) {
 	o.Synonyms = &v
+	o.NullFields = removeNullField(o.NullFields, "Synonyms")
+}
+
+// SetSynonymsNil sets Synonyms to an explicit JSON null when marshaled.
+func (o *ClusterSearchIndex) SetSynonymsNil() {
+	o.Synonyms = nil
+	o.NullFields = addNullField(o.NullFields, "Synonyms")
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise
@@ -503,6 +582,13 @@ func (o *ClusterSearchIndex) HasFields() bool {
 // SetFields gets a reference to the given []any and assigns it to the Fields field.
 func (o *ClusterSearchIndex) SetFields(v []any) {
 	o.Fields = &v
+	o.NullFields = removeNullField(o.NullFields, "Fields")
+}
+
+// SetFieldsNil sets Fields to an explicit JSON null when marshaled.
+func (o *ClusterSearchIndex) SetFieldsNil() {
+	o.Fields = nil
+	o.NullFields = addNullField(o.NullFields, "Fields")
 }
 
 // GetNestedRoot returns the NestedRoot field value if set, zero value otherwise
@@ -536,4 +622,11 @@ func (o *ClusterSearchIndex) HasNestedRoot() bool {
 // SetNestedRoot gets a reference to the given string and assigns it to the NestedRoot field.
 func (o *ClusterSearchIndex) SetNestedRoot(v string) {
 	o.NestedRoot = &v
+	o.NullFields = removeNullField(o.NullFields, "NestedRoot")
+}
+
+// SetNestedRootNil sets NestedRoot to an explicit JSON null when marshaled.
+func (o *ClusterSearchIndex) SetNestedRootNil() {
+	o.NestedRoot = nil
+	o.NullFields = addNullField(o.NullFields, "NestedRoot")
 }

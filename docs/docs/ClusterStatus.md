@@ -50,6 +50,13 @@ SetChangeStatus sets ChangeStatus field to given value.
 `func (o *ClusterStatus) HasChangeStatus() bool`
 
 HasChangeStatus returns a boolean if a field has been set.
+
+### SetChangeStatusNil
+
+`func (o *ClusterStatus) SetChangeStatusNil()`
+
+SetChangeStatusNil sets ChangeStatus to an explicit JSON null when marshaled, overriding any value previously set with SetChangeStatus. Calling SetChangeStatus again clears the null override.
+
 ### GetLinks
 
 `func (o *ClusterStatus) GetLinks() []Link`
@@ -74,6 +81,13 @@ SetLinks sets Links field to given value.
 `func (o *ClusterStatus) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *ClusterStatus) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

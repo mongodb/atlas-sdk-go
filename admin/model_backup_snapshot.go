@@ -38,6 +38,15 @@ type BackupSnapshot struct {
 	// Metadata that describes the complete snapshot.  - For a replica set, this array contains a single document. - For a sharded cluster, this array contains one document for each shard plus one document for the config host.
 	// Read only field.
 	Parts *[]BackupSnapshotPart `json:"parts,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *BackupSnapshot) MarshalJSON() ([]byte, error) {
+	type noMethod BackupSnapshot
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewBackupSnapshot instantiates a new BackupSnapshot object
@@ -88,6 +97,13 @@ func (o *BackupSnapshot) HasClusterId() bool {
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
 func (o *BackupSnapshot) SetClusterId(v string) {
 	o.ClusterId = &v
+	o.NullFields = removeNullField(o.NullFields, "ClusterId")
+}
+
+// SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled.
+func (o *BackupSnapshot) SetClusterIdNil() {
+	o.ClusterId = nil
+	o.NullFields = addNullField(o.NullFields, "ClusterId")
 }
 
 // GetClusterName returns the ClusterName field value if set, zero value otherwise
@@ -121,6 +137,13 @@ func (o *BackupSnapshot) HasClusterName() bool {
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *BackupSnapshot) SetClusterName(v string) {
 	o.ClusterName = &v
+	o.NullFields = removeNullField(o.NullFields, "ClusterName")
+}
+
+// SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled.
+func (o *BackupSnapshot) SetClusterNameNil() {
+	o.ClusterName = nil
+	o.NullFields = addNullField(o.NullFields, "ClusterName")
 }
 
 // GetComplete returns the Complete field value if set, zero value otherwise
@@ -154,6 +177,13 @@ func (o *BackupSnapshot) HasComplete() bool {
 // SetComplete gets a reference to the given bool and assigns it to the Complete field.
 func (o *BackupSnapshot) SetComplete(v bool) {
 	o.Complete = &v
+	o.NullFields = removeNullField(o.NullFields, "Complete")
+}
+
+// SetCompleteNil sets Complete to an explicit JSON null when marshaled.
+func (o *BackupSnapshot) SetCompleteNil() {
+	o.Complete = nil
+	o.NullFields = addNullField(o.NullFields, "Complete")
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise
@@ -187,6 +217,13 @@ func (o *BackupSnapshot) HasCreated() bool {
 // SetCreated gets a reference to the given ApiBSONTimestamp and assigns it to the Created field.
 func (o *BackupSnapshot) SetCreated(v ApiBSONTimestamp) {
 	o.Created = &v
+	o.NullFields = removeNullField(o.NullFields, "Created")
+}
+
+// SetCreatedNil sets Created to an explicit JSON null when marshaled.
+func (o *BackupSnapshot) SetCreatedNil() {
+	o.Created = nil
+	o.NullFields = addNullField(o.NullFields, "Created")
 }
 
 // GetDoNotDelete returns the DoNotDelete field value if set, zero value otherwise
@@ -220,6 +257,13 @@ func (o *BackupSnapshot) HasDoNotDelete() bool {
 // SetDoNotDelete gets a reference to the given bool and assigns it to the DoNotDelete field.
 func (o *BackupSnapshot) SetDoNotDelete(v bool) {
 	o.DoNotDelete = &v
+	o.NullFields = removeNullField(o.NullFields, "DoNotDelete")
+}
+
+// SetDoNotDeleteNil sets DoNotDelete to an explicit JSON null when marshaled.
+func (o *BackupSnapshot) SetDoNotDeleteNil() {
+	o.DoNotDelete = nil
+	o.NullFields = addNullField(o.NullFields, "DoNotDelete")
 }
 
 // GetExpires returns the Expires field value if set, zero value otherwise
@@ -253,6 +297,13 @@ func (o *BackupSnapshot) HasExpires() bool {
 // SetExpires gets a reference to the given time.Time and assigns it to the Expires field.
 func (o *BackupSnapshot) SetExpires(v time.Time) {
 	o.Expires = &v
+	o.NullFields = removeNullField(o.NullFields, "Expires")
+}
+
+// SetExpiresNil sets Expires to an explicit JSON null when marshaled.
+func (o *BackupSnapshot) SetExpiresNil() {
+	o.Expires = nil
+	o.NullFields = addNullField(o.NullFields, "Expires")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -286,6 +337,13 @@ func (o *BackupSnapshot) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *BackupSnapshot) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *BackupSnapshot) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -319,6 +377,13 @@ func (o *BackupSnapshot) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *BackupSnapshot) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *BackupSnapshot) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetIncremental returns the Incremental field value if set, zero value otherwise
@@ -352,6 +417,13 @@ func (o *BackupSnapshot) HasIncremental() bool {
 // SetIncremental gets a reference to the given bool and assigns it to the Incremental field.
 func (o *BackupSnapshot) SetIncremental(v bool) {
 	o.Incremental = &v
+	o.NullFields = removeNullField(o.NullFields, "Incremental")
+}
+
+// SetIncrementalNil sets Incremental to an explicit JSON null when marshaled.
+func (o *BackupSnapshot) SetIncrementalNil() {
+	o.Incremental = nil
+	o.NullFields = addNullField(o.NullFields, "Incremental")
 }
 
 // GetLastOplogAppliedTimestamp returns the LastOplogAppliedTimestamp field value if set, zero value otherwise
@@ -385,6 +457,13 @@ func (o *BackupSnapshot) HasLastOplogAppliedTimestamp() bool {
 // SetLastOplogAppliedTimestamp gets a reference to the given ApiBSONTimestamp and assigns it to the LastOplogAppliedTimestamp field.
 func (o *BackupSnapshot) SetLastOplogAppliedTimestamp(v ApiBSONTimestamp) {
 	o.LastOplogAppliedTimestamp = &v
+	o.NullFields = removeNullField(o.NullFields, "LastOplogAppliedTimestamp")
+}
+
+// SetLastOplogAppliedTimestampNil sets LastOplogAppliedTimestamp to an explicit JSON null when marshaled.
+func (o *BackupSnapshot) SetLastOplogAppliedTimestampNil() {
+	o.LastOplogAppliedTimestamp = nil
+	o.NullFields = addNullField(o.NullFields, "LastOplogAppliedTimestamp")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -418,6 +497,13 @@ func (o *BackupSnapshot) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *BackupSnapshot) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *BackupSnapshot) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetParts returns the Parts field value if set, zero value otherwise
@@ -451,4 +537,11 @@ func (o *BackupSnapshot) HasParts() bool {
 // SetParts gets a reference to the given []BackupSnapshotPart and assigns it to the Parts field.
 func (o *BackupSnapshot) SetParts(v []BackupSnapshotPart) {
 	o.Parts = &v
+	o.NullFields = removeNullField(o.NullFields, "Parts")
+}
+
+// SetPartsNil sets Parts to an explicit JSON null when marshaled.
+func (o *BackupSnapshot) SetPartsNil() {
+	o.Parts = nil
+	o.NullFields = addNullField(o.NullFields, "Parts")
 }

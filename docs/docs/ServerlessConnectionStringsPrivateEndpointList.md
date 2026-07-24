@@ -51,6 +51,13 @@ SetEndpoints sets Endpoints field to given value.
 `func (o *ServerlessConnectionStringsPrivateEndpointList) HasEndpoints() bool`
 
 HasEndpoints returns a boolean if a field has been set.
+
+### SetEndpointsNil
+
+`func (o *ServerlessConnectionStringsPrivateEndpointList) SetEndpointsNil()`
+
+SetEndpointsNil sets Endpoints to an explicit JSON null when marshaled, overriding any value previously set with SetEndpoints. Calling SetEndpoints again clears the null override.
+
 ### GetSrvConnectionString
 
 `func (o *ServerlessConnectionStringsPrivateEndpointList) GetSrvConnectionString() string`
@@ -75,6 +82,13 @@ SetSrvConnectionString sets SrvConnectionString field to given value.
 `func (o *ServerlessConnectionStringsPrivateEndpointList) HasSrvConnectionString() bool`
 
 HasSrvConnectionString returns a boolean if a field has been set.
+
+### SetSrvConnectionStringNil
+
+`func (o *ServerlessConnectionStringsPrivateEndpointList) SetSrvConnectionStringNil()`
+
+SetSrvConnectionStringNil sets SrvConnectionString to an explicit JSON null when marshaled, overriding any value previously set with SetSrvConnectionString. Calling SetSrvConnectionString again clears the null override.
+
 ### GetType
 
 `func (o *ServerlessConnectionStringsPrivateEndpointList) GetType() string`
@@ -99,6 +113,13 @@ SetType sets Type field to given value.
 `func (o *ServerlessConnectionStringsPrivateEndpointList) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *ServerlessConnectionStringsPrivateEndpointList) SetTypeNil()`
+
+SetTypeNil sets Type to an explicit JSON null when marshaled, overriding any value previously set with SetType. Calling SetType again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

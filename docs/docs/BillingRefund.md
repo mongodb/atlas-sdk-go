@@ -52,6 +52,13 @@ SetAmountCents sets AmountCents field to given value.
 `func (o *BillingRefund) HasAmountCents() bool`
 
 HasAmountCents returns a boolean if a field has been set.
+
+### SetAmountCentsNil
+
+`func (o *BillingRefund) SetAmountCentsNil()`
+
+SetAmountCentsNil sets AmountCents to an explicit JSON null when marshaled, overriding any value previously set with SetAmountCents. Calling SetAmountCents again clears the null override.
+
 ### GetCreated
 
 `func (o *BillingRefund) GetCreated() time.Time`
@@ -76,6 +83,13 @@ SetCreated sets Created field to given value.
 `func (o *BillingRefund) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
+
+### SetCreatedNil
+
+`func (o *BillingRefund) SetCreatedNil()`
+
+SetCreatedNil sets Created to an explicit JSON null when marshaled, overriding any value previously set with SetCreated. Calling SetCreated again clears the null override.
+
 ### GetPaymentId
 
 `func (o *BillingRefund) GetPaymentId() string`
@@ -100,6 +114,13 @@ SetPaymentId sets PaymentId field to given value.
 `func (o *BillingRefund) HasPaymentId() bool`
 
 HasPaymentId returns a boolean if a field has been set.
+
+### SetPaymentIdNil
+
+`func (o *BillingRefund) SetPaymentIdNil()`
+
+SetPaymentIdNil sets PaymentId to an explicit JSON null when marshaled, overriding any value previously set with SetPaymentId. Calling SetPaymentId again clears the null override.
+
 ### GetReason
 
 `func (o *BillingRefund) GetReason() string`
@@ -124,6 +145,13 @@ SetReason sets Reason field to given value.
 `func (o *BillingRefund) HasReason() bool`
 
 HasReason returns a boolean if a field has been set.
+
+### SetReasonNil
+
+`func (o *BillingRefund) SetReasonNil()`
+
+SetReasonNil sets Reason to an explicit JSON null when marshaled, overriding any value previously set with SetReason. Calling SetReason again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

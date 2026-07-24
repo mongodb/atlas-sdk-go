@@ -52,6 +52,13 @@ SetCollections sets Collections field to given value.
 `func (o *DataLakeDatabaseInstance) HasCollections() bool`
 
 HasCollections returns a boolean if a field has been set.
+
+### SetCollectionsNil
+
+`func (o *DataLakeDatabaseInstance) SetCollectionsNil()`
+
+SetCollectionsNil sets Collections to an explicit JSON null when marshaled, overriding any value previously set with SetCollections. Calling SetCollections again clears the null override.
+
 ### GetMaxWildcardCollections
 
 `func (o *DataLakeDatabaseInstance) GetMaxWildcardCollections() int`
@@ -76,6 +83,13 @@ SetMaxWildcardCollections sets MaxWildcardCollections field to given value.
 `func (o *DataLakeDatabaseInstance) HasMaxWildcardCollections() bool`
 
 HasMaxWildcardCollections returns a boolean if a field has been set.
+
+### SetMaxWildcardCollectionsNil
+
+`func (o *DataLakeDatabaseInstance) SetMaxWildcardCollectionsNil()`
+
+SetMaxWildcardCollectionsNil sets MaxWildcardCollections to an explicit JSON null when marshaled, overriding any value previously set with SetMaxWildcardCollections. Calling SetMaxWildcardCollections again clears the null override.
+
 ### GetName
 
 `func (o *DataLakeDatabaseInstance) GetName() string`
@@ -100,6 +114,13 @@ SetName sets Name field to given value.
 `func (o *DataLakeDatabaseInstance) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *DataLakeDatabaseInstance) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetViews
 
 `func (o *DataLakeDatabaseInstance) GetViews() []DataLakeApiBase`
@@ -124,6 +145,13 @@ SetViews sets Views field to given value.
 `func (o *DataLakeDatabaseInstance) HasViews() bool`
 
 HasViews returns a boolean if a field has been set.
+
+### SetViewsNil
+
+`func (o *DataLakeDatabaseInstance) SetViewsNil()`
+
+SetViewsNil sets Views to an explicit JSON null when marshaled, overriding any value previously set with SetViews. Calling SetViews again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

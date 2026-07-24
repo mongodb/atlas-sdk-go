@@ -50,6 +50,13 @@ SetNamespace sets Namespace field to given value.
 `func (o *NamespaceObj) HasNamespace() bool`
 
 HasNamespace returns a boolean if a field has been set.
+
+### SetNamespaceNil
+
+`func (o *NamespaceObj) SetNamespaceNil()`
+
+SetNamespaceNil sets Namespace to an explicit JSON null when marshaled, overriding any value previously set with SetNamespace. Calling SetNamespace again clears the null override.
+
 ### GetType
 
 `func (o *NamespaceObj) GetType() string`
@@ -74,6 +81,13 @@ SetType sets Type field to given value.
 `func (o *NamespaceObj) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *NamespaceObj) SetTypeNil()`
+
+SetTypeNil sets Type to an explicit JSON null when marshaled, overriding any value previously set with SetType. Calling SetType again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

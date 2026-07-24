@@ -51,6 +51,13 @@ SetCustomerX509 sets CustomerX509 field to given value.
 `func (o *UserSecurity) HasCustomerX509() bool`
 
 HasCustomerX509 returns a boolean if a field has been set.
+
+### SetCustomerX509Nil
+
+`func (o *UserSecurity) SetCustomerX509Nil()`
+
+SetCustomerX509Nil sets CustomerX509 to an explicit JSON null when marshaled, overriding any value previously set with SetCustomerX509. Calling SetCustomerX509 again clears the null override.
+
 ### GetLdap
 
 `func (o *UserSecurity) GetLdap() LDAPSecuritySettings`
@@ -75,6 +82,13 @@ SetLdap sets Ldap field to given value.
 `func (o *UserSecurity) HasLdap() bool`
 
 HasLdap returns a boolean if a field has been set.
+
+### SetLdapNil
+
+`func (o *UserSecurity) SetLdapNil()`
+
+SetLdapNil sets Ldap to an explicit JSON null when marshaled, overriding any value previously set with SetLdap. Calling SetLdap again clears the null override.
+
 ### GetLinks
 
 `func (o *UserSecurity) GetLinks() []Link`
@@ -99,6 +113,13 @@ SetLinks sets Links field to given value.
 `func (o *UserSecurity) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *UserSecurity) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

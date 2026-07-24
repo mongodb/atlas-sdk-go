@@ -51,6 +51,13 @@ SetDownloadUrl sets DownloadUrl field to given value.
 `func (o *DiskBackupRestoreMember) HasDownloadUrl() bool`
 
 HasDownloadUrl returns a boolean if a field has been set.
+
+### SetDownloadUrlNil
+
+`func (o *DiskBackupRestoreMember) SetDownloadUrlNil()`
+
+SetDownloadUrlNil sets DownloadUrl to an explicit JSON null when marshaled, overriding any value previously set with SetDownloadUrl. Calling SetDownloadUrl again clears the null override.
+
 ### GetPrivateDownloadDeliveryUrls
 
 `func (o *DiskBackupRestoreMember) GetPrivateDownloadDeliveryUrls() []ApiPrivateDownloadDeliveryUrl`
@@ -75,6 +82,13 @@ SetPrivateDownloadDeliveryUrls sets PrivateDownloadDeliveryUrls field to given v
 `func (o *DiskBackupRestoreMember) HasPrivateDownloadDeliveryUrls() bool`
 
 HasPrivateDownloadDeliveryUrls returns a boolean if a field has been set.
+
+### SetPrivateDownloadDeliveryUrlsNil
+
+`func (o *DiskBackupRestoreMember) SetPrivateDownloadDeliveryUrlsNil()`
+
+SetPrivateDownloadDeliveryUrlsNil sets PrivateDownloadDeliveryUrls to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateDownloadDeliveryUrls. Calling SetPrivateDownloadDeliveryUrls again clears the null override.
+
 ### GetReplicaSetName
 
 `func (o *DiskBackupRestoreMember) GetReplicaSetName() string`
@@ -99,6 +113,13 @@ SetReplicaSetName sets ReplicaSetName field to given value.
 `func (o *DiskBackupRestoreMember) HasReplicaSetName() bool`
 
 HasReplicaSetName returns a boolean if a field has been set.
+
+### SetReplicaSetNameNil
+
+`func (o *DiskBackupRestoreMember) SetReplicaSetNameNil()`
+
+SetReplicaSetNameNil sets ReplicaSetName to an explicit JSON null when marshaled, overriding any value previously set with SetReplicaSetName. Calling SetReplicaSetName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -51,6 +51,13 @@ SetLdapQuery sets LdapQuery field to given value.
 `func (o *UserToDNMapping) HasLdapQuery() bool`
 
 HasLdapQuery returns a boolean if a field has been set.
+
+### SetLdapQueryNil
+
+`func (o *UserToDNMapping) SetLdapQueryNil()`
+
+SetLdapQueryNil sets LdapQuery to an explicit JSON null when marshaled, overriding any value previously set with SetLdapQuery. Calling SetLdapQuery again clears the null override.
+
 ### GetMatch
 
 `func (o *UserToDNMapping) GetMatch() string`
@@ -94,6 +101,13 @@ SetSubstitution sets Substitution field to given value.
 `func (o *UserToDNMapping) HasSubstitution() bool`
 
 HasSubstitution returns a boolean if a field has been set.
+
+### SetSubstitutionNil
+
+`func (o *UserToDNMapping) SetSubstitutionNil()`
+
+SetSubstitutionNil sets Substitution to an explicit JSON null when marshaled, overriding any value previously set with SetSubstitution. Calling SetSubstitution again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

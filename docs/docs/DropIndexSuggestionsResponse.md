@@ -51,6 +51,13 @@ SetHiddenIndexes sets HiddenIndexes field to given value.
 `func (o *DropIndexSuggestionsResponse) HasHiddenIndexes() bool`
 
 HasHiddenIndexes returns a boolean if a field has been set.
+
+### SetHiddenIndexesNil
+
+`func (o *DropIndexSuggestionsResponse) SetHiddenIndexesNil()`
+
+SetHiddenIndexesNil sets HiddenIndexes to an explicit JSON null when marshaled, overriding any value previously set with SetHiddenIndexes. Calling SetHiddenIndexes again clears the null override.
+
 ### GetRedundantIndexes
 
 `func (o *DropIndexSuggestionsResponse) GetRedundantIndexes() []DropIndexSuggestionsIndex`
@@ -75,6 +82,13 @@ SetRedundantIndexes sets RedundantIndexes field to given value.
 `func (o *DropIndexSuggestionsResponse) HasRedundantIndexes() bool`
 
 HasRedundantIndexes returns a boolean if a field has been set.
+
+### SetRedundantIndexesNil
+
+`func (o *DropIndexSuggestionsResponse) SetRedundantIndexesNil()`
+
+SetRedundantIndexesNil sets RedundantIndexes to an explicit JSON null when marshaled, overriding any value previously set with SetRedundantIndexes. Calling SetRedundantIndexes again clears the null override.
+
 ### GetUnusedIndexes
 
 `func (o *DropIndexSuggestionsResponse) GetUnusedIndexes() []DropIndexSuggestionsIndex`
@@ -99,6 +113,13 @@ SetUnusedIndexes sets UnusedIndexes field to given value.
 `func (o *DropIndexSuggestionsResponse) HasUnusedIndexes() bool`
 
 HasUnusedIndexes returns a boolean if a field has been set.
+
+### SetUnusedIndexesNil
+
+`func (o *DropIndexSuggestionsResponse) SetUnusedIndexesNil()`
+
+SetUnusedIndexesNil sets UnusedIndexes to an explicit JSON null when marshaled, overriding any value previously set with SetUnusedIndexes. Calling SetUnusedIndexes again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

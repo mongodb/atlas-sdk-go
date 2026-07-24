@@ -6,6 +6,15 @@ package admin
 type QueryShapeUpdateRequest struct {
 	// The rejection status of a query shape. Use REJECTED to prevent the query shape from executing on the cluster, or UNREJECTED to allow it to execute.
 	Status string `json:"status"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *QueryShapeUpdateRequest) MarshalJSON() ([]byte, error) {
+	type noMethod QueryShapeUpdateRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewQueryShapeUpdateRequest instantiates a new QueryShapeUpdateRequest object

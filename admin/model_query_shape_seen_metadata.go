@@ -12,6 +12,15 @@ type QueryShapeSeenMetadata struct {
 	DriverVersion *string `json:"driverVersion,omitempty"`
 	// Unix epoch milliseconds of the time.
 	Timestamp *int64 `json:"timestamp,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *QueryShapeSeenMetadata) MarshalJSON() ([]byte, error) {
+	type noMethod QueryShapeSeenMetadata
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewQueryShapeSeenMetadata instantiates a new QueryShapeSeenMetadata object
@@ -62,6 +71,13 @@ func (o *QueryShapeSeenMetadata) HasApplicationName() bool {
 // SetApplicationName gets a reference to the given string and assigns it to the ApplicationName field.
 func (o *QueryShapeSeenMetadata) SetApplicationName(v string) {
 	o.ApplicationName = &v
+	o.NullFields = removeNullField(o.NullFields, "ApplicationName")
+}
+
+// SetApplicationNameNil sets ApplicationName to an explicit JSON null when marshaled.
+func (o *QueryShapeSeenMetadata) SetApplicationNameNil() {
+	o.ApplicationName = nil
+	o.NullFields = addNullField(o.NullFields, "ApplicationName")
 }
 
 // GetDriverName returns the DriverName field value if set, zero value otherwise
@@ -95,6 +111,13 @@ func (o *QueryShapeSeenMetadata) HasDriverName() bool {
 // SetDriverName gets a reference to the given string and assigns it to the DriverName field.
 func (o *QueryShapeSeenMetadata) SetDriverName(v string) {
 	o.DriverName = &v
+	o.NullFields = removeNullField(o.NullFields, "DriverName")
+}
+
+// SetDriverNameNil sets DriverName to an explicit JSON null when marshaled.
+func (o *QueryShapeSeenMetadata) SetDriverNameNil() {
+	o.DriverName = nil
+	o.NullFields = addNullField(o.NullFields, "DriverName")
 }
 
 // GetDriverVersion returns the DriverVersion field value if set, zero value otherwise
@@ -128,6 +151,13 @@ func (o *QueryShapeSeenMetadata) HasDriverVersion() bool {
 // SetDriverVersion gets a reference to the given string and assigns it to the DriverVersion field.
 func (o *QueryShapeSeenMetadata) SetDriverVersion(v string) {
 	o.DriverVersion = &v
+	o.NullFields = removeNullField(o.NullFields, "DriverVersion")
+}
+
+// SetDriverVersionNil sets DriverVersion to an explicit JSON null when marshaled.
+func (o *QueryShapeSeenMetadata) SetDriverVersionNil() {
+	o.DriverVersion = nil
+	o.NullFields = addNullField(o.NullFields, "DriverVersion")
 }
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise
@@ -161,4 +191,11 @@ func (o *QueryShapeSeenMetadata) HasTimestamp() bool {
 // SetTimestamp gets a reference to the given int64 and assigns it to the Timestamp field.
 func (o *QueryShapeSeenMetadata) SetTimestamp(v int64) {
 	o.Timestamp = &v
+	o.NullFields = removeNullField(o.NullFields, "Timestamp")
+}
+
+// SetTimestampNil sets Timestamp to an explicit JSON null when marshaled.
+func (o *QueryShapeSeenMetadata) SetTimestampNil() {
+	o.Timestamp = nil
+	o.NullFields = addNullField(o.NullFields, "Timestamp")
 }

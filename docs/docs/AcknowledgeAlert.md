@@ -52,6 +52,13 @@ SetAcknowledgedUntil sets AcknowledgedUntil field to given value.
 `func (o *AcknowledgeAlert) HasAcknowledgedUntil() bool`
 
 HasAcknowledgedUntil returns a boolean if a field has been set.
+
+### SetAcknowledgedUntilNil
+
+`func (o *AcknowledgeAlert) SetAcknowledgedUntilNil()`
+
+SetAcknowledgedUntilNil sets AcknowledgedUntil to an explicit JSON null when marshaled, overriding any value previously set with SetAcknowledgedUntil. Calling SetAcknowledgedUntil again clears the null override.
+
 ### GetAcknowledgementComment
 
 `func (o *AcknowledgeAlert) GetAcknowledgementComment() string`
@@ -76,6 +83,13 @@ SetAcknowledgementComment sets AcknowledgementComment field to given value.
 `func (o *AcknowledgeAlert) HasAcknowledgementComment() bool`
 
 HasAcknowledgementComment returns a boolean if a field has been set.
+
+### SetAcknowledgementCommentNil
+
+`func (o *AcknowledgeAlert) SetAcknowledgementCommentNil()`
+
+SetAcknowledgementCommentNil sets AcknowledgementComment to an explicit JSON null when marshaled, overriding any value previously set with SetAcknowledgementComment. Calling SetAcknowledgementComment again clears the null override.
+
 ### GetLinks
 
 `func (o *AcknowledgeAlert) GetLinks() []Link`
@@ -100,6 +114,13 @@ SetLinks sets Links field to given value.
 `func (o *AcknowledgeAlert) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *AcknowledgeAlert) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetUnacknowledgeAlert
 
 `func (o *AcknowledgeAlert) GetUnacknowledgeAlert() bool`
@@ -124,6 +145,13 @@ SetUnacknowledgeAlert sets UnacknowledgeAlert field to given value.
 `func (o *AcknowledgeAlert) HasUnacknowledgeAlert() bool`
 
 HasUnacknowledgeAlert returns a boolean if a field has been set.
+
+### SetUnacknowledgeAlertNil
+
+`func (o *AcknowledgeAlert) SetUnacknowledgeAlertNil()`
+
+SetUnacknowledgeAlertNil sets UnacknowledgeAlert to an explicit JSON null when marshaled, overriding any value previously set with SetUnacknowledgeAlert. Calling SetUnacknowledgeAlert again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

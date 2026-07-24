@@ -20,6 +20,15 @@ type CostExplorerFilterRequestBody struct {
 	Services *[]string `json:"services,omitempty"`
 	// The inclusive starting date for the Cost Explorer query. The date must be the start of a month.
 	StartDate string `json:"startDate"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CostExplorerFilterRequestBody) MarshalJSON() ([]byte, error) {
+	type noMethod CostExplorerFilterRequestBody
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCostExplorerFilterRequestBody instantiates a new CostExplorerFilterRequestBody object
@@ -72,6 +81,13 @@ func (o *CostExplorerFilterRequestBody) HasClusters() bool {
 // SetClusters gets a reference to the given []string and assigns it to the Clusters field.
 func (o *CostExplorerFilterRequestBody) SetClusters(v []string) {
 	o.Clusters = &v
+	o.NullFields = removeNullField(o.NullFields, "Clusters")
+}
+
+// SetClustersNil sets Clusters to an explicit JSON null when marshaled.
+func (o *CostExplorerFilterRequestBody) SetClustersNil() {
+	o.Clusters = nil
+	o.NullFields = addNullField(o.NullFields, "Clusters")
 }
 
 // GetEndDate returns the EndDate field value
@@ -129,6 +145,13 @@ func (o *CostExplorerFilterRequestBody) HasGroupBy() bool {
 // SetGroupBy gets a reference to the given string and assigns it to the GroupBy field.
 func (o *CostExplorerFilterRequestBody) SetGroupBy(v string) {
 	o.GroupBy = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupBy")
+}
+
+// SetGroupByNil sets GroupBy to an explicit JSON null when marshaled.
+func (o *CostExplorerFilterRequestBody) SetGroupByNil() {
+	o.GroupBy = nil
+	o.NullFields = addNullField(o.NullFields, "GroupBy")
 }
 
 // GetIncludePartialMatches returns the IncludePartialMatches field value if set, zero value otherwise
@@ -162,6 +185,13 @@ func (o *CostExplorerFilterRequestBody) HasIncludePartialMatches() bool {
 // SetIncludePartialMatches gets a reference to the given bool and assigns it to the IncludePartialMatches field.
 func (o *CostExplorerFilterRequestBody) SetIncludePartialMatches(v bool) {
 	o.IncludePartialMatches = &v
+	o.NullFields = removeNullField(o.NullFields, "IncludePartialMatches")
+}
+
+// SetIncludePartialMatchesNil sets IncludePartialMatches to an explicit JSON null when marshaled.
+func (o *CostExplorerFilterRequestBody) SetIncludePartialMatchesNil() {
+	o.IncludePartialMatches = nil
+	o.NullFields = addNullField(o.NullFields, "IncludePartialMatches")
 }
 
 // GetOrganizations returns the Organizations field value if set, zero value otherwise
@@ -195,6 +225,13 @@ func (o *CostExplorerFilterRequestBody) HasOrganizations() bool {
 // SetOrganizations gets a reference to the given []string and assigns it to the Organizations field.
 func (o *CostExplorerFilterRequestBody) SetOrganizations(v []string) {
 	o.Organizations = &v
+	o.NullFields = removeNullField(o.NullFields, "Organizations")
+}
+
+// SetOrganizationsNil sets Organizations to an explicit JSON null when marshaled.
+func (o *CostExplorerFilterRequestBody) SetOrganizationsNil() {
+	o.Organizations = nil
+	o.NullFields = addNullField(o.NullFields, "Organizations")
 }
 
 // GetProjects returns the Projects field value if set, zero value otherwise
@@ -228,6 +265,13 @@ func (o *CostExplorerFilterRequestBody) HasProjects() bool {
 // SetProjects gets a reference to the given []string and assigns it to the Projects field.
 func (o *CostExplorerFilterRequestBody) SetProjects(v []string) {
 	o.Projects = &v
+	o.NullFields = removeNullField(o.NullFields, "Projects")
+}
+
+// SetProjectsNil sets Projects to an explicit JSON null when marshaled.
+func (o *CostExplorerFilterRequestBody) SetProjectsNil() {
+	o.Projects = nil
+	o.NullFields = addNullField(o.NullFields, "Projects")
 }
 
 // GetServices returns the Services field value if set, zero value otherwise
@@ -261,6 +305,13 @@ func (o *CostExplorerFilterRequestBody) HasServices() bool {
 // SetServices gets a reference to the given []string and assigns it to the Services field.
 func (o *CostExplorerFilterRequestBody) SetServices(v []string) {
 	o.Services = &v
+	o.NullFields = removeNullField(o.NullFields, "Services")
+}
+
+// SetServicesNil sets Services to an explicit JSON null when marshaled.
+func (o *CostExplorerFilterRequestBody) SetServicesNil() {
+	o.Services = nil
+	o.NullFields = addNullField(o.NullFields, "Services")
 }
 
 // GetStartDate returns the StartDate field value

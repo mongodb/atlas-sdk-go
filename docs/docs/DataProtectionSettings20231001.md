@@ -119,6 +119,13 @@ SetCopyProtectionEnabled sets CopyProtectionEnabled field to given value.
 `func (o *DataProtectionSettings20231001) HasCopyProtectionEnabled() bool`
 
 HasCopyProtectionEnabled returns a boolean if a field has been set.
+
+### SetCopyProtectionEnabledNil
+
+`func (o *DataProtectionSettings20231001) SetCopyProtectionEnabledNil()`
+
+SetCopyProtectionEnabledNil sets CopyProtectionEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetCopyProtectionEnabled. Calling SetCopyProtectionEnabled again clears the null override.
+
 ### GetDeletable
 
 `func (o *DataProtectionSettings20231001) GetDeletable() bool`
@@ -143,6 +150,13 @@ SetDeletable sets Deletable field to given value.
 `func (o *DataProtectionSettings20231001) HasDeletable() bool`
 
 HasDeletable returns a boolean if a field has been set.
+
+### SetDeletableNil
+
+`func (o *DataProtectionSettings20231001) SetDeletableNil()`
+
+SetDeletableNil sets Deletable to an explicit JSON null when marshaled, overriding any value previously set with SetDeletable. Calling SetDeletable again clears the null override.
+
 ### GetEncryptionAtRestEnabled
 
 `func (o *DataProtectionSettings20231001) GetEncryptionAtRestEnabled() bool`
@@ -167,6 +181,13 @@ SetEncryptionAtRestEnabled sets EncryptionAtRestEnabled field to given value.
 `func (o *DataProtectionSettings20231001) HasEncryptionAtRestEnabled() bool`
 
 HasEncryptionAtRestEnabled returns a boolean if a field has been set.
+
+### SetEncryptionAtRestEnabledNil
+
+`func (o *DataProtectionSettings20231001) SetEncryptionAtRestEnabledNil()`
+
+SetEncryptionAtRestEnabledNil sets EncryptionAtRestEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetEncryptionAtRestEnabled. Calling SetEncryptionAtRestEnabled again clears the null override.
+
 ### GetOnDemandPolicyItem
 
 `func (o *DataProtectionSettings20231001) GetOnDemandPolicyItem() BackupComplianceOnDemandPolicyItem`
@@ -191,6 +212,13 @@ SetOnDemandPolicyItem sets OnDemandPolicyItem field to given value.
 `func (o *DataProtectionSettings20231001) HasOnDemandPolicyItem() bool`
 
 HasOnDemandPolicyItem returns a boolean if a field has been set.
+
+### SetOnDemandPolicyItemNil
+
+`func (o *DataProtectionSettings20231001) SetOnDemandPolicyItemNil()`
+
+SetOnDemandPolicyItemNil sets OnDemandPolicyItem to an explicit JSON null when marshaled, overriding any value previously set with SetOnDemandPolicyItem. Calling SetOnDemandPolicyItem again clears the null override.
+
 ### GetPitEnabled
 
 `func (o *DataProtectionSettings20231001) GetPitEnabled() bool`
@@ -215,6 +243,13 @@ SetPitEnabled sets PitEnabled field to given value.
 `func (o *DataProtectionSettings20231001) HasPitEnabled() bool`
 
 HasPitEnabled returns a boolean if a field has been set.
+
+### SetPitEnabledNil
+
+`func (o *DataProtectionSettings20231001) SetPitEnabledNil()`
+
+SetPitEnabledNil sets PitEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetPitEnabled. Calling SetPitEnabled again clears the null override.
+
 ### GetProjectId
 
 `func (o *DataProtectionSettings20231001) GetProjectId() string`
@@ -239,6 +274,13 @@ SetProjectId sets ProjectId field to given value.
 `func (o *DataProtectionSettings20231001) HasProjectId() bool`
 
 HasProjectId returns a boolean if a field has been set.
+
+### SetProjectIdNil
+
+`func (o *DataProtectionSettings20231001) SetProjectIdNil()`
+
+SetProjectIdNil sets ProjectId to an explicit JSON null when marshaled, overriding any value previously set with SetProjectId. Calling SetProjectId again clears the null override.
+
 ### GetRestoreWindowDays
 
 `func (o *DataProtectionSettings20231001) GetRestoreWindowDays() int`
@@ -263,6 +305,13 @@ SetRestoreWindowDays sets RestoreWindowDays field to given value.
 `func (o *DataProtectionSettings20231001) HasRestoreWindowDays() bool`
 
 HasRestoreWindowDays returns a boolean if a field has been set.
+
+### SetRestoreWindowDaysNil
+
+`func (o *DataProtectionSettings20231001) SetRestoreWindowDaysNil()`
+
+SetRestoreWindowDaysNil sets RestoreWindowDays to an explicit JSON null when marshaled, overriding any value previously set with SetRestoreWindowDays. Calling SetRestoreWindowDays again clears the null override.
+
 ### GetScheduledPolicyItems
 
 `func (o *DataProtectionSettings20231001) GetScheduledPolicyItems() []BackupComplianceScheduledPolicyItem`
@@ -287,6 +336,13 @@ SetScheduledPolicyItems sets ScheduledPolicyItems field to given value.
 `func (o *DataProtectionSettings20231001) HasScheduledPolicyItems() bool`
 
 HasScheduledPolicyItems returns a boolean if a field has been set.
+
+### SetScheduledPolicyItemsNil
+
+`func (o *DataProtectionSettings20231001) SetScheduledPolicyItemsNil()`
+
+SetScheduledPolicyItemsNil sets ScheduledPolicyItems to an explicit JSON null when marshaled, overriding any value previously set with SetScheduledPolicyItems. Calling SetScheduledPolicyItems again clears the null override.
+
 ### GetState
 
 `func (o *DataProtectionSettings20231001) GetState() string`
@@ -311,6 +367,13 @@ SetState sets State field to given value.
 `func (o *DataProtectionSettings20231001) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### SetStateNil
+
+`func (o *DataProtectionSettings20231001) SetStateNil()`
+
+SetStateNil sets State to an explicit JSON null when marshaled, overriding any value previously set with SetState. Calling SetState again clears the null override.
+
 ### GetUpdatedDate
 
 `func (o *DataProtectionSettings20231001) GetUpdatedDate() time.Time`
@@ -335,6 +398,13 @@ SetUpdatedDate sets UpdatedDate field to given value.
 `func (o *DataProtectionSettings20231001) HasUpdatedDate() bool`
 
 HasUpdatedDate returns a boolean if a field has been set.
+
+### SetUpdatedDateNil
+
+`func (o *DataProtectionSettings20231001) SetUpdatedDateNil()`
+
+SetUpdatedDateNil sets UpdatedDate to an explicit JSON null when marshaled, overriding any value previously set with SetUpdatedDate. Calling SetUpdatedDate again clears the null override.
+
 ### GetUpdatedUser
 
 `func (o *DataProtectionSettings20231001) GetUpdatedUser() string`
@@ -359,6 +429,13 @@ SetUpdatedUser sets UpdatedUser field to given value.
 `func (o *DataProtectionSettings20231001) HasUpdatedUser() bool`
 
 HasUpdatedUser returns a boolean if a field has been set.
+
+### SetUpdatedUserNil
+
+`func (o *DataProtectionSettings20231001) SetUpdatedUserNil()`
+
+SetUpdatedUserNil sets UpdatedUser to an explicit JSON null when marshaled, overriding any value previously set with SetUpdatedUser. Calling SetUpdatedUser again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

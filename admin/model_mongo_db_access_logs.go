@@ -30,6 +30,15 @@ type MongoDBAccessLogs struct {
 	// Username used to authenticate against the database.
 	// Read only field.
 	Username *string `json:"username,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *MongoDBAccessLogs) MarshalJSON() ([]byte, error) {
+	type noMethod MongoDBAccessLogs
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewMongoDBAccessLogs instantiates a new MongoDBAccessLogs object
@@ -80,6 +89,13 @@ func (o *MongoDBAccessLogs) HasAuthResult() bool {
 // SetAuthResult gets a reference to the given bool and assigns it to the AuthResult field.
 func (o *MongoDBAccessLogs) SetAuthResult(v bool) {
 	o.AuthResult = &v
+	o.NullFields = removeNullField(o.NullFields, "AuthResult")
+}
+
+// SetAuthResultNil sets AuthResult to an explicit JSON null when marshaled.
+func (o *MongoDBAccessLogs) SetAuthResultNil() {
+	o.AuthResult = nil
+	o.NullFields = addNullField(o.NullFields, "AuthResult")
 }
 
 // GetAuthSource returns the AuthSource field value if set, zero value otherwise
@@ -113,6 +129,13 @@ func (o *MongoDBAccessLogs) HasAuthSource() bool {
 // SetAuthSource gets a reference to the given string and assigns it to the AuthSource field.
 func (o *MongoDBAccessLogs) SetAuthSource(v string) {
 	o.AuthSource = &v
+	o.NullFields = removeNullField(o.NullFields, "AuthSource")
+}
+
+// SetAuthSourceNil sets AuthSource to an explicit JSON null when marshaled.
+func (o *MongoDBAccessLogs) SetAuthSourceNil() {
+	o.AuthSource = nil
+	o.NullFields = addNullField(o.NullFields, "AuthSource")
 }
 
 // GetFailureReason returns the FailureReason field value if set, zero value otherwise
@@ -146,6 +169,13 @@ func (o *MongoDBAccessLogs) HasFailureReason() bool {
 // SetFailureReason gets a reference to the given string and assigns it to the FailureReason field.
 func (o *MongoDBAccessLogs) SetFailureReason(v string) {
 	o.FailureReason = &v
+	o.NullFields = removeNullField(o.NullFields, "FailureReason")
+}
+
+// SetFailureReasonNil sets FailureReason to an explicit JSON null when marshaled.
+func (o *MongoDBAccessLogs) SetFailureReasonNil() {
+	o.FailureReason = nil
+	o.NullFields = addNullField(o.NullFields, "FailureReason")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -179,6 +209,13 @@ func (o *MongoDBAccessLogs) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *MongoDBAccessLogs) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *MongoDBAccessLogs) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetHostname returns the Hostname field value if set, zero value otherwise
@@ -212,6 +249,13 @@ func (o *MongoDBAccessLogs) HasHostname() bool {
 // SetHostname gets a reference to the given string and assigns it to the Hostname field.
 func (o *MongoDBAccessLogs) SetHostname(v string) {
 	o.Hostname = &v
+	o.NullFields = removeNullField(o.NullFields, "Hostname")
+}
+
+// SetHostnameNil sets Hostname to an explicit JSON null when marshaled.
+func (o *MongoDBAccessLogs) SetHostnameNil() {
+	o.Hostname = nil
+	o.NullFields = addNullField(o.NullFields, "Hostname")
 }
 
 // GetIpAddress returns the IpAddress field value if set, zero value otherwise
@@ -245,6 +289,13 @@ func (o *MongoDBAccessLogs) HasIpAddress() bool {
 // SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *MongoDBAccessLogs) SetIpAddress(v string) {
 	o.IpAddress = &v
+	o.NullFields = removeNullField(o.NullFields, "IpAddress")
+}
+
+// SetIpAddressNil sets IpAddress to an explicit JSON null when marshaled.
+func (o *MongoDBAccessLogs) SetIpAddressNil() {
+	o.IpAddress = nil
+	o.NullFields = addNullField(o.NullFields, "IpAddress")
 }
 
 // GetLogLine returns the LogLine field value if set, zero value otherwise
@@ -278,6 +329,13 @@ func (o *MongoDBAccessLogs) HasLogLine() bool {
 // SetLogLine gets a reference to the given string and assigns it to the LogLine field.
 func (o *MongoDBAccessLogs) SetLogLine(v string) {
 	o.LogLine = &v
+	o.NullFields = removeNullField(o.NullFields, "LogLine")
+}
+
+// SetLogLineNil sets LogLine to an explicit JSON null when marshaled.
+func (o *MongoDBAccessLogs) SetLogLineNil() {
+	o.LogLine = nil
+	o.NullFields = addNullField(o.NullFields, "LogLine")
 }
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise
@@ -311,6 +369,13 @@ func (o *MongoDBAccessLogs) HasTimestamp() bool {
 // SetTimestamp gets a reference to the given string and assigns it to the Timestamp field.
 func (o *MongoDBAccessLogs) SetTimestamp(v string) {
 	o.Timestamp = &v
+	o.NullFields = removeNullField(o.NullFields, "Timestamp")
+}
+
+// SetTimestampNil sets Timestamp to an explicit JSON null when marshaled.
+func (o *MongoDBAccessLogs) SetTimestampNil() {
+	o.Timestamp = nil
+	o.NullFields = addNullField(o.NullFields, "Timestamp")
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise
@@ -344,4 +409,11 @@ func (o *MongoDBAccessLogs) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *MongoDBAccessLogs) SetUsername(v string) {
 	o.Username = &v
+	o.NullFields = removeNullField(o.NullFields, "Username")
+}
+
+// SetUsernameNil sets Username to an explicit JSON null when marshaled.
+func (o *MongoDBAccessLogs) SetUsernameNil() {
+	o.Username = nil
+	o.NullFields = addNullField(o.NullFields, "Username")
 }

@@ -57,6 +57,13 @@ SetApiAccessListRequired sets ApiAccessListRequired field to given value.
 `func (o *OrganizationSettings) HasApiAccessListRequired() bool`
 
 HasApiAccessListRequired returns a boolean if a field has been set.
+
+### SetApiAccessListRequiredNil
+
+`func (o *OrganizationSettings) SetApiAccessListRequiredNil()`
+
+SetApiAccessListRequiredNil sets ApiAccessListRequired to an explicit JSON null when marshaled, overriding any value previously set with SetApiAccessListRequired. Calling SetApiAccessListRequired again clears the null override.
+
 ### GetCustomSessionTimeouts
 
 `func (o *OrganizationSettings) GetCustomSessionTimeouts() CustomSessionTimeouts`
@@ -81,6 +88,13 @@ SetCustomSessionTimeouts sets CustomSessionTimeouts field to given value.
 `func (o *OrganizationSettings) HasCustomSessionTimeouts() bool`
 
 HasCustomSessionTimeouts returns a boolean if a field has been set.
+
+### SetCustomSessionTimeoutsNil
+
+`func (o *OrganizationSettings) SetCustomSessionTimeoutsNil()`
+
+SetCustomSessionTimeoutsNil sets CustomSessionTimeouts to an explicit JSON null when marshaled, overriding any value previously set with SetCustomSessionTimeouts. Calling SetCustomSessionTimeouts again clears the null override.
+
 ### GetGenAIFeaturesEnabled
 
 `func (o *OrganizationSettings) GetGenAIFeaturesEnabled() bool`
@@ -105,6 +119,13 @@ SetGenAIFeaturesEnabled sets GenAIFeaturesEnabled field to given value.
 `func (o *OrganizationSettings) HasGenAIFeaturesEnabled() bool`
 
 HasGenAIFeaturesEnabled returns a boolean if a field has been set.
+
+### SetGenAIFeaturesEnabledNil
+
+`func (o *OrganizationSettings) SetGenAIFeaturesEnabledNil()`
+
+SetGenAIFeaturesEnabledNil sets GenAIFeaturesEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetGenAIFeaturesEnabled. Calling SetGenAIFeaturesEnabled again clears the null override.
+
 ### GetMaxServiceAccountSecretValidityInHours
 
 `func (o *OrganizationSettings) GetMaxServiceAccountSecretValidityInHours() int`
@@ -129,6 +150,13 @@ SetMaxServiceAccountSecretValidityInHours sets MaxServiceAccountSecretValidityIn
 `func (o *OrganizationSettings) HasMaxServiceAccountSecretValidityInHours() bool`
 
 HasMaxServiceAccountSecretValidityInHours returns a boolean if a field has been set.
+
+### SetMaxServiceAccountSecretValidityInHoursNil
+
+`func (o *OrganizationSettings) SetMaxServiceAccountSecretValidityInHoursNil()`
+
+SetMaxServiceAccountSecretValidityInHoursNil sets MaxServiceAccountSecretValidityInHours to an explicit JSON null when marshaled, overriding any value previously set with SetMaxServiceAccountSecretValidityInHours. Calling SetMaxServiceAccountSecretValidityInHours again clears the null override.
+
 ### GetMultiFactorAuthRequired
 
 `func (o *OrganizationSettings) GetMultiFactorAuthRequired() bool`
@@ -153,6 +181,13 @@ SetMultiFactorAuthRequired sets MultiFactorAuthRequired field to given value.
 `func (o *OrganizationSettings) HasMultiFactorAuthRequired() bool`
 
 HasMultiFactorAuthRequired returns a boolean if a field has been set.
+
+### SetMultiFactorAuthRequiredNil
+
+`func (o *OrganizationSettings) SetMultiFactorAuthRequiredNil()`
+
+SetMultiFactorAuthRequiredNil sets MultiFactorAuthRequired to an explicit JSON null when marshaled, overriding any value previously set with SetMultiFactorAuthRequired. Calling SetMultiFactorAuthRequired again clears the null override.
+
 ### GetOperationsContact
 
 `func (o *OrganizationSettings) GetOperationsContact() string`
@@ -177,6 +212,13 @@ SetOperationsContact sets OperationsContact field to given value.
 `func (o *OrganizationSettings) HasOperationsContact() bool`
 
 HasOperationsContact returns a boolean if a field has been set.
+
+### SetOperationsContactNil
+
+`func (o *OrganizationSettings) SetOperationsContactNil()`
+
+SetOperationsContactNil sets OperationsContact to an explicit JSON null when marshaled, overriding any value previously set with SetOperationsContact. Calling SetOperationsContact again clears the null override.
+
 ### GetRestrictEmployeeAccess
 
 `func (o *OrganizationSettings) GetRestrictEmployeeAccess() bool`
@@ -201,6 +243,13 @@ SetRestrictEmployeeAccess sets RestrictEmployeeAccess field to given value.
 `func (o *OrganizationSettings) HasRestrictEmployeeAccess() bool`
 
 HasRestrictEmployeeAccess returns a boolean if a field has been set.
+
+### SetRestrictEmployeeAccessNil
+
+`func (o *OrganizationSettings) SetRestrictEmployeeAccessNil()`
+
+SetRestrictEmployeeAccessNil sets RestrictEmployeeAccess to an explicit JSON null when marshaled, overriding any value previously set with SetRestrictEmployeeAccess. Calling SetRestrictEmployeeAccess again clears the null override.
+
 ### GetSecurityContact
 
 `func (o *OrganizationSettings) GetSecurityContact() string`
@@ -225,6 +274,13 @@ SetSecurityContact sets SecurityContact field to given value.
 `func (o *OrganizationSettings) HasSecurityContact() bool`
 
 HasSecurityContact returns a boolean if a field has been set.
+
+### SetSecurityContactNil
+
+`func (o *OrganizationSettings) SetSecurityContactNil()`
+
+SetSecurityContactNil sets SecurityContact to an explicit JSON null when marshaled, overriding any value previously set with SetSecurityContact. Calling SetSecurityContact again clears the null override.
+
 ### GetStreamsCrossGroupEnabled
 
 `func (o *OrganizationSettings) GetStreamsCrossGroupEnabled() bool`
@@ -249,6 +305,13 @@ SetStreamsCrossGroupEnabled sets StreamsCrossGroupEnabled field to given value.
 `func (o *OrganizationSettings) HasStreamsCrossGroupEnabled() bool`
 
 HasStreamsCrossGroupEnabled returns a boolean if a field has been set.
+
+### SetStreamsCrossGroupEnabledNil
+
+`func (o *OrganizationSettings) SetStreamsCrossGroupEnabledNil()`
+
+SetStreamsCrossGroupEnabledNil sets StreamsCrossGroupEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetStreamsCrossGroupEnabled. Calling SetStreamsCrossGroupEnabled again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

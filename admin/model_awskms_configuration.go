@@ -23,6 +23,15 @@ type AWSKMSConfiguration struct {
 	// Flag that indicates whether the Amazon Web Services (AWS) Key Management Service (KMS) encryption key can encrypt and decrypt data.
 	// Read only field.
 	Valid *bool `json:"valid,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AWSKMSConfiguration) MarshalJSON() ([]byte, error) {
+	type noMethod AWSKMSConfiguration
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAWSKMSConfiguration instantiates a new AWSKMSConfiguration object
@@ -73,6 +82,13 @@ func (o *AWSKMSConfiguration) HasAccessKeyID() bool {
 // SetAccessKeyID gets a reference to the given string and assigns it to the AccessKeyID field.
 func (o *AWSKMSConfiguration) SetAccessKeyID(v string) {
 	o.AccessKeyID = &v
+	o.NullFields = removeNullField(o.NullFields, "AccessKeyID")
+}
+
+// SetAccessKeyIDNil sets AccessKeyID to an explicit JSON null when marshaled.
+func (o *AWSKMSConfiguration) SetAccessKeyIDNil() {
+	o.AccessKeyID = nil
+	o.NullFields = addNullField(o.NullFields, "AccessKeyID")
 }
 
 // GetCustomerMasterKeyID returns the CustomerMasterKeyID field value if set, zero value otherwise
@@ -106,6 +122,13 @@ func (o *AWSKMSConfiguration) HasCustomerMasterKeyID() bool {
 // SetCustomerMasterKeyID gets a reference to the given string and assigns it to the CustomerMasterKeyID field.
 func (o *AWSKMSConfiguration) SetCustomerMasterKeyID(v string) {
 	o.CustomerMasterKeyID = &v
+	o.NullFields = removeNullField(o.NullFields, "CustomerMasterKeyID")
+}
+
+// SetCustomerMasterKeyIDNil sets CustomerMasterKeyID to an explicit JSON null when marshaled.
+func (o *AWSKMSConfiguration) SetCustomerMasterKeyIDNil() {
+	o.CustomerMasterKeyID = nil
+	o.NullFields = addNullField(o.NullFields, "CustomerMasterKeyID")
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise
@@ -139,6 +162,13 @@ func (o *AWSKMSConfiguration) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *AWSKMSConfiguration) SetEnabled(v bool) {
 	o.Enabled = &v
+	o.NullFields = removeNullField(o.NullFields, "Enabled")
+}
+
+// SetEnabledNil sets Enabled to an explicit JSON null when marshaled.
+func (o *AWSKMSConfiguration) SetEnabledNil() {
+	o.Enabled = nil
+	o.NullFields = addNullField(o.NullFields, "Enabled")
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise
@@ -172,6 +202,13 @@ func (o *AWSKMSConfiguration) HasRegion() bool {
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *AWSKMSConfiguration) SetRegion(v string) {
 	o.Region = &v
+	o.NullFields = removeNullField(o.NullFields, "Region")
+}
+
+// SetRegionNil sets Region to an explicit JSON null when marshaled.
+func (o *AWSKMSConfiguration) SetRegionNil() {
+	o.Region = nil
+	o.NullFields = addNullField(o.NullFields, "Region")
 }
 
 // GetRequirePrivateNetworking returns the RequirePrivateNetworking field value if set, zero value otherwise
@@ -205,6 +242,13 @@ func (o *AWSKMSConfiguration) HasRequirePrivateNetworking() bool {
 // SetRequirePrivateNetworking gets a reference to the given bool and assigns it to the RequirePrivateNetworking field.
 func (o *AWSKMSConfiguration) SetRequirePrivateNetworking(v bool) {
 	o.RequirePrivateNetworking = &v
+	o.NullFields = removeNullField(o.NullFields, "RequirePrivateNetworking")
+}
+
+// SetRequirePrivateNetworkingNil sets RequirePrivateNetworking to an explicit JSON null when marshaled.
+func (o *AWSKMSConfiguration) SetRequirePrivateNetworkingNil() {
+	o.RequirePrivateNetworking = nil
+	o.NullFields = addNullField(o.NullFields, "RequirePrivateNetworking")
 }
 
 // GetRoleId returns the RoleId field value if set, zero value otherwise
@@ -238,6 +282,13 @@ func (o *AWSKMSConfiguration) HasRoleId() bool {
 // SetRoleId gets a reference to the given string and assigns it to the RoleId field.
 func (o *AWSKMSConfiguration) SetRoleId(v string) {
 	o.RoleId = &v
+	o.NullFields = removeNullField(o.NullFields, "RoleId")
+}
+
+// SetRoleIdNil sets RoleId to an explicit JSON null when marshaled.
+func (o *AWSKMSConfiguration) SetRoleIdNil() {
+	o.RoleId = nil
+	o.NullFields = addNullField(o.NullFields, "RoleId")
 }
 
 // GetSecretAccessKey returns the SecretAccessKey field value if set, zero value otherwise
@@ -271,6 +322,13 @@ func (o *AWSKMSConfiguration) HasSecretAccessKey() bool {
 // SetSecretAccessKey gets a reference to the given string and assigns it to the SecretAccessKey field.
 func (o *AWSKMSConfiguration) SetSecretAccessKey(v string) {
 	o.SecretAccessKey = &v
+	o.NullFields = removeNullField(o.NullFields, "SecretAccessKey")
+}
+
+// SetSecretAccessKeyNil sets SecretAccessKey to an explicit JSON null when marshaled.
+func (o *AWSKMSConfiguration) SetSecretAccessKeyNil() {
+	o.SecretAccessKey = nil
+	o.NullFields = addNullField(o.NullFields, "SecretAccessKey")
 }
 
 // GetValid returns the Valid field value if set, zero value otherwise
@@ -304,4 +362,11 @@ func (o *AWSKMSConfiguration) HasValid() bool {
 // SetValid gets a reference to the given bool and assigns it to the Valid field.
 func (o *AWSKMSConfiguration) SetValid(v bool) {
 	o.Valid = &v
+	o.NullFields = removeNullField(o.NullFields, "Valid")
+}
+
+// SetValidNil sets Valid to an explicit JSON null when marshaled.
+func (o *AWSKMSConfiguration) SetValidNil() {
+	o.Valid = nil
+	o.NullFields = addNullField(o.NullFields, "Valid")
 }

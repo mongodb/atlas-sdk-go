@@ -50,6 +50,13 @@ SetDatabaseName sets DatabaseName field to given value.
 `func (o *MesurementsDatabase) HasDatabaseName() bool`
 
 HasDatabaseName returns a boolean if a field has been set.
+
+### SetDatabaseNameNil
+
+`func (o *MesurementsDatabase) SetDatabaseNameNil()`
+
+SetDatabaseNameNil sets DatabaseName to an explicit JSON null when marshaled, overriding any value previously set with SetDatabaseName. Calling SetDatabaseName again clears the null override.
+
 ### GetLinks
 
 `func (o *MesurementsDatabase) GetLinks() []Link`
@@ -74,6 +81,13 @@ SetLinks sets Links field to given value.
 `func (o *MesurementsDatabase) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *MesurementsDatabase) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

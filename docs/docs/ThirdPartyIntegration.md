@@ -75,6 +75,13 @@ SetId sets Id field to given value.
 `func (o *ThirdPartyIntegration) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *ThirdPartyIntegration) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetType
 
 `func (o *ThirdPartyIntegration) GetType() string`
@@ -99,6 +106,13 @@ SetType sets Type field to given value.
 `func (o *ThirdPartyIntegration) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *ThirdPartyIntegration) SetTypeNil()`
+
+SetTypeNil sets Type to an explicit JSON null when marshaled, overriding any value previously set with SetType. Calling SetType again clears the null override.
+
 ### GetRegion
 
 `func (o *ThirdPartyIntegration) GetRegion() string`
@@ -123,6 +137,13 @@ SetRegion sets Region field to given value.
 `func (o *ThirdPartyIntegration) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *ThirdPartyIntegration) SetRegionNil()`
+
+SetRegionNil sets Region to an explicit JSON null when marshaled, overriding any value previously set with SetRegion. Calling SetRegion again clears the null override.
+
 ### GetServiceKey
 
 `func (o *ThirdPartyIntegration) GetServiceKey() string`
@@ -147,6 +168,13 @@ SetServiceKey sets ServiceKey field to given value.
 `func (o *ThirdPartyIntegration) HasServiceKey() bool`
 
 HasServiceKey returns a boolean if a field has been set.
+
+### SetServiceKeyNil
+
+`func (o *ThirdPartyIntegration) SetServiceKeyNil()`
+
+SetServiceKeyNil sets ServiceKey to an explicit JSON null when marshaled, overriding any value previously set with SetServiceKey. Calling SetServiceKey again clears the null override.
+
 ### GetApiToken
 
 `func (o *ThirdPartyIntegration) GetApiToken() string`
@@ -171,6 +199,13 @@ SetApiToken sets ApiToken field to given value.
 `func (o *ThirdPartyIntegration) HasApiToken() bool`
 
 HasApiToken returns a boolean if a field has been set.
+
+### SetApiTokenNil
+
+`func (o *ThirdPartyIntegration) SetApiTokenNil()`
+
+SetApiTokenNil sets ApiToken to an explicit JSON null when marshaled, overriding any value previously set with SetApiToken. Calling SetApiToken again clears the null override.
+
 ### GetChannelName
 
 `func (o *ThirdPartyIntegration) GetChannelName() string`
@@ -195,6 +230,13 @@ SetChannelName sets ChannelName field to given value.
 `func (o *ThirdPartyIntegration) HasChannelName() bool`
 
 HasChannelName returns a boolean if a field has been set.
+
+### SetChannelNameNil
+
+`func (o *ThirdPartyIntegration) SetChannelNameNil()`
+
+SetChannelNameNil sets ChannelName to an explicit JSON null when marshaled, overriding any value previously set with SetChannelName. Calling SetChannelName again clears the null override.
+
 ### GetTeamName
 
 `func (o *ThirdPartyIntegration) GetTeamName() string`
@@ -219,6 +261,13 @@ SetTeamName sets TeamName field to given value.
 `func (o *ThirdPartyIntegration) HasTeamName() bool`
 
 HasTeamName returns a boolean if a field has been set.
+
+### SetTeamNameNil
+
+`func (o *ThirdPartyIntegration) SetTeamNameNil()`
+
+SetTeamNameNil sets TeamName to an explicit JSON null when marshaled, overriding any value previously set with SetTeamName. Calling SetTeamName again clears the null override.
+
 ### GetApiKey
 
 `func (o *ThirdPartyIntegration) GetApiKey() string`
@@ -243,6 +292,13 @@ SetApiKey sets ApiKey field to given value.
 `func (o *ThirdPartyIntegration) HasApiKey() bool`
 
 HasApiKey returns a boolean if a field has been set.
+
+### SetApiKeyNil
+
+`func (o *ThirdPartyIntegration) SetApiKeyNil()`
+
+SetApiKeyNil sets ApiKey to an explicit JSON null when marshaled, overriding any value previously set with SetApiKey. Calling SetApiKey again clears the null override.
+
 ### GetSendCollectionLatencyMetrics
 
 `func (o *ThirdPartyIntegration) GetSendCollectionLatencyMetrics() bool`
@@ -267,6 +323,13 @@ SetSendCollectionLatencyMetrics sets SendCollectionLatencyMetrics field to given
 `func (o *ThirdPartyIntegration) HasSendCollectionLatencyMetrics() bool`
 
 HasSendCollectionLatencyMetrics returns a boolean if a field has been set.
+
+### SetSendCollectionLatencyMetricsNil
+
+`func (o *ThirdPartyIntegration) SetSendCollectionLatencyMetricsNil()`
+
+SetSendCollectionLatencyMetricsNil sets SendCollectionLatencyMetrics to an explicit JSON null when marshaled, overriding any value previously set with SetSendCollectionLatencyMetrics. Calling SetSendCollectionLatencyMetrics again clears the null override.
+
 ### GetSendDatabaseMetrics
 
 `func (o *ThirdPartyIntegration) GetSendDatabaseMetrics() bool`
@@ -291,6 +354,13 @@ SetSendDatabaseMetrics sets SendDatabaseMetrics field to given value.
 `func (o *ThirdPartyIntegration) HasSendDatabaseMetrics() bool`
 
 HasSendDatabaseMetrics returns a boolean if a field has been set.
+
+### SetSendDatabaseMetricsNil
+
+`func (o *ThirdPartyIntegration) SetSendDatabaseMetricsNil()`
+
+SetSendDatabaseMetricsNil sets SendDatabaseMetrics to an explicit JSON null when marshaled, overriding any value previously set with SetSendDatabaseMetrics. Calling SetSendDatabaseMetrics again clears the null override.
+
 ### GetSendQueryStatsMetrics
 
 `func (o *ThirdPartyIntegration) GetSendQueryStatsMetrics() bool`
@@ -315,6 +385,13 @@ SetSendQueryStatsMetrics sets SendQueryStatsMetrics field to given value.
 `func (o *ThirdPartyIntegration) HasSendQueryStatsMetrics() bool`
 
 HasSendQueryStatsMetrics returns a boolean if a field has been set.
+
+### SetSendQueryStatsMetricsNil
+
+`func (o *ThirdPartyIntegration) SetSendQueryStatsMetricsNil()`
+
+SetSendQueryStatsMetricsNil sets SendQueryStatsMetrics to an explicit JSON null when marshaled, overriding any value previously set with SetSendQueryStatsMetrics. Calling SetSendQueryStatsMetrics again clears the null override.
+
 ### GetSendUserProvidedResourceTags
 
 `func (o *ThirdPartyIntegration) GetSendUserProvidedResourceTags() bool`
@@ -339,6 +416,13 @@ SetSendUserProvidedResourceTags sets SendUserProvidedResourceTags field to given
 `func (o *ThirdPartyIntegration) HasSendUserProvidedResourceTags() bool`
 
 HasSendUserProvidedResourceTags returns a boolean if a field has been set.
+
+### SetSendUserProvidedResourceTagsNil
+
+`func (o *ThirdPartyIntegration) SetSendUserProvidedResourceTagsNil()`
+
+SetSendUserProvidedResourceTagsNil sets SendUserProvidedResourceTags to an explicit JSON null when marshaled, overriding any value previously set with SetSendUserProvidedResourceTags. Calling SetSendUserProvidedResourceTags again clears the null override.
+
 ### GetAccountId
 
 `func (o *ThirdPartyIntegration) GetAccountId() string`
@@ -363,6 +447,13 @@ SetAccountId sets AccountId field to given value.
 `func (o *ThirdPartyIntegration) HasAccountId() bool`
 
 HasAccountId returns a boolean if a field has been set.
+
+### SetAccountIdNil
+
+`func (o *ThirdPartyIntegration) SetAccountIdNil()`
+
+SetAccountIdNil sets AccountId to an explicit JSON null when marshaled, overriding any value previously set with SetAccountId. Calling SetAccountId again clears the null override.
+
 ### GetLicenseKey
 
 `func (o *ThirdPartyIntegration) GetLicenseKey() string`
@@ -387,6 +478,13 @@ SetLicenseKey sets LicenseKey field to given value.
 `func (o *ThirdPartyIntegration) HasLicenseKey() bool`
 
 HasLicenseKey returns a boolean if a field has been set.
+
+### SetLicenseKeyNil
+
+`func (o *ThirdPartyIntegration) SetLicenseKeyNil()`
+
+SetLicenseKeyNil sets LicenseKey to an explicit JSON null when marshaled, overriding any value previously set with SetLicenseKey. Calling SetLicenseKey again clears the null override.
+
 ### GetReadToken
 
 `func (o *ThirdPartyIntegration) GetReadToken() string`
@@ -411,6 +509,13 @@ SetReadToken sets ReadToken field to given value.
 `func (o *ThirdPartyIntegration) HasReadToken() bool`
 
 HasReadToken returns a boolean if a field has been set.
+
+### SetReadTokenNil
+
+`func (o *ThirdPartyIntegration) SetReadTokenNil()`
+
+SetReadTokenNil sets ReadToken to an explicit JSON null when marshaled, overriding any value previously set with SetReadToken. Calling SetReadToken again clears the null override.
+
 ### GetWriteToken
 
 `func (o *ThirdPartyIntegration) GetWriteToken() string`
@@ -435,6 +540,13 @@ SetWriteToken sets WriteToken field to given value.
 `func (o *ThirdPartyIntegration) HasWriteToken() bool`
 
 HasWriteToken returns a boolean if a field has been set.
+
+### SetWriteTokenNil
+
+`func (o *ThirdPartyIntegration) SetWriteTokenNil()`
+
+SetWriteTokenNil sets WriteToken to an explicit JSON null when marshaled, overriding any value previously set with SetWriteToken. Calling SetWriteToken again clears the null override.
+
 ### GetRoutingKey
 
 `func (o *ThirdPartyIntegration) GetRoutingKey() string`
@@ -459,6 +571,13 @@ SetRoutingKey sets RoutingKey field to given value.
 `func (o *ThirdPartyIntegration) HasRoutingKey() bool`
 
 HasRoutingKey returns a boolean if a field has been set.
+
+### SetRoutingKeyNil
+
+`func (o *ThirdPartyIntegration) SetRoutingKeyNil()`
+
+SetRoutingKeyNil sets RoutingKey to an explicit JSON null when marshaled, overriding any value previously set with SetRoutingKey. Calling SetRoutingKey again clears the null override.
+
 ### GetBodyTemplate
 
 `func (o *ThirdPartyIntegration) GetBodyTemplate() string`
@@ -483,6 +602,13 @@ SetBodyTemplate sets BodyTemplate field to given value.
 `func (o *ThirdPartyIntegration) HasBodyTemplate() bool`
 
 HasBodyTemplate returns a boolean if a field has been set.
+
+### SetBodyTemplateNil
+
+`func (o *ThirdPartyIntegration) SetBodyTemplateNil()`
+
+SetBodyTemplateNil sets BodyTemplate to an explicit JSON null when marshaled, overriding any value previously set with SetBodyTemplate. Calling SetBodyTemplate again clears the null override.
+
 ### GetHeadersTemplate
 
 `func (o *ThirdPartyIntegration) GetHeadersTemplate() string`
@@ -507,6 +633,13 @@ SetHeadersTemplate sets HeadersTemplate field to given value.
 `func (o *ThirdPartyIntegration) HasHeadersTemplate() bool`
 
 HasHeadersTemplate returns a boolean if a field has been set.
+
+### SetHeadersTemplateNil
+
+`func (o *ThirdPartyIntegration) SetHeadersTemplateNil()`
+
+SetHeadersTemplateNil sets HeadersTemplate to an explicit JSON null when marshaled, overriding any value previously set with SetHeadersTemplate. Calling SetHeadersTemplate again clears the null override.
+
 ### GetSecret
 
 `func (o *ThirdPartyIntegration) GetSecret() string`
@@ -531,6 +664,13 @@ SetSecret sets Secret field to given value.
 `func (o *ThirdPartyIntegration) HasSecret() bool`
 
 HasSecret returns a boolean if a field has been set.
+
+### SetSecretNil
+
+`func (o *ThirdPartyIntegration) SetSecretNil()`
+
+SetSecretNil sets Secret to an explicit JSON null when marshaled, overriding any value previously set with SetSecret. Calling SetSecret again clears the null override.
+
 ### GetUrl
 
 `func (o *ThirdPartyIntegration) GetUrl() string`
@@ -555,6 +695,13 @@ SetUrl sets Url field to given value.
 `func (o *ThirdPartyIntegration) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
+
+### SetUrlNil
+
+`func (o *ThirdPartyIntegration) SetUrlNil()`
+
+SetUrlNil sets Url to an explicit JSON null when marshaled, overriding any value previously set with SetUrl. Calling SetUrl again clears the null override.
+
 ### GetEnabled
 
 `func (o *ThirdPartyIntegration) GetEnabled() bool`
@@ -579,6 +726,13 @@ SetEnabled sets Enabled field to given value.
 `func (o *ThirdPartyIntegration) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
+
+### SetEnabledNil
+
+`func (o *ThirdPartyIntegration) SetEnabledNil()`
+
+SetEnabledNil sets Enabled to an explicit JSON null when marshaled, overriding any value previously set with SetEnabled. Calling SetEnabled again clears the null override.
+
 ### GetPassword
 
 `func (o *ThirdPartyIntegration) GetPassword() string`
@@ -603,6 +757,13 @@ SetPassword sets Password field to given value.
 `func (o *ThirdPartyIntegration) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
+
+### SetPasswordNil
+
+`func (o *ThirdPartyIntegration) SetPasswordNil()`
+
+SetPasswordNil sets Password to an explicit JSON null when marshaled, overriding any value previously set with SetPassword. Calling SetPassword again clears the null override.
+
 ### GetSendUserProvidedResourceTagsEnabled
 
 `func (o *ThirdPartyIntegration) GetSendUserProvidedResourceTagsEnabled() bool`
@@ -627,6 +788,13 @@ SetSendUserProvidedResourceTagsEnabled sets SendUserProvidedResourceTagsEnabled 
 `func (o *ThirdPartyIntegration) HasSendUserProvidedResourceTagsEnabled() bool`
 
 HasSendUserProvidedResourceTagsEnabled returns a boolean if a field has been set.
+
+### SetSendUserProvidedResourceTagsEnabledNil
+
+`func (o *ThirdPartyIntegration) SetSendUserProvidedResourceTagsEnabledNil()`
+
+SetSendUserProvidedResourceTagsEnabledNil sets SendUserProvidedResourceTagsEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetSendUserProvidedResourceTagsEnabled. Calling SetSendUserProvidedResourceTagsEnabled again clears the null override.
+
 ### GetServiceDiscovery
 
 `func (o *ThirdPartyIntegration) GetServiceDiscovery() string`
@@ -651,6 +819,13 @@ SetServiceDiscovery sets ServiceDiscovery field to given value.
 `func (o *ThirdPartyIntegration) HasServiceDiscovery() bool`
 
 HasServiceDiscovery returns a boolean if a field has been set.
+
+### SetServiceDiscoveryNil
+
+`func (o *ThirdPartyIntegration) SetServiceDiscoveryNil()`
+
+SetServiceDiscoveryNil sets ServiceDiscovery to an explicit JSON null when marshaled, overriding any value previously set with SetServiceDiscovery. Calling SetServiceDiscovery again clears the null override.
+
 ### GetUsername
 
 `func (o *ThirdPartyIntegration) GetUsername() string`
@@ -675,6 +850,13 @@ SetUsername sets Username field to given value.
 `func (o *ThirdPartyIntegration) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
+
+### SetUsernameNil
+
+`func (o *ThirdPartyIntegration) SetUsernameNil()`
+
+SetUsernameNil sets Username to an explicit JSON null when marshaled, overriding any value previously set with SetUsername. Calling SetUsername again clears the null override.
+
 ### GetMicrosoftTeamsWebhookUrl
 
 `func (o *ThirdPartyIntegration) GetMicrosoftTeamsWebhookUrl() string`
@@ -699,6 +881,13 @@ SetMicrosoftTeamsWebhookUrl sets MicrosoftTeamsWebhookUrl field to given value.
 `func (o *ThirdPartyIntegration) HasMicrosoftTeamsWebhookUrl() bool`
 
 HasMicrosoftTeamsWebhookUrl returns a boolean if a field has been set.
+
+### SetMicrosoftTeamsWebhookUrlNil
+
+`func (o *ThirdPartyIntegration) SetMicrosoftTeamsWebhookUrlNil()`
+
+SetMicrosoftTeamsWebhookUrlNil sets MicrosoftTeamsWebhookUrl to an explicit JSON null when marshaled, overriding any value previously set with SetMicrosoftTeamsWebhookUrl. Calling SetMicrosoftTeamsWebhookUrl again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -50,6 +50,13 @@ SetEnabled sets Enabled field to given value.
 `func (o *BiConnector) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
+
+### SetEnabledNil
+
+`func (o *BiConnector) SetEnabledNil()`
+
+SetEnabledNil sets Enabled to an explicit JSON null when marshaled, overriding any value previously set with SetEnabled. Calling SetEnabled again clears the null override.
+
 ### GetReadPreference
 
 `func (o *BiConnector) GetReadPreference() string`
@@ -74,6 +81,13 @@ SetReadPreference sets ReadPreference field to given value.
 `func (o *BiConnector) HasReadPreference() bool`
 
 HasReadPreference returns a boolean if a field has been set.
+
+### SetReadPreferenceNil
+
+`func (o *BiConnector) SetReadPreferenceNil()`
+
+SetReadPreferenceNil sets ReadPreference to an explicit JSON null when marshaled, overriding any value previously set with SetReadPreference. Calling SetReadPreference again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

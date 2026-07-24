@@ -53,6 +53,13 @@ SetConnectionId sets ConnectionId field to given value.
 `func (o *StreamsKafkaNetworkingAccess) HasConnectionId() bool`
 
 HasConnectionId returns a boolean if a field has been set.
+
+### SetConnectionIdNil
+
+`func (o *StreamsKafkaNetworkingAccess) SetConnectionIdNil()`
+
+SetConnectionIdNil sets ConnectionId to an explicit JSON null when marshaled, overriding any value previously set with SetConnectionId. Calling SetConnectionId again clears the null override.
+
 ### GetLinks
 
 `func (o *StreamsKafkaNetworkingAccess) GetLinks() []Link`
@@ -77,6 +84,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsKafkaNetworkingAccess) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsKafkaNetworkingAccess) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetName
 
 `func (o *StreamsKafkaNetworkingAccess) GetName() string`
@@ -101,6 +115,13 @@ SetName sets Name field to given value.
 `func (o *StreamsKafkaNetworkingAccess) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *StreamsKafkaNetworkingAccess) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetTgwRouteId
 
 `func (o *StreamsKafkaNetworkingAccess) GetTgwRouteId() string`
@@ -125,6 +146,13 @@ SetTgwRouteId sets TgwRouteId field to given value.
 `func (o *StreamsKafkaNetworkingAccess) HasTgwRouteId() bool`
 
 HasTgwRouteId returns a boolean if a field has been set.
+
+### SetTgwRouteIdNil
+
+`func (o *StreamsKafkaNetworkingAccess) SetTgwRouteIdNil()`
+
+SetTgwRouteIdNil sets TgwRouteId to an explicit JSON null when marshaled, overriding any value previously set with SetTgwRouteId. Calling SetTgwRouteId again clears the null override.
+
 ### GetType
 
 `func (o *StreamsKafkaNetworkingAccess) GetType() string`
@@ -149,6 +177,13 @@ SetType sets Type field to given value.
 `func (o *StreamsKafkaNetworkingAccess) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *StreamsKafkaNetworkingAccess) SetTypeNil()`
+
+SetTypeNil sets Type to an explicit JSON null when marshaled, overriding any value previously set with SetType. Calling SetType again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -20,6 +20,15 @@ type LDAPVerifyConnectivityJobRequest struct {
 	// List that contains the validation messages related to the verification of the provided Lightweight Directory Access Protocol (LDAP) over Transport Layer Security (TLS) configuration details. The list contains a document for each test that MongoDB Cloud runs. MongoDB Cloud stops running tests after the first failure.
 	// Read only field.
 	Validations *[]LDAPVerifyConnectivityJobRequestValidation `json:"validations,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *LDAPVerifyConnectivityJobRequest) MarshalJSON() ([]byte, error) {
+	type noMethod LDAPVerifyConnectivityJobRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewLDAPVerifyConnectivityJobRequest instantiates a new LDAPVerifyConnectivityJobRequest object
@@ -70,6 +79,13 @@ func (o *LDAPVerifyConnectivityJobRequest) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *LDAPVerifyConnectivityJobRequest) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *LDAPVerifyConnectivityJobRequest) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -103,6 +119,13 @@ func (o *LDAPVerifyConnectivityJobRequest) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *LDAPVerifyConnectivityJobRequest) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *LDAPVerifyConnectivityJobRequest) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetRequest returns the Request field value if set, zero value otherwise
@@ -136,6 +159,13 @@ func (o *LDAPVerifyConnectivityJobRequest) HasRequest() bool {
 // SetRequest gets a reference to the given LDAPVerifyConnectivityJobRequestParams and assigns it to the Request field.
 func (o *LDAPVerifyConnectivityJobRequest) SetRequest(v LDAPVerifyConnectivityJobRequestParams) {
 	o.Request = &v
+	o.NullFields = removeNullField(o.NullFields, "Request")
+}
+
+// SetRequestNil sets Request to an explicit JSON null when marshaled.
+func (o *LDAPVerifyConnectivityJobRequest) SetRequestNil() {
+	o.Request = nil
+	o.NullFields = addNullField(o.NullFields, "Request")
 }
 
 // GetRequestId returns the RequestId field value if set, zero value otherwise
@@ -169,6 +199,13 @@ func (o *LDAPVerifyConnectivityJobRequest) HasRequestId() bool {
 // SetRequestId gets a reference to the given string and assigns it to the RequestId field.
 func (o *LDAPVerifyConnectivityJobRequest) SetRequestId(v string) {
 	o.RequestId = &v
+	o.NullFields = removeNullField(o.NullFields, "RequestId")
+}
+
+// SetRequestIdNil sets RequestId to an explicit JSON null when marshaled.
+func (o *LDAPVerifyConnectivityJobRequest) SetRequestIdNil() {
+	o.RequestId = nil
+	o.NullFields = addNullField(o.NullFields, "RequestId")
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
@@ -202,6 +239,13 @@ func (o *LDAPVerifyConnectivityJobRequest) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *LDAPVerifyConnectivityJobRequest) SetStatus(v string) {
 	o.Status = &v
+	o.NullFields = removeNullField(o.NullFields, "Status")
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *LDAPVerifyConnectivityJobRequest) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = addNullField(o.NullFields, "Status")
 }
 
 // GetValidations returns the Validations field value if set, zero value otherwise
@@ -235,4 +279,11 @@ func (o *LDAPVerifyConnectivityJobRequest) HasValidations() bool {
 // SetValidations gets a reference to the given []LDAPVerifyConnectivityJobRequestValidation and assigns it to the Validations field.
 func (o *LDAPVerifyConnectivityJobRequest) SetValidations(v []LDAPVerifyConnectivityJobRequestValidation) {
 	o.Validations = &v
+	o.NullFields = removeNullField(o.NullFields, "Validations")
+}
+
+// SetValidationsNil sets Validations to an explicit JSON null when marshaled.
+func (o *LDAPVerifyConnectivityJobRequest) SetValidationsNil() {
+	o.Validations = nil
+	o.NullFields = addNullField(o.NullFields, "Validations")
 }

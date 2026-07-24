@@ -54,6 +54,13 @@ SetCidrBlock sets CidrBlock field to given value.
 `func (o *ServiceAccountIPAccessListEntry) HasCidrBlock() bool`
 
 HasCidrBlock returns a boolean if a field has been set.
+
+### SetCidrBlockNil
+
+`func (o *ServiceAccountIPAccessListEntry) SetCidrBlockNil()`
+
+SetCidrBlockNil sets CidrBlock to an explicit JSON null when marshaled, overriding any value previously set with SetCidrBlock. Calling SetCidrBlock again clears the null override.
+
 ### GetCreatedAt
 
 `func (o *ServiceAccountIPAccessListEntry) GetCreatedAt() time.Time`
@@ -78,6 +85,13 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *ServiceAccountIPAccessListEntry) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
+
+### SetCreatedAtNil
+
+`func (o *ServiceAccountIPAccessListEntry) SetCreatedAtNil()`
+
+SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled, overriding any value previously set with SetCreatedAt. Calling SetCreatedAt again clears the null override.
+
 ### GetIpAddress
 
 `func (o *ServiceAccountIPAccessListEntry) GetIpAddress() string`
@@ -102,6 +116,13 @@ SetIpAddress sets IpAddress field to given value.
 `func (o *ServiceAccountIPAccessListEntry) HasIpAddress() bool`
 
 HasIpAddress returns a boolean if a field has been set.
+
+### SetIpAddressNil
+
+`func (o *ServiceAccountIPAccessListEntry) SetIpAddressNil()`
+
+SetIpAddressNil sets IpAddress to an explicit JSON null when marshaled, overriding any value previously set with SetIpAddress. Calling SetIpAddress again clears the null override.
+
 ### GetLastUsedAddress
 
 `func (o *ServiceAccountIPAccessListEntry) GetLastUsedAddress() string`
@@ -126,6 +147,13 @@ SetLastUsedAddress sets LastUsedAddress field to given value.
 `func (o *ServiceAccountIPAccessListEntry) HasLastUsedAddress() bool`
 
 HasLastUsedAddress returns a boolean if a field has been set.
+
+### SetLastUsedAddressNil
+
+`func (o *ServiceAccountIPAccessListEntry) SetLastUsedAddressNil()`
+
+SetLastUsedAddressNil sets LastUsedAddress to an explicit JSON null when marshaled, overriding any value previously set with SetLastUsedAddress. Calling SetLastUsedAddress again clears the null override.
+
 ### GetLastUsedAt
 
 `func (o *ServiceAccountIPAccessListEntry) GetLastUsedAt() time.Time`
@@ -150,6 +178,13 @@ SetLastUsedAt sets LastUsedAt field to given value.
 `func (o *ServiceAccountIPAccessListEntry) HasLastUsedAt() bool`
 
 HasLastUsedAt returns a boolean if a field has been set.
+
+### SetLastUsedAtNil
+
+`func (o *ServiceAccountIPAccessListEntry) SetLastUsedAtNil()`
+
+SetLastUsedAtNil sets LastUsedAt to an explicit JSON null when marshaled, overriding any value previously set with SetLastUsedAt. Calling SetLastUsedAt again clears the null override.
+
 ### GetRequestCount
 
 `func (o *ServiceAccountIPAccessListEntry) GetRequestCount() int`
@@ -174,6 +209,13 @@ SetRequestCount sets RequestCount field to given value.
 `func (o *ServiceAccountIPAccessListEntry) HasRequestCount() bool`
 
 HasRequestCount returns a boolean if a field has been set.
+
+### SetRequestCountNil
+
+`func (o *ServiceAccountIPAccessListEntry) SetRequestCountNil()`
+
+SetRequestCountNil sets RequestCount to an explicit JSON null when marshaled, overriding any value previously set with SetRequestCount. Calling SetRequestCount again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

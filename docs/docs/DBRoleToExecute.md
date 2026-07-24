@@ -51,6 +51,13 @@ SetLinks sets Links field to given value.
 `func (o *DBRoleToExecute) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *DBRoleToExecute) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetRole
 
 `func (o *DBRoleToExecute) GetRole() string`
@@ -75,6 +82,13 @@ SetRole sets Role field to given value.
 `func (o *DBRoleToExecute) HasRole() bool`
 
 HasRole returns a boolean if a field has been set.
+
+### SetRoleNil
+
+`func (o *DBRoleToExecute) SetRoleNil()`
+
+SetRoleNil sets Role to an explicit JSON null when marshaled, overriding any value previously set with SetRole. Calling SetRole again clears the null override.
+
 ### GetType
 
 `func (o *DBRoleToExecute) GetType() string`
@@ -99,6 +113,13 @@ SetType sets Type field to given value.
 `func (o *DBRoleToExecute) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *DBRoleToExecute) SetTypeNil()`
+
+SetTypeNil sets Type to an explicit JSON null when marshaled, overriding any value previously set with SetType. Calling SetType again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

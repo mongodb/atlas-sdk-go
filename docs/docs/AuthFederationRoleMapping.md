@@ -70,6 +70,13 @@ SetId sets Id field to given value.
 `func (o *AuthFederationRoleMapping) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *AuthFederationRoleMapping) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetRoleAssignments
 
 `func (o *AuthFederationRoleMapping) GetRoleAssignments() []ConnectedOrgConfigRoleAssignment`

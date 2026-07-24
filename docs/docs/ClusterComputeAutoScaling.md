@@ -50,6 +50,13 @@ SetEnabled sets Enabled field to given value.
 `func (o *ClusterComputeAutoScaling) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
+
+### SetEnabledNil
+
+`func (o *ClusterComputeAutoScaling) SetEnabledNil()`
+
+SetEnabledNil sets Enabled to an explicit JSON null when marshaled, overriding any value previously set with SetEnabled. Calling SetEnabled again clears the null override.
+
 ### GetScaleDownEnabled
 
 `func (o *ClusterComputeAutoScaling) GetScaleDownEnabled() bool`
@@ -74,6 +81,13 @@ SetScaleDownEnabled sets ScaleDownEnabled field to given value.
 `func (o *ClusterComputeAutoScaling) HasScaleDownEnabled() bool`
 
 HasScaleDownEnabled returns a boolean if a field has been set.
+
+### SetScaleDownEnabledNil
+
+`func (o *ClusterComputeAutoScaling) SetScaleDownEnabledNil()`
+
+SetScaleDownEnabledNil sets ScaleDownEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetScaleDownEnabled. Calling SetScaleDownEnabled again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

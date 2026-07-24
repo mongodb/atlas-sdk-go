@@ -18,6 +18,15 @@ type DataFederationLimit struct {
 	Name string `json:"name"`
 	// Amount to set the limit to.
 	Value int64 `json:"value"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DataFederationLimit) MarshalJSON() ([]byte, error) {
+	type noMethod DataFederationLimit
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataFederationLimit instantiates a new DataFederationLimit object
@@ -70,6 +79,13 @@ func (o *DataFederationLimit) HasCurrentUsage() bool {
 // SetCurrentUsage gets a reference to the given int64 and assigns it to the CurrentUsage field.
 func (o *DataFederationLimit) SetCurrentUsage(v int64) {
 	o.CurrentUsage = &v
+	o.NullFields = removeNullField(o.NullFields, "CurrentUsage")
+}
+
+// SetCurrentUsageNil sets CurrentUsage to an explicit JSON null when marshaled.
+func (o *DataFederationLimit) SetCurrentUsageNil() {
+	o.CurrentUsage = nil
+	o.NullFields = addNullField(o.NullFields, "CurrentUsage")
 }
 
 // GetDefaultLimit returns the DefaultLimit field value if set, zero value otherwise
@@ -103,6 +119,13 @@ func (o *DataFederationLimit) HasDefaultLimit() bool {
 // SetDefaultLimit gets a reference to the given int64 and assigns it to the DefaultLimit field.
 func (o *DataFederationLimit) SetDefaultLimit(v int64) {
 	o.DefaultLimit = &v
+	o.NullFields = removeNullField(o.NullFields, "DefaultLimit")
+}
+
+// SetDefaultLimitNil sets DefaultLimit to an explicit JSON null when marshaled.
+func (o *DataFederationLimit) SetDefaultLimitNil() {
+	o.DefaultLimit = nil
+	o.NullFields = addNullField(o.NullFields, "DefaultLimit")
 }
 
 // GetMaximumLimit returns the MaximumLimit field value if set, zero value otherwise
@@ -136,6 +159,13 @@ func (o *DataFederationLimit) HasMaximumLimit() bool {
 // SetMaximumLimit gets a reference to the given int64 and assigns it to the MaximumLimit field.
 func (o *DataFederationLimit) SetMaximumLimit(v int64) {
 	o.MaximumLimit = &v
+	o.NullFields = removeNullField(o.NullFields, "MaximumLimit")
+}
+
+// SetMaximumLimitNil sets MaximumLimit to an explicit JSON null when marshaled.
+func (o *DataFederationLimit) SetMaximumLimitNil() {
+	o.MaximumLimit = nil
+	o.NullFields = addNullField(o.NullFields, "MaximumLimit")
 }
 
 // GetName returns the Name field value

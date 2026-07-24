@@ -61,6 +61,15 @@ type InvoiceLineItem struct {
 	// Value per **unit** for this line item expressed in US Dollars.
 	// Read only field.
 	UnitPriceDollars *float64 `json:"unitPriceDollars,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *InvoiceLineItem) MarshalJSON() ([]byte, error) {
+	type noMethod InvoiceLineItem
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewInvoiceLineItem instantiates a new InvoiceLineItem object
@@ -111,6 +120,13 @@ func (o *InvoiceLineItem) HasClusterName() bool {
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *InvoiceLineItem) SetClusterName(v string) {
 	o.ClusterName = &v
+	o.NullFields = removeNullField(o.NullFields, "ClusterName")
+}
+
+// SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetClusterNameNil() {
+	o.ClusterName = nil
+	o.NullFields = addNullField(o.NullFields, "ClusterName")
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise
@@ -144,6 +160,13 @@ func (o *InvoiceLineItem) HasCreated() bool {
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *InvoiceLineItem) SetCreated(v time.Time) {
 	o.Created = &v
+	o.NullFields = removeNullField(o.NullFields, "Created")
+}
+
+// SetCreatedNil sets Created to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetCreatedNil() {
+	o.Created = nil
+	o.NullFields = addNullField(o.NullFields, "Created")
 }
 
 // GetDiscountCents returns the DiscountCents field value if set, zero value otherwise
@@ -177,6 +200,13 @@ func (o *InvoiceLineItem) HasDiscountCents() bool {
 // SetDiscountCents gets a reference to the given int64 and assigns it to the DiscountCents field.
 func (o *InvoiceLineItem) SetDiscountCents(v int64) {
 	o.DiscountCents = &v
+	o.NullFields = removeNullField(o.NullFields, "DiscountCents")
+}
+
+// SetDiscountCentsNil sets DiscountCents to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetDiscountCentsNil() {
+	o.DiscountCents = nil
+	o.NullFields = addNullField(o.NullFields, "DiscountCents")
 }
 
 // GetEndDate returns the EndDate field value if set, zero value otherwise
@@ -210,6 +240,13 @@ func (o *InvoiceLineItem) HasEndDate() bool {
 // SetEndDate gets a reference to the given time.Time and assigns it to the EndDate field.
 func (o *InvoiceLineItem) SetEndDate(v time.Time) {
 	o.EndDate = &v
+	o.NullFields = removeNullField(o.NullFields, "EndDate")
+}
+
+// SetEndDateNil sets EndDate to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetEndDateNil() {
+	o.EndDate = nil
+	o.NullFields = addNullField(o.NullFields, "EndDate")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -243,6 +280,13 @@ func (o *InvoiceLineItem) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *InvoiceLineItem) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetGroupName returns the GroupName field value if set, zero value otherwise
@@ -276,6 +320,13 @@ func (o *InvoiceLineItem) HasGroupName() bool {
 // SetGroupName gets a reference to the given string and assigns it to the GroupName field.
 func (o *InvoiceLineItem) SetGroupName(v string) {
 	o.GroupName = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupName")
+}
+
+// SetGroupNameNil sets GroupName to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetGroupNameNil() {
+	o.GroupName = nil
+	o.NullFields = addNullField(o.NullFields, "GroupName")
 }
 
 // GetNote returns the Note field value if set, zero value otherwise
@@ -309,6 +360,13 @@ func (o *InvoiceLineItem) HasNote() bool {
 // SetNote gets a reference to the given string and assigns it to the Note field.
 func (o *InvoiceLineItem) SetNote(v string) {
 	o.Note = &v
+	o.NullFields = removeNullField(o.NullFields, "Note")
+}
+
+// SetNoteNil sets Note to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetNoteNil() {
+	o.Note = nil
+	o.NullFields = addNullField(o.NullFields, "Note")
 }
 
 // GetPercentDiscount returns the PercentDiscount field value if set, zero value otherwise
@@ -342,6 +400,13 @@ func (o *InvoiceLineItem) HasPercentDiscount() bool {
 // SetPercentDiscount gets a reference to the given float32 and assigns it to the PercentDiscount field.
 func (o *InvoiceLineItem) SetPercentDiscount(v float32) {
 	o.PercentDiscount = &v
+	o.NullFields = removeNullField(o.NullFields, "PercentDiscount")
+}
+
+// SetPercentDiscountNil sets PercentDiscount to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetPercentDiscountNil() {
+	o.PercentDiscount = nil
+	o.NullFields = addNullField(o.NullFields, "PercentDiscount")
 }
 
 // GetQuantity returns the Quantity field value if set, zero value otherwise
@@ -375,6 +440,13 @@ func (o *InvoiceLineItem) HasQuantity() bool {
 // SetQuantity gets a reference to the given float64 and assigns it to the Quantity field.
 func (o *InvoiceLineItem) SetQuantity(v float64) {
 	o.Quantity = &v
+	o.NullFields = removeNullField(o.NullFields, "Quantity")
+}
+
+// SetQuantityNil sets Quantity to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetQuantityNil() {
+	o.Quantity = nil
+	o.NullFields = addNullField(o.NullFields, "Quantity")
 }
 
 // GetSku returns the Sku field value if set, zero value otherwise
@@ -408,6 +480,13 @@ func (o *InvoiceLineItem) HasSku() bool {
 // SetSku gets a reference to the given string and assigns it to the Sku field.
 func (o *InvoiceLineItem) SetSku(v string) {
 	o.Sku = &v
+	o.NullFields = removeNullField(o.NullFields, "Sku")
+}
+
+// SetSkuNil sets Sku to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetSkuNil() {
+	o.Sku = nil
+	o.NullFields = addNullField(o.NullFields, "Sku")
 }
 
 // GetStartDate returns the StartDate field value if set, zero value otherwise
@@ -441,6 +520,13 @@ func (o *InvoiceLineItem) HasStartDate() bool {
 // SetStartDate gets a reference to the given time.Time and assigns it to the StartDate field.
 func (o *InvoiceLineItem) SetStartDate(v time.Time) {
 	o.StartDate = &v
+	o.NullFields = removeNullField(o.NullFields, "StartDate")
+}
+
+// SetStartDateNil sets StartDate to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetStartDateNil() {
+	o.StartDate = nil
+	o.NullFields = addNullField(o.NullFields, "StartDate")
 }
 
 // GetStitchAppName returns the StitchAppName field value if set, zero value otherwise
@@ -474,6 +560,13 @@ func (o *InvoiceLineItem) HasStitchAppName() bool {
 // SetStitchAppName gets a reference to the given string and assigns it to the StitchAppName field.
 func (o *InvoiceLineItem) SetStitchAppName(v string) {
 	o.StitchAppName = &v
+	o.NullFields = removeNullField(o.NullFields, "StitchAppName")
+}
+
+// SetStitchAppNameNil sets StitchAppName to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetStitchAppNameNil() {
+	o.StitchAppName = nil
+	o.NullFields = addNullField(o.NullFields, "StitchAppName")
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise
@@ -507,6 +600,13 @@ func (o *InvoiceLineItem) HasTags() bool {
 // SetTags gets a reference to the given map[string][]string and assigns it to the Tags field.
 func (o *InvoiceLineItem) SetTags(v map[string][]string) {
 	o.Tags = &v
+	o.NullFields = removeNullField(o.NullFields, "Tags")
+}
+
+// SetTagsNil sets Tags to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetTagsNil() {
+	o.Tags = nil
+	o.NullFields = addNullField(o.NullFields, "Tags")
 }
 
 // GetTierLowerBound returns the TierLowerBound field value if set, zero value otherwise
@@ -540,6 +640,13 @@ func (o *InvoiceLineItem) HasTierLowerBound() bool {
 // SetTierLowerBound gets a reference to the given float64 and assigns it to the TierLowerBound field.
 func (o *InvoiceLineItem) SetTierLowerBound(v float64) {
 	o.TierLowerBound = &v
+	o.NullFields = removeNullField(o.NullFields, "TierLowerBound")
+}
+
+// SetTierLowerBoundNil sets TierLowerBound to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetTierLowerBoundNil() {
+	o.TierLowerBound = nil
+	o.NullFields = addNullField(o.NullFields, "TierLowerBound")
 }
 
 // GetTierUpperBound returns the TierUpperBound field value if set, zero value otherwise
@@ -573,6 +680,13 @@ func (o *InvoiceLineItem) HasTierUpperBound() bool {
 // SetTierUpperBound gets a reference to the given float64 and assigns it to the TierUpperBound field.
 func (o *InvoiceLineItem) SetTierUpperBound(v float64) {
 	o.TierUpperBound = &v
+	o.NullFields = removeNullField(o.NullFields, "TierUpperBound")
+}
+
+// SetTierUpperBoundNil sets TierUpperBound to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetTierUpperBoundNil() {
+	o.TierUpperBound = nil
+	o.NullFields = addNullField(o.NullFields, "TierUpperBound")
 }
 
 // GetTotalPriceCents returns the TotalPriceCents field value if set, zero value otherwise
@@ -606,6 +720,13 @@ func (o *InvoiceLineItem) HasTotalPriceCents() bool {
 // SetTotalPriceCents gets a reference to the given int64 and assigns it to the TotalPriceCents field.
 func (o *InvoiceLineItem) SetTotalPriceCents(v int64) {
 	o.TotalPriceCents = &v
+	o.NullFields = removeNullField(o.NullFields, "TotalPriceCents")
+}
+
+// SetTotalPriceCentsNil sets TotalPriceCents to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetTotalPriceCentsNil() {
+	o.TotalPriceCents = nil
+	o.NullFields = addNullField(o.NullFields, "TotalPriceCents")
 }
 
 // GetUnit returns the Unit field value if set, zero value otherwise
@@ -639,6 +760,13 @@ func (o *InvoiceLineItem) HasUnit() bool {
 // SetUnit gets a reference to the given string and assigns it to the Unit field.
 func (o *InvoiceLineItem) SetUnit(v string) {
 	o.Unit = &v
+	o.NullFields = removeNullField(o.NullFields, "Unit")
+}
+
+// SetUnitNil sets Unit to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetUnitNil() {
+	o.Unit = nil
+	o.NullFields = addNullField(o.NullFields, "Unit")
 }
 
 // GetUnitPriceDollars returns the UnitPriceDollars field value if set, zero value otherwise
@@ -672,4 +800,11 @@ func (o *InvoiceLineItem) HasUnitPriceDollars() bool {
 // SetUnitPriceDollars gets a reference to the given float64 and assigns it to the UnitPriceDollars field.
 func (o *InvoiceLineItem) SetUnitPriceDollars(v float64) {
 	o.UnitPriceDollars = &v
+	o.NullFields = removeNullField(o.NullFields, "UnitPriceDollars")
+}
+
+// SetUnitPriceDollarsNil sets UnitPriceDollars to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetUnitPriceDollarsNil() {
+	o.UnitPriceDollars = nil
+	o.NullFields = addNullField(o.NullFields, "UnitPriceDollars")
 }

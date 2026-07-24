@@ -60,6 +60,13 @@ SetAuthHeader sets AuthHeader field to given value.
 `func (o *BackupRestoreJobDelivery) HasAuthHeader() bool`
 
 HasAuthHeader returns a boolean if a field has been set.
+
+### SetAuthHeaderNil
+
+`func (o *BackupRestoreJobDelivery) SetAuthHeaderNil()`
+
+SetAuthHeaderNil sets AuthHeader to an explicit JSON null when marshaled, overriding any value previously set with SetAuthHeader. Calling SetAuthHeader again clears the null override.
+
 ### GetAuthValue
 
 `func (o *BackupRestoreJobDelivery) GetAuthValue() string`
@@ -84,6 +91,13 @@ SetAuthValue sets AuthValue field to given value.
 `func (o *BackupRestoreJobDelivery) HasAuthValue() bool`
 
 HasAuthValue returns a boolean if a field has been set.
+
+### SetAuthValueNil
+
+`func (o *BackupRestoreJobDelivery) SetAuthValueNil()`
+
+SetAuthValueNil sets AuthValue to an explicit JSON null when marshaled, overriding any value previously set with SetAuthValue. Calling SetAuthValue again clears the null override.
+
 ### GetExpirationHours
 
 `func (o *BackupRestoreJobDelivery) GetExpirationHours() int`
@@ -108,6 +122,13 @@ SetExpirationHours sets ExpirationHours field to given value.
 `func (o *BackupRestoreJobDelivery) HasExpirationHours() bool`
 
 HasExpirationHours returns a boolean if a field has been set.
+
+### SetExpirationHoursNil
+
+`func (o *BackupRestoreJobDelivery) SetExpirationHoursNil()`
+
+SetExpirationHoursNil sets ExpirationHours to an explicit JSON null when marshaled, overriding any value previously set with SetExpirationHours. Calling SetExpirationHours again clears the null override.
+
 ### GetExpires
 
 `func (o *BackupRestoreJobDelivery) GetExpires() time.Time`
@@ -132,6 +153,13 @@ SetExpires sets Expires field to given value.
 `func (o *BackupRestoreJobDelivery) HasExpires() bool`
 
 HasExpires returns a boolean if a field has been set.
+
+### SetExpiresNil
+
+`func (o *BackupRestoreJobDelivery) SetExpiresNil()`
+
+SetExpiresNil sets Expires to an explicit JSON null when marshaled, overriding any value previously set with SetExpires. Calling SetExpires again clears the null override.
+
 ### GetMaxDownloads
 
 `func (o *BackupRestoreJobDelivery) GetMaxDownloads() int`
@@ -156,6 +184,13 @@ SetMaxDownloads sets MaxDownloads field to given value.
 `func (o *BackupRestoreJobDelivery) HasMaxDownloads() bool`
 
 HasMaxDownloads returns a boolean if a field has been set.
+
+### SetMaxDownloadsNil
+
+`func (o *BackupRestoreJobDelivery) SetMaxDownloadsNil()`
+
+SetMaxDownloadsNil sets MaxDownloads to an explicit JSON null when marshaled, overriding any value previously set with SetMaxDownloads. Calling SetMaxDownloads again clears the null override.
+
 ### GetMethodName
 
 `func (o *BackupRestoreJobDelivery) GetMethodName() string`
@@ -199,6 +234,13 @@ SetStatusName sets StatusName field to given value.
 `func (o *BackupRestoreJobDelivery) HasStatusName() bool`
 
 HasStatusName returns a boolean if a field has been set.
+
+### SetStatusNameNil
+
+`func (o *BackupRestoreJobDelivery) SetStatusNameNil()`
+
+SetStatusNameNil sets StatusName to an explicit JSON null when marshaled, overriding any value previously set with SetStatusName. Calling SetStatusName again clears the null override.
+
 ### GetTargetClusterId
 
 `func (o *BackupRestoreJobDelivery) GetTargetClusterId() string`
@@ -223,6 +265,13 @@ SetTargetClusterId sets TargetClusterId field to given value.
 `func (o *BackupRestoreJobDelivery) HasTargetClusterId() bool`
 
 HasTargetClusterId returns a boolean if a field has been set.
+
+### SetTargetClusterIdNil
+
+`func (o *BackupRestoreJobDelivery) SetTargetClusterIdNil()`
+
+SetTargetClusterIdNil sets TargetClusterId to an explicit JSON null when marshaled, overriding any value previously set with SetTargetClusterId. Calling SetTargetClusterId again clears the null override.
+
 ### GetTargetClusterName
 
 `func (o *BackupRestoreJobDelivery) GetTargetClusterName() string`
@@ -247,6 +296,13 @@ SetTargetClusterName sets TargetClusterName field to given value.
 `func (o *BackupRestoreJobDelivery) HasTargetClusterName() bool`
 
 HasTargetClusterName returns a boolean if a field has been set.
+
+### SetTargetClusterNameNil
+
+`func (o *BackupRestoreJobDelivery) SetTargetClusterNameNil()`
+
+SetTargetClusterNameNil sets TargetClusterName to an explicit JSON null when marshaled, overriding any value previously set with SetTargetClusterName. Calling SetTargetClusterName again clears the null override.
+
 ### GetTargetGroupId
 
 `func (o *BackupRestoreJobDelivery) GetTargetGroupId() string`
@@ -271,6 +327,13 @@ SetTargetGroupId sets TargetGroupId field to given value.
 `func (o *BackupRestoreJobDelivery) HasTargetGroupId() bool`
 
 HasTargetGroupId returns a boolean if a field has been set.
+
+### SetTargetGroupIdNil
+
+`func (o *BackupRestoreJobDelivery) SetTargetGroupIdNil()`
+
+SetTargetGroupIdNil sets TargetGroupId to an explicit JSON null when marshaled, overriding any value previously set with SetTargetGroupId. Calling SetTargetGroupId again clears the null override.
+
 ### GetUrl
 
 `func (o *BackupRestoreJobDelivery) GetUrl() string`
@@ -295,6 +358,13 @@ SetUrl sets Url field to given value.
 `func (o *BackupRestoreJobDelivery) HasUrl() bool`
 
 HasUrl returns a boolean if a field has been set.
+
+### SetUrlNil
+
+`func (o *BackupRestoreJobDelivery) SetUrlNil()`
+
+SetUrlNil sets Url to an explicit JSON null when marshaled, overriding any value previously set with SetUrl. Calling SetUrl again clears the null override.
+
 ### GetUrlV2
 
 `func (o *BackupRestoreJobDelivery) GetUrlV2() string`
@@ -319,6 +389,13 @@ SetUrlV2 sets UrlV2 field to given value.
 `func (o *BackupRestoreJobDelivery) HasUrlV2() bool`
 
 HasUrlV2 returns a boolean if a field has been set.
+
+### SetUrlV2Nil
+
+`func (o *BackupRestoreJobDelivery) SetUrlV2Nil()`
+
+SetUrlV2Nil sets UrlV2 to an explicit JSON null when marshaled, overriding any value previously set with SetUrlV2. Calling SetUrlV2 again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

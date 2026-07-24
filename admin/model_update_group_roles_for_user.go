@@ -9,6 +9,15 @@ type UpdateGroupRolesForUser struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *UpdateGroupRolesForUser) MarshalJSON() ([]byte, error) {
+	type noMethod UpdateGroupRolesForUser
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewUpdateGroupRolesForUser instantiates a new UpdateGroupRolesForUser object
@@ -59,6 +68,13 @@ func (o *UpdateGroupRolesForUser) HasGroupRoles() bool {
 // SetGroupRoles gets a reference to the given []string and assigns it to the GroupRoles field.
 func (o *UpdateGroupRolesForUser) SetGroupRoles(v []string) {
 	o.GroupRoles = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupRoles")
+}
+
+// SetGroupRolesNil sets GroupRoles to an explicit JSON null when marshaled.
+func (o *UpdateGroupRolesForUser) SetGroupRolesNil() {
+	o.GroupRoles = nil
+	o.NullFields = addNullField(o.NullFields, "GroupRoles")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -92,4 +108,11 @@ func (o *UpdateGroupRolesForUser) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *UpdateGroupRolesForUser) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *UpdateGroupRolesForUser) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }

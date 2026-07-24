@@ -52,6 +52,13 @@ SetAnalyticsNodes sets AnalyticsNodes field to given value.
 `func (o *RegionSpec) HasAnalyticsNodes() bool`
 
 HasAnalyticsNodes returns a boolean if a field has been set.
+
+### SetAnalyticsNodesNil
+
+`func (o *RegionSpec) SetAnalyticsNodesNil()`
+
+SetAnalyticsNodesNil sets AnalyticsNodes to an explicit JSON null when marshaled, overriding any value previously set with SetAnalyticsNodes. Calling SetAnalyticsNodes again clears the null override.
+
 ### GetElectableNodes
 
 `func (o *RegionSpec) GetElectableNodes() int`
@@ -76,6 +83,13 @@ SetElectableNodes sets ElectableNodes field to given value.
 `func (o *RegionSpec) HasElectableNodes() bool`
 
 HasElectableNodes returns a boolean if a field has been set.
+
+### SetElectableNodesNil
+
+`func (o *RegionSpec) SetElectableNodesNil()`
+
+SetElectableNodesNil sets ElectableNodes to an explicit JSON null when marshaled, overriding any value previously set with SetElectableNodes. Calling SetElectableNodes again clears the null override.
+
 ### GetPriority
 
 `func (o *RegionSpec) GetPriority() int`
@@ -100,6 +114,13 @@ SetPriority sets Priority field to given value.
 `func (o *RegionSpec) HasPriority() bool`
 
 HasPriority returns a boolean if a field has been set.
+
+### SetPriorityNil
+
+`func (o *RegionSpec) SetPriorityNil()`
+
+SetPriorityNil sets Priority to an explicit JSON null when marshaled, overriding any value previously set with SetPriority. Calling SetPriority again clears the null override.
+
 ### GetReadOnlyNodes
 
 `func (o *RegionSpec) GetReadOnlyNodes() int`
@@ -124,6 +145,13 @@ SetReadOnlyNodes sets ReadOnlyNodes field to given value.
 `func (o *RegionSpec) HasReadOnlyNodes() bool`
 
 HasReadOnlyNodes returns a boolean if a field has been set.
+
+### SetReadOnlyNodesNil
+
+`func (o *RegionSpec) SetReadOnlyNodesNil()`
+
+SetReadOnlyNodesNil sets ReadOnlyNodes to an explicit JSON null when marshaled, overriding any value previously set with SetReadOnlyNodes. Calling SetReadOnlyNodes again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -16,6 +16,15 @@ type ApiAtlasFTSAnalyzersTokenizer struct {
 	Pattern *string `json:"pattern,omitempty"`
 	// Maximum number of characters in a single token. Tokens greater than this length are split at this length into multiple tokens.
 	MaxTokenLength *int `json:"maxTokenLength,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiAtlasFTSAnalyzersTokenizer) MarshalJSON() ([]byte, error) {
+	type noMethod ApiAtlasFTSAnalyzersTokenizer
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasFTSAnalyzersTokenizer instantiates a new ApiAtlasFTSAnalyzersTokenizer object
@@ -70,6 +79,13 @@ func (o *ApiAtlasFTSAnalyzersTokenizer) HasMaxGram() bool {
 // SetMaxGram gets a reference to the given int and assigns it to the MaxGram field.
 func (o *ApiAtlasFTSAnalyzersTokenizer) SetMaxGram(v int) {
 	o.MaxGram = &v
+	o.NullFields = removeNullField(o.NullFields, "MaxGram")
+}
+
+// SetMaxGramNil sets MaxGram to an explicit JSON null when marshaled.
+func (o *ApiAtlasFTSAnalyzersTokenizer) SetMaxGramNil() {
+	o.MaxGram = nil
+	o.NullFields = addNullField(o.NullFields, "MaxGram")
 }
 
 // GetMinGram returns the MinGram field value if set, zero value otherwise
@@ -103,6 +119,13 @@ func (o *ApiAtlasFTSAnalyzersTokenizer) HasMinGram() bool {
 // SetMinGram gets a reference to the given int and assigns it to the MinGram field.
 func (o *ApiAtlasFTSAnalyzersTokenizer) SetMinGram(v int) {
 	o.MinGram = &v
+	o.NullFields = removeNullField(o.NullFields, "MinGram")
+}
+
+// SetMinGramNil sets MinGram to an explicit JSON null when marshaled.
+func (o *ApiAtlasFTSAnalyzersTokenizer) SetMinGramNil() {
+	o.MinGram = nil
+	o.NullFields = addNullField(o.NullFields, "MinGram")
 }
 
 // GetType returns the Type field value if set, zero value otherwise
@@ -136,6 +159,13 @@ func (o *ApiAtlasFTSAnalyzersTokenizer) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *ApiAtlasFTSAnalyzersTokenizer) SetType(v string) {
 	o.Type = &v
+	o.NullFields = removeNullField(o.NullFields, "Type")
+}
+
+// SetTypeNil sets Type to an explicit JSON null when marshaled.
+func (o *ApiAtlasFTSAnalyzersTokenizer) SetTypeNil() {
+	o.Type = nil
+	o.NullFields = addNullField(o.NullFields, "Type")
 }
 
 // GetGroup returns the Group field value if set, zero value otherwise
@@ -169,6 +199,13 @@ func (o *ApiAtlasFTSAnalyzersTokenizer) HasGroup() bool {
 // SetGroup gets a reference to the given int and assigns it to the Group field.
 func (o *ApiAtlasFTSAnalyzersTokenizer) SetGroup(v int) {
 	o.Group = &v
+	o.NullFields = removeNullField(o.NullFields, "Group")
+}
+
+// SetGroupNil sets Group to an explicit JSON null when marshaled.
+func (o *ApiAtlasFTSAnalyzersTokenizer) SetGroupNil() {
+	o.Group = nil
+	o.NullFields = addNullField(o.NullFields, "Group")
 }
 
 // GetPattern returns the Pattern field value if set, zero value otherwise
@@ -202,6 +239,13 @@ func (o *ApiAtlasFTSAnalyzersTokenizer) HasPattern() bool {
 // SetPattern gets a reference to the given string and assigns it to the Pattern field.
 func (o *ApiAtlasFTSAnalyzersTokenizer) SetPattern(v string) {
 	o.Pattern = &v
+	o.NullFields = removeNullField(o.NullFields, "Pattern")
+}
+
+// SetPatternNil sets Pattern to an explicit JSON null when marshaled.
+func (o *ApiAtlasFTSAnalyzersTokenizer) SetPatternNil() {
+	o.Pattern = nil
+	o.NullFields = addNullField(o.NullFields, "Pattern")
 }
 
 // GetMaxTokenLength returns the MaxTokenLength field value if set, zero value otherwise
@@ -235,4 +279,11 @@ func (o *ApiAtlasFTSAnalyzersTokenizer) HasMaxTokenLength() bool {
 // SetMaxTokenLength gets a reference to the given int and assigns it to the MaxTokenLength field.
 func (o *ApiAtlasFTSAnalyzersTokenizer) SetMaxTokenLength(v int) {
 	o.MaxTokenLength = &v
+	o.NullFields = removeNullField(o.NullFields, "MaxTokenLength")
+}
+
+// SetMaxTokenLengthNil sets MaxTokenLength to an explicit JSON null when marshaled.
+func (o *ApiAtlasFTSAnalyzersTokenizer) SetMaxTokenLengthNil() {
+	o.MaxTokenLength = nil
+	o.NullFields = addNullField(o.NullFields, "MaxTokenLength")
 }

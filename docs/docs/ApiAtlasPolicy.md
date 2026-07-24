@@ -50,6 +50,13 @@ SetBody sets Body field to given value.
 `func (o *ApiAtlasPolicy) HasBody() bool`
 
 HasBody returns a boolean if a field has been set.
+
+### SetBodyNil
+
+`func (o *ApiAtlasPolicy) SetBodyNil()`
+
+SetBodyNil sets Body to an explicit JSON null when marshaled, overriding any value previously set with SetBody. Calling SetBody again clears the null override.
+
 ### GetId
 
 `func (o *ApiAtlasPolicy) GetId() string`
@@ -74,6 +81,13 @@ SetId sets Id field to given value.
 `func (o *ApiAtlasPolicy) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *ApiAtlasPolicy) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

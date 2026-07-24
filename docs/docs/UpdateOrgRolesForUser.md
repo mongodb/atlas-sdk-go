@@ -50,6 +50,13 @@ SetLinks sets Links field to given value.
 `func (o *UpdateOrgRolesForUser) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *UpdateOrgRolesForUser) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetOrgRoles
 
 `func (o *UpdateOrgRolesForUser) GetOrgRoles() []string`
@@ -74,6 +81,13 @@ SetOrgRoles sets OrgRoles field to given value.
 `func (o *UpdateOrgRolesForUser) HasOrgRoles() bool`
 
 HasOrgRoles returns a boolean if a field has been set.
+
+### SetOrgRolesNil
+
+`func (o *UpdateOrgRolesForUser) SetOrgRolesNil()`
+
+SetOrgRolesNil sets OrgRoles to an explicit JSON null when marshaled, overriding any value previously set with SetOrgRoles. Calling SetOrgRoles again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

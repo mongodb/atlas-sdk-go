@@ -52,6 +52,13 @@ SetFileName sets FileName field to given value.
 `func (o *RestoreJobFileHash) HasFileName() bool`
 
 HasFileName returns a boolean if a field has been set.
+
+### SetFileNameNil
+
+`func (o *RestoreJobFileHash) SetFileNameNil()`
+
+SetFileNameNil sets FileName to an explicit JSON null when marshaled, overriding any value previously set with SetFileName. Calling SetFileName again clears the null override.
+
 ### GetHash
 
 `func (o *RestoreJobFileHash) GetHash() string`
@@ -76,6 +83,13 @@ SetHash sets Hash field to given value.
 `func (o *RestoreJobFileHash) HasHash() bool`
 
 HasHash returns a boolean if a field has been set.
+
+### SetHashNil
+
+`func (o *RestoreJobFileHash) SetHashNil()`
+
+SetHashNil sets Hash to an explicit JSON null when marshaled, overriding any value previously set with SetHash. Calling SetHash again clears the null override.
+
 ### GetLinks
 
 `func (o *RestoreJobFileHash) GetLinks() []Link`
@@ -100,6 +114,13 @@ SetLinks sets Links field to given value.
 `func (o *RestoreJobFileHash) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *RestoreJobFileHash) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetTypeName
 
 `func (o *RestoreJobFileHash) GetTypeName() string`
@@ -124,6 +145,13 @@ SetTypeName sets TypeName field to given value.
 `func (o *RestoreJobFileHash) HasTypeName() bool`
 
 HasTypeName returns a boolean if a field has been set.
+
+### SetTypeNameNil
+
+`func (o *RestoreJobFileHash) SetTypeNameNil()`
+
+SetTypeNameNil sets TypeName to an explicit JSON null when marshaled, overriding any value previously set with SetTypeName. Calling SetTypeName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

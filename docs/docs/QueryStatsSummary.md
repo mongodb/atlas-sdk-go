@@ -68,6 +68,13 @@ SetAvgWorkingMillis sets AvgWorkingMillis field to given value.
 `func (o *QueryStatsSummary) HasAvgWorkingMillis() bool`
 
 HasAvgWorkingMillis returns a boolean if a field has been set.
+
+### SetAvgWorkingMillisNil
+
+`func (o *QueryStatsSummary) SetAvgWorkingMillisNil()`
+
+SetAvgWorkingMillisNil sets AvgWorkingMillis to an explicit JSON null when marshaled, overriding any value previously set with SetAvgWorkingMillis. Calling SetAvgWorkingMillis again clears the null override.
+
 ### GetBytesRead
 
 `func (o *QueryStatsSummary) GetBytesRead() float64`
@@ -92,6 +99,13 @@ SetBytesRead sets BytesRead field to given value.
 `func (o *QueryStatsSummary) HasBytesRead() bool`
 
 HasBytesRead returns a boolean if a field has been set.
+
+### SetBytesReadNil
+
+`func (o *QueryStatsSummary) SetBytesReadNil()`
+
+SetBytesReadNil sets BytesRead to an explicit JSON null when marshaled, overriding any value previously set with SetBytesRead. Calling SetBytesRead again clears the null override.
+
 ### GetCommand
 
 `func (o *QueryStatsSummary) GetCommand() string`
@@ -116,6 +130,13 @@ SetCommand sets Command field to given value.
 `func (o *QueryStatsSummary) HasCommand() bool`
 
 HasCommand returns a boolean if a field has been set.
+
+### SetCommandNil
+
+`func (o *QueryStatsSummary) SetCommandNil()`
+
+SetCommandNil sets Command to an explicit JSON null when marshaled, overriding any value previously set with SetCommand. Calling SetCommand again clears the null override.
+
 ### GetCpuTime
 
 `func (o *QueryStatsSummary) GetCpuTime() float64`
@@ -140,6 +161,13 @@ SetCpuTime sets CpuTime field to given value.
 `func (o *QueryStatsSummary) HasCpuTime() bool`
 
 HasCpuTime returns a boolean if a field has been set.
+
+### SetCpuTimeNil
+
+`func (o *QueryStatsSummary) SetCpuTimeNil()`
+
+SetCpuTimeNil sets CpuTime to an explicit JSON null when marshaled, overriding any value previously set with SetCpuTime. Calling SetCpuTime again clears the null override.
+
 ### GetDocsExamined
 
 `func (o *QueryStatsSummary) GetDocsExamined() float64`
@@ -164,6 +192,13 @@ SetDocsExamined sets DocsExamined field to given value.
 `func (o *QueryStatsSummary) HasDocsExamined() bool`
 
 HasDocsExamined returns a boolean if a field has been set.
+
+### SetDocsExaminedNil
+
+`func (o *QueryStatsSummary) SetDocsExaminedNil()`
+
+SetDocsExaminedNil sets DocsExamined to an explicit JSON null when marshaled, overriding any value previously set with SetDocsExamined. Calling SetDocsExamined again clears the null override.
+
 ### GetDocsExaminedRatio
 
 `func (o *QueryStatsSummary) GetDocsExaminedRatio() float64`
@@ -188,6 +223,13 @@ SetDocsExaminedRatio sets DocsExaminedRatio field to given value.
 `func (o *QueryStatsSummary) HasDocsExaminedRatio() bool`
 
 HasDocsExaminedRatio returns a boolean if a field has been set.
+
+### SetDocsExaminedRatioNil
+
+`func (o *QueryStatsSummary) SetDocsExaminedRatioNil()`
+
+SetDocsExaminedRatioNil sets DocsExaminedRatio to an explicit JSON null when marshaled, overriding any value previously set with SetDocsExaminedRatio. Calling SetDocsExaminedRatio again clears the null override.
+
 ### GetDocsReturned
 
 `func (o *QueryStatsSummary) GetDocsReturned() float64`
@@ -212,6 +254,13 @@ SetDocsReturned sets DocsReturned field to given value.
 `func (o *QueryStatsSummary) HasDocsReturned() bool`
 
 HasDocsReturned returns a boolean if a field has been set.
+
+### SetDocsReturnedNil
+
+`func (o *QueryStatsSummary) SetDocsReturnedNil()`
+
+SetDocsReturnedNil sets DocsReturned to an explicit JSON null when marshaled, overriding any value previously set with SetDocsReturned. Calling SetDocsReturned again clears the null override.
+
 ### GetExecCount
 
 `func (o *QueryStatsSummary) GetExecCount() float64`
@@ -236,6 +285,13 @@ SetExecCount sets ExecCount field to given value.
 `func (o *QueryStatsSummary) HasExecCount() bool`
 
 HasExecCount returns a boolean if a field has been set.
+
+### SetExecCountNil
+
+`func (o *QueryStatsSummary) SetExecCountNil()`
+
+SetExecCountNil sets ExecCount to an explicit JSON null when marshaled, overriding any value previously set with SetExecCount. Calling SetExecCount again clears the null override.
+
 ### GetKeysExamined
 
 `func (o *QueryStatsSummary) GetKeysExamined() float64`
@@ -260,6 +316,13 @@ SetKeysExamined sets KeysExamined field to given value.
 `func (o *QueryStatsSummary) HasKeysExamined() bool`
 
 HasKeysExamined returns a boolean if a field has been set.
+
+### SetKeysExaminedNil
+
+`func (o *QueryStatsSummary) SetKeysExaminedNil()`
+
+SetKeysExaminedNil sets KeysExamined to an explicit JSON null when marshaled, overriding any value previously set with SetKeysExamined. Calling SetKeysExamined again clears the null override.
+
 ### GetKeysExaminedRatio
 
 `func (o *QueryStatsSummary) GetKeysExaminedRatio() float64`
@@ -284,6 +347,13 @@ SetKeysExaminedRatio sets KeysExaminedRatio field to given value.
 `func (o *QueryStatsSummary) HasKeysExaminedRatio() bool`
 
 HasKeysExaminedRatio returns a boolean if a field has been set.
+
+### SetKeysExaminedRatioNil
+
+`func (o *QueryStatsSummary) SetKeysExaminedRatioNil()`
+
+SetKeysExaminedRatioNil sets KeysExaminedRatio to an explicit JSON null when marshaled, overriding any value previously set with SetKeysExaminedRatio. Calling SetKeysExaminedRatio again clears the null override.
+
 ### GetLastExecMicros
 
 `func (o *QueryStatsSummary) GetLastExecMicros() float64`
@@ -308,6 +378,13 @@ SetLastExecMicros sets LastExecMicros field to given value.
 `func (o *QueryStatsSummary) HasLastExecMicros() bool`
 
 HasLastExecMicros returns a boolean if a field has been set.
+
+### SetLastExecMicrosNil
+
+`func (o *QueryStatsSummary) SetLastExecMicrosNil()`
+
+SetLastExecMicrosNil sets LastExecMicros to an explicit JSON null when marshaled, overriding any value previously set with SetLastExecMicros. Calling SetLastExecMicros again clears the null override.
+
 ### GetNamespace
 
 `func (o *QueryStatsSummary) GetNamespace() string`
@@ -332,6 +409,13 @@ SetNamespace sets Namespace field to given value.
 `func (o *QueryStatsSummary) HasNamespace() bool`
 
 HasNamespace returns a boolean if a field has been set.
+
+### SetNamespaceNil
+
+`func (o *QueryStatsSummary) SetNamespaceNil()`
+
+SetNamespaceNil sets Namespace to an explicit JSON null when marshaled, overriding any value previously set with SetNamespace. Calling SetNamespace again clears the null override.
+
 ### GetP50ExecMicros
 
 `func (o *QueryStatsSummary) GetP50ExecMicros() float64`
@@ -356,6 +440,13 @@ SetP50ExecMicros sets P50ExecMicros field to given value.
 `func (o *QueryStatsSummary) HasP50ExecMicros() bool`
 
 HasP50ExecMicros returns a boolean if a field has been set.
+
+### SetP50ExecMicrosNil
+
+`func (o *QueryStatsSummary) SetP50ExecMicrosNil()`
+
+SetP50ExecMicrosNil sets P50ExecMicros to an explicit JSON null when marshaled, overriding any value previously set with SetP50ExecMicros. Calling SetP50ExecMicros again clears the null override.
+
 ### GetP90ExecMicros
 
 `func (o *QueryStatsSummary) GetP90ExecMicros() float64`
@@ -380,6 +471,13 @@ SetP90ExecMicros sets P90ExecMicros field to given value.
 `func (o *QueryStatsSummary) HasP90ExecMicros() bool`
 
 HasP90ExecMicros returns a boolean if a field has been set.
+
+### SetP90ExecMicrosNil
+
+`func (o *QueryStatsSummary) SetP90ExecMicrosNil()`
+
+SetP90ExecMicrosNil sets P90ExecMicros to an explicit JSON null when marshaled, overriding any value previously set with SetP90ExecMicros. Calling SetP90ExecMicros again clears the null override.
+
 ### GetP99ExecMicros
 
 `func (o *QueryStatsSummary) GetP99ExecMicros() float64`
@@ -404,6 +502,13 @@ SetP99ExecMicros sets P99ExecMicros field to given value.
 `func (o *QueryStatsSummary) HasP99ExecMicros() bool`
 
 HasP99ExecMicros returns a boolean if a field has been set.
+
+### SetP99ExecMicrosNil
+
+`func (o *QueryStatsSummary) SetP99ExecMicrosNil()`
+
+SetP99ExecMicrosNil sets P99ExecMicros to an explicit JSON null when marshaled, overriding any value previously set with SetP99ExecMicros. Calling SetP99ExecMicros again clears the null override.
+
 ### GetQueryShape
 
 `func (o *QueryStatsSummary) GetQueryShape() string`
@@ -428,6 +533,13 @@ SetQueryShape sets QueryShape field to given value.
 `func (o *QueryStatsSummary) HasQueryShape() bool`
 
 HasQueryShape returns a boolean if a field has been set.
+
+### SetQueryShapeNil
+
+`func (o *QueryStatsSummary) SetQueryShapeNil()`
+
+SetQueryShapeNil sets QueryShape to an explicit JSON null when marshaled, overriding any value previously set with SetQueryShape. Calling SetQueryShape again clears the null override.
+
 ### GetQueryShapeHash
 
 `func (o *QueryStatsSummary) GetQueryShapeHash() string`
@@ -452,6 +564,13 @@ SetQueryShapeHash sets QueryShapeHash field to given value.
 `func (o *QueryStatsSummary) HasQueryShapeHash() bool`
 
 HasQueryShapeHash returns a boolean if a field has been set.
+
+### SetQueryShapeHashNil
+
+`func (o *QueryStatsSummary) SetQueryShapeHashNil()`
+
+SetQueryShapeHashNil sets QueryShapeHash to an explicit JSON null when marshaled, overriding any value previously set with SetQueryShapeHash. Calling SetQueryShapeHash again clears the null override.
+
 ### GetSystemQuery
 
 `func (o *QueryStatsSummary) GetSystemQuery() bool`
@@ -476,6 +595,13 @@ SetSystemQuery sets SystemQuery field to given value.
 `func (o *QueryStatsSummary) HasSystemQuery() bool`
 
 HasSystemQuery returns a boolean if a field has been set.
+
+### SetSystemQueryNil
+
+`func (o *QueryStatsSummary) SetSystemQueryNil()`
+
+SetSystemQueryNil sets SystemQuery to an explicit JSON null when marshaled, overriding any value previously set with SetSystemQuery. Calling SetSystemQuery again clears the null override.
+
 ### GetTotalTimeToResponseMicros
 
 `func (o *QueryStatsSummary) GetTotalTimeToResponseMicros() float64`
@@ -500,6 +626,13 @@ SetTotalTimeToResponseMicros sets TotalTimeToResponseMicros field to given value
 `func (o *QueryStatsSummary) HasTotalTimeToResponseMicros() bool`
 
 HasTotalTimeToResponseMicros returns a boolean if a field has been set.
+
+### SetTotalTimeToResponseMicrosNil
+
+`func (o *QueryStatsSummary) SetTotalTimeToResponseMicrosNil()`
+
+SetTotalTimeToResponseMicrosNil sets TotalTimeToResponseMicros to an explicit JSON null when marshaled, overriding any value previously set with SetTotalTimeToResponseMicros. Calling SetTotalTimeToResponseMicros again clears the null override.
+
 ### GetTotalWorkingMillis
 
 `func (o *QueryStatsSummary) GetTotalWorkingMillis() float64`
@@ -524,6 +657,13 @@ SetTotalWorkingMillis sets TotalWorkingMillis field to given value.
 `func (o *QueryStatsSummary) HasTotalWorkingMillis() bool`
 
 HasTotalWorkingMillis returns a boolean if a field has been set.
+
+### SetTotalWorkingMillisNil
+
+`func (o *QueryStatsSummary) SetTotalWorkingMillisNil()`
+
+SetTotalWorkingMillisNil sets TotalWorkingMillis to an explicit JSON null when marshaled, overriding any value previously set with SetTotalWorkingMillis. Calling SetTotalWorkingMillis again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

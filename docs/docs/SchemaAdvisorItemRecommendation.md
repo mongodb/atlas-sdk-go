@@ -51,6 +51,13 @@ SetAffectedNamespaces sets AffectedNamespaces field to given value.
 `func (o *SchemaAdvisorItemRecommendation) HasAffectedNamespaces() bool`
 
 HasAffectedNamespaces returns a boolean if a field has been set.
+
+### SetAffectedNamespacesNil
+
+`func (o *SchemaAdvisorItemRecommendation) SetAffectedNamespacesNil()`
+
+SetAffectedNamespacesNil sets AffectedNamespaces to an explicit JSON null when marshaled, overriding any value previously set with SetAffectedNamespaces. Calling SetAffectedNamespaces again clears the null override.
+
 ### GetDescription
 
 `func (o *SchemaAdvisorItemRecommendation) GetDescription() string`
@@ -75,6 +82,13 @@ SetDescription sets Description field to given value.
 `func (o *SchemaAdvisorItemRecommendation) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *SchemaAdvisorItemRecommendation) SetDescriptionNil()`
+
+SetDescriptionNil sets Description to an explicit JSON null when marshaled, overriding any value previously set with SetDescription. Calling SetDescription again clears the null override.
+
 ### GetRecommendation
 
 `func (o *SchemaAdvisorItemRecommendation) GetRecommendation() string`
@@ -99,6 +113,13 @@ SetRecommendation sets Recommendation field to given value.
 `func (o *SchemaAdvisorItemRecommendation) HasRecommendation() bool`
 
 HasRecommendation returns a boolean if a field has been set.
+
+### SetRecommendationNil
+
+`func (o *SchemaAdvisorItemRecommendation) SetRecommendationNil()`
+
+SetRecommendationNil sets Recommendation to an explicit JSON null when marshaled, overriding any value previously set with SetRecommendation. Calling SetRecommendation again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

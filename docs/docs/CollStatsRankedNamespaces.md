@@ -51,6 +51,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *CollStatsRankedNamespaces) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *CollStatsRankedNamespaces) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetIdentifierId
 
 `func (o *CollStatsRankedNamespaces) GetIdentifierId() string`
@@ -75,6 +82,13 @@ SetIdentifierId sets IdentifierId field to given value.
 `func (o *CollStatsRankedNamespaces) HasIdentifierId() bool`
 
 HasIdentifierId returns a boolean if a field has been set.
+
+### SetIdentifierIdNil
+
+`func (o *CollStatsRankedNamespaces) SetIdentifierIdNil()`
+
+SetIdentifierIdNil sets IdentifierId to an explicit JSON null when marshaled, overriding any value previously set with SetIdentifierId. Calling SetIdentifierId again clears the null override.
+
 ### GetRankedNamespaces
 
 `func (o *CollStatsRankedNamespaces) GetRankedNamespaces() []string`

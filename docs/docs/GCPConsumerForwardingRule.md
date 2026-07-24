@@ -51,6 +51,13 @@ SetEndpointName sets EndpointName field to given value.
 `func (o *GCPConsumerForwardingRule) HasEndpointName() bool`
 
 HasEndpointName returns a boolean if a field has been set.
+
+### SetEndpointNameNil
+
+`func (o *GCPConsumerForwardingRule) SetEndpointNameNil()`
+
+SetEndpointNameNil sets EndpointName to an explicit JSON null when marshaled, overriding any value previously set with SetEndpointName. Calling SetEndpointName again clears the null override.
+
 ### GetIpAddress
 
 `func (o *GCPConsumerForwardingRule) GetIpAddress() string`
@@ -75,6 +82,13 @@ SetIpAddress sets IpAddress field to given value.
 `func (o *GCPConsumerForwardingRule) HasIpAddress() bool`
 
 HasIpAddress returns a boolean if a field has been set.
+
+### SetIpAddressNil
+
+`func (o *GCPConsumerForwardingRule) SetIpAddressNil()`
+
+SetIpAddressNil sets IpAddress to an explicit JSON null when marshaled, overriding any value previously set with SetIpAddress. Calling SetIpAddress again clears the null override.
+
 ### GetStatus
 
 `func (o *GCPConsumerForwardingRule) GetStatus() string`
@@ -99,6 +113,13 @@ SetStatus sets Status field to given value.
 `func (o *GCPConsumerForwardingRule) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *GCPConsumerForwardingRule) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

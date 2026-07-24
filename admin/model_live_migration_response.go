@@ -19,6 +19,15 @@ type LiveMigrationResponse struct {
 	// Progress made in migrating one cluster to MongoDB Atlas.  `NEW`: Someone scheduled a local cluster migration to MongoDB Atlas.  `FAILED`: The cluster migration to MongoDB Atlas failed.  `COMPLETE`: The cluster migration to MongoDB Atlas succeeded.  `EXPIRED`: MongoDB Atlas prepares to begin the cut over of the migrating cluster when source and destination clusters have almost synchronized. If `\"readyForCutover\" : true`, this synchronization starts a timer of 120 hours. You can extend this timer. If the timer expires, MongoDB Atlas returns this status.  `WORKING`: The cluster migration to MongoDB Atlas is performing one of the following tasks:  - Preparing connections to source and destination clusters. - Replicating data from source to destination. - Verifying MongoDB Atlas connection settings. - Stopping replication after the cut over.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *LiveMigrationResponse) MarshalJSON() ([]byte, error) {
+	type noMethod LiveMigrationResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewLiveMigrationResponse instantiates a new LiveMigrationResponse object
@@ -69,6 +78,13 @@ func (o *LiveMigrationResponse) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *LiveMigrationResponse) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *LiveMigrationResponse) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetLagTimeSeconds returns the LagTimeSeconds field value if set, zero value otherwise
@@ -102,6 +118,13 @@ func (o *LiveMigrationResponse) HasLagTimeSeconds() bool {
 // SetLagTimeSeconds gets a reference to the given int64 and assigns it to the LagTimeSeconds field.
 func (o *LiveMigrationResponse) SetLagTimeSeconds(v int64) {
 	o.LagTimeSeconds = &v
+	o.NullFields = removeNullField(o.NullFields, "LagTimeSeconds")
+}
+
+// SetLagTimeSecondsNil sets LagTimeSeconds to an explicit JSON null when marshaled.
+func (o *LiveMigrationResponse) SetLagTimeSecondsNil() {
+	o.LagTimeSeconds = nil
+	o.NullFields = addNullField(o.NullFields, "LagTimeSeconds")
 }
 
 // GetMigrationHosts returns the MigrationHosts field value if set, zero value otherwise
@@ -135,6 +158,13 @@ func (o *LiveMigrationResponse) HasMigrationHosts() bool {
 // SetMigrationHosts gets a reference to the given []string and assigns it to the MigrationHosts field.
 func (o *LiveMigrationResponse) SetMigrationHosts(v []string) {
 	o.MigrationHosts = &v
+	o.NullFields = removeNullField(o.NullFields, "MigrationHosts")
+}
+
+// SetMigrationHostsNil sets MigrationHosts to an explicit JSON null when marshaled.
+func (o *LiveMigrationResponse) SetMigrationHostsNil() {
+	o.MigrationHosts = nil
+	o.NullFields = addNullField(o.NullFields, "MigrationHosts")
 }
 
 // GetReadyForCutover returns the ReadyForCutover field value if set, zero value otherwise
@@ -168,6 +198,13 @@ func (o *LiveMigrationResponse) HasReadyForCutover() bool {
 // SetReadyForCutover gets a reference to the given bool and assigns it to the ReadyForCutover field.
 func (o *LiveMigrationResponse) SetReadyForCutover(v bool) {
 	o.ReadyForCutover = &v
+	o.NullFields = removeNullField(o.NullFields, "ReadyForCutover")
+}
+
+// SetReadyForCutoverNil sets ReadyForCutover to an explicit JSON null when marshaled.
+func (o *LiveMigrationResponse) SetReadyForCutoverNil() {
+	o.ReadyForCutover = nil
+	o.NullFields = addNullField(o.NullFields, "ReadyForCutover")
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
@@ -201,4 +238,11 @@ func (o *LiveMigrationResponse) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *LiveMigrationResponse) SetStatus(v string) {
 	o.Status = &v
+	o.NullFields = removeNullField(o.NullFields, "Status")
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *LiveMigrationResponse) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = addNullField(o.NullFields, "Status")
 }

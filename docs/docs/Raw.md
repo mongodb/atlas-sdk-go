@@ -58,6 +58,13 @@ SetT sets T field to given value.
 `func (o *Raw) HasT() bool`
 
 HasT returns a boolean if a field has been set.
+
+### SetTNil
+
+`func (o *Raw) SetTNil()`
+
+SetTNil sets T to an explicit JSON null when marshaled, overriding any value previously set with SetT. Calling SetT again clears the null override.
+
 ### GetAlertConfigId
 
 `func (o *Raw) GetAlertConfigId() string`
@@ -82,6 +89,13 @@ SetAlertConfigId sets AlertConfigId field to given value.
 `func (o *Raw) HasAlertConfigId() bool`
 
 HasAlertConfigId returns a boolean if a field has been set.
+
+### SetAlertConfigIdNil
+
+`func (o *Raw) SetAlertConfigIdNil()`
+
+SetAlertConfigIdNil sets AlertConfigId to an explicit JSON null when marshaled, overriding any value previously set with SetAlertConfigId. Calling SetAlertConfigId again clears the null override.
+
 ### GetCid
 
 `func (o *Raw) GetCid() string`
@@ -106,6 +120,13 @@ SetCid sets Cid field to given value.
 `func (o *Raw) HasCid() bool`
 
 HasCid returns a boolean if a field has been set.
+
+### SetCidNil
+
+`func (o *Raw) SetCidNil()`
+
+SetCidNil sets Cid to an explicit JSON null when marshaled, overriding any value previously set with SetCid. Calling SetCid again clears the null override.
+
 ### GetCre
 
 `func (o *Raw) GetCre() time.Time`
@@ -130,6 +151,13 @@ SetCre sets Cre field to given value.
 `func (o *Raw) HasCre() bool`
 
 HasCre returns a boolean if a field has been set.
+
+### SetCreNil
+
+`func (o *Raw) SetCreNil()`
+
+SetCreNil sets Cre to an explicit JSON null when marshaled, overriding any value previously set with SetCre. Calling SetCre again clears the null override.
+
 ### GetDescription
 
 `func (o *Raw) GetDescription() string`
@@ -154,6 +182,13 @@ SetDescription sets Description field to given value.
 `func (o *Raw) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *Raw) SetDescriptionNil()`
+
+SetDescriptionNil sets Description to an explicit JSON null when marshaled, overriding any value previously set with SetDescription. Calling SetDescription again clears the null override.
+
 ### GetGn
 
 `func (o *Raw) GetGn() string`
@@ -178,6 +213,13 @@ SetGn sets Gn field to given value.
 `func (o *Raw) HasGn() bool`
 
 HasGn returns a boolean if a field has been set.
+
+### SetGnNil
+
+`func (o *Raw) SetGnNil()`
+
+SetGnNil sets Gn to an explicit JSON null when marshaled, overriding any value previously set with SetGn. Calling SetGn again clears the null override.
+
 ### GetId
 
 `func (o *Raw) GetId() string`
@@ -202,6 +244,13 @@ SetId sets Id field to given value.
 `func (o *Raw) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *Raw) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetOrgId
 
 `func (o *Raw) GetOrgId() string`
@@ -226,6 +275,13 @@ SetOrgId sets OrgId field to given value.
 `func (o *Raw) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
+
+### SetOrgIdNil
+
+`func (o *Raw) SetOrgIdNil()`
+
+SetOrgIdNil sets OrgId to an explicit JSON null when marshaled, overriding any value previously set with SetOrgId. Calling SetOrgId again clears the null override.
+
 ### GetOrgName
 
 `func (o *Raw) GetOrgName() string`
@@ -250,6 +306,13 @@ SetOrgName sets OrgName field to given value.
 `func (o *Raw) HasOrgName() bool`
 
 HasOrgName returns a boolean if a field has been set.
+
+### SetOrgNameNil
+
+`func (o *Raw) SetOrgNameNil()`
+
+SetOrgNameNil sets OrgName to an explicit JSON null when marshaled, overriding any value previously set with SetOrgName. Calling SetOrgName again clears the null override.
+
 ### GetSeverity
 
 `func (o *Raw) GetSeverity() string`
@@ -274,6 +337,13 @@ SetSeverity sets Severity field to given value.
 `func (o *Raw) HasSeverity() bool`
 
 HasSeverity returns a boolean if a field has been set.
+
+### SetSeverityNil
+
+`func (o *Raw) SetSeverityNil()`
+
+SetSeverityNil sets Severity to an explicit JSON null when marshaled, overriding any value previously set with SetSeverity. Calling SetSeverity again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

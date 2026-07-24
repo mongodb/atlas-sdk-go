@@ -52,6 +52,13 @@ SetMs sets Ms field to given value.
 `func (o *PerformanceAdvisorOpStats) HasMs() bool`
 
 HasMs returns a boolean if a field has been set.
+
+### SetMsNil
+
+`func (o *PerformanceAdvisorOpStats) SetMsNil()`
+
+SetMsNil sets Ms to an explicit JSON null when marshaled, overriding any value previously set with SetMs. Calling SetMs again clears the null override.
+
 ### GetNReturned
 
 `func (o *PerformanceAdvisorOpStats) GetNReturned() int64`
@@ -76,6 +83,13 @@ SetNReturned sets NReturned field to given value.
 `func (o *PerformanceAdvisorOpStats) HasNReturned() bool`
 
 HasNReturned returns a boolean if a field has been set.
+
+### SetNReturnedNil
+
+`func (o *PerformanceAdvisorOpStats) SetNReturnedNil()`
+
+SetNReturnedNil sets NReturned to an explicit JSON null when marshaled, overriding any value previously set with SetNReturned. Calling SetNReturned again clears the null override.
+
 ### GetNScanned
 
 `func (o *PerformanceAdvisorOpStats) GetNScanned() int64`
@@ -100,6 +114,13 @@ SetNScanned sets NScanned field to given value.
 `func (o *PerformanceAdvisorOpStats) HasNScanned() bool`
 
 HasNScanned returns a boolean if a field has been set.
+
+### SetNScannedNil
+
+`func (o *PerformanceAdvisorOpStats) SetNScannedNil()`
+
+SetNScannedNil sets NScanned to an explicit JSON null when marshaled, overriding any value previously set with SetNScanned. Calling SetNScanned again clears the null override.
+
 ### GetTs
 
 `func (o *PerformanceAdvisorOpStats) GetTs() int64`
@@ -124,6 +145,13 @@ SetTs sets Ts field to given value.
 `func (o *PerformanceAdvisorOpStats) HasTs() bool`
 
 HasTs returns a boolean if a field has been set.
+
+### SetTsNil
+
+`func (o *PerformanceAdvisorOpStats) SetTsNil()`
+
+SetTsNil sets Ts to an explicit JSON null when marshaled, overriding any value previously set with SetTs. Calling SetTs again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -65,6 +65,13 @@ SetId sets Id field to given value.
 `func (o *StreamsPrivateLinkConnection) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *StreamsPrivateLinkConnection) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetArn
 
 `func (o *StreamsPrivateLinkConnection) GetArn() string`
@@ -89,6 +96,13 @@ SetArn sets Arn field to given value.
 `func (o *StreamsPrivateLinkConnection) HasArn() bool`
 
 HasArn returns a boolean if a field has been set.
+
+### SetArnNil
+
+`func (o *StreamsPrivateLinkConnection) SetArnNil()`
+
+SetArnNil sets Arn to an explicit JSON null when marshaled, overriding any value previously set with SetArn. Calling SetArn again clears the null override.
+
 ### GetAzureResourceIds
 
 `func (o *StreamsPrivateLinkConnection) GetAzureResourceIds() []string`
@@ -113,6 +127,13 @@ SetAzureResourceIds sets AzureResourceIds field to given value.
 `func (o *StreamsPrivateLinkConnection) HasAzureResourceIds() bool`
 
 HasAzureResourceIds returns a boolean if a field has been set.
+
+### SetAzureResourceIdsNil
+
+`func (o *StreamsPrivateLinkConnection) SetAzureResourceIdsNil()`
+
+SetAzureResourceIdsNil sets AzureResourceIds to an explicit JSON null when marshaled, overriding any value previously set with SetAzureResourceIds. Calling SetAzureResourceIds again clears the null override.
+
 ### GetDnsDomain
 
 `func (o *StreamsPrivateLinkConnection) GetDnsDomain() string`
@@ -137,6 +158,13 @@ SetDnsDomain sets DnsDomain field to given value.
 `func (o *StreamsPrivateLinkConnection) HasDnsDomain() bool`
 
 HasDnsDomain returns a boolean if a field has been set.
+
+### SetDnsDomainNil
+
+`func (o *StreamsPrivateLinkConnection) SetDnsDomainNil()`
+
+SetDnsDomainNil sets DnsDomain to an explicit JSON null when marshaled, overriding any value previously set with SetDnsDomain. Calling SetDnsDomain again clears the null override.
+
 ### GetDnsSubDomain
 
 `func (o *StreamsPrivateLinkConnection) GetDnsSubDomain() []string`
@@ -161,6 +189,13 @@ SetDnsSubDomain sets DnsSubDomain field to given value.
 `func (o *StreamsPrivateLinkConnection) HasDnsSubDomain() bool`
 
 HasDnsSubDomain returns a boolean if a field has been set.
+
+### SetDnsSubDomainNil
+
+`func (o *StreamsPrivateLinkConnection) SetDnsSubDomainNil()`
+
+SetDnsSubDomainNil sets DnsSubDomain to an explicit JSON null when marshaled, overriding any value previously set with SetDnsSubDomain. Calling SetDnsSubDomain again clears the null override.
+
 ### GetErrorMessage
 
 `func (o *StreamsPrivateLinkConnection) GetErrorMessage() string`
@@ -185,6 +220,13 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *StreamsPrivateLinkConnection) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
+
+### SetErrorMessageNil
+
+`func (o *StreamsPrivateLinkConnection) SetErrorMessageNil()`
+
+SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled, overriding any value previously set with SetErrorMessage. Calling SetErrorMessage again clears the null override.
+
 ### GetGcpConnectionIds
 
 `func (o *StreamsPrivateLinkConnection) GetGcpConnectionIds() []string`
@@ -209,6 +251,13 @@ SetGcpConnectionIds sets GcpConnectionIds field to given value.
 `func (o *StreamsPrivateLinkConnection) HasGcpConnectionIds() bool`
 
 HasGcpConnectionIds returns a boolean if a field has been set.
+
+### SetGcpConnectionIdsNil
+
+`func (o *StreamsPrivateLinkConnection) SetGcpConnectionIdsNil()`
+
+SetGcpConnectionIdsNil sets GcpConnectionIds to an explicit JSON null when marshaled, overriding any value previously set with SetGcpConnectionIds. Calling SetGcpConnectionIds again clears the null override.
+
 ### GetGcpServiceAttachmentUris
 
 `func (o *StreamsPrivateLinkConnection) GetGcpServiceAttachmentUris() []string`
@@ -233,6 +282,13 @@ SetGcpServiceAttachmentUris sets GcpServiceAttachmentUris field to given value.
 `func (o *StreamsPrivateLinkConnection) HasGcpServiceAttachmentUris() bool`
 
 HasGcpServiceAttachmentUris returns a boolean if a field has been set.
+
+### SetGcpServiceAttachmentUrisNil
+
+`func (o *StreamsPrivateLinkConnection) SetGcpServiceAttachmentUrisNil()`
+
+SetGcpServiceAttachmentUrisNil sets GcpServiceAttachmentUris to an explicit JSON null when marshaled, overriding any value previously set with SetGcpServiceAttachmentUris. Calling SetGcpServiceAttachmentUris again clears the null override.
+
 ### GetInterfaceEndpointId
 
 `func (o *StreamsPrivateLinkConnection) GetInterfaceEndpointId() string`
@@ -257,6 +313,13 @@ SetInterfaceEndpointId sets InterfaceEndpointId field to given value.
 `func (o *StreamsPrivateLinkConnection) HasInterfaceEndpointId() bool`
 
 HasInterfaceEndpointId returns a boolean if a field has been set.
+
+### SetInterfaceEndpointIdNil
+
+`func (o *StreamsPrivateLinkConnection) SetInterfaceEndpointIdNil()`
+
+SetInterfaceEndpointIdNil sets InterfaceEndpointId to an explicit JSON null when marshaled, overriding any value previously set with SetInterfaceEndpointId. Calling SetInterfaceEndpointId again clears the null override.
+
 ### GetInterfaceEndpointName
 
 `func (o *StreamsPrivateLinkConnection) GetInterfaceEndpointName() string`
@@ -281,6 +344,13 @@ SetInterfaceEndpointName sets InterfaceEndpointName field to given value.
 `func (o *StreamsPrivateLinkConnection) HasInterfaceEndpointName() bool`
 
 HasInterfaceEndpointName returns a boolean if a field has been set.
+
+### SetInterfaceEndpointNameNil
+
+`func (o *StreamsPrivateLinkConnection) SetInterfaceEndpointNameNil()`
+
+SetInterfaceEndpointNameNil sets InterfaceEndpointName to an explicit JSON null when marshaled, overriding any value previously set with SetInterfaceEndpointName. Calling SetInterfaceEndpointName again clears the null override.
+
 ### GetLinks
 
 `func (o *StreamsPrivateLinkConnection) GetLinks() []Link`
@@ -305,6 +375,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsPrivateLinkConnection) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsPrivateLinkConnection) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetProvider
 
 `func (o *StreamsPrivateLinkConnection) GetProvider() string`
@@ -348,6 +425,13 @@ SetProviderAccountId sets ProviderAccountId field to given value.
 `func (o *StreamsPrivateLinkConnection) HasProviderAccountId() bool`
 
 HasProviderAccountId returns a boolean if a field has been set.
+
+### SetProviderAccountIdNil
+
+`func (o *StreamsPrivateLinkConnection) SetProviderAccountIdNil()`
+
+SetProviderAccountIdNil sets ProviderAccountId to an explicit JSON null when marshaled, overriding any value previously set with SetProviderAccountId. Calling SetProviderAccountId again clears the null override.
+
 ### GetRegion
 
 `func (o *StreamsPrivateLinkConnection) GetRegion() string`
@@ -372,6 +456,13 @@ SetRegion sets Region field to given value.
 `func (o *StreamsPrivateLinkConnection) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *StreamsPrivateLinkConnection) SetRegionNil()`
+
+SetRegionNil sets Region to an explicit JSON null when marshaled, overriding any value previously set with SetRegion. Calling SetRegion again clears the null override.
+
 ### GetServiceEndpointId
 
 `func (o *StreamsPrivateLinkConnection) GetServiceEndpointId() string`
@@ -396,6 +487,13 @@ SetServiceEndpointId sets ServiceEndpointId field to given value.
 `func (o *StreamsPrivateLinkConnection) HasServiceEndpointId() bool`
 
 HasServiceEndpointId returns a boolean if a field has been set.
+
+### SetServiceEndpointIdNil
+
+`func (o *StreamsPrivateLinkConnection) SetServiceEndpointIdNil()`
+
+SetServiceEndpointIdNil sets ServiceEndpointId to an explicit JSON null when marshaled, overriding any value previously set with SetServiceEndpointId. Calling SetServiceEndpointId again clears the null override.
+
 ### GetState
 
 `func (o *StreamsPrivateLinkConnection) GetState() string`
@@ -420,6 +518,13 @@ SetState sets State field to given value.
 `func (o *StreamsPrivateLinkConnection) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### SetStateNil
+
+`func (o *StreamsPrivateLinkConnection) SetStateNil()`
+
+SetStateNil sets State to an explicit JSON null when marshaled, overriding any value previously set with SetState. Calling SetState again clears the null override.
+
 ### GetVendor
 
 `func (o *StreamsPrivateLinkConnection) GetVendor() string`
@@ -444,6 +549,13 @@ SetVendor sets Vendor field to given value.
 `func (o *StreamsPrivateLinkConnection) HasVendor() bool`
 
 HasVendor returns a boolean if a field has been set.
+
+### SetVendorNil
+
+`func (o *StreamsPrivateLinkConnection) SetVendorNil()`
+
+SetVendorNil sets Vendor to an explicit JSON null when marshaled, overriding any value previously set with SetVendor. Calling SetVendor again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

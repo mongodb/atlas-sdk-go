@@ -9,6 +9,15 @@ type ServiceAccountGroup struct {
 	GroupId *string `json:"groupId,omitempty"`
 	// A list of project roles assigned to the Service Account in this project.
 	Roles *[]string `json:"roles,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ServiceAccountGroup) MarshalJSON() ([]byte, error) {
+	type noMethod ServiceAccountGroup
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewServiceAccountGroup instantiates a new ServiceAccountGroup object
@@ -59,6 +68,13 @@ func (o *ServiceAccountGroup) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *ServiceAccountGroup) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *ServiceAccountGroup) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise
@@ -92,4 +108,11 @@ func (o *ServiceAccountGroup) HasRoles() bool {
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *ServiceAccountGroup) SetRoles(v []string) {
 	o.Roles = &v
+	o.NullFields = removeNullField(o.NullFields, "Roles")
+}
+
+// SetRolesNil sets Roles to an explicit JSON null when marshaled.
+func (o *ServiceAccountGroup) SetRolesNil() {
+	o.Roles = nil
+	o.NullFields = addNullField(o.NullFields, "Roles")
 }

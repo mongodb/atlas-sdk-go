@@ -8,6 +8,15 @@ type ClusterConfigurationValidationResult struct {
 	Errors *[]ClusterConfigurationValidationError `json:"errors,omitempty"`
 	// Whether the cluster configuration is valid.
 	Valid *bool `json:"valid,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ClusterConfigurationValidationResult) MarshalJSON() ([]byte, error) {
+	type noMethod ClusterConfigurationValidationResult
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterConfigurationValidationResult instantiates a new ClusterConfigurationValidationResult object
@@ -58,6 +67,13 @@ func (o *ClusterConfigurationValidationResult) HasErrors() bool {
 // SetErrors gets a reference to the given []ClusterConfigurationValidationError and assigns it to the Errors field.
 func (o *ClusterConfigurationValidationResult) SetErrors(v []ClusterConfigurationValidationError) {
 	o.Errors = &v
+	o.NullFields = removeNullField(o.NullFields, "Errors")
+}
+
+// SetErrorsNil sets Errors to an explicit JSON null when marshaled.
+func (o *ClusterConfigurationValidationResult) SetErrorsNil() {
+	o.Errors = nil
+	o.NullFields = addNullField(o.NullFields, "Errors")
 }
 
 // GetValid returns the Valid field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *ClusterConfigurationValidationResult) HasValid() bool {
 // SetValid gets a reference to the given bool and assigns it to the Valid field.
 func (o *ClusterConfigurationValidationResult) SetValid(v bool) {
 	o.Valid = &v
+	o.NullFields = removeNullField(o.NullFields, "Valid")
+}
+
+// SetValidNil sets Valid to an explicit JSON null when marshaled.
+func (o *ClusterConfigurationValidationResult) SetValidNil() {
+	o.Valid = nil
+	o.NullFields = addNullField(o.NullFields, "Valid")
 }

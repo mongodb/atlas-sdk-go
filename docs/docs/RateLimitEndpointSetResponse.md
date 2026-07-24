@@ -55,6 +55,13 @@ SetCapacity sets Capacity field to given value.
 `func (o *RateLimitEndpointSetResponse) HasCapacity() bool`
 
 HasCapacity returns a boolean if a field has been set.
+
+### SetCapacityNil
+
+`func (o *RateLimitEndpointSetResponse) SetCapacityNil()`
+
+SetCapacityNil sets Capacity to an explicit JSON null when marshaled, overriding any value previously set with SetCapacity. Calling SetCapacity again clears the null override.
+
 ### GetEndpointSetId
 
 `func (o *RateLimitEndpointSetResponse) GetEndpointSetId() string`
@@ -79,6 +86,13 @@ SetEndpointSetId sets EndpointSetId field to given value.
 `func (o *RateLimitEndpointSetResponse) HasEndpointSetId() bool`
 
 HasEndpointSetId returns a boolean if a field has been set.
+
+### SetEndpointSetIdNil
+
+`func (o *RateLimitEndpointSetResponse) SetEndpointSetIdNil()`
+
+SetEndpointSetIdNil sets EndpointSetId to an explicit JSON null when marshaled, overriding any value previously set with SetEndpointSetId. Calling SetEndpointSetId again clears the null override.
+
 ### GetEndpointSetName
 
 `func (o *RateLimitEndpointSetResponse) GetEndpointSetName() string`
@@ -103,6 +117,13 @@ SetEndpointSetName sets EndpointSetName field to given value.
 `func (o *RateLimitEndpointSetResponse) HasEndpointSetName() bool`
 
 HasEndpointSetName returns a boolean if a field has been set.
+
+### SetEndpointSetNameNil
+
+`func (o *RateLimitEndpointSetResponse) SetEndpointSetNameNil()`
+
+SetEndpointSetNameNil sets EndpointSetName to an explicit JSON null when marshaled, overriding any value previously set with SetEndpointSetName. Calling SetEndpointSetName again clears the null override.
+
 ### GetEndpoints
 
 `func (o *RateLimitEndpointSetResponse) GetEndpoints() []RateLimitEndpointSetEndpoint`
@@ -127,6 +148,13 @@ SetEndpoints sets Endpoints field to given value.
 `func (o *RateLimitEndpointSetResponse) HasEndpoints() bool`
 
 HasEndpoints returns a boolean if a field has been set.
+
+### SetEndpointsNil
+
+`func (o *RateLimitEndpointSetResponse) SetEndpointsNil()`
+
+SetEndpointsNil sets Endpoints to an explicit JSON null when marshaled, overriding any value previously set with SetEndpoints. Calling SetEndpoints again clears the null override.
+
 ### GetRefillDurationSeconds
 
 `func (o *RateLimitEndpointSetResponse) GetRefillDurationSeconds() RateLimitEndpointSetRefillDurationSeconds`
@@ -151,6 +179,13 @@ SetRefillDurationSeconds sets RefillDurationSeconds field to given value.
 `func (o *RateLimitEndpointSetResponse) HasRefillDurationSeconds() bool`
 
 HasRefillDurationSeconds returns a boolean if a field has been set.
+
+### SetRefillDurationSecondsNil
+
+`func (o *RateLimitEndpointSetResponse) SetRefillDurationSecondsNil()`
+
+SetRefillDurationSecondsNil sets RefillDurationSeconds to an explicit JSON null when marshaled, overriding any value previously set with SetRefillDurationSeconds. Calling SetRefillDurationSeconds again clears the null override.
+
 ### GetRefillRate
 
 `func (o *RateLimitEndpointSetResponse) GetRefillRate() RateLimitEndpointSetRefillRate`
@@ -175,6 +210,13 @@ SetRefillRate sets RefillRate field to given value.
 `func (o *RateLimitEndpointSetResponse) HasRefillRate() bool`
 
 HasRefillRate returns a boolean if a field has been set.
+
+### SetRefillRateNil
+
+`func (o *RateLimitEndpointSetResponse) SetRefillRateNil()`
+
+SetRefillRateNil sets RefillRate to an explicit JSON null when marshaled, overriding any value previously set with SetRefillRate. Calling SetRefillRate again clears the null override.
+
 ### GetScope
 
 `func (o *RateLimitEndpointSetResponse) GetScope() string`
@@ -199,6 +241,13 @@ SetScope sets Scope field to given value.
 `func (o *RateLimitEndpointSetResponse) HasScope() bool`
 
 HasScope returns a boolean if a field has been set.
+
+### SetScopeNil
+
+`func (o *RateLimitEndpointSetResponse) SetScopeNil()`
+
+SetScopeNil sets Scope to an explicit JSON null when marshaled, overriding any value previously set with SetScope. Calling SetScope again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

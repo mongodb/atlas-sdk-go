@@ -50,6 +50,13 @@ SetNumber sets Number field to given value.
 `func (o *NumberMetricValue) HasNumber() bool`
 
 HasNumber returns a boolean if a field has been set.
+
+### SetNumberNil
+
+`func (o *NumberMetricValue) SetNumberNil()`
+
+SetNumberNil sets Number to an explicit JSON null when marshaled, overriding any value previously set with SetNumber. Calling SetNumber again clears the null override.
+
 ### GetUnits
 
 `func (o *NumberMetricValue) GetUnits() string`
@@ -74,6 +81,13 @@ SetUnits sets Units field to given value.
 `func (o *NumberMetricValue) HasUnits() bool`
 
 HasUnits returns a boolean if a field has been set.
+
+### SetUnitsNil
+
+`func (o *NumberMetricValue) SetUnitsNil()`
+
+SetUnitsNil sets Units to an explicit JSON null when marshaled, overriding any value previously set with SetUnits. Calling SetUnits again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

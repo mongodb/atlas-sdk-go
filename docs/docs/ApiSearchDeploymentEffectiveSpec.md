@@ -52,6 +52,13 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *ApiSearchDeploymentEffectiveSpec) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
+
+### SetCloudProviderNil
+
+`func (o *ApiSearchDeploymentEffectiveSpec) SetCloudProviderNil()`
+
+SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProvider. Calling SetCloudProvider again clears the null override.
+
 ### GetInstanceSize
 
 `func (o *ApiSearchDeploymentEffectiveSpec) GetInstanceSize() string`
@@ -76,6 +83,13 @@ SetInstanceSize sets InstanceSize field to given value.
 `func (o *ApiSearchDeploymentEffectiveSpec) HasInstanceSize() bool`
 
 HasInstanceSize returns a boolean if a field has been set.
+
+### SetInstanceSizeNil
+
+`func (o *ApiSearchDeploymentEffectiveSpec) SetInstanceSizeNil()`
+
+SetInstanceSizeNil sets InstanceSize to an explicit JSON null when marshaled, overriding any value previously set with SetInstanceSize. Calling SetInstanceSize again clears the null override.
+
 ### GetNodeCount
 
 `func (o *ApiSearchDeploymentEffectiveSpec) GetNodeCount() int`
@@ -100,6 +114,13 @@ SetNodeCount sets NodeCount field to given value.
 `func (o *ApiSearchDeploymentEffectiveSpec) HasNodeCount() bool`
 
 HasNodeCount returns a boolean if a field has been set.
+
+### SetNodeCountNil
+
+`func (o *ApiSearchDeploymentEffectiveSpec) SetNodeCountNil()`
+
+SetNodeCountNil sets NodeCount to an explicit JSON null when marshaled, overriding any value previously set with SetNodeCount. Calling SetNodeCount again clears the null override.
+
 ### GetRegionName
 
 `func (o *ApiSearchDeploymentEffectiveSpec) GetRegionName() string`
@@ -124,6 +145,13 @@ SetRegionName sets RegionName field to given value.
 `func (o *ApiSearchDeploymentEffectiveSpec) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
+
+### SetRegionNameNil
+
+`func (o *ApiSearchDeploymentEffectiveSpec) SetRegionNameNil()`
+
+SetRegionNameNil sets RegionName to an explicit JSON null when marshaled, overriding any value previously set with SetRegionName. Calling SetRegionName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

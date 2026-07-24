@@ -52,6 +52,13 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *ApiSearchDeploymentRequestSpec) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
+
+### SetCloudProviderNil
+
+`func (o *ApiSearchDeploymentRequestSpec) SetCloudProviderNil()`
+
+SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProvider. Calling SetCloudProvider again clears the null override.
+
 ### GetInstanceSize
 
 `func (o *ApiSearchDeploymentRequestSpec) GetInstanceSize() string`
@@ -95,6 +102,13 @@ SetNodeCount sets NodeCount field to given value.
 `func (o *ApiSearchDeploymentRequestSpec) HasNodeCount() bool`
 
 HasNodeCount returns a boolean if a field has been set.
+
+### SetNodeCountNil
+
+`func (o *ApiSearchDeploymentRequestSpec) SetNodeCountNil()`
+
+SetNodeCountNil sets NodeCount to an explicit JSON null when marshaled, overriding any value previously set with SetNodeCount. Calling SetNodeCount again clears the null override.
+
 ### GetRegionName
 
 `func (o *ApiSearchDeploymentRequestSpec) GetRegionName() string`
@@ -119,6 +133,13 @@ SetRegionName sets RegionName field to given value.
 `func (o *ApiSearchDeploymentRequestSpec) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
+
+### SetRegionNameNil
+
+`func (o *ApiSearchDeploymentRequestSpec) SetRegionNameNil()`
+
+SetRegionNameNil sets RegionName to an explicit JSON null when marshaled, overriding any value previously set with SetRegionName. Calling SetRegionName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

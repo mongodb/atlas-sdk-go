@@ -50,6 +50,13 @@ SetNamespace sets Namespace field to given value.
 `func (o *SchemaAdvisorNamespaceTriggers) HasNamespace() bool`
 
 HasNamespace returns a boolean if a field has been set.
+
+### SetNamespaceNil
+
+`func (o *SchemaAdvisorNamespaceTriggers) SetNamespaceNil()`
+
+SetNamespaceNil sets Namespace to an explicit JSON null when marshaled, overriding any value previously set with SetNamespace. Calling SetNamespace again clears the null override.
+
 ### GetTriggers
 
 `func (o *SchemaAdvisorNamespaceTriggers) GetTriggers() []SchemaAdvisorTriggerDetails`
@@ -74,6 +81,13 @@ SetTriggers sets Triggers field to given value.
 `func (o *SchemaAdvisorNamespaceTriggers) HasTriggers() bool`
 
 HasTriggers returns a boolean if a field has been set.
+
+### SetTriggersNil
+
+`func (o *SchemaAdvisorNamespaceTriggers) SetTriggersNil()`
+
+SetTriggersNil sets Triggers to an explicit JSON null when marshaled, overriding any value previously set with SetTriggers. Calling SetTriggers again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

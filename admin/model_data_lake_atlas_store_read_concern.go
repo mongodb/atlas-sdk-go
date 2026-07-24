@@ -6,6 +6,15 @@ package admin
 type DataLakeAtlasStoreReadConcern struct {
 	// Read Concern level that specifies the consistency and availability of the data read.
 	Level *string `json:"level,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DataLakeAtlasStoreReadConcern) MarshalJSON() ([]byte, error) {
+	type noMethod DataLakeAtlasStoreReadConcern
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataLakeAtlasStoreReadConcern instantiates a new DataLakeAtlasStoreReadConcern object
@@ -56,4 +65,11 @@ func (o *DataLakeAtlasStoreReadConcern) HasLevel() bool {
 // SetLevel gets a reference to the given string and assigns it to the Level field.
 func (o *DataLakeAtlasStoreReadConcern) SetLevel(v string) {
 	o.Level = &v
+	o.NullFields = removeNullField(o.NullFields, "Level")
+}
+
+// SetLevelNil sets Level to an explicit JSON null when marshaled.
+func (o *DataLakeAtlasStoreReadConcern) SetLevelNil() {
+	o.Level = nil
+	o.NullFields = addNullField(o.NullFields, "Level")
 }

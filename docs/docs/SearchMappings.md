@@ -50,6 +50,13 @@ SetDynamic sets Dynamic field to given value.
 `func (o *SearchMappings) HasDynamic() bool`
 
 HasDynamic returns a boolean if a field has been set.
+
+### SetDynamicNil
+
+`func (o *SearchMappings) SetDynamicNil()`
+
+SetDynamicNil sets Dynamic to an explicit JSON null when marshaled, overriding any value previously set with SetDynamic. Calling SetDynamic again clears the null override.
+
 ### GetFields
 
 `func (o *SearchMappings) GetFields() map[string]any`
@@ -74,6 +81,13 @@ SetFields sets Fields field to given value.
 `func (o *SearchMappings) HasFields() bool`
 
 HasFields returns a boolean if a field has been set.
+
+### SetFieldsNil
+
+`func (o *SearchMappings) SetFieldsNil()`
+
+SetFieldsNil sets Fields to an explicit JSON null when marshaled, overriding any value previously set with SetFields. Calling SetFields again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

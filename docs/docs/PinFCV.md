@@ -50,6 +50,13 @@ SetExpirationDate sets ExpirationDate field to given value.
 `func (o *PinFCV) HasExpirationDate() bool`
 
 HasExpirationDate returns a boolean if a field has been set.
+
+### SetExpirationDateNil
+
+`func (o *PinFCV) SetExpirationDateNil()`
+
+SetExpirationDateNil sets ExpirationDate to an explicit JSON null when marshaled, overriding any value previously set with SetExpirationDate. Calling SetExpirationDate again clears the null override.
+
 ### GetLinks
 
 `func (o *PinFCV) GetLinks() []Link`
@@ -74,6 +81,13 @@ SetLinks sets Links field to given value.
 `func (o *PinFCV) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *PinFCV) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

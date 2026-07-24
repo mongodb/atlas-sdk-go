@@ -8,6 +8,15 @@ type CreateDataProcessRegion struct {
 	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// Human-readable label that identifies the geographic location of the region where you wish to store your archived data.
 	Region *string `json:"region,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CreateDataProcessRegion) MarshalJSON() ([]byte, error) {
+	type noMethod CreateDataProcessRegion
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCreateDataProcessRegion instantiates a new CreateDataProcessRegion object
@@ -58,6 +67,13 @@ func (o *CreateDataProcessRegion) HasCloudProvider() bool {
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *CreateDataProcessRegion) SetCloudProvider(v string) {
 	o.CloudProvider = &v
+	o.NullFields = removeNullField(o.NullFields, "CloudProvider")
+}
+
+// SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled.
+func (o *CreateDataProcessRegion) SetCloudProviderNil() {
+	o.CloudProvider = nil
+	o.NullFields = addNullField(o.NullFields, "CloudProvider")
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *CreateDataProcessRegion) HasRegion() bool {
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *CreateDataProcessRegion) SetRegion(v string) {
 	o.Region = &v
+	o.NullFields = removeNullField(o.NullFields, "Region")
+}
+
+// SetRegionNil sets Region to an explicit JSON null when marshaled.
+func (o *CreateDataProcessRegion) SetRegionNil() {
+	o.Region = nil
+	o.NullFields = addNullField(o.NullFields, "Region")
 }

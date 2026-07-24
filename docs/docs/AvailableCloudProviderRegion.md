@@ -50,6 +50,13 @@ SetDefault sets Default field to given value.
 `func (o *AvailableCloudProviderRegion) HasDefault() bool`
 
 HasDefault returns a boolean if a field has been set.
+
+### SetDefaultNil
+
+`func (o *AvailableCloudProviderRegion) SetDefaultNil()`
+
+SetDefaultNil sets Default to an explicit JSON null when marshaled, overriding any value previously set with SetDefault. Calling SetDefault again clears the null override.
+
 ### GetName
 
 `func (o *AvailableCloudProviderRegion) GetName() string`
@@ -74,6 +81,13 @@ SetName sets Name field to given value.
 `func (o *AvailableCloudProviderRegion) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *AvailableCloudProviderRegion) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

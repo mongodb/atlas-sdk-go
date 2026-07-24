@@ -60,6 +60,13 @@ SetClusterId sets ClusterId field to given value.
 `func (o *BackupSnapshot) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
+
+### SetClusterIdNil
+
+`func (o *BackupSnapshot) SetClusterIdNil()`
+
+SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled, overriding any value previously set with SetClusterId. Calling SetClusterId again clears the null override.
+
 ### GetClusterName
 
 `func (o *BackupSnapshot) GetClusterName() string`
@@ -84,6 +91,13 @@ SetClusterName sets ClusterName field to given value.
 `func (o *BackupSnapshot) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+
+### SetClusterNameNil
+
+`func (o *BackupSnapshot) SetClusterNameNil()`
+
+SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled, overriding any value previously set with SetClusterName. Calling SetClusterName again clears the null override.
+
 ### GetComplete
 
 `func (o *BackupSnapshot) GetComplete() bool`
@@ -108,6 +122,13 @@ SetComplete sets Complete field to given value.
 `func (o *BackupSnapshot) HasComplete() bool`
 
 HasComplete returns a boolean if a field has been set.
+
+### SetCompleteNil
+
+`func (o *BackupSnapshot) SetCompleteNil()`
+
+SetCompleteNil sets Complete to an explicit JSON null when marshaled, overriding any value previously set with SetComplete. Calling SetComplete again clears the null override.
+
 ### GetCreated
 
 `func (o *BackupSnapshot) GetCreated() ApiBSONTimestamp`
@@ -132,6 +153,13 @@ SetCreated sets Created field to given value.
 `func (o *BackupSnapshot) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
+
+### SetCreatedNil
+
+`func (o *BackupSnapshot) SetCreatedNil()`
+
+SetCreatedNil sets Created to an explicit JSON null when marshaled, overriding any value previously set with SetCreated. Calling SetCreated again clears the null override.
+
 ### GetDoNotDelete
 
 `func (o *BackupSnapshot) GetDoNotDelete() bool`
@@ -156,6 +184,13 @@ SetDoNotDelete sets DoNotDelete field to given value.
 `func (o *BackupSnapshot) HasDoNotDelete() bool`
 
 HasDoNotDelete returns a boolean if a field has been set.
+
+### SetDoNotDeleteNil
+
+`func (o *BackupSnapshot) SetDoNotDeleteNil()`
+
+SetDoNotDeleteNil sets DoNotDelete to an explicit JSON null when marshaled, overriding any value previously set with SetDoNotDelete. Calling SetDoNotDelete again clears the null override.
+
 ### GetExpires
 
 `func (o *BackupSnapshot) GetExpires() time.Time`
@@ -180,6 +215,13 @@ SetExpires sets Expires field to given value.
 `func (o *BackupSnapshot) HasExpires() bool`
 
 HasExpires returns a boolean if a field has been set.
+
+### SetExpiresNil
+
+`func (o *BackupSnapshot) SetExpiresNil()`
+
+SetExpiresNil sets Expires to an explicit JSON null when marshaled, overriding any value previously set with SetExpires. Calling SetExpires again clears the null override.
+
 ### GetGroupId
 
 `func (o *BackupSnapshot) GetGroupId() string`
@@ -204,6 +246,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *BackupSnapshot) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *BackupSnapshot) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetId
 
 `func (o *BackupSnapshot) GetId() string`
@@ -228,6 +277,13 @@ SetId sets Id field to given value.
 `func (o *BackupSnapshot) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *BackupSnapshot) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetIncremental
 
 `func (o *BackupSnapshot) GetIncremental() bool`
@@ -252,6 +308,13 @@ SetIncremental sets Incremental field to given value.
 `func (o *BackupSnapshot) HasIncremental() bool`
 
 HasIncremental returns a boolean if a field has been set.
+
+### SetIncrementalNil
+
+`func (o *BackupSnapshot) SetIncrementalNil()`
+
+SetIncrementalNil sets Incremental to an explicit JSON null when marshaled, overriding any value previously set with SetIncremental. Calling SetIncremental again clears the null override.
+
 ### GetLastOplogAppliedTimestamp
 
 `func (o *BackupSnapshot) GetLastOplogAppliedTimestamp() ApiBSONTimestamp`
@@ -276,6 +339,13 @@ SetLastOplogAppliedTimestamp sets LastOplogAppliedTimestamp field to given value
 `func (o *BackupSnapshot) HasLastOplogAppliedTimestamp() bool`
 
 HasLastOplogAppliedTimestamp returns a boolean if a field has been set.
+
+### SetLastOplogAppliedTimestampNil
+
+`func (o *BackupSnapshot) SetLastOplogAppliedTimestampNil()`
+
+SetLastOplogAppliedTimestampNil sets LastOplogAppliedTimestamp to an explicit JSON null when marshaled, overriding any value previously set with SetLastOplogAppliedTimestamp. Calling SetLastOplogAppliedTimestamp again clears the null override.
+
 ### GetLinks
 
 `func (o *BackupSnapshot) GetLinks() []Link`
@@ -300,6 +370,13 @@ SetLinks sets Links field to given value.
 `func (o *BackupSnapshot) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *BackupSnapshot) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetParts
 
 `func (o *BackupSnapshot) GetParts() []BackupSnapshotPart`
@@ -324,6 +401,13 @@ SetParts sets Parts field to given value.
 `func (o *BackupSnapshot) HasParts() bool`
 
 HasParts returns a boolean if a field has been set.
+
+### SetPartsNil
+
+`func (o *BackupSnapshot) SetPartsNil()`
+
+SetPartsNil sets Parts to an explicit JSON null when marshaled, overriding any value previously set with SetParts. Calling SetParts again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

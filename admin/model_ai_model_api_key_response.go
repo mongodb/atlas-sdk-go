@@ -16,7 +16,7 @@ type AiModelApiKeyResponse struct {
 	// Name of the user that created this API key. If no user name is available, the user ID is returned.
 	// Read only field.
 	CreatedBy *string `json:"createdBy,omitempty"`
-	// Server-computed endpoint hostname derived from cloud and geography. This field is read-only and must not be supplied in request bodies.
+	// Server-computed endpoint hostname derived from `cloud` and `geography`. This field is read-only and must not be supplied in request bodies.
 	// Read only field.
 	Endpoint *string `json:"endpoint,omitempty"`
 	// Geography scope for this API key. Use \"ANY\" for geography-agnostic scope.
@@ -39,6 +39,15 @@ type AiModelApiKeyResponse struct {
 	// A string describing the current status of the API key.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AiModelApiKeyResponse) MarshalJSON() ([]byte, error) {
+	type noMethod AiModelApiKeyResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAiModelApiKeyResponse instantiates a new AiModelApiKeyResponse object
@@ -89,6 +98,13 @@ func (o *AiModelApiKeyResponse) HasApiKeyId() bool {
 // SetApiKeyId gets a reference to the given string and assigns it to the ApiKeyId field.
 func (o *AiModelApiKeyResponse) SetApiKeyId(v string) {
 	o.ApiKeyId = &v
+	o.NullFields = removeNullField(o.NullFields, "ApiKeyId")
+}
+
+// SetApiKeyIdNil sets ApiKeyId to an explicit JSON null when marshaled.
+func (o *AiModelApiKeyResponse) SetApiKeyIdNil() {
+	o.ApiKeyId = nil
+	o.NullFields = addNullField(o.NullFields, "ApiKeyId")
 }
 
 // GetCloud returns the Cloud field value if set, zero value otherwise
@@ -122,6 +138,13 @@ func (o *AiModelApiKeyResponse) HasCloud() bool {
 // SetCloud gets a reference to the given string and assigns it to the Cloud field.
 func (o *AiModelApiKeyResponse) SetCloud(v string) {
 	o.Cloud = &v
+	o.NullFields = removeNullField(o.NullFields, "Cloud")
+}
+
+// SetCloudNil sets Cloud to an explicit JSON null when marshaled.
+func (o *AiModelApiKeyResponse) SetCloudNil() {
+	o.Cloud = nil
+	o.NullFields = addNullField(o.NullFields, "Cloud")
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
@@ -155,6 +178,13 @@ func (o *AiModelApiKeyResponse) HasCreatedAt() bool {
 // SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
 func (o *AiModelApiKeyResponse) SetCreatedAt(v string) {
 	o.CreatedAt = &v
+	o.NullFields = removeNullField(o.NullFields, "CreatedAt")
+}
+
+// SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled.
+func (o *AiModelApiKeyResponse) SetCreatedAtNil() {
+	o.CreatedAt = nil
+	o.NullFields = addNullField(o.NullFields, "CreatedAt")
 }
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise
@@ -188,6 +218,13 @@ func (o *AiModelApiKeyResponse) HasCreatedBy() bool {
 // SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
 func (o *AiModelApiKeyResponse) SetCreatedBy(v string) {
 	o.CreatedBy = &v
+	o.NullFields = removeNullField(o.NullFields, "CreatedBy")
+}
+
+// SetCreatedByNil sets CreatedBy to an explicit JSON null when marshaled.
+func (o *AiModelApiKeyResponse) SetCreatedByNil() {
+	o.CreatedBy = nil
+	o.NullFields = addNullField(o.NullFields, "CreatedBy")
 }
 
 // GetEndpoint returns the Endpoint field value if set, zero value otherwise
@@ -221,6 +258,13 @@ func (o *AiModelApiKeyResponse) HasEndpoint() bool {
 // SetEndpoint gets a reference to the given string and assigns it to the Endpoint field.
 func (o *AiModelApiKeyResponse) SetEndpoint(v string) {
 	o.Endpoint = &v
+	o.NullFields = removeNullField(o.NullFields, "Endpoint")
+}
+
+// SetEndpointNil sets Endpoint to an explicit JSON null when marshaled.
+func (o *AiModelApiKeyResponse) SetEndpointNil() {
+	o.Endpoint = nil
+	o.NullFields = addNullField(o.NullFields, "Endpoint")
 }
 
 // GetGeography returns the Geography field value if set, zero value otherwise
@@ -254,6 +298,13 @@ func (o *AiModelApiKeyResponse) HasGeography() bool {
 // SetGeography gets a reference to the given string and assigns it to the Geography field.
 func (o *AiModelApiKeyResponse) SetGeography(v string) {
 	o.Geography = &v
+	o.NullFields = removeNullField(o.NullFields, "Geography")
+}
+
+// SetGeographyNil sets Geography to an explicit JSON null when marshaled.
+func (o *AiModelApiKeyResponse) SetGeographyNil() {
+	o.Geography = nil
+	o.NullFields = addNullField(o.NullFields, "Geography")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -287,6 +338,13 @@ func (o *AiModelApiKeyResponse) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *AiModelApiKeyResponse) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *AiModelApiKeyResponse) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetLastUsedAt returns the LastUsedAt field value if set, zero value otherwise
@@ -320,6 +378,13 @@ func (o *AiModelApiKeyResponse) HasLastUsedAt() bool {
 // SetLastUsedAt gets a reference to the given string and assigns it to the LastUsedAt field.
 func (o *AiModelApiKeyResponse) SetLastUsedAt(v string) {
 	o.LastUsedAt = &v
+	o.NullFields = removeNullField(o.NullFields, "LastUsedAt")
+}
+
+// SetLastUsedAtNil sets LastUsedAt to an explicit JSON null when marshaled.
+func (o *AiModelApiKeyResponse) SetLastUsedAtNil() {
+	o.LastUsedAt = nil
+	o.NullFields = addNullField(o.NullFields, "LastUsedAt")
 }
 
 // GetMaskedSecret returns the MaskedSecret field value if set, zero value otherwise
@@ -353,6 +418,13 @@ func (o *AiModelApiKeyResponse) HasMaskedSecret() bool {
 // SetMaskedSecret gets a reference to the given string and assigns it to the MaskedSecret field.
 func (o *AiModelApiKeyResponse) SetMaskedSecret(v string) {
 	o.MaskedSecret = &v
+	o.NullFields = removeNullField(o.NullFields, "MaskedSecret")
+}
+
+// SetMaskedSecretNil sets MaskedSecret to an explicit JSON null when marshaled.
+func (o *AiModelApiKeyResponse) SetMaskedSecretNil() {
+	o.MaskedSecret = nil
+	o.NullFields = addNullField(o.NullFields, "MaskedSecret")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -386,6 +458,13 @@ func (o *AiModelApiKeyResponse) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AiModelApiKeyResponse) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *AiModelApiKeyResponse) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }
 
 // GetSecret returns the Secret field value if set, zero value otherwise
@@ -419,6 +498,13 @@ func (o *AiModelApiKeyResponse) HasSecret() bool {
 // SetSecret gets a reference to the given string and assigns it to the Secret field.
 func (o *AiModelApiKeyResponse) SetSecret(v string) {
 	o.Secret = &v
+	o.NullFields = removeNullField(o.NullFields, "Secret")
+}
+
+// SetSecretNil sets Secret to an explicit JSON null when marshaled.
+func (o *AiModelApiKeyResponse) SetSecretNil() {
+	o.Secret = nil
+	o.NullFields = addNullField(o.NullFields, "Secret")
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
@@ -452,4 +538,11 @@ func (o *AiModelApiKeyResponse) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *AiModelApiKeyResponse) SetStatus(v string) {
 	o.Status = &v
+	o.NullFields = removeNullField(o.NullFields, "Status")
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *AiModelApiKeyResponse) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = addNullField(o.NullFields, "Status")
 }

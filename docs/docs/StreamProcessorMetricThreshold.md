@@ -53,6 +53,13 @@ SetMetricName sets MetricName field to given value.
 `func (o *StreamProcessorMetricThreshold) HasMetricName() bool`
 
 HasMetricName returns a boolean if a field has been set.
+
+### SetMetricNameNil
+
+`func (o *StreamProcessorMetricThreshold) SetMetricNameNil()`
+
+SetMetricNameNil sets MetricName to an explicit JSON null when marshaled, overriding any value previously set with SetMetricName. Calling SetMetricName again clears the null override.
+
 ### GetMode
 
 `func (o *StreamProcessorMetricThreshold) GetMode() string`
@@ -77,6 +84,13 @@ SetMode sets Mode field to given value.
 `func (o *StreamProcessorMetricThreshold) HasMode() bool`
 
 HasMode returns a boolean if a field has been set.
+
+### SetModeNil
+
+`func (o *StreamProcessorMetricThreshold) SetModeNil()`
+
+SetModeNil sets Mode to an explicit JSON null when marshaled, overriding any value previously set with SetMode. Calling SetMode again clears the null override.
+
 ### GetOperator
 
 `func (o *StreamProcessorMetricThreshold) GetOperator() string`
@@ -101,6 +115,13 @@ SetOperator sets Operator field to given value.
 `func (o *StreamProcessorMetricThreshold) HasOperator() bool`
 
 HasOperator returns a boolean if a field has been set.
+
+### SetOperatorNil
+
+`func (o *StreamProcessorMetricThreshold) SetOperatorNil()`
+
+SetOperatorNil sets Operator to an explicit JSON null when marshaled, overriding any value previously set with SetOperator. Calling SetOperator again clears the null override.
+
 ### GetThreshold
 
 `func (o *StreamProcessorMetricThreshold) GetThreshold() float64`
@@ -125,6 +146,13 @@ SetThreshold sets Threshold field to given value.
 `func (o *StreamProcessorMetricThreshold) HasThreshold() bool`
 
 HasThreshold returns a boolean if a field has been set.
+
+### SetThresholdNil
+
+`func (o *StreamProcessorMetricThreshold) SetThresholdNil()`
+
+SetThresholdNil sets Threshold to an explicit JSON null when marshaled, overriding any value previously set with SetThreshold. Calling SetThreshold again clears the null override.
+
 ### GetUnits
 
 `func (o *StreamProcessorMetricThreshold) GetUnits() string`
@@ -149,6 +177,13 @@ SetUnits sets Units field to given value.
 `func (o *StreamProcessorMetricThreshold) HasUnits() bool`
 
 HasUnits returns a boolean if a field has been set.
+
+### SetUnitsNil
+
+`func (o *StreamProcessorMetricThreshold) SetUnitsNil()`
+
+SetUnitsNil sets Units to an explicit JSON null when marshaled, overriding any value previously set with SetUnits. Calling SetUnits again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

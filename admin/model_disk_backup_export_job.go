@@ -38,6 +38,15 @@ type DiskBackupExportJob struct {
 	// Read only field.
 	State       *string      `json:"state,omitempty"`
 	StateReason *StateReason `json:"stateReason,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DiskBackupExportJob) MarshalJSON() ([]byte, error) {
+	type noMethod DiskBackupExportJob
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupExportJob instantiates a new DiskBackupExportJob object
@@ -89,6 +98,13 @@ func (o *DiskBackupExportJob) HasComponents() bool {
 // SetComponents gets a reference to the given []DiskBackupExportMember and assigns it to the Components field.
 func (o *DiskBackupExportJob) SetComponents(v []DiskBackupExportMember) {
 	o.Components = &v
+	o.NullFields = removeNullField(o.NullFields, "Components")
+}
+
+// SetComponentsNil sets Components to an explicit JSON null when marshaled.
+func (o *DiskBackupExportJob) SetComponentsNil() {
+	o.Components = nil
+	o.NullFields = addNullField(o.NullFields, "Components")
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
@@ -122,6 +138,13 @@ func (o *DiskBackupExportJob) HasCreatedAt() bool {
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *DiskBackupExportJob) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
+	o.NullFields = removeNullField(o.NullFields, "CreatedAt")
+}
+
+// SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled.
+func (o *DiskBackupExportJob) SetCreatedAtNil() {
+	o.CreatedAt = nil
+	o.NullFields = addNullField(o.NullFields, "CreatedAt")
 }
 
 // GetCustomData returns the CustomData field value if set, zero value otherwise
@@ -155,6 +178,13 @@ func (o *DiskBackupExportJob) HasCustomData() bool {
 // SetCustomData gets a reference to the given []BackupLabel and assigns it to the CustomData field.
 func (o *DiskBackupExportJob) SetCustomData(v []BackupLabel) {
 	o.CustomData = &v
+	o.NullFields = removeNullField(o.NullFields, "CustomData")
+}
+
+// SetCustomDataNil sets CustomData to an explicit JSON null when marshaled.
+func (o *DiskBackupExportJob) SetCustomDataNil() {
+	o.CustomData = nil
+	o.NullFields = addNullField(o.NullFields, "CustomData")
 }
 
 // GetExportBucketId returns the ExportBucketId field value
@@ -212,6 +242,13 @@ func (o *DiskBackupExportJob) HasExportStatus() bool {
 // SetExportStatus gets a reference to the given ExportStatus and assigns it to the ExportStatus field.
 func (o *DiskBackupExportJob) SetExportStatus(v ExportStatus) {
 	o.ExportStatus = &v
+	o.NullFields = removeNullField(o.NullFields, "ExportStatus")
+}
+
+// SetExportStatusNil sets ExportStatus to an explicit JSON null when marshaled.
+func (o *DiskBackupExportJob) SetExportStatusNil() {
+	o.ExportStatus = nil
+	o.NullFields = addNullField(o.NullFields, "ExportStatus")
 }
 
 // GetFinishedAt returns the FinishedAt field value if set, zero value otherwise
@@ -245,6 +282,13 @@ func (o *DiskBackupExportJob) HasFinishedAt() bool {
 // SetFinishedAt gets a reference to the given time.Time and assigns it to the FinishedAt field.
 func (o *DiskBackupExportJob) SetFinishedAt(v time.Time) {
 	o.FinishedAt = &v
+	o.NullFields = removeNullField(o.NullFields, "FinishedAt")
+}
+
+// SetFinishedAtNil sets FinishedAt to an explicit JSON null when marshaled.
+func (o *DiskBackupExportJob) SetFinishedAtNil() {
+	o.FinishedAt = nil
+	o.NullFields = addNullField(o.NullFields, "FinishedAt")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -278,6 +322,13 @@ func (o *DiskBackupExportJob) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *DiskBackupExportJob) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *DiskBackupExportJob) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -311,6 +362,13 @@ func (o *DiskBackupExportJob) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupExportJob) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *DiskBackupExportJob) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetPrefix returns the Prefix field value if set, zero value otherwise
@@ -344,6 +402,13 @@ func (o *DiskBackupExportJob) HasPrefix() bool {
 // SetPrefix gets a reference to the given string and assigns it to the Prefix field.
 func (o *DiskBackupExportJob) SetPrefix(v string) {
 	o.Prefix = &v
+	o.NullFields = removeNullField(o.NullFields, "Prefix")
+}
+
+// SetPrefixNil sets Prefix to an explicit JSON null when marshaled.
+func (o *DiskBackupExportJob) SetPrefixNil() {
+	o.Prefix = nil
+	o.NullFields = addNullField(o.NullFields, "Prefix")
 }
 
 // GetSnapshotId returns the SnapshotId field value if set, zero value otherwise
@@ -377,6 +442,13 @@ func (o *DiskBackupExportJob) HasSnapshotId() bool {
 // SetSnapshotId gets a reference to the given string and assigns it to the SnapshotId field.
 func (o *DiskBackupExportJob) SetSnapshotId(v string) {
 	o.SnapshotId = &v
+	o.NullFields = removeNullField(o.NullFields, "SnapshotId")
+}
+
+// SetSnapshotIdNil sets SnapshotId to an explicit JSON null when marshaled.
+func (o *DiskBackupExportJob) SetSnapshotIdNil() {
+	o.SnapshotId = nil
+	o.NullFields = addNullField(o.NullFields, "SnapshotId")
 }
 
 // GetState returns the State field value if set, zero value otherwise
@@ -410,6 +482,13 @@ func (o *DiskBackupExportJob) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *DiskBackupExportJob) SetState(v string) {
 	o.State = &v
+	o.NullFields = removeNullField(o.NullFields, "State")
+}
+
+// SetStateNil sets State to an explicit JSON null when marshaled.
+func (o *DiskBackupExportJob) SetStateNil() {
+	o.State = nil
+	o.NullFields = addNullField(o.NullFields, "State")
 }
 
 // GetStateReason returns the StateReason field value if set, zero value otherwise
@@ -443,4 +522,11 @@ func (o *DiskBackupExportJob) HasStateReason() bool {
 // SetStateReason gets a reference to the given StateReason and assigns it to the StateReason field.
 func (o *DiskBackupExportJob) SetStateReason(v StateReason) {
 	o.StateReason = &v
+	o.NullFields = removeNullField(o.NullFields, "StateReason")
+}
+
+// SetStateReasonNil sets StateReason to an explicit JSON null when marshaled.
+func (o *DiskBackupExportJob) SetStateReasonNil() {
+	o.StateReason = nil
+	o.NullFields = addNullField(o.NullFields, "StateReason")
 }

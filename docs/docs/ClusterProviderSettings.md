@@ -77,6 +77,13 @@ SetAutoScaling sets AutoScaling field to given value.
 `func (o *ClusterProviderSettings) HasAutoScaling() bool`
 
 HasAutoScaling returns a boolean if a field has been set.
+
+### SetAutoScalingNil
+
+`func (o *ClusterProviderSettings) SetAutoScalingNil()`
+
+SetAutoScalingNil sets AutoScaling to an explicit JSON null when marshaled, overriding any value previously set with SetAutoScaling. Calling SetAutoScaling again clears the null override.
+
 ### GetDiskIOPS
 
 `func (o *ClusterProviderSettings) GetDiskIOPS() int`
@@ -101,6 +108,13 @@ SetDiskIOPS sets DiskIOPS field to given value.
 `func (o *ClusterProviderSettings) HasDiskIOPS() bool`
 
 HasDiskIOPS returns a boolean if a field has been set.
+
+### SetDiskIOPSNil
+
+`func (o *ClusterProviderSettings) SetDiskIOPSNil()`
+
+SetDiskIOPSNil sets DiskIOPS to an explicit JSON null when marshaled, overriding any value previously set with SetDiskIOPS. Calling SetDiskIOPS again clears the null override.
+
 ### GetEncryptEBSVolume
 
 `func (o *ClusterProviderSettings) GetEncryptEBSVolume() bool`
@@ -125,6 +139,13 @@ SetEncryptEBSVolume sets EncryptEBSVolume field to given value.
 `func (o *ClusterProviderSettings) HasEncryptEBSVolume() bool`
 
 HasEncryptEBSVolume returns a boolean if a field has been set.
+
+### SetEncryptEBSVolumeNil
+
+`func (o *ClusterProviderSettings) SetEncryptEBSVolumeNil()`
+
+SetEncryptEBSVolumeNil sets EncryptEBSVolume to an explicit JSON null when marshaled, overriding any value previously set with SetEncryptEBSVolume. Calling SetEncryptEBSVolume again clears the null override.
+
 ### GetInstanceSizeName
 
 `func (o *ClusterProviderSettings) GetInstanceSizeName() string`
@@ -149,6 +170,13 @@ SetInstanceSizeName sets InstanceSizeName field to given value.
 `func (o *ClusterProviderSettings) HasInstanceSizeName() bool`
 
 HasInstanceSizeName returns a boolean if a field has been set.
+
+### SetInstanceSizeNameNil
+
+`func (o *ClusterProviderSettings) SetInstanceSizeNameNil()`
+
+SetInstanceSizeNameNil sets InstanceSizeName to an explicit JSON null when marshaled, overriding any value previously set with SetInstanceSizeName. Calling SetInstanceSizeName again clears the null override.
+
 ### GetRegionName
 
 `func (o *ClusterProviderSettings) GetRegionName() string`
@@ -173,6 +201,13 @@ SetRegionName sets RegionName field to given value.
 `func (o *ClusterProviderSettings) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
+
+### SetRegionNameNil
+
+`func (o *ClusterProviderSettings) SetRegionNameNil()`
+
+SetRegionNameNil sets RegionName to an explicit JSON null when marshaled, overriding any value previously set with SetRegionName. Calling SetRegionName again clears the null override.
+
 ### GetVolumeType
 
 `func (o *ClusterProviderSettings) GetVolumeType() string`
@@ -197,6 +232,13 @@ SetVolumeType sets VolumeType field to given value.
 `func (o *ClusterProviderSettings) HasVolumeType() bool`
 
 HasVolumeType returns a boolean if a field has been set.
+
+### SetVolumeTypeNil
+
+`func (o *ClusterProviderSettings) SetVolumeTypeNil()`
+
+SetVolumeTypeNil sets VolumeType to an explicit JSON null when marshaled, overriding any value previously set with SetVolumeType. Calling SetVolumeType again clears the null override.
+
 ### GetDiskTypeName
 
 `func (o *ClusterProviderSettings) GetDiskTypeName() string`
@@ -221,6 +263,13 @@ SetDiskTypeName sets DiskTypeName field to given value.
 `func (o *ClusterProviderSettings) HasDiskTypeName() bool`
 
 HasDiskTypeName returns a boolean if a field has been set.
+
+### SetDiskTypeNameNil
+
+`func (o *ClusterProviderSettings) SetDiskTypeNameNil()`
+
+SetDiskTypeNameNil sets DiskTypeName to an explicit JSON null when marshaled, overriding any value previously set with SetDiskTypeName. Calling SetDiskTypeName again clears the null override.
+
 ### GetBackingProviderName
 
 `func (o *ClusterProviderSettings) GetBackingProviderName() string`
@@ -245,6 +294,13 @@ SetBackingProviderName sets BackingProviderName field to given value.
 `func (o *ClusterProviderSettings) HasBackingProviderName() bool`
 
 HasBackingProviderName returns a boolean if a field has been set.
+
+### SetBackingProviderNameNil
+
+`func (o *ClusterProviderSettings) SetBackingProviderNameNil()`
+
+SetBackingProviderNameNil sets BackingProviderName to an explicit JSON null when marshaled, overriding any value previously set with SetBackingProviderName. Calling SetBackingProviderName again clears the null override.
+
 ### GetEffectiveInstanceSizeName
 
 `func (o *ClusterProviderSettings) GetEffectiveInstanceSizeName() string`
@@ -269,6 +325,13 @@ SetEffectiveInstanceSizeName sets EffectiveInstanceSizeName field to given value
 `func (o *ClusterProviderSettings) HasEffectiveInstanceSizeName() bool`
 
 HasEffectiveInstanceSizeName returns a boolean if a field has been set.
+
+### SetEffectiveInstanceSizeNameNil
+
+`func (o *ClusterProviderSettings) SetEffectiveInstanceSizeNameNil()`
+
+SetEffectiveInstanceSizeNameNil sets EffectiveInstanceSizeName to an explicit JSON null when marshaled, overriding any value previously set with SetEffectiveInstanceSizeName. Calling SetEffectiveInstanceSizeName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

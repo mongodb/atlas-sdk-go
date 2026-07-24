@@ -50,6 +50,13 @@ SetBody sets Body field to given value.
 `func (o *ApiAtlasInvalidPolicy) HasBody() bool`
 
 HasBody returns a boolean if a field has been set.
+
+### SetBodyNil
+
+`func (o *ApiAtlasInvalidPolicy) SetBodyNil()`
+
+SetBodyNil sets Body to an explicit JSON null when marshaled, overriding any value previously set with SetBody. Calling SetBody again clears the null override.
+
 ### GetErrors
 
 `func (o *ApiAtlasInvalidPolicy) GetErrors() []ApiAtlasInvalidPolicyErrorDetail`
@@ -74,6 +81,13 @@ SetErrors sets Errors field to given value.
 `func (o *ApiAtlasInvalidPolicy) HasErrors() bool`
 
 HasErrors returns a boolean if a field has been set.
+
+### SetErrorsNil
+
+`func (o *ApiAtlasInvalidPolicy) SetErrorsNil()`
+
+SetErrorsNil sets Errors to an explicit JSON null when marshaled, overriding any value previously set with SetErrors. Calling SetErrors again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

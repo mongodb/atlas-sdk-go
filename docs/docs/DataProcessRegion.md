@@ -50,6 +50,13 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *DataProcessRegion) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
+
+### SetCloudProviderNil
+
+`func (o *DataProcessRegion) SetCloudProviderNil()`
+
+SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProvider. Calling SetCloudProvider again clears the null override.
+
 ### GetRegion
 
 `func (o *DataProcessRegion) GetRegion() string`
@@ -74,6 +81,13 @@ SetRegion sets Region field to given value.
 `func (o *DataProcessRegion) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *DataProcessRegion) SetRegionNil()`
+
+SetRegionNil sets Region to an explicit JSON null when marshaled, overriding any value previously set with SetRegion. Calling SetRegion again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

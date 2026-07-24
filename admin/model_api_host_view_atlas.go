@@ -44,6 +44,15 @@ type ApiHostViewAtlas struct {
 	// Version of MongoDB that this process runs.
 	// Read only field.
 	Version *string `json:"version,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiHostViewAtlas) MarshalJSON() ([]byte, error) {
+	type noMethod ApiHostViewAtlas
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiHostViewAtlas instantiates a new ApiHostViewAtlas object
@@ -94,6 +103,13 @@ func (o *ApiHostViewAtlas) HasCreated() bool {
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *ApiHostViewAtlas) SetCreated(v time.Time) {
 	o.Created = &v
+	o.NullFields = removeNullField(o.NullFields, "Created")
+}
+
+// SetCreatedNil sets Created to an explicit JSON null when marshaled.
+func (o *ApiHostViewAtlas) SetCreatedNil() {
+	o.Created = nil
+	o.NullFields = addNullField(o.NullFields, "Created")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -127,6 +143,13 @@ func (o *ApiHostViewAtlas) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *ApiHostViewAtlas) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *ApiHostViewAtlas) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetHostname returns the Hostname field value if set, zero value otherwise
@@ -160,6 +183,13 @@ func (o *ApiHostViewAtlas) HasHostname() bool {
 // SetHostname gets a reference to the given string and assigns it to the Hostname field.
 func (o *ApiHostViewAtlas) SetHostname(v string) {
 	o.Hostname = &v
+	o.NullFields = removeNullField(o.NullFields, "Hostname")
+}
+
+// SetHostnameNil sets Hostname to an explicit JSON null when marshaled.
+func (o *ApiHostViewAtlas) SetHostnameNil() {
+	o.Hostname = nil
+	o.NullFields = addNullField(o.NullFields, "Hostname")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -193,6 +223,13 @@ func (o *ApiHostViewAtlas) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApiHostViewAtlas) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *ApiHostViewAtlas) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetLastPing returns the LastPing field value if set, zero value otherwise
@@ -226,6 +263,13 @@ func (o *ApiHostViewAtlas) HasLastPing() bool {
 // SetLastPing gets a reference to the given time.Time and assigns it to the LastPing field.
 func (o *ApiHostViewAtlas) SetLastPing(v time.Time) {
 	o.LastPing = &v
+	o.NullFields = removeNullField(o.NullFields, "LastPing")
+}
+
+// SetLastPingNil sets LastPing to an explicit JSON null when marshaled.
+func (o *ApiHostViewAtlas) SetLastPingNil() {
+	o.LastPing = nil
+	o.NullFields = addNullField(o.NullFields, "LastPing")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -259,6 +303,13 @@ func (o *ApiHostViewAtlas) HasLinks() bool {
 // SetLinks gets a reference to the given []LinkAtlas and assigns it to the Links field.
 func (o *ApiHostViewAtlas) SetLinks(v []LinkAtlas) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *ApiHostViewAtlas) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetPort returns the Port field value if set, zero value otherwise
@@ -292,6 +343,13 @@ func (o *ApiHostViewAtlas) HasPort() bool {
 // SetPort gets a reference to the given int and assigns it to the Port field.
 func (o *ApiHostViewAtlas) SetPort(v int) {
 	o.Port = &v
+	o.NullFields = removeNullField(o.NullFields, "Port")
+}
+
+// SetPortNil sets Port to an explicit JSON null when marshaled.
+func (o *ApiHostViewAtlas) SetPortNil() {
+	o.Port = nil
+	o.NullFields = addNullField(o.NullFields, "Port")
 }
 
 // GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise
@@ -325,6 +383,13 @@ func (o *ApiHostViewAtlas) HasReplicaSetName() bool {
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
 func (o *ApiHostViewAtlas) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
+	o.NullFields = removeNullField(o.NullFields, "ReplicaSetName")
+}
+
+// SetReplicaSetNameNil sets ReplicaSetName to an explicit JSON null when marshaled.
+func (o *ApiHostViewAtlas) SetReplicaSetNameNil() {
+	o.ReplicaSetName = nil
+	o.NullFields = addNullField(o.NullFields, "ReplicaSetName")
 }
 
 // GetShardName returns the ShardName field value if set, zero value otherwise
@@ -358,6 +423,13 @@ func (o *ApiHostViewAtlas) HasShardName() bool {
 // SetShardName gets a reference to the given string and assigns it to the ShardName field.
 func (o *ApiHostViewAtlas) SetShardName(v string) {
 	o.ShardName = &v
+	o.NullFields = removeNullField(o.NullFields, "ShardName")
+}
+
+// SetShardNameNil sets ShardName to an explicit JSON null when marshaled.
+func (o *ApiHostViewAtlas) SetShardNameNil() {
+	o.ShardName = nil
+	o.NullFields = addNullField(o.NullFields, "ShardName")
 }
 
 // GetTypeName returns the TypeName field value if set, zero value otherwise
@@ -391,6 +463,13 @@ func (o *ApiHostViewAtlas) HasTypeName() bool {
 // SetTypeName gets a reference to the given string and assigns it to the TypeName field.
 func (o *ApiHostViewAtlas) SetTypeName(v string) {
 	o.TypeName = &v
+	o.NullFields = removeNullField(o.NullFields, "TypeName")
+}
+
+// SetTypeNameNil sets TypeName to an explicit JSON null when marshaled.
+func (o *ApiHostViewAtlas) SetTypeNameNil() {
+	o.TypeName = nil
+	o.NullFields = addNullField(o.NullFields, "TypeName")
 }
 
 // GetUserAlias returns the UserAlias field value if set, zero value otherwise
@@ -424,6 +503,13 @@ func (o *ApiHostViewAtlas) HasUserAlias() bool {
 // SetUserAlias gets a reference to the given string and assigns it to the UserAlias field.
 func (o *ApiHostViewAtlas) SetUserAlias(v string) {
 	o.UserAlias = &v
+	o.NullFields = removeNullField(o.NullFields, "UserAlias")
+}
+
+// SetUserAliasNil sets UserAlias to an explicit JSON null when marshaled.
+func (o *ApiHostViewAtlas) SetUserAliasNil() {
+	o.UserAlias = nil
+	o.NullFields = addNullField(o.NullFields, "UserAlias")
 }
 
 // GetVersion returns the Version field value if set, zero value otherwise
@@ -457,4 +543,11 @@ func (o *ApiHostViewAtlas) HasVersion() bool {
 // SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *ApiHostViewAtlas) SetVersion(v string) {
 	o.Version = &v
+	o.NullFields = removeNullField(o.NullFields, "Version")
+}
+
+// SetVersionNil sets Version to an explicit JSON null when marshaled.
+func (o *ApiHostViewAtlas) SetVersionNil() {
+	o.Version = nil
+	o.NullFields = addNullField(o.NullFields, "Version")
 }

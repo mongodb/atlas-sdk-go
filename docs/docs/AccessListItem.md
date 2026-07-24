@@ -50,6 +50,13 @@ SetCidrBlock sets CidrBlock field to given value.
 `func (o *AccessListItem) HasCidrBlock() bool`
 
 HasCidrBlock returns a boolean if a field has been set.
+
+### SetCidrBlockNil
+
+`func (o *AccessListItem) SetCidrBlockNil()`
+
+SetCidrBlockNil sets CidrBlock to an explicit JSON null when marshaled, overriding any value previously set with SetCidrBlock. Calling SetCidrBlock again clears the null override.
+
 ### GetIpAddress
 
 `func (o *AccessListItem) GetIpAddress() string`

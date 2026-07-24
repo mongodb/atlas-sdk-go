@@ -57,6 +57,13 @@ SetAwsAccountId sets AwsAccountId field to given value.
 `func (o *AccountDetails) HasAwsAccountId() bool`
 
 HasAwsAccountId returns a boolean if a field has been set.
+
+### SetAwsAccountIdNil
+
+`func (o *AccountDetails) SetAwsAccountIdNil()`
+
+SetAwsAccountIdNil sets AwsAccountId to an explicit JSON null when marshaled, overriding any value previously set with SetAwsAccountId. Calling SetAwsAccountId again clears the null override.
+
 ### GetCidrBlock
 
 `func (o *AccountDetails) GetCidrBlock() string`
@@ -81,6 +88,13 @@ SetCidrBlock sets CidrBlock field to given value.
 `func (o *AccountDetails) HasCidrBlock() bool`
 
 HasCidrBlock returns a boolean if a field has been set.
+
+### SetCidrBlockNil
+
+`func (o *AccountDetails) SetCidrBlockNil()`
+
+SetCidrBlockNil sets CidrBlock to an explicit JSON null when marshaled, overriding any value previously set with SetCidrBlock. Calling SetCidrBlock again clears the null override.
+
 ### GetCloudProvider
 
 `func (o *AccountDetails) GetCloudProvider() string`
@@ -105,6 +119,13 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *AccountDetails) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
+
+### SetCloudProviderNil
+
+`func (o *AccountDetails) SetCloudProviderNil()`
+
+SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProvider. Calling SetCloudProvider again clears the null override.
+
 ### GetLinks
 
 `func (o *AccountDetails) GetLinks() []Link`
@@ -129,6 +150,13 @@ SetLinks sets Links field to given value.
 `func (o *AccountDetails) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *AccountDetails) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetVpcId
 
 `func (o *AccountDetails) GetVpcId() string`
@@ -153,6 +181,13 @@ SetVpcId sets VpcId field to given value.
 `func (o *AccountDetails) HasVpcId() bool`
 
 HasVpcId returns a boolean if a field has been set.
+
+### SetVpcIdNil
+
+`func (o *AccountDetails) SetVpcIdNil()`
+
+SetVpcIdNil sets VpcId to an explicit JSON null when marshaled, overriding any value previously set with SetVpcId. Calling SetVpcId again clears the null override.
+
 ### GetAzureSubscriptionId
 
 `func (o *AccountDetails) GetAzureSubscriptionId() string`
@@ -177,6 +212,13 @@ SetAzureSubscriptionId sets AzureSubscriptionId field to given value.
 `func (o *AccountDetails) HasAzureSubscriptionId() bool`
 
 HasAzureSubscriptionId returns a boolean if a field has been set.
+
+### SetAzureSubscriptionIdNil
+
+`func (o *AccountDetails) SetAzureSubscriptionIdNil()`
+
+SetAzureSubscriptionIdNil sets AzureSubscriptionId to an explicit JSON null when marshaled, overriding any value previously set with SetAzureSubscriptionId. Calling SetAzureSubscriptionId again clears the null override.
+
 ### GetVirtualNetworkName
 
 `func (o *AccountDetails) GetVirtualNetworkName() string`
@@ -201,6 +243,13 @@ SetVirtualNetworkName sets VirtualNetworkName field to given value.
 `func (o *AccountDetails) HasVirtualNetworkName() bool`
 
 HasVirtualNetworkName returns a boolean if a field has been set.
+
+### SetVirtualNetworkNameNil
+
+`func (o *AccountDetails) SetVirtualNetworkNameNil()`
+
+SetVirtualNetworkNameNil sets VirtualNetworkName to an explicit JSON null when marshaled, overriding any value previously set with SetVirtualNetworkName. Calling SetVirtualNetworkName again clears the null override.
+
 ### GetGcpProjectId
 
 `func (o *AccountDetails) GetGcpProjectId() string`
@@ -225,6 +274,13 @@ SetGcpProjectId sets GcpProjectId field to given value.
 `func (o *AccountDetails) HasGcpProjectId() bool`
 
 HasGcpProjectId returns a boolean if a field has been set.
+
+### SetGcpProjectIdNil
+
+`func (o *AccountDetails) SetGcpProjectIdNil()`
+
+SetGcpProjectIdNil sets GcpProjectId to an explicit JSON null when marshaled, overriding any value previously set with SetGcpProjectId. Calling SetGcpProjectId again clears the null override.
+
 ### GetVpcNetworkName
 
 `func (o *AccountDetails) GetVpcNetworkName() string`
@@ -249,6 +305,13 @@ SetVpcNetworkName sets VpcNetworkName field to given value.
 `func (o *AccountDetails) HasVpcNetworkName() bool`
 
 HasVpcNetworkName returns a boolean if a field has been set.
+
+### SetVpcNetworkNameNil
+
+`func (o *AccountDetails) SetVpcNetworkNameNil()`
+
+SetVpcNetworkNameNil sets VpcNetworkName to an explicit JSON null when marshaled, overriding any value previously set with SetVpcNetworkName. Calling SetVpcNetworkName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

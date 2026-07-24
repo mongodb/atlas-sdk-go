@@ -51,6 +51,13 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *DeleteCopiedBackups20240805) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
+
+### SetCloudProviderNil
+
+`func (o *DeleteCopiedBackups20240805) SetCloudProviderNil()`
+
+SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProvider. Calling SetCloudProvider again clears the null override.
+
 ### GetRegionName
 
 `func (o *DeleteCopiedBackups20240805) GetRegionName() string`
@@ -75,6 +82,13 @@ SetRegionName sets RegionName field to given value.
 `func (o *DeleteCopiedBackups20240805) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
+
+### SetRegionNameNil
+
+`func (o *DeleteCopiedBackups20240805) SetRegionNameNil()`
+
+SetRegionNameNil sets RegionName to an explicit JSON null when marshaled, overriding any value previously set with SetRegionName. Calling SetRegionName again clears the null override.
+
 ### GetZoneId
 
 `func (o *DeleteCopiedBackups20240805) GetZoneId() string`
@@ -99,6 +113,13 @@ SetZoneId sets ZoneId field to given value.
 `func (o *DeleteCopiedBackups20240805) HasZoneId() bool`
 
 HasZoneId returns a boolean if a field has been set.
+
+### SetZoneIdNil
+
+`func (o *DeleteCopiedBackups20240805) SetZoneIdNil()`
+
+SetZoneIdNil sets ZoneId to an explicit JSON null when marshaled, overriding any value previously set with SetZoneId. Calling SetZoneId again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

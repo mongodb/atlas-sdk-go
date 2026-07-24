@@ -32,6 +32,15 @@ type FlexBackupSnapshot20241113 struct {
 	// Phase of the workflow for this snapshot at the time this resource made this request.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *FlexBackupSnapshot20241113) MarshalJSON() ([]byte, error) {
+	type noMethod FlexBackupSnapshot20241113
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFlexBackupSnapshot20241113 instantiates a new FlexBackupSnapshot20241113 object
@@ -82,6 +91,13 @@ func (o *FlexBackupSnapshot20241113) HasExpiration() bool {
 // SetExpiration gets a reference to the given time.Time and assigns it to the Expiration field.
 func (o *FlexBackupSnapshot20241113) SetExpiration(v time.Time) {
 	o.Expiration = &v
+	o.NullFields = removeNullField(o.NullFields, "Expiration")
+}
+
+// SetExpirationNil sets Expiration to an explicit JSON null when marshaled.
+func (o *FlexBackupSnapshot20241113) SetExpirationNil() {
+	o.Expiration = nil
+	o.NullFields = addNullField(o.NullFields, "Expiration")
 }
 
 // GetFinishTime returns the FinishTime field value if set, zero value otherwise
@@ -115,6 +131,13 @@ func (o *FlexBackupSnapshot20241113) HasFinishTime() bool {
 // SetFinishTime gets a reference to the given time.Time and assigns it to the FinishTime field.
 func (o *FlexBackupSnapshot20241113) SetFinishTime(v time.Time) {
 	o.FinishTime = &v
+	o.NullFields = removeNullField(o.NullFields, "FinishTime")
+}
+
+// SetFinishTimeNil sets FinishTime to an explicit JSON null when marshaled.
+func (o *FlexBackupSnapshot20241113) SetFinishTimeNil() {
+	o.FinishTime = nil
+	o.NullFields = addNullField(o.NullFields, "FinishTime")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -148,6 +171,13 @@ func (o *FlexBackupSnapshot20241113) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *FlexBackupSnapshot20241113) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *FlexBackupSnapshot20241113) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -181,6 +211,13 @@ func (o *FlexBackupSnapshot20241113) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *FlexBackupSnapshot20241113) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *FlexBackupSnapshot20241113) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetMongoDBVersion returns the MongoDBVersion field value if set, zero value otherwise
@@ -214,6 +251,13 @@ func (o *FlexBackupSnapshot20241113) HasMongoDBVersion() bool {
 // SetMongoDBVersion gets a reference to the given string and assigns it to the MongoDBVersion field.
 func (o *FlexBackupSnapshot20241113) SetMongoDBVersion(v string) {
 	o.MongoDBVersion = &v
+	o.NullFields = removeNullField(o.NullFields, "MongoDBVersion")
+}
+
+// SetMongoDBVersionNil sets MongoDBVersion to an explicit JSON null when marshaled.
+func (o *FlexBackupSnapshot20241113) SetMongoDBVersionNil() {
+	o.MongoDBVersion = nil
+	o.NullFields = addNullField(o.NullFields, "MongoDBVersion")
 }
 
 // GetScheduledTime returns the ScheduledTime field value if set, zero value otherwise
@@ -247,6 +291,13 @@ func (o *FlexBackupSnapshot20241113) HasScheduledTime() bool {
 // SetScheduledTime gets a reference to the given time.Time and assigns it to the ScheduledTime field.
 func (o *FlexBackupSnapshot20241113) SetScheduledTime(v time.Time) {
 	o.ScheduledTime = &v
+	o.NullFields = removeNullField(o.NullFields, "ScheduledTime")
+}
+
+// SetScheduledTimeNil sets ScheduledTime to an explicit JSON null when marshaled.
+func (o *FlexBackupSnapshot20241113) SetScheduledTimeNil() {
+	o.ScheduledTime = nil
+	o.NullFields = addNullField(o.NullFields, "ScheduledTime")
 }
 
 // GetStartTime returns the StartTime field value if set, zero value otherwise
@@ -280,6 +331,13 @@ func (o *FlexBackupSnapshot20241113) HasStartTime() bool {
 // SetStartTime gets a reference to the given time.Time and assigns it to the StartTime field.
 func (o *FlexBackupSnapshot20241113) SetStartTime(v time.Time) {
 	o.StartTime = &v
+	o.NullFields = removeNullField(o.NullFields, "StartTime")
+}
+
+// SetStartTimeNil sets StartTime to an explicit JSON null when marshaled.
+func (o *FlexBackupSnapshot20241113) SetStartTimeNil() {
+	o.StartTime = nil
+	o.NullFields = addNullField(o.NullFields, "StartTime")
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
@@ -313,4 +371,11 @@ func (o *FlexBackupSnapshot20241113) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *FlexBackupSnapshot20241113) SetStatus(v string) {
 	o.Status = &v
+	o.NullFields = removeNullField(o.NullFields, "Status")
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *FlexBackupSnapshot20241113) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = addNullField(o.NullFields, "Status")
 }

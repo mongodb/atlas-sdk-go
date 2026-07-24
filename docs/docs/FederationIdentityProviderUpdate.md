@@ -67,6 +67,13 @@ SetDescription sets Description field to given value.
 `func (o *FederationIdentityProviderUpdate) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *FederationIdentityProviderUpdate) SetDescriptionNil()`
+
+SetDescriptionNil sets Description to an explicit JSON null when marshaled, overriding any value previously set with SetDescription. Calling SetDescription again clears the null override.
+
 ### GetDisplayName
 
 `func (o *FederationIdentityProviderUpdate) GetDisplayName() string`
@@ -91,6 +98,13 @@ SetDisplayName sets DisplayName field to given value.
 `func (o *FederationIdentityProviderUpdate) HasDisplayName() bool`
 
 HasDisplayName returns a boolean if a field has been set.
+
+### SetDisplayNameNil
+
+`func (o *FederationIdentityProviderUpdate) SetDisplayNameNil()`
+
+SetDisplayNameNil sets DisplayName to an explicit JSON null when marshaled, overriding any value previously set with SetDisplayName. Calling SetDisplayName again clears the null override.
+
 ### GetIdpType
 
 `func (o *FederationIdentityProviderUpdate) GetIdpType() string`
@@ -115,6 +129,13 @@ SetIdpType sets IdpType field to given value.
 `func (o *FederationIdentityProviderUpdate) HasIdpType() bool`
 
 HasIdpType returns a boolean if a field has been set.
+
+### SetIdpTypeNil
+
+`func (o *FederationIdentityProviderUpdate) SetIdpTypeNil()`
+
+SetIdpTypeNil sets IdpType to an explicit JSON null when marshaled, overriding any value previously set with SetIdpType. Calling SetIdpType again clears the null override.
+
 ### GetIssuerUri
 
 `func (o *FederationIdentityProviderUpdate) GetIssuerUri() string`
@@ -139,6 +160,13 @@ SetIssuerUri sets IssuerUri field to given value.
 `func (o *FederationIdentityProviderUpdate) HasIssuerUri() bool`
 
 HasIssuerUri returns a boolean if a field has been set.
+
+### SetIssuerUriNil
+
+`func (o *FederationIdentityProviderUpdate) SetIssuerUriNil()`
+
+SetIssuerUriNil sets IssuerUri to an explicit JSON null when marshaled, overriding any value previously set with SetIssuerUri. Calling SetIssuerUri again clears the null override.
+
 ### GetProtocol
 
 `func (o *FederationIdentityProviderUpdate) GetProtocol() string`
@@ -163,6 +191,13 @@ SetProtocol sets Protocol field to given value.
 `func (o *FederationIdentityProviderUpdate) HasProtocol() bool`
 
 HasProtocol returns a boolean if a field has been set.
+
+### SetProtocolNil
+
+`func (o *FederationIdentityProviderUpdate) SetProtocolNil()`
+
+SetProtocolNil sets Protocol to an explicit JSON null when marshaled, overriding any value previously set with SetProtocol. Calling SetProtocol again clears the null override.
+
 ### GetAssociatedDomains
 
 `func (o *FederationIdentityProviderUpdate) GetAssociatedDomains() []string`
@@ -187,6 +222,13 @@ SetAssociatedDomains sets AssociatedDomains field to given value.
 `func (o *FederationIdentityProviderUpdate) HasAssociatedDomains() bool`
 
 HasAssociatedDomains returns a boolean if a field has been set.
+
+### SetAssociatedDomainsNil
+
+`func (o *FederationIdentityProviderUpdate) SetAssociatedDomainsNil()`
+
+SetAssociatedDomainsNil sets AssociatedDomains to an explicit JSON null when marshaled, overriding any value previously set with SetAssociatedDomains. Calling SetAssociatedDomains again clears the null override.
+
 ### GetPemFileInfo
 
 `func (o *FederationIdentityProviderUpdate) GetPemFileInfo() PemFileInfoUpdate`
@@ -211,6 +253,13 @@ SetPemFileInfo sets PemFileInfo field to given value.
 `func (o *FederationIdentityProviderUpdate) HasPemFileInfo() bool`
 
 HasPemFileInfo returns a boolean if a field has been set.
+
+### SetPemFileInfoNil
+
+`func (o *FederationIdentityProviderUpdate) SetPemFileInfoNil()`
+
+SetPemFileInfoNil sets PemFileInfo to an explicit JSON null when marshaled, overriding any value previously set with SetPemFileInfo. Calling SetPemFileInfo again clears the null override.
+
 ### GetRequestBinding
 
 `func (o *FederationIdentityProviderUpdate) GetRequestBinding() string`
@@ -235,6 +284,13 @@ SetRequestBinding sets RequestBinding field to given value.
 `func (o *FederationIdentityProviderUpdate) HasRequestBinding() bool`
 
 HasRequestBinding returns a boolean if a field has been set.
+
+### SetRequestBindingNil
+
+`func (o *FederationIdentityProviderUpdate) SetRequestBindingNil()`
+
+SetRequestBindingNil sets RequestBinding to an explicit JSON null when marshaled, overriding any value previously set with SetRequestBinding. Calling SetRequestBinding again clears the null override.
+
 ### GetResponseSignatureAlgorithm
 
 `func (o *FederationIdentityProviderUpdate) GetResponseSignatureAlgorithm() string`
@@ -259,6 +315,13 @@ SetResponseSignatureAlgorithm sets ResponseSignatureAlgorithm field to given val
 `func (o *FederationIdentityProviderUpdate) HasResponseSignatureAlgorithm() bool`
 
 HasResponseSignatureAlgorithm returns a boolean if a field has been set.
+
+### SetResponseSignatureAlgorithmNil
+
+`func (o *FederationIdentityProviderUpdate) SetResponseSignatureAlgorithmNil()`
+
+SetResponseSignatureAlgorithmNil sets ResponseSignatureAlgorithm to an explicit JSON null when marshaled, overriding any value previously set with SetResponseSignatureAlgorithm. Calling SetResponseSignatureAlgorithm again clears the null override.
+
 ### GetSlug
 
 `func (o *FederationIdentityProviderUpdate) GetSlug() string`
@@ -283,6 +346,13 @@ SetSlug sets Slug field to given value.
 `func (o *FederationIdentityProviderUpdate) HasSlug() bool`
 
 HasSlug returns a boolean if a field has been set.
+
+### SetSlugNil
+
+`func (o *FederationIdentityProviderUpdate) SetSlugNil()`
+
+SetSlugNil sets Slug to an explicit JSON null when marshaled, overriding any value previously set with SetSlug. Calling SetSlug again clears the null override.
+
 ### GetSsoDebugEnabled
 
 `func (o *FederationIdentityProviderUpdate) GetSsoDebugEnabled() bool`
@@ -307,6 +377,13 @@ SetSsoDebugEnabled sets SsoDebugEnabled field to given value.
 `func (o *FederationIdentityProviderUpdate) HasSsoDebugEnabled() bool`
 
 HasSsoDebugEnabled returns a boolean if a field has been set.
+
+### SetSsoDebugEnabledNil
+
+`func (o *FederationIdentityProviderUpdate) SetSsoDebugEnabledNil()`
+
+SetSsoDebugEnabledNil sets SsoDebugEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetSsoDebugEnabled. Calling SetSsoDebugEnabled again clears the null override.
+
 ### GetSsoUrl
 
 `func (o *FederationIdentityProviderUpdate) GetSsoUrl() string`
@@ -331,6 +408,13 @@ SetSsoUrl sets SsoUrl field to given value.
 `func (o *FederationIdentityProviderUpdate) HasSsoUrl() bool`
 
 HasSsoUrl returns a boolean if a field has been set.
+
+### SetSsoUrlNil
+
+`func (o *FederationIdentityProviderUpdate) SetSsoUrlNil()`
+
+SetSsoUrlNil sets SsoUrl to an explicit JSON null when marshaled, overriding any value previously set with SetSsoUrl. Calling SetSsoUrl again clears the null override.
+
 ### GetStatus
 
 `func (o *FederationIdentityProviderUpdate) GetStatus() string`
@@ -355,6 +439,13 @@ SetStatus sets Status field to given value.
 `func (o *FederationIdentityProviderUpdate) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *FederationIdentityProviderUpdate) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 ### GetAudience
 
 `func (o *FederationIdentityProviderUpdate) GetAudience() string`
@@ -379,6 +470,13 @@ SetAudience sets Audience field to given value.
 `func (o *FederationIdentityProviderUpdate) HasAudience() bool`
 
 HasAudience returns a boolean if a field has been set.
+
+### SetAudienceNil
+
+`func (o *FederationIdentityProviderUpdate) SetAudienceNil()`
+
+SetAudienceNil sets Audience to an explicit JSON null when marshaled, overriding any value previously set with SetAudience. Calling SetAudience again clears the null override.
+
 ### GetAuthorizationType
 
 `func (o *FederationIdentityProviderUpdate) GetAuthorizationType() string`
@@ -403,6 +501,13 @@ SetAuthorizationType sets AuthorizationType field to given value.
 `func (o *FederationIdentityProviderUpdate) HasAuthorizationType() bool`
 
 HasAuthorizationType returns a boolean if a field has been set.
+
+### SetAuthorizationTypeNil
+
+`func (o *FederationIdentityProviderUpdate) SetAuthorizationTypeNil()`
+
+SetAuthorizationTypeNil sets AuthorizationType to an explicit JSON null when marshaled, overriding any value previously set with SetAuthorizationType. Calling SetAuthorizationType again clears the null override.
+
 ### GetClientId
 
 `func (o *FederationIdentityProviderUpdate) GetClientId() string`
@@ -427,6 +532,13 @@ SetClientId sets ClientId field to given value.
 `func (o *FederationIdentityProviderUpdate) HasClientId() bool`
 
 HasClientId returns a boolean if a field has been set.
+
+### SetClientIdNil
+
+`func (o *FederationIdentityProviderUpdate) SetClientIdNil()`
+
+SetClientIdNil sets ClientId to an explicit JSON null when marshaled, overriding any value previously set with SetClientId. Calling SetClientId again clears the null override.
+
 ### GetGroupsClaim
 
 `func (o *FederationIdentityProviderUpdate) GetGroupsClaim() string`
@@ -451,6 +563,13 @@ SetGroupsClaim sets GroupsClaim field to given value.
 `func (o *FederationIdentityProviderUpdate) HasGroupsClaim() bool`
 
 HasGroupsClaim returns a boolean if a field has been set.
+
+### SetGroupsClaimNil
+
+`func (o *FederationIdentityProviderUpdate) SetGroupsClaimNil()`
+
+SetGroupsClaimNil sets GroupsClaim to an explicit JSON null when marshaled, overriding any value previously set with SetGroupsClaim. Calling SetGroupsClaim again clears the null override.
+
 ### GetRequestedScopes
 
 `func (o *FederationIdentityProviderUpdate) GetRequestedScopes() []string`
@@ -475,6 +594,13 @@ SetRequestedScopes sets RequestedScopes field to given value.
 `func (o *FederationIdentityProviderUpdate) HasRequestedScopes() bool`
 
 HasRequestedScopes returns a boolean if a field has been set.
+
+### SetRequestedScopesNil
+
+`func (o *FederationIdentityProviderUpdate) SetRequestedScopesNil()`
+
+SetRequestedScopesNil sets RequestedScopes to an explicit JSON null when marshaled, overriding any value previously set with SetRequestedScopes. Calling SetRequestedScopes again clears the null override.
+
 ### GetUserClaim
 
 `func (o *FederationIdentityProviderUpdate) GetUserClaim() string`
@@ -499,6 +625,13 @@ SetUserClaim sets UserClaim field to given value.
 `func (o *FederationIdentityProviderUpdate) HasUserClaim() bool`
 
 HasUserClaim returns a boolean if a field has been set.
+
+### SetUserClaimNil
+
+`func (o *FederationIdentityProviderUpdate) SetUserClaimNil()`
+
+SetUserClaimNil sets UserClaim to an explicit JSON null when marshaled, overriding any value previously set with SetUserClaim. Calling SetUserClaim again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

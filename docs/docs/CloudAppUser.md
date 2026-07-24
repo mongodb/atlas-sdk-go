@@ -80,6 +80,13 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *CloudAppUser) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
+
+### SetCreatedAtNil
+
+`func (o *CloudAppUser) SetCreatedAtNil()`
+
+SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled, overriding any value previously set with SetCreatedAt. Calling SetCreatedAt again clears the null override.
+
 ### GetEmailAddress
 
 `func (o *CloudAppUser) GetEmailAddress() string`
@@ -142,6 +149,13 @@ SetId sets Id field to given value.
 `func (o *CloudAppUser) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *CloudAppUser) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLastAuth
 
 `func (o *CloudAppUser) GetLastAuth() time.Time`
@@ -166,6 +180,13 @@ SetLastAuth sets LastAuth field to given value.
 `func (o *CloudAppUser) HasLastAuth() bool`
 
 HasLastAuth returns a boolean if a field has been set.
+
+### SetLastAuthNil
+
+`func (o *CloudAppUser) SetLastAuthNil()`
+
+SetLastAuthNil sets LastAuth to an explicit JSON null when marshaled, overriding any value previously set with SetLastAuth. Calling SetLastAuth again clears the null override.
+
 ### GetLastName
 
 `func (o *CloudAppUser) GetLastName() string`
@@ -209,6 +230,13 @@ SetLinks sets Links field to given value.
 `func (o *CloudAppUser) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *CloudAppUser) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetMobileNumber
 
 `func (o *CloudAppUser) GetMobileNumber() string`
@@ -290,6 +318,13 @@ SetTeamIds sets TeamIds field to given value.
 `func (o *CloudAppUser) HasTeamIds() bool`
 
 HasTeamIds returns a boolean if a field has been set.
+
+### SetTeamIdsNil
+
+`func (o *CloudAppUser) SetTeamIdsNil()`
+
+SetTeamIdsNil sets TeamIds to an explicit JSON null when marshaled, overriding any value previously set with SetTeamIds. Calling SetTeamIds again clears the null override.
+
 ### GetUsername
 
 `func (o *CloudAppUser) GetUsername() string`

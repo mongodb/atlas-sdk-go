@@ -55,6 +55,13 @@ SetAccessCount sets AccessCount field to given value.
 `func (o *DropIndexSuggestionsIndex) HasAccessCount() bool`
 
 HasAccessCount returns a boolean if a field has been set.
+
+### SetAccessCountNil
+
+`func (o *DropIndexSuggestionsIndex) SetAccessCountNil()`
+
+SetAccessCountNil sets AccessCount to an explicit JSON null when marshaled, overriding any value previously set with SetAccessCount. Calling SetAccessCount again clears the null override.
+
 ### GetIndex
 
 `func (o *DropIndexSuggestionsIndex) GetIndex() []any`
@@ -79,6 +86,13 @@ SetIndex sets Index field to given value.
 `func (o *DropIndexSuggestionsIndex) HasIndex() bool`
 
 HasIndex returns a boolean if a field has been set.
+
+### SetIndexNil
+
+`func (o *DropIndexSuggestionsIndex) SetIndexNil()`
+
+SetIndexNil sets Index to an explicit JSON null when marshaled, overriding any value previously set with SetIndex. Calling SetIndex again clears the null override.
+
 ### GetName
 
 `func (o *DropIndexSuggestionsIndex) GetName() string`
@@ -103,6 +117,13 @@ SetName sets Name field to given value.
 `func (o *DropIndexSuggestionsIndex) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *DropIndexSuggestionsIndex) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetNamespace
 
 `func (o *DropIndexSuggestionsIndex) GetNamespace() string`
@@ -127,6 +148,13 @@ SetNamespace sets Namespace field to given value.
 `func (o *DropIndexSuggestionsIndex) HasNamespace() bool`
 
 HasNamespace returns a boolean if a field has been set.
+
+### SetNamespaceNil
+
+`func (o *DropIndexSuggestionsIndex) SetNamespaceNil()`
+
+SetNamespaceNil sets Namespace to an explicit JSON null when marshaled, overriding any value previously set with SetNamespace. Calling SetNamespace again clears the null override.
+
 ### GetShards
 
 `func (o *DropIndexSuggestionsIndex) GetShards() []string`
@@ -151,6 +179,13 @@ SetShards sets Shards field to given value.
 `func (o *DropIndexSuggestionsIndex) HasShards() bool`
 
 HasShards returns a boolean if a field has been set.
+
+### SetShardsNil
+
+`func (o *DropIndexSuggestionsIndex) SetShardsNil()`
+
+SetShardsNil sets Shards to an explicit JSON null when marshaled, overriding any value previously set with SetShards. Calling SetShards again clears the null override.
+
 ### GetSince
 
 `func (o *DropIndexSuggestionsIndex) GetSince() time.Time`
@@ -175,6 +210,13 @@ SetSince sets Since field to given value.
 `func (o *DropIndexSuggestionsIndex) HasSince() bool`
 
 HasSince returns a boolean if a field has been set.
+
+### SetSinceNil
+
+`func (o *DropIndexSuggestionsIndex) SetSinceNil()`
+
+SetSinceNil sets Since to an explicit JSON null when marshaled, overriding any value previously set with SetSince. Calling SetSince again clears the null override.
+
 ### GetSizeBytes
 
 `func (o *DropIndexSuggestionsIndex) GetSizeBytes() int64`
@@ -199,6 +241,13 @@ SetSizeBytes sets SizeBytes field to given value.
 `func (o *DropIndexSuggestionsIndex) HasSizeBytes() bool`
 
 HasSizeBytes returns a boolean if a field has been set.
+
+### SetSizeBytesNil
+
+`func (o *DropIndexSuggestionsIndex) SetSizeBytesNil()`
+
+SetSizeBytesNil sets SizeBytes to an explicit JSON null when marshaled, overriding any value previously set with SetSizeBytes. Calling SetSizeBytes again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

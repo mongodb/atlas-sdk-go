@@ -58,6 +58,13 @@ SetCreatedByUser sets CreatedByUser field to given value.
 `func (o *ApiAtlasResourcePolicy) HasCreatedByUser() bool`
 
 HasCreatedByUser returns a boolean if a field has been set.
+
+### SetCreatedByUserNil
+
+`func (o *ApiAtlasResourcePolicy) SetCreatedByUserNil()`
+
+SetCreatedByUserNil sets CreatedByUser to an explicit JSON null when marshaled, overriding any value previously set with SetCreatedByUser. Calling SetCreatedByUser again clears the null override.
+
 ### GetCreatedDate
 
 `func (o *ApiAtlasResourcePolicy) GetCreatedDate() time.Time`
@@ -82,6 +89,13 @@ SetCreatedDate sets CreatedDate field to given value.
 `func (o *ApiAtlasResourcePolicy) HasCreatedDate() bool`
 
 HasCreatedDate returns a boolean if a field has been set.
+
+### SetCreatedDateNil
+
+`func (o *ApiAtlasResourcePolicy) SetCreatedDateNil()`
+
+SetCreatedDateNil sets CreatedDate to an explicit JSON null when marshaled, overriding any value previously set with SetCreatedDate. Calling SetCreatedDate again clears the null override.
+
 ### GetDescription
 
 `func (o *ApiAtlasResourcePolicy) GetDescription() string`
@@ -106,6 +120,13 @@ SetDescription sets Description field to given value.
 `func (o *ApiAtlasResourcePolicy) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *ApiAtlasResourcePolicy) SetDescriptionNil()`
+
+SetDescriptionNil sets Description to an explicit JSON null when marshaled, overriding any value previously set with SetDescription. Calling SetDescription again clears the null override.
+
 ### GetId
 
 `func (o *ApiAtlasResourcePolicy) GetId() string`
@@ -130,6 +151,13 @@ SetId sets Id field to given value.
 `func (o *ApiAtlasResourcePolicy) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *ApiAtlasResourcePolicy) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLastUpdatedByUser
 
 `func (o *ApiAtlasResourcePolicy) GetLastUpdatedByUser() ApiAtlasUserMetadata`
@@ -154,6 +182,13 @@ SetLastUpdatedByUser sets LastUpdatedByUser field to given value.
 `func (o *ApiAtlasResourcePolicy) HasLastUpdatedByUser() bool`
 
 HasLastUpdatedByUser returns a boolean if a field has been set.
+
+### SetLastUpdatedByUserNil
+
+`func (o *ApiAtlasResourcePolicy) SetLastUpdatedByUserNil()`
+
+SetLastUpdatedByUserNil sets LastUpdatedByUser to an explicit JSON null when marshaled, overriding any value previously set with SetLastUpdatedByUser. Calling SetLastUpdatedByUser again clears the null override.
+
 ### GetLastUpdatedDate
 
 `func (o *ApiAtlasResourcePolicy) GetLastUpdatedDate() time.Time`
@@ -178,6 +213,13 @@ SetLastUpdatedDate sets LastUpdatedDate field to given value.
 `func (o *ApiAtlasResourcePolicy) HasLastUpdatedDate() bool`
 
 HasLastUpdatedDate returns a boolean if a field has been set.
+
+### SetLastUpdatedDateNil
+
+`func (o *ApiAtlasResourcePolicy) SetLastUpdatedDateNil()`
+
+SetLastUpdatedDateNil sets LastUpdatedDate to an explicit JSON null when marshaled, overriding any value previously set with SetLastUpdatedDate. Calling SetLastUpdatedDate again clears the null override.
+
 ### GetName
 
 `func (o *ApiAtlasResourcePolicy) GetName() string`
@@ -202,6 +244,13 @@ SetName sets Name field to given value.
 `func (o *ApiAtlasResourcePolicy) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *ApiAtlasResourcePolicy) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetOrgId
 
 `func (o *ApiAtlasResourcePolicy) GetOrgId() string`
@@ -226,6 +275,13 @@ SetOrgId sets OrgId field to given value.
 `func (o *ApiAtlasResourcePolicy) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
+
+### SetOrgIdNil
+
+`func (o *ApiAtlasResourcePolicy) SetOrgIdNil()`
+
+SetOrgIdNil sets OrgId to an explicit JSON null when marshaled, overriding any value previously set with SetOrgId. Calling SetOrgId again clears the null override.
+
 ### GetPolicies
 
 `func (o *ApiAtlasResourcePolicy) GetPolicies() []ApiAtlasPolicy`
@@ -250,6 +306,13 @@ SetPolicies sets Policies field to given value.
 `func (o *ApiAtlasResourcePolicy) HasPolicies() bool`
 
 HasPolicies returns a boolean if a field has been set.
+
+### SetPoliciesNil
+
+`func (o *ApiAtlasResourcePolicy) SetPoliciesNil()`
+
+SetPoliciesNil sets Policies to an explicit JSON null when marshaled, overriding any value previously set with SetPolicies. Calling SetPolicies again clears the null override.
+
 ### GetVersion
 
 `func (o *ApiAtlasResourcePolicy) GetVersion() string`
@@ -274,6 +337,13 @@ SetVersion sets Version field to given value.
 `func (o *ApiAtlasResourcePolicy) HasVersion() bool`
 
 HasVersion returns a boolean if a field has been set.
+
+### SetVersionNil
+
+`func (o *ApiAtlasResourcePolicy) SetVersionNil()`
+
+SetVersionNil sets Version to an explicit JSON null when marshaled, overriding any value previously set with SetVersion. Calling SetVersion again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

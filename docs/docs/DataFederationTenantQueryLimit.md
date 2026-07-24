@@ -56,6 +56,13 @@ SetCurrentUsage sets CurrentUsage field to given value.
 `func (o *DataFederationTenantQueryLimit) HasCurrentUsage() bool`
 
 HasCurrentUsage returns a boolean if a field has been set.
+
+### SetCurrentUsageNil
+
+`func (o *DataFederationTenantQueryLimit) SetCurrentUsageNil()`
+
+SetCurrentUsageNil sets CurrentUsage to an explicit JSON null when marshaled, overriding any value previously set with SetCurrentUsage. Calling SetCurrentUsage again clears the null override.
+
 ### GetDefaultLimit
 
 `func (o *DataFederationTenantQueryLimit) GetDefaultLimit() int64`
@@ -80,6 +87,13 @@ SetDefaultLimit sets DefaultLimit field to given value.
 `func (o *DataFederationTenantQueryLimit) HasDefaultLimit() bool`
 
 HasDefaultLimit returns a boolean if a field has been set.
+
+### SetDefaultLimitNil
+
+`func (o *DataFederationTenantQueryLimit) SetDefaultLimitNil()`
+
+SetDefaultLimitNil sets DefaultLimit to an explicit JSON null when marshaled, overriding any value previously set with SetDefaultLimit. Calling SetDefaultLimit again clears the null override.
+
 ### GetLastModifiedDate
 
 `func (o *DataFederationTenantQueryLimit) GetLastModifiedDate() time.Time`
@@ -104,6 +118,13 @@ SetLastModifiedDate sets LastModifiedDate field to given value.
 `func (o *DataFederationTenantQueryLimit) HasLastModifiedDate() bool`
 
 HasLastModifiedDate returns a boolean if a field has been set.
+
+### SetLastModifiedDateNil
+
+`func (o *DataFederationTenantQueryLimit) SetLastModifiedDateNil()`
+
+SetLastModifiedDateNil sets LastModifiedDate to an explicit JSON null when marshaled, overriding any value previously set with SetLastModifiedDate. Calling SetLastModifiedDate again clears the null override.
+
 ### GetMaximumLimit
 
 `func (o *DataFederationTenantQueryLimit) GetMaximumLimit() int64`
@@ -128,6 +149,13 @@ SetMaximumLimit sets MaximumLimit field to given value.
 `func (o *DataFederationTenantQueryLimit) HasMaximumLimit() bool`
 
 HasMaximumLimit returns a boolean if a field has been set.
+
+### SetMaximumLimitNil
+
+`func (o *DataFederationTenantQueryLimit) SetMaximumLimitNil()`
+
+SetMaximumLimitNil sets MaximumLimit to an explicit JSON null when marshaled, overriding any value previously set with SetMaximumLimit. Calling SetMaximumLimit again clears the null override.
+
 ### GetName
 
 `func (o *DataFederationTenantQueryLimit) GetName() string`
@@ -171,6 +199,13 @@ SetOverrunPolicy sets OverrunPolicy field to given value.
 `func (o *DataFederationTenantQueryLimit) HasOverrunPolicy() bool`
 
 HasOverrunPolicy returns a boolean if a field has been set.
+
+### SetOverrunPolicyNil
+
+`func (o *DataFederationTenantQueryLimit) SetOverrunPolicyNil()`
+
+SetOverrunPolicyNil sets OverrunPolicy to an explicit JSON null when marshaled, overriding any value previously set with SetOverrunPolicy. Calling SetOverrunPolicy again clears the null override.
+
 ### GetTenantName
 
 `func (o *DataFederationTenantQueryLimit) GetTenantName() string`
@@ -195,6 +230,13 @@ SetTenantName sets TenantName field to given value.
 `func (o *DataFederationTenantQueryLimit) HasTenantName() bool`
 
 HasTenantName returns a boolean if a field has been set.
+
+### SetTenantNameNil
+
+`func (o *DataFederationTenantQueryLimit) SetTenantNameNil()`
+
+SetTenantNameNil sets TenantName to an explicit JSON null when marshaled, overriding any value previously set with SetTenantName. Calling SetTenantName again clears the null override.
+
 ### GetValue
 
 `func (o *DataFederationTenantQueryLimit) GetValue() int64`

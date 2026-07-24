@@ -60,6 +60,13 @@ SetConnectionStrings sets ConnectionStrings field to given value.
 `func (o *ServerlessInstanceDescription) HasConnectionStrings() bool`
 
 HasConnectionStrings returns a boolean if a field has been set.
+
+### SetConnectionStringsNil
+
+`func (o *ServerlessInstanceDescription) SetConnectionStringsNil()`
+
+SetConnectionStringsNil sets ConnectionStrings to an explicit JSON null when marshaled, overriding any value previously set with SetConnectionStrings. Calling SetConnectionStrings again clears the null override.
+
 ### GetCreateDate
 
 `func (o *ServerlessInstanceDescription) GetCreateDate() time.Time`
@@ -84,6 +91,13 @@ SetCreateDate sets CreateDate field to given value.
 `func (o *ServerlessInstanceDescription) HasCreateDate() bool`
 
 HasCreateDate returns a boolean if a field has been set.
+
+### SetCreateDateNil
+
+`func (o *ServerlessInstanceDescription) SetCreateDateNil()`
+
+SetCreateDateNil sets CreateDate to an explicit JSON null when marshaled, overriding any value previously set with SetCreateDate. Calling SetCreateDate again clears the null override.
+
 ### GetGroupId
 
 `func (o *ServerlessInstanceDescription) GetGroupId() string`
@@ -108,6 +122,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *ServerlessInstanceDescription) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *ServerlessInstanceDescription) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetId
 
 `func (o *ServerlessInstanceDescription) GetId() string`
@@ -132,6 +153,13 @@ SetId sets Id field to given value.
 `func (o *ServerlessInstanceDescription) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *ServerlessInstanceDescription) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLinks
 
 `func (o *ServerlessInstanceDescription) GetLinks() []Link`
@@ -156,6 +184,13 @@ SetLinks sets Links field to given value.
 `func (o *ServerlessInstanceDescription) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *ServerlessInstanceDescription) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetMongoDBVersion
 
 `func (o *ServerlessInstanceDescription) GetMongoDBVersion() string`
@@ -180,6 +215,13 @@ SetMongoDBVersion sets MongoDBVersion field to given value.
 `func (o *ServerlessInstanceDescription) HasMongoDBVersion() bool`
 
 HasMongoDBVersion returns a boolean if a field has been set.
+
+### SetMongoDBVersionNil
+
+`func (o *ServerlessInstanceDescription) SetMongoDBVersionNil()`
+
+SetMongoDBVersionNil sets MongoDBVersion to an explicit JSON null when marshaled, overriding any value previously set with SetMongoDBVersion. Calling SetMongoDBVersion again clears the null override.
+
 ### GetName
 
 `func (o *ServerlessInstanceDescription) GetName() string`
@@ -204,6 +246,13 @@ SetName sets Name field to given value.
 `func (o *ServerlessInstanceDescription) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *ServerlessInstanceDescription) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetProviderSettings
 
 `func (o *ServerlessInstanceDescription) GetProviderSettings() ServerlessProviderSettings`
@@ -247,6 +296,13 @@ SetServerlessBackupOptions sets ServerlessBackupOptions field to given value.
 `func (o *ServerlessInstanceDescription) HasServerlessBackupOptions() bool`
 
 HasServerlessBackupOptions returns a boolean if a field has been set.
+
+### SetServerlessBackupOptionsNil
+
+`func (o *ServerlessInstanceDescription) SetServerlessBackupOptionsNil()`
+
+SetServerlessBackupOptionsNil sets ServerlessBackupOptions to an explicit JSON null when marshaled, overriding any value previously set with SetServerlessBackupOptions. Calling SetServerlessBackupOptions again clears the null override.
+
 ### GetStateName
 
 `func (o *ServerlessInstanceDescription) GetStateName() string`
@@ -271,6 +327,13 @@ SetStateName sets StateName field to given value.
 `func (o *ServerlessInstanceDescription) HasStateName() bool`
 
 HasStateName returns a boolean if a field has been set.
+
+### SetStateNameNil
+
+`func (o *ServerlessInstanceDescription) SetStateNameNil()`
+
+SetStateNameNil sets StateName to an explicit JSON null when marshaled, overriding any value previously set with SetStateName. Calling SetStateName again clears the null override.
+
 ### GetTags
 
 `func (o *ServerlessInstanceDescription) GetTags() []ResourceTag`
@@ -295,6 +358,13 @@ SetTags sets Tags field to given value.
 `func (o *ServerlessInstanceDescription) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### SetTagsNil
+
+`func (o *ServerlessInstanceDescription) SetTagsNil()`
+
+SetTagsNil sets Tags to an explicit JSON null when marshaled, overriding any value previously set with SetTags. Calling SetTags again clears the null override.
+
 ### GetTerminationProtectionEnabled
 
 `func (o *ServerlessInstanceDescription) GetTerminationProtectionEnabled() bool`
@@ -319,6 +389,13 @@ SetTerminationProtectionEnabled sets TerminationProtectionEnabled field to given
 `func (o *ServerlessInstanceDescription) HasTerminationProtectionEnabled() bool`
 
 HasTerminationProtectionEnabled returns a boolean if a field has been set.
+
+### SetTerminationProtectionEnabledNil
+
+`func (o *ServerlessInstanceDescription) SetTerminationProtectionEnabledNil()`
+
+SetTerminationProtectionEnabledNil sets TerminationProtectionEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetTerminationProtectionEnabled. Calling SetTerminationProtectionEnabled again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

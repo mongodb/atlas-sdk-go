@@ -10,6 +10,15 @@ type AtlasClusterOutageSimulationOutageFilter struct {
 	RegionName *string `json:"regionName,omitempty"`
 	// The type of cluster outage to simulate. `REGION` simulates a cluster outage for a region.
 	Type *string `json:"type,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AtlasClusterOutageSimulationOutageFilter) MarshalJSON() ([]byte, error) {
+	type noMethod AtlasClusterOutageSimulationOutageFilter
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAtlasClusterOutageSimulationOutageFilter instantiates a new AtlasClusterOutageSimulationOutageFilter object
@@ -60,6 +69,13 @@ func (o *AtlasClusterOutageSimulationOutageFilter) HasCloudProvider() bool {
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *AtlasClusterOutageSimulationOutageFilter) SetCloudProvider(v string) {
 	o.CloudProvider = &v
+	o.NullFields = removeNullField(o.NullFields, "CloudProvider")
+}
+
+// SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled.
+func (o *AtlasClusterOutageSimulationOutageFilter) SetCloudProviderNil() {
+	o.CloudProvider = nil
+	o.NullFields = addNullField(o.NullFields, "CloudProvider")
 }
 
 // GetRegionName returns the RegionName field value if set, zero value otherwise
@@ -93,6 +109,13 @@ func (o *AtlasClusterOutageSimulationOutageFilter) HasRegionName() bool {
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *AtlasClusterOutageSimulationOutageFilter) SetRegionName(v string) {
 	o.RegionName = &v
+	o.NullFields = removeNullField(o.NullFields, "RegionName")
+}
+
+// SetRegionNameNil sets RegionName to an explicit JSON null when marshaled.
+func (o *AtlasClusterOutageSimulationOutageFilter) SetRegionNameNil() {
+	o.RegionName = nil
+	o.NullFields = addNullField(o.NullFields, "RegionName")
 }
 
 // GetType returns the Type field value if set, zero value otherwise
@@ -126,4 +149,11 @@ func (o *AtlasClusterOutageSimulationOutageFilter) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *AtlasClusterOutageSimulationOutageFilter) SetType(v string) {
 	o.Type = &v
+	o.NullFields = removeNullField(o.NullFields, "Type")
+}
+
+// SetTypeNil sets Type to an explicit JSON null when marshaled.
+func (o *AtlasClusterOutageSimulationOutageFilter) SetTypeNil() {
+	o.Type = nil
+	o.NullFields = addNullField(o.NullFields, "Type")
 }

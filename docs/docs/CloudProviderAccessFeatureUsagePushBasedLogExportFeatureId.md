@@ -50,6 +50,13 @@ SetBucketName sets BucketName field to given value.
 `func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) HasBucketName() bool`
 
 HasBucketName returns a boolean if a field has been set.
+
+### SetBucketNameNil
+
+`func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) SetBucketNameNil()`
+
+SetBucketNameNil sets BucketName to an explicit JSON null when marshaled, overriding any value previously set with SetBucketName. Calling SetBucketName again clears the null override.
+
 ### GetGroupId
 
 `func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) GetGroupId() string`
@@ -74,6 +81,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

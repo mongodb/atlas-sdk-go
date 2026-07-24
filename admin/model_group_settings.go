@@ -26,6 +26,15 @@ type GroupSettings struct {
 	IsRealtimePerformancePanelEnabled *bool `json:"isRealtimePerformancePanelEnabled,omitempty"`
 	// Flag that indicates whether to enable the Schema Advisor for the specified project.
 	IsSchemaAdvisorEnabled *bool `json:"isSchemaAdvisorEnabled,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *GroupSettings) MarshalJSON() ([]byte, error) {
+	type noMethod GroupSettings
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGroupSettings instantiates a new GroupSettings object
@@ -80,6 +89,13 @@ func (o *GroupSettings) HasIsClusterAiAssistantEnabled() bool {
 // SetIsClusterAiAssistantEnabled gets a reference to the given bool and assigns it to the IsClusterAiAssistantEnabled field.
 func (o *GroupSettings) SetIsClusterAiAssistantEnabled(v bool) {
 	o.IsClusterAiAssistantEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "IsClusterAiAssistantEnabled")
+}
+
+// SetIsClusterAiAssistantEnabledNil sets IsClusterAiAssistantEnabled to an explicit JSON null when marshaled.
+func (o *GroupSettings) SetIsClusterAiAssistantEnabledNil() {
+	o.IsClusterAiAssistantEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "IsClusterAiAssistantEnabled")
 }
 
 // GetIsCollectDatabaseSpecificsStatisticsEnabled returns the IsCollectDatabaseSpecificsStatisticsEnabled field value if set, zero value otherwise
@@ -113,6 +129,13 @@ func (o *GroupSettings) HasIsCollectDatabaseSpecificsStatisticsEnabled() bool {
 // SetIsCollectDatabaseSpecificsStatisticsEnabled gets a reference to the given bool and assigns it to the IsCollectDatabaseSpecificsStatisticsEnabled field.
 func (o *GroupSettings) SetIsCollectDatabaseSpecificsStatisticsEnabled(v bool) {
 	o.IsCollectDatabaseSpecificsStatisticsEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "IsCollectDatabaseSpecificsStatisticsEnabled")
+}
+
+// SetIsCollectDatabaseSpecificsStatisticsEnabledNil sets IsCollectDatabaseSpecificsStatisticsEnabled to an explicit JSON null when marshaled.
+func (o *GroupSettings) SetIsCollectDatabaseSpecificsStatisticsEnabledNil() {
+	o.IsCollectDatabaseSpecificsStatisticsEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "IsCollectDatabaseSpecificsStatisticsEnabled")
 }
 
 // GetIsDataExplorerEnabled returns the IsDataExplorerEnabled field value if set, zero value otherwise
@@ -146,6 +169,13 @@ func (o *GroupSettings) HasIsDataExplorerEnabled() bool {
 // SetIsDataExplorerEnabled gets a reference to the given bool and assigns it to the IsDataExplorerEnabled field.
 func (o *GroupSettings) SetIsDataExplorerEnabled(v bool) {
 	o.IsDataExplorerEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "IsDataExplorerEnabled")
+}
+
+// SetIsDataExplorerEnabledNil sets IsDataExplorerEnabled to an explicit JSON null when marshaled.
+func (o *GroupSettings) SetIsDataExplorerEnabledNil() {
+	o.IsDataExplorerEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "IsDataExplorerEnabled")
 }
 
 // GetIsDataExplorerGenAIFeaturesEnabled returns the IsDataExplorerGenAIFeaturesEnabled field value if set, zero value otherwise
@@ -179,6 +209,13 @@ func (o *GroupSettings) HasIsDataExplorerGenAIFeaturesEnabled() bool {
 // SetIsDataExplorerGenAIFeaturesEnabled gets a reference to the given bool and assigns it to the IsDataExplorerGenAIFeaturesEnabled field.
 func (o *GroupSettings) SetIsDataExplorerGenAIFeaturesEnabled(v bool) {
 	o.IsDataExplorerGenAIFeaturesEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "IsDataExplorerGenAIFeaturesEnabled")
+}
+
+// SetIsDataExplorerGenAIFeaturesEnabledNil sets IsDataExplorerGenAIFeaturesEnabled to an explicit JSON null when marshaled.
+func (o *GroupSettings) SetIsDataExplorerGenAIFeaturesEnabledNil() {
+	o.IsDataExplorerGenAIFeaturesEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "IsDataExplorerGenAIFeaturesEnabled")
 }
 
 // GetIsDataExplorerGenAISampleDocumentPassingEnabled returns the IsDataExplorerGenAISampleDocumentPassingEnabled field value if set, zero value otherwise
@@ -212,6 +249,13 @@ func (o *GroupSettings) HasIsDataExplorerGenAISampleDocumentPassingEnabled() boo
 // SetIsDataExplorerGenAISampleDocumentPassingEnabled gets a reference to the given bool and assigns it to the IsDataExplorerGenAISampleDocumentPassingEnabled field.
 func (o *GroupSettings) SetIsDataExplorerGenAISampleDocumentPassingEnabled(v bool) {
 	o.IsDataExplorerGenAISampleDocumentPassingEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "IsDataExplorerGenAISampleDocumentPassingEnabled")
+}
+
+// SetIsDataExplorerGenAISampleDocumentPassingEnabledNil sets IsDataExplorerGenAISampleDocumentPassingEnabled to an explicit JSON null when marshaled.
+func (o *GroupSettings) SetIsDataExplorerGenAISampleDocumentPassingEnabledNil() {
+	o.IsDataExplorerGenAISampleDocumentPassingEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "IsDataExplorerGenAISampleDocumentPassingEnabled")
 }
 
 // GetIsDataValidationEnabled returns the IsDataValidationEnabled field value if set, zero value otherwise
@@ -245,6 +289,13 @@ func (o *GroupSettings) HasIsDataValidationEnabled() bool {
 // SetIsDataValidationEnabled gets a reference to the given bool and assigns it to the IsDataValidationEnabled field.
 func (o *GroupSettings) SetIsDataValidationEnabled(v bool) {
 	o.IsDataValidationEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "IsDataValidationEnabled")
+}
+
+// SetIsDataValidationEnabledNil sets IsDataValidationEnabled to an explicit JSON null when marshaled.
+func (o *GroupSettings) SetIsDataValidationEnabledNil() {
+	o.IsDataValidationEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "IsDataValidationEnabled")
 }
 
 // GetIsExtendedStorageSizesEnabled returns the IsExtendedStorageSizesEnabled field value if set, zero value otherwise
@@ -278,6 +329,13 @@ func (o *GroupSettings) HasIsExtendedStorageSizesEnabled() bool {
 // SetIsExtendedStorageSizesEnabled gets a reference to the given bool and assigns it to the IsExtendedStorageSizesEnabled field.
 func (o *GroupSettings) SetIsExtendedStorageSizesEnabled(v bool) {
 	o.IsExtendedStorageSizesEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "IsExtendedStorageSizesEnabled")
+}
+
+// SetIsExtendedStorageSizesEnabledNil sets IsExtendedStorageSizesEnabled to an explicit JSON null when marshaled.
+func (o *GroupSettings) SetIsExtendedStorageSizesEnabledNil() {
+	o.IsExtendedStorageSizesEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "IsExtendedStorageSizesEnabled")
 }
 
 // GetIsNativeRerankingEnabled returns the IsNativeRerankingEnabled field value if set, zero value otherwise
@@ -311,6 +369,13 @@ func (o *GroupSettings) HasIsNativeRerankingEnabled() bool {
 // SetIsNativeRerankingEnabled gets a reference to the given bool and assigns it to the IsNativeRerankingEnabled field.
 func (o *GroupSettings) SetIsNativeRerankingEnabled(v bool) {
 	o.IsNativeRerankingEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "IsNativeRerankingEnabled")
+}
+
+// SetIsNativeRerankingEnabledNil sets IsNativeRerankingEnabled to an explicit JSON null when marshaled.
+func (o *GroupSettings) SetIsNativeRerankingEnabledNil() {
+	o.IsNativeRerankingEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "IsNativeRerankingEnabled")
 }
 
 // GetIsPerformanceAdvisorEnabled returns the IsPerformanceAdvisorEnabled field value if set, zero value otherwise
@@ -344,6 +409,13 @@ func (o *GroupSettings) HasIsPerformanceAdvisorEnabled() bool {
 // SetIsPerformanceAdvisorEnabled gets a reference to the given bool and assigns it to the IsPerformanceAdvisorEnabled field.
 func (o *GroupSettings) SetIsPerformanceAdvisorEnabled(v bool) {
 	o.IsPerformanceAdvisorEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "IsPerformanceAdvisorEnabled")
+}
+
+// SetIsPerformanceAdvisorEnabledNil sets IsPerformanceAdvisorEnabled to an explicit JSON null when marshaled.
+func (o *GroupSettings) SetIsPerformanceAdvisorEnabledNil() {
+	o.IsPerformanceAdvisorEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "IsPerformanceAdvisorEnabled")
 }
 
 // GetIsRealtimePerformancePanelEnabled returns the IsRealtimePerformancePanelEnabled field value if set, zero value otherwise
@@ -377,6 +449,13 @@ func (o *GroupSettings) HasIsRealtimePerformancePanelEnabled() bool {
 // SetIsRealtimePerformancePanelEnabled gets a reference to the given bool and assigns it to the IsRealtimePerformancePanelEnabled field.
 func (o *GroupSettings) SetIsRealtimePerformancePanelEnabled(v bool) {
 	o.IsRealtimePerformancePanelEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "IsRealtimePerformancePanelEnabled")
+}
+
+// SetIsRealtimePerformancePanelEnabledNil sets IsRealtimePerformancePanelEnabled to an explicit JSON null when marshaled.
+func (o *GroupSettings) SetIsRealtimePerformancePanelEnabledNil() {
+	o.IsRealtimePerformancePanelEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "IsRealtimePerformancePanelEnabled")
 }
 
 // GetIsSchemaAdvisorEnabled returns the IsSchemaAdvisorEnabled field value if set, zero value otherwise
@@ -410,4 +489,11 @@ func (o *GroupSettings) HasIsSchemaAdvisorEnabled() bool {
 // SetIsSchemaAdvisorEnabled gets a reference to the given bool and assigns it to the IsSchemaAdvisorEnabled field.
 func (o *GroupSettings) SetIsSchemaAdvisorEnabled(v bool) {
 	o.IsSchemaAdvisorEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "IsSchemaAdvisorEnabled")
+}
+
+// SetIsSchemaAdvisorEnabledNil sets IsSchemaAdvisorEnabled to an explicit JSON null when marshaled.
+func (o *GroupSettings) SetIsSchemaAdvisorEnabledNil() {
+	o.IsSchemaAdvisorEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "IsSchemaAdvisorEnabled")
 }

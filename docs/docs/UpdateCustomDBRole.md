@@ -50,6 +50,13 @@ SetActions sets Actions field to given value.
 `func (o *UpdateCustomDBRole) HasActions() bool`
 
 HasActions returns a boolean if a field has been set.
+
+### SetActionsNil
+
+`func (o *UpdateCustomDBRole) SetActionsNil()`
+
+SetActionsNil sets Actions to an explicit JSON null when marshaled, overriding any value previously set with SetActions. Calling SetActions again clears the null override.
+
 ### GetInheritedRoles
 
 `func (o *UpdateCustomDBRole) GetInheritedRoles() []DatabaseInheritedRole`
@@ -74,6 +81,13 @@ SetInheritedRoles sets InheritedRoles field to given value.
 `func (o *UpdateCustomDBRole) HasInheritedRoles() bool`
 
 HasInheritedRoles returns a boolean if a field has been set.
+
+### SetInheritedRolesNil
+
+`func (o *UpdateCustomDBRole) SetInheritedRolesNil()`
+
+SetInheritedRolesNil sets InheritedRoles to an explicit JSON null when marshaled, overriding any value previously set with SetInheritedRoles. Calling SetInheritedRoles again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

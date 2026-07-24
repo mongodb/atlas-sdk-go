@@ -85,6 +85,13 @@ SetAcceptDataRisksAndForceReplicaSetReconfig sets AcceptDataRisksAndForceReplica
 `func (o *ClusterDescription20240805) HasAcceptDataRisksAndForceReplicaSetReconfig() bool`
 
 HasAcceptDataRisksAndForceReplicaSetReconfig returns a boolean if a field has been set.
+
+### SetAcceptDataRisksAndForceReplicaSetReconfigNil
+
+`func (o *ClusterDescription20240805) SetAcceptDataRisksAndForceReplicaSetReconfigNil()`
+
+SetAcceptDataRisksAndForceReplicaSetReconfigNil sets AcceptDataRisksAndForceReplicaSetReconfig to an explicit JSON null when marshaled, overriding any value previously set with SetAcceptDataRisksAndForceReplicaSetReconfig. Calling SetAcceptDataRisksAndForceReplicaSetReconfig again clears the null override.
+
 ### GetAdaptiveCapacity
 
 `func (o *ClusterDescription20240805) GetAdaptiveCapacity() string`
@@ -109,6 +116,13 @@ SetAdaptiveCapacity sets AdaptiveCapacity field to given value.
 `func (o *ClusterDescription20240805) HasAdaptiveCapacity() bool`
 
 HasAdaptiveCapacity returns a boolean if a field has been set.
+
+### SetAdaptiveCapacityNil
+
+`func (o *ClusterDescription20240805) SetAdaptiveCapacityNil()`
+
+SetAdaptiveCapacityNil sets AdaptiveCapacity to an explicit JSON null when marshaled, overriding any value previously set with SetAdaptiveCapacity. Calling SetAdaptiveCapacity again clears the null override.
+
 ### GetAdvancedConfiguration
 
 `func (o *ClusterDescription20240805) GetAdvancedConfiguration() ApiAtlasClusterAdvancedConfiguration`
@@ -133,6 +147,13 @@ SetAdvancedConfiguration sets AdvancedConfiguration field to given value.
 `func (o *ClusterDescription20240805) HasAdvancedConfiguration() bool`
 
 HasAdvancedConfiguration returns a boolean if a field has been set.
+
+### SetAdvancedConfigurationNil
+
+`func (o *ClusterDescription20240805) SetAdvancedConfigurationNil()`
+
+SetAdvancedConfigurationNil sets AdvancedConfiguration to an explicit JSON null when marshaled, overriding any value previously set with SetAdvancedConfiguration. Calling SetAdvancedConfiguration again clears the null override.
+
 ### GetBackupEnabled
 
 `func (o *ClusterDescription20240805) GetBackupEnabled() bool`
@@ -157,6 +178,13 @@ SetBackupEnabled sets BackupEnabled field to given value.
 `func (o *ClusterDescription20240805) HasBackupEnabled() bool`
 
 HasBackupEnabled returns a boolean if a field has been set.
+
+### SetBackupEnabledNil
+
+`func (o *ClusterDescription20240805) SetBackupEnabledNil()`
+
+SetBackupEnabledNil sets BackupEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetBackupEnabled. Calling SetBackupEnabled again clears the null override.
+
 ### GetBiConnector
 
 `func (o *ClusterDescription20240805) GetBiConnector() BiConnector`
@@ -181,6 +209,13 @@ SetBiConnector sets BiConnector field to given value.
 `func (o *ClusterDescription20240805) HasBiConnector() bool`
 
 HasBiConnector returns a boolean if a field has been set.
+
+### SetBiConnectorNil
+
+`func (o *ClusterDescription20240805) SetBiConnectorNil()`
+
+SetBiConnectorNil sets BiConnector to an explicit JSON null when marshaled, overriding any value previously set with SetBiConnector. Calling SetBiConnector again clears the null override.
+
 ### GetClusterType
 
 `func (o *ClusterDescription20240805) GetClusterType() string`
@@ -205,6 +240,13 @@ SetClusterType sets ClusterType field to given value.
 `func (o *ClusterDescription20240805) HasClusterType() bool`
 
 HasClusterType returns a boolean if a field has been set.
+
+### SetClusterTypeNil
+
+`func (o *ClusterDescription20240805) SetClusterTypeNil()`
+
+SetClusterTypeNil sets ClusterType to an explicit JSON null when marshaled, overriding any value previously set with SetClusterType. Calling SetClusterType again clears the null override.
+
 ### GetConfigServerManagementMode
 
 `func (o *ClusterDescription20240805) GetConfigServerManagementMode() string`
@@ -229,6 +271,13 @@ SetConfigServerManagementMode sets ConfigServerManagementMode field to given val
 `func (o *ClusterDescription20240805) HasConfigServerManagementMode() bool`
 
 HasConfigServerManagementMode returns a boolean if a field has been set.
+
+### SetConfigServerManagementModeNil
+
+`func (o *ClusterDescription20240805) SetConfigServerManagementModeNil()`
+
+SetConfigServerManagementModeNil sets ConfigServerManagementMode to an explicit JSON null when marshaled, overriding any value previously set with SetConfigServerManagementMode. Calling SetConfigServerManagementMode again clears the null override.
+
 ### GetConfigServerType
 
 `func (o *ClusterDescription20240805) GetConfigServerType() string`
@@ -253,6 +302,13 @@ SetConfigServerType sets ConfigServerType field to given value.
 `func (o *ClusterDescription20240805) HasConfigServerType() bool`
 
 HasConfigServerType returns a boolean if a field has been set.
+
+### SetConfigServerTypeNil
+
+`func (o *ClusterDescription20240805) SetConfigServerTypeNil()`
+
+SetConfigServerTypeNil sets ConfigServerType to an explicit JSON null when marshaled, overriding any value previously set with SetConfigServerType. Calling SetConfigServerType again clears the null override.
+
 ### GetConnectionStrings
 
 `func (o *ClusterDescription20240805) GetConnectionStrings() ClusterConnectionStrings`
@@ -277,6 +333,13 @@ SetConnectionStrings sets ConnectionStrings field to given value.
 `func (o *ClusterDescription20240805) HasConnectionStrings() bool`
 
 HasConnectionStrings returns a boolean if a field has been set.
+
+### SetConnectionStringsNil
+
+`func (o *ClusterDescription20240805) SetConnectionStringsNil()`
+
+SetConnectionStringsNil sets ConnectionStrings to an explicit JSON null when marshaled, overriding any value previously set with SetConnectionStrings. Calling SetConnectionStrings again clears the null override.
+
 ### GetCreateDate
 
 `func (o *ClusterDescription20240805) GetCreateDate() time.Time`
@@ -301,6 +364,13 @@ SetCreateDate sets CreateDate field to given value.
 `func (o *ClusterDescription20240805) HasCreateDate() bool`
 
 HasCreateDate returns a boolean if a field has been set.
+
+### SetCreateDateNil
+
+`func (o *ClusterDescription20240805) SetCreateDateNil()`
+
+SetCreateDateNil sets CreateDate to an explicit JSON null when marshaled, overriding any value previously set with SetCreateDate. Calling SetCreateDate again clears the null override.
+
 ### GetDiskWarmingMode
 
 `func (o *ClusterDescription20240805) GetDiskWarmingMode() string`
@@ -325,6 +395,13 @@ SetDiskWarmingMode sets DiskWarmingMode field to given value.
 `func (o *ClusterDescription20240805) HasDiskWarmingMode() bool`
 
 HasDiskWarmingMode returns a boolean if a field has been set.
+
+### SetDiskWarmingModeNil
+
+`func (o *ClusterDescription20240805) SetDiskWarmingModeNil()`
+
+SetDiskWarmingModeNil sets DiskWarmingMode to an explicit JSON null when marshaled, overriding any value previously set with SetDiskWarmingMode. Calling SetDiskWarmingMode again clears the null override.
+
 ### GetEffectiveReplicationSpecs
 
 `func (o *ClusterDescription20240805) GetEffectiveReplicationSpecs() []ReplicationSpec20240805`
@@ -349,6 +426,13 @@ SetEffectiveReplicationSpecs sets EffectiveReplicationSpecs field to given value
 `func (o *ClusterDescription20240805) HasEffectiveReplicationSpecs() bool`
 
 HasEffectiveReplicationSpecs returns a boolean if a field has been set.
+
+### SetEffectiveReplicationSpecsNil
+
+`func (o *ClusterDescription20240805) SetEffectiveReplicationSpecsNil()`
+
+SetEffectiveReplicationSpecsNil sets EffectiveReplicationSpecs to an explicit JSON null when marshaled, overriding any value previously set with SetEffectiveReplicationSpecs. Calling SetEffectiveReplicationSpecs again clears the null override.
+
 ### GetEncryptionAtRestProvider
 
 `func (o *ClusterDescription20240805) GetEncryptionAtRestProvider() string`
@@ -373,6 +457,13 @@ SetEncryptionAtRestProvider sets EncryptionAtRestProvider field to given value.
 `func (o *ClusterDescription20240805) HasEncryptionAtRestProvider() bool`
 
 HasEncryptionAtRestProvider returns a boolean if a field has been set.
+
+### SetEncryptionAtRestProviderNil
+
+`func (o *ClusterDescription20240805) SetEncryptionAtRestProviderNil()`
+
+SetEncryptionAtRestProviderNil sets EncryptionAtRestProvider to an explicit JSON null when marshaled, overriding any value previously set with SetEncryptionAtRestProvider. Calling SetEncryptionAtRestProvider again clears the null override.
+
 ### GetFeatureCompatibilityVersion
 
 `func (o *ClusterDescription20240805) GetFeatureCompatibilityVersion() string`
@@ -397,6 +488,13 @@ SetFeatureCompatibilityVersion sets FeatureCompatibilityVersion field to given v
 `func (o *ClusterDescription20240805) HasFeatureCompatibilityVersion() bool`
 
 HasFeatureCompatibilityVersion returns a boolean if a field has been set.
+
+### SetFeatureCompatibilityVersionNil
+
+`func (o *ClusterDescription20240805) SetFeatureCompatibilityVersionNil()`
+
+SetFeatureCompatibilityVersionNil sets FeatureCompatibilityVersion to an explicit JSON null when marshaled, overriding any value previously set with SetFeatureCompatibilityVersion. Calling SetFeatureCompatibilityVersion again clears the null override.
+
 ### GetFeatureCompatibilityVersionExpirationDate
 
 `func (o *ClusterDescription20240805) GetFeatureCompatibilityVersionExpirationDate() time.Time`
@@ -421,6 +519,13 @@ SetFeatureCompatibilityVersionExpirationDate sets FeatureCompatibilityVersionExp
 `func (o *ClusterDescription20240805) HasFeatureCompatibilityVersionExpirationDate() bool`
 
 HasFeatureCompatibilityVersionExpirationDate returns a boolean if a field has been set.
+
+### SetFeatureCompatibilityVersionExpirationDateNil
+
+`func (o *ClusterDescription20240805) SetFeatureCompatibilityVersionExpirationDateNil()`
+
+SetFeatureCompatibilityVersionExpirationDateNil sets FeatureCompatibilityVersionExpirationDate to an explicit JSON null when marshaled, overriding any value previously set with SetFeatureCompatibilityVersionExpirationDate. Calling SetFeatureCompatibilityVersionExpirationDate again clears the null override.
+
 ### GetGlobalClusterSelfManagedSharding
 
 `func (o *ClusterDescription20240805) GetGlobalClusterSelfManagedSharding() bool`
@@ -445,6 +550,13 @@ SetGlobalClusterSelfManagedSharding sets GlobalClusterSelfManagedSharding field 
 `func (o *ClusterDescription20240805) HasGlobalClusterSelfManagedSharding() bool`
 
 HasGlobalClusterSelfManagedSharding returns a boolean if a field has been set.
+
+### SetGlobalClusterSelfManagedShardingNil
+
+`func (o *ClusterDescription20240805) SetGlobalClusterSelfManagedShardingNil()`
+
+SetGlobalClusterSelfManagedShardingNil sets GlobalClusterSelfManagedSharding to an explicit JSON null when marshaled, overriding any value previously set with SetGlobalClusterSelfManagedSharding. Calling SetGlobalClusterSelfManagedSharding again clears the null override.
+
 ### GetGroupId
 
 `func (o *ClusterDescription20240805) GetGroupId() string`
@@ -469,6 +581,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *ClusterDescription20240805) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *ClusterDescription20240805) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetId
 
 `func (o *ClusterDescription20240805) GetId() string`
@@ -493,6 +612,13 @@ SetId sets Id field to given value.
 `func (o *ClusterDescription20240805) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *ClusterDescription20240805) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetInternalClusterRole
 
 `func (o *ClusterDescription20240805) GetInternalClusterRole() string`
@@ -517,6 +643,13 @@ SetInternalClusterRole sets InternalClusterRole field to given value.
 `func (o *ClusterDescription20240805) HasInternalClusterRole() bool`
 
 HasInternalClusterRole returns a boolean if a field has been set.
+
+### SetInternalClusterRoleNil
+
+`func (o *ClusterDescription20240805) SetInternalClusterRoleNil()`
+
+SetInternalClusterRoleNil sets InternalClusterRole to an explicit JSON null when marshaled, overriding any value previously set with SetInternalClusterRole. Calling SetInternalClusterRole again clears the null override.
+
 ### GetLabels
 
 `func (o *ClusterDescription20240805) GetLabels() []ComponentLabel`
@@ -541,6 +674,13 @@ SetLabels sets Labels field to given value.
 `func (o *ClusterDescription20240805) HasLabels() bool`
 
 HasLabels returns a boolean if a field has been set.
+
+### SetLabelsNil
+
+`func (o *ClusterDescription20240805) SetLabelsNil()`
+
+SetLabelsNil sets Labels to an explicit JSON null when marshaled, overriding any value previously set with SetLabels. Calling SetLabels again clears the null override.
+
 ### GetLinks
 
 `func (o *ClusterDescription20240805) GetLinks() []Link`
@@ -565,6 +705,13 @@ SetLinks sets Links field to given value.
 `func (o *ClusterDescription20240805) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *ClusterDescription20240805) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetMongoDBEmployeeAccessGrant
 
 `func (o *ClusterDescription20240805) GetMongoDBEmployeeAccessGrant() EmployeeAccessGrant`
@@ -589,6 +736,13 @@ SetMongoDBEmployeeAccessGrant sets MongoDBEmployeeAccessGrant field to given val
 `func (o *ClusterDescription20240805) HasMongoDBEmployeeAccessGrant() bool`
 
 HasMongoDBEmployeeAccessGrant returns a boolean if a field has been set.
+
+### SetMongoDBEmployeeAccessGrantNil
+
+`func (o *ClusterDescription20240805) SetMongoDBEmployeeAccessGrantNil()`
+
+SetMongoDBEmployeeAccessGrantNil sets MongoDBEmployeeAccessGrant to an explicit JSON null when marshaled, overriding any value previously set with SetMongoDBEmployeeAccessGrant. Calling SetMongoDBEmployeeAccessGrant again clears the null override.
+
 ### GetMongoDBMajorVersion
 
 `func (o *ClusterDescription20240805) GetMongoDBMajorVersion() string`
@@ -613,6 +767,13 @@ SetMongoDBMajorVersion sets MongoDBMajorVersion field to given value.
 `func (o *ClusterDescription20240805) HasMongoDBMajorVersion() bool`
 
 HasMongoDBMajorVersion returns a boolean if a field has been set.
+
+### SetMongoDBMajorVersionNil
+
+`func (o *ClusterDescription20240805) SetMongoDBMajorVersionNil()`
+
+SetMongoDBMajorVersionNil sets MongoDBMajorVersion to an explicit JSON null when marshaled, overriding any value previously set with SetMongoDBMajorVersion. Calling SetMongoDBMajorVersion again clears the null override.
+
 ### GetMongoDBVersion
 
 `func (o *ClusterDescription20240805) GetMongoDBVersion() string`
@@ -637,6 +798,13 @@ SetMongoDBVersion sets MongoDBVersion field to given value.
 `func (o *ClusterDescription20240805) HasMongoDBVersion() bool`
 
 HasMongoDBVersion returns a boolean if a field has been set.
+
+### SetMongoDBVersionNil
+
+`func (o *ClusterDescription20240805) SetMongoDBVersionNil()`
+
+SetMongoDBVersionNil sets MongoDBVersion to an explicit JSON null when marshaled, overriding any value previously set with SetMongoDBVersion. Calling SetMongoDBVersion again clears the null override.
+
 ### GetName
 
 `func (o *ClusterDescription20240805) GetName() string`
@@ -661,6 +829,13 @@ SetName sets Name field to given value.
 `func (o *ClusterDescription20240805) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *ClusterDescription20240805) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetPaused
 
 `func (o *ClusterDescription20240805) GetPaused() bool`
@@ -685,6 +860,13 @@ SetPaused sets Paused field to given value.
 `func (o *ClusterDescription20240805) HasPaused() bool`
 
 HasPaused returns a boolean if a field has been set.
+
+### SetPausedNil
+
+`func (o *ClusterDescription20240805) SetPausedNil()`
+
+SetPausedNil sets Paused to an explicit JSON null when marshaled, overriding any value previously set with SetPaused. Calling SetPaused again clears the null override.
+
 ### GetPitEnabled
 
 `func (o *ClusterDescription20240805) GetPitEnabled() bool`
@@ -709,6 +891,13 @@ SetPitEnabled sets PitEnabled field to given value.
 `func (o *ClusterDescription20240805) HasPitEnabled() bool`
 
 HasPitEnabled returns a boolean if a field has been set.
+
+### SetPitEnabledNil
+
+`func (o *ClusterDescription20240805) SetPitEnabledNil()`
+
+SetPitEnabledNil sets PitEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetPitEnabled. Calling SetPitEnabled again clears the null override.
+
 ### GetRedactClientLogData
 
 `func (o *ClusterDescription20240805) GetRedactClientLogData() bool`
@@ -733,6 +922,13 @@ SetRedactClientLogData sets RedactClientLogData field to given value.
 `func (o *ClusterDescription20240805) HasRedactClientLogData() bool`
 
 HasRedactClientLogData returns a boolean if a field has been set.
+
+### SetRedactClientLogDataNil
+
+`func (o *ClusterDescription20240805) SetRedactClientLogDataNil()`
+
+SetRedactClientLogDataNil sets RedactClientLogData to an explicit JSON null when marshaled, overriding any value previously set with SetRedactClientLogData. Calling SetRedactClientLogData again clears the null override.
+
 ### GetReplicaSetScalingStrategy
 
 `func (o *ClusterDescription20240805) GetReplicaSetScalingStrategy() string`
@@ -757,6 +953,13 @@ SetReplicaSetScalingStrategy sets ReplicaSetScalingStrategy field to given value
 `func (o *ClusterDescription20240805) HasReplicaSetScalingStrategy() bool`
 
 HasReplicaSetScalingStrategy returns a boolean if a field has been set.
+
+### SetReplicaSetScalingStrategyNil
+
+`func (o *ClusterDescription20240805) SetReplicaSetScalingStrategyNil()`
+
+SetReplicaSetScalingStrategyNil sets ReplicaSetScalingStrategy to an explicit JSON null when marshaled, overriding any value previously set with SetReplicaSetScalingStrategy. Calling SetReplicaSetScalingStrategy again clears the null override.
+
 ### GetReplicationSpecs
 
 `func (o *ClusterDescription20240805) GetReplicationSpecs() []ReplicationSpec20240805`
@@ -781,6 +984,13 @@ SetReplicationSpecs sets ReplicationSpecs field to given value.
 `func (o *ClusterDescription20240805) HasReplicationSpecs() bool`
 
 HasReplicationSpecs returns a boolean if a field has been set.
+
+### SetReplicationSpecsNil
+
+`func (o *ClusterDescription20240805) SetReplicationSpecsNil()`
+
+SetReplicationSpecsNil sets ReplicationSpecs to an explicit JSON null when marshaled, overriding any value previously set with SetReplicationSpecs. Calling SetReplicationSpecs again clears the null override.
+
 ### GetRetainBackups
 
 `func (o *ClusterDescription20240805) GetRetainBackups() bool`
@@ -805,6 +1015,13 @@ SetRetainBackups sets RetainBackups field to given value.
 `func (o *ClusterDescription20240805) HasRetainBackups() bool`
 
 HasRetainBackups returns a boolean if a field has been set.
+
+### SetRetainBackupsNil
+
+`func (o *ClusterDescription20240805) SetRetainBackupsNil()`
+
+SetRetainBackupsNil sets RetainBackups to an explicit JSON null when marshaled, overriding any value previously set with SetRetainBackups. Calling SetRetainBackups again clears the null override.
+
 ### GetRootCertType
 
 `func (o *ClusterDescription20240805) GetRootCertType() string`
@@ -829,6 +1046,13 @@ SetRootCertType sets RootCertType field to given value.
 `func (o *ClusterDescription20240805) HasRootCertType() bool`
 
 HasRootCertType returns a boolean if a field has been set.
+
+### SetRootCertTypeNil
+
+`func (o *ClusterDescription20240805) SetRootCertTypeNil()`
+
+SetRootCertTypeNil sets RootCertType to an explicit JSON null when marshaled, overriding any value previously set with SetRootCertType. Calling SetRootCertType again clears the null override.
+
 ### GetStateName
 
 `func (o *ClusterDescription20240805) GetStateName() string`
@@ -853,6 +1077,13 @@ SetStateName sets StateName field to given value.
 `func (o *ClusterDescription20240805) HasStateName() bool`
 
 HasStateName returns a boolean if a field has been set.
+
+### SetStateNameNil
+
+`func (o *ClusterDescription20240805) SetStateNameNil()`
+
+SetStateNameNil sets StateName to an explicit JSON null when marshaled, overriding any value previously set with SetStateName. Calling SetStateName again clears the null override.
+
 ### GetTags
 
 `func (o *ClusterDescription20240805) GetTags() []ResourceTag`
@@ -877,6 +1108,13 @@ SetTags sets Tags field to given value.
 `func (o *ClusterDescription20240805) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### SetTagsNil
+
+`func (o *ClusterDescription20240805) SetTagsNil()`
+
+SetTagsNil sets Tags to an explicit JSON null when marshaled, overriding any value previously set with SetTags. Calling SetTags again clears the null override.
+
 ### GetTerminationProtectionEnabled
 
 `func (o *ClusterDescription20240805) GetTerminationProtectionEnabled() bool`
@@ -901,6 +1139,13 @@ SetTerminationProtectionEnabled sets TerminationProtectionEnabled field to given
 `func (o *ClusterDescription20240805) HasTerminationProtectionEnabled() bool`
 
 HasTerminationProtectionEnabled returns a boolean if a field has been set.
+
+### SetTerminationProtectionEnabledNil
+
+`func (o *ClusterDescription20240805) SetTerminationProtectionEnabledNil()`
+
+SetTerminationProtectionEnabledNil sets TerminationProtectionEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetTerminationProtectionEnabled. Calling SetTerminationProtectionEnabled again clears the null override.
+
 ### GetUseAwsTimeBasedSnapshotCopyForFastInitialSync
 
 `func (o *ClusterDescription20240805) GetUseAwsTimeBasedSnapshotCopyForFastInitialSync() bool`
@@ -925,6 +1170,13 @@ SetUseAwsTimeBasedSnapshotCopyForFastInitialSync sets UseAwsTimeBasedSnapshotCop
 `func (o *ClusterDescription20240805) HasUseAwsTimeBasedSnapshotCopyForFastInitialSync() bool`
 
 HasUseAwsTimeBasedSnapshotCopyForFastInitialSync returns a boolean if a field has been set.
+
+### SetUseAwsTimeBasedSnapshotCopyForFastInitialSyncNil
+
+`func (o *ClusterDescription20240805) SetUseAwsTimeBasedSnapshotCopyForFastInitialSyncNil()`
+
+SetUseAwsTimeBasedSnapshotCopyForFastInitialSyncNil sets UseAwsTimeBasedSnapshotCopyForFastInitialSync to an explicit JSON null when marshaled, overriding any value previously set with SetUseAwsTimeBasedSnapshotCopyForFastInitialSync. Calling SetUseAwsTimeBasedSnapshotCopyForFastInitialSync again clears the null override.
+
 ### GetVersionReleaseSystem
 
 `func (o *ClusterDescription20240805) GetVersionReleaseSystem() string`
@@ -949,6 +1201,13 @@ SetVersionReleaseSystem sets VersionReleaseSystem field to given value.
 `func (o *ClusterDescription20240805) HasVersionReleaseSystem() bool`
 
 HasVersionReleaseSystem returns a boolean if a field has been set.
+
+### SetVersionReleaseSystemNil
+
+`func (o *ClusterDescription20240805) SetVersionReleaseSystemNil()`
+
+SetVersionReleaseSystemNil sets VersionReleaseSystem to an explicit JSON null when marshaled, overriding any value previously set with SetVersionReleaseSystem. Calling SetVersionReleaseSystem again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

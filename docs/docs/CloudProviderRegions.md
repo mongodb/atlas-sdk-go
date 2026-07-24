@@ -50,6 +50,13 @@ SetInstanceSizes sets InstanceSizes field to given value.
 `func (o *CloudProviderRegions) HasInstanceSizes() bool`
 
 HasInstanceSizes returns a boolean if a field has been set.
+
+### SetInstanceSizesNil
+
+`func (o *CloudProviderRegions) SetInstanceSizesNil()`
+
+SetInstanceSizesNil sets InstanceSizes to an explicit JSON null when marshaled, overriding any value previously set with SetInstanceSizes. Calling SetInstanceSizes again clears the null override.
+
 ### GetProvider
 
 `func (o *CloudProviderRegions) GetProvider() string`
@@ -74,6 +81,13 @@ SetProvider sets Provider field to given value.
 `func (o *CloudProviderRegions) HasProvider() bool`
 
 HasProvider returns a boolean if a field has been set.
+
+### SetProviderNil
+
+`func (o *CloudProviderRegions) SetProviderNil()`
+
+SetProviderNil sets Provider to an explicit JSON null when marshaled, overriding any value previously set with SetProvider. Calling SetProvider again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

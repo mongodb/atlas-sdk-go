@@ -50,6 +50,13 @@ SetComment sets Comment field to given value.
 
 HasComment returns a boolean if a field has been set.
 
+### SetCommentNil
+
+`func (o *ServerlessTenantCreateRequest) SetCommentNil()`
+
+SetCommentNil sets Comment to an explicit JSON null when marshaled, overriding any value previously set with SetComment. Calling SetComment again clears the null override.
+
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

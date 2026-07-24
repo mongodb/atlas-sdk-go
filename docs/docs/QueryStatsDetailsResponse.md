@@ -51,6 +51,13 @@ SetFirstSeen sets FirstSeen field to given value.
 `func (o *QueryStatsDetailsResponse) HasFirstSeen() bool`
 
 HasFirstSeen returns a boolean if a field has been set.
+
+### SetFirstSeenNil
+
+`func (o *QueryStatsDetailsResponse) SetFirstSeenNil()`
+
+SetFirstSeenNil sets FirstSeen to an explicit JSON null when marshaled, overriding any value previously set with SetFirstSeen. Calling SetFirstSeen again clears the null override.
+
 ### GetLastSeen
 
 `func (o *QueryStatsDetailsResponse) GetLastSeen() QueryShapeSeenMetadata`
@@ -75,6 +82,13 @@ SetLastSeen sets LastSeen field to given value.
 `func (o *QueryStatsDetailsResponse) HasLastSeen() bool`
 
 HasLastSeen returns a boolean if a field has been set.
+
+### SetLastSeenNil
+
+`func (o *QueryStatsDetailsResponse) SetLastSeenNil()`
+
+SetLastSeenNil sets LastSeen to an explicit JSON null when marshaled, overriding any value previously set with SetLastSeen. Calling SetLastSeen again clears the null override.
+
 ### GetQueryStats
 
 `func (o *QueryStatsDetailsResponse) GetQueryStats() QueryStatsSummary`
@@ -99,6 +113,13 @@ SetQueryStats sets QueryStats field to given value.
 `func (o *QueryStatsDetailsResponse) HasQueryStats() bool`
 
 HasQueryStats returns a boolean if a field has been set.
+
+### SetQueryStatsNil
+
+`func (o *QueryStatsDetailsResponse) SetQueryStatsNil()`
+
+SetQueryStatsNil sets QueryStats to an explicit JSON null when marshaled, overriding any value previously set with SetQueryStats. Calling SetQueryStats again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

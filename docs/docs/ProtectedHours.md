@@ -50,6 +50,13 @@ SetEndHourOfDay sets EndHourOfDay field to given value.
 `func (o *ProtectedHours) HasEndHourOfDay() bool`
 
 HasEndHourOfDay returns a boolean if a field has been set.
+
+### SetEndHourOfDayNil
+
+`func (o *ProtectedHours) SetEndHourOfDayNil()`
+
+SetEndHourOfDayNil sets EndHourOfDay to an explicit JSON null when marshaled, overriding any value previously set with SetEndHourOfDay. Calling SetEndHourOfDay again clears the null override.
+
 ### GetStartHourOfDay
 
 `func (o *ProtectedHours) GetStartHourOfDay() int`
@@ -74,6 +81,13 @@ SetStartHourOfDay sets StartHourOfDay field to given value.
 `func (o *ProtectedHours) HasStartHourOfDay() bool`
 
 HasStartHourOfDay returns a boolean if a field has been set.
+
+### SetStartHourOfDayNil
+
+`func (o *ProtectedHours) SetStartHourOfDayNil()`
+
+SetStartHourOfDayNil sets StartHourOfDay to an explicit JSON null when marshaled, overriding any value previously set with SetStartHourOfDay. Calling SetStartHourOfDay again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

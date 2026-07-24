@@ -131,6 +131,13 @@ SetLinks sets Links field to given value.
 `func (o *DiskBackupSnapshotAWSExportBucketResponse) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *DiskBackupSnapshotAWSExportBucketResponse) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetRegion
 
 `func (o *DiskBackupSnapshotAWSExportBucketResponse) GetRegion() string`
@@ -155,6 +162,13 @@ SetRegion sets Region field to given value.
 `func (o *DiskBackupSnapshotAWSExportBucketResponse) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *DiskBackupSnapshotAWSExportBucketResponse) SetRegionNil()`
+
+SetRegionNil sets Region to an explicit JSON null when marshaled, overriding any value previously set with SetRegion. Calling SetRegion again clears the null override.
+
 ### GetRequirePrivateNetworking
 
 `func (o *DiskBackupSnapshotAWSExportBucketResponse) GetRequirePrivateNetworking() bool`
@@ -179,6 +193,13 @@ SetRequirePrivateNetworking sets RequirePrivateNetworking field to given value.
 `func (o *DiskBackupSnapshotAWSExportBucketResponse) HasRequirePrivateNetworking() bool`
 
 HasRequirePrivateNetworking returns a boolean if a field has been set.
+
+### SetRequirePrivateNetworkingNil
+
+`func (o *DiskBackupSnapshotAWSExportBucketResponse) SetRequirePrivateNetworkingNil()`
+
+SetRequirePrivateNetworkingNil sets RequirePrivateNetworking to an explicit JSON null when marshaled, overriding any value previously set with SetRequirePrivateNetworking. Calling SetRequirePrivateNetworking again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

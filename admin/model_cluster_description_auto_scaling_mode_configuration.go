@@ -6,6 +6,15 @@ package admin
 type ClusterDescriptionAutoScalingModeConfiguration struct {
 	// Describes whether cluster nodes scale together across all shards or independently.
 	AutoScalingMode *string `json:"autoScalingMode,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ClusterDescriptionAutoScalingModeConfiguration) MarshalJSON() ([]byte, error) {
+	type noMethod ClusterDescriptionAutoScalingModeConfiguration
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterDescriptionAutoScalingModeConfiguration instantiates a new ClusterDescriptionAutoScalingModeConfiguration object
@@ -56,4 +65,11 @@ func (o *ClusterDescriptionAutoScalingModeConfiguration) HasAutoScalingMode() bo
 // SetAutoScalingMode gets a reference to the given string and assigns it to the AutoScalingMode field.
 func (o *ClusterDescriptionAutoScalingModeConfiguration) SetAutoScalingMode(v string) {
 	o.AutoScalingMode = &v
+	o.NullFields = removeNullField(o.NullFields, "AutoScalingMode")
+}
+
+// SetAutoScalingModeNil sets AutoScalingMode to an explicit JSON null when marshaled.
+func (o *ClusterDescriptionAutoScalingModeConfiguration) SetAutoScalingModeNil() {
+	o.AutoScalingMode = nil
+	o.NullFields = addNullField(o.NullFields, "AutoScalingMode")
 }

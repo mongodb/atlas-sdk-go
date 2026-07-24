@@ -37,6 +37,15 @@ type VPCPeeringConnection struct {
 	RequesterVpcId *string `json:"requesterVpcId,omitempty"`
 	// A status message.
 	StatusMessage *string `json:"statusMessage,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *VPCPeeringConnection) MarshalJSON() ([]byte, error) {
+	type noMethod VPCPeeringConnection
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewVPCPeeringConnection instantiates a new VPCPeeringConnection object
@@ -87,6 +96,13 @@ func (o *VPCPeeringConnection) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *VPCPeeringConnection) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *VPCPeeringConnection) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetAccepterAccountId returns the AccepterAccountId field value if set, zero value otherwise
@@ -120,6 +136,13 @@ func (o *VPCPeeringConnection) HasAccepterAccountId() bool {
 // SetAccepterAccountId gets a reference to the given string and assigns it to the AccepterAccountId field.
 func (o *VPCPeeringConnection) SetAccepterAccountId(v string) {
 	o.AccepterAccountId = &v
+	o.NullFields = removeNullField(o.NullFields, "AccepterAccountId")
+}
+
+// SetAccepterAccountIdNil sets AccepterAccountId to an explicit JSON null when marshaled.
+func (o *VPCPeeringConnection) SetAccepterAccountIdNil() {
+	o.AccepterAccountId = nil
+	o.NullFields = addNullField(o.NullFields, "AccepterAccountId")
 }
 
 // GetAccepterCidr returns the AccepterCidr field value if set, zero value otherwise
@@ -153,6 +176,13 @@ func (o *VPCPeeringConnection) HasAccepterCidr() bool {
 // SetAccepterCidr gets a reference to the given string and assigns it to the AccepterCidr field.
 func (o *VPCPeeringConnection) SetAccepterCidr(v string) {
 	o.AccepterCidr = &v
+	o.NullFields = removeNullField(o.NullFields, "AccepterCidr")
+}
+
+// SetAccepterCidrNil sets AccepterCidr to an explicit JSON null when marshaled.
+func (o *VPCPeeringConnection) SetAccepterCidrNil() {
+	o.AccepterCidr = nil
+	o.NullFields = addNullField(o.NullFields, "AccepterCidr")
 }
 
 // GetAccepterVpcId returns the AccepterVpcId field value if set, zero value otherwise
@@ -186,6 +216,13 @@ func (o *VPCPeeringConnection) HasAccepterVpcId() bool {
 // SetAccepterVpcId gets a reference to the given string and assigns it to the AccepterVpcId field.
 func (o *VPCPeeringConnection) SetAccepterVpcId(v string) {
 	o.AccepterVpcId = &v
+	o.NullFields = removeNullField(o.NullFields, "AccepterVpcId")
+}
+
+// SetAccepterVpcIdNil sets AccepterVpcId to an explicit JSON null when marshaled.
+func (o *VPCPeeringConnection) SetAccepterVpcIdNil() {
+	o.AccepterVpcId = nil
+	o.NullFields = addNullField(o.NullFields, "AccepterVpcId")
 }
 
 // GetCloudStatus returns the CloudStatus field value if set, zero value otherwise
@@ -219,6 +256,13 @@ func (o *VPCPeeringConnection) HasCloudStatus() bool {
 // SetCloudStatus gets a reference to the given string and assigns it to the CloudStatus field.
 func (o *VPCPeeringConnection) SetCloudStatus(v string) {
 	o.CloudStatus = &v
+	o.NullFields = removeNullField(o.NullFields, "CloudStatus")
+}
+
+// SetCloudStatusNil sets CloudStatus to an explicit JSON null when marshaled.
+func (o *VPCPeeringConnection) SetCloudStatusNil() {
+	o.CloudStatus = nil
+	o.NullFields = addNullField(o.NullFields, "CloudStatus")
 }
 
 // GetExpirationTime returns the ExpirationTime field value if set, zero value otherwise
@@ -252,6 +296,13 @@ func (o *VPCPeeringConnection) HasExpirationTime() bool {
 // SetExpirationTime gets a reference to the given time.Time and assigns it to the ExpirationTime field.
 func (o *VPCPeeringConnection) SetExpirationTime(v time.Time) {
 	o.ExpirationTime = &v
+	o.NullFields = removeNullField(o.NullFields, "ExpirationTime")
+}
+
+// SetExpirationTimeNil sets ExpirationTime to an explicit JSON null when marshaled.
+func (o *VPCPeeringConnection) SetExpirationTimeNil() {
+	o.ExpirationTime = nil
+	o.NullFields = addNullField(o.NullFields, "ExpirationTime")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -285,6 +336,13 @@ func (o *VPCPeeringConnection) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *VPCPeeringConnection) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *VPCPeeringConnection) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -318,6 +376,13 @@ func (o *VPCPeeringConnection) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *VPCPeeringConnection) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *VPCPeeringConnection) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetLocalStatus returns the LocalStatus field value if set, zero value otherwise
@@ -351,6 +416,13 @@ func (o *VPCPeeringConnection) HasLocalStatus() bool {
 // SetLocalStatus gets a reference to the given string and assigns it to the LocalStatus field.
 func (o *VPCPeeringConnection) SetLocalStatus(v string) {
 	o.LocalStatus = &v
+	o.NullFields = removeNullField(o.NullFields, "LocalStatus")
+}
+
+// SetLocalStatusNil sets LocalStatus to an explicit JSON null when marshaled.
+func (o *VPCPeeringConnection) SetLocalStatusNil() {
+	o.LocalStatus = nil
+	o.NullFields = addNullField(o.NullFields, "LocalStatus")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -384,6 +456,13 @@ func (o *VPCPeeringConnection) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *VPCPeeringConnection) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *VPCPeeringConnection) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }
 
 // GetRequesterAccountId returns the RequesterAccountId field value if set, zero value otherwise
@@ -417,6 +496,13 @@ func (o *VPCPeeringConnection) HasRequesterAccountId() bool {
 // SetRequesterAccountId gets a reference to the given string and assigns it to the RequesterAccountId field.
 func (o *VPCPeeringConnection) SetRequesterAccountId(v string) {
 	o.RequesterAccountId = &v
+	o.NullFields = removeNullField(o.NullFields, "RequesterAccountId")
+}
+
+// SetRequesterAccountIdNil sets RequesterAccountId to an explicit JSON null when marshaled.
+func (o *VPCPeeringConnection) SetRequesterAccountIdNil() {
+	o.RequesterAccountId = nil
+	o.NullFields = addNullField(o.NullFields, "RequesterAccountId")
 }
 
 // GetRequesterCidr returns the RequesterCidr field value if set, zero value otherwise
@@ -450,6 +536,13 @@ func (o *VPCPeeringConnection) HasRequesterCidr() bool {
 // SetRequesterCidr gets a reference to the given string and assigns it to the RequesterCidr field.
 func (o *VPCPeeringConnection) SetRequesterCidr(v string) {
 	o.RequesterCidr = &v
+	o.NullFields = removeNullField(o.NullFields, "RequesterCidr")
+}
+
+// SetRequesterCidrNil sets RequesterCidr to an explicit JSON null when marshaled.
+func (o *VPCPeeringConnection) SetRequesterCidrNil() {
+	o.RequesterCidr = nil
+	o.NullFields = addNullField(o.NullFields, "RequesterCidr")
 }
 
 // GetRequesterVpcId returns the RequesterVpcId field value if set, zero value otherwise
@@ -483,6 +576,13 @@ func (o *VPCPeeringConnection) HasRequesterVpcId() bool {
 // SetRequesterVpcId gets a reference to the given string and assigns it to the RequesterVpcId field.
 func (o *VPCPeeringConnection) SetRequesterVpcId(v string) {
 	o.RequesterVpcId = &v
+	o.NullFields = removeNullField(o.NullFields, "RequesterVpcId")
+}
+
+// SetRequesterVpcIdNil sets RequesterVpcId to an explicit JSON null when marshaled.
+func (o *VPCPeeringConnection) SetRequesterVpcIdNil() {
+	o.RequesterVpcId = nil
+	o.NullFields = addNullField(o.NullFields, "RequesterVpcId")
 }
 
 // GetStatusMessage returns the StatusMessage field value if set, zero value otherwise
@@ -516,4 +616,11 @@ func (o *VPCPeeringConnection) HasStatusMessage() bool {
 // SetStatusMessage gets a reference to the given string and assigns it to the StatusMessage field.
 func (o *VPCPeeringConnection) SetStatusMessage(v string) {
 	o.StatusMessage = &v
+	o.NullFields = removeNullField(o.NullFields, "StatusMessage")
+}
+
+// SetStatusMessageNil sets StatusMessage to an explicit JSON null when marshaled.
+func (o *VPCPeeringConnection) SetStatusMessageNil() {
+	o.StatusMessage = nil
+	o.NullFields = addNullField(o.NullFields, "StatusMessage")
 }

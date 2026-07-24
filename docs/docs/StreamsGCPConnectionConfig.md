@@ -50,6 +50,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsGCPConnectionConfig) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsGCPConnectionConfig) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetServiceAccountId
 
 `func (o *StreamsGCPConnectionConfig) GetServiceAccountId() string`
@@ -74,6 +81,13 @@ SetServiceAccountId sets ServiceAccountId field to given value.
 `func (o *StreamsGCPConnectionConfig) HasServiceAccountId() bool`
 
 HasServiceAccountId returns a boolean if a field has been set.
+
+### SetServiceAccountIdNil
+
+`func (o *StreamsGCPConnectionConfig) SetServiceAccountIdNil()`
+
+SetServiceAccountIdNil sets ServiceAccountId to an explicit JSON null when marshaled, overriding any value previously set with SetServiceAccountId. Calling SetServiceAccountId again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

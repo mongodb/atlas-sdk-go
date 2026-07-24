@@ -55,6 +55,13 @@ SetClusters sets Clusters field to given value.
 `func (o *OrgGroup) HasClusters() bool`
 
 HasClusters returns a boolean if a field has been set.
+
+### SetClustersNil
+
+`func (o *OrgGroup) SetClustersNil()`
+
+SetClustersNil sets Clusters to an explicit JSON null when marshaled, overriding any value previously set with SetClusters. Calling SetClusters again clears the null override.
+
 ### GetGroupId
 
 `func (o *OrgGroup) GetGroupId() string`
@@ -79,6 +86,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *OrgGroup) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *OrgGroup) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetGroupName
 
 `func (o *OrgGroup) GetGroupName() string`
@@ -103,6 +117,13 @@ SetGroupName sets GroupName field to given value.
 `func (o *OrgGroup) HasGroupName() bool`
 
 HasGroupName returns a boolean if a field has been set.
+
+### SetGroupNameNil
+
+`func (o *OrgGroup) SetGroupNameNil()`
+
+SetGroupNameNil sets GroupName to an explicit JSON null when marshaled, overriding any value previously set with SetGroupName. Calling SetGroupName again clears the null override.
+
 ### GetOrgId
 
 `func (o *OrgGroup) GetOrgId() string`
@@ -127,6 +148,13 @@ SetOrgId sets OrgId field to given value.
 `func (o *OrgGroup) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
+
+### SetOrgIdNil
+
+`func (o *OrgGroup) SetOrgIdNil()`
+
+SetOrgIdNil sets OrgId to an explicit JSON null when marshaled, overriding any value previously set with SetOrgId. Calling SetOrgId again clears the null override.
+
 ### GetOrgName
 
 `func (o *OrgGroup) GetOrgName() string`
@@ -151,6 +179,13 @@ SetOrgName sets OrgName field to given value.
 `func (o *OrgGroup) HasOrgName() bool`
 
 HasOrgName returns a boolean if a field has been set.
+
+### SetOrgNameNil
+
+`func (o *OrgGroup) SetOrgNameNil()`
+
+SetOrgNameNil sets OrgName to an explicit JSON null when marshaled, overriding any value previously set with SetOrgName. Calling SetOrgName again clears the null override.
+
 ### GetPlanType
 
 `func (o *OrgGroup) GetPlanType() string`
@@ -175,6 +210,13 @@ SetPlanType sets PlanType field to given value.
 `func (o *OrgGroup) HasPlanType() bool`
 
 HasPlanType returns a boolean if a field has been set.
+
+### SetPlanTypeNil
+
+`func (o *OrgGroup) SetPlanTypeNil()`
+
+SetPlanTypeNil sets PlanType to an explicit JSON null when marshaled, overriding any value previously set with SetPlanType. Calling SetPlanType again clears the null override.
+
 ### GetTags
 
 `func (o *OrgGroup) GetTags() []string`
@@ -199,6 +241,13 @@ SetTags sets Tags field to given value.
 `func (o *OrgGroup) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### SetTagsNil
+
+`func (o *OrgGroup) SetTagsNil()`
+
+SetTagsNil sets Tags to an explicit JSON null when marshaled, overriding any value previously set with SetTags. Calling SetTags again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

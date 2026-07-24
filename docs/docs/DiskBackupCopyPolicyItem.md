@@ -71,6 +71,13 @@ SetId sets Id field to given value.
 `func (o *DiskBackupCopyPolicyItem) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *DiskBackupCopyPolicyItem) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetRetentionUnit
 
 `func (o *DiskBackupCopyPolicyItem) GetRetentionUnit() string`
@@ -95,6 +102,13 @@ SetRetentionUnit sets RetentionUnit field to given value.
 `func (o *DiskBackupCopyPolicyItem) HasRetentionUnit() bool`
 
 HasRetentionUnit returns a boolean if a field has been set.
+
+### SetRetentionUnitNil
+
+`func (o *DiskBackupCopyPolicyItem) SetRetentionUnitNil()`
+
+SetRetentionUnitNil sets RetentionUnit to an explicit JSON null when marshaled, overriding any value previously set with SetRetentionUnit. Calling SetRetentionUnit again clears the null override.
+
 ### GetRetentionValue
 
 `func (o *DiskBackupCopyPolicyItem) GetRetentionValue() int`
@@ -119,6 +133,13 @@ SetRetentionValue sets RetentionValue field to given value.
 `func (o *DiskBackupCopyPolicyItem) HasRetentionValue() bool`
 
 HasRetentionValue returns a boolean if a field has been set.
+
+### SetRetentionValueNil
+
+`func (o *DiskBackupCopyPolicyItem) SetRetentionValueNil()`
+
+SetRetentionValueNil sets RetentionValue to an explicit JSON null when marshaled, overriding any value previously set with SetRetentionValue. Calling SetRetentionValue again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

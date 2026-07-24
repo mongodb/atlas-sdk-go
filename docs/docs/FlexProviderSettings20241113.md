@@ -52,6 +52,13 @@ SetBackingProviderName sets BackingProviderName field to given value.
 `func (o *FlexProviderSettings20241113) HasBackingProviderName() bool`
 
 HasBackingProviderName returns a boolean if a field has been set.
+
+### SetBackingProviderNameNil
+
+`func (o *FlexProviderSettings20241113) SetBackingProviderNameNil()`
+
+SetBackingProviderNameNil sets BackingProviderName to an explicit JSON null when marshaled, overriding any value previously set with SetBackingProviderName. Calling SetBackingProviderName again clears the null override.
+
 ### GetDiskSizeGB
 
 `func (o *FlexProviderSettings20241113) GetDiskSizeGB() float64`
@@ -76,6 +83,13 @@ SetDiskSizeGB sets DiskSizeGB field to given value.
 `func (o *FlexProviderSettings20241113) HasDiskSizeGB() bool`
 
 HasDiskSizeGB returns a boolean if a field has been set.
+
+### SetDiskSizeGBNil
+
+`func (o *FlexProviderSettings20241113) SetDiskSizeGBNil()`
+
+SetDiskSizeGBNil sets DiskSizeGB to an explicit JSON null when marshaled, overriding any value previously set with SetDiskSizeGB. Calling SetDiskSizeGB again clears the null override.
+
 ### GetProviderName
 
 `func (o *FlexProviderSettings20241113) GetProviderName() string`
@@ -100,6 +114,13 @@ SetProviderName sets ProviderName field to given value.
 `func (o *FlexProviderSettings20241113) HasProviderName() bool`
 
 HasProviderName returns a boolean if a field has been set.
+
+### SetProviderNameNil
+
+`func (o *FlexProviderSettings20241113) SetProviderNameNil()`
+
+SetProviderNameNil sets ProviderName to an explicit JSON null when marshaled, overriding any value previously set with SetProviderName. Calling SetProviderName again clears the null override.
+
 ### GetRegionName
 
 `func (o *FlexProviderSettings20241113) GetRegionName() string`
@@ -124,6 +145,13 @@ SetRegionName sets RegionName field to given value.
 `func (o *FlexProviderSettings20241113) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
+
+### SetRegionNameNil
+
+`func (o *FlexProviderSettings20241113) SetRegionNameNil()`
+
+SetRegionNameNil sets RegionName to an explicit JSON null when marshaled, overriding any value previously set with SetRegionName. Calling SetRegionName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

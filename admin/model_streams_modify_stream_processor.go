@@ -14,6 +14,15 @@ type StreamsModifyStreamProcessor struct {
 	Options *StreamsModifyStreamProcessorOptions `json:"options,omitempty"`
 	// New pipeline for the stream processor.
 	Pipeline *[]any `json:"pipeline,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamsModifyStreamProcessor) MarshalJSON() ([]byte, error) {
+	type noMethod StreamsModifyStreamProcessor
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsModifyStreamProcessor instantiates a new StreamsModifyStreamProcessor object
@@ -64,6 +73,13 @@ func (o *StreamsModifyStreamProcessor) HasFailoverEnabled() bool {
 // SetFailoverEnabled gets a reference to the given bool and assigns it to the FailoverEnabled field.
 func (o *StreamsModifyStreamProcessor) SetFailoverEnabled(v bool) {
 	o.FailoverEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "FailoverEnabled")
+}
+
+// SetFailoverEnabledNil sets FailoverEnabled to an explicit JSON null when marshaled.
+func (o *StreamsModifyStreamProcessor) SetFailoverEnabledNil() {
+	o.FailoverEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "FailoverEnabled")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -97,6 +113,13 @@ func (o *StreamsModifyStreamProcessor) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsModifyStreamProcessor) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *StreamsModifyStreamProcessor) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -130,6 +153,13 @@ func (o *StreamsModifyStreamProcessor) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *StreamsModifyStreamProcessor) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *StreamsModifyStreamProcessor) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }
 
 // GetOptions returns the Options field value if set, zero value otherwise
@@ -163,6 +193,13 @@ func (o *StreamsModifyStreamProcessor) HasOptions() bool {
 // SetOptions gets a reference to the given StreamsModifyStreamProcessorOptions and assigns it to the Options field.
 func (o *StreamsModifyStreamProcessor) SetOptions(v StreamsModifyStreamProcessorOptions) {
 	o.Options = &v
+	o.NullFields = removeNullField(o.NullFields, "Options")
+}
+
+// SetOptionsNil sets Options to an explicit JSON null when marshaled.
+func (o *StreamsModifyStreamProcessor) SetOptionsNil() {
+	o.Options = nil
+	o.NullFields = addNullField(o.NullFields, "Options")
 }
 
 // GetPipeline returns the Pipeline field value if set, zero value otherwise
@@ -196,4 +233,11 @@ func (o *StreamsModifyStreamProcessor) HasPipeline() bool {
 // SetPipeline gets a reference to the given []any and assigns it to the Pipeline field.
 func (o *StreamsModifyStreamProcessor) SetPipeline(v []any) {
 	o.Pipeline = &v
+	o.NullFields = removeNullField(o.NullFields, "Pipeline")
+}
+
+// SetPipelineNil sets Pipeline to an explicit JSON null when marshaled.
+func (o *StreamsModifyStreamProcessor) SetPipelineNil() {
+	o.Pipeline = nil
+	o.NullFields = addNullField(o.NullFields, "Pipeline")
 }

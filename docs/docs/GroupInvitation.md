@@ -57,6 +57,13 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *GroupInvitation) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
+
+### SetCreatedAtNil
+
+`func (o *GroupInvitation) SetCreatedAtNil()`
+
+SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled, overriding any value previously set with SetCreatedAt. Calling SetCreatedAt again clears the null override.
+
 ### GetExpiresAt
 
 `func (o *GroupInvitation) GetExpiresAt() time.Time`
@@ -81,6 +88,13 @@ SetExpiresAt sets ExpiresAt field to given value.
 `func (o *GroupInvitation) HasExpiresAt() bool`
 
 HasExpiresAt returns a boolean if a field has been set.
+
+### SetExpiresAtNil
+
+`func (o *GroupInvitation) SetExpiresAtNil()`
+
+SetExpiresAtNil sets ExpiresAt to an explicit JSON null when marshaled, overriding any value previously set with SetExpiresAt. Calling SetExpiresAt again clears the null override.
+
 ### GetGroupId
 
 `func (o *GroupInvitation) GetGroupId() string`
@@ -105,6 +119,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *GroupInvitation) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *GroupInvitation) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetGroupName
 
 `func (o *GroupInvitation) GetGroupName() string`
@@ -129,6 +150,13 @@ SetGroupName sets GroupName field to given value.
 `func (o *GroupInvitation) HasGroupName() bool`
 
 HasGroupName returns a boolean if a field has been set.
+
+### SetGroupNameNil
+
+`func (o *GroupInvitation) SetGroupNameNil()`
+
+SetGroupNameNil sets GroupName to an explicit JSON null when marshaled, overriding any value previously set with SetGroupName. Calling SetGroupName again clears the null override.
+
 ### GetId
 
 `func (o *GroupInvitation) GetId() string`
@@ -153,6 +181,13 @@ SetId sets Id field to given value.
 `func (o *GroupInvitation) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *GroupInvitation) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetInviterUsername
 
 `func (o *GroupInvitation) GetInviterUsername() string`
@@ -177,6 +212,13 @@ SetInviterUsername sets InviterUsername field to given value.
 `func (o *GroupInvitation) HasInviterUsername() bool`
 
 HasInviterUsername returns a boolean if a field has been set.
+
+### SetInviterUsernameNil
+
+`func (o *GroupInvitation) SetInviterUsernameNil()`
+
+SetInviterUsernameNil sets InviterUsername to an explicit JSON null when marshaled, overriding any value previously set with SetInviterUsername. Calling SetInviterUsername again clears the null override.
+
 ### GetLinks
 
 `func (o *GroupInvitation) GetLinks() []Link`
@@ -201,6 +243,13 @@ SetLinks sets Links field to given value.
 `func (o *GroupInvitation) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *GroupInvitation) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetRoles
 
 `func (o *GroupInvitation) GetRoles() []string`
@@ -225,6 +274,13 @@ SetRoles sets Roles field to given value.
 `func (o *GroupInvitation) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
+
+### SetRolesNil
+
+`func (o *GroupInvitation) SetRolesNil()`
+
+SetRolesNil sets Roles to an explicit JSON null when marshaled, overriding any value previously set with SetRoles. Calling SetRoles again clears the null override.
+
 ### GetUsername
 
 `func (o *GroupInvitation) GetUsername() string`
@@ -249,6 +305,13 @@ SetUsername sets Username field to given value.
 `func (o *GroupInvitation) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
+
+### SetUsernameNil
+
+`func (o *GroupInvitation) SetUsernameNil()`
+
+SetUsernameNil sets Username to an explicit JSON null when marshaled, overriding any value previously set with SetUsername. Calling SetUsername again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

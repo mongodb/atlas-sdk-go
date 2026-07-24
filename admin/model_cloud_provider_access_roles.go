@@ -10,6 +10,15 @@ type CloudProviderAccessRoles struct {
 	AzureServicePrincipals *[]CloudProviderAccessAzureServicePrincipal `json:"azureServicePrincipals,omitempty"`
 	// List that contains the Google Service Accounts registered and authorized with MongoDB Cloud.
 	GcpServiceAccounts *[]CloudProviderAccessGCPServiceAccount `json:"gcpServiceAccounts,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CloudProviderAccessRoles) MarshalJSON() ([]byte, error) {
+	type noMethod CloudProviderAccessRoles
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudProviderAccessRoles instantiates a new CloudProviderAccessRoles object
@@ -60,6 +69,13 @@ func (o *CloudProviderAccessRoles) HasAwsIamRoles() bool {
 // SetAwsIamRoles gets a reference to the given []CloudProviderAccessAWSIAMRole and assigns it to the AwsIamRoles field.
 func (o *CloudProviderAccessRoles) SetAwsIamRoles(v []CloudProviderAccessAWSIAMRole) {
 	o.AwsIamRoles = &v
+	o.NullFields = removeNullField(o.NullFields, "AwsIamRoles")
+}
+
+// SetAwsIamRolesNil sets AwsIamRoles to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessRoles) SetAwsIamRolesNil() {
+	o.AwsIamRoles = nil
+	o.NullFields = addNullField(o.NullFields, "AwsIamRoles")
 }
 
 // GetAzureServicePrincipals returns the AzureServicePrincipals field value if set, zero value otherwise
@@ -93,6 +109,13 @@ func (o *CloudProviderAccessRoles) HasAzureServicePrincipals() bool {
 // SetAzureServicePrincipals gets a reference to the given []CloudProviderAccessAzureServicePrincipal and assigns it to the AzureServicePrincipals field.
 func (o *CloudProviderAccessRoles) SetAzureServicePrincipals(v []CloudProviderAccessAzureServicePrincipal) {
 	o.AzureServicePrincipals = &v
+	o.NullFields = removeNullField(o.NullFields, "AzureServicePrincipals")
+}
+
+// SetAzureServicePrincipalsNil sets AzureServicePrincipals to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessRoles) SetAzureServicePrincipalsNil() {
+	o.AzureServicePrincipals = nil
+	o.NullFields = addNullField(o.NullFields, "AzureServicePrincipals")
 }
 
 // GetGcpServiceAccounts returns the GcpServiceAccounts field value if set, zero value otherwise
@@ -126,4 +149,11 @@ func (o *CloudProviderAccessRoles) HasGcpServiceAccounts() bool {
 // SetGcpServiceAccounts gets a reference to the given []CloudProviderAccessGCPServiceAccount and assigns it to the GcpServiceAccounts field.
 func (o *CloudProviderAccessRoles) SetGcpServiceAccounts(v []CloudProviderAccessGCPServiceAccount) {
 	o.GcpServiceAccounts = &v
+	o.NullFields = removeNullField(o.NullFields, "GcpServiceAccounts")
+}
+
+// SetGcpServiceAccountsNil sets GcpServiceAccounts to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessRoles) SetGcpServiceAccountsNil() {
+	o.GcpServiceAccounts = nil
+	o.NullFields = addNullField(o.NullFields, "GcpServiceAccounts")
 }

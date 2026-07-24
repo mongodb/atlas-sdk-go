@@ -8,6 +8,15 @@ type CustomSessionTimeouts struct {
 	AbsoluteSessionTimeoutInSeconds *int `json:"absoluteSessionTimeoutInSeconds,omitempty"`
 	// Specifies the idle session timeout duration in seconds. When set to null, the field's value is unset, and the default behavior depends on the context: no timeout for Atlas Commercial, and 600 seconds (10 minutes) for Atlas for Government. Accepted values start at a minimum of 300 seconds (5 minutes). For Atlas Commercial, the maximum value cannot exceed the configured absolute session timeout. For Atlas for Government, the maximum value is capped at 600 seconds (10 minutes).
 	IdleSessionTimeoutInSeconds *int `json:"idleSessionTimeoutInSeconds,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CustomSessionTimeouts) MarshalJSON() ([]byte, error) {
+	type noMethod CustomSessionTimeouts
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCustomSessionTimeouts instantiates a new CustomSessionTimeouts object
@@ -58,6 +67,13 @@ func (o *CustomSessionTimeouts) HasAbsoluteSessionTimeoutInSeconds() bool {
 // SetAbsoluteSessionTimeoutInSeconds gets a reference to the given int and assigns it to the AbsoluteSessionTimeoutInSeconds field.
 func (o *CustomSessionTimeouts) SetAbsoluteSessionTimeoutInSeconds(v int) {
 	o.AbsoluteSessionTimeoutInSeconds = &v
+	o.NullFields = removeNullField(o.NullFields, "AbsoluteSessionTimeoutInSeconds")
+}
+
+// SetAbsoluteSessionTimeoutInSecondsNil sets AbsoluteSessionTimeoutInSeconds to an explicit JSON null when marshaled.
+func (o *CustomSessionTimeouts) SetAbsoluteSessionTimeoutInSecondsNil() {
+	o.AbsoluteSessionTimeoutInSeconds = nil
+	o.NullFields = addNullField(o.NullFields, "AbsoluteSessionTimeoutInSeconds")
 }
 
 // GetIdleSessionTimeoutInSeconds returns the IdleSessionTimeoutInSeconds field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *CustomSessionTimeouts) HasIdleSessionTimeoutInSeconds() bool {
 // SetIdleSessionTimeoutInSeconds gets a reference to the given int and assigns it to the IdleSessionTimeoutInSeconds field.
 func (o *CustomSessionTimeouts) SetIdleSessionTimeoutInSeconds(v int) {
 	o.IdleSessionTimeoutInSeconds = &v
+	o.NullFields = removeNullField(o.NullFields, "IdleSessionTimeoutInSeconds")
+}
+
+// SetIdleSessionTimeoutInSecondsNil sets IdleSessionTimeoutInSeconds to an explicit JSON null when marshaled.
+func (o *CustomSessionTimeouts) SetIdleSessionTimeoutInSecondsNil() {
+	o.IdleSessionTimeoutInSeconds = nil
+	o.NullFields = addNullField(o.NullFields, "IdleSessionTimeoutInSeconds")
 }

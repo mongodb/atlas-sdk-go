@@ -55,6 +55,13 @@ SetAutoDeferOnceEnabled sets AutoDeferOnceEnabled field to given value.
 `func (o *GroupMaintenanceWindow) HasAutoDeferOnceEnabled() bool`
 
 HasAutoDeferOnceEnabled returns a boolean if a field has been set.
+
+### SetAutoDeferOnceEnabledNil
+
+`func (o *GroupMaintenanceWindow) SetAutoDeferOnceEnabledNil()`
+
+SetAutoDeferOnceEnabledNil sets AutoDeferOnceEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetAutoDeferOnceEnabled. Calling SetAutoDeferOnceEnabled again clears the null override.
+
 ### GetDayOfWeek
 
 `func (o *GroupMaintenanceWindow) GetDayOfWeek() int`
@@ -98,6 +105,13 @@ SetHourOfDay sets HourOfDay field to given value.
 `func (o *GroupMaintenanceWindow) HasHourOfDay() bool`
 
 HasHourOfDay returns a boolean if a field has been set.
+
+### SetHourOfDayNil
+
+`func (o *GroupMaintenanceWindow) SetHourOfDayNil()`
+
+SetHourOfDayNil sets HourOfDay to an explicit JSON null when marshaled, overriding any value previously set with SetHourOfDay. Calling SetHourOfDay again clears the null override.
+
 ### GetNumberOfDeferrals
 
 `func (o *GroupMaintenanceWindow) GetNumberOfDeferrals() int`
@@ -122,6 +136,13 @@ SetNumberOfDeferrals sets NumberOfDeferrals field to given value.
 `func (o *GroupMaintenanceWindow) HasNumberOfDeferrals() bool`
 
 HasNumberOfDeferrals returns a boolean if a field has been set.
+
+### SetNumberOfDeferralsNil
+
+`func (o *GroupMaintenanceWindow) SetNumberOfDeferralsNil()`
+
+SetNumberOfDeferralsNil sets NumberOfDeferrals to an explicit JSON null when marshaled, overriding any value previously set with SetNumberOfDeferrals. Calling SetNumberOfDeferrals again clears the null override.
+
 ### GetProtectedHours
 
 `func (o *GroupMaintenanceWindow) GetProtectedHours() ProtectedHours`
@@ -146,6 +167,13 @@ SetProtectedHours sets ProtectedHours field to given value.
 `func (o *GroupMaintenanceWindow) HasProtectedHours() bool`
 
 HasProtectedHours returns a boolean if a field has been set.
+
+### SetProtectedHoursNil
+
+`func (o *GroupMaintenanceWindow) SetProtectedHoursNil()`
+
+SetProtectedHoursNil sets ProtectedHours to an explicit JSON null when marshaled, overriding any value previously set with SetProtectedHours. Calling SetProtectedHours again clears the null override.
+
 ### GetStartASAP
 
 `func (o *GroupMaintenanceWindow) GetStartASAP() bool`
@@ -170,6 +198,13 @@ SetStartASAP sets StartASAP field to given value.
 `func (o *GroupMaintenanceWindow) HasStartASAP() bool`
 
 HasStartASAP returns a boolean if a field has been set.
+
+### SetStartASAPNil
+
+`func (o *GroupMaintenanceWindow) SetStartASAPNil()`
+
+SetStartASAPNil sets StartASAP to an explicit JSON null when marshaled, overriding any value previously set with SetStartASAP. Calling SetStartASAP again clears the null override.
+
 ### GetTimeZoneId
 
 `func (o *GroupMaintenanceWindow) GetTimeZoneId() string`
@@ -194,6 +229,13 @@ SetTimeZoneId sets TimeZoneId field to given value.
 `func (o *GroupMaintenanceWindow) HasTimeZoneId() bool`
 
 HasTimeZoneId returns a boolean if a field has been set.
+
+### SetTimeZoneIdNil
+
+`func (o *GroupMaintenanceWindow) SetTimeZoneIdNil()`
+
+SetTimeZoneIdNil sets TimeZoneId to an explicit JSON null when marshaled, overriding any value previously set with SetTimeZoneId. Calling SetTimeZoneId again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
