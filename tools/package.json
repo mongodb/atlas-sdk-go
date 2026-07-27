@@ -5,15 +5,15 @@
   "private": "true",
   "main": "transformer/src/index.js",
   "dependencies": {
-    "yargs": "^18.0.0",
+    "yargs": "^18.1.0",
     "simple-node-logger": "^21.8.12",
     "yaml": "2.9.0"
   },
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "2.39.1",
+    "@openapitools/openapi-generator-cli": "2.40.1",
     "jest": "30.4.2",
     "replace-in-file": "^8.4.0",
-    "prettier": "3.9.5"
+    "prettier": "3.9.6"
   },
   "overrides": {
     "shell-quote": "^1.9.0"
