@@ -30,6 +30,15 @@ type AzureKeyVault struct {
 	// Flag that indicates whether the Azure encryption key can encrypt and decrypt data.
 	// Read only field.
 	Valid *bool `json:"valid,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AzureKeyVault) MarshalJSON() ([]byte, error) {
+	type noMethod AzureKeyVault
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAzureKeyVault instantiates a new AzureKeyVault object
@@ -80,6 +89,13 @@ func (o *AzureKeyVault) HasAzureEnvironment() bool {
 // SetAzureEnvironment gets a reference to the given string and assigns it to the AzureEnvironment field.
 func (o *AzureKeyVault) SetAzureEnvironment(v string) {
 	o.AzureEnvironment = &v
+	o.NullFields = removeNullField(o.NullFields, "AzureEnvironment")
+}
+
+// SetAzureEnvironmentNil sets AzureEnvironment to an explicit JSON null when marshaled.
+func (o *AzureKeyVault) SetAzureEnvironmentNil() {
+	o.AzureEnvironment = nil
+	o.NullFields = addNullField(o.NullFields, "AzureEnvironment")
 }
 
 // GetClientID returns the ClientID field value if set, zero value otherwise
@@ -113,6 +129,13 @@ func (o *AzureKeyVault) HasClientID() bool {
 // SetClientID gets a reference to the given string and assigns it to the ClientID field.
 func (o *AzureKeyVault) SetClientID(v string) {
 	o.ClientID = &v
+	o.NullFields = removeNullField(o.NullFields, "ClientID")
+}
+
+// SetClientIDNil sets ClientID to an explicit JSON null when marshaled.
+func (o *AzureKeyVault) SetClientIDNil() {
+	o.ClientID = nil
+	o.NullFields = addNullField(o.NullFields, "ClientID")
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise
@@ -146,6 +169,13 @@ func (o *AzureKeyVault) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *AzureKeyVault) SetEnabled(v bool) {
 	o.Enabled = &v
+	o.NullFields = removeNullField(o.NullFields, "Enabled")
+}
+
+// SetEnabledNil sets Enabled to an explicit JSON null when marshaled.
+func (o *AzureKeyVault) SetEnabledNil() {
+	o.Enabled = nil
+	o.NullFields = addNullField(o.NullFields, "Enabled")
 }
 
 // GetKeyIdentifier returns the KeyIdentifier field value if set, zero value otherwise
@@ -179,6 +209,13 @@ func (o *AzureKeyVault) HasKeyIdentifier() bool {
 // SetKeyIdentifier gets a reference to the given string and assigns it to the KeyIdentifier field.
 func (o *AzureKeyVault) SetKeyIdentifier(v string) {
 	o.KeyIdentifier = &v
+	o.NullFields = removeNullField(o.NullFields, "KeyIdentifier")
+}
+
+// SetKeyIdentifierNil sets KeyIdentifier to an explicit JSON null when marshaled.
+func (o *AzureKeyVault) SetKeyIdentifierNil() {
+	o.KeyIdentifier = nil
+	o.NullFields = addNullField(o.NullFields, "KeyIdentifier")
 }
 
 // GetKeyVaultName returns the KeyVaultName field value if set, zero value otherwise
@@ -212,6 +249,13 @@ func (o *AzureKeyVault) HasKeyVaultName() bool {
 // SetKeyVaultName gets a reference to the given string and assigns it to the KeyVaultName field.
 func (o *AzureKeyVault) SetKeyVaultName(v string) {
 	o.KeyVaultName = &v
+	o.NullFields = removeNullField(o.NullFields, "KeyVaultName")
+}
+
+// SetKeyVaultNameNil sets KeyVaultName to an explicit JSON null when marshaled.
+func (o *AzureKeyVault) SetKeyVaultNameNil() {
+	o.KeyVaultName = nil
+	o.NullFields = addNullField(o.NullFields, "KeyVaultName")
 }
 
 // GetRequirePrivateNetworking returns the RequirePrivateNetworking field value if set, zero value otherwise
@@ -245,6 +289,13 @@ func (o *AzureKeyVault) HasRequirePrivateNetworking() bool {
 // SetRequirePrivateNetworking gets a reference to the given bool and assigns it to the RequirePrivateNetworking field.
 func (o *AzureKeyVault) SetRequirePrivateNetworking(v bool) {
 	o.RequirePrivateNetworking = &v
+	o.NullFields = removeNullField(o.NullFields, "RequirePrivateNetworking")
+}
+
+// SetRequirePrivateNetworkingNil sets RequirePrivateNetworking to an explicit JSON null when marshaled.
+func (o *AzureKeyVault) SetRequirePrivateNetworkingNil() {
+	o.RequirePrivateNetworking = nil
+	o.NullFields = addNullField(o.NullFields, "RequirePrivateNetworking")
 }
 
 // GetResourceGroupName returns the ResourceGroupName field value if set, zero value otherwise
@@ -278,6 +329,13 @@ func (o *AzureKeyVault) HasResourceGroupName() bool {
 // SetResourceGroupName gets a reference to the given string and assigns it to the ResourceGroupName field.
 func (o *AzureKeyVault) SetResourceGroupName(v string) {
 	o.ResourceGroupName = &v
+	o.NullFields = removeNullField(o.NullFields, "ResourceGroupName")
+}
+
+// SetResourceGroupNameNil sets ResourceGroupName to an explicit JSON null when marshaled.
+func (o *AzureKeyVault) SetResourceGroupNameNil() {
+	o.ResourceGroupName = nil
+	o.NullFields = addNullField(o.NullFields, "ResourceGroupName")
 }
 
 // GetRoleId returns the RoleId field value if set, zero value otherwise
@@ -311,6 +369,13 @@ func (o *AzureKeyVault) HasRoleId() bool {
 // SetRoleId gets a reference to the given string and assigns it to the RoleId field.
 func (o *AzureKeyVault) SetRoleId(v string) {
 	o.RoleId = &v
+	o.NullFields = removeNullField(o.NullFields, "RoleId")
+}
+
+// SetRoleIdNil sets RoleId to an explicit JSON null when marshaled.
+func (o *AzureKeyVault) SetRoleIdNil() {
+	o.RoleId = nil
+	o.NullFields = addNullField(o.NullFields, "RoleId")
 }
 
 // GetSecret returns the Secret field value if set, zero value otherwise
@@ -344,6 +409,13 @@ func (o *AzureKeyVault) HasSecret() bool {
 // SetSecret gets a reference to the given string and assigns it to the Secret field.
 func (o *AzureKeyVault) SetSecret(v string) {
 	o.Secret = &v
+	o.NullFields = removeNullField(o.NullFields, "Secret")
+}
+
+// SetSecretNil sets Secret to an explicit JSON null when marshaled.
+func (o *AzureKeyVault) SetSecretNil() {
+	o.Secret = nil
+	o.NullFields = addNullField(o.NullFields, "Secret")
 }
 
 // GetSubscriptionID returns the SubscriptionID field value if set, zero value otherwise
@@ -377,6 +449,13 @@ func (o *AzureKeyVault) HasSubscriptionID() bool {
 // SetSubscriptionID gets a reference to the given string and assigns it to the SubscriptionID field.
 func (o *AzureKeyVault) SetSubscriptionID(v string) {
 	o.SubscriptionID = &v
+	o.NullFields = removeNullField(o.NullFields, "SubscriptionID")
+}
+
+// SetSubscriptionIDNil sets SubscriptionID to an explicit JSON null when marshaled.
+func (o *AzureKeyVault) SetSubscriptionIDNil() {
+	o.SubscriptionID = nil
+	o.NullFields = addNullField(o.NullFields, "SubscriptionID")
 }
 
 // GetTenantID returns the TenantID field value if set, zero value otherwise
@@ -410,6 +489,13 @@ func (o *AzureKeyVault) HasTenantID() bool {
 // SetTenantID gets a reference to the given string and assigns it to the TenantID field.
 func (o *AzureKeyVault) SetTenantID(v string) {
 	o.TenantID = &v
+	o.NullFields = removeNullField(o.NullFields, "TenantID")
+}
+
+// SetTenantIDNil sets TenantID to an explicit JSON null when marshaled.
+func (o *AzureKeyVault) SetTenantIDNil() {
+	o.TenantID = nil
+	o.NullFields = addNullField(o.NullFields, "TenantID")
 }
 
 // GetValid returns the Valid field value if set, zero value otherwise
@@ -443,4 +529,11 @@ func (o *AzureKeyVault) HasValid() bool {
 // SetValid gets a reference to the given bool and assigns it to the Valid field.
 func (o *AzureKeyVault) SetValid(v bool) {
 	o.Valid = &v
+	o.NullFields = removeNullField(o.NullFields, "Valid")
+}
+
+// SetValidNil sets Valid to an explicit JSON null when marshaled.
+func (o *AzureKeyVault) SetValidNil() {
+	o.Valid = nil
+	o.NullFields = addNullField(o.NullFields, "Valid")
 }

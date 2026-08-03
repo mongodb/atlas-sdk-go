@@ -8,6 +8,15 @@ type CloudProviderAccessFeatureUsage struct {
 	// Read only field.
 	FeatureType *string                                                     `json:"featureType,omitempty"`
 	FeatureId   *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId `json:"featureId,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CloudProviderAccessFeatureUsage) MarshalJSON() ([]byte, error) {
+	type noMethod CloudProviderAccessFeatureUsage
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudProviderAccessFeatureUsage instantiates a new CloudProviderAccessFeatureUsage object
@@ -58,6 +67,13 @@ func (o *CloudProviderAccessFeatureUsage) HasFeatureType() bool {
 // SetFeatureType gets a reference to the given string and assigns it to the FeatureType field.
 func (o *CloudProviderAccessFeatureUsage) SetFeatureType(v string) {
 	o.FeatureType = &v
+	o.NullFields = removeNullField(o.NullFields, "FeatureType")
+}
+
+// SetFeatureTypeNil sets FeatureType to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessFeatureUsage) SetFeatureTypeNil() {
+	o.FeatureType = nil
+	o.NullFields = addNullField(o.NullFields, "FeatureType")
 }
 
 // GetFeatureId returns the FeatureId field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *CloudProviderAccessFeatureUsage) HasFeatureId() bool {
 // SetFeatureId gets a reference to the given CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId and assigns it to the FeatureId field.
 func (o *CloudProviderAccessFeatureUsage) SetFeatureId(v CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) {
 	o.FeatureId = &v
+	o.NullFields = removeNullField(o.NullFields, "FeatureId")
+}
+
+// SetFeatureIdNil sets FeatureId to an explicit JSON null when marshaled.
+func (o *CloudProviderAccessFeatureUsage) SetFeatureIdNil() {
+	o.FeatureId = nil
+	o.NullFields = addNullField(o.NullFields, "FeatureId")
 }

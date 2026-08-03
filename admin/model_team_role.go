@@ -11,6 +11,15 @@ type TeamRole struct {
 	RoleNames []string `json:"roleNames"`
 	// Unique 24-hexadecimal character string that identifies the team.
 	TeamId string `json:"teamId"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *TeamRole) MarshalJSON() ([]byte, error) {
+	type noMethod TeamRole
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewTeamRole instantiates a new TeamRole object
@@ -63,6 +72,13 @@ func (o *TeamRole) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *TeamRole) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *TeamRole) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetRoleNames returns the RoleNames field value

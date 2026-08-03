@@ -10,6 +10,15 @@ type DiskBackupCollectionResponse struct {
 	// Human-readable label that identifies the collection in the database within the snapshot.
 	// Read only field.
 	Name string `json:"name"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DiskBackupCollectionResponse) MarshalJSON() ([]byte, error) {
+	type noMethod DiskBackupCollectionResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupCollectionResponse instantiates a new DiskBackupCollectionResponse object
@@ -61,6 +70,13 @@ func (o *DiskBackupCollectionResponse) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupCollectionResponse) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *DiskBackupCollectionResponse) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetName returns the Name field value

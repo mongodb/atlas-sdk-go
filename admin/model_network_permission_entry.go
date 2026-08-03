@@ -24,6 +24,15 @@ type NetworkPermissionEntry struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *NetworkPermissionEntry) MarshalJSON() ([]byte, error) {
+	type noMethod NetworkPermissionEntry
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewNetworkPermissionEntry instantiates a new NetworkPermissionEntry object
@@ -74,6 +83,13 @@ func (o *NetworkPermissionEntry) HasAwsSecurityGroup() bool {
 // SetAwsSecurityGroup gets a reference to the given string and assigns it to the AwsSecurityGroup field.
 func (o *NetworkPermissionEntry) SetAwsSecurityGroup(v string) {
 	o.AwsSecurityGroup = &v
+	o.NullFields = removeNullField(o.NullFields, "AwsSecurityGroup")
+}
+
+// SetAwsSecurityGroupNil sets AwsSecurityGroup to an explicit JSON null when marshaled.
+func (o *NetworkPermissionEntry) SetAwsSecurityGroupNil() {
+	o.AwsSecurityGroup = nil
+	o.NullFields = addNullField(o.NullFields, "AwsSecurityGroup")
 }
 
 // GetCidrBlock returns the CidrBlock field value if set, zero value otherwise
@@ -107,6 +123,13 @@ func (o *NetworkPermissionEntry) HasCidrBlock() bool {
 // SetCidrBlock gets a reference to the given string and assigns it to the CidrBlock field.
 func (o *NetworkPermissionEntry) SetCidrBlock(v string) {
 	o.CidrBlock = &v
+	o.NullFields = removeNullField(o.NullFields, "CidrBlock")
+}
+
+// SetCidrBlockNil sets CidrBlock to an explicit JSON null when marshaled.
+func (o *NetworkPermissionEntry) SetCidrBlockNil() {
+	o.CidrBlock = nil
+	o.NullFields = addNullField(o.NullFields, "CidrBlock")
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise
@@ -140,6 +163,13 @@ func (o *NetworkPermissionEntry) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *NetworkPermissionEntry) SetComment(v string) {
 	o.Comment = &v
+	o.NullFields = removeNullField(o.NullFields, "Comment")
+}
+
+// SetCommentNil sets Comment to an explicit JSON null when marshaled.
+func (o *NetworkPermissionEntry) SetCommentNil() {
+	o.Comment = nil
+	o.NullFields = addNullField(o.NullFields, "Comment")
 }
 
 // GetDeleteAfterDate returns the DeleteAfterDate field value if set, zero value otherwise
@@ -173,6 +203,13 @@ func (o *NetworkPermissionEntry) HasDeleteAfterDate() bool {
 // SetDeleteAfterDate gets a reference to the given time.Time and assigns it to the DeleteAfterDate field.
 func (o *NetworkPermissionEntry) SetDeleteAfterDate(v time.Time) {
 	o.DeleteAfterDate = &v
+	o.NullFields = removeNullField(o.NullFields, "DeleteAfterDate")
+}
+
+// SetDeleteAfterDateNil sets DeleteAfterDate to an explicit JSON null when marshaled.
+func (o *NetworkPermissionEntry) SetDeleteAfterDateNil() {
+	o.DeleteAfterDate = nil
+	o.NullFields = addNullField(o.NullFields, "DeleteAfterDate")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -206,6 +243,13 @@ func (o *NetworkPermissionEntry) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *NetworkPermissionEntry) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *NetworkPermissionEntry) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetIpAddress returns the IpAddress field value if set, zero value otherwise
@@ -239,6 +283,13 @@ func (o *NetworkPermissionEntry) HasIpAddress() bool {
 // SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *NetworkPermissionEntry) SetIpAddress(v string) {
 	o.IpAddress = &v
+	o.NullFields = removeNullField(o.NullFields, "IpAddress")
+}
+
+// SetIpAddressNil sets IpAddress to an explicit JSON null when marshaled.
+func (o *NetworkPermissionEntry) SetIpAddressNil() {
+	o.IpAddress = nil
+	o.NullFields = addNullField(o.NullFields, "IpAddress")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -272,4 +323,11 @@ func (o *NetworkPermissionEntry) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *NetworkPermissionEntry) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *NetworkPermissionEntry) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }

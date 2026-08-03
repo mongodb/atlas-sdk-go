@@ -10,6 +10,15 @@ type DataLakeAtlasStoreReadPreference struct {
 	Mode *string `json:"mode,omitempty"`
 	// List that contains tag sets or tag specification documents. If specified, Atlas Data Lake routes read requests to replica set member or members that are associated with the specified tags.
 	TagSets *[][]DataLakeAtlasStoreReadPreferenceTag `json:"tagSets,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DataLakeAtlasStoreReadPreference) MarshalJSON() ([]byte, error) {
+	type noMethod DataLakeAtlasStoreReadPreference
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataLakeAtlasStoreReadPreference instantiates a new DataLakeAtlasStoreReadPreference object
@@ -60,6 +69,13 @@ func (o *DataLakeAtlasStoreReadPreference) HasMaxStalenessSeconds() bool {
 // SetMaxStalenessSeconds gets a reference to the given int and assigns it to the MaxStalenessSeconds field.
 func (o *DataLakeAtlasStoreReadPreference) SetMaxStalenessSeconds(v int) {
 	o.MaxStalenessSeconds = &v
+	o.NullFields = removeNullField(o.NullFields, "MaxStalenessSeconds")
+}
+
+// SetMaxStalenessSecondsNil sets MaxStalenessSeconds to an explicit JSON null when marshaled.
+func (o *DataLakeAtlasStoreReadPreference) SetMaxStalenessSecondsNil() {
+	o.MaxStalenessSeconds = nil
+	o.NullFields = addNullField(o.NullFields, "MaxStalenessSeconds")
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise
@@ -93,6 +109,13 @@ func (o *DataLakeAtlasStoreReadPreference) HasMode() bool {
 // SetMode gets a reference to the given string and assigns it to the Mode field.
 func (o *DataLakeAtlasStoreReadPreference) SetMode(v string) {
 	o.Mode = &v
+	o.NullFields = removeNullField(o.NullFields, "Mode")
+}
+
+// SetModeNil sets Mode to an explicit JSON null when marshaled.
+func (o *DataLakeAtlasStoreReadPreference) SetModeNil() {
+	o.Mode = nil
+	o.NullFields = addNullField(o.NullFields, "Mode")
 }
 
 // GetTagSets returns the TagSets field value if set, zero value otherwise
@@ -126,4 +149,11 @@ func (o *DataLakeAtlasStoreReadPreference) HasTagSets() bool {
 // SetTagSets gets a reference to the given [][]DataLakeAtlasStoreReadPreferenceTag and assigns it to the TagSets field.
 func (o *DataLakeAtlasStoreReadPreference) SetTagSets(v [][]DataLakeAtlasStoreReadPreferenceTag) {
 	o.TagSets = &v
+	o.NullFields = removeNullField(o.NullFields, "TagSets")
+}
+
+// SetTagSetsNil sets TagSets to an explicit JSON null when marshaled.
+func (o *DataLakeAtlasStoreReadPreference) SetTagSetsNil() {
+	o.TagSets = nil
+	o.NullFields = addNullField(o.NullFields, "TagSets")
 }

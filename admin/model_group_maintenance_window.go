@@ -19,6 +19,15 @@ type GroupMaintenanceWindow struct {
 	// Identifier for the current time zone of the maintenance window. This can only be updated via the Project Settings UI.
 	// Read only field.
 	TimeZoneId *string `json:"timeZoneId,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *GroupMaintenanceWindow) MarshalJSON() ([]byte, error) {
+	type noMethod GroupMaintenanceWindow
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGroupMaintenanceWindow instantiates a new GroupMaintenanceWindow object
@@ -70,6 +79,13 @@ func (o *GroupMaintenanceWindow) HasAutoDeferOnceEnabled() bool {
 // SetAutoDeferOnceEnabled gets a reference to the given bool and assigns it to the AutoDeferOnceEnabled field.
 func (o *GroupMaintenanceWindow) SetAutoDeferOnceEnabled(v bool) {
 	o.AutoDeferOnceEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "AutoDeferOnceEnabled")
+}
+
+// SetAutoDeferOnceEnabledNil sets AutoDeferOnceEnabled to an explicit JSON null when marshaled.
+func (o *GroupMaintenanceWindow) SetAutoDeferOnceEnabledNil() {
+	o.AutoDeferOnceEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "AutoDeferOnceEnabled")
 }
 
 // GetDayOfWeek returns the DayOfWeek field value
@@ -127,6 +143,13 @@ func (o *GroupMaintenanceWindow) HasHourOfDay() bool {
 // SetHourOfDay gets a reference to the given int and assigns it to the HourOfDay field.
 func (o *GroupMaintenanceWindow) SetHourOfDay(v int) {
 	o.HourOfDay = &v
+	o.NullFields = removeNullField(o.NullFields, "HourOfDay")
+}
+
+// SetHourOfDayNil sets HourOfDay to an explicit JSON null when marshaled.
+func (o *GroupMaintenanceWindow) SetHourOfDayNil() {
+	o.HourOfDay = nil
+	o.NullFields = addNullField(o.NullFields, "HourOfDay")
 }
 
 // GetNumberOfDeferrals returns the NumberOfDeferrals field value if set, zero value otherwise
@@ -160,6 +183,13 @@ func (o *GroupMaintenanceWindow) HasNumberOfDeferrals() bool {
 // SetNumberOfDeferrals gets a reference to the given int and assigns it to the NumberOfDeferrals field.
 func (o *GroupMaintenanceWindow) SetNumberOfDeferrals(v int) {
 	o.NumberOfDeferrals = &v
+	o.NullFields = removeNullField(o.NullFields, "NumberOfDeferrals")
+}
+
+// SetNumberOfDeferralsNil sets NumberOfDeferrals to an explicit JSON null when marshaled.
+func (o *GroupMaintenanceWindow) SetNumberOfDeferralsNil() {
+	o.NumberOfDeferrals = nil
+	o.NullFields = addNullField(o.NullFields, "NumberOfDeferrals")
 }
 
 // GetProtectedHours returns the ProtectedHours field value if set, zero value otherwise
@@ -193,6 +223,13 @@ func (o *GroupMaintenanceWindow) HasProtectedHours() bool {
 // SetProtectedHours gets a reference to the given ProtectedHours and assigns it to the ProtectedHours field.
 func (o *GroupMaintenanceWindow) SetProtectedHours(v ProtectedHours) {
 	o.ProtectedHours = &v
+	o.NullFields = removeNullField(o.NullFields, "ProtectedHours")
+}
+
+// SetProtectedHoursNil sets ProtectedHours to an explicit JSON null when marshaled.
+func (o *GroupMaintenanceWindow) SetProtectedHoursNil() {
+	o.ProtectedHours = nil
+	o.NullFields = addNullField(o.NullFields, "ProtectedHours")
 }
 
 // GetStartASAP returns the StartASAP field value if set, zero value otherwise
@@ -226,6 +263,13 @@ func (o *GroupMaintenanceWindow) HasStartASAP() bool {
 // SetStartASAP gets a reference to the given bool and assigns it to the StartASAP field.
 func (o *GroupMaintenanceWindow) SetStartASAP(v bool) {
 	o.StartASAP = &v
+	o.NullFields = removeNullField(o.NullFields, "StartASAP")
+}
+
+// SetStartASAPNil sets StartASAP to an explicit JSON null when marshaled.
+func (o *GroupMaintenanceWindow) SetStartASAPNil() {
+	o.StartASAP = nil
+	o.NullFields = addNullField(o.NullFields, "StartASAP")
 }
 
 // GetTimeZoneId returns the TimeZoneId field value if set, zero value otherwise
@@ -259,4 +303,11 @@ func (o *GroupMaintenanceWindow) HasTimeZoneId() bool {
 // SetTimeZoneId gets a reference to the given string and assigns it to the TimeZoneId field.
 func (o *GroupMaintenanceWindow) SetTimeZoneId(v string) {
 	o.TimeZoneId = &v
+	o.NullFields = removeNullField(o.NullFields, "TimeZoneId")
+}
+
+// SetTimeZoneIdNil sets TimeZoneId to an explicit JSON null when marshaled.
+func (o *GroupMaintenanceWindow) SetTimeZoneIdNil() {
+	o.TimeZoneId = nil
+	o.NullFields = addNullField(o.NullFields, "TimeZoneId")
 }

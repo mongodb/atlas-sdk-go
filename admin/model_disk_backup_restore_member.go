@@ -13,6 +13,15 @@ type DiskBackupRestoreMember struct {
 	// Human-readable label that identifies the replica set on the sharded cluster.
 	// Read only field.
 	ReplicaSetName *string `json:"replicaSetName,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DiskBackupRestoreMember) MarshalJSON() ([]byte, error) {
+	type noMethod DiskBackupRestoreMember
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupRestoreMember instantiates a new DiskBackupRestoreMember object
@@ -63,6 +72,13 @@ func (o *DiskBackupRestoreMember) HasDownloadUrl() bool {
 // SetDownloadUrl gets a reference to the given string and assigns it to the DownloadUrl field.
 func (o *DiskBackupRestoreMember) SetDownloadUrl(v string) {
 	o.DownloadUrl = &v
+	o.NullFields = removeNullField(o.NullFields, "DownloadUrl")
+}
+
+// SetDownloadUrlNil sets DownloadUrl to an explicit JSON null when marshaled.
+func (o *DiskBackupRestoreMember) SetDownloadUrlNil() {
+	o.DownloadUrl = nil
+	o.NullFields = addNullField(o.NullFields, "DownloadUrl")
 }
 
 // GetPrivateDownloadDeliveryUrls returns the PrivateDownloadDeliveryUrls field value if set, zero value otherwise
@@ -96,6 +112,13 @@ func (o *DiskBackupRestoreMember) HasPrivateDownloadDeliveryUrls() bool {
 // SetPrivateDownloadDeliveryUrls gets a reference to the given []ApiPrivateDownloadDeliveryUrl and assigns it to the PrivateDownloadDeliveryUrls field.
 func (o *DiskBackupRestoreMember) SetPrivateDownloadDeliveryUrls(v []ApiPrivateDownloadDeliveryUrl) {
 	o.PrivateDownloadDeliveryUrls = &v
+	o.NullFields = removeNullField(o.NullFields, "PrivateDownloadDeliveryUrls")
+}
+
+// SetPrivateDownloadDeliveryUrlsNil sets PrivateDownloadDeliveryUrls to an explicit JSON null when marshaled.
+func (o *DiskBackupRestoreMember) SetPrivateDownloadDeliveryUrlsNil() {
+	o.PrivateDownloadDeliveryUrls = nil
+	o.NullFields = addNullField(o.NullFields, "PrivateDownloadDeliveryUrls")
 }
 
 // GetReplicaSetName returns the ReplicaSetName field value if set, zero value otherwise
@@ -129,4 +152,11 @@ func (o *DiskBackupRestoreMember) HasReplicaSetName() bool {
 // SetReplicaSetName gets a reference to the given string and assigns it to the ReplicaSetName field.
 func (o *DiskBackupRestoreMember) SetReplicaSetName(v string) {
 	o.ReplicaSetName = &v
+	o.NullFields = removeNullField(o.NullFields, "ReplicaSetName")
+}
+
+// SetReplicaSetNameNil sets ReplicaSetName to an explicit JSON null when marshaled.
+func (o *DiskBackupRestoreMember) SetReplicaSetNameNil() {
+	o.ReplicaSetName = nil
+	o.NullFields = addNullField(o.NullFields, "ReplicaSetName")
 }

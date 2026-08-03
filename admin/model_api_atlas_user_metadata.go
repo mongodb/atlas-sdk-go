@@ -10,6 +10,15 @@ type ApiAtlasUserMetadata struct {
 	// Human-readable label that describes a user.
 	// Read only field.
 	Name *string `json:"name,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiAtlasUserMetadata) MarshalJSON() ([]byte, error) {
+	type noMethod ApiAtlasUserMetadata
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasUserMetadata instantiates a new ApiAtlasUserMetadata object
@@ -60,6 +69,13 @@ func (o *ApiAtlasUserMetadata) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ApiAtlasUserMetadata) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *ApiAtlasUserMetadata) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -93,4 +109,11 @@ func (o *ApiAtlasUserMetadata) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ApiAtlasUserMetadata) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *ApiAtlasUserMetadata) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }

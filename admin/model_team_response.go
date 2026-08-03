@@ -12,6 +12,15 @@ type TeamResponse struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the team.
 	Name *string `json:"name,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *TeamResponse) MarshalJSON() ([]byte, error) {
+	type noMethod TeamResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewTeamResponse instantiates a new TeamResponse object
@@ -62,6 +71,13 @@ func (o *TeamResponse) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *TeamResponse) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *TeamResponse) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -95,6 +111,13 @@ func (o *TeamResponse) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *TeamResponse) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *TeamResponse) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -128,4 +151,11 @@ func (o *TeamResponse) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *TeamResponse) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *TeamResponse) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }

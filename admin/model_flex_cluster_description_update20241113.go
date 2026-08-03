@@ -11,6 +11,15 @@ type FlexClusterDescriptionUpdate20241113 struct {
 	Tags *[]ResourceTag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the cluster. If set to `true`, MongoDB Cloud won't delete the cluster. If set to `false`, MongoDB Cloud will delete the cluster.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *FlexClusterDescriptionUpdate20241113) MarshalJSON() ([]byte, error) {
+	type noMethod FlexClusterDescriptionUpdate20241113
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFlexClusterDescriptionUpdate20241113 instantiates a new FlexClusterDescriptionUpdate20241113 object
@@ -65,6 +74,13 @@ func (o *FlexClusterDescriptionUpdate20241113) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *FlexClusterDescriptionUpdate20241113) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *FlexClusterDescriptionUpdate20241113) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise
@@ -98,6 +114,13 @@ func (o *FlexClusterDescriptionUpdate20241113) HasTags() bool {
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
 func (o *FlexClusterDescriptionUpdate20241113) SetTags(v []ResourceTag) {
 	o.Tags = &v
+	o.NullFields = removeNullField(o.NullFields, "Tags")
+}
+
+// SetTagsNil sets Tags to an explicit JSON null when marshaled.
+func (o *FlexClusterDescriptionUpdate20241113) SetTagsNil() {
+	o.Tags = nil
+	o.NullFields = addNullField(o.NullFields, "Tags")
 }
 
 // GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise
@@ -131,4 +154,11 @@ func (o *FlexClusterDescriptionUpdate20241113) HasTerminationProtectionEnabled()
 // SetTerminationProtectionEnabled gets a reference to the given bool and assigns it to the TerminationProtectionEnabled field.
 func (o *FlexClusterDescriptionUpdate20241113) SetTerminationProtectionEnabled(v bool) {
 	o.TerminationProtectionEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "TerminationProtectionEnabled")
+}
+
+// SetTerminationProtectionEnabledNil sets TerminationProtectionEnabled to an explicit JSON null when marshaled.
+func (o *FlexClusterDescriptionUpdate20241113) SetTerminationProtectionEnabledNil() {
+	o.TerminationProtectionEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "TerminationProtectionEnabled")
 }

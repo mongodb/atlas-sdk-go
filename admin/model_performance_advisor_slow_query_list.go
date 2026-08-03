@@ -7,6 +7,15 @@ type PerformanceAdvisorSlowQueryList struct {
 	// List of operations that the Performance Advisor detected that took longer to execute than a specified threshold.
 	// Read only field.
 	SlowQueries *[]PerformanceAdvisorSlowQuery `json:"slowQueries,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PerformanceAdvisorSlowQueryList) MarshalJSON() ([]byte, error) {
+	type noMethod PerformanceAdvisorSlowQueryList
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPerformanceAdvisorSlowQueryList instantiates a new PerformanceAdvisorSlowQueryList object
@@ -57,4 +66,11 @@ func (o *PerformanceAdvisorSlowQueryList) HasSlowQueries() bool {
 // SetSlowQueries gets a reference to the given []PerformanceAdvisorSlowQuery and assigns it to the SlowQueries field.
 func (o *PerformanceAdvisorSlowQueryList) SetSlowQueries(v []PerformanceAdvisorSlowQuery) {
 	o.SlowQueries = &v
+	o.NullFields = removeNullField(o.NullFields, "SlowQueries")
+}
+
+// SetSlowQueriesNil sets SlowQueries to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorSlowQueryList) SetSlowQueriesNil() {
+	o.SlowQueries = nil
+	o.NullFields = addNullField(o.NullFields, "SlowQueries")
 }

@@ -31,6 +31,15 @@ type ServerlessTenantEndpoint struct {
 	// Root-relative path that identifies the Azure Private Link Service that MongoDB Cloud manages. MongoDB Cloud returns null while it creates the endpoint service.
 	// Read only field.
 	PrivateLinkServiceResourceId *string `json:"privateLinkServiceResourceId,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ServerlessTenantEndpoint) MarshalJSON() ([]byte, error) {
+	type noMethod ServerlessTenantEndpoint
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewServerlessTenantEndpoint instantiates a new ServerlessTenantEndpoint object
@@ -81,6 +90,13 @@ func (o *ServerlessTenantEndpoint) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ServerlessTenantEndpoint) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *ServerlessTenantEndpoint) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetCloudProviderEndpointId returns the CloudProviderEndpointId field value if set, zero value otherwise
@@ -114,6 +130,13 @@ func (o *ServerlessTenantEndpoint) HasCloudProviderEndpointId() bool {
 // SetCloudProviderEndpointId gets a reference to the given string and assigns it to the CloudProviderEndpointId field.
 func (o *ServerlessTenantEndpoint) SetCloudProviderEndpointId(v string) {
 	o.CloudProviderEndpointId = &v
+	o.NullFields = removeNullField(o.NullFields, "CloudProviderEndpointId")
+}
+
+// SetCloudProviderEndpointIdNil sets CloudProviderEndpointId to an explicit JSON null when marshaled.
+func (o *ServerlessTenantEndpoint) SetCloudProviderEndpointIdNil() {
+	o.CloudProviderEndpointId = nil
+	o.NullFields = addNullField(o.NullFields, "CloudProviderEndpointId")
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise
@@ -147,6 +170,13 @@ func (o *ServerlessTenantEndpoint) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *ServerlessTenantEndpoint) SetComment(v string) {
 	o.Comment = &v
+	o.NullFields = removeNullField(o.NullFields, "Comment")
+}
+
+// SetCommentNil sets Comment to an explicit JSON null when marshaled.
+func (o *ServerlessTenantEndpoint) SetCommentNil() {
+	o.Comment = nil
+	o.NullFields = addNullField(o.NullFields, "Comment")
 }
 
 // GetEndpointServiceName returns the EndpointServiceName field value if set, zero value otherwise
@@ -180,6 +210,13 @@ func (o *ServerlessTenantEndpoint) HasEndpointServiceName() bool {
 // SetEndpointServiceName gets a reference to the given string and assigns it to the EndpointServiceName field.
 func (o *ServerlessTenantEndpoint) SetEndpointServiceName(v string) {
 	o.EndpointServiceName = &v
+	o.NullFields = removeNullField(o.NullFields, "EndpointServiceName")
+}
+
+// SetEndpointServiceNameNil sets EndpointServiceName to an explicit JSON null when marshaled.
+func (o *ServerlessTenantEndpoint) SetEndpointServiceNameNil() {
+	o.EndpointServiceName = nil
+	o.NullFields = addNullField(o.NullFields, "EndpointServiceName")
 }
 
 // GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise
@@ -213,6 +250,13 @@ func (o *ServerlessTenantEndpoint) HasErrorMessage() bool {
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *ServerlessTenantEndpoint) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
+	o.NullFields = removeNullField(o.NullFields, "ErrorMessage")
+}
+
+// SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled.
+func (o *ServerlessTenantEndpoint) SetErrorMessageNil() {
+	o.ErrorMessage = nil
+	o.NullFields = addNullField(o.NullFields, "ErrorMessage")
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
@@ -246,6 +290,13 @@ func (o *ServerlessTenantEndpoint) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *ServerlessTenantEndpoint) SetStatus(v string) {
 	o.Status = &v
+	o.NullFields = removeNullField(o.NullFields, "Status")
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *ServerlessTenantEndpoint) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = addNullField(o.NullFields, "Status")
 }
 
 // GetProviderName returns the ProviderName field value if set, zero value otherwise
@@ -279,6 +330,13 @@ func (o *ServerlessTenantEndpoint) HasProviderName() bool {
 // SetProviderName gets a reference to the given string and assigns it to the ProviderName field.
 func (o *ServerlessTenantEndpoint) SetProviderName(v string) {
 	o.ProviderName = &v
+	o.NullFields = removeNullField(o.NullFields, "ProviderName")
+}
+
+// SetProviderNameNil sets ProviderName to an explicit JSON null when marshaled.
+func (o *ServerlessTenantEndpoint) SetProviderNameNil() {
+	o.ProviderName = nil
+	o.NullFields = addNullField(o.NullFields, "ProviderName")
 }
 
 // GetPrivateEndpointIpAddress returns the PrivateEndpointIpAddress field value if set, zero value otherwise
@@ -312,6 +370,13 @@ func (o *ServerlessTenantEndpoint) HasPrivateEndpointIpAddress() bool {
 // SetPrivateEndpointIpAddress gets a reference to the given string and assigns it to the PrivateEndpointIpAddress field.
 func (o *ServerlessTenantEndpoint) SetPrivateEndpointIpAddress(v string) {
 	o.PrivateEndpointIpAddress = &v
+	o.NullFields = removeNullField(o.NullFields, "PrivateEndpointIpAddress")
+}
+
+// SetPrivateEndpointIpAddressNil sets PrivateEndpointIpAddress to an explicit JSON null when marshaled.
+func (o *ServerlessTenantEndpoint) SetPrivateEndpointIpAddressNil() {
+	o.PrivateEndpointIpAddress = nil
+	o.NullFields = addNullField(o.NullFields, "PrivateEndpointIpAddress")
 }
 
 // GetPrivateLinkServiceResourceId returns the PrivateLinkServiceResourceId field value if set, zero value otherwise
@@ -345,4 +410,11 @@ func (o *ServerlessTenantEndpoint) HasPrivateLinkServiceResourceId() bool {
 // SetPrivateLinkServiceResourceId gets a reference to the given string and assigns it to the PrivateLinkServiceResourceId field.
 func (o *ServerlessTenantEndpoint) SetPrivateLinkServiceResourceId(v string) {
 	o.PrivateLinkServiceResourceId = &v
+	o.NullFields = removeNullField(o.NullFields, "PrivateLinkServiceResourceId")
+}
+
+// SetPrivateLinkServiceResourceIdNil sets PrivateLinkServiceResourceId to an explicit JSON null when marshaled.
+func (o *ServerlessTenantEndpoint) SetPrivateLinkServiceResourceIdNil() {
+	o.PrivateLinkServiceResourceId = nil
+	o.NullFields = addNullField(o.NullFields, "PrivateLinkServiceResourceId")
 }

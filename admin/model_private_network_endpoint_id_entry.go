@@ -24,6 +24,15 @@ type PrivateNetworkEndpointIdEntry struct {
 	Status *string `json:"status,omitempty"`
 	// Human-readable label that identifies the resource type associated with this private endpoint.
 	Type *string `json:"type,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PrivateNetworkEndpointIdEntry) MarshalJSON() ([]byte, error) {
+	type noMethod PrivateNetworkEndpointIdEntry
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPrivateNetworkEndpointIdEntry instantiates a new PrivateNetworkEndpointIdEntry object
@@ -83,6 +92,13 @@ func (o *PrivateNetworkEndpointIdEntry) HasAzureLinkId() bool {
 // SetAzureLinkId gets a reference to the given string and assigns it to the AzureLinkId field.
 func (o *PrivateNetworkEndpointIdEntry) SetAzureLinkId(v string) {
 	o.AzureLinkId = &v
+	o.NullFields = removeNullField(o.NullFields, "AzureLinkId")
+}
+
+// SetAzureLinkIdNil sets AzureLinkId to an explicit JSON null when marshaled.
+func (o *PrivateNetworkEndpointIdEntry) SetAzureLinkIdNil() {
+	o.AzureLinkId = nil
+	o.NullFields = addNullField(o.NullFields, "AzureLinkId")
 }
 
 // GetComment returns the Comment field value if set, zero value otherwise
@@ -116,6 +132,13 @@ func (o *PrivateNetworkEndpointIdEntry) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *PrivateNetworkEndpointIdEntry) SetComment(v string) {
 	o.Comment = &v
+	o.NullFields = removeNullField(o.NullFields, "Comment")
+}
+
+// SetCommentNil sets Comment to an explicit JSON null when marshaled.
+func (o *PrivateNetworkEndpointIdEntry) SetCommentNil() {
+	o.Comment = nil
+	o.NullFields = addNullField(o.NullFields, "Comment")
 }
 
 // GetCustomerEndpointDNSName returns the CustomerEndpointDNSName field value if set, zero value otherwise
@@ -149,6 +172,13 @@ func (o *PrivateNetworkEndpointIdEntry) HasCustomerEndpointDNSName() bool {
 // SetCustomerEndpointDNSName gets a reference to the given string and assigns it to the CustomerEndpointDNSName field.
 func (o *PrivateNetworkEndpointIdEntry) SetCustomerEndpointDNSName(v string) {
 	o.CustomerEndpointDNSName = &v
+	o.NullFields = removeNullField(o.NullFields, "CustomerEndpointDNSName")
+}
+
+// SetCustomerEndpointDNSNameNil sets CustomerEndpointDNSName to an explicit JSON null when marshaled.
+func (o *PrivateNetworkEndpointIdEntry) SetCustomerEndpointDNSNameNil() {
+	o.CustomerEndpointDNSName = nil
+	o.NullFields = addNullField(o.NullFields, "CustomerEndpointDNSName")
 }
 
 // GetCustomerEndpointIPAddress returns the CustomerEndpointIPAddress field value if set, zero value otherwise
@@ -182,6 +212,13 @@ func (o *PrivateNetworkEndpointIdEntry) HasCustomerEndpointIPAddress() bool {
 // SetCustomerEndpointIPAddress gets a reference to the given string and assigns it to the CustomerEndpointIPAddress field.
 func (o *PrivateNetworkEndpointIdEntry) SetCustomerEndpointIPAddress(v string) {
 	o.CustomerEndpointIPAddress = &v
+	o.NullFields = removeNullField(o.NullFields, "CustomerEndpointIPAddress")
+}
+
+// SetCustomerEndpointIPAddressNil sets CustomerEndpointIPAddress to an explicit JSON null when marshaled.
+func (o *PrivateNetworkEndpointIdEntry) SetCustomerEndpointIPAddressNil() {
+	o.CustomerEndpointIPAddress = nil
+	o.NullFields = addNullField(o.NullFields, "CustomerEndpointIPAddress")
 }
 
 // GetEndpointId returns the EndpointId field value
@@ -239,6 +276,13 @@ func (o *PrivateNetworkEndpointIdEntry) HasErrorMessage() bool {
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *PrivateNetworkEndpointIdEntry) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
+	o.NullFields = removeNullField(o.NullFields, "ErrorMessage")
+}
+
+// SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled.
+func (o *PrivateNetworkEndpointIdEntry) SetErrorMessageNil() {
+	o.ErrorMessage = nil
+	o.NullFields = addNullField(o.NullFields, "ErrorMessage")
 }
 
 // GetProvider returns the Provider field value if set, zero value otherwise
@@ -272,6 +316,13 @@ func (o *PrivateNetworkEndpointIdEntry) HasProvider() bool {
 // SetProvider gets a reference to the given string and assigns it to the Provider field.
 func (o *PrivateNetworkEndpointIdEntry) SetProvider(v string) {
 	o.Provider = &v
+	o.NullFields = removeNullField(o.NullFields, "Provider")
+}
+
+// SetProviderNil sets Provider to an explicit JSON null when marshaled.
+func (o *PrivateNetworkEndpointIdEntry) SetProviderNil() {
+	o.Provider = nil
+	o.NullFields = addNullField(o.NullFields, "Provider")
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise
@@ -305,6 +356,13 @@ func (o *PrivateNetworkEndpointIdEntry) HasRegion() bool {
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *PrivateNetworkEndpointIdEntry) SetRegion(v string) {
 	o.Region = &v
+	o.NullFields = removeNullField(o.NullFields, "Region")
+}
+
+// SetRegionNil sets Region to an explicit JSON null when marshaled.
+func (o *PrivateNetworkEndpointIdEntry) SetRegionNil() {
+	o.Region = nil
+	o.NullFields = addNullField(o.NullFields, "Region")
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
@@ -338,6 +396,13 @@ func (o *PrivateNetworkEndpointIdEntry) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *PrivateNetworkEndpointIdEntry) SetStatus(v string) {
 	o.Status = &v
+	o.NullFields = removeNullField(o.NullFields, "Status")
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *PrivateNetworkEndpointIdEntry) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = addNullField(o.NullFields, "Status")
 }
 
 // GetType returns the Type field value if set, zero value otherwise
@@ -371,4 +436,11 @@ func (o *PrivateNetworkEndpointIdEntry) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *PrivateNetworkEndpointIdEntry) SetType(v string) {
 	o.Type = &v
+	o.NullFields = removeNullField(o.NullFields, "Type")
+}
+
+// SetTypeNil sets Type to an explicit JSON null when marshaled.
+func (o *PrivateNetworkEndpointIdEntry) SetTypeNil() {
+	o.Type = nil
+	o.NullFields = addNullField(o.NullFields, "Type")
 }

@@ -2,7 +2,7 @@
 
 package admin
 
-// DropIndexSuggestionsResponse struct for DropIndexSuggestionsResponse
+// DropIndexSuggestionsResponse Response that contains Performance Advisor drop index suggestions.
 type DropIndexSuggestionsResponse struct {
 	// List that contains the documents with information about the hidden indexes that the Performance Advisor suggests to remove.
 	// Read only field.
@@ -13,6 +13,15 @@ type DropIndexSuggestionsResponse struct {
 	// List that contains the documents with information about the unused indexes that the Performance Advisor suggests to remove.
 	// Read only field.
 	UnusedIndexes *[]DropIndexSuggestionsIndex `json:"unusedIndexes,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DropIndexSuggestionsResponse) MarshalJSON() ([]byte, error) {
+	type noMethod DropIndexSuggestionsResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDropIndexSuggestionsResponse instantiates a new DropIndexSuggestionsResponse object
@@ -63,6 +72,13 @@ func (o *DropIndexSuggestionsResponse) HasHiddenIndexes() bool {
 // SetHiddenIndexes gets a reference to the given []DropIndexSuggestionsIndex and assigns it to the HiddenIndexes field.
 func (o *DropIndexSuggestionsResponse) SetHiddenIndexes(v []DropIndexSuggestionsIndex) {
 	o.HiddenIndexes = &v
+	o.NullFields = removeNullField(o.NullFields, "HiddenIndexes")
+}
+
+// SetHiddenIndexesNil sets HiddenIndexes to an explicit JSON null when marshaled.
+func (o *DropIndexSuggestionsResponse) SetHiddenIndexesNil() {
+	o.HiddenIndexes = nil
+	o.NullFields = addNullField(o.NullFields, "HiddenIndexes")
 }
 
 // GetRedundantIndexes returns the RedundantIndexes field value if set, zero value otherwise
@@ -96,6 +112,13 @@ func (o *DropIndexSuggestionsResponse) HasRedundantIndexes() bool {
 // SetRedundantIndexes gets a reference to the given []DropIndexSuggestionsIndex and assigns it to the RedundantIndexes field.
 func (o *DropIndexSuggestionsResponse) SetRedundantIndexes(v []DropIndexSuggestionsIndex) {
 	o.RedundantIndexes = &v
+	o.NullFields = removeNullField(o.NullFields, "RedundantIndexes")
+}
+
+// SetRedundantIndexesNil sets RedundantIndexes to an explicit JSON null when marshaled.
+func (o *DropIndexSuggestionsResponse) SetRedundantIndexesNil() {
+	o.RedundantIndexes = nil
+	o.NullFields = addNullField(o.NullFields, "RedundantIndexes")
 }
 
 // GetUnusedIndexes returns the UnusedIndexes field value if set, zero value otherwise
@@ -129,4 +152,11 @@ func (o *DropIndexSuggestionsResponse) HasUnusedIndexes() bool {
 // SetUnusedIndexes gets a reference to the given []DropIndexSuggestionsIndex and assigns it to the UnusedIndexes field.
 func (o *DropIndexSuggestionsResponse) SetUnusedIndexes(v []DropIndexSuggestionsIndex) {
 	o.UnusedIndexes = &v
+	o.NullFields = removeNullField(o.NullFields, "UnusedIndexes")
+}
+
+// SetUnusedIndexesNil sets UnusedIndexes to an explicit JSON null when marshaled.
+func (o *DropIndexSuggestionsResponse) SetUnusedIndexesNil() {
+	o.UnusedIndexes = nil
+	o.NullFields = addNullField(o.NullFields, "UnusedIndexes")
 }

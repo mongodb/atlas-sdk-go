@@ -13,6 +13,15 @@ type AuditLog struct {
 	ConfigurationType *string `json:"configurationType,omitempty"`
 	// Flag that indicates whether someone enabled database auditing for the specified project.
 	Enabled *bool `json:"enabled,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AuditLog) MarshalJSON() ([]byte, error) {
+	type noMethod AuditLog
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAuditLog instantiates a new AuditLog object
@@ -71,6 +80,13 @@ func (o *AuditLog) HasAuditAuthorizationSuccess() bool {
 // SetAuditAuthorizationSuccess gets a reference to the given bool and assigns it to the AuditAuthorizationSuccess field.
 func (o *AuditLog) SetAuditAuthorizationSuccess(v bool) {
 	o.AuditAuthorizationSuccess = &v
+	o.NullFields = removeNullField(o.NullFields, "AuditAuthorizationSuccess")
+}
+
+// SetAuditAuthorizationSuccessNil sets AuditAuthorizationSuccess to an explicit JSON null when marshaled.
+func (o *AuditLog) SetAuditAuthorizationSuccessNil() {
+	o.AuditAuthorizationSuccess = nil
+	o.NullFields = addNullField(o.NullFields, "AuditAuthorizationSuccess")
 }
 
 // GetAuditFilter returns the AuditFilter field value if set, zero value otherwise
@@ -104,6 +120,13 @@ func (o *AuditLog) HasAuditFilter() bool {
 // SetAuditFilter gets a reference to the given string and assigns it to the AuditFilter field.
 func (o *AuditLog) SetAuditFilter(v string) {
 	o.AuditFilter = &v
+	o.NullFields = removeNullField(o.NullFields, "AuditFilter")
+}
+
+// SetAuditFilterNil sets AuditFilter to an explicit JSON null when marshaled.
+func (o *AuditLog) SetAuditFilterNil() {
+	o.AuditFilter = nil
+	o.NullFields = addNullField(o.NullFields, "AuditFilter")
 }
 
 // GetConfigurationType returns the ConfigurationType field value if set, zero value otherwise
@@ -137,6 +160,13 @@ func (o *AuditLog) HasConfigurationType() bool {
 // SetConfigurationType gets a reference to the given string and assigns it to the ConfigurationType field.
 func (o *AuditLog) SetConfigurationType(v string) {
 	o.ConfigurationType = &v
+	o.NullFields = removeNullField(o.NullFields, "ConfigurationType")
+}
+
+// SetConfigurationTypeNil sets ConfigurationType to an explicit JSON null when marshaled.
+func (o *AuditLog) SetConfigurationTypeNil() {
+	o.ConfigurationType = nil
+	o.NullFields = addNullField(o.NullFields, "ConfigurationType")
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise
@@ -170,4 +200,11 @@ func (o *AuditLog) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *AuditLog) SetEnabled(v bool) {
 	o.Enabled = &v
+	o.NullFields = removeNullField(o.NullFields, "Enabled")
+}
+
+// SetEnabledNil sets Enabled to an explicit JSON null when marshaled.
+func (o *AuditLog) SetEnabledNil() {
+	o.Enabled = nil
+	o.NullFields = addNullField(o.NullFields, "Enabled")
 }

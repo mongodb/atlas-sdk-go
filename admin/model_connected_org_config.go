@@ -23,6 +23,15 @@ type ConnectedOrgConfig struct {
 	RoleMappings *[]AuthFederationRoleMapping `json:"roleMappings,omitempty"`
 	// List that contains the users who have an email address that doesn't match any domain on the allowed list.
 	UserConflicts *[]FederatedUser `json:"userConflicts,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ConnectedOrgConfig) MarshalJSON() ([]byte, error) {
+	type noMethod ConnectedOrgConfig
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewConnectedOrgConfig instantiates a new ConnectedOrgConfig object
@@ -75,6 +84,13 @@ func (o *ConnectedOrgConfig) HasDataAccessIdentityProviderIds() bool {
 // SetDataAccessIdentityProviderIds gets a reference to the given []string and assigns it to the DataAccessIdentityProviderIds field.
 func (o *ConnectedOrgConfig) SetDataAccessIdentityProviderIds(v []string) {
 	o.DataAccessIdentityProviderIds = &v
+	o.NullFields = removeNullField(o.NullFields, "DataAccessIdentityProviderIds")
+}
+
+// SetDataAccessIdentityProviderIdsNil sets DataAccessIdentityProviderIds to an explicit JSON null when marshaled.
+func (o *ConnectedOrgConfig) SetDataAccessIdentityProviderIdsNil() {
+	o.DataAccessIdentityProviderIds = nil
+	o.NullFields = addNullField(o.NullFields, "DataAccessIdentityProviderIds")
 }
 
 // GetDomainAllowList returns the DomainAllowList field value if set, zero value otherwise
@@ -108,6 +124,13 @@ func (o *ConnectedOrgConfig) HasDomainAllowList() bool {
 // SetDomainAllowList gets a reference to the given []string and assigns it to the DomainAllowList field.
 func (o *ConnectedOrgConfig) SetDomainAllowList(v []string) {
 	o.DomainAllowList = &v
+	o.NullFields = removeNullField(o.NullFields, "DomainAllowList")
+}
+
+// SetDomainAllowListNil sets DomainAllowList to an explicit JSON null when marshaled.
+func (o *ConnectedOrgConfig) SetDomainAllowListNil() {
+	o.DomainAllowList = nil
+	o.NullFields = addNullField(o.NullFields, "DomainAllowList")
 }
 
 // GetDomainRestrictionEnabled returns the DomainRestrictionEnabled field value
@@ -165,6 +188,13 @@ func (o *ConnectedOrgConfig) HasIdentityProviderId() bool {
 // SetIdentityProviderId gets a reference to the given string and assigns it to the IdentityProviderId field.
 func (o *ConnectedOrgConfig) SetIdentityProviderId(v string) {
 	o.IdentityProviderId = &v
+	o.NullFields = removeNullField(o.NullFields, "IdentityProviderId")
+}
+
+// SetIdentityProviderIdNil sets IdentityProviderId to an explicit JSON null when marshaled.
+func (o *ConnectedOrgConfig) SetIdentityProviderIdNil() {
+	o.IdentityProviderId = nil
+	o.NullFields = addNullField(o.NullFields, "IdentityProviderId")
 }
 
 // GetInstantUserProvisioningDisabled returns the InstantUserProvisioningDisabled field value if set, zero value otherwise
@@ -198,6 +228,13 @@ func (o *ConnectedOrgConfig) HasInstantUserProvisioningDisabled() bool {
 // SetInstantUserProvisioningDisabled gets a reference to the given bool and assigns it to the InstantUserProvisioningDisabled field.
 func (o *ConnectedOrgConfig) SetInstantUserProvisioningDisabled(v bool) {
 	o.InstantUserProvisioningDisabled = &v
+	o.NullFields = removeNullField(o.NullFields, "InstantUserProvisioningDisabled")
+}
+
+// SetInstantUserProvisioningDisabledNil sets InstantUserProvisioningDisabled to an explicit JSON null when marshaled.
+func (o *ConnectedOrgConfig) SetInstantUserProvisioningDisabledNil() {
+	o.InstantUserProvisioningDisabled = nil
+	o.NullFields = addNullField(o.NullFields, "InstantUserProvisioningDisabled")
 }
 
 // GetOrgId returns the OrgId field value
@@ -255,6 +292,13 @@ func (o *ConnectedOrgConfig) HasPostAuthRoleGrants() bool {
 // SetPostAuthRoleGrants gets a reference to the given []string and assigns it to the PostAuthRoleGrants field.
 func (o *ConnectedOrgConfig) SetPostAuthRoleGrants(v []string) {
 	o.PostAuthRoleGrants = &v
+	o.NullFields = removeNullField(o.NullFields, "PostAuthRoleGrants")
+}
+
+// SetPostAuthRoleGrantsNil sets PostAuthRoleGrants to an explicit JSON null when marshaled.
+func (o *ConnectedOrgConfig) SetPostAuthRoleGrantsNil() {
+	o.PostAuthRoleGrants = nil
+	o.NullFields = addNullField(o.NullFields, "PostAuthRoleGrants")
 }
 
 // GetRoleMappings returns the RoleMappings field value if set, zero value otherwise
@@ -288,6 +332,13 @@ func (o *ConnectedOrgConfig) HasRoleMappings() bool {
 // SetRoleMappings gets a reference to the given []AuthFederationRoleMapping and assigns it to the RoleMappings field.
 func (o *ConnectedOrgConfig) SetRoleMappings(v []AuthFederationRoleMapping) {
 	o.RoleMappings = &v
+	o.NullFields = removeNullField(o.NullFields, "RoleMappings")
+}
+
+// SetRoleMappingsNil sets RoleMappings to an explicit JSON null when marshaled.
+func (o *ConnectedOrgConfig) SetRoleMappingsNil() {
+	o.RoleMappings = nil
+	o.NullFields = addNullField(o.NullFields, "RoleMappings")
 }
 
 // GetUserConflicts returns the UserConflicts field value if set, zero value otherwise
@@ -321,4 +372,11 @@ func (o *ConnectedOrgConfig) HasUserConflicts() bool {
 // SetUserConflicts gets a reference to the given []FederatedUser and assigns it to the UserConflicts field.
 func (o *ConnectedOrgConfig) SetUserConflicts(v []FederatedUser) {
 	o.UserConflicts = &v
+	o.NullFields = removeNullField(o.NullFields, "UserConflicts")
+}
+
+// SetUserConflictsNil sets UserConflicts to an explicit JSON null when marshaled.
+func (o *ConnectedOrgConfig) SetUserConflictsNil() {
+	o.UserConflicts = nil
+	o.NullFields = addNullField(o.NullFields, "UserConflicts")
 }

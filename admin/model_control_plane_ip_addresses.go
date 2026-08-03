@@ -4,8 +4,20 @@ package admin
 
 // ControlPlaneIPAddresses List of IP addresses in the Atlas control plane.
 type ControlPlaneIPAddresses struct {
+	// List of gateways, each representing a group of service-specific IP addresses that customers can add to their allow lists independently. Includes the Atlas Gateway (data plane) group when present.
+	// Read only field.
+	Gateways *[]Gateway                                    `json:"gateways,omitempty"`
 	Inbound  *InboundControlPlaneCloudProviderIPAddresses  `json:"inbound,omitempty"`
 	Outbound *OutboundControlPlaneCloudProviderIPAddresses `json:"outbound,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ControlPlaneIPAddresses) MarshalJSON() ([]byte, error) {
+	type noMethod ControlPlaneIPAddresses
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewControlPlaneIPAddresses instantiates a new ControlPlaneIPAddresses object
@@ -23,6 +35,46 @@ func NewControlPlaneIPAddresses() *ControlPlaneIPAddresses {
 func NewControlPlaneIPAddressesWithDefaults() *ControlPlaneIPAddresses {
 	this := ControlPlaneIPAddresses{}
 	return &this
+}
+
+// GetGateways returns the Gateways field value if set, zero value otherwise
+func (o *ControlPlaneIPAddresses) GetGateways() []Gateway {
+	if o == nil || IsNil(o.Gateways) {
+		var ret []Gateway
+		return ret
+	}
+	return *o.Gateways
+}
+
+// GetGatewaysOk returns a tuple with the Gateways field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControlPlaneIPAddresses) GetGatewaysOk() (*[]Gateway, bool) {
+	if o == nil || IsNil(o.Gateways) {
+		return nil, false
+	}
+
+	return o.Gateways, true
+}
+
+// HasGateways returns a boolean if a field has been set.
+func (o *ControlPlaneIPAddresses) HasGateways() bool {
+	if o != nil && !IsNil(o.Gateways) {
+		return true
+	}
+
+	return false
+}
+
+// SetGateways gets a reference to the given []Gateway and assigns it to the Gateways field.
+func (o *ControlPlaneIPAddresses) SetGateways(v []Gateway) {
+	o.Gateways = &v
+	o.NullFields = removeNullField(o.NullFields, "Gateways")
+}
+
+// SetGatewaysNil sets Gateways to an explicit JSON null when marshaled.
+func (o *ControlPlaneIPAddresses) SetGatewaysNil() {
+	o.Gateways = nil
+	o.NullFields = addNullField(o.NullFields, "Gateways")
 }
 
 // GetInbound returns the Inbound field value if set, zero value otherwise
@@ -56,6 +108,13 @@ func (o *ControlPlaneIPAddresses) HasInbound() bool {
 // SetInbound gets a reference to the given InboundControlPlaneCloudProviderIPAddresses and assigns it to the Inbound field.
 func (o *ControlPlaneIPAddresses) SetInbound(v InboundControlPlaneCloudProviderIPAddresses) {
 	o.Inbound = &v
+	o.NullFields = removeNullField(o.NullFields, "Inbound")
+}
+
+// SetInboundNil sets Inbound to an explicit JSON null when marshaled.
+func (o *ControlPlaneIPAddresses) SetInboundNil() {
+	o.Inbound = nil
+	o.NullFields = addNullField(o.NullFields, "Inbound")
 }
 
 // GetOutbound returns the Outbound field value if set, zero value otherwise
@@ -89,4 +148,11 @@ func (o *ControlPlaneIPAddresses) HasOutbound() bool {
 // SetOutbound gets a reference to the given OutboundControlPlaneCloudProviderIPAddresses and assigns it to the Outbound field.
 func (o *ControlPlaneIPAddresses) SetOutbound(v OutboundControlPlaneCloudProviderIPAddresses) {
 	o.Outbound = &v
+	o.NullFields = removeNullField(o.NullFields, "Outbound")
+}
+
+// SetOutboundNil sets Outbound to an explicit JSON null when marshaled.
+func (o *ControlPlaneIPAddresses) SetOutboundNil() {
+	o.Outbound = nil
+	o.NullFields = addNullField(o.NullFields, "Outbound")
 }

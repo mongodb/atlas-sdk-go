@@ -8,6 +8,15 @@ type AiModelsRateLimitUpdateRequest struct {
 	RequestsPerMinuteLimit int `json:"requestsPerMinuteLimit"`
 	// The number of tokens per minute allowed for this model group. Must be a positive integer. Cannot be more than the organization level limit for this group model.
 	TokensPerMinuteLimit int `json:"tokensPerMinuteLimit"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AiModelsRateLimitUpdateRequest) MarshalJSON() ([]byte, error) {
+	type noMethod AiModelsRateLimitUpdateRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAiModelsRateLimitUpdateRequest instantiates a new AiModelsRateLimitUpdateRequest object

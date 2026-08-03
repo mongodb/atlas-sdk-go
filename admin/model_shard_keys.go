@@ -7,6 +7,15 @@ type ShardKeys struct {
 	// List of fields to use for the shard key.
 	// Write only field.
 	Key []any `json:"key"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ShardKeys) MarshalJSON() ([]byte, error) {
+	type noMethod ShardKeys
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewShardKeys instantiates a new ShardKeys object

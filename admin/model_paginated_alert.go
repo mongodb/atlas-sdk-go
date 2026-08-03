@@ -13,6 +13,15 @@ type PaginatedAlert struct {
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PaginatedAlert) MarshalJSON() ([]byte, error) {
+	type noMethod PaginatedAlert
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPaginatedAlert instantiates a new PaginatedAlert object
@@ -64,6 +73,13 @@ func (o *PaginatedAlert) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedAlert) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *PaginatedAlert) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetResults returns the Results field value
@@ -121,4 +137,11 @@ func (o *PaginatedAlert) HasTotalCount() bool {
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedAlert) SetTotalCount(v int) {
 	o.TotalCount = &v
+	o.NullFields = removeNullField(o.NullFields, "TotalCount")
+}
+
+// SetTotalCountNil sets TotalCount to an explicit JSON null when marshaled.
+func (o *PaginatedAlert) SetTotalCountNil() {
+	o.TotalCount = nil
+	o.NullFields = addNullField(o.NullFields, "TotalCount")
 }

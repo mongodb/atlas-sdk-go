@@ -8,6 +8,15 @@ type ZoneMapping struct {
 	Location string `json:"location"`
 	// Human-readable label that identifies the zone in your global cluster. This zone maps to a location code.
 	Zone string `json:"zone"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ZoneMapping) MarshalJSON() ([]byte, error) {
+	type noMethod ZoneMapping
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewZoneMapping instantiates a new ZoneMapping object

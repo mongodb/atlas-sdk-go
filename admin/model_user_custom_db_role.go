@@ -10,6 +10,15 @@ type UserCustomDBRole struct {
 	InheritedRoles *[]DatabaseInheritedRole `json:"inheritedRoles,omitempty"`
 	// Human-readable label that identifies the role for the request. This name must be unique for this custom role in this project.
 	RoleName string `json:"roleName"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *UserCustomDBRole) MarshalJSON() ([]byte, error) {
+	type noMethod UserCustomDBRole
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewUserCustomDBRole instantiates a new UserCustomDBRole object
@@ -61,6 +70,13 @@ func (o *UserCustomDBRole) HasActions() bool {
 // SetActions gets a reference to the given []DatabasePrivilegeAction and assigns it to the Actions field.
 func (o *UserCustomDBRole) SetActions(v []DatabasePrivilegeAction) {
 	o.Actions = &v
+	o.NullFields = removeNullField(o.NullFields, "Actions")
+}
+
+// SetActionsNil sets Actions to an explicit JSON null when marshaled.
+func (o *UserCustomDBRole) SetActionsNil() {
+	o.Actions = nil
+	o.NullFields = addNullField(o.NullFields, "Actions")
 }
 
 // GetInheritedRoles returns the InheritedRoles field value if set, zero value otherwise
@@ -94,6 +110,13 @@ func (o *UserCustomDBRole) HasInheritedRoles() bool {
 // SetInheritedRoles gets a reference to the given []DatabaseInheritedRole and assigns it to the InheritedRoles field.
 func (o *UserCustomDBRole) SetInheritedRoles(v []DatabaseInheritedRole) {
 	o.InheritedRoles = &v
+	o.NullFields = removeNullField(o.NullFields, "InheritedRoles")
+}
+
+// SetInheritedRolesNil sets InheritedRoles to an explicit JSON null when marshaled.
+func (o *UserCustomDBRole) SetInheritedRolesNil() {
+	o.InheritedRoles = nil
+	o.NullFields = addNullField(o.NullFields, "InheritedRoles")
 }
 
 // GetRoleName returns the RoleName field value

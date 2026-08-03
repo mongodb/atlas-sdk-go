@@ -20,6 +20,15 @@ type OrgServiceAccount struct {
 	Roles *[]string `json:"roles,omitempty"`
 	// A list of secrets associated with the specified Service Account.
 	Secrets *[]ServiceAccountSecret `json:"secrets,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *OrgServiceAccount) MarshalJSON() ([]byte, error) {
+	type noMethod OrgServiceAccount
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewOrgServiceAccount instantiates a new OrgServiceAccount object
@@ -70,6 +79,13 @@ func (o *OrgServiceAccount) HasClientId() bool {
 // SetClientId gets a reference to the given string and assigns it to the ClientId field.
 func (o *OrgServiceAccount) SetClientId(v string) {
 	o.ClientId = &v
+	o.NullFields = removeNullField(o.NullFields, "ClientId")
+}
+
+// SetClientIdNil sets ClientId to an explicit JSON null when marshaled.
+func (o *OrgServiceAccount) SetClientIdNil() {
+	o.ClientId = nil
+	o.NullFields = addNullField(o.NullFields, "ClientId")
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise
@@ -103,6 +119,13 @@ func (o *OrgServiceAccount) HasCreatedAt() bool {
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *OrgServiceAccount) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
+	o.NullFields = removeNullField(o.NullFields, "CreatedAt")
+}
+
+// SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled.
+func (o *OrgServiceAccount) SetCreatedAtNil() {
+	o.CreatedAt = nil
+	o.NullFields = addNullField(o.NullFields, "CreatedAt")
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise
@@ -136,6 +159,13 @@ func (o *OrgServiceAccount) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *OrgServiceAccount) SetDescription(v string) {
 	o.Description = &v
+	o.NullFields = removeNullField(o.NullFields, "Description")
+}
+
+// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
+func (o *OrgServiceAccount) SetDescriptionNil() {
+	o.Description = nil
+	o.NullFields = addNullField(o.NullFields, "Description")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -169,6 +199,13 @@ func (o *OrgServiceAccount) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *OrgServiceAccount) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *OrgServiceAccount) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise
@@ -202,6 +239,13 @@ func (o *OrgServiceAccount) HasRoles() bool {
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *OrgServiceAccount) SetRoles(v []string) {
 	o.Roles = &v
+	o.NullFields = removeNullField(o.NullFields, "Roles")
+}
+
+// SetRolesNil sets Roles to an explicit JSON null when marshaled.
+func (o *OrgServiceAccount) SetRolesNil() {
+	o.Roles = nil
+	o.NullFields = addNullField(o.NullFields, "Roles")
 }
 
 // GetSecrets returns the Secrets field value if set, zero value otherwise
@@ -235,4 +279,11 @@ func (o *OrgServiceAccount) HasSecrets() bool {
 // SetSecrets gets a reference to the given []ServiceAccountSecret and assigns it to the Secrets field.
 func (o *OrgServiceAccount) SetSecrets(v []ServiceAccountSecret) {
 	o.Secrets = &v
+	o.NullFields = removeNullField(o.NullFields, "Secrets")
+}
+
+// SetSecretsNil sets Secrets to an explicit JSON null when marshaled.
+func (o *OrgServiceAccount) SetSecretsNil() {
+	o.Secrets = nil
+	o.NullFields = addNullField(o.NullFields, "Secrets")
 }

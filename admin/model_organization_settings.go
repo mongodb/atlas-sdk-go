@@ -21,6 +21,15 @@ type OrganizationSettings struct {
 	SecurityContact *string `json:"securityContact,omitempty"`
 	// Flag that indicates whether a group's Atlas Stream Processing workspaces in this organization can create connections to other group's clusters in the same organization.
 	StreamsCrossGroupEnabled *bool `json:"streamsCrossGroupEnabled,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *OrganizationSettings) MarshalJSON() ([]byte, error) {
+	type noMethod OrganizationSettings
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewOrganizationSettings instantiates a new OrganizationSettings object
@@ -75,6 +84,13 @@ func (o *OrganizationSettings) HasApiAccessListRequired() bool {
 // SetApiAccessListRequired gets a reference to the given bool and assigns it to the ApiAccessListRequired field.
 func (o *OrganizationSettings) SetApiAccessListRequired(v bool) {
 	o.ApiAccessListRequired = &v
+	o.NullFields = removeNullField(o.NullFields, "ApiAccessListRequired")
+}
+
+// SetApiAccessListRequiredNil sets ApiAccessListRequired to an explicit JSON null when marshaled.
+func (o *OrganizationSettings) SetApiAccessListRequiredNil() {
+	o.ApiAccessListRequired = nil
+	o.NullFields = addNullField(o.NullFields, "ApiAccessListRequired")
 }
 
 // GetCustomSessionTimeouts returns the CustomSessionTimeouts field value if set, zero value otherwise
@@ -108,6 +124,13 @@ func (o *OrganizationSettings) HasCustomSessionTimeouts() bool {
 // SetCustomSessionTimeouts gets a reference to the given CustomSessionTimeouts and assigns it to the CustomSessionTimeouts field.
 func (o *OrganizationSettings) SetCustomSessionTimeouts(v CustomSessionTimeouts) {
 	o.CustomSessionTimeouts = &v
+	o.NullFields = removeNullField(o.NullFields, "CustomSessionTimeouts")
+}
+
+// SetCustomSessionTimeoutsNil sets CustomSessionTimeouts to an explicit JSON null when marshaled.
+func (o *OrganizationSettings) SetCustomSessionTimeoutsNil() {
+	o.CustomSessionTimeouts = nil
+	o.NullFields = addNullField(o.NullFields, "CustomSessionTimeouts")
 }
 
 // GetGenAIFeaturesEnabled returns the GenAIFeaturesEnabled field value if set, zero value otherwise
@@ -141,6 +164,13 @@ func (o *OrganizationSettings) HasGenAIFeaturesEnabled() bool {
 // SetGenAIFeaturesEnabled gets a reference to the given bool and assigns it to the GenAIFeaturesEnabled field.
 func (o *OrganizationSettings) SetGenAIFeaturesEnabled(v bool) {
 	o.GenAIFeaturesEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "GenAIFeaturesEnabled")
+}
+
+// SetGenAIFeaturesEnabledNil sets GenAIFeaturesEnabled to an explicit JSON null when marshaled.
+func (o *OrganizationSettings) SetGenAIFeaturesEnabledNil() {
+	o.GenAIFeaturesEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "GenAIFeaturesEnabled")
 }
 
 // GetMaxServiceAccountSecretValidityInHours returns the MaxServiceAccountSecretValidityInHours field value if set, zero value otherwise
@@ -174,6 +204,13 @@ func (o *OrganizationSettings) HasMaxServiceAccountSecretValidityInHours() bool 
 // SetMaxServiceAccountSecretValidityInHours gets a reference to the given int and assigns it to the MaxServiceAccountSecretValidityInHours field.
 func (o *OrganizationSettings) SetMaxServiceAccountSecretValidityInHours(v int) {
 	o.MaxServiceAccountSecretValidityInHours = &v
+	o.NullFields = removeNullField(o.NullFields, "MaxServiceAccountSecretValidityInHours")
+}
+
+// SetMaxServiceAccountSecretValidityInHoursNil sets MaxServiceAccountSecretValidityInHours to an explicit JSON null when marshaled.
+func (o *OrganizationSettings) SetMaxServiceAccountSecretValidityInHoursNil() {
+	o.MaxServiceAccountSecretValidityInHours = nil
+	o.NullFields = addNullField(o.NullFields, "MaxServiceAccountSecretValidityInHours")
 }
 
 // GetMultiFactorAuthRequired returns the MultiFactorAuthRequired field value if set, zero value otherwise
@@ -207,6 +244,13 @@ func (o *OrganizationSettings) HasMultiFactorAuthRequired() bool {
 // SetMultiFactorAuthRequired gets a reference to the given bool and assigns it to the MultiFactorAuthRequired field.
 func (o *OrganizationSettings) SetMultiFactorAuthRequired(v bool) {
 	o.MultiFactorAuthRequired = &v
+	o.NullFields = removeNullField(o.NullFields, "MultiFactorAuthRequired")
+}
+
+// SetMultiFactorAuthRequiredNil sets MultiFactorAuthRequired to an explicit JSON null when marshaled.
+func (o *OrganizationSettings) SetMultiFactorAuthRequiredNil() {
+	o.MultiFactorAuthRequired = nil
+	o.NullFields = addNullField(o.NullFields, "MultiFactorAuthRequired")
 }
 
 // GetOperationsContact returns the OperationsContact field value if set, zero value otherwise
@@ -240,6 +284,13 @@ func (o *OrganizationSettings) HasOperationsContact() bool {
 // SetOperationsContact gets a reference to the given string and assigns it to the OperationsContact field.
 func (o *OrganizationSettings) SetOperationsContact(v string) {
 	o.OperationsContact = &v
+	o.NullFields = removeNullField(o.NullFields, "OperationsContact")
+}
+
+// SetOperationsContactNil sets OperationsContact to an explicit JSON null when marshaled.
+func (o *OrganizationSettings) SetOperationsContactNil() {
+	o.OperationsContact = nil
+	o.NullFields = addNullField(o.NullFields, "OperationsContact")
 }
 
 // GetRestrictEmployeeAccess returns the RestrictEmployeeAccess field value if set, zero value otherwise
@@ -273,6 +324,13 @@ func (o *OrganizationSettings) HasRestrictEmployeeAccess() bool {
 // SetRestrictEmployeeAccess gets a reference to the given bool and assigns it to the RestrictEmployeeAccess field.
 func (o *OrganizationSettings) SetRestrictEmployeeAccess(v bool) {
 	o.RestrictEmployeeAccess = &v
+	o.NullFields = removeNullField(o.NullFields, "RestrictEmployeeAccess")
+}
+
+// SetRestrictEmployeeAccessNil sets RestrictEmployeeAccess to an explicit JSON null when marshaled.
+func (o *OrganizationSettings) SetRestrictEmployeeAccessNil() {
+	o.RestrictEmployeeAccess = nil
+	o.NullFields = addNullField(o.NullFields, "RestrictEmployeeAccess")
 }
 
 // GetSecurityContact returns the SecurityContact field value if set, zero value otherwise
@@ -306,6 +364,13 @@ func (o *OrganizationSettings) HasSecurityContact() bool {
 // SetSecurityContact gets a reference to the given string and assigns it to the SecurityContact field.
 func (o *OrganizationSettings) SetSecurityContact(v string) {
 	o.SecurityContact = &v
+	o.NullFields = removeNullField(o.NullFields, "SecurityContact")
+}
+
+// SetSecurityContactNil sets SecurityContact to an explicit JSON null when marshaled.
+func (o *OrganizationSettings) SetSecurityContactNil() {
+	o.SecurityContact = nil
+	o.NullFields = addNullField(o.NullFields, "SecurityContact")
 }
 
 // GetStreamsCrossGroupEnabled returns the StreamsCrossGroupEnabled field value if set, zero value otherwise
@@ -339,4 +404,11 @@ func (o *OrganizationSettings) HasStreamsCrossGroupEnabled() bool {
 // SetStreamsCrossGroupEnabled gets a reference to the given bool and assigns it to the StreamsCrossGroupEnabled field.
 func (o *OrganizationSettings) SetStreamsCrossGroupEnabled(v bool) {
 	o.StreamsCrossGroupEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "StreamsCrossGroupEnabled")
+}
+
+// SetStreamsCrossGroupEnabledNil sets StreamsCrossGroupEnabled to an explicit JSON null when marshaled.
+func (o *OrganizationSettings) SetStreamsCrossGroupEnabledNil() {
+	o.StreamsCrossGroupEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "StreamsCrossGroupEnabled")
 }

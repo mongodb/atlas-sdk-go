@@ -6,6 +6,15 @@ package admin
 type GroupInvitationUpdateRequest struct {
 	// One or more project-level roles to assign to the MongoDB Cloud user.
 	Roles *[]string `json:"roles,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *GroupInvitationUpdateRequest) MarshalJSON() ([]byte, error) {
+	type noMethod GroupInvitationUpdateRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGroupInvitationUpdateRequest instantiates a new GroupInvitationUpdateRequest object
@@ -56,4 +65,11 @@ func (o *GroupInvitationUpdateRequest) HasRoles() bool {
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *GroupInvitationUpdateRequest) SetRoles(v []string) {
 	o.Roles = &v
+	o.NullFields = removeNullField(o.NullFields, "Roles")
+}
+
+// SetRolesNil sets Roles to an explicit JSON null when marshaled.
+func (o *GroupInvitationUpdateRequest) SetRolesNil() {
+	o.Roles = nil
+	o.NullFields = addNullField(o.NullFields, "Roles")
 }

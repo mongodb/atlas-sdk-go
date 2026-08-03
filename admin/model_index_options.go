@@ -38,6 +38,15 @@ type IndexOptions struct {
 	TextIndexVersion *int `json:"textIndexVersion,omitempty"`
 	// Relative importance to place upon provided index parameters. This object expresses this as key/value pairs of index parameter and weight to apply to that parameter. You can specify weights for some or all the indexed parameters. The weight must be an integer between 1 and 99,999. MongoDB 5.0 and later can apply **weights** to **text** indexes only.
 	Weights any `json:"weights,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *IndexOptions) MarshalJSON() ([]byte, error) {
+	type noMethod IndexOptions
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewIndexOptions instantiates a new IndexOptions object
@@ -128,6 +137,13 @@ func (o *IndexOptions) HasVar2dsphereIndexVersion() bool {
 // SetVar2dsphereIndexVersion gets a reference to the given int and assigns it to the Var2dsphereIndexVersion field.
 func (o *IndexOptions) SetVar2dsphereIndexVersion(v int) {
 	o.Var2dsphereIndexVersion = &v
+	o.NullFields = removeNullField(o.NullFields, "Var2dsphereIndexVersion")
+}
+
+// SetVar2dsphereIndexVersionNil sets Var2dsphereIndexVersion to an explicit JSON null when marshaled.
+func (o *IndexOptions) SetVar2dsphereIndexVersionNil() {
+	o.Var2dsphereIndexVersion = nil
+	o.NullFields = addNullField(o.NullFields, "Var2dsphereIndexVersion")
 }
 
 // GetBackground returns the Background field value if set, zero value otherwise
@@ -161,6 +177,13 @@ func (o *IndexOptions) HasBackground() bool {
 // SetBackground gets a reference to the given bool and assigns it to the Background field.
 func (o *IndexOptions) SetBackground(v bool) {
 	o.Background = &v
+	o.NullFields = removeNullField(o.NullFields, "Background")
+}
+
+// SetBackgroundNil sets Background to an explicit JSON null when marshaled.
+func (o *IndexOptions) SetBackgroundNil() {
+	o.Background = nil
+	o.NullFields = addNullField(o.NullFields, "Background")
 }
 
 // GetBits returns the Bits field value if set, zero value otherwise
@@ -194,6 +217,13 @@ func (o *IndexOptions) HasBits() bool {
 // SetBits gets a reference to the given int and assigns it to the Bits field.
 func (o *IndexOptions) SetBits(v int) {
 	o.Bits = &v
+	o.NullFields = removeNullField(o.NullFields, "Bits")
+}
+
+// SetBitsNil sets Bits to an explicit JSON null when marshaled.
+func (o *IndexOptions) SetBitsNil() {
+	o.Bits = nil
+	o.NullFields = addNullField(o.NullFields, "Bits")
 }
 
 // GetBucketSize returns the BucketSize field value if set, zero value otherwise
@@ -227,6 +257,13 @@ func (o *IndexOptions) HasBucketSize() bool {
 // SetBucketSize gets a reference to the given int and assigns it to the BucketSize field.
 func (o *IndexOptions) SetBucketSize(v int) {
 	o.BucketSize = &v
+	o.NullFields = removeNullField(o.NullFields, "BucketSize")
+}
+
+// SetBucketSizeNil sets BucketSize to an explicit JSON null when marshaled.
+func (o *IndexOptions) SetBucketSizeNil() {
+	o.BucketSize = nil
+	o.NullFields = addNullField(o.NullFields, "BucketSize")
 }
 
 // GetColumnstoreProjection returns the ColumnstoreProjection field value if set, zero value otherwise
@@ -260,6 +297,13 @@ func (o *IndexOptions) HasColumnstoreProjection() bool {
 // SetColumnstoreProjection gets a reference to the given map[string]int and assigns it to the ColumnstoreProjection field.
 func (o *IndexOptions) SetColumnstoreProjection(v map[string]int) {
 	o.ColumnstoreProjection = &v
+	o.NullFields = removeNullField(o.NullFields, "ColumnstoreProjection")
+}
+
+// SetColumnstoreProjectionNil sets ColumnstoreProjection to an explicit JSON null when marshaled.
+func (o *IndexOptions) SetColumnstoreProjectionNil() {
+	o.ColumnstoreProjection = nil
+	o.NullFields = addNullField(o.NullFields, "ColumnstoreProjection")
 }
 
 // GetDefaultLanguage returns the DefaultLanguage field value if set, zero value otherwise
@@ -293,6 +337,13 @@ func (o *IndexOptions) HasDefaultLanguage() bool {
 // SetDefaultLanguage gets a reference to the given string and assigns it to the DefaultLanguage field.
 func (o *IndexOptions) SetDefaultLanguage(v string) {
 	o.DefaultLanguage = &v
+	o.NullFields = removeNullField(o.NullFields, "DefaultLanguage")
+}
+
+// SetDefaultLanguageNil sets DefaultLanguage to an explicit JSON null when marshaled.
+func (o *IndexOptions) SetDefaultLanguageNil() {
+	o.DefaultLanguage = nil
+	o.NullFields = addNullField(o.NullFields, "DefaultLanguage")
 }
 
 // GetExpireAfterSeconds returns the ExpireAfterSeconds field value if set, zero value otherwise
@@ -326,6 +377,13 @@ func (o *IndexOptions) HasExpireAfterSeconds() bool {
 // SetExpireAfterSeconds gets a reference to the given int and assigns it to the ExpireAfterSeconds field.
 func (o *IndexOptions) SetExpireAfterSeconds(v int) {
 	o.ExpireAfterSeconds = &v
+	o.NullFields = removeNullField(o.NullFields, "ExpireAfterSeconds")
+}
+
+// SetExpireAfterSecondsNil sets ExpireAfterSeconds to an explicit JSON null when marshaled.
+func (o *IndexOptions) SetExpireAfterSecondsNil() {
+	o.ExpireAfterSeconds = nil
+	o.NullFields = addNullField(o.NullFields, "ExpireAfterSeconds")
 }
 
 // GetHidden returns the Hidden field value if set, zero value otherwise
@@ -359,6 +417,13 @@ func (o *IndexOptions) HasHidden() bool {
 // SetHidden gets a reference to the given bool and assigns it to the Hidden field.
 func (o *IndexOptions) SetHidden(v bool) {
 	o.Hidden = &v
+	o.NullFields = removeNullField(o.NullFields, "Hidden")
+}
+
+// SetHiddenNil sets Hidden to an explicit JSON null when marshaled.
+func (o *IndexOptions) SetHiddenNil() {
+	o.Hidden = nil
+	o.NullFields = addNullField(o.NullFields, "Hidden")
 }
 
 // GetLanguageOverride returns the LanguageOverride field value if set, zero value otherwise
@@ -392,6 +457,13 @@ func (o *IndexOptions) HasLanguageOverride() bool {
 // SetLanguageOverride gets a reference to the given string and assigns it to the LanguageOverride field.
 func (o *IndexOptions) SetLanguageOverride(v string) {
 	o.LanguageOverride = &v
+	o.NullFields = removeNullField(o.NullFields, "LanguageOverride")
+}
+
+// SetLanguageOverrideNil sets LanguageOverride to an explicit JSON null when marshaled.
+func (o *IndexOptions) SetLanguageOverrideNil() {
+	o.LanguageOverride = nil
+	o.NullFields = addNullField(o.NullFields, "LanguageOverride")
 }
 
 // GetMax returns the Max field value if set, zero value otherwise
@@ -425,6 +497,13 @@ func (o *IndexOptions) HasMax() bool {
 // SetMax gets a reference to the given int and assigns it to the Max field.
 func (o *IndexOptions) SetMax(v int) {
 	o.Max = &v
+	o.NullFields = removeNullField(o.NullFields, "Max")
+}
+
+// SetMaxNil sets Max to an explicit JSON null when marshaled.
+func (o *IndexOptions) SetMaxNil() {
+	o.Max = nil
+	o.NullFields = addNullField(o.NullFields, "Max")
 }
 
 // GetMin returns the Min field value if set, zero value otherwise
@@ -458,6 +537,13 @@ func (o *IndexOptions) HasMin() bool {
 // SetMin gets a reference to the given int and assigns it to the Min field.
 func (o *IndexOptions) SetMin(v int) {
 	o.Min = &v
+	o.NullFields = removeNullField(o.NullFields, "Min")
+}
+
+// SetMinNil sets Min to an explicit JSON null when marshaled.
+func (o *IndexOptions) SetMinNil() {
+	o.Min = nil
+	o.NullFields = addNullField(o.NullFields, "Min")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -491,6 +577,13 @@ func (o *IndexOptions) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *IndexOptions) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *IndexOptions) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }
 
 // GetPartialFilterExpression returns the PartialFilterExpression field value if set, zero value otherwise
@@ -525,6 +618,13 @@ func (o *IndexOptions) HasPartialFilterExpression() bool {
 // SetPartialFilterExpression gets a reference to the given any and assigns it to the PartialFilterExpression field.
 func (o *IndexOptions) SetPartialFilterExpression(v any) {
 	o.PartialFilterExpression = v
+	o.NullFields = removeNullField(o.NullFields, "PartialFilterExpression")
+}
+
+// SetPartialFilterExpressionNil sets PartialFilterExpression to an explicit JSON null when marshaled.
+func (o *IndexOptions) SetPartialFilterExpressionNil() {
+	o.PartialFilterExpression = nil
+	o.NullFields = addNullField(o.NullFields, "PartialFilterExpression")
 }
 
 // GetSparse returns the Sparse field value if set, zero value otherwise
@@ -558,6 +658,13 @@ func (o *IndexOptions) HasSparse() bool {
 // SetSparse gets a reference to the given bool and assigns it to the Sparse field.
 func (o *IndexOptions) SetSparse(v bool) {
 	o.Sparse = &v
+	o.NullFields = removeNullField(o.NullFields, "Sparse")
+}
+
+// SetSparseNil sets Sparse to an explicit JSON null when marshaled.
+func (o *IndexOptions) SetSparseNil() {
+	o.Sparse = nil
+	o.NullFields = addNullField(o.NullFields, "Sparse")
 }
 
 // GetStorageEngine returns the StorageEngine field value if set, zero value otherwise
@@ -592,6 +699,13 @@ func (o *IndexOptions) HasStorageEngine() bool {
 // SetStorageEngine gets a reference to the given any and assigns it to the StorageEngine field.
 func (o *IndexOptions) SetStorageEngine(v any) {
 	o.StorageEngine = v
+	o.NullFields = removeNullField(o.NullFields, "StorageEngine")
+}
+
+// SetStorageEngineNil sets StorageEngine to an explicit JSON null when marshaled.
+func (o *IndexOptions) SetStorageEngineNil() {
+	o.StorageEngine = nil
+	o.NullFields = addNullField(o.NullFields, "StorageEngine")
 }
 
 // GetTextIndexVersion returns the TextIndexVersion field value if set, zero value otherwise
@@ -625,6 +739,13 @@ func (o *IndexOptions) HasTextIndexVersion() bool {
 // SetTextIndexVersion gets a reference to the given int and assigns it to the TextIndexVersion field.
 func (o *IndexOptions) SetTextIndexVersion(v int) {
 	o.TextIndexVersion = &v
+	o.NullFields = removeNullField(o.NullFields, "TextIndexVersion")
+}
+
+// SetTextIndexVersionNil sets TextIndexVersion to an explicit JSON null when marshaled.
+func (o *IndexOptions) SetTextIndexVersionNil() {
+	o.TextIndexVersion = nil
+	o.NullFields = addNullField(o.NullFields, "TextIndexVersion")
 }
 
 // GetWeights returns the Weights field value if set, zero value otherwise
@@ -659,4 +780,11 @@ func (o *IndexOptions) HasWeights() bool {
 // SetWeights gets a reference to the given any and assigns it to the Weights field.
 func (o *IndexOptions) SetWeights(v any) {
 	o.Weights = v
+	o.NullFields = removeNullField(o.NullFields, "Weights")
+}
+
+// SetWeightsNil sets Weights to an explicit JSON null when marshaled.
+func (o *IndexOptions) SetWeightsNil() {
+	o.Weights = nil
+	o.NullFields = addNullField(o.NullFields, "Weights")
 }

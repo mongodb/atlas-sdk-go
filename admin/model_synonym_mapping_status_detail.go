@@ -10,6 +10,15 @@ type SynonymMappingStatusDetail struct {
 	Queryable *bool `json:"queryable,omitempty"`
 	// Status that describes this index's synonym mappings. This status appears only if the index has synonyms defined.
 	Status *string `json:"status,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *SynonymMappingStatusDetail) MarshalJSON() ([]byte, error) {
+	type noMethod SynonymMappingStatusDetail
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSynonymMappingStatusDetail instantiates a new SynonymMappingStatusDetail object
@@ -60,6 +69,13 @@ func (o *SynonymMappingStatusDetail) HasMessage() bool {
 // SetMessage gets a reference to the given string and assigns it to the Message field.
 func (o *SynonymMappingStatusDetail) SetMessage(v string) {
 	o.Message = &v
+	o.NullFields = removeNullField(o.NullFields, "Message")
+}
+
+// SetMessageNil sets Message to an explicit JSON null when marshaled.
+func (o *SynonymMappingStatusDetail) SetMessageNil() {
+	o.Message = nil
+	o.NullFields = addNullField(o.NullFields, "Message")
 }
 
 // GetQueryable returns the Queryable field value if set, zero value otherwise
@@ -93,6 +109,13 @@ func (o *SynonymMappingStatusDetail) HasQueryable() bool {
 // SetQueryable gets a reference to the given bool and assigns it to the Queryable field.
 func (o *SynonymMappingStatusDetail) SetQueryable(v bool) {
 	o.Queryable = &v
+	o.NullFields = removeNullField(o.NullFields, "Queryable")
+}
+
+// SetQueryableNil sets Queryable to an explicit JSON null when marshaled.
+func (o *SynonymMappingStatusDetail) SetQueryableNil() {
+	o.Queryable = nil
+	o.NullFields = addNullField(o.NullFields, "Queryable")
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
@@ -126,4 +149,11 @@ func (o *SynonymMappingStatusDetail) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *SynonymMappingStatusDetail) SetStatus(v string) {
 	o.Status = &v
+	o.NullFields = removeNullField(o.NullFields, "Status")
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *SynonymMappingStatusDetail) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = addNullField(o.NullFields, "Status")
 }

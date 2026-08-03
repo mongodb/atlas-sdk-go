@@ -60,6 +60,15 @@ type BackupRestoreJob struct {
 	// Read only field.
 	StatusName *string           `json:"statusName,omitempty"`
 	Timestamp  *ApiBSONTimestamp `json:"timestamp,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *BackupRestoreJob) MarshalJSON() ([]byte, error) {
+	type noMethod BackupRestoreJob
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewBackupRestoreJob instantiates a new BackupRestoreJob object
@@ -111,6 +120,13 @@ func (o *BackupRestoreJob) HasBatchId() bool {
 // SetBatchId gets a reference to the given string and assigns it to the BatchId field.
 func (o *BackupRestoreJob) SetBatchId(v string) {
 	o.BatchId = &v
+	o.NullFields = removeNullField(o.NullFields, "BatchId")
+}
+
+// SetBatchIdNil sets BatchId to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetBatchIdNil() {
+	o.BatchId = nil
+	o.NullFields = addNullField(o.NullFields, "BatchId")
 }
 
 // GetCheckpointId returns the CheckpointId field value if set, zero value otherwise
@@ -144,6 +160,13 @@ func (o *BackupRestoreJob) HasCheckpointId() bool {
 // SetCheckpointId gets a reference to the given string and assigns it to the CheckpointId field.
 func (o *BackupRestoreJob) SetCheckpointId(v string) {
 	o.CheckpointId = &v
+	o.NullFields = removeNullField(o.NullFields, "CheckpointId")
+}
+
+// SetCheckpointIdNil sets CheckpointId to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetCheckpointIdNil() {
+	o.CheckpointId = nil
+	o.NullFields = addNullField(o.NullFields, "CheckpointId")
 }
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise
@@ -177,6 +200,13 @@ func (o *BackupRestoreJob) HasClusterId() bool {
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
 func (o *BackupRestoreJob) SetClusterId(v string) {
 	o.ClusterId = &v
+	o.NullFields = removeNullField(o.NullFields, "ClusterId")
+}
+
+// SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetClusterIdNil() {
+	o.ClusterId = nil
+	o.NullFields = addNullField(o.NullFields, "ClusterId")
 }
 
 // GetClusterName returns the ClusterName field value if set, zero value otherwise
@@ -210,6 +240,13 @@ func (o *BackupRestoreJob) HasClusterName() bool {
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *BackupRestoreJob) SetClusterName(v string) {
 	o.ClusterName = &v
+	o.NullFields = removeNullField(o.NullFields, "ClusterName")
+}
+
+// SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetClusterNameNil() {
+	o.ClusterName = nil
+	o.NullFields = addNullField(o.NullFields, "ClusterName")
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise
@@ -243,6 +280,13 @@ func (o *BackupRestoreJob) HasCreated() bool {
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *BackupRestoreJob) SetCreated(v time.Time) {
 	o.Created = &v
+	o.NullFields = removeNullField(o.NullFields, "Created")
+}
+
+// SetCreatedNil sets Created to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetCreatedNil() {
+	o.Created = nil
+	o.NullFields = addNullField(o.NullFields, "Created")
 }
 
 // GetDelivery returns the Delivery field value
@@ -300,6 +344,13 @@ func (o *BackupRestoreJob) HasDeploymentJobId() bool {
 // SetDeploymentJobId gets a reference to the given string and assigns it to the DeploymentJobId field.
 func (o *BackupRestoreJob) SetDeploymentJobId(v string) {
 	o.DeploymentJobId = &v
+	o.NullFields = removeNullField(o.NullFields, "DeploymentJobId")
+}
+
+// SetDeploymentJobIdNil sets DeploymentJobId to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetDeploymentJobIdNil() {
+	o.DeploymentJobId = nil
+	o.NullFields = addNullField(o.NullFields, "DeploymentJobId")
 }
 
 // GetEncryptionEnabled returns the EncryptionEnabled field value if set, zero value otherwise
@@ -333,6 +384,13 @@ func (o *BackupRestoreJob) HasEncryptionEnabled() bool {
 // SetEncryptionEnabled gets a reference to the given bool and assigns it to the EncryptionEnabled field.
 func (o *BackupRestoreJob) SetEncryptionEnabled(v bool) {
 	o.EncryptionEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "EncryptionEnabled")
+}
+
+// SetEncryptionEnabledNil sets EncryptionEnabled to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetEncryptionEnabledNil() {
+	o.EncryptionEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "EncryptionEnabled")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -366,6 +424,13 @@ func (o *BackupRestoreJob) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *BackupRestoreJob) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetHashes returns the Hashes field value if set, zero value otherwise
@@ -399,6 +464,13 @@ func (o *BackupRestoreJob) HasHashes() bool {
 // SetHashes gets a reference to the given []RestoreJobFileHash and assigns it to the Hashes field.
 func (o *BackupRestoreJob) SetHashes(v []RestoreJobFileHash) {
 	o.Hashes = &v
+	o.NullFields = removeNullField(o.NullFields, "Hashes")
+}
+
+// SetHashesNil sets Hashes to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetHashesNil() {
+	o.Hashes = nil
+	o.NullFields = addNullField(o.NullFields, "Hashes")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -432,6 +504,13 @@ func (o *BackupRestoreJob) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *BackupRestoreJob) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -465,6 +544,13 @@ func (o *BackupRestoreJob) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *BackupRestoreJob) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetMasterKeyUUID returns the MasterKeyUUID field value if set, zero value otherwise
@@ -498,6 +584,13 @@ func (o *BackupRestoreJob) HasMasterKeyUUID() bool {
 // SetMasterKeyUUID gets a reference to the given string and assigns it to the MasterKeyUUID field.
 func (o *BackupRestoreJob) SetMasterKeyUUID(v string) {
 	o.MasterKeyUUID = &v
+	o.NullFields = removeNullField(o.NullFields, "MasterKeyUUID")
+}
+
+// SetMasterKeyUUIDNil sets MasterKeyUUID to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetMasterKeyUUIDNil() {
+	o.MasterKeyUUID = nil
+	o.NullFields = addNullField(o.NullFields, "MasterKeyUUID")
 }
 
 // GetOplogInc returns the OplogInc field value if set, zero value otherwise
@@ -531,6 +624,13 @@ func (o *BackupRestoreJob) HasOplogInc() bool {
 // SetOplogInc gets a reference to the given int and assigns it to the OplogInc field.
 func (o *BackupRestoreJob) SetOplogInc(v int) {
 	o.OplogInc = &v
+	o.NullFields = removeNullField(o.NullFields, "OplogInc")
+}
+
+// SetOplogIncNil sets OplogInc to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetOplogIncNil() {
+	o.OplogInc = nil
+	o.NullFields = addNullField(o.NullFields, "OplogInc")
 }
 
 // GetOplogTs returns the OplogTs field value if set, zero value otherwise
@@ -564,6 +664,13 @@ func (o *BackupRestoreJob) HasOplogTs() bool {
 // SetOplogTs gets a reference to the given string and assigns it to the OplogTs field.
 func (o *BackupRestoreJob) SetOplogTs(v string) {
 	o.OplogTs = &v
+	o.NullFields = removeNullField(o.NullFields, "OplogTs")
+}
+
+// SetOplogTsNil sets OplogTs to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetOplogTsNil() {
+	o.OplogTs = nil
+	o.NullFields = addNullField(o.NullFields, "OplogTs")
 }
 
 // GetPointInTimeUTCMillis returns the PointInTimeUTCMillis field value if set, zero value otherwise
@@ -597,6 +704,13 @@ func (o *BackupRestoreJob) HasPointInTimeUTCMillis() bool {
 // SetPointInTimeUTCMillis gets a reference to the given int64 and assigns it to the PointInTimeUTCMillis field.
 func (o *BackupRestoreJob) SetPointInTimeUTCMillis(v int64) {
 	o.PointInTimeUTCMillis = &v
+	o.NullFields = removeNullField(o.NullFields, "PointInTimeUTCMillis")
+}
+
+// SetPointInTimeUTCMillisNil sets PointInTimeUTCMillis to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetPointInTimeUTCMillisNil() {
+	o.PointInTimeUTCMillis = nil
+	o.NullFields = addNullField(o.NullFields, "PointInTimeUTCMillis")
 }
 
 // GetSnapshotId returns the SnapshotId field value if set, zero value otherwise
@@ -630,6 +744,13 @@ func (o *BackupRestoreJob) HasSnapshotId() bool {
 // SetSnapshotId gets a reference to the given string and assigns it to the SnapshotId field.
 func (o *BackupRestoreJob) SetSnapshotId(v string) {
 	o.SnapshotId = &v
+	o.NullFields = removeNullField(o.NullFields, "SnapshotId")
+}
+
+// SetSnapshotIdNil sets SnapshotId to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetSnapshotIdNil() {
+	o.SnapshotId = nil
+	o.NullFields = addNullField(o.NullFields, "SnapshotId")
 }
 
 // GetStatusName returns the StatusName field value if set, zero value otherwise
@@ -663,6 +784,13 @@ func (o *BackupRestoreJob) HasStatusName() bool {
 // SetStatusName gets a reference to the given string and assigns it to the StatusName field.
 func (o *BackupRestoreJob) SetStatusName(v string) {
 	o.StatusName = &v
+	o.NullFields = removeNullField(o.NullFields, "StatusName")
+}
+
+// SetStatusNameNil sets StatusName to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetStatusNameNil() {
+	o.StatusName = nil
+	o.NullFields = addNullField(o.NullFields, "StatusName")
 }
 
 // GetTimestamp returns the Timestamp field value if set, zero value otherwise
@@ -696,4 +824,11 @@ func (o *BackupRestoreJob) HasTimestamp() bool {
 // SetTimestamp gets a reference to the given ApiBSONTimestamp and assigns it to the Timestamp field.
 func (o *BackupRestoreJob) SetTimestamp(v ApiBSONTimestamp) {
 	o.Timestamp = &v
+	o.NullFields = removeNullField(o.NullFields, "Timestamp")
+}
+
+// SetTimestampNil sets Timestamp to an explicit JSON null when marshaled.
+func (o *BackupRestoreJob) SetTimestampNil() {
+	o.Timestamp = nil
+	o.NullFields = addNullField(o.NullFields, "Timestamp")
 }

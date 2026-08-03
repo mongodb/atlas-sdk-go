@@ -8,6 +8,15 @@ type DataLakeStorage struct {
 	Databases *[]DataLakeDatabaseInstance `json:"databases,omitempty"`
 	// Array that contains the data stores for the data lake.
 	Stores *[]DataLakeStoreSettings `json:"stores,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DataLakeStorage) MarshalJSON() ([]byte, error) {
+	type noMethod DataLakeStorage
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataLakeStorage instantiates a new DataLakeStorage object
@@ -58,6 +67,13 @@ func (o *DataLakeStorage) HasDatabases() bool {
 // SetDatabases gets a reference to the given []DataLakeDatabaseInstance and assigns it to the Databases field.
 func (o *DataLakeStorage) SetDatabases(v []DataLakeDatabaseInstance) {
 	o.Databases = &v
+	o.NullFields = removeNullField(o.NullFields, "Databases")
+}
+
+// SetDatabasesNil sets Databases to an explicit JSON null when marshaled.
+func (o *DataLakeStorage) SetDatabasesNil() {
+	o.Databases = nil
+	o.NullFields = addNullField(o.NullFields, "Databases")
 }
 
 // GetStores returns the Stores field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *DataLakeStorage) HasStores() bool {
 // SetStores gets a reference to the given []DataLakeStoreSettings and assigns it to the Stores field.
 func (o *DataLakeStorage) SetStores(v []DataLakeStoreSettings) {
 	o.Stores = &v
+	o.NullFields = removeNullField(o.NullFields, "Stores")
+}
+
+// SetStoresNil sets Stores to an explicit JSON null when marshaled.
+func (o *DataLakeStorage) SetStoresNil() {
+	o.Stores = nil
+	o.NullFields = addNullField(o.NullFields, "Stores")
 }

@@ -7,6 +7,15 @@ type ServerlessTenantCreateRequest struct {
 	// Human-readable comment associated with the private endpoint.
 	// Write only field.
 	Comment *string `json:"comment,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ServerlessTenantCreateRequest) MarshalJSON() ([]byte, error) {
+	type noMethod ServerlessTenantCreateRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewServerlessTenantCreateRequest instantiates a new ServerlessTenantCreateRequest object
@@ -57,4 +66,11 @@ func (o *ServerlessTenantCreateRequest) HasComment() bool {
 // SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *ServerlessTenantCreateRequest) SetComment(v string) {
 	o.Comment = &v
+	o.NullFields = removeNullField(o.NullFields, "Comment")
+}
+
+// SetCommentNil sets Comment to an explicit JSON null when marshaled.
+func (o *ServerlessTenantCreateRequest) SetCommentNil() {
+	o.Comment = nil
+	o.NullFields = addNullField(o.NullFields, "Comment")
 }

@@ -8,6 +8,15 @@ type DataLakeDatabaseCollection struct {
 	DataSources *[]DataLakeDatabaseDataSourceSettings `json:"dataSources,omitempty"`
 	// Human-readable label that identifies the collection to which MongoDB Cloud maps the data in the data stores.
 	Name *string `json:"name,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DataLakeDatabaseCollection) MarshalJSON() ([]byte, error) {
+	type noMethod DataLakeDatabaseCollection
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataLakeDatabaseCollection instantiates a new DataLakeDatabaseCollection object
@@ -58,6 +67,13 @@ func (o *DataLakeDatabaseCollection) HasDataSources() bool {
 // SetDataSources gets a reference to the given []DataLakeDatabaseDataSourceSettings and assigns it to the DataSources field.
 func (o *DataLakeDatabaseCollection) SetDataSources(v []DataLakeDatabaseDataSourceSettings) {
 	o.DataSources = &v
+	o.NullFields = removeNullField(o.NullFields, "DataSources")
+}
+
+// SetDataSourcesNil sets DataSources to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseCollection) SetDataSourcesNil() {
+	o.DataSources = nil
+	o.NullFields = addNullField(o.NullFields, "DataSources")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *DataLakeDatabaseCollection) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DataLakeDatabaseCollection) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseCollection) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }

@@ -12,6 +12,15 @@ type DataLakeDatabaseInstance struct {
 	Name *string `json:"name,omitempty"`
 	// Array of aggregation pipelines that apply to the collection. This only applies to S3 data sources.
 	Views *[]DataLakeApiBase `json:"views,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DataLakeDatabaseInstance) MarshalJSON() ([]byte, error) {
+	type noMethod DataLakeDatabaseInstance
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataLakeDatabaseInstance instantiates a new DataLakeDatabaseInstance object
@@ -66,6 +75,13 @@ func (o *DataLakeDatabaseInstance) HasCollections() bool {
 // SetCollections gets a reference to the given []DataLakeDatabaseCollection and assigns it to the Collections field.
 func (o *DataLakeDatabaseInstance) SetCollections(v []DataLakeDatabaseCollection) {
 	o.Collections = &v
+	o.NullFields = removeNullField(o.NullFields, "Collections")
+}
+
+// SetCollectionsNil sets Collections to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseInstance) SetCollectionsNil() {
+	o.Collections = nil
+	o.NullFields = addNullField(o.NullFields, "Collections")
 }
 
 // GetMaxWildcardCollections returns the MaxWildcardCollections field value if set, zero value otherwise
@@ -99,6 +115,13 @@ func (o *DataLakeDatabaseInstance) HasMaxWildcardCollections() bool {
 // SetMaxWildcardCollections gets a reference to the given int and assigns it to the MaxWildcardCollections field.
 func (o *DataLakeDatabaseInstance) SetMaxWildcardCollections(v int) {
 	o.MaxWildcardCollections = &v
+	o.NullFields = removeNullField(o.NullFields, "MaxWildcardCollections")
+}
+
+// SetMaxWildcardCollectionsNil sets MaxWildcardCollections to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseInstance) SetMaxWildcardCollectionsNil() {
+	o.MaxWildcardCollections = nil
+	o.NullFields = addNullField(o.NullFields, "MaxWildcardCollections")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -132,6 +155,13 @@ func (o *DataLakeDatabaseInstance) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DataLakeDatabaseInstance) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseInstance) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }
 
 // GetViews returns the Views field value if set, zero value otherwise
@@ -165,4 +195,11 @@ func (o *DataLakeDatabaseInstance) HasViews() bool {
 // SetViews gets a reference to the given []DataLakeApiBase and assigns it to the Views field.
 func (o *DataLakeDatabaseInstance) SetViews(v []DataLakeApiBase) {
 	o.Views = &v
+	o.NullFields = removeNullField(o.NullFields, "Views")
+}
+
+// SetViewsNil sets Views to an explicit JSON null when marshaled.
+func (o *DataLakeDatabaseInstance) SetViewsNil() {
+	o.Views = nil
+	o.NullFields = addNullField(o.NullFields, "Views")
 }

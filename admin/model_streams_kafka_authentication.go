@@ -14,7 +14,7 @@ type StreamsKafkaAuthentication struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Style of authentication. Can be one of PLAIN, SCRAM-256, SCRAM-512, or OAUTHBEARER.
 	Mechanism *string `json:"mechanism,omitempty"`
-	// SASL OAUTHBEARER authentication method. Can only be OIDC currently.
+	// SASL OAUTHBEARER authentication method. Currently, only OIDC is supported.
 	Method *string `json:"method,omitempty"`
 	// Password of the account to connect to the Kafka cluster.
 	// Write only field.
@@ -35,6 +35,15 @@ type StreamsKafkaAuthentication struct {
 	TokenEndpointUrl *string `json:"tokenEndpointUrl,omitempty"`
 	// Username of the account to connect to the Kafka cluster.
 	Username *string `json:"username,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamsKafkaAuthentication) MarshalJSON() ([]byte, error) {
+	type noMethod StreamsKafkaAuthentication
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsKafkaAuthentication instantiates a new StreamsKafkaAuthentication object
@@ -85,6 +94,13 @@ func (o *StreamsKafkaAuthentication) HasClientId() bool {
 // SetClientId gets a reference to the given string and assigns it to the ClientId field.
 func (o *StreamsKafkaAuthentication) SetClientId(v string) {
 	o.ClientId = &v
+	o.NullFields = removeNullField(o.NullFields, "ClientId")
+}
+
+// SetClientIdNil sets ClientId to an explicit JSON null when marshaled.
+func (o *StreamsKafkaAuthentication) SetClientIdNil() {
+	o.ClientId = nil
+	o.NullFields = addNullField(o.NullFields, "ClientId")
 }
 
 // GetClientSecret returns the ClientSecret field value if set, zero value otherwise
@@ -118,6 +134,13 @@ func (o *StreamsKafkaAuthentication) HasClientSecret() bool {
 // SetClientSecret gets a reference to the given string and assigns it to the ClientSecret field.
 func (o *StreamsKafkaAuthentication) SetClientSecret(v string) {
 	o.ClientSecret = &v
+	o.NullFields = removeNullField(o.NullFields, "ClientSecret")
+}
+
+// SetClientSecretNil sets ClientSecret to an explicit JSON null when marshaled.
+func (o *StreamsKafkaAuthentication) SetClientSecretNil() {
+	o.ClientSecret = nil
+	o.NullFields = addNullField(o.NullFields, "ClientSecret")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -151,6 +174,13 @@ func (o *StreamsKafkaAuthentication) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsKafkaAuthentication) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *StreamsKafkaAuthentication) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetMechanism returns the Mechanism field value if set, zero value otherwise
@@ -184,6 +214,13 @@ func (o *StreamsKafkaAuthentication) HasMechanism() bool {
 // SetMechanism gets a reference to the given string and assigns it to the Mechanism field.
 func (o *StreamsKafkaAuthentication) SetMechanism(v string) {
 	o.Mechanism = &v
+	o.NullFields = removeNullField(o.NullFields, "Mechanism")
+}
+
+// SetMechanismNil sets Mechanism to an explicit JSON null when marshaled.
+func (o *StreamsKafkaAuthentication) SetMechanismNil() {
+	o.Mechanism = nil
+	o.NullFields = addNullField(o.NullFields, "Mechanism")
 }
 
 // GetMethod returns the Method field value if set, zero value otherwise
@@ -217,6 +254,13 @@ func (o *StreamsKafkaAuthentication) HasMethod() bool {
 // SetMethod gets a reference to the given string and assigns it to the Method field.
 func (o *StreamsKafkaAuthentication) SetMethod(v string) {
 	o.Method = &v
+	o.NullFields = removeNullField(o.NullFields, "Method")
+}
+
+// SetMethodNil sets Method to an explicit JSON null when marshaled.
+func (o *StreamsKafkaAuthentication) SetMethodNil() {
+	o.Method = nil
+	o.NullFields = addNullField(o.NullFields, "Method")
 }
 
 // GetPassword returns the Password field value if set, zero value otherwise
@@ -250,6 +294,13 @@ func (o *StreamsKafkaAuthentication) HasPassword() bool {
 // SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *StreamsKafkaAuthentication) SetPassword(v string) {
 	o.Password = &v
+	o.NullFields = removeNullField(o.NullFields, "Password")
+}
+
+// SetPasswordNil sets Password to an explicit JSON null when marshaled.
+func (o *StreamsKafkaAuthentication) SetPasswordNil() {
+	o.Password = nil
+	o.NullFields = addNullField(o.NullFields, "Password")
 }
 
 // GetSaslOauthbearerExtensions returns the SaslOauthbearerExtensions field value if set, zero value otherwise
@@ -283,6 +334,13 @@ func (o *StreamsKafkaAuthentication) HasSaslOauthbearerExtensions() bool {
 // SetSaslOauthbearerExtensions gets a reference to the given string and assigns it to the SaslOauthbearerExtensions field.
 func (o *StreamsKafkaAuthentication) SetSaslOauthbearerExtensions(v string) {
 	o.SaslOauthbearerExtensions = &v
+	o.NullFields = removeNullField(o.NullFields, "SaslOauthbearerExtensions")
+}
+
+// SetSaslOauthbearerExtensionsNil sets SaslOauthbearerExtensions to an explicit JSON null when marshaled.
+func (o *StreamsKafkaAuthentication) SetSaslOauthbearerExtensionsNil() {
+	o.SaslOauthbearerExtensions = nil
+	o.NullFields = addNullField(o.NullFields, "SaslOauthbearerExtensions")
 }
 
 // GetScope returns the Scope field value if set, zero value otherwise
@@ -316,6 +374,13 @@ func (o *StreamsKafkaAuthentication) HasScope() bool {
 // SetScope gets a reference to the given string and assigns it to the Scope field.
 func (o *StreamsKafkaAuthentication) SetScope(v string) {
 	o.Scope = &v
+	o.NullFields = removeNullField(o.NullFields, "Scope")
+}
+
+// SetScopeNil sets Scope to an explicit JSON null when marshaled.
+func (o *StreamsKafkaAuthentication) SetScopeNil() {
+	o.Scope = nil
+	o.NullFields = addNullField(o.NullFields, "Scope")
 }
 
 // GetSslCertificate returns the SslCertificate field value if set, zero value otherwise
@@ -349,6 +414,13 @@ func (o *StreamsKafkaAuthentication) HasSslCertificate() bool {
 // SetSslCertificate gets a reference to the given string and assigns it to the SslCertificate field.
 func (o *StreamsKafkaAuthentication) SetSslCertificate(v string) {
 	o.SslCertificate = &v
+	o.NullFields = removeNullField(o.NullFields, "SslCertificate")
+}
+
+// SetSslCertificateNil sets SslCertificate to an explicit JSON null when marshaled.
+func (o *StreamsKafkaAuthentication) SetSslCertificateNil() {
+	o.SslCertificate = nil
+	o.NullFields = addNullField(o.NullFields, "SslCertificate")
 }
 
 // GetSslKey returns the SslKey field value if set, zero value otherwise
@@ -382,6 +454,13 @@ func (o *StreamsKafkaAuthentication) HasSslKey() bool {
 // SetSslKey gets a reference to the given string and assigns it to the SslKey field.
 func (o *StreamsKafkaAuthentication) SetSslKey(v string) {
 	o.SslKey = &v
+	o.NullFields = removeNullField(o.NullFields, "SslKey")
+}
+
+// SetSslKeyNil sets SslKey to an explicit JSON null when marshaled.
+func (o *StreamsKafkaAuthentication) SetSslKeyNil() {
+	o.SslKey = nil
+	o.NullFields = addNullField(o.NullFields, "SslKey")
 }
 
 // GetSslKeyPassword returns the SslKeyPassword field value if set, zero value otherwise
@@ -415,6 +494,13 @@ func (o *StreamsKafkaAuthentication) HasSslKeyPassword() bool {
 // SetSslKeyPassword gets a reference to the given string and assigns it to the SslKeyPassword field.
 func (o *StreamsKafkaAuthentication) SetSslKeyPassword(v string) {
 	o.SslKeyPassword = &v
+	o.NullFields = removeNullField(o.NullFields, "SslKeyPassword")
+}
+
+// SetSslKeyPasswordNil sets SslKeyPassword to an explicit JSON null when marshaled.
+func (o *StreamsKafkaAuthentication) SetSslKeyPasswordNil() {
+	o.SslKeyPassword = nil
+	o.NullFields = addNullField(o.NullFields, "SslKeyPassword")
 }
 
 // GetTokenEndpointUrl returns the TokenEndpointUrl field value if set, zero value otherwise
@@ -448,6 +534,13 @@ func (o *StreamsKafkaAuthentication) HasTokenEndpointUrl() bool {
 // SetTokenEndpointUrl gets a reference to the given string and assigns it to the TokenEndpointUrl field.
 func (o *StreamsKafkaAuthentication) SetTokenEndpointUrl(v string) {
 	o.TokenEndpointUrl = &v
+	o.NullFields = removeNullField(o.NullFields, "TokenEndpointUrl")
+}
+
+// SetTokenEndpointUrlNil sets TokenEndpointUrl to an explicit JSON null when marshaled.
+func (o *StreamsKafkaAuthentication) SetTokenEndpointUrlNil() {
+	o.TokenEndpointUrl = nil
+	o.NullFields = addNullField(o.NullFields, "TokenEndpointUrl")
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise
@@ -481,4 +574,11 @@ func (o *StreamsKafkaAuthentication) HasUsername() bool {
 // SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *StreamsKafkaAuthentication) SetUsername(v string) {
 	o.Username = &v
+	o.NullFields = removeNullField(o.NullFields, "Username")
+}
+
+// SetUsernameNil sets Username to an explicit JSON null when marshaled.
+func (o *StreamsKafkaAuthentication) SetUsernameNil() {
+	o.Username = nil
+	o.NullFields = addNullField(o.NullFields, "Username")
 }
