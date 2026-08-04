@@ -53,6 +53,13 @@ SetId sets Id field to given value.
 `func (o *AtlasOrganization) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *AtlasOrganization) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetIsDeleted
 
 `func (o *AtlasOrganization) GetIsDeleted() bool`
@@ -77,6 +84,13 @@ SetIsDeleted sets IsDeleted field to given value.
 `func (o *AtlasOrganization) HasIsDeleted() bool`
 
 HasIsDeleted returns a boolean if a field has been set.
+
+### SetIsDeletedNil
+
+`func (o *AtlasOrganization) SetIsDeletedNil()`
+
+SetIsDeletedNil sets IsDeleted to an explicit JSON null when marshaled, overriding any value previously set with SetIsDeleted. Calling SetIsDeleted again clears the null override.
+
 ### GetLinks
 
 `func (o *AtlasOrganization) GetLinks() []Link`
@@ -101,6 +115,13 @@ SetLinks sets Links field to given value.
 `func (o *AtlasOrganization) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *AtlasOrganization) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetName
 
 `func (o *AtlasOrganization) GetName() string`
@@ -144,6 +165,13 @@ SetSkipDefaultAlertsSettings sets SkipDefaultAlertsSettings field to given value
 `func (o *AtlasOrganization) HasSkipDefaultAlertsSettings() bool`
 
 HasSkipDefaultAlertsSettings returns a boolean if a field has been set.
+
+### SetSkipDefaultAlertsSettingsNil
+
+`func (o *AtlasOrganization) SetSkipDefaultAlertsSettingsNil()`
+
+SetSkipDefaultAlertsSettingsNil sets SkipDefaultAlertsSettings to an explicit JSON null when marshaled, overriding any value previously set with SetSkipDefaultAlertsSettings. Calling SetSkipDefaultAlertsSettings again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

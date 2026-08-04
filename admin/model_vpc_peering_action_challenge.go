@@ -11,6 +11,15 @@ type VPCPeeringActionChallenge struct {
 	RequesterAccountId *string `json:"requesterAccountId,omitempty"`
 	// The AWS requester VPC ID.
 	RequesterVpcId *string `json:"requesterVpcId,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *VPCPeeringActionChallenge) MarshalJSON() ([]byte, error) {
+	type noMethod VPCPeeringActionChallenge
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewVPCPeeringActionChallenge instantiates a new VPCPeeringActionChallenge object
@@ -61,6 +70,13 @@ func (o *VPCPeeringActionChallenge) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *VPCPeeringActionChallenge) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *VPCPeeringActionChallenge) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetRequesterAccountId returns the RequesterAccountId field value if set, zero value otherwise
@@ -94,6 +110,13 @@ func (o *VPCPeeringActionChallenge) HasRequesterAccountId() bool {
 // SetRequesterAccountId gets a reference to the given string and assigns it to the RequesterAccountId field.
 func (o *VPCPeeringActionChallenge) SetRequesterAccountId(v string) {
 	o.RequesterAccountId = &v
+	o.NullFields = removeNullField(o.NullFields, "RequesterAccountId")
+}
+
+// SetRequesterAccountIdNil sets RequesterAccountId to an explicit JSON null when marshaled.
+func (o *VPCPeeringActionChallenge) SetRequesterAccountIdNil() {
+	o.RequesterAccountId = nil
+	o.NullFields = addNullField(o.NullFields, "RequesterAccountId")
 }
 
 // GetRequesterVpcId returns the RequesterVpcId field value if set, zero value otherwise
@@ -127,4 +150,11 @@ func (o *VPCPeeringActionChallenge) HasRequesterVpcId() bool {
 // SetRequesterVpcId gets a reference to the given string and assigns it to the RequesterVpcId field.
 func (o *VPCPeeringActionChallenge) SetRequesterVpcId(v string) {
 	o.RequesterVpcId = &v
+	o.NullFields = removeNullField(o.NullFields, "RequesterVpcId")
+}
+
+// SetRequesterVpcIdNil sets RequesterVpcId to an explicit JSON null when marshaled.
+func (o *VPCPeeringActionChallenge) SetRequesterVpcIdNil() {
+	o.RequesterVpcId = nil
+	o.NullFields = addNullField(o.NullFields, "RequesterVpcId")
 }

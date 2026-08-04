@@ -52,6 +52,13 @@ SetLinks sets Links field to given value.
 `func (o *AzureConnection) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *AzureConnection) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetRegion
 
 `func (o *AzureConnection) GetRegion() string`
@@ -76,6 +83,13 @@ SetRegion sets Region field to given value.
 `func (o *AzureConnection) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *AzureConnection) SetRegionNil()`
+
+SetRegionNil sets Region to an explicit JSON null when marshaled, overriding any value previously set with SetRegion. Calling SetRegion again clears the null override.
+
 ### GetServicePrincipalId
 
 `func (o *AzureConnection) GetServicePrincipalId() string`
@@ -100,6 +114,13 @@ SetServicePrincipalId sets ServicePrincipalId field to given value.
 `func (o *AzureConnection) HasServicePrincipalId() bool`
 
 HasServicePrincipalId returns a boolean if a field has been set.
+
+### SetServicePrincipalIdNil
+
+`func (o *AzureConnection) SetServicePrincipalIdNil()`
+
+SetServicePrincipalIdNil sets ServicePrincipalId to an explicit JSON null when marshaled, overriding any value previously set with SetServicePrincipalId. Calling SetServicePrincipalId again clears the null override.
+
 ### GetStorageAccountName
 
 `func (o *AzureConnection) GetStorageAccountName() string`
@@ -124,6 +145,13 @@ SetStorageAccountName sets StorageAccountName field to given value.
 `func (o *AzureConnection) HasStorageAccountName() bool`
 
 HasStorageAccountName returns a boolean if a field has been set.
+
+### SetStorageAccountNameNil
+
+`func (o *AzureConnection) SetStorageAccountNameNil()`
+
+SetStorageAccountNameNil sets StorageAccountName to an explicit JSON null when marshaled, overriding any value previously set with SetStorageAccountName. Calling SetStorageAccountName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -50,6 +50,13 @@ SetDlq sets Dlq field to given value.
 `func (o *StreamsOptions) HasDlq() bool`
 
 HasDlq returns a boolean if a field has been set.
+
+### SetDlqNil
+
+`func (o *StreamsOptions) SetDlqNil()`
+
+SetDlqNil sets Dlq to an explicit JSON null when marshaled, overriding any value previously set with SetDlq. Calling SetDlq again clears the null override.
+
 ### GetLinks
 
 `func (o *StreamsOptions) GetLinks() []Link`
@@ -74,6 +81,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsOptions) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsOptions) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

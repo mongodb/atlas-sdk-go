@@ -50,6 +50,13 @@ SetCidrBlock sets CidrBlock field to given value.
 `func (o *UserAccessListRequest) HasCidrBlock() bool`
 
 HasCidrBlock returns a boolean if a field has been set.
+
+### SetCidrBlockNil
+
+`func (o *UserAccessListRequest) SetCidrBlockNil()`
+
+SetCidrBlockNil sets CidrBlock to an explicit JSON null when marshaled, overriding any value previously set with SetCidrBlock. Calling SetCidrBlock again clears the null override.
+
 ### GetIpAddress
 
 `func (o *UserAccessListRequest) GetIpAddress() string`
@@ -74,6 +81,13 @@ SetIpAddress sets IpAddress field to given value.
 `func (o *UserAccessListRequest) HasIpAddress() bool`
 
 HasIpAddress returns a boolean if a field has been set.
+
+### SetIpAddressNil
+
+`func (o *UserAccessListRequest) SetIpAddressNil()`
+
+SetIpAddressNil sets IpAddress to an explicit JSON null when marshaled, overriding any value previously set with SetIpAddress. Calling SetIpAddress again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

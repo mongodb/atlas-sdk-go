@@ -10,6 +10,15 @@ type StreamsStartProcessorFailover struct {
 	Mode *string `json:"mode,omitempty"`
 	// Cloud provider region where the stream processor should be started in failover mode. The region must be a valid region for the stream processor's cloud provider and must be included in the tenant's configured failover regions, or it may be the tenant's default (primary) region.
 	Region string `json:"region"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamsStartProcessorFailover) MarshalJSON() ([]byte, error) {
+	type noMethod StreamsStartProcessorFailover
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsStartProcessorFailover instantiates a new StreamsStartProcessorFailover object
@@ -61,6 +70,13 @@ func (o *StreamsStartProcessorFailover) HasDryRun() bool {
 // SetDryRun gets a reference to the given bool and assigns it to the DryRun field.
 func (o *StreamsStartProcessorFailover) SetDryRun(v bool) {
 	o.DryRun = &v
+	o.NullFields = removeNullField(o.NullFields, "DryRun")
+}
+
+// SetDryRunNil sets DryRun to an explicit JSON null when marshaled.
+func (o *StreamsStartProcessorFailover) SetDryRunNil() {
+	o.DryRun = nil
+	o.NullFields = addNullField(o.NullFields, "DryRun")
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise
@@ -94,6 +110,13 @@ func (o *StreamsStartProcessorFailover) HasMode() bool {
 // SetMode gets a reference to the given string and assigns it to the Mode field.
 func (o *StreamsStartProcessorFailover) SetMode(v string) {
 	o.Mode = &v
+	o.NullFields = removeNullField(o.NullFields, "Mode")
+}
+
+// SetModeNil sets Mode to an explicit JSON null when marshaled.
+func (o *StreamsStartProcessorFailover) SetModeNil() {
+	o.Mode = nil
+	o.NullFields = addNullField(o.NullFields, "Mode")
 }
 
 // GetRegion returns the Region field value

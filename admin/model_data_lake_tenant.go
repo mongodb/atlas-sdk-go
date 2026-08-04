@@ -21,6 +21,15 @@ type DataLakeTenant struct {
 	// Read only field.
 	State   *string          `json:"state,omitempty"`
 	Storage *DataLakeStorage `json:"storage,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DataLakeTenant) MarshalJSON() ([]byte, error) {
+	type noMethod DataLakeTenant
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDataLakeTenant instantiates a new DataLakeTenant object
@@ -71,6 +80,13 @@ func (o *DataLakeTenant) HasCloudProviderConfig() bool {
 // SetCloudProviderConfig gets a reference to the given DataLakeCloudProviderConfig and assigns it to the CloudProviderConfig field.
 func (o *DataLakeTenant) SetCloudProviderConfig(v DataLakeCloudProviderConfig) {
 	o.CloudProviderConfig = &v
+	o.NullFields = removeNullField(o.NullFields, "CloudProviderConfig")
+}
+
+// SetCloudProviderConfigNil sets CloudProviderConfig to an explicit JSON null when marshaled.
+func (o *DataLakeTenant) SetCloudProviderConfigNil() {
+	o.CloudProviderConfig = nil
+	o.NullFields = addNullField(o.NullFields, "CloudProviderConfig")
 }
 
 // GetDataProcessRegion returns the DataProcessRegion field value if set, zero value otherwise
@@ -104,6 +120,13 @@ func (o *DataLakeTenant) HasDataProcessRegion() bool {
 // SetDataProcessRegion gets a reference to the given DataLakeDataProcessRegion and assigns it to the DataProcessRegion field.
 func (o *DataLakeTenant) SetDataProcessRegion(v DataLakeDataProcessRegion) {
 	o.DataProcessRegion = &v
+	o.NullFields = removeNullField(o.NullFields, "DataProcessRegion")
+}
+
+// SetDataProcessRegionNil sets DataProcessRegion to an explicit JSON null when marshaled.
+func (o *DataLakeTenant) SetDataProcessRegionNil() {
+	o.DataProcessRegion = nil
+	o.NullFields = addNullField(o.NullFields, "DataProcessRegion")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -137,6 +160,13 @@ func (o *DataLakeTenant) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *DataLakeTenant) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *DataLakeTenant) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetHostnames returns the Hostnames field value if set, zero value otherwise
@@ -170,6 +200,13 @@ func (o *DataLakeTenant) HasHostnames() bool {
 // SetHostnames gets a reference to the given []string and assigns it to the Hostnames field.
 func (o *DataLakeTenant) SetHostnames(v []string) {
 	o.Hostnames = &v
+	o.NullFields = removeNullField(o.NullFields, "Hostnames")
+}
+
+// SetHostnamesNil sets Hostnames to an explicit JSON null when marshaled.
+func (o *DataLakeTenant) SetHostnamesNil() {
+	o.Hostnames = nil
+	o.NullFields = addNullField(o.NullFields, "Hostnames")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -203,6 +240,13 @@ func (o *DataLakeTenant) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DataLakeTenant) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *DataLakeTenant) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }
 
 // GetPrivateEndpointHostnames returns the PrivateEndpointHostnames field value if set, zero value otherwise
@@ -236,6 +280,13 @@ func (o *DataLakeTenant) HasPrivateEndpointHostnames() bool {
 // SetPrivateEndpointHostnames gets a reference to the given []PrivateEndpointHostname and assigns it to the PrivateEndpointHostnames field.
 func (o *DataLakeTenant) SetPrivateEndpointHostnames(v []PrivateEndpointHostname) {
 	o.PrivateEndpointHostnames = &v
+	o.NullFields = removeNullField(o.NullFields, "PrivateEndpointHostnames")
+}
+
+// SetPrivateEndpointHostnamesNil sets PrivateEndpointHostnames to an explicit JSON null when marshaled.
+func (o *DataLakeTenant) SetPrivateEndpointHostnamesNil() {
+	o.PrivateEndpointHostnames = nil
+	o.NullFields = addNullField(o.NullFields, "PrivateEndpointHostnames")
 }
 
 // GetState returns the State field value if set, zero value otherwise
@@ -269,6 +320,13 @@ func (o *DataLakeTenant) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *DataLakeTenant) SetState(v string) {
 	o.State = &v
+	o.NullFields = removeNullField(o.NullFields, "State")
+}
+
+// SetStateNil sets State to an explicit JSON null when marshaled.
+func (o *DataLakeTenant) SetStateNil() {
+	o.State = nil
+	o.NullFields = addNullField(o.NullFields, "State")
 }
 
 // GetStorage returns the Storage field value if set, zero value otherwise
@@ -302,4 +360,11 @@ func (o *DataLakeTenant) HasStorage() bool {
 // SetStorage gets a reference to the given DataLakeStorage and assigns it to the Storage field.
 func (o *DataLakeTenant) SetStorage(v DataLakeStorage) {
 	o.Storage = &v
+	o.NullFields = removeNullField(o.NullFields, "Storage")
+}
+
+// SetStorageNil sets Storage to an explicit JSON null when marshaled.
+func (o *DataLakeTenant) SetStorageNil() {
+	o.Storage = nil
+	o.NullFields = addNullField(o.NullFields, "Storage")
 }

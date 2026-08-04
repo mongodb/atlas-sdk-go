@@ -50,6 +50,13 @@ SetDnsDomain sets DnsDomain field to given value.
 
 HasDnsDomain returns a boolean if a field has been set.
 
+### SetDnsDomainNil
+
+`func (o *StreamsPrivateLinkConnectionRequest) SetDnsDomainNil()`
+
+SetDnsDomainNil sets DnsDomain to an explicit JSON null when marshaled, overriding any value previously set with SetDnsDomain. Calling SetDnsDomain again clears the null override.
+
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

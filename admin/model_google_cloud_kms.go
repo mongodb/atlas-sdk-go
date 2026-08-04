@@ -16,6 +16,15 @@ type GoogleCloudKMS struct {
 	// Flag that indicates whether the Google Cloud Key Management Service (KMS) encryption key can encrypt and decrypt data.
 	// Read only field.
 	Valid *bool `json:"valid,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *GoogleCloudKMS) MarshalJSON() ([]byte, error) {
+	type noMethod GoogleCloudKMS
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGoogleCloudKMS instantiates a new GoogleCloudKMS object
@@ -66,6 +75,13 @@ func (o *GoogleCloudKMS) HasEnabled() bool {
 // SetEnabled gets a reference to the given bool and assigns it to the Enabled field.
 func (o *GoogleCloudKMS) SetEnabled(v bool) {
 	o.Enabled = &v
+	o.NullFields = removeNullField(o.NullFields, "Enabled")
+}
+
+// SetEnabledNil sets Enabled to an explicit JSON null when marshaled.
+func (o *GoogleCloudKMS) SetEnabledNil() {
+	o.Enabled = nil
+	o.NullFields = addNullField(o.NullFields, "Enabled")
 }
 
 // GetKeyVersionResourceID returns the KeyVersionResourceID field value if set, zero value otherwise
@@ -99,6 +115,13 @@ func (o *GoogleCloudKMS) HasKeyVersionResourceID() bool {
 // SetKeyVersionResourceID gets a reference to the given string and assigns it to the KeyVersionResourceID field.
 func (o *GoogleCloudKMS) SetKeyVersionResourceID(v string) {
 	o.KeyVersionResourceID = &v
+	o.NullFields = removeNullField(o.NullFields, "KeyVersionResourceID")
+}
+
+// SetKeyVersionResourceIDNil sets KeyVersionResourceID to an explicit JSON null when marshaled.
+func (o *GoogleCloudKMS) SetKeyVersionResourceIDNil() {
+	o.KeyVersionResourceID = nil
+	o.NullFields = addNullField(o.NullFields, "KeyVersionResourceID")
 }
 
 // GetRoleId returns the RoleId field value if set, zero value otherwise
@@ -132,6 +155,13 @@ func (o *GoogleCloudKMS) HasRoleId() bool {
 // SetRoleId gets a reference to the given string and assigns it to the RoleId field.
 func (o *GoogleCloudKMS) SetRoleId(v string) {
 	o.RoleId = &v
+	o.NullFields = removeNullField(o.NullFields, "RoleId")
+}
+
+// SetRoleIdNil sets RoleId to an explicit JSON null when marshaled.
+func (o *GoogleCloudKMS) SetRoleIdNil() {
+	o.RoleId = nil
+	o.NullFields = addNullField(o.NullFields, "RoleId")
 }
 
 // GetServiceAccountKey returns the ServiceAccountKey field value if set, zero value otherwise
@@ -165,6 +195,13 @@ func (o *GoogleCloudKMS) HasServiceAccountKey() bool {
 // SetServiceAccountKey gets a reference to the given string and assigns it to the ServiceAccountKey field.
 func (o *GoogleCloudKMS) SetServiceAccountKey(v string) {
 	o.ServiceAccountKey = &v
+	o.NullFields = removeNullField(o.NullFields, "ServiceAccountKey")
+}
+
+// SetServiceAccountKeyNil sets ServiceAccountKey to an explicit JSON null when marshaled.
+func (o *GoogleCloudKMS) SetServiceAccountKeyNil() {
+	o.ServiceAccountKey = nil
+	o.NullFields = addNullField(o.NullFields, "ServiceAccountKey")
 }
 
 // GetValid returns the Valid field value if set, zero value otherwise
@@ -198,4 +235,11 @@ func (o *GoogleCloudKMS) HasValid() bool {
 // SetValid gets a reference to the given bool and assigns it to the Valid field.
 func (o *GoogleCloudKMS) SetValid(v bool) {
 	o.Valid = &v
+	o.NullFields = removeNullField(o.NullFields, "Valid")
+}
+
+// SetValidNil sets Valid to an explicit JSON null when marshaled.
+func (o *GoogleCloudKMS) SetValidNil() {
+	o.Valid = nil
+	o.NullFields = addNullField(o.NullFields, "Valid")
 }

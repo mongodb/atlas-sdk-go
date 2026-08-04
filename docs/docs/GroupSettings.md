@@ -59,6 +59,13 @@ SetIsClusterAiAssistantEnabled sets IsClusterAiAssistantEnabled field to given v
 `func (o *GroupSettings) HasIsClusterAiAssistantEnabled() bool`
 
 HasIsClusterAiAssistantEnabled returns a boolean if a field has been set.
+
+### SetIsClusterAiAssistantEnabledNil
+
+`func (o *GroupSettings) SetIsClusterAiAssistantEnabledNil()`
+
+SetIsClusterAiAssistantEnabledNil sets IsClusterAiAssistantEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetIsClusterAiAssistantEnabled. Calling SetIsClusterAiAssistantEnabled again clears the null override.
+
 ### GetIsCollectDatabaseSpecificsStatisticsEnabled
 
 `func (o *GroupSettings) GetIsCollectDatabaseSpecificsStatisticsEnabled() bool`
@@ -83,6 +90,13 @@ SetIsCollectDatabaseSpecificsStatisticsEnabled sets IsCollectDatabaseSpecificsSt
 `func (o *GroupSettings) HasIsCollectDatabaseSpecificsStatisticsEnabled() bool`
 
 HasIsCollectDatabaseSpecificsStatisticsEnabled returns a boolean if a field has been set.
+
+### SetIsCollectDatabaseSpecificsStatisticsEnabledNil
+
+`func (o *GroupSettings) SetIsCollectDatabaseSpecificsStatisticsEnabledNil()`
+
+SetIsCollectDatabaseSpecificsStatisticsEnabledNil sets IsCollectDatabaseSpecificsStatisticsEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetIsCollectDatabaseSpecificsStatisticsEnabled. Calling SetIsCollectDatabaseSpecificsStatisticsEnabled again clears the null override.
+
 ### GetIsDataExplorerEnabled
 
 `func (o *GroupSettings) GetIsDataExplorerEnabled() bool`
@@ -107,6 +121,13 @@ SetIsDataExplorerEnabled sets IsDataExplorerEnabled field to given value.
 `func (o *GroupSettings) HasIsDataExplorerEnabled() bool`
 
 HasIsDataExplorerEnabled returns a boolean if a field has been set.
+
+### SetIsDataExplorerEnabledNil
+
+`func (o *GroupSettings) SetIsDataExplorerEnabledNil()`
+
+SetIsDataExplorerEnabledNil sets IsDataExplorerEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetIsDataExplorerEnabled. Calling SetIsDataExplorerEnabled again clears the null override.
+
 ### GetIsDataExplorerGenAIFeaturesEnabled
 
 `func (o *GroupSettings) GetIsDataExplorerGenAIFeaturesEnabled() bool`
@@ -131,6 +152,13 @@ SetIsDataExplorerGenAIFeaturesEnabled sets IsDataExplorerGenAIFeaturesEnabled fi
 `func (o *GroupSettings) HasIsDataExplorerGenAIFeaturesEnabled() bool`
 
 HasIsDataExplorerGenAIFeaturesEnabled returns a boolean if a field has been set.
+
+### SetIsDataExplorerGenAIFeaturesEnabledNil
+
+`func (o *GroupSettings) SetIsDataExplorerGenAIFeaturesEnabledNil()`
+
+SetIsDataExplorerGenAIFeaturesEnabledNil sets IsDataExplorerGenAIFeaturesEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetIsDataExplorerGenAIFeaturesEnabled. Calling SetIsDataExplorerGenAIFeaturesEnabled again clears the null override.
+
 ### GetIsDataExplorerGenAISampleDocumentPassingEnabled
 
 `func (o *GroupSettings) GetIsDataExplorerGenAISampleDocumentPassingEnabled() bool`
@@ -155,6 +183,13 @@ SetIsDataExplorerGenAISampleDocumentPassingEnabled sets IsDataExplorerGenAISampl
 `func (o *GroupSettings) HasIsDataExplorerGenAISampleDocumentPassingEnabled() bool`
 
 HasIsDataExplorerGenAISampleDocumentPassingEnabled returns a boolean if a field has been set.
+
+### SetIsDataExplorerGenAISampleDocumentPassingEnabledNil
+
+`func (o *GroupSettings) SetIsDataExplorerGenAISampleDocumentPassingEnabledNil()`
+
+SetIsDataExplorerGenAISampleDocumentPassingEnabledNil sets IsDataExplorerGenAISampleDocumentPassingEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetIsDataExplorerGenAISampleDocumentPassingEnabled. Calling SetIsDataExplorerGenAISampleDocumentPassingEnabled again clears the null override.
+
 ### GetIsDataValidationEnabled
 
 `func (o *GroupSettings) GetIsDataValidationEnabled() bool`
@@ -179,6 +214,13 @@ SetIsDataValidationEnabled sets IsDataValidationEnabled field to given value.
 `func (o *GroupSettings) HasIsDataValidationEnabled() bool`
 
 HasIsDataValidationEnabled returns a boolean if a field has been set.
+
+### SetIsDataValidationEnabledNil
+
+`func (o *GroupSettings) SetIsDataValidationEnabledNil()`
+
+SetIsDataValidationEnabledNil sets IsDataValidationEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetIsDataValidationEnabled. Calling SetIsDataValidationEnabled again clears the null override.
+
 ### GetIsExtendedStorageSizesEnabled
 
 `func (o *GroupSettings) GetIsExtendedStorageSizesEnabled() bool`
@@ -203,6 +245,13 @@ SetIsExtendedStorageSizesEnabled sets IsExtendedStorageSizesEnabled field to giv
 `func (o *GroupSettings) HasIsExtendedStorageSizesEnabled() bool`
 
 HasIsExtendedStorageSizesEnabled returns a boolean if a field has been set.
+
+### SetIsExtendedStorageSizesEnabledNil
+
+`func (o *GroupSettings) SetIsExtendedStorageSizesEnabledNil()`
+
+SetIsExtendedStorageSizesEnabledNil sets IsExtendedStorageSizesEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetIsExtendedStorageSizesEnabled. Calling SetIsExtendedStorageSizesEnabled again clears the null override.
+
 ### GetIsNativeRerankingEnabled
 
 `func (o *GroupSettings) GetIsNativeRerankingEnabled() bool`
@@ -227,6 +276,13 @@ SetIsNativeRerankingEnabled sets IsNativeRerankingEnabled field to given value.
 `func (o *GroupSettings) HasIsNativeRerankingEnabled() bool`
 
 HasIsNativeRerankingEnabled returns a boolean if a field has been set.
+
+### SetIsNativeRerankingEnabledNil
+
+`func (o *GroupSettings) SetIsNativeRerankingEnabledNil()`
+
+SetIsNativeRerankingEnabledNil sets IsNativeRerankingEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetIsNativeRerankingEnabled. Calling SetIsNativeRerankingEnabled again clears the null override.
+
 ### GetIsPerformanceAdvisorEnabled
 
 `func (o *GroupSettings) GetIsPerformanceAdvisorEnabled() bool`
@@ -251,6 +307,13 @@ SetIsPerformanceAdvisorEnabled sets IsPerformanceAdvisorEnabled field to given v
 `func (o *GroupSettings) HasIsPerformanceAdvisorEnabled() bool`
 
 HasIsPerformanceAdvisorEnabled returns a boolean if a field has been set.
+
+### SetIsPerformanceAdvisorEnabledNil
+
+`func (o *GroupSettings) SetIsPerformanceAdvisorEnabledNil()`
+
+SetIsPerformanceAdvisorEnabledNil sets IsPerformanceAdvisorEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetIsPerformanceAdvisorEnabled. Calling SetIsPerformanceAdvisorEnabled again clears the null override.
+
 ### GetIsRealtimePerformancePanelEnabled
 
 `func (o *GroupSettings) GetIsRealtimePerformancePanelEnabled() bool`
@@ -275,6 +338,13 @@ SetIsRealtimePerformancePanelEnabled sets IsRealtimePerformancePanelEnabled fiel
 `func (o *GroupSettings) HasIsRealtimePerformancePanelEnabled() bool`
 
 HasIsRealtimePerformancePanelEnabled returns a boolean if a field has been set.
+
+### SetIsRealtimePerformancePanelEnabledNil
+
+`func (o *GroupSettings) SetIsRealtimePerformancePanelEnabledNil()`
+
+SetIsRealtimePerformancePanelEnabledNil sets IsRealtimePerformancePanelEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetIsRealtimePerformancePanelEnabled. Calling SetIsRealtimePerformancePanelEnabled again clears the null override.
+
 ### GetIsSchemaAdvisorEnabled
 
 `func (o *GroupSettings) GetIsSchemaAdvisorEnabled() bool`
@@ -299,6 +369,13 @@ SetIsSchemaAdvisorEnabled sets IsSchemaAdvisorEnabled field to given value.
 `func (o *GroupSettings) HasIsSchemaAdvisorEnabled() bool`
 
 HasIsSchemaAdvisorEnabled returns a boolean if a field has been set.
+
+### SetIsSchemaAdvisorEnabledNil
+
+`func (o *GroupSettings) SetIsSchemaAdvisorEnabledNil()`
+
+SetIsSchemaAdvisorEnabledNil sets IsSchemaAdvisorEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetIsSchemaAdvisorEnabled. Calling SetIsSchemaAdvisorEnabled again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -50,6 +50,13 @@ SetRoles sets Roles field to given value.
 `func (o *UserAccessRoleAssignment) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
+
+### SetRolesNil
+
+`func (o *UserAccessRoleAssignment) SetRolesNil()`
+
+SetRolesNil sets Roles to an explicit JSON null when marshaled, overriding any value previously set with SetRoles. Calling SetRoles again clears the null override.
+
 ### GetUserId
 
 `func (o *UserAccessRoleAssignment) GetUserId() string`
@@ -74,6 +81,13 @@ SetUserId sets UserId field to given value.
 `func (o *UserAccessRoleAssignment) HasUserId() bool`
 
 HasUserId returns a boolean if a field has been set.
+
+### SetUserIdNil
+
+`func (o *UserAccessRoleAssignment) SetUserIdNil()`
+
+SetUserIdNil sets UserId to an explicit JSON null when marshaled, overriding any value previously set with SetUserId. Calling SetUserId again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

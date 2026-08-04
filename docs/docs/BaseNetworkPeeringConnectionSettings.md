@@ -86,6 +86,13 @@ SetId sets Id field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetProviderName
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetProviderName() string`
@@ -110,6 +117,13 @@ SetProviderName sets ProviderName field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasProviderName() bool`
 
 HasProviderName returns a boolean if a field has been set.
+
+### SetProviderNameNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetProviderNameNil()`
+
+SetProviderNameNil sets ProviderName to an explicit JSON null when marshaled, overriding any value previously set with SetProviderName. Calling SetProviderName again clears the null override.
+
 ### GetAccepterRegionName
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetAccepterRegionName() string`
@@ -134,6 +148,13 @@ SetAccepterRegionName sets AccepterRegionName field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasAccepterRegionName() bool`
 
 HasAccepterRegionName returns a boolean if a field has been set.
+
+### SetAccepterRegionNameNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetAccepterRegionNameNil()`
+
+SetAccepterRegionNameNil sets AccepterRegionName to an explicit JSON null when marshaled, overriding any value previously set with SetAccepterRegionName. Calling SetAccepterRegionName again clears the null override.
+
 ### GetAwsAccountId
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetAwsAccountId() string`
@@ -158,6 +179,13 @@ SetAwsAccountId sets AwsAccountId field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasAwsAccountId() bool`
 
 HasAwsAccountId returns a boolean if a field has been set.
+
+### SetAwsAccountIdNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetAwsAccountIdNil()`
+
+SetAwsAccountIdNil sets AwsAccountId to an explicit JSON null when marshaled, overriding any value previously set with SetAwsAccountId. Calling SetAwsAccountId again clears the null override.
+
 ### GetConnectionId
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetConnectionId() string`
@@ -182,6 +210,13 @@ SetConnectionId sets ConnectionId field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasConnectionId() bool`
 
 HasConnectionId returns a boolean if a field has been set.
+
+### SetConnectionIdNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetConnectionIdNil()`
+
+SetConnectionIdNil sets ConnectionId to an explicit JSON null when marshaled, overriding any value previously set with SetConnectionId. Calling SetConnectionId again clears the null override.
+
 ### GetErrorStateName
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetErrorStateName() string`
@@ -206,6 +241,13 @@ SetErrorStateName sets ErrorStateName field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasErrorStateName() bool`
 
 HasErrorStateName returns a boolean if a field has been set.
+
+### SetErrorStateNameNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetErrorStateNameNil()`
+
+SetErrorStateNameNil sets ErrorStateName to an explicit JSON null when marshaled, overriding any value previously set with SetErrorStateName. Calling SetErrorStateName again clears the null override.
+
 ### GetRouteTableCidrBlock
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetRouteTableCidrBlock() string`
@@ -230,6 +272,13 @@ SetRouteTableCidrBlock sets RouteTableCidrBlock field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasRouteTableCidrBlock() bool`
 
 HasRouteTableCidrBlock returns a boolean if a field has been set.
+
+### SetRouteTableCidrBlockNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetRouteTableCidrBlockNil()`
+
+SetRouteTableCidrBlockNil sets RouteTableCidrBlock to an explicit JSON null when marshaled, overriding any value previously set with SetRouteTableCidrBlock. Calling SetRouteTableCidrBlock again clears the null override.
+
 ### GetStatusName
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetStatusName() string`
@@ -254,6 +303,13 @@ SetStatusName sets StatusName field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasStatusName() bool`
 
 HasStatusName returns a boolean if a field has been set.
+
+### SetStatusNameNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetStatusNameNil()`
+
+SetStatusNameNil sets StatusName to an explicit JSON null when marshaled, overriding any value previously set with SetStatusName. Calling SetStatusName again clears the null override.
+
 ### GetVpcId
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetVpcId() string`
@@ -278,6 +334,13 @@ SetVpcId sets VpcId field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasVpcId() bool`
 
 HasVpcId returns a boolean if a field has been set.
+
+### SetVpcIdNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetVpcIdNil()`
+
+SetVpcIdNil sets VpcId to an explicit JSON null when marshaled, overriding any value previously set with SetVpcId. Calling SetVpcId again clears the null override.
+
 ### GetAzureDirectoryId
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetAzureDirectoryId() string`
@@ -302,6 +365,13 @@ SetAzureDirectoryId sets AzureDirectoryId field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasAzureDirectoryId() bool`
 
 HasAzureDirectoryId returns a boolean if a field has been set.
+
+### SetAzureDirectoryIdNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetAzureDirectoryIdNil()`
+
+SetAzureDirectoryIdNil sets AzureDirectoryId to an explicit JSON null when marshaled, overriding any value previously set with SetAzureDirectoryId. Calling SetAzureDirectoryId again clears the null override.
+
 ### GetAzureSubscriptionId
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetAzureSubscriptionId() string`
@@ -326,6 +396,13 @@ SetAzureSubscriptionId sets AzureSubscriptionId field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasAzureSubscriptionId() bool`
 
 HasAzureSubscriptionId returns a boolean if a field has been set.
+
+### SetAzureSubscriptionIdNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetAzureSubscriptionIdNil()`
+
+SetAzureSubscriptionIdNil sets AzureSubscriptionId to an explicit JSON null when marshaled, overriding any value previously set with SetAzureSubscriptionId. Calling SetAzureSubscriptionId again clears the null override.
+
 ### GetErrorState
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetErrorState() string`
@@ -350,6 +427,13 @@ SetErrorState sets ErrorState field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasErrorState() bool`
 
 HasErrorState returns a boolean if a field has been set.
+
+### SetErrorStateNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetErrorStateNil()`
+
+SetErrorStateNil sets ErrorState to an explicit JSON null when marshaled, overriding any value previously set with SetErrorState. Calling SetErrorState again clears the null override.
+
 ### GetResourceGroupName
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetResourceGroupName() string`
@@ -374,6 +458,13 @@ SetResourceGroupName sets ResourceGroupName field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasResourceGroupName() bool`
 
 HasResourceGroupName returns a boolean if a field has been set.
+
+### SetResourceGroupNameNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetResourceGroupNameNil()`
+
+SetResourceGroupNameNil sets ResourceGroupName to an explicit JSON null when marshaled, overriding any value previously set with SetResourceGroupName. Calling SetResourceGroupName again clears the null override.
+
 ### GetStatus
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetStatus() string`
@@ -398,6 +489,13 @@ SetStatus sets Status field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 ### GetVnetName
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetVnetName() string`
@@ -422,6 +520,13 @@ SetVnetName sets VnetName field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasVnetName() bool`
 
 HasVnetName returns a boolean if a field has been set.
+
+### SetVnetNameNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetVnetNameNil()`
+
+SetVnetNameNil sets VnetName to an explicit JSON null when marshaled, overriding any value previously set with SetVnetName. Calling SetVnetName again clears the null override.
+
 ### GetErrorMessage
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetErrorMessage() string`
@@ -446,6 +551,13 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
+
+### SetErrorMessageNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetErrorMessageNil()`
+
+SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled, overriding any value previously set with SetErrorMessage. Calling SetErrorMessage again clears the null override.
+
 ### GetGcpProjectId
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetGcpProjectId() string`
@@ -470,6 +582,13 @@ SetGcpProjectId sets GcpProjectId field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasGcpProjectId() bool`
 
 HasGcpProjectId returns a boolean if a field has been set.
+
+### SetGcpProjectIdNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetGcpProjectIdNil()`
+
+SetGcpProjectIdNil sets GcpProjectId to an explicit JSON null when marshaled, overriding any value previously set with SetGcpProjectId. Calling SetGcpProjectId again clears the null override.
+
 ### GetNetworkName
 
 `func (o *BaseNetworkPeeringConnectionSettings) GetNetworkName() string`
@@ -494,6 +613,13 @@ SetNetworkName sets NetworkName field to given value.
 `func (o *BaseNetworkPeeringConnectionSettings) HasNetworkName() bool`
 
 HasNetworkName returns a boolean if a field has been set.
+
+### SetNetworkNameNil
+
+`func (o *BaseNetworkPeeringConnectionSettings) SetNetworkNameNil()`
+
+SetNetworkNameNil sets NetworkName to an explicit JSON null when marshaled, overriding any value previously set with SetNetworkName. Calling SetNetworkName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -12,6 +12,15 @@ type AtlasSearchAnalyzer struct {
 	TokenFilters *[]any `json:"tokenFilters,omitempty"`
 	// Tokenizer that you want to use to create tokens. Tokens determine how Atlas Search splits up text into discrete chunks for indexing.
 	Tokenizer any `json:"tokenizer"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AtlasSearchAnalyzer) MarshalJSON() ([]byte, error) {
+	type noMethod AtlasSearchAnalyzer
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAtlasSearchAnalyzer instantiates a new AtlasSearchAnalyzer object
@@ -64,6 +73,13 @@ func (o *AtlasSearchAnalyzer) HasCharFilters() bool {
 // SetCharFilters gets a reference to the given []any and assigns it to the CharFilters field.
 func (o *AtlasSearchAnalyzer) SetCharFilters(v []any) {
 	o.CharFilters = &v
+	o.NullFields = removeNullField(o.NullFields, "CharFilters")
+}
+
+// SetCharFiltersNil sets CharFilters to an explicit JSON null when marshaled.
+func (o *AtlasSearchAnalyzer) SetCharFiltersNil() {
+	o.CharFilters = nil
+	o.NullFields = addNullField(o.NullFields, "CharFilters")
 }
 
 // GetName returns the Name field value
@@ -121,6 +137,13 @@ func (o *AtlasSearchAnalyzer) HasTokenFilters() bool {
 // SetTokenFilters gets a reference to the given []any and assigns it to the TokenFilters field.
 func (o *AtlasSearchAnalyzer) SetTokenFilters(v []any) {
 	o.TokenFilters = &v
+	o.NullFields = removeNullField(o.NullFields, "TokenFilters")
+}
+
+// SetTokenFiltersNil sets TokenFilters to an explicit JSON null when marshaled.
+func (o *AtlasSearchAnalyzer) SetTokenFiltersNil() {
+	o.TokenFilters = nil
+	o.NullFields = addNullField(o.NullFields, "TokenFilters")
 }
 
 // GetTokenizer returns the Tokenizer field value

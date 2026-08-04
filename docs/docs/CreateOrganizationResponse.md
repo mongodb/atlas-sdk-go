@@ -54,6 +54,13 @@ SetApiKey sets ApiKey field to given value.
 `func (o *CreateOrganizationResponse) HasApiKey() bool`
 
 HasApiKey returns a boolean if a field has been set.
+
+### SetApiKeyNil
+
+`func (o *CreateOrganizationResponse) SetApiKeyNil()`
+
+SetApiKeyNil sets ApiKey to an explicit JSON null when marshaled, overriding any value previously set with SetApiKey. Calling SetApiKey again clears the null override.
+
 ### GetFederationSettingsId
 
 `func (o *CreateOrganizationResponse) GetFederationSettingsId() string`
@@ -78,6 +85,13 @@ SetFederationSettingsId sets FederationSettingsId field to given value.
 `func (o *CreateOrganizationResponse) HasFederationSettingsId() bool`
 
 HasFederationSettingsId returns a boolean if a field has been set.
+
+### SetFederationSettingsIdNil
+
+`func (o *CreateOrganizationResponse) SetFederationSettingsIdNil()`
+
+SetFederationSettingsIdNil sets FederationSettingsId to an explicit JSON null when marshaled, overriding any value previously set with SetFederationSettingsId. Calling SetFederationSettingsId again clears the null override.
+
 ### GetOrgOwnerId
 
 `func (o *CreateOrganizationResponse) GetOrgOwnerId() string`
@@ -102,6 +116,13 @@ SetOrgOwnerId sets OrgOwnerId field to given value.
 `func (o *CreateOrganizationResponse) HasOrgOwnerId() bool`
 
 HasOrgOwnerId returns a boolean if a field has been set.
+
+### SetOrgOwnerIdNil
+
+`func (o *CreateOrganizationResponse) SetOrgOwnerIdNil()`
+
+SetOrgOwnerIdNil sets OrgOwnerId to an explicit JSON null when marshaled, overriding any value previously set with SetOrgOwnerId. Calling SetOrgOwnerId again clears the null override.
+
 ### GetOrganization
 
 `func (o *CreateOrganizationResponse) GetOrganization() AtlasOrganization`
@@ -126,6 +147,13 @@ SetOrganization sets Organization field to given value.
 `func (o *CreateOrganizationResponse) HasOrganization() bool`
 
 HasOrganization returns a boolean if a field has been set.
+
+### SetOrganizationNil
+
+`func (o *CreateOrganizationResponse) SetOrganizationNil()`
+
+SetOrganizationNil sets Organization to an explicit JSON null when marshaled, overriding any value previously set with SetOrganization. Calling SetOrganization again clears the null override.
+
 ### GetServiceAccount
 
 `func (o *CreateOrganizationResponse) GetServiceAccount() OrgServiceAccount`
@@ -150,6 +178,13 @@ SetServiceAccount sets ServiceAccount field to given value.
 `func (o *CreateOrganizationResponse) HasServiceAccount() bool`
 
 HasServiceAccount returns a boolean if a field has been set.
+
+### SetServiceAccountNil
+
+`func (o *CreateOrganizationResponse) SetServiceAccountNil()`
+
+SetServiceAccountNil sets ServiceAccount to an explicit JSON null when marshaled, overriding any value previously set with SetServiceAccount. Calling SetServiceAccount again clears the null override.
+
 ### GetSkipDefaultAlertsSettings
 
 `func (o *CreateOrganizationResponse) GetSkipDefaultAlertsSettings() bool`
@@ -174,6 +209,13 @@ SetSkipDefaultAlertsSettings sets SkipDefaultAlertsSettings field to given value
 `func (o *CreateOrganizationResponse) HasSkipDefaultAlertsSettings() bool`
 
 HasSkipDefaultAlertsSettings returns a boolean if a field has been set.
+
+### SetSkipDefaultAlertsSettingsNil
+
+`func (o *CreateOrganizationResponse) SetSkipDefaultAlertsSettingsNil()`
+
+SetSkipDefaultAlertsSettingsNil sets SkipDefaultAlertsSettings to an explicit JSON null when marshaled, overriding any value previously set with SetSkipDefaultAlertsSettings. Calling SetSkipDefaultAlertsSettings again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

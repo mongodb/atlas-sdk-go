@@ -56,6 +56,13 @@ SetBillEndDate sets BillEndDate field to given value.
 `func (o *UsageDetailsFilterRequest) HasBillEndDate() bool`
 
 HasBillEndDate returns a boolean if a field has been set.
+
+### SetBillEndDateNil
+
+`func (o *UsageDetailsFilterRequest) SetBillEndDateNil()`
+
+SetBillEndDateNil sets BillEndDate to an explicit JSON null when marshaled, overriding any value previously set with SetBillEndDate. Calling SetBillEndDate again clears the null override.
+
 ### GetBillStartDate
 
 `func (o *UsageDetailsFilterRequest) GetBillStartDate() string`
@@ -80,6 +87,13 @@ SetBillStartDate sets BillStartDate field to given value.
 `func (o *UsageDetailsFilterRequest) HasBillStartDate() bool`
 
 HasBillStartDate returns a boolean if a field has been set.
+
+### SetBillStartDateNil
+
+`func (o *UsageDetailsFilterRequest) SetBillStartDateNil()`
+
+SetBillStartDateNil sets BillStartDate to an explicit JSON null when marshaled, overriding any value previously set with SetBillStartDate. Calling SetBillStartDate again clears the null override.
+
 ### GetClusterIds
 
 `func (o *UsageDetailsFilterRequest) GetClusterIds() []string`
@@ -104,6 +118,13 @@ SetClusterIds sets ClusterIds field to given value.
 `func (o *UsageDetailsFilterRequest) HasClusterIds() bool`
 
 HasClusterIds returns a boolean if a field has been set.
+
+### SetClusterIdsNil
+
+`func (o *UsageDetailsFilterRequest) SetClusterIdsNil()`
+
+SetClusterIdsNil sets ClusterIds to an explicit JSON null when marshaled, overriding any value previously set with SetClusterIds. Calling SetClusterIds again clears the null override.
+
 ### GetGroupIds
 
 `func (o *UsageDetailsFilterRequest) GetGroupIds() []string`
@@ -128,6 +149,13 @@ SetGroupIds sets GroupIds field to given value.
 `func (o *UsageDetailsFilterRequest) HasGroupIds() bool`
 
 HasGroupIds returns a boolean if a field has been set.
+
+### SetGroupIdsNil
+
+`func (o *UsageDetailsFilterRequest) SetGroupIdsNil()`
+
+SetGroupIdsNil sets GroupIds to an explicit JSON null when marshaled, overriding any value previously set with SetGroupIds. Calling SetGroupIds again clears the null override.
+
 ### GetIncludeZeroCentLineItems
 
 `func (o *UsageDetailsFilterRequest) GetIncludeZeroCentLineItems() bool`
@@ -152,6 +180,13 @@ SetIncludeZeroCentLineItems sets IncludeZeroCentLineItems field to given value.
 `func (o *UsageDetailsFilterRequest) HasIncludeZeroCentLineItems() bool`
 
 HasIncludeZeroCentLineItems returns a boolean if a field has been set.
+
+### SetIncludeZeroCentLineItemsNil
+
+`func (o *UsageDetailsFilterRequest) SetIncludeZeroCentLineItemsNil()`
+
+SetIncludeZeroCentLineItemsNil sets IncludeZeroCentLineItems to an explicit JSON null when marshaled, overriding any value previously set with SetIncludeZeroCentLineItems. Calling SetIncludeZeroCentLineItems again clears the null override.
+
 ### GetSkuServices
 
 `func (o *UsageDetailsFilterRequest) GetSkuServices() []string`
@@ -176,6 +211,13 @@ SetSkuServices sets SkuServices field to given value.
 `func (o *UsageDetailsFilterRequest) HasSkuServices() bool`
 
 HasSkuServices returns a boolean if a field has been set.
+
+### SetSkuServicesNil
+
+`func (o *UsageDetailsFilterRequest) SetSkuServicesNil()`
+
+SetSkuServicesNil sets SkuServices to an explicit JSON null when marshaled, overriding any value previously set with SetSkuServices. Calling SetSkuServices again clears the null override.
+
 ### GetUsageEndDate
 
 `func (o *UsageDetailsFilterRequest) GetUsageEndDate() string`
@@ -200,6 +242,13 @@ SetUsageEndDate sets UsageEndDate field to given value.
 `func (o *UsageDetailsFilterRequest) HasUsageEndDate() bool`
 
 HasUsageEndDate returns a boolean if a field has been set.
+
+### SetUsageEndDateNil
+
+`func (o *UsageDetailsFilterRequest) SetUsageEndDateNil()`
+
+SetUsageEndDateNil sets UsageEndDate to an explicit JSON null when marshaled, overriding any value previously set with SetUsageEndDate. Calling SetUsageEndDate again clears the null override.
+
 ### GetUsageStartDate
 
 `func (o *UsageDetailsFilterRequest) GetUsageStartDate() string`
@@ -224,6 +273,13 @@ SetUsageStartDate sets UsageStartDate field to given value.
 `func (o *UsageDetailsFilterRequest) HasUsageStartDate() bool`
 
 HasUsageStartDate returns a boolean if a field has been set.
+
+### SetUsageStartDateNil
+
+`func (o *UsageDetailsFilterRequest) SetUsageStartDateNil()`
+
+SetUsageStartDateNil sets UsageStartDate to an explicit JSON null when marshaled, overriding any value previously set with SetUsageStartDate. Calling SetUsageStartDate again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

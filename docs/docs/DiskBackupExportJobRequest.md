@@ -52,6 +52,13 @@ SetCustomData sets CustomData field to given value.
 `func (o *DiskBackupExportJobRequest) HasCustomData() bool`
 
 HasCustomData returns a boolean if a field has been set.
+
+### SetCustomDataNil
+
+`func (o *DiskBackupExportJobRequest) SetCustomDataNil()`
+
+SetCustomDataNil sets CustomData to an explicit JSON null when marshaled, overriding any value previously set with SetCustomData. Calling SetCustomData again clears the null override.
+
 ### GetExportBucketId
 
 `func (o *DiskBackupExportJobRequest) GetExportBucketId() string`
@@ -95,6 +102,13 @@ SetLinks sets Links field to given value.
 `func (o *DiskBackupExportJobRequest) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *DiskBackupExportJobRequest) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetSnapshotId
 
 `func (o *DiskBackupExportJobRequest) GetSnapshotId() string`

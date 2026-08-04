@@ -50,6 +50,15 @@ type ServerlessBackupRestoreJob struct {
 	// Date and time when MongoDB Cloud took the snapshot associated with `snapshotId`. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Timestamp *time.Time `json:"timestamp,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ServerlessBackupRestoreJob) MarshalJSON() ([]byte, error) {
+	type noMethod ServerlessBackupRestoreJob
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewServerlessBackupRestoreJob instantiates a new ServerlessBackupRestoreJob object
@@ -103,6 +112,13 @@ func (o *ServerlessBackupRestoreJob) HasCancelled() bool {
 // SetCancelled gets a reference to the given bool and assigns it to the Cancelled field.
 func (o *ServerlessBackupRestoreJob) SetCancelled(v bool) {
 	o.Cancelled = &v
+	o.NullFields = removeNullField(o.NullFields, "Cancelled")
+}
+
+// SetCancelledNil sets Cancelled to an explicit JSON null when marshaled.
+func (o *ServerlessBackupRestoreJob) SetCancelledNil() {
+	o.Cancelled = nil
+	o.NullFields = addNullField(o.NullFields, "Cancelled")
 }
 
 // GetDeliveryType returns the DeliveryType field value
@@ -160,6 +176,13 @@ func (o *ServerlessBackupRestoreJob) HasDeliveryUrl() bool {
 // SetDeliveryUrl gets a reference to the given []string and assigns it to the DeliveryUrl field.
 func (o *ServerlessBackupRestoreJob) SetDeliveryUrl(v []string) {
 	o.DeliveryUrl = &v
+	o.NullFields = removeNullField(o.NullFields, "DeliveryUrl")
+}
+
+// SetDeliveryUrlNil sets DeliveryUrl to an explicit JSON null when marshaled.
+func (o *ServerlessBackupRestoreJob) SetDeliveryUrlNil() {
+	o.DeliveryUrl = nil
+	o.NullFields = addNullField(o.NullFields, "DeliveryUrl")
 }
 
 // GetDesiredTimestamp returns the DesiredTimestamp field value if set, zero value otherwise
@@ -193,6 +216,13 @@ func (o *ServerlessBackupRestoreJob) HasDesiredTimestamp() bool {
 // SetDesiredTimestamp gets a reference to the given ApiBSONTimestamp and assigns it to the DesiredTimestamp field.
 func (o *ServerlessBackupRestoreJob) SetDesiredTimestamp(v ApiBSONTimestamp) {
 	o.DesiredTimestamp = &v
+	o.NullFields = removeNullField(o.NullFields, "DesiredTimestamp")
+}
+
+// SetDesiredTimestampNil sets DesiredTimestamp to an explicit JSON null when marshaled.
+func (o *ServerlessBackupRestoreJob) SetDesiredTimestampNil() {
+	o.DesiredTimestamp = nil
+	o.NullFields = addNullField(o.NullFields, "DesiredTimestamp")
 }
 
 // GetExpired returns the Expired field value if set, zero value otherwise
@@ -226,6 +256,13 @@ func (o *ServerlessBackupRestoreJob) HasExpired() bool {
 // SetExpired gets a reference to the given bool and assigns it to the Expired field.
 func (o *ServerlessBackupRestoreJob) SetExpired(v bool) {
 	o.Expired = &v
+	o.NullFields = removeNullField(o.NullFields, "Expired")
+}
+
+// SetExpiredNil sets Expired to an explicit JSON null when marshaled.
+func (o *ServerlessBackupRestoreJob) SetExpiredNil() {
+	o.Expired = nil
+	o.NullFields = addNullField(o.NullFields, "Expired")
 }
 
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise
@@ -259,6 +296,13 @@ func (o *ServerlessBackupRestoreJob) HasExpiresAt() bool {
 // SetExpiresAt gets a reference to the given time.Time and assigns it to the ExpiresAt field.
 func (o *ServerlessBackupRestoreJob) SetExpiresAt(v time.Time) {
 	o.ExpiresAt = &v
+	o.NullFields = removeNullField(o.NullFields, "ExpiresAt")
+}
+
+// SetExpiresAtNil sets ExpiresAt to an explicit JSON null when marshaled.
+func (o *ServerlessBackupRestoreJob) SetExpiresAtNil() {
+	o.ExpiresAt = nil
+	o.NullFields = addNullField(o.NullFields, "ExpiresAt")
 }
 
 // GetFailed returns the Failed field value if set, zero value otherwise
@@ -292,6 +336,13 @@ func (o *ServerlessBackupRestoreJob) HasFailed() bool {
 // SetFailed gets a reference to the given bool and assigns it to the Failed field.
 func (o *ServerlessBackupRestoreJob) SetFailed(v bool) {
 	o.Failed = &v
+	o.NullFields = removeNullField(o.NullFields, "Failed")
+}
+
+// SetFailedNil sets Failed to an explicit JSON null when marshaled.
+func (o *ServerlessBackupRestoreJob) SetFailedNil() {
+	o.Failed = nil
+	o.NullFields = addNullField(o.NullFields, "Failed")
 }
 
 // GetFinishedAt returns the FinishedAt field value if set, zero value otherwise
@@ -325,6 +376,13 @@ func (o *ServerlessBackupRestoreJob) HasFinishedAt() bool {
 // SetFinishedAt gets a reference to the given time.Time and assigns it to the FinishedAt field.
 func (o *ServerlessBackupRestoreJob) SetFinishedAt(v time.Time) {
 	o.FinishedAt = &v
+	o.NullFields = removeNullField(o.NullFields, "FinishedAt")
+}
+
+// SetFinishedAtNil sets FinishedAt to an explicit JSON null when marshaled.
+func (o *ServerlessBackupRestoreJob) SetFinishedAtNil() {
+	o.FinishedAt = nil
+	o.NullFields = addNullField(o.NullFields, "FinishedAt")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -358,6 +416,13 @@ func (o *ServerlessBackupRestoreJob) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ServerlessBackupRestoreJob) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *ServerlessBackupRestoreJob) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -391,6 +456,13 @@ func (o *ServerlessBackupRestoreJob) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *ServerlessBackupRestoreJob) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *ServerlessBackupRestoreJob) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetOplogInc returns the OplogInc field value if set, zero value otherwise
@@ -424,6 +496,13 @@ func (o *ServerlessBackupRestoreJob) HasOplogInc() bool {
 // SetOplogInc gets a reference to the given int and assigns it to the OplogInc field.
 func (o *ServerlessBackupRestoreJob) SetOplogInc(v int) {
 	o.OplogInc = &v
+	o.NullFields = removeNullField(o.NullFields, "OplogInc")
+}
+
+// SetOplogIncNil sets OplogInc to an explicit JSON null when marshaled.
+func (o *ServerlessBackupRestoreJob) SetOplogIncNil() {
+	o.OplogInc = nil
+	o.NullFields = addNullField(o.NullFields, "OplogInc")
 }
 
 // GetOplogTs returns the OplogTs field value if set, zero value otherwise
@@ -457,6 +536,13 @@ func (o *ServerlessBackupRestoreJob) HasOplogTs() bool {
 // SetOplogTs gets a reference to the given int and assigns it to the OplogTs field.
 func (o *ServerlessBackupRestoreJob) SetOplogTs(v int) {
 	o.OplogTs = &v
+	o.NullFields = removeNullField(o.NullFields, "OplogTs")
+}
+
+// SetOplogTsNil sets OplogTs to an explicit JSON null when marshaled.
+func (o *ServerlessBackupRestoreJob) SetOplogTsNil() {
+	o.OplogTs = nil
+	o.NullFields = addNullField(o.NullFields, "OplogTs")
 }
 
 // GetPointInTimeUTCSeconds returns the PointInTimeUTCSeconds field value if set, zero value otherwise
@@ -490,6 +576,13 @@ func (o *ServerlessBackupRestoreJob) HasPointInTimeUTCSeconds() bool {
 // SetPointInTimeUTCSeconds gets a reference to the given int and assigns it to the PointInTimeUTCSeconds field.
 func (o *ServerlessBackupRestoreJob) SetPointInTimeUTCSeconds(v int) {
 	o.PointInTimeUTCSeconds = &v
+	o.NullFields = removeNullField(o.NullFields, "PointInTimeUTCSeconds")
+}
+
+// SetPointInTimeUTCSecondsNil sets PointInTimeUTCSeconds to an explicit JSON null when marshaled.
+func (o *ServerlessBackupRestoreJob) SetPointInTimeUTCSecondsNil() {
+	o.PointInTimeUTCSeconds = nil
+	o.NullFields = addNullField(o.NullFields, "PointInTimeUTCSeconds")
 }
 
 // GetSnapshotId returns the SnapshotId field value if set, zero value otherwise
@@ -523,6 +616,13 @@ func (o *ServerlessBackupRestoreJob) HasSnapshotId() bool {
 // SetSnapshotId gets a reference to the given string and assigns it to the SnapshotId field.
 func (o *ServerlessBackupRestoreJob) SetSnapshotId(v string) {
 	o.SnapshotId = &v
+	o.NullFields = removeNullField(o.NullFields, "SnapshotId")
+}
+
+// SetSnapshotIdNil sets SnapshotId to an explicit JSON null when marshaled.
+func (o *ServerlessBackupRestoreJob) SetSnapshotIdNil() {
+	o.SnapshotId = nil
+	o.NullFields = addNullField(o.NullFields, "SnapshotId")
 }
 
 // GetTargetClusterName returns the TargetClusterName field value
@@ -604,4 +704,11 @@ func (o *ServerlessBackupRestoreJob) HasTimestamp() bool {
 // SetTimestamp gets a reference to the given time.Time and assigns it to the Timestamp field.
 func (o *ServerlessBackupRestoreJob) SetTimestamp(v time.Time) {
 	o.Timestamp = &v
+	o.NullFields = removeNullField(o.NullFields, "Timestamp")
+}
+
+// SetTimestampNil sets Timestamp to an explicit JSON null when marshaled.
+func (o *ServerlessBackupRestoreJob) SetTimestampNil() {
+	o.Timestamp = nil
+	o.NullFields = addNullField(o.NullFields, "Timestamp")
 }

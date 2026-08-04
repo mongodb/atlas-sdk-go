@@ -37,6 +37,15 @@ type CloudCluster struct {
 	// List that contains the versions of MongoDB that each node in the cluster runs.
 	// Read only field.
 	Versions *[]string `json:"versions,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CloudCluster) MarshalJSON() ([]byte, error) {
+	type noMethod CloudCluster
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudCluster instantiates a new CloudCluster object
@@ -87,6 +96,13 @@ func (o *CloudCluster) HasAlertCount() bool {
 // SetAlertCount gets a reference to the given int and assigns it to the AlertCount field.
 func (o *CloudCluster) SetAlertCount(v int) {
 	o.AlertCount = &v
+	o.NullFields = removeNullField(o.NullFields, "AlertCount")
+}
+
+// SetAlertCountNil sets AlertCount to an explicit JSON null when marshaled.
+func (o *CloudCluster) SetAlertCountNil() {
+	o.AlertCount = nil
+	o.NullFields = addNullField(o.NullFields, "AlertCount")
 }
 
 // GetAuthEnabled returns the AuthEnabled field value if set, zero value otherwise
@@ -120,6 +136,13 @@ func (o *CloudCluster) HasAuthEnabled() bool {
 // SetAuthEnabled gets a reference to the given bool and assigns it to the AuthEnabled field.
 func (o *CloudCluster) SetAuthEnabled(v bool) {
 	o.AuthEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "AuthEnabled")
+}
+
+// SetAuthEnabledNil sets AuthEnabled to an explicit JSON null when marshaled.
+func (o *CloudCluster) SetAuthEnabledNil() {
+	o.AuthEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "AuthEnabled")
 }
 
 // GetAvailability returns the Availability field value if set, zero value otherwise
@@ -153,6 +176,13 @@ func (o *CloudCluster) HasAvailability() bool {
 // SetAvailability gets a reference to the given string and assigns it to the Availability field.
 func (o *CloudCluster) SetAvailability(v string) {
 	o.Availability = &v
+	o.NullFields = removeNullField(o.NullFields, "Availability")
+}
+
+// SetAvailabilityNil sets Availability to an explicit JSON null when marshaled.
+func (o *CloudCluster) SetAvailabilityNil() {
+	o.Availability = nil
+	o.NullFields = addNullField(o.NullFields, "Availability")
 }
 
 // GetBackupEnabled returns the BackupEnabled field value if set, zero value otherwise
@@ -186,6 +216,13 @@ func (o *CloudCluster) HasBackupEnabled() bool {
 // SetBackupEnabled gets a reference to the given bool and assigns it to the BackupEnabled field.
 func (o *CloudCluster) SetBackupEnabled(v bool) {
 	o.BackupEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "BackupEnabled")
+}
+
+// SetBackupEnabledNil sets BackupEnabled to an explicit JSON null when marshaled.
+func (o *CloudCluster) SetBackupEnabledNil() {
+	o.BackupEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "BackupEnabled")
 }
 
 // GetClusterId returns the ClusterId field value if set, zero value otherwise
@@ -219,6 +256,13 @@ func (o *CloudCluster) HasClusterId() bool {
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
 func (o *CloudCluster) SetClusterId(v string) {
 	o.ClusterId = &v
+	o.NullFields = removeNullField(o.NullFields, "ClusterId")
+}
+
+// SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled.
+func (o *CloudCluster) SetClusterIdNil() {
+	o.ClusterId = nil
+	o.NullFields = addNullField(o.NullFields, "ClusterId")
 }
 
 // GetDataSizeBytes returns the DataSizeBytes field value if set, zero value otherwise
@@ -252,6 +296,13 @@ func (o *CloudCluster) HasDataSizeBytes() bool {
 // SetDataSizeBytes gets a reference to the given int64 and assigns it to the DataSizeBytes field.
 func (o *CloudCluster) SetDataSizeBytes(v int64) {
 	o.DataSizeBytes = &v
+	o.NullFields = removeNullField(o.NullFields, "DataSizeBytes")
+}
+
+// SetDataSizeBytesNil sets DataSizeBytes to an explicit JSON null when marshaled.
+func (o *CloudCluster) SetDataSizeBytesNil() {
+	o.DataSizeBytes = nil
+	o.NullFields = addNullField(o.NullFields, "DataSizeBytes")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -285,6 +336,13 @@ func (o *CloudCluster) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CloudCluster) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *CloudCluster) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }
 
 // GetNodeCount returns the NodeCount field value if set, zero value otherwise
@@ -318,6 +376,13 @@ func (o *CloudCluster) HasNodeCount() bool {
 // SetNodeCount gets a reference to the given int and assigns it to the NodeCount field.
 func (o *CloudCluster) SetNodeCount(v int) {
 	o.NodeCount = &v
+	o.NullFields = removeNullField(o.NullFields, "NodeCount")
+}
+
+// SetNodeCountNil sets NodeCount to an explicit JSON null when marshaled.
+func (o *CloudCluster) SetNodeCountNil() {
+	o.NodeCount = nil
+	o.NullFields = addNullField(o.NullFields, "NodeCount")
 }
 
 // GetSslEnabled returns the SslEnabled field value if set, zero value otherwise
@@ -351,6 +416,13 @@ func (o *CloudCluster) HasSslEnabled() bool {
 // SetSslEnabled gets a reference to the given bool and assigns it to the SslEnabled field.
 func (o *CloudCluster) SetSslEnabled(v bool) {
 	o.SslEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "SslEnabled")
+}
+
+// SetSslEnabledNil sets SslEnabled to an explicit JSON null when marshaled.
+func (o *CloudCluster) SetSslEnabledNil() {
+	o.SslEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "SslEnabled")
 }
 
 // GetType returns the Type field value if set, zero value otherwise
@@ -384,6 +456,13 @@ func (o *CloudCluster) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *CloudCluster) SetType(v string) {
 	o.Type = &v
+	o.NullFields = removeNullField(o.NullFields, "Type")
+}
+
+// SetTypeNil sets Type to an explicit JSON null when marshaled.
+func (o *CloudCluster) SetTypeNil() {
+	o.Type = nil
+	o.NullFields = addNullField(o.NullFields, "Type")
 }
 
 // GetVersions returns the Versions field value if set, zero value otherwise
@@ -417,4 +496,11 @@ func (o *CloudCluster) HasVersions() bool {
 // SetVersions gets a reference to the given []string and assigns it to the Versions field.
 func (o *CloudCluster) SetVersions(v []string) {
 	o.Versions = &v
+	o.NullFields = removeNullField(o.NullFields, "Versions")
+}
+
+// SetVersionsNil sets Versions to an explicit JSON null when marshaled.
+func (o *CloudCluster) SetVersionsNil() {
+	o.Versions = nil
+	o.NullFields = addNullField(o.NullFields, "Versions")
 }

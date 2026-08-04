@@ -10,6 +10,15 @@ type OrgServiceAccountUpdateRequest struct {
 	Name *string `json:"name,omitempty"`
 	// A list of organization-level roles for the Service Account.
 	Roles *[]string `json:"roles,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *OrgServiceAccountUpdateRequest) MarshalJSON() ([]byte, error) {
+	type noMethod OrgServiceAccountUpdateRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewOrgServiceAccountUpdateRequest instantiates a new OrgServiceAccountUpdateRequest object
@@ -60,6 +69,13 @@ func (o *OrgServiceAccountUpdateRequest) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *OrgServiceAccountUpdateRequest) SetDescription(v string) {
 	o.Description = &v
+	o.NullFields = removeNullField(o.NullFields, "Description")
+}
+
+// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
+func (o *OrgServiceAccountUpdateRequest) SetDescriptionNil() {
+	o.Description = nil
+	o.NullFields = addNullField(o.NullFields, "Description")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -93,6 +109,13 @@ func (o *OrgServiceAccountUpdateRequest) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *OrgServiceAccountUpdateRequest) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *OrgServiceAccountUpdateRequest) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise
@@ -126,4 +149,11 @@ func (o *OrgServiceAccountUpdateRequest) HasRoles() bool {
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *OrgServiceAccountUpdateRequest) SetRoles(v []string) {
 	o.Roles = &v
+	o.NullFields = removeNullField(o.NullFields, "Roles")
+}
+
+// SetRolesNil sets Roles to an explicit JSON null when marshaled.
+func (o *OrgServiceAccountUpdateRequest) SetRolesNil() {
+	o.Roles = nil
+	o.NullFields = addNullField(o.NullFields, "Roles")
 }

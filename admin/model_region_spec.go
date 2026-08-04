@@ -12,6 +12,15 @@ type RegionSpec struct {
 	Priority *int `json:"priority,omitempty"`
 	// Number of read-only nodes in the region. Read-only nodes can never become the primary member, but can facilitate local reads. Use `replicationSpecs[n].{region}.readOnlyNodes` instead.
 	ReadOnlyNodes *int `json:"readOnlyNodes,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *RegionSpec) MarshalJSON() ([]byte, error) {
+	type noMethod RegionSpec
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewRegionSpec instantiates a new RegionSpec object
@@ -62,6 +71,13 @@ func (o *RegionSpec) HasAnalyticsNodes() bool {
 // SetAnalyticsNodes gets a reference to the given int and assigns it to the AnalyticsNodes field.
 func (o *RegionSpec) SetAnalyticsNodes(v int) {
 	o.AnalyticsNodes = &v
+	o.NullFields = removeNullField(o.NullFields, "AnalyticsNodes")
+}
+
+// SetAnalyticsNodesNil sets AnalyticsNodes to an explicit JSON null when marshaled.
+func (o *RegionSpec) SetAnalyticsNodesNil() {
+	o.AnalyticsNodes = nil
+	o.NullFields = addNullField(o.NullFields, "AnalyticsNodes")
 }
 
 // GetElectableNodes returns the ElectableNodes field value if set, zero value otherwise
@@ -95,6 +111,13 @@ func (o *RegionSpec) HasElectableNodes() bool {
 // SetElectableNodes gets a reference to the given int and assigns it to the ElectableNodes field.
 func (o *RegionSpec) SetElectableNodes(v int) {
 	o.ElectableNodes = &v
+	o.NullFields = removeNullField(o.NullFields, "ElectableNodes")
+}
+
+// SetElectableNodesNil sets ElectableNodes to an explicit JSON null when marshaled.
+func (o *RegionSpec) SetElectableNodesNil() {
+	o.ElectableNodes = nil
+	o.NullFields = addNullField(o.NullFields, "ElectableNodes")
 }
 
 // GetPriority returns the Priority field value if set, zero value otherwise
@@ -128,6 +151,13 @@ func (o *RegionSpec) HasPriority() bool {
 // SetPriority gets a reference to the given int and assigns it to the Priority field.
 func (o *RegionSpec) SetPriority(v int) {
 	o.Priority = &v
+	o.NullFields = removeNullField(o.NullFields, "Priority")
+}
+
+// SetPriorityNil sets Priority to an explicit JSON null when marshaled.
+func (o *RegionSpec) SetPriorityNil() {
+	o.Priority = nil
+	o.NullFields = addNullField(o.NullFields, "Priority")
 }
 
 // GetReadOnlyNodes returns the ReadOnlyNodes field value if set, zero value otherwise
@@ -161,4 +191,11 @@ func (o *RegionSpec) HasReadOnlyNodes() bool {
 // SetReadOnlyNodes gets a reference to the given int and assigns it to the ReadOnlyNodes field.
 func (o *RegionSpec) SetReadOnlyNodes(v int) {
 	o.ReadOnlyNodes = &v
+	o.NullFields = removeNullField(o.NullFields, "ReadOnlyNodes")
+}
+
+// SetReadOnlyNodesNil sets ReadOnlyNodes to an explicit JSON null when marshaled.
+func (o *RegionSpec) SetReadOnlyNodesNil() {
+	o.ReadOnlyNodes = nil
+	o.NullFields = addNullField(o.NullFields, "ReadOnlyNodes")
 }

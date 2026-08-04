@@ -51,6 +51,13 @@ SetPoliciesCausingNonCompliance sets PoliciesCausingNonCompliance field to given
 `func (o *ApiAtlasResourcePolicyMetadata) HasPoliciesCausingNonCompliance() bool`
 
 HasPoliciesCausingNonCompliance returns a boolean if a field has been set.
+
+### SetPoliciesCausingNonComplianceNil
+
+`func (o *ApiAtlasResourcePolicyMetadata) SetPoliciesCausingNonComplianceNil()`
+
+SetPoliciesCausingNonComplianceNil sets PoliciesCausingNonCompliance to an explicit JSON null when marshaled, overriding any value previously set with SetPoliciesCausingNonCompliance. Calling SetPoliciesCausingNonCompliance again clears the null override.
+
 ### GetResourcePolicyId
 
 `func (o *ApiAtlasResourcePolicyMetadata) GetResourcePolicyId() string`
@@ -75,6 +82,13 @@ SetResourcePolicyId sets ResourcePolicyId field to given value.
 `func (o *ApiAtlasResourcePolicyMetadata) HasResourcePolicyId() bool`
 
 HasResourcePolicyId returns a boolean if a field has been set.
+
+### SetResourcePolicyIdNil
+
+`func (o *ApiAtlasResourcePolicyMetadata) SetResourcePolicyIdNil()`
+
+SetResourcePolicyIdNil sets ResourcePolicyId to an explicit JSON null when marshaled, overriding any value previously set with SetResourcePolicyId. Calling SetResourcePolicyId again clears the null override.
+
 ### GetResourcePolicyName
 
 `func (o *ApiAtlasResourcePolicyMetadata) GetResourcePolicyName() string`
@@ -99,6 +113,13 @@ SetResourcePolicyName sets ResourcePolicyName field to given value.
 `func (o *ApiAtlasResourcePolicyMetadata) HasResourcePolicyName() bool`
 
 HasResourcePolicyName returns a boolean if a field has been set.
+
+### SetResourcePolicyNameNil
+
+`func (o *ApiAtlasResourcePolicyMetadata) SetResourcePolicyNameNil()`
+
+SetResourcePolicyNameNil sets ResourcePolicyName to an explicit JSON null when marshaled, overriding any value previously set with SetResourcePolicyName. Calling SetResourcePolicyName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -64,6 +64,13 @@ SetConfigServerType sets ConfigServerType field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasConfigServerType() bool`
 
 HasConfigServerType returns a boolean if a field has been set.
+
+### SetConfigServerTypeNil
+
+`func (o *DiskBackupShardedClusterSnapshot) SetConfigServerTypeNil()`
+
+SetConfigServerTypeNil sets ConfigServerType to an explicit JSON null when marshaled, overriding any value previously set with SetConfigServerType. Calling SetConfigServerType again clears the null override.
+
 ### GetCreatedAt
 
 `func (o *DiskBackupShardedClusterSnapshot) GetCreatedAt() time.Time`
@@ -88,6 +95,13 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
+
+### SetCreatedAtNil
+
+`func (o *DiskBackupShardedClusterSnapshot) SetCreatedAtNil()`
+
+SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled, overriding any value previously set with SetCreatedAt. Calling SetCreatedAt again clears the null override.
+
 ### GetDescription
 
 `func (o *DiskBackupShardedClusterSnapshot) GetDescription() string`
@@ -112,6 +126,13 @@ SetDescription sets Description field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *DiskBackupShardedClusterSnapshot) SetDescriptionNil()`
+
+SetDescriptionNil sets Description to an explicit JSON null when marshaled, overriding any value previously set with SetDescription. Calling SetDescription again clears the null override.
+
 ### GetExpiresAt
 
 `func (o *DiskBackupShardedClusterSnapshot) GetExpiresAt() time.Time`
@@ -136,6 +157,13 @@ SetExpiresAt sets ExpiresAt field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasExpiresAt() bool`
 
 HasExpiresAt returns a boolean if a field has been set.
+
+### SetExpiresAtNil
+
+`func (o *DiskBackupShardedClusterSnapshot) SetExpiresAtNil()`
+
+SetExpiresAtNil sets ExpiresAt to an explicit JSON null when marshaled, overriding any value previously set with SetExpiresAt. Calling SetExpiresAt again clears the null override.
+
 ### GetFrequencyType
 
 `func (o *DiskBackupShardedClusterSnapshot) GetFrequencyType() string`
@@ -160,6 +188,13 @@ SetFrequencyType sets FrequencyType field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasFrequencyType() bool`
 
 HasFrequencyType returns a boolean if a field has been set.
+
+### SetFrequencyTypeNil
+
+`func (o *DiskBackupShardedClusterSnapshot) SetFrequencyTypeNil()`
+
+SetFrequencyTypeNil sets FrequencyType to an explicit JSON null when marshaled, overriding any value previously set with SetFrequencyType. Calling SetFrequencyType again clears the null override.
+
 ### GetId
 
 `func (o *DiskBackupShardedClusterSnapshot) GetId() string`
@@ -184,6 +219,13 @@ SetId sets Id field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *DiskBackupShardedClusterSnapshot) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLinks
 
 `func (o *DiskBackupShardedClusterSnapshot) GetLinks() []Link`
@@ -208,6 +250,13 @@ SetLinks sets Links field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *DiskBackupShardedClusterSnapshot) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetMasterKeyUUID
 
 `func (o *DiskBackupShardedClusterSnapshot) GetMasterKeyUUID() string`
@@ -232,6 +281,13 @@ SetMasterKeyUUID sets MasterKeyUUID field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasMasterKeyUUID() bool`
 
 HasMasterKeyUUID returns a boolean if a field has been set.
+
+### SetMasterKeyUUIDNil
+
+`func (o *DiskBackupShardedClusterSnapshot) SetMasterKeyUUIDNil()`
+
+SetMasterKeyUUIDNil sets MasterKeyUUID to an explicit JSON null when marshaled, overriding any value previously set with SetMasterKeyUUID. Calling SetMasterKeyUUID again clears the null override.
+
 ### GetMembers
 
 `func (o *DiskBackupShardedClusterSnapshot) GetMembers() []DiskBackupShardedClusterSnapshotMember`
@@ -256,6 +312,13 @@ SetMembers sets Members field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasMembers() bool`
 
 HasMembers returns a boolean if a field has been set.
+
+### SetMembersNil
+
+`func (o *DiskBackupShardedClusterSnapshot) SetMembersNil()`
+
+SetMembersNil sets Members to an explicit JSON null when marshaled, overriding any value previously set with SetMembers. Calling SetMembers again clears the null override.
+
 ### GetMongodVersion
 
 `func (o *DiskBackupShardedClusterSnapshot) GetMongodVersion() string`
@@ -280,6 +343,13 @@ SetMongodVersion sets MongodVersion field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasMongodVersion() bool`
 
 HasMongodVersion returns a boolean if a field has been set.
+
+### SetMongodVersionNil
+
+`func (o *DiskBackupShardedClusterSnapshot) SetMongodVersionNil()`
+
+SetMongodVersionNil sets MongodVersion to an explicit JSON null when marshaled, overriding any value previously set with SetMongodVersion. Calling SetMongodVersion again clears the null override.
+
 ### GetPolicyItems
 
 `func (o *DiskBackupShardedClusterSnapshot) GetPolicyItems() []string`
@@ -304,6 +374,13 @@ SetPolicyItems sets PolicyItems field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasPolicyItems() bool`
 
 HasPolicyItems returns a boolean if a field has been set.
+
+### SetPolicyItemsNil
+
+`func (o *DiskBackupShardedClusterSnapshot) SetPolicyItemsNil()`
+
+SetPolicyItemsNil sets PolicyItems to an explicit JSON null when marshaled, overriding any value previously set with SetPolicyItems. Calling SetPolicyItems again clears the null override.
+
 ### GetSnapshotIds
 
 `func (o *DiskBackupShardedClusterSnapshot) GetSnapshotIds() []string`
@@ -328,6 +405,13 @@ SetSnapshotIds sets SnapshotIds field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasSnapshotIds() bool`
 
 HasSnapshotIds returns a boolean if a field has been set.
+
+### SetSnapshotIdsNil
+
+`func (o *DiskBackupShardedClusterSnapshot) SetSnapshotIdsNil()`
+
+SetSnapshotIdsNil sets SnapshotIds to an explicit JSON null when marshaled, overriding any value previously set with SetSnapshotIds. Calling SetSnapshotIds again clears the null override.
+
 ### GetSnapshotType
 
 `func (o *DiskBackupShardedClusterSnapshot) GetSnapshotType() string`
@@ -352,6 +436,13 @@ SetSnapshotType sets SnapshotType field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasSnapshotType() bool`
 
 HasSnapshotType returns a boolean if a field has been set.
+
+### SetSnapshotTypeNil
+
+`func (o *DiskBackupShardedClusterSnapshot) SetSnapshotTypeNil()`
+
+SetSnapshotTypeNil sets SnapshotType to an explicit JSON null when marshaled, overriding any value previously set with SetSnapshotType. Calling SetSnapshotType again clears the null override.
+
 ### GetStatus
 
 `func (o *DiskBackupShardedClusterSnapshot) GetStatus() string`
@@ -376,6 +467,13 @@ SetStatus sets Status field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *DiskBackupShardedClusterSnapshot) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 ### GetStorageSizeBytes
 
 `func (o *DiskBackupShardedClusterSnapshot) GetStorageSizeBytes() int64`
@@ -400,6 +498,13 @@ SetStorageSizeBytes sets StorageSizeBytes field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasStorageSizeBytes() bool`
 
 HasStorageSizeBytes returns a boolean if a field has been set.
+
+### SetStorageSizeBytesNil
+
+`func (o *DiskBackupShardedClusterSnapshot) SetStorageSizeBytesNil()`
+
+SetStorageSizeBytesNil sets StorageSizeBytes to an explicit JSON null when marshaled, overriding any value previously set with SetStorageSizeBytes. Calling SetStorageSizeBytes again clears the null override.
+
 ### GetType
 
 `func (o *DiskBackupShardedClusterSnapshot) GetType() string`
@@ -424,6 +529,13 @@ SetType sets Type field to given value.
 `func (o *DiskBackupShardedClusterSnapshot) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *DiskBackupShardedClusterSnapshot) SetTypeNil()`
+
+SetTypeNil sets Type to an explicit JSON null when marshaled, overriding any value previously set with SetType. Calling SetType again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

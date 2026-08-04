@@ -52,6 +52,13 @@ SetAuditAuthorizationSuccess sets AuditAuthorizationSuccess field to given value
 `func (o *AuditLog) HasAuditAuthorizationSuccess() bool`
 
 HasAuditAuthorizationSuccess returns a boolean if a field has been set.
+
+### SetAuditAuthorizationSuccessNil
+
+`func (o *AuditLog) SetAuditAuthorizationSuccessNil()`
+
+SetAuditAuthorizationSuccessNil sets AuditAuthorizationSuccess to an explicit JSON null when marshaled, overriding any value previously set with SetAuditAuthorizationSuccess. Calling SetAuditAuthorizationSuccess again clears the null override.
+
 ### GetAuditFilter
 
 `func (o *AuditLog) GetAuditFilter() string`
@@ -76,6 +83,13 @@ SetAuditFilter sets AuditFilter field to given value.
 `func (o *AuditLog) HasAuditFilter() bool`
 
 HasAuditFilter returns a boolean if a field has been set.
+
+### SetAuditFilterNil
+
+`func (o *AuditLog) SetAuditFilterNil()`
+
+SetAuditFilterNil sets AuditFilter to an explicit JSON null when marshaled, overriding any value previously set with SetAuditFilter. Calling SetAuditFilter again clears the null override.
+
 ### GetConfigurationType
 
 `func (o *AuditLog) GetConfigurationType() string`
@@ -100,6 +114,13 @@ SetConfigurationType sets ConfigurationType field to given value.
 `func (o *AuditLog) HasConfigurationType() bool`
 
 HasConfigurationType returns a boolean if a field has been set.
+
+### SetConfigurationTypeNil
+
+`func (o *AuditLog) SetConfigurationTypeNil()`
+
+SetConfigurationTypeNil sets ConfigurationType to an explicit JSON null when marshaled, overriding any value previously set with SetConfigurationType. Calling SetConfigurationType again clears the null override.
+
 ### GetEnabled
 
 `func (o *AuditLog) GetEnabled() bool`
@@ -124,6 +145,13 @@ SetEnabled sets Enabled field to given value.
 `func (o *AuditLog) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
+
+### SetEnabledNil
+
+`func (o *AuditLog) SetEnabledNil()`
+
+SetEnabledNil sets Enabled to an explicit JSON null when marshaled, overriding any value previously set with SetEnabled. Calling SetEnabled again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

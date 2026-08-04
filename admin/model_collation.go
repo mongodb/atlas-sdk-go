@@ -22,6 +22,15 @@ type Collation struct {
 	NumericOrdering *bool `json:"numericOrdering,omitempty"`
 	// Degree of comparison to perform when sorting words.  MongoDB Cloud accepts the following _numeric values_ that correspond to the _comparison level_ and what that _comparison method_ is.  - `1` - \"Primary\" - Compares the base characters only, ignoring other differences such as diacritics and case. - `2` - \"Secondary\" - Compares base characters (primary) and diacritics (secondary). Primary differences take precedence over secondary differences. - `3` - \"Tertiary\" - Compares base characters (primary), diacritics (secondary), and case and variants (tertiary). Differences between base characters takes precedence over secondary differences which take precedence over tertiary differences. - `4` - \"Quaternary\" - Compares for the specific use case to consider punctuation when levels 1 through 3 ignore punctuation or for processing Japanese text. - `5` - \"Identical\" - Compares for the specific use case of tie breaker.
 	Strength *int `json:"strength,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *Collation) MarshalJSON() ([]byte, error) {
+	type noMethod Collation
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCollation instantiates a new Collation object
@@ -101,6 +110,13 @@ func (o *Collation) HasAlternate() bool {
 // SetAlternate gets a reference to the given string and assigns it to the Alternate field.
 func (o *Collation) SetAlternate(v string) {
 	o.Alternate = &v
+	o.NullFields = removeNullField(o.NullFields, "Alternate")
+}
+
+// SetAlternateNil sets Alternate to an explicit JSON null when marshaled.
+func (o *Collation) SetAlternateNil() {
+	o.Alternate = nil
+	o.NullFields = addNullField(o.NullFields, "Alternate")
 }
 
 // GetBackwards returns the Backwards field value if set, zero value otherwise
@@ -134,6 +150,13 @@ func (o *Collation) HasBackwards() bool {
 // SetBackwards gets a reference to the given bool and assigns it to the Backwards field.
 func (o *Collation) SetBackwards(v bool) {
 	o.Backwards = &v
+	o.NullFields = removeNullField(o.NullFields, "Backwards")
+}
+
+// SetBackwardsNil sets Backwards to an explicit JSON null when marshaled.
+func (o *Collation) SetBackwardsNil() {
+	o.Backwards = nil
+	o.NullFields = addNullField(o.NullFields, "Backwards")
 }
 
 // GetCaseFirst returns the CaseFirst field value if set, zero value otherwise
@@ -167,6 +190,13 @@ func (o *Collation) HasCaseFirst() bool {
 // SetCaseFirst gets a reference to the given string and assigns it to the CaseFirst field.
 func (o *Collation) SetCaseFirst(v string) {
 	o.CaseFirst = &v
+	o.NullFields = removeNullField(o.NullFields, "CaseFirst")
+}
+
+// SetCaseFirstNil sets CaseFirst to an explicit JSON null when marshaled.
+func (o *Collation) SetCaseFirstNil() {
+	o.CaseFirst = nil
+	o.NullFields = addNullField(o.NullFields, "CaseFirst")
 }
 
 // GetCaseLevel returns the CaseLevel field value if set, zero value otherwise
@@ -200,6 +230,13 @@ func (o *Collation) HasCaseLevel() bool {
 // SetCaseLevel gets a reference to the given bool and assigns it to the CaseLevel field.
 func (o *Collation) SetCaseLevel(v bool) {
 	o.CaseLevel = &v
+	o.NullFields = removeNullField(o.NullFields, "CaseLevel")
+}
+
+// SetCaseLevelNil sets CaseLevel to an explicit JSON null when marshaled.
+func (o *Collation) SetCaseLevelNil() {
+	o.CaseLevel = nil
+	o.NullFields = addNullField(o.NullFields, "CaseLevel")
 }
 
 // GetLocale returns the Locale field value
@@ -257,6 +294,13 @@ func (o *Collation) HasMaxVariable() bool {
 // SetMaxVariable gets a reference to the given string and assigns it to the MaxVariable field.
 func (o *Collation) SetMaxVariable(v string) {
 	o.MaxVariable = &v
+	o.NullFields = removeNullField(o.NullFields, "MaxVariable")
+}
+
+// SetMaxVariableNil sets MaxVariable to an explicit JSON null when marshaled.
+func (o *Collation) SetMaxVariableNil() {
+	o.MaxVariable = nil
+	o.NullFields = addNullField(o.NullFields, "MaxVariable")
 }
 
 // GetNormalization returns the Normalization field value if set, zero value otherwise
@@ -290,6 +334,13 @@ func (o *Collation) HasNormalization() bool {
 // SetNormalization gets a reference to the given bool and assigns it to the Normalization field.
 func (o *Collation) SetNormalization(v bool) {
 	o.Normalization = &v
+	o.NullFields = removeNullField(o.NullFields, "Normalization")
+}
+
+// SetNormalizationNil sets Normalization to an explicit JSON null when marshaled.
+func (o *Collation) SetNormalizationNil() {
+	o.Normalization = nil
+	o.NullFields = addNullField(o.NullFields, "Normalization")
 }
 
 // GetNumericOrdering returns the NumericOrdering field value if set, zero value otherwise
@@ -323,6 +374,13 @@ func (o *Collation) HasNumericOrdering() bool {
 // SetNumericOrdering gets a reference to the given bool and assigns it to the NumericOrdering field.
 func (o *Collation) SetNumericOrdering(v bool) {
 	o.NumericOrdering = &v
+	o.NullFields = removeNullField(o.NullFields, "NumericOrdering")
+}
+
+// SetNumericOrderingNil sets NumericOrdering to an explicit JSON null when marshaled.
+func (o *Collation) SetNumericOrderingNil() {
+	o.NumericOrdering = nil
+	o.NullFields = addNullField(o.NullFields, "NumericOrdering")
 }
 
 // GetStrength returns the Strength field value if set, zero value otherwise
@@ -356,4 +414,11 @@ func (o *Collation) HasStrength() bool {
 // SetStrength gets a reference to the given int and assigns it to the Strength field.
 func (o *Collation) SetStrength(v int) {
 	o.Strength = &v
+	o.NullFields = removeNullField(o.NullFields, "Strength")
+}
+
+// SetStrengthNil sets Strength to an explicit JSON null when marshaled.
+func (o *Collation) SetStrengthNil() {
+	o.Strength = nil
+	o.NullFields = addNullField(o.NullFields, "Strength")
 }

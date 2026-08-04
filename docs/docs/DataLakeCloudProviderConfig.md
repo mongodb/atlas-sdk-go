@@ -51,6 +51,13 @@ SetAws sets Aws field to given value.
 `func (o *DataLakeCloudProviderConfig) HasAws() bool`
 
 HasAws returns a boolean if a field has been set.
+
+### SetAwsNil
+
+`func (o *DataLakeCloudProviderConfig) SetAwsNil()`
+
+SetAwsNil sets Aws to an explicit JSON null when marshaled, overriding any value previously set with SetAws. Calling SetAws again clears the null override.
+
 ### GetAzure
 
 `func (o *DataLakeCloudProviderConfig) GetAzure() DataFederationAzureCloudProviderConfig`
@@ -75,6 +82,13 @@ SetAzure sets Azure field to given value.
 `func (o *DataLakeCloudProviderConfig) HasAzure() bool`
 
 HasAzure returns a boolean if a field has been set.
+
+### SetAzureNil
+
+`func (o *DataLakeCloudProviderConfig) SetAzureNil()`
+
+SetAzureNil sets Azure to an explicit JSON null when marshaled, overriding any value previously set with SetAzure. Calling SetAzure again clears the null override.
+
 ### GetGcp
 
 `func (o *DataLakeCloudProviderConfig) GetGcp() DataFederationGCPCloudProviderConfig`
@@ -99,6 +113,13 @@ SetGcp sets Gcp field to given value.
 `func (o *DataLakeCloudProviderConfig) HasGcp() bool`
 
 HasGcp returns a boolean if a field has been set.
+
+### SetGcpNil
+
+`func (o *DataLakeCloudProviderConfig) SetGcpNil()`
+
+SetGcpNil sets Gcp to an explicit JSON null when marshaled, overriding any value previously set with SetGcp. Calling SetGcp again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -8,6 +8,15 @@ type GroupRoleAssignment struct {
 	GroupId *string `json:"groupId,omitempty"`
 	// One or more project-level roles assigned to the MongoDB Cloud user.
 	GroupRoles *[]string `json:"groupRoles,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *GroupRoleAssignment) MarshalJSON() ([]byte, error) {
+	type noMethod GroupRoleAssignment
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGroupRoleAssignment instantiates a new GroupRoleAssignment object
@@ -58,6 +67,13 @@ func (o *GroupRoleAssignment) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *GroupRoleAssignment) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *GroupRoleAssignment) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetGroupRoles returns the GroupRoles field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *GroupRoleAssignment) HasGroupRoles() bool {
 // SetGroupRoles gets a reference to the given []string and assigns it to the GroupRoles field.
 func (o *GroupRoleAssignment) SetGroupRoles(v []string) {
 	o.GroupRoles = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupRoles")
+}
+
+// SetGroupRolesNil sets GroupRoles to an explicit JSON null when marshaled.
+func (o *GroupRoleAssignment) SetGroupRolesNil() {
+	o.GroupRoles = nil
+	o.NullFields = addNullField(o.NullFields, "GroupRoles")
 }

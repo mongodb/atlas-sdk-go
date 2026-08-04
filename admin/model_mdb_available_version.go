@@ -16,6 +16,15 @@ type MdbAvailableVersion struct {
 	Links *[]Link `json:"links,omitempty"`
 	// The MongoDB Major Version in question.
 	Version *string `json:"version,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *MdbAvailableVersion) MarshalJSON() ([]byte, error) {
+	type noMethod MdbAvailableVersion
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewMdbAvailableVersion instantiates a new MdbAvailableVersion object
@@ -66,6 +75,13 @@ func (o *MdbAvailableVersion) HasCloudProvider() bool {
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *MdbAvailableVersion) SetCloudProvider(v string) {
 	o.CloudProvider = &v
+	o.NullFields = removeNullField(o.NullFields, "CloudProvider")
+}
+
+// SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled.
+func (o *MdbAvailableVersion) SetCloudProviderNil() {
+	o.CloudProvider = nil
+	o.NullFields = addNullField(o.NullFields, "CloudProvider")
 }
 
 // GetDefaultStatus returns the DefaultStatus field value if set, zero value otherwise
@@ -99,6 +115,13 @@ func (o *MdbAvailableVersion) HasDefaultStatus() bool {
 // SetDefaultStatus gets a reference to the given string and assigns it to the DefaultStatus field.
 func (o *MdbAvailableVersion) SetDefaultStatus(v string) {
 	o.DefaultStatus = &v
+	o.NullFields = removeNullField(o.NullFields, "DefaultStatus")
+}
+
+// SetDefaultStatusNil sets DefaultStatus to an explicit JSON null when marshaled.
+func (o *MdbAvailableVersion) SetDefaultStatusNil() {
+	o.DefaultStatus = nil
+	o.NullFields = addNullField(o.NullFields, "DefaultStatus")
 }
 
 // GetInstanceSize returns the InstanceSize field value if set, zero value otherwise
@@ -132,6 +155,13 @@ func (o *MdbAvailableVersion) HasInstanceSize() bool {
 // SetInstanceSize gets a reference to the given string and assigns it to the InstanceSize field.
 func (o *MdbAvailableVersion) SetInstanceSize(v string) {
 	o.InstanceSize = &v
+	o.NullFields = removeNullField(o.NullFields, "InstanceSize")
+}
+
+// SetInstanceSizeNil sets InstanceSize to an explicit JSON null when marshaled.
+func (o *MdbAvailableVersion) SetInstanceSizeNil() {
+	o.InstanceSize = nil
+	o.NullFields = addNullField(o.NullFields, "InstanceSize")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -165,6 +195,13 @@ func (o *MdbAvailableVersion) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *MdbAvailableVersion) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *MdbAvailableVersion) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetVersion returns the Version field value if set, zero value otherwise
@@ -198,4 +235,11 @@ func (o *MdbAvailableVersion) HasVersion() bool {
 // SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *MdbAvailableVersion) SetVersion(v string) {
 	o.Version = &v
+	o.NullFields = removeNullField(o.NullFields, "Version")
+}
+
+// SetVersionNil sets Version to an explicit JSON null when marshaled.
+func (o *MdbAvailableVersion) SetVersionNil() {
+	o.Version = nil
+	o.NullFields = addNullField(o.NullFields, "Version")
 }

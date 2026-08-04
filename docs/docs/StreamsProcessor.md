@@ -55,6 +55,13 @@ SetId sets Id field to given value.
 `func (o *StreamsProcessor) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *StreamsProcessor) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetFailoverEnabled
 
 `func (o *StreamsProcessor) GetFailoverEnabled() bool`
@@ -79,6 +86,13 @@ SetFailoverEnabled sets FailoverEnabled field to given value.
 `func (o *StreamsProcessor) HasFailoverEnabled() bool`
 
 HasFailoverEnabled returns a boolean if a field has been set.
+
+### SetFailoverEnabledNil
+
+`func (o *StreamsProcessor) SetFailoverEnabledNil()`
+
+SetFailoverEnabledNil sets FailoverEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetFailoverEnabled. Calling SetFailoverEnabled again clears the null override.
+
 ### GetLinks
 
 `func (o *StreamsProcessor) GetLinks() []Link`
@@ -103,6 +117,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsProcessor) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsProcessor) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetName
 
 `func (o *StreamsProcessor) GetName() string`
@@ -127,6 +148,13 @@ SetName sets Name field to given value.
 `func (o *StreamsProcessor) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *StreamsProcessor) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetOptions
 
 `func (o *StreamsProcessor) GetOptions() StreamsOptions`
@@ -151,6 +179,13 @@ SetOptions sets Options field to given value.
 `func (o *StreamsProcessor) HasOptions() bool`
 
 HasOptions returns a boolean if a field has been set.
+
+### SetOptionsNil
+
+`func (o *StreamsProcessor) SetOptionsNil()`
+
+SetOptionsNil sets Options to an explicit JSON null when marshaled, overriding any value previously set with SetOptions. Calling SetOptions again clears the null override.
+
 ### GetPipeline
 
 `func (o *StreamsProcessor) GetPipeline() []any`
@@ -175,6 +210,13 @@ SetPipeline sets Pipeline field to given value.
 `func (o *StreamsProcessor) HasPipeline() bool`
 
 HasPipeline returns a boolean if a field has been set.
+
+### SetPipelineNil
+
+`func (o *StreamsProcessor) SetPipelineNil()`
+
+SetPipelineNil sets Pipeline to an explicit JSON null when marshaled, overriding any value previously set with SetPipeline. Calling SetPipeline again clears the null override.
+
 ### GetTier
 
 `func (o *StreamsProcessor) GetTier() string`
@@ -199,6 +241,13 @@ SetTier sets Tier field to given value.
 `func (o *StreamsProcessor) HasTier() bool`
 
 HasTier returns a boolean if a field has been set.
+
+### SetTierNil
+
+`func (o *StreamsProcessor) SetTierNil()`
+
+SetTierNil sets Tier to an explicit JSON null when marshaled, overriding any value previously set with SetTier. Calling SetTier again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

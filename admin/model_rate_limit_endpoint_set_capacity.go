@@ -8,6 +8,15 @@ type RateLimitEndpointSetCapacity struct {
 	DefaultValue *int64 `json:"defaultValue,omitempty"`
 	// The applied request capacity of the endpoint set.
 	Value *int64 `json:"value,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *RateLimitEndpointSetCapacity) MarshalJSON() ([]byte, error) {
+	type noMethod RateLimitEndpointSetCapacity
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewRateLimitEndpointSetCapacity instantiates a new RateLimitEndpointSetCapacity object
@@ -58,6 +67,13 @@ func (o *RateLimitEndpointSetCapacity) HasDefaultValue() bool {
 // SetDefaultValue gets a reference to the given int64 and assigns it to the DefaultValue field.
 func (o *RateLimitEndpointSetCapacity) SetDefaultValue(v int64) {
 	o.DefaultValue = &v
+	o.NullFields = removeNullField(o.NullFields, "DefaultValue")
+}
+
+// SetDefaultValueNil sets DefaultValue to an explicit JSON null when marshaled.
+func (o *RateLimitEndpointSetCapacity) SetDefaultValueNil() {
+	o.DefaultValue = nil
+	o.NullFields = addNullField(o.NullFields, "DefaultValue")
 }
 
 // GetValue returns the Value field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *RateLimitEndpointSetCapacity) HasValue() bool {
 // SetValue gets a reference to the given int64 and assigns it to the Value field.
 func (o *RateLimitEndpointSetCapacity) SetValue(v int64) {
 	o.Value = &v
+	o.NullFields = removeNullField(o.NullFields, "Value")
+}
+
+// SetValueNil sets Value to an explicit JSON null when marshaled.
+func (o *RateLimitEndpointSetCapacity) SetValueNil() {
+	o.Value = nil
+	o.NullFields = addNullField(o.NullFields, "Value")
 }

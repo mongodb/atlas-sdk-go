@@ -42,6 +42,15 @@ type EndpointService struct {
 	PortMappingEnabled *bool `json:"portMappingEnabled,omitempty"`
 	// List of Uniform Resource Locators (URLs) that identifies endpoints that MongoDB Cloud can use to access one Google Cloud Service across a Google Cloud Virtual Private Connection (VPC) network. If this endpoint service uses PSC port-mapping, this field will only contain a list of one service attachment.
 	ServiceAttachmentNames *[]string `json:"serviceAttachmentNames,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *EndpointService) MarshalJSON() ([]byte, error) {
+	type noMethod EndpointService
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewEndpointService instantiates a new EndpointService object
@@ -117,6 +126,13 @@ func (o *EndpointService) HasErrorMessage() bool {
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *EndpointService) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
+	o.NullFields = removeNullField(o.NullFields, "ErrorMessage")
+}
+
+// SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled.
+func (o *EndpointService) SetErrorMessageNil() {
+	o.ErrorMessage = nil
+	o.NullFields = addNullField(o.NullFields, "ErrorMessage")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -150,6 +166,13 @@ func (o *EndpointService) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *EndpointService) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *EndpointService) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetRegionName returns the RegionName field value if set, zero value otherwise
@@ -183,6 +206,13 @@ func (o *EndpointService) HasRegionName() bool {
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *EndpointService) SetRegionName(v string) {
 	o.RegionName = &v
+	o.NullFields = removeNullField(o.NullFields, "RegionName")
+}
+
+// SetRegionNameNil sets RegionName to an explicit JSON null when marshaled.
+func (o *EndpointService) SetRegionNameNil() {
+	o.RegionName = nil
+	o.NullFields = addNullField(o.NullFields, "RegionName")
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
@@ -216,6 +246,13 @@ func (o *EndpointService) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *EndpointService) SetStatus(v string) {
 	o.Status = &v
+	o.NullFields = removeNullField(o.NullFields, "Status")
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *EndpointService) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = addNullField(o.NullFields, "Status")
 }
 
 // GetEndpointServiceName returns the EndpointServiceName field value if set, zero value otherwise
@@ -249,6 +286,13 @@ func (o *EndpointService) HasEndpointServiceName() bool {
 // SetEndpointServiceName gets a reference to the given string and assigns it to the EndpointServiceName field.
 func (o *EndpointService) SetEndpointServiceName(v string) {
 	o.EndpointServiceName = &v
+	o.NullFields = removeNullField(o.NullFields, "EndpointServiceName")
+}
+
+// SetEndpointServiceNameNil sets EndpointServiceName to an explicit JSON null when marshaled.
+func (o *EndpointService) SetEndpointServiceNameNil() {
+	o.EndpointServiceName = nil
+	o.NullFields = addNullField(o.NullFields, "EndpointServiceName")
 }
 
 // GetInterfaceEndpoints returns the InterfaceEndpoints field value if set, zero value otherwise
@@ -282,6 +326,13 @@ func (o *EndpointService) HasInterfaceEndpoints() bool {
 // SetInterfaceEndpoints gets a reference to the given []string and assigns it to the InterfaceEndpoints field.
 func (o *EndpointService) SetInterfaceEndpoints(v []string) {
 	o.InterfaceEndpoints = &v
+	o.NullFields = removeNullField(o.NullFields, "InterfaceEndpoints")
+}
+
+// SetInterfaceEndpointsNil sets InterfaceEndpoints to an explicit JSON null when marshaled.
+func (o *EndpointService) SetInterfaceEndpointsNil() {
+	o.InterfaceEndpoints = nil
+	o.NullFields = addNullField(o.NullFields, "InterfaceEndpoints")
 }
 
 // GetSupportedRemoteRegions returns the SupportedRemoteRegions field value if set, zero value otherwise
@@ -315,6 +366,13 @@ func (o *EndpointService) HasSupportedRemoteRegions() bool {
 // SetSupportedRemoteRegions gets a reference to the given []string and assigns it to the SupportedRemoteRegions field.
 func (o *EndpointService) SetSupportedRemoteRegions(v []string) {
 	o.SupportedRemoteRegions = &v
+	o.NullFields = removeNullField(o.NullFields, "SupportedRemoteRegions")
+}
+
+// SetSupportedRemoteRegionsNil sets SupportedRemoteRegions to an explicit JSON null when marshaled.
+func (o *EndpointService) SetSupportedRemoteRegionsNil() {
+	o.SupportedRemoteRegions = nil
+	o.NullFields = addNullField(o.NullFields, "SupportedRemoteRegions")
 }
 
 // GetPrivateEndpoints returns the PrivateEndpoints field value if set, zero value otherwise
@@ -348,6 +406,13 @@ func (o *EndpointService) HasPrivateEndpoints() bool {
 // SetPrivateEndpoints gets a reference to the given []string and assigns it to the PrivateEndpoints field.
 func (o *EndpointService) SetPrivateEndpoints(v []string) {
 	o.PrivateEndpoints = &v
+	o.NullFields = removeNullField(o.NullFields, "PrivateEndpoints")
+}
+
+// SetPrivateEndpointsNil sets PrivateEndpoints to an explicit JSON null when marshaled.
+func (o *EndpointService) SetPrivateEndpointsNil() {
+	o.PrivateEndpoints = nil
+	o.NullFields = addNullField(o.NullFields, "PrivateEndpoints")
 }
 
 // GetPrivateLinkServiceName returns the PrivateLinkServiceName field value if set, zero value otherwise
@@ -381,6 +446,13 @@ func (o *EndpointService) HasPrivateLinkServiceName() bool {
 // SetPrivateLinkServiceName gets a reference to the given string and assigns it to the PrivateLinkServiceName field.
 func (o *EndpointService) SetPrivateLinkServiceName(v string) {
 	o.PrivateLinkServiceName = &v
+	o.NullFields = removeNullField(o.NullFields, "PrivateLinkServiceName")
+}
+
+// SetPrivateLinkServiceNameNil sets PrivateLinkServiceName to an explicit JSON null when marshaled.
+func (o *EndpointService) SetPrivateLinkServiceNameNil() {
+	o.PrivateLinkServiceName = nil
+	o.NullFields = addNullField(o.NullFields, "PrivateLinkServiceName")
 }
 
 // GetPrivateLinkServiceResourceId returns the PrivateLinkServiceResourceId field value if set, zero value otherwise
@@ -414,6 +486,13 @@ func (o *EndpointService) HasPrivateLinkServiceResourceId() bool {
 // SetPrivateLinkServiceResourceId gets a reference to the given string and assigns it to the PrivateLinkServiceResourceId field.
 func (o *EndpointService) SetPrivateLinkServiceResourceId(v string) {
 	o.PrivateLinkServiceResourceId = &v
+	o.NullFields = removeNullField(o.NullFields, "PrivateLinkServiceResourceId")
+}
+
+// SetPrivateLinkServiceResourceIdNil sets PrivateLinkServiceResourceId to an explicit JSON null when marshaled.
+func (o *EndpointService) SetPrivateLinkServiceResourceIdNil() {
+	o.PrivateLinkServiceResourceId = nil
+	o.NullFields = addNullField(o.NullFields, "PrivateLinkServiceResourceId")
 }
 
 // GetEndpointGroupNames returns the EndpointGroupNames field value if set, zero value otherwise
@@ -447,6 +526,13 @@ func (o *EndpointService) HasEndpointGroupNames() bool {
 // SetEndpointGroupNames gets a reference to the given []string and assigns it to the EndpointGroupNames field.
 func (o *EndpointService) SetEndpointGroupNames(v []string) {
 	o.EndpointGroupNames = &v
+	o.NullFields = removeNullField(o.NullFields, "EndpointGroupNames")
+}
+
+// SetEndpointGroupNamesNil sets EndpointGroupNames to an explicit JSON null when marshaled.
+func (o *EndpointService) SetEndpointGroupNamesNil() {
+	o.EndpointGroupNames = nil
+	o.NullFields = addNullField(o.NullFields, "EndpointGroupNames")
 }
 
 // GetPortMappingEnabled returns the PortMappingEnabled field value if set, zero value otherwise
@@ -480,6 +566,13 @@ func (o *EndpointService) HasPortMappingEnabled() bool {
 // SetPortMappingEnabled gets a reference to the given bool and assigns it to the PortMappingEnabled field.
 func (o *EndpointService) SetPortMappingEnabled(v bool) {
 	o.PortMappingEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "PortMappingEnabled")
+}
+
+// SetPortMappingEnabledNil sets PortMappingEnabled to an explicit JSON null when marshaled.
+func (o *EndpointService) SetPortMappingEnabledNil() {
+	o.PortMappingEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "PortMappingEnabled")
 }
 
 // GetServiceAttachmentNames returns the ServiceAttachmentNames field value if set, zero value otherwise
@@ -513,4 +606,11 @@ func (o *EndpointService) HasServiceAttachmentNames() bool {
 // SetServiceAttachmentNames gets a reference to the given []string and assigns it to the ServiceAttachmentNames field.
 func (o *EndpointService) SetServiceAttachmentNames(v []string) {
 	o.ServiceAttachmentNames = &v
+	o.NullFields = removeNullField(o.NullFields, "ServiceAttachmentNames")
+}
+
+// SetServiceAttachmentNamesNil sets ServiceAttachmentNames to an explicit JSON null when marshaled.
+func (o *EndpointService) SetServiceAttachmentNamesNil() {
+	o.ServiceAttachmentNames = nil
+	o.NullFields = addNullField(o.NullFields, "ServiceAttachmentNames")
 }

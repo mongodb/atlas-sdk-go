@@ -10,6 +10,15 @@ type LDAPVerifyConnectivityJobRequestValidation struct {
 	// Human-readable label that identifies this verification test that MongoDB Cloud runs.
 	// Read only field.
 	ValidationType *string `json:"validationType,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *LDAPVerifyConnectivityJobRequestValidation) MarshalJSON() ([]byte, error) {
+	type noMethod LDAPVerifyConnectivityJobRequestValidation
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewLDAPVerifyConnectivityJobRequestValidation instantiates a new LDAPVerifyConnectivityJobRequestValidation object
@@ -60,6 +69,13 @@ func (o *LDAPVerifyConnectivityJobRequestValidation) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *LDAPVerifyConnectivityJobRequestValidation) SetStatus(v string) {
 	o.Status = &v
+	o.NullFields = removeNullField(o.NullFields, "Status")
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *LDAPVerifyConnectivityJobRequestValidation) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = addNullField(o.NullFields, "Status")
 }
 
 // GetValidationType returns the ValidationType field value if set, zero value otherwise
@@ -93,4 +109,11 @@ func (o *LDAPVerifyConnectivityJobRequestValidation) HasValidationType() bool {
 // SetValidationType gets a reference to the given string and assigns it to the ValidationType field.
 func (o *LDAPVerifyConnectivityJobRequestValidation) SetValidationType(v string) {
 	o.ValidationType = &v
+	o.NullFields = removeNullField(o.NullFields, "ValidationType")
+}
+
+// SetValidationTypeNil sets ValidationType to an explicit JSON null when marshaled.
+func (o *LDAPVerifyConnectivityJobRequestValidation) SetValidationTypeNil() {
+	o.ValidationType = nil
+	o.NullFields = addNullField(o.NullFields, "ValidationType")
 }

@@ -54,6 +54,13 @@ SetMaxGram sets MaxGram field to given value.
 `func (o *ApiAtlasFTSAnalyzersTokenizer) HasMaxGram() bool`
 
 HasMaxGram returns a boolean if a field has been set.
+
+### SetMaxGramNil
+
+`func (o *ApiAtlasFTSAnalyzersTokenizer) SetMaxGramNil()`
+
+SetMaxGramNil sets MaxGram to an explicit JSON null when marshaled, overriding any value previously set with SetMaxGram. Calling SetMaxGram again clears the null override.
+
 ### GetMinGram
 
 `func (o *ApiAtlasFTSAnalyzersTokenizer) GetMinGram() int`
@@ -78,6 +85,13 @@ SetMinGram sets MinGram field to given value.
 `func (o *ApiAtlasFTSAnalyzersTokenizer) HasMinGram() bool`
 
 HasMinGram returns a boolean if a field has been set.
+
+### SetMinGramNil
+
+`func (o *ApiAtlasFTSAnalyzersTokenizer) SetMinGramNil()`
+
+SetMinGramNil sets MinGram to an explicit JSON null when marshaled, overriding any value previously set with SetMinGram. Calling SetMinGram again clears the null override.
+
 ### GetType
 
 `func (o *ApiAtlasFTSAnalyzersTokenizer) GetType() string`
@@ -102,6 +116,13 @@ SetType sets Type field to given value.
 `func (o *ApiAtlasFTSAnalyzersTokenizer) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *ApiAtlasFTSAnalyzersTokenizer) SetTypeNil()`
+
+SetTypeNil sets Type to an explicit JSON null when marshaled, overriding any value previously set with SetType. Calling SetType again clears the null override.
+
 ### GetGroup
 
 `func (o *ApiAtlasFTSAnalyzersTokenizer) GetGroup() int`
@@ -126,6 +147,13 @@ SetGroup sets Group field to given value.
 `func (o *ApiAtlasFTSAnalyzersTokenizer) HasGroup() bool`
 
 HasGroup returns a boolean if a field has been set.
+
+### SetGroupNil
+
+`func (o *ApiAtlasFTSAnalyzersTokenizer) SetGroupNil()`
+
+SetGroupNil sets Group to an explicit JSON null when marshaled, overriding any value previously set with SetGroup. Calling SetGroup again clears the null override.
+
 ### GetPattern
 
 `func (o *ApiAtlasFTSAnalyzersTokenizer) GetPattern() string`
@@ -150,6 +178,13 @@ SetPattern sets Pattern field to given value.
 `func (o *ApiAtlasFTSAnalyzersTokenizer) HasPattern() bool`
 
 HasPattern returns a boolean if a field has been set.
+
+### SetPatternNil
+
+`func (o *ApiAtlasFTSAnalyzersTokenizer) SetPatternNil()`
+
+SetPatternNil sets Pattern to an explicit JSON null when marshaled, overriding any value previously set with SetPattern. Calling SetPattern again clears the null override.
+
 ### GetMaxTokenLength
 
 `func (o *ApiAtlasFTSAnalyzersTokenizer) GetMaxTokenLength() int`
@@ -174,6 +209,13 @@ SetMaxTokenLength sets MaxTokenLength field to given value.
 `func (o *ApiAtlasFTSAnalyzersTokenizer) HasMaxTokenLength() bool`
 
 HasMaxTokenLength returns a boolean if a field has been set.
+
+### SetMaxTokenLengthNil
+
+`func (o *ApiAtlasFTSAnalyzersTokenizer) SetMaxTokenLengthNil()`
+
+SetMaxTokenLengthNil sets MaxTokenLength to an explicit JSON null when marshaled, overriding any value previously set with SetMaxTokenLength. Calling SetMaxTokenLength again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

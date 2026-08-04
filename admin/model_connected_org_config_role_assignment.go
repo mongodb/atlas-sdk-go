@@ -10,6 +10,15 @@ type ConnectedOrgConfigRoleAssignment struct {
 	OrgId *string `json:"orgId,omitempty"`
 	// Human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific API key, MongoDB Cloud user, or MongoDB Cloud team. These roles include organization- and project-level roles.
 	Role *string `json:"role,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ConnectedOrgConfigRoleAssignment) MarshalJSON() ([]byte, error) {
+	type noMethod ConnectedOrgConfigRoleAssignment
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewConnectedOrgConfigRoleAssignment instantiates a new ConnectedOrgConfigRoleAssignment object
@@ -60,6 +69,13 @@ func (o *ConnectedOrgConfigRoleAssignment) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *ConnectedOrgConfigRoleAssignment) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *ConnectedOrgConfigRoleAssignment) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetOrgId returns the OrgId field value if set, zero value otherwise
@@ -93,6 +109,13 @@ func (o *ConnectedOrgConfigRoleAssignment) HasOrgId() bool {
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *ConnectedOrgConfigRoleAssignment) SetOrgId(v string) {
 	o.OrgId = &v
+	o.NullFields = removeNullField(o.NullFields, "OrgId")
+}
+
+// SetOrgIdNil sets OrgId to an explicit JSON null when marshaled.
+func (o *ConnectedOrgConfigRoleAssignment) SetOrgIdNil() {
+	o.OrgId = nil
+	o.NullFields = addNullField(o.NullFields, "OrgId")
 }
 
 // GetRole returns the Role field value if set, zero value otherwise
@@ -126,4 +149,11 @@ func (o *ConnectedOrgConfigRoleAssignment) HasRole() bool {
 // SetRole gets a reference to the given string and assigns it to the Role field.
 func (o *ConnectedOrgConfigRoleAssignment) SetRole(v string) {
 	o.Role = &v
+	o.NullFields = removeNullField(o.NullFields, "Role")
+}
+
+// SetRoleNil sets Role to an explicit JSON null when marshaled.
+func (o *ConnectedOrgConfigRoleAssignment) SetRoleNil() {
+	o.Role = nil
+	o.NullFields = addNullField(o.NullFields, "Role")
 }

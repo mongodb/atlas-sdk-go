@@ -51,6 +51,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *ConnectedOrgConfigRoleAssignment) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *ConnectedOrgConfigRoleAssignment) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetOrgId
 
 `func (o *ConnectedOrgConfigRoleAssignment) GetOrgId() string`
@@ -75,6 +82,13 @@ SetOrgId sets OrgId field to given value.
 `func (o *ConnectedOrgConfigRoleAssignment) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
+
+### SetOrgIdNil
+
+`func (o *ConnectedOrgConfigRoleAssignment) SetOrgIdNil()`
+
+SetOrgIdNil sets OrgId to an explicit JSON null when marshaled, overriding any value previously set with SetOrgId. Calling SetOrgId again clears the null override.
+
 ### GetRole
 
 `func (o *ConnectedOrgConfigRoleAssignment) GetRole() string`
@@ -99,6 +113,13 @@ SetRole sets Role field to given value.
 `func (o *ConnectedOrgConfigRoleAssignment) HasRole() bool`
 
 HasRole returns a boolean if a field has been set.
+
+### SetRoleNil
+
+`func (o *ConnectedOrgConfigRoleAssignment) SetRoleNil()`
+
+SetRoleNil sets Role to an explicit JSON null when marshaled, overriding any value previously set with SetRole. Calling SetRole again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

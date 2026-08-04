@@ -58,6 +58,13 @@ SetDatabaseName sets DatabaseName field to given value.
 `func (o *ApiMeasurementsGeneralViewAtlas) HasDatabaseName() bool`
 
 HasDatabaseName returns a boolean if a field has been set.
+
+### SetDatabaseNameNil
+
+`func (o *ApiMeasurementsGeneralViewAtlas) SetDatabaseNameNil()`
+
+SetDatabaseNameNil sets DatabaseName to an explicit JSON null when marshaled, overriding any value previously set with SetDatabaseName. Calling SetDatabaseName again clears the null override.
+
 ### GetEnd
 
 `func (o *ApiMeasurementsGeneralViewAtlas) GetEnd() time.Time`
@@ -82,6 +89,13 @@ SetEnd sets End field to given value.
 `func (o *ApiMeasurementsGeneralViewAtlas) HasEnd() bool`
 
 HasEnd returns a boolean if a field has been set.
+
+### SetEndNil
+
+`func (o *ApiMeasurementsGeneralViewAtlas) SetEndNil()`
+
+SetEndNil sets End to an explicit JSON null when marshaled, overriding any value previously set with SetEnd. Calling SetEnd again clears the null override.
+
 ### GetGranularity
 
 `func (o *ApiMeasurementsGeneralViewAtlas) GetGranularity() string`
@@ -106,6 +120,13 @@ SetGranularity sets Granularity field to given value.
 `func (o *ApiMeasurementsGeneralViewAtlas) HasGranularity() bool`
 
 HasGranularity returns a boolean if a field has been set.
+
+### SetGranularityNil
+
+`func (o *ApiMeasurementsGeneralViewAtlas) SetGranularityNil()`
+
+SetGranularityNil sets Granularity to an explicit JSON null when marshaled, overriding any value previously set with SetGranularity. Calling SetGranularity again clears the null override.
+
 ### GetGroupId
 
 `func (o *ApiMeasurementsGeneralViewAtlas) GetGroupId() string`
@@ -130,6 +151,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *ApiMeasurementsGeneralViewAtlas) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *ApiMeasurementsGeneralViewAtlas) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetHostId
 
 `func (o *ApiMeasurementsGeneralViewAtlas) GetHostId() string`
@@ -154,6 +182,13 @@ SetHostId sets HostId field to given value.
 `func (o *ApiMeasurementsGeneralViewAtlas) HasHostId() bool`
 
 HasHostId returns a boolean if a field has been set.
+
+### SetHostIdNil
+
+`func (o *ApiMeasurementsGeneralViewAtlas) SetHostIdNil()`
+
+SetHostIdNil sets HostId to an explicit JSON null when marshaled, overriding any value previously set with SetHostId. Calling SetHostId again clears the null override.
+
 ### GetLinks
 
 `func (o *ApiMeasurementsGeneralViewAtlas) GetLinks() []LinkAtlas`
@@ -178,6 +213,13 @@ SetLinks sets Links field to given value.
 `func (o *ApiMeasurementsGeneralViewAtlas) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *ApiMeasurementsGeneralViewAtlas) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetMeasurements
 
 `func (o *ApiMeasurementsGeneralViewAtlas) GetMeasurements() []MetricsMeasurementAtlas`
@@ -202,6 +244,13 @@ SetMeasurements sets Measurements field to given value.
 `func (o *ApiMeasurementsGeneralViewAtlas) HasMeasurements() bool`
 
 HasMeasurements returns a boolean if a field has been set.
+
+### SetMeasurementsNil
+
+`func (o *ApiMeasurementsGeneralViewAtlas) SetMeasurementsNil()`
+
+SetMeasurementsNil sets Measurements to an explicit JSON null when marshaled, overriding any value previously set with SetMeasurements. Calling SetMeasurements again clears the null override.
+
 ### GetPartitionName
 
 `func (o *ApiMeasurementsGeneralViewAtlas) GetPartitionName() string`
@@ -226,6 +275,13 @@ SetPartitionName sets PartitionName field to given value.
 `func (o *ApiMeasurementsGeneralViewAtlas) HasPartitionName() bool`
 
 HasPartitionName returns a boolean if a field has been set.
+
+### SetPartitionNameNil
+
+`func (o *ApiMeasurementsGeneralViewAtlas) SetPartitionNameNil()`
+
+SetPartitionNameNil sets PartitionName to an explicit JSON null when marshaled, overriding any value previously set with SetPartitionName. Calling SetPartitionName again clears the null override.
+
 ### GetProcessId
 
 `func (o *ApiMeasurementsGeneralViewAtlas) GetProcessId() string`
@@ -250,6 +306,13 @@ SetProcessId sets ProcessId field to given value.
 `func (o *ApiMeasurementsGeneralViewAtlas) HasProcessId() bool`
 
 HasProcessId returns a boolean if a field has been set.
+
+### SetProcessIdNil
+
+`func (o *ApiMeasurementsGeneralViewAtlas) SetProcessIdNil()`
+
+SetProcessIdNil sets ProcessId to an explicit JSON null when marshaled, overriding any value previously set with SetProcessId. Calling SetProcessId again clears the null override.
+
 ### GetStart
 
 `func (o *ApiMeasurementsGeneralViewAtlas) GetStart() time.Time`
@@ -274,6 +337,13 @@ SetStart sets Start field to given value.
 `func (o *ApiMeasurementsGeneralViewAtlas) HasStart() bool`
 
 HasStart returns a boolean if a field has been set.
+
+### SetStartNil
+
+`func (o *ApiMeasurementsGeneralViewAtlas) SetStartNil()`
+
+SetStartNil sets Start to an explicit JSON null when marshaled, overriding any value previously set with SetStart. Calling SetStart again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

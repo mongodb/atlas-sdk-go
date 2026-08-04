@@ -6,6 +6,15 @@ package admin
 type ControlPlaneIPAddresses struct {
 	Inbound  *InboundControlPlaneCloudProviderIPAddresses  `json:"inbound,omitempty"`
 	Outbound *OutboundControlPlaneCloudProviderIPAddresses `json:"outbound,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ControlPlaneIPAddresses) MarshalJSON() ([]byte, error) {
+	type noMethod ControlPlaneIPAddresses
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewControlPlaneIPAddresses instantiates a new ControlPlaneIPAddresses object
@@ -56,6 +65,13 @@ func (o *ControlPlaneIPAddresses) HasInbound() bool {
 // SetInbound gets a reference to the given InboundControlPlaneCloudProviderIPAddresses and assigns it to the Inbound field.
 func (o *ControlPlaneIPAddresses) SetInbound(v InboundControlPlaneCloudProviderIPAddresses) {
 	o.Inbound = &v
+	o.NullFields = removeNullField(o.NullFields, "Inbound")
+}
+
+// SetInboundNil sets Inbound to an explicit JSON null when marshaled.
+func (o *ControlPlaneIPAddresses) SetInboundNil() {
+	o.Inbound = nil
+	o.NullFields = addNullField(o.NullFields, "Inbound")
 }
 
 // GetOutbound returns the Outbound field value if set, zero value otherwise
@@ -89,4 +105,11 @@ func (o *ControlPlaneIPAddresses) HasOutbound() bool {
 // SetOutbound gets a reference to the given OutboundControlPlaneCloudProviderIPAddresses and assigns it to the Outbound field.
 func (o *ControlPlaneIPAddresses) SetOutbound(v OutboundControlPlaneCloudProviderIPAddresses) {
 	o.Outbound = &v
+	o.NullFields = removeNullField(o.NullFields, "Outbound")
+}
+
+// SetOutboundNil sets Outbound to an explicit JSON null when marshaled.
+func (o *ControlPlaneIPAddresses) SetOutboundNil() {
+	o.Outbound = nil
+	o.NullFields = addNullField(o.NullFields, "Outbound")
 }

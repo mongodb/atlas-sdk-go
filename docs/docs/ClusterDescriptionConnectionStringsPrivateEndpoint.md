@@ -53,6 +53,13 @@ SetConnectionString sets ConnectionString field to given value.
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasConnectionString() bool`
 
 HasConnectionString returns a boolean if a field has been set.
+
+### SetConnectionStringNil
+
+`func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetConnectionStringNil()`
+
+SetConnectionStringNil sets ConnectionString to an explicit JSON null when marshaled, overriding any value previously set with SetConnectionString. Calling SetConnectionString again clears the null override.
+
 ### GetEndpoints
 
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) GetEndpoints() []ClusterDescriptionConnectionStringsPrivateEndpointEndpoint`
@@ -77,6 +84,13 @@ SetEndpoints sets Endpoints field to given value.
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasEndpoints() bool`
 
 HasEndpoints returns a boolean if a field has been set.
+
+### SetEndpointsNil
+
+`func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetEndpointsNil()`
+
+SetEndpointsNil sets Endpoints to an explicit JSON null when marshaled, overriding any value previously set with SetEndpoints. Calling SetEndpoints again clears the null override.
+
 ### GetSrvConnectionString
 
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) GetSrvConnectionString() string`
@@ -101,6 +115,13 @@ SetSrvConnectionString sets SrvConnectionString field to given value.
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasSrvConnectionString() bool`
 
 HasSrvConnectionString returns a boolean if a field has been set.
+
+### SetSrvConnectionStringNil
+
+`func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetSrvConnectionStringNil()`
+
+SetSrvConnectionStringNil sets SrvConnectionString to an explicit JSON null when marshaled, overriding any value previously set with SetSrvConnectionString. Calling SetSrvConnectionString again clears the null override.
+
 ### GetSrvShardOptimizedConnectionString
 
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) GetSrvShardOptimizedConnectionString() string`
@@ -125,6 +146,13 @@ SetSrvShardOptimizedConnectionString sets SrvShardOptimizedConnectionString fiel
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasSrvShardOptimizedConnectionString() bool`
 
 HasSrvShardOptimizedConnectionString returns a boolean if a field has been set.
+
+### SetSrvShardOptimizedConnectionStringNil
+
+`func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetSrvShardOptimizedConnectionStringNil()`
+
+SetSrvShardOptimizedConnectionStringNil sets SrvShardOptimizedConnectionString to an explicit JSON null when marshaled, overriding any value previously set with SetSrvShardOptimizedConnectionString. Calling SetSrvShardOptimizedConnectionString again clears the null override.
+
 ### GetType
 
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) GetType() string`
@@ -149,6 +177,13 @@ SetType sets Type field to given value.
 `func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *ClusterDescriptionConnectionStringsPrivateEndpoint) SetTypeNil()`
+
+SetTypeNil sets Type to an explicit JSON null when marshaled, overriding any value previously set with SetType. Calling SetType again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

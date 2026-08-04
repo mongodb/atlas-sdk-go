@@ -8,6 +8,15 @@ type BackupLabel struct {
 	Key *string `json:"key,omitempty"`
 	// Value for the key to include in file that MongoDB Cloud uploads to the bucket when the export job finishes.
 	Value *string `json:"value,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *BackupLabel) MarshalJSON() ([]byte, error) {
+	type noMethod BackupLabel
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewBackupLabel instantiates a new BackupLabel object
@@ -58,6 +67,13 @@ func (o *BackupLabel) HasKey() bool {
 // SetKey gets a reference to the given string and assigns it to the Key field.
 func (o *BackupLabel) SetKey(v string) {
 	o.Key = &v
+	o.NullFields = removeNullField(o.NullFields, "Key")
+}
+
+// SetKeyNil sets Key to an explicit JSON null when marshaled.
+func (o *BackupLabel) SetKeyNil() {
+	o.Key = nil
+	o.NullFields = addNullField(o.NullFields, "Key")
 }
 
 // GetValue returns the Value field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *BackupLabel) HasValue() bool {
 // SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *BackupLabel) SetValue(v string) {
 	o.Value = &v
+	o.NullFields = removeNullField(o.NullFields, "Value")
+}
+
+// SetValueNil sets Value to an explicit JSON null when marshaled.
+func (o *BackupLabel) SetValueNil() {
+	o.Value = nil
+	o.NullFields = addNullField(o.NullFields, "Value")
 }

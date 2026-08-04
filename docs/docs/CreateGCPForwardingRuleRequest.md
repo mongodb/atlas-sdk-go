@@ -50,6 +50,13 @@ SetEndpointName sets EndpointName field to given value.
 `func (o *CreateGCPForwardingRuleRequest) HasEndpointName() bool`
 
 HasEndpointName returns a boolean if a field has been set.
+
+### SetEndpointNameNil
+
+`func (o *CreateGCPForwardingRuleRequest) SetEndpointNameNil()`
+
+SetEndpointNameNil sets EndpointName to an explicit JSON null when marshaled, overriding any value previously set with SetEndpointName. Calling SetEndpointName again clears the null override.
+
 ### GetIpAddress
 
 `func (o *CreateGCPForwardingRuleRequest) GetIpAddress() string`
@@ -74,6 +81,13 @@ SetIpAddress sets IpAddress field to given value.
 `func (o *CreateGCPForwardingRuleRequest) HasIpAddress() bool`
 
 HasIpAddress returns a boolean if a field has been set.
+
+### SetIpAddressNil
+
+`func (o *CreateGCPForwardingRuleRequest) SetIpAddressNil()`
+
+SetIpAddressNil sets IpAddress to an explicit JSON null when marshaled, overriding any value previously set with SetIpAddress. Calling SetIpAddress again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

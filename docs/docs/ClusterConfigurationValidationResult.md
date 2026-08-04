@@ -50,6 +50,13 @@ SetErrors sets Errors field to given value.
 `func (o *ClusterConfigurationValidationResult) HasErrors() bool`
 
 HasErrors returns a boolean if a field has been set.
+
+### SetErrorsNil
+
+`func (o *ClusterConfigurationValidationResult) SetErrorsNil()`
+
+SetErrorsNil sets Errors to an explicit JSON null when marshaled, overriding any value previously set with SetErrors. Calling SetErrors again clears the null override.
+
 ### GetValid
 
 `func (o *ClusterConfigurationValidationResult) GetValid() bool`
@@ -74,6 +81,13 @@ SetValid sets Valid field to given value.
 `func (o *ClusterConfigurationValidationResult) HasValid() bool`
 
 HasValid returns a boolean if a field has been set.
+
+### SetValidNil
+
+`func (o *ClusterConfigurationValidationResult) SetValidNil()`
+
+SetValidNil sets Valid to an explicit JSON null when marshaled, overriding any value previously set with SetValid. Calling SetValid again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

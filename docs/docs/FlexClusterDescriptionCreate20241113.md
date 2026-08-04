@@ -53,6 +53,13 @@ SetLinks sets Links field to given value.
 `func (o *FlexClusterDescriptionCreate20241113) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *FlexClusterDescriptionCreate20241113) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetName
 
 `func (o *FlexClusterDescriptionCreate20241113) GetName() string`
@@ -115,6 +122,13 @@ SetTags sets Tags field to given value.
 `func (o *FlexClusterDescriptionCreate20241113) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### SetTagsNil
+
+`func (o *FlexClusterDescriptionCreate20241113) SetTagsNil()`
+
+SetTagsNil sets Tags to an explicit JSON null when marshaled, overriding any value previously set with SetTags. Calling SetTags again clears the null override.
+
 ### GetTerminationProtectionEnabled
 
 `func (o *FlexClusterDescriptionCreate20241113) GetTerminationProtectionEnabled() bool`
@@ -139,6 +153,13 @@ SetTerminationProtectionEnabled sets TerminationProtectionEnabled field to given
 `func (o *FlexClusterDescriptionCreate20241113) HasTerminationProtectionEnabled() bool`
 
 HasTerminationProtectionEnabled returns a boolean if a field has been set.
+
+### SetTerminationProtectionEnabledNil
+
+`func (o *FlexClusterDescriptionCreate20241113) SetTerminationProtectionEnabledNil()`
+
+SetTerminationProtectionEnabledNil sets TerminationProtectionEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetTerminationProtectionEnabled. Calling SetTerminationProtectionEnabled again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

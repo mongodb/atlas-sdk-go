@@ -50,6 +50,13 @@ SetSummaries sets Summaries field to given value.
 
 HasSummaries returns a boolean if a field has been set.
 
+### SetSummariesNil
+
+`func (o *QueryStatsSummaryListResponse) SetSummariesNil()`
+
+SetSummariesNil sets Summaries to an explicit JSON null when marshaled, overriding any value previously set with SetSummaries. Calling SetSummaries again clears the null override.
+
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

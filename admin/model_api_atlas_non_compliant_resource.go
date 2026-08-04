@@ -19,6 +19,15 @@ type ApiAtlasNonCompliantResource struct {
 	// Human-readable label that displays the type of a resource.
 	// Read only field.
 	ResourceType *string `json:"resourceType,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiAtlasNonCompliantResource) MarshalJSON() ([]byte, error) {
+	type noMethod ApiAtlasNonCompliantResource
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasNonCompliantResource instantiates a new ApiAtlasNonCompliantResource object
@@ -69,6 +78,13 @@ func (o *ApiAtlasNonCompliantResource) HasOrgId() bool {
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *ApiAtlasNonCompliantResource) SetOrgId(v string) {
 	o.OrgId = &v
+	o.NullFields = removeNullField(o.NullFields, "OrgId")
+}
+
+// SetOrgIdNil sets OrgId to an explicit JSON null when marshaled.
+func (o *ApiAtlasNonCompliantResource) SetOrgIdNil() {
+	o.OrgId = nil
+	o.NullFields = addNullField(o.NullFields, "OrgId")
 }
 
 // GetResourceId returns the ResourceId field value if set, zero value otherwise
@@ -102,6 +118,13 @@ func (o *ApiAtlasNonCompliantResource) HasResourceId() bool {
 // SetResourceId gets a reference to the given string and assigns it to the ResourceId field.
 func (o *ApiAtlasNonCompliantResource) SetResourceId(v string) {
 	o.ResourceId = &v
+	o.NullFields = removeNullField(o.NullFields, "ResourceId")
+}
+
+// SetResourceIdNil sets ResourceId to an explicit JSON null when marshaled.
+func (o *ApiAtlasNonCompliantResource) SetResourceIdNil() {
+	o.ResourceId = nil
+	o.NullFields = addNullField(o.NullFields, "ResourceId")
 }
 
 // GetResourceName returns the ResourceName field value if set, zero value otherwise
@@ -135,6 +158,13 @@ func (o *ApiAtlasNonCompliantResource) HasResourceName() bool {
 // SetResourceName gets a reference to the given string and assigns it to the ResourceName field.
 func (o *ApiAtlasNonCompliantResource) SetResourceName(v string) {
 	o.ResourceName = &v
+	o.NullFields = removeNullField(o.NullFields, "ResourceName")
+}
+
+// SetResourceNameNil sets ResourceName to an explicit JSON null when marshaled.
+func (o *ApiAtlasNonCompliantResource) SetResourceNameNil() {
+	o.ResourceName = nil
+	o.NullFields = addNullField(o.NullFields, "ResourceName")
 }
 
 // GetResourcePoliciesCausingNonCompliance returns the ResourcePoliciesCausingNonCompliance field value if set, zero value otherwise
@@ -168,6 +198,13 @@ func (o *ApiAtlasNonCompliantResource) HasResourcePoliciesCausingNonCompliance()
 // SetResourcePoliciesCausingNonCompliance gets a reference to the given []ApiAtlasResourcePolicyMetadata and assigns it to the ResourcePoliciesCausingNonCompliance field.
 func (o *ApiAtlasNonCompliantResource) SetResourcePoliciesCausingNonCompliance(v []ApiAtlasResourcePolicyMetadata) {
 	o.ResourcePoliciesCausingNonCompliance = &v
+	o.NullFields = removeNullField(o.NullFields, "ResourcePoliciesCausingNonCompliance")
+}
+
+// SetResourcePoliciesCausingNonComplianceNil sets ResourcePoliciesCausingNonCompliance to an explicit JSON null when marshaled.
+func (o *ApiAtlasNonCompliantResource) SetResourcePoliciesCausingNonComplianceNil() {
+	o.ResourcePoliciesCausingNonCompliance = nil
+	o.NullFields = addNullField(o.NullFields, "ResourcePoliciesCausingNonCompliance")
 }
 
 // GetResourceType returns the ResourceType field value if set, zero value otherwise
@@ -201,4 +238,11 @@ func (o *ApiAtlasNonCompliantResource) HasResourceType() bool {
 // SetResourceType gets a reference to the given string and assigns it to the ResourceType field.
 func (o *ApiAtlasNonCompliantResource) SetResourceType(v string) {
 	o.ResourceType = &v
+	o.NullFields = removeNullField(o.NullFields, "ResourceType")
+}
+
+// SetResourceTypeNil sets ResourceType to an explicit JSON null when marshaled.
+func (o *ApiAtlasNonCompliantResource) SetResourceTypeNil() {
+	o.ResourceType = nil
+	o.NullFields = addNullField(o.NullFields, "ResourceType")
 }

@@ -10,6 +10,15 @@ type SchemaAdvisorNamespaceTriggers struct {
 	// List of triggers that specify why the collection activated the recommendation.
 	// Read only field.
 	Triggers *[]SchemaAdvisorTriggerDetails `json:"triggers,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *SchemaAdvisorNamespaceTriggers) MarshalJSON() ([]byte, error) {
+	type noMethod SchemaAdvisorNamespaceTriggers
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSchemaAdvisorNamespaceTriggers instantiates a new SchemaAdvisorNamespaceTriggers object
@@ -60,6 +69,13 @@ func (o *SchemaAdvisorNamespaceTriggers) HasNamespace() bool {
 // SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *SchemaAdvisorNamespaceTriggers) SetNamespace(v string) {
 	o.Namespace = &v
+	o.NullFields = removeNullField(o.NullFields, "Namespace")
+}
+
+// SetNamespaceNil sets Namespace to an explicit JSON null when marshaled.
+func (o *SchemaAdvisorNamespaceTriggers) SetNamespaceNil() {
+	o.Namespace = nil
+	o.NullFields = addNullField(o.NullFields, "Namespace")
 }
 
 // GetTriggers returns the Triggers field value if set, zero value otherwise
@@ -93,4 +109,11 @@ func (o *SchemaAdvisorNamespaceTriggers) HasTriggers() bool {
 // SetTriggers gets a reference to the given []SchemaAdvisorTriggerDetails and assigns it to the Triggers field.
 func (o *SchemaAdvisorNamespaceTriggers) SetTriggers(v []SchemaAdvisorTriggerDetails) {
 	o.Triggers = &v
+	o.NullFields = removeNullField(o.NullFields, "Triggers")
+}
+
+// SetTriggersNil sets Triggers to an explicit JSON null when marshaled.
+func (o *SchemaAdvisorNamespaceTriggers) SetTriggersNil() {
+	o.Triggers = nil
+	o.NullFields = addNullField(o.NullFields, "Triggers")
 }

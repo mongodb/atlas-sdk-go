@@ -82,6 +82,13 @@ SetAtlasAWSAccountArn sets AtlasAWSAccountArn field to given value.
 `func (o *CloudProviderAccessAzureServicePrincipal) HasAtlasAWSAccountArn() bool`
 
 HasAtlasAWSAccountArn returns a boolean if a field has been set.
+
+### SetAtlasAWSAccountArnNil
+
+`func (o *CloudProviderAccessAzureServicePrincipal) SetAtlasAWSAccountArnNil()`
+
+SetAtlasAWSAccountArnNil sets AtlasAWSAccountArn to an explicit JSON null when marshaled, overriding any value previously set with SetAtlasAWSAccountArn. Calling SetAtlasAWSAccountArn again clears the null override.
+
 ### GetAtlasAssumedRoleExternalId
 
 `func (o *CloudProviderAccessAzureServicePrincipal) GetAtlasAssumedRoleExternalId() string`
@@ -106,6 +113,13 @@ SetAtlasAssumedRoleExternalId sets AtlasAssumedRoleExternalId field to given val
 `func (o *CloudProviderAccessAzureServicePrincipal) HasAtlasAssumedRoleExternalId() bool`
 
 HasAtlasAssumedRoleExternalId returns a boolean if a field has been set.
+
+### SetAtlasAssumedRoleExternalIdNil
+
+`func (o *CloudProviderAccessAzureServicePrincipal) SetAtlasAssumedRoleExternalIdNil()`
+
+SetAtlasAssumedRoleExternalIdNil sets AtlasAssumedRoleExternalId to an explicit JSON null when marshaled, overriding any value previously set with SetAtlasAssumedRoleExternalId. Calling SetAtlasAssumedRoleExternalId again clears the null override.
+
 ### GetAuthorizedDate
 
 `func (o *CloudProviderAccessAzureServicePrincipal) GetAuthorizedDate() time.Time`
@@ -130,6 +144,13 @@ SetAuthorizedDate sets AuthorizedDate field to given value.
 `func (o *CloudProviderAccessAzureServicePrincipal) HasAuthorizedDate() bool`
 
 HasAuthorizedDate returns a boolean if a field has been set.
+
+### SetAuthorizedDateNil
+
+`func (o *CloudProviderAccessAzureServicePrincipal) SetAuthorizedDateNil()`
+
+SetAuthorizedDateNil sets AuthorizedDate to an explicit JSON null when marshaled, overriding any value previously set with SetAuthorizedDate. Calling SetAuthorizedDate again clears the null override.
+
 ### GetCreatedDate
 
 `func (o *CloudProviderAccessAzureServicePrincipal) GetCreatedDate() time.Time`
@@ -154,6 +175,13 @@ SetCreatedDate sets CreatedDate field to given value.
 `func (o *CloudProviderAccessAzureServicePrincipal) HasCreatedDate() bool`
 
 HasCreatedDate returns a boolean if a field has been set.
+
+### SetCreatedDateNil
+
+`func (o *CloudProviderAccessAzureServicePrincipal) SetCreatedDateNil()`
+
+SetCreatedDateNil sets CreatedDate to an explicit JSON null when marshaled, overriding any value previously set with SetCreatedDate. Calling SetCreatedDate again clears the null override.
+
 ### GetFeatureUsages
 
 `func (o *CloudProviderAccessAzureServicePrincipal) GetFeatureUsages() []CloudProviderAccessFeatureUsage`
@@ -178,6 +206,13 @@ SetFeatureUsages sets FeatureUsages field to given value.
 `func (o *CloudProviderAccessAzureServicePrincipal) HasFeatureUsages() bool`
 
 HasFeatureUsages returns a boolean if a field has been set.
+
+### SetFeatureUsagesNil
+
+`func (o *CloudProviderAccessAzureServicePrincipal) SetFeatureUsagesNil()`
+
+SetFeatureUsagesNil sets FeatureUsages to an explicit JSON null when marshaled, overriding any value previously set with SetFeatureUsages. Calling SetFeatureUsages again clears the null override.
+
 ### GetIamAssumedRoleArn
 
 `func (o *CloudProviderAccessAzureServicePrincipal) GetIamAssumedRoleArn() string`
@@ -202,6 +237,13 @@ SetIamAssumedRoleArn sets IamAssumedRoleArn field to given value.
 `func (o *CloudProviderAccessAzureServicePrincipal) HasIamAssumedRoleArn() bool`
 
 HasIamAssumedRoleArn returns a boolean if a field has been set.
+
+### SetIamAssumedRoleArnNil
+
+`func (o *CloudProviderAccessAzureServicePrincipal) SetIamAssumedRoleArnNil()`
+
+SetIamAssumedRoleArnNil sets IamAssumedRoleArn to an explicit JSON null when marshaled, overriding any value previously set with SetIamAssumedRoleArn. Calling SetIamAssumedRoleArn again clears the null override.
+
 ### GetRoleId
 
 `func (o *CloudProviderAccessAzureServicePrincipal) GetRoleId() string`
@@ -226,6 +268,13 @@ SetRoleId sets RoleId field to given value.
 `func (o *CloudProviderAccessAzureServicePrincipal) HasRoleId() bool`
 
 HasRoleId returns a boolean if a field has been set.
+
+### SetRoleIdNil
+
+`func (o *CloudProviderAccessAzureServicePrincipal) SetRoleIdNil()`
+
+SetRoleIdNil sets RoleId to an explicit JSON null when marshaled, overriding any value previously set with SetRoleId. Calling SetRoleId again clears the null override.
+
 ### GetId
 
 `func (o *CloudProviderAccessAzureServicePrincipal) GetId() string`
@@ -250,6 +299,13 @@ SetId sets Id field to given value.
 `func (o *CloudProviderAccessAzureServicePrincipal) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *CloudProviderAccessAzureServicePrincipal) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetAtlasAzureAppId
 
 `func (o *CloudProviderAccessAzureServicePrincipal) GetAtlasAzureAppId() string`
@@ -274,6 +330,13 @@ SetAtlasAzureAppId sets AtlasAzureAppId field to given value.
 `func (o *CloudProviderAccessAzureServicePrincipal) HasAtlasAzureAppId() bool`
 
 HasAtlasAzureAppId returns a boolean if a field has been set.
+
+### SetAtlasAzureAppIdNil
+
+`func (o *CloudProviderAccessAzureServicePrincipal) SetAtlasAzureAppIdNil()`
+
+SetAtlasAzureAppIdNil sets AtlasAzureAppId to an explicit JSON null when marshaled, overriding any value previously set with SetAtlasAzureAppId. Calling SetAtlasAzureAppId again clears the null override.
+
 ### GetLastUpdatedDate
 
 `func (o *CloudProviderAccessAzureServicePrincipal) GetLastUpdatedDate() time.Time`
@@ -298,6 +361,13 @@ SetLastUpdatedDate sets LastUpdatedDate field to given value.
 `func (o *CloudProviderAccessAzureServicePrincipal) HasLastUpdatedDate() bool`
 
 HasLastUpdatedDate returns a boolean if a field has been set.
+
+### SetLastUpdatedDateNil
+
+`func (o *CloudProviderAccessAzureServicePrincipal) SetLastUpdatedDateNil()`
+
+SetLastUpdatedDateNil sets LastUpdatedDate to an explicit JSON null when marshaled, overriding any value previously set with SetLastUpdatedDate. Calling SetLastUpdatedDate again clears the null override.
+
 ### GetServicePrincipalId
 
 `func (o *CloudProviderAccessAzureServicePrincipal) GetServicePrincipalId() string`
@@ -322,6 +392,13 @@ SetServicePrincipalId sets ServicePrincipalId field to given value.
 `func (o *CloudProviderAccessAzureServicePrincipal) HasServicePrincipalId() bool`
 
 HasServicePrincipalId returns a boolean if a field has been set.
+
+### SetServicePrincipalIdNil
+
+`func (o *CloudProviderAccessAzureServicePrincipal) SetServicePrincipalIdNil()`
+
+SetServicePrincipalIdNil sets ServicePrincipalId to an explicit JSON null when marshaled, overriding any value previously set with SetServicePrincipalId. Calling SetServicePrincipalId again clears the null override.
+
 ### GetTenantId
 
 `func (o *CloudProviderAccessAzureServicePrincipal) GetTenantId() string`
@@ -346,6 +423,13 @@ SetTenantId sets TenantId field to given value.
 `func (o *CloudProviderAccessAzureServicePrincipal) HasTenantId() bool`
 
 HasTenantId returns a boolean if a field has been set.
+
+### SetTenantIdNil
+
+`func (o *CloudProviderAccessAzureServicePrincipal) SetTenantIdNil()`
+
+SetTenantIdNil sets TenantId to an explicit JSON null when marshaled, overriding any value previously set with SetTenantId. Calling SetTenantId again clears the null override.
+
 ### GetGcpServiceAccountForAtlas
 
 `func (o *CloudProviderAccessAzureServicePrincipal) GetGcpServiceAccountForAtlas() string`
@@ -370,6 +454,13 @@ SetGcpServiceAccountForAtlas sets GcpServiceAccountForAtlas field to given value
 `func (o *CloudProviderAccessAzureServicePrincipal) HasGcpServiceAccountForAtlas() bool`
 
 HasGcpServiceAccountForAtlas returns a boolean if a field has been set.
+
+### SetGcpServiceAccountForAtlasNil
+
+`func (o *CloudProviderAccessAzureServicePrincipal) SetGcpServiceAccountForAtlasNil()`
+
+SetGcpServiceAccountForAtlasNil sets GcpServiceAccountForAtlas to an explicit JSON null when marshaled, overriding any value previously set with SetGcpServiceAccountForAtlas. Calling SetGcpServiceAccountForAtlas again clears the null override.
+
 ### GetStatus
 
 `func (o *CloudProviderAccessAzureServicePrincipal) GetStatus() string`
@@ -394,6 +485,13 @@ SetStatus sets Status field to given value.
 `func (o *CloudProviderAccessAzureServicePrincipal) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *CloudProviderAccessAzureServicePrincipal) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

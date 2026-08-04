@@ -95,6 +95,13 @@ SetId sets Id field to given value.
 `func (o *Group) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *Group) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLinks
 
 `func (o *Group) GetLinks() []Link`
@@ -119,6 +126,13 @@ SetLinks sets Links field to given value.
 `func (o *Group) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *Group) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetName
 
 `func (o *Group) GetName() string`
@@ -181,6 +195,13 @@ SetRegionUsageRestrictions sets RegionUsageRestrictions field to given value.
 `func (o *Group) HasRegionUsageRestrictions() bool`
 
 HasRegionUsageRestrictions returns a boolean if a field has been set.
+
+### SetRegionUsageRestrictionsNil
+
+`func (o *Group) SetRegionUsageRestrictionsNil()`
+
+SetRegionUsageRestrictionsNil sets RegionUsageRestrictions to an explicit JSON null when marshaled, overriding any value previously set with SetRegionUsageRestrictions. Calling SetRegionUsageRestrictions again clears the null override.
+
 ### GetTags
 
 `func (o *Group) GetTags() []ResourceTag`
@@ -205,6 +226,13 @@ SetTags sets Tags field to given value.
 `func (o *Group) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### SetTagsNil
+
+`func (o *Group) SetTagsNil()`
+
+SetTagsNil sets Tags to an explicit JSON null when marshaled, overriding any value previously set with SetTags. Calling SetTags again clears the null override.
+
 ### GetWithDefaultAlertsSettings
 
 `func (o *Group) GetWithDefaultAlertsSettings() bool`
@@ -229,6 +257,13 @@ SetWithDefaultAlertsSettings sets WithDefaultAlertsSettings field to given value
 `func (o *Group) HasWithDefaultAlertsSettings() bool`
 
 HasWithDefaultAlertsSettings returns a boolean if a field has been set.
+
+### SetWithDefaultAlertsSettingsNil
+
+`func (o *Group) SetWithDefaultAlertsSettingsNil()`
+
+SetWithDefaultAlertsSettingsNil sets WithDefaultAlertsSettings to an explicit JSON null when marshaled, overriding any value previously set with SetWithDefaultAlertsSettings. Calling SetWithDefaultAlertsSettings again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

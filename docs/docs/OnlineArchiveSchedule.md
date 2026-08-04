@@ -74,6 +74,13 @@ SetEndHour sets EndHour field to given value.
 `func (o *OnlineArchiveSchedule) HasEndHour() bool`
 
 HasEndHour returns a boolean if a field has been set.
+
+### SetEndHourNil
+
+`func (o *OnlineArchiveSchedule) SetEndHourNil()`
+
+SetEndHourNil sets EndHour to an explicit JSON null when marshaled, overriding any value previously set with SetEndHour. Calling SetEndHour again clears the null override.
+
 ### GetEndMinute
 
 `func (o *OnlineArchiveSchedule) GetEndMinute() int`
@@ -98,6 +105,13 @@ SetEndMinute sets EndMinute field to given value.
 `func (o *OnlineArchiveSchedule) HasEndMinute() bool`
 
 HasEndMinute returns a boolean if a field has been set.
+
+### SetEndMinuteNil
+
+`func (o *OnlineArchiveSchedule) SetEndMinuteNil()`
+
+SetEndMinuteNil sets EndMinute to an explicit JSON null when marshaled, overriding any value previously set with SetEndMinute. Calling SetEndMinute again clears the null override.
+
 ### GetStartHour
 
 `func (o *OnlineArchiveSchedule) GetStartHour() int`
@@ -122,6 +136,13 @@ SetStartHour sets StartHour field to given value.
 `func (o *OnlineArchiveSchedule) HasStartHour() bool`
 
 HasStartHour returns a boolean if a field has been set.
+
+### SetStartHourNil
+
+`func (o *OnlineArchiveSchedule) SetStartHourNil()`
+
+SetStartHourNil sets StartHour to an explicit JSON null when marshaled, overriding any value previously set with SetStartHour. Calling SetStartHour again clears the null override.
+
 ### GetStartMinute
 
 `func (o *OnlineArchiveSchedule) GetStartMinute() int`
@@ -146,6 +167,13 @@ SetStartMinute sets StartMinute field to given value.
 `func (o *OnlineArchiveSchedule) HasStartMinute() bool`
 
 HasStartMinute returns a boolean if a field has been set.
+
+### SetStartMinuteNil
+
+`func (o *OnlineArchiveSchedule) SetStartMinuteNil()`
+
+SetStartMinuteNil sets StartMinute to an explicit JSON null when marshaled, overriding any value previously set with SetStartMinute. Calling SetStartMinute again clears the null override.
+
 ### GetDayOfWeek
 
 `func (o *OnlineArchiveSchedule) GetDayOfWeek() int`
@@ -170,6 +198,13 @@ SetDayOfWeek sets DayOfWeek field to given value.
 `func (o *OnlineArchiveSchedule) HasDayOfWeek() bool`
 
 HasDayOfWeek returns a boolean if a field has been set.
+
+### SetDayOfWeekNil
+
+`func (o *OnlineArchiveSchedule) SetDayOfWeekNil()`
+
+SetDayOfWeekNil sets DayOfWeek to an explicit JSON null when marshaled, overriding any value previously set with SetDayOfWeek. Calling SetDayOfWeek again clears the null override.
+
 ### GetDayOfMonth
 
 `func (o *OnlineArchiveSchedule) GetDayOfMonth() int`
@@ -194,6 +229,13 @@ SetDayOfMonth sets DayOfMonth field to given value.
 `func (o *OnlineArchiveSchedule) HasDayOfMonth() bool`
 
 HasDayOfMonth returns a boolean if a field has been set.
+
+### SetDayOfMonthNil
+
+`func (o *OnlineArchiveSchedule) SetDayOfMonthNil()`
+
+SetDayOfMonthNil sets DayOfMonth to an explicit JSON null when marshaled, overriding any value previously set with SetDayOfMonth. Calling SetDayOfMonth again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

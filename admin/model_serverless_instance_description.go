@@ -35,6 +35,15 @@ type ServerlessInstanceDescription struct {
 	Tags *[]ResourceTag `json:"tags,omitempty"`
 	// Flag that indicates whether termination protection is enabled on the serverless instance. If set to `true`, MongoDB Cloud won't delete the serverless instance. If set to `false`, MongoDB Cloud will delete the serverless instance.
 	TerminationProtectionEnabled *bool `json:"terminationProtectionEnabled,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ServerlessInstanceDescription) MarshalJSON() ([]byte, error) {
+	type noMethod ServerlessInstanceDescription
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewServerlessInstanceDescription instantiates a new ServerlessInstanceDescription object
@@ -90,6 +99,13 @@ func (o *ServerlessInstanceDescription) HasConnectionStrings() bool {
 // SetConnectionStrings gets a reference to the given ServerlessInstanceDescriptionConnectionStrings and assigns it to the ConnectionStrings field.
 func (o *ServerlessInstanceDescription) SetConnectionStrings(v ServerlessInstanceDescriptionConnectionStrings) {
 	o.ConnectionStrings = &v
+	o.NullFields = removeNullField(o.NullFields, "ConnectionStrings")
+}
+
+// SetConnectionStringsNil sets ConnectionStrings to an explicit JSON null when marshaled.
+func (o *ServerlessInstanceDescription) SetConnectionStringsNil() {
+	o.ConnectionStrings = nil
+	o.NullFields = addNullField(o.NullFields, "ConnectionStrings")
 }
 
 // GetCreateDate returns the CreateDate field value if set, zero value otherwise
@@ -123,6 +139,13 @@ func (o *ServerlessInstanceDescription) HasCreateDate() bool {
 // SetCreateDate gets a reference to the given time.Time and assigns it to the CreateDate field.
 func (o *ServerlessInstanceDescription) SetCreateDate(v time.Time) {
 	o.CreateDate = &v
+	o.NullFields = removeNullField(o.NullFields, "CreateDate")
+}
+
+// SetCreateDateNil sets CreateDate to an explicit JSON null when marshaled.
+func (o *ServerlessInstanceDescription) SetCreateDateNil() {
+	o.CreateDate = nil
+	o.NullFields = addNullField(o.NullFields, "CreateDate")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -156,6 +179,13 @@ func (o *ServerlessInstanceDescription) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *ServerlessInstanceDescription) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *ServerlessInstanceDescription) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -189,6 +219,13 @@ func (o *ServerlessInstanceDescription) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ServerlessInstanceDescription) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *ServerlessInstanceDescription) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -222,6 +259,13 @@ func (o *ServerlessInstanceDescription) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *ServerlessInstanceDescription) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *ServerlessInstanceDescription) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetMongoDBVersion returns the MongoDBVersion field value if set, zero value otherwise
@@ -255,6 +299,13 @@ func (o *ServerlessInstanceDescription) HasMongoDBVersion() bool {
 // SetMongoDBVersion gets a reference to the given string and assigns it to the MongoDBVersion field.
 func (o *ServerlessInstanceDescription) SetMongoDBVersion(v string) {
 	o.MongoDBVersion = &v
+	o.NullFields = removeNullField(o.NullFields, "MongoDBVersion")
+}
+
+// SetMongoDBVersionNil sets MongoDBVersion to an explicit JSON null when marshaled.
+func (o *ServerlessInstanceDescription) SetMongoDBVersionNil() {
+	o.MongoDBVersion = nil
+	o.NullFields = addNullField(o.NullFields, "MongoDBVersion")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -288,6 +339,13 @@ func (o *ServerlessInstanceDescription) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ServerlessInstanceDescription) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *ServerlessInstanceDescription) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }
 
 // GetProviderSettings returns the ProviderSettings field value
@@ -345,6 +403,13 @@ func (o *ServerlessInstanceDescription) HasServerlessBackupOptions() bool {
 // SetServerlessBackupOptions gets a reference to the given ClusterServerlessBackupOptions and assigns it to the ServerlessBackupOptions field.
 func (o *ServerlessInstanceDescription) SetServerlessBackupOptions(v ClusterServerlessBackupOptions) {
 	o.ServerlessBackupOptions = &v
+	o.NullFields = removeNullField(o.NullFields, "ServerlessBackupOptions")
+}
+
+// SetServerlessBackupOptionsNil sets ServerlessBackupOptions to an explicit JSON null when marshaled.
+func (o *ServerlessInstanceDescription) SetServerlessBackupOptionsNil() {
+	o.ServerlessBackupOptions = nil
+	o.NullFields = addNullField(o.NullFields, "ServerlessBackupOptions")
 }
 
 // GetStateName returns the StateName field value if set, zero value otherwise
@@ -378,6 +443,13 @@ func (o *ServerlessInstanceDescription) HasStateName() bool {
 // SetStateName gets a reference to the given string and assigns it to the StateName field.
 func (o *ServerlessInstanceDescription) SetStateName(v string) {
 	o.StateName = &v
+	o.NullFields = removeNullField(o.NullFields, "StateName")
+}
+
+// SetStateNameNil sets StateName to an explicit JSON null when marshaled.
+func (o *ServerlessInstanceDescription) SetStateNameNil() {
+	o.StateName = nil
+	o.NullFields = addNullField(o.NullFields, "StateName")
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise
@@ -411,6 +483,13 @@ func (o *ServerlessInstanceDescription) HasTags() bool {
 // SetTags gets a reference to the given []ResourceTag and assigns it to the Tags field.
 func (o *ServerlessInstanceDescription) SetTags(v []ResourceTag) {
 	o.Tags = &v
+	o.NullFields = removeNullField(o.NullFields, "Tags")
+}
+
+// SetTagsNil sets Tags to an explicit JSON null when marshaled.
+func (o *ServerlessInstanceDescription) SetTagsNil() {
+	o.Tags = nil
+	o.NullFields = addNullField(o.NullFields, "Tags")
 }
 
 // GetTerminationProtectionEnabled returns the TerminationProtectionEnabled field value if set, zero value otherwise
@@ -444,4 +523,11 @@ func (o *ServerlessInstanceDescription) HasTerminationProtectionEnabled() bool {
 // SetTerminationProtectionEnabled gets a reference to the given bool and assigns it to the TerminationProtectionEnabled field.
 func (o *ServerlessInstanceDescription) SetTerminationProtectionEnabled(v bool) {
 	o.TerminationProtectionEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "TerminationProtectionEnabled")
+}
+
+// SetTerminationProtectionEnabledNil sets TerminationProtectionEnabled to an explicit JSON null when marshaled.
+func (o *ServerlessInstanceDescription) SetTerminationProtectionEnabledNil() {
+	o.TerminationProtectionEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "TerminationProtectionEnabled")
 }

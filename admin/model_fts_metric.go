@@ -10,6 +10,15 @@ type FTSMetric struct {
 	// Unit of measurement that applies to this Atlas Search metric.
 	// Read only field.
 	Units string `json:"units"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *FTSMetric) MarshalJSON() ([]byte, error) {
+	type noMethod FTSMetric
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFTSMetric instantiates a new FTSMetric object

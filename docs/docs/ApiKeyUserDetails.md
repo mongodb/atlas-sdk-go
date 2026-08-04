@@ -54,6 +54,13 @@ SetDesc sets Desc field to given value.
 `func (o *ApiKeyUserDetails) HasDesc() bool`
 
 HasDesc returns a boolean if a field has been set.
+
+### SetDescNil
+
+`func (o *ApiKeyUserDetails) SetDescNil()`
+
+SetDescNil sets Desc to an explicit JSON null when marshaled, overriding any value previously set with SetDesc. Calling SetDesc again clears the null override.
+
 ### GetId
 
 `func (o *ApiKeyUserDetails) GetId() string`
@@ -78,6 +85,13 @@ SetId sets Id field to given value.
 `func (o *ApiKeyUserDetails) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *ApiKeyUserDetails) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLinks
 
 `func (o *ApiKeyUserDetails) GetLinks() []Link`
@@ -102,6 +116,13 @@ SetLinks sets Links field to given value.
 `func (o *ApiKeyUserDetails) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *ApiKeyUserDetails) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetPrivateKey
 
 `func (o *ApiKeyUserDetails) GetPrivateKey() string`
@@ -126,6 +147,13 @@ SetPrivateKey sets PrivateKey field to given value.
 `func (o *ApiKeyUserDetails) HasPrivateKey() bool`
 
 HasPrivateKey returns a boolean if a field has been set.
+
+### SetPrivateKeyNil
+
+`func (o *ApiKeyUserDetails) SetPrivateKeyNil()`
+
+SetPrivateKeyNil sets PrivateKey to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateKey. Calling SetPrivateKey again clears the null override.
+
 ### GetPublicKey
 
 `func (o *ApiKeyUserDetails) GetPublicKey() string`
@@ -150,6 +178,13 @@ SetPublicKey sets PublicKey field to given value.
 `func (o *ApiKeyUserDetails) HasPublicKey() bool`
 
 HasPublicKey returns a boolean if a field has been set.
+
+### SetPublicKeyNil
+
+`func (o *ApiKeyUserDetails) SetPublicKeyNil()`
+
+SetPublicKeyNil sets PublicKey to an explicit JSON null when marshaled, overriding any value previously set with SetPublicKey. Calling SetPublicKey again clears the null override.
+
 ### GetRoles
 
 `func (o *ApiKeyUserDetails) GetRoles() []CloudAccessRoleAssignment`
@@ -174,6 +209,13 @@ SetRoles sets Roles field to given value.
 `func (o *ApiKeyUserDetails) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
+
+### SetRolesNil
+
+`func (o *ApiKeyUserDetails) SetRolesNil()`
+
+SetRolesNil sets Roles to an explicit JSON null when marshaled, overriding any value previously set with SetRoles. Calling SetRoles again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

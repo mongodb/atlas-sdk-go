@@ -50,6 +50,13 @@ SetCompute sets Compute field to given value.
 
 HasCompute returns a boolean if a field has been set.
 
+### SetComputeNil
+
+`func (o *ClusterFreeAutoScaling) SetComputeNil()`
+
+SetComputeNil sets Compute to an explicit JSON null when marshaled, overriding any value previously set with SetCompute. Calling SetCompute again clears the null override.
+
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

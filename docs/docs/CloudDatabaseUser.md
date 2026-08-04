@@ -62,6 +62,13 @@ SetAwsIAMType sets AwsIAMType field to given value.
 `func (o *CloudDatabaseUser) HasAwsIAMType() bool`
 
 HasAwsIAMType returns a boolean if a field has been set.
+
+### SetAwsIAMTypeNil
+
+`func (o *CloudDatabaseUser) SetAwsIAMTypeNil()`
+
+SetAwsIAMTypeNil sets AwsIAMType to an explicit JSON null when marshaled, overriding any value previously set with SetAwsIAMType. Calling SetAwsIAMType again clears the null override.
+
 ### GetDatabaseName
 
 `func (o *CloudDatabaseUser) GetDatabaseName() string`
@@ -105,6 +112,13 @@ SetDeleteAfterDate sets DeleteAfterDate field to given value.
 `func (o *CloudDatabaseUser) HasDeleteAfterDate() bool`
 
 HasDeleteAfterDate returns a boolean if a field has been set.
+
+### SetDeleteAfterDateNil
+
+`func (o *CloudDatabaseUser) SetDeleteAfterDateNil()`
+
+SetDeleteAfterDateNil sets DeleteAfterDate to an explicit JSON null when marshaled, overriding any value previously set with SetDeleteAfterDate. Calling SetDeleteAfterDate again clears the null override.
+
 ### GetDescription
 
 `func (o *CloudDatabaseUser) GetDescription() string`
@@ -129,6 +143,13 @@ SetDescription sets Description field to given value.
 `func (o *CloudDatabaseUser) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *CloudDatabaseUser) SetDescriptionNil()`
+
+SetDescriptionNil sets Description to an explicit JSON null when marshaled, overriding any value previously set with SetDescription. Calling SetDescription again clears the null override.
+
 ### GetGroupId
 
 `func (o *CloudDatabaseUser) GetGroupId() string`
@@ -172,6 +193,13 @@ SetLabels sets Labels field to given value.
 `func (o *CloudDatabaseUser) HasLabels() bool`
 
 HasLabels returns a boolean if a field has been set.
+
+### SetLabelsNil
+
+`func (o *CloudDatabaseUser) SetLabelsNil()`
+
+SetLabelsNil sets Labels to an explicit JSON null when marshaled, overriding any value previously set with SetLabels. Calling SetLabels again clears the null override.
+
 ### GetLdapAuthType
 
 `func (o *CloudDatabaseUser) GetLdapAuthType() string`
@@ -196,6 +224,13 @@ SetLdapAuthType sets LdapAuthType field to given value.
 `func (o *CloudDatabaseUser) HasLdapAuthType() bool`
 
 HasLdapAuthType returns a boolean if a field has been set.
+
+### SetLdapAuthTypeNil
+
+`func (o *CloudDatabaseUser) SetLdapAuthTypeNil()`
+
+SetLdapAuthTypeNil sets LdapAuthType to an explicit JSON null when marshaled, overriding any value previously set with SetLdapAuthType. Calling SetLdapAuthType again clears the null override.
+
 ### GetLinks
 
 `func (o *CloudDatabaseUser) GetLinks() []Link`
@@ -220,6 +255,13 @@ SetLinks sets Links field to given value.
 `func (o *CloudDatabaseUser) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *CloudDatabaseUser) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetOidcAuthType
 
 `func (o *CloudDatabaseUser) GetOidcAuthType() string`
@@ -244,6 +286,13 @@ SetOidcAuthType sets OidcAuthType field to given value.
 `func (o *CloudDatabaseUser) HasOidcAuthType() bool`
 
 HasOidcAuthType returns a boolean if a field has been set.
+
+### SetOidcAuthTypeNil
+
+`func (o *CloudDatabaseUser) SetOidcAuthTypeNil()`
+
+SetOidcAuthTypeNil sets OidcAuthType to an explicit JSON null when marshaled, overriding any value previously set with SetOidcAuthType. Calling SetOidcAuthType again clears the null override.
+
 ### GetPassword
 
 `func (o *CloudDatabaseUser) GetPassword() string`
@@ -268,6 +317,13 @@ SetPassword sets Password field to given value.
 `func (o *CloudDatabaseUser) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
+
+### SetPasswordNil
+
+`func (o *CloudDatabaseUser) SetPasswordNil()`
+
+SetPasswordNil sets Password to an explicit JSON null when marshaled, overriding any value previously set with SetPassword. Calling SetPassword again clears the null override.
+
 ### GetRoles
 
 `func (o *CloudDatabaseUser) GetRoles() []DatabaseUserRole`
@@ -311,6 +367,13 @@ SetScopes sets Scopes field to given value.
 `func (o *CloudDatabaseUser) HasScopes() bool`
 
 HasScopes returns a boolean if a field has been set.
+
+### SetScopesNil
+
+`func (o *CloudDatabaseUser) SetScopesNil()`
+
+SetScopesNil sets Scopes to an explicit JSON null when marshaled, overriding any value previously set with SetScopes. Calling SetScopes again clears the null override.
+
 ### GetUsername
 
 `func (o *CloudDatabaseUser) GetUsername() string`
@@ -354,6 +417,13 @@ SetX509Type sets X509Type field to given value.
 `func (o *CloudDatabaseUser) HasX509Type() bool`
 
 HasX509Type returns a boolean if a field has been set.
+
+### SetX509TypeNil
+
+`func (o *CloudDatabaseUser) SetX509TypeNil()`
+
+SetX509TypeNil sets X509Type to an explicit JSON null when marshaled, overriding any value previously set with SetX509Type. Calling SetX509Type again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

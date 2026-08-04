@@ -57,6 +57,13 @@ SetAuthResult sets AuthResult field to given value.
 `func (o *MongoDBAccessLogs) HasAuthResult() bool`
 
 HasAuthResult returns a boolean if a field has been set.
+
+### SetAuthResultNil
+
+`func (o *MongoDBAccessLogs) SetAuthResultNil()`
+
+SetAuthResultNil sets AuthResult to an explicit JSON null when marshaled, overriding any value previously set with SetAuthResult. Calling SetAuthResult again clears the null override.
+
 ### GetAuthSource
 
 `func (o *MongoDBAccessLogs) GetAuthSource() string`
@@ -81,6 +88,13 @@ SetAuthSource sets AuthSource field to given value.
 `func (o *MongoDBAccessLogs) HasAuthSource() bool`
 
 HasAuthSource returns a boolean if a field has been set.
+
+### SetAuthSourceNil
+
+`func (o *MongoDBAccessLogs) SetAuthSourceNil()`
+
+SetAuthSourceNil sets AuthSource to an explicit JSON null when marshaled, overriding any value previously set with SetAuthSource. Calling SetAuthSource again clears the null override.
+
 ### GetFailureReason
 
 `func (o *MongoDBAccessLogs) GetFailureReason() string`
@@ -105,6 +119,13 @@ SetFailureReason sets FailureReason field to given value.
 `func (o *MongoDBAccessLogs) HasFailureReason() bool`
 
 HasFailureReason returns a boolean if a field has been set.
+
+### SetFailureReasonNil
+
+`func (o *MongoDBAccessLogs) SetFailureReasonNil()`
+
+SetFailureReasonNil sets FailureReason to an explicit JSON null when marshaled, overriding any value previously set with SetFailureReason. Calling SetFailureReason again clears the null override.
+
 ### GetGroupId
 
 `func (o *MongoDBAccessLogs) GetGroupId() string`
@@ -129,6 +150,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *MongoDBAccessLogs) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *MongoDBAccessLogs) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetHostname
 
 `func (o *MongoDBAccessLogs) GetHostname() string`
@@ -153,6 +181,13 @@ SetHostname sets Hostname field to given value.
 `func (o *MongoDBAccessLogs) HasHostname() bool`
 
 HasHostname returns a boolean if a field has been set.
+
+### SetHostnameNil
+
+`func (o *MongoDBAccessLogs) SetHostnameNil()`
+
+SetHostnameNil sets Hostname to an explicit JSON null when marshaled, overriding any value previously set with SetHostname. Calling SetHostname again clears the null override.
+
 ### GetIpAddress
 
 `func (o *MongoDBAccessLogs) GetIpAddress() string`
@@ -177,6 +212,13 @@ SetIpAddress sets IpAddress field to given value.
 `func (o *MongoDBAccessLogs) HasIpAddress() bool`
 
 HasIpAddress returns a boolean if a field has been set.
+
+### SetIpAddressNil
+
+`func (o *MongoDBAccessLogs) SetIpAddressNil()`
+
+SetIpAddressNil sets IpAddress to an explicit JSON null when marshaled, overriding any value previously set with SetIpAddress. Calling SetIpAddress again clears the null override.
+
 ### GetLogLine
 
 `func (o *MongoDBAccessLogs) GetLogLine() string`
@@ -201,6 +243,13 @@ SetLogLine sets LogLine field to given value.
 `func (o *MongoDBAccessLogs) HasLogLine() bool`
 
 HasLogLine returns a boolean if a field has been set.
+
+### SetLogLineNil
+
+`func (o *MongoDBAccessLogs) SetLogLineNil()`
+
+SetLogLineNil sets LogLine to an explicit JSON null when marshaled, overriding any value previously set with SetLogLine. Calling SetLogLine again clears the null override.
+
 ### GetTimestamp
 
 `func (o *MongoDBAccessLogs) GetTimestamp() string`
@@ -225,6 +274,13 @@ SetTimestamp sets Timestamp field to given value.
 `func (o *MongoDBAccessLogs) HasTimestamp() bool`
 
 HasTimestamp returns a boolean if a field has been set.
+
+### SetTimestampNil
+
+`func (o *MongoDBAccessLogs) SetTimestampNil()`
+
+SetTimestampNil sets Timestamp to an explicit JSON null when marshaled, overriding any value previously set with SetTimestamp. Calling SetTimestamp again clears the null override.
+
 ### GetUsername
 
 `func (o *MongoDBAccessLogs) GetUsername() string`
@@ -249,6 +305,13 @@ SetUsername sets Username field to given value.
 `func (o *MongoDBAccessLogs) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
+
+### SetUsernameNil
+
+`func (o *MongoDBAccessLogs) SetUsernameNil()`
+
+SetUsernameNil sets Username to an explicit JSON null when marshaled, overriding any value previously set with SetUsername. Calling SetUsername again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

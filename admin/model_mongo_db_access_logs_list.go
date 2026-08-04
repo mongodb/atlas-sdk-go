@@ -7,6 +7,15 @@ type MongoDBAccessLogsList struct {
 	// Authentication attempt, one per object, made against the cluster.
 	// Read only field.
 	AccessLogs *[]MongoDBAccessLogs `json:"accessLogs,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *MongoDBAccessLogsList) MarshalJSON() ([]byte, error) {
+	type noMethod MongoDBAccessLogsList
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewMongoDBAccessLogsList instantiates a new MongoDBAccessLogsList object
@@ -57,4 +66,11 @@ func (o *MongoDBAccessLogsList) HasAccessLogs() bool {
 // SetAccessLogs gets a reference to the given []MongoDBAccessLogs and assigns it to the AccessLogs field.
 func (o *MongoDBAccessLogsList) SetAccessLogs(v []MongoDBAccessLogs) {
 	o.AccessLogs = &v
+	o.NullFields = removeNullField(o.NullFields, "AccessLogs")
+}
+
+// SetAccessLogsNil sets AccessLogs to an explicit JSON null when marshaled.
+func (o *MongoDBAccessLogsList) SetAccessLogsNil() {
+	o.AccessLogs = nil
+	o.NullFields = addNullField(o.NullFields, "AccessLogs")
 }

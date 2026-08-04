@@ -60,6 +60,13 @@ SetCreated sets Created field to given value.
 `func (o *ApiHostViewAtlas) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
+
+### SetCreatedNil
+
+`func (o *ApiHostViewAtlas) SetCreatedNil()`
+
+SetCreatedNil sets Created to an explicit JSON null when marshaled, overriding any value previously set with SetCreated. Calling SetCreated again clears the null override.
+
 ### GetGroupId
 
 `func (o *ApiHostViewAtlas) GetGroupId() string`
@@ -84,6 +91,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *ApiHostViewAtlas) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *ApiHostViewAtlas) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetHostname
 
 `func (o *ApiHostViewAtlas) GetHostname() string`
@@ -108,6 +122,13 @@ SetHostname sets Hostname field to given value.
 `func (o *ApiHostViewAtlas) HasHostname() bool`
 
 HasHostname returns a boolean if a field has been set.
+
+### SetHostnameNil
+
+`func (o *ApiHostViewAtlas) SetHostnameNil()`
+
+SetHostnameNil sets Hostname to an explicit JSON null when marshaled, overriding any value previously set with SetHostname. Calling SetHostname again clears the null override.
+
 ### GetId
 
 `func (o *ApiHostViewAtlas) GetId() string`
@@ -132,6 +153,13 @@ SetId sets Id field to given value.
 `func (o *ApiHostViewAtlas) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *ApiHostViewAtlas) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLastPing
 
 `func (o *ApiHostViewAtlas) GetLastPing() time.Time`
@@ -156,6 +184,13 @@ SetLastPing sets LastPing field to given value.
 `func (o *ApiHostViewAtlas) HasLastPing() bool`
 
 HasLastPing returns a boolean if a field has been set.
+
+### SetLastPingNil
+
+`func (o *ApiHostViewAtlas) SetLastPingNil()`
+
+SetLastPingNil sets LastPing to an explicit JSON null when marshaled, overriding any value previously set with SetLastPing. Calling SetLastPing again clears the null override.
+
 ### GetLinks
 
 `func (o *ApiHostViewAtlas) GetLinks() []LinkAtlas`
@@ -180,6 +215,13 @@ SetLinks sets Links field to given value.
 `func (o *ApiHostViewAtlas) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *ApiHostViewAtlas) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetPort
 
 `func (o *ApiHostViewAtlas) GetPort() int`
@@ -204,6 +246,13 @@ SetPort sets Port field to given value.
 `func (o *ApiHostViewAtlas) HasPort() bool`
 
 HasPort returns a boolean if a field has been set.
+
+### SetPortNil
+
+`func (o *ApiHostViewAtlas) SetPortNil()`
+
+SetPortNil sets Port to an explicit JSON null when marshaled, overriding any value previously set with SetPort. Calling SetPort again clears the null override.
+
 ### GetReplicaSetName
 
 `func (o *ApiHostViewAtlas) GetReplicaSetName() string`
@@ -228,6 +277,13 @@ SetReplicaSetName sets ReplicaSetName field to given value.
 `func (o *ApiHostViewAtlas) HasReplicaSetName() bool`
 
 HasReplicaSetName returns a boolean if a field has been set.
+
+### SetReplicaSetNameNil
+
+`func (o *ApiHostViewAtlas) SetReplicaSetNameNil()`
+
+SetReplicaSetNameNil sets ReplicaSetName to an explicit JSON null when marshaled, overriding any value previously set with SetReplicaSetName. Calling SetReplicaSetName again clears the null override.
+
 ### GetShardName
 
 `func (o *ApiHostViewAtlas) GetShardName() string`
@@ -252,6 +308,13 @@ SetShardName sets ShardName field to given value.
 `func (o *ApiHostViewAtlas) HasShardName() bool`
 
 HasShardName returns a boolean if a field has been set.
+
+### SetShardNameNil
+
+`func (o *ApiHostViewAtlas) SetShardNameNil()`
+
+SetShardNameNil sets ShardName to an explicit JSON null when marshaled, overriding any value previously set with SetShardName. Calling SetShardName again clears the null override.
+
 ### GetTypeName
 
 `func (o *ApiHostViewAtlas) GetTypeName() string`
@@ -276,6 +339,13 @@ SetTypeName sets TypeName field to given value.
 `func (o *ApiHostViewAtlas) HasTypeName() bool`
 
 HasTypeName returns a boolean if a field has been set.
+
+### SetTypeNameNil
+
+`func (o *ApiHostViewAtlas) SetTypeNameNil()`
+
+SetTypeNameNil sets TypeName to an explicit JSON null when marshaled, overriding any value previously set with SetTypeName. Calling SetTypeName again clears the null override.
+
 ### GetUserAlias
 
 `func (o *ApiHostViewAtlas) GetUserAlias() string`
@@ -300,6 +370,13 @@ SetUserAlias sets UserAlias field to given value.
 `func (o *ApiHostViewAtlas) HasUserAlias() bool`
 
 HasUserAlias returns a boolean if a field has been set.
+
+### SetUserAliasNil
+
+`func (o *ApiHostViewAtlas) SetUserAliasNil()`
+
+SetUserAliasNil sets UserAlias to an explicit JSON null when marshaled, overriding any value previously set with SetUserAlias. Calling SetUserAlias again clears the null override.
+
 ### GetVersion
 
 `func (o *ApiHostViewAtlas) GetVersion() string`
@@ -324,6 +401,13 @@ SetVersion sets Version field to given value.
 `func (o *ApiHostViewAtlas) HasVersion() bool`
 
 HasVersion returns a boolean if a field has been set.
+
+### SetVersionNil
+
+`func (o *ApiHostViewAtlas) SetVersionNil()`
+
+SetVersionNil sets Version to an explicit JSON null when marshaled, overriding any value previously set with SetVersion. Calling SetVersion again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

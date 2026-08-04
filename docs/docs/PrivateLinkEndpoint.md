@@ -80,6 +80,13 @@ SetDeleteRequested sets DeleteRequested field to given value.
 `func (o *PrivateLinkEndpoint) HasDeleteRequested() bool`
 
 HasDeleteRequested returns a boolean if a field has been set.
+
+### SetDeleteRequestedNil
+
+`func (o *PrivateLinkEndpoint) SetDeleteRequestedNil()`
+
+SetDeleteRequestedNil sets DeleteRequested to an explicit JSON null when marshaled, overriding any value previously set with SetDeleteRequested. Calling SetDeleteRequested again clears the null override.
+
 ### GetErrorMessage
 
 `func (o *PrivateLinkEndpoint) GetErrorMessage() string`
@@ -104,6 +111,13 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *PrivateLinkEndpoint) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
+
+### SetErrorMessageNil
+
+`func (o *PrivateLinkEndpoint) SetErrorMessageNil()`
+
+SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled, overriding any value previously set with SetErrorMessage. Calling SetErrorMessage again clears the null override.
+
 ### GetConnectionStatus
 
 `func (o *PrivateLinkEndpoint) GetConnectionStatus() string`
@@ -128,6 +142,13 @@ SetConnectionStatus sets ConnectionStatus field to given value.
 `func (o *PrivateLinkEndpoint) HasConnectionStatus() bool`
 
 HasConnectionStatus returns a boolean if a field has been set.
+
+### SetConnectionStatusNil
+
+`func (o *PrivateLinkEndpoint) SetConnectionStatusNil()`
+
+SetConnectionStatusNil sets ConnectionStatus to an explicit JSON null when marshaled, overriding any value previously set with SetConnectionStatus. Calling SetConnectionStatus again clears the null override.
+
 ### GetInterfaceEndpointId
 
 `func (o *PrivateLinkEndpoint) GetInterfaceEndpointId() string`
@@ -152,6 +173,13 @@ SetInterfaceEndpointId sets InterfaceEndpointId field to given value.
 `func (o *PrivateLinkEndpoint) HasInterfaceEndpointId() bool`
 
 HasInterfaceEndpointId returns a boolean if a field has been set.
+
+### SetInterfaceEndpointIdNil
+
+`func (o *PrivateLinkEndpoint) SetInterfaceEndpointIdNil()`
+
+SetInterfaceEndpointIdNil sets InterfaceEndpointId to an explicit JSON null when marshaled, overriding any value previously set with SetInterfaceEndpointId. Calling SetInterfaceEndpointId again clears the null override.
+
 ### GetPrivateEndpointConnectionName
 
 `func (o *PrivateLinkEndpoint) GetPrivateEndpointConnectionName() string`
@@ -176,6 +204,13 @@ SetPrivateEndpointConnectionName sets PrivateEndpointConnectionName field to giv
 `func (o *PrivateLinkEndpoint) HasPrivateEndpointConnectionName() bool`
 
 HasPrivateEndpointConnectionName returns a boolean if a field has been set.
+
+### SetPrivateEndpointConnectionNameNil
+
+`func (o *PrivateLinkEndpoint) SetPrivateEndpointConnectionNameNil()`
+
+SetPrivateEndpointConnectionNameNil sets PrivateEndpointConnectionName to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateEndpointConnectionName. Calling SetPrivateEndpointConnectionName again clears the null override.
+
 ### GetPrivateEndpointIPAddress
 
 `func (o *PrivateLinkEndpoint) GetPrivateEndpointIPAddress() string`
@@ -200,6 +235,13 @@ SetPrivateEndpointIPAddress sets PrivateEndpointIPAddress field to given value.
 `func (o *PrivateLinkEndpoint) HasPrivateEndpointIPAddress() bool`
 
 HasPrivateEndpointIPAddress returns a boolean if a field has been set.
+
+### SetPrivateEndpointIPAddressNil
+
+`func (o *PrivateLinkEndpoint) SetPrivateEndpointIPAddressNil()`
+
+SetPrivateEndpointIPAddressNil sets PrivateEndpointIPAddress to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateEndpointIPAddress. Calling SetPrivateEndpointIPAddress again clears the null override.
+
 ### GetPrivateEndpointResourceId
 
 `func (o *PrivateLinkEndpoint) GetPrivateEndpointResourceId() string`
@@ -224,6 +266,13 @@ SetPrivateEndpointResourceId sets PrivateEndpointResourceId field to given value
 `func (o *PrivateLinkEndpoint) HasPrivateEndpointResourceId() bool`
 
 HasPrivateEndpointResourceId returns a boolean if a field has been set.
+
+### SetPrivateEndpointResourceIdNil
+
+`func (o *PrivateLinkEndpoint) SetPrivateEndpointResourceIdNil()`
+
+SetPrivateEndpointResourceIdNil sets PrivateEndpointResourceId to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateEndpointResourceId. Calling SetPrivateEndpointResourceId again clears the null override.
+
 ### GetStatus
 
 `func (o *PrivateLinkEndpoint) GetStatus() string`
@@ -248,6 +297,13 @@ SetStatus sets Status field to given value.
 `func (o *PrivateLinkEndpoint) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *PrivateLinkEndpoint) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 ### GetEndpointGroupName
 
 `func (o *PrivateLinkEndpoint) GetEndpointGroupName() string`
@@ -272,6 +328,13 @@ SetEndpointGroupName sets EndpointGroupName field to given value.
 `func (o *PrivateLinkEndpoint) HasEndpointGroupName() bool`
 
 HasEndpointGroupName returns a boolean if a field has been set.
+
+### SetEndpointGroupNameNil
+
+`func (o *PrivateLinkEndpoint) SetEndpointGroupNameNil()`
+
+SetEndpointGroupNameNil sets EndpointGroupName to an explicit JSON null when marshaled, overriding any value previously set with SetEndpointGroupName. Calling SetEndpointGroupName again clears the null override.
+
 ### GetEndpoints
 
 `func (o *PrivateLinkEndpoint) GetEndpoints() []GCPConsumerForwardingRule`
@@ -296,6 +359,13 @@ SetEndpoints sets Endpoints field to given value.
 `func (o *PrivateLinkEndpoint) HasEndpoints() bool`
 
 HasEndpoints returns a boolean if a field has been set.
+
+### SetEndpointsNil
+
+`func (o *PrivateLinkEndpoint) SetEndpointsNil()`
+
+SetEndpointsNil sets Endpoints to an explicit JSON null when marshaled, overriding any value previously set with SetEndpoints. Calling SetEndpoints again clears the null override.
+
 ### GetGcpProjectId
 
 `func (o *PrivateLinkEndpoint) GetGcpProjectId() string`
@@ -320,6 +390,13 @@ SetGcpProjectId sets GcpProjectId field to given value.
 `func (o *PrivateLinkEndpoint) HasGcpProjectId() bool`
 
 HasGcpProjectId returns a boolean if a field has been set.
+
+### SetGcpProjectIdNil
+
+`func (o *PrivateLinkEndpoint) SetGcpProjectIdNil()`
+
+SetGcpProjectIdNil sets GcpProjectId to an explicit JSON null when marshaled, overriding any value previously set with SetGcpProjectId. Calling SetGcpProjectId again clears the null override.
+
 ### GetPortMappingEnabled
 
 `func (o *PrivateLinkEndpoint) GetPortMappingEnabled() bool`
@@ -344,6 +421,13 @@ SetPortMappingEnabled sets PortMappingEnabled field to given value.
 `func (o *PrivateLinkEndpoint) HasPortMappingEnabled() bool`
 
 HasPortMappingEnabled returns a boolean if a field has been set.
+
+### SetPortMappingEnabledNil
+
+`func (o *PrivateLinkEndpoint) SetPortMappingEnabledNil()`
+
+SetPortMappingEnabledNil sets PortMappingEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetPortMappingEnabled. Calling SetPortMappingEnabled again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

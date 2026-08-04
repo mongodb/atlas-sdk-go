@@ -51,6 +51,13 @@ SetCustomZoneMapping sets CustomZoneMapping field to given value.
 `func (o *GeoSharding20240805) HasCustomZoneMapping() bool`
 
 HasCustomZoneMapping returns a boolean if a field has been set.
+
+### SetCustomZoneMappingNil
+
+`func (o *GeoSharding20240805) SetCustomZoneMappingNil()`
+
+SetCustomZoneMappingNil sets CustomZoneMapping to an explicit JSON null when marshaled, overriding any value previously set with SetCustomZoneMapping. Calling SetCustomZoneMapping again clears the null override.
+
 ### GetManagedNamespaces
 
 `func (o *GeoSharding20240805) GetManagedNamespaces() []ManagedNamespaces`
@@ -75,6 +82,13 @@ SetManagedNamespaces sets ManagedNamespaces field to given value.
 `func (o *GeoSharding20240805) HasManagedNamespaces() bool`
 
 HasManagedNamespaces returns a boolean if a field has been set.
+
+### SetManagedNamespacesNil
+
+`func (o *GeoSharding20240805) SetManagedNamespacesNil()`
+
+SetManagedNamespacesNil sets ManagedNamespaces to an explicit JSON null when marshaled, overriding any value previously set with SetManagedNamespaces. Calling SetManagedNamespaces again clears the null override.
+
 ### GetSelfManagedSharding
 
 `func (o *GeoSharding20240805) GetSelfManagedSharding() bool`
@@ -99,6 +113,13 @@ SetSelfManagedSharding sets SelfManagedSharding field to given value.
 `func (o *GeoSharding20240805) HasSelfManagedSharding() bool`
 
 HasSelfManagedSharding returns a boolean if a field has been set.
+
+### SetSelfManagedShardingNil
+
+`func (o *GeoSharding20240805) SetSelfManagedShardingNil()`
+
+SetSelfManagedShardingNil sets SelfManagedSharding to an explicit JSON null when marshaled, overriding any value previously set with SetSelfManagedSharding. Calling SetSelfManagedSharding again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

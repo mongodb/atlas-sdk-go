@@ -110,6 +110,13 @@ SetPrivateLinkId sets PrivateLinkId field to given value.
 
 HasPrivateLinkId returns a boolean if a field has been set.
 
+### SetPrivateLinkIdNil
+
+`func (o *Destination) SetPrivateLinkIdNil()`
+
+SetPrivateLinkIdNil sets PrivateLinkId to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateLinkId. Calling SetPrivateLinkId again clears the null override.
+
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

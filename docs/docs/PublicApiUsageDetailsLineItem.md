@@ -57,6 +57,13 @@ SetAdditionalData sets AdditionalData field to given value.
 `func (o *PublicApiUsageDetailsLineItem) HasAdditionalData() bool`
 
 HasAdditionalData returns a boolean if a field has been set.
+
+### SetAdditionalDataNil
+
+`func (o *PublicApiUsageDetailsLineItem) SetAdditionalDataNil()`
+
+SetAdditionalDataNil sets AdditionalData to an explicit JSON null when marshaled, overriding any value previously set with SetAdditionalData. Calling SetAdditionalData again clears the null override.
+
 ### GetBillDate
 
 `func (o *PublicApiUsageDetailsLineItem) GetBillDate() time.Time`
@@ -81,6 +88,13 @@ SetBillDate sets BillDate field to given value.
 `func (o *PublicApiUsageDetailsLineItem) HasBillDate() bool`
 
 HasBillDate returns a boolean if a field has been set.
+
+### SetBillDateNil
+
+`func (o *PublicApiUsageDetailsLineItem) SetBillDateNil()`
+
+SetBillDateNil sets BillDate to an explicit JSON null when marshaled, overriding any value previously set with SetBillDate. Calling SetBillDate again clears the null override.
+
 ### GetClusterName
 
 `func (o *PublicApiUsageDetailsLineItem) GetClusterName() string`
@@ -105,6 +119,13 @@ SetClusterName sets ClusterName field to given value.
 `func (o *PublicApiUsageDetailsLineItem) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+
+### SetClusterNameNil
+
+`func (o *PublicApiUsageDetailsLineItem) SetClusterNameNil()`
+
+SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled, overriding any value previously set with SetClusterName. Calling SetClusterName again clears the null override.
+
 ### GetDescription
 
 `func (o *PublicApiUsageDetailsLineItem) GetDescription() string`
@@ -129,6 +150,13 @@ SetDescription sets Description field to given value.
 `func (o *PublicApiUsageDetailsLineItem) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *PublicApiUsageDetailsLineItem) SetDescriptionNil()`
+
+SetDescriptionNil sets Description to an explicit JSON null when marshaled, overriding any value previously set with SetDescription. Calling SetDescription again clears the null override.
+
 ### GetGroupId
 
 `func (o *PublicApiUsageDetailsLineItem) GetGroupId() string`
@@ -153,6 +181,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *PublicApiUsageDetailsLineItem) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *PublicApiUsageDetailsLineItem) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetQuantity
 
 `func (o *PublicApiUsageDetailsLineItem) GetQuantity() float64`
@@ -177,6 +212,13 @@ SetQuantity sets Quantity field to given value.
 `func (o *PublicApiUsageDetailsLineItem) HasQuantity() bool`
 
 HasQuantity returns a boolean if a field has been set.
+
+### SetQuantityNil
+
+`func (o *PublicApiUsageDetailsLineItem) SetQuantityNil()`
+
+SetQuantityNil sets Quantity to an explicit JSON null when marshaled, overriding any value previously set with SetQuantity. Calling SetQuantity again clears the null override.
+
 ### GetTotalPriceCents
 
 `func (o *PublicApiUsageDetailsLineItem) GetTotalPriceCents() int64`
@@ -201,6 +243,13 @@ SetTotalPriceCents sets TotalPriceCents field to given value.
 `func (o *PublicApiUsageDetailsLineItem) HasTotalPriceCents() bool`
 
 HasTotalPriceCents returns a boolean if a field has been set.
+
+### SetTotalPriceCentsNil
+
+`func (o *PublicApiUsageDetailsLineItem) SetTotalPriceCentsNil()`
+
+SetTotalPriceCentsNil sets TotalPriceCents to an explicit JSON null when marshaled, overriding any value previously set with SetTotalPriceCents. Calling SetTotalPriceCents again clears the null override.
+
 ### GetUnitPriceDollars
 
 `func (o *PublicApiUsageDetailsLineItem) GetUnitPriceDollars() float64`
@@ -225,6 +274,13 @@ SetUnitPriceDollars sets UnitPriceDollars field to given value.
 `func (o *PublicApiUsageDetailsLineItem) HasUnitPriceDollars() bool`
 
 HasUnitPriceDollars returns a boolean if a field has been set.
+
+### SetUnitPriceDollarsNil
+
+`func (o *PublicApiUsageDetailsLineItem) SetUnitPriceDollarsNil()`
+
+SetUnitPriceDollarsNil sets UnitPriceDollars to an explicit JSON null when marshaled, overriding any value previously set with SetUnitPriceDollars. Calling SetUnitPriceDollars again clears the null override.
+
 ### GetUsageDate
 
 `func (o *PublicApiUsageDetailsLineItem) GetUsageDate() time.Time`
@@ -249,6 +305,13 @@ SetUsageDate sets UsageDate field to given value.
 `func (o *PublicApiUsageDetailsLineItem) HasUsageDate() bool`
 
 HasUsageDate returns a boolean if a field has been set.
+
+### SetUsageDateNil
+
+`func (o *PublicApiUsageDetailsLineItem) SetUsageDateNil()`
+
+SetUsageDateNil sets UsageDate to an explicit JSON null when marshaled, overriding any value previously set with SetUsageDate. Calling SetUsageDate again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

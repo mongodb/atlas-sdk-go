@@ -14,6 +14,15 @@ type LiveImportAvailableProject struct {
 	// Unique 24-hexadecimal digit string that identifies the project to be migrated.
 	// Read only field.
 	ProjectId string `json:"projectId"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *LiveImportAvailableProject) MarshalJSON() ([]byte, error) {
+	type noMethod LiveImportAvailableProject
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewLiveImportAvailableProject instantiates a new LiveImportAvailableProject object

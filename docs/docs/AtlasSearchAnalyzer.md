@@ -52,6 +52,13 @@ SetCharFilters sets CharFilters field to given value.
 `func (o *AtlasSearchAnalyzer) HasCharFilters() bool`
 
 HasCharFilters returns a boolean if a field has been set.
+
+### SetCharFiltersNil
+
+`func (o *AtlasSearchAnalyzer) SetCharFiltersNil()`
+
+SetCharFiltersNil sets CharFilters to an explicit JSON null when marshaled, overriding any value previously set with SetCharFilters. Calling SetCharFilters again clears the null override.
+
 ### GetName
 
 `func (o *AtlasSearchAnalyzer) GetName() string`
@@ -95,6 +102,13 @@ SetTokenFilters sets TokenFilters field to given value.
 `func (o *AtlasSearchAnalyzer) HasTokenFilters() bool`
 
 HasTokenFilters returns a boolean if a field has been set.
+
+### SetTokenFiltersNil
+
+`func (o *AtlasSearchAnalyzer) SetTokenFiltersNil()`
+
+SetTokenFiltersNil sets TokenFilters to an explicit JSON null when marshaled, overriding any value previously set with SetTokenFilters. Calling SetTokenFilters again clears the null override.
+
 ### GetTokenizer
 
 `func (o *AtlasSearchAnalyzer) GetTokenizer() any`

@@ -50,6 +50,13 @@ SetRoles sets Roles field to given value.
 `func (o *GroupInvitationRequest) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
+
+### SetRolesNil
+
+`func (o *GroupInvitationRequest) SetRolesNil()`
+
+SetRolesNil sets Roles to an explicit JSON null when marshaled, overriding any value previously set with SetRoles. Calling SetRoles again clears the null override.
+
 ### GetUsername
 
 `func (o *GroupInvitationRequest) GetUsername() string`
@@ -74,6 +81,13 @@ SetUsername sets Username field to given value.
 `func (o *GroupInvitationRequest) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
+
+### SetUsernameNil
+
+`func (o *GroupInvitationRequest) SetUsernameNil()`
+
+SetUsernameNil sets Username to an explicit JSON null when marshaled, overriding any value previously set with SetUsername. Calling SetUsername again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

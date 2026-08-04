@@ -8,6 +8,15 @@ type ApiPrivateDownloadDeliveryUrl struct {
 	DeliveryUrl *string `json:"deliveryUrl,omitempty"`
 	// Unique 22-character alphanumeric string that identifies the private endpoint.
 	EndpointId *string `json:"endpointId,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiPrivateDownloadDeliveryUrl) MarshalJSON() ([]byte, error) {
+	type noMethod ApiPrivateDownloadDeliveryUrl
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiPrivateDownloadDeliveryUrl instantiates a new ApiPrivateDownloadDeliveryUrl object
@@ -58,6 +67,13 @@ func (o *ApiPrivateDownloadDeliveryUrl) HasDeliveryUrl() bool {
 // SetDeliveryUrl gets a reference to the given string and assigns it to the DeliveryUrl field.
 func (o *ApiPrivateDownloadDeliveryUrl) SetDeliveryUrl(v string) {
 	o.DeliveryUrl = &v
+	o.NullFields = removeNullField(o.NullFields, "DeliveryUrl")
+}
+
+// SetDeliveryUrlNil sets DeliveryUrl to an explicit JSON null when marshaled.
+func (o *ApiPrivateDownloadDeliveryUrl) SetDeliveryUrlNil() {
+	o.DeliveryUrl = nil
+	o.NullFields = addNullField(o.NullFields, "DeliveryUrl")
 }
 
 // GetEndpointId returns the EndpointId field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *ApiPrivateDownloadDeliveryUrl) HasEndpointId() bool {
 // SetEndpointId gets a reference to the given string and assigns it to the EndpointId field.
 func (o *ApiPrivateDownloadDeliveryUrl) SetEndpointId(v string) {
 	o.EndpointId = &v
+	o.NullFields = removeNullField(o.NullFields, "EndpointId")
+}
+
+// SetEndpointIdNil sets EndpointId to an explicit JSON null when marshaled.
+func (o *ApiPrivateDownloadDeliveryUrl) SetEndpointIdNil() {
+	o.EndpointId = nil
+	o.NullFields = addNullField(o.NullFields, "EndpointId")
 }

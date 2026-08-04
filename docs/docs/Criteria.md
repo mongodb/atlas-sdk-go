@@ -53,6 +53,13 @@ SetType sets Type field to given value.
 `func (o *Criteria) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *Criteria) SetTypeNil()`
+
+SetTypeNil sets Type to an explicit JSON null when marshaled, overriding any value previously set with SetType. Calling SetType again clears the null override.
+
 ### GetQuery
 
 `func (o *Criteria) GetQuery() string`
@@ -77,6 +84,13 @@ SetQuery sets Query field to given value.
 `func (o *Criteria) HasQuery() bool`
 
 HasQuery returns a boolean if a field has been set.
+
+### SetQueryNil
+
+`func (o *Criteria) SetQueryNil()`
+
+SetQueryNil sets Query to an explicit JSON null when marshaled, overriding any value previously set with SetQuery. Calling SetQuery again clears the null override.
+
 ### GetDateField
 
 `func (o *Criteria) GetDateField() string`
@@ -101,6 +115,13 @@ SetDateField sets DateField field to given value.
 `func (o *Criteria) HasDateField() bool`
 
 HasDateField returns a boolean if a field has been set.
+
+### SetDateFieldNil
+
+`func (o *Criteria) SetDateFieldNil()`
+
+SetDateFieldNil sets DateField to an explicit JSON null when marshaled, overriding any value previously set with SetDateField. Calling SetDateField again clears the null override.
+
 ### GetDateFormat
 
 `func (o *Criteria) GetDateFormat() string`
@@ -125,6 +146,13 @@ SetDateFormat sets DateFormat field to given value.
 `func (o *Criteria) HasDateFormat() bool`
 
 HasDateFormat returns a boolean if a field has been set.
+
+### SetDateFormatNil
+
+`func (o *Criteria) SetDateFormatNil()`
+
+SetDateFormatNil sets DateFormat to an explicit JSON null when marshaled, overriding any value previously set with SetDateFormat. Calling SetDateFormat again clears the null override.
+
 ### GetExpireAfterDays
 
 `func (o *Criteria) GetExpireAfterDays() int`
@@ -149,6 +177,13 @@ SetExpireAfterDays sets ExpireAfterDays field to given value.
 `func (o *Criteria) HasExpireAfterDays() bool`
 
 HasExpireAfterDays returns a boolean if a field has been set.
+
+### SetExpireAfterDaysNil
+
+`func (o *Criteria) SetExpireAfterDaysNil()`
+
+SetExpireAfterDaysNil sets ExpireAfterDays to an explicit JSON null when marshaled, overriding any value previously set with SetExpireAfterDays. Calling SetExpireAfterDays again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

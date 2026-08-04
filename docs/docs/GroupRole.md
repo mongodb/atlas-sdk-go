@@ -50,6 +50,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *GroupRole) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *GroupRole) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetGroupRole
 
 `func (o *GroupRole) GetGroupRole() string`
@@ -74,6 +81,13 @@ SetGroupRole sets GroupRole field to given value.
 `func (o *GroupRole) HasGroupRole() bool`
 
 HasGroupRole returns a boolean if a field has been set.
+
+### SetGroupRoleNil
+
+`func (o *GroupRole) SetGroupRoleNil()`
+
+SetGroupRoleNil sets GroupRole to an explicit JSON null when marshaled, overriding any value previously set with SetGroupRole. Calling SetGroupRole again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

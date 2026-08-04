@@ -25,6 +25,15 @@ type BaseSearchIndexResponseLatestDefinition struct {
 	Fields *[]any `json:"fields,omitempty"`
 	// Top-level path to the array that contains vector fields. When provided, vector fields under this path are treated as nested.
 	NestedRoot *string `json:"nestedRoot,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *BaseSearchIndexResponseLatestDefinition) MarshalJSON() ([]byte, error) {
+	type noMethod BaseSearchIndexResponseLatestDefinition
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewBaseSearchIndexResponseLatestDefinition instantiates a new BaseSearchIndexResponseLatestDefinition object
@@ -87,6 +96,13 @@ func (o *BaseSearchIndexResponseLatestDefinition) HasAnalyzer() bool {
 // SetAnalyzer gets a reference to the given string and assigns it to the Analyzer field.
 func (o *BaseSearchIndexResponseLatestDefinition) SetAnalyzer(v string) {
 	o.Analyzer = &v
+	o.NullFields = removeNullField(o.NullFields, "Analyzer")
+}
+
+// SetAnalyzerNil sets Analyzer to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexResponseLatestDefinition) SetAnalyzerNil() {
+	o.Analyzer = nil
+	o.NullFields = addNullField(o.NullFields, "Analyzer")
 }
 
 // GetAnalyzers returns the Analyzers field value if set, zero value otherwise
@@ -120,6 +136,13 @@ func (o *BaseSearchIndexResponseLatestDefinition) HasAnalyzers() bool {
 // SetAnalyzers gets a reference to the given []AtlasSearchAnalyzer and assigns it to the Analyzers field.
 func (o *BaseSearchIndexResponseLatestDefinition) SetAnalyzers(v []AtlasSearchAnalyzer) {
 	o.Analyzers = &v
+	o.NullFields = removeNullField(o.NullFields, "Analyzers")
+}
+
+// SetAnalyzersNil sets Analyzers to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexResponseLatestDefinition) SetAnalyzersNil() {
+	o.Analyzers = nil
+	o.NullFields = addNullField(o.NullFields, "Analyzers")
 }
 
 // GetMappings returns the Mappings field value if set, zero value otherwise
@@ -153,6 +176,13 @@ func (o *BaseSearchIndexResponseLatestDefinition) HasMappings() bool {
 // SetMappings gets a reference to the given SearchMappings and assigns it to the Mappings field.
 func (o *BaseSearchIndexResponseLatestDefinition) SetMappings(v SearchMappings) {
 	o.Mappings = &v
+	o.NullFields = removeNullField(o.NullFields, "Mappings")
+}
+
+// SetMappingsNil sets Mappings to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexResponseLatestDefinition) SetMappingsNil() {
+	o.Mappings = nil
+	o.NullFields = addNullField(o.NullFields, "Mappings")
 }
 
 // GetNumPartitions returns the NumPartitions field value if set, zero value otherwise
@@ -186,6 +216,13 @@ func (o *BaseSearchIndexResponseLatestDefinition) HasNumPartitions() bool {
 // SetNumPartitions gets a reference to the given int and assigns it to the NumPartitions field.
 func (o *BaseSearchIndexResponseLatestDefinition) SetNumPartitions(v int) {
 	o.NumPartitions = &v
+	o.NullFields = removeNullField(o.NullFields, "NumPartitions")
+}
+
+// SetNumPartitionsNil sets NumPartitions to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexResponseLatestDefinition) SetNumPartitionsNil() {
+	o.NumPartitions = nil
+	o.NullFields = addNullField(o.NullFields, "NumPartitions")
 }
 
 // GetSearchAnalyzer returns the SearchAnalyzer field value if set, zero value otherwise
@@ -219,6 +256,13 @@ func (o *BaseSearchIndexResponseLatestDefinition) HasSearchAnalyzer() bool {
 // SetSearchAnalyzer gets a reference to the given string and assigns it to the SearchAnalyzer field.
 func (o *BaseSearchIndexResponseLatestDefinition) SetSearchAnalyzer(v string) {
 	o.SearchAnalyzer = &v
+	o.NullFields = removeNullField(o.NullFields, "SearchAnalyzer")
+}
+
+// SetSearchAnalyzerNil sets SearchAnalyzer to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexResponseLatestDefinition) SetSearchAnalyzerNil() {
+	o.SearchAnalyzer = nil
+	o.NullFields = addNullField(o.NullFields, "SearchAnalyzer")
 }
 
 // GetSort returns the Sort field value if set, zero value otherwise
@@ -253,6 +297,13 @@ func (o *BaseSearchIndexResponseLatestDefinition) HasSort() bool {
 // SetSort gets a reference to the given any and assigns it to the Sort field.
 func (o *BaseSearchIndexResponseLatestDefinition) SetSort(v any) {
 	o.Sort = v
+	o.NullFields = removeNullField(o.NullFields, "Sort")
+}
+
+// SetSortNil sets Sort to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexResponseLatestDefinition) SetSortNil() {
+	o.Sort = nil
+	o.NullFields = addNullField(o.NullFields, "Sort")
 }
 
 // GetStoredSource returns the StoredSource field value if set, zero value otherwise
@@ -287,6 +338,13 @@ func (o *BaseSearchIndexResponseLatestDefinition) HasStoredSource() bool {
 // SetStoredSource gets a reference to the given any and assigns it to the StoredSource field.
 func (o *BaseSearchIndexResponseLatestDefinition) SetStoredSource(v any) {
 	o.StoredSource = v
+	o.NullFields = removeNullField(o.NullFields, "StoredSource")
+}
+
+// SetStoredSourceNil sets StoredSource to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexResponseLatestDefinition) SetStoredSourceNil() {
+	o.StoredSource = nil
+	o.NullFields = addNullField(o.NullFields, "StoredSource")
 }
 
 // GetSynonyms returns the Synonyms field value if set, zero value otherwise
@@ -320,6 +378,13 @@ func (o *BaseSearchIndexResponseLatestDefinition) HasSynonyms() bool {
 // SetSynonyms gets a reference to the given []SearchSynonymMappingDefinition and assigns it to the Synonyms field.
 func (o *BaseSearchIndexResponseLatestDefinition) SetSynonyms(v []SearchSynonymMappingDefinition) {
 	o.Synonyms = &v
+	o.NullFields = removeNullField(o.NullFields, "Synonyms")
+}
+
+// SetSynonymsNil sets Synonyms to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexResponseLatestDefinition) SetSynonymsNil() {
+	o.Synonyms = nil
+	o.NullFields = addNullField(o.NullFields, "Synonyms")
 }
 
 // GetTypeSets returns the TypeSets field value if set, zero value otherwise
@@ -353,6 +418,13 @@ func (o *BaseSearchIndexResponseLatestDefinition) HasTypeSets() bool {
 // SetTypeSets gets a reference to the given []SearchTypeSets and assigns it to the TypeSets field.
 func (o *BaseSearchIndexResponseLatestDefinition) SetTypeSets(v []SearchTypeSets) {
 	o.TypeSets = &v
+	o.NullFields = removeNullField(o.NullFields, "TypeSets")
+}
+
+// SetTypeSetsNil sets TypeSets to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexResponseLatestDefinition) SetTypeSetsNil() {
+	o.TypeSets = nil
+	o.NullFields = addNullField(o.NullFields, "TypeSets")
 }
 
 // GetFields returns the Fields field value if set, zero value otherwise
@@ -386,6 +458,13 @@ func (o *BaseSearchIndexResponseLatestDefinition) HasFields() bool {
 // SetFields gets a reference to the given []any and assigns it to the Fields field.
 func (o *BaseSearchIndexResponseLatestDefinition) SetFields(v []any) {
 	o.Fields = &v
+	o.NullFields = removeNullField(o.NullFields, "Fields")
+}
+
+// SetFieldsNil sets Fields to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexResponseLatestDefinition) SetFieldsNil() {
+	o.Fields = nil
+	o.NullFields = addNullField(o.NullFields, "Fields")
 }
 
 // GetNestedRoot returns the NestedRoot field value if set, zero value otherwise
@@ -419,4 +498,11 @@ func (o *BaseSearchIndexResponseLatestDefinition) HasNestedRoot() bool {
 // SetNestedRoot gets a reference to the given string and assigns it to the NestedRoot field.
 func (o *BaseSearchIndexResponseLatestDefinition) SetNestedRoot(v string) {
 	o.NestedRoot = &v
+	o.NullFields = removeNullField(o.NullFields, "NestedRoot")
+}
+
+// SetNestedRootNil sets NestedRoot to an explicit JSON null when marshaled.
+func (o *BaseSearchIndexResponseLatestDefinition) SetNestedRootNil() {
+	o.NestedRoot = nil
+	o.NullFields = addNullField(o.NullFields, "NestedRoot")
 }

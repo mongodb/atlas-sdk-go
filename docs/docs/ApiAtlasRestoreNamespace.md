@@ -70,6 +70,13 @@ SetTargetNamespace sets TargetNamespace field to given value.
 
 HasTargetNamespace returns a boolean if a field has been set.
 
+### SetTargetNamespaceNil
+
+`func (o *ApiAtlasRestoreNamespace) SetTargetNamespaceNil()`
+
+SetTargetNamespaceNil sets TargetNamespace to an explicit JSON null when marshaled, overriding any value previously set with SetTargetNamespace. Calling SetTargetNamespace again clears the null override.
+
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

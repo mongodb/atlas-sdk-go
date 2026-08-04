@@ -51,6 +51,13 @@ SetProcessorId sets ProcessorId field to given value.
 `func (o *AdditionalData) HasProcessorId() bool`
 
 HasProcessorId returns a boolean if a field has been set.
+
+### SetProcessorIdNil
+
+`func (o *AdditionalData) SetProcessorIdNil()`
+
+SetProcessorIdNil sets ProcessorId to an explicit JSON null when marshaled, overriding any value previously set with SetProcessorId. Calling SetProcessorId again clears the null override.
+
 ### GetProcessorName
 
 `func (o *AdditionalData) GetProcessorName() string`
@@ -75,6 +82,13 @@ SetProcessorName sets ProcessorName field to given value.
 `func (o *AdditionalData) HasProcessorName() bool`
 
 HasProcessorName returns a boolean if a field has been set.
+
+### SetProcessorNameNil
+
+`func (o *AdditionalData) SetProcessorNameNil()`
+
+SetProcessorNameNil sets ProcessorName to an explicit JSON null when marshaled, overriding any value previously set with SetProcessorName. Calling SetProcessorName again clears the null override.
+
 ### GetWorkspace
 
 `func (o *AdditionalData) GetWorkspace() string`
@@ -99,6 +113,13 @@ SetWorkspace sets Workspace field to given value.
 `func (o *AdditionalData) HasWorkspace() bool`
 
 HasWorkspace returns a boolean if a field has been set.
+
+### SetWorkspaceNil
+
+`func (o *AdditionalData) SetWorkspaceNil()`
+
+SetWorkspaceNil sets Workspace to an explicit JSON null when marshaled, overriding any value previously set with SetWorkspace. Calling SetWorkspace again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

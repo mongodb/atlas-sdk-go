@@ -59,6 +59,13 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *OrganizationInvitation) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
+
+### SetCreatedAtNil
+
+`func (o *OrganizationInvitation) SetCreatedAtNil()`
+
+SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled, overriding any value previously set with SetCreatedAt. Calling SetCreatedAt again clears the null override.
+
 ### GetExpiresAt
 
 `func (o *OrganizationInvitation) GetExpiresAt() time.Time`
@@ -83,6 +90,13 @@ SetExpiresAt sets ExpiresAt field to given value.
 `func (o *OrganizationInvitation) HasExpiresAt() bool`
 
 HasExpiresAt returns a boolean if a field has been set.
+
+### SetExpiresAtNil
+
+`func (o *OrganizationInvitation) SetExpiresAtNil()`
+
+SetExpiresAtNil sets ExpiresAt to an explicit JSON null when marshaled, overriding any value previously set with SetExpiresAt. Calling SetExpiresAt again clears the null override.
+
 ### GetGroupRoleAssignments
 
 `func (o *OrganizationInvitation) GetGroupRoleAssignments() []GroupRole`
@@ -107,6 +121,13 @@ SetGroupRoleAssignments sets GroupRoleAssignments field to given value.
 `func (o *OrganizationInvitation) HasGroupRoleAssignments() bool`
 
 HasGroupRoleAssignments returns a boolean if a field has been set.
+
+### SetGroupRoleAssignmentsNil
+
+`func (o *OrganizationInvitation) SetGroupRoleAssignmentsNil()`
+
+SetGroupRoleAssignmentsNil sets GroupRoleAssignments to an explicit JSON null when marshaled, overriding any value previously set with SetGroupRoleAssignments. Calling SetGroupRoleAssignments again clears the null override.
+
 ### GetId
 
 `func (o *OrganizationInvitation) GetId() string`
@@ -131,6 +152,13 @@ SetId sets Id field to given value.
 `func (o *OrganizationInvitation) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *OrganizationInvitation) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetInviterUsername
 
 `func (o *OrganizationInvitation) GetInviterUsername() string`
@@ -155,6 +183,13 @@ SetInviterUsername sets InviterUsername field to given value.
 `func (o *OrganizationInvitation) HasInviterUsername() bool`
 
 HasInviterUsername returns a boolean if a field has been set.
+
+### SetInviterUsernameNil
+
+`func (o *OrganizationInvitation) SetInviterUsernameNil()`
+
+SetInviterUsernameNil sets InviterUsername to an explicit JSON null when marshaled, overriding any value previously set with SetInviterUsername. Calling SetInviterUsername again clears the null override.
+
 ### GetLinks
 
 `func (o *OrganizationInvitation) GetLinks() []Link`
@@ -179,6 +214,13 @@ SetLinks sets Links field to given value.
 `func (o *OrganizationInvitation) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *OrganizationInvitation) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetOrgId
 
 `func (o *OrganizationInvitation) GetOrgId() string`
@@ -203,6 +245,13 @@ SetOrgId sets OrgId field to given value.
 `func (o *OrganizationInvitation) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
+
+### SetOrgIdNil
+
+`func (o *OrganizationInvitation) SetOrgIdNil()`
+
+SetOrgIdNil sets OrgId to an explicit JSON null when marshaled, overriding any value previously set with SetOrgId. Calling SetOrgId again clears the null override.
+
 ### GetOrgName
 
 `func (o *OrganizationInvitation) GetOrgName() string`
@@ -246,6 +295,13 @@ SetRoles sets Roles field to given value.
 `func (o *OrganizationInvitation) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
+
+### SetRolesNil
+
+`func (o *OrganizationInvitation) SetRolesNil()`
+
+SetRolesNil sets Roles to an explicit JSON null when marshaled, overriding any value previously set with SetRoles. Calling SetRoles again clears the null override.
+
 ### GetTeamIds
 
 `func (o *OrganizationInvitation) GetTeamIds() []string`
@@ -270,6 +326,13 @@ SetTeamIds sets TeamIds field to given value.
 `func (o *OrganizationInvitation) HasTeamIds() bool`
 
 HasTeamIds returns a boolean if a field has been set.
+
+### SetTeamIdsNil
+
+`func (o *OrganizationInvitation) SetTeamIdsNil()`
+
+SetTeamIdsNil sets TeamIds to an explicit JSON null when marshaled, overriding any value previously set with SetTeamIds. Calling SetTeamIds again clears the null override.
+
 ### GetUsername
 
 `func (o *OrganizationInvitation) GetUsername() string`
@@ -294,6 +357,13 @@ SetUsername sets Username field to given value.
 `func (o *OrganizationInvitation) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
+
+### SetUsernameNil
+
+`func (o *OrganizationInvitation) SetUsernameNil()`
+
+SetUsernameNil sets Username to an explicit JSON null when marshaled, overriding any value previously set with SetUsername. Calling SetUsername again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

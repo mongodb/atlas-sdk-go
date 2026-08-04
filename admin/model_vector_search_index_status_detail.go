@@ -12,6 +12,15 @@ type VectorSearchIndexStatusDetail struct {
 	Queryable *bool `json:"queryable,omitempty"`
 	// Condition of the search index when you made this request.  - `DELETING`: The index is being deleted. - `FAILED` The index build failed. Indexes can enter the FAILED state due to an invalid index definition. - `STALE`: The index is queryable but has stopped replicating data from the indexed collection. Searches on the index may return out-of-date data. - `PENDING`: Atlas has not yet started building the index. - `BUILDING`: Atlas is building or re-building the index after an edit. - `READY`: The index is ready and can support queries.
 	Status *string `json:"status,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *VectorSearchIndexStatusDetail) MarshalJSON() ([]byte, error) {
+	type noMethod VectorSearchIndexStatusDetail
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewVectorSearchIndexStatusDetail instantiates a new VectorSearchIndexStatusDetail object
@@ -62,6 +71,13 @@ func (o *VectorSearchIndexStatusDetail) HasDefinition() bool {
 // SetDefinition gets a reference to the given VectorSearchIndexDefinition and assigns it to the Definition field.
 func (o *VectorSearchIndexStatusDetail) SetDefinition(v VectorSearchIndexDefinition) {
 	o.Definition = &v
+	o.NullFields = removeNullField(o.NullFields, "Definition")
+}
+
+// SetDefinitionNil sets Definition to an explicit JSON null when marshaled.
+func (o *VectorSearchIndexStatusDetail) SetDefinitionNil() {
+	o.Definition = nil
+	o.NullFields = addNullField(o.NullFields, "Definition")
 }
 
 // GetDefinitionVersion returns the DefinitionVersion field value if set, zero value otherwise
@@ -95,6 +111,13 @@ func (o *VectorSearchIndexStatusDetail) HasDefinitionVersion() bool {
 // SetDefinitionVersion gets a reference to the given SearchIndexDefinitionVersion and assigns it to the DefinitionVersion field.
 func (o *VectorSearchIndexStatusDetail) SetDefinitionVersion(v SearchIndexDefinitionVersion) {
 	o.DefinitionVersion = &v
+	o.NullFields = removeNullField(o.NullFields, "DefinitionVersion")
+}
+
+// SetDefinitionVersionNil sets DefinitionVersion to an explicit JSON null when marshaled.
+func (o *VectorSearchIndexStatusDetail) SetDefinitionVersionNil() {
+	o.DefinitionVersion = nil
+	o.NullFields = addNullField(o.NullFields, "DefinitionVersion")
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise
@@ -128,6 +151,13 @@ func (o *VectorSearchIndexStatusDetail) HasMessage() bool {
 // SetMessage gets a reference to the given string and assigns it to the Message field.
 func (o *VectorSearchIndexStatusDetail) SetMessage(v string) {
 	o.Message = &v
+	o.NullFields = removeNullField(o.NullFields, "Message")
+}
+
+// SetMessageNil sets Message to an explicit JSON null when marshaled.
+func (o *VectorSearchIndexStatusDetail) SetMessageNil() {
+	o.Message = nil
+	o.NullFields = addNullField(o.NullFields, "Message")
 }
 
 // GetQueryable returns the Queryable field value if set, zero value otherwise
@@ -161,6 +191,13 @@ func (o *VectorSearchIndexStatusDetail) HasQueryable() bool {
 // SetQueryable gets a reference to the given bool and assigns it to the Queryable field.
 func (o *VectorSearchIndexStatusDetail) SetQueryable(v bool) {
 	o.Queryable = &v
+	o.NullFields = removeNullField(o.NullFields, "Queryable")
+}
+
+// SetQueryableNil sets Queryable to an explicit JSON null when marshaled.
+func (o *VectorSearchIndexStatusDetail) SetQueryableNil() {
+	o.Queryable = nil
+	o.NullFields = addNullField(o.NullFields, "Queryable")
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
@@ -194,4 +231,11 @@ func (o *VectorSearchIndexStatusDetail) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *VectorSearchIndexStatusDetail) SetStatus(v string) {
 	o.Status = &v
+	o.NullFields = removeNullField(o.NullFields, "Status")
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *VectorSearchIndexStatusDetail) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = addNullField(o.NullFields, "Status")
 }

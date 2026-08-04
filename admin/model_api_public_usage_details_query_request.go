@@ -9,6 +9,15 @@ type ApiPublicUsageDetailsQueryRequest struct {
 	SortField *string `json:"sortField,omitempty"`
 	// Specify the sort order (ascending / descending) used to specify how to sort query results. Defaults to descending.
 	SortOrder *string `json:"sortOrder,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiPublicUsageDetailsQueryRequest) MarshalJSON() ([]byte, error) {
+	type noMethod ApiPublicUsageDetailsQueryRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiPublicUsageDetailsQueryRequest instantiates a new ApiPublicUsageDetailsQueryRequest object
@@ -59,6 +68,13 @@ func (o *ApiPublicUsageDetailsQueryRequest) HasFilters() bool {
 // SetFilters gets a reference to the given UsageDetailsFilterRequest and assigns it to the Filters field.
 func (o *ApiPublicUsageDetailsQueryRequest) SetFilters(v UsageDetailsFilterRequest) {
 	o.Filters = &v
+	o.NullFields = removeNullField(o.NullFields, "Filters")
+}
+
+// SetFiltersNil sets Filters to an explicit JSON null when marshaled.
+func (o *ApiPublicUsageDetailsQueryRequest) SetFiltersNil() {
+	o.Filters = nil
+	o.NullFields = addNullField(o.NullFields, "Filters")
 }
 
 // GetSortField returns the SortField field value if set, zero value otherwise
@@ -92,6 +108,13 @@ func (o *ApiPublicUsageDetailsQueryRequest) HasSortField() bool {
 // SetSortField gets a reference to the given string and assigns it to the SortField field.
 func (o *ApiPublicUsageDetailsQueryRequest) SetSortField(v string) {
 	o.SortField = &v
+	o.NullFields = removeNullField(o.NullFields, "SortField")
+}
+
+// SetSortFieldNil sets SortField to an explicit JSON null when marshaled.
+func (o *ApiPublicUsageDetailsQueryRequest) SetSortFieldNil() {
+	o.SortField = nil
+	o.NullFields = addNullField(o.NullFields, "SortField")
 }
 
 // GetSortOrder returns the SortOrder field value if set, zero value otherwise
@@ -125,4 +148,11 @@ func (o *ApiPublicUsageDetailsQueryRequest) HasSortOrder() bool {
 // SetSortOrder gets a reference to the given string and assigns it to the SortOrder field.
 func (o *ApiPublicUsageDetailsQueryRequest) SetSortOrder(v string) {
 	o.SortOrder = &v
+	o.NullFields = removeNullField(o.NullFields, "SortOrder")
+}
+
+// SetSortOrderNil sets SortOrder to an explicit JSON null when marshaled.
+func (o *ApiPublicUsageDetailsQueryRequest) SetSortOrderNil() {
+	o.SortOrder = nil
+	o.NullFields = addNullField(o.NullFields, "SortOrder")
 }

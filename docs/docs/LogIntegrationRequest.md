@@ -102,6 +102,13 @@ SetBucketName sets BucketName field to given value.
 `func (o *LogIntegrationRequest) HasBucketName() bool`
 
 HasBucketName returns a boolean if a field has been set.
+
+### SetBucketNameNil
+
+`func (o *LogIntegrationRequest) SetBucketNameNil()`
+
+SetBucketNameNil sets BucketName to an explicit JSON null when marshaled, overriding any value previously set with SetBucketName. Calling SetBucketName again clears the null override.
+
 ### GetIamRoleId
 
 `func (o *LogIntegrationRequest) GetIamRoleId() string`
@@ -126,6 +133,13 @@ SetIamRoleId sets IamRoleId field to given value.
 `func (o *LogIntegrationRequest) HasIamRoleId() bool`
 
 HasIamRoleId returns a boolean if a field has been set.
+
+### SetIamRoleIdNil
+
+`func (o *LogIntegrationRequest) SetIamRoleIdNil()`
+
+SetIamRoleIdNil sets IamRoleId to an explicit JSON null when marshaled, overriding any value previously set with SetIamRoleId. Calling SetIamRoleId again clears the null override.
+
 ### GetKmsKey
 
 `func (o *LogIntegrationRequest) GetKmsKey() string`
@@ -150,6 +164,13 @@ SetKmsKey sets KmsKey field to given value.
 `func (o *LogIntegrationRequest) HasKmsKey() bool`
 
 HasKmsKey returns a boolean if a field has been set.
+
+### SetKmsKeyNil
+
+`func (o *LogIntegrationRequest) SetKmsKeyNil()`
+
+SetKmsKeyNil sets KmsKey to an explicit JSON null when marshaled, overriding any value previously set with SetKmsKey. Calling SetKmsKey again clears the null override.
+
 ### GetPrefixPath
 
 `func (o *LogIntegrationRequest) GetPrefixPath() string`
@@ -174,6 +195,13 @@ SetPrefixPath sets PrefixPath field to given value.
 `func (o *LogIntegrationRequest) HasPrefixPath() bool`
 
 HasPrefixPath returns a boolean if a field has been set.
+
+### SetPrefixPathNil
+
+`func (o *LogIntegrationRequest) SetPrefixPathNil()`
+
+SetPrefixPathNil sets PrefixPath to an explicit JSON null when marshaled, overriding any value previously set with SetPrefixPath. Calling SetPrefixPath again clears the null override.
+
 ### GetUseLegacyPathStructure
 
 `func (o *LogIntegrationRequest) GetUseLegacyPathStructure() bool`
@@ -198,6 +226,13 @@ SetUseLegacyPathStructure sets UseLegacyPathStructure field to given value.
 `func (o *LogIntegrationRequest) HasUseLegacyPathStructure() bool`
 
 HasUseLegacyPathStructure returns a boolean if a field has been set.
+
+### SetUseLegacyPathStructureNil
+
+`func (o *LogIntegrationRequest) SetUseLegacyPathStructureNil()`
+
+SetUseLegacyPathStructureNil sets UseLegacyPathStructure to an explicit JSON null when marshaled, overriding any value previously set with SetUseLegacyPathStructure. Calling SetUseLegacyPathStructure again clears the null override.
+
 ### GetApiKey
 
 `func (o *LogIntegrationRequest) GetApiKey() string`
@@ -222,6 +257,13 @@ SetApiKey sets ApiKey field to given value.
 `func (o *LogIntegrationRequest) HasApiKey() bool`
 
 HasApiKey returns a boolean if a field has been set.
+
+### SetApiKeyNil
+
+`func (o *LogIntegrationRequest) SetApiKeyNil()`
+
+SetApiKeyNil sets ApiKey to an explicit JSON null when marshaled, overriding any value previously set with SetApiKey. Calling SetApiKey again clears the null override.
+
 ### GetRegion
 
 `func (o *LogIntegrationRequest) GetRegion() string`
@@ -246,6 +288,13 @@ SetRegion sets Region field to given value.
 `func (o *LogIntegrationRequest) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *LogIntegrationRequest) SetRegionNil()`
+
+SetRegionNil sets Region to an explicit JSON null when marshaled, overriding any value previously set with SetRegion. Calling SetRegion again clears the null override.
+
 ### GetRoleId
 
 `func (o *LogIntegrationRequest) GetRoleId() string`
@@ -270,6 +319,13 @@ SetRoleId sets RoleId field to given value.
 `func (o *LogIntegrationRequest) HasRoleId() bool`
 
 HasRoleId returns a boolean if a field has been set.
+
+### SetRoleIdNil
+
+`func (o *LogIntegrationRequest) SetRoleIdNil()`
+
+SetRoleIdNil sets RoleId to an explicit JSON null when marshaled, overriding any value previously set with SetRoleId. Calling SetRoleId again clears the null override.
+
 ### GetOtelEndpoint
 
 `func (o *LogIntegrationRequest) GetOtelEndpoint() string`
@@ -294,6 +350,13 @@ SetOtelEndpoint sets OtelEndpoint field to given value.
 `func (o *LogIntegrationRequest) HasOtelEndpoint() bool`
 
 HasOtelEndpoint returns a boolean if a field has been set.
+
+### SetOtelEndpointNil
+
+`func (o *LogIntegrationRequest) SetOtelEndpointNil()`
+
+SetOtelEndpointNil sets OtelEndpoint to an explicit JSON null when marshaled, overriding any value previously set with SetOtelEndpoint. Calling SetOtelEndpoint again clears the null override.
+
 ### GetOtelSuppliedHeaders
 
 `func (o *LogIntegrationRequest) GetOtelSuppliedHeaders() []Header`
@@ -318,6 +381,13 @@ SetOtelSuppliedHeaders sets OtelSuppliedHeaders field to given value.
 `func (o *LogIntegrationRequest) HasOtelSuppliedHeaders() bool`
 
 HasOtelSuppliedHeaders returns a boolean if a field has been set.
+
+### SetOtelSuppliedHeadersNil
+
+`func (o *LogIntegrationRequest) SetOtelSuppliedHeadersNil()`
+
+SetOtelSuppliedHeadersNil sets OtelSuppliedHeaders to an explicit JSON null when marshaled, overriding any value previously set with SetOtelSuppliedHeaders. Calling SetOtelSuppliedHeaders again clears the null override.
+
 ### GetHecToken
 
 `func (o *LogIntegrationRequest) GetHecToken() string`
@@ -342,6 +412,13 @@ SetHecToken sets HecToken field to given value.
 `func (o *LogIntegrationRequest) HasHecToken() bool`
 
 HasHecToken returns a boolean if a field has been set.
+
+### SetHecTokenNil
+
+`func (o *LogIntegrationRequest) SetHecTokenNil()`
+
+SetHecTokenNil sets HecToken to an explicit JSON null when marshaled, overriding any value previously set with SetHecToken. Calling SetHecToken again clears the null override.
+
 ### GetHecUrl
 
 `func (o *LogIntegrationRequest) GetHecUrl() string`
@@ -366,6 +443,13 @@ SetHecUrl sets HecUrl field to given value.
 `func (o *LogIntegrationRequest) HasHecUrl() bool`
 
 HasHecUrl returns a boolean if a field has been set.
+
+### SetHecUrlNil
+
+`func (o *LogIntegrationRequest) SetHecUrlNil()`
+
+SetHecUrlNil sets HecUrl to an explicit JSON null when marshaled, overriding any value previously set with SetHecUrl. Calling SetHecUrl again clears the null override.
+
 ### GetStorageAccountName
 
 `func (o *LogIntegrationRequest) GetStorageAccountName() string`
@@ -390,6 +474,13 @@ SetStorageAccountName sets StorageAccountName field to given value.
 `func (o *LogIntegrationRequest) HasStorageAccountName() bool`
 
 HasStorageAccountName returns a boolean if a field has been set.
+
+### SetStorageAccountNameNil
+
+`func (o *LogIntegrationRequest) SetStorageAccountNameNil()`
+
+SetStorageAccountNameNil sets StorageAccountName to an explicit JSON null when marshaled, overriding any value previously set with SetStorageAccountName. Calling SetStorageAccountName again clears the null override.
+
 ### GetStorageContainerName
 
 `func (o *LogIntegrationRequest) GetStorageContainerName() string`
@@ -414,6 +505,13 @@ SetStorageContainerName sets StorageContainerName field to given value.
 `func (o *LogIntegrationRequest) HasStorageContainerName() bool`
 
 HasStorageContainerName returns a boolean if a field has been set.
+
+### SetStorageContainerNameNil
+
+`func (o *LogIntegrationRequest) SetStorageContainerNameNil()`
+
+SetStorageContainerNameNil sets StorageContainerName to an explicit JSON null when marshaled, overriding any value previously set with SetStorageContainerName. Calling SetStorageContainerName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

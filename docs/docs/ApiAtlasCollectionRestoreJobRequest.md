@@ -60,6 +60,13 @@ SetCollectionSuffix sets CollectionSuffix field to given value.
 `func (o *ApiAtlasCollectionRestoreJobRequest) HasCollectionSuffix() bool`
 
 HasCollectionSuffix returns a boolean if a field has been set.
+
+### SetCollectionSuffixNil
+
+`func (o *ApiAtlasCollectionRestoreJobRequest) SetCollectionSuffixNil()`
+
+SetCollectionSuffixNil sets CollectionSuffix to an explicit JSON null when marshaled, overriding any value previously set with SetCollectionSuffix. Calling SetCollectionSuffix again clears the null override.
+
 ### GetCollections
 
 `func (o *ApiAtlasCollectionRestoreJobRequest) GetCollections() []ApiAtlasRestoreNamespace`
@@ -84,6 +91,13 @@ SetCollections sets Collections field to given value.
 `func (o *ApiAtlasCollectionRestoreJobRequest) HasCollections() bool`
 
 HasCollections returns a boolean if a field has been set.
+
+### SetCollectionsNil
+
+`func (o *ApiAtlasCollectionRestoreJobRequest) SetCollectionsNil()`
+
+SetCollectionsNil sets Collections to an explicit JSON null when marshaled, overriding any value previously set with SetCollections. Calling SetCollections again clears the null override.
+
 ### GetDatabaseSuffix
 
 `func (o *ApiAtlasCollectionRestoreJobRequest) GetDatabaseSuffix() string`
@@ -108,6 +122,13 @@ SetDatabaseSuffix sets DatabaseSuffix field to given value.
 `func (o *ApiAtlasCollectionRestoreJobRequest) HasDatabaseSuffix() bool`
 
 HasDatabaseSuffix returns a boolean if a field has been set.
+
+### SetDatabaseSuffixNil
+
+`func (o *ApiAtlasCollectionRestoreJobRequest) SetDatabaseSuffixNil()`
+
+SetDatabaseSuffixNil sets DatabaseSuffix to an explicit JSON null when marshaled, overriding any value previously set with SetDatabaseSuffix. Calling SetDatabaseSuffix again clears the null override.
+
 ### GetDatabases
 
 `func (o *ApiAtlasCollectionRestoreJobRequest) GetDatabases() []ApiAtlasRestoreNamespace`
@@ -132,6 +153,13 @@ SetDatabases sets Databases field to given value.
 `func (o *ApiAtlasCollectionRestoreJobRequest) HasDatabases() bool`
 
 HasDatabases returns a boolean if a field has been set.
+
+### SetDatabasesNil
+
+`func (o *ApiAtlasCollectionRestoreJobRequest) SetDatabasesNil()`
+
+SetDatabasesNil sets Databases to an explicit JSON null when marshaled, overriding any value previously set with SetDatabases. Calling SetDatabases again clears the null override.
+
 ### GetIndexStrategy
 
 `func (o *ApiAtlasCollectionRestoreJobRequest) GetIndexStrategy() string`
@@ -175,6 +203,13 @@ SetOplogInc sets OplogInc field to given value.
 `func (o *ApiAtlasCollectionRestoreJobRequest) HasOplogInc() bool`
 
 HasOplogInc returns a boolean if a field has been set.
+
+### SetOplogIncNil
+
+`func (o *ApiAtlasCollectionRestoreJobRequest) SetOplogIncNil()`
+
+SetOplogIncNil sets OplogInc to an explicit JSON null when marshaled, overriding any value previously set with SetOplogInc. Calling SetOplogInc again clears the null override.
+
 ### GetOplogTs
 
 `func (o *ApiAtlasCollectionRestoreJobRequest) GetOplogTs() int`
@@ -199,6 +234,13 @@ SetOplogTs sets OplogTs field to given value.
 `func (o *ApiAtlasCollectionRestoreJobRequest) HasOplogTs() bool`
 
 HasOplogTs returns a boolean if a field has been set.
+
+### SetOplogTsNil
+
+`func (o *ApiAtlasCollectionRestoreJobRequest) SetOplogTsNil()`
+
+SetOplogTsNil sets OplogTs to an explicit JSON null when marshaled, overriding any value previously set with SetOplogTs. Calling SetOplogTs again clears the null override.
+
 ### GetPointInTimeUtcSeconds
 
 `func (o *ApiAtlasCollectionRestoreJobRequest) GetPointInTimeUtcSeconds() int`
@@ -223,6 +265,13 @@ SetPointInTimeUtcSeconds sets PointInTimeUtcSeconds field to given value.
 `func (o *ApiAtlasCollectionRestoreJobRequest) HasPointInTimeUtcSeconds() bool`
 
 HasPointInTimeUtcSeconds returns a boolean if a field has been set.
+
+### SetPointInTimeUtcSecondsNil
+
+`func (o *ApiAtlasCollectionRestoreJobRequest) SetPointInTimeUtcSecondsNil()`
+
+SetPointInTimeUtcSecondsNil sets PointInTimeUtcSeconds to an explicit JSON null when marshaled, overriding any value previously set with SetPointInTimeUtcSeconds. Calling SetPointInTimeUtcSeconds again clears the null override.
+
 ### GetSnapshotId
 
 `func (o *ApiAtlasCollectionRestoreJobRequest) GetSnapshotId() string`
@@ -247,6 +296,13 @@ SetSnapshotId sets SnapshotId field to given value.
 `func (o *ApiAtlasCollectionRestoreJobRequest) HasSnapshotId() bool`
 
 HasSnapshotId returns a boolean if a field has been set.
+
+### SetSnapshotIdNil
+
+`func (o *ApiAtlasCollectionRestoreJobRequest) SetSnapshotIdNil()`
+
+SetSnapshotIdNil sets SnapshotId to an explicit JSON null when marshaled, overriding any value previously set with SetSnapshotId. Calling SetSnapshotId again clears the null override.
+
 ### GetTargetClusterName
 
 `func (o *ApiAtlasCollectionRestoreJobRequest) GetTargetClusterName() string`

@@ -53,6 +53,13 @@ SetCollation sets Collation field to given value.
 `func (o *DatabaseRollingIndexRequest) HasCollation() bool`
 
 HasCollation returns a boolean if a field has been set.
+
+### SetCollationNil
+
+`func (o *DatabaseRollingIndexRequest) SetCollationNil()`
+
+SetCollationNil sets Collation to an explicit JSON null when marshaled, overriding any value previously set with SetCollation. Calling SetCollation again clears the null override.
+
 ### GetCollection
 
 `func (o *DatabaseRollingIndexRequest) GetCollection() string`
@@ -134,6 +141,13 @@ SetOptions sets Options field to given value.
 `func (o *DatabaseRollingIndexRequest) HasOptions() bool`
 
 HasOptions returns a boolean if a field has been set.
+
+### SetOptionsNil
+
+`func (o *DatabaseRollingIndexRequest) SetOptionsNil()`
+
+SetOptionsNil sets Options to an explicit JSON null when marshaled, overriding any value previously set with SetOptions. Calling SetOptions again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ApiKeyId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the API Key that triggered the event. If this resource returns this parameter, it doesn&#39;t return the &#x60;userId&#x60; parameter. | [optional] [readonly] 
 **Created** | Pointer to **time.Time** | Date and time when this event occurred. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
+**DelegatePrincipal** | Pointer to [**Principal**](Principal.md) |  | [optional] 
 **EventTypeName** | Pointer to **string** | Unique identifier of event type. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project in which the event occurred. The &#x60;eventId&#x60; identifies the specific event. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the event. | [optional] [readonly] 
@@ -43,9 +44,14 @@ Name | Type | Description | Notes
 **ResourceId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the resource associated with the event. | [optional] [readonly] 
 **ResourceType** | Pointer to **string** | Unique identifier of resource type. | [optional] 
 **InstanceName** | Pointer to **string** | Name of the stream processing workspace associated with the event. | [optional] [readonly] 
+**FromTier** | Pointer to **string** | Tier the stream processor scaled from. | [optional] [readonly] 
+**ModifiedBy** | Pointer to **string** | Username of the user who modified the stream processor. | [optional] [readonly] 
 **ProcessorErrorMsg** | Pointer to **string** | Error message linked to the stream processor associated with the event. | [optional] [readonly] 
 **ProcessorName** | Pointer to **string** | Name of the stream processor associated with the event. | [optional] [readonly] 
 **ProcessorState** | Pointer to **string** | State of the stream processor associated with the event. | [optional] [readonly] 
+**Reason** | Pointer to **string** | Reason for the autoscale event. | [optional] [readonly] 
+**Region** | Pointer to **string** | Cloud provider region in which the stream processor is running. | [optional] [readonly] 
+**ToTier** | Pointer to **string** | Tier the stream processor scaled to. | [optional] [readonly] 
 **ResourcePolicyId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the resource policy. | [optional] [readonly] 
 **ViolatedPolicies** | Pointer to **[]string** | String representation of the violated resource policy ids. | [optional] 
 **ViolationAction** | Pointer to **string** | Resource policy action taken by the user and evaluated against the currently active policies. | [optional] [readonly] 
@@ -93,6 +99,13 @@ SetApiKeyId sets ApiKeyId field to given value.
 `func (o *EventViewForNdsGroup) HasApiKeyId() bool`
 
 HasApiKeyId returns a boolean if a field has been set.
+
+### SetApiKeyIdNil
+
+`func (o *EventViewForNdsGroup) SetApiKeyIdNil()`
+
+SetApiKeyIdNil sets ApiKeyId to an explicit JSON null when marshaled, overriding any value previously set with SetApiKeyId. Calling SetApiKeyId again clears the null override.
+
 ### GetCreated
 
 `func (o *EventViewForNdsGroup) GetCreated() time.Time`
@@ -117,6 +130,44 @@ SetCreated sets Created field to given value.
 `func (o *EventViewForNdsGroup) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
+
+### SetCreatedNil
+
+`func (o *EventViewForNdsGroup) SetCreatedNil()`
+
+SetCreatedNil sets Created to an explicit JSON null when marshaled, overriding any value previously set with SetCreated. Calling SetCreated again clears the null override.
+
+### GetDelegatePrincipal
+
+`func (o *EventViewForNdsGroup) GetDelegatePrincipal() Principal`
+
+GetDelegatePrincipal returns the DelegatePrincipal field if non-nil, zero value otherwise.
+
+### GetDelegatePrincipalOk
+
+`func (o *EventViewForNdsGroup) GetDelegatePrincipalOk() (*Principal, bool)`
+
+GetDelegatePrincipalOk returns a tuple with the DelegatePrincipal field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDelegatePrincipal
+
+`func (o *EventViewForNdsGroup) SetDelegatePrincipal(v Principal)`
+
+SetDelegatePrincipal sets DelegatePrincipal field to given value.
+
+### HasDelegatePrincipal
+
+`func (o *EventViewForNdsGroup) HasDelegatePrincipal() bool`
+
+HasDelegatePrincipal returns a boolean if a field has been set.
+
+### SetDelegatePrincipalNil
+
+`func (o *EventViewForNdsGroup) SetDelegatePrincipalNil()`
+
+SetDelegatePrincipalNil sets DelegatePrincipal to an explicit JSON null when marshaled, overriding any value previously set with SetDelegatePrincipal. Calling SetDelegatePrincipal again clears the null override.
+
 ### GetEventTypeName
 
 `func (o *EventViewForNdsGroup) GetEventTypeName() string`
@@ -141,6 +192,13 @@ SetEventTypeName sets EventTypeName field to given value.
 `func (o *EventViewForNdsGroup) HasEventTypeName() bool`
 
 HasEventTypeName returns a boolean if a field has been set.
+
+### SetEventTypeNameNil
+
+`func (o *EventViewForNdsGroup) SetEventTypeNameNil()`
+
+SetEventTypeNameNil sets EventTypeName to an explicit JSON null when marshaled, overriding any value previously set with SetEventTypeName. Calling SetEventTypeName again clears the null override.
+
 ### GetGroupId
 
 `func (o *EventViewForNdsGroup) GetGroupId() string`
@@ -165,6 +223,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *EventViewForNdsGroup) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *EventViewForNdsGroup) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetId
 
 `func (o *EventViewForNdsGroup) GetId() string`
@@ -189,6 +254,13 @@ SetId sets Id field to given value.
 `func (o *EventViewForNdsGroup) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *EventViewForNdsGroup) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetIsGlobalAdmin
 
 `func (o *EventViewForNdsGroup) GetIsGlobalAdmin() bool`
@@ -213,6 +285,13 @@ SetIsGlobalAdmin sets IsGlobalAdmin field to given value.
 `func (o *EventViewForNdsGroup) HasIsGlobalAdmin() bool`
 
 HasIsGlobalAdmin returns a boolean if a field has been set.
+
+### SetIsGlobalAdminNil
+
+`func (o *EventViewForNdsGroup) SetIsGlobalAdminNil()`
+
+SetIsGlobalAdminNil sets IsGlobalAdmin to an explicit JSON null when marshaled, overriding any value previously set with SetIsGlobalAdmin. Calling SetIsGlobalAdmin again clears the null override.
+
 ### GetLinks
 
 `func (o *EventViewForNdsGroup) GetLinks() []Link`
@@ -237,6 +316,13 @@ SetLinks sets Links field to given value.
 `func (o *EventViewForNdsGroup) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *EventViewForNdsGroup) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetOrgId
 
 `func (o *EventViewForNdsGroup) GetOrgId() string`
@@ -261,6 +347,13 @@ SetOrgId sets OrgId field to given value.
 `func (o *EventViewForNdsGroup) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
+
+### SetOrgIdNil
+
+`func (o *EventViewForNdsGroup) SetOrgIdNil()`
+
+SetOrgIdNil sets OrgId to an explicit JSON null when marshaled, overriding any value previously set with SetOrgId. Calling SetOrgId again clears the null override.
+
 ### GetPublicKey
 
 `func (o *EventViewForNdsGroup) GetPublicKey() string`
@@ -285,6 +378,13 @@ SetPublicKey sets PublicKey field to given value.
 `func (o *EventViewForNdsGroup) HasPublicKey() bool`
 
 HasPublicKey returns a boolean if a field has been set.
+
+### SetPublicKeyNil
+
+`func (o *EventViewForNdsGroup) SetPublicKeyNil()`
+
+SetPublicKeyNil sets PublicKey to an explicit JSON null when marshaled, overriding any value previously set with SetPublicKey. Calling SetPublicKey again clears the null override.
+
 ### GetRaw
 
 `func (o *EventViewForNdsGroup) GetRaw() Raw`
@@ -309,6 +409,13 @@ SetRaw sets Raw field to given value.
 `func (o *EventViewForNdsGroup) HasRaw() bool`
 
 HasRaw returns a boolean if a field has been set.
+
+### SetRawNil
+
+`func (o *EventViewForNdsGroup) SetRawNil()`
+
+SetRawNil sets Raw to an explicit JSON null when marshaled, overriding any value previously set with SetRaw. Calling SetRaw again clears the null override.
+
 ### GetRemoteAddress
 
 `func (o *EventViewForNdsGroup) GetRemoteAddress() string`
@@ -333,6 +440,13 @@ SetRemoteAddress sets RemoteAddress field to given value.
 `func (o *EventViewForNdsGroup) HasRemoteAddress() bool`
 
 HasRemoteAddress returns a boolean if a field has been set.
+
+### SetRemoteAddressNil
+
+`func (o *EventViewForNdsGroup) SetRemoteAddressNil()`
+
+SetRemoteAddressNil sets RemoteAddress to an explicit JSON null when marshaled, overriding any value previously set with SetRemoteAddress. Calling SetRemoteAddress again clears the null override.
+
 ### GetUserId
 
 `func (o *EventViewForNdsGroup) GetUserId() string`
@@ -357,6 +471,13 @@ SetUserId sets UserId field to given value.
 `func (o *EventViewForNdsGroup) HasUserId() bool`
 
 HasUserId returns a boolean if a field has been set.
+
+### SetUserIdNil
+
+`func (o *EventViewForNdsGroup) SetUserIdNil()`
+
+SetUserIdNil sets UserId to an explicit JSON null when marshaled, overriding any value previously set with SetUserId. Calling SetUserId again clears the null override.
+
 ### GetUsername
 
 `func (o *EventViewForNdsGroup) GetUsername() string`
@@ -381,6 +502,13 @@ SetUsername sets Username field to given value.
 `func (o *EventViewForNdsGroup) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
+
+### SetUsernameNil
+
+`func (o *EventViewForNdsGroup) SetUsernameNil()`
+
+SetUsernameNil sets Username to an explicit JSON null when marshaled, overriding any value previously set with SetUsername. Calling SetUsername again clears the null override.
+
 ### GetAlertId
 
 `func (o *EventViewForNdsGroup) GetAlertId() string`
@@ -405,6 +533,13 @@ SetAlertId sets AlertId field to given value.
 `func (o *EventViewForNdsGroup) HasAlertId() bool`
 
 HasAlertId returns a boolean if a field has been set.
+
+### SetAlertIdNil
+
+`func (o *EventViewForNdsGroup) SetAlertIdNil()`
+
+SetAlertIdNil sets AlertId to an explicit JSON null when marshaled, overriding any value previously set with SetAlertId. Calling SetAlertId again clears the null override.
+
 ### GetAlertConfigId
 
 `func (o *EventViewForNdsGroup) GetAlertConfigId() string`
@@ -429,6 +564,13 @@ SetAlertConfigId sets AlertConfigId field to given value.
 `func (o *EventViewForNdsGroup) HasAlertConfigId() bool`
 
 HasAlertConfigId returns a boolean if a field has been set.
+
+### SetAlertConfigIdNil
+
+`func (o *EventViewForNdsGroup) SetAlertConfigIdNil()`
+
+SetAlertConfigIdNil sets AlertConfigId to an explicit JSON null when marshaled, overriding any value previously set with SetAlertConfigId. Calling SetAlertConfigId again clears the null override.
+
 ### GetTargetPublicKey
 
 `func (o *EventViewForNdsGroup) GetTargetPublicKey() string`
@@ -453,6 +595,13 @@ SetTargetPublicKey sets TargetPublicKey field to given value.
 `func (o *EventViewForNdsGroup) HasTargetPublicKey() bool`
 
 HasTargetPublicKey returns a boolean if a field has been set.
+
+### SetTargetPublicKeyNil
+
+`func (o *EventViewForNdsGroup) SetTargetPublicKeyNil()`
+
+SetTargetPublicKeyNil sets TargetPublicKey to an explicit JSON null when marshaled, overriding any value previously set with SetTargetPublicKey. Calling SetTargetPublicKey again clears the null override.
+
 ### GetWhitelistEntry
 
 `func (o *EventViewForNdsGroup) GetWhitelistEntry() string`
@@ -477,6 +626,13 @@ SetWhitelistEntry sets WhitelistEntry field to given value.
 `func (o *EventViewForNdsGroup) HasWhitelistEntry() bool`
 
 HasWhitelistEntry returns a boolean if a field has been set.
+
+### SetWhitelistEntryNil
+
+`func (o *EventViewForNdsGroup) SetWhitelistEntryNil()`
+
+SetWhitelistEntryNil sets WhitelistEntry to an explicit JSON null when marshaled, overriding any value previously set with SetWhitelistEntry. Calling SetWhitelistEntry again clears the null override.
+
 ### GetInvoiceId
 
 `func (o *EventViewForNdsGroup) GetInvoiceId() string`
@@ -501,6 +657,13 @@ SetInvoiceId sets InvoiceId field to given value.
 `func (o *EventViewForNdsGroup) HasInvoiceId() bool`
 
 HasInvoiceId returns a boolean if a field has been set.
+
+### SetInvoiceIdNil
+
+`func (o *EventViewForNdsGroup) SetInvoiceIdNil()`
+
+SetInvoiceIdNil sets InvoiceId to an explicit JSON null when marshaled, overriding any value previously set with SetInvoiceId. Calling SetInvoiceId again clears the null override.
+
 ### GetPaymentId
 
 `func (o *EventViewForNdsGroup) GetPaymentId() string`
@@ -525,6 +688,13 @@ SetPaymentId sets PaymentId field to given value.
 `func (o *EventViewForNdsGroup) HasPaymentId() bool`
 
 HasPaymentId returns a boolean if a field has been set.
+
+### SetPaymentIdNil
+
+`func (o *EventViewForNdsGroup) SetPaymentIdNil()`
+
+SetPaymentIdNil sets PaymentId to an explicit JSON null when marshaled, overriding any value previously set with SetPaymentId. Calling SetPaymentId again clears the null override.
+
 ### GetShardName
 
 `func (o *EventViewForNdsGroup) GetShardName() string`
@@ -549,6 +719,13 @@ SetShardName sets ShardName field to given value.
 `func (o *EventViewForNdsGroup) HasShardName() bool`
 
 HasShardName returns a boolean if a field has been set.
+
+### SetShardNameNil
+
+`func (o *EventViewForNdsGroup) SetShardNameNil()`
+
+SetShardNameNil sets ShardName to an explicit JSON null when marshaled, overriding any value previously set with SetShardName. Calling SetShardName again clears the null override.
+
 ### GetCollection
 
 `func (o *EventViewForNdsGroup) GetCollection() string`
@@ -573,6 +750,13 @@ SetCollection sets Collection field to given value.
 `func (o *EventViewForNdsGroup) HasCollection() bool`
 
 HasCollection returns a boolean if a field has been set.
+
+### SetCollectionNil
+
+`func (o *EventViewForNdsGroup) SetCollectionNil()`
+
+SetCollectionNil sets Collection to an explicit JSON null when marshaled, overriding any value previously set with SetCollection. Calling SetCollection again clears the null override.
+
 ### GetDatabase
 
 `func (o *EventViewForNdsGroup) GetDatabase() string`
@@ -597,6 +781,13 @@ SetDatabase sets Database field to given value.
 `func (o *EventViewForNdsGroup) HasDatabase() bool`
 
 HasDatabase returns a boolean if a field has been set.
+
+### SetDatabaseNil
+
+`func (o *EventViewForNdsGroup) SetDatabaseNil()`
+
+SetDatabaseNil sets Database to an explicit JSON null when marshaled, overriding any value previously set with SetDatabase. Calling SetDatabase again clears the null override.
+
 ### GetOpType
 
 `func (o *EventViewForNdsGroup) GetOpType() string`
@@ -621,6 +812,13 @@ SetOpType sets OpType field to given value.
 `func (o *EventViewForNdsGroup) HasOpType() bool`
 
 HasOpType returns a boolean if a field has been set.
+
+### SetOpTypeNil
+
+`func (o *EventViewForNdsGroup) SetOpTypeNil()`
+
+SetOpTypeNil sets OpType to an explicit JSON null when marshaled, overriding any value previously set with SetOpType. Calling SetOpType again clears the null override.
+
 ### GetSessionId
 
 `func (o *EventViewForNdsGroup) GetSessionId() string`
@@ -645,6 +843,13 @@ SetSessionId sets SessionId field to given value.
 `func (o *EventViewForNdsGroup) HasSessionId() bool`
 
 HasSessionId returns a boolean if a field has been set.
+
+### SetSessionIdNil
+
+`func (o *EventViewForNdsGroup) SetSessionIdNil()`
+
+SetSessionIdNil sets SessionId to an explicit JSON null when marshaled, overriding any value previously set with SetSessionId. Calling SetSessionId again clears the null override.
+
 ### GetDeskLocation
 
 `func (o *EventViewForNdsGroup) GetDeskLocation() string`
@@ -669,6 +874,13 @@ SetDeskLocation sets DeskLocation field to given value.
 `func (o *EventViewForNdsGroup) HasDeskLocation() bool`
 
 HasDeskLocation returns a boolean if a field has been set.
+
+### SetDeskLocationNil
+
+`func (o *EventViewForNdsGroup) SetDeskLocationNil()`
+
+SetDeskLocationNil sets DeskLocation to an explicit JSON null when marshaled, overriding any value previously set with SetDeskLocation. Calling SetDeskLocation again clears the null override.
+
 ### GetEmployeeIdentifier
 
 `func (o *EventViewForNdsGroup) GetEmployeeIdentifier() string`
@@ -693,6 +905,13 @@ SetEmployeeIdentifier sets EmployeeIdentifier field to given value.
 `func (o *EventViewForNdsGroup) HasEmployeeIdentifier() bool`
 
 HasEmployeeIdentifier returns a boolean if a field has been set.
+
+### SetEmployeeIdentifierNil
+
+`func (o *EventViewForNdsGroup) SetEmployeeIdentifierNil()`
+
+SetEmployeeIdentifierNil sets EmployeeIdentifier to an explicit JSON null when marshaled, overriding any value previously set with SetEmployeeIdentifier. Calling SetEmployeeIdentifier again clears the null override.
+
 ### GetPort
 
 `func (o *EventViewForNdsGroup) GetPort() int`
@@ -717,6 +936,13 @@ SetPort sets Port field to given value.
 `func (o *EventViewForNdsGroup) HasPort() bool`
 
 HasPort returns a boolean if a field has been set.
+
+### SetPortNil
+
+`func (o *EventViewForNdsGroup) SetPortNil()`
+
+SetPortNil sets Port to an explicit JSON null when marshaled, overriding any value previously set with SetPort. Calling SetPort again clears the null override.
+
 ### GetReplicaSetName
 
 `func (o *EventViewForNdsGroup) GetReplicaSetName() string`
@@ -741,6 +967,13 @@ SetReplicaSetName sets ReplicaSetName field to given value.
 `func (o *EventViewForNdsGroup) HasReplicaSetName() bool`
 
 HasReplicaSetName returns a boolean if a field has been set.
+
+### SetReplicaSetNameNil
+
+`func (o *EventViewForNdsGroup) SetReplicaSetNameNil()`
+
+SetReplicaSetNameNil sets ReplicaSetName to an explicit JSON null when marshaled, overriding any value previously set with SetReplicaSetName. Calling SetReplicaSetName again clears the null override.
+
 ### GetCurrentValue
 
 `func (o *EventViewForNdsGroup) GetCurrentValue() NumberMetricValue`
@@ -765,6 +998,13 @@ SetCurrentValue sets CurrentValue field to given value.
 `func (o *EventViewForNdsGroup) HasCurrentValue() bool`
 
 HasCurrentValue returns a boolean if a field has been set.
+
+### SetCurrentValueNil
+
+`func (o *EventViewForNdsGroup) SetCurrentValueNil()`
+
+SetCurrentValueNil sets CurrentValue to an explicit JSON null when marshaled, overriding any value previously set with SetCurrentValue. Calling SetCurrentValue again clears the null override.
+
 ### GetMetricName
 
 `func (o *EventViewForNdsGroup) GetMetricName() string`
@@ -789,6 +1029,13 @@ SetMetricName sets MetricName field to given value.
 `func (o *EventViewForNdsGroup) HasMetricName() bool`
 
 HasMetricName returns a boolean if a field has been set.
+
+### SetMetricNameNil
+
+`func (o *EventViewForNdsGroup) SetMetricNameNil()`
+
+SetMetricNameNil sets MetricName to an explicit JSON null when marshaled, overriding any value previously set with SetMetricName. Calling SetMetricName again clears the null override.
+
 ### GetDbUserUsername
 
 `func (o *EventViewForNdsGroup) GetDbUserUsername() string`
@@ -813,6 +1060,13 @@ SetDbUserUsername sets DbUserUsername field to given value.
 `func (o *EventViewForNdsGroup) HasDbUserUsername() bool`
 
 HasDbUserUsername returns a boolean if a field has been set.
+
+### SetDbUserUsernameNil
+
+`func (o *EventViewForNdsGroup) SetDbUserUsernameNil()`
+
+SetDbUserUsernameNil sets DbUserUsername to an explicit JSON null when marshaled, overriding any value previously set with SetDbUserUsername. Calling SetDbUserUsername again clears the null override.
+
 ### GetEndpointId
 
 `func (o *EventViewForNdsGroup) GetEndpointId() string`
@@ -837,6 +1091,13 @@ SetEndpointId sets EndpointId field to given value.
 `func (o *EventViewForNdsGroup) HasEndpointId() bool`
 
 HasEndpointId returns a boolean if a field has been set.
+
+### SetEndpointIdNil
+
+`func (o *EventViewForNdsGroup) SetEndpointIdNil()`
+
+SetEndpointIdNil sets EndpointId to an explicit JSON null when marshaled, overriding any value previously set with SetEndpointId. Calling SetEndpointId again clears the null override.
+
 ### GetProviderEndpointId
 
 `func (o *EventViewForNdsGroup) GetProviderEndpointId() string`
@@ -861,6 +1122,13 @@ SetProviderEndpointId sets ProviderEndpointId field to given value.
 `func (o *EventViewForNdsGroup) HasProviderEndpointId() bool`
 
 HasProviderEndpointId returns a boolean if a field has been set.
+
+### SetProviderEndpointIdNil
+
+`func (o *EventViewForNdsGroup) SetProviderEndpointIdNil()`
+
+SetProviderEndpointIdNil sets ProviderEndpointId to an explicit JSON null when marshaled, overriding any value previously set with SetProviderEndpointId. Calling SetProviderEndpointId again clears the null override.
+
 ### GetHostname
 
 `func (o *EventViewForNdsGroup) GetHostname() string`
@@ -885,6 +1153,13 @@ SetHostname sets Hostname field to given value.
 `func (o *EventViewForNdsGroup) HasHostname() bool`
 
 HasHostname returns a boolean if a field has been set.
+
+### SetHostnameNil
+
+`func (o *EventViewForNdsGroup) SetHostnameNil()`
+
+SetHostnameNil sets Hostname to an explicit JSON null when marshaled, overriding any value previously set with SetHostname. Calling SetHostname again clears the null override.
+
 ### GetTeamId
 
 `func (o *EventViewForNdsGroup) GetTeamId() string`
@@ -909,6 +1184,13 @@ SetTeamId sets TeamId field to given value.
 `func (o *EventViewForNdsGroup) HasTeamId() bool`
 
 HasTeamId returns a boolean if a field has been set.
+
+### SetTeamIdNil
+
+`func (o *EventViewForNdsGroup) SetTeamIdNil()`
+
+SetTeamIdNil sets TeamId to an explicit JSON null when marshaled, overriding any value previously set with SetTeamId. Calling SetTeamId again clears the null override.
+
 ### GetTargetUsername
 
 `func (o *EventViewForNdsGroup) GetTargetUsername() string`
@@ -933,6 +1215,13 @@ SetTargetUsername sets TargetUsername field to given value.
 `func (o *EventViewForNdsGroup) HasTargetUsername() bool`
 
 HasTargetUsername returns a boolean if a field has been set.
+
+### SetTargetUsernameNil
+
+`func (o *EventViewForNdsGroup) SetTargetUsernameNil()`
+
+SetTargetUsernameNil sets TargetUsername to an explicit JSON null when marshaled, overriding any value previously set with SetTargetUsername. Calling SetTargetUsername again clears the null override.
+
 ### GetResourceId
 
 `func (o *EventViewForNdsGroup) GetResourceId() string`
@@ -957,6 +1246,13 @@ SetResourceId sets ResourceId field to given value.
 `func (o *EventViewForNdsGroup) HasResourceId() bool`
 
 HasResourceId returns a boolean if a field has been set.
+
+### SetResourceIdNil
+
+`func (o *EventViewForNdsGroup) SetResourceIdNil()`
+
+SetResourceIdNil sets ResourceId to an explicit JSON null when marshaled, overriding any value previously set with SetResourceId. Calling SetResourceId again clears the null override.
+
 ### GetResourceType
 
 `func (o *EventViewForNdsGroup) GetResourceType() string`
@@ -981,6 +1277,13 @@ SetResourceType sets ResourceType field to given value.
 `func (o *EventViewForNdsGroup) HasResourceType() bool`
 
 HasResourceType returns a boolean if a field has been set.
+
+### SetResourceTypeNil
+
+`func (o *EventViewForNdsGroup) SetResourceTypeNil()`
+
+SetResourceTypeNil sets ResourceType to an explicit JSON null when marshaled, overriding any value previously set with SetResourceType. Calling SetResourceType again clears the null override.
+
 ### GetInstanceName
 
 `func (o *EventViewForNdsGroup) GetInstanceName() string`
@@ -1005,6 +1308,75 @@ SetInstanceName sets InstanceName field to given value.
 `func (o *EventViewForNdsGroup) HasInstanceName() bool`
 
 HasInstanceName returns a boolean if a field has been set.
+
+### SetInstanceNameNil
+
+`func (o *EventViewForNdsGroup) SetInstanceNameNil()`
+
+SetInstanceNameNil sets InstanceName to an explicit JSON null when marshaled, overriding any value previously set with SetInstanceName. Calling SetInstanceName again clears the null override.
+
+### GetFromTier
+
+`func (o *EventViewForNdsGroup) GetFromTier() string`
+
+GetFromTier returns the FromTier field if non-nil, zero value otherwise.
+
+### GetFromTierOk
+
+`func (o *EventViewForNdsGroup) GetFromTierOk() (*string, bool)`
+
+GetFromTierOk returns a tuple with the FromTier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFromTier
+
+`func (o *EventViewForNdsGroup) SetFromTier(v string)`
+
+SetFromTier sets FromTier field to given value.
+
+### HasFromTier
+
+`func (o *EventViewForNdsGroup) HasFromTier() bool`
+
+HasFromTier returns a boolean if a field has been set.
+
+### SetFromTierNil
+
+`func (o *EventViewForNdsGroup) SetFromTierNil()`
+
+SetFromTierNil sets FromTier to an explicit JSON null when marshaled, overriding any value previously set with SetFromTier. Calling SetFromTier again clears the null override.
+
+### GetModifiedBy
+
+`func (o *EventViewForNdsGroup) GetModifiedBy() string`
+
+GetModifiedBy returns the ModifiedBy field if non-nil, zero value otherwise.
+
+### GetModifiedByOk
+
+`func (o *EventViewForNdsGroup) GetModifiedByOk() (*string, bool)`
+
+GetModifiedByOk returns a tuple with the ModifiedBy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModifiedBy
+
+`func (o *EventViewForNdsGroup) SetModifiedBy(v string)`
+
+SetModifiedBy sets ModifiedBy field to given value.
+
+### HasModifiedBy
+
+`func (o *EventViewForNdsGroup) HasModifiedBy() bool`
+
+HasModifiedBy returns a boolean if a field has been set.
+
+### SetModifiedByNil
+
+`func (o *EventViewForNdsGroup) SetModifiedByNil()`
+
+SetModifiedByNil sets ModifiedBy to an explicit JSON null when marshaled, overriding any value previously set with SetModifiedBy. Calling SetModifiedBy again clears the null override.
+
 ### GetProcessorErrorMsg
 
 `func (o *EventViewForNdsGroup) GetProcessorErrorMsg() string`
@@ -1029,6 +1401,13 @@ SetProcessorErrorMsg sets ProcessorErrorMsg field to given value.
 `func (o *EventViewForNdsGroup) HasProcessorErrorMsg() bool`
 
 HasProcessorErrorMsg returns a boolean if a field has been set.
+
+### SetProcessorErrorMsgNil
+
+`func (o *EventViewForNdsGroup) SetProcessorErrorMsgNil()`
+
+SetProcessorErrorMsgNil sets ProcessorErrorMsg to an explicit JSON null when marshaled, overriding any value previously set with SetProcessorErrorMsg. Calling SetProcessorErrorMsg again clears the null override.
+
 ### GetProcessorName
 
 `func (o *EventViewForNdsGroup) GetProcessorName() string`
@@ -1053,6 +1432,13 @@ SetProcessorName sets ProcessorName field to given value.
 `func (o *EventViewForNdsGroup) HasProcessorName() bool`
 
 HasProcessorName returns a boolean if a field has been set.
+
+### SetProcessorNameNil
+
+`func (o *EventViewForNdsGroup) SetProcessorNameNil()`
+
+SetProcessorNameNil sets ProcessorName to an explicit JSON null when marshaled, overriding any value previously set with SetProcessorName. Calling SetProcessorName again clears the null override.
+
 ### GetProcessorState
 
 `func (o *EventViewForNdsGroup) GetProcessorState() string`
@@ -1077,6 +1463,106 @@ SetProcessorState sets ProcessorState field to given value.
 `func (o *EventViewForNdsGroup) HasProcessorState() bool`
 
 HasProcessorState returns a boolean if a field has been set.
+
+### SetProcessorStateNil
+
+`func (o *EventViewForNdsGroup) SetProcessorStateNil()`
+
+SetProcessorStateNil sets ProcessorState to an explicit JSON null when marshaled, overriding any value previously set with SetProcessorState. Calling SetProcessorState again clears the null override.
+
+### GetReason
+
+`func (o *EventViewForNdsGroup) GetReason() string`
+
+GetReason returns the Reason field if non-nil, zero value otherwise.
+
+### GetReasonOk
+
+`func (o *EventViewForNdsGroup) GetReasonOk() (*string, bool)`
+
+GetReasonOk returns a tuple with the Reason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReason
+
+`func (o *EventViewForNdsGroup) SetReason(v string)`
+
+SetReason sets Reason field to given value.
+
+### HasReason
+
+`func (o *EventViewForNdsGroup) HasReason() bool`
+
+HasReason returns a boolean if a field has been set.
+
+### SetReasonNil
+
+`func (o *EventViewForNdsGroup) SetReasonNil()`
+
+SetReasonNil sets Reason to an explicit JSON null when marshaled, overriding any value previously set with SetReason. Calling SetReason again clears the null override.
+
+### GetRegion
+
+`func (o *EventViewForNdsGroup) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *EventViewForNdsGroup) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *EventViewForNdsGroup) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *EventViewForNdsGroup) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *EventViewForNdsGroup) SetRegionNil()`
+
+SetRegionNil sets Region to an explicit JSON null when marshaled, overriding any value previously set with SetRegion. Calling SetRegion again clears the null override.
+
+### GetToTier
+
+`func (o *EventViewForNdsGroup) GetToTier() string`
+
+GetToTier returns the ToTier field if non-nil, zero value otherwise.
+
+### GetToTierOk
+
+`func (o *EventViewForNdsGroup) GetToTierOk() (*string, bool)`
+
+GetToTierOk returns a tuple with the ToTier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetToTier
+
+`func (o *EventViewForNdsGroup) SetToTier(v string)`
+
+SetToTier sets ToTier field to given value.
+
+### HasToTier
+
+`func (o *EventViewForNdsGroup) HasToTier() bool`
+
+HasToTier returns a boolean if a field has been set.
+
+### SetToTierNil
+
+`func (o *EventViewForNdsGroup) SetToTierNil()`
+
+SetToTierNil sets ToTier to an explicit JSON null when marshaled, overriding any value previously set with SetToTier. Calling SetToTier again clears the null override.
+
 ### GetResourcePolicyId
 
 `func (o *EventViewForNdsGroup) GetResourcePolicyId() string`
@@ -1101,6 +1587,13 @@ SetResourcePolicyId sets ResourcePolicyId field to given value.
 `func (o *EventViewForNdsGroup) HasResourcePolicyId() bool`
 
 HasResourcePolicyId returns a boolean if a field has been set.
+
+### SetResourcePolicyIdNil
+
+`func (o *EventViewForNdsGroup) SetResourcePolicyIdNil()`
+
+SetResourcePolicyIdNil sets ResourcePolicyId to an explicit JSON null when marshaled, overriding any value previously set with SetResourcePolicyId. Calling SetResourcePolicyId again clears the null override.
+
 ### GetViolatedPolicies
 
 `func (o *EventViewForNdsGroup) GetViolatedPolicies() []string`
@@ -1125,6 +1618,13 @@ SetViolatedPolicies sets ViolatedPolicies field to given value.
 `func (o *EventViewForNdsGroup) HasViolatedPolicies() bool`
 
 HasViolatedPolicies returns a boolean if a field has been set.
+
+### SetViolatedPoliciesNil
+
+`func (o *EventViewForNdsGroup) SetViolatedPoliciesNil()`
+
+SetViolatedPoliciesNil sets ViolatedPolicies to an explicit JSON null when marshaled, overriding any value previously set with SetViolatedPolicies. Calling SetViolatedPolicies again clears the null override.
+
 ### GetViolationAction
 
 `func (o *EventViewForNdsGroup) GetViolationAction() string`
@@ -1149,6 +1649,13 @@ SetViolationAction sets ViolationAction field to given value.
 `func (o *EventViewForNdsGroup) HasViolationAction() bool`
 
 HasViolationAction returns a boolean if a field has been set.
+
+### SetViolationActionNil
+
+`func (o *EventViewForNdsGroup) SetViolationActionNil()`
+
+SetViolationActionNil sets ViolationAction to an explicit JSON null when marshaled, overriding any value previously set with SetViolationAction. Calling SetViolationAction again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

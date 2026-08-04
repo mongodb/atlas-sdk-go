@@ -52,6 +52,13 @@ SetCustomOpensslCipherConfigTls12 sets CustomOpensslCipherConfigTls12 field to g
 `func (o *ApiAtlasClusterAdvancedConfiguration) HasCustomOpensslCipherConfigTls12() bool`
 
 HasCustomOpensslCipherConfigTls12 returns a boolean if a field has been set.
+
+### SetCustomOpensslCipherConfigTls12Nil
+
+`func (o *ApiAtlasClusterAdvancedConfiguration) SetCustomOpensslCipherConfigTls12Nil()`
+
+SetCustomOpensslCipherConfigTls12Nil sets CustomOpensslCipherConfigTls12 to an explicit JSON null when marshaled, overriding any value previously set with SetCustomOpensslCipherConfigTls12. Calling SetCustomOpensslCipherConfigTls12 again clears the null override.
+
 ### GetCustomOpensslCipherConfigTls13
 
 `func (o *ApiAtlasClusterAdvancedConfiguration) GetCustomOpensslCipherConfigTls13() []string`
@@ -76,6 +83,13 @@ SetCustomOpensslCipherConfigTls13 sets CustomOpensslCipherConfigTls13 field to g
 `func (o *ApiAtlasClusterAdvancedConfiguration) HasCustomOpensslCipherConfigTls13() bool`
 
 HasCustomOpensslCipherConfigTls13 returns a boolean if a field has been set.
+
+### SetCustomOpensslCipherConfigTls13Nil
+
+`func (o *ApiAtlasClusterAdvancedConfiguration) SetCustomOpensslCipherConfigTls13Nil()`
+
+SetCustomOpensslCipherConfigTls13Nil sets CustomOpensslCipherConfigTls13 to an explicit JSON null when marshaled, overriding any value previously set with SetCustomOpensslCipherConfigTls13. Calling SetCustomOpensslCipherConfigTls13 again clears the null override.
+
 ### GetMinimumEnabledTlsProtocol
 
 `func (o *ApiAtlasClusterAdvancedConfiguration) GetMinimumEnabledTlsProtocol() string`
@@ -100,6 +114,13 @@ SetMinimumEnabledTlsProtocol sets MinimumEnabledTlsProtocol field to given value
 `func (o *ApiAtlasClusterAdvancedConfiguration) HasMinimumEnabledTlsProtocol() bool`
 
 HasMinimumEnabledTlsProtocol returns a boolean if a field has been set.
+
+### SetMinimumEnabledTlsProtocolNil
+
+`func (o *ApiAtlasClusterAdvancedConfiguration) SetMinimumEnabledTlsProtocolNil()`
+
+SetMinimumEnabledTlsProtocolNil sets MinimumEnabledTlsProtocol to an explicit JSON null when marshaled, overriding any value previously set with SetMinimumEnabledTlsProtocol. Calling SetMinimumEnabledTlsProtocol again clears the null override.
+
 ### GetTlsCipherConfigMode
 
 `func (o *ApiAtlasClusterAdvancedConfiguration) GetTlsCipherConfigMode() string`
@@ -124,6 +145,13 @@ SetTlsCipherConfigMode sets TlsCipherConfigMode field to given value.
 `func (o *ApiAtlasClusterAdvancedConfiguration) HasTlsCipherConfigMode() bool`
 
 HasTlsCipherConfigMode returns a boolean if a field has been set.
+
+### SetTlsCipherConfigModeNil
+
+`func (o *ApiAtlasClusterAdvancedConfiguration) SetTlsCipherConfigModeNil()`
+
+SetTlsCipherConfigModeNil sets TlsCipherConfigMode to an explicit JSON null when marshaled, overriding any value previously set with SetTlsCipherConfigMode. Calling SetTlsCipherConfigMode again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

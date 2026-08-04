@@ -70,6 +70,13 @@ SetSupportedRemoteRegions sets SupportedRemoteRegions field to given value.
 
 HasSupportedRemoteRegions returns a boolean if a field has been set.
 
+### SetSupportedRemoteRegionsNil
+
+`func (o *ApiAtlasModifyEndpointServiceRequest) SetSupportedRemoteRegionsNil()`
+
+SetSupportedRemoteRegionsNil sets SupportedRemoteRegions to an explicit JSON null when marshaled, overriding any value previously set with SetSupportedRemoteRegions. Calling SetSupportedRemoteRegions again clears the null override.
+
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

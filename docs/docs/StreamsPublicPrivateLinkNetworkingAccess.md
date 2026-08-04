@@ -51,6 +51,13 @@ SetConnectionId sets ConnectionId field to given value.
 `func (o *StreamsPublicPrivateLinkNetworkingAccess) HasConnectionId() bool`
 
 HasConnectionId returns a boolean if a field has been set.
+
+### SetConnectionIdNil
+
+`func (o *StreamsPublicPrivateLinkNetworkingAccess) SetConnectionIdNil()`
+
+SetConnectionIdNil sets ConnectionId to an explicit JSON null when marshaled, overriding any value previously set with SetConnectionId. Calling SetConnectionId again clears the null override.
+
 ### GetLinks
 
 `func (o *StreamsPublicPrivateLinkNetworkingAccess) GetLinks() []Link`
@@ -75,6 +82,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsPublicPrivateLinkNetworkingAccess) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsPublicPrivateLinkNetworkingAccess) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetType
 
 `func (o *StreamsPublicPrivateLinkNetworkingAccess) GetType() string`
@@ -99,6 +113,13 @@ SetType sets Type field to given value.
 `func (o *StreamsPublicPrivateLinkNetworkingAccess) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *StreamsPublicPrivateLinkNetworkingAccess) SetTypeNil()`
+
+SetTypeNil sets Type to an explicit JSON null when marshaled, overriding any value previously set with SetType. Calling SetType again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

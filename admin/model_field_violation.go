@@ -8,6 +8,15 @@ type FieldViolation struct {
 	Description string `json:"description"`
 	// A path that leads to a field in the request body.
 	Field string `json:"field"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *FieldViolation) MarshalJSON() ([]byte, error) {
+	type noMethod FieldViolation
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFieldViolation instantiates a new FieldViolation object

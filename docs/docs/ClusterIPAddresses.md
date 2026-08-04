@@ -53,6 +53,13 @@ SetClusterName sets ClusterName field to given value.
 `func (o *ClusterIPAddresses) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+
+### SetClusterNameNil
+
+`func (o *ClusterIPAddresses) SetClusterNameNil()`
+
+SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled, overriding any value previously set with SetClusterName. Calling SetClusterName again clears the null override.
+
 ### GetFutureInbound
 
 `func (o *ClusterIPAddresses) GetFutureInbound() []string`
@@ -77,6 +84,13 @@ SetFutureInbound sets FutureInbound field to given value.
 `func (o *ClusterIPAddresses) HasFutureInbound() bool`
 
 HasFutureInbound returns a boolean if a field has been set.
+
+### SetFutureInboundNil
+
+`func (o *ClusterIPAddresses) SetFutureInboundNil()`
+
+SetFutureInboundNil sets FutureInbound to an explicit JSON null when marshaled, overriding any value previously set with SetFutureInbound. Calling SetFutureInbound again clears the null override.
+
 ### GetFutureOutbound
 
 `func (o *ClusterIPAddresses) GetFutureOutbound() []string`
@@ -101,6 +115,13 @@ SetFutureOutbound sets FutureOutbound field to given value.
 `func (o *ClusterIPAddresses) HasFutureOutbound() bool`
 
 HasFutureOutbound returns a boolean if a field has been set.
+
+### SetFutureOutboundNil
+
+`func (o *ClusterIPAddresses) SetFutureOutboundNil()`
+
+SetFutureOutboundNil sets FutureOutbound to an explicit JSON null when marshaled, overriding any value previously set with SetFutureOutbound. Calling SetFutureOutbound again clears the null override.
+
 ### GetInbound
 
 `func (o *ClusterIPAddresses) GetInbound() []string`
@@ -125,6 +146,13 @@ SetInbound sets Inbound field to given value.
 `func (o *ClusterIPAddresses) HasInbound() bool`
 
 HasInbound returns a boolean if a field has been set.
+
+### SetInboundNil
+
+`func (o *ClusterIPAddresses) SetInboundNil()`
+
+SetInboundNil sets Inbound to an explicit JSON null when marshaled, overriding any value previously set with SetInbound. Calling SetInbound again clears the null override.
+
 ### GetOutbound
 
 `func (o *ClusterIPAddresses) GetOutbound() []string`
@@ -149,6 +177,13 @@ SetOutbound sets Outbound field to given value.
 `func (o *ClusterIPAddresses) HasOutbound() bool`
 
 HasOutbound returns a boolean if a field has been set.
+
+### SetOutboundNil
+
+`func (o *ClusterIPAddresses) SetOutboundNil()`
+
+SetOutboundNil sets Outbound to an explicit JSON null when marshaled, overriding any value previously set with SetOutbound. Calling SetOutbound again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

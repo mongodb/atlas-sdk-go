@@ -5,12 +5,15 @@ All URIs are relative to *https://cloud.mongodb.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateCostExplorerProcess**](InvoicesAPI.md#CreateCostExplorerProcess) | **Post** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage | Create One Cost Explorer Query Process
+[**CreateOrgInvoiceReport**](InvoicesAPI.md#CreateOrgInvoiceReport) | **Post** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/reports | Create One Invoice Report
 [**GetCostExplorerUsage**](InvoicesAPI.md#GetCostExplorerUsage) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return Usage Details for One Cost Explorer Query
 [**GetInvoice**](InvoicesAPI.md#GetInvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId} | Return One Invoice for One Organization
 [**GetInvoiceCsv**](InvoicesAPI.md#GetInvoiceCsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Invoice as CSV for One Organization
+[**GetOrgInvoiceReport**](InvoicesAPI.md#GetOrgInvoiceReport) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/reports/{reportId} | Return One Invoice Report
 [**GetSku**](InvoicesAPI.md#GetSku) | **Get** /api/atlas/v2/skus/{skuId} | Return One Stock Keeping Unit
 [**ListInvoicePending**](InvoicesAPI.md#ListInvoicePending) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/pending | Return All Pending Invoices for One Organization
 [**ListInvoices**](InvoicesAPI.md#ListInvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices | Return All Invoices for One Organization
+[**ListOrgInvoiceReports**](InvoicesAPI.md#ListOrgInvoiceReports) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/reports | Return All Invoice Reports for One Invoice
 [**ListSkus**](InvoicesAPI.md#ListSkus) | **Get** /api/atlas/v2/skus | Return All Stock Keeping Units
 [**SearchInvoiceLineItems**](InvoicesAPI.md#SearchInvoiceLineItems) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems:search | Return All Line Items for One Invoice by Invoice ID
 
@@ -92,6 +95,91 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/vnd.atlas.2023-01-01+json
 - **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateOrgInvoiceReport
+
+> InvoiceReportResponse CreateOrgInvoiceReport(ctx, orgId, invoiceId, invoiceReportRequest InvoiceReportRequest).Execute()
+
+Create One Invoice Report
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    invoiceId := "invoiceId_example" // string | 
+    invoiceReportRequest := *admin.NewInvoiceReportRequest("ReportFormat_example", "ReportType_example") // InvoiceReportRequest | 
+
+    resp, r, err := sdk.InvoicesAPI.CreateOrgInvoiceReport(context.Background(), orgId, invoiceId, &invoiceReportRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.CreateOrgInvoiceReport`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `CreateOrgInvoiceReport`: InvoiceReportResponse
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesAPI.CreateOrgInvoiceReport`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**invoiceId** | **string** | Unique string that identifies the invoice for which to generate the report. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateOrgInvoiceReportRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **invoiceReportRequest** | [**InvoiceReportRequest**](InvoiceReportRequest.md) | Create Invoice Report request body. | 
+
+### Return type
+
+[**InvoiceReportResponse**](InvoiceReportResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2025-03-12+json
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -341,6 +429,92 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2023-01-01+csv
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetOrgInvoiceReport
+
+> InvoiceReportResponse GetOrgInvoiceReport(ctx, orgId, invoiceId, reportId).Execute()
+
+Return One Invoice Report
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    invoiceId := "invoiceId_example" // string | 
+    reportId := "reportId_example" // string | 
+
+    resp, r, err := sdk.InvoicesAPI.GetOrgInvoiceReport(context.Background(), orgId, invoiceId, reportId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.GetOrgInvoiceReport`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetOrgInvoiceReport`: InvoiceReportResponse
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesAPI.GetOrgInvoiceReport`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**invoiceId** | **string** | Unique string that identifies the invoice the report was generated for. | 
+**reportId** | **string** | Unique string that identifies the report to retrieve. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOrgInvoiceReportRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+### Return type
+
+[**InvoiceReportResponse**](InvoiceReportResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -599,6 +773,95 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListOrgInvoiceReports
+
+> PaginatedInvoiceReport ListOrgInvoiceReports(ctx, orgId, invoiceId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+
+Return All Invoice Reports for One Invoice
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    invoiceId := "invoiceId_example" // string | 
+    includeCount := true // bool |  (optional) (default to true)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
+
+    resp, r, err := sdk.InvoicesAPI.ListOrgInvoiceReports(context.Background(), orgId, invoiceId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.ListOrgInvoiceReports`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListOrgInvoiceReports`: PaginatedInvoiceReport
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesAPI.ListOrgInvoiceReports`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**invoiceId** | **string** | Unique string that identifies the invoice to list reports for. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListOrgInvoiceReportsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+
+### Return type
+
+[**PaginatedInvoiceReport**](PaginatedInvoiceReport.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -62,6 +62,13 @@ SetDeliveryType sets DeliveryType field to given value.
 `func (o *FlexBackupRestoreJobCreate20241113) HasDeliveryType() bool`
 
 HasDeliveryType returns a boolean if a field has been set.
+
+### SetDeliveryTypeNil
+
+`func (o *FlexBackupRestoreJobCreate20241113) SetDeliveryTypeNil()`
+
+SetDeliveryTypeNil sets DeliveryType to an explicit JSON null when marshaled, overriding any value previously set with SetDeliveryType. Calling SetDeliveryType again clears the null override.
+
 ### GetExpirationDate
 
 `func (o *FlexBackupRestoreJobCreate20241113) GetExpirationDate() time.Time`
@@ -86,6 +93,13 @@ SetExpirationDate sets ExpirationDate field to given value.
 `func (o *FlexBackupRestoreJobCreate20241113) HasExpirationDate() bool`
 
 HasExpirationDate returns a boolean if a field has been set.
+
+### SetExpirationDateNil
+
+`func (o *FlexBackupRestoreJobCreate20241113) SetExpirationDateNil()`
+
+SetExpirationDateNil sets ExpirationDate to an explicit JSON null when marshaled, overriding any value previously set with SetExpirationDate. Calling SetExpirationDate again clears the null override.
+
 ### GetId
 
 `func (o *FlexBackupRestoreJobCreate20241113) GetId() string`
@@ -110,6 +124,13 @@ SetId sets Id field to given value.
 `func (o *FlexBackupRestoreJobCreate20241113) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *FlexBackupRestoreJobCreate20241113) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetInstanceName
 
 `func (o *FlexBackupRestoreJobCreate20241113) GetInstanceName() string`
@@ -134,6 +155,13 @@ SetInstanceName sets InstanceName field to given value.
 `func (o *FlexBackupRestoreJobCreate20241113) HasInstanceName() bool`
 
 HasInstanceName returns a boolean if a field has been set.
+
+### SetInstanceNameNil
+
+`func (o *FlexBackupRestoreJobCreate20241113) SetInstanceNameNil()`
+
+SetInstanceNameNil sets InstanceName to an explicit JSON null when marshaled, overriding any value previously set with SetInstanceName. Calling SetInstanceName again clears the null override.
+
 ### GetLinks
 
 `func (o *FlexBackupRestoreJobCreate20241113) GetLinks() []Link`
@@ -158,6 +186,13 @@ SetLinks sets Links field to given value.
 `func (o *FlexBackupRestoreJobCreate20241113) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *FlexBackupRestoreJobCreate20241113) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetProjectId
 
 `func (o *FlexBackupRestoreJobCreate20241113) GetProjectId() string`
@@ -182,6 +217,13 @@ SetProjectId sets ProjectId field to given value.
 `func (o *FlexBackupRestoreJobCreate20241113) HasProjectId() bool`
 
 HasProjectId returns a boolean if a field has been set.
+
+### SetProjectIdNil
+
+`func (o *FlexBackupRestoreJobCreate20241113) SetProjectIdNil()`
+
+SetProjectIdNil sets ProjectId to an explicit JSON null when marshaled, overriding any value previously set with SetProjectId. Calling SetProjectId again clears the null override.
+
 ### GetRestoreFinishedDate
 
 `func (o *FlexBackupRestoreJobCreate20241113) GetRestoreFinishedDate() time.Time`
@@ -206,6 +248,13 @@ SetRestoreFinishedDate sets RestoreFinishedDate field to given value.
 `func (o *FlexBackupRestoreJobCreate20241113) HasRestoreFinishedDate() bool`
 
 HasRestoreFinishedDate returns a boolean if a field has been set.
+
+### SetRestoreFinishedDateNil
+
+`func (o *FlexBackupRestoreJobCreate20241113) SetRestoreFinishedDateNil()`
+
+SetRestoreFinishedDateNil sets RestoreFinishedDate to an explicit JSON null when marshaled, overriding any value previously set with SetRestoreFinishedDate. Calling SetRestoreFinishedDate again clears the null override.
+
 ### GetRestoreScheduledDate
 
 `func (o *FlexBackupRestoreJobCreate20241113) GetRestoreScheduledDate() time.Time`
@@ -230,6 +279,13 @@ SetRestoreScheduledDate sets RestoreScheduledDate field to given value.
 `func (o *FlexBackupRestoreJobCreate20241113) HasRestoreScheduledDate() bool`
 
 HasRestoreScheduledDate returns a boolean if a field has been set.
+
+### SetRestoreScheduledDateNil
+
+`func (o *FlexBackupRestoreJobCreate20241113) SetRestoreScheduledDateNil()`
+
+SetRestoreScheduledDateNil sets RestoreScheduledDate to an explicit JSON null when marshaled, overriding any value previously set with SetRestoreScheduledDate. Calling SetRestoreScheduledDate again clears the null override.
+
 ### GetSnapshotFinishedDate
 
 `func (o *FlexBackupRestoreJobCreate20241113) GetSnapshotFinishedDate() time.Time`
@@ -254,6 +310,13 @@ SetSnapshotFinishedDate sets SnapshotFinishedDate field to given value.
 `func (o *FlexBackupRestoreJobCreate20241113) HasSnapshotFinishedDate() bool`
 
 HasSnapshotFinishedDate returns a boolean if a field has been set.
+
+### SetSnapshotFinishedDateNil
+
+`func (o *FlexBackupRestoreJobCreate20241113) SetSnapshotFinishedDateNil()`
+
+SetSnapshotFinishedDateNil sets SnapshotFinishedDate to an explicit JSON null when marshaled, overriding any value previously set with SetSnapshotFinishedDate. Calling SetSnapshotFinishedDate again clears the null override.
+
 ### GetSnapshotId
 
 `func (o *FlexBackupRestoreJobCreate20241113) GetSnapshotId() string`
@@ -297,6 +360,13 @@ SetSnapshotUrl sets SnapshotUrl field to given value.
 `func (o *FlexBackupRestoreJobCreate20241113) HasSnapshotUrl() bool`
 
 HasSnapshotUrl returns a boolean if a field has been set.
+
+### SetSnapshotUrlNil
+
+`func (o *FlexBackupRestoreJobCreate20241113) SetSnapshotUrlNil()`
+
+SetSnapshotUrlNil sets SnapshotUrl to an explicit JSON null when marshaled, overriding any value previously set with SetSnapshotUrl. Calling SetSnapshotUrl again clears the null override.
+
 ### GetStatus
 
 `func (o *FlexBackupRestoreJobCreate20241113) GetStatus() string`
@@ -321,6 +391,13 @@ SetStatus sets Status field to given value.
 `func (o *FlexBackupRestoreJobCreate20241113) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *FlexBackupRestoreJobCreate20241113) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 ### GetTargetDeploymentItemName
 
 `func (o *FlexBackupRestoreJobCreate20241113) GetTargetDeploymentItemName() string`
@@ -364,6 +441,13 @@ SetTargetProjectId sets TargetProjectId field to given value.
 `func (o *FlexBackupRestoreJobCreate20241113) HasTargetProjectId() bool`
 
 HasTargetProjectId returns a boolean if a field has been set.
+
+### SetTargetProjectIdNil
+
+`func (o *FlexBackupRestoreJobCreate20241113) SetTargetProjectIdNil()`
+
+SetTargetProjectIdNil sets TargetProjectId to an explicit JSON null when marshaled, overriding any value previously set with SetTargetProjectId. Calling SetTargetProjectId again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

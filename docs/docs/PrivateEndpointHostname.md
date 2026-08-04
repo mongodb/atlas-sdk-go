@@ -50,6 +50,13 @@ SetHostname sets Hostname field to given value.
 `func (o *PrivateEndpointHostname) HasHostname() bool`
 
 HasHostname returns a boolean if a field has been set.
+
+### SetHostnameNil
+
+`func (o *PrivateEndpointHostname) SetHostnameNil()`
+
+SetHostnameNil sets Hostname to an explicit JSON null when marshaled, overriding any value previously set with SetHostname. Calling SetHostname again clears the null override.
+
 ### GetPrivateEndpoint
 
 `func (o *PrivateEndpointHostname) GetPrivateEndpoint() string`
@@ -74,6 +81,13 @@ SetPrivateEndpoint sets PrivateEndpoint field to given value.
 `func (o *PrivateEndpointHostname) HasPrivateEndpoint() bool`
 
 HasPrivateEndpoint returns a boolean if a field has been set.
+
+### SetPrivateEndpointNil
+
+`func (o *PrivateEndpointHostname) SetPrivateEndpointNil()`
+
+SetPrivateEndpointNil sets PrivateEndpoint to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateEndpoint. Calling SetPrivateEndpoint again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

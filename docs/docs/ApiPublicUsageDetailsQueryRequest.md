@@ -51,6 +51,13 @@ SetFilters sets Filters field to given value.
 `func (o *ApiPublicUsageDetailsQueryRequest) HasFilters() bool`
 
 HasFilters returns a boolean if a field has been set.
+
+### SetFiltersNil
+
+`func (o *ApiPublicUsageDetailsQueryRequest) SetFiltersNil()`
+
+SetFiltersNil sets Filters to an explicit JSON null when marshaled, overriding any value previously set with SetFilters. Calling SetFilters again clears the null override.
+
 ### GetSortField
 
 `func (o *ApiPublicUsageDetailsQueryRequest) GetSortField() string`
@@ -75,6 +82,13 @@ SetSortField sets SortField field to given value.
 `func (o *ApiPublicUsageDetailsQueryRequest) HasSortField() bool`
 
 HasSortField returns a boolean if a field has been set.
+
+### SetSortFieldNil
+
+`func (o *ApiPublicUsageDetailsQueryRequest) SetSortFieldNil()`
+
+SetSortFieldNil sets SortField to an explicit JSON null when marshaled, overriding any value previously set with SetSortField. Calling SetSortField again clears the null override.
+
 ### GetSortOrder
 
 `func (o *ApiPublicUsageDetailsQueryRequest) GetSortOrder() string`
@@ -99,6 +113,13 @@ SetSortOrder sets SortOrder field to given value.
 `func (o *ApiPublicUsageDetailsQueryRequest) HasSortOrder() bool`
 
 HasSortOrder returns a boolean if a field has been set.
+
+### SetSortOrderNil
+
+`func (o *ApiPublicUsageDetailsQueryRequest) SetSortOrderNil()`
+
+SetSortOrderNil sets SortOrder to an explicit JSON null when marshaled, overriding any value previously set with SetSortOrder. Calling SetSortOrder again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

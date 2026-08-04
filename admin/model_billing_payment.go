@@ -37,6 +37,15 @@ type BillingPayment struct {
 	// Date and time when the customer made an update to this payment attempt. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Updated *time.Time `json:"updated,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *BillingPayment) MarshalJSON() ([]byte, error) {
+	type noMethod BillingPayment
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewBillingPayment instantiates a new BillingPayment object
@@ -87,6 +96,13 @@ func (o *BillingPayment) HasAmountBilledCents() bool {
 // SetAmountBilledCents gets a reference to the given int64 and assigns it to the AmountBilledCents field.
 func (o *BillingPayment) SetAmountBilledCents(v int64) {
 	o.AmountBilledCents = &v
+	o.NullFields = removeNullField(o.NullFields, "AmountBilledCents")
+}
+
+// SetAmountBilledCentsNil sets AmountBilledCents to an explicit JSON null when marshaled.
+func (o *BillingPayment) SetAmountBilledCentsNil() {
+	o.AmountBilledCents = nil
+	o.NullFields = addNullField(o.NullFields, "AmountBilledCents")
 }
 
 // GetAmountPaidCents returns the AmountPaidCents field value if set, zero value otherwise
@@ -120,6 +136,13 @@ func (o *BillingPayment) HasAmountPaidCents() bool {
 // SetAmountPaidCents gets a reference to the given int64 and assigns it to the AmountPaidCents field.
 func (o *BillingPayment) SetAmountPaidCents(v int64) {
 	o.AmountPaidCents = &v
+	o.NullFields = removeNullField(o.NullFields, "AmountPaidCents")
+}
+
+// SetAmountPaidCentsNil sets AmountPaidCents to an explicit JSON null when marshaled.
+func (o *BillingPayment) SetAmountPaidCentsNil() {
+	o.AmountPaidCents = nil
+	o.NullFields = addNullField(o.NullFields, "AmountPaidCents")
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise
@@ -153,6 +176,13 @@ func (o *BillingPayment) HasCreated() bool {
 // SetCreated gets a reference to the given time.Time and assigns it to the Created field.
 func (o *BillingPayment) SetCreated(v time.Time) {
 	o.Created = &v
+	o.NullFields = removeNullField(o.NullFields, "Created")
+}
+
+// SetCreatedNil sets Created to an explicit JSON null when marshaled.
+func (o *BillingPayment) SetCreatedNil() {
+	o.Created = nil
+	o.NullFields = addNullField(o.NullFields, "Created")
 }
 
 // GetCurrency returns the Currency field value if set, zero value otherwise
@@ -186,6 +216,13 @@ func (o *BillingPayment) HasCurrency() bool {
 // SetCurrency gets a reference to the given string and assigns it to the Currency field.
 func (o *BillingPayment) SetCurrency(v string) {
 	o.Currency = &v
+	o.NullFields = removeNullField(o.NullFields, "Currency")
+}
+
+// SetCurrencyNil sets Currency to an explicit JSON null when marshaled.
+func (o *BillingPayment) SetCurrencyNil() {
+	o.Currency = nil
+	o.NullFields = addNullField(o.NullFields, "Currency")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -219,6 +256,13 @@ func (o *BillingPayment) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *BillingPayment) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *BillingPayment) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetSalesTaxCents returns the SalesTaxCents field value if set, zero value otherwise
@@ -252,6 +296,13 @@ func (o *BillingPayment) HasSalesTaxCents() bool {
 // SetSalesTaxCents gets a reference to the given int64 and assigns it to the SalesTaxCents field.
 func (o *BillingPayment) SetSalesTaxCents(v int64) {
 	o.SalesTaxCents = &v
+	o.NullFields = removeNullField(o.NullFields, "SalesTaxCents")
+}
+
+// SetSalesTaxCentsNil sets SalesTaxCents to an explicit JSON null when marshaled.
+func (o *BillingPayment) SetSalesTaxCentsNil() {
+	o.SalesTaxCents = nil
+	o.NullFields = addNullField(o.NullFields, "SalesTaxCents")
 }
 
 // GetStatusName returns the StatusName field value if set, zero value otherwise
@@ -285,6 +336,13 @@ func (o *BillingPayment) HasStatusName() bool {
 // SetStatusName gets a reference to the given string and assigns it to the StatusName field.
 func (o *BillingPayment) SetStatusName(v string) {
 	o.StatusName = &v
+	o.NullFields = removeNullField(o.NullFields, "StatusName")
+}
+
+// SetStatusNameNil sets StatusName to an explicit JSON null when marshaled.
+func (o *BillingPayment) SetStatusNameNil() {
+	o.StatusName = nil
+	o.NullFields = addNullField(o.NullFields, "StatusName")
 }
 
 // GetSubtotalCents returns the SubtotalCents field value if set, zero value otherwise
@@ -318,6 +376,13 @@ func (o *BillingPayment) HasSubtotalCents() bool {
 // SetSubtotalCents gets a reference to the given int64 and assigns it to the SubtotalCents field.
 func (o *BillingPayment) SetSubtotalCents(v int64) {
 	o.SubtotalCents = &v
+	o.NullFields = removeNullField(o.NullFields, "SubtotalCents")
+}
+
+// SetSubtotalCentsNil sets SubtotalCents to an explicit JSON null when marshaled.
+func (o *BillingPayment) SetSubtotalCentsNil() {
+	o.SubtotalCents = nil
+	o.NullFields = addNullField(o.NullFields, "SubtotalCents")
 }
 
 // GetUnitPrice returns the UnitPrice field value if set, zero value otherwise
@@ -351,6 +416,13 @@ func (o *BillingPayment) HasUnitPrice() bool {
 // SetUnitPrice gets a reference to the given string and assigns it to the UnitPrice field.
 func (o *BillingPayment) SetUnitPrice(v string) {
 	o.UnitPrice = &v
+	o.NullFields = removeNullField(o.NullFields, "UnitPrice")
+}
+
+// SetUnitPriceNil sets UnitPrice to an explicit JSON null when marshaled.
+func (o *BillingPayment) SetUnitPriceNil() {
+	o.UnitPrice = nil
+	o.NullFields = addNullField(o.NullFields, "UnitPrice")
 }
 
 // GetUpdated returns the Updated field value if set, zero value otherwise
@@ -384,4 +456,11 @@ func (o *BillingPayment) HasUpdated() bool {
 // SetUpdated gets a reference to the given time.Time and assigns it to the Updated field.
 func (o *BillingPayment) SetUpdated(v time.Time) {
 	o.Updated = &v
+	o.NullFields = removeNullField(o.NullFields, "Updated")
+}
+
+// SetUpdatedNil sets Updated to an explicit JSON null when marshaled.
+func (o *BillingPayment) SetUpdatedNil() {
+	o.Updated = nil
+	o.NullFields = addNullField(o.NullFields, "Updated")
 }

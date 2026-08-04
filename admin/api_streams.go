@@ -45,10 +45,10 @@ type StreamsAPI interface {
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param tenantName Label that identifies the stream workspace.
 		@param connectionName Label that identifies the stream connection name.
-		@param streamsConnection Details to create one failover connection for a streams workspace in the specified project.
+		@param streamsFailoverConnection Details to create one failover connection for a streams workspace in the specified project.
 		@return CreateFailoverConnectionApiRequest
 	*/
-	CreateFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsConnection *StreamsConnection) CreateFailoverConnectionApiRequest
+	CreateFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsFailoverConnection *StreamsFailoverConnection) CreateFailoverConnectionApiRequest
 	/*
 		CreateFailoverConnection Create One Failover Stream Connection
 
@@ -60,7 +60,7 @@ type StreamsAPI interface {
 	CreateFailoverConnectionWithParams(ctx context.Context, args *CreateFailoverConnectionApiParams) CreateFailoverConnectionApiRequest
 
 	// Method available only for mocking purposes
-	CreateFailoverConnectionExecute(r CreateFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error)
+	CreateFailoverConnectionExecute(r CreateFailoverConnectionApiRequest) (*StreamsFailoverConnection, *http.Response, error)
 
 	/*
 		CreatePrivateLinkConnection Create One Private Link Connection
@@ -452,7 +452,7 @@ type StreamsAPI interface {
 	GetStreamFailoverConnectionWithParams(ctx context.Context, args *GetStreamFailoverConnectionApiParams) GetStreamFailoverConnectionApiRequest
 
 	// Method available only for mocking purposes
-	GetStreamFailoverConnectionExecute(r GetStreamFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error)
+	GetStreamFailoverConnectionExecute(r GetStreamFailoverConnectionApiRequest) (*StreamsFailoverConnection, *http.Response, error)
 
 	/*
 		GetStreamProcessor Return One Stream Processor
@@ -829,10 +829,10 @@ type StreamsAPI interface {
 		@param tenantName Label that identifies the stream workspace.
 		@param connectionName Label that identifies the stream connection.
 		@param failoverConnectionId Label that identifies the stream failover connection id.
-		@param streamsConnection Details to update one failover connection for a streams workspace in the specified project.
+		@param streamsFailoverConnection Details to update one failover connection for a streams workspace in the specified project.
 		@return UpdateStreamFailoverConnectionApiRequest
 	*/
-	UpdateStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string, streamsConnection *StreamsConnection) UpdateStreamFailoverConnectionApiRequest
+	UpdateStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string, streamsFailoverConnection *StreamsFailoverConnection) UpdateStreamFailoverConnectionApiRequest
 	/*
 		UpdateStreamFailoverConnection Update One Stream Failover Connection
 
@@ -844,7 +844,7 @@ type StreamsAPI interface {
 	UpdateStreamFailoverConnectionWithParams(ctx context.Context, args *UpdateStreamFailoverConnectionApiParams) UpdateStreamFailoverConnectionApiRequest
 
 	// Method available only for mocking purposes
-	UpdateStreamFailoverConnectionExecute(r UpdateStreamFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error)
+	UpdateStreamFailoverConnectionExecute(r UpdateStreamFailoverConnectionApiRequest) (*StreamsFailoverConnection, *http.Response, error)
 
 	/*
 		UpdateStreamProcessor Update One Stream Processor
@@ -1041,33 +1041,33 @@ func (a *StreamsAPIService) AcceptVpcPeeringConnectionExecute(r AcceptVpcPeering
 }
 
 type CreateFailoverConnectionApiRequest struct {
-	ctx               context.Context
-	ApiService        StreamsAPI
-	groupId           string
-	tenantName        string
-	connectionName    string
-	streamsConnection *StreamsConnection
+	ctx                       context.Context
+	ApiService                StreamsAPI
+	groupId                   string
+	tenantName                string
+	connectionName            string
+	streamsFailoverConnection *StreamsFailoverConnection
 }
 
 type CreateFailoverConnectionApiParams struct {
-	GroupId           string
-	TenantName        string
-	ConnectionName    string
-	StreamsConnection *StreamsConnection
+	GroupId                   string
+	TenantName                string
+	ConnectionName            string
+	StreamsFailoverConnection *StreamsFailoverConnection
 }
 
 func (a *StreamsAPIService) CreateFailoverConnectionWithParams(ctx context.Context, args *CreateFailoverConnectionApiParams) CreateFailoverConnectionApiRequest {
 	return CreateFailoverConnectionApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		groupId:           args.GroupId,
-		tenantName:        args.TenantName,
-		connectionName:    args.ConnectionName,
-		streamsConnection: args.StreamsConnection,
+		ApiService:                a,
+		ctx:                       ctx,
+		groupId:                   args.GroupId,
+		tenantName:                args.TenantName,
+		connectionName:            args.ConnectionName,
+		streamsFailoverConnection: args.StreamsFailoverConnection,
 	}
 }
 
-func (r CreateFailoverConnectionApiRequest) Execute() (*StreamsConnection, *http.Response, error) {
+func (r CreateFailoverConnectionApiRequest) Execute() (*StreamsFailoverConnection, *http.Response, error) {
 	return r.ApiService.CreateFailoverConnectionExecute(r)
 }
 
@@ -1082,26 +1082,26 @@ Creates one failover connection for a stream workspace in the specified project.
 	@param connectionName Label that identifies the stream connection name.
 	@return CreateFailoverConnectionApiRequest
 */
-func (a *StreamsAPIService) CreateFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsConnection *StreamsConnection) CreateFailoverConnectionApiRequest {
+func (a *StreamsAPIService) CreateFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, streamsFailoverConnection *StreamsFailoverConnection) CreateFailoverConnectionApiRequest {
 	return CreateFailoverConnectionApiRequest{
-		ApiService:        a,
-		ctx:               ctx,
-		groupId:           groupId,
-		tenantName:        tenantName,
-		connectionName:    connectionName,
-		streamsConnection: streamsConnection,
+		ApiService:                a,
+		ctx:                       ctx,
+		groupId:                   groupId,
+		tenantName:                tenantName,
+		connectionName:            connectionName,
+		streamsFailoverConnection: streamsFailoverConnection,
 	}
 }
 
 // CreateFailoverConnectionExecute executes the request
 //
-//	@return StreamsConnection
-func (a *StreamsAPIService) CreateFailoverConnectionExecute(r CreateFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+//	@return StreamsFailoverConnection
+func (a *StreamsAPIService) CreateFailoverConnectionExecute(r CreateFailoverConnectionApiRequest) (*StreamsFailoverConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *StreamsConnection
+		localVarReturnValue *StreamsFailoverConnection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.CreateFailoverConnection")
@@ -1126,8 +1126,8 @@ func (a *StreamsAPIService) CreateFailoverConnectionExecute(r CreateFailoverConn
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.streamsConnection == nil {
-		return localVarReturnValue, nil, reportError("streamsConnection is required and must be specified")
+	if r.streamsFailoverConnection == nil {
+		return localVarReturnValue, nil, reportError("streamsFailoverConnection is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1148,7 +1148,7 @@ func (a *StreamsAPIService) CreateFailoverConnectionExecute(r CreateFailoverConn
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.streamsConnection
+	localVarPostBody = r.streamsFailoverConnection
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3103,7 +3103,7 @@ func (a *StreamsAPIService) GetStreamFailoverConnectionWithParams(ctx context.Co
 	}
 }
 
-func (r GetStreamFailoverConnectionApiRequest) Execute() (*StreamsConnection, *http.Response, error) {
+func (r GetStreamFailoverConnectionApiRequest) Execute() (*StreamsFailoverConnection, *http.Response, error) {
 	return r.ApiService.GetStreamFailoverConnectionExecute(r)
 }
 
@@ -3132,13 +3132,13 @@ func (a *StreamsAPIService) GetStreamFailoverConnection(ctx context.Context, gro
 
 // GetStreamFailoverConnectionExecute executes the request
 //
-//	@return StreamsConnection
-func (a *StreamsAPIService) GetStreamFailoverConnectionExecute(r GetStreamFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+//	@return StreamsFailoverConnection
+func (a *StreamsAPIService) GetStreamFailoverConnectionExecute(r GetStreamFailoverConnectionApiRequest) (*StreamsFailoverConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *StreamsConnection
+		localVarReturnValue *StreamsFailoverConnection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.GetStreamFailoverConnection")
@@ -5302,36 +5302,36 @@ func (a *StreamsAPIService) UpdateStreamConnectionExecute(r UpdateStreamConnecti
 }
 
 type UpdateStreamFailoverConnectionApiRequest struct {
-	ctx                  context.Context
-	ApiService           StreamsAPI
-	groupId              string
-	tenantName           string
-	connectionName       string
-	failoverConnectionId string
-	streamsConnection    *StreamsConnection
+	ctx                       context.Context
+	ApiService                StreamsAPI
+	groupId                   string
+	tenantName                string
+	connectionName            string
+	failoverConnectionId      string
+	streamsFailoverConnection *StreamsFailoverConnection
 }
 
 type UpdateStreamFailoverConnectionApiParams struct {
-	GroupId              string
-	TenantName           string
-	ConnectionName       string
-	FailoverConnectionId string
-	StreamsConnection    *StreamsConnection
+	GroupId                   string
+	TenantName                string
+	ConnectionName            string
+	FailoverConnectionId      string
+	StreamsFailoverConnection *StreamsFailoverConnection
 }
 
 func (a *StreamsAPIService) UpdateStreamFailoverConnectionWithParams(ctx context.Context, args *UpdateStreamFailoverConnectionApiParams) UpdateStreamFailoverConnectionApiRequest {
 	return UpdateStreamFailoverConnectionApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		groupId:              args.GroupId,
-		tenantName:           args.TenantName,
-		connectionName:       args.ConnectionName,
-		failoverConnectionId: args.FailoverConnectionId,
-		streamsConnection:    args.StreamsConnection,
+		ApiService:                a,
+		ctx:                       ctx,
+		groupId:                   args.GroupId,
+		tenantName:                args.TenantName,
+		connectionName:            args.ConnectionName,
+		failoverConnectionId:      args.FailoverConnectionId,
+		streamsFailoverConnection: args.StreamsFailoverConnection,
 	}
 }
 
-func (r UpdateStreamFailoverConnectionApiRequest) Execute() (*StreamsConnection, *http.Response, error) {
+func (r UpdateStreamFailoverConnectionApiRequest) Execute() (*StreamsFailoverConnection, *http.Response, error) {
 	return r.ApiService.UpdateStreamFailoverConnectionExecute(r)
 }
 
@@ -5347,27 +5347,27 @@ Update one failover connection of the specified stream workspace.
 	@param failoverConnectionId Label that identifies the stream failover connection id.
 	@return UpdateStreamFailoverConnectionApiRequest
 */
-func (a *StreamsAPIService) UpdateStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string, streamsConnection *StreamsConnection) UpdateStreamFailoverConnectionApiRequest {
+func (a *StreamsAPIService) UpdateStreamFailoverConnection(ctx context.Context, groupId string, tenantName string, connectionName string, failoverConnectionId string, streamsFailoverConnection *StreamsFailoverConnection) UpdateStreamFailoverConnectionApiRequest {
 	return UpdateStreamFailoverConnectionApiRequest{
-		ApiService:           a,
-		ctx:                  ctx,
-		groupId:              groupId,
-		tenantName:           tenantName,
-		connectionName:       connectionName,
-		failoverConnectionId: failoverConnectionId,
-		streamsConnection:    streamsConnection,
+		ApiService:                a,
+		ctx:                       ctx,
+		groupId:                   groupId,
+		tenantName:                tenantName,
+		connectionName:            connectionName,
+		failoverConnectionId:      failoverConnectionId,
+		streamsFailoverConnection: streamsFailoverConnection,
 	}
 }
 
 // UpdateStreamFailoverConnectionExecute executes the request
 //
-//	@return StreamsConnection
-func (a *StreamsAPIService) UpdateStreamFailoverConnectionExecute(r UpdateStreamFailoverConnectionApiRequest) (*StreamsConnection, *http.Response, error) {
+//	@return StreamsFailoverConnection
+func (a *StreamsAPIService) UpdateStreamFailoverConnectionExecute(r UpdateStreamFailoverConnectionApiRequest) (*StreamsFailoverConnection, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *StreamsConnection
+		localVarReturnValue *StreamsFailoverConnection
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.UpdateStreamFailoverConnection")
@@ -5396,8 +5396,8 @@ func (a *StreamsAPIService) UpdateStreamFailoverConnectionExecute(r UpdateStream
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.streamsConnection == nil {
-		return localVarReturnValue, nil, reportError("streamsConnection is required and must be specified")
+	if r.streamsFailoverConnection == nil {
+		return localVarReturnValue, nil, reportError("streamsFailoverConnection is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -5418,7 +5418,7 @@ func (a *StreamsAPIService) UpdateStreamFailoverConnectionExecute(r UpdateStream
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.streamsConnection
+	localVarPostBody = r.streamsFailoverConnection
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

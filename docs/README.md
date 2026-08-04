@@ -44,6 +44,7 @@
    * [Working with Objects](./doc_5_best_practices.md#working-with-objects)
    * [Working with Pointers](./doc_5_best_practices.md#working-with-pointers)
    * [Working with Arrays](./doc_5_best_practices.md#working-with-arrays)
+   * [Working with Explicit Null Values](./doc_5_best_practices.md#working-with-explicit-null-values)
    * [Working with Binary Responses](./doc_5_best_practices.md#working-with-binary-responses)
    * [Use Method for Creating Models](./doc_5_best_practices.md#use-method-for-creating-models)
    * [Use golangci-lint Validators](./doc_5_best_practices.md#use-golangci-lint-validators)

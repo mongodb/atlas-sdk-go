@@ -8,6 +8,15 @@ type ApiSearchDeploymentRequest struct {
 	DefaultNodeCount *int `json:"defaultNodeCount,omitempty"`
 	// List of settings that configure the Search Nodes for your cluster. Provide one element per region when configuring asymmetric deployments; a single element applies to all regions.
 	Specs []ApiSearchDeploymentRequestSpec `json:"specs"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiSearchDeploymentRequest) MarshalJSON() ([]byte, error) {
+	type noMethod ApiSearchDeploymentRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiSearchDeploymentRequest instantiates a new ApiSearchDeploymentRequest object
@@ -59,6 +68,13 @@ func (o *ApiSearchDeploymentRequest) HasDefaultNodeCount() bool {
 // SetDefaultNodeCount gets a reference to the given int and assigns it to the DefaultNodeCount field.
 func (o *ApiSearchDeploymentRequest) SetDefaultNodeCount(v int) {
 	o.DefaultNodeCount = &v
+	o.NullFields = removeNullField(o.NullFields, "DefaultNodeCount")
+}
+
+// SetDefaultNodeCountNil sets DefaultNodeCount to an explicit JSON null when marshaled.
+func (o *ApiSearchDeploymentRequest) SetDefaultNodeCountNil() {
+	o.DefaultNodeCount = nil
+	o.NullFields = addNullField(o.NullFields, "DefaultNodeCount")
 }
 
 // GetSpecs returns the Specs field value

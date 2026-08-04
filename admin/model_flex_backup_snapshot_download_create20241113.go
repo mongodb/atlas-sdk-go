@@ -10,6 +10,15 @@ type FlexBackupSnapshotDownloadCreate20241113 struct {
 	// Unique 24-hexadecimal digit string that identifies the snapshot to download.
 	// Write only field.
 	SnapshotId string `json:"snapshotId"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *FlexBackupSnapshotDownloadCreate20241113) MarshalJSON() ([]byte, error) {
+	type noMethod FlexBackupSnapshotDownloadCreate20241113
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewFlexBackupSnapshotDownloadCreate20241113 instantiates a new FlexBackupSnapshotDownloadCreate20241113 object
@@ -61,6 +70,13 @@ func (o *FlexBackupSnapshotDownloadCreate20241113) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *FlexBackupSnapshotDownloadCreate20241113) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *FlexBackupSnapshotDownloadCreate20241113) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetSnapshotId returns the SnapshotId field value

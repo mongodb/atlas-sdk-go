@@ -50,6 +50,13 @@ SetAvailableRegions sets AvailableRegions field to given value.
 `func (o *ClusterCloudProviderInstanceSize) HasAvailableRegions() bool`
 
 HasAvailableRegions returns a boolean if a field has been set.
+
+### SetAvailableRegionsNil
+
+`func (o *ClusterCloudProviderInstanceSize) SetAvailableRegionsNil()`
+
+SetAvailableRegionsNil sets AvailableRegions to an explicit JSON null when marshaled, overriding any value previously set with SetAvailableRegions. Calling SetAvailableRegions again clears the null override.
+
 ### GetName
 
 `func (o *ClusterCloudProviderInstanceSize) GetName() string`
@@ -74,6 +81,13 @@ SetName sets Name field to given value.
 `func (o *ClusterCloudProviderInstanceSize) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *ClusterCloudProviderInstanceSize) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

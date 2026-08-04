@@ -112,6 +112,13 @@ SetIsCustomShardKeyHashed sets IsCustomShardKeyHashed field to given value.
 `func (o *ManagedNamespaces) HasIsCustomShardKeyHashed() bool`
 
 HasIsCustomShardKeyHashed returns a boolean if a field has been set.
+
+### SetIsCustomShardKeyHashedNil
+
+`func (o *ManagedNamespaces) SetIsCustomShardKeyHashedNil()`
+
+SetIsCustomShardKeyHashedNil sets IsCustomShardKeyHashed to an explicit JSON null when marshaled, overriding any value previously set with SetIsCustomShardKeyHashed. Calling SetIsCustomShardKeyHashed again clears the null override.
+
 ### GetIsShardKeyUnique
 
 `func (o *ManagedNamespaces) GetIsShardKeyUnique() bool`
@@ -136,6 +143,13 @@ SetIsShardKeyUnique sets IsShardKeyUnique field to given value.
 `func (o *ManagedNamespaces) HasIsShardKeyUnique() bool`
 
 HasIsShardKeyUnique returns a boolean if a field has been set.
+
+### SetIsShardKeyUniqueNil
+
+`func (o *ManagedNamespaces) SetIsShardKeyUniqueNil()`
+
+SetIsShardKeyUniqueNil sets IsShardKeyUnique to an explicit JSON null when marshaled, overriding any value previously set with SetIsShardKeyUnique. Calling SetIsShardKeyUnique again clears the null override.
+
 ### GetNumInitialChunks
 
 `func (o *ManagedNamespaces) GetNumInitialChunks() int64`
@@ -160,6 +174,13 @@ SetNumInitialChunks sets NumInitialChunks field to given value.
 `func (o *ManagedNamespaces) HasNumInitialChunks() bool`
 
 HasNumInitialChunks returns a boolean if a field has been set.
+
+### SetNumInitialChunksNil
+
+`func (o *ManagedNamespaces) SetNumInitialChunksNil()`
+
+SetNumInitialChunksNil sets NumInitialChunks to an explicit JSON null when marshaled, overriding any value previously set with SetNumInitialChunks. Calling SetNumInitialChunks again clears the null override.
+
 ### GetPresplitHashedZones
 
 `func (o *ManagedNamespaces) GetPresplitHashedZones() bool`
@@ -184,6 +205,13 @@ SetPresplitHashedZones sets PresplitHashedZones field to given value.
 `func (o *ManagedNamespaces) HasPresplitHashedZones() bool`
 
 HasPresplitHashedZones returns a boolean if a field has been set.
+
+### SetPresplitHashedZonesNil
+
+`func (o *ManagedNamespaces) SetPresplitHashedZonesNil()`
+
+SetPresplitHashedZonesNil sets PresplitHashedZones to an explicit JSON null when marshaled, overriding any value previously set with SetPresplitHashedZones. Calling SetPresplitHashedZones again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

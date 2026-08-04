@@ -110,6 +110,13 @@ SetType sets Type field to given value.
 `func (o *SearchIndexCreateRequest) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *SearchIndexCreateRequest) SetTypeNil()`
+
+SetTypeNil sets Type to an explicit JSON null when marshaled, overriding any value previously set with SetType. Calling SetType again clears the null override.
+
 ### GetDefinition
 
 `func (o *SearchIndexCreateRequest) GetDefinition() BaseSearchIndexCreateRequestDefinition`
@@ -134,6 +141,13 @@ SetDefinition sets Definition field to given value.
 `func (o *SearchIndexCreateRequest) HasDefinition() bool`
 
 HasDefinition returns a boolean if a field has been set.
+
+### SetDefinitionNil
+
+`func (o *SearchIndexCreateRequest) SetDefinitionNil()`
+
+SetDefinitionNil sets Definition to an explicit JSON null when marshaled, overriding any value previously set with SetDefinition. Calling SetDefinition again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
