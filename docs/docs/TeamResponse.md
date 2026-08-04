@@ -51,6 +51,13 @@ SetId sets Id field to given value.
 `func (o *TeamResponse) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *TeamResponse) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLinks
 
 `func (o *TeamResponse) GetLinks() []Link`
@@ -75,6 +82,13 @@ SetLinks sets Links field to given value.
 `func (o *TeamResponse) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *TeamResponse) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetName
 
 `func (o *TeamResponse) GetName() string`
@@ -99,6 +113,13 @@ SetName sets Name field to given value.
 `func (o *TeamResponse) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *TeamResponse) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

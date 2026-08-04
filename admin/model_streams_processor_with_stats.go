@@ -31,6 +31,15 @@ type StreamsProcessorWithStats struct {
 	Stats any `json:"stats,omitempty"`
 	// Selected tier for the Stream Workspace. Configures Memory / VCPU allowances.
 	Tier *string `json:"tier,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamsProcessorWithStats) MarshalJSON() ([]byte, error) {
+	type noMethod StreamsProcessorWithStats
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsProcessorWithStats instantiates a new StreamsProcessorWithStats object
@@ -109,6 +118,13 @@ func (o *StreamsProcessorWithStats) HasEligibleForFailover() bool {
 // SetEligibleForFailover gets a reference to the given bool and assigns it to the EligibleForFailover field.
 func (o *StreamsProcessorWithStats) SetEligibleForFailover(v bool) {
 	o.EligibleForFailover = &v
+	o.NullFields = removeNullField(o.NullFields, "EligibleForFailover")
+}
+
+// SetEligibleForFailoverNil sets EligibleForFailover to an explicit JSON null when marshaled.
+func (o *StreamsProcessorWithStats) SetEligibleForFailoverNil() {
+	o.EligibleForFailover = nil
+	o.NullFields = addNullField(o.NullFields, "EligibleForFailover")
 }
 
 // GetFailoverEnabled returns the FailoverEnabled field value if set, zero value otherwise
@@ -142,6 +158,13 @@ func (o *StreamsProcessorWithStats) HasFailoverEnabled() bool {
 // SetFailoverEnabled gets a reference to the given bool and assigns it to the FailoverEnabled field.
 func (o *StreamsProcessorWithStats) SetFailoverEnabled(v bool) {
 	o.FailoverEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "FailoverEnabled")
+}
+
+// SetFailoverEnabledNil sets FailoverEnabled to an explicit JSON null when marshaled.
+func (o *StreamsProcessorWithStats) SetFailoverEnabledNil() {
+	o.FailoverEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "FailoverEnabled")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -175,6 +198,13 @@ func (o *StreamsProcessorWithStats) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsProcessorWithStats) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *StreamsProcessorWithStats) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetName returns the Name field value
@@ -232,6 +262,13 @@ func (o *StreamsProcessorWithStats) HasOptions() bool {
 // SetOptions gets a reference to the given StreamsOptions and assigns it to the Options field.
 func (o *StreamsProcessorWithStats) SetOptions(v StreamsOptions) {
 	o.Options = &v
+	o.NullFields = removeNullField(o.NullFields, "Options")
+}
+
+// SetOptionsNil sets Options to an explicit JSON null when marshaled.
+func (o *StreamsProcessorWithStats) SetOptionsNil() {
+	o.Options = nil
+	o.NullFields = addNullField(o.NullFields, "Options")
 }
 
 // GetPipeline returns the Pipeline field value
@@ -314,6 +351,13 @@ func (o *StreamsProcessorWithStats) HasStats() bool {
 // SetStats gets a reference to the given any and assigns it to the Stats field.
 func (o *StreamsProcessorWithStats) SetStats(v any) {
 	o.Stats = v
+	o.NullFields = removeNullField(o.NullFields, "Stats")
+}
+
+// SetStatsNil sets Stats to an explicit JSON null when marshaled.
+func (o *StreamsProcessorWithStats) SetStatsNil() {
+	o.Stats = nil
+	o.NullFields = addNullField(o.NullFields, "Stats")
 }
 
 // GetTier returns the Tier field value if set, zero value otherwise
@@ -347,4 +391,11 @@ func (o *StreamsProcessorWithStats) HasTier() bool {
 // SetTier gets a reference to the given string and assigns it to the Tier field.
 func (o *StreamsProcessorWithStats) SetTier(v string) {
 	o.Tier = &v
+	o.NullFields = removeNullField(o.NullFields, "Tier")
+}
+
+// SetTierNil sets Tier to an explicit JSON null when marshaled.
+func (o *StreamsProcessorWithStats) SetTierNil() {
+	o.Tier = nil
+	o.NullFields = addNullField(o.NullFields, "Tier")
 }

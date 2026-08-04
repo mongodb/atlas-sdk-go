@@ -35,7 +35,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -113,7 +113,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -191,7 +191,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -271,7 +271,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
 
 ## ListClusterSuggestedIndexes
 
-> PerformanceAdvisorResponse ListClusterSuggestedIndexes(ctx, groupId, clusterName).ProcessIds(processIds).Namespaces(namespaces).Since(since).Until(until).Execute()
+> EnvelopedPerformanceAdvisorResponse ListClusterSuggestedIndexes(ctx, groupId, clusterName).Envelope(envelope).ProcessIds(processIds).Namespaces(namespaces).Since(since).Until(until).Execute()
 
 Return All Suggested Indexes
 
@@ -354,7 +354,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -369,12 +369,13 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
+    envelope := true // bool |  (optional) (default to true)
     processIds := []string{"Inner_example"} // []string |  (optional)
     namespaces := []string{"Inner_example"} // []string |  (optional)
     since := int64(789) // int64 |  (optional)
     until := int64(789) // int64 |  (optional)
 
-    resp, r, err := sdk.PerformanceAdvisorAPI.ListClusterSuggestedIndexes(context.Background(), groupId, clusterName).ProcessIds(processIds).Namespaces(namespaces).Since(since).Until(until).Execute()
+    resp, r, err := sdk.PerformanceAdvisorAPI.ListClusterSuggestedIndexes(context.Background(), groupId, clusterName).Envelope(envelope).ProcessIds(processIds).Namespaces(namespaces).Since(since).Until(until).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorAPI.ListClusterSuggestedIndexes`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -383,7 +384,7 @@ func main() {
         }
         return
     }
-    // response from `ListClusterSuggestedIndexes`: PerformanceAdvisorResponse
+    // response from `ListClusterSuggestedIndexes`: EnvelopedPerformanceAdvisorResponse
     fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorAPI.ListClusterSuggestedIndexes`: %v (%v)\n", resp, r)
 }
 ```
@@ -406,6 +407,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **envelope** | **bool** | Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. | [default to true]
  **processIds** | **[]string** | Process IDs from which to retrieve suggested indexes. A &#x60;processId&#x60; is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple &#x60;processIds&#x60;, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each &#x60;processId&#x60;. | 
  **namespaces** | **[]string** | Namespaces from which to retrieve suggested indexes. A namespace consists of one database and one collection resource written as &#x60;.&#x60;: &#x60;&lt;database&gt;.&lt;collection&gt;&#x60;. To include multiple namespaces, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each namespace. Omit this parameter to return results for all namespaces. | 
  **since** | **int64** | Date and time from which the query retrieves the suggested indexes. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).  - If you don&#39;t specify the **until** parameter, the endpoint returns data covering from the **since** value and the current time. - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours. | 
@@ -413,7 +415,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PerformanceAdvisorResponse**](PerformanceAdvisorResponse.md)
+[**EnvelopedPerformanceAdvisorResponse**](EnvelopedPerformanceAdvisorResponse.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -430,7 +432,7 @@ Name | Type | Description  | Notes
 
 ## ListDropIndexSuggestions
 
-> DropIndexSuggestionsResponse ListDropIndexSuggestions(ctx, groupId, clusterName).Execute()
+> EnvelopedDropIndexSuggestionsResponse ListDropIndexSuggestions(ctx, groupId, clusterName).Envelope(envelope).Execute()
 
 Return All Suggested Indexes to Drop
 
@@ -445,7 +447,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -460,8 +462,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
+    envelope := true // bool |  (optional) (default to true)
 
-    resp, r, err := sdk.PerformanceAdvisorAPI.ListDropIndexSuggestions(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.PerformanceAdvisorAPI.ListDropIndexSuggestions(context.Background(), groupId, clusterName).Envelope(envelope).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorAPI.ListDropIndexSuggestions`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -470,7 +473,7 @@ func main() {
         }
         return
     }
-    // response from `ListDropIndexSuggestions`: DropIndexSuggestionsResponse
+    // response from `ListDropIndexSuggestions`: EnvelopedDropIndexSuggestionsResponse
     fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorAPI.ListDropIndexSuggestions`: %v (%v)\n", resp, r)
 }
 ```
@@ -493,10 +496,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **envelope** | **bool** | Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. | [default to true]
 
 ### Return type
 
-[**DropIndexSuggestionsResponse**](DropIndexSuggestionsResponse.md)
+[**EnvelopedDropIndexSuggestionsResponse**](EnvelopedDropIndexSuggestionsResponse.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -528,7 +532,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -600,7 +604,7 @@ Name | Type | Description  | Notes
 
 ## ListSchemaAdvice
 
-> SchemaAdvisorResponse ListSchemaAdvice(ctx, groupId, clusterName).Execute()
+> EnvelopedSchemaAdvisorResponse ListSchemaAdvice(ctx, groupId, clusterName).Envelope(envelope).Execute()
 
 Return Schema Advice
 
@@ -615,7 +619,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -630,8 +634,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     clusterName := "clusterName_example" // string | 
+    envelope := true // bool |  (optional) (default to true)
 
-    resp, r, err := sdk.PerformanceAdvisorAPI.ListSchemaAdvice(context.Background(), groupId, clusterName).Execute()
+    resp, r, err := sdk.PerformanceAdvisorAPI.ListSchemaAdvice(context.Background(), groupId, clusterName).Envelope(envelope).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `PerformanceAdvisorAPI.ListSchemaAdvice`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -640,7 +645,7 @@ func main() {
         }
         return
     }
-    // response from `ListSchemaAdvice`: SchemaAdvisorResponse
+    // response from `ListSchemaAdvice`: EnvelopedSchemaAdvisorResponse
     fmt.Fprintf(os.Stdout, "Response from `PerformanceAdvisorAPI.ListSchemaAdvice`: %v (%v)\n", resp, r)
 }
 ```
@@ -663,10 +668,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **envelope** | **bool** | Flag that indicates whether Application wraps the response in an &#x60;envelope&#x60; JSON object. Some API clients cannot access the HTTP response headers or status code. To remediate this, set envelope&#x3D;true in the query. Endpoints that return a list of results use the results object as an envelope. Application adds the status parameter to the response body. | [default to true]
 
 ### Return type
 
-[**SchemaAdvisorResponse**](SchemaAdvisorResponse.md)
+[**EnvelopedSchemaAdvisorResponse**](EnvelopedSchemaAdvisorResponse.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -698,7 +704,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -795,7 +801,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -894,7 +900,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {

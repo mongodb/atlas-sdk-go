@@ -66,6 +66,13 @@ SetAmountBilledCents sets AmountBilledCents field to given value.
 `func (o *BillingInvoice) HasAmountBilledCents() bool`
 
 HasAmountBilledCents returns a boolean if a field has been set.
+
+### SetAmountBilledCentsNil
+
+`func (o *BillingInvoice) SetAmountBilledCentsNil()`
+
+SetAmountBilledCentsNil sets AmountBilledCents to an explicit JSON null when marshaled, overriding any value previously set with SetAmountBilledCents. Calling SetAmountBilledCents again clears the null override.
+
 ### GetAmountPaidCents
 
 `func (o *BillingInvoice) GetAmountPaidCents() int64`
@@ -90,6 +97,13 @@ SetAmountPaidCents sets AmountPaidCents field to given value.
 `func (o *BillingInvoice) HasAmountPaidCents() bool`
 
 HasAmountPaidCents returns a boolean if a field has been set.
+
+### SetAmountPaidCentsNil
+
+`func (o *BillingInvoice) SetAmountPaidCentsNil()`
+
+SetAmountPaidCentsNil sets AmountPaidCents to an explicit JSON null when marshaled, overriding any value previously set with SetAmountPaidCents. Calling SetAmountPaidCents again clears the null override.
+
 ### GetCreated
 
 `func (o *BillingInvoice) GetCreated() time.Time`
@@ -114,6 +128,13 @@ SetCreated sets Created field to given value.
 `func (o *BillingInvoice) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
+
+### SetCreatedNil
+
+`func (o *BillingInvoice) SetCreatedNil()`
+
+SetCreatedNil sets Created to an explicit JSON null when marshaled, overriding any value previously set with SetCreated. Calling SetCreated again clears the null override.
+
 ### GetCreditsCents
 
 `func (o *BillingInvoice) GetCreditsCents() int64`
@@ -138,6 +159,13 @@ SetCreditsCents sets CreditsCents field to given value.
 `func (o *BillingInvoice) HasCreditsCents() bool`
 
 HasCreditsCents returns a boolean if a field has been set.
+
+### SetCreditsCentsNil
+
+`func (o *BillingInvoice) SetCreditsCentsNil()`
+
+SetCreditsCentsNil sets CreditsCents to an explicit JSON null when marshaled, overriding any value previously set with SetCreditsCents. Calling SetCreditsCents again clears the null override.
+
 ### GetEndDate
 
 `func (o *BillingInvoice) GetEndDate() time.Time`
@@ -162,6 +190,13 @@ SetEndDate sets EndDate field to given value.
 `func (o *BillingInvoice) HasEndDate() bool`
 
 HasEndDate returns a boolean if a field has been set.
+
+### SetEndDateNil
+
+`func (o *BillingInvoice) SetEndDateNil()`
+
+SetEndDateNil sets EndDate to an explicit JSON null when marshaled, overriding any value previously set with SetEndDate. Calling SetEndDate again clears the null override.
+
 ### GetId
 
 `func (o *BillingInvoice) GetId() string`
@@ -186,6 +221,13 @@ SetId sets Id field to given value.
 `func (o *BillingInvoice) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *BillingInvoice) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLineItems
 
 `func (o *BillingInvoice) GetLineItems() []InvoiceLineItem`
@@ -210,6 +252,13 @@ SetLineItems sets LineItems field to given value.
 `func (o *BillingInvoice) HasLineItems() bool`
 
 HasLineItems returns a boolean if a field has been set.
+
+### SetLineItemsNil
+
+`func (o *BillingInvoice) SetLineItemsNil()`
+
+SetLineItemsNil sets LineItems to an explicit JSON null when marshaled, overriding any value previously set with SetLineItems. Calling SetLineItems again clears the null override.
+
 ### GetLinkedInvoices
 
 `func (o *BillingInvoice) GetLinkedInvoices() []BillingInvoice`
@@ -234,6 +283,13 @@ SetLinkedInvoices sets LinkedInvoices field to given value.
 `func (o *BillingInvoice) HasLinkedInvoices() bool`
 
 HasLinkedInvoices returns a boolean if a field has been set.
+
+### SetLinkedInvoicesNil
+
+`func (o *BillingInvoice) SetLinkedInvoicesNil()`
+
+SetLinkedInvoicesNil sets LinkedInvoices to an explicit JSON null when marshaled, overriding any value previously set with SetLinkedInvoices. Calling SetLinkedInvoices again clears the null override.
+
 ### GetLinks
 
 `func (o *BillingInvoice) GetLinks() []Link`
@@ -258,6 +314,13 @@ SetLinks sets Links field to given value.
 `func (o *BillingInvoice) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *BillingInvoice) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetOrgId
 
 `func (o *BillingInvoice) GetOrgId() string`
@@ -282,6 +345,13 @@ SetOrgId sets OrgId field to given value.
 `func (o *BillingInvoice) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
+
+### SetOrgIdNil
+
+`func (o *BillingInvoice) SetOrgIdNil()`
+
+SetOrgIdNil sets OrgId to an explicit JSON null when marshaled, overriding any value previously set with SetOrgId. Calling SetOrgId again clears the null override.
+
 ### GetPayments
 
 `func (o *BillingInvoice) GetPayments() []BillingPayment`
@@ -306,6 +376,13 @@ SetPayments sets Payments field to given value.
 `func (o *BillingInvoice) HasPayments() bool`
 
 HasPayments returns a boolean if a field has been set.
+
+### SetPaymentsNil
+
+`func (o *BillingInvoice) SetPaymentsNil()`
+
+SetPaymentsNil sets Payments to an explicit JSON null when marshaled, overriding any value previously set with SetPayments. Calling SetPayments again clears the null override.
+
 ### GetRefunds
 
 `func (o *BillingInvoice) GetRefunds() []BillingRefund`
@@ -330,6 +407,13 @@ SetRefunds sets Refunds field to given value.
 `func (o *BillingInvoice) HasRefunds() bool`
 
 HasRefunds returns a boolean if a field has been set.
+
+### SetRefundsNil
+
+`func (o *BillingInvoice) SetRefundsNil()`
+
+SetRefundsNil sets Refunds to an explicit JSON null when marshaled, overriding any value previously set with SetRefunds. Calling SetRefunds again clears the null override.
+
 ### GetSalesTaxCents
 
 `func (o *BillingInvoice) GetSalesTaxCents() int64`
@@ -354,6 +438,13 @@ SetSalesTaxCents sets SalesTaxCents field to given value.
 `func (o *BillingInvoice) HasSalesTaxCents() bool`
 
 HasSalesTaxCents returns a boolean if a field has been set.
+
+### SetSalesTaxCentsNil
+
+`func (o *BillingInvoice) SetSalesTaxCentsNil()`
+
+SetSalesTaxCentsNil sets SalesTaxCents to an explicit JSON null when marshaled, overriding any value previously set with SetSalesTaxCents. Calling SetSalesTaxCents again clears the null override.
+
 ### GetStartDate
 
 `func (o *BillingInvoice) GetStartDate() time.Time`
@@ -378,6 +469,13 @@ SetStartDate sets StartDate field to given value.
 `func (o *BillingInvoice) HasStartDate() bool`
 
 HasStartDate returns a boolean if a field has been set.
+
+### SetStartDateNil
+
+`func (o *BillingInvoice) SetStartDateNil()`
+
+SetStartDateNil sets StartDate to an explicit JSON null when marshaled, overriding any value previously set with SetStartDate. Calling SetStartDate again clears the null override.
+
 ### GetStartingBalanceCents
 
 `func (o *BillingInvoice) GetStartingBalanceCents() int64`
@@ -402,6 +500,13 @@ SetStartingBalanceCents sets StartingBalanceCents field to given value.
 `func (o *BillingInvoice) HasStartingBalanceCents() bool`
 
 HasStartingBalanceCents returns a boolean if a field has been set.
+
+### SetStartingBalanceCentsNil
+
+`func (o *BillingInvoice) SetStartingBalanceCentsNil()`
+
+SetStartingBalanceCentsNil sets StartingBalanceCents to an explicit JSON null when marshaled, overriding any value previously set with SetStartingBalanceCents. Calling SetStartingBalanceCents again clears the null override.
+
 ### GetStatusName
 
 `func (o *BillingInvoice) GetStatusName() string`
@@ -426,6 +531,13 @@ SetStatusName sets StatusName field to given value.
 `func (o *BillingInvoice) HasStatusName() bool`
 
 HasStatusName returns a boolean if a field has been set.
+
+### SetStatusNameNil
+
+`func (o *BillingInvoice) SetStatusNameNil()`
+
+SetStatusNameNil sets StatusName to an explicit JSON null when marshaled, overriding any value previously set with SetStatusName. Calling SetStatusName again clears the null override.
+
 ### GetSubtotalCents
 
 `func (o *BillingInvoice) GetSubtotalCents() int64`
@@ -450,6 +562,13 @@ SetSubtotalCents sets SubtotalCents field to given value.
 `func (o *BillingInvoice) HasSubtotalCents() bool`
 
 HasSubtotalCents returns a boolean if a field has been set.
+
+### SetSubtotalCentsNil
+
+`func (o *BillingInvoice) SetSubtotalCentsNil()`
+
+SetSubtotalCentsNil sets SubtotalCents to an explicit JSON null when marshaled, overriding any value previously set with SetSubtotalCents. Calling SetSubtotalCents again clears the null override.
+
 ### GetUpdated
 
 `func (o *BillingInvoice) GetUpdated() time.Time`
@@ -474,6 +593,13 @@ SetUpdated sets Updated field to given value.
 `func (o *BillingInvoice) HasUpdated() bool`
 
 HasUpdated returns a boolean if a field has been set.
+
+### SetUpdatedNil
+
+`func (o *BillingInvoice) SetUpdatedNil()`
+
+SetUpdatedNil sets Updated to an explicit JSON null when marshaled, overriding any value previously set with SetUpdated. Calling SetUpdated again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

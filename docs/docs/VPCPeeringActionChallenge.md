@@ -51,6 +51,13 @@ SetLinks sets Links field to given value.
 `func (o *VPCPeeringActionChallenge) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *VPCPeeringActionChallenge) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetRequesterAccountId
 
 `func (o *VPCPeeringActionChallenge) GetRequesterAccountId() string`
@@ -75,6 +82,13 @@ SetRequesterAccountId sets RequesterAccountId field to given value.
 `func (o *VPCPeeringActionChallenge) HasRequesterAccountId() bool`
 
 HasRequesterAccountId returns a boolean if a field has been set.
+
+### SetRequesterAccountIdNil
+
+`func (o *VPCPeeringActionChallenge) SetRequesterAccountIdNil()`
+
+SetRequesterAccountIdNil sets RequesterAccountId to an explicit JSON null when marshaled, overriding any value previously set with SetRequesterAccountId. Calling SetRequesterAccountId again clears the null override.
+
 ### GetRequesterVpcId
 
 `func (o *VPCPeeringActionChallenge) GetRequesterVpcId() string`
@@ -99,6 +113,13 @@ SetRequesterVpcId sets RequesterVpcId field to given value.
 `func (o *VPCPeeringActionChallenge) HasRequesterVpcId() bool`
 
 HasRequesterVpcId returns a boolean if a field has been set.
+
+### SetRequesterVpcIdNil
+
+`func (o *VPCPeeringActionChallenge) SetRequesterVpcIdNil()`
+
+SetRequesterVpcIdNil sets RequesterVpcId to an explicit JSON null when marshaled, overriding any value previously set with SetRequesterVpcId. Calling SetRequesterVpcId again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -55,6 +55,13 @@ SetCidrBlock sets CidrBlock field to given value.
 `func (o *UserAccessListResponse) HasCidrBlock() bool`
 
 HasCidrBlock returns a boolean if a field has been set.
+
+### SetCidrBlockNil
+
+`func (o *UserAccessListResponse) SetCidrBlockNil()`
+
+SetCidrBlockNil sets CidrBlock to an explicit JSON null when marshaled, overriding any value previously set with SetCidrBlock. Calling SetCidrBlock again clears the null override.
+
 ### GetCount
 
 `func (o *UserAccessListResponse) GetCount() int`
@@ -79,6 +86,13 @@ SetCount sets Count field to given value.
 `func (o *UserAccessListResponse) HasCount() bool`
 
 HasCount returns a boolean if a field has been set.
+
+### SetCountNil
+
+`func (o *UserAccessListResponse) SetCountNil()`
+
+SetCountNil sets Count to an explicit JSON null when marshaled, overriding any value previously set with SetCount. Calling SetCount again clears the null override.
+
 ### GetCreated
 
 `func (o *UserAccessListResponse) GetCreated() time.Time`
@@ -103,6 +117,13 @@ SetCreated sets Created field to given value.
 `func (o *UserAccessListResponse) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
+
+### SetCreatedNil
+
+`func (o *UserAccessListResponse) SetCreatedNil()`
+
+SetCreatedNil sets Created to an explicit JSON null when marshaled, overriding any value previously set with SetCreated. Calling SetCreated again clears the null override.
+
 ### GetIpAddress
 
 `func (o *UserAccessListResponse) GetIpAddress() string`
@@ -127,6 +148,13 @@ SetIpAddress sets IpAddress field to given value.
 `func (o *UserAccessListResponse) HasIpAddress() bool`
 
 HasIpAddress returns a boolean if a field has been set.
+
+### SetIpAddressNil
+
+`func (o *UserAccessListResponse) SetIpAddressNil()`
+
+SetIpAddressNil sets IpAddress to an explicit JSON null when marshaled, overriding any value previously set with SetIpAddress. Calling SetIpAddress again clears the null override.
+
 ### GetLastUsed
 
 `func (o *UserAccessListResponse) GetLastUsed() time.Time`
@@ -151,6 +179,13 @@ SetLastUsed sets LastUsed field to given value.
 `func (o *UserAccessListResponse) HasLastUsed() bool`
 
 HasLastUsed returns a boolean if a field has been set.
+
+### SetLastUsedNil
+
+`func (o *UserAccessListResponse) SetLastUsedNil()`
+
+SetLastUsedNil sets LastUsed to an explicit JSON null when marshaled, overriding any value previously set with SetLastUsed. Calling SetLastUsed again clears the null override.
+
 ### GetLastUsedAddress
 
 `func (o *UserAccessListResponse) GetLastUsedAddress() string`
@@ -175,6 +210,13 @@ SetLastUsedAddress sets LastUsedAddress field to given value.
 `func (o *UserAccessListResponse) HasLastUsedAddress() bool`
 
 HasLastUsedAddress returns a boolean if a field has been set.
+
+### SetLastUsedAddressNil
+
+`func (o *UserAccessListResponse) SetLastUsedAddressNil()`
+
+SetLastUsedAddressNil sets LastUsedAddress to an explicit JSON null when marshaled, overriding any value previously set with SetLastUsedAddress. Calling SetLastUsedAddress again clears the null override.
+
 ### GetLinks
 
 `func (o *UserAccessListResponse) GetLinks() []Link`
@@ -199,6 +241,13 @@ SetLinks sets Links field to given value.
 `func (o *UserAccessListResponse) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *UserAccessListResponse) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -6,6 +6,15 @@ package admin
 type SynonymSource struct {
 	// Label that identifies the MongoDB collection that stores words and their applicable synonyms.
 	Collection string `json:"collection"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *SynonymSource) MarshalJSON() ([]byte, error) {
+	type noMethod SynonymSource
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSynonymSource instantiates a new SynonymSource object

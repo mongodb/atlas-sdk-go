@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Cloud** | Pointer to **string** | Cloud provider scope for this API key. Use \&quot;ANY\&quot; for cloud-agnostic scope. | [optional] [readonly] 
 **CreatedAt** | Pointer to **string** | UTC date when the API key was created. This parameter is formatted as an ISO 8601 timestamp. | [optional] [readonly] 
 **CreatedBy** | Pointer to **string** | Name of the user that created this API key. If no user name is available, the user ID is returned. | [optional] [readonly] 
-**Endpoint** | Pointer to **string** | Server-computed endpoint hostname derived from cloud and geography. This field is read-only and must not be supplied in request bodies. | [optional] [readonly] 
+**Endpoint** | Pointer to **string** | Server-computed endpoint hostname derived from &#x60;cloud&#x60; and &#x60;geography&#x60;. This field is read-only and must not be supplied in request bodies. | [optional] [readonly] 
 **Geography** | Pointer to **string** | Geography scope for this API key. Use \&quot;ANY\&quot; for geography-agnostic scope. | [optional] [readonly] 
 **GroupId** | Pointer to **string** | ID of the Atlas group this API key belongs to. | [optional] [readonly] 
 **LastUsedAt** | Pointer to **string** | UTC date when the API key was last used. This parameter is formatted as an ISO 8601 timestamp. | [optional] [readonly] 
@@ -60,6 +60,13 @@ SetApiKeyId sets ApiKeyId field to given value.
 `func (o *AiModelApiKeyResponse) HasApiKeyId() bool`
 
 HasApiKeyId returns a boolean if a field has been set.
+
+### SetApiKeyIdNil
+
+`func (o *AiModelApiKeyResponse) SetApiKeyIdNil()`
+
+SetApiKeyIdNil sets ApiKeyId to an explicit JSON null when marshaled, overriding any value previously set with SetApiKeyId. Calling SetApiKeyId again clears the null override.
+
 ### GetCloud
 
 `func (o *AiModelApiKeyResponse) GetCloud() string`
@@ -84,6 +91,13 @@ SetCloud sets Cloud field to given value.
 `func (o *AiModelApiKeyResponse) HasCloud() bool`
 
 HasCloud returns a boolean if a field has been set.
+
+### SetCloudNil
+
+`func (o *AiModelApiKeyResponse) SetCloudNil()`
+
+SetCloudNil sets Cloud to an explicit JSON null when marshaled, overriding any value previously set with SetCloud. Calling SetCloud again clears the null override.
+
 ### GetCreatedAt
 
 `func (o *AiModelApiKeyResponse) GetCreatedAt() string`
@@ -108,6 +122,13 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *AiModelApiKeyResponse) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
+
+### SetCreatedAtNil
+
+`func (o *AiModelApiKeyResponse) SetCreatedAtNil()`
+
+SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled, overriding any value previously set with SetCreatedAt. Calling SetCreatedAt again clears the null override.
+
 ### GetCreatedBy
 
 `func (o *AiModelApiKeyResponse) GetCreatedBy() string`
@@ -132,6 +153,13 @@ SetCreatedBy sets CreatedBy field to given value.
 `func (o *AiModelApiKeyResponse) HasCreatedBy() bool`
 
 HasCreatedBy returns a boolean if a field has been set.
+
+### SetCreatedByNil
+
+`func (o *AiModelApiKeyResponse) SetCreatedByNil()`
+
+SetCreatedByNil sets CreatedBy to an explicit JSON null when marshaled, overriding any value previously set with SetCreatedBy. Calling SetCreatedBy again clears the null override.
+
 ### GetEndpoint
 
 `func (o *AiModelApiKeyResponse) GetEndpoint() string`
@@ -156,6 +184,13 @@ SetEndpoint sets Endpoint field to given value.
 `func (o *AiModelApiKeyResponse) HasEndpoint() bool`
 
 HasEndpoint returns a boolean if a field has been set.
+
+### SetEndpointNil
+
+`func (o *AiModelApiKeyResponse) SetEndpointNil()`
+
+SetEndpointNil sets Endpoint to an explicit JSON null when marshaled, overriding any value previously set with SetEndpoint. Calling SetEndpoint again clears the null override.
+
 ### GetGeography
 
 `func (o *AiModelApiKeyResponse) GetGeography() string`
@@ -180,6 +215,13 @@ SetGeography sets Geography field to given value.
 `func (o *AiModelApiKeyResponse) HasGeography() bool`
 
 HasGeography returns a boolean if a field has been set.
+
+### SetGeographyNil
+
+`func (o *AiModelApiKeyResponse) SetGeographyNil()`
+
+SetGeographyNil sets Geography to an explicit JSON null when marshaled, overriding any value previously set with SetGeography. Calling SetGeography again clears the null override.
+
 ### GetGroupId
 
 `func (o *AiModelApiKeyResponse) GetGroupId() string`
@@ -204,6 +246,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *AiModelApiKeyResponse) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *AiModelApiKeyResponse) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetLastUsedAt
 
 `func (o *AiModelApiKeyResponse) GetLastUsedAt() string`
@@ -228,6 +277,13 @@ SetLastUsedAt sets LastUsedAt field to given value.
 `func (o *AiModelApiKeyResponse) HasLastUsedAt() bool`
 
 HasLastUsedAt returns a boolean if a field has been set.
+
+### SetLastUsedAtNil
+
+`func (o *AiModelApiKeyResponse) SetLastUsedAtNil()`
+
+SetLastUsedAtNil sets LastUsedAt to an explicit JSON null when marshaled, overriding any value previously set with SetLastUsedAt. Calling SetLastUsedAt again clears the null override.
+
 ### GetMaskedSecret
 
 `func (o *AiModelApiKeyResponse) GetMaskedSecret() string`
@@ -252,6 +308,13 @@ SetMaskedSecret sets MaskedSecret field to given value.
 `func (o *AiModelApiKeyResponse) HasMaskedSecret() bool`
 
 HasMaskedSecret returns a boolean if a field has been set.
+
+### SetMaskedSecretNil
+
+`func (o *AiModelApiKeyResponse) SetMaskedSecretNil()`
+
+SetMaskedSecretNil sets MaskedSecret to an explicit JSON null when marshaled, overriding any value previously set with SetMaskedSecret. Calling SetMaskedSecret again clears the null override.
+
 ### GetName
 
 `func (o *AiModelApiKeyResponse) GetName() string`
@@ -276,6 +339,13 @@ SetName sets Name field to given value.
 `func (o *AiModelApiKeyResponse) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *AiModelApiKeyResponse) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetSecret
 
 `func (o *AiModelApiKeyResponse) GetSecret() string`
@@ -300,6 +370,13 @@ SetSecret sets Secret field to given value.
 `func (o *AiModelApiKeyResponse) HasSecret() bool`
 
 HasSecret returns a boolean if a field has been set.
+
+### SetSecretNil
+
+`func (o *AiModelApiKeyResponse) SetSecretNil()`
+
+SetSecretNil sets Secret to an explicit JSON null when marshaled, overriding any value previously set with SetSecret. Calling SetSecret again clears the null override.
+
 ### GetStatus
 
 `func (o *AiModelApiKeyResponse) GetStatus() string`
@@ -324,6 +401,13 @@ SetStatus sets Status field to given value.
 `func (o *AiModelApiKeyResponse) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *AiModelApiKeyResponse) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

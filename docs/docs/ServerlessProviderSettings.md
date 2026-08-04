@@ -73,6 +73,13 @@ SetEffectiveDiskSizeGBLimit sets EffectiveDiskSizeGBLimit field to given value.
 `func (o *ServerlessProviderSettings) HasEffectiveDiskSizeGBLimit() bool`
 
 HasEffectiveDiskSizeGBLimit returns a boolean if a field has been set.
+
+### SetEffectiveDiskSizeGBLimitNil
+
+`func (o *ServerlessProviderSettings) SetEffectiveDiskSizeGBLimitNil()`
+
+SetEffectiveDiskSizeGBLimitNil sets EffectiveDiskSizeGBLimit to an explicit JSON null when marshaled, overriding any value previously set with SetEffectiveDiskSizeGBLimit. Calling SetEffectiveDiskSizeGBLimit again clears the null override.
+
 ### GetEffectiveInstanceSizeName
 
 `func (o *ServerlessProviderSettings) GetEffectiveInstanceSizeName() string`
@@ -97,6 +104,13 @@ SetEffectiveInstanceSizeName sets EffectiveInstanceSizeName field to given value
 `func (o *ServerlessProviderSettings) HasEffectiveInstanceSizeName() bool`
 
 HasEffectiveInstanceSizeName returns a boolean if a field has been set.
+
+### SetEffectiveInstanceSizeNameNil
+
+`func (o *ServerlessProviderSettings) SetEffectiveInstanceSizeNameNil()`
+
+SetEffectiveInstanceSizeNameNil sets EffectiveInstanceSizeName to an explicit JSON null when marshaled, overriding any value previously set with SetEffectiveInstanceSizeName. Calling SetEffectiveInstanceSizeName again clears the null override.
+
 ### GetEffectiveProviderName
 
 `func (o *ServerlessProviderSettings) GetEffectiveProviderName() string`
@@ -121,6 +135,13 @@ SetEffectiveProviderName sets EffectiveProviderName field to given value.
 `func (o *ServerlessProviderSettings) HasEffectiveProviderName() bool`
 
 HasEffectiveProviderName returns a boolean if a field has been set.
+
+### SetEffectiveProviderNameNil
+
+`func (o *ServerlessProviderSettings) SetEffectiveProviderNameNil()`
+
+SetEffectiveProviderNameNil sets EffectiveProviderName to an explicit JSON null when marshaled, overriding any value previously set with SetEffectiveProviderName. Calling SetEffectiveProviderName again clears the null override.
+
 ### GetProviderName
 
 `func (o *ServerlessProviderSettings) GetProviderName() string`
@@ -145,6 +166,13 @@ SetProviderName sets ProviderName field to given value.
 `func (o *ServerlessProviderSettings) HasProviderName() bool`
 
 HasProviderName returns a boolean if a field has been set.
+
+### SetProviderNameNil
+
+`func (o *ServerlessProviderSettings) SetProviderNameNil()`
+
+SetProviderNameNil sets ProviderName to an explicit JSON null when marshaled, overriding any value previously set with SetProviderName. Calling SetProviderName again clears the null override.
+
 ### GetRegionName
 
 `func (o *ServerlessProviderSettings) GetRegionName() string`

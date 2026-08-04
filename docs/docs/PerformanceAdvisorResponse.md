@@ -50,6 +50,13 @@ SetShapes sets Shapes field to given value.
 `func (o *PerformanceAdvisorResponse) HasShapes() bool`
 
 HasShapes returns a boolean if a field has been set.
+
+### SetShapesNil
+
+`func (o *PerformanceAdvisorResponse) SetShapesNil()`
+
+SetShapesNil sets Shapes to an explicit JSON null when marshaled, overriding any value previously set with SetShapes. Calling SetShapes again clears the null override.
+
 ### GetSuggestedIndexes
 
 `func (o *PerformanceAdvisorResponse) GetSuggestedIndexes() []PerformanceAdvisorIndex`
@@ -74,6 +81,13 @@ SetSuggestedIndexes sets SuggestedIndexes field to given value.
 `func (o *PerformanceAdvisorResponse) HasSuggestedIndexes() bool`
 
 HasSuggestedIndexes returns a boolean if a field has been set.
+
+### SetSuggestedIndexesNil
+
+`func (o *PerformanceAdvisorResponse) SetSuggestedIndexesNil()`
+
+SetSuggestedIndexesNil sets SuggestedIndexes to an explicit JSON null when marshaled, overriding any value previously set with SetSuggestedIndexes. Calling SetSuggestedIndexes again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

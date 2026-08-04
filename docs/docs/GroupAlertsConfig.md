@@ -60,6 +60,13 @@ SetCreated sets Created field to given value.
 `func (o *GroupAlertsConfig) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
+
+### SetCreatedNil
+
+`func (o *GroupAlertsConfig) SetCreatedNil()`
+
+SetCreatedNil sets Created to an explicit JSON null when marshaled, overriding any value previously set with SetCreated. Calling SetCreated again clears the null override.
+
 ### GetEnabled
 
 `func (o *GroupAlertsConfig) GetEnabled() bool`
@@ -84,6 +91,13 @@ SetEnabled sets Enabled field to given value.
 `func (o *GroupAlertsConfig) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
+
+### SetEnabledNil
+
+`func (o *GroupAlertsConfig) SetEnabledNil()`
+
+SetEnabledNil sets Enabled to an explicit JSON null when marshaled, overriding any value previously set with SetEnabled. Calling SetEnabled again clears the null override.
+
 ### GetEventTypeName
 
 `func (o *GroupAlertsConfig) GetEventTypeName() string`
@@ -108,6 +122,13 @@ SetEventTypeName sets EventTypeName field to given value.
 `func (o *GroupAlertsConfig) HasEventTypeName() bool`
 
 HasEventTypeName returns a boolean if a field has been set.
+
+### SetEventTypeNameNil
+
+`func (o *GroupAlertsConfig) SetEventTypeNameNil()`
+
+SetEventTypeNameNil sets EventTypeName to an explicit JSON null when marshaled, overriding any value previously set with SetEventTypeName. Calling SetEventTypeName again clears the null override.
+
 ### GetGroupId
 
 `func (o *GroupAlertsConfig) GetGroupId() string`
@@ -132,6 +153,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *GroupAlertsConfig) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *GroupAlertsConfig) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetId
 
 `func (o *GroupAlertsConfig) GetId() string`
@@ -156,6 +184,13 @@ SetId sets Id field to given value.
 `func (o *GroupAlertsConfig) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *GroupAlertsConfig) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLinks
 
 `func (o *GroupAlertsConfig) GetLinks() []Link`
@@ -180,6 +215,13 @@ SetLinks sets Links field to given value.
 `func (o *GroupAlertsConfig) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *GroupAlertsConfig) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetMatchers
 
 `func (o *GroupAlertsConfig) GetMatchers() []StreamsMatcher`
@@ -204,6 +246,13 @@ SetMatchers sets Matchers field to given value.
 `func (o *GroupAlertsConfig) HasMatchers() bool`
 
 HasMatchers returns a boolean if a field has been set.
+
+### SetMatchersNil
+
+`func (o *GroupAlertsConfig) SetMatchersNil()`
+
+SetMatchersNil sets Matchers to an explicit JSON null when marshaled, overriding any value previously set with SetMatchers. Calling SetMatchers again clears the null override.
+
 ### GetNotifications
 
 `func (o *GroupAlertsConfig) GetNotifications() []AlertsNotificationRootForGroup`
@@ -228,6 +277,13 @@ SetNotifications sets Notifications field to given value.
 `func (o *GroupAlertsConfig) HasNotifications() bool`
 
 HasNotifications returns a boolean if a field has been set.
+
+### SetNotificationsNil
+
+`func (o *GroupAlertsConfig) SetNotificationsNil()`
+
+SetNotificationsNil sets Notifications to an explicit JSON null when marshaled, overriding any value previously set with SetNotifications. Calling SetNotifications again clears the null override.
+
 ### GetSeverityOverride
 
 `func (o *GroupAlertsConfig) GetSeverityOverride() string`
@@ -252,6 +308,13 @@ SetSeverityOverride sets SeverityOverride field to given value.
 `func (o *GroupAlertsConfig) HasSeverityOverride() bool`
 
 HasSeverityOverride returns a boolean if a field has been set.
+
+### SetSeverityOverrideNil
+
+`func (o *GroupAlertsConfig) SetSeverityOverrideNil()`
+
+SetSeverityOverrideNil sets SeverityOverride to an explicit JSON null when marshaled, overriding any value previously set with SetSeverityOverride. Calling SetSeverityOverride again clears the null override.
+
 ### GetUpdated
 
 `func (o *GroupAlertsConfig) GetUpdated() time.Time`
@@ -276,6 +339,13 @@ SetUpdated sets Updated field to given value.
 `func (o *GroupAlertsConfig) HasUpdated() bool`
 
 HasUpdated returns a boolean if a field has been set.
+
+### SetUpdatedNil
+
+`func (o *GroupAlertsConfig) SetUpdatedNil()`
+
+SetUpdatedNil sets Updated to an explicit JSON null when marshaled, overriding any value previously set with SetUpdated. Calling SetUpdated again clears the null override.
+
 ### GetMetricThreshold
 
 `func (o *GroupAlertsConfig) GetMetricThreshold() StreamProcessorMetricThreshold`
@@ -300,6 +370,13 @@ SetMetricThreshold sets MetricThreshold field to given value.
 `func (o *GroupAlertsConfig) HasMetricThreshold() bool`
 
 HasMetricThreshold returns a boolean if a field has been set.
+
+### SetMetricThresholdNil
+
+`func (o *GroupAlertsConfig) SetMetricThresholdNil()`
+
+SetMetricThresholdNil sets MetricThreshold to an explicit JSON null when marshaled, overriding any value previously set with SetMetricThreshold. Calling SetMetricThreshold again clears the null override.
+
 ### GetThreshold
 
 `func (o *GroupAlertsConfig) GetThreshold() StreamProcessorMetricThreshold`
@@ -324,6 +401,13 @@ SetThreshold sets Threshold field to given value.
 `func (o *GroupAlertsConfig) HasThreshold() bool`
 
 HasThreshold returns a boolean if a field has been set.
+
+### SetThresholdNil
+
+`func (o *GroupAlertsConfig) SetThresholdNil()`
+
+SetThresholdNil sets Threshold to an explicit JSON null when marshaled, overriding any value previously set with SetThreshold. Calling SetThreshold again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

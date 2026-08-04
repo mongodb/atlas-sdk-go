@@ -54,6 +54,13 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *EARPrivateEndpoint) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
+
+### SetCloudProviderNil
+
+`func (o *EARPrivateEndpoint) SetCloudProviderNil()`
+
+SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProvider. Calling SetCloudProvider again clears the null override.
+
 ### GetErrorMessage
 
 `func (o *EARPrivateEndpoint) GetErrorMessage() string`
@@ -78,6 +85,13 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *EARPrivateEndpoint) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
+
+### SetErrorMessageNil
+
+`func (o *EARPrivateEndpoint) SetErrorMessageNil()`
+
+SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled, overriding any value previously set with SetErrorMessage. Calling SetErrorMessage again clears the null override.
+
 ### GetId
 
 `func (o *EARPrivateEndpoint) GetId() string`
@@ -102,6 +116,13 @@ SetId sets Id field to given value.
 `func (o *EARPrivateEndpoint) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *EARPrivateEndpoint) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetRegionName
 
 `func (o *EARPrivateEndpoint) GetRegionName() string`
@@ -126,6 +147,13 @@ SetRegionName sets RegionName field to given value.
 `func (o *EARPrivateEndpoint) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
+
+### SetRegionNameNil
+
+`func (o *EARPrivateEndpoint) SetRegionNameNil()`
+
+SetRegionNameNil sets RegionName to an explicit JSON null when marshaled, overriding any value previously set with SetRegionName. Calling SetRegionName again clears the null override.
+
 ### GetStatus
 
 `func (o *EARPrivateEndpoint) GetStatus() string`
@@ -150,6 +178,13 @@ SetStatus sets Status field to given value.
 `func (o *EARPrivateEndpoint) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *EARPrivateEndpoint) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 ### GetPrivateEndpointConnectionName
 
 `func (o *EARPrivateEndpoint) GetPrivateEndpointConnectionName() string`
@@ -174,6 +209,13 @@ SetPrivateEndpointConnectionName sets PrivateEndpointConnectionName field to giv
 `func (o *EARPrivateEndpoint) HasPrivateEndpointConnectionName() bool`
 
 HasPrivateEndpointConnectionName returns a boolean if a field has been set.
+
+### SetPrivateEndpointConnectionNameNil
+
+`func (o *EARPrivateEndpoint) SetPrivateEndpointConnectionNameNil()`
+
+SetPrivateEndpointConnectionNameNil sets PrivateEndpointConnectionName to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateEndpointConnectionName. Calling SetPrivateEndpointConnectionName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

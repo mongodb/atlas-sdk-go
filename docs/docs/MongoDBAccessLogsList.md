@@ -50,6 +50,13 @@ SetAccessLogs sets AccessLogs field to given value.
 
 HasAccessLogs returns a boolean if a field has been set.
 
+### SetAccessLogsNil
+
+`func (o *MongoDBAccessLogsList) SetAccessLogsNil()`
+
+SetAccessLogsNil sets AccessLogs to an explicit JSON null when marshaled, overriding any value previously set with SetAccessLogs. Calling SetAccessLogs again clears the null override.
+
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

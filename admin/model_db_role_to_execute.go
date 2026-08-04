@@ -2,7 +2,7 @@
 
 package admin
 
-// DBRoleToExecute The name of a Built in or Custom DB Role to connect to an Atlas Cluster.
+// DBRoleToExecute The name of a built-in or custom DB Role to connect to an Atlas Cluster.
 type DBRoleToExecute struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
@@ -11,6 +11,15 @@ type DBRoleToExecute struct {
 	Role *string `json:"role,omitempty"`
 	// Type of the DB role. Can be either Built In or Custom.
 	Type *string `json:"type,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DBRoleToExecute) MarshalJSON() ([]byte, error) {
+	type noMethod DBRoleToExecute
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDBRoleToExecute instantiates a new DBRoleToExecute object
@@ -61,6 +70,13 @@ func (o *DBRoleToExecute) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DBRoleToExecute) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *DBRoleToExecute) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetRole returns the Role field value if set, zero value otherwise
@@ -94,6 +110,13 @@ func (o *DBRoleToExecute) HasRole() bool {
 // SetRole gets a reference to the given string and assigns it to the Role field.
 func (o *DBRoleToExecute) SetRole(v string) {
 	o.Role = &v
+	o.NullFields = removeNullField(o.NullFields, "Role")
+}
+
+// SetRoleNil sets Role to an explicit JSON null when marshaled.
+func (o *DBRoleToExecute) SetRoleNil() {
+	o.Role = nil
+	o.NullFields = addNullField(o.NullFields, "Role")
 }
 
 // GetType returns the Type field value if set, zero value otherwise
@@ -127,4 +150,11 @@ func (o *DBRoleToExecute) HasType() bool {
 // SetType gets a reference to the given string and assigns it to the Type field.
 func (o *DBRoleToExecute) SetType(v string) {
 	o.Type = &v
+	o.NullFields = removeNullField(o.NullFields, "Type")
+}
+
+// SetTypeNil sets Type to an explicit JSON null when marshaled.
+func (o *DBRoleToExecute) SetTypeNil() {
+	o.Type = nil
+	o.NullFields = addNullField(o.NullFields, "Type")
 }

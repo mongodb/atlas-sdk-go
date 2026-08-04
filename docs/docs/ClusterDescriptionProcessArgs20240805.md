@@ -64,6 +64,13 @@ SetChangeStreamOptionsPreAndPostImagesExpireAfterSeconds sets ChangeStreamOption
 `func (o *ClusterDescriptionProcessArgs20240805) HasChangeStreamOptionsPreAndPostImagesExpireAfterSeconds() bool`
 
 HasChangeStreamOptionsPreAndPostImagesExpireAfterSeconds returns a boolean if a field has been set.
+
+### SetChangeStreamOptionsPreAndPostImagesExpireAfterSecondsNil
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetChangeStreamOptionsPreAndPostImagesExpireAfterSecondsNil()`
+
+SetChangeStreamOptionsPreAndPostImagesExpireAfterSecondsNil sets ChangeStreamOptionsPreAndPostImagesExpireAfterSeconds to an explicit JSON null when marshaled, overriding any value previously set with SetChangeStreamOptionsPreAndPostImagesExpireAfterSeconds. Calling SetChangeStreamOptionsPreAndPostImagesExpireAfterSeconds again clears the null override.
+
 ### GetChunkMigrationConcurrency
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetChunkMigrationConcurrency() int`
@@ -88,6 +95,13 @@ SetChunkMigrationConcurrency sets ChunkMigrationConcurrency field to given value
 `func (o *ClusterDescriptionProcessArgs20240805) HasChunkMigrationConcurrency() bool`
 
 HasChunkMigrationConcurrency returns a boolean if a field has been set.
+
+### SetChunkMigrationConcurrencyNil
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetChunkMigrationConcurrencyNil()`
+
+SetChunkMigrationConcurrencyNil sets ChunkMigrationConcurrency to an explicit JSON null when marshaled, overriding any value previously set with SetChunkMigrationConcurrency. Calling SetChunkMigrationConcurrency again clears the null override.
+
 ### GetCustomOpensslCipherConfigTls12
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetCustomOpensslCipherConfigTls12() []string`
@@ -112,6 +126,13 @@ SetCustomOpensslCipherConfigTls12 sets CustomOpensslCipherConfigTls12 field to g
 `func (o *ClusterDescriptionProcessArgs20240805) HasCustomOpensslCipherConfigTls12() bool`
 
 HasCustomOpensslCipherConfigTls12 returns a boolean if a field has been set.
+
+### SetCustomOpensslCipherConfigTls12Nil
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetCustomOpensslCipherConfigTls12Nil()`
+
+SetCustomOpensslCipherConfigTls12Nil sets CustomOpensslCipherConfigTls12 to an explicit JSON null when marshaled, overriding any value previously set with SetCustomOpensslCipherConfigTls12. Calling SetCustomOpensslCipherConfigTls12 again clears the null override.
+
 ### GetCustomOpensslCipherConfigTls13
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetCustomOpensslCipherConfigTls13() []string`
@@ -136,6 +157,13 @@ SetCustomOpensslCipherConfigTls13 sets CustomOpensslCipherConfigTls13 field to g
 `func (o *ClusterDescriptionProcessArgs20240805) HasCustomOpensslCipherConfigTls13() bool`
 
 HasCustomOpensslCipherConfigTls13 returns a boolean if a field has been set.
+
+### SetCustomOpensslCipherConfigTls13Nil
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetCustomOpensslCipherConfigTls13Nil()`
+
+SetCustomOpensslCipherConfigTls13Nil sets CustomOpensslCipherConfigTls13 to an explicit JSON null when marshaled, overriding any value previously set with SetCustomOpensslCipherConfigTls13. Calling SetCustomOpensslCipherConfigTls13 again clears the null override.
+
 ### GetDefaultMaxTimeMS
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetDefaultMaxTimeMS() int`
@@ -160,6 +188,13 @@ SetDefaultMaxTimeMS sets DefaultMaxTimeMS field to given value.
 `func (o *ClusterDescriptionProcessArgs20240805) HasDefaultMaxTimeMS() bool`
 
 HasDefaultMaxTimeMS returns a boolean if a field has been set.
+
+### SetDefaultMaxTimeMSNil
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetDefaultMaxTimeMSNil()`
+
+SetDefaultMaxTimeMSNil sets DefaultMaxTimeMS to an explicit JSON null when marshaled, overriding any value previously set with SetDefaultMaxTimeMS. Calling SetDefaultMaxTimeMS again clears the null override.
+
 ### GetDefaultWriteConcern
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetDefaultWriteConcern() string`
@@ -184,6 +219,13 @@ SetDefaultWriteConcern sets DefaultWriteConcern field to given value.
 `func (o *ClusterDescriptionProcessArgs20240805) HasDefaultWriteConcern() bool`
 
 HasDefaultWriteConcern returns a boolean if a field has been set.
+
+### SetDefaultWriteConcernNil
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetDefaultWriteConcernNil()`
+
+SetDefaultWriteConcernNil sets DefaultWriteConcern to an explicit JSON null when marshaled, overriding any value previously set with SetDefaultWriteConcern. Calling SetDefaultWriteConcern again clears the null override.
+
 ### GetJavascriptEnabled
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetJavascriptEnabled() bool`
@@ -208,6 +250,13 @@ SetJavascriptEnabled sets JavascriptEnabled field to given value.
 `func (o *ClusterDescriptionProcessArgs20240805) HasJavascriptEnabled() bool`
 
 HasJavascriptEnabled returns a boolean if a field has been set.
+
+### SetJavascriptEnabledNil
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetJavascriptEnabledNil()`
+
+SetJavascriptEnabledNil sets JavascriptEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetJavascriptEnabled. Calling SetJavascriptEnabled again clears the null override.
+
 ### GetMinimumEnabledTlsProtocol
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetMinimumEnabledTlsProtocol() string`
@@ -232,6 +281,13 @@ SetMinimumEnabledTlsProtocol sets MinimumEnabledTlsProtocol field to given value
 `func (o *ClusterDescriptionProcessArgs20240805) HasMinimumEnabledTlsProtocol() bool`
 
 HasMinimumEnabledTlsProtocol returns a boolean if a field has been set.
+
+### SetMinimumEnabledTlsProtocolNil
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetMinimumEnabledTlsProtocolNil()`
+
+SetMinimumEnabledTlsProtocolNil sets MinimumEnabledTlsProtocol to an explicit JSON null when marshaled, overriding any value previously set with SetMinimumEnabledTlsProtocol. Calling SetMinimumEnabledTlsProtocol again clears the null override.
+
 ### GetNoTableScan
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetNoTableScan() bool`
@@ -256,6 +312,13 @@ SetNoTableScan sets NoTableScan field to given value.
 `func (o *ClusterDescriptionProcessArgs20240805) HasNoTableScan() bool`
 
 HasNoTableScan returns a boolean if a field has been set.
+
+### SetNoTableScanNil
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetNoTableScanNil()`
+
+SetNoTableScanNil sets NoTableScan to an explicit JSON null when marshaled, overriding any value previously set with SetNoTableScan. Calling SetNoTableScan again clears the null override.
+
 ### GetOplogMinRetentionHours
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetOplogMinRetentionHours() float64`
@@ -280,6 +343,13 @@ SetOplogMinRetentionHours sets OplogMinRetentionHours field to given value.
 `func (o *ClusterDescriptionProcessArgs20240805) HasOplogMinRetentionHours() bool`
 
 HasOplogMinRetentionHours returns a boolean if a field has been set.
+
+### SetOplogMinRetentionHoursNil
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetOplogMinRetentionHoursNil()`
+
+SetOplogMinRetentionHoursNil sets OplogMinRetentionHours to an explicit JSON null when marshaled, overriding any value previously set with SetOplogMinRetentionHours. Calling SetOplogMinRetentionHours again clears the null override.
+
 ### GetOplogSizeMB
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetOplogSizeMB() int`
@@ -304,6 +374,13 @@ SetOplogSizeMB sets OplogSizeMB field to given value.
 `func (o *ClusterDescriptionProcessArgs20240805) HasOplogSizeMB() bool`
 
 HasOplogSizeMB returns a boolean if a field has been set.
+
+### SetOplogSizeMBNil
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetOplogSizeMBNil()`
+
+SetOplogSizeMBNil sets OplogSizeMB to an explicit JSON null when marshaled, overriding any value previously set with SetOplogSizeMB. Calling SetOplogSizeMB again clears the null override.
+
 ### GetQueryStatsLogVerbosity
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetQueryStatsLogVerbosity() int`
@@ -328,6 +405,13 @@ SetQueryStatsLogVerbosity sets QueryStatsLogVerbosity field to given value.
 `func (o *ClusterDescriptionProcessArgs20240805) HasQueryStatsLogVerbosity() bool`
 
 HasQueryStatsLogVerbosity returns a boolean if a field has been set.
+
+### SetQueryStatsLogVerbosityNil
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetQueryStatsLogVerbosityNil()`
+
+SetQueryStatsLogVerbosityNil sets QueryStatsLogVerbosity to an explicit JSON null when marshaled, overriding any value previously set with SetQueryStatsLogVerbosity. Calling SetQueryStatsLogVerbosity again clears the null override.
+
 ### GetSampleRefreshIntervalBIConnector
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetSampleRefreshIntervalBIConnector() int`
@@ -352,6 +436,13 @@ SetSampleRefreshIntervalBIConnector sets SampleRefreshIntervalBIConnector field 
 `func (o *ClusterDescriptionProcessArgs20240805) HasSampleRefreshIntervalBIConnector() bool`
 
 HasSampleRefreshIntervalBIConnector returns a boolean if a field has been set.
+
+### SetSampleRefreshIntervalBIConnectorNil
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetSampleRefreshIntervalBIConnectorNil()`
+
+SetSampleRefreshIntervalBIConnectorNil sets SampleRefreshIntervalBIConnector to an explicit JSON null when marshaled, overriding any value previously set with SetSampleRefreshIntervalBIConnector. Calling SetSampleRefreshIntervalBIConnector again clears the null override.
+
 ### GetSampleSizeBIConnector
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetSampleSizeBIConnector() int`
@@ -376,6 +467,13 @@ SetSampleSizeBIConnector sets SampleSizeBIConnector field to given value.
 `func (o *ClusterDescriptionProcessArgs20240805) HasSampleSizeBIConnector() bool`
 
 HasSampleSizeBIConnector returns a boolean if a field has been set.
+
+### SetSampleSizeBIConnectorNil
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetSampleSizeBIConnectorNil()`
+
+SetSampleSizeBIConnectorNil sets SampleSizeBIConnector to an explicit JSON null when marshaled, overriding any value previously set with SetSampleSizeBIConnector. Calling SetSampleSizeBIConnector again clears the null override.
+
 ### GetTlsCipherConfigMode
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetTlsCipherConfigMode() string`
@@ -400,6 +498,13 @@ SetTlsCipherConfigMode sets TlsCipherConfigMode field to given value.
 `func (o *ClusterDescriptionProcessArgs20240805) HasTlsCipherConfigMode() bool`
 
 HasTlsCipherConfigMode returns a boolean if a field has been set.
+
+### SetTlsCipherConfigModeNil
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetTlsCipherConfigModeNil()`
+
+SetTlsCipherConfigModeNil sets TlsCipherConfigMode to an explicit JSON null when marshaled, overriding any value previously set with SetTlsCipherConfigMode. Calling SetTlsCipherConfigMode again clears the null override.
+
 ### GetTransactionLifetimeLimitSeconds
 
 `func (o *ClusterDescriptionProcessArgs20240805) GetTransactionLifetimeLimitSeconds() int64`
@@ -424,6 +529,13 @@ SetTransactionLifetimeLimitSeconds sets TransactionLifetimeLimitSeconds field to
 `func (o *ClusterDescriptionProcessArgs20240805) HasTransactionLifetimeLimitSeconds() bool`
 
 HasTransactionLifetimeLimitSeconds returns a boolean if a field has been set.
+
+### SetTransactionLifetimeLimitSecondsNil
+
+`func (o *ClusterDescriptionProcessArgs20240805) SetTransactionLifetimeLimitSecondsNil()`
+
+SetTransactionLifetimeLimitSecondsNil sets TransactionLifetimeLimitSeconds to an explicit JSON null when marshaled, overriding any value previously set with SetTransactionLifetimeLimitSeconds. Calling SetTransactionLifetimeLimitSeconds again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

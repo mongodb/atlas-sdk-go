@@ -9,6 +9,15 @@ type DBUserTLSX509Settings struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DBUserTLSX509Settings) MarshalJSON() ([]byte, error) {
+	type noMethod DBUserTLSX509Settings
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDBUserTLSX509Settings instantiates a new DBUserTLSX509Settings object
@@ -59,6 +68,13 @@ func (o *DBUserTLSX509Settings) HasCas() bool {
 // SetCas gets a reference to the given string and assigns it to the Cas field.
 func (o *DBUserTLSX509Settings) SetCas(v string) {
 	o.Cas = &v
+	o.NullFields = removeNullField(o.NullFields, "Cas")
+}
+
+// SetCasNil sets Cas to an explicit JSON null when marshaled.
+func (o *DBUserTLSX509Settings) SetCasNil() {
+	o.Cas = nil
+	o.NullFields = addNullField(o.NullFields, "Cas")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -92,4 +108,11 @@ func (o *DBUserTLSX509Settings) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DBUserTLSX509Settings) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *DBUserTLSX509Settings) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }

@@ -78,6 +78,13 @@ SetDatadogApiKey sets DatadogApiKey field to given value.
 `func (o *AlertsNotificationRootForGroup) HasDatadogApiKey() bool`
 
 HasDatadogApiKey returns a boolean if a field has been set.
+
+### SetDatadogApiKeyNil
+
+`func (o *AlertsNotificationRootForGroup) SetDatadogApiKeyNil()`
+
+SetDatadogApiKeyNil sets DatadogApiKey to an explicit JSON null when marshaled, overriding any value previously set with SetDatadogApiKey. Calling SetDatadogApiKey again clears the null override.
+
 ### GetDatadogRegion
 
 `func (o *AlertsNotificationRootForGroup) GetDatadogRegion() string`
@@ -102,6 +109,13 @@ SetDatadogRegion sets DatadogRegion field to given value.
 `func (o *AlertsNotificationRootForGroup) HasDatadogRegion() bool`
 
 HasDatadogRegion returns a boolean if a field has been set.
+
+### SetDatadogRegionNil
+
+`func (o *AlertsNotificationRootForGroup) SetDatadogRegionNil()`
+
+SetDatadogRegionNil sets DatadogRegion to an explicit JSON null when marshaled, overriding any value previously set with SetDatadogRegion. Calling SetDatadogRegion again clears the null override.
+
 ### GetDelayMin
 
 `func (o *AlertsNotificationRootForGroup) GetDelayMin() int`
@@ -126,6 +140,13 @@ SetDelayMin sets DelayMin field to given value.
 `func (o *AlertsNotificationRootForGroup) HasDelayMin() bool`
 
 HasDelayMin returns a boolean if a field has been set.
+
+### SetDelayMinNil
+
+`func (o *AlertsNotificationRootForGroup) SetDelayMinNil()`
+
+SetDelayMinNil sets DelayMin to an explicit JSON null when marshaled, overriding any value previously set with SetDelayMin. Calling SetDelayMin again clears the null override.
+
 ### GetIntegrationId
 
 `func (o *AlertsNotificationRootForGroup) GetIntegrationId() string`
@@ -150,6 +171,13 @@ SetIntegrationId sets IntegrationId field to given value.
 `func (o *AlertsNotificationRootForGroup) HasIntegrationId() bool`
 
 HasIntegrationId returns a boolean if a field has been set.
+
+### SetIntegrationIdNil
+
+`func (o *AlertsNotificationRootForGroup) SetIntegrationIdNil()`
+
+SetIntegrationIdNil sets IntegrationId to an explicit JSON null when marshaled, overriding any value previously set with SetIntegrationId. Calling SetIntegrationId again clears the null override.
+
 ### GetIntervalMin
 
 `func (o *AlertsNotificationRootForGroup) GetIntervalMin() int`
@@ -174,6 +202,13 @@ SetIntervalMin sets IntervalMin field to given value.
 `func (o *AlertsNotificationRootForGroup) HasIntervalMin() bool`
 
 HasIntervalMin returns a boolean if a field has been set.
+
+### SetIntervalMinNil
+
+`func (o *AlertsNotificationRootForGroup) SetIntervalMinNil()`
+
+SetIntervalMinNil sets IntervalMin to an explicit JSON null when marshaled, overriding any value previously set with SetIntervalMin. Calling SetIntervalMin again clears the null override.
+
 ### GetNotifierId
 
 `func (o *AlertsNotificationRootForGroup) GetNotifierId() string`
@@ -198,6 +233,13 @@ SetNotifierId sets NotifierId field to given value.
 `func (o *AlertsNotificationRootForGroup) HasNotifierId() bool`
 
 HasNotifierId returns a boolean if a field has been set.
+
+### SetNotifierIdNil
+
+`func (o *AlertsNotificationRootForGroup) SetNotifierIdNil()`
+
+SetNotifierIdNil sets NotifierId to an explicit JSON null when marshaled, overriding any value previously set with SetNotifierId. Calling SetNotifierId again clears the null override.
+
 ### GetTypeName
 
 `func (o *AlertsNotificationRootForGroup) GetTypeName() string`
@@ -222,6 +264,13 @@ SetTypeName sets TypeName field to given value.
 `func (o *AlertsNotificationRootForGroup) HasTypeName() bool`
 
 HasTypeName returns a boolean if a field has been set.
+
+### SetTypeNameNil
+
+`func (o *AlertsNotificationRootForGroup) SetTypeNameNil()`
+
+SetTypeNameNil sets TypeName to an explicit JSON null when marshaled, overriding any value previously set with SetTypeName. Calling SetTypeName again clears the null override.
+
 ### GetEmailAddress
 
 `func (o *AlertsNotificationRootForGroup) GetEmailAddress() string`
@@ -246,6 +295,13 @@ SetEmailAddress sets EmailAddress field to given value.
 `func (o *AlertsNotificationRootForGroup) HasEmailAddress() bool`
 
 HasEmailAddress returns a boolean if a field has been set.
+
+### SetEmailAddressNil
+
+`func (o *AlertsNotificationRootForGroup) SetEmailAddressNil()`
+
+SetEmailAddressNil sets EmailAddress to an explicit JSON null when marshaled, overriding any value previously set with SetEmailAddress. Calling SetEmailAddress again clears the null override.
+
 ### GetEmailEnabled
 
 `func (o *AlertsNotificationRootForGroup) GetEmailEnabled() bool`
@@ -270,6 +326,13 @@ SetEmailEnabled sets EmailEnabled field to given value.
 `func (o *AlertsNotificationRootForGroup) HasEmailEnabled() bool`
 
 HasEmailEnabled returns a boolean if a field has been set.
+
+### SetEmailEnabledNil
+
+`func (o *AlertsNotificationRootForGroup) SetEmailEnabledNil()`
+
+SetEmailEnabledNil sets EmailEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetEmailEnabled. Calling SetEmailEnabled again clears the null override.
+
 ### GetRoles
 
 `func (o *AlertsNotificationRootForGroup) GetRoles() []string`
@@ -294,6 +357,13 @@ SetRoles sets Roles field to given value.
 `func (o *AlertsNotificationRootForGroup) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
+
+### SetRolesNil
+
+`func (o *AlertsNotificationRootForGroup) SetRolesNil()`
+
+SetRolesNil sets Roles to an explicit JSON null when marshaled, overriding any value previously set with SetRoles. Calling SetRoles again clears the null override.
+
 ### GetSmsEnabled
 
 `func (o *AlertsNotificationRootForGroup) GetSmsEnabled() bool`
@@ -318,6 +388,13 @@ SetSmsEnabled sets SmsEnabled field to given value.
 `func (o *AlertsNotificationRootForGroup) HasSmsEnabled() bool`
 
 HasSmsEnabled returns a boolean if a field has been set.
+
+### SetSmsEnabledNil
+
+`func (o *AlertsNotificationRootForGroup) SetSmsEnabledNil()`
+
+SetSmsEnabledNil sets SmsEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetSmsEnabled. Calling SetSmsEnabled again clears the null override.
+
 ### GetNotificationToken
 
 `func (o *AlertsNotificationRootForGroup) GetNotificationToken() string`
@@ -342,6 +419,13 @@ SetNotificationToken sets NotificationToken field to given value.
 `func (o *AlertsNotificationRootForGroup) HasNotificationToken() bool`
 
 HasNotificationToken returns a boolean if a field has been set.
+
+### SetNotificationTokenNil
+
+`func (o *AlertsNotificationRootForGroup) SetNotificationTokenNil()`
+
+SetNotificationTokenNil sets NotificationToken to an explicit JSON null when marshaled, overriding any value previously set with SetNotificationToken. Calling SetNotificationToken again clears the null override.
+
 ### GetRoomName
 
 `func (o *AlertsNotificationRootForGroup) GetRoomName() string`
@@ -366,6 +450,13 @@ SetRoomName sets RoomName field to given value.
 `func (o *AlertsNotificationRootForGroup) HasRoomName() bool`
 
 HasRoomName returns a boolean if a field has been set.
+
+### SetRoomNameNil
+
+`func (o *AlertsNotificationRootForGroup) SetRoomNameNil()`
+
+SetRoomNameNil sets RoomName to an explicit JSON null when marshaled, overriding any value previously set with SetRoomName. Calling SetRoomName again clears the null override.
+
 ### GetMicrosoftTeamsWebhookUrl
 
 `func (o *AlertsNotificationRootForGroup) GetMicrosoftTeamsWebhookUrl() string`
@@ -390,6 +481,13 @@ SetMicrosoftTeamsWebhookUrl sets MicrosoftTeamsWebhookUrl field to given value.
 `func (o *AlertsNotificationRootForGroup) HasMicrosoftTeamsWebhookUrl() bool`
 
 HasMicrosoftTeamsWebhookUrl returns a boolean if a field has been set.
+
+### SetMicrosoftTeamsWebhookUrlNil
+
+`func (o *AlertsNotificationRootForGroup) SetMicrosoftTeamsWebhookUrlNil()`
+
+SetMicrosoftTeamsWebhookUrlNil sets MicrosoftTeamsWebhookUrl to an explicit JSON null when marshaled, overriding any value previously set with SetMicrosoftTeamsWebhookUrl. Calling SetMicrosoftTeamsWebhookUrl again clears the null override.
+
 ### GetOpsGenieApiKey
 
 `func (o *AlertsNotificationRootForGroup) GetOpsGenieApiKey() string`
@@ -414,6 +512,13 @@ SetOpsGenieApiKey sets OpsGenieApiKey field to given value.
 `func (o *AlertsNotificationRootForGroup) HasOpsGenieApiKey() bool`
 
 HasOpsGenieApiKey returns a boolean if a field has been set.
+
+### SetOpsGenieApiKeyNil
+
+`func (o *AlertsNotificationRootForGroup) SetOpsGenieApiKeyNil()`
+
+SetOpsGenieApiKeyNil sets OpsGenieApiKey to an explicit JSON null when marshaled, overriding any value previously set with SetOpsGenieApiKey. Calling SetOpsGenieApiKey again clears the null override.
+
 ### GetOpsGenieRegion
 
 `func (o *AlertsNotificationRootForGroup) GetOpsGenieRegion() string`
@@ -438,6 +543,13 @@ SetOpsGenieRegion sets OpsGenieRegion field to given value.
 `func (o *AlertsNotificationRootForGroup) HasOpsGenieRegion() bool`
 
 HasOpsGenieRegion returns a boolean if a field has been set.
+
+### SetOpsGenieRegionNil
+
+`func (o *AlertsNotificationRootForGroup) SetOpsGenieRegionNil()`
+
+SetOpsGenieRegionNil sets OpsGenieRegion to an explicit JSON null when marshaled, overriding any value previously set with SetOpsGenieRegion. Calling SetOpsGenieRegion again clears the null override.
+
 ### GetRegion
 
 `func (o *AlertsNotificationRootForGroup) GetRegion() string`
@@ -462,6 +574,13 @@ SetRegion sets Region field to given value.
 `func (o *AlertsNotificationRootForGroup) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *AlertsNotificationRootForGroup) SetRegionNil()`
+
+SetRegionNil sets Region to an explicit JSON null when marshaled, overriding any value previously set with SetRegion. Calling SetRegion again clears the null override.
+
 ### GetServiceKey
 
 `func (o *AlertsNotificationRootForGroup) GetServiceKey() string`
@@ -486,6 +605,13 @@ SetServiceKey sets ServiceKey field to given value.
 `func (o *AlertsNotificationRootForGroup) HasServiceKey() bool`
 
 HasServiceKey returns a boolean if a field has been set.
+
+### SetServiceKeyNil
+
+`func (o *AlertsNotificationRootForGroup) SetServiceKeyNil()`
+
+SetServiceKeyNil sets ServiceKey to an explicit JSON null when marshaled, overriding any value previously set with SetServiceKey. Calling SetServiceKey again clears the null override.
+
 ### GetApiToken
 
 `func (o *AlertsNotificationRootForGroup) GetApiToken() string`
@@ -510,6 +636,13 @@ SetApiToken sets ApiToken field to given value.
 `func (o *AlertsNotificationRootForGroup) HasApiToken() bool`
 
 HasApiToken returns a boolean if a field has been set.
+
+### SetApiTokenNil
+
+`func (o *AlertsNotificationRootForGroup) SetApiTokenNil()`
+
+SetApiTokenNil sets ApiToken to an explicit JSON null when marshaled, overriding any value previously set with SetApiToken. Calling SetApiToken again clears the null override.
+
 ### GetChannelName
 
 `func (o *AlertsNotificationRootForGroup) GetChannelName() string`
@@ -534,6 +667,13 @@ SetChannelName sets ChannelName field to given value.
 `func (o *AlertsNotificationRootForGroup) HasChannelName() bool`
 
 HasChannelName returns a boolean if a field has been set.
+
+### SetChannelNameNil
+
+`func (o *AlertsNotificationRootForGroup) SetChannelNameNil()`
+
+SetChannelNameNil sets ChannelName to an explicit JSON null when marshaled, overriding any value previously set with SetChannelName. Calling SetChannelName again clears the null override.
+
 ### GetMobileNumber
 
 `func (o *AlertsNotificationRootForGroup) GetMobileNumber() string`
@@ -558,6 +698,13 @@ SetMobileNumber sets MobileNumber field to given value.
 `func (o *AlertsNotificationRootForGroup) HasMobileNumber() bool`
 
 HasMobileNumber returns a boolean if a field has been set.
+
+### SetMobileNumberNil
+
+`func (o *AlertsNotificationRootForGroup) SetMobileNumberNil()`
+
+SetMobileNumberNil sets MobileNumber to an explicit JSON null when marshaled, overriding any value previously set with SetMobileNumber. Calling SetMobileNumber again clears the null override.
+
 ### GetTeamId
 
 `func (o *AlertsNotificationRootForGroup) GetTeamId() string`
@@ -582,6 +729,13 @@ SetTeamId sets TeamId field to given value.
 `func (o *AlertsNotificationRootForGroup) HasTeamId() bool`
 
 HasTeamId returns a boolean if a field has been set.
+
+### SetTeamIdNil
+
+`func (o *AlertsNotificationRootForGroup) SetTeamIdNil()`
+
+SetTeamIdNil sets TeamId to an explicit JSON null when marshaled, overriding any value previously set with SetTeamId. Calling SetTeamId again clears the null override.
+
 ### GetTeamName
 
 `func (o *AlertsNotificationRootForGroup) GetTeamName() string`
@@ -606,6 +760,13 @@ SetTeamName sets TeamName field to given value.
 `func (o *AlertsNotificationRootForGroup) HasTeamName() bool`
 
 HasTeamName returns a boolean if a field has been set.
+
+### SetTeamNameNil
+
+`func (o *AlertsNotificationRootForGroup) SetTeamNameNil()`
+
+SetTeamNameNil sets TeamName to an explicit JSON null when marshaled, overriding any value previously set with SetTeamName. Calling SetTeamName again clears the null override.
+
 ### GetUsername
 
 `func (o *AlertsNotificationRootForGroup) GetUsername() string`
@@ -630,6 +791,13 @@ SetUsername sets Username field to given value.
 `func (o *AlertsNotificationRootForGroup) HasUsername() bool`
 
 HasUsername returns a boolean if a field has been set.
+
+### SetUsernameNil
+
+`func (o *AlertsNotificationRootForGroup) SetUsernameNil()`
+
+SetUsernameNil sets Username to an explicit JSON null when marshaled, overriding any value previously set with SetUsername. Calling SetUsername again clears the null override.
+
 ### GetVictorOpsApiKey
 
 `func (o *AlertsNotificationRootForGroup) GetVictorOpsApiKey() string`
@@ -654,6 +822,13 @@ SetVictorOpsApiKey sets VictorOpsApiKey field to given value.
 `func (o *AlertsNotificationRootForGroup) HasVictorOpsApiKey() bool`
 
 HasVictorOpsApiKey returns a boolean if a field has been set.
+
+### SetVictorOpsApiKeyNil
+
+`func (o *AlertsNotificationRootForGroup) SetVictorOpsApiKeyNil()`
+
+SetVictorOpsApiKeyNil sets VictorOpsApiKey to an explicit JSON null when marshaled, overriding any value previously set with SetVictorOpsApiKey. Calling SetVictorOpsApiKey again clears the null override.
+
 ### GetVictorOpsRoutingKey
 
 `func (o *AlertsNotificationRootForGroup) GetVictorOpsRoutingKey() string`
@@ -678,6 +853,13 @@ SetVictorOpsRoutingKey sets VictorOpsRoutingKey field to given value.
 `func (o *AlertsNotificationRootForGroup) HasVictorOpsRoutingKey() bool`
 
 HasVictorOpsRoutingKey returns a boolean if a field has been set.
+
+### SetVictorOpsRoutingKeyNil
+
+`func (o *AlertsNotificationRootForGroup) SetVictorOpsRoutingKeyNil()`
+
+SetVictorOpsRoutingKeyNil sets VictorOpsRoutingKey to an explicit JSON null when marshaled, overriding any value previously set with SetVictorOpsRoutingKey. Calling SetVictorOpsRoutingKey again clears the null override.
+
 ### GetWebhookBodyTemplate
 
 `func (o *AlertsNotificationRootForGroup) GetWebhookBodyTemplate() string`
@@ -702,6 +884,13 @@ SetWebhookBodyTemplate sets WebhookBodyTemplate field to given value.
 `func (o *AlertsNotificationRootForGroup) HasWebhookBodyTemplate() bool`
 
 HasWebhookBodyTemplate returns a boolean if a field has been set.
+
+### SetWebhookBodyTemplateNil
+
+`func (o *AlertsNotificationRootForGroup) SetWebhookBodyTemplateNil()`
+
+SetWebhookBodyTemplateNil sets WebhookBodyTemplate to an explicit JSON null when marshaled, overriding any value previously set with SetWebhookBodyTemplate. Calling SetWebhookBodyTemplate again clears the null override.
+
 ### GetWebhookHeadersTemplate
 
 `func (o *AlertsNotificationRootForGroup) GetWebhookHeadersTemplate() string`
@@ -726,6 +915,13 @@ SetWebhookHeadersTemplate sets WebhookHeadersTemplate field to given value.
 `func (o *AlertsNotificationRootForGroup) HasWebhookHeadersTemplate() bool`
 
 HasWebhookHeadersTemplate returns a boolean if a field has been set.
+
+### SetWebhookHeadersTemplateNil
+
+`func (o *AlertsNotificationRootForGroup) SetWebhookHeadersTemplateNil()`
+
+SetWebhookHeadersTemplateNil sets WebhookHeadersTemplate to an explicit JSON null when marshaled, overriding any value previously set with SetWebhookHeadersTemplate. Calling SetWebhookHeadersTemplate again clears the null override.
+
 ### GetWebhookSecret
 
 `func (o *AlertsNotificationRootForGroup) GetWebhookSecret() string`
@@ -750,6 +946,13 @@ SetWebhookSecret sets WebhookSecret field to given value.
 `func (o *AlertsNotificationRootForGroup) HasWebhookSecret() bool`
 
 HasWebhookSecret returns a boolean if a field has been set.
+
+### SetWebhookSecretNil
+
+`func (o *AlertsNotificationRootForGroup) SetWebhookSecretNil()`
+
+SetWebhookSecretNil sets WebhookSecret to an explicit JSON null when marshaled, overriding any value previously set with SetWebhookSecret. Calling SetWebhookSecret again clears the null override.
+
 ### GetWebhookUrl
 
 `func (o *AlertsNotificationRootForGroup) GetWebhookUrl() string`
@@ -774,6 +977,13 @@ SetWebhookUrl sets WebhookUrl field to given value.
 `func (o *AlertsNotificationRootForGroup) HasWebhookUrl() bool`
 
 HasWebhookUrl returns a boolean if a field has been set.
+
+### SetWebhookUrlNil
+
+`func (o *AlertsNotificationRootForGroup) SetWebhookUrlNil()`
+
+SetWebhookUrlNil sets WebhookUrl to an explicit JSON null when marshaled, overriding any value previously set with SetWebhookUrl. Calling SetWebhookUrl again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

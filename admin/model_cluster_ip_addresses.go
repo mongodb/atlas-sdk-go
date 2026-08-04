@@ -19,6 +19,15 @@ type ClusterIPAddresses struct {
 	// List of outbound IP addresses associated with the cluster. If your network allows inbound HTTP requests only from specific IP addresses, you must allow access from the following IP addresses so that your Atlas cluster can communicate with your webhooks and KMS.
 	// Read only field.
 	Outbound *[]string `json:"outbound,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ClusterIPAddresses) MarshalJSON() ([]byte, error) {
+	type noMethod ClusterIPAddresses
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterIPAddresses instantiates a new ClusterIPAddresses object
@@ -69,6 +78,13 @@ func (o *ClusterIPAddresses) HasClusterName() bool {
 // SetClusterName gets a reference to the given string and assigns it to the ClusterName field.
 func (o *ClusterIPAddresses) SetClusterName(v string) {
 	o.ClusterName = &v
+	o.NullFields = removeNullField(o.NullFields, "ClusterName")
+}
+
+// SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled.
+func (o *ClusterIPAddresses) SetClusterNameNil() {
+	o.ClusterName = nil
+	o.NullFields = addNullField(o.NullFields, "ClusterName")
 }
 
 // GetFutureInbound returns the FutureInbound field value if set, zero value otherwise
@@ -102,6 +118,13 @@ func (o *ClusterIPAddresses) HasFutureInbound() bool {
 // SetFutureInbound gets a reference to the given []string and assigns it to the FutureInbound field.
 func (o *ClusterIPAddresses) SetFutureInbound(v []string) {
 	o.FutureInbound = &v
+	o.NullFields = removeNullField(o.NullFields, "FutureInbound")
+}
+
+// SetFutureInboundNil sets FutureInbound to an explicit JSON null when marshaled.
+func (o *ClusterIPAddresses) SetFutureInboundNil() {
+	o.FutureInbound = nil
+	o.NullFields = addNullField(o.NullFields, "FutureInbound")
 }
 
 // GetFutureOutbound returns the FutureOutbound field value if set, zero value otherwise
@@ -135,6 +158,13 @@ func (o *ClusterIPAddresses) HasFutureOutbound() bool {
 // SetFutureOutbound gets a reference to the given []string and assigns it to the FutureOutbound field.
 func (o *ClusterIPAddresses) SetFutureOutbound(v []string) {
 	o.FutureOutbound = &v
+	o.NullFields = removeNullField(o.NullFields, "FutureOutbound")
+}
+
+// SetFutureOutboundNil sets FutureOutbound to an explicit JSON null when marshaled.
+func (o *ClusterIPAddresses) SetFutureOutboundNil() {
+	o.FutureOutbound = nil
+	o.NullFields = addNullField(o.NullFields, "FutureOutbound")
 }
 
 // GetInbound returns the Inbound field value if set, zero value otherwise
@@ -168,6 +198,13 @@ func (o *ClusterIPAddresses) HasInbound() bool {
 // SetInbound gets a reference to the given []string and assigns it to the Inbound field.
 func (o *ClusterIPAddresses) SetInbound(v []string) {
 	o.Inbound = &v
+	o.NullFields = removeNullField(o.NullFields, "Inbound")
+}
+
+// SetInboundNil sets Inbound to an explicit JSON null when marshaled.
+func (o *ClusterIPAddresses) SetInboundNil() {
+	o.Inbound = nil
+	o.NullFields = addNullField(o.NullFields, "Inbound")
 }
 
 // GetOutbound returns the Outbound field value if set, zero value otherwise
@@ -201,4 +238,11 @@ func (o *ClusterIPAddresses) HasOutbound() bool {
 // SetOutbound gets a reference to the given []string and assigns it to the Outbound field.
 func (o *ClusterIPAddresses) SetOutbound(v []string) {
 	o.Outbound = &v
+	o.NullFields = removeNullField(o.NullFields, "Outbound")
+}
+
+// SetOutboundNil sets Outbound to an explicit JSON null when marshaled.
+func (o *ClusterIPAddresses) SetOutboundNil() {
+	o.Outbound = nil
+	o.NullFields = addNullField(o.NullFields, "Outbound")
 }

@@ -57,6 +57,13 @@ SetAlternate sets Alternate field to given value.
 `func (o *Collation) HasAlternate() bool`
 
 HasAlternate returns a boolean if a field has been set.
+
+### SetAlternateNil
+
+`func (o *Collation) SetAlternateNil()`
+
+SetAlternateNil sets Alternate to an explicit JSON null when marshaled, overriding any value previously set with SetAlternate. Calling SetAlternate again clears the null override.
+
 ### GetBackwards
 
 `func (o *Collation) GetBackwards() bool`
@@ -81,6 +88,13 @@ SetBackwards sets Backwards field to given value.
 `func (o *Collation) HasBackwards() bool`
 
 HasBackwards returns a boolean if a field has been set.
+
+### SetBackwardsNil
+
+`func (o *Collation) SetBackwardsNil()`
+
+SetBackwardsNil sets Backwards to an explicit JSON null when marshaled, overriding any value previously set with SetBackwards. Calling SetBackwards again clears the null override.
+
 ### GetCaseFirst
 
 `func (o *Collation) GetCaseFirst() string`
@@ -105,6 +119,13 @@ SetCaseFirst sets CaseFirst field to given value.
 `func (o *Collation) HasCaseFirst() bool`
 
 HasCaseFirst returns a boolean if a field has been set.
+
+### SetCaseFirstNil
+
+`func (o *Collation) SetCaseFirstNil()`
+
+SetCaseFirstNil sets CaseFirst to an explicit JSON null when marshaled, overriding any value previously set with SetCaseFirst. Calling SetCaseFirst again clears the null override.
+
 ### GetCaseLevel
 
 `func (o *Collation) GetCaseLevel() bool`
@@ -129,6 +150,13 @@ SetCaseLevel sets CaseLevel field to given value.
 `func (o *Collation) HasCaseLevel() bool`
 
 HasCaseLevel returns a boolean if a field has been set.
+
+### SetCaseLevelNil
+
+`func (o *Collation) SetCaseLevelNil()`
+
+SetCaseLevelNil sets CaseLevel to an explicit JSON null when marshaled, overriding any value previously set with SetCaseLevel. Calling SetCaseLevel again clears the null override.
+
 ### GetLocale
 
 `func (o *Collation) GetLocale() string`
@@ -172,6 +200,13 @@ SetMaxVariable sets MaxVariable field to given value.
 `func (o *Collation) HasMaxVariable() bool`
 
 HasMaxVariable returns a boolean if a field has been set.
+
+### SetMaxVariableNil
+
+`func (o *Collation) SetMaxVariableNil()`
+
+SetMaxVariableNil sets MaxVariable to an explicit JSON null when marshaled, overriding any value previously set with SetMaxVariable. Calling SetMaxVariable again clears the null override.
+
 ### GetNormalization
 
 `func (o *Collation) GetNormalization() bool`
@@ -196,6 +231,13 @@ SetNormalization sets Normalization field to given value.
 `func (o *Collation) HasNormalization() bool`
 
 HasNormalization returns a boolean if a field has been set.
+
+### SetNormalizationNil
+
+`func (o *Collation) SetNormalizationNil()`
+
+SetNormalizationNil sets Normalization to an explicit JSON null when marshaled, overriding any value previously set with SetNormalization. Calling SetNormalization again clears the null override.
+
 ### GetNumericOrdering
 
 `func (o *Collation) GetNumericOrdering() bool`
@@ -220,6 +262,13 @@ SetNumericOrdering sets NumericOrdering field to given value.
 `func (o *Collation) HasNumericOrdering() bool`
 
 HasNumericOrdering returns a boolean if a field has been set.
+
+### SetNumericOrderingNil
+
+`func (o *Collation) SetNumericOrderingNil()`
+
+SetNumericOrderingNil sets NumericOrdering to an explicit JSON null when marshaled, overriding any value previously set with SetNumericOrdering. Calling SetNumericOrdering again clears the null override.
+
 ### GetStrength
 
 `func (o *Collation) GetStrength() int`
@@ -244,6 +293,13 @@ SetStrength sets Strength field to given value.
 `func (o *Collation) HasStrength() bool`
 
 HasStrength returns a boolean if a field has been set.
+
+### SetStrengthNil
+
+`func (o *Collation) SetStrengthNil()`
+
+SetStrengthNil sets Strength to an explicit JSON null when marshaled, overriding any value previously set with SetStrength. Calling SetStrength again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -55,6 +55,13 @@ SetAwsSecurityGroup sets AwsSecurityGroup field to given value.
 `func (o *NetworkPermissionEntry) HasAwsSecurityGroup() bool`
 
 HasAwsSecurityGroup returns a boolean if a field has been set.
+
+### SetAwsSecurityGroupNil
+
+`func (o *NetworkPermissionEntry) SetAwsSecurityGroupNil()`
+
+SetAwsSecurityGroupNil sets AwsSecurityGroup to an explicit JSON null when marshaled, overriding any value previously set with SetAwsSecurityGroup. Calling SetAwsSecurityGroup again clears the null override.
+
 ### GetCidrBlock
 
 `func (o *NetworkPermissionEntry) GetCidrBlock() string`
@@ -79,6 +86,13 @@ SetCidrBlock sets CidrBlock field to given value.
 `func (o *NetworkPermissionEntry) HasCidrBlock() bool`
 
 HasCidrBlock returns a boolean if a field has been set.
+
+### SetCidrBlockNil
+
+`func (o *NetworkPermissionEntry) SetCidrBlockNil()`
+
+SetCidrBlockNil sets CidrBlock to an explicit JSON null when marshaled, overriding any value previously set with SetCidrBlock. Calling SetCidrBlock again clears the null override.
+
 ### GetComment
 
 `func (o *NetworkPermissionEntry) GetComment() string`
@@ -103,6 +117,13 @@ SetComment sets Comment field to given value.
 `func (o *NetworkPermissionEntry) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### SetCommentNil
+
+`func (o *NetworkPermissionEntry) SetCommentNil()`
+
+SetCommentNil sets Comment to an explicit JSON null when marshaled, overriding any value previously set with SetComment. Calling SetComment again clears the null override.
+
 ### GetDeleteAfterDate
 
 `func (o *NetworkPermissionEntry) GetDeleteAfterDate() time.Time`
@@ -127,6 +148,13 @@ SetDeleteAfterDate sets DeleteAfterDate field to given value.
 `func (o *NetworkPermissionEntry) HasDeleteAfterDate() bool`
 
 HasDeleteAfterDate returns a boolean if a field has been set.
+
+### SetDeleteAfterDateNil
+
+`func (o *NetworkPermissionEntry) SetDeleteAfterDateNil()`
+
+SetDeleteAfterDateNil sets DeleteAfterDate to an explicit JSON null when marshaled, overriding any value previously set with SetDeleteAfterDate. Calling SetDeleteAfterDate again clears the null override.
+
 ### GetGroupId
 
 `func (o *NetworkPermissionEntry) GetGroupId() string`
@@ -151,6 +179,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *NetworkPermissionEntry) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *NetworkPermissionEntry) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetIpAddress
 
 `func (o *NetworkPermissionEntry) GetIpAddress() string`
@@ -175,6 +210,13 @@ SetIpAddress sets IpAddress field to given value.
 `func (o *NetworkPermissionEntry) HasIpAddress() bool`
 
 HasIpAddress returns a boolean if a field has been set.
+
+### SetIpAddressNil
+
+`func (o *NetworkPermissionEntry) SetIpAddressNil()`
+
+SetIpAddressNil sets IpAddress to an explicit JSON null when marshaled, overriding any value previously set with SetIpAddress. Calling SetIpAddress again clears the null override.
+
 ### GetLinks
 
 `func (o *NetworkPermissionEntry) GetLinks() []Link`
@@ -199,6 +241,13 @@ SetLinks sets Links field to given value.
 `func (o *NetworkPermissionEntry) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *NetworkPermissionEntry) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

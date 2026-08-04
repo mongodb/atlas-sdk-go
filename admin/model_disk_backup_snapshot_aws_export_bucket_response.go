@@ -20,6 +20,15 @@ type DiskBackupSnapshotAWSExportBucketResponse struct {
 	Region *string `json:"region,omitempty"`
 	// Indicates whether to use private link. User supplied.
 	RequirePrivateNetworking *bool `json:"requirePrivateNetworking,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DiskBackupSnapshotAWSExportBucketResponse) MarshalJSON() ([]byte, error) {
+	type noMethod DiskBackupSnapshotAWSExportBucketResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupSnapshotAWSExportBucketResponse instantiates a new DiskBackupSnapshotAWSExportBucketResponse object
@@ -170,6 +179,13 @@ func (o *DiskBackupSnapshotAWSExportBucketResponse) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupSnapshotAWSExportBucketResponse) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotAWSExportBucketResponse) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetRegion returns the Region field value if set, zero value otherwise
@@ -203,6 +219,13 @@ func (o *DiskBackupSnapshotAWSExportBucketResponse) HasRegion() bool {
 // SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *DiskBackupSnapshotAWSExportBucketResponse) SetRegion(v string) {
 	o.Region = &v
+	o.NullFields = removeNullField(o.NullFields, "Region")
+}
+
+// SetRegionNil sets Region to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotAWSExportBucketResponse) SetRegionNil() {
+	o.Region = nil
+	o.NullFields = addNullField(o.NullFields, "Region")
 }
 
 // GetRequirePrivateNetworking returns the RequirePrivateNetworking field value if set, zero value otherwise
@@ -236,4 +259,11 @@ func (o *DiskBackupSnapshotAWSExportBucketResponse) HasRequirePrivateNetworking(
 // SetRequirePrivateNetworking gets a reference to the given bool and assigns it to the RequirePrivateNetworking field.
 func (o *DiskBackupSnapshotAWSExportBucketResponse) SetRequirePrivateNetworking(v bool) {
 	o.RequirePrivateNetworking = &v
+	o.NullFields = removeNullField(o.NullFields, "RequirePrivateNetworking")
+}
+
+// SetRequirePrivateNetworkingNil sets RequirePrivateNetworking to an explicit JSON null when marshaled.
+func (o *DiskBackupSnapshotAWSExportBucketResponse) SetRequirePrivateNetworkingNil() {
+	o.RequirePrivateNetworking = nil
+	o.NullFields = addNullField(o.NullFields, "RequirePrivateNetworking")
 }

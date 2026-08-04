@@ -51,6 +51,13 @@ SetContent sets Content field to given value.
 `func (o *X509CertificateUpdate) HasContent() bool`
 
 HasContent returns a boolean if a field has been set.
+
+### SetContentNil
+
+`func (o *X509CertificateUpdate) SetContentNil()`
+
+SetContentNil sets Content to an explicit JSON null when marshaled, overriding any value previously set with SetContent. Calling SetContent again clears the null override.
+
 ### GetNotAfter
 
 `func (o *X509CertificateUpdate) GetNotAfter() time.Time`
@@ -75,6 +82,13 @@ SetNotAfter sets NotAfter field to given value.
 `func (o *X509CertificateUpdate) HasNotAfter() bool`
 
 HasNotAfter returns a boolean if a field has been set.
+
+### SetNotAfterNil
+
+`func (o *X509CertificateUpdate) SetNotAfterNil()`
+
+SetNotAfterNil sets NotAfter to an explicit JSON null when marshaled, overriding any value previously set with SetNotAfter. Calling SetNotAfter again clears the null override.
+
 ### GetNotBefore
 
 `func (o *X509CertificateUpdate) GetNotBefore() time.Time`
@@ -99,6 +113,13 @@ SetNotBefore sets NotBefore field to given value.
 `func (o *X509CertificateUpdate) HasNotBefore() bool`
 
 HasNotBefore returns a boolean if a field has been set.
+
+### SetNotBeforeNil
+
+`func (o *X509CertificateUpdate) SetNotBeforeNil()`
+
+SetNotBeforeNil sets NotBefore to an explicit JSON null when marshaled, overriding any value previously set with SetNotBefore. Calling SetNotBefore again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

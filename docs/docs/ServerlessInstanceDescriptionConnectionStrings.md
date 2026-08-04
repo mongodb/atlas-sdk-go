@@ -50,6 +50,13 @@ SetPrivateEndpoint sets PrivateEndpoint field to given value.
 `func (o *ServerlessInstanceDescriptionConnectionStrings) HasPrivateEndpoint() bool`
 
 HasPrivateEndpoint returns a boolean if a field has been set.
+
+### SetPrivateEndpointNil
+
+`func (o *ServerlessInstanceDescriptionConnectionStrings) SetPrivateEndpointNil()`
+
+SetPrivateEndpointNil sets PrivateEndpoint to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateEndpoint. Calling SetPrivateEndpoint again clears the null override.
+
 ### GetStandardSrv
 
 `func (o *ServerlessInstanceDescriptionConnectionStrings) GetStandardSrv() string`
@@ -74,6 +81,13 @@ SetStandardSrv sets StandardSrv field to given value.
 `func (o *ServerlessInstanceDescriptionConnectionStrings) HasStandardSrv() bool`
 
 HasStandardSrv returns a boolean if a field has been set.
+
+### SetStandardSrvNil
+
+`func (o *ServerlessInstanceDescriptionConnectionStrings) SetStandardSrvNil()`
+
+SetStandardSrvNil sets StandardSrv to an explicit JSON null when marshaled, overriding any value previously set with SetStandardSrv. Calling SetStandardSrv again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

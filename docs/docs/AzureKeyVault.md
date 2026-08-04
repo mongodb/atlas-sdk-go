@@ -60,6 +60,13 @@ SetAzureEnvironment sets AzureEnvironment field to given value.
 `func (o *AzureKeyVault) HasAzureEnvironment() bool`
 
 HasAzureEnvironment returns a boolean if a field has been set.
+
+### SetAzureEnvironmentNil
+
+`func (o *AzureKeyVault) SetAzureEnvironmentNil()`
+
+SetAzureEnvironmentNil sets AzureEnvironment to an explicit JSON null when marshaled, overriding any value previously set with SetAzureEnvironment. Calling SetAzureEnvironment again clears the null override.
+
 ### GetClientID
 
 `func (o *AzureKeyVault) GetClientID() string`
@@ -84,6 +91,13 @@ SetClientID sets ClientID field to given value.
 `func (o *AzureKeyVault) HasClientID() bool`
 
 HasClientID returns a boolean if a field has been set.
+
+### SetClientIDNil
+
+`func (o *AzureKeyVault) SetClientIDNil()`
+
+SetClientIDNil sets ClientID to an explicit JSON null when marshaled, overriding any value previously set with SetClientID. Calling SetClientID again clears the null override.
+
 ### GetEnabled
 
 `func (o *AzureKeyVault) GetEnabled() bool`
@@ -108,6 +122,13 @@ SetEnabled sets Enabled field to given value.
 `func (o *AzureKeyVault) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
+
+### SetEnabledNil
+
+`func (o *AzureKeyVault) SetEnabledNil()`
+
+SetEnabledNil sets Enabled to an explicit JSON null when marshaled, overriding any value previously set with SetEnabled. Calling SetEnabled again clears the null override.
+
 ### GetKeyIdentifier
 
 `func (o *AzureKeyVault) GetKeyIdentifier() string`
@@ -132,6 +153,13 @@ SetKeyIdentifier sets KeyIdentifier field to given value.
 `func (o *AzureKeyVault) HasKeyIdentifier() bool`
 
 HasKeyIdentifier returns a boolean if a field has been set.
+
+### SetKeyIdentifierNil
+
+`func (o *AzureKeyVault) SetKeyIdentifierNil()`
+
+SetKeyIdentifierNil sets KeyIdentifier to an explicit JSON null when marshaled, overriding any value previously set with SetKeyIdentifier. Calling SetKeyIdentifier again clears the null override.
+
 ### GetKeyVaultName
 
 `func (o *AzureKeyVault) GetKeyVaultName() string`
@@ -156,6 +184,13 @@ SetKeyVaultName sets KeyVaultName field to given value.
 `func (o *AzureKeyVault) HasKeyVaultName() bool`
 
 HasKeyVaultName returns a boolean if a field has been set.
+
+### SetKeyVaultNameNil
+
+`func (o *AzureKeyVault) SetKeyVaultNameNil()`
+
+SetKeyVaultNameNil sets KeyVaultName to an explicit JSON null when marshaled, overriding any value previously set with SetKeyVaultName. Calling SetKeyVaultName again clears the null override.
+
 ### GetRequirePrivateNetworking
 
 `func (o *AzureKeyVault) GetRequirePrivateNetworking() bool`
@@ -180,6 +215,13 @@ SetRequirePrivateNetworking sets RequirePrivateNetworking field to given value.
 `func (o *AzureKeyVault) HasRequirePrivateNetworking() bool`
 
 HasRequirePrivateNetworking returns a boolean if a field has been set.
+
+### SetRequirePrivateNetworkingNil
+
+`func (o *AzureKeyVault) SetRequirePrivateNetworkingNil()`
+
+SetRequirePrivateNetworkingNil sets RequirePrivateNetworking to an explicit JSON null when marshaled, overriding any value previously set with SetRequirePrivateNetworking. Calling SetRequirePrivateNetworking again clears the null override.
+
 ### GetResourceGroupName
 
 `func (o *AzureKeyVault) GetResourceGroupName() string`
@@ -204,6 +246,13 @@ SetResourceGroupName sets ResourceGroupName field to given value.
 `func (o *AzureKeyVault) HasResourceGroupName() bool`
 
 HasResourceGroupName returns a boolean if a field has been set.
+
+### SetResourceGroupNameNil
+
+`func (o *AzureKeyVault) SetResourceGroupNameNil()`
+
+SetResourceGroupNameNil sets ResourceGroupName to an explicit JSON null when marshaled, overriding any value previously set with SetResourceGroupName. Calling SetResourceGroupName again clears the null override.
+
 ### GetRoleId
 
 `func (o *AzureKeyVault) GetRoleId() string`
@@ -228,6 +277,13 @@ SetRoleId sets RoleId field to given value.
 `func (o *AzureKeyVault) HasRoleId() bool`
 
 HasRoleId returns a boolean if a field has been set.
+
+### SetRoleIdNil
+
+`func (o *AzureKeyVault) SetRoleIdNil()`
+
+SetRoleIdNil sets RoleId to an explicit JSON null when marshaled, overriding any value previously set with SetRoleId. Calling SetRoleId again clears the null override.
+
 ### GetSecret
 
 `func (o *AzureKeyVault) GetSecret() string`
@@ -252,6 +308,13 @@ SetSecret sets Secret field to given value.
 `func (o *AzureKeyVault) HasSecret() bool`
 
 HasSecret returns a boolean if a field has been set.
+
+### SetSecretNil
+
+`func (o *AzureKeyVault) SetSecretNil()`
+
+SetSecretNil sets Secret to an explicit JSON null when marshaled, overriding any value previously set with SetSecret. Calling SetSecret again clears the null override.
+
 ### GetSubscriptionID
 
 `func (o *AzureKeyVault) GetSubscriptionID() string`
@@ -276,6 +339,13 @@ SetSubscriptionID sets SubscriptionID field to given value.
 `func (o *AzureKeyVault) HasSubscriptionID() bool`
 
 HasSubscriptionID returns a boolean if a field has been set.
+
+### SetSubscriptionIDNil
+
+`func (o *AzureKeyVault) SetSubscriptionIDNil()`
+
+SetSubscriptionIDNil sets SubscriptionID to an explicit JSON null when marshaled, overriding any value previously set with SetSubscriptionID. Calling SetSubscriptionID again clears the null override.
+
 ### GetTenantID
 
 `func (o *AzureKeyVault) GetTenantID() string`
@@ -300,6 +370,13 @@ SetTenantID sets TenantID field to given value.
 `func (o *AzureKeyVault) HasTenantID() bool`
 
 HasTenantID returns a boolean if a field has been set.
+
+### SetTenantIDNil
+
+`func (o *AzureKeyVault) SetTenantIDNil()`
+
+SetTenantIDNil sets TenantID to an explicit JSON null when marshaled, overriding any value previously set with SetTenantID. Calling SetTenantID again clears the null override.
+
 ### GetValid
 
 `func (o *AzureKeyVault) GetValid() bool`
@@ -324,6 +401,13 @@ SetValid sets Valid field to given value.
 `func (o *AzureKeyVault) HasValid() bool`
 
 HasValid returns a boolean if a field has been set.
+
+### SetValidNil
+
+`func (o *AzureKeyVault) SetValidNil()`
+
+SetValidNil sets Valid to an explicit JSON null when marshaled, overriding any value previously set with SetValid. Calling SetValid again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

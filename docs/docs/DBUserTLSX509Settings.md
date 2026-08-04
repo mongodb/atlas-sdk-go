@@ -50,6 +50,13 @@ SetCas sets Cas field to given value.
 `func (o *DBUserTLSX509Settings) HasCas() bool`
 
 HasCas returns a boolean if a field has been set.
+
+### SetCasNil
+
+`func (o *DBUserTLSX509Settings) SetCasNil()`
+
+SetCasNil sets Cas to an explicit JSON null when marshaled, overriding any value previously set with SetCas. Calling SetCas again clears the null override.
+
 ### GetLinks
 
 `func (o *DBUserTLSX509Settings) GetLinks() []Link`
@@ -74,6 +81,13 @@ SetLinks sets Links field to given value.
 `func (o *DBUserTLSX509Settings) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *DBUserTLSX509Settings) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

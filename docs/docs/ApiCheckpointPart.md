@@ -53,6 +53,13 @@ SetReplicaSetName sets ReplicaSetName field to given value.
 `func (o *ApiCheckpointPart) HasReplicaSetName() bool`
 
 HasReplicaSetName returns a boolean if a field has been set.
+
+### SetReplicaSetNameNil
+
+`func (o *ApiCheckpointPart) SetReplicaSetNameNil()`
+
+SetReplicaSetNameNil sets ReplicaSetName to an explicit JSON null when marshaled, overriding any value previously set with SetReplicaSetName. Calling SetReplicaSetName again clears the null override.
+
 ### GetShardName
 
 `func (o *ApiCheckpointPart) GetShardName() string`
@@ -77,6 +84,13 @@ SetShardName sets ShardName field to given value.
 `func (o *ApiCheckpointPart) HasShardName() bool`
 
 HasShardName returns a boolean if a field has been set.
+
+### SetShardNameNil
+
+`func (o *ApiCheckpointPart) SetShardNameNil()`
+
+SetShardNameNil sets ShardName to an explicit JSON null when marshaled, overriding any value previously set with SetShardName. Calling SetShardName again clears the null override.
+
 ### GetTokenDiscovered
 
 `func (o *ApiCheckpointPart) GetTokenDiscovered() bool`
@@ -101,6 +115,13 @@ SetTokenDiscovered sets TokenDiscovered field to given value.
 `func (o *ApiCheckpointPart) HasTokenDiscovered() bool`
 
 HasTokenDiscovered returns a boolean if a field has been set.
+
+### SetTokenDiscoveredNil
+
+`func (o *ApiCheckpointPart) SetTokenDiscoveredNil()`
+
+SetTokenDiscoveredNil sets TokenDiscovered to an explicit JSON null when marshaled, overriding any value previously set with SetTokenDiscovered. Calling SetTokenDiscovered again clears the null override.
+
 ### GetTokenTimestamp
 
 `func (o *ApiCheckpointPart) GetTokenTimestamp() ApiBSONTimestamp`
@@ -125,6 +146,13 @@ SetTokenTimestamp sets TokenTimestamp field to given value.
 `func (o *ApiCheckpointPart) HasTokenTimestamp() bool`
 
 HasTokenTimestamp returns a boolean if a field has been set.
+
+### SetTokenTimestampNil
+
+`func (o *ApiCheckpointPart) SetTokenTimestampNil()`
+
+SetTokenTimestampNil sets TokenTimestamp to an explicit JSON null when marshaled, overriding any value previously set with SetTokenTimestamp. Calling SetTokenTimestamp again clears the null override.
+
 ### GetTypeName
 
 `func (o *ApiCheckpointPart) GetTypeName() string`
@@ -149,6 +177,13 @@ SetTypeName sets TypeName field to given value.
 `func (o *ApiCheckpointPart) HasTypeName() bool`
 
 HasTypeName returns a boolean if a field has been set.
+
+### SetTypeNameNil
+
+`func (o *ApiCheckpointPart) SetTypeNameNil()`
+
+SetTypeNameNil sets TypeName to an explicit JSON null when marshaled, overriding any value previously set with SetTypeName. Calling SetTypeName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

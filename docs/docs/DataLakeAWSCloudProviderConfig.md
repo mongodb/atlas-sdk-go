@@ -53,6 +53,13 @@ SetExternalId sets ExternalId field to given value.
 `func (o *DataLakeAWSCloudProviderConfig) HasExternalId() bool`
 
 HasExternalId returns a boolean if a field has been set.
+
+### SetExternalIdNil
+
+`func (o *DataLakeAWSCloudProviderConfig) SetExternalIdNil()`
+
+SetExternalIdNil sets ExternalId to an explicit JSON null when marshaled, overriding any value previously set with SetExternalId. Calling SetExternalId again clears the null override.
+
 ### GetIamAssumedRoleARN
 
 `func (o *DataLakeAWSCloudProviderConfig) GetIamAssumedRoleARN() string`
@@ -77,6 +84,13 @@ SetIamAssumedRoleARN sets IamAssumedRoleARN field to given value.
 `func (o *DataLakeAWSCloudProviderConfig) HasIamAssumedRoleARN() bool`
 
 HasIamAssumedRoleARN returns a boolean if a field has been set.
+
+### SetIamAssumedRoleARNNil
+
+`func (o *DataLakeAWSCloudProviderConfig) SetIamAssumedRoleARNNil()`
+
+SetIamAssumedRoleARNNil sets IamAssumedRoleARN to an explicit JSON null when marshaled, overriding any value previously set with SetIamAssumedRoleARN. Calling SetIamAssumedRoleARN again clears the null override.
+
 ### GetIamUserARN
 
 `func (o *DataLakeAWSCloudProviderConfig) GetIamUserARN() string`
@@ -101,6 +115,13 @@ SetIamUserARN sets IamUserARN field to given value.
 `func (o *DataLakeAWSCloudProviderConfig) HasIamUserARN() bool`
 
 HasIamUserARN returns a boolean if a field has been set.
+
+### SetIamUserARNNil
+
+`func (o *DataLakeAWSCloudProviderConfig) SetIamUserARNNil()`
+
+SetIamUserARNNil sets IamUserARN to an explicit JSON null when marshaled, overriding any value previously set with SetIamUserARN. Calling SetIamUserARN again clears the null override.
+
 ### GetRoleId
 
 `func (o *DataLakeAWSCloudProviderConfig) GetRoleId() string`

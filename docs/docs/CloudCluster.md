@@ -59,6 +59,13 @@ SetAlertCount sets AlertCount field to given value.
 `func (o *CloudCluster) HasAlertCount() bool`
 
 HasAlertCount returns a boolean if a field has been set.
+
+### SetAlertCountNil
+
+`func (o *CloudCluster) SetAlertCountNil()`
+
+SetAlertCountNil sets AlertCount to an explicit JSON null when marshaled, overriding any value previously set with SetAlertCount. Calling SetAlertCount again clears the null override.
+
 ### GetAuthEnabled
 
 `func (o *CloudCluster) GetAuthEnabled() bool`
@@ -83,6 +90,13 @@ SetAuthEnabled sets AuthEnabled field to given value.
 `func (o *CloudCluster) HasAuthEnabled() bool`
 
 HasAuthEnabled returns a boolean if a field has been set.
+
+### SetAuthEnabledNil
+
+`func (o *CloudCluster) SetAuthEnabledNil()`
+
+SetAuthEnabledNil sets AuthEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetAuthEnabled. Calling SetAuthEnabled again clears the null override.
+
 ### GetAvailability
 
 `func (o *CloudCluster) GetAvailability() string`
@@ -107,6 +121,13 @@ SetAvailability sets Availability field to given value.
 `func (o *CloudCluster) HasAvailability() bool`
 
 HasAvailability returns a boolean if a field has been set.
+
+### SetAvailabilityNil
+
+`func (o *CloudCluster) SetAvailabilityNil()`
+
+SetAvailabilityNil sets Availability to an explicit JSON null when marshaled, overriding any value previously set with SetAvailability. Calling SetAvailability again clears the null override.
+
 ### GetBackupEnabled
 
 `func (o *CloudCluster) GetBackupEnabled() bool`
@@ -131,6 +152,13 @@ SetBackupEnabled sets BackupEnabled field to given value.
 `func (o *CloudCluster) HasBackupEnabled() bool`
 
 HasBackupEnabled returns a boolean if a field has been set.
+
+### SetBackupEnabledNil
+
+`func (o *CloudCluster) SetBackupEnabledNil()`
+
+SetBackupEnabledNil sets BackupEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetBackupEnabled. Calling SetBackupEnabled again clears the null override.
+
 ### GetClusterId
 
 `func (o *CloudCluster) GetClusterId() string`
@@ -155,6 +183,13 @@ SetClusterId sets ClusterId field to given value.
 `func (o *CloudCluster) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
+
+### SetClusterIdNil
+
+`func (o *CloudCluster) SetClusterIdNil()`
+
+SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled, overriding any value previously set with SetClusterId. Calling SetClusterId again clears the null override.
+
 ### GetDataSizeBytes
 
 `func (o *CloudCluster) GetDataSizeBytes() int64`
@@ -179,6 +214,13 @@ SetDataSizeBytes sets DataSizeBytes field to given value.
 `func (o *CloudCluster) HasDataSizeBytes() bool`
 
 HasDataSizeBytes returns a boolean if a field has been set.
+
+### SetDataSizeBytesNil
+
+`func (o *CloudCluster) SetDataSizeBytesNil()`
+
+SetDataSizeBytesNil sets DataSizeBytes to an explicit JSON null when marshaled, overriding any value previously set with SetDataSizeBytes. Calling SetDataSizeBytes again clears the null override.
+
 ### GetName
 
 `func (o *CloudCluster) GetName() string`
@@ -203,6 +245,13 @@ SetName sets Name field to given value.
 `func (o *CloudCluster) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *CloudCluster) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetNodeCount
 
 `func (o *CloudCluster) GetNodeCount() int`
@@ -227,6 +276,13 @@ SetNodeCount sets NodeCount field to given value.
 `func (o *CloudCluster) HasNodeCount() bool`
 
 HasNodeCount returns a boolean if a field has been set.
+
+### SetNodeCountNil
+
+`func (o *CloudCluster) SetNodeCountNil()`
+
+SetNodeCountNil sets NodeCount to an explicit JSON null when marshaled, overriding any value previously set with SetNodeCount. Calling SetNodeCount again clears the null override.
+
 ### GetSslEnabled
 
 `func (o *CloudCluster) GetSslEnabled() bool`
@@ -251,6 +307,13 @@ SetSslEnabled sets SslEnabled field to given value.
 `func (o *CloudCluster) HasSslEnabled() bool`
 
 HasSslEnabled returns a boolean if a field has been set.
+
+### SetSslEnabledNil
+
+`func (o *CloudCluster) SetSslEnabledNil()`
+
+SetSslEnabledNil sets SslEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetSslEnabled. Calling SetSslEnabled again clears the null override.
+
 ### GetType
 
 `func (o *CloudCluster) GetType() string`
@@ -275,6 +338,13 @@ SetType sets Type field to given value.
 `func (o *CloudCluster) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *CloudCluster) SetTypeNil()`
+
+SetTypeNil sets Type to an explicit JSON null when marshaled, overriding any value previously set with SetType. Calling SetType again clears the null override.
+
 ### GetVersions
 
 `func (o *CloudCluster) GetVersions() []string`
@@ -299,6 +369,13 @@ SetVersions sets Versions field to given value.
 `func (o *CloudCluster) HasVersions() bool`
 
 HasVersions returns a boolean if a field has been set.
+
+### SetVersionsNil
+
+`func (o *CloudCluster) SetVersionsNil()`
+
+SetVersionsNil sets Versions to an explicit JSON null when marshaled, overriding any value previously set with SetVersions. Calling SetVersions again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

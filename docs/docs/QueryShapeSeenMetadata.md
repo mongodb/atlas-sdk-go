@@ -52,6 +52,13 @@ SetApplicationName sets ApplicationName field to given value.
 `func (o *QueryShapeSeenMetadata) HasApplicationName() bool`
 
 HasApplicationName returns a boolean if a field has been set.
+
+### SetApplicationNameNil
+
+`func (o *QueryShapeSeenMetadata) SetApplicationNameNil()`
+
+SetApplicationNameNil sets ApplicationName to an explicit JSON null when marshaled, overriding any value previously set with SetApplicationName. Calling SetApplicationName again clears the null override.
+
 ### GetDriverName
 
 `func (o *QueryShapeSeenMetadata) GetDriverName() string`
@@ -76,6 +83,13 @@ SetDriverName sets DriverName field to given value.
 `func (o *QueryShapeSeenMetadata) HasDriverName() bool`
 
 HasDriverName returns a boolean if a field has been set.
+
+### SetDriverNameNil
+
+`func (o *QueryShapeSeenMetadata) SetDriverNameNil()`
+
+SetDriverNameNil sets DriverName to an explicit JSON null when marshaled, overriding any value previously set with SetDriverName. Calling SetDriverName again clears the null override.
+
 ### GetDriverVersion
 
 `func (o *QueryShapeSeenMetadata) GetDriverVersion() string`
@@ -100,6 +114,13 @@ SetDriverVersion sets DriverVersion field to given value.
 `func (o *QueryShapeSeenMetadata) HasDriverVersion() bool`
 
 HasDriverVersion returns a boolean if a field has been set.
+
+### SetDriverVersionNil
+
+`func (o *QueryShapeSeenMetadata) SetDriverVersionNil()`
+
+SetDriverVersionNil sets DriverVersion to an explicit JSON null when marshaled, overriding any value previously set with SetDriverVersion. Calling SetDriverVersion again clears the null override.
+
 ### GetTimestamp
 
 `func (o *QueryShapeSeenMetadata) GetTimestamp() int64`
@@ -124,6 +145,13 @@ SetTimestamp sets Timestamp field to given value.
 `func (o *QueryShapeSeenMetadata) HasTimestamp() bool`
 
 HasTimestamp returns a boolean if a field has been set.
+
+### SetTimestampNil
+
+`func (o *QueryShapeSeenMetadata) SetTimestampNil()`
+
+SetTimestampNil sets Timestamp to an explicit JSON null when marshaled, overriding any value previously set with SetTimestamp. Calling SetTimestamp again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

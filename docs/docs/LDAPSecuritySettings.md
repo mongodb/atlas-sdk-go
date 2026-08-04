@@ -58,6 +58,13 @@ SetAuthenticationEnabled sets AuthenticationEnabled field to given value.
 `func (o *LDAPSecuritySettings) HasAuthenticationEnabled() bool`
 
 HasAuthenticationEnabled returns a boolean if a field has been set.
+
+### SetAuthenticationEnabledNil
+
+`func (o *LDAPSecuritySettings) SetAuthenticationEnabledNil()`
+
+SetAuthenticationEnabledNil sets AuthenticationEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetAuthenticationEnabled. Calling SetAuthenticationEnabled again clears the null override.
+
 ### GetAuthorizationEnabled
 
 `func (o *LDAPSecuritySettings) GetAuthorizationEnabled() bool`
@@ -82,6 +89,13 @@ SetAuthorizationEnabled sets AuthorizationEnabled field to given value.
 `func (o *LDAPSecuritySettings) HasAuthorizationEnabled() bool`
 
 HasAuthorizationEnabled returns a boolean if a field has been set.
+
+### SetAuthorizationEnabledNil
+
+`func (o *LDAPSecuritySettings) SetAuthorizationEnabledNil()`
+
+SetAuthorizationEnabledNil sets AuthorizationEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetAuthorizationEnabled. Calling SetAuthorizationEnabled again clears the null override.
+
 ### GetAuthzQueryTemplate
 
 `func (o *LDAPSecuritySettings) GetAuthzQueryTemplate() string`
@@ -106,6 +120,13 @@ SetAuthzQueryTemplate sets AuthzQueryTemplate field to given value.
 `func (o *LDAPSecuritySettings) HasAuthzQueryTemplate() bool`
 
 HasAuthzQueryTemplate returns a boolean if a field has been set.
+
+### SetAuthzQueryTemplateNil
+
+`func (o *LDAPSecuritySettings) SetAuthzQueryTemplateNil()`
+
+SetAuthzQueryTemplateNil sets AuthzQueryTemplate to an explicit JSON null when marshaled, overriding any value previously set with SetAuthzQueryTemplate. Calling SetAuthzQueryTemplate again clears the null override.
+
 ### GetBindPassword
 
 `func (o *LDAPSecuritySettings) GetBindPassword() string`
@@ -130,6 +151,13 @@ SetBindPassword sets BindPassword field to given value.
 `func (o *LDAPSecuritySettings) HasBindPassword() bool`
 
 HasBindPassword returns a boolean if a field has been set.
+
+### SetBindPasswordNil
+
+`func (o *LDAPSecuritySettings) SetBindPasswordNil()`
+
+SetBindPasswordNil sets BindPassword to an explicit JSON null when marshaled, overriding any value previously set with SetBindPassword. Calling SetBindPassword again clears the null override.
+
 ### GetBindUsername
 
 `func (o *LDAPSecuritySettings) GetBindUsername() string`
@@ -154,6 +182,13 @@ SetBindUsername sets BindUsername field to given value.
 `func (o *LDAPSecuritySettings) HasBindUsername() bool`
 
 HasBindUsername returns a boolean if a field has been set.
+
+### SetBindUsernameNil
+
+`func (o *LDAPSecuritySettings) SetBindUsernameNil()`
+
+SetBindUsernameNil sets BindUsername to an explicit JSON null when marshaled, overriding any value previously set with SetBindUsername. Calling SetBindUsername again clears the null override.
+
 ### GetCaCertificate
 
 `func (o *LDAPSecuritySettings) GetCaCertificate() string`
@@ -178,6 +213,13 @@ SetCaCertificate sets CaCertificate field to given value.
 `func (o *LDAPSecuritySettings) HasCaCertificate() bool`
 
 HasCaCertificate returns a boolean if a field has been set.
+
+### SetCaCertificateNil
+
+`func (o *LDAPSecuritySettings) SetCaCertificateNil()`
+
+SetCaCertificateNil sets CaCertificate to an explicit JSON null when marshaled, overriding any value previously set with SetCaCertificate. Calling SetCaCertificate again clears the null override.
+
 ### GetHostname
 
 `func (o *LDAPSecuritySettings) GetHostname() string`
@@ -202,6 +244,13 @@ SetHostname sets Hostname field to given value.
 `func (o *LDAPSecuritySettings) HasHostname() bool`
 
 HasHostname returns a boolean if a field has been set.
+
+### SetHostnameNil
+
+`func (o *LDAPSecuritySettings) SetHostnameNil()`
+
+SetHostnameNil sets Hostname to an explicit JSON null when marshaled, overriding any value previously set with SetHostname. Calling SetHostname again clears the null override.
+
 ### GetLinks
 
 `func (o *LDAPSecuritySettings) GetLinks() []Link`
@@ -226,6 +275,13 @@ SetLinks sets Links field to given value.
 `func (o *LDAPSecuritySettings) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *LDAPSecuritySettings) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetPort
 
 `func (o *LDAPSecuritySettings) GetPort() int`
@@ -250,6 +306,13 @@ SetPort sets Port field to given value.
 `func (o *LDAPSecuritySettings) HasPort() bool`
 
 HasPort returns a boolean if a field has been set.
+
+### SetPortNil
+
+`func (o *LDAPSecuritySettings) SetPortNil()`
+
+SetPortNil sets Port to an explicit JSON null when marshaled, overriding any value previously set with SetPort. Calling SetPort again clears the null override.
+
 ### GetUserToDNMapping
 
 `func (o *LDAPSecuritySettings) GetUserToDNMapping() []UserToDNMapping`
@@ -274,6 +337,13 @@ SetUserToDNMapping sets UserToDNMapping field to given value.
 `func (o *LDAPSecuritySettings) HasUserToDNMapping() bool`
 
 HasUserToDNMapping returns a boolean if a field has been set.
+
+### SetUserToDNMappingNil
+
+`func (o *LDAPSecuritySettings) SetUserToDNMappingNil()`
+
+SetUserToDNMappingNil sets UserToDNMapping to an explicit JSON null when marshaled, overriding any value previously set with SetUserToDNMapping. Calling SetUserToDNMapping again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

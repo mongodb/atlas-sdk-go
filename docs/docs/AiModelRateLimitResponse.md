@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cloud** | Pointer to **string** | Cloud provider scope for this rate limit. Use \&quot;any\&quot; for cloud-agnostic scope. | [optional] [readonly] 
-**Endpoint** | Pointer to **string** | Server-computed endpoint hostname derived from cloud and geography. This field is read-only and must not be supplied in request bodies. | [optional] [readonly] 
-**Geography** | Pointer to **string** | Geography scope for this rate limit. Use \&quot;any\&quot; for geography-agnostic scope. | [optional] [readonly] 
+**Cloud** | Pointer to **string** | Cloud provider scope for this rate limit. Use \&quot;ANY\&quot; for cloud-agnostic scope. | [optional] [readonly] 
+**Endpoint** | Pointer to **string** | Server-computed endpoint hostname derived from &#x60;cloud&#x60; and &#x60;geography&#x60;. This field is read-only and must not be supplied in request bodies. | [optional] [readonly] 
+**Geography** | Pointer to **string** | Geography scope for this rate limit. Use \&quot;ANY\&quot; for geography-agnostic scope. | [optional] [readonly] 
 **ModelGroupName** | Pointer to **string** | Identifier used to reference this model group. | [optional] [readonly] 
 **ModelNames** | Pointer to **[]string** | List of embedding model names included in this model group. | [optional] [readonly] 
 **RequestsPerMinuteLimit** | Pointer to **int** | The number of requests per minute allowed for this model group. Must be a positive integer. Cannot be more than the organization level limit for this group model. | [optional] 
@@ -55,6 +55,13 @@ SetCloud sets Cloud field to given value.
 `func (o *AiModelRateLimitResponse) HasCloud() bool`
 
 HasCloud returns a boolean if a field has been set.
+
+### SetCloudNil
+
+`func (o *AiModelRateLimitResponse) SetCloudNil()`
+
+SetCloudNil sets Cloud to an explicit JSON null when marshaled, overriding any value previously set with SetCloud. Calling SetCloud again clears the null override.
+
 ### GetEndpoint
 
 `func (o *AiModelRateLimitResponse) GetEndpoint() string`
@@ -79,6 +86,13 @@ SetEndpoint sets Endpoint field to given value.
 `func (o *AiModelRateLimitResponse) HasEndpoint() bool`
 
 HasEndpoint returns a boolean if a field has been set.
+
+### SetEndpointNil
+
+`func (o *AiModelRateLimitResponse) SetEndpointNil()`
+
+SetEndpointNil sets Endpoint to an explicit JSON null when marshaled, overriding any value previously set with SetEndpoint. Calling SetEndpoint again clears the null override.
+
 ### GetGeography
 
 `func (o *AiModelRateLimitResponse) GetGeography() string`
@@ -103,6 +117,13 @@ SetGeography sets Geography field to given value.
 `func (o *AiModelRateLimitResponse) HasGeography() bool`
 
 HasGeography returns a boolean if a field has been set.
+
+### SetGeographyNil
+
+`func (o *AiModelRateLimitResponse) SetGeographyNil()`
+
+SetGeographyNil sets Geography to an explicit JSON null when marshaled, overriding any value previously set with SetGeography. Calling SetGeography again clears the null override.
+
 ### GetModelGroupName
 
 `func (o *AiModelRateLimitResponse) GetModelGroupName() string`
@@ -127,6 +148,13 @@ SetModelGroupName sets ModelGroupName field to given value.
 `func (o *AiModelRateLimitResponse) HasModelGroupName() bool`
 
 HasModelGroupName returns a boolean if a field has been set.
+
+### SetModelGroupNameNil
+
+`func (o *AiModelRateLimitResponse) SetModelGroupNameNil()`
+
+SetModelGroupNameNil sets ModelGroupName to an explicit JSON null when marshaled, overriding any value previously set with SetModelGroupName. Calling SetModelGroupName again clears the null override.
+
 ### GetModelNames
 
 `func (o *AiModelRateLimitResponse) GetModelNames() []string`
@@ -151,6 +179,13 @@ SetModelNames sets ModelNames field to given value.
 `func (o *AiModelRateLimitResponse) HasModelNames() bool`
 
 HasModelNames returns a boolean if a field has been set.
+
+### SetModelNamesNil
+
+`func (o *AiModelRateLimitResponse) SetModelNamesNil()`
+
+SetModelNamesNil sets ModelNames to an explicit JSON null when marshaled, overriding any value previously set with SetModelNames. Calling SetModelNames again clears the null override.
+
 ### GetRequestsPerMinuteLimit
 
 `func (o *AiModelRateLimitResponse) GetRequestsPerMinuteLimit() int`
@@ -175,6 +210,13 @@ SetRequestsPerMinuteLimit sets RequestsPerMinuteLimit field to given value.
 `func (o *AiModelRateLimitResponse) HasRequestsPerMinuteLimit() bool`
 
 HasRequestsPerMinuteLimit returns a boolean if a field has been set.
+
+### SetRequestsPerMinuteLimitNil
+
+`func (o *AiModelRateLimitResponse) SetRequestsPerMinuteLimitNil()`
+
+SetRequestsPerMinuteLimitNil sets RequestsPerMinuteLimit to an explicit JSON null when marshaled, overriding any value previously set with SetRequestsPerMinuteLimit. Calling SetRequestsPerMinuteLimit again clears the null override.
+
 ### GetTokensPerMinuteLimit
 
 `func (o *AiModelRateLimitResponse) GetTokensPerMinuteLimit() int`
@@ -199,6 +241,13 @@ SetTokensPerMinuteLimit sets TokensPerMinuteLimit field to given value.
 `func (o *AiModelRateLimitResponse) HasTokensPerMinuteLimit() bool`
 
 HasTokensPerMinuteLimit returns a boolean if a field has been set.
+
+### SetTokensPerMinuteLimitNil
+
+`func (o *AiModelRateLimitResponse) SetTokensPerMinuteLimitNil()`
+
+SetTokensPerMinuteLimitNil sets TokensPerMinuteLimit to an explicit JSON null when marshaled, overriding any value previously set with SetTokensPerMinuteLimit. Calling SetTokensPerMinuteLimit again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

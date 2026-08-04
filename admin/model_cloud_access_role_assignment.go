@@ -10,6 +10,15 @@ type CloudAccessRoleAssignment struct {
 	OrgId *string `json:"orgId,omitempty"`
 	// Human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific API key, MongoDB Cloud user, or MongoDB Cloud team. These roles include organization- and project-level roles.
 	RoleName *string `json:"roleName,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CloudAccessRoleAssignment) MarshalJSON() ([]byte, error) {
+	type noMethod CloudAccessRoleAssignment
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudAccessRoleAssignment instantiates a new CloudAccessRoleAssignment object
@@ -60,6 +69,13 @@ func (o *CloudAccessRoleAssignment) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *CloudAccessRoleAssignment) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *CloudAccessRoleAssignment) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetOrgId returns the OrgId field value if set, zero value otherwise
@@ -93,6 +109,13 @@ func (o *CloudAccessRoleAssignment) HasOrgId() bool {
 // SetOrgId gets a reference to the given string and assigns it to the OrgId field.
 func (o *CloudAccessRoleAssignment) SetOrgId(v string) {
 	o.OrgId = &v
+	o.NullFields = removeNullField(o.NullFields, "OrgId")
+}
+
+// SetOrgIdNil sets OrgId to an explicit JSON null when marshaled.
+func (o *CloudAccessRoleAssignment) SetOrgIdNil() {
+	o.OrgId = nil
+	o.NullFields = addNullField(o.NullFields, "OrgId")
 }
 
 // GetRoleName returns the RoleName field value if set, zero value otherwise
@@ -126,4 +149,11 @@ func (o *CloudAccessRoleAssignment) HasRoleName() bool {
 // SetRoleName gets a reference to the given string and assigns it to the RoleName field.
 func (o *CloudAccessRoleAssignment) SetRoleName(v string) {
 	o.RoleName = &v
+	o.NullFields = removeNullField(o.NullFields, "RoleName")
+}
+
+// SetRoleNameNil sets RoleName to an explicit JSON null when marshaled.
+func (o *CloudAccessRoleAssignment) SetRoleNameNil() {
+	o.RoleName = nil
+	o.NullFields = addNullField(o.NullFields, "RoleName")
 }

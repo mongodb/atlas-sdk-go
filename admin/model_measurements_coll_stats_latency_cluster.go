@@ -41,6 +41,15 @@ type MeasurementsCollStatsLatencyCluster struct {
 	// Date and time that specifies when to start retrieving measurements. If you set **start**, you must set **end**. You can't set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Start *time.Time `json:"start,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *MeasurementsCollStatsLatencyCluster) MarshalJSON() ([]byte, error) {
+	type noMethod MeasurementsCollStatsLatencyCluster
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewMeasurementsCollStatsLatencyCluster instantiates a new MeasurementsCollStatsLatencyCluster object
@@ -91,6 +100,13 @@ func (o *MeasurementsCollStatsLatencyCluster) HasClusterId() bool {
 // SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
 func (o *MeasurementsCollStatsLatencyCluster) SetClusterId(v string) {
 	o.ClusterId = &v
+	o.NullFields = removeNullField(o.NullFields, "ClusterId")
+}
+
+// SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyCluster) SetClusterIdNil() {
+	o.ClusterId = nil
+	o.NullFields = addNullField(o.NullFields, "ClusterId")
 }
 
 // GetClusterView returns the ClusterView field value if set, zero value otherwise
@@ -124,6 +140,13 @@ func (o *MeasurementsCollStatsLatencyCluster) HasClusterView() bool {
 // SetClusterView gets a reference to the given string and assigns it to the ClusterView field.
 func (o *MeasurementsCollStatsLatencyCluster) SetClusterView(v string) {
 	o.ClusterView = &v
+	o.NullFields = removeNullField(o.NullFields, "ClusterView")
+}
+
+// SetClusterViewNil sets ClusterView to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyCluster) SetClusterViewNil() {
+	o.ClusterView = nil
+	o.NullFields = addNullField(o.NullFields, "ClusterView")
 }
 
 // GetCollectionName returns the CollectionName field value if set, zero value otherwise
@@ -157,6 +180,13 @@ func (o *MeasurementsCollStatsLatencyCluster) HasCollectionName() bool {
 // SetCollectionName gets a reference to the given string and assigns it to the CollectionName field.
 func (o *MeasurementsCollStatsLatencyCluster) SetCollectionName(v string) {
 	o.CollectionName = &v
+	o.NullFields = removeNullField(o.NullFields, "CollectionName")
+}
+
+// SetCollectionNameNil sets CollectionName to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyCluster) SetCollectionNameNil() {
+	o.CollectionName = nil
+	o.NullFields = addNullField(o.NullFields, "CollectionName")
 }
 
 // GetDatabaseName returns the DatabaseName field value if set, zero value otherwise
@@ -190,6 +220,13 @@ func (o *MeasurementsCollStatsLatencyCluster) HasDatabaseName() bool {
 // SetDatabaseName gets a reference to the given string and assigns it to the DatabaseName field.
 func (o *MeasurementsCollStatsLatencyCluster) SetDatabaseName(v string) {
 	o.DatabaseName = &v
+	o.NullFields = removeNullField(o.NullFields, "DatabaseName")
+}
+
+// SetDatabaseNameNil sets DatabaseName to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyCluster) SetDatabaseNameNil() {
+	o.DatabaseName = nil
+	o.NullFields = addNullField(o.NullFields, "DatabaseName")
 }
 
 // GetEnd returns the End field value if set, zero value otherwise
@@ -223,6 +260,13 @@ func (o *MeasurementsCollStatsLatencyCluster) HasEnd() bool {
 // SetEnd gets a reference to the given time.Time and assigns it to the End field.
 func (o *MeasurementsCollStatsLatencyCluster) SetEnd(v time.Time) {
 	o.End = &v
+	o.NullFields = removeNullField(o.NullFields, "End")
+}
+
+// SetEndNil sets End to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyCluster) SetEndNil() {
+	o.End = nil
+	o.NullFields = addNullField(o.NullFields, "End")
 }
 
 // GetGranularity returns the Granularity field value if set, zero value otherwise
@@ -256,6 +300,13 @@ func (o *MeasurementsCollStatsLatencyCluster) HasGranularity() bool {
 // SetGranularity gets a reference to the given string and assigns it to the Granularity field.
 func (o *MeasurementsCollStatsLatencyCluster) SetGranularity(v string) {
 	o.Granularity = &v
+	o.NullFields = removeNullField(o.NullFields, "Granularity")
+}
+
+// SetGranularityNil sets Granularity to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyCluster) SetGranularityNil() {
+	o.Granularity = nil
+	o.NullFields = addNullField(o.NullFields, "Granularity")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -289,6 +340,13 @@ func (o *MeasurementsCollStatsLatencyCluster) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *MeasurementsCollStatsLatencyCluster) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyCluster) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -322,6 +380,13 @@ func (o *MeasurementsCollStatsLatencyCluster) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *MeasurementsCollStatsLatencyCluster) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyCluster) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetMeasurements returns the Measurements field value if set, zero value otherwise
@@ -355,6 +420,13 @@ func (o *MeasurementsCollStatsLatencyCluster) HasMeasurements() bool {
 // SetMeasurements gets a reference to the given []MetricsMeasurement and assigns it to the Measurements field.
 func (o *MeasurementsCollStatsLatencyCluster) SetMeasurements(v []MetricsMeasurement) {
 	o.Measurements = &v
+	o.NullFields = removeNullField(o.NullFields, "Measurements")
+}
+
+// SetMeasurementsNil sets Measurements to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyCluster) SetMeasurementsNil() {
+	o.Measurements = nil
+	o.NullFields = addNullField(o.NullFields, "Measurements")
 }
 
 // GetProcessId returns the ProcessId field value if set, zero value otherwise
@@ -388,6 +460,13 @@ func (o *MeasurementsCollStatsLatencyCluster) HasProcessId() bool {
 // SetProcessId gets a reference to the given string and assigns it to the ProcessId field.
 func (o *MeasurementsCollStatsLatencyCluster) SetProcessId(v string) {
 	o.ProcessId = &v
+	o.NullFields = removeNullField(o.NullFields, "ProcessId")
+}
+
+// SetProcessIdNil sets ProcessId to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyCluster) SetProcessIdNil() {
+	o.ProcessId = nil
+	o.NullFields = addNullField(o.NullFields, "ProcessId")
 }
 
 // GetStart returns the Start field value if set, zero value otherwise
@@ -421,4 +500,11 @@ func (o *MeasurementsCollStatsLatencyCluster) HasStart() bool {
 // SetStart gets a reference to the given time.Time and assigns it to the Start field.
 func (o *MeasurementsCollStatsLatencyCluster) SetStart(v time.Time) {
 	o.Start = &v
+	o.NullFields = removeNullField(o.NullFields, "Start")
+}
+
+// SetStartNil sets Start to an explicit JSON null when marshaled.
+func (o *MeasurementsCollStatsLatencyCluster) SetStartNil() {
+	o.Start = nil
+	o.NullFields = addNullField(o.NullFields, "Start")
 }

@@ -62,6 +62,13 @@ SetBackupSettings sets BackupSettings field to given value.
 `func (o *FlexClusterDescription20241113) HasBackupSettings() bool`
 
 HasBackupSettings returns a boolean if a field has been set.
+
+### SetBackupSettingsNil
+
+`func (o *FlexClusterDescription20241113) SetBackupSettingsNil()`
+
+SetBackupSettingsNil sets BackupSettings to an explicit JSON null when marshaled, overriding any value previously set with SetBackupSettings. Calling SetBackupSettings again clears the null override.
+
 ### GetClusterType
 
 `func (o *FlexClusterDescription20241113) GetClusterType() string`
@@ -86,6 +93,13 @@ SetClusterType sets ClusterType field to given value.
 `func (o *FlexClusterDescription20241113) HasClusterType() bool`
 
 HasClusterType returns a boolean if a field has been set.
+
+### SetClusterTypeNil
+
+`func (o *FlexClusterDescription20241113) SetClusterTypeNil()`
+
+SetClusterTypeNil sets ClusterType to an explicit JSON null when marshaled, overriding any value previously set with SetClusterType. Calling SetClusterType again clears the null override.
+
 ### GetConnectionStrings
 
 `func (o *FlexClusterDescription20241113) GetConnectionStrings() FlexConnectionStrings20241113`
@@ -110,6 +124,13 @@ SetConnectionStrings sets ConnectionStrings field to given value.
 `func (o *FlexClusterDescription20241113) HasConnectionStrings() bool`
 
 HasConnectionStrings returns a boolean if a field has been set.
+
+### SetConnectionStringsNil
+
+`func (o *FlexClusterDescription20241113) SetConnectionStringsNil()`
+
+SetConnectionStringsNil sets ConnectionStrings to an explicit JSON null when marshaled, overriding any value previously set with SetConnectionStrings. Calling SetConnectionStrings again clears the null override.
+
 ### GetCreateDate
 
 `func (o *FlexClusterDescription20241113) GetCreateDate() time.Time`
@@ -134,6 +155,13 @@ SetCreateDate sets CreateDate field to given value.
 `func (o *FlexClusterDescription20241113) HasCreateDate() bool`
 
 HasCreateDate returns a boolean if a field has been set.
+
+### SetCreateDateNil
+
+`func (o *FlexClusterDescription20241113) SetCreateDateNil()`
+
+SetCreateDateNil sets CreateDate to an explicit JSON null when marshaled, overriding any value previously set with SetCreateDate. Calling SetCreateDate again clears the null override.
+
 ### GetGroupId
 
 `func (o *FlexClusterDescription20241113) GetGroupId() string`
@@ -158,6 +186,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *FlexClusterDescription20241113) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *FlexClusterDescription20241113) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetId
 
 `func (o *FlexClusterDescription20241113) GetId() string`
@@ -182,6 +217,13 @@ SetId sets Id field to given value.
 `func (o *FlexClusterDescription20241113) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *FlexClusterDescription20241113) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLinks
 
 `func (o *FlexClusterDescription20241113) GetLinks() []Link`
@@ -206,6 +248,13 @@ SetLinks sets Links field to given value.
 `func (o *FlexClusterDescription20241113) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *FlexClusterDescription20241113) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetMongoDBVersion
 
 `func (o *FlexClusterDescription20241113) GetMongoDBVersion() string`
@@ -230,6 +279,13 @@ SetMongoDBVersion sets MongoDBVersion field to given value.
 `func (o *FlexClusterDescription20241113) HasMongoDBVersion() bool`
 
 HasMongoDBVersion returns a boolean if a field has been set.
+
+### SetMongoDBVersionNil
+
+`func (o *FlexClusterDescription20241113) SetMongoDBVersionNil()`
+
+SetMongoDBVersionNil sets MongoDBVersion to an explicit JSON null when marshaled, overriding any value previously set with SetMongoDBVersion. Calling SetMongoDBVersion again clears the null override.
+
 ### GetName
 
 `func (o *FlexClusterDescription20241113) GetName() string`
@@ -254,6 +310,13 @@ SetName sets Name field to given value.
 `func (o *FlexClusterDescription20241113) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *FlexClusterDescription20241113) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetProviderSettings
 
 `func (o *FlexClusterDescription20241113) GetProviderSettings() FlexProviderSettings20241113`
@@ -297,6 +360,13 @@ SetStateName sets StateName field to given value.
 `func (o *FlexClusterDescription20241113) HasStateName() bool`
 
 HasStateName returns a boolean if a field has been set.
+
+### SetStateNameNil
+
+`func (o *FlexClusterDescription20241113) SetStateNameNil()`
+
+SetStateNameNil sets StateName to an explicit JSON null when marshaled, overriding any value previously set with SetStateName. Calling SetStateName again clears the null override.
+
 ### GetTags
 
 `func (o *FlexClusterDescription20241113) GetTags() []ResourceTag`
@@ -321,6 +391,13 @@ SetTags sets Tags field to given value.
 `func (o *FlexClusterDescription20241113) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### SetTagsNil
+
+`func (o *FlexClusterDescription20241113) SetTagsNil()`
+
+SetTagsNil sets Tags to an explicit JSON null when marshaled, overriding any value previously set with SetTags. Calling SetTags again clears the null override.
+
 ### GetTerminationProtectionEnabled
 
 `func (o *FlexClusterDescription20241113) GetTerminationProtectionEnabled() bool`
@@ -345,6 +422,13 @@ SetTerminationProtectionEnabled sets TerminationProtectionEnabled field to given
 `func (o *FlexClusterDescription20241113) HasTerminationProtectionEnabled() bool`
 
 HasTerminationProtectionEnabled returns a boolean if a field has been set.
+
+### SetTerminationProtectionEnabledNil
+
+`func (o *FlexClusterDescription20241113) SetTerminationProtectionEnabledNil()`
+
+SetTerminationProtectionEnabledNil sets TerminationProtectionEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetTerminationProtectionEnabled. Calling SetTerminationProtectionEnabled again clears the null override.
+
 ### GetVersionReleaseSystem
 
 `func (o *FlexClusterDescription20241113) GetVersionReleaseSystem() string`
@@ -369,6 +453,13 @@ SetVersionReleaseSystem sets VersionReleaseSystem field to given value.
 `func (o *FlexClusterDescription20241113) HasVersionReleaseSystem() bool`
 
 HasVersionReleaseSystem returns a boolean if a field has been set.
+
+### SetVersionReleaseSystemNil
+
+`func (o *FlexClusterDescription20241113) SetVersionReleaseSystemNil()`
+
+SetVersionReleaseSystemNil sets VersionReleaseSystem to an explicit JSON null when marshaled, overriding any value previously set with SetVersionReleaseSystem. Calling SetVersionReleaseSystem again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

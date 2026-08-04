@@ -53,6 +53,13 @@ SetOrgId sets OrgId field to given value.
 `func (o *ApiAtlasNonCompliantResource) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
+
+### SetOrgIdNil
+
+`func (o *ApiAtlasNonCompliantResource) SetOrgIdNil()`
+
+SetOrgIdNil sets OrgId to an explicit JSON null when marshaled, overriding any value previously set with SetOrgId. Calling SetOrgId again clears the null override.
+
 ### GetResourceId
 
 `func (o *ApiAtlasNonCompliantResource) GetResourceId() string`
@@ -77,6 +84,13 @@ SetResourceId sets ResourceId field to given value.
 `func (o *ApiAtlasNonCompliantResource) HasResourceId() bool`
 
 HasResourceId returns a boolean if a field has been set.
+
+### SetResourceIdNil
+
+`func (o *ApiAtlasNonCompliantResource) SetResourceIdNil()`
+
+SetResourceIdNil sets ResourceId to an explicit JSON null when marshaled, overriding any value previously set with SetResourceId. Calling SetResourceId again clears the null override.
+
 ### GetResourceName
 
 `func (o *ApiAtlasNonCompliantResource) GetResourceName() string`
@@ -101,6 +115,13 @@ SetResourceName sets ResourceName field to given value.
 `func (o *ApiAtlasNonCompliantResource) HasResourceName() bool`
 
 HasResourceName returns a boolean if a field has been set.
+
+### SetResourceNameNil
+
+`func (o *ApiAtlasNonCompliantResource) SetResourceNameNil()`
+
+SetResourceNameNil sets ResourceName to an explicit JSON null when marshaled, overriding any value previously set with SetResourceName. Calling SetResourceName again clears the null override.
+
 ### GetResourcePoliciesCausingNonCompliance
 
 `func (o *ApiAtlasNonCompliantResource) GetResourcePoliciesCausingNonCompliance() []ApiAtlasResourcePolicyMetadata`
@@ -125,6 +146,13 @@ SetResourcePoliciesCausingNonCompliance sets ResourcePoliciesCausingNonComplianc
 `func (o *ApiAtlasNonCompliantResource) HasResourcePoliciesCausingNonCompliance() bool`
 
 HasResourcePoliciesCausingNonCompliance returns a boolean if a field has been set.
+
+### SetResourcePoliciesCausingNonComplianceNil
+
+`func (o *ApiAtlasNonCompliantResource) SetResourcePoliciesCausingNonComplianceNil()`
+
+SetResourcePoliciesCausingNonComplianceNil sets ResourcePoliciesCausingNonCompliance to an explicit JSON null when marshaled, overriding any value previously set with SetResourcePoliciesCausingNonCompliance. Calling SetResourcePoliciesCausingNonCompliance again clears the null override.
+
 ### GetResourceType
 
 `func (o *ApiAtlasNonCompliantResource) GetResourceType() string`
@@ -149,6 +177,13 @@ SetResourceType sets ResourceType field to given value.
 `func (o *ApiAtlasNonCompliantResource) HasResourceType() bool`
 
 HasResourceType returns a boolean if a field has been set.
+
+### SetResourceTypeNil
+
+`func (o *ApiAtlasNonCompliantResource) SetResourceTypeNil()`
+
+SetResourceTypeNil sets ResourceType to an explicit JSON null when marshaled, overriding any value previously set with SetResourceType. Calling SetResourceType again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

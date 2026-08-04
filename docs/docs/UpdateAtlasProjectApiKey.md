@@ -50,6 +50,13 @@ SetDesc sets Desc field to given value.
 `func (o *UpdateAtlasProjectApiKey) HasDesc() bool`
 
 HasDesc returns a boolean if a field has been set.
+
+### SetDescNil
+
+`func (o *UpdateAtlasProjectApiKey) SetDescNil()`
+
+SetDescNil sets Desc to an explicit JSON null when marshaled, overriding any value previously set with SetDesc. Calling SetDesc again clears the null override.
+
 ### GetRoles
 
 `func (o *UpdateAtlasProjectApiKey) GetRoles() []string`
@@ -74,6 +81,13 @@ SetRoles sets Roles field to given value.
 `func (o *UpdateAtlasProjectApiKey) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
+
+### SetRolesNil
+
+`func (o *UpdateAtlasProjectApiKey) SetRolesNil()`
+
+SetRolesNil sets Roles to an explicit JSON null when marshaled, overriding any value previously set with SetRoles. Calling SetRoles again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

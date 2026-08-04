@@ -54,6 +54,13 @@ SetEffectiveSpecs sets EffectiveSpecs field to given value.
 `func (o *ApiSearchDeploymentResponse) HasEffectiveSpecs() bool`
 
 HasEffectiveSpecs returns a boolean if a field has been set.
+
+### SetEffectiveSpecsNil
+
+`func (o *ApiSearchDeploymentResponse) SetEffectiveSpecsNil()`
+
+SetEffectiveSpecsNil sets EffectiveSpecs to an explicit JSON null when marshaled, overriding any value previously set with SetEffectiveSpecs. Calling SetEffectiveSpecs again clears the null override.
+
 ### GetEncryptionAtRestProvider
 
 `func (o *ApiSearchDeploymentResponse) GetEncryptionAtRestProvider() string`
@@ -78,6 +85,13 @@ SetEncryptionAtRestProvider sets EncryptionAtRestProvider field to given value.
 `func (o *ApiSearchDeploymentResponse) HasEncryptionAtRestProvider() bool`
 
 HasEncryptionAtRestProvider returns a boolean if a field has been set.
+
+### SetEncryptionAtRestProviderNil
+
+`func (o *ApiSearchDeploymentResponse) SetEncryptionAtRestProviderNil()`
+
+SetEncryptionAtRestProviderNil sets EncryptionAtRestProvider to an explicit JSON null when marshaled, overriding any value previously set with SetEncryptionAtRestProvider. Calling SetEncryptionAtRestProvider again clears the null override.
+
 ### GetGroupId
 
 `func (o *ApiSearchDeploymentResponse) GetGroupId() string`
@@ -102,6 +116,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *ApiSearchDeploymentResponse) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *ApiSearchDeploymentResponse) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetId
 
 `func (o *ApiSearchDeploymentResponse) GetId() string`
@@ -126,6 +147,13 @@ SetId sets Id field to given value.
 `func (o *ApiSearchDeploymentResponse) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *ApiSearchDeploymentResponse) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetSpecs
 
 `func (o *ApiSearchDeploymentResponse) GetSpecs() []ApiSearchDeploymentSpec`
@@ -150,6 +178,13 @@ SetSpecs sets Specs field to given value.
 `func (o *ApiSearchDeploymentResponse) HasSpecs() bool`
 
 HasSpecs returns a boolean if a field has been set.
+
+### SetSpecsNil
+
+`func (o *ApiSearchDeploymentResponse) SetSpecsNil()`
+
+SetSpecsNil sets Specs to an explicit JSON null when marshaled, overriding any value previously set with SetSpecs. Calling SetSpecs again clears the null override.
+
 ### GetStateName
 
 `func (o *ApiSearchDeploymentResponse) GetStateName() string`
@@ -174,6 +209,13 @@ SetStateName sets StateName field to given value.
 `func (o *ApiSearchDeploymentResponse) HasStateName() bool`
 
 HasStateName returns a boolean if a field has been set.
+
+### SetStateNameNil
+
+`func (o *ApiSearchDeploymentResponse) SetStateNameNil()`
+
+SetStateNameNil sets StateName to an explicit JSON null when marshaled, overriding any value previously set with SetStateName. Calling SetStateName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -130,6 +130,13 @@ SetUserId sets UserId field to given value.
 
 HasUserId returns a boolean if a field has been set.
 
+### SetUserIdNil
+
+`func (o *FederatedUser) SetUserIdNil()`
+
+SetUserIdNil sets UserId to an explicit JSON null when marshaled, overriding any value previously set with SetUserId. Calling SetUserId again clears the null override.
+
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

@@ -51,6 +51,13 @@ SetMessage sets Message field to given value.
 `func (o *SynonymMappingStatusDetail) HasMessage() bool`
 
 HasMessage returns a boolean if a field has been set.
+
+### SetMessageNil
+
+`func (o *SynonymMappingStatusDetail) SetMessageNil()`
+
+SetMessageNil sets Message to an explicit JSON null when marshaled, overriding any value previously set with SetMessage. Calling SetMessage again clears the null override.
+
 ### GetQueryable
 
 `func (o *SynonymMappingStatusDetail) GetQueryable() bool`
@@ -75,6 +82,13 @@ SetQueryable sets Queryable field to given value.
 `func (o *SynonymMappingStatusDetail) HasQueryable() bool`
 
 HasQueryable returns a boolean if a field has been set.
+
+### SetQueryableNil
+
+`func (o *SynonymMappingStatusDetail) SetQueryableNil()`
+
+SetQueryableNil sets Queryable to an explicit JSON null when marshaled, overriding any value previously set with SetQueryable. Calling SetQueryable again clears the null override.
+
 ### GetStatus
 
 `func (o *SynonymMappingStatusDetail) GetStatus() string`
@@ -99,6 +113,13 @@ SetStatus sets Status field to given value.
 `func (o *SynonymMappingStatusDetail) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *SynonymMappingStatusDetail) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

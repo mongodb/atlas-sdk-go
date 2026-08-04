@@ -8,6 +8,15 @@ type UpdateAtlasOrganizationApiKey struct {
 	Desc *string `json:"desc,omitempty"`
 	// List of roles to grant this API key. If you provide this list, provide a minimum of one role and ensure each role applies to this organization.
 	Roles *[]string `json:"roles,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *UpdateAtlasOrganizationApiKey) MarshalJSON() ([]byte, error) {
+	type noMethod UpdateAtlasOrganizationApiKey
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewUpdateAtlasOrganizationApiKey instantiates a new UpdateAtlasOrganizationApiKey object
@@ -58,6 +67,13 @@ func (o *UpdateAtlasOrganizationApiKey) HasDesc() bool {
 // SetDesc gets a reference to the given string and assigns it to the Desc field.
 func (o *UpdateAtlasOrganizationApiKey) SetDesc(v string) {
 	o.Desc = &v
+	o.NullFields = removeNullField(o.NullFields, "Desc")
+}
+
+// SetDescNil sets Desc to an explicit JSON null when marshaled.
+func (o *UpdateAtlasOrganizationApiKey) SetDescNil() {
+	o.Desc = nil
+	o.NullFields = addNullField(o.NullFields, "Desc")
 }
 
 // GetRoles returns the Roles field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *UpdateAtlasOrganizationApiKey) HasRoles() bool {
 // SetRoles gets a reference to the given []string and assigns it to the Roles field.
 func (o *UpdateAtlasOrganizationApiKey) SetRoles(v []string) {
 	o.Roles = &v
+	o.NullFields = removeNullField(o.NullFields, "Roles")
+}
+
+// SetRolesNil sets Roles to an explicit JSON null when marshaled.
+func (o *UpdateAtlasOrganizationApiKey) SetRolesNil() {
+	o.Roles = nil
+	o.NullFields = addNullField(o.NullFields, "Roles")
 }

@@ -13,6 +13,15 @@ type GCPConsumerForwardingRule struct {
 	// State of the MongoDB Cloud endpoint group when MongoDB Cloud received this request.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *GCPConsumerForwardingRule) MarshalJSON() ([]byte, error) {
+	type noMethod GCPConsumerForwardingRule
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGCPConsumerForwardingRule instantiates a new GCPConsumerForwardingRule object
@@ -63,6 +72,13 @@ func (o *GCPConsumerForwardingRule) HasEndpointName() bool {
 // SetEndpointName gets a reference to the given string and assigns it to the EndpointName field.
 func (o *GCPConsumerForwardingRule) SetEndpointName(v string) {
 	o.EndpointName = &v
+	o.NullFields = removeNullField(o.NullFields, "EndpointName")
+}
+
+// SetEndpointNameNil sets EndpointName to an explicit JSON null when marshaled.
+func (o *GCPConsumerForwardingRule) SetEndpointNameNil() {
+	o.EndpointName = nil
+	o.NullFields = addNullField(o.NullFields, "EndpointName")
 }
 
 // GetIpAddress returns the IpAddress field value if set, zero value otherwise
@@ -96,6 +112,13 @@ func (o *GCPConsumerForwardingRule) HasIpAddress() bool {
 // SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *GCPConsumerForwardingRule) SetIpAddress(v string) {
 	o.IpAddress = &v
+	o.NullFields = removeNullField(o.NullFields, "IpAddress")
+}
+
+// SetIpAddressNil sets IpAddress to an explicit JSON null when marshaled.
+func (o *GCPConsumerForwardingRule) SetIpAddressNil() {
+	o.IpAddress = nil
+	o.NullFields = addNullField(o.NullFields, "IpAddress")
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
@@ -129,4 +152,11 @@ func (o *GCPConsumerForwardingRule) HasStatus() bool {
 // SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *GCPConsumerForwardingRule) SetStatus(v string) {
 	o.Status = &v
+	o.NullFields = removeNullField(o.NullFields, "Status")
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *GCPConsumerForwardingRule) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = addNullField(o.NullFields, "Status")
 }

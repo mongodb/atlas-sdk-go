@@ -50,6 +50,13 @@ SetCreatedAt sets CreatedAt field to given value.
 `func (o *SearchIndexDefinitionVersion) HasCreatedAt() bool`
 
 HasCreatedAt returns a boolean if a field has been set.
+
+### SetCreatedAtNil
+
+`func (o *SearchIndexDefinitionVersion) SetCreatedAtNil()`
+
+SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled, overriding any value previously set with SetCreatedAt. Calling SetCreatedAt again clears the null override.
+
 ### GetVersion
 
 `func (o *SearchIndexDefinitionVersion) GetVersion() int64`
@@ -74,6 +81,13 @@ SetVersion sets Version field to given value.
 `func (o *SearchIndexDefinitionVersion) HasVersion() bool`
 
 HasVersion returns a boolean if a field has been set.
+
+### SetVersionNil
+
+`func (o *SearchIndexDefinitionVersion) SetVersionNil()`
+
+SetVersionNil sets Version to an explicit JSON null when marshaled, overriding any value previously set with SetVersion. Calling SetVersion again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

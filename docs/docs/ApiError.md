@@ -54,6 +54,13 @@ SetBadRequestDetail sets BadRequestDetail field to given value.
 `func (o *ApiError) HasBadRequestDetail() bool`
 
 HasBadRequestDetail returns a boolean if a field has been set.
+
+### SetBadRequestDetailNil
+
+`func (o *ApiError) SetBadRequestDetailNil()`
+
+SetBadRequestDetailNil sets BadRequestDetail to an explicit JSON null when marshaled, overriding any value previously set with SetBadRequestDetail. Calling SetBadRequestDetail again clears the null override.
+
 ### GetDetail
 
 `func (o *ApiError) GetDetail() string`
@@ -78,6 +85,13 @@ SetDetail sets Detail field to given value.
 `func (o *ApiError) HasDetail() bool`
 
 HasDetail returns a boolean if a field has been set.
+
+### SetDetailNil
+
+`func (o *ApiError) SetDetailNil()`
+
+SetDetailNil sets Detail to an explicit JSON null when marshaled, overriding any value previously set with SetDetail. Calling SetDetail again clears the null override.
+
 ### GetError
 
 `func (o *ApiError) GetError() int`
@@ -140,6 +154,13 @@ SetParameters sets Parameters field to given value.
 `func (o *ApiError) HasParameters() bool`
 
 HasParameters returns a boolean if a field has been set.
+
+### SetParametersNil
+
+`func (o *ApiError) SetParametersNil()`
+
+SetParametersNil sets Parameters to an explicit JSON null when marshaled, overriding any value previously set with SetParameters. Calling SetParameters again clears the null override.
+
 ### GetReason
 
 `func (o *ApiError) GetReason() string`
@@ -164,6 +185,13 @@ SetReason sets Reason field to given value.
 `func (o *ApiError) HasReason() bool`
 
 HasReason returns a boolean if a field has been set.
+
+### SetReasonNil
+
+`func (o *ApiError) SetReasonNil()`
+
+SetReasonNil sets Reason to an explicit JSON null when marshaled, overriding any value previously set with SetReason. Calling SetReason again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -50,6 +50,13 @@ SetErrorType sets ErrorType field to given value.
 `func (o *ApiAtlasInvalidResourcePolicyCreateError) HasErrorType() bool`
 
 HasErrorType returns a boolean if a field has been set.
+
+### SetErrorTypeNil
+
+`func (o *ApiAtlasInvalidResourcePolicyCreateError) SetErrorTypeNil()`
+
+SetErrorTypeNil sets ErrorType to an explicit JSON null when marshaled, overriding any value previously set with SetErrorType. Calling SetErrorType again clears the null override.
+
 ### GetInvalidPolicies
 
 `func (o *ApiAtlasInvalidResourcePolicyCreateError) GetInvalidPolicies() []ApiAtlasInvalidPolicy`
@@ -74,6 +81,13 @@ SetInvalidPolicies sets InvalidPolicies field to given value.
 `func (o *ApiAtlasInvalidResourcePolicyCreateError) HasInvalidPolicies() bool`
 
 HasInvalidPolicies returns a boolean if a field has been set.
+
+### SetInvalidPoliciesNil
+
+`func (o *ApiAtlasInvalidResourcePolicyCreateError) SetInvalidPoliciesNil()`
+
+SetInvalidPoliciesNil sets InvalidPolicies to an explicit JSON null when marshaled, overriding any value previously set with SetInvalidPolicies. Calling SetInvalidPolicies again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

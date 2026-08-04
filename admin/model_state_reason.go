@@ -8,6 +8,15 @@ type StateReason struct {
 	ErrorCode *string `json:"errorCode,omitempty"`
 	// Message describing error or state.
 	Message *string `json:"message,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StateReason) MarshalJSON() ([]byte, error) {
+	type noMethod StateReason
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStateReason instantiates a new StateReason object
@@ -58,6 +67,13 @@ func (o *StateReason) HasErrorCode() bool {
 // SetErrorCode gets a reference to the given string and assigns it to the ErrorCode field.
 func (o *StateReason) SetErrorCode(v string) {
 	o.ErrorCode = &v
+	o.NullFields = removeNullField(o.NullFields, "ErrorCode")
+}
+
+// SetErrorCodeNil sets ErrorCode to an explicit JSON null when marshaled.
+func (o *StateReason) SetErrorCodeNil() {
+	o.ErrorCode = nil
+	o.NullFields = addNullField(o.NullFields, "ErrorCode")
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *StateReason) HasMessage() bool {
 // SetMessage gets a reference to the given string and assigns it to the Message field.
 func (o *StateReason) SetMessage(v string) {
 	o.Message = &v
+	o.NullFields = removeNullField(o.NullFields, "Message")
+}
+
+// SetMessageNil sets Message to an explicit JSON null when marshaled.
+func (o *StateReason) SetMessageNil() {
+	o.Message = nil
+	o.NullFields = addNullField(o.NullFields, "Message")
 }

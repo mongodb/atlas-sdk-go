@@ -13,6 +13,15 @@ type GeoSharding20240805 struct {
 	// Boolean that controls which management mode the Global Cluster is operating under. If this parameter is true Self-Managed Sharding is enabled and users are in control of the zone sharding within the Global Cluster. If this parameter is false Atlas-Managed Sharding is enabled and Atlas is control of zone sharding within the Global Cluster.
 	// Read only field.
 	SelfManagedSharding *bool `json:"selfManagedSharding,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *GeoSharding20240805) MarshalJSON() ([]byte, error) {
+	type noMethod GeoSharding20240805
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewGeoSharding20240805 instantiates a new GeoSharding20240805 object
@@ -63,6 +72,13 @@ func (o *GeoSharding20240805) HasCustomZoneMapping() bool {
 // SetCustomZoneMapping gets a reference to the given map[string]string and assigns it to the CustomZoneMapping field.
 func (o *GeoSharding20240805) SetCustomZoneMapping(v map[string]string) {
 	o.CustomZoneMapping = &v
+	o.NullFields = removeNullField(o.NullFields, "CustomZoneMapping")
+}
+
+// SetCustomZoneMappingNil sets CustomZoneMapping to an explicit JSON null when marshaled.
+func (o *GeoSharding20240805) SetCustomZoneMappingNil() {
+	o.CustomZoneMapping = nil
+	o.NullFields = addNullField(o.NullFields, "CustomZoneMapping")
 }
 
 // GetManagedNamespaces returns the ManagedNamespaces field value if set, zero value otherwise
@@ -96,6 +112,13 @@ func (o *GeoSharding20240805) HasManagedNamespaces() bool {
 // SetManagedNamespaces gets a reference to the given []ManagedNamespaces and assigns it to the ManagedNamespaces field.
 func (o *GeoSharding20240805) SetManagedNamespaces(v []ManagedNamespaces) {
 	o.ManagedNamespaces = &v
+	o.NullFields = removeNullField(o.NullFields, "ManagedNamespaces")
+}
+
+// SetManagedNamespacesNil sets ManagedNamespaces to an explicit JSON null when marshaled.
+func (o *GeoSharding20240805) SetManagedNamespacesNil() {
+	o.ManagedNamespaces = nil
+	o.NullFields = addNullField(o.NullFields, "ManagedNamespaces")
 }
 
 // GetSelfManagedSharding returns the SelfManagedSharding field value if set, zero value otherwise
@@ -129,4 +152,11 @@ func (o *GeoSharding20240805) HasSelfManagedSharding() bool {
 // SetSelfManagedSharding gets a reference to the given bool and assigns it to the SelfManagedSharding field.
 func (o *GeoSharding20240805) SetSelfManagedSharding(v bool) {
 	o.SelfManagedSharding = &v
+	o.NullFields = removeNullField(o.NullFields, "SelfManagedSharding")
+}
+
+// SetSelfManagedShardingNil sets SelfManagedSharding to an explicit JSON null when marshaled.
+func (o *GeoSharding20240805) SetSelfManagedShardingNil() {
+	o.SelfManagedSharding = nil
+	o.NullFields = addNullField(o.NullFields, "SelfManagedSharding")
 }

@@ -52,6 +52,13 @@ SetEnabled sets Enabled field to given value.
 `func (o *AdvancedComputeAutoScaling) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
+
+### SetEnabledNil
+
+`func (o *AdvancedComputeAutoScaling) SetEnabledNil()`
+
+SetEnabledNil sets Enabled to an explicit JSON null when marshaled, overriding any value previously set with SetEnabled. Calling SetEnabled again clears the null override.
+
 ### GetMaxInstanceSize
 
 `func (o *AdvancedComputeAutoScaling) GetMaxInstanceSize() string`
@@ -76,6 +83,13 @@ SetMaxInstanceSize sets MaxInstanceSize field to given value.
 `func (o *AdvancedComputeAutoScaling) HasMaxInstanceSize() bool`
 
 HasMaxInstanceSize returns a boolean if a field has been set.
+
+### SetMaxInstanceSizeNil
+
+`func (o *AdvancedComputeAutoScaling) SetMaxInstanceSizeNil()`
+
+SetMaxInstanceSizeNil sets MaxInstanceSize to an explicit JSON null when marshaled, overriding any value previously set with SetMaxInstanceSize. Calling SetMaxInstanceSize again clears the null override.
+
 ### GetMinInstanceSize
 
 `func (o *AdvancedComputeAutoScaling) GetMinInstanceSize() string`
@@ -100,6 +114,13 @@ SetMinInstanceSize sets MinInstanceSize field to given value.
 `func (o *AdvancedComputeAutoScaling) HasMinInstanceSize() bool`
 
 HasMinInstanceSize returns a boolean if a field has been set.
+
+### SetMinInstanceSizeNil
+
+`func (o *AdvancedComputeAutoScaling) SetMinInstanceSizeNil()`
+
+SetMinInstanceSizeNil sets MinInstanceSize to an explicit JSON null when marshaled, overriding any value previously set with SetMinInstanceSize. Calling SetMinInstanceSize again clears the null override.
+
 ### GetScaleDownEnabled
 
 `func (o *AdvancedComputeAutoScaling) GetScaleDownEnabled() bool`
@@ -124,6 +145,13 @@ SetScaleDownEnabled sets ScaleDownEnabled field to given value.
 `func (o *AdvancedComputeAutoScaling) HasScaleDownEnabled() bool`
 
 HasScaleDownEnabled returns a boolean if a field has been set.
+
+### SetScaleDownEnabledNil
+
+`func (o *AdvancedComputeAutoScaling) SetScaleDownEnabledNil()`
+
+SetScaleDownEnabledNil sets ScaleDownEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetScaleDownEnabled. Calling SetScaleDownEnabled again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

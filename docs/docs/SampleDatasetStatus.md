@@ -54,6 +54,13 @@ SetId sets Id field to given value.
 `func (o *SampleDatasetStatus) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *SampleDatasetStatus) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetClusterName
 
 `func (o *SampleDatasetStatus) GetClusterName() string`
@@ -78,6 +85,13 @@ SetClusterName sets ClusterName field to given value.
 `func (o *SampleDatasetStatus) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+
+### SetClusterNameNil
+
+`func (o *SampleDatasetStatus) SetClusterNameNil()`
+
+SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled, overriding any value previously set with SetClusterName. Calling SetClusterName again clears the null override.
+
 ### GetCompleteDate
 
 `func (o *SampleDatasetStatus) GetCompleteDate() time.Time`
@@ -102,6 +116,13 @@ SetCompleteDate sets CompleteDate field to given value.
 `func (o *SampleDatasetStatus) HasCompleteDate() bool`
 
 HasCompleteDate returns a boolean if a field has been set.
+
+### SetCompleteDateNil
+
+`func (o *SampleDatasetStatus) SetCompleteDateNil()`
+
+SetCompleteDateNil sets CompleteDate to an explicit JSON null when marshaled, overriding any value previously set with SetCompleteDate. Calling SetCompleteDate again clears the null override.
+
 ### GetCreateDate
 
 `func (o *SampleDatasetStatus) GetCreateDate() time.Time`
@@ -126,6 +147,13 @@ SetCreateDate sets CreateDate field to given value.
 `func (o *SampleDatasetStatus) HasCreateDate() bool`
 
 HasCreateDate returns a boolean if a field has been set.
+
+### SetCreateDateNil
+
+`func (o *SampleDatasetStatus) SetCreateDateNil()`
+
+SetCreateDateNil sets CreateDate to an explicit JSON null when marshaled, overriding any value previously set with SetCreateDate. Calling SetCreateDate again clears the null override.
+
 ### GetErrorMessage
 
 `func (o *SampleDatasetStatus) GetErrorMessage() string`
@@ -150,6 +178,13 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *SampleDatasetStatus) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
+
+### SetErrorMessageNil
+
+`func (o *SampleDatasetStatus) SetErrorMessageNil()`
+
+SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled, overriding any value previously set with SetErrorMessage. Calling SetErrorMessage again clears the null override.
+
 ### GetState
 
 `func (o *SampleDatasetStatus) GetState() string`
@@ -174,6 +209,13 @@ SetState sets State field to given value.
 `func (o *SampleDatasetStatus) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### SetStateNil
+
+`func (o *SampleDatasetStatus) SetStateNil()`
+
+SetStateNil sets State to an explicit JSON null when marshaled, overriding any value previously set with SetState. Calling SetState again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

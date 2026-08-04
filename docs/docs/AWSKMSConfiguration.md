@@ -56,6 +56,13 @@ SetAccessKeyID sets AccessKeyID field to given value.
 `func (o *AWSKMSConfiguration) HasAccessKeyID() bool`
 
 HasAccessKeyID returns a boolean if a field has been set.
+
+### SetAccessKeyIDNil
+
+`func (o *AWSKMSConfiguration) SetAccessKeyIDNil()`
+
+SetAccessKeyIDNil sets AccessKeyID to an explicit JSON null when marshaled, overriding any value previously set with SetAccessKeyID. Calling SetAccessKeyID again clears the null override.
+
 ### GetCustomerMasterKeyID
 
 `func (o *AWSKMSConfiguration) GetCustomerMasterKeyID() string`
@@ -80,6 +87,13 @@ SetCustomerMasterKeyID sets CustomerMasterKeyID field to given value.
 `func (o *AWSKMSConfiguration) HasCustomerMasterKeyID() bool`
 
 HasCustomerMasterKeyID returns a boolean if a field has been set.
+
+### SetCustomerMasterKeyIDNil
+
+`func (o *AWSKMSConfiguration) SetCustomerMasterKeyIDNil()`
+
+SetCustomerMasterKeyIDNil sets CustomerMasterKeyID to an explicit JSON null when marshaled, overriding any value previously set with SetCustomerMasterKeyID. Calling SetCustomerMasterKeyID again clears the null override.
+
 ### GetEnabled
 
 `func (o *AWSKMSConfiguration) GetEnabled() bool`
@@ -104,6 +118,13 @@ SetEnabled sets Enabled field to given value.
 `func (o *AWSKMSConfiguration) HasEnabled() bool`
 
 HasEnabled returns a boolean if a field has been set.
+
+### SetEnabledNil
+
+`func (o *AWSKMSConfiguration) SetEnabledNil()`
+
+SetEnabledNil sets Enabled to an explicit JSON null when marshaled, overriding any value previously set with SetEnabled. Calling SetEnabled again clears the null override.
+
 ### GetRegion
 
 `func (o *AWSKMSConfiguration) GetRegion() string`
@@ -128,6 +149,13 @@ SetRegion sets Region field to given value.
 `func (o *AWSKMSConfiguration) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *AWSKMSConfiguration) SetRegionNil()`
+
+SetRegionNil sets Region to an explicit JSON null when marshaled, overriding any value previously set with SetRegion. Calling SetRegion again clears the null override.
+
 ### GetRequirePrivateNetworking
 
 `func (o *AWSKMSConfiguration) GetRequirePrivateNetworking() bool`
@@ -152,6 +180,13 @@ SetRequirePrivateNetworking sets RequirePrivateNetworking field to given value.
 `func (o *AWSKMSConfiguration) HasRequirePrivateNetworking() bool`
 
 HasRequirePrivateNetworking returns a boolean if a field has been set.
+
+### SetRequirePrivateNetworkingNil
+
+`func (o *AWSKMSConfiguration) SetRequirePrivateNetworkingNil()`
+
+SetRequirePrivateNetworkingNil sets RequirePrivateNetworking to an explicit JSON null when marshaled, overriding any value previously set with SetRequirePrivateNetworking. Calling SetRequirePrivateNetworking again clears the null override.
+
 ### GetRoleId
 
 `func (o *AWSKMSConfiguration) GetRoleId() string`
@@ -176,6 +211,13 @@ SetRoleId sets RoleId field to given value.
 `func (o *AWSKMSConfiguration) HasRoleId() bool`
 
 HasRoleId returns a boolean if a field has been set.
+
+### SetRoleIdNil
+
+`func (o *AWSKMSConfiguration) SetRoleIdNil()`
+
+SetRoleIdNil sets RoleId to an explicit JSON null when marshaled, overriding any value previously set with SetRoleId. Calling SetRoleId again clears the null override.
+
 ### GetSecretAccessKey
 
 `func (o *AWSKMSConfiguration) GetSecretAccessKey() string`
@@ -200,6 +242,13 @@ SetSecretAccessKey sets SecretAccessKey field to given value.
 `func (o *AWSKMSConfiguration) HasSecretAccessKey() bool`
 
 HasSecretAccessKey returns a boolean if a field has been set.
+
+### SetSecretAccessKeyNil
+
+`func (o *AWSKMSConfiguration) SetSecretAccessKeyNil()`
+
+SetSecretAccessKeyNil sets SecretAccessKey to an explicit JSON null when marshaled, overriding any value previously set with SetSecretAccessKey. Calling SetSecretAccessKey again clears the null override.
+
 ### GetValid
 
 `func (o *AWSKMSConfiguration) GetValid() bool`
@@ -224,6 +273,13 @@ SetValid sets Valid field to given value.
 `func (o *AWSKMSConfiguration) HasValid() bool`
 
 HasValid returns a boolean if a field has been set.
+
+### SetValidNil
+
+`func (o *AWSKMSConfiguration) SetValidNil()`
+
+SetValidNil sets Valid to an explicit JSON null when marshaled, overriding any value previously set with SetValid. Calling SetValid again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

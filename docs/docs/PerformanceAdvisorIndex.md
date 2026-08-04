@@ -54,6 +54,13 @@ SetAvgObjSize sets AvgObjSize field to given value.
 `func (o *PerformanceAdvisorIndex) HasAvgObjSize() bool`
 
 HasAvgObjSize returns a boolean if a field has been set.
+
+### SetAvgObjSizeNil
+
+`func (o *PerformanceAdvisorIndex) SetAvgObjSizeNil()`
+
+SetAvgObjSizeNil sets AvgObjSize to an explicit JSON null when marshaled, overriding any value previously set with SetAvgObjSize. Calling SetAvgObjSize again clears the null override.
+
 ### GetId
 
 `func (o *PerformanceAdvisorIndex) GetId() string`
@@ -78,6 +85,13 @@ SetId sets Id field to given value.
 `func (o *PerformanceAdvisorIndex) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *PerformanceAdvisorIndex) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetImpact
 
 `func (o *PerformanceAdvisorIndex) GetImpact() []string`
@@ -102,6 +116,13 @@ SetImpact sets Impact field to given value.
 `func (o *PerformanceAdvisorIndex) HasImpact() bool`
 
 HasImpact returns a boolean if a field has been set.
+
+### SetImpactNil
+
+`func (o *PerformanceAdvisorIndex) SetImpactNil()`
+
+SetImpactNil sets Impact to an explicit JSON null when marshaled, overriding any value previously set with SetImpact. Calling SetImpact again clears the null override.
+
 ### GetIndex
 
 `func (o *PerformanceAdvisorIndex) GetIndex() []map[string]int`
@@ -126,6 +147,13 @@ SetIndex sets Index field to given value.
 `func (o *PerformanceAdvisorIndex) HasIndex() bool`
 
 HasIndex returns a boolean if a field has been set.
+
+### SetIndexNil
+
+`func (o *PerformanceAdvisorIndex) SetIndexNil()`
+
+SetIndexNil sets Index to an explicit JSON null when marshaled, overriding any value previously set with SetIndex. Calling SetIndex again clears the null override.
+
 ### GetNamespace
 
 `func (o *PerformanceAdvisorIndex) GetNamespace() string`
@@ -150,6 +178,13 @@ SetNamespace sets Namespace field to given value.
 `func (o *PerformanceAdvisorIndex) HasNamespace() bool`
 
 HasNamespace returns a boolean if a field has been set.
+
+### SetNamespaceNil
+
+`func (o *PerformanceAdvisorIndex) SetNamespaceNil()`
+
+SetNamespaceNil sets Namespace to an explicit JSON null when marshaled, overriding any value previously set with SetNamespace. Calling SetNamespace again clears the null override.
+
 ### GetWeight
 
 `func (o *PerformanceAdvisorIndex) GetWeight() float64`
@@ -174,6 +209,13 @@ SetWeight sets Weight field to given value.
 `func (o *PerformanceAdvisorIndex) HasWeight() bool`
 
 HasWeight returns a boolean if a field has been set.
+
+### SetWeightNil
+
+`func (o *PerformanceAdvisorIndex) SetWeightNil()`
+
+SetWeightNil sets Weight to an explicit JSON null when marshaled, overriding any value previously set with SetWeight. Calling SetWeight again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

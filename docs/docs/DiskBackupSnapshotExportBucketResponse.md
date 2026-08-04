@@ -115,6 +115,13 @@ SetLinks sets Links field to given value.
 `func (o *DiskBackupSnapshotExportBucketResponse) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *DiskBackupSnapshotExportBucketResponse) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetIamRoleId
 
 `func (o *DiskBackupSnapshotExportBucketResponse) GetIamRoleId() string`
@@ -139,6 +146,13 @@ SetIamRoleId sets IamRoleId field to given value.
 `func (o *DiskBackupSnapshotExportBucketResponse) HasIamRoleId() bool`
 
 HasIamRoleId returns a boolean if a field has been set.
+
+### SetIamRoleIdNil
+
+`func (o *DiskBackupSnapshotExportBucketResponse) SetIamRoleIdNil()`
+
+SetIamRoleIdNil sets IamRoleId to an explicit JSON null when marshaled, overriding any value previously set with SetIamRoleId. Calling SetIamRoleId again clears the null override.
+
 ### GetRegion
 
 `func (o *DiskBackupSnapshotExportBucketResponse) GetRegion() string`
@@ -163,6 +177,13 @@ SetRegion sets Region field to given value.
 `func (o *DiskBackupSnapshotExportBucketResponse) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *DiskBackupSnapshotExportBucketResponse) SetRegionNil()`
+
+SetRegionNil sets Region to an explicit JSON null when marshaled, overriding any value previously set with SetRegion. Calling SetRegion again clears the null override.
+
 ### GetRequirePrivateNetworking
 
 `func (o *DiskBackupSnapshotExportBucketResponse) GetRequirePrivateNetworking() bool`
@@ -187,6 +208,13 @@ SetRequirePrivateNetworking sets RequirePrivateNetworking field to given value.
 `func (o *DiskBackupSnapshotExportBucketResponse) HasRequirePrivateNetworking() bool`
 
 HasRequirePrivateNetworking returns a boolean if a field has been set.
+
+### SetRequirePrivateNetworkingNil
+
+`func (o *DiskBackupSnapshotExportBucketResponse) SetRequirePrivateNetworkingNil()`
+
+SetRequirePrivateNetworkingNil sets RequirePrivateNetworking to an explicit JSON null when marshaled, overriding any value previously set with SetRequirePrivateNetworking. Calling SetRequirePrivateNetworking again clears the null override.
+
 ### GetRoleId
 
 `func (o *DiskBackupSnapshotExportBucketResponse) GetRoleId() string`
@@ -211,6 +239,13 @@ SetRoleId sets RoleId field to given value.
 `func (o *DiskBackupSnapshotExportBucketResponse) HasRoleId() bool`
 
 HasRoleId returns a boolean if a field has been set.
+
+### SetRoleIdNil
+
+`func (o *DiskBackupSnapshotExportBucketResponse) SetRoleIdNil()`
+
+SetRoleIdNil sets RoleId to an explicit JSON null when marshaled, overriding any value previously set with SetRoleId. Calling SetRoleId again clears the null override.
+
 ### GetServiceUrl
 
 `func (o *DiskBackupSnapshotExportBucketResponse) GetServiceUrl() string`
@@ -235,6 +270,13 @@ SetServiceUrl sets ServiceUrl field to given value.
 `func (o *DiskBackupSnapshotExportBucketResponse) HasServiceUrl() bool`
 
 HasServiceUrl returns a boolean if a field has been set.
+
+### SetServiceUrlNil
+
+`func (o *DiskBackupSnapshotExportBucketResponse) SetServiceUrlNil()`
+
+SetServiceUrlNil sets ServiceUrl to an explicit JSON null when marshaled, overriding any value previously set with SetServiceUrl. Calling SetServiceUrl again clears the null override.
+
 ### GetTenantId
 
 `func (o *DiskBackupSnapshotExportBucketResponse) GetTenantId() string`
@@ -259,6 +301,13 @@ SetTenantId sets TenantId field to given value.
 `func (o *DiskBackupSnapshotExportBucketResponse) HasTenantId() bool`
 
 HasTenantId returns a boolean if a field has been set.
+
+### SetTenantIdNil
+
+`func (o *DiskBackupSnapshotExportBucketResponse) SetTenantIdNil()`
+
+SetTenantIdNil sets TenantId to an explicit JSON null when marshaled, overriding any value previously set with SetTenantId. Calling SetTenantId again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

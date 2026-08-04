@@ -50,6 +50,13 @@ SetDataSources sets DataSources field to given value.
 `func (o *DataLakeDatabaseCollection) HasDataSources() bool`
 
 HasDataSources returns a boolean if a field has been set.
+
+### SetDataSourcesNil
+
+`func (o *DataLakeDatabaseCollection) SetDataSourcesNil()`
+
+SetDataSourcesNil sets DataSources to an explicit JSON null when marshaled, overriding any value previously set with SetDataSources. Calling SetDataSources again clears the null override.
+
 ### GetName
 
 `func (o *DataLakeDatabaseCollection) GetName() string`
@@ -74,6 +81,13 @@ SetName sets Name field to given value.
 `func (o *DataLakeDatabaseCollection) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *DataLakeDatabaseCollection) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

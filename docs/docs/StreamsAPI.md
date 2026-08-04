@@ -61,7 +61,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ## CreateFailoverConnection
 
-> StreamsConnection CreateFailoverConnection(ctx, groupId, tenantName, connectionName, streamsConnection StreamsConnection).Execute()
+> StreamsFailoverConnection CreateFailoverConnection(ctx, groupId, tenantName, connectionName, streamsFailoverConnection StreamsFailoverConnection).Execute()
 
 Create One Failover Stream Connection
 
@@ -144,7 +144,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -160,9 +160,9 @@ func main() {
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
     connectionName := "connectionName_example" // string | 
-    streamsConnection := *admin.NewStreamsConnection() // StreamsConnection | 
+    streamsFailoverConnection := *admin.NewStreamsFailoverConnection() // StreamsFailoverConnection | 
 
-    resp, r, err := sdk.StreamsAPI.CreateFailoverConnection(context.Background(), groupId, tenantName, connectionName, &streamsConnection).Execute()
+    resp, r, err := sdk.StreamsAPI.CreateFailoverConnection(context.Background(), groupId, tenantName, connectionName, &streamsFailoverConnection).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.CreateFailoverConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -171,7 +171,7 @@ func main() {
         }
         return
     }
-    // response from `CreateFailoverConnection`: StreamsConnection
+    // response from `CreateFailoverConnection`: StreamsFailoverConnection
     fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.CreateFailoverConnection`: %v (%v)\n", resp, r)
 }
 ```
@@ -196,11 +196,11 @@ Name | Type | Description  | Notes
 
 
 
- **streamsConnection** | [**StreamsConnection**](StreamsConnection.md) | Details to create one failover connection for a streams workspace in the specified project. | 
+ **streamsFailoverConnection** | [**StreamsFailoverConnection**](StreamsFailoverConnection.md) | Details to create one failover connection for a streams workspace in the specified project. | 
 
 ### Return type
 
-[**StreamsConnection**](StreamsConnection.md)
+[**StreamsFailoverConnection**](StreamsFailoverConnection.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -232,7 +232,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -314,7 +314,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -399,7 +399,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -484,7 +484,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -566,7 +566,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -647,7 +647,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -731,7 +731,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -818,7 +818,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -902,7 +902,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -983,7 +983,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -1064,7 +1064,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -1153,7 +1153,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -1242,7 +1242,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -1326,7 +1326,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -1409,7 +1409,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -1480,7 +1480,7 @@ Name | Type | Description  | Notes
 
 ## GetStreamFailoverConnection
 
-> StreamsConnection GetStreamFailoverConnection(ctx, groupId, tenantName, connectionName, failoverConnectionId).Execute()
+> StreamsFailoverConnection GetStreamFailoverConnection(ctx, groupId, tenantName, connectionName, failoverConnectionId).Execute()
 
 Return One Stream Failover Connection
 
@@ -1495,7 +1495,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -1522,7 +1522,7 @@ func main() {
         }
         return
     }
-    // response from `GetStreamFailoverConnection`: StreamsConnection
+    // response from `GetStreamFailoverConnection`: StreamsFailoverConnection
     fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.GetStreamFailoverConnection`: %v (%v)\n", resp, r)
 }
 ```
@@ -1552,7 +1552,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StreamsConnection**](StreamsConnection.md)
+[**StreamsFailoverConnection**](StreamsFailoverConnection.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -1584,7 +1584,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -1670,7 +1670,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -1759,7 +1759,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -1844,7 +1844,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -1928,7 +1928,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -2018,7 +2018,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -2102,7 +2102,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -2189,7 +2189,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -2273,7 +2273,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -2359,7 +2359,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -2440,7 +2440,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -2524,7 +2524,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -2610,7 +2610,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -2694,7 +2694,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -2779,7 +2779,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -2852,7 +2852,7 @@ Name | Type | Description  | Notes
 
 ## UpdateStreamFailoverConnection
 
-> StreamsConnection UpdateStreamFailoverConnection(ctx, groupId, tenantName, connectionName, failoverConnectionId, streamsConnection StreamsConnection).Execute()
+> StreamsFailoverConnection UpdateStreamFailoverConnection(ctx, groupId, tenantName, connectionName, failoverConnectionId, streamsFailoverConnection StreamsFailoverConnection).Execute()
 
 Update One Stream Failover Connection
 
@@ -2867,7 +2867,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -2884,9 +2884,9 @@ func main() {
     tenantName := "tenantName_example" // string | 
     connectionName := "connectionName_example" // string | 
     failoverConnectionId := "failoverConnectionId_example" // string | 
-    streamsConnection := *admin.NewStreamsConnection() // StreamsConnection | 
+    streamsFailoverConnection := *admin.NewStreamsFailoverConnection() // StreamsFailoverConnection | 
 
-    resp, r, err := sdk.StreamsAPI.UpdateStreamFailoverConnection(context.Background(), groupId, tenantName, connectionName, failoverConnectionId, &streamsConnection).Execute()
+    resp, r, err := sdk.StreamsAPI.UpdateStreamFailoverConnection(context.Background(), groupId, tenantName, connectionName, failoverConnectionId, &streamsFailoverConnection).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.UpdateStreamFailoverConnection`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -2895,7 +2895,7 @@ func main() {
         }
         return
     }
-    // response from `UpdateStreamFailoverConnection`: StreamsConnection
+    // response from `UpdateStreamFailoverConnection`: StreamsFailoverConnection
     fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.UpdateStreamFailoverConnection`: %v (%v)\n", resp, r)
 }
 ```
@@ -2922,11 +2922,11 @@ Name | Type | Description  | Notes
 
 
 
- **streamsConnection** | [**StreamsConnection**](StreamsConnection.md) | Details to update one failover connection for a streams workspace in the specified project. | 
+ **streamsFailoverConnection** | [**StreamsFailoverConnection**](StreamsFailoverConnection.md) | Details to update one failover connection for a streams workspace in the specified project. | 
 
 ### Return type
 
-[**StreamsConnection**](StreamsConnection.md)
+[**StreamsFailoverConnection**](StreamsFailoverConnection.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -2958,7 +2958,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -3046,7 +3046,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {
@@ -3131,7 +3131,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312022/admin"
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
 func main() {

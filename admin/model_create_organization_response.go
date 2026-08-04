@@ -15,6 +15,15 @@ type CreateOrganizationResponse struct {
 	ServiceAccount *OrgServiceAccount `json:"serviceAccount,omitempty"`
 	// Disables automatic alert creation. When set to true, no organization level alerts will be created automatically.
 	SkipDefaultAlertsSettings *bool `json:"skipDefaultAlertsSettings,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CreateOrganizationResponse) MarshalJSON() ([]byte, error) {
+	type noMethod CreateOrganizationResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCreateOrganizationResponse instantiates a new CreateOrganizationResponse object
@@ -69,6 +78,13 @@ func (o *CreateOrganizationResponse) HasApiKey() bool {
 // SetApiKey gets a reference to the given ApiKeyUserDetails and assigns it to the ApiKey field.
 func (o *CreateOrganizationResponse) SetApiKey(v ApiKeyUserDetails) {
 	o.ApiKey = &v
+	o.NullFields = removeNullField(o.NullFields, "ApiKey")
+}
+
+// SetApiKeyNil sets ApiKey to an explicit JSON null when marshaled.
+func (o *CreateOrganizationResponse) SetApiKeyNil() {
+	o.ApiKey = nil
+	o.NullFields = addNullField(o.NullFields, "ApiKey")
 }
 
 // GetFederationSettingsId returns the FederationSettingsId field value if set, zero value otherwise
@@ -102,6 +118,13 @@ func (o *CreateOrganizationResponse) HasFederationSettingsId() bool {
 // SetFederationSettingsId gets a reference to the given string and assigns it to the FederationSettingsId field.
 func (o *CreateOrganizationResponse) SetFederationSettingsId(v string) {
 	o.FederationSettingsId = &v
+	o.NullFields = removeNullField(o.NullFields, "FederationSettingsId")
+}
+
+// SetFederationSettingsIdNil sets FederationSettingsId to an explicit JSON null when marshaled.
+func (o *CreateOrganizationResponse) SetFederationSettingsIdNil() {
+	o.FederationSettingsId = nil
+	o.NullFields = addNullField(o.NullFields, "FederationSettingsId")
 }
 
 // GetOrgOwnerId returns the OrgOwnerId field value if set, zero value otherwise
@@ -135,6 +158,13 @@ func (o *CreateOrganizationResponse) HasOrgOwnerId() bool {
 // SetOrgOwnerId gets a reference to the given string and assigns it to the OrgOwnerId field.
 func (o *CreateOrganizationResponse) SetOrgOwnerId(v string) {
 	o.OrgOwnerId = &v
+	o.NullFields = removeNullField(o.NullFields, "OrgOwnerId")
+}
+
+// SetOrgOwnerIdNil sets OrgOwnerId to an explicit JSON null when marshaled.
+func (o *CreateOrganizationResponse) SetOrgOwnerIdNil() {
+	o.OrgOwnerId = nil
+	o.NullFields = addNullField(o.NullFields, "OrgOwnerId")
 }
 
 // GetOrganization returns the Organization field value if set, zero value otherwise
@@ -168,6 +198,13 @@ func (o *CreateOrganizationResponse) HasOrganization() bool {
 // SetOrganization gets a reference to the given AtlasOrganization and assigns it to the Organization field.
 func (o *CreateOrganizationResponse) SetOrganization(v AtlasOrganization) {
 	o.Organization = &v
+	o.NullFields = removeNullField(o.NullFields, "Organization")
+}
+
+// SetOrganizationNil sets Organization to an explicit JSON null when marshaled.
+func (o *CreateOrganizationResponse) SetOrganizationNil() {
+	o.Organization = nil
+	o.NullFields = addNullField(o.NullFields, "Organization")
 }
 
 // GetServiceAccount returns the ServiceAccount field value if set, zero value otherwise
@@ -201,6 +238,13 @@ func (o *CreateOrganizationResponse) HasServiceAccount() bool {
 // SetServiceAccount gets a reference to the given OrgServiceAccount and assigns it to the ServiceAccount field.
 func (o *CreateOrganizationResponse) SetServiceAccount(v OrgServiceAccount) {
 	o.ServiceAccount = &v
+	o.NullFields = removeNullField(o.NullFields, "ServiceAccount")
+}
+
+// SetServiceAccountNil sets ServiceAccount to an explicit JSON null when marshaled.
+func (o *CreateOrganizationResponse) SetServiceAccountNil() {
+	o.ServiceAccount = nil
+	o.NullFields = addNullField(o.NullFields, "ServiceAccount")
 }
 
 // GetSkipDefaultAlertsSettings returns the SkipDefaultAlertsSettings field value if set, zero value otherwise
@@ -234,4 +278,11 @@ func (o *CreateOrganizationResponse) HasSkipDefaultAlertsSettings() bool {
 // SetSkipDefaultAlertsSettings gets a reference to the given bool and assigns it to the SkipDefaultAlertsSettings field.
 func (o *CreateOrganizationResponse) SetSkipDefaultAlertsSettings(v bool) {
 	o.SkipDefaultAlertsSettings = &v
+	o.NullFields = removeNullField(o.NullFields, "SkipDefaultAlertsSettings")
+}
+
+// SetSkipDefaultAlertsSettingsNil sets SkipDefaultAlertsSettings to an explicit JSON null when marshaled.
+func (o *CreateOrganizationResponse) SetSkipDefaultAlertsSettingsNil() {
+	o.SkipDefaultAlertsSettings = nil
+	o.NullFields = addNullField(o.NullFields, "SkipDefaultAlertsSettings")
 }

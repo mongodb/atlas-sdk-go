@@ -73,6 +73,13 @@ SetAcknowledgedUntil sets AcknowledgedUntil field to given value.
 `func (o *AlertViewForNdsGroup) HasAcknowledgedUntil() bool`
 
 HasAcknowledgedUntil returns a boolean if a field has been set.
+
+### SetAcknowledgedUntilNil
+
+`func (o *AlertViewForNdsGroup) SetAcknowledgedUntilNil()`
+
+SetAcknowledgedUntilNil sets AcknowledgedUntil to an explicit JSON null when marshaled, overriding any value previously set with SetAcknowledgedUntil. Calling SetAcknowledgedUntil again clears the null override.
+
 ### GetAcknowledgementComment
 
 `func (o *AlertViewForNdsGroup) GetAcknowledgementComment() string`
@@ -97,6 +104,13 @@ SetAcknowledgementComment sets AcknowledgementComment field to given value.
 `func (o *AlertViewForNdsGroup) HasAcknowledgementComment() bool`
 
 HasAcknowledgementComment returns a boolean if a field has been set.
+
+### SetAcknowledgementCommentNil
+
+`func (o *AlertViewForNdsGroup) SetAcknowledgementCommentNil()`
+
+SetAcknowledgementCommentNil sets AcknowledgementComment to an explicit JSON null when marshaled, overriding any value previously set with SetAcknowledgementComment. Calling SetAcknowledgementComment again clears the null override.
+
 ### GetAcknowledgingUsername
 
 `func (o *AlertViewForNdsGroup) GetAcknowledgingUsername() string`
@@ -121,6 +135,13 @@ SetAcknowledgingUsername sets AcknowledgingUsername field to given value.
 `func (o *AlertViewForNdsGroup) HasAcknowledgingUsername() bool`
 
 HasAcknowledgingUsername returns a boolean if a field has been set.
+
+### SetAcknowledgingUsernameNil
+
+`func (o *AlertViewForNdsGroup) SetAcknowledgingUsernameNil()`
+
+SetAcknowledgingUsernameNil sets AcknowledgingUsername to an explicit JSON null when marshaled, overriding any value previously set with SetAcknowledgingUsername. Calling SetAcknowledgingUsername again clears the null override.
+
 ### GetAlertConfigId
 
 `func (o *AlertViewForNdsGroup) GetAlertConfigId() string`
@@ -145,6 +166,13 @@ SetAlertConfigId sets AlertConfigId field to given value.
 `func (o *AlertViewForNdsGroup) HasAlertConfigId() bool`
 
 HasAlertConfigId returns a boolean if a field has been set.
+
+### SetAlertConfigIdNil
+
+`func (o *AlertViewForNdsGroup) SetAlertConfigIdNil()`
+
+SetAlertConfigIdNil sets AlertConfigId to an explicit JSON null when marshaled, overriding any value previously set with SetAlertConfigId. Calling SetAlertConfigId again clears the null override.
+
 ### GetCreated
 
 `func (o *AlertViewForNdsGroup) GetCreated() time.Time`
@@ -169,6 +197,13 @@ SetCreated sets Created field to given value.
 `func (o *AlertViewForNdsGroup) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
+
+### SetCreatedNil
+
+`func (o *AlertViewForNdsGroup) SetCreatedNil()`
+
+SetCreatedNil sets Created to an explicit JSON null when marshaled, overriding any value previously set with SetCreated. Calling SetCreated again clears the null override.
+
 ### GetEventTypeName
 
 `func (o *AlertViewForNdsGroup) GetEventTypeName() string`
@@ -193,6 +228,13 @@ SetEventTypeName sets EventTypeName field to given value.
 `func (o *AlertViewForNdsGroup) HasEventTypeName() bool`
 
 HasEventTypeName returns a boolean if a field has been set.
+
+### SetEventTypeNameNil
+
+`func (o *AlertViewForNdsGroup) SetEventTypeNameNil()`
+
+SetEventTypeNameNil sets EventTypeName to an explicit JSON null when marshaled, overriding any value previously set with SetEventTypeName. Calling SetEventTypeName again clears the null override.
+
 ### GetGroupId
 
 `func (o *AlertViewForNdsGroup) GetGroupId() string`
@@ -217,6 +259,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *AlertViewForNdsGroup) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *AlertViewForNdsGroup) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetId
 
 `func (o *AlertViewForNdsGroup) GetId() string`
@@ -241,6 +290,13 @@ SetId sets Id field to given value.
 `func (o *AlertViewForNdsGroup) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *AlertViewForNdsGroup) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLastNotified
 
 `func (o *AlertViewForNdsGroup) GetLastNotified() time.Time`
@@ -265,6 +321,13 @@ SetLastNotified sets LastNotified field to given value.
 `func (o *AlertViewForNdsGroup) HasLastNotified() bool`
 
 HasLastNotified returns a boolean if a field has been set.
+
+### SetLastNotifiedNil
+
+`func (o *AlertViewForNdsGroup) SetLastNotifiedNil()`
+
+SetLastNotifiedNil sets LastNotified to an explicit JSON null when marshaled, overriding any value previously set with SetLastNotified. Calling SetLastNotified again clears the null override.
+
 ### GetLinks
 
 `func (o *AlertViewForNdsGroup) GetLinks() []Link`
@@ -289,6 +352,13 @@ SetLinks sets Links field to given value.
 `func (o *AlertViewForNdsGroup) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *AlertViewForNdsGroup) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetOrgId
 
 `func (o *AlertViewForNdsGroup) GetOrgId() string`
@@ -313,6 +383,13 @@ SetOrgId sets OrgId field to given value.
 `func (o *AlertViewForNdsGroup) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
+
+### SetOrgIdNil
+
+`func (o *AlertViewForNdsGroup) SetOrgIdNil()`
+
+SetOrgIdNil sets OrgId to an explicit JSON null when marshaled, overriding any value previously set with SetOrgId. Calling SetOrgId again clears the null override.
+
 ### GetResolved
 
 `func (o *AlertViewForNdsGroup) GetResolved() time.Time`
@@ -337,6 +414,13 @@ SetResolved sets Resolved field to given value.
 `func (o *AlertViewForNdsGroup) HasResolved() bool`
 
 HasResolved returns a boolean if a field has been set.
+
+### SetResolvedNil
+
+`func (o *AlertViewForNdsGroup) SetResolvedNil()`
+
+SetResolvedNil sets Resolved to an explicit JSON null when marshaled, overriding any value previously set with SetResolved. Calling SetResolved again clears the null override.
+
 ### GetStatus
 
 `func (o *AlertViewForNdsGroup) GetStatus() string`
@@ -361,6 +445,13 @@ SetStatus sets Status field to given value.
 `func (o *AlertViewForNdsGroup) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *AlertViewForNdsGroup) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 ### GetUpdated
 
 `func (o *AlertViewForNdsGroup) GetUpdated() time.Time`
@@ -385,6 +476,13 @@ SetUpdated sets Updated field to given value.
 `func (o *AlertViewForNdsGroup) HasUpdated() bool`
 
 HasUpdated returns a boolean if a field has been set.
+
+### SetUpdatedNil
+
+`func (o *AlertViewForNdsGroup) SetUpdatedNil()`
+
+SetUpdatedNil sets Updated to an explicit JSON null when marshaled, overriding any value previously set with SetUpdated. Calling SetUpdated again clears the null override.
+
 ### GetClusterName
 
 `func (o *AlertViewForNdsGroup) GetClusterName() string`
@@ -409,6 +507,13 @@ SetClusterName sets ClusterName field to given value.
 `func (o *AlertViewForNdsGroup) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+
+### SetClusterNameNil
+
+`func (o *AlertViewForNdsGroup) SetClusterNameNil()`
+
+SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled, overriding any value previously set with SetClusterName. Calling SetClusterName again clears the null override.
+
 ### GetHostnameAndPort
 
 `func (o *AlertViewForNdsGroup) GetHostnameAndPort() string`
@@ -433,6 +538,13 @@ SetHostnameAndPort sets HostnameAndPort field to given value.
 `func (o *AlertViewForNdsGroup) HasHostnameAndPort() bool`
 
 HasHostnameAndPort returns a boolean if a field has been set.
+
+### SetHostnameAndPortNil
+
+`func (o *AlertViewForNdsGroup) SetHostnameAndPortNil()`
+
+SetHostnameAndPortNil sets HostnameAndPort to an explicit JSON null when marshaled, overriding any value previously set with SetHostnameAndPort. Calling SetHostnameAndPort again clears the null override.
+
 ### GetReplicaSetName
 
 `func (o *AlertViewForNdsGroup) GetReplicaSetName() string`
@@ -457,6 +569,13 @@ SetReplicaSetName sets ReplicaSetName field to given value.
 `func (o *AlertViewForNdsGroup) HasReplicaSetName() bool`
 
 HasReplicaSetName returns a boolean if a field has been set.
+
+### SetReplicaSetNameNil
+
+`func (o *AlertViewForNdsGroup) SetReplicaSetNameNil()`
+
+SetReplicaSetNameNil sets ReplicaSetName to an explicit JSON null when marshaled, overriding any value previously set with SetReplicaSetName. Calling SetReplicaSetName again clears the null override.
+
 ### GetCurrentValue
 
 `func (o *AlertViewForNdsGroup) GetCurrentValue() NumberMetricValue`
@@ -481,6 +600,13 @@ SetCurrentValue sets CurrentValue field to given value.
 `func (o *AlertViewForNdsGroup) HasCurrentValue() bool`
 
 HasCurrentValue returns a boolean if a field has been set.
+
+### SetCurrentValueNil
+
+`func (o *AlertViewForNdsGroup) SetCurrentValueNil()`
+
+SetCurrentValueNil sets CurrentValue to an explicit JSON null when marshaled, overriding any value previously set with SetCurrentValue. Calling SetCurrentValue again clears the null override.
+
 ### GetMetricName
 
 `func (o *AlertViewForNdsGroup) GetMetricName() string`
@@ -505,6 +631,13 @@ SetMetricName sets MetricName field to given value.
 `func (o *AlertViewForNdsGroup) HasMetricName() bool`
 
 HasMetricName returns a boolean if a field has been set.
+
+### SetMetricNameNil
+
+`func (o *AlertViewForNdsGroup) SetMetricNameNil()`
+
+SetMetricNameNil sets MetricName to an explicit JSON null when marshaled, overriding any value previously set with SetMetricName. Calling SetMetricName again clears the null override.
+
 ### GetNonRunningHostIds
 
 `func (o *AlertViewForNdsGroup) GetNonRunningHostIds() []string`
@@ -529,6 +662,13 @@ SetNonRunningHostIds sets NonRunningHostIds field to given value.
 `func (o *AlertViewForNdsGroup) HasNonRunningHostIds() bool`
 
 HasNonRunningHostIds returns a boolean if a field has been set.
+
+### SetNonRunningHostIdsNil
+
+`func (o *AlertViewForNdsGroup) SetNonRunningHostIdsNil()`
+
+SetNonRunningHostIdsNil sets NonRunningHostIds to an explicit JSON null when marshaled, overriding any value previously set with SetNonRunningHostIds. Calling SetNonRunningHostIds again clears the null override.
+
 ### GetParentClusterId
 
 `func (o *AlertViewForNdsGroup) GetParentClusterId() string`
@@ -553,6 +693,13 @@ SetParentClusterId sets ParentClusterId field to given value.
 `func (o *AlertViewForNdsGroup) HasParentClusterId() bool`
 
 HasParentClusterId returns a boolean if a field has been set.
+
+### SetParentClusterIdNil
+
+`func (o *AlertViewForNdsGroup) SetParentClusterIdNil()`
+
+SetParentClusterIdNil sets ParentClusterId to an explicit JSON null when marshaled, overriding any value previously set with SetParentClusterId. Calling SetParentClusterId again clears the null override.
+
 ### GetInstanceName
 
 `func (o *AlertViewForNdsGroup) GetInstanceName() string`
@@ -577,6 +724,13 @@ SetInstanceName sets InstanceName field to given value.
 `func (o *AlertViewForNdsGroup) HasInstanceName() bool`
 
 HasInstanceName returns a boolean if a field has been set.
+
+### SetInstanceNameNil
+
+`func (o *AlertViewForNdsGroup) SetInstanceNameNil()`
+
+SetInstanceNameNil sets InstanceName to an explicit JSON null when marshaled, overriding any value previously set with SetInstanceName. Calling SetInstanceName again clears the null override.
+
 ### GetProcessorErrorMsg
 
 `func (o *AlertViewForNdsGroup) GetProcessorErrorMsg() string`
@@ -601,6 +755,13 @@ SetProcessorErrorMsg sets ProcessorErrorMsg field to given value.
 `func (o *AlertViewForNdsGroup) HasProcessorErrorMsg() bool`
 
 HasProcessorErrorMsg returns a boolean if a field has been set.
+
+### SetProcessorErrorMsgNil
+
+`func (o *AlertViewForNdsGroup) SetProcessorErrorMsgNil()`
+
+SetProcessorErrorMsgNil sets ProcessorErrorMsg to an explicit JSON null when marshaled, overriding any value previously set with SetProcessorErrorMsg. Calling SetProcessorErrorMsg again clears the null override.
+
 ### GetProcessorName
 
 `func (o *AlertViewForNdsGroup) GetProcessorName() string`
@@ -625,6 +786,13 @@ SetProcessorName sets ProcessorName field to given value.
 `func (o *AlertViewForNdsGroup) HasProcessorName() bool`
 
 HasProcessorName returns a boolean if a field has been set.
+
+### SetProcessorNameNil
+
+`func (o *AlertViewForNdsGroup) SetProcessorNameNil()`
+
+SetProcessorNameNil sets ProcessorName to an explicit JSON null when marshaled, overriding any value previously set with SetProcessorName. Calling SetProcessorName again clears the null override.
+
 ### GetProcessorState
 
 `func (o *AlertViewForNdsGroup) GetProcessorState() string`
@@ -649,6 +817,13 @@ SetProcessorState sets ProcessorState field to given value.
 `func (o *AlertViewForNdsGroup) HasProcessorState() bool`
 
 HasProcessorState returns a boolean if a field has been set.
+
+### SetProcessorStateNil
+
+`func (o *AlertViewForNdsGroup) SetProcessorStateNil()`
+
+SetProcessorStateNil sets ProcessorState to an explicit JSON null when marshaled, overriding any value previously set with SetProcessorState. Calling SetProcessorState again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -62,6 +62,13 @@ SetId sets Id field to given value.
 `func (o *BackupOnlineArchiveCreate) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *BackupOnlineArchiveCreate) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetClusterName
 
 `func (o *BackupOnlineArchiveCreate) GetClusterName() string`
@@ -86,6 +93,13 @@ SetClusterName sets ClusterName field to given value.
 `func (o *BackupOnlineArchiveCreate) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+
+### SetClusterNameNil
+
+`func (o *BackupOnlineArchiveCreate) SetClusterNameNil()`
+
+SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled, overriding any value previously set with SetClusterName. Calling SetClusterName again clears the null override.
+
 ### GetCollName
 
 `func (o *BackupOnlineArchiveCreate) GetCollName() string`
@@ -129,6 +143,13 @@ SetCollectionType sets CollectionType field to given value.
 `func (o *BackupOnlineArchiveCreate) HasCollectionType() bool`
 
 HasCollectionType returns a boolean if a field has been set.
+
+### SetCollectionTypeNil
+
+`func (o *BackupOnlineArchiveCreate) SetCollectionTypeNil()`
+
+SetCollectionTypeNil sets CollectionType to an explicit JSON null when marshaled, overriding any value previously set with SetCollectionType. Calling SetCollectionType again clears the null override.
+
 ### GetCriteria
 
 `func (o *BackupOnlineArchiveCreate) GetCriteria() Criteria`
@@ -172,6 +193,13 @@ SetDataExpirationRule sets DataExpirationRule field to given value.
 `func (o *BackupOnlineArchiveCreate) HasDataExpirationRule() bool`
 
 HasDataExpirationRule returns a boolean if a field has been set.
+
+### SetDataExpirationRuleNil
+
+`func (o *BackupOnlineArchiveCreate) SetDataExpirationRuleNil()`
+
+SetDataExpirationRuleNil sets DataExpirationRule to an explicit JSON null when marshaled, overriding any value previously set with SetDataExpirationRule. Calling SetDataExpirationRule again clears the null override.
+
 ### GetDataProcessRegion
 
 `func (o *BackupOnlineArchiveCreate) GetDataProcessRegion() CreateDataProcessRegion`
@@ -196,6 +224,13 @@ SetDataProcessRegion sets DataProcessRegion field to given value.
 `func (o *BackupOnlineArchiveCreate) HasDataProcessRegion() bool`
 
 HasDataProcessRegion returns a boolean if a field has been set.
+
+### SetDataProcessRegionNil
+
+`func (o *BackupOnlineArchiveCreate) SetDataProcessRegionNil()`
+
+SetDataProcessRegionNil sets DataProcessRegion to an explicit JSON null when marshaled, overriding any value previously set with SetDataProcessRegion. Calling SetDataProcessRegion again clears the null override.
+
 ### GetDataSetName
 
 `func (o *BackupOnlineArchiveCreate) GetDataSetName() string`
@@ -220,6 +255,13 @@ SetDataSetName sets DataSetName field to given value.
 `func (o *BackupOnlineArchiveCreate) HasDataSetName() bool`
 
 HasDataSetName returns a boolean if a field has been set.
+
+### SetDataSetNameNil
+
+`func (o *BackupOnlineArchiveCreate) SetDataSetNameNil()`
+
+SetDataSetNameNil sets DataSetName to an explicit JSON null when marshaled, overriding any value previously set with SetDataSetName. Calling SetDataSetName again clears the null override.
+
 ### GetDbName
 
 `func (o *BackupOnlineArchiveCreate) GetDbName() string`
@@ -263,6 +305,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *BackupOnlineArchiveCreate) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *BackupOnlineArchiveCreate) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetPartitionFields
 
 `func (o *BackupOnlineArchiveCreate) GetPartitionFields() []PartitionField`
@@ -287,6 +336,13 @@ SetPartitionFields sets PartitionFields field to given value.
 `func (o *BackupOnlineArchiveCreate) HasPartitionFields() bool`
 
 HasPartitionFields returns a boolean if a field has been set.
+
+### SetPartitionFieldsNil
+
+`func (o *BackupOnlineArchiveCreate) SetPartitionFieldsNil()`
+
+SetPartitionFieldsNil sets PartitionFields to an explicit JSON null when marshaled, overriding any value previously set with SetPartitionFields. Calling SetPartitionFields again clears the null override.
+
 ### GetPaused
 
 `func (o *BackupOnlineArchiveCreate) GetPaused() bool`
@@ -311,6 +367,13 @@ SetPaused sets Paused field to given value.
 `func (o *BackupOnlineArchiveCreate) HasPaused() bool`
 
 HasPaused returns a boolean if a field has been set.
+
+### SetPausedNil
+
+`func (o *BackupOnlineArchiveCreate) SetPausedNil()`
+
+SetPausedNil sets Paused to an explicit JSON null when marshaled, overriding any value previously set with SetPaused. Calling SetPaused again clears the null override.
+
 ### GetSchedule
 
 `func (o *BackupOnlineArchiveCreate) GetSchedule() OnlineArchiveSchedule`
@@ -335,6 +398,13 @@ SetSchedule sets Schedule field to given value.
 `func (o *BackupOnlineArchiveCreate) HasSchedule() bool`
 
 HasSchedule returns a boolean if a field has been set.
+
+### SetScheduleNil
+
+`func (o *BackupOnlineArchiveCreate) SetScheduleNil()`
+
+SetScheduleNil sets Schedule to an explicit JSON null when marshaled, overriding any value previously set with SetSchedule. Calling SetSchedule again clears the null override.
+
 ### GetState
 
 `func (o *BackupOnlineArchiveCreate) GetState() string`
@@ -359,6 +429,13 @@ SetState sets State field to given value.
 `func (o *BackupOnlineArchiveCreate) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### SetStateNil
+
+`func (o *BackupOnlineArchiveCreate) SetStateNil()`
+
+SetStateNil sets State to an explicit JSON null when marshaled, overriding any value previously set with SetState. Calling SetState again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

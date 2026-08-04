@@ -21,6 +21,15 @@ type CloudSearchMetrics struct {
 	ProcessId string `json:"processId"`
 	// List that contains all available Atlas Search status metrics when MongoDB Atlas received this request.
 	StatusMetrics []FTSMetric `json:"statusMetrics"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CloudSearchMetrics) MarshalJSON() ([]byte, error) {
+	type noMethod CloudSearchMetrics
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudSearchMetrics instantiates a new CloudSearchMetrics object
@@ -148,6 +157,13 @@ func (o *CloudSearchMetrics) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *CloudSearchMetrics) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *CloudSearchMetrics) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetProcessId returns the ProcessId field value

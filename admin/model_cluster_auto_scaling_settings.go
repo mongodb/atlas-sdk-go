@@ -7,6 +7,15 @@ type ClusterAutoScalingSettings struct {
 	Compute *ClusterComputeAutoScaling `json:"compute,omitempty"`
 	// Flag that indicates whether someone enabled disk auto-scaling for this cluster.
 	DiskGBEnabled *bool `json:"diskGBEnabled,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ClusterAutoScalingSettings) MarshalJSON() ([]byte, error) {
+	type noMethod ClusterAutoScalingSettings
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterAutoScalingSettings instantiates a new ClusterAutoScalingSettings object
@@ -61,6 +70,13 @@ func (o *ClusterAutoScalingSettings) HasCompute() bool {
 // SetCompute gets a reference to the given ClusterComputeAutoScaling and assigns it to the Compute field.
 func (o *ClusterAutoScalingSettings) SetCompute(v ClusterComputeAutoScaling) {
 	o.Compute = &v
+	o.NullFields = removeNullField(o.NullFields, "Compute")
+}
+
+// SetComputeNil sets Compute to an explicit JSON null when marshaled.
+func (o *ClusterAutoScalingSettings) SetComputeNil() {
+	o.Compute = nil
+	o.NullFields = addNullField(o.NullFields, "Compute")
 }
 
 // GetDiskGBEnabled returns the DiskGBEnabled field value if set, zero value otherwise
@@ -94,4 +110,11 @@ func (o *ClusterAutoScalingSettings) HasDiskGBEnabled() bool {
 // SetDiskGBEnabled gets a reference to the given bool and assigns it to the DiskGBEnabled field.
 func (o *ClusterAutoScalingSettings) SetDiskGBEnabled(v bool) {
 	o.DiskGBEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "DiskGBEnabled")
+}
+
+// SetDiskGBEnabledNil sets DiskGBEnabled to an explicit JSON null when marshaled.
+func (o *ClusterAutoScalingSettings) SetDiskGBEnabledNil() {
+	o.DiskGBEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "DiskGBEnabled")
 }

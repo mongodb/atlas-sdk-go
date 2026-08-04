@@ -13,6 +13,15 @@ type MetricsMeasurementAtlas struct {
 	// Element used to quantify the measurement. The resource returns units of throughput, storage, and time.
 	// Read only field.
 	Units *string `json:"units,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *MetricsMeasurementAtlas) MarshalJSON() ([]byte, error) {
+	type noMethod MetricsMeasurementAtlas
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewMetricsMeasurementAtlas instantiates a new MetricsMeasurementAtlas object
@@ -63,6 +72,13 @@ func (o *MetricsMeasurementAtlas) HasDataPoints() bool {
 // SetDataPoints gets a reference to the given []MetricDataPointAtlas and assigns it to the DataPoints field.
 func (o *MetricsMeasurementAtlas) SetDataPoints(v []MetricDataPointAtlas) {
 	o.DataPoints = &v
+	o.NullFields = removeNullField(o.NullFields, "DataPoints")
+}
+
+// SetDataPointsNil sets DataPoints to an explicit JSON null when marshaled.
+func (o *MetricsMeasurementAtlas) SetDataPointsNil() {
+	o.DataPoints = nil
+	o.NullFields = addNullField(o.NullFields, "DataPoints")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -96,6 +112,13 @@ func (o *MetricsMeasurementAtlas) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *MetricsMeasurementAtlas) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *MetricsMeasurementAtlas) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }
 
 // GetUnits returns the Units field value if set, zero value otherwise
@@ -129,4 +152,11 @@ func (o *MetricsMeasurementAtlas) HasUnits() bool {
 // SetUnits gets a reference to the given string and assigns it to the Units field.
 func (o *MetricsMeasurementAtlas) SetUnits(v string) {
 	o.Units = &v
+	o.NullFields = removeNullField(o.NullFields, "Units")
+}
+
+// SetUnitsNil sets Units to an explicit JSON null when marshaled.
+func (o *MetricsMeasurementAtlas) SetUnitsNil() {
+	o.Units = nil
+	o.NullFields = addNullField(o.NullFields, "Units")
 }

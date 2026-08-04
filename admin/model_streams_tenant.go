@@ -26,6 +26,15 @@ type StreamsTenant struct {
 	Name              *string                   `json:"name,omitempty"`
 	SampleConnections *StreamsSampleConnections `json:"sampleConnections,omitempty"`
 	StreamConfig      *StreamConfig             `json:"streamConfig,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamsTenant) MarshalJSON() ([]byte, error) {
+	type noMethod StreamsTenant
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamsTenant instantiates a new StreamsTenant object
@@ -76,6 +85,13 @@ func (o *StreamsTenant) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *StreamsTenant) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *StreamsTenant) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetConnections returns the Connections field value if set, zero value otherwise
@@ -109,6 +125,13 @@ func (o *StreamsTenant) HasConnections() bool {
 // SetConnections gets a reference to the given []StreamsConnection and assigns it to the Connections field.
 func (o *StreamsTenant) SetConnections(v []StreamsConnection) {
 	o.Connections = &v
+	o.NullFields = removeNullField(o.NullFields, "Connections")
+}
+
+// SetConnectionsNil sets Connections to an explicit JSON null when marshaled.
+func (o *StreamsTenant) SetConnectionsNil() {
+	o.Connections = nil
+	o.NullFields = addNullField(o.NullFields, "Connections")
 }
 
 // GetDataProcessRegion returns the DataProcessRegion field value if set, zero value otherwise
@@ -142,6 +165,13 @@ func (o *StreamsTenant) HasDataProcessRegion() bool {
 // SetDataProcessRegion gets a reference to the given StreamsDataProcessRegion and assigns it to the DataProcessRegion field.
 func (o *StreamsTenant) SetDataProcessRegion(v StreamsDataProcessRegion) {
 	o.DataProcessRegion = &v
+	o.NullFields = removeNullField(o.NullFields, "DataProcessRegion")
+}
+
+// SetDataProcessRegionNil sets DataProcessRegion to an explicit JSON null when marshaled.
+func (o *StreamsTenant) SetDataProcessRegionNil() {
+	o.DataProcessRegion = nil
+	o.NullFields = addNullField(o.NullFields, "DataProcessRegion")
 }
 
 // GetFailoverRegions returns the FailoverRegions field value if set, zero value otherwise
@@ -175,6 +205,13 @@ func (o *StreamsTenant) HasFailoverRegions() bool {
 // SetFailoverRegions gets a reference to the given []StreamsDataProcessRegion and assigns it to the FailoverRegions field.
 func (o *StreamsTenant) SetFailoverRegions(v []StreamsDataProcessRegion) {
 	o.FailoverRegions = &v
+	o.NullFields = removeNullField(o.NullFields, "FailoverRegions")
+}
+
+// SetFailoverRegionsNil sets FailoverRegions to an explicit JSON null when marshaled.
+func (o *StreamsTenant) SetFailoverRegionsNil() {
+	o.FailoverRegions = nil
+	o.NullFields = addNullField(o.NullFields, "FailoverRegions")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
@@ -208,6 +245,13 @@ func (o *StreamsTenant) HasGroupId() bool {
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
 func (o *StreamsTenant) SetGroupId(v string) {
 	o.GroupId = &v
+	o.NullFields = removeNullField(o.NullFields, "GroupId")
+}
+
+// SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
+func (o *StreamsTenant) SetGroupIdNil() {
+	o.GroupId = nil
+	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetHostnames returns the Hostnames field value if set, zero value otherwise
@@ -241,6 +285,13 @@ func (o *StreamsTenant) HasHostnames() bool {
 // SetHostnames gets a reference to the given []string and assigns it to the Hostnames field.
 func (o *StreamsTenant) SetHostnames(v []string) {
 	o.Hostnames = &v
+	o.NullFields = removeNullField(o.NullFields, "Hostnames")
+}
+
+// SetHostnamesNil sets Hostnames to an explicit JSON null when marshaled.
+func (o *StreamsTenant) SetHostnamesNil() {
+	o.Hostnames = nil
+	o.NullFields = addNullField(o.NullFields, "Hostnames")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -274,6 +325,13 @@ func (o *StreamsTenant) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamsTenant) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *StreamsTenant) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetName returns the Name field value if set, zero value otherwise
@@ -307,6 +365,13 @@ func (o *StreamsTenant) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *StreamsTenant) SetName(v string) {
 	o.Name = &v
+	o.NullFields = removeNullField(o.NullFields, "Name")
+}
+
+// SetNameNil sets Name to an explicit JSON null when marshaled.
+func (o *StreamsTenant) SetNameNil() {
+	o.Name = nil
+	o.NullFields = addNullField(o.NullFields, "Name")
 }
 
 // GetSampleConnections returns the SampleConnections field value if set, zero value otherwise
@@ -340,6 +405,13 @@ func (o *StreamsTenant) HasSampleConnections() bool {
 // SetSampleConnections gets a reference to the given StreamsSampleConnections and assigns it to the SampleConnections field.
 func (o *StreamsTenant) SetSampleConnections(v StreamsSampleConnections) {
 	o.SampleConnections = &v
+	o.NullFields = removeNullField(o.NullFields, "SampleConnections")
+}
+
+// SetSampleConnectionsNil sets SampleConnections to an explicit JSON null when marshaled.
+func (o *StreamsTenant) SetSampleConnectionsNil() {
+	o.SampleConnections = nil
+	o.NullFields = addNullField(o.NullFields, "SampleConnections")
 }
 
 // GetStreamConfig returns the StreamConfig field value if set, zero value otherwise
@@ -373,4 +445,11 @@ func (o *StreamsTenant) HasStreamConfig() bool {
 // SetStreamConfig gets a reference to the given StreamConfig and assigns it to the StreamConfig field.
 func (o *StreamsTenant) SetStreamConfig(v StreamConfig) {
 	o.StreamConfig = &v
+	o.NullFields = removeNullField(o.NullFields, "StreamConfig")
+}
+
+// SetStreamConfigNil sets StreamConfig to an explicit JSON null when marshaled.
+func (o *StreamsTenant) SetStreamConfigNil() {
+	o.StreamConfig = nil
+	o.NullFields = addNullField(o.NullFields, "StreamConfig")
 }

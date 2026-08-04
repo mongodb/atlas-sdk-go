@@ -50,6 +50,13 @@ SetFeatureType sets FeatureType field to given value.
 `func (o *CloudProviderAccessFeatureUsage) HasFeatureType() bool`
 
 HasFeatureType returns a boolean if a field has been set.
+
+### SetFeatureTypeNil
+
+`func (o *CloudProviderAccessFeatureUsage) SetFeatureTypeNil()`
+
+SetFeatureTypeNil sets FeatureType to an explicit JSON null when marshaled, overriding any value previously set with SetFeatureType. Calling SetFeatureType again clears the null override.
+
 ### GetFeatureId
 
 `func (o *CloudProviderAccessFeatureUsage) GetFeatureId() CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId`
@@ -74,6 +81,13 @@ SetFeatureId sets FeatureId field to given value.
 `func (o *CloudProviderAccessFeatureUsage) HasFeatureId() bool`
 
 HasFeatureId returns a boolean if a field has been set.
+
+### SetFeatureIdNil
+
+`func (o *CloudProviderAccessFeatureUsage) SetFeatureIdNil()`
+
+SetFeatureIdNil sets FeatureId to an explicit JSON null when marshaled, overriding any value previously set with SetFeatureId. Calling SetFeatureId again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

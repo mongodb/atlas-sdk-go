@@ -66,6 +66,13 @@ SetClusterName sets ClusterName field to given value.
 `func (o *InvoiceLineItem) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+
+### SetClusterNameNil
+
+`func (o *InvoiceLineItem) SetClusterNameNil()`
+
+SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled, overriding any value previously set with SetClusterName. Calling SetClusterName again clears the null override.
+
 ### GetCreated
 
 `func (o *InvoiceLineItem) GetCreated() time.Time`
@@ -90,6 +97,13 @@ SetCreated sets Created field to given value.
 `func (o *InvoiceLineItem) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
+
+### SetCreatedNil
+
+`func (o *InvoiceLineItem) SetCreatedNil()`
+
+SetCreatedNil sets Created to an explicit JSON null when marshaled, overriding any value previously set with SetCreated. Calling SetCreated again clears the null override.
+
 ### GetDiscountCents
 
 `func (o *InvoiceLineItem) GetDiscountCents() int64`
@@ -114,6 +128,13 @@ SetDiscountCents sets DiscountCents field to given value.
 `func (o *InvoiceLineItem) HasDiscountCents() bool`
 
 HasDiscountCents returns a boolean if a field has been set.
+
+### SetDiscountCentsNil
+
+`func (o *InvoiceLineItem) SetDiscountCentsNil()`
+
+SetDiscountCentsNil sets DiscountCents to an explicit JSON null when marshaled, overriding any value previously set with SetDiscountCents. Calling SetDiscountCents again clears the null override.
+
 ### GetEndDate
 
 `func (o *InvoiceLineItem) GetEndDate() time.Time`
@@ -138,6 +159,13 @@ SetEndDate sets EndDate field to given value.
 `func (o *InvoiceLineItem) HasEndDate() bool`
 
 HasEndDate returns a boolean if a field has been set.
+
+### SetEndDateNil
+
+`func (o *InvoiceLineItem) SetEndDateNil()`
+
+SetEndDateNil sets EndDate to an explicit JSON null when marshaled, overriding any value previously set with SetEndDate. Calling SetEndDate again clears the null override.
+
 ### GetGroupId
 
 `func (o *InvoiceLineItem) GetGroupId() string`
@@ -162,6 +190,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *InvoiceLineItem) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *InvoiceLineItem) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetGroupName
 
 `func (o *InvoiceLineItem) GetGroupName() string`
@@ -186,6 +221,13 @@ SetGroupName sets GroupName field to given value.
 `func (o *InvoiceLineItem) HasGroupName() bool`
 
 HasGroupName returns a boolean if a field has been set.
+
+### SetGroupNameNil
+
+`func (o *InvoiceLineItem) SetGroupNameNil()`
+
+SetGroupNameNil sets GroupName to an explicit JSON null when marshaled, overriding any value previously set with SetGroupName. Calling SetGroupName again clears the null override.
+
 ### GetNote
 
 `func (o *InvoiceLineItem) GetNote() string`
@@ -210,6 +252,13 @@ SetNote sets Note field to given value.
 `func (o *InvoiceLineItem) HasNote() bool`
 
 HasNote returns a boolean if a field has been set.
+
+### SetNoteNil
+
+`func (o *InvoiceLineItem) SetNoteNil()`
+
+SetNoteNil sets Note to an explicit JSON null when marshaled, overriding any value previously set with SetNote. Calling SetNote again clears the null override.
+
 ### GetPercentDiscount
 
 `func (o *InvoiceLineItem) GetPercentDiscount() float32`
@@ -234,6 +283,13 @@ SetPercentDiscount sets PercentDiscount field to given value.
 `func (o *InvoiceLineItem) HasPercentDiscount() bool`
 
 HasPercentDiscount returns a boolean if a field has been set.
+
+### SetPercentDiscountNil
+
+`func (o *InvoiceLineItem) SetPercentDiscountNil()`
+
+SetPercentDiscountNil sets PercentDiscount to an explicit JSON null when marshaled, overriding any value previously set with SetPercentDiscount. Calling SetPercentDiscount again clears the null override.
+
 ### GetQuantity
 
 `func (o *InvoiceLineItem) GetQuantity() float64`
@@ -258,6 +314,13 @@ SetQuantity sets Quantity field to given value.
 `func (o *InvoiceLineItem) HasQuantity() bool`
 
 HasQuantity returns a boolean if a field has been set.
+
+### SetQuantityNil
+
+`func (o *InvoiceLineItem) SetQuantityNil()`
+
+SetQuantityNil sets Quantity to an explicit JSON null when marshaled, overriding any value previously set with SetQuantity. Calling SetQuantity again clears the null override.
+
 ### GetSku
 
 `func (o *InvoiceLineItem) GetSku() string`
@@ -282,6 +345,13 @@ SetSku sets Sku field to given value.
 `func (o *InvoiceLineItem) HasSku() bool`
 
 HasSku returns a boolean if a field has been set.
+
+### SetSkuNil
+
+`func (o *InvoiceLineItem) SetSkuNil()`
+
+SetSkuNil sets Sku to an explicit JSON null when marshaled, overriding any value previously set with SetSku. Calling SetSku again clears the null override.
+
 ### GetStartDate
 
 `func (o *InvoiceLineItem) GetStartDate() time.Time`
@@ -306,6 +376,13 @@ SetStartDate sets StartDate field to given value.
 `func (o *InvoiceLineItem) HasStartDate() bool`
 
 HasStartDate returns a boolean if a field has been set.
+
+### SetStartDateNil
+
+`func (o *InvoiceLineItem) SetStartDateNil()`
+
+SetStartDateNil sets StartDate to an explicit JSON null when marshaled, overriding any value previously set with SetStartDate. Calling SetStartDate again clears the null override.
+
 ### GetStitchAppName
 
 `func (o *InvoiceLineItem) GetStitchAppName() string`
@@ -330,6 +407,13 @@ SetStitchAppName sets StitchAppName field to given value.
 `func (o *InvoiceLineItem) HasStitchAppName() bool`
 
 HasStitchAppName returns a boolean if a field has been set.
+
+### SetStitchAppNameNil
+
+`func (o *InvoiceLineItem) SetStitchAppNameNil()`
+
+SetStitchAppNameNil sets StitchAppName to an explicit JSON null when marshaled, overriding any value previously set with SetStitchAppName. Calling SetStitchAppName again clears the null override.
+
 ### GetTags
 
 `func (o *InvoiceLineItem) GetTags() map[string][]string`
@@ -354,6 +438,13 @@ SetTags sets Tags field to given value.
 `func (o *InvoiceLineItem) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### SetTagsNil
+
+`func (o *InvoiceLineItem) SetTagsNil()`
+
+SetTagsNil sets Tags to an explicit JSON null when marshaled, overriding any value previously set with SetTags. Calling SetTags again clears the null override.
+
 ### GetTierLowerBound
 
 `func (o *InvoiceLineItem) GetTierLowerBound() float64`
@@ -378,6 +469,13 @@ SetTierLowerBound sets TierLowerBound field to given value.
 `func (o *InvoiceLineItem) HasTierLowerBound() bool`
 
 HasTierLowerBound returns a boolean if a field has been set.
+
+### SetTierLowerBoundNil
+
+`func (o *InvoiceLineItem) SetTierLowerBoundNil()`
+
+SetTierLowerBoundNil sets TierLowerBound to an explicit JSON null when marshaled, overriding any value previously set with SetTierLowerBound. Calling SetTierLowerBound again clears the null override.
+
 ### GetTierUpperBound
 
 `func (o *InvoiceLineItem) GetTierUpperBound() float64`
@@ -402,6 +500,13 @@ SetTierUpperBound sets TierUpperBound field to given value.
 `func (o *InvoiceLineItem) HasTierUpperBound() bool`
 
 HasTierUpperBound returns a boolean if a field has been set.
+
+### SetTierUpperBoundNil
+
+`func (o *InvoiceLineItem) SetTierUpperBoundNil()`
+
+SetTierUpperBoundNil sets TierUpperBound to an explicit JSON null when marshaled, overriding any value previously set with SetTierUpperBound. Calling SetTierUpperBound again clears the null override.
+
 ### GetTotalPriceCents
 
 `func (o *InvoiceLineItem) GetTotalPriceCents() int64`
@@ -426,6 +531,13 @@ SetTotalPriceCents sets TotalPriceCents field to given value.
 `func (o *InvoiceLineItem) HasTotalPriceCents() bool`
 
 HasTotalPriceCents returns a boolean if a field has been set.
+
+### SetTotalPriceCentsNil
+
+`func (o *InvoiceLineItem) SetTotalPriceCentsNil()`
+
+SetTotalPriceCentsNil sets TotalPriceCents to an explicit JSON null when marshaled, overriding any value previously set with SetTotalPriceCents. Calling SetTotalPriceCents again clears the null override.
+
 ### GetUnit
 
 `func (o *InvoiceLineItem) GetUnit() string`
@@ -450,6 +562,13 @@ SetUnit sets Unit field to given value.
 `func (o *InvoiceLineItem) HasUnit() bool`
 
 HasUnit returns a boolean if a field has been set.
+
+### SetUnitNil
+
+`func (o *InvoiceLineItem) SetUnitNil()`
+
+SetUnitNil sets Unit to an explicit JSON null when marshaled, overriding any value previously set with SetUnit. Calling SetUnit again clears the null override.
+
 ### GetUnitPriceDollars
 
 `func (o *InvoiceLineItem) GetUnitPriceDollars() float64`
@@ -474,6 +593,13 @@ SetUnitPriceDollars sets UnitPriceDollars field to given value.
 `func (o *InvoiceLineItem) HasUnitPriceDollars() bool`
 
 HasUnitPriceDollars returns a boolean if a field has been set.
+
+### SetUnitPriceDollarsNil
+
+`func (o *InvoiceLineItem) SetUnitPriceDollarsNil()`
+
+SetUnitPriceDollarsNil sets UnitPriceDollars to an explicit JSON null when marshaled, overriding any value previously set with SetUnitPriceDollars. Calling SetUnitPriceDollars again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

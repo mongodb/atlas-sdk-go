@@ -10,6 +10,15 @@ type ObjectStoragePrivateEndpointRequest struct {
 	RegionName *string `json:"regionName,omitempty"`
 	// Cloud provider region in which the VPC interface endpoint is deployed. Omit to deploy the interface endpoint in the same region as the S3 bucket (same-region endpoint). Set to a region different from `regionName` to create a cross-region endpoint.
 	VpcRegionName *string `json:"vpcRegionName,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ObjectStoragePrivateEndpointRequest) MarshalJSON() ([]byte, error) {
+	type noMethod ObjectStoragePrivateEndpointRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewObjectStoragePrivateEndpointRequest instantiates a new ObjectStoragePrivateEndpointRequest object
@@ -60,6 +69,13 @@ func (o *ObjectStoragePrivateEndpointRequest) HasCloudProvider() bool {
 // SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
 func (o *ObjectStoragePrivateEndpointRequest) SetCloudProvider(v string) {
 	o.CloudProvider = &v
+	o.NullFields = removeNullField(o.NullFields, "CloudProvider")
+}
+
+// SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled.
+func (o *ObjectStoragePrivateEndpointRequest) SetCloudProviderNil() {
+	o.CloudProvider = nil
+	o.NullFields = addNullField(o.NullFields, "CloudProvider")
 }
 
 // GetRegionName returns the RegionName field value if set, zero value otherwise
@@ -93,6 +109,13 @@ func (o *ObjectStoragePrivateEndpointRequest) HasRegionName() bool {
 // SetRegionName gets a reference to the given string and assigns it to the RegionName field.
 func (o *ObjectStoragePrivateEndpointRequest) SetRegionName(v string) {
 	o.RegionName = &v
+	o.NullFields = removeNullField(o.NullFields, "RegionName")
+}
+
+// SetRegionNameNil sets RegionName to an explicit JSON null when marshaled.
+func (o *ObjectStoragePrivateEndpointRequest) SetRegionNameNil() {
+	o.RegionName = nil
+	o.NullFields = addNullField(o.NullFields, "RegionName")
 }
 
 // GetVpcRegionName returns the VpcRegionName field value if set, zero value otherwise
@@ -126,4 +149,11 @@ func (o *ObjectStoragePrivateEndpointRequest) HasVpcRegionName() bool {
 // SetVpcRegionName gets a reference to the given string and assigns it to the VpcRegionName field.
 func (o *ObjectStoragePrivateEndpointRequest) SetVpcRegionName(v string) {
 	o.VpcRegionName = &v
+	o.NullFields = removeNullField(o.NullFields, "VpcRegionName")
+}
+
+// SetVpcRegionNameNil sets VpcRegionName to an explicit JSON null when marshaled.
+func (o *ObjectStoragePrivateEndpointRequest) SetVpcRegionNameNil() {
+	o.VpcRegionName = nil
+	o.NullFields = addNullField(o.NullFields, "VpcRegionName")
 }

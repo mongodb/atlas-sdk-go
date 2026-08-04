@@ -52,6 +52,13 @@ SetComment sets Comment field to given value.
 `func (o *ServerlessTenantEndpointUpdate) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### SetCommentNil
+
+`func (o *ServerlessTenantEndpointUpdate) SetCommentNil()`
+
+SetCommentNil sets Comment to an explicit JSON null when marshaled, overriding any value previously set with SetComment. Calling SetComment again clears the null override.
+
 ### GetProviderName
 
 `func (o *ServerlessTenantEndpointUpdate) GetProviderName() string`
@@ -95,6 +102,13 @@ SetCloudProviderEndpointId sets CloudProviderEndpointId field to given value.
 `func (o *ServerlessTenantEndpointUpdate) HasCloudProviderEndpointId() bool`
 
 HasCloudProviderEndpointId returns a boolean if a field has been set.
+
+### SetCloudProviderEndpointIdNil
+
+`func (o *ServerlessTenantEndpointUpdate) SetCloudProviderEndpointIdNil()`
+
+SetCloudProviderEndpointIdNil sets CloudProviderEndpointId to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProviderEndpointId. Calling SetCloudProviderEndpointId again clears the null override.
+
 ### GetPrivateEndpointIpAddress
 
 `func (o *ServerlessTenantEndpointUpdate) GetPrivateEndpointIpAddress() string`
@@ -119,6 +133,13 @@ SetPrivateEndpointIpAddress sets PrivateEndpointIpAddress field to given value.
 `func (o *ServerlessTenantEndpointUpdate) HasPrivateEndpointIpAddress() bool`
 
 HasPrivateEndpointIpAddress returns a boolean if a field has been set.
+
+### SetPrivateEndpointIpAddressNil
+
+`func (o *ServerlessTenantEndpointUpdate) SetPrivateEndpointIpAddressNil()`
+
+SetPrivateEndpointIpAddressNil sets PrivateEndpointIpAddress to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateEndpointIpAddress. Calling SetPrivateEndpointIpAddress again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -54,6 +54,13 @@ SetBucketName sets BucketName field to given value.
 `func (o *PushBasedLogExportProject) HasBucketName() bool`
 
 HasBucketName returns a boolean if a field has been set.
+
+### SetBucketNameNil
+
+`func (o *PushBasedLogExportProject) SetBucketNameNil()`
+
+SetBucketNameNil sets BucketName to an explicit JSON null when marshaled, overriding any value previously set with SetBucketName. Calling SetBucketName again clears the null override.
+
 ### GetCreateDate
 
 `func (o *PushBasedLogExportProject) GetCreateDate() time.Time`
@@ -78,6 +85,13 @@ SetCreateDate sets CreateDate field to given value.
 `func (o *PushBasedLogExportProject) HasCreateDate() bool`
 
 HasCreateDate returns a boolean if a field has been set.
+
+### SetCreateDateNil
+
+`func (o *PushBasedLogExportProject) SetCreateDateNil()`
+
+SetCreateDateNil sets CreateDate to an explicit JSON null when marshaled, overriding any value previously set with SetCreateDate. Calling SetCreateDate again clears the null override.
+
 ### GetIamRoleId
 
 `func (o *PushBasedLogExportProject) GetIamRoleId() string`
@@ -102,6 +116,13 @@ SetIamRoleId sets IamRoleId field to given value.
 `func (o *PushBasedLogExportProject) HasIamRoleId() bool`
 
 HasIamRoleId returns a boolean if a field has been set.
+
+### SetIamRoleIdNil
+
+`func (o *PushBasedLogExportProject) SetIamRoleIdNil()`
+
+SetIamRoleIdNil sets IamRoleId to an explicit JSON null when marshaled, overriding any value previously set with SetIamRoleId. Calling SetIamRoleId again clears the null override.
+
 ### GetLinks
 
 `func (o *PushBasedLogExportProject) GetLinks() []Link`
@@ -126,6 +147,13 @@ SetLinks sets Links field to given value.
 `func (o *PushBasedLogExportProject) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *PushBasedLogExportProject) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetPrefixPath
 
 `func (o *PushBasedLogExportProject) GetPrefixPath() string`
@@ -150,6 +178,13 @@ SetPrefixPath sets PrefixPath field to given value.
 `func (o *PushBasedLogExportProject) HasPrefixPath() bool`
 
 HasPrefixPath returns a boolean if a field has been set.
+
+### SetPrefixPathNil
+
+`func (o *PushBasedLogExportProject) SetPrefixPathNil()`
+
+SetPrefixPathNil sets PrefixPath to an explicit JSON null when marshaled, overriding any value previously set with SetPrefixPath. Calling SetPrefixPath again clears the null override.
+
 ### GetState
 
 `func (o *PushBasedLogExportProject) GetState() string`
@@ -174,6 +209,13 @@ SetState sets State field to given value.
 `func (o *PushBasedLogExportProject) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### SetStateNil
+
+`func (o *PushBasedLogExportProject) SetStateNil()`
+
+SetStateNil sets State to an explicit JSON null when marshaled, overriding any value previously set with SetState. Calling SetState again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

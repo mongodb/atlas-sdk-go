@@ -51,6 +51,13 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *ObjectStoragePrivateEndpointRequest) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
+
+### SetCloudProviderNil
+
+`func (o *ObjectStoragePrivateEndpointRequest) SetCloudProviderNil()`
+
+SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProvider. Calling SetCloudProvider again clears the null override.
+
 ### GetRegionName
 
 `func (o *ObjectStoragePrivateEndpointRequest) GetRegionName() string`
@@ -75,6 +82,13 @@ SetRegionName sets RegionName field to given value.
 `func (o *ObjectStoragePrivateEndpointRequest) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
+
+### SetRegionNameNil
+
+`func (o *ObjectStoragePrivateEndpointRequest) SetRegionNameNil()`
+
+SetRegionNameNil sets RegionName to an explicit JSON null when marshaled, overriding any value previously set with SetRegionName. Calling SetRegionName again clears the null override.
+
 ### GetVpcRegionName
 
 `func (o *ObjectStoragePrivateEndpointRequest) GetVpcRegionName() string`
@@ -99,6 +113,13 @@ SetVpcRegionName sets VpcRegionName field to given value.
 `func (o *ObjectStoragePrivateEndpointRequest) HasVpcRegionName() bool`
 
 HasVpcRegionName returns a boolean if a field has been set.
+
+### SetVpcRegionNameNil
+
+`func (o *ObjectStoragePrivateEndpointRequest) SetVpcRegionNameNil()`
+
+SetVpcRegionNameNil sets VpcRegionName to an explicit JSON null when marshaled, overriding any value previously set with SetVpcRegionName. Calling SetVpcRegionName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -53,6 +53,13 @@ SetCommand sets Command field to given value.
 `func (o *QueryShapeResponse) HasCommand() bool`
 
 HasCommand returns a boolean if a field has been set.
+
+### SetCommandNil
+
+`func (o *QueryShapeResponse) SetCommandNil()`
+
+SetCommandNil sets Command to an explicit JSON null when marshaled, overriding any value previously set with SetCommand. Calling SetCommand again clears the null override.
+
 ### GetNamespace
 
 `func (o *QueryShapeResponse) GetNamespace() string`
@@ -77,6 +84,13 @@ SetNamespace sets Namespace field to given value.
 `func (o *QueryShapeResponse) HasNamespace() bool`
 
 HasNamespace returns a boolean if a field has been set.
+
+### SetNamespaceNil
+
+`func (o *QueryShapeResponse) SetNamespaceNil()`
+
+SetNamespaceNil sets Namespace to an explicit JSON null when marshaled, overriding any value previously set with SetNamespace. Calling SetNamespace again clears the null override.
+
 ### GetQueryShape
 
 `func (o *QueryShapeResponse) GetQueryShape() string`
@@ -101,6 +115,13 @@ SetQueryShape sets QueryShape field to given value.
 `func (o *QueryShapeResponse) HasQueryShape() bool`
 
 HasQueryShape returns a boolean if a field has been set.
+
+### SetQueryShapeNil
+
+`func (o *QueryShapeResponse) SetQueryShapeNil()`
+
+SetQueryShapeNil sets QueryShape to an explicit JSON null when marshaled, overriding any value previously set with SetQueryShape. Calling SetQueryShape again clears the null override.
+
 ### GetQueryShapeHash
 
 `func (o *QueryShapeResponse) GetQueryShapeHash() string`

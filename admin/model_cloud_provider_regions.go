@@ -9,6 +9,15 @@ type CloudProviderRegions struct {
 	InstanceSizes *[]ClusterCloudProviderInstanceSize `json:"instanceSizes,omitempty"`
 	// Human-readable label that identifies the Cloud provider.
 	Provider *string `json:"provider,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CloudProviderRegions) MarshalJSON() ([]byte, error) {
+	type noMethod CloudProviderRegions
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCloudProviderRegions instantiates a new CloudProviderRegions object
@@ -59,6 +68,13 @@ func (o *CloudProviderRegions) HasInstanceSizes() bool {
 // SetInstanceSizes gets a reference to the given []ClusterCloudProviderInstanceSize and assigns it to the InstanceSizes field.
 func (o *CloudProviderRegions) SetInstanceSizes(v []ClusterCloudProviderInstanceSize) {
 	o.InstanceSizes = &v
+	o.NullFields = removeNullField(o.NullFields, "InstanceSizes")
+}
+
+// SetInstanceSizesNil sets InstanceSizes to an explicit JSON null when marshaled.
+func (o *CloudProviderRegions) SetInstanceSizesNil() {
+	o.InstanceSizes = nil
+	o.NullFields = addNullField(o.NullFields, "InstanceSizes")
 }
 
 // GetProvider returns the Provider field value if set, zero value otherwise
@@ -92,4 +108,11 @@ func (o *CloudProviderRegions) HasProvider() bool {
 // SetProvider gets a reference to the given string and assigns it to the Provider field.
 func (o *CloudProviderRegions) SetProvider(v string) {
 	o.Provider = &v
+	o.NullFields = removeNullField(o.NullFields, "Provider")
+}
+
+// SetProviderNil sets Provider to an explicit JSON null when marshaled.
+func (o *CloudProviderRegions) SetProviderNil() {
+	o.Provider = nil
+	o.NullFields = addNullField(o.NullFields, "Provider")
 }

@@ -8,6 +8,15 @@ type ClusterConfigurationValidationError struct {
 	ErrorCode *string `json:"errorCode,omitempty"`
 	// Description of the validation failure.
 	ValidationIssue *string `json:"validationIssue,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ClusterConfigurationValidationError) MarshalJSON() ([]byte, error) {
+	type noMethod ClusterConfigurationValidationError
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewClusterConfigurationValidationError instantiates a new ClusterConfigurationValidationError object
@@ -58,6 +67,13 @@ func (o *ClusterConfigurationValidationError) HasErrorCode() bool {
 // SetErrorCode gets a reference to the given string and assigns it to the ErrorCode field.
 func (o *ClusterConfigurationValidationError) SetErrorCode(v string) {
 	o.ErrorCode = &v
+	o.NullFields = removeNullField(o.NullFields, "ErrorCode")
+}
+
+// SetErrorCodeNil sets ErrorCode to an explicit JSON null when marshaled.
+func (o *ClusterConfigurationValidationError) SetErrorCodeNil() {
+	o.ErrorCode = nil
+	o.NullFields = addNullField(o.NullFields, "ErrorCode")
 }
 
 // GetValidationIssue returns the ValidationIssue field value if set, zero value otherwise
@@ -91,4 +107,11 @@ func (o *ClusterConfigurationValidationError) HasValidationIssue() bool {
 // SetValidationIssue gets a reference to the given string and assigns it to the ValidationIssue field.
 func (o *ClusterConfigurationValidationError) SetValidationIssue(v string) {
 	o.ValidationIssue = &v
+	o.NullFields = removeNullField(o.NullFields, "ValidationIssue")
+}
+
+// SetValidationIssueNil sets ValidationIssue to an explicit JSON null when marshaled.
+func (o *ClusterConfigurationValidationError) SetValidationIssueNil() {
+	o.ValidationIssue = nil
+	o.NullFields = addNullField(o.NullFields, "ValidationIssue")
 }

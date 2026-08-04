@@ -55,6 +55,13 @@ SetDiskSizeGB sets DiskSizeGB field to given value.
 `func (o *HardwareSpec20240805) HasDiskSizeGB() bool`
 
 HasDiskSizeGB returns a boolean if a field has been set.
+
+### SetDiskSizeGBNil
+
+`func (o *HardwareSpec20240805) SetDiskSizeGBNil()`
+
+SetDiskSizeGBNil sets DiskSizeGB to an explicit JSON null when marshaled, overriding any value previously set with SetDiskSizeGB. Calling SetDiskSizeGB again clears the null override.
+
 ### GetDiskIOPS
 
 `func (o *HardwareSpec20240805) GetDiskIOPS() int`
@@ -79,6 +86,13 @@ SetDiskIOPS sets DiskIOPS field to given value.
 `func (o *HardwareSpec20240805) HasDiskIOPS() bool`
 
 HasDiskIOPS returns a boolean if a field has been set.
+
+### SetDiskIOPSNil
+
+`func (o *HardwareSpec20240805) SetDiskIOPSNil()`
+
+SetDiskIOPSNil sets DiskIOPS to an explicit JSON null when marshaled, overriding any value previously set with SetDiskIOPS. Calling SetDiskIOPS again clears the null override.
+
 ### GetDiskThroughput
 
 `func (o *HardwareSpec20240805) GetDiskThroughput() int`
@@ -103,6 +117,13 @@ SetDiskThroughput sets DiskThroughput field to given value.
 `func (o *HardwareSpec20240805) HasDiskThroughput() bool`
 
 HasDiskThroughput returns a boolean if a field has been set.
+
+### SetDiskThroughputNil
+
+`func (o *HardwareSpec20240805) SetDiskThroughputNil()`
+
+SetDiskThroughputNil sets DiskThroughput to an explicit JSON null when marshaled, overriding any value previously set with SetDiskThroughput. Calling SetDiskThroughput again clears the null override.
+
 ### GetEbsVolumeType
 
 `func (o *HardwareSpec20240805) GetEbsVolumeType() string`
@@ -127,6 +148,13 @@ SetEbsVolumeType sets EbsVolumeType field to given value.
 `func (o *HardwareSpec20240805) HasEbsVolumeType() bool`
 
 HasEbsVolumeType returns a boolean if a field has been set.
+
+### SetEbsVolumeTypeNil
+
+`func (o *HardwareSpec20240805) SetEbsVolumeTypeNil()`
+
+SetEbsVolumeTypeNil sets EbsVolumeType to an explicit JSON null when marshaled, overriding any value previously set with SetEbsVolumeType. Calling SetEbsVolumeType again clears the null override.
+
 ### GetInstanceSize
 
 `func (o *HardwareSpec20240805) GetInstanceSize() string`
@@ -151,6 +179,13 @@ SetInstanceSize sets InstanceSize field to given value.
 `func (o *HardwareSpec20240805) HasInstanceSize() bool`
 
 HasInstanceSize returns a boolean if a field has been set.
+
+### SetInstanceSizeNil
+
+`func (o *HardwareSpec20240805) SetInstanceSizeNil()`
+
+SetInstanceSizeNil sets InstanceSize to an explicit JSON null when marshaled, overriding any value previously set with SetInstanceSize. Calling SetInstanceSize again clears the null override.
+
 ### GetNodeCount
 
 `func (o *HardwareSpec20240805) GetNodeCount() int`
@@ -175,6 +210,13 @@ SetNodeCount sets NodeCount field to given value.
 `func (o *HardwareSpec20240805) HasNodeCount() bool`
 
 HasNodeCount returns a boolean if a field has been set.
+
+### SetNodeCountNil
+
+`func (o *HardwareSpec20240805) SetNodeCountNil()`
+
+SetNodeCountNil sets NodeCount to an explicit JSON null when marshaled, overriding any value previously set with SetNodeCount. Calling SetNodeCount again clears the null override.
+
 ### GetEffectiveInstanceSize
 
 `func (o *HardwareSpec20240805) GetEffectiveInstanceSize() string`
@@ -199,6 +241,13 @@ SetEffectiveInstanceSize sets EffectiveInstanceSize field to given value.
 `func (o *HardwareSpec20240805) HasEffectiveInstanceSize() bool`
 
 HasEffectiveInstanceSize returns a boolean if a field has been set.
+
+### SetEffectiveInstanceSizeNil
+
+`func (o *HardwareSpec20240805) SetEffectiveInstanceSizeNil()`
+
+SetEffectiveInstanceSizeNil sets EffectiveInstanceSize to an explicit JSON null when marshaled, overriding any value previously set with SetEffectiveInstanceSize. Calling SetEffectiveInstanceSize again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

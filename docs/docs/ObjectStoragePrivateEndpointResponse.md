@@ -55,6 +55,13 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *ObjectStoragePrivateEndpointResponse) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
+
+### SetCloudProviderNil
+
+`func (o *ObjectStoragePrivateEndpointResponse) SetCloudProviderNil()`
+
+SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProvider. Calling SetCloudProvider again clears the null override.
+
 ### GetErrorMessage
 
 `func (o *ObjectStoragePrivateEndpointResponse) GetErrorMessage() string`
@@ -79,6 +86,13 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *ObjectStoragePrivateEndpointResponse) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
+
+### SetErrorMessageNil
+
+`func (o *ObjectStoragePrivateEndpointResponse) SetErrorMessageNil()`
+
+SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled, overriding any value previously set with SetErrorMessage. Calling SetErrorMessage again clears the null override.
+
 ### GetId
 
 `func (o *ObjectStoragePrivateEndpointResponse) GetId() string`
@@ -103,6 +117,13 @@ SetId sets Id field to given value.
 `func (o *ObjectStoragePrivateEndpointResponse) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *ObjectStoragePrivateEndpointResponse) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetPrivateEndpointConnectionName
 
 `func (o *ObjectStoragePrivateEndpointResponse) GetPrivateEndpointConnectionName() string`
@@ -127,6 +148,13 @@ SetPrivateEndpointConnectionName sets PrivateEndpointConnectionName field to giv
 `func (o *ObjectStoragePrivateEndpointResponse) HasPrivateEndpointConnectionName() bool`
 
 HasPrivateEndpointConnectionName returns a boolean if a field has been set.
+
+### SetPrivateEndpointConnectionNameNil
+
+`func (o *ObjectStoragePrivateEndpointResponse) SetPrivateEndpointConnectionNameNil()`
+
+SetPrivateEndpointConnectionNameNil sets PrivateEndpointConnectionName to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateEndpointConnectionName. Calling SetPrivateEndpointConnectionName again clears the null override.
+
 ### GetRegionName
 
 `func (o *ObjectStoragePrivateEndpointResponse) GetRegionName() string`
@@ -151,6 +179,13 @@ SetRegionName sets RegionName field to given value.
 `func (o *ObjectStoragePrivateEndpointResponse) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
+
+### SetRegionNameNil
+
+`func (o *ObjectStoragePrivateEndpointResponse) SetRegionNameNil()`
+
+SetRegionNameNil sets RegionName to an explicit JSON null when marshaled, overriding any value previously set with SetRegionName. Calling SetRegionName again clears the null override.
+
 ### GetStatus
 
 `func (o *ObjectStoragePrivateEndpointResponse) GetStatus() string`
@@ -175,6 +210,13 @@ SetStatus sets Status field to given value.
 `func (o *ObjectStoragePrivateEndpointResponse) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *ObjectStoragePrivateEndpointResponse) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 ### GetVpcRegionName
 
 `func (o *ObjectStoragePrivateEndpointResponse) GetVpcRegionName() string`
@@ -199,6 +241,13 @@ SetVpcRegionName sets VpcRegionName field to given value.
 `func (o *ObjectStoragePrivateEndpointResponse) HasVpcRegionName() bool`
 
 HasVpcRegionName returns a boolean if a field has been set.
+
+### SetVpcRegionNameNil
+
+`func (o *ObjectStoragePrivateEndpointResponse) SetVpcRegionNameNil()`
+
+SetVpcRegionNameNil sets VpcRegionName to an explicit JSON null when marshaled, overriding any value previously set with SetVpcRegionName. Calling SetVpcRegionName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

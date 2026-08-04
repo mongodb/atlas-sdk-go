@@ -9,6 +9,15 @@ type MesurementsDatabase struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *MesurementsDatabase) MarshalJSON() ([]byte, error) {
+	type noMethod MesurementsDatabase
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewMesurementsDatabase instantiates a new MesurementsDatabase object
@@ -59,6 +68,13 @@ func (o *MesurementsDatabase) HasDatabaseName() bool {
 // SetDatabaseName gets a reference to the given string and assigns it to the DatabaseName field.
 func (o *MesurementsDatabase) SetDatabaseName(v string) {
 	o.DatabaseName = &v
+	o.NullFields = removeNullField(o.NullFields, "DatabaseName")
+}
+
+// SetDatabaseNameNil sets DatabaseName to an explicit JSON null when marshaled.
+func (o *MesurementsDatabase) SetDatabaseNameNil() {
+	o.DatabaseName = nil
+	o.NullFields = addNullField(o.NullFields, "DatabaseName")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -92,4 +108,11 @@ func (o *MesurementsDatabase) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *MesurementsDatabase) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *MesurementsDatabase) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }

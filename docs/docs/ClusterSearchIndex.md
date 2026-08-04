@@ -101,6 +101,13 @@ SetIndexID sets IndexID field to given value.
 `func (o *ClusterSearchIndex) HasIndexID() bool`
 
 HasIndexID returns a boolean if a field has been set.
+
+### SetIndexIDNil
+
+`func (o *ClusterSearchIndex) SetIndexIDNil()`
+
+SetIndexIDNil sets IndexID to an explicit JSON null when marshaled, overriding any value previously set with SetIndexID. Calling SetIndexID again clears the null override.
+
 ### GetName
 
 `func (o *ClusterSearchIndex) GetName() string`
@@ -144,6 +151,13 @@ SetNumPartitions sets NumPartitions field to given value.
 `func (o *ClusterSearchIndex) HasNumPartitions() bool`
 
 HasNumPartitions returns a boolean if a field has been set.
+
+### SetNumPartitionsNil
+
+`func (o *ClusterSearchIndex) SetNumPartitionsNil()`
+
+SetNumPartitionsNil sets NumPartitions to an explicit JSON null when marshaled, overriding any value previously set with SetNumPartitions. Calling SetNumPartitions again clears the null override.
+
 ### GetStatus
 
 `func (o *ClusterSearchIndex) GetStatus() string`
@@ -168,6 +182,13 @@ SetStatus sets Status field to given value.
 `func (o *ClusterSearchIndex) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *ClusterSearchIndex) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 ### GetStoredSource
 
 `func (o *ClusterSearchIndex) GetStoredSource() any`
@@ -192,6 +213,13 @@ SetStoredSource sets StoredSource field to given value.
 `func (o *ClusterSearchIndex) HasStoredSource() bool`
 
 HasStoredSource returns a boolean if a field has been set.
+
+### SetStoredSourceNil
+
+`func (o *ClusterSearchIndex) SetStoredSourceNil()`
+
+SetStoredSourceNil sets StoredSource to an explicit JSON null when marshaled, overriding any value previously set with SetStoredSource. Calling SetStoredSource again clears the null override.
+
 ### GetType
 
 `func (o *ClusterSearchIndex) GetType() string`
@@ -216,6 +244,13 @@ SetType sets Type field to given value.
 `func (o *ClusterSearchIndex) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *ClusterSearchIndex) SetTypeNil()`
+
+SetTypeNil sets Type to an explicit JSON null when marshaled, overriding any value previously set with SetType. Calling SetType again clears the null override.
+
 ### GetAnalyzer
 
 `func (o *ClusterSearchIndex) GetAnalyzer() string`
@@ -240,6 +275,13 @@ SetAnalyzer sets Analyzer field to given value.
 `func (o *ClusterSearchIndex) HasAnalyzer() bool`
 
 HasAnalyzer returns a boolean if a field has been set.
+
+### SetAnalyzerNil
+
+`func (o *ClusterSearchIndex) SetAnalyzerNil()`
+
+SetAnalyzerNil sets Analyzer to an explicit JSON null when marshaled, overriding any value previously set with SetAnalyzer. Calling SetAnalyzer again clears the null override.
+
 ### GetAnalyzers
 
 `func (o *ClusterSearchIndex) GetAnalyzers() []ApiAtlasFTSAnalyzers`
@@ -264,6 +306,13 @@ SetAnalyzers sets Analyzers field to given value.
 `func (o *ClusterSearchIndex) HasAnalyzers() bool`
 
 HasAnalyzers returns a boolean if a field has been set.
+
+### SetAnalyzersNil
+
+`func (o *ClusterSearchIndex) SetAnalyzersNil()`
+
+SetAnalyzersNil sets Analyzers to an explicit JSON null when marshaled, overriding any value previously set with SetAnalyzers. Calling SetAnalyzers again clears the null override.
+
 ### GetMappings
 
 `func (o *ClusterSearchIndex) GetMappings() ApiAtlasFTSMappings`
@@ -288,6 +337,13 @@ SetMappings sets Mappings field to given value.
 `func (o *ClusterSearchIndex) HasMappings() bool`
 
 HasMappings returns a boolean if a field has been set.
+
+### SetMappingsNil
+
+`func (o *ClusterSearchIndex) SetMappingsNil()`
+
+SetMappingsNil sets Mappings to an explicit JSON null when marshaled, overriding any value previously set with SetMappings. Calling SetMappings again clears the null override.
+
 ### GetSearchAnalyzer
 
 `func (o *ClusterSearchIndex) GetSearchAnalyzer() string`
@@ -312,6 +368,13 @@ SetSearchAnalyzer sets SearchAnalyzer field to given value.
 `func (o *ClusterSearchIndex) HasSearchAnalyzer() bool`
 
 HasSearchAnalyzer returns a boolean if a field has been set.
+
+### SetSearchAnalyzerNil
+
+`func (o *ClusterSearchIndex) SetSearchAnalyzerNil()`
+
+SetSearchAnalyzerNil sets SearchAnalyzer to an explicit JSON null when marshaled, overriding any value previously set with SetSearchAnalyzer. Calling SetSearchAnalyzer again clears the null override.
+
 ### GetSynonyms
 
 `func (o *ClusterSearchIndex) GetSynonyms() []SearchSynonymMappingDefinition`
@@ -336,6 +399,13 @@ SetSynonyms sets Synonyms field to given value.
 `func (o *ClusterSearchIndex) HasSynonyms() bool`
 
 HasSynonyms returns a boolean if a field has been set.
+
+### SetSynonymsNil
+
+`func (o *ClusterSearchIndex) SetSynonymsNil()`
+
+SetSynonymsNil sets Synonyms to an explicit JSON null when marshaled, overriding any value previously set with SetSynonyms. Calling SetSynonyms again clears the null override.
+
 ### GetFields
 
 `func (o *ClusterSearchIndex) GetFields() []any`
@@ -360,6 +430,13 @@ SetFields sets Fields field to given value.
 `func (o *ClusterSearchIndex) HasFields() bool`
 
 HasFields returns a boolean if a field has been set.
+
+### SetFieldsNil
+
+`func (o *ClusterSearchIndex) SetFieldsNil()`
+
+SetFieldsNil sets Fields to an explicit JSON null when marshaled, overriding any value previously set with SetFields. Calling SetFields again clears the null override.
+
 ### GetNestedRoot
 
 `func (o *ClusterSearchIndex) GetNestedRoot() string`
@@ -384,6 +461,13 @@ SetNestedRoot sets NestedRoot field to given value.
 `func (o *ClusterSearchIndex) HasNestedRoot() bool`
 
 HasNestedRoot returns a boolean if a field has been set.
+
+### SetNestedRootNil
+
+`func (o *ClusterSearchIndex) SetNestedRootNil()`
+
+SetNestedRootNil sets NestedRoot to an explicit JSON null when marshaled, overriding any value previously set with SetNestedRoot. Calling SetNestedRoot again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

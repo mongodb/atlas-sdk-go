@@ -55,6 +55,13 @@ SetAuthzQueryTemplate sets AuthzQueryTemplate field to given value.
 `func (o *LDAPVerifyConnectivityJobRequestParams) HasAuthzQueryTemplate() bool`
 
 HasAuthzQueryTemplate returns a boolean if a field has been set.
+
+### SetAuthzQueryTemplateNil
+
+`func (o *LDAPVerifyConnectivityJobRequestParams) SetAuthzQueryTemplateNil()`
+
+SetAuthzQueryTemplateNil sets AuthzQueryTemplate to an explicit JSON null when marshaled, overriding any value previously set with SetAuthzQueryTemplate. Calling SetAuthzQueryTemplate again clears the null override.
+
 ### GetBindPassword
 
 `func (o *LDAPVerifyConnectivityJobRequestParams) GetBindPassword() string`
@@ -117,6 +124,13 @@ SetCaCertificate sets CaCertificate field to given value.
 `func (o *LDAPVerifyConnectivityJobRequestParams) HasCaCertificate() bool`
 
 HasCaCertificate returns a boolean if a field has been set.
+
+### SetCaCertificateNil
+
+`func (o *LDAPVerifyConnectivityJobRequestParams) SetCaCertificateNil()`
+
+SetCaCertificateNil sets CaCertificate to an explicit JSON null when marshaled, overriding any value previously set with SetCaCertificate. Calling SetCaCertificate again clears the null override.
+
 ### GetHostname
 
 `func (o *LDAPVerifyConnectivityJobRequestParams) GetHostname() string`
@@ -160,6 +174,13 @@ SetLinks sets Links field to given value.
 `func (o *LDAPVerifyConnectivityJobRequestParams) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *LDAPVerifyConnectivityJobRequestParams) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetPort
 
 `func (o *LDAPVerifyConnectivityJobRequestParams) GetPort() int`

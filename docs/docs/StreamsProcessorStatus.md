@@ -52,6 +52,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsProcessorStatus) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsProcessorStatus) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetMode
 
 `func (o *StreamsProcessorStatus) GetMode() string`
@@ -76,6 +83,13 @@ SetMode sets Mode field to given value.
 `func (o *StreamsProcessorStatus) HasMode() bool`
 
 HasMode returns a boolean if a field has been set.
+
+### SetModeNil
+
+`func (o *StreamsProcessorStatus) SetModeNil()`
+
+SetModeNil sets Mode to an explicit JSON null when marshaled, overriding any value previously set with SetMode. Calling SetMode again clears the null override.
+
 ### GetRegion
 
 `func (o *StreamsProcessorStatus) GetRegion() string`
@@ -100,6 +114,13 @@ SetRegion sets Region field to given value.
 `func (o *StreamsProcessorStatus) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *StreamsProcessorStatus) SetRegionNil()`
+
+SetRegionNil sets Region to an explicit JSON null when marshaled, overriding any value previously set with SetRegion. Calling SetRegion again clears the null override.
+
 ### GetStatus
 
 `func (o *StreamsProcessorStatus) GetStatus() string`

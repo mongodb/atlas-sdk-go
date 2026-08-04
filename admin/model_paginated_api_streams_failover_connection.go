@@ -9,17 +9,26 @@ type PaginatedApiStreamsFailoverConnection struct {
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results []StreamsConnection `json:"results"`
+	Results []StreamsFailoverConnection `json:"results"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PaginatedApiStreamsFailoverConnection) MarshalJSON() ([]byte, error) {
+	type noMethod PaginatedApiStreamsFailoverConnection
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPaginatedApiStreamsFailoverConnection instantiates a new PaginatedApiStreamsFailoverConnection object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedApiStreamsFailoverConnection(results []StreamsConnection) *PaginatedApiStreamsFailoverConnection {
+func NewPaginatedApiStreamsFailoverConnection(results []StreamsFailoverConnection) *PaginatedApiStreamsFailoverConnection {
 	this := PaginatedApiStreamsFailoverConnection{}
 	this.Results = results
 	return &this
@@ -64,12 +73,19 @@ func (o *PaginatedApiStreamsFailoverConnection) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *PaginatedApiStreamsFailoverConnection) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *PaginatedApiStreamsFailoverConnection) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetResults returns the Results field value
-func (o *PaginatedApiStreamsFailoverConnection) GetResults() []StreamsConnection {
+func (o *PaginatedApiStreamsFailoverConnection) GetResults() []StreamsFailoverConnection {
 	if o == nil {
-		var ret []StreamsConnection
+		var ret []StreamsFailoverConnection
 		return ret
 	}
 
@@ -78,7 +94,7 @@ func (o *PaginatedApiStreamsFailoverConnection) GetResults() []StreamsConnection
 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedApiStreamsFailoverConnection) GetResultsOk() (*[]StreamsConnection, bool) {
+func (o *PaginatedApiStreamsFailoverConnection) GetResultsOk() (*[]StreamsFailoverConnection, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -86,7 +102,7 @@ func (o *PaginatedApiStreamsFailoverConnection) GetResultsOk() (*[]StreamsConnec
 }
 
 // SetResults sets field value
-func (o *PaginatedApiStreamsFailoverConnection) SetResults(v []StreamsConnection) {
+func (o *PaginatedApiStreamsFailoverConnection) SetResults(v []StreamsFailoverConnection) {
 	o.Results = v
 }
 
@@ -121,4 +137,11 @@ func (o *PaginatedApiStreamsFailoverConnection) HasTotalCount() bool {
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
 func (o *PaginatedApiStreamsFailoverConnection) SetTotalCount(v int) {
 	o.TotalCount = &v
+	o.NullFields = removeNullField(o.NullFields, "TotalCount")
+}
+
+// SetTotalCountNil sets TotalCount to an explicit JSON null when marshaled.
+func (o *PaginatedApiStreamsFailoverConnection) SetTotalCountNil() {
+	o.TotalCount = nil
+	o.NullFields = addNullField(o.NullFields, "TotalCount")
 }

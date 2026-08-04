@@ -51,6 +51,13 @@ SetMaxStalenessSeconds sets MaxStalenessSeconds field to given value.
 `func (o *DataLakeAtlasStoreReadPreference) HasMaxStalenessSeconds() bool`
 
 HasMaxStalenessSeconds returns a boolean if a field has been set.
+
+### SetMaxStalenessSecondsNil
+
+`func (o *DataLakeAtlasStoreReadPreference) SetMaxStalenessSecondsNil()`
+
+SetMaxStalenessSecondsNil sets MaxStalenessSeconds to an explicit JSON null when marshaled, overriding any value previously set with SetMaxStalenessSeconds. Calling SetMaxStalenessSeconds again clears the null override.
+
 ### GetMode
 
 `func (o *DataLakeAtlasStoreReadPreference) GetMode() string`
@@ -75,6 +82,13 @@ SetMode sets Mode field to given value.
 `func (o *DataLakeAtlasStoreReadPreference) HasMode() bool`
 
 HasMode returns a boolean if a field has been set.
+
+### SetModeNil
+
+`func (o *DataLakeAtlasStoreReadPreference) SetModeNil()`
+
+SetModeNil sets Mode to an explicit JSON null when marshaled, overriding any value previously set with SetMode. Calling SetMode again clears the null override.
+
 ### GetTagSets
 
 `func (o *DataLakeAtlasStoreReadPreference) GetTagSets() [][]DataLakeAtlasStoreReadPreferenceTag`
@@ -99,6 +113,13 @@ SetTagSets sets TagSets field to given value.
 `func (o *DataLakeAtlasStoreReadPreference) HasTagSets() bool`
 
 HasTagSets returns a boolean if a field has been set.
+
+### SetTagSetsNil
+
+`func (o *DataLakeAtlasStoreReadPreference) SetTagSetsNil()`
+
+SetTagSetsNil sets TagSets to an explicit JSON null when marshaled, overriding any value previously set with SetTagSets. Calling SetTagSets again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

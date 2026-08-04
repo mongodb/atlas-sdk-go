@@ -53,6 +53,13 @@ SetDefinition sets Definition field to given value.
 `func (o *VectorSearchIndexStatusDetail) HasDefinition() bool`
 
 HasDefinition returns a boolean if a field has been set.
+
+### SetDefinitionNil
+
+`func (o *VectorSearchIndexStatusDetail) SetDefinitionNil()`
+
+SetDefinitionNil sets Definition to an explicit JSON null when marshaled, overriding any value previously set with SetDefinition. Calling SetDefinition again clears the null override.
+
 ### GetDefinitionVersion
 
 `func (o *VectorSearchIndexStatusDetail) GetDefinitionVersion() SearchIndexDefinitionVersion`
@@ -77,6 +84,13 @@ SetDefinitionVersion sets DefinitionVersion field to given value.
 `func (o *VectorSearchIndexStatusDetail) HasDefinitionVersion() bool`
 
 HasDefinitionVersion returns a boolean if a field has been set.
+
+### SetDefinitionVersionNil
+
+`func (o *VectorSearchIndexStatusDetail) SetDefinitionVersionNil()`
+
+SetDefinitionVersionNil sets DefinitionVersion to an explicit JSON null when marshaled, overriding any value previously set with SetDefinitionVersion. Calling SetDefinitionVersion again clears the null override.
+
 ### GetMessage
 
 `func (o *VectorSearchIndexStatusDetail) GetMessage() string`
@@ -101,6 +115,13 @@ SetMessage sets Message field to given value.
 `func (o *VectorSearchIndexStatusDetail) HasMessage() bool`
 
 HasMessage returns a boolean if a field has been set.
+
+### SetMessageNil
+
+`func (o *VectorSearchIndexStatusDetail) SetMessageNil()`
+
+SetMessageNil sets Message to an explicit JSON null when marshaled, overriding any value previously set with SetMessage. Calling SetMessage again clears the null override.
+
 ### GetQueryable
 
 `func (o *VectorSearchIndexStatusDetail) GetQueryable() bool`
@@ -125,6 +146,13 @@ SetQueryable sets Queryable field to given value.
 `func (o *VectorSearchIndexStatusDetail) HasQueryable() bool`
 
 HasQueryable returns a boolean if a field has been set.
+
+### SetQueryableNil
+
+`func (o *VectorSearchIndexStatusDetail) SetQueryableNil()`
+
+SetQueryableNil sets Queryable to an explicit JSON null when marshaled, overriding any value previously set with SetQueryable. Calling SetQueryable again clears the null override.
+
 ### GetStatus
 
 `func (o *VectorSearchIndexStatusDetail) GetStatus() string`
@@ -149,6 +177,13 @@ SetStatus sets Status field to given value.
 `func (o *VectorSearchIndexStatusDetail) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *VectorSearchIndexStatusDetail) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

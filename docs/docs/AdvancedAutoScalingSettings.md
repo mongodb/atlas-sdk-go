@@ -50,6 +50,13 @@ SetCompute sets Compute field to given value.
 `func (o *AdvancedAutoScalingSettings) HasCompute() bool`
 
 HasCompute returns a boolean if a field has been set.
+
+### SetComputeNil
+
+`func (o *AdvancedAutoScalingSettings) SetComputeNil()`
+
+SetComputeNil sets Compute to an explicit JSON null when marshaled, overriding any value previously set with SetCompute. Calling SetCompute again clears the null override.
+
 ### GetDiskGB
 
 `func (o *AdvancedAutoScalingSettings) GetDiskGB() DiskGBAutoScaling`
@@ -74,6 +81,13 @@ SetDiskGB sets DiskGB field to given value.
 `func (o *AdvancedAutoScalingSettings) HasDiskGB() bool`
 
 HasDiskGB returns a boolean if a field has been set.
+
+### SetDiskGBNil
+
+`func (o *AdvancedAutoScalingSettings) SetDiskGBNil()`
+
+SetDiskGBNil sets DiskGB to an explicit JSON null when marshaled, overriding any value previously set with SetDiskGB. Calling SetDiskGB again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

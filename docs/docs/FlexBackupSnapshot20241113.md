@@ -56,6 +56,13 @@ SetExpiration sets Expiration field to given value.
 `func (o *FlexBackupSnapshot20241113) HasExpiration() bool`
 
 HasExpiration returns a boolean if a field has been set.
+
+### SetExpirationNil
+
+`func (o *FlexBackupSnapshot20241113) SetExpirationNil()`
+
+SetExpirationNil sets Expiration to an explicit JSON null when marshaled, overriding any value previously set with SetExpiration. Calling SetExpiration again clears the null override.
+
 ### GetFinishTime
 
 `func (o *FlexBackupSnapshot20241113) GetFinishTime() time.Time`
@@ -80,6 +87,13 @@ SetFinishTime sets FinishTime field to given value.
 `func (o *FlexBackupSnapshot20241113) HasFinishTime() bool`
 
 HasFinishTime returns a boolean if a field has been set.
+
+### SetFinishTimeNil
+
+`func (o *FlexBackupSnapshot20241113) SetFinishTimeNil()`
+
+SetFinishTimeNil sets FinishTime to an explicit JSON null when marshaled, overriding any value previously set with SetFinishTime. Calling SetFinishTime again clears the null override.
+
 ### GetId
 
 `func (o *FlexBackupSnapshot20241113) GetId() string`
@@ -104,6 +118,13 @@ SetId sets Id field to given value.
 `func (o *FlexBackupSnapshot20241113) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *FlexBackupSnapshot20241113) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLinks
 
 `func (o *FlexBackupSnapshot20241113) GetLinks() []Link`
@@ -128,6 +149,13 @@ SetLinks sets Links field to given value.
 `func (o *FlexBackupSnapshot20241113) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *FlexBackupSnapshot20241113) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetMongoDBVersion
 
 `func (o *FlexBackupSnapshot20241113) GetMongoDBVersion() string`
@@ -152,6 +180,13 @@ SetMongoDBVersion sets MongoDBVersion field to given value.
 `func (o *FlexBackupSnapshot20241113) HasMongoDBVersion() bool`
 
 HasMongoDBVersion returns a boolean if a field has been set.
+
+### SetMongoDBVersionNil
+
+`func (o *FlexBackupSnapshot20241113) SetMongoDBVersionNil()`
+
+SetMongoDBVersionNil sets MongoDBVersion to an explicit JSON null when marshaled, overriding any value previously set with SetMongoDBVersion. Calling SetMongoDBVersion again clears the null override.
+
 ### GetScheduledTime
 
 `func (o *FlexBackupSnapshot20241113) GetScheduledTime() time.Time`
@@ -176,6 +211,13 @@ SetScheduledTime sets ScheduledTime field to given value.
 `func (o *FlexBackupSnapshot20241113) HasScheduledTime() bool`
 
 HasScheduledTime returns a boolean if a field has been set.
+
+### SetScheduledTimeNil
+
+`func (o *FlexBackupSnapshot20241113) SetScheduledTimeNil()`
+
+SetScheduledTimeNil sets ScheduledTime to an explicit JSON null when marshaled, overriding any value previously set with SetScheduledTime. Calling SetScheduledTime again clears the null override.
+
 ### GetStartTime
 
 `func (o *FlexBackupSnapshot20241113) GetStartTime() time.Time`
@@ -200,6 +242,13 @@ SetStartTime sets StartTime field to given value.
 `func (o *FlexBackupSnapshot20241113) HasStartTime() bool`
 
 HasStartTime returns a boolean if a field has been set.
+
+### SetStartTimeNil
+
+`func (o *FlexBackupSnapshot20241113) SetStartTimeNil()`
+
+SetStartTimeNil sets StartTime to an explicit JSON null when marshaled, overriding any value previously set with SetStartTime. Calling SetStartTime again clears the null override.
+
 ### GetStatus
 
 `func (o *FlexBackupSnapshot20241113) GetStatus() string`
@@ -224,6 +273,13 @@ SetStatus sets Status field to given value.
 `func (o *FlexBackupSnapshot20241113) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *FlexBackupSnapshot20241113) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

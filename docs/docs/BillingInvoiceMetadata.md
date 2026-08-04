@@ -63,6 +63,13 @@ SetAmountBilledCents sets AmountBilledCents field to given value.
 `func (o *BillingInvoiceMetadata) HasAmountBilledCents() bool`
 
 HasAmountBilledCents returns a boolean if a field has been set.
+
+### SetAmountBilledCentsNil
+
+`func (o *BillingInvoiceMetadata) SetAmountBilledCentsNil()`
+
+SetAmountBilledCentsNil sets AmountBilledCents to an explicit JSON null when marshaled, overriding any value previously set with SetAmountBilledCents. Calling SetAmountBilledCents again clears the null override.
+
 ### GetAmountPaidCents
 
 `func (o *BillingInvoiceMetadata) GetAmountPaidCents() int64`
@@ -87,6 +94,13 @@ SetAmountPaidCents sets AmountPaidCents field to given value.
 `func (o *BillingInvoiceMetadata) HasAmountPaidCents() bool`
 
 HasAmountPaidCents returns a boolean if a field has been set.
+
+### SetAmountPaidCentsNil
+
+`func (o *BillingInvoiceMetadata) SetAmountPaidCentsNil()`
+
+SetAmountPaidCentsNil sets AmountPaidCents to an explicit JSON null when marshaled, overriding any value previously set with SetAmountPaidCents. Calling SetAmountPaidCents again clears the null override.
+
 ### GetCreated
 
 `func (o *BillingInvoiceMetadata) GetCreated() time.Time`
@@ -111,6 +125,13 @@ SetCreated sets Created field to given value.
 `func (o *BillingInvoiceMetadata) HasCreated() bool`
 
 HasCreated returns a boolean if a field has been set.
+
+### SetCreatedNil
+
+`func (o *BillingInvoiceMetadata) SetCreatedNil()`
+
+SetCreatedNil sets Created to an explicit JSON null when marshaled, overriding any value previously set with SetCreated. Calling SetCreated again clears the null override.
+
 ### GetCreditsCents
 
 `func (o *BillingInvoiceMetadata) GetCreditsCents() int64`
@@ -135,6 +156,13 @@ SetCreditsCents sets CreditsCents field to given value.
 `func (o *BillingInvoiceMetadata) HasCreditsCents() bool`
 
 HasCreditsCents returns a boolean if a field has been set.
+
+### SetCreditsCentsNil
+
+`func (o *BillingInvoiceMetadata) SetCreditsCentsNil()`
+
+SetCreditsCentsNil sets CreditsCents to an explicit JSON null when marshaled, overriding any value previously set with SetCreditsCents. Calling SetCreditsCents again clears the null override.
+
 ### GetEndDate
 
 `func (o *BillingInvoiceMetadata) GetEndDate() time.Time`
@@ -159,6 +187,13 @@ SetEndDate sets EndDate field to given value.
 `func (o *BillingInvoiceMetadata) HasEndDate() bool`
 
 HasEndDate returns a boolean if a field has been set.
+
+### SetEndDateNil
+
+`func (o *BillingInvoiceMetadata) SetEndDateNil()`
+
+SetEndDateNil sets EndDate to an explicit JSON null when marshaled, overriding any value previously set with SetEndDate. Calling SetEndDate again clears the null override.
+
 ### GetId
 
 `func (o *BillingInvoiceMetadata) GetId() string`
@@ -183,6 +218,13 @@ SetId sets Id field to given value.
 `func (o *BillingInvoiceMetadata) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *BillingInvoiceMetadata) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetLinkedInvoices
 
 `func (o *BillingInvoiceMetadata) GetLinkedInvoices() []BillingInvoiceMetadata`
@@ -207,6 +249,13 @@ SetLinkedInvoices sets LinkedInvoices field to given value.
 `func (o *BillingInvoiceMetadata) HasLinkedInvoices() bool`
 
 HasLinkedInvoices returns a boolean if a field has been set.
+
+### SetLinkedInvoicesNil
+
+`func (o *BillingInvoiceMetadata) SetLinkedInvoicesNil()`
+
+SetLinkedInvoicesNil sets LinkedInvoices to an explicit JSON null when marshaled, overriding any value previously set with SetLinkedInvoices. Calling SetLinkedInvoices again clears the null override.
+
 ### GetLinks
 
 `func (o *BillingInvoiceMetadata) GetLinks() []Link`
@@ -231,6 +280,13 @@ SetLinks sets Links field to given value.
 `func (o *BillingInvoiceMetadata) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *BillingInvoiceMetadata) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetOrgId
 
 `func (o *BillingInvoiceMetadata) GetOrgId() string`
@@ -255,6 +311,13 @@ SetOrgId sets OrgId field to given value.
 `func (o *BillingInvoiceMetadata) HasOrgId() bool`
 
 HasOrgId returns a boolean if a field has been set.
+
+### SetOrgIdNil
+
+`func (o *BillingInvoiceMetadata) SetOrgIdNil()`
+
+SetOrgIdNil sets OrgId to an explicit JSON null when marshaled, overriding any value previously set with SetOrgId. Calling SetOrgId again clears the null override.
+
 ### GetSalesTaxCents
 
 `func (o *BillingInvoiceMetadata) GetSalesTaxCents() int64`
@@ -279,6 +342,13 @@ SetSalesTaxCents sets SalesTaxCents field to given value.
 `func (o *BillingInvoiceMetadata) HasSalesTaxCents() bool`
 
 HasSalesTaxCents returns a boolean if a field has been set.
+
+### SetSalesTaxCentsNil
+
+`func (o *BillingInvoiceMetadata) SetSalesTaxCentsNil()`
+
+SetSalesTaxCentsNil sets SalesTaxCents to an explicit JSON null when marshaled, overriding any value previously set with SetSalesTaxCents. Calling SetSalesTaxCents again clears the null override.
+
 ### GetStartDate
 
 `func (o *BillingInvoiceMetadata) GetStartDate() time.Time`
@@ -303,6 +373,13 @@ SetStartDate sets StartDate field to given value.
 `func (o *BillingInvoiceMetadata) HasStartDate() bool`
 
 HasStartDate returns a boolean if a field has been set.
+
+### SetStartDateNil
+
+`func (o *BillingInvoiceMetadata) SetStartDateNil()`
+
+SetStartDateNil sets StartDate to an explicit JSON null when marshaled, overriding any value previously set with SetStartDate. Calling SetStartDate again clears the null override.
+
 ### GetStartingBalanceCents
 
 `func (o *BillingInvoiceMetadata) GetStartingBalanceCents() int64`
@@ -327,6 +404,13 @@ SetStartingBalanceCents sets StartingBalanceCents field to given value.
 `func (o *BillingInvoiceMetadata) HasStartingBalanceCents() bool`
 
 HasStartingBalanceCents returns a boolean if a field has been set.
+
+### SetStartingBalanceCentsNil
+
+`func (o *BillingInvoiceMetadata) SetStartingBalanceCentsNil()`
+
+SetStartingBalanceCentsNil sets StartingBalanceCents to an explicit JSON null when marshaled, overriding any value previously set with SetStartingBalanceCents. Calling SetStartingBalanceCents again clears the null override.
+
 ### GetStatusName
 
 `func (o *BillingInvoiceMetadata) GetStatusName() string`
@@ -351,6 +435,13 @@ SetStatusName sets StatusName field to given value.
 `func (o *BillingInvoiceMetadata) HasStatusName() bool`
 
 HasStatusName returns a boolean if a field has been set.
+
+### SetStatusNameNil
+
+`func (o *BillingInvoiceMetadata) SetStatusNameNil()`
+
+SetStatusNameNil sets StatusName to an explicit JSON null when marshaled, overriding any value previously set with SetStatusName. Calling SetStatusName again clears the null override.
+
 ### GetSubtotalCents
 
 `func (o *BillingInvoiceMetadata) GetSubtotalCents() int64`
@@ -375,6 +466,13 @@ SetSubtotalCents sets SubtotalCents field to given value.
 `func (o *BillingInvoiceMetadata) HasSubtotalCents() bool`
 
 HasSubtotalCents returns a boolean if a field has been set.
+
+### SetSubtotalCentsNil
+
+`func (o *BillingInvoiceMetadata) SetSubtotalCentsNil()`
+
+SetSubtotalCentsNil sets SubtotalCents to an explicit JSON null when marshaled, overriding any value previously set with SetSubtotalCents. Calling SetSubtotalCents again clears the null override.
+
 ### GetUpdated
 
 `func (o *BillingInvoiceMetadata) GetUpdated() time.Time`
@@ -399,6 +497,13 @@ SetUpdated sets Updated field to given value.
 `func (o *BillingInvoiceMetadata) HasUpdated() bool`
 
 HasUpdated returns a boolean if a field has been set.
+
+### SetUpdatedNil
+
+`func (o *BillingInvoiceMetadata) SetUpdatedNil()`
+
+SetUpdatedNil sets Updated to an explicit JSON null when marshaled, overriding any value previously set with SetUpdated. Calling SetUpdated again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

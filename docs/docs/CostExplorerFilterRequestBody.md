@@ -56,6 +56,13 @@ SetClusters sets Clusters field to given value.
 `func (o *CostExplorerFilterRequestBody) HasClusters() bool`
 
 HasClusters returns a boolean if a field has been set.
+
+### SetClustersNil
+
+`func (o *CostExplorerFilterRequestBody) SetClustersNil()`
+
+SetClustersNil sets Clusters to an explicit JSON null when marshaled, overriding any value previously set with SetClusters. Calling SetClusters again clears the null override.
+
 ### GetEndDate
 
 `func (o *CostExplorerFilterRequestBody) GetEndDate() string`
@@ -99,6 +106,13 @@ SetGroupBy sets GroupBy field to given value.
 `func (o *CostExplorerFilterRequestBody) HasGroupBy() bool`
 
 HasGroupBy returns a boolean if a field has been set.
+
+### SetGroupByNil
+
+`func (o *CostExplorerFilterRequestBody) SetGroupByNil()`
+
+SetGroupByNil sets GroupBy to an explicit JSON null when marshaled, overriding any value previously set with SetGroupBy. Calling SetGroupBy again clears the null override.
+
 ### GetIncludePartialMatches
 
 `func (o *CostExplorerFilterRequestBody) GetIncludePartialMatches() bool`
@@ -123,6 +137,13 @@ SetIncludePartialMatches sets IncludePartialMatches field to given value.
 `func (o *CostExplorerFilterRequestBody) HasIncludePartialMatches() bool`
 
 HasIncludePartialMatches returns a boolean if a field has been set.
+
+### SetIncludePartialMatchesNil
+
+`func (o *CostExplorerFilterRequestBody) SetIncludePartialMatchesNil()`
+
+SetIncludePartialMatchesNil sets IncludePartialMatches to an explicit JSON null when marshaled, overriding any value previously set with SetIncludePartialMatches. Calling SetIncludePartialMatches again clears the null override.
+
 ### GetOrganizations
 
 `func (o *CostExplorerFilterRequestBody) GetOrganizations() []string`
@@ -147,6 +168,13 @@ SetOrganizations sets Organizations field to given value.
 `func (o *CostExplorerFilterRequestBody) HasOrganizations() bool`
 
 HasOrganizations returns a boolean if a field has been set.
+
+### SetOrganizationsNil
+
+`func (o *CostExplorerFilterRequestBody) SetOrganizationsNil()`
+
+SetOrganizationsNil sets Organizations to an explicit JSON null when marshaled, overriding any value previously set with SetOrganizations. Calling SetOrganizations again clears the null override.
+
 ### GetProjects
 
 `func (o *CostExplorerFilterRequestBody) GetProjects() []string`
@@ -171,6 +199,13 @@ SetProjects sets Projects field to given value.
 `func (o *CostExplorerFilterRequestBody) HasProjects() bool`
 
 HasProjects returns a boolean if a field has been set.
+
+### SetProjectsNil
+
+`func (o *CostExplorerFilterRequestBody) SetProjectsNil()`
+
+SetProjectsNil sets Projects to an explicit JSON null when marshaled, overriding any value previously set with SetProjects. Calling SetProjects again clears the null override.
+
 ### GetServices
 
 `func (o *CostExplorerFilterRequestBody) GetServices() []string`
@@ -195,6 +230,13 @@ SetServices sets Services field to given value.
 `func (o *CostExplorerFilterRequestBody) HasServices() bool`
 
 HasServices returns a boolean if a field has been set.
+
+### SetServicesNil
+
+`func (o *CostExplorerFilterRequestBody) SetServicesNil()`
+
+SetServicesNil sets Services to an explicit JSON null when marshaled, overriding any value previously set with SetServices. Calling SetServices again clears the null override.
+
 ### GetStartDate
 
 `func (o *CostExplorerFilterRequestBody) GetStartDate() string`

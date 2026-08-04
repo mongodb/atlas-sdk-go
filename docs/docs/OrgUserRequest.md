@@ -70,6 +70,13 @@ SetTeamIds sets TeamIds field to given value.
 `func (o *OrgUserRequest) HasTeamIds() bool`
 
 HasTeamIds returns a boolean if a field has been set.
+
+### SetTeamIdsNil
+
+`func (o *OrgUserRequest) SetTeamIdsNil()`
+
+SetTeamIdsNil sets TeamIds to an explicit JSON null when marshaled, overriding any value previously set with SetTeamIds. Calling SetTeamIds again clears the null override.
+
 ### GetUsername
 
 `func (o *OrgUserRequest) GetUsername() string`

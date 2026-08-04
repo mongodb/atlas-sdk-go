@@ -11,6 +11,15 @@ type StreamConfig struct {
 	MaxTierSize *string `json:"maxTierSize,omitempty"`
 	// Selected tier for the Stream Workspace. Configures Memory / VCPU allowances.
 	Tier *string `json:"tier,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *StreamConfig) MarshalJSON() ([]byte, error) {
+	type noMethod StreamConfig
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewStreamConfig instantiates a new StreamConfig object
@@ -61,6 +70,13 @@ func (o *StreamConfig) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *StreamConfig) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *StreamConfig) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetMaxTierSize returns the MaxTierSize field value if set, zero value otherwise
@@ -94,6 +110,13 @@ func (o *StreamConfig) HasMaxTierSize() bool {
 // SetMaxTierSize gets a reference to the given string and assigns it to the MaxTierSize field.
 func (o *StreamConfig) SetMaxTierSize(v string) {
 	o.MaxTierSize = &v
+	o.NullFields = removeNullField(o.NullFields, "MaxTierSize")
+}
+
+// SetMaxTierSizeNil sets MaxTierSize to an explicit JSON null when marshaled.
+func (o *StreamConfig) SetMaxTierSizeNil() {
+	o.MaxTierSize = nil
+	o.NullFields = addNullField(o.NullFields, "MaxTierSize")
 }
 
 // GetTier returns the Tier field value if set, zero value otherwise
@@ -127,4 +150,11 @@ func (o *StreamConfig) HasTier() bool {
 // SetTier gets a reference to the given string and assigns it to the Tier field.
 func (o *StreamConfig) SetTier(v string) {
 	o.Tier = &v
+	o.NullFields = removeNullField(o.NullFields, "Tier")
+}
+
+// SetTierNil sets Tier to an explicit JSON null when marshaled.
+func (o *StreamConfig) SetTierNil() {
+	o.Tier = nil
+	o.NullFields = addNullField(o.NullFields, "Tier")
 }

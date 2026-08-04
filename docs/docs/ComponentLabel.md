@@ -50,6 +50,13 @@ SetKey sets Key field to given value.
 `func (o *ComponentLabel) HasKey() bool`
 
 HasKey returns a boolean if a field has been set.
+
+### SetKeyNil
+
+`func (o *ComponentLabel) SetKeyNil()`
+
+SetKeyNil sets Key to an explicit JSON null when marshaled, overriding any value previously set with SetKey. Calling SetKey again clears the null override.
+
 ### GetValue
 
 `func (o *ComponentLabel) GetValue() string`
@@ -74,6 +81,13 @@ SetValue sets Value field to given value.
 `func (o *ComponentLabel) HasValue() bool`
 
 HasValue returns a boolean if a field has been set.
+
+### SetValueNil
+
+`func (o *ComponentLabel) SetValueNil()`
+
+SetValueNil sets Value to an explicit JSON null when marshaled, overriding any value previously set with SetValue. Calling SetValue again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

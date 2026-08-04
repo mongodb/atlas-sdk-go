@@ -53,6 +53,13 @@ SetId sets Id field to given value.
 `func (o *LiveImportValidation) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *LiveImportValidation) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetErrorMessage
 
 `func (o *LiveImportValidation) GetErrorMessage() string`
@@ -77,6 +84,13 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *LiveImportValidation) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
+
+### SetErrorMessageNil
+
+`func (o *LiveImportValidation) SetErrorMessageNil()`
+
+SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled, overriding any value previously set with SetErrorMessage. Calling SetErrorMessage again clears the null override.
+
 ### GetGroupId
 
 `func (o *LiveImportValidation) GetGroupId() string`
@@ -101,6 +115,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *LiveImportValidation) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *LiveImportValidation) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetSourceGroupId
 
 `func (o *LiveImportValidation) GetSourceGroupId() string`
@@ -125,6 +146,13 @@ SetSourceGroupId sets SourceGroupId field to given value.
 `func (o *LiveImportValidation) HasSourceGroupId() bool`
 
 HasSourceGroupId returns a boolean if a field has been set.
+
+### SetSourceGroupIdNil
+
+`func (o *LiveImportValidation) SetSourceGroupIdNil()`
+
+SetSourceGroupIdNil sets SourceGroupId to an explicit JSON null when marshaled, overriding any value previously set with SetSourceGroupId. Calling SetSourceGroupId again clears the null override.
+
 ### GetStatus
 
 `func (o *LiveImportValidation) GetStatus() string`
@@ -149,6 +177,13 @@ SetStatus sets Status field to given value.
 `func (o *LiveImportValidation) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *LiveImportValidation) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -7,6 +7,15 @@ type QueryStatsDetailsResponse struct {
 	FirstSeen  *QueryShapeSeenMetadata `json:"firstSeen,omitempty"`
 	LastSeen   *QueryShapeSeenMetadata `json:"lastSeen,omitempty"`
 	QueryStats *QueryStatsSummary      `json:"queryStats,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *QueryStatsDetailsResponse) MarshalJSON() ([]byte, error) {
+	type noMethod QueryStatsDetailsResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewQueryStatsDetailsResponse instantiates a new QueryStatsDetailsResponse object
@@ -57,6 +66,13 @@ func (o *QueryStatsDetailsResponse) HasFirstSeen() bool {
 // SetFirstSeen gets a reference to the given QueryShapeSeenMetadata and assigns it to the FirstSeen field.
 func (o *QueryStatsDetailsResponse) SetFirstSeen(v QueryShapeSeenMetadata) {
 	o.FirstSeen = &v
+	o.NullFields = removeNullField(o.NullFields, "FirstSeen")
+}
+
+// SetFirstSeenNil sets FirstSeen to an explicit JSON null when marshaled.
+func (o *QueryStatsDetailsResponse) SetFirstSeenNil() {
+	o.FirstSeen = nil
+	o.NullFields = addNullField(o.NullFields, "FirstSeen")
 }
 
 // GetLastSeen returns the LastSeen field value if set, zero value otherwise
@@ -90,6 +106,13 @@ func (o *QueryStatsDetailsResponse) HasLastSeen() bool {
 // SetLastSeen gets a reference to the given QueryShapeSeenMetadata and assigns it to the LastSeen field.
 func (o *QueryStatsDetailsResponse) SetLastSeen(v QueryShapeSeenMetadata) {
 	o.LastSeen = &v
+	o.NullFields = removeNullField(o.NullFields, "LastSeen")
+}
+
+// SetLastSeenNil sets LastSeen to an explicit JSON null when marshaled.
+func (o *QueryStatsDetailsResponse) SetLastSeenNil() {
+	o.LastSeen = nil
+	o.NullFields = addNullField(o.NullFields, "LastSeen")
 }
 
 // GetQueryStats returns the QueryStats field value if set, zero value otherwise
@@ -123,4 +146,11 @@ func (o *QueryStatsDetailsResponse) HasQueryStats() bool {
 // SetQueryStats gets a reference to the given QueryStatsSummary and assigns it to the QueryStats field.
 func (o *QueryStatsDetailsResponse) SetQueryStats(v QueryStatsSummary) {
 	o.QueryStats = &v
+	o.NullFields = removeNullField(o.NullFields, "QueryStats")
+}
+
+// SetQueryStatsNil sets QueryStats to an explicit JSON null when marshaled.
+func (o *QueryStatsDetailsResponse) SetQueryStatsNil() {
+	o.QueryStats = nil
+	o.NullFields = addNullField(o.NullFields, "QueryStats")
 }

@@ -59,6 +59,13 @@ SetClusterId sets ClusterId field to given value.
 `func (o *MeasurementsCollStatsLatencyCluster) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
+
+### SetClusterIdNil
+
+`func (o *MeasurementsCollStatsLatencyCluster) SetClusterIdNil()`
+
+SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled, overriding any value previously set with SetClusterId. Calling SetClusterId again clears the null override.
+
 ### GetClusterView
 
 `func (o *MeasurementsCollStatsLatencyCluster) GetClusterView() string`
@@ -83,6 +90,13 @@ SetClusterView sets ClusterView field to given value.
 `func (o *MeasurementsCollStatsLatencyCluster) HasClusterView() bool`
 
 HasClusterView returns a boolean if a field has been set.
+
+### SetClusterViewNil
+
+`func (o *MeasurementsCollStatsLatencyCluster) SetClusterViewNil()`
+
+SetClusterViewNil sets ClusterView to an explicit JSON null when marshaled, overriding any value previously set with SetClusterView. Calling SetClusterView again clears the null override.
+
 ### GetCollectionName
 
 `func (o *MeasurementsCollStatsLatencyCluster) GetCollectionName() string`
@@ -107,6 +121,13 @@ SetCollectionName sets CollectionName field to given value.
 `func (o *MeasurementsCollStatsLatencyCluster) HasCollectionName() bool`
 
 HasCollectionName returns a boolean if a field has been set.
+
+### SetCollectionNameNil
+
+`func (o *MeasurementsCollStatsLatencyCluster) SetCollectionNameNil()`
+
+SetCollectionNameNil sets CollectionName to an explicit JSON null when marshaled, overriding any value previously set with SetCollectionName. Calling SetCollectionName again clears the null override.
+
 ### GetDatabaseName
 
 `func (o *MeasurementsCollStatsLatencyCluster) GetDatabaseName() string`
@@ -131,6 +152,13 @@ SetDatabaseName sets DatabaseName field to given value.
 `func (o *MeasurementsCollStatsLatencyCluster) HasDatabaseName() bool`
 
 HasDatabaseName returns a boolean if a field has been set.
+
+### SetDatabaseNameNil
+
+`func (o *MeasurementsCollStatsLatencyCluster) SetDatabaseNameNil()`
+
+SetDatabaseNameNil sets DatabaseName to an explicit JSON null when marshaled, overriding any value previously set with SetDatabaseName. Calling SetDatabaseName again clears the null override.
+
 ### GetEnd
 
 `func (o *MeasurementsCollStatsLatencyCluster) GetEnd() time.Time`
@@ -155,6 +183,13 @@ SetEnd sets End field to given value.
 `func (o *MeasurementsCollStatsLatencyCluster) HasEnd() bool`
 
 HasEnd returns a boolean if a field has been set.
+
+### SetEndNil
+
+`func (o *MeasurementsCollStatsLatencyCluster) SetEndNil()`
+
+SetEndNil sets End to an explicit JSON null when marshaled, overriding any value previously set with SetEnd. Calling SetEnd again clears the null override.
+
 ### GetGranularity
 
 `func (o *MeasurementsCollStatsLatencyCluster) GetGranularity() string`
@@ -179,6 +214,13 @@ SetGranularity sets Granularity field to given value.
 `func (o *MeasurementsCollStatsLatencyCluster) HasGranularity() bool`
 
 HasGranularity returns a boolean if a field has been set.
+
+### SetGranularityNil
+
+`func (o *MeasurementsCollStatsLatencyCluster) SetGranularityNil()`
+
+SetGranularityNil sets Granularity to an explicit JSON null when marshaled, overriding any value previously set with SetGranularity. Calling SetGranularity again clears the null override.
+
 ### GetGroupId
 
 `func (o *MeasurementsCollStatsLatencyCluster) GetGroupId() string`
@@ -203,6 +245,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *MeasurementsCollStatsLatencyCluster) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *MeasurementsCollStatsLatencyCluster) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetLinks
 
 `func (o *MeasurementsCollStatsLatencyCluster) GetLinks() []Link`
@@ -227,6 +276,13 @@ SetLinks sets Links field to given value.
 `func (o *MeasurementsCollStatsLatencyCluster) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *MeasurementsCollStatsLatencyCluster) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetMeasurements
 
 `func (o *MeasurementsCollStatsLatencyCluster) GetMeasurements() []MetricsMeasurement`
@@ -251,6 +307,13 @@ SetMeasurements sets Measurements field to given value.
 `func (o *MeasurementsCollStatsLatencyCluster) HasMeasurements() bool`
 
 HasMeasurements returns a boolean if a field has been set.
+
+### SetMeasurementsNil
+
+`func (o *MeasurementsCollStatsLatencyCluster) SetMeasurementsNil()`
+
+SetMeasurementsNil sets Measurements to an explicit JSON null when marshaled, overriding any value previously set with SetMeasurements. Calling SetMeasurements again clears the null override.
+
 ### GetProcessId
 
 `func (o *MeasurementsCollStatsLatencyCluster) GetProcessId() string`
@@ -275,6 +338,13 @@ SetProcessId sets ProcessId field to given value.
 `func (o *MeasurementsCollStatsLatencyCluster) HasProcessId() bool`
 
 HasProcessId returns a boolean if a field has been set.
+
+### SetProcessIdNil
+
+`func (o *MeasurementsCollStatsLatencyCluster) SetProcessIdNil()`
+
+SetProcessIdNil sets ProcessId to an explicit JSON null when marshaled, overriding any value previously set with SetProcessId. Calling SetProcessId again clears the null override.
+
 ### GetStart
 
 `func (o *MeasurementsCollStatsLatencyCluster) GetStart() time.Time`
@@ -299,6 +369,13 @@ SetStart sets Start field to given value.
 `func (o *MeasurementsCollStatsLatencyCluster) HasStart() bool`
 
 HasStart returns a boolean if a field has been set.
+
+### SetStartNil
+
+`func (o *MeasurementsCollStatsLatencyCluster) SetStartNil()`
+
+SetStartNil sets Start to an explicit JSON null when marshaled, overriding any value previously set with SetStart. Calling SetStart again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

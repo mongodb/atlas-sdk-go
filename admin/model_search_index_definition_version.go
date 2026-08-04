@@ -12,6 +12,15 @@ type SearchIndexDefinitionVersion struct {
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// The version number associated with this index definition when it was created.
 	Version *int64 `json:"version,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *SearchIndexDefinitionVersion) MarshalJSON() ([]byte, error) {
+	type noMethod SearchIndexDefinitionVersion
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewSearchIndexDefinitionVersion instantiates a new SearchIndexDefinitionVersion object
@@ -62,6 +71,13 @@ func (o *SearchIndexDefinitionVersion) HasCreatedAt() bool {
 // SetCreatedAt gets a reference to the given time.Time and assigns it to the CreatedAt field.
 func (o *SearchIndexDefinitionVersion) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
+	o.NullFields = removeNullField(o.NullFields, "CreatedAt")
+}
+
+// SetCreatedAtNil sets CreatedAt to an explicit JSON null when marshaled.
+func (o *SearchIndexDefinitionVersion) SetCreatedAtNil() {
+	o.CreatedAt = nil
+	o.NullFields = addNullField(o.NullFields, "CreatedAt")
 }
 
 // GetVersion returns the Version field value if set, zero value otherwise
@@ -95,4 +111,11 @@ func (o *SearchIndexDefinitionVersion) HasVersion() bool {
 // SetVersion gets a reference to the given int64 and assigns it to the Version field.
 func (o *SearchIndexDefinitionVersion) SetVersion(v int64) {
 	o.Version = &v
+	o.NullFields = removeNullField(o.NullFields, "Version")
+}
+
+// SetVersionNil sets Version to an explicit JSON null when marshaled.
+func (o *SearchIndexDefinitionVersion) SetVersionNil() {
+	o.Version = nil
+	o.NullFields = addNullField(o.NullFields, "Version")
 }

@@ -6,6 +6,15 @@ package admin
 type PrivateIPMode struct {
 	// Flag that indicates whether someone enabled **Connect via Peering Only** mode for the specified project.
 	Enabled bool `json:"enabled"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *PrivateIPMode) MarshalJSON() ([]byte, error) {
+	type noMethod PrivateIPMode
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewPrivateIPMode instantiates a new PrivateIPMode object

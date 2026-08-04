@@ -67,6 +67,13 @@ SetName sets Name field to given value.
 `func (o *DataLakeStoreSettings) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *DataLakeStoreSettings) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetProvider
 
 `func (o *DataLakeStoreSettings) GetProvider() string`
@@ -110,6 +117,13 @@ SetAdditionalStorageClasses sets AdditionalStorageClasses field to given value.
 `func (o *DataLakeStoreSettings) HasAdditionalStorageClasses() bool`
 
 HasAdditionalStorageClasses returns a boolean if a field has been set.
+
+### SetAdditionalStorageClassesNil
+
+`func (o *DataLakeStoreSettings) SetAdditionalStorageClassesNil()`
+
+SetAdditionalStorageClassesNil sets AdditionalStorageClasses to an explicit JSON null when marshaled, overriding any value previously set with SetAdditionalStorageClasses. Calling SetAdditionalStorageClasses again clears the null override.
+
 ### GetBucket
 
 `func (o *DataLakeStoreSettings) GetBucket() string`
@@ -134,6 +148,13 @@ SetBucket sets Bucket field to given value.
 `func (o *DataLakeStoreSettings) HasBucket() bool`
 
 HasBucket returns a boolean if a field has been set.
+
+### SetBucketNil
+
+`func (o *DataLakeStoreSettings) SetBucketNil()`
+
+SetBucketNil sets Bucket to an explicit JSON null when marshaled, overriding any value previously set with SetBucket. Calling SetBucket again clears the null override.
+
 ### GetDelimiter
 
 `func (o *DataLakeStoreSettings) GetDelimiter() string`
@@ -158,6 +179,13 @@ SetDelimiter sets Delimiter field to given value.
 `func (o *DataLakeStoreSettings) HasDelimiter() bool`
 
 HasDelimiter returns a boolean if a field has been set.
+
+### SetDelimiterNil
+
+`func (o *DataLakeStoreSettings) SetDelimiterNil()`
+
+SetDelimiterNil sets Delimiter to an explicit JSON null when marshaled, overriding any value previously set with SetDelimiter. Calling SetDelimiter again clears the null override.
+
 ### GetIncludeTags
 
 `func (o *DataLakeStoreSettings) GetIncludeTags() bool`
@@ -182,6 +210,13 @@ SetIncludeTags sets IncludeTags field to given value.
 `func (o *DataLakeStoreSettings) HasIncludeTags() bool`
 
 HasIncludeTags returns a boolean if a field has been set.
+
+### SetIncludeTagsNil
+
+`func (o *DataLakeStoreSettings) SetIncludeTagsNil()`
+
+SetIncludeTagsNil sets IncludeTags to an explicit JSON null when marshaled, overriding any value previously set with SetIncludeTags. Calling SetIncludeTags again clears the null override.
+
 ### GetPrefix
 
 `func (o *DataLakeStoreSettings) GetPrefix() string`
@@ -206,6 +241,13 @@ SetPrefix sets Prefix field to given value.
 `func (o *DataLakeStoreSettings) HasPrefix() bool`
 
 HasPrefix returns a boolean if a field has been set.
+
+### SetPrefixNil
+
+`func (o *DataLakeStoreSettings) SetPrefixNil()`
+
+SetPrefixNil sets Prefix to an explicit JSON null when marshaled, overriding any value previously set with SetPrefix. Calling SetPrefix again clears the null override.
+
 ### GetPublic
 
 `func (o *DataLakeStoreSettings) GetPublic() bool`
@@ -230,6 +272,13 @@ SetPublic sets Public field to given value.
 `func (o *DataLakeStoreSettings) HasPublic() bool`
 
 HasPublic returns a boolean if a field has been set.
+
+### SetPublicNil
+
+`func (o *DataLakeStoreSettings) SetPublicNil()`
+
+SetPublicNil sets Public to an explicit JSON null when marshaled, overriding any value previously set with SetPublic. Calling SetPublic again clears the null override.
+
 ### GetRegion
 
 `func (o *DataLakeStoreSettings) GetRegion() string`
@@ -254,6 +303,13 @@ SetRegion sets Region field to given value.
 `func (o *DataLakeStoreSettings) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *DataLakeStoreSettings) SetRegionNil()`
+
+SetRegionNil sets Region to an explicit JSON null when marshaled, overriding any value previously set with SetRegion. Calling SetRegion again clears the null override.
+
 ### GetClusterName
 
 `func (o *DataLakeStoreSettings) GetClusterName() string`
@@ -278,6 +334,13 @@ SetClusterName sets ClusterName field to given value.
 `func (o *DataLakeStoreSettings) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+
+### SetClusterNameNil
+
+`func (o *DataLakeStoreSettings) SetClusterNameNil()`
+
+SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled, overriding any value previously set with SetClusterName. Calling SetClusterName again clears the null override.
+
 ### GetProjectId
 
 `func (o *DataLakeStoreSettings) GetProjectId() string`
@@ -302,6 +365,13 @@ SetProjectId sets ProjectId field to given value.
 `func (o *DataLakeStoreSettings) HasProjectId() bool`
 
 HasProjectId returns a boolean if a field has been set.
+
+### SetProjectIdNil
+
+`func (o *DataLakeStoreSettings) SetProjectIdNil()`
+
+SetProjectIdNil sets ProjectId to an explicit JSON null when marshaled, overriding any value previously set with SetProjectId. Calling SetProjectId again clears the null override.
+
 ### GetReadConcern
 
 `func (o *DataLakeStoreSettings) GetReadConcern() DataLakeAtlasStoreReadConcern`
@@ -326,6 +396,13 @@ SetReadConcern sets ReadConcern field to given value.
 `func (o *DataLakeStoreSettings) HasReadConcern() bool`
 
 HasReadConcern returns a boolean if a field has been set.
+
+### SetReadConcernNil
+
+`func (o *DataLakeStoreSettings) SetReadConcernNil()`
+
+SetReadConcernNil sets ReadConcern to an explicit JSON null when marshaled, overriding any value previously set with SetReadConcern. Calling SetReadConcern again clears the null override.
+
 ### GetReadPreference
 
 `func (o *DataLakeStoreSettings) GetReadPreference() DataLakeAtlasStoreReadPreference`
@@ -350,6 +427,13 @@ SetReadPreference sets ReadPreference field to given value.
 `func (o *DataLakeStoreSettings) HasReadPreference() bool`
 
 HasReadPreference returns a boolean if a field has been set.
+
+### SetReadPreferenceNil
+
+`func (o *DataLakeStoreSettings) SetReadPreferenceNil()`
+
+SetReadPreferenceNil sets ReadPreference to an explicit JSON null when marshaled, overriding any value previously set with SetReadPreference. Calling SetReadPreference again clears the null override.
+
 ### GetAllowInsecure
 
 `func (o *DataLakeStoreSettings) GetAllowInsecure() bool`
@@ -374,6 +458,13 @@ SetAllowInsecure sets AllowInsecure field to given value.
 `func (o *DataLakeStoreSettings) HasAllowInsecure() bool`
 
 HasAllowInsecure returns a boolean if a field has been set.
+
+### SetAllowInsecureNil
+
+`func (o *DataLakeStoreSettings) SetAllowInsecureNil()`
+
+SetAllowInsecureNil sets AllowInsecure to an explicit JSON null when marshaled, overriding any value previously set with SetAllowInsecure. Calling SetAllowInsecure again clears the null override.
+
 ### GetDefaultFormat
 
 `func (o *DataLakeStoreSettings) GetDefaultFormat() string`
@@ -398,6 +489,13 @@ SetDefaultFormat sets DefaultFormat field to given value.
 `func (o *DataLakeStoreSettings) HasDefaultFormat() bool`
 
 HasDefaultFormat returns a boolean if a field has been set.
+
+### SetDefaultFormatNil
+
+`func (o *DataLakeStoreSettings) SetDefaultFormatNil()`
+
+SetDefaultFormatNil sets DefaultFormat to an explicit JSON null when marshaled, overriding any value previously set with SetDefaultFormat. Calling SetDefaultFormat again clears the null override.
+
 ### GetUrls
 
 `func (o *DataLakeStoreSettings) GetUrls() []string`
@@ -422,6 +520,13 @@ SetUrls sets Urls field to given value.
 `func (o *DataLakeStoreSettings) HasUrls() bool`
 
 HasUrls returns a boolean if a field has been set.
+
+### SetUrlsNil
+
+`func (o *DataLakeStoreSettings) SetUrlsNil()`
+
+SetUrlsNil sets Urls to an explicit JSON null when marshaled, overriding any value previously set with SetUrls. Calling SetUrls again clears the null override.
+
 ### GetContainerName
 
 `func (o *DataLakeStoreSettings) GetContainerName() string`
@@ -446,6 +551,13 @@ SetContainerName sets ContainerName field to given value.
 `func (o *DataLakeStoreSettings) HasContainerName() bool`
 
 HasContainerName returns a boolean if a field has been set.
+
+### SetContainerNameNil
+
+`func (o *DataLakeStoreSettings) SetContainerNameNil()`
+
+SetContainerNameNil sets ContainerName to an explicit JSON null when marshaled, overriding any value previously set with SetContainerName. Calling SetContainerName again clears the null override.
+
 ### GetReplacementDelimiter
 
 `func (o *DataLakeStoreSettings) GetReplacementDelimiter() string`
@@ -470,6 +582,13 @@ SetReplacementDelimiter sets ReplacementDelimiter field to given value.
 `func (o *DataLakeStoreSettings) HasReplacementDelimiter() bool`
 
 HasReplacementDelimiter returns a boolean if a field has been set.
+
+### SetReplacementDelimiterNil
+
+`func (o *DataLakeStoreSettings) SetReplacementDelimiterNil()`
+
+SetReplacementDelimiterNil sets ReplacementDelimiter to an explicit JSON null when marshaled, overriding any value previously set with SetReplacementDelimiter. Calling SetReplacementDelimiter again clears the null override.
+
 ### GetServiceURL
 
 `func (o *DataLakeStoreSettings) GetServiceURL() string`
@@ -494,6 +613,13 @@ SetServiceURL sets ServiceURL field to given value.
 `func (o *DataLakeStoreSettings) HasServiceURL() bool`
 
 HasServiceURL returns a boolean if a field has been set.
+
+### SetServiceURLNil
+
+`func (o *DataLakeStoreSettings) SetServiceURLNil()`
+
+SetServiceURLNil sets ServiceURL to an explicit JSON null when marshaled, overriding any value previously set with SetServiceURL. Calling SetServiceURL again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

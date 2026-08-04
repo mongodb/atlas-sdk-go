@@ -50,6 +50,13 @@ SetExportId sets ExportId field to given value.
 `func (o *DiskBackupExportMember) HasExportId() bool`
 
 HasExportId returns a boolean if a field has been set.
+
+### SetExportIdNil
+
+`func (o *DiskBackupExportMember) SetExportIdNil()`
+
+SetExportIdNil sets ExportId to an explicit JSON null when marshaled, overriding any value previously set with SetExportId. Calling SetExportId again clears the null override.
+
 ### GetReplicaSetName
 
 `func (o *DiskBackupExportMember) GetReplicaSetName() string`
@@ -74,6 +81,13 @@ SetReplicaSetName sets ReplicaSetName field to given value.
 `func (o *DiskBackupExportMember) HasReplicaSetName() bool`
 
 HasReplicaSetName returns a boolean if a field has been set.
+
+### SetReplicaSetNameNil
+
+`func (o *DiskBackupExportMember) SetReplicaSetNameNil()`
+
+SetReplicaSetNameNil sets ReplicaSetName to an explicit JSON null when marshaled, overriding any value previously set with SetReplicaSetName. Calling SetReplicaSetName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

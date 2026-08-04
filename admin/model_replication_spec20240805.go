@@ -14,6 +14,15 @@ type ReplicationSpec20240805 struct {
 	ZoneId *string `json:"zoneId,omitempty"`
 	// Human-readable label that describes the zone this shard belongs to in a Global Cluster. Provide this value only if `clusterType` : `GEOSHARDED` but not `selfManagedSharding` : `true`.
 	ZoneName *string `json:"zoneName,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ReplicationSpec20240805) MarshalJSON() ([]byte, error) {
+	type noMethod ReplicationSpec20240805
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewReplicationSpec20240805 instantiates a new ReplicationSpec20240805 object
@@ -64,6 +73,13 @@ func (o *ReplicationSpec20240805) HasId() bool {
 // SetId gets a reference to the given string and assigns it to the Id field.
 func (o *ReplicationSpec20240805) SetId(v string) {
 	o.Id = &v
+	o.NullFields = removeNullField(o.NullFields, "Id")
+}
+
+// SetIdNil sets Id to an explicit JSON null when marshaled.
+func (o *ReplicationSpec20240805) SetIdNil() {
+	o.Id = nil
+	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetRegionConfigs returns the RegionConfigs field value if set, zero value otherwise
@@ -97,6 +113,13 @@ func (o *ReplicationSpec20240805) HasRegionConfigs() bool {
 // SetRegionConfigs gets a reference to the given []CloudRegionConfig20240805 and assigns it to the RegionConfigs field.
 func (o *ReplicationSpec20240805) SetRegionConfigs(v []CloudRegionConfig20240805) {
 	o.RegionConfigs = &v
+	o.NullFields = removeNullField(o.NullFields, "RegionConfigs")
+}
+
+// SetRegionConfigsNil sets RegionConfigs to an explicit JSON null when marshaled.
+func (o *ReplicationSpec20240805) SetRegionConfigsNil() {
+	o.RegionConfigs = nil
+	o.NullFields = addNullField(o.NullFields, "RegionConfigs")
 }
 
 // GetZoneId returns the ZoneId field value if set, zero value otherwise
@@ -130,6 +153,13 @@ func (o *ReplicationSpec20240805) HasZoneId() bool {
 // SetZoneId gets a reference to the given string and assigns it to the ZoneId field.
 func (o *ReplicationSpec20240805) SetZoneId(v string) {
 	o.ZoneId = &v
+	o.NullFields = removeNullField(o.NullFields, "ZoneId")
+}
+
+// SetZoneIdNil sets ZoneId to an explicit JSON null when marshaled.
+func (o *ReplicationSpec20240805) SetZoneIdNil() {
+	o.ZoneId = nil
+	o.NullFields = addNullField(o.NullFields, "ZoneId")
 }
 
 // GetZoneName returns the ZoneName field value if set, zero value otherwise
@@ -163,4 +193,11 @@ func (o *ReplicationSpec20240805) HasZoneName() bool {
 // SetZoneName gets a reference to the given string and assigns it to the ZoneName field.
 func (o *ReplicationSpec20240805) SetZoneName(v string) {
 	o.ZoneName = &v
+	o.NullFields = removeNullField(o.NullFields, "ZoneName")
+}
+
+// SetZoneNameNil sets ZoneName to an explicit JSON null when marshaled.
+func (o *ReplicationSpec20240805) SetZoneNameNil() {
+	o.ZoneName = nil
+	o.NullFields = addNullField(o.NullFields, "ZoneName")
 }

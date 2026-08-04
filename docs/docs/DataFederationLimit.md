@@ -53,6 +53,13 @@ SetCurrentUsage sets CurrentUsage field to given value.
 `func (o *DataFederationLimit) HasCurrentUsage() bool`
 
 HasCurrentUsage returns a boolean if a field has been set.
+
+### SetCurrentUsageNil
+
+`func (o *DataFederationLimit) SetCurrentUsageNil()`
+
+SetCurrentUsageNil sets CurrentUsage to an explicit JSON null when marshaled, overriding any value previously set with SetCurrentUsage. Calling SetCurrentUsage again clears the null override.
+
 ### GetDefaultLimit
 
 `func (o *DataFederationLimit) GetDefaultLimit() int64`
@@ -77,6 +84,13 @@ SetDefaultLimit sets DefaultLimit field to given value.
 `func (o *DataFederationLimit) HasDefaultLimit() bool`
 
 HasDefaultLimit returns a boolean if a field has been set.
+
+### SetDefaultLimitNil
+
+`func (o *DataFederationLimit) SetDefaultLimitNil()`
+
+SetDefaultLimitNil sets DefaultLimit to an explicit JSON null when marshaled, overriding any value previously set with SetDefaultLimit. Calling SetDefaultLimit again clears the null override.
+
 ### GetMaximumLimit
 
 `func (o *DataFederationLimit) GetMaximumLimit() int64`
@@ -101,6 +115,13 @@ SetMaximumLimit sets MaximumLimit field to given value.
 `func (o *DataFederationLimit) HasMaximumLimit() bool`
 
 HasMaximumLimit returns a boolean if a field has been set.
+
+### SetMaximumLimitNil
+
+`func (o *DataFederationLimit) SetMaximumLimitNil()`
+
+SetMaximumLimitNil sets MaximumLimit to an explicit JSON null when marshaled, overriding any value previously set with SetMaximumLimit. Calling SetMaximumLimit again clears the null override.
+
 ### GetName
 
 `func (o *DataFederationLimit) GetName() string`

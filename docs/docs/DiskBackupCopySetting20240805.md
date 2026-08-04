@@ -55,6 +55,13 @@ SetCloudProvider sets CloudProvider field to given value.
 `func (o *DiskBackupCopySetting20240805) HasCloudProvider() bool`
 
 HasCloudProvider returns a boolean if a field has been set.
+
+### SetCloudProviderNil
+
+`func (o *DiskBackupCopySetting20240805) SetCloudProviderNil()`
+
+SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProvider. Calling SetCloudProvider again clears the null override.
+
 ### GetCopyPolicyItems
 
 `func (o *DiskBackupCopySetting20240805) GetCopyPolicyItems() []DiskBackupCopyPolicyItem`
@@ -79,6 +86,13 @@ SetCopyPolicyItems sets CopyPolicyItems field to given value.
 `func (o *DiskBackupCopySetting20240805) HasCopyPolicyItems() bool`
 
 HasCopyPolicyItems returns a boolean if a field has been set.
+
+### SetCopyPolicyItemsNil
+
+`func (o *DiskBackupCopySetting20240805) SetCopyPolicyItemsNil()`
+
+SetCopyPolicyItemsNil sets CopyPolicyItems to an explicit JSON null when marshaled, overriding any value previously set with SetCopyPolicyItems. Calling SetCopyPolicyItems again clears the null override.
+
 ### GetFrequencies
 
 `func (o *DiskBackupCopySetting20240805) GetFrequencies() []string`
@@ -103,6 +117,13 @@ SetFrequencies sets Frequencies field to given value.
 `func (o *DiskBackupCopySetting20240805) HasFrequencies() bool`
 
 HasFrequencies returns a boolean if a field has been set.
+
+### SetFrequenciesNil
+
+`func (o *DiskBackupCopySetting20240805) SetFrequenciesNil()`
+
+SetFrequenciesNil sets Frequencies to an explicit JSON null when marshaled, overriding any value previously set with SetFrequencies. Calling SetFrequencies again clears the null override.
+
 ### GetLastNumberOfSnapshots
 
 `func (o *DiskBackupCopySetting20240805) GetLastNumberOfSnapshots() int`
@@ -127,6 +148,13 @@ SetLastNumberOfSnapshots sets LastNumberOfSnapshots field to given value.
 `func (o *DiskBackupCopySetting20240805) HasLastNumberOfSnapshots() bool`
 
 HasLastNumberOfSnapshots returns a boolean if a field has been set.
+
+### SetLastNumberOfSnapshotsNil
+
+`func (o *DiskBackupCopySetting20240805) SetLastNumberOfSnapshotsNil()`
+
+SetLastNumberOfSnapshotsNil sets LastNumberOfSnapshots to an explicit JSON null when marshaled, overriding any value previously set with SetLastNumberOfSnapshots. Calling SetLastNumberOfSnapshots again clears the null override.
+
 ### GetRegionName
 
 `func (o *DiskBackupCopySetting20240805) GetRegionName() string`
@@ -151,6 +179,13 @@ SetRegionName sets RegionName field to given value.
 `func (o *DiskBackupCopySetting20240805) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
+
+### SetRegionNameNil
+
+`func (o *DiskBackupCopySetting20240805) SetRegionNameNil()`
+
+SetRegionNameNil sets RegionName to an explicit JSON null when marshaled, overriding any value previously set with SetRegionName. Calling SetRegionName again clears the null override.
+
 ### GetShouldCopyOplogs
 
 `func (o *DiskBackupCopySetting20240805) GetShouldCopyOplogs() bool`
@@ -175,6 +210,13 @@ SetShouldCopyOplogs sets ShouldCopyOplogs field to given value.
 `func (o *DiskBackupCopySetting20240805) HasShouldCopyOplogs() bool`
 
 HasShouldCopyOplogs returns a boolean if a field has been set.
+
+### SetShouldCopyOplogsNil
+
+`func (o *DiskBackupCopySetting20240805) SetShouldCopyOplogsNil()`
+
+SetShouldCopyOplogsNil sets ShouldCopyOplogs to an explicit JSON null when marshaled, overriding any value previously set with SetShouldCopyOplogs. Calling SetShouldCopyOplogs again clears the null override.
+
 ### GetZoneId
 
 `func (o *DiskBackupCopySetting20240805) GetZoneId() string`

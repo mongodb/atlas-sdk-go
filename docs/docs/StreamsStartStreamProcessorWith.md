@@ -53,6 +53,13 @@ SetFailover sets Failover field to given value.
 `func (o *StreamsStartStreamProcessorWith) HasFailover() bool`
 
 HasFailover returns a boolean if a field has been set.
+
+### SetFailoverNil
+
+`func (o *StreamsStartStreamProcessorWith) SetFailoverNil()`
+
+SetFailoverNil sets Failover to an explicit JSON null when marshaled, overriding any value previously set with SetFailover. Calling SetFailover again clears the null override.
+
 ### GetLinks
 
 `func (o *StreamsStartStreamProcessorWith) GetLinks() []Link`
@@ -77,6 +84,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsStartStreamProcessorWith) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsStartStreamProcessorWith) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetResumeFromCheckpoint
 
 `func (o *StreamsStartStreamProcessorWith) GetResumeFromCheckpoint() bool`
@@ -101,6 +115,13 @@ SetResumeFromCheckpoint sets ResumeFromCheckpoint field to given value.
 `func (o *StreamsStartStreamProcessorWith) HasResumeFromCheckpoint() bool`
 
 HasResumeFromCheckpoint returns a boolean if a field has been set.
+
+### SetResumeFromCheckpointNil
+
+`func (o *StreamsStartStreamProcessorWith) SetResumeFromCheckpointNil()`
+
+SetResumeFromCheckpointNil sets ResumeFromCheckpoint to an explicit JSON null when marshaled, overriding any value previously set with SetResumeFromCheckpoint. Calling SetResumeFromCheckpoint again clears the null override.
+
 ### GetStartAtOperationTime
 
 `func (o *StreamsStartStreamProcessorWith) GetStartAtOperationTime() time.Time`
@@ -125,6 +146,13 @@ SetStartAtOperationTime sets StartAtOperationTime field to given value.
 `func (o *StreamsStartStreamProcessorWith) HasStartAtOperationTime() bool`
 
 HasStartAtOperationTime returns a boolean if a field has been set.
+
+### SetStartAtOperationTimeNil
+
+`func (o *StreamsStartStreamProcessorWith) SetStartAtOperationTimeNil()`
+
+SetStartAtOperationTimeNil sets StartAtOperationTime to an explicit JSON null when marshaled, overriding any value previously set with SetStartAtOperationTime. Calling SetStartAtOperationTime again clears the null override.
+
 ### GetTier
 
 `func (o *StreamsStartStreamProcessorWith) GetTier() string`
@@ -149,6 +177,13 @@ SetTier sets Tier field to given value.
 `func (o *StreamsStartStreamProcessorWith) HasTier() bool`
 
 HasTier returns a boolean if a field has been set.
+
+### SetTierNil
+
+`func (o *StreamsStartStreamProcessorWith) SetTierNil()`
+
+SetTierNil sets Tier to an explicit JSON null when marshaled, overriding any value previously set with SetTier. Calling SetTier again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -11,6 +11,15 @@ type DiskBackupOnDemandSnapshotRequest struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Number of days that MongoDB Cloud should retain the on-demand snapshot. Must be at least **1**.
 	RetentionInDays *int `json:"retentionInDays,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DiskBackupOnDemandSnapshotRequest) MarshalJSON() ([]byte, error) {
+	type noMethod DiskBackupOnDemandSnapshotRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupOnDemandSnapshotRequest instantiates a new DiskBackupOnDemandSnapshotRequest object
@@ -61,6 +70,13 @@ func (o *DiskBackupOnDemandSnapshotRequest) HasDescription() bool {
 // SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *DiskBackupOnDemandSnapshotRequest) SetDescription(v string) {
 	o.Description = &v
+	o.NullFields = removeNullField(o.NullFields, "Description")
+}
+
+// SetDescriptionNil sets Description to an explicit JSON null when marshaled.
+func (o *DiskBackupOnDemandSnapshotRequest) SetDescriptionNil() {
+	o.Description = nil
+	o.NullFields = addNullField(o.NullFields, "Description")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -94,6 +110,13 @@ func (o *DiskBackupOnDemandSnapshotRequest) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupOnDemandSnapshotRequest) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *DiskBackupOnDemandSnapshotRequest) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetRetentionInDays returns the RetentionInDays field value if set, zero value otherwise
@@ -127,4 +150,11 @@ func (o *DiskBackupOnDemandSnapshotRequest) HasRetentionInDays() bool {
 // SetRetentionInDays gets a reference to the given int and assigns it to the RetentionInDays field.
 func (o *DiskBackupOnDemandSnapshotRequest) SetRetentionInDays(v int) {
 	o.RetentionInDays = &v
+	o.NullFields = removeNullField(o.NullFields, "RetentionInDays")
+}
+
+// SetRetentionInDaysNil sets RetentionInDays to an explicit JSON null when marshaled.
+func (o *DiskBackupOnDemandSnapshotRequest) SetRetentionInDaysNil() {
+	o.RetentionInDays = nil
+	o.NullFields = addNullField(o.NullFields, "RetentionInDays")
 }

@@ -111,6 +111,13 @@ SetLastUsedAt sets LastUsedAt field to given value.
 `func (o *ServiceAccountSecret) HasLastUsedAt() bool`
 
 HasLastUsedAt returns a boolean if a field has been set.
+
+### SetLastUsedAtNil
+
+`func (o *ServiceAccountSecret) SetLastUsedAtNil()`
+
+SetLastUsedAtNil sets LastUsedAt to an explicit JSON null when marshaled, overriding any value previously set with SetLastUsedAt. Calling SetLastUsedAt again clears the null override.
+
 ### GetMaskedSecretValue
 
 `func (o *ServiceAccountSecret) GetMaskedSecretValue() string`
@@ -135,6 +142,13 @@ SetMaskedSecretValue sets MaskedSecretValue field to given value.
 `func (o *ServiceAccountSecret) HasMaskedSecretValue() bool`
 
 HasMaskedSecretValue returns a boolean if a field has been set.
+
+### SetMaskedSecretValueNil
+
+`func (o *ServiceAccountSecret) SetMaskedSecretValueNil()`
+
+SetMaskedSecretValueNil sets MaskedSecretValue to an explicit JSON null when marshaled, overriding any value previously set with SetMaskedSecretValue. Calling SetMaskedSecretValue again clears the null override.
+
 ### GetSecret
 
 `func (o *ServiceAccountSecret) GetSecret() string`
@@ -159,6 +173,13 @@ SetSecret sets Secret field to given value.
 `func (o *ServiceAccountSecret) HasSecret() bool`
 
 HasSecret returns a boolean if a field has been set.
+
+### SetSecretNil
+
+`func (o *ServiceAccountSecret) SetSecretNil()`
+
+SetSecretNil sets Secret to an explicit JSON null when marshaled, overriding any value previously set with SetSecret. Calling SetSecret again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

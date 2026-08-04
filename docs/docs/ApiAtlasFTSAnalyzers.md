@@ -52,6 +52,13 @@ SetCharFilters sets CharFilters field to given value.
 `func (o *ApiAtlasFTSAnalyzers) HasCharFilters() bool`
 
 HasCharFilters returns a boolean if a field has been set.
+
+### SetCharFiltersNil
+
+`func (o *ApiAtlasFTSAnalyzers) SetCharFiltersNil()`
+
+SetCharFiltersNil sets CharFilters to an explicit JSON null when marshaled, overriding any value previously set with SetCharFilters. Calling SetCharFilters again clears the null override.
+
 ### GetName
 
 `func (o *ApiAtlasFTSAnalyzers) GetName() string`
@@ -95,6 +102,13 @@ SetTokenFilters sets TokenFilters field to given value.
 `func (o *ApiAtlasFTSAnalyzers) HasTokenFilters() bool`
 
 HasTokenFilters returns a boolean if a field has been set.
+
+### SetTokenFiltersNil
+
+`func (o *ApiAtlasFTSAnalyzers) SetTokenFiltersNil()`
+
+SetTokenFiltersNil sets TokenFilters to an explicit JSON null when marshaled, overriding any value previously set with SetTokenFilters. Calling SetTokenFilters again clears the null override.
+
 ### GetTokenizer
 
 `func (o *ApiAtlasFTSAnalyzers) GetTokenizer() ApiAtlasFTSAnalyzersTokenizer`

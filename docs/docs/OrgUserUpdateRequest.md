@@ -50,6 +50,13 @@ SetRoles sets Roles field to given value.
 `func (o *OrgUserUpdateRequest) HasRoles() bool`
 
 HasRoles returns a boolean if a field has been set.
+
+### SetRolesNil
+
+`func (o *OrgUserUpdateRequest) SetRolesNil()`
+
+SetRolesNil sets Roles to an explicit JSON null when marshaled, overriding any value previously set with SetRoles. Calling SetRoles again clears the null override.
+
 ### GetTeamIds
 
 `func (o *OrgUserUpdateRequest) GetTeamIds() []string`
@@ -74,6 +81,13 @@ SetTeamIds sets TeamIds field to given value.
 `func (o *OrgUserUpdateRequest) HasTeamIds() bool`
 
 HasTeamIds returns a boolean if a field has been set.
+
+### SetTeamIdsNil
+
+`func (o *OrgUserUpdateRequest) SetTeamIdsNil()`
+
+SetTeamIdsNil sets TeamIds to an explicit JSON null when marshaled, overriding any value previously set with SetTeamIds. Calling SetTeamIds again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

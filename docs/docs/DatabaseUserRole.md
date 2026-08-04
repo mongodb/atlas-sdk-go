@@ -51,6 +51,13 @@ SetCollectionName sets CollectionName field to given value.
 `func (o *DatabaseUserRole) HasCollectionName() bool`
 
 HasCollectionName returns a boolean if a field has been set.
+
+### SetCollectionNameNil
+
+`func (o *DatabaseUserRole) SetCollectionNameNil()`
+
+SetCollectionNameNil sets CollectionName to an explicit JSON null when marshaled, overriding any value previously set with SetCollectionName. Calling SetCollectionName again clears the null override.
+
 ### GetDatabaseName
 
 `func (o *DatabaseUserRole) GetDatabaseName() string`

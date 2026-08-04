@@ -50,6 +50,13 @@ SetMaxInstanceSize sets MaxInstanceSize field to given value.
 `func (o *FreeComputeAutoScalingRules) HasMaxInstanceSize() bool`
 
 HasMaxInstanceSize returns a boolean if a field has been set.
+
+### SetMaxInstanceSizeNil
+
+`func (o *FreeComputeAutoScalingRules) SetMaxInstanceSizeNil()`
+
+SetMaxInstanceSizeNil sets MaxInstanceSize to an explicit JSON null when marshaled, overriding any value previously set with SetMaxInstanceSize. Calling SetMaxInstanceSize again clears the null override.
+
 ### GetMinInstanceSize
 
 `func (o *FreeComputeAutoScalingRules) GetMinInstanceSize() string`
@@ -74,6 +81,13 @@ SetMinInstanceSize sets MinInstanceSize field to given value.
 `func (o *FreeComputeAutoScalingRules) HasMinInstanceSize() bool`
 
 HasMinInstanceSize returns a boolean if a field has been set.
+
+### SetMinInstanceSizeNil
+
+`func (o *FreeComputeAutoScalingRules) SetMinInstanceSizeNil()`
+
+SetMinInstanceSizeNil sets MinInstanceSize to an explicit JSON null when marshaled, overriding any value previously set with SetMinInstanceSize. Calling SetMinInstanceSize again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

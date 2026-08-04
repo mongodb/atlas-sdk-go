@@ -6,6 +6,15 @@ package admin
 type AiModelApiKeyUpdateRequest struct {
 	// A new name for the API key.
 	Name string `json:"name"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *AiModelApiKeyUpdateRequest) MarshalJSON() ([]byte, error) {
+	type noMethod AiModelApiKeyUpdateRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewAiModelApiKeyUpdateRequest instantiates a new AiModelApiKeyUpdateRequest object

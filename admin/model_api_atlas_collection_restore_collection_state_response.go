@@ -23,6 +23,15 @@ type ApiAtlasCollectionRestoreCollectionStateResponse struct {
 	// Total document count for this collection.
 	// Read only field.
 	TotalDocuments *int64 `json:"totalDocuments,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiAtlasCollectionRestoreCollectionStateResponse) MarshalJSON() ([]byte, error) {
+	type noMethod ApiAtlasCollectionRestoreCollectionStateResponse
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasCollectionRestoreCollectionStateResponse instantiates a new ApiAtlasCollectionRestoreCollectionStateResponse object
@@ -73,6 +82,13 @@ func (o *ApiAtlasCollectionRestoreCollectionStateResponse) HasEffectiveTargetNam
 // SetEffectiveTargetNamespace gets a reference to the given string and assigns it to the EffectiveTargetNamespace field.
 func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetEffectiveTargetNamespace(v string) {
 	o.EffectiveTargetNamespace = &v
+	o.NullFields = removeNullField(o.NullFields, "EffectiveTargetNamespace")
+}
+
+// SetEffectiveTargetNamespaceNil sets EffectiveTargetNamespace to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetEffectiveTargetNamespaceNil() {
+	o.EffectiveTargetNamespace = nil
+	o.NullFields = addNullField(o.NullFields, "EffectiveTargetNamespace")
 }
 
 // GetIndexStatus returns the IndexStatus field value if set, zero value otherwise
@@ -106,6 +122,13 @@ func (o *ApiAtlasCollectionRestoreCollectionStateResponse) HasIndexStatus() bool
 // SetIndexStatus gets a reference to the given ApiAtlasCollectionRestoreIndexStatus and assigns it to the IndexStatus field.
 func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetIndexStatus(v ApiAtlasCollectionRestoreIndexStatus) {
 	o.IndexStatus = &v
+	o.NullFields = removeNullField(o.NullFields, "IndexStatus")
+}
+
+// SetIndexStatusNil sets IndexStatus to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetIndexStatusNil() {
+	o.IndexStatus = nil
+	o.NullFields = addNullField(o.NullFields, "IndexStatus")
 }
 
 // GetRestoredDocuments returns the RestoredDocuments field value if set, zero value otherwise
@@ -139,6 +162,13 @@ func (o *ApiAtlasCollectionRestoreCollectionStateResponse) HasRestoredDocuments(
 // SetRestoredDocuments gets a reference to the given int64 and assigns it to the RestoredDocuments field.
 func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetRestoredDocuments(v int64) {
 	o.RestoredDocuments = &v
+	o.NullFields = removeNullField(o.NullFields, "RestoredDocuments")
+}
+
+// SetRestoredDocumentsNil sets RestoredDocuments to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetRestoredDocumentsNil() {
+	o.RestoredDocuments = nil
+	o.NullFields = addNullField(o.NullFields, "RestoredDocuments")
 }
 
 // GetSourceNamespace returns the SourceNamespace field value if set, zero value otherwise
@@ -172,6 +202,13 @@ func (o *ApiAtlasCollectionRestoreCollectionStateResponse) HasSourceNamespace() 
 // SetSourceNamespace gets a reference to the given string and assigns it to the SourceNamespace field.
 func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetSourceNamespace(v string) {
 	o.SourceNamespace = &v
+	o.NullFields = removeNullField(o.NullFields, "SourceNamespace")
+}
+
+// SetSourceNamespaceNil sets SourceNamespace to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetSourceNamespaceNil() {
+	o.SourceNamespace = nil
+	o.NullFields = addNullField(o.NullFields, "SourceNamespace")
 }
 
 // GetState returns the State field value if set, zero value otherwise
@@ -205,6 +242,13 @@ func (o *ApiAtlasCollectionRestoreCollectionStateResponse) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetState(v string) {
 	o.State = &v
+	o.NullFields = removeNullField(o.NullFields, "State")
+}
+
+// SetStateNil sets State to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetStateNil() {
+	o.State = nil
+	o.NullFields = addNullField(o.NullFields, "State")
 }
 
 // GetTargetNamespace returns the TargetNamespace field value if set, zero value otherwise
@@ -238,6 +282,13 @@ func (o *ApiAtlasCollectionRestoreCollectionStateResponse) HasTargetNamespace() 
 // SetTargetNamespace gets a reference to the given string and assigns it to the TargetNamespace field.
 func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetTargetNamespace(v string) {
 	o.TargetNamespace = &v
+	o.NullFields = removeNullField(o.NullFields, "TargetNamespace")
+}
+
+// SetTargetNamespaceNil sets TargetNamespace to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetTargetNamespaceNil() {
+	o.TargetNamespace = nil
+	o.NullFields = addNullField(o.NullFields, "TargetNamespace")
 }
 
 // GetTotalDocuments returns the TotalDocuments field value if set, zero value otherwise
@@ -271,4 +322,11 @@ func (o *ApiAtlasCollectionRestoreCollectionStateResponse) HasTotalDocuments() b
 // SetTotalDocuments gets a reference to the given int64 and assigns it to the TotalDocuments field.
 func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetTotalDocuments(v int64) {
 	o.TotalDocuments = &v
+	o.NullFields = removeNullField(o.NullFields, "TotalDocuments")
+}
+
+// SetTotalDocumentsNil sets TotalDocuments to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreCollectionStateResponse) SetTotalDocumentsNil() {
+	o.TotalDocuments = nil
+	o.NullFields = addNullField(o.NullFields, "TotalDocuments")
 }

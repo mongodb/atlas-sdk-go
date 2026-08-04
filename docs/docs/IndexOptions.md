@@ -65,6 +65,13 @@ SetVar2dsphereIndexVersion sets Var2dsphereIndexVersion field to given value.
 `func (o *IndexOptions) HasVar2dsphereIndexVersion() bool`
 
 HasVar2dsphereIndexVersion returns a boolean if a field has been set.
+
+### SetVar2dsphereIndexVersionNil
+
+`func (o *IndexOptions) SetVar2dsphereIndexVersionNil()`
+
+SetVar2dsphereIndexVersionNil sets Var2dsphereIndexVersion to an explicit JSON null when marshaled, overriding any value previously set with SetVar2dsphereIndexVersion. Calling SetVar2dsphereIndexVersion again clears the null override.
+
 ### GetBackground
 
 `func (o *IndexOptions) GetBackground() bool`
@@ -89,6 +96,13 @@ SetBackground sets Background field to given value.
 `func (o *IndexOptions) HasBackground() bool`
 
 HasBackground returns a boolean if a field has been set.
+
+### SetBackgroundNil
+
+`func (o *IndexOptions) SetBackgroundNil()`
+
+SetBackgroundNil sets Background to an explicit JSON null when marshaled, overriding any value previously set with SetBackground. Calling SetBackground again clears the null override.
+
 ### GetBits
 
 `func (o *IndexOptions) GetBits() int`
@@ -113,6 +127,13 @@ SetBits sets Bits field to given value.
 `func (o *IndexOptions) HasBits() bool`
 
 HasBits returns a boolean if a field has been set.
+
+### SetBitsNil
+
+`func (o *IndexOptions) SetBitsNil()`
+
+SetBitsNil sets Bits to an explicit JSON null when marshaled, overriding any value previously set with SetBits. Calling SetBits again clears the null override.
+
 ### GetBucketSize
 
 `func (o *IndexOptions) GetBucketSize() int`
@@ -137,6 +158,13 @@ SetBucketSize sets BucketSize field to given value.
 `func (o *IndexOptions) HasBucketSize() bool`
 
 HasBucketSize returns a boolean if a field has been set.
+
+### SetBucketSizeNil
+
+`func (o *IndexOptions) SetBucketSizeNil()`
+
+SetBucketSizeNil sets BucketSize to an explicit JSON null when marshaled, overriding any value previously set with SetBucketSize. Calling SetBucketSize again clears the null override.
+
 ### GetColumnstoreProjection
 
 `func (o *IndexOptions) GetColumnstoreProjection() map[string]int`
@@ -161,6 +189,13 @@ SetColumnstoreProjection sets ColumnstoreProjection field to given value.
 `func (o *IndexOptions) HasColumnstoreProjection() bool`
 
 HasColumnstoreProjection returns a boolean if a field has been set.
+
+### SetColumnstoreProjectionNil
+
+`func (o *IndexOptions) SetColumnstoreProjectionNil()`
+
+SetColumnstoreProjectionNil sets ColumnstoreProjection to an explicit JSON null when marshaled, overriding any value previously set with SetColumnstoreProjection. Calling SetColumnstoreProjection again clears the null override.
+
 ### GetDefaultLanguage
 
 `func (o *IndexOptions) GetDefaultLanguage() string`
@@ -185,6 +220,13 @@ SetDefaultLanguage sets DefaultLanguage field to given value.
 `func (o *IndexOptions) HasDefaultLanguage() bool`
 
 HasDefaultLanguage returns a boolean if a field has been set.
+
+### SetDefaultLanguageNil
+
+`func (o *IndexOptions) SetDefaultLanguageNil()`
+
+SetDefaultLanguageNil sets DefaultLanguage to an explicit JSON null when marshaled, overriding any value previously set with SetDefaultLanguage. Calling SetDefaultLanguage again clears the null override.
+
 ### GetExpireAfterSeconds
 
 `func (o *IndexOptions) GetExpireAfterSeconds() int`
@@ -209,6 +251,13 @@ SetExpireAfterSeconds sets ExpireAfterSeconds field to given value.
 `func (o *IndexOptions) HasExpireAfterSeconds() bool`
 
 HasExpireAfterSeconds returns a boolean if a field has been set.
+
+### SetExpireAfterSecondsNil
+
+`func (o *IndexOptions) SetExpireAfterSecondsNil()`
+
+SetExpireAfterSecondsNil sets ExpireAfterSeconds to an explicit JSON null when marshaled, overriding any value previously set with SetExpireAfterSeconds. Calling SetExpireAfterSeconds again clears the null override.
+
 ### GetHidden
 
 `func (o *IndexOptions) GetHidden() bool`
@@ -233,6 +282,13 @@ SetHidden sets Hidden field to given value.
 `func (o *IndexOptions) HasHidden() bool`
 
 HasHidden returns a boolean if a field has been set.
+
+### SetHiddenNil
+
+`func (o *IndexOptions) SetHiddenNil()`
+
+SetHiddenNil sets Hidden to an explicit JSON null when marshaled, overriding any value previously set with SetHidden. Calling SetHidden again clears the null override.
+
 ### GetLanguageOverride
 
 `func (o *IndexOptions) GetLanguageOverride() string`
@@ -257,6 +313,13 @@ SetLanguageOverride sets LanguageOverride field to given value.
 `func (o *IndexOptions) HasLanguageOverride() bool`
 
 HasLanguageOverride returns a boolean if a field has been set.
+
+### SetLanguageOverrideNil
+
+`func (o *IndexOptions) SetLanguageOverrideNil()`
+
+SetLanguageOverrideNil sets LanguageOverride to an explicit JSON null when marshaled, overriding any value previously set with SetLanguageOverride. Calling SetLanguageOverride again clears the null override.
+
 ### GetMax
 
 `func (o *IndexOptions) GetMax() int`
@@ -281,6 +344,13 @@ SetMax sets Max field to given value.
 `func (o *IndexOptions) HasMax() bool`
 
 HasMax returns a boolean if a field has been set.
+
+### SetMaxNil
+
+`func (o *IndexOptions) SetMaxNil()`
+
+SetMaxNil sets Max to an explicit JSON null when marshaled, overriding any value previously set with SetMax. Calling SetMax again clears the null override.
+
 ### GetMin
 
 `func (o *IndexOptions) GetMin() int`
@@ -305,6 +375,13 @@ SetMin sets Min field to given value.
 `func (o *IndexOptions) HasMin() bool`
 
 HasMin returns a boolean if a field has been set.
+
+### SetMinNil
+
+`func (o *IndexOptions) SetMinNil()`
+
+SetMinNil sets Min to an explicit JSON null when marshaled, overriding any value previously set with SetMin. Calling SetMin again clears the null override.
+
 ### GetName
 
 `func (o *IndexOptions) GetName() string`
@@ -329,6 +406,13 @@ SetName sets Name field to given value.
 `func (o *IndexOptions) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *IndexOptions) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetPartialFilterExpression
 
 `func (o *IndexOptions) GetPartialFilterExpression() any`
@@ -353,6 +437,13 @@ SetPartialFilterExpression sets PartialFilterExpression field to given value.
 `func (o *IndexOptions) HasPartialFilterExpression() bool`
 
 HasPartialFilterExpression returns a boolean if a field has been set.
+
+### SetPartialFilterExpressionNil
+
+`func (o *IndexOptions) SetPartialFilterExpressionNil()`
+
+SetPartialFilterExpressionNil sets PartialFilterExpression to an explicit JSON null when marshaled, overriding any value previously set with SetPartialFilterExpression. Calling SetPartialFilterExpression again clears the null override.
+
 ### GetSparse
 
 `func (o *IndexOptions) GetSparse() bool`
@@ -377,6 +468,13 @@ SetSparse sets Sparse field to given value.
 `func (o *IndexOptions) HasSparse() bool`
 
 HasSparse returns a boolean if a field has been set.
+
+### SetSparseNil
+
+`func (o *IndexOptions) SetSparseNil()`
+
+SetSparseNil sets Sparse to an explicit JSON null when marshaled, overriding any value previously set with SetSparse. Calling SetSparse again clears the null override.
+
 ### GetStorageEngine
 
 `func (o *IndexOptions) GetStorageEngine() any`
@@ -401,6 +499,13 @@ SetStorageEngine sets StorageEngine field to given value.
 `func (o *IndexOptions) HasStorageEngine() bool`
 
 HasStorageEngine returns a boolean if a field has been set.
+
+### SetStorageEngineNil
+
+`func (o *IndexOptions) SetStorageEngineNil()`
+
+SetStorageEngineNil sets StorageEngine to an explicit JSON null when marshaled, overriding any value previously set with SetStorageEngine. Calling SetStorageEngine again clears the null override.
+
 ### GetTextIndexVersion
 
 `func (o *IndexOptions) GetTextIndexVersion() int`
@@ -425,6 +530,13 @@ SetTextIndexVersion sets TextIndexVersion field to given value.
 `func (o *IndexOptions) HasTextIndexVersion() bool`
 
 HasTextIndexVersion returns a boolean if a field has been set.
+
+### SetTextIndexVersionNil
+
+`func (o *IndexOptions) SetTextIndexVersionNil()`
+
+SetTextIndexVersionNil sets TextIndexVersion to an explicit JSON null when marshaled, overriding any value previously set with SetTextIndexVersion. Calling SetTextIndexVersion again clears the null override.
+
 ### GetWeights
 
 `func (o *IndexOptions) GetWeights() any`
@@ -449,6 +561,13 @@ SetWeights sets Weights field to given value.
 `func (o *IndexOptions) HasWeights() bool`
 
 HasWeights returns a boolean if a field has been set.
+
+### SetWeightsNil
+
+`func (o *IndexOptions) SetWeightsNil()`
+
+SetWeightsNil sets Weights to an explicit JSON null when marshaled, overriding any value previously set with SetWeights. Calling SetWeights again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -6,6 +6,15 @@ package admin
 type ApiAtlasPolicyCreate struct {
 	// A string that defines the permissions for the policy. The syntax used is the Cedar Policy language.
 	Body string `json:"body"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiAtlasPolicyCreate) MarshalJSON() ([]byte, error) {
+	type noMethod ApiAtlasPolicyCreate
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasPolicyCreate instantiates a new ApiAtlasPolicyCreate object

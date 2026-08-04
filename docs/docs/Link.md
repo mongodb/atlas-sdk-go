@@ -50,6 +50,13 @@ SetHref sets Href field to given value.
 `func (o *Link) HasHref() bool`
 
 HasHref returns a boolean if a field has been set.
+
+### SetHrefNil
+
+`func (o *Link) SetHrefNil()`
+
+SetHrefNil sets Href to an explicit JSON null when marshaled, overriding any value previously set with SetHref. Calling SetHref again clears the null override.
+
 ### GetRel
 
 `func (o *Link) GetRel() string`
@@ -74,6 +81,13 @@ SetRel sets Rel field to given value.
 `func (o *Link) HasRel() bool`
 
 HasRel returns a boolean if a field has been set.
+
+### SetRelNil
+
+`func (o *Link) SetRelNil()`
+
+SetRelNil sets Rel to an explicit JSON null when marshaled, overriding any value previously set with SetRel. Calling SetRel again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

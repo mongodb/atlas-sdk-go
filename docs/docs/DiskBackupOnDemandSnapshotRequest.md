@@ -51,6 +51,13 @@ SetDescription sets Description field to given value.
 `func (o *DiskBackupOnDemandSnapshotRequest) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *DiskBackupOnDemandSnapshotRequest) SetDescriptionNil()`
+
+SetDescriptionNil sets Description to an explicit JSON null when marshaled, overriding any value previously set with SetDescription. Calling SetDescription again clears the null override.
+
 ### GetLinks
 
 `func (o *DiskBackupOnDemandSnapshotRequest) GetLinks() []Link`
@@ -75,6 +82,13 @@ SetLinks sets Links field to given value.
 `func (o *DiskBackupOnDemandSnapshotRequest) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *DiskBackupOnDemandSnapshotRequest) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetRetentionInDays
 
 `func (o *DiskBackupOnDemandSnapshotRequest) GetRetentionInDays() int`
@@ -99,6 +113,13 @@ SetRetentionInDays sets RetentionInDays field to given value.
 `func (o *DiskBackupOnDemandSnapshotRequest) HasRetentionInDays() bool`
 
 HasRetentionInDays returns a boolean if a field has been set.
+
+### SetRetentionInDaysNil
+
+`func (o *DiskBackupOnDemandSnapshotRequest) SetRetentionInDaysNil()`
+
+SetRetentionInDaysNil sets RetentionInDays to an explicit JSON null when marshaled, overriding any value previously set with SetRetentionInDays. Calling SetRetentionInDays again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

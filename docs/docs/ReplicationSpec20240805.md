@@ -52,6 +52,13 @@ SetId sets Id field to given value.
 `func (o *ReplicationSpec20240805) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *ReplicationSpec20240805) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetRegionConfigs
 
 `func (o *ReplicationSpec20240805) GetRegionConfigs() []CloudRegionConfig20240805`
@@ -76,6 +83,13 @@ SetRegionConfigs sets RegionConfigs field to given value.
 `func (o *ReplicationSpec20240805) HasRegionConfigs() bool`
 
 HasRegionConfigs returns a boolean if a field has been set.
+
+### SetRegionConfigsNil
+
+`func (o *ReplicationSpec20240805) SetRegionConfigsNil()`
+
+SetRegionConfigsNil sets RegionConfigs to an explicit JSON null when marshaled, overriding any value previously set with SetRegionConfigs. Calling SetRegionConfigs again clears the null override.
+
 ### GetZoneId
 
 `func (o *ReplicationSpec20240805) GetZoneId() string`
@@ -100,6 +114,13 @@ SetZoneId sets ZoneId field to given value.
 `func (o *ReplicationSpec20240805) HasZoneId() bool`
 
 HasZoneId returns a boolean if a field has been set.
+
+### SetZoneIdNil
+
+`func (o *ReplicationSpec20240805) SetZoneIdNil()`
+
+SetZoneIdNil sets ZoneId to an explicit JSON null when marshaled, overriding any value previously set with SetZoneId. Calling SetZoneId again clears the null override.
+
 ### GetZoneName
 
 `func (o *ReplicationSpec20240805) GetZoneName() string`
@@ -124,6 +145,13 @@ SetZoneName sets ZoneName field to given value.
 `func (o *ReplicationSpec20240805) HasZoneName() bool`
 
 HasZoneName returns a boolean if a field has been set.
+
+### SetZoneNameNil
+
+`func (o *ReplicationSpec20240805) SetZoneNameNil()`
+
+SetZoneNameNil sets ZoneName to an explicit JSON null when marshaled, overriding any value previously set with SetZoneName. Calling SetZoneName again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

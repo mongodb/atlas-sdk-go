@@ -51,6 +51,13 @@ SetDescription sets Description field to given value.
 `func (o *ApiAtlasResourcePolicyEdit) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *ApiAtlasResourcePolicyEdit) SetDescriptionNil()`
+
+SetDescriptionNil sets Description to an explicit JSON null when marshaled, overriding any value previously set with SetDescription. Calling SetDescription again clears the null override.
+
 ### GetName
 
 `func (o *ApiAtlasResourcePolicyEdit) GetName() string`
@@ -75,6 +82,13 @@ SetName sets Name field to given value.
 `func (o *ApiAtlasResourcePolicyEdit) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *ApiAtlasResourcePolicyEdit) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetPolicies
 
 `func (o *ApiAtlasResourcePolicyEdit) GetPolicies() []ApiAtlasPolicyCreate`
@@ -99,6 +113,13 @@ SetPolicies sets Policies field to given value.
 `func (o *ApiAtlasResourcePolicyEdit) HasPolicies() bool`
 
 HasPolicies returns a boolean if a field has been set.
+
+### SetPoliciesNil
+
+`func (o *ApiAtlasResourcePolicyEdit) SetPoliciesNil()`
+
+SetPoliciesNil sets Policies to an explicit JSON null when marshaled, overriding any value previously set with SetPolicies. Calling SetPolicies again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

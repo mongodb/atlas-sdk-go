@@ -71,6 +71,13 @@ SetNestedRoot sets NestedRoot field to given value.
 `func (o *VectorSearchIndexDefinition) HasNestedRoot() bool`
 
 HasNestedRoot returns a boolean if a field has been set.
+
+### SetNestedRootNil
+
+`func (o *VectorSearchIndexDefinition) SetNestedRootNil()`
+
+SetNestedRootNil sets NestedRoot to an explicit JSON null when marshaled, overriding any value previously set with SetNestedRoot. Calling SetNestedRoot again clears the null override.
+
 ### GetNumPartitions
 
 `func (o *VectorSearchIndexDefinition) GetNumPartitions() int`
@@ -95,6 +102,13 @@ SetNumPartitions sets NumPartitions field to given value.
 `func (o *VectorSearchIndexDefinition) HasNumPartitions() bool`
 
 HasNumPartitions returns a boolean if a field has been set.
+
+### SetNumPartitionsNil
+
+`func (o *VectorSearchIndexDefinition) SetNumPartitionsNil()`
+
+SetNumPartitionsNil sets NumPartitions to an explicit JSON null when marshaled, overriding any value previously set with SetNumPartitions. Calling SetNumPartitions again clears the null override.
+
 ### GetStoredSource
 
 `func (o *VectorSearchIndexDefinition) GetStoredSource() any`
@@ -119,6 +133,13 @@ SetStoredSource sets StoredSource field to given value.
 `func (o *VectorSearchIndexDefinition) HasStoredSource() bool`
 
 HasStoredSource returns a boolean if a field has been set.
+
+### SetStoredSourceNil
+
+`func (o *VectorSearchIndexDefinition) SetStoredSourceNil()`
+
+SetStoredSourceNil sets StoredSource to an explicit JSON null when marshaled, overriding any value previously set with SetStoredSource. Calling SetStoredSource again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

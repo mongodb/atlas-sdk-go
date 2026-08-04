@@ -54,6 +54,13 @@ SetAdvancedConfiguration sets AdvancedConfiguration field to given value.
 `func (o *ClusterConfigurationValidation) HasAdvancedConfiguration() bool`
 
 HasAdvancedConfiguration returns a boolean if a field has been set.
+
+### SetAdvancedConfigurationNil
+
+`func (o *ClusterConfigurationValidation) SetAdvancedConfigurationNil()`
+
+SetAdvancedConfigurationNil sets AdvancedConfiguration to an explicit JSON null when marshaled, overriding any value previously set with SetAdvancedConfiguration. Calling SetAdvancedConfiguration again clears the null override.
+
 ### GetClusterDescription
 
 `func (o *ClusterConfigurationValidation) GetClusterDescription() ClusterDescription20240805`
@@ -97,6 +104,13 @@ SetClusterName sets ClusterName field to given value.
 `func (o *ClusterConfigurationValidation) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+
+### SetClusterNameNil
+
+`func (o *ClusterConfigurationValidation) SetClusterNameNil()`
+
+SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled, overriding any value previously set with SetClusterName. Calling SetClusterName again clears the null override.
+
 ### GetEditing
 
 `func (o *ClusterConfigurationValidation) GetEditing() bool`
@@ -140,6 +154,13 @@ SetSearchDeploymentSpec sets SearchDeploymentSpec field to given value.
 `func (o *ClusterConfigurationValidation) HasSearchDeploymentSpec() bool`
 
 HasSearchDeploymentSpec returns a boolean if a field has been set.
+
+### SetSearchDeploymentSpecNil
+
+`func (o *ClusterConfigurationValidation) SetSearchDeploymentSpecNil()`
+
+SetSearchDeploymentSpecNil sets SearchDeploymentSpec to an explicit JSON null when marshaled, overriding any value previously set with SetSearchDeploymentSpec. Calling SetSearchDeploymentSpec again clears the null override.
+
 ### GetTags
 
 `func (o *ClusterConfigurationValidation) GetTags() []ResourceTag`
@@ -164,6 +185,13 @@ SetTags sets Tags field to given value.
 `func (o *ClusterConfigurationValidation) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### SetTagsNil
+
+`func (o *ClusterConfigurationValidation) SetTagsNil()`
+
+SetTagsNil sets Tags to an explicit JSON null when marshaled, overriding any value previously set with SetTags. Calling SetTags again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -13,6 +13,15 @@ type CollStatsLatencyNamespaceMetrics struct {
 	// List of Coll Stats Latency metric names and their respective units.
 	// Read only field.
 	Metrics []CollStatsLatencyNamespaceMetric `json:"metrics"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *CollStatsLatencyNamespaceMetrics) MarshalJSON() ([]byte, error) {
+	type noMethod CollStatsLatencyNamespaceMetrics
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewCollStatsLatencyNamespaceMetrics instantiates a new CollStatsLatencyNamespaceMetrics object
@@ -89,6 +98,13 @@ func (o *CollStatsLatencyNamespaceMetrics) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *CollStatsLatencyNamespaceMetrics) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *CollStatsLatencyNamespaceMetrics) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetMetrics returns the Metrics field value

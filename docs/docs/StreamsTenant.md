@@ -58,6 +58,13 @@ SetId sets Id field to given value.
 `func (o *StreamsTenant) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *StreamsTenant) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetConnections
 
 `func (o *StreamsTenant) GetConnections() []StreamsConnection`
@@ -82,6 +89,13 @@ SetConnections sets Connections field to given value.
 `func (o *StreamsTenant) HasConnections() bool`
 
 HasConnections returns a boolean if a field has been set.
+
+### SetConnectionsNil
+
+`func (o *StreamsTenant) SetConnectionsNil()`
+
+SetConnectionsNil sets Connections to an explicit JSON null when marshaled, overriding any value previously set with SetConnections. Calling SetConnections again clears the null override.
+
 ### GetDataProcessRegion
 
 `func (o *StreamsTenant) GetDataProcessRegion() StreamsDataProcessRegion`
@@ -106,6 +120,13 @@ SetDataProcessRegion sets DataProcessRegion field to given value.
 `func (o *StreamsTenant) HasDataProcessRegion() bool`
 
 HasDataProcessRegion returns a boolean if a field has been set.
+
+### SetDataProcessRegionNil
+
+`func (o *StreamsTenant) SetDataProcessRegionNil()`
+
+SetDataProcessRegionNil sets DataProcessRegion to an explicit JSON null when marshaled, overriding any value previously set with SetDataProcessRegion. Calling SetDataProcessRegion again clears the null override.
+
 ### GetFailoverRegions
 
 `func (o *StreamsTenant) GetFailoverRegions() []StreamsDataProcessRegion`
@@ -130,6 +151,13 @@ SetFailoverRegions sets FailoverRegions field to given value.
 `func (o *StreamsTenant) HasFailoverRegions() bool`
 
 HasFailoverRegions returns a boolean if a field has been set.
+
+### SetFailoverRegionsNil
+
+`func (o *StreamsTenant) SetFailoverRegionsNil()`
+
+SetFailoverRegionsNil sets FailoverRegions to an explicit JSON null when marshaled, overriding any value previously set with SetFailoverRegions. Calling SetFailoverRegions again clears the null override.
+
 ### GetGroupId
 
 `func (o *StreamsTenant) GetGroupId() string`
@@ -154,6 +182,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *StreamsTenant) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *StreamsTenant) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetHostnames
 
 `func (o *StreamsTenant) GetHostnames() []string`
@@ -178,6 +213,13 @@ SetHostnames sets Hostnames field to given value.
 `func (o *StreamsTenant) HasHostnames() bool`
 
 HasHostnames returns a boolean if a field has been set.
+
+### SetHostnamesNil
+
+`func (o *StreamsTenant) SetHostnamesNil()`
+
+SetHostnamesNil sets Hostnames to an explicit JSON null when marshaled, overriding any value previously set with SetHostnames. Calling SetHostnames again clears the null override.
+
 ### GetLinks
 
 `func (o *StreamsTenant) GetLinks() []Link`
@@ -202,6 +244,13 @@ SetLinks sets Links field to given value.
 `func (o *StreamsTenant) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *StreamsTenant) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetName
 
 `func (o *StreamsTenant) GetName() string`
@@ -226,6 +275,13 @@ SetName sets Name field to given value.
 `func (o *StreamsTenant) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *StreamsTenant) SetNameNil()`
+
+SetNameNil sets Name to an explicit JSON null when marshaled, overriding any value previously set with SetName. Calling SetName again clears the null override.
+
 ### GetSampleConnections
 
 `func (o *StreamsTenant) GetSampleConnections() StreamsSampleConnections`
@@ -250,6 +306,13 @@ SetSampleConnections sets SampleConnections field to given value.
 `func (o *StreamsTenant) HasSampleConnections() bool`
 
 HasSampleConnections returns a boolean if a field has been set.
+
+### SetSampleConnectionsNil
+
+`func (o *StreamsTenant) SetSampleConnectionsNil()`
+
+SetSampleConnectionsNil sets SampleConnections to an explicit JSON null when marshaled, overriding any value previously set with SetSampleConnections. Calling SetSampleConnections again clears the null override.
+
 ### GetStreamConfig
 
 `func (o *StreamsTenant) GetStreamConfig() StreamConfig`
@@ -274,6 +337,13 @@ SetStreamConfig sets StreamConfig field to given value.
 `func (o *StreamsTenant) HasStreamConfig() bool`
 
 HasStreamConfig returns a boolean if a field has been set.
+
+### SetStreamConfigNil
+
+`func (o *StreamsTenant) SetStreamConfigNil()`
+
+SetStreamConfigNil sets StreamConfig to an explicit JSON null when marshaled, overriding any value previously set with SetStreamConfig. Calling SetStreamConfig again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

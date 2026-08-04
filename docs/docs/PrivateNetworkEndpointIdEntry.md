@@ -58,6 +58,13 @@ SetAzureLinkId sets AzureLinkId field to given value.
 `func (o *PrivateNetworkEndpointIdEntry) HasAzureLinkId() bool`
 
 HasAzureLinkId returns a boolean if a field has been set.
+
+### SetAzureLinkIdNil
+
+`func (o *PrivateNetworkEndpointIdEntry) SetAzureLinkIdNil()`
+
+SetAzureLinkIdNil sets AzureLinkId to an explicit JSON null when marshaled, overriding any value previously set with SetAzureLinkId. Calling SetAzureLinkId again clears the null override.
+
 ### GetComment
 
 `func (o *PrivateNetworkEndpointIdEntry) GetComment() string`
@@ -82,6 +89,13 @@ SetComment sets Comment field to given value.
 `func (o *PrivateNetworkEndpointIdEntry) HasComment() bool`
 
 HasComment returns a boolean if a field has been set.
+
+### SetCommentNil
+
+`func (o *PrivateNetworkEndpointIdEntry) SetCommentNil()`
+
+SetCommentNil sets Comment to an explicit JSON null when marshaled, overriding any value previously set with SetComment. Calling SetComment again clears the null override.
+
 ### GetCustomerEndpointDNSName
 
 `func (o *PrivateNetworkEndpointIdEntry) GetCustomerEndpointDNSName() string`
@@ -106,6 +120,13 @@ SetCustomerEndpointDNSName sets CustomerEndpointDNSName field to given value.
 `func (o *PrivateNetworkEndpointIdEntry) HasCustomerEndpointDNSName() bool`
 
 HasCustomerEndpointDNSName returns a boolean if a field has been set.
+
+### SetCustomerEndpointDNSNameNil
+
+`func (o *PrivateNetworkEndpointIdEntry) SetCustomerEndpointDNSNameNil()`
+
+SetCustomerEndpointDNSNameNil sets CustomerEndpointDNSName to an explicit JSON null when marshaled, overriding any value previously set with SetCustomerEndpointDNSName. Calling SetCustomerEndpointDNSName again clears the null override.
+
 ### GetCustomerEndpointIPAddress
 
 `func (o *PrivateNetworkEndpointIdEntry) GetCustomerEndpointIPAddress() string`
@@ -130,6 +151,13 @@ SetCustomerEndpointIPAddress sets CustomerEndpointIPAddress field to given value
 `func (o *PrivateNetworkEndpointIdEntry) HasCustomerEndpointIPAddress() bool`
 
 HasCustomerEndpointIPAddress returns a boolean if a field has been set.
+
+### SetCustomerEndpointIPAddressNil
+
+`func (o *PrivateNetworkEndpointIdEntry) SetCustomerEndpointIPAddressNil()`
+
+SetCustomerEndpointIPAddressNil sets CustomerEndpointIPAddress to an explicit JSON null when marshaled, overriding any value previously set with SetCustomerEndpointIPAddress. Calling SetCustomerEndpointIPAddress again clears the null override.
+
 ### GetEndpointId
 
 `func (o *PrivateNetworkEndpointIdEntry) GetEndpointId() string`
@@ -173,6 +201,13 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *PrivateNetworkEndpointIdEntry) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
+
+### SetErrorMessageNil
+
+`func (o *PrivateNetworkEndpointIdEntry) SetErrorMessageNil()`
+
+SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled, overriding any value previously set with SetErrorMessage. Calling SetErrorMessage again clears the null override.
+
 ### GetProvider
 
 `func (o *PrivateNetworkEndpointIdEntry) GetProvider() string`
@@ -197,6 +232,13 @@ SetProvider sets Provider field to given value.
 `func (o *PrivateNetworkEndpointIdEntry) HasProvider() bool`
 
 HasProvider returns a boolean if a field has been set.
+
+### SetProviderNil
+
+`func (o *PrivateNetworkEndpointIdEntry) SetProviderNil()`
+
+SetProviderNil sets Provider to an explicit JSON null when marshaled, overriding any value previously set with SetProvider. Calling SetProvider again clears the null override.
+
 ### GetRegion
 
 `func (o *PrivateNetworkEndpointIdEntry) GetRegion() string`
@@ -221,6 +263,13 @@ SetRegion sets Region field to given value.
 `func (o *PrivateNetworkEndpointIdEntry) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *PrivateNetworkEndpointIdEntry) SetRegionNil()`
+
+SetRegionNil sets Region to an explicit JSON null when marshaled, overriding any value previously set with SetRegion. Calling SetRegion again clears the null override.
+
 ### GetStatus
 
 `func (o *PrivateNetworkEndpointIdEntry) GetStatus() string`
@@ -245,6 +294,13 @@ SetStatus sets Status field to given value.
 `func (o *PrivateNetworkEndpointIdEntry) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *PrivateNetworkEndpointIdEntry) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 ### GetType
 
 `func (o *PrivateNetworkEndpointIdEntry) GetType() string`
@@ -269,6 +325,13 @@ SetType sets Type field to given value.
 `func (o *PrivateNetworkEndpointIdEntry) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### SetTypeNil
+
+`func (o *PrivateNetworkEndpointIdEntry) SetTypeNil()`
+
+SetTypeNil sets Type to an explicit JSON null when marshaled, overriding any value previously set with SetType. Calling SetType again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

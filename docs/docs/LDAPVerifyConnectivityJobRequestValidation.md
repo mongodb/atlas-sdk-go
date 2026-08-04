@@ -50,6 +50,13 @@ SetStatus sets Status field to given value.
 `func (o *LDAPVerifyConnectivityJobRequestValidation) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *LDAPVerifyConnectivityJobRequestValidation) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 ### GetValidationType
 
 `func (o *LDAPVerifyConnectivityJobRequestValidation) GetValidationType() string`
@@ -74,6 +81,13 @@ SetValidationType sets ValidationType field to given value.
 `func (o *LDAPVerifyConnectivityJobRequestValidation) HasValidationType() bool`
 
 HasValidationType returns a boolean if a field has been set.
+
+### SetValidationTypeNil
+
+`func (o *LDAPVerifyConnectivityJobRequestValidation) SetValidationTypeNil()`
+
+SetValidationTypeNil sets ValidationType to an explicit JSON null when marshaled, overriding any value previously set with SetValidationType. Calling SetValidationType again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -50,6 +50,13 @@ SetAutoScalingMode sets AutoScalingMode field to given value.
 
 HasAutoScalingMode returns a boolean if a field has been set.
 
+### SetAutoScalingModeNil
+
+`func (o *ClusterDescriptionAutoScalingModeConfiguration) SetAutoScalingModeNil()`
+
+SetAutoScalingModeNil sets AutoScalingMode to an explicit JSON null when marshaled, overriding any value previously set with SetAutoScalingMode. Calling SetAutoScalingMode again clears the null override.
+
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

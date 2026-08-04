@@ -54,6 +54,13 @@ SetAvgMs sets AvgMs field to given value.
 `func (o *PerformanceAdvisorShape) HasAvgMs() bool`
 
 HasAvgMs returns a boolean if a field has been set.
+
+### SetAvgMsNil
+
+`func (o *PerformanceAdvisorShape) SetAvgMsNil()`
+
+SetAvgMsNil sets AvgMs to an explicit JSON null when marshaled, overriding any value previously set with SetAvgMs. Calling SetAvgMs again clears the null override.
+
 ### GetCount
 
 `func (o *PerformanceAdvisorShape) GetCount() int64`
@@ -78,6 +85,13 @@ SetCount sets Count field to given value.
 `func (o *PerformanceAdvisorShape) HasCount() bool`
 
 HasCount returns a boolean if a field has been set.
+
+### SetCountNil
+
+`func (o *PerformanceAdvisorShape) SetCountNil()`
+
+SetCountNil sets Count to an explicit JSON null when marshaled, overriding any value previously set with SetCount. Calling SetCount again clears the null override.
+
 ### GetId
 
 `func (o *PerformanceAdvisorShape) GetId() string`
@@ -102,6 +116,13 @@ SetId sets Id field to given value.
 `func (o *PerformanceAdvisorShape) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *PerformanceAdvisorShape) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetInefficiencyScore
 
 `func (o *PerformanceAdvisorShape) GetInefficiencyScore() int64`
@@ -126,6 +147,13 @@ SetInefficiencyScore sets InefficiencyScore field to given value.
 `func (o *PerformanceAdvisorShape) HasInefficiencyScore() bool`
 
 HasInefficiencyScore returns a boolean if a field has been set.
+
+### SetInefficiencyScoreNil
+
+`func (o *PerformanceAdvisorShape) SetInefficiencyScoreNil()`
+
+SetInefficiencyScoreNil sets InefficiencyScore to an explicit JSON null when marshaled, overriding any value previously set with SetInefficiencyScore. Calling SetInefficiencyScore again clears the null override.
+
 ### GetNamespace
 
 `func (o *PerformanceAdvisorShape) GetNamespace() string`
@@ -150,6 +178,13 @@ SetNamespace sets Namespace field to given value.
 `func (o *PerformanceAdvisorShape) HasNamespace() bool`
 
 HasNamespace returns a boolean if a field has been set.
+
+### SetNamespaceNil
+
+`func (o *PerformanceAdvisorShape) SetNamespaceNil()`
+
+SetNamespaceNil sets Namespace to an explicit JSON null when marshaled, overriding any value previously set with SetNamespace. Calling SetNamespace again clears the null override.
+
 ### GetOperations
 
 `func (o *PerformanceAdvisorShape) GetOperations() []PerformanceAdvisorOperation`
@@ -174,6 +209,13 @@ SetOperations sets Operations field to given value.
 `func (o *PerformanceAdvisorShape) HasOperations() bool`
 
 HasOperations returns a boolean if a field has been set.
+
+### SetOperationsNil
+
+`func (o *PerformanceAdvisorShape) SetOperationsNil()`
+
+SetOperationsNil sets Operations to an explicit JSON null when marshaled, overriding any value previously set with SetOperations. Calling SetOperations again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

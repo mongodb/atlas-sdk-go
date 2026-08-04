@@ -50,6 +50,13 @@ SetFailedCollectionCount sets FailedCollectionCount field to given value.
 `func (o *ApiAtlasCollectionRestoreJobIndexStatus) HasFailedCollectionCount() bool`
 
 HasFailedCollectionCount returns a boolean if a field has been set.
+
+### SetFailedCollectionCountNil
+
+`func (o *ApiAtlasCollectionRestoreJobIndexStatus) SetFailedCollectionCountNil()`
+
+SetFailedCollectionCountNil sets FailedCollectionCount to an explicit JSON null when marshaled, overriding any value previously set with SetFailedCollectionCount. Calling SetFailedCollectionCount again clears the null override.
+
 ### GetState
 
 `func (o *ApiAtlasCollectionRestoreJobIndexStatus) GetState() string`
@@ -74,6 +81,13 @@ SetState sets State field to given value.
 `func (o *ApiAtlasCollectionRestoreJobIndexStatus) HasState() bool`
 
 HasState returns a boolean if a field has been set.
+
+### SetStateNil
+
+`func (o *ApiAtlasCollectionRestoreJobIndexStatus) SetStateNil()`
+
+SetStateNil sets State to an explicit JSON null when marshaled, overriding any value previously set with SetState. Calling SetState again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

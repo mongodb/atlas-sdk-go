@@ -51,6 +51,13 @@ SetDryRun sets DryRun field to given value.
 `func (o *StreamsStartProcessorFailover) HasDryRun() bool`
 
 HasDryRun returns a boolean if a field has been set.
+
+### SetDryRunNil
+
+`func (o *StreamsStartProcessorFailover) SetDryRunNil()`
+
+SetDryRunNil sets DryRun to an explicit JSON null when marshaled, overriding any value previously set with SetDryRun. Calling SetDryRun again clears the null override.
+
 ### GetMode
 
 `func (o *StreamsStartProcessorFailover) GetMode() string`
@@ -75,6 +82,13 @@ SetMode sets Mode field to given value.
 `func (o *StreamsStartProcessorFailover) HasMode() bool`
 
 HasMode returns a boolean if a field has been set.
+
+### SetModeNil
+
+`func (o *StreamsStartProcessorFailover) SetModeNil()`
+
+SetModeNil sets Mode to an explicit JSON null when marshaled, overriding any value previously set with SetMode. Calling SetMode again clears the null override.
+
 ### GetRegion
 
 `func (o *StreamsStartProcessorFailover) GetRegion() string`

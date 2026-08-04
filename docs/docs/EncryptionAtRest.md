@@ -52,6 +52,13 @@ SetAwsKms sets AwsKms field to given value.
 `func (o *EncryptionAtRest) HasAwsKms() bool`
 
 HasAwsKms returns a boolean if a field has been set.
+
+### SetAwsKmsNil
+
+`func (o *EncryptionAtRest) SetAwsKmsNil()`
+
+SetAwsKmsNil sets AwsKms to an explicit JSON null when marshaled, overriding any value previously set with SetAwsKms. Calling SetAwsKms again clears the null override.
+
 ### GetAzureKeyVault
 
 `func (o *EncryptionAtRest) GetAzureKeyVault() AzureKeyVault`
@@ -76,6 +83,13 @@ SetAzureKeyVault sets AzureKeyVault field to given value.
 `func (o *EncryptionAtRest) HasAzureKeyVault() bool`
 
 HasAzureKeyVault returns a boolean if a field has been set.
+
+### SetAzureKeyVaultNil
+
+`func (o *EncryptionAtRest) SetAzureKeyVaultNil()`
+
+SetAzureKeyVaultNil sets AzureKeyVault to an explicit JSON null when marshaled, overriding any value previously set with SetAzureKeyVault. Calling SetAzureKeyVault again clears the null override.
+
 ### GetEnabledForSearchNodes
 
 `func (o *EncryptionAtRest) GetEnabledForSearchNodes() bool`
@@ -100,6 +114,13 @@ SetEnabledForSearchNodes sets EnabledForSearchNodes field to given value.
 `func (o *EncryptionAtRest) HasEnabledForSearchNodes() bool`
 
 HasEnabledForSearchNodes returns a boolean if a field has been set.
+
+### SetEnabledForSearchNodesNil
+
+`func (o *EncryptionAtRest) SetEnabledForSearchNodesNil()`
+
+SetEnabledForSearchNodesNil sets EnabledForSearchNodes to an explicit JSON null when marshaled, overriding any value previously set with SetEnabledForSearchNodes. Calling SetEnabledForSearchNodes again clears the null override.
+
 ### GetGoogleCloudKms
 
 `func (o *EncryptionAtRest) GetGoogleCloudKms() GoogleCloudKMS`
@@ -124,6 +145,13 @@ SetGoogleCloudKms sets GoogleCloudKms field to given value.
 `func (o *EncryptionAtRest) HasGoogleCloudKms() bool`
 
 HasGoogleCloudKms returns a boolean if a field has been set.
+
+### SetGoogleCloudKmsNil
+
+`func (o *EncryptionAtRest) SetGoogleCloudKmsNil()`
+
+SetGoogleCloudKmsNil sets GoogleCloudKms to an explicit JSON null when marshaled, overriding any value previously set with SetGoogleCloudKms. Calling SetGoogleCloudKms again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -10,6 +10,15 @@ type ApiAtlasCollectionRestoreIndexStatus struct {
 	FailedIndexes *[]map[string]any `json:"failedIndexes,omitempty"`
 	// Index build state indicating the status of index creation during or after a restore operation.
 	State *string `json:"state,omitempty"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *ApiAtlasCollectionRestoreIndexStatus) MarshalJSON() ([]byte, error) {
+	type noMethod ApiAtlasCollectionRestoreIndexStatus
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewApiAtlasCollectionRestoreIndexStatus instantiates a new ApiAtlasCollectionRestoreIndexStatus object
@@ -60,6 +69,13 @@ func (o *ApiAtlasCollectionRestoreIndexStatus) HasErrorMessage() bool {
 // SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
 func (o *ApiAtlasCollectionRestoreIndexStatus) SetErrorMessage(v string) {
 	o.ErrorMessage = &v
+	o.NullFields = removeNullField(o.NullFields, "ErrorMessage")
+}
+
+// SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreIndexStatus) SetErrorMessageNil() {
+	o.ErrorMessage = nil
+	o.NullFields = addNullField(o.NullFields, "ErrorMessage")
 }
 
 // GetFailedIndexes returns the FailedIndexes field value if set, zero value otherwise
@@ -93,6 +109,13 @@ func (o *ApiAtlasCollectionRestoreIndexStatus) HasFailedIndexes() bool {
 // SetFailedIndexes gets a reference to the given []map[string]any and assigns it to the FailedIndexes field.
 func (o *ApiAtlasCollectionRestoreIndexStatus) SetFailedIndexes(v []map[string]any) {
 	o.FailedIndexes = &v
+	o.NullFields = removeNullField(o.NullFields, "FailedIndexes")
+}
+
+// SetFailedIndexesNil sets FailedIndexes to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreIndexStatus) SetFailedIndexesNil() {
+	o.FailedIndexes = nil
+	o.NullFields = addNullField(o.NullFields, "FailedIndexes")
 }
 
 // GetState returns the State field value if set, zero value otherwise
@@ -126,4 +149,11 @@ func (o *ApiAtlasCollectionRestoreIndexStatus) HasState() bool {
 // SetState gets a reference to the given string and assigns it to the State field.
 func (o *ApiAtlasCollectionRestoreIndexStatus) SetState(v string) {
 	o.State = &v
+	o.NullFields = removeNullField(o.NullFields, "State")
+}
+
+// SetStateNil sets State to an explicit JSON null when marshaled.
+func (o *ApiAtlasCollectionRestoreIndexStatus) SetStateNil() {
+	o.State = nil
+	o.NullFields = addNullField(o.NullFields, "State")
 }

@@ -15,6 +15,15 @@ type DiskBackupExportJobRequest struct {
 	// Unique 24-hexadecimal character string that identifies the Cloud Backup Snapshot to export.
 	// Write only field.
 	SnapshotId string `json:"snapshotId"`
+	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
+	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
+	NullFields []string `json:"-"`
+}
+
+// MarshalJSON honors NullFields, in addition to the regular struct tags.
+func (o *DiskBackupExportJobRequest) MarshalJSON() ([]byte, error) {
+	type noMethod DiskBackupExportJobRequest
+	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
 // NewDiskBackupExportJobRequest instantiates a new DiskBackupExportJobRequest object
@@ -67,6 +76,13 @@ func (o *DiskBackupExportJobRequest) HasCustomData() bool {
 // SetCustomData gets a reference to the given []BackupLabel and assigns it to the CustomData field.
 func (o *DiskBackupExportJobRequest) SetCustomData(v []BackupLabel) {
 	o.CustomData = &v
+	o.NullFields = removeNullField(o.NullFields, "CustomData")
+}
+
+// SetCustomDataNil sets CustomData to an explicit JSON null when marshaled.
+func (o *DiskBackupExportJobRequest) SetCustomDataNil() {
+	o.CustomData = nil
+	o.NullFields = addNullField(o.NullFields, "CustomData")
 }
 
 // GetExportBucketId returns the ExportBucketId field value
@@ -124,6 +140,13 @@ func (o *DiskBackupExportJobRequest) HasLinks() bool {
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
 func (o *DiskBackupExportJobRequest) SetLinks(v []Link) {
 	o.Links = &v
+	o.NullFields = removeNullField(o.NullFields, "Links")
+}
+
+// SetLinksNil sets Links to an explicit JSON null when marshaled.
+func (o *DiskBackupExportJobRequest) SetLinksNil() {
+	o.Links = nil
+	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetSnapshotId returns the SnapshotId field value

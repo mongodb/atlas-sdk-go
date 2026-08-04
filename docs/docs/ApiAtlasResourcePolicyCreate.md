@@ -51,6 +51,13 @@ SetDescription sets Description field to given value.
 `func (o *ApiAtlasResourcePolicyCreate) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *ApiAtlasResourcePolicyCreate) SetDescriptionNil()`
+
+SetDescriptionNil sets Description to an explicit JSON null when marshaled, overriding any value previously set with SetDescription. Calling SetDescription again clears the null override.
+
 ### GetName
 
 `func (o *ApiAtlasResourcePolicyCreate) GetName() string`

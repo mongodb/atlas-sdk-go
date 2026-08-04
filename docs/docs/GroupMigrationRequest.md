@@ -51,6 +51,13 @@ SetDestinationOrgId sets DestinationOrgId field to given value.
 `func (o *GroupMigrationRequest) HasDestinationOrgId() bool`
 
 HasDestinationOrgId returns a boolean if a field has been set.
+
+### SetDestinationOrgIdNil
+
+`func (o *GroupMigrationRequest) SetDestinationOrgIdNil()`
+
+SetDestinationOrgIdNil sets DestinationOrgId to an explicit JSON null when marshaled, overriding any value previously set with SetDestinationOrgId. Calling SetDestinationOrgId again clears the null override.
+
 ### GetDestinationOrgPrivateApiKey
 
 `func (o *GroupMigrationRequest) GetDestinationOrgPrivateApiKey() string`
@@ -75,6 +82,13 @@ SetDestinationOrgPrivateApiKey sets DestinationOrgPrivateApiKey field to given v
 `func (o *GroupMigrationRequest) HasDestinationOrgPrivateApiKey() bool`
 
 HasDestinationOrgPrivateApiKey returns a boolean if a field has been set.
+
+### SetDestinationOrgPrivateApiKeyNil
+
+`func (o *GroupMigrationRequest) SetDestinationOrgPrivateApiKeyNil()`
+
+SetDestinationOrgPrivateApiKeyNil sets DestinationOrgPrivateApiKey to an explicit JSON null when marshaled, overriding any value previously set with SetDestinationOrgPrivateApiKey. Calling SetDestinationOrgPrivateApiKey again clears the null override.
+
 ### GetDestinationOrgPublicApiKey
 
 `func (o *GroupMigrationRequest) GetDestinationOrgPublicApiKey() string`
@@ -99,6 +113,13 @@ SetDestinationOrgPublicApiKey sets DestinationOrgPublicApiKey field to given val
 `func (o *GroupMigrationRequest) HasDestinationOrgPublicApiKey() bool`
 
 HasDestinationOrgPublicApiKey returns a boolean if a field has been set.
+
+### SetDestinationOrgPublicApiKeyNil
+
+`func (o *GroupMigrationRequest) SetDestinationOrgPublicApiKeyNil()`
+
+SetDestinationOrgPublicApiKeyNil sets DestinationOrgPublicApiKey to an explicit JSON null when marshaled, overriding any value previously set with SetDestinationOrgPublicApiKey. Calling SetDestinationOrgPublicApiKey again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

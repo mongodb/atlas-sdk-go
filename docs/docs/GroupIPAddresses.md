@@ -50,6 +50,13 @@ SetGroupId sets GroupId field to given value.
 `func (o *GroupIPAddresses) HasGroupId() bool`
 
 HasGroupId returns a boolean if a field has been set.
+
+### SetGroupIdNil
+
+`func (o *GroupIPAddresses) SetGroupIdNil()`
+
+SetGroupIdNil sets GroupId to an explicit JSON null when marshaled, overriding any value previously set with SetGroupId. Calling SetGroupId again clears the null override.
+
 ### GetServices
 
 `func (o *GroupIPAddresses) GetServices() GroupService`
@@ -74,6 +81,13 @@ SetServices sets Services field to given value.
 `func (o *GroupIPAddresses) HasServices() bool`
 
 HasServices returns a boolean if a field has been set.
+
+### SetServicesNil
+
+`func (o *GroupIPAddresses) SetServicesNil()`
+
+SetServicesNil sets Services to an explicit JSON null when marshaled, overriding any value previously set with SetServices. Calling SetServices again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

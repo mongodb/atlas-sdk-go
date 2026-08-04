@@ -51,6 +51,13 @@ SetLinks sets Links field to given value.
 `func (o *BackupSnapshotRetention) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *BackupSnapshotRetention) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetRetentionUnit
 
 `func (o *BackupSnapshotRetention) GetRetentionUnit() string`

@@ -68,6 +68,13 @@ SetAutoCopySettingsEnabled sets AutoCopySettingsEnabled field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasAutoCopySettingsEnabled() bool`
 
 HasAutoCopySettingsEnabled returns a boolean if a field has been set.
+
+### SetAutoCopySettingsEnabledNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetAutoCopySettingsEnabledNil()`
+
+SetAutoCopySettingsEnabledNil sets AutoCopySettingsEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetAutoCopySettingsEnabled. Calling SetAutoCopySettingsEnabled again clears the null override.
+
 ### GetAutoExportEnabled
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetAutoExportEnabled() bool`
@@ -92,6 +99,13 @@ SetAutoExportEnabled sets AutoExportEnabled field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasAutoExportEnabled() bool`
 
 HasAutoExportEnabled returns a boolean if a field has been set.
+
+### SetAutoExportEnabledNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetAutoExportEnabledNil()`
+
+SetAutoExportEnabledNil sets AutoExportEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetAutoExportEnabled. Calling SetAutoExportEnabled again clears the null override.
+
 ### GetClusterId
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetClusterId() string`
@@ -116,6 +130,13 @@ SetClusterId sets ClusterId field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasClusterId() bool`
 
 HasClusterId returns a boolean if a field has been set.
+
+### SetClusterIdNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetClusterIdNil()`
+
+SetClusterIdNil sets ClusterId to an explicit JSON null when marshaled, overriding any value previously set with SetClusterId. Calling SetClusterId again clears the null override.
+
 ### GetClusterName
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetClusterName() string`
@@ -140,6 +161,13 @@ SetClusterName sets ClusterName field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasClusterName() bool`
 
 HasClusterName returns a boolean if a field has been set.
+
+### SetClusterNameNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetClusterNameNil()`
+
+SetClusterNameNil sets ClusterName to an explicit JSON null when marshaled, overriding any value previously set with SetClusterName. Calling SetClusterName again clears the null override.
+
 ### GetCopyPolicyItemsEnabled
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetCopyPolicyItemsEnabled() bool`
@@ -164,6 +192,13 @@ SetCopyPolicyItemsEnabled sets CopyPolicyItemsEnabled field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasCopyPolicyItemsEnabled() bool`
 
 HasCopyPolicyItemsEnabled returns a boolean if a field has been set.
+
+### SetCopyPolicyItemsEnabledNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetCopyPolicyItemsEnabledNil()`
+
+SetCopyPolicyItemsEnabledNil sets CopyPolicyItemsEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetCopyPolicyItemsEnabled. Calling SetCopyPolicyItemsEnabled again clears the null override.
+
 ### GetCopySettings
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetCopySettings() []DiskBackupCopySetting20240805`
@@ -188,6 +223,13 @@ SetCopySettings sets CopySettings field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasCopySettings() bool`
 
 HasCopySettings returns a boolean if a field has been set.
+
+### SetCopySettingsNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetCopySettingsNil()`
+
+SetCopySettingsNil sets CopySettings to an explicit JSON null when marshaled, overriding any value previously set with SetCopySettings. Calling SetCopySettings again clears the null override.
+
 ### GetDeleteCopiedBackups
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetDeleteCopiedBackups() []DeleteCopiedBackups20240805`
@@ -212,6 +254,13 @@ SetDeleteCopiedBackups sets DeleteCopiedBackups field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasDeleteCopiedBackups() bool`
 
 HasDeleteCopiedBackups returns a boolean if a field has been set.
+
+### SetDeleteCopiedBackupsNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetDeleteCopiedBackupsNil()`
+
+SetDeleteCopiedBackupsNil sets DeleteCopiedBackups to an explicit JSON null when marshaled, overriding any value previously set with SetDeleteCopiedBackups. Calling SetDeleteCopiedBackups again clears the null override.
+
 ### GetDeleteCopySnapshots
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetDeleteCopySnapshots() bool`
@@ -236,6 +285,13 @@ SetDeleteCopySnapshots sets DeleteCopySnapshots field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasDeleteCopySnapshots() bool`
 
 HasDeleteCopySnapshots returns a boolean if a field has been set.
+
+### SetDeleteCopySnapshotsNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetDeleteCopySnapshotsNil()`
+
+SetDeleteCopySnapshotsNil sets DeleteCopySnapshots to an explicit JSON null when marshaled, overriding any value previously set with SetDeleteCopySnapshots. Calling SetDeleteCopySnapshots again clears the null override.
+
 ### GetDeleteSnapshots
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetDeleteSnapshots() bool`
@@ -260,6 +316,13 @@ SetDeleteSnapshots sets DeleteSnapshots field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasDeleteSnapshots() bool`
 
 HasDeleteSnapshots returns a boolean if a field has been set.
+
+### SetDeleteSnapshotsNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetDeleteSnapshotsNil()`
+
+SetDeleteSnapshotsNil sets DeleteSnapshots to an explicit JSON null when marshaled, overriding any value previously set with SetDeleteSnapshots. Calling SetDeleteSnapshots again clears the null override.
+
 ### GetExport
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetExport() AutoExportPolicy`
@@ -284,6 +347,13 @@ SetExport sets Export field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasExport() bool`
 
 HasExport returns a boolean if a field has been set.
+
+### SetExportNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetExportNil()`
+
+SetExportNil sets Export to an explicit JSON null when marshaled, overriding any value previously set with SetExport. Calling SetExport again clears the null override.
+
 ### GetExtraRetentionSettings
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetExtraRetentionSettings() []ExtraRetentionSetting`
@@ -308,6 +378,13 @@ SetExtraRetentionSettings sets ExtraRetentionSettings field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasExtraRetentionSettings() bool`
 
 HasExtraRetentionSettings returns a boolean if a field has been set.
+
+### SetExtraRetentionSettingsNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetExtraRetentionSettingsNil()`
+
+SetExtraRetentionSettingsNil sets ExtraRetentionSettings to an explicit JSON null when marshaled, overriding any value previously set with SetExtraRetentionSettings. Calling SetExtraRetentionSettings again clears the null override.
+
 ### GetLinks
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetLinks() []Link`
@@ -332,6 +409,13 @@ SetLinks sets Links field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### SetLinksNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetLinksNil()`
+
+SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any value previously set with SetLinks. Calling SetLinks again clears the null override.
+
 ### GetNextSnapshot
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetNextSnapshot() time.Time`
@@ -356,6 +440,13 @@ SetNextSnapshot sets NextSnapshot field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasNextSnapshot() bool`
 
 HasNextSnapshot returns a boolean if a field has been set.
+
+### SetNextSnapshotNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetNextSnapshotNil()`
+
+SetNextSnapshotNil sets NextSnapshot to an explicit JSON null when marshaled, overriding any value previously set with SetNextSnapshot. Calling SetNextSnapshot again clears the null override.
+
 ### GetPolicies
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetPolicies() []AdvancedDiskBackupSnapshotSchedulePolicy`
@@ -399,6 +490,13 @@ SetReferenceHourOfDay sets ReferenceHourOfDay field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasReferenceHourOfDay() bool`
 
 HasReferenceHourOfDay returns a boolean if a field has been set.
+
+### SetReferenceHourOfDayNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetReferenceHourOfDayNil()`
+
+SetReferenceHourOfDayNil sets ReferenceHourOfDay to an explicit JSON null when marshaled, overriding any value previously set with SetReferenceHourOfDay. Calling SetReferenceHourOfDay again clears the null override.
+
 ### GetReferenceMinuteOfHour
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetReferenceMinuteOfHour() int`
@@ -423,6 +521,13 @@ SetReferenceMinuteOfHour sets ReferenceMinuteOfHour field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasReferenceMinuteOfHour() bool`
 
 HasReferenceMinuteOfHour returns a boolean if a field has been set.
+
+### SetReferenceMinuteOfHourNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetReferenceMinuteOfHourNil()`
+
+SetReferenceMinuteOfHourNil sets ReferenceMinuteOfHour to an explicit JSON null when marshaled, overriding any value previously set with SetReferenceMinuteOfHour. Calling SetReferenceMinuteOfHour again clears the null override.
+
 ### GetRestoreWindowDays
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetRestoreWindowDays() int`
@@ -447,6 +552,13 @@ SetRestoreWindowDays sets RestoreWindowDays field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasRestoreWindowDays() bool`
 
 HasRestoreWindowDays returns a boolean if a field has been set.
+
+### SetRestoreWindowDaysNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetRestoreWindowDaysNil()`
+
+SetRestoreWindowDaysNil sets RestoreWindowDays to an explicit JSON null when marshaled, overriding any value previously set with SetRestoreWindowDays. Calling SetRestoreWindowDays again clears the null override.
+
 ### GetUpdateCopySnapshots
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetUpdateCopySnapshots() bool`
@@ -471,6 +583,13 @@ SetUpdateCopySnapshots sets UpdateCopySnapshots field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasUpdateCopySnapshots() bool`
 
 HasUpdateCopySnapshots returns a boolean if a field has been set.
+
+### SetUpdateCopySnapshotsNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetUpdateCopySnapshotsNil()`
+
+SetUpdateCopySnapshotsNil sets UpdateCopySnapshots to an explicit JSON null when marshaled, overriding any value previously set with SetUpdateCopySnapshots. Calling SetUpdateCopySnapshots again clears the null override.
+
 ### GetUpdateSnapshots
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetUpdateSnapshots() bool`
@@ -495,6 +614,13 @@ SetUpdateSnapshots sets UpdateSnapshots field to given value.
 `func (o *DiskBackupSnapshotSchedule20240805) HasUpdateSnapshots() bool`
 
 HasUpdateSnapshots returns a boolean if a field has been set.
+
+### SetUpdateSnapshotsNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetUpdateSnapshotsNil()`
+
+SetUpdateSnapshotsNil sets UpdateSnapshots to an explicit JSON null when marshaled, overriding any value previously set with SetUpdateSnapshots. Calling SetUpdateSnapshots again clears the null override.
+
 ### GetUseOrgAndGroupNamesInExportPrefix
 
 `func (o *DiskBackupSnapshotSchedule20240805) GetUseOrgAndGroupNamesInExportPrefix() bool`
@@ -519,6 +645,13 @@ SetUseOrgAndGroupNamesInExportPrefix sets UseOrgAndGroupNamesInExportPrefix fiel
 `func (o *DiskBackupSnapshotSchedule20240805) HasUseOrgAndGroupNamesInExportPrefix() bool`
 
 HasUseOrgAndGroupNamesInExportPrefix returns a boolean if a field has been set.
+
+### SetUseOrgAndGroupNamesInExportPrefixNil
+
+`func (o *DiskBackupSnapshotSchedule20240805) SetUseOrgAndGroupNamesInExportPrefixNil()`
+
+SetUseOrgAndGroupNamesInExportPrefixNil sets UseOrgAndGroupNamesInExportPrefix to an explicit JSON null when marshaled, overriding any value previously set with SetUseOrgAndGroupNamesInExportPrefix. Calling SetUseOrgAndGroupNamesInExportPrefix again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

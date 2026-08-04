@@ -81,6 +81,13 @@ SetErrorMessage sets ErrorMessage field to given value.
 `func (o *EndpointService) HasErrorMessage() bool`
 
 HasErrorMessage returns a boolean if a field has been set.
+
+### SetErrorMessageNil
+
+`func (o *EndpointService) SetErrorMessageNil()`
+
+SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled, overriding any value previously set with SetErrorMessage. Calling SetErrorMessage again clears the null override.
+
 ### GetId
 
 `func (o *EndpointService) GetId() string`
@@ -105,6 +112,13 @@ SetId sets Id field to given value.
 `func (o *EndpointService) HasId() bool`
 
 HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *EndpointService) SetIdNil()`
+
+SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
 ### GetRegionName
 
 `func (o *EndpointService) GetRegionName() string`
@@ -129,6 +143,13 @@ SetRegionName sets RegionName field to given value.
 `func (o *EndpointService) HasRegionName() bool`
 
 HasRegionName returns a boolean if a field has been set.
+
+### SetRegionNameNil
+
+`func (o *EndpointService) SetRegionNameNil()`
+
+SetRegionNameNil sets RegionName to an explicit JSON null when marshaled, overriding any value previously set with SetRegionName. Calling SetRegionName again clears the null override.
+
 ### GetStatus
 
 `func (o *EndpointService) GetStatus() string`
@@ -153,6 +174,13 @@ SetStatus sets Status field to given value.
 `func (o *EndpointService) HasStatus() bool`
 
 HasStatus returns a boolean if a field has been set.
+
+### SetStatusNil
+
+`func (o *EndpointService) SetStatusNil()`
+
+SetStatusNil sets Status to an explicit JSON null when marshaled, overriding any value previously set with SetStatus. Calling SetStatus again clears the null override.
+
 ### GetEndpointServiceName
 
 `func (o *EndpointService) GetEndpointServiceName() string`
@@ -177,6 +205,13 @@ SetEndpointServiceName sets EndpointServiceName field to given value.
 `func (o *EndpointService) HasEndpointServiceName() bool`
 
 HasEndpointServiceName returns a boolean if a field has been set.
+
+### SetEndpointServiceNameNil
+
+`func (o *EndpointService) SetEndpointServiceNameNil()`
+
+SetEndpointServiceNameNil sets EndpointServiceName to an explicit JSON null when marshaled, overriding any value previously set with SetEndpointServiceName. Calling SetEndpointServiceName again clears the null override.
+
 ### GetInterfaceEndpoints
 
 `func (o *EndpointService) GetInterfaceEndpoints() []string`
@@ -201,6 +236,13 @@ SetInterfaceEndpoints sets InterfaceEndpoints field to given value.
 `func (o *EndpointService) HasInterfaceEndpoints() bool`
 
 HasInterfaceEndpoints returns a boolean if a field has been set.
+
+### SetInterfaceEndpointsNil
+
+`func (o *EndpointService) SetInterfaceEndpointsNil()`
+
+SetInterfaceEndpointsNil sets InterfaceEndpoints to an explicit JSON null when marshaled, overriding any value previously set with SetInterfaceEndpoints. Calling SetInterfaceEndpoints again clears the null override.
+
 ### GetSupportedRemoteRegions
 
 `func (o *EndpointService) GetSupportedRemoteRegions() []string`
@@ -225,6 +267,13 @@ SetSupportedRemoteRegions sets SupportedRemoteRegions field to given value.
 `func (o *EndpointService) HasSupportedRemoteRegions() bool`
 
 HasSupportedRemoteRegions returns a boolean if a field has been set.
+
+### SetSupportedRemoteRegionsNil
+
+`func (o *EndpointService) SetSupportedRemoteRegionsNil()`
+
+SetSupportedRemoteRegionsNil sets SupportedRemoteRegions to an explicit JSON null when marshaled, overriding any value previously set with SetSupportedRemoteRegions. Calling SetSupportedRemoteRegions again clears the null override.
+
 ### GetPrivateEndpoints
 
 `func (o *EndpointService) GetPrivateEndpoints() []string`
@@ -249,6 +298,13 @@ SetPrivateEndpoints sets PrivateEndpoints field to given value.
 `func (o *EndpointService) HasPrivateEndpoints() bool`
 
 HasPrivateEndpoints returns a boolean if a field has been set.
+
+### SetPrivateEndpointsNil
+
+`func (o *EndpointService) SetPrivateEndpointsNil()`
+
+SetPrivateEndpointsNil sets PrivateEndpoints to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateEndpoints. Calling SetPrivateEndpoints again clears the null override.
+
 ### GetPrivateLinkServiceName
 
 `func (o *EndpointService) GetPrivateLinkServiceName() string`
@@ -273,6 +329,13 @@ SetPrivateLinkServiceName sets PrivateLinkServiceName field to given value.
 `func (o *EndpointService) HasPrivateLinkServiceName() bool`
 
 HasPrivateLinkServiceName returns a boolean if a field has been set.
+
+### SetPrivateLinkServiceNameNil
+
+`func (o *EndpointService) SetPrivateLinkServiceNameNil()`
+
+SetPrivateLinkServiceNameNil sets PrivateLinkServiceName to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateLinkServiceName. Calling SetPrivateLinkServiceName again clears the null override.
+
 ### GetPrivateLinkServiceResourceId
 
 `func (o *EndpointService) GetPrivateLinkServiceResourceId() string`
@@ -297,6 +360,13 @@ SetPrivateLinkServiceResourceId sets PrivateLinkServiceResourceId field to given
 `func (o *EndpointService) HasPrivateLinkServiceResourceId() bool`
 
 HasPrivateLinkServiceResourceId returns a boolean if a field has been set.
+
+### SetPrivateLinkServiceResourceIdNil
+
+`func (o *EndpointService) SetPrivateLinkServiceResourceIdNil()`
+
+SetPrivateLinkServiceResourceIdNil sets PrivateLinkServiceResourceId to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateLinkServiceResourceId. Calling SetPrivateLinkServiceResourceId again clears the null override.
+
 ### GetEndpointGroupNames
 
 `func (o *EndpointService) GetEndpointGroupNames() []string`
@@ -321,6 +391,13 @@ SetEndpointGroupNames sets EndpointGroupNames field to given value.
 `func (o *EndpointService) HasEndpointGroupNames() bool`
 
 HasEndpointGroupNames returns a boolean if a field has been set.
+
+### SetEndpointGroupNamesNil
+
+`func (o *EndpointService) SetEndpointGroupNamesNil()`
+
+SetEndpointGroupNamesNil sets EndpointGroupNames to an explicit JSON null when marshaled, overriding any value previously set with SetEndpointGroupNames. Calling SetEndpointGroupNames again clears the null override.
+
 ### GetPortMappingEnabled
 
 `func (o *EndpointService) GetPortMappingEnabled() bool`
@@ -345,6 +422,13 @@ SetPortMappingEnabled sets PortMappingEnabled field to given value.
 `func (o *EndpointService) HasPortMappingEnabled() bool`
 
 HasPortMappingEnabled returns a boolean if a field has been set.
+
+### SetPortMappingEnabledNil
+
+`func (o *EndpointService) SetPortMappingEnabledNil()`
+
+SetPortMappingEnabledNil sets PortMappingEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetPortMappingEnabled. Calling SetPortMappingEnabled again clears the null override.
+
 ### GetServiceAttachmentNames
 
 `func (o *EndpointService) GetServiceAttachmentNames() []string`
@@ -369,6 +453,13 @@ SetServiceAttachmentNames sets ServiceAttachmentNames field to given value.
 `func (o *EndpointService) HasServiceAttachmentNames() bool`
 
 HasServiceAttachmentNames returns a boolean if a field has been set.
+
+### SetServiceAttachmentNamesNil
+
+`func (o *EndpointService) SetServiceAttachmentNamesNil()`
+
+SetServiceAttachmentNamesNil sets ServiceAttachmentNames to an explicit JSON null when marshaled, overriding any value previously set with SetServiceAttachmentNames. Calling SetServiceAttachmentNames again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

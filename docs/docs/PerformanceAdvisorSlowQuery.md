@@ -53,6 +53,13 @@ SetLine sets Line field to given value.
 `func (o *PerformanceAdvisorSlowQuery) HasLine() bool`
 
 HasLine returns a boolean if a field has been set.
+
+### SetLineNil
+
+`func (o *PerformanceAdvisorSlowQuery) SetLineNil()`
+
+SetLineNil sets Line to an explicit JSON null when marshaled, overriding any value previously set with SetLine. Calling SetLine again clears the null override.
+
 ### GetMetrics
 
 `func (o *PerformanceAdvisorSlowQuery) GetMetrics() PerformanceAdvisorSlowQueryMetrics`
@@ -77,6 +84,13 @@ SetMetrics sets Metrics field to given value.
 `func (o *PerformanceAdvisorSlowQuery) HasMetrics() bool`
 
 HasMetrics returns a boolean if a field has been set.
+
+### SetMetricsNil
+
+`func (o *PerformanceAdvisorSlowQuery) SetMetricsNil()`
+
+SetMetricsNil sets Metrics to an explicit JSON null when marshaled, overriding any value previously set with SetMetrics. Calling SetMetrics again clears the null override.
+
 ### GetNamespace
 
 `func (o *PerformanceAdvisorSlowQuery) GetNamespace() string`
@@ -101,6 +115,13 @@ SetNamespace sets Namespace field to given value.
 `func (o *PerformanceAdvisorSlowQuery) HasNamespace() bool`
 
 HasNamespace returns a boolean if a field has been set.
+
+### SetNamespaceNil
+
+`func (o *PerformanceAdvisorSlowQuery) SetNamespaceNil()`
+
+SetNamespaceNil sets Namespace to an explicit JSON null when marshaled, overriding any value previously set with SetNamespace. Calling SetNamespace again clears the null override.
+
 ### GetOpType
 
 `func (o *PerformanceAdvisorSlowQuery) GetOpType() string`
@@ -125,6 +146,13 @@ SetOpType sets OpType field to given value.
 `func (o *PerformanceAdvisorSlowQuery) HasOpType() bool`
 
 HasOpType returns a boolean if a field has been set.
+
+### SetOpTypeNil
+
+`func (o *PerformanceAdvisorSlowQuery) SetOpTypeNil()`
+
+SetOpTypeNil sets OpType to an explicit JSON null when marshaled, overriding any value previously set with SetOpType. Calling SetOpType again clears the null override.
+
 ### GetReplicaState
 
 `func (o *PerformanceAdvisorSlowQuery) GetReplicaState() string`
@@ -149,6 +177,13 @@ SetReplicaState sets ReplicaState field to given value.
 `func (o *PerformanceAdvisorSlowQuery) HasReplicaState() bool`
 
 HasReplicaState returns a boolean if a field has been set.
+
+### SetReplicaStateNil
+
+`func (o *PerformanceAdvisorSlowQuery) SetReplicaStateNil()`
+
+SetReplicaStateNil sets ReplicaState to an explicit JSON null when marshaled, overriding any value previously set with SetReplicaState. Calling SetReplicaState again clears the null override.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
