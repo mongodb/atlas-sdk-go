@@ -10,7 +10,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"go.mongodb.org/atlas-sdk/v20250312022/auth"
+	"go.mongodb.org/atlas-sdk/v20250312023/auth"
 )
 
 type roundTripperFunc func(*http.Request) (*http.Response, error)
