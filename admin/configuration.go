@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
+
+	"go.mongodb.org/atlas-sdk/v20250312023/internal/core"
 )
 
 // contextKeys are used to identify the type of value in the context.
@@ -82,7 +84,8 @@ func NewConfiguration() *Configuration {
 		Debug:         false,
 		Servers: ServerConfigurations{
 			{
-				URL:         "https://cloud.mongodb.com",
+				// Default base URL is decoupled from the spec servers URL so spec changes do not affect generated code.
+				URL:         core.DefaultCloudURL,
 				Description: "No description provided",
 			},
 		},
