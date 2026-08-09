@@ -12,7 +12,7 @@
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "2.40.1",
     "jest": "30.4.2",
-    "replace-in-file": "^8.4.0",
+    "replace-in-file": "^9.0.0",
     "prettier": "3.9.6"
   },
   "overrides": {
