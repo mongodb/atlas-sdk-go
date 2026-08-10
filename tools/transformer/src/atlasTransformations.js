@@ -11,6 +11,7 @@ const {
   reorderResponseBodies,
   applyFieldTransformations,
   applyOperationIdOverrides,
+  applyServersValidation,
 } = require("./transformations");
 const { resolveOpenAPIReference } = require("./engine/transformers");
 
@@ -55,6 +56,9 @@ function runFlatteningTransformations(openapi) {
 }
 
 function runAllTransformations(openapi) {
+  // SDK templates assume a single root server and no operation-level servers
+  applyServersValidation(openapi);
+
   openapi = runFlatteningTransformations(openapi);
 
   // SDK specific transformations

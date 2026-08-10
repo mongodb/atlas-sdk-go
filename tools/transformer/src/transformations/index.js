@@ -17,6 +17,7 @@ const { removeRefsFromParameters } = require("./removeInvalidParams");
 const { reorderResponseBodies } = require("./reorderResponseBodies");
 const { applyFieldTransformations } = require("./fields");
 const { applyOperationIdOverrides } = require("./operationId");
+const { applyServersValidation } = require("./validateServers");
 
 module.exports = {
   applyModelNameTransformations,
@@ -35,4 +36,5 @@ module.exports = {
   reorderResponseBodies,
   applyFieldTransformations,
   applyOperationIdOverrides,
+  applyServersValidation,
 };
