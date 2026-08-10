@@ -5,6 +5,7 @@ const {
   transformAllOf,
   transformOneOf,
   applyOperationIdOverrides,
+  applyServersValidation,
 } = require("../src/transformations");
 const cases = require("./transformations-snapshots");
 
@@ -90,4 +91,68 @@ test("applyOperationIdOverrides", () => {
   expect(
     api.paths["/api/atlas/v2/example/info"].get["x-xgen-operation-id-override"],
   ).toBeFalsy();
+});
+
+describe("applyServersValidation", () => {
+  const singleRootServer = {
+    servers: [{ url: "https://cloud.mongodb.com" }],
+    paths: {
+      "/api/atlas/v2/groups": { get: { operationId: "listGroups" } },
+    },
+  };
+
+  test("passes with exactly one root server and no operation-level servers", () => {
+    expect(applyServersValidation(singleRootServer)).toBe(singleRootServer);
+  });
+
+  test("throws when root servers are missing", () => {
+    expect(() => applyServersValidation({ paths: {} })).toThrow(
+      /exactly one root server/,
+    );
+  });
+
+  test("throws when multiple root servers are defined", () => {
+    const multipleServers = {
+      servers: [
+        { url: "https://cloud.mongodb.com" },
+        { url: "https://api.mongodb.com" },
+      ],
+      paths: {},
+    };
+    expect(() => applyServersValidation(multipleServers)).toThrow(
+      /exactly one root server/,
+    );
+  });
+
+  test("throws when a path-level servers block is defined", () => {
+    const pathServers = {
+      servers: [{ url: "https://cloud.mongodb.com" }],
+      paths: {
+        "/api/atlas/v2/groups": {
+          servers: [{ url: "https://api.mongodb.com" }],
+          get: { operationId: "listGroups" },
+        },
+      },
+    };
+    expect(() => applyServersValidation(pathServers)).toThrow(
+      /servers block at path level/,
+    );
+  });
+
+  test("throws when an operation-level servers block is defined", () => {
+    const operationServers = {
+      servers: [{ url: "https://cloud.mongodb.com" }],
+      paths: {
+        "/api/atlas/v2/groups": {
+          get: {
+            operationId: "listGroups",
+            servers: [{ url: "https://api.mongodb.com" }],
+          },
+        },
+      },
+    };
+    expect(() => applyServersValidation(operationServers)).toThrow(
+      /servers block at operation level/,
+    );
+  });
 });

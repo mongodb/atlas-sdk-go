@@ -84,7 +84,6 @@ func NewConfiguration() *Configuration {
 		Debug:         false,
 		Servers: ServerConfigurations{
 			{
-				// Default base URL is decoupled from the spec servers URL so spec changes do not affect generated code.
 				URL:         core.DefaultCloudURL,
 				Description: "No description provided",
 			},

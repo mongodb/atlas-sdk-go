@@ -111,7 +111,9 @@ func NewConfiguration() *Configuration {
 		Servers:          ServerConfigurations{
 		{{/-first}}
 			{
-				// Default base URL is decoupled from the spec servers URL so spec changes do not affect generated code.
+				{{! X-XGEN-MODIFIED }}
+				{{! Default base URL is decoupled from the spec servers URL so spec changes do not affect generated code. }}
+				{{! Assumes a single root server in the spec, enforced by validation in the transformer. }}
 				URL: core.DefaultCloudURL,
 				Description: "{{{description}}}{{^description}}No description provided{{/description}}",
 				{{#variables}}
