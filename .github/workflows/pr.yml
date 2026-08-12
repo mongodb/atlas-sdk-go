@@ -12,6 +12,30 @@ permissions:
   contents: read
 
 jobs:
+  # Temporary validation for the SilkBomb ECR migration. Remove after this PR passes.
+  silkbomb-ecr-access:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      ECR_REGISTRY: 901841024863.dkr.ecr.us-east-1.amazonaws.com
+      ECR_ROLE_ARN: arn:aws:iam::901841024863:role/ecr-role-gha-ro
+      SILKBOMB_IMG: 901841024863.dkr.ecr.us-east-1.amazonaws.com/release-infrastructure/silkbomb:2.0
+    steps:
+      - name: Configure AWS credentials for DevProd Platforms ECR
+        uses: aws-actions/configure-aws-credentials@e6de054238d6b7531b4efff3b6587d9aade6a06c
+        with:
+          role-to-assume: ${{ env.ECR_ROLE_ARN }}
+          aws-region: us-east-1
+      - name: Pull and run SilkBomb from ECR
+        run: |
+          aws ecr get-login-password --region us-east-1 |
+            docker login --username AWS --password-stdin "${ECR_REGISTRY}"
+          docker pull "${SILKBOMB_IMG}"
+          docker run --platform="linux/amd64" --rm "${SILKBOMB_IMG}" --help
+
   code-health:
     runs-on: ubuntu-latest
     steps:
