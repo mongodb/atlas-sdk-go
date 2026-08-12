@@ -8,6 +8,9 @@ import (
 
 // InvoiceLineItem One service included in this invoice.
 type InvoiceLineItem struct {
+	// Code identifying the cloud provider this line item's usage is attributed to. Values map as follows: AWS is Amazon Web Services, GCP is Google Cloud, AZURE is Microsoft Azure, and ATLAS is other Atlas usage not tied to a specific cloud provider.
+	// Read only field.
+	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// Human-readable label that identifies the cluster that incurred the charge.
 	// Read only field.
 	ClusterName *string `json:"clusterName,omitempty"`
@@ -87,6 +90,46 @@ func NewInvoiceLineItem() *InvoiceLineItem {
 func NewInvoiceLineItemWithDefaults() *InvoiceLineItem {
 	this := InvoiceLineItem{}
 	return &this
+}
+
+// GetCloudProvider returns the CloudProvider field value if set, zero value otherwise
+func (o *InvoiceLineItem) GetCloudProvider() string {
+	if o == nil || IsNil(o.CloudProvider) {
+		var ret string
+		return ret
+	}
+	return *o.CloudProvider
+}
+
+// GetCloudProviderOk returns a tuple with the CloudProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InvoiceLineItem) GetCloudProviderOk() (*string, bool) {
+	if o == nil || IsNil(o.CloudProvider) {
+		return nil, false
+	}
+
+	return o.CloudProvider, true
+}
+
+// HasCloudProvider returns a boolean if a field has been set.
+func (o *InvoiceLineItem) HasCloudProvider() bool {
+	if o != nil && !IsNil(o.CloudProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
+func (o *InvoiceLineItem) SetCloudProvider(v string) {
+	o.CloudProvider = &v
+	o.NullFields = removeNullField(o.NullFields, "CloudProvider")
+}
+
+// SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled.
+func (o *InvoiceLineItem) SetCloudProviderNil() {
+	o.CloudProvider = nil
+	o.NullFields = addNullField(o.NullFields, "CloudProvider")
 }
 
 // GetClusterName returns the ClusterName field value if set, zero value otherwise

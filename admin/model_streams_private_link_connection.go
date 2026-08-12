@@ -9,6 +9,8 @@ type StreamsPrivateLinkConnection struct {
 	Id *string `json:"_id,omitempty"`
 	// Amazon Resource Name (ARN). Required for AWS Provider and MSK vendor.
 	Arn *string `json:"arn,omitempty"`
+	// Authentication mechanism to use with this private networking connection.
+	AuthenticationScheme *string `json:"authenticationScheme,omitempty"`
 	// Azure Resource IDs of each availability zone for the Azure Confluent cluster.
 	AzureResourceIds *[]string `json:"azureResourceIds,omitempty"`
 	// The domain hostname. Required for the following provider and vendor combinations: - AWS provider with CONFLUENT vendor. - AZURE provider with EVENTHUB or CONFLUENT vendor.
@@ -152,6 +154,46 @@ func (o *StreamsPrivateLinkConnection) SetArn(v string) {
 func (o *StreamsPrivateLinkConnection) SetArnNil() {
 	o.Arn = nil
 	o.NullFields = addNullField(o.NullFields, "Arn")
+}
+
+// GetAuthenticationScheme returns the AuthenticationScheme field value if set, zero value otherwise
+func (o *StreamsPrivateLinkConnection) GetAuthenticationScheme() string {
+	if o == nil || IsNil(o.AuthenticationScheme) {
+		var ret string
+		return ret
+	}
+	return *o.AuthenticationScheme
+}
+
+// GetAuthenticationSchemeOk returns a tuple with the AuthenticationScheme field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsPrivateLinkConnection) GetAuthenticationSchemeOk() (*string, bool) {
+	if o == nil || IsNil(o.AuthenticationScheme) {
+		return nil, false
+	}
+
+	return o.AuthenticationScheme, true
+}
+
+// HasAuthenticationScheme returns a boolean if a field has been set.
+func (o *StreamsPrivateLinkConnection) HasAuthenticationScheme() bool {
+	if o != nil && !IsNil(o.AuthenticationScheme) {
+		return true
+	}
+
+	return false
+}
+
+// SetAuthenticationScheme gets a reference to the given string and assigns it to the AuthenticationScheme field.
+func (o *StreamsPrivateLinkConnection) SetAuthenticationScheme(v string) {
+	o.AuthenticationScheme = &v
+	o.NullFields = removeNullField(o.NullFields, "AuthenticationScheme")
+}
+
+// SetAuthenticationSchemeNil sets AuthenticationScheme to an explicit JSON null when marshaled.
+func (o *StreamsPrivateLinkConnection) SetAuthenticationSchemeNil() {
+	o.AuthenticationScheme = nil
+	o.NullFields = addNullField(o.NullFields, "AuthenticationScheme")
 }
 
 // GetAzureResourceIds returns the AzureResourceIds field value if set, zero value otherwise

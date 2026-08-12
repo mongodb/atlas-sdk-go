@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cloud** | **string** | Cloud provider scope for this API key. Must be \&quot;ANY\&quot;. Additional cloud values will be supported in future API versions. | 
-**Geography** | **string** | Geography scope for this API key. Must be \&quot;ANY\&quot;. Additional geography values will be supported in future API versions. | 
+**Cloud** | **string** | Cloud provider scope for this API key. Use \&quot;ANY\&quot; for a cloud-agnostic scope. Additional cloud values will be supported in future API versions. | 
+**Geography** | **string** | Geography scope for this API key. Use \&quot;ANY\&quot; for a geography-agnostic scope. Additional geography values will be supported in future API versions. | 
 **Name** | **string** | A name for the new API key that will be created. | 
 
 ## Methods

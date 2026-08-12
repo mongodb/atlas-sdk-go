@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**GetCostExplorerUsage**](InvoicesAPI.md#GetCostExplorerUsage) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return Usage Details for One Cost Explorer Query
 [**GetInvoice**](InvoicesAPI.md#GetInvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId} | Return One Invoice for One Organization
 [**GetInvoiceCsv**](InvoicesAPI.md#GetInvoiceCsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Invoice as CSV for One Organization
+[**GetOrgAssociatedInvoices**](InvoicesAPI.md#GetOrgAssociatedInvoices) | **Get** /api/atlas/v2/orgs/{orgId}/associatedInvoices | Return Associated Invoices
 [**GetOrgInvoiceReport**](InvoicesAPI.md#GetOrgInvoiceReport) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/reports/{reportId} | Return One Invoice Report
 [**GetSku**](InvoicesAPI.md#GetSku) | **Get** /api/atlas/v2/skus/{skuId} | Return One Stock Keeping Unit
 [**ListInvoicePending**](InvoicesAPI.md#ListInvoicePending) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/pending | Return All Pending Invoices for One Organization
@@ -429,6 +430,92 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2023-01-01+csv
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetOrgAssociatedInvoices
+
+> OrgAssociatedInvoiceResponse GetOrgAssociatedInvoices(ctx, orgId).Month(month).Year(year).IncludeLinkedOrgs(includeLinkedOrgs).Execute()
+
+Return Associated Invoices
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    month := int64(789) // int64 |  (optional)
+    year := int64(789) // int64 |  (optional)
+    includeLinkedOrgs := true // bool |  (optional)
+
+    resp, r, err := sdk.InvoicesAPI.GetOrgAssociatedInvoices(context.Background(), orgId).Month(month).Year(year).IncludeLinkedOrgs(includeLinkedOrgs).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.GetOrgAssociatedInvoices`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetOrgAssociatedInvoices`: OrgAssociatedInvoiceResponse
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesAPI.GetOrgAssociatedInvoices`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOrgAssociatedInvoicesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **month** | **int64** | The month for which to retrieve invoices (1-12). Defaults to current month. | 
+ **year** | **int64** | The year for which to retrieve invoices. Defaults to current year. | 
+ **includeLinkedOrgs** | **bool** | Whether to include invoices from linked organizations. Defaults to false. | 
+
+### Return type
+
+[**OrgAssociatedInvoiceResponse**](OrgAssociatedInvoiceResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

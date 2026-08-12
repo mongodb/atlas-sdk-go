@@ -98,6 +98,8 @@ type APIClient struct {
 
 	MaintenanceWindowsAPI MaintenanceWindowsAPI
 
+	MetricIntegrationsAPI MetricIntegrationsAPI
+
 	MongoDBCloudUsersAPI MongoDBCloudUsersAPI
 
 	MonitoringAndLogsAPI MonitoringAndLogsAPI
@@ -123,6 +125,8 @@ type APIClient struct {
 	QueryShapeInsightsAPI QueryShapeInsightsAPI
 
 	RateLimitingAPI RateLimitingAPI
+
+	RemoteMCPConfigurationsAPI RemoteMCPConfigurationsAPI
 
 	ResourcePoliciesAPI ResourcePoliciesAPI
 
@@ -191,6 +195,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.LDAPConfigurationAPI = (*LDAPConfigurationAPIService)(&c.common)
 	c.LegacyBackupAPI = (*LegacyBackupAPIService)(&c.common)
 	c.MaintenanceWindowsAPI = (*MaintenanceWindowsAPIService)(&c.common)
+	c.MetricIntegrationsAPI = (*MetricIntegrationsAPIService)(&c.common)
 	c.MongoDBCloudUsersAPI = (*MongoDBCloudUsersAPIService)(&c.common)
 	c.MonitoringAndLogsAPI = (*MonitoringAndLogsAPIService)(&c.common)
 	c.NetworkPeeringAPI = (*NetworkPeeringAPIService)(&c.common)
@@ -204,6 +209,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PushBasedLogExportAPI = (*PushBasedLogExportAPIService)(&c.common)
 	c.QueryShapeInsightsAPI = (*QueryShapeInsightsAPIService)(&c.common)
 	c.RateLimitingAPI = (*RateLimitingAPIService)(&c.common)
+	c.RemoteMCPConfigurationsAPI = (*RemoteMCPConfigurationsAPIService)(&c.common)
 	c.ResourcePoliciesAPI = (*ResourcePoliciesAPIService)(&c.common)
 	c.RollingIndexAPI = (*RollingIndexAPIService)(&c.common)
 	c.RootAPI = (*RootAPIService)(&c.common)

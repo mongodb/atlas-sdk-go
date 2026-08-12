@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | The ID of the Private Link connection. | [optional] [readonly] 
 **Arn** | Pointer to **string** | Amazon Resource Name (ARN). Required for AWS Provider and MSK vendor. | [optional] 
+**AuthenticationScheme** | Pointer to **string** | Authentication mechanism to use with this private networking connection. | [optional] 
 **AzureResourceIds** | Pointer to **[]string** | Azure Resource IDs of each availability zone for the Azure Confluent cluster. | [optional] 
 **DnsDomain** | Pointer to **string** | The domain hostname. Required for the following provider and vendor combinations: - AWS provider with CONFLUENT vendor. - AZURE provider with EVENTHUB or CONFLUENT vendor. | [optional] 
 **DnsSubDomain** | Pointer to **[]string** | Sub-Domain name of Confluent cluster. These are typically your availability zones. Required for AWS Provider and CONFLUENT vendor, if your AWS CONFLUENT cluster doesn&#39;t use subdomains, you must set this to the empty array []. | [optional] 
@@ -102,6 +103,37 @@ HasArn returns a boolean if a field has been set.
 `func (o *StreamsPrivateLinkConnection) SetArnNil()`
 
 SetArnNil sets Arn to an explicit JSON null when marshaled, overriding any value previously set with SetArn. Calling SetArn again clears the null override.
+
+### GetAuthenticationScheme
+
+`func (o *StreamsPrivateLinkConnection) GetAuthenticationScheme() string`
+
+GetAuthenticationScheme returns the AuthenticationScheme field if non-nil, zero value otherwise.
+
+### GetAuthenticationSchemeOk
+
+`func (o *StreamsPrivateLinkConnection) GetAuthenticationSchemeOk() (*string, bool)`
+
+GetAuthenticationSchemeOk returns a tuple with the AuthenticationScheme field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAuthenticationScheme
+
+`func (o *StreamsPrivateLinkConnection) SetAuthenticationScheme(v string)`
+
+SetAuthenticationScheme sets AuthenticationScheme field to given value.
+
+### HasAuthenticationScheme
+
+`func (o *StreamsPrivateLinkConnection) HasAuthenticationScheme() bool`
+
+HasAuthenticationScheme returns a boolean if a field has been set.
+
+### SetAuthenticationSchemeNil
+
+`func (o *StreamsPrivateLinkConnection) SetAuthenticationSchemeNil()`
+
+SetAuthenticationSchemeNil sets AuthenticationScheme to an explicit JSON null when marshaled, overriding any value previously set with SetAuthenticationScheme. Calling SetAuthenticationScheme again clears the null override.
 
 ### GetAzureResourceIds
 

@@ -4,6 +4,8 @@ package admin
 
 // StreamsStartProcessorFailover Failover options for starting a stream processor.
 type StreamsStartProcessorFailover struct {
+	// If true, clears the checkpoint so the failover processor does not resume from it. Applies only to FORCED failover; clearing may cause duplicate or missing records in the output.
+	ClearCheckpoint *bool `json:"clearCheckpoint,omitempty"`
 	// If true, simulates the operation without making any changes.
 	DryRun *bool `json:"dryRun,omitempty"`
 	// Strategy for the processor: GRACEFUL - attempt to stop the processor, error if processor cannot be stopped. if stop was successful, start the processor in the new region with the latest checkpoint.  FORCED - attempt to stop the processor, proceed to starting the processor in the new region with checkpoints disabled regardless of whether or not the stop succeeds.
@@ -37,6 +39,46 @@ func NewStreamsStartProcessorFailover(region string) *StreamsStartProcessorFailo
 func NewStreamsStartProcessorFailoverWithDefaults() *StreamsStartProcessorFailover {
 	this := StreamsStartProcessorFailover{}
 	return &this
+}
+
+// GetClearCheckpoint returns the ClearCheckpoint field value if set, zero value otherwise
+func (o *StreamsStartProcessorFailover) GetClearCheckpoint() bool {
+	if o == nil || IsNil(o.ClearCheckpoint) {
+		var ret bool
+		return ret
+	}
+	return *o.ClearCheckpoint
+}
+
+// GetClearCheckpointOk returns a tuple with the ClearCheckpoint field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsStartProcessorFailover) GetClearCheckpointOk() (*bool, bool) {
+	if o == nil || IsNil(o.ClearCheckpoint) {
+		return nil, false
+	}
+
+	return o.ClearCheckpoint, true
+}
+
+// HasClearCheckpoint returns a boolean if a field has been set.
+func (o *StreamsStartProcessorFailover) HasClearCheckpoint() bool {
+	if o != nil && !IsNil(o.ClearCheckpoint) {
+		return true
+	}
+
+	return false
+}
+
+// SetClearCheckpoint gets a reference to the given bool and assigns it to the ClearCheckpoint field.
+func (o *StreamsStartProcessorFailover) SetClearCheckpoint(v bool) {
+	o.ClearCheckpoint = &v
+	o.NullFields = removeNullField(o.NullFields, "ClearCheckpoint")
+}
+
+// SetClearCheckpointNil sets ClearCheckpoint to an explicit JSON null when marshaled.
+func (o *StreamsStartProcessorFailover) SetClearCheckpointNil() {
+	o.ClearCheckpoint = nil
+	o.NullFields = addNullField(o.NullFields, "ClearCheckpoint")
 }
 
 // GetDryRun returns the DryRun field value if set, zero value otherwise

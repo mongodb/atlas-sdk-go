@@ -4,6 +4,7 @@ package admin
 
 // StreamsKafkaAuthentication User credentials required to connect to a Kafka Cluster. Includes the authentication type, as well as the parameters for that authentication mode.
 type StreamsKafkaAuthentication struct {
+	Aws *StreamsAWSConnectionConfig `json:"aws,omitempty"`
 	// OIDC client identifier for authentication to the Kafka cluster.
 	ClientId *string `json:"clientId,omitempty"`
 	// OIDC client secret for authentication to the Kafka cluster.
@@ -61,6 +62,46 @@ func NewStreamsKafkaAuthentication() *StreamsKafkaAuthentication {
 func NewStreamsKafkaAuthenticationWithDefaults() *StreamsKafkaAuthentication {
 	this := StreamsKafkaAuthentication{}
 	return &this
+}
+
+// GetAws returns the Aws field value if set, zero value otherwise
+func (o *StreamsKafkaAuthentication) GetAws() StreamsAWSConnectionConfig {
+	if o == nil || IsNil(o.Aws) {
+		var ret StreamsAWSConnectionConfig
+		return ret
+	}
+	return *o.Aws
+}
+
+// GetAwsOk returns a tuple with the Aws field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsKafkaAuthentication) GetAwsOk() (*StreamsAWSConnectionConfig, bool) {
+	if o == nil || IsNil(o.Aws) {
+		return nil, false
+	}
+
+	return o.Aws, true
+}
+
+// HasAws returns a boolean if a field has been set.
+func (o *StreamsKafkaAuthentication) HasAws() bool {
+	if o != nil && !IsNil(o.Aws) {
+		return true
+	}
+
+	return false
+}
+
+// SetAws gets a reference to the given StreamsAWSConnectionConfig and assigns it to the Aws field.
+func (o *StreamsKafkaAuthentication) SetAws(v StreamsAWSConnectionConfig) {
+	o.Aws = &v
+	o.NullFields = removeNullField(o.NullFields, "Aws")
+}
+
+// SetAwsNil sets Aws to an explicit JSON null when marshaled.
+func (o *StreamsKafkaAuthentication) SetAwsNil() {
+	o.Aws = nil
+	o.NullFields = addNullField(o.NullFields, "Aws")
 }
 
 // GetClientId returns the ClientId field value if set, zero value otherwise

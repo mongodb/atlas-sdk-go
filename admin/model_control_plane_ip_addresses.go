@@ -4,6 +4,9 @@ package admin
 
 // ControlPlaneIPAddresses List of IP addresses in the Atlas control plane.
 type ControlPlaneIPAddresses struct {
+	// List of gateways, each representing a group of service-specific IP addresses that customers can add to their allow lists independently. Includes the Atlas Gateway (data plane) group when present.
+	// Read only field.
+	Gateways *[]Gateway                                    `json:"gateways,omitempty"`
 	Inbound  *InboundControlPlaneCloudProviderIPAddresses  `json:"inbound,omitempty"`
 	Outbound *OutboundControlPlaneCloudProviderIPAddresses `json:"outbound,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
@@ -32,6 +35,46 @@ func NewControlPlaneIPAddresses() *ControlPlaneIPAddresses {
 func NewControlPlaneIPAddressesWithDefaults() *ControlPlaneIPAddresses {
 	this := ControlPlaneIPAddresses{}
 	return &this
+}
+
+// GetGateways returns the Gateways field value if set, zero value otherwise
+func (o *ControlPlaneIPAddresses) GetGateways() []Gateway {
+	if o == nil || IsNil(o.Gateways) {
+		var ret []Gateway
+		return ret
+	}
+	return *o.Gateways
+}
+
+// GetGatewaysOk returns a tuple with the Gateways field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ControlPlaneIPAddresses) GetGatewaysOk() (*[]Gateway, bool) {
+	if o == nil || IsNil(o.Gateways) {
+		return nil, false
+	}
+
+	return o.Gateways, true
+}
+
+// HasGateways returns a boolean if a field has been set.
+func (o *ControlPlaneIPAddresses) HasGateways() bool {
+	if o != nil && !IsNil(o.Gateways) {
+		return true
+	}
+
+	return false
+}
+
+// SetGateways gets a reference to the given []Gateway and assigns it to the Gateways field.
+func (o *ControlPlaneIPAddresses) SetGateways(v []Gateway) {
+	o.Gateways = &v
+	o.NullFields = removeNullField(o.NullFields, "Gateways")
+}
+
+// SetGatewaysNil sets Gateways to an explicit JSON null when marshaled.
+func (o *ControlPlaneIPAddresses) SetGatewaysNil() {
+	o.Gateways = nil
+	o.NullFields = addNullField(o.NullFields, "Gateways")
 }
 
 // GetInbound returns the Inbound field value if set, zero value otherwise

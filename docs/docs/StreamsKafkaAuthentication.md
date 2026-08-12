@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Aws** | Pointer to [**StreamsAWSConnectionConfig**](StreamsAWSConnectionConfig.md) |  | [optional] 
 **ClientId** | Pointer to **string** | OIDC client identifier for authentication to the Kafka cluster. | [optional] 
 **ClientSecret** | Pointer to **string** | OIDC client secret for authentication to the Kafka cluster. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
@@ -36,6 +37,37 @@ will change when the set of required properties is changed
 NewStreamsKafkaAuthenticationWithDefaults instantiates a new StreamsKafkaAuthentication object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAws
+
+`func (o *StreamsKafkaAuthentication) GetAws() StreamsAWSConnectionConfig`
+
+GetAws returns the Aws field if non-nil, zero value otherwise.
+
+### GetAwsOk
+
+`func (o *StreamsKafkaAuthentication) GetAwsOk() (*StreamsAWSConnectionConfig, bool)`
+
+GetAwsOk returns a tuple with the Aws field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAws
+
+`func (o *StreamsKafkaAuthentication) SetAws(v StreamsAWSConnectionConfig)`
+
+SetAws sets Aws field to given value.
+
+### HasAws
+
+`func (o *StreamsKafkaAuthentication) HasAws() bool`
+
+HasAws returns a boolean if a field has been set.
+
+### SetAwsNil
+
+`func (o *StreamsKafkaAuthentication) SetAwsNil()`
+
+SetAwsNil sets Aws to an explicit JSON null when marshaled, overriding any value previously set with SetAws. Calling SetAws again clears the null override.
 
 ### GetClientId
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Gateways** | Pointer to [**[]Gateway**](Gateway.md) | List of gateways, each representing a group of service-specific IP addresses that customers can add to their allow lists independently. Includes the Atlas Gateway (data plane) group when present. | [optional] [readonly] 
 **Inbound** | Pointer to [**InboundControlPlaneCloudProviderIPAddresses**](InboundControlPlaneCloudProviderIPAddresses.md) |  | [optional] 
 **Outbound** | Pointer to [**OutboundControlPlaneCloudProviderIPAddresses**](OutboundControlPlaneCloudProviderIPAddresses.md) |  | [optional] 
 
@@ -25,6 +26,37 @@ will change when the set of required properties is changed
 NewControlPlaneIPAddressesWithDefaults instantiates a new ControlPlaneIPAddresses object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetGateways
+
+`func (o *ControlPlaneIPAddresses) GetGateways() []Gateway`
+
+GetGateways returns the Gateways field if non-nil, zero value otherwise.
+
+### GetGatewaysOk
+
+`func (o *ControlPlaneIPAddresses) GetGatewaysOk() (*[]Gateway, bool)`
+
+GetGatewaysOk returns a tuple with the Gateways field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGateways
+
+`func (o *ControlPlaneIPAddresses) SetGateways(v []Gateway)`
+
+SetGateways sets Gateways field to given value.
+
+### HasGateways
+
+`func (o *ControlPlaneIPAddresses) HasGateways() bool`
+
+HasGateways returns a boolean if a field has been set.
+
+### SetGatewaysNil
+
+`func (o *ControlPlaneIPAddresses) SetGatewaysNil()`
+
+SetGatewaysNil sets Gateways to an explicit JSON null when marshaled, overriding any value previously set with SetGateways. Calling SetGateways again clears the null override.
 
 ### GetInbound
 
