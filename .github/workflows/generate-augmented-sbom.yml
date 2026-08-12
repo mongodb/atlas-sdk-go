@@ -16,12 +16,12 @@ jobs:
   augment-sbom:
     runs-on: ubuntu-latest
     env:
-      ECR_REGISTRY: 901841024863.dkr.ecr.us-east-1.amazonaws.com
-      ECR_ROLE_ARN: arn:aws:iam::901841024863:role/ecr-role-gha-ro
+      ECR_REGISTRY: ${{ vars.ECR_REGISTRY }}
+      ECR_ROLE_ARN: ${{ vars.ECR_ROLE_ARN }}
       KONDUKTO_TOKEN: ${{ secrets.KONDUKTO_TOKEN }}
       KONDUKTO_REPO: ${{ vars.KONDUKTO_REPO }}
       KONDUKTO_BRANCH_PREFIX: ${{ vars.KONDUKTO_BRANCH_PREFIX }}
-      SILKBOMB_IMG: 901841024863.dkr.ecr.us-east-1.amazonaws.com/release-infrastructure/silkbomb:2.0@sha256:fd89d36841f1f7f286f1dbddffdb50f3e9d893d867ee3ddd441187a96539ee08
+      SILKBOMB_IMG: ${{ vars.SILKBOMB_IMG }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
