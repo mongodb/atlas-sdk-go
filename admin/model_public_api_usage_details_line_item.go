@@ -11,6 +11,9 @@ type PublicApiUsageDetailsLineItem struct {
 	AdditionalData *AdditionalData `json:"additionalData,omitempty"`
 	// Billing date of the line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	BillDate *time.Time `json:"billDate,omitempty"`
+	// Code identifying the cloud provider this line item's usage is attributed to. Values map as follows: AWS is Amazon Web Services, GCP is Google Cloud, AZURE is Microsoft Azure, and ATLAS is other Atlas usage not tied to a specific cloud provider.
+	// Read only field.
+	CloudProvider *string `json:"cloudProvider,omitempty"`
 	// Cluster associated with the line item.
 	ClusterName *string `json:"clusterName,omitempty"`
 	// Description of the line item, which can include SKU name and other identifying information.
@@ -132,6 +135,46 @@ func (o *PublicApiUsageDetailsLineItem) SetBillDate(v time.Time) {
 func (o *PublicApiUsageDetailsLineItem) SetBillDateNil() {
 	o.BillDate = nil
 	o.NullFields = addNullField(o.NullFields, "BillDate")
+}
+
+// GetCloudProvider returns the CloudProvider field value if set, zero value otherwise
+func (o *PublicApiUsageDetailsLineItem) GetCloudProvider() string {
+	if o == nil || IsNil(o.CloudProvider) {
+		var ret string
+		return ret
+	}
+	return *o.CloudProvider
+}
+
+// GetCloudProviderOk returns a tuple with the CloudProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PublicApiUsageDetailsLineItem) GetCloudProviderOk() (*string, bool) {
+	if o == nil || IsNil(o.CloudProvider) {
+		return nil, false
+	}
+
+	return o.CloudProvider, true
+}
+
+// HasCloudProvider returns a boolean if a field has been set.
+func (o *PublicApiUsageDetailsLineItem) HasCloudProvider() bool {
+	if o != nil && !IsNil(o.CloudProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudProvider gets a reference to the given string and assigns it to the CloudProvider field.
+func (o *PublicApiUsageDetailsLineItem) SetCloudProvider(v string) {
+	o.CloudProvider = &v
+	o.NullFields = removeNullField(o.NullFields, "CloudProvider")
+}
+
+// SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled.
+func (o *PublicApiUsageDetailsLineItem) SetCloudProviderNil() {
+	o.CloudProvider = nil
+	o.NullFields = addNullField(o.NullFields, "CloudProvider")
 }
 
 // GetClusterName returns the ClusterName field value if set, zero value otherwise

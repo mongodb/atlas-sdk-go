@@ -4,10 +4,10 @@ package admin
 
 // AiModelApiKeyCreateRequest struct for AiModelApiKeyCreateRequest
 type AiModelApiKeyCreateRequest struct {
-	// Cloud provider scope for this API key. Must be \"ANY\". Additional cloud values will be supported in future API versions.
+	// Cloud provider scope for this API key. Use \"ANY\" for a cloud-agnostic scope. Additional cloud values will be supported in future API versions.
 	// Write only field.
 	Cloud string `json:"cloud"`
-	// Geography scope for this API key. Must be \"ANY\". Additional geography values will be supported in future API versions.
+	// Geography scope for this API key. Use \"ANY\" for a geography-agnostic scope. Additional geography values will be supported in future API versions.
 	// Write only field.
 	Geography string `json:"geography"`
 	// A name for the new API key that will be created.

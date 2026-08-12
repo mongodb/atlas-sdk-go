@@ -223,6 +223,7 @@ Class        | Method        | HTTP request  | Description   |
 *InvoicesAPI* | [GetCostExplorerUsage](./docs/InvoicesAPI.md#getcostexplorerusage) | **Get** /api/atlas/v2/orgs/{orgId}/billing/costExplorer/usage/{token} | Return Usage Details for One Cost Explorer Query |
 *InvoicesAPI* | [GetInvoice](./docs/InvoicesAPI.md#getinvoice) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId} | Return One Invoice for One Organization |
 *InvoicesAPI* | [GetInvoiceCsv](./docs/InvoicesAPI.md#getinvoicecsv) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/csv | Return One Invoice as CSV for One Organization |
+*InvoicesAPI* | [GetOrgAssociatedInvoices](./docs/InvoicesAPI.md#getorgassociatedinvoices) | **Get** /api/atlas/v2/orgs/{orgId}/associatedInvoices | Return Associated Invoices |
 *InvoicesAPI* | [GetOrgInvoiceReport](./docs/InvoicesAPI.md#getorginvoicereport) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/reports/{reportId} | Return One Invoice Report |
 *InvoicesAPI* | [GetSku](./docs/InvoicesAPI.md#getsku) | **Get** /api/atlas/v2/skus/{skuId} | Return One Stock Keeping Unit |
 *InvoicesAPI* | [ListInvoicePending](./docs/InvoicesAPI.md#listinvoicepending) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/pending | Return All Pending Invoices for One Organization |
@@ -251,6 +252,11 @@ Class        | Method        | HTTP request  | Description   |
 *MaintenanceWindowsAPI* | [ResetMaintenanceWindow](./docs/MaintenanceWindowsAPI.md#resetmaintenancewindow) | **Delete** /api/atlas/v2/groups/{groupId}/maintenanceWindow | Reset One Maintenance Window for One Project |
 *MaintenanceWindowsAPI* | [ToggleMaintenanceAutoDefer](./docs/MaintenanceWindowsAPI.md#togglemaintenanceautodefer) | **Post** /api/atlas/v2/groups/{groupId}/maintenanceWindow/autoDefer | Toggle Automatic Deferral of Maintenance for One Project |
 *MaintenanceWindowsAPI* | [UpdateMaintenanceWindow](./docs/MaintenanceWindowsAPI.md#updatemaintenancewindow) | **Patch** /api/atlas/v2/groups/{groupId}/maintenanceWindow | Update One Maintenance Window for One Project |
+*MetricIntegrationsAPI* | [CreateGroupMetricIntegration](./docs/MetricIntegrationsAPI.md#creategroupmetricintegration) | **Post** /api/atlas/v2/groups/{groupId}/metricIntegrations | Create One Metric Integration |
+*MetricIntegrationsAPI* | [DeleteGroupMetricIntegration](./docs/MetricIntegrationsAPI.md#deletegroupmetricintegration) | **Delete** /api/atlas/v2/groups/{groupId}/metricIntegrations/{metricIntegrationId} | Remove One Metric Integration |
+*MetricIntegrationsAPI* | [GetGroupMetricIntegration](./docs/MetricIntegrationsAPI.md#getgroupmetricintegration) | **Get** /api/atlas/v2/groups/{groupId}/metricIntegrations/{metricIntegrationId} | Return One Metric Integration |
+*MetricIntegrationsAPI* | [ListGroupMetricIntegrations](./docs/MetricIntegrationsAPI.md#listgroupmetricintegrations) | **Get** /api/atlas/v2/groups/{groupId}/metricIntegrations | Return All Active Metric Integrations |
+*MetricIntegrationsAPI* | [UpdateGroupMetricIntegration](./docs/MetricIntegrationsAPI.md#updategroupmetricintegration) | **Put** /api/atlas/v2/groups/{groupId}/metricIntegrations/{metricIntegrationId} | Update One Metric Integration |
 *MongoDBCloudUsersAPI* | [AddGroupUserRole](./docs/MongoDBCloudUsersAPI.md#addgroupuserrole) | **Post** /api/atlas/v2/groups/{groupId}/users/{userId}:addRole | Add One Project Role to One MongoDB Cloud User |
 *MongoDBCloudUsersAPI* | [AddGroupUsers](./docs/MongoDBCloudUsersAPI.md#addgroupusers) | **Post** /api/atlas/v2/groups/{groupId}/users | Add One MongoDB Cloud User to One Project |
 *MongoDBCloudUsersAPI* | [AddOrgRole](./docs/MongoDBCloudUsersAPI.md#addorgrole) | **Post** /api/atlas/v2/orgs/{orgId}/users/{userId}:addRole | Add One Organization Role to One MongoDB Cloud User |
@@ -399,6 +405,24 @@ Class        | Method        | HTTP request  | Description   |
 *QueryShapeInsightsAPI* | [UpdateClusterQueryShape](./docs/QueryShapeInsightsAPI.md#updateclusterqueryshape) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash} | Update Query Shape Rejection Status |
 *RateLimitingAPI* | [GetRateLimit](./docs/RateLimitingAPI.md#getratelimit) | **Get** /api/atlas/v2/rateLimits/{endpointSetId} | Return One Rate Limit |
 *RateLimitingAPI* | [ListRateLimits](./docs/RateLimitingAPI.md#listratelimits) | **Get** /api/atlas/v2/rateLimits | Return All Rate Limits |
+*RemoteMCPConfigurationsAPI* | [CreateGroupMcpConfig](./docs/RemoteMCPConfigurationsAPI.md#creategroupmcpconfig) | **Post** /api/atlas/v2/groups/{groupId}/mcpConfigs | Create One MCP Configuration for One Project |
+*RemoteMCPConfigurationsAPI* | [CreateGroupMcpSecret](./docs/RemoteMCPConfigurationsAPI.md#creategroupmcpsecret) | **Post** /api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets | Create One Secret for One Project MCP Configuration |
+*RemoteMCPConfigurationsAPI* | [CreateOrgMcpConfig](./docs/RemoteMCPConfigurationsAPI.md#createorgmcpconfig) | **Post** /api/atlas/v2/orgs/{orgId}/mcpConfigs | Create One MCP Configuration for One Organization |
+*RemoteMCPConfigurationsAPI* | [CreateOrgMcpSecret](./docs/RemoteMCPConfigurationsAPI.md#createorgmcpsecret) | **Post** /api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets | Create One Secret for One Organization MCP Configuration |
+*RemoteMCPConfigurationsAPI* | [DeleteGroupMcpConfig](./docs/RemoteMCPConfigurationsAPI.md#deletegroupmcpconfig) | **Delete** /api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId} | Delete One MCP Configuration for One Project |
+*RemoteMCPConfigurationsAPI* | [DeleteGroupMcpSecret](./docs/RemoteMCPConfigurationsAPI.md#deletegroupmcpsecret) | **Delete** /api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets/{secretId} | Delete One Secret for One Project MCP Configuration |
+*RemoteMCPConfigurationsAPI* | [DeleteOrgMcpConfig](./docs/RemoteMCPConfigurationsAPI.md#deleteorgmcpconfig) | **Delete** /api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId} | Delete One MCP Configuration for One Organization |
+*RemoteMCPConfigurationsAPI* | [DeleteOrgMcpSecret](./docs/RemoteMCPConfigurationsAPI.md#deleteorgmcpsecret) | **Delete** /api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets/{secretId} | Delete One Secret for One Organization MCP Configuration |
+*RemoteMCPConfigurationsAPI* | [GetGroupMcpConfig](./docs/RemoteMCPConfigurationsAPI.md#getgroupmcpconfig) | **Get** /api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId} | Return One MCP Configuration for One Project |
+*RemoteMCPConfigurationsAPI* | [GetGroupMcpSecret](./docs/RemoteMCPConfigurationsAPI.md#getgroupmcpsecret) | **Get** /api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets/{secretId} | Return One Secret for One Project MCP Configuration |
+*RemoteMCPConfigurationsAPI* | [GetOrgMcpConfig](./docs/RemoteMCPConfigurationsAPI.md#getorgmcpconfig) | **Get** /api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId} | Return One MCP Configuration for One Organization |
+*RemoteMCPConfigurationsAPI* | [GetOrgMcpSecret](./docs/RemoteMCPConfigurationsAPI.md#getorgmcpsecret) | **Get** /api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets/{secretId} | Return One Secret for One Organization MCP Configuration |
+*RemoteMCPConfigurationsAPI* | [ListGroupMcpConfigs](./docs/RemoteMCPConfigurationsAPI.md#listgroupmcpconfigs) | **Get** /api/atlas/v2/groups/{groupId}/mcpConfigs | Return All MCP Configurations for One Project |
+*RemoteMCPConfigurationsAPI* | [ListGroupMcpSecrets](./docs/RemoteMCPConfigurationsAPI.md#listgroupmcpsecrets) | **Get** /api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId}/secrets | Return All Secrets for One Project MCP Configuration |
+*RemoteMCPConfigurationsAPI* | [ListOrgMcpConfigs](./docs/RemoteMCPConfigurationsAPI.md#listorgmcpconfigs) | **Get** /api/atlas/v2/orgs/{orgId}/mcpConfigs | Return All MCP Configurations for One Organization |
+*RemoteMCPConfigurationsAPI* | [ListOrgMcpSecrets](./docs/RemoteMCPConfigurationsAPI.md#listorgmcpsecrets) | **Get** /api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId}/secrets | Return All Secrets for One Organization MCP Configuration |
+*RemoteMCPConfigurationsAPI* | [UpdateGroupMcpConfig](./docs/RemoteMCPConfigurationsAPI.md#updategroupmcpconfig) | **Patch** /api/atlas/v2/groups/{groupId}/mcpConfigs/{mcpConfigId} | Update One MCP Configuration for One Project |
+*RemoteMCPConfigurationsAPI* | [UpdateOrgMcpConfig](./docs/RemoteMCPConfigurationsAPI.md#updateorgmcpconfig) | **Patch** /api/atlas/v2/orgs/{orgId}/mcpConfigs/{mcpConfigId} | Update One MCP Configuration for One Organization |
 *ResourcePoliciesAPI* | [CreateOrgResourcePolicy](./docs/ResourcePoliciesAPI.md#createorgresourcepolicy) | **Post** /api/atlas/v2/orgs/{orgId}/resourcePolicies | Create One Atlas Resource Policy |
 *ResourcePoliciesAPI* | [DeleteOrgResourcePolicy](./docs/ResourcePoliciesAPI.md#deleteorgresourcepolicy) | **Delete** /api/atlas/v2/orgs/{orgId}/resourcePolicies/{resourcePolicyId} | Delete One Atlas Resource Policy |
 *ResourcePoliciesAPI* | [GetNonCompliantResources](./docs/ResourcePoliciesAPI.md#getnoncompliantresources) | **Get** /api/atlas/v2/orgs/{orgId}/nonCompliantResources | Return All Non-Compliant Resources |
@@ -561,6 +585,7 @@ Class        | Method        | HTTP request  | Description   |
  - [ApiSearchDeploymentRequestSpec](./docs/ApiSearchDeploymentRequestSpec.md)
  - [ApiSearchDeploymentResponse](./docs/ApiSearchDeploymentResponse.md)
  - [ApiSearchDeploymentSpec](./docs/ApiSearchDeploymentSpec.md)
+ - [AssociatedInvoice](./docs/AssociatedInvoice.md)
  - [AtlasClusterOutageSimulationOutageFilter](./docs/AtlasClusterOutageSimulationOutageFilter.md)
  - [AtlasOrganization](./docs/AtlasOrganization.md)
  - [AtlasSearchAnalyzer](./docs/AtlasSearchAnalyzer.md)
@@ -643,6 +668,8 @@ Class        | Method        | HTTP request  | Description   |
  - [CreateDataProcessRegion](./docs/CreateDataProcessRegion.md)
  - [CreateEndpointRequest](./docs/CreateEndpointRequest.md)
  - [CreateGCPForwardingRuleRequest](./docs/CreateGCPForwardingRuleRequest.md)
+ - [CreateGroupMcpConfigRequest](./docs/CreateGroupMcpConfigRequest.md)
+ - [CreateOrgMcpConfigRequest](./docs/CreateOrgMcpConfigRequest.md)
  - [CreateOrganizationRequest](./docs/CreateOrganizationRequest.md)
  - [CreateOrganizationResponse](./docs/CreateOrganizationResponse.md)
  - [CreatePushBasedLogExportProjectRequest](./docs/CreatePushBasedLogExportProjectRequest.md)
@@ -733,6 +760,8 @@ Class        | Method        | HTTP request  | Description   |
  - [FlexProviderSettingsCreate20241113](./docs/FlexProviderSettingsCreate20241113.md)
  - [FreeComputeAutoScalingRules](./docs/FreeComputeAutoScalingRules.md)
  - [GCPConsumerForwardingRule](./docs/GCPConsumerForwardingRule.md)
+ - [Gateway](./docs/Gateway.md)
+ - [GatewayIpAddresses](./docs/GatewayIpAddresses.md)
  - [GeoSharding20240805](./docs/GeoSharding20240805.md)
  - [GoogleCloudKMS](./docs/GoogleCloudKMS.md)
  - [Group](./docs/Group.md)
@@ -742,6 +771,8 @@ Class        | Method        | HTTP request  | Description   |
  - [GroupInvitationRequest](./docs/GroupInvitationRequest.md)
  - [GroupInvitationUpdateRequest](./docs/GroupInvitationUpdateRequest.md)
  - [GroupMaintenanceWindow](./docs/GroupMaintenanceWindow.md)
+ - [GroupMcpConfigResponse](./docs/GroupMcpConfigResponse.md)
+ - [GroupMcpConfigUpdateRequest](./docs/GroupMcpConfigUpdateRequest.md)
  - [GroupMigrationRequest](./docs/GroupMigrationRequest.md)
  - [GroupPaginatedEvent](./docs/GroupPaginatedEvent.md)
  - [GroupRole](./docs/GroupRole.md)
@@ -787,6 +818,9 @@ Class        | Method        | HTTP request  | Description   |
  - [MesurementsDatabase](./docs/MesurementsDatabase.md)
  - [MetricDataPoint](./docs/MetricDataPoint.md)
  - [MetricDataPointAtlas](./docs/MetricDataPointAtlas.md)
+ - [MetricIntegrationRequest](./docs/MetricIntegrationRequest.md)
+ - [MetricIntegrationResponse](./docs/MetricIntegrationResponse.md)
+ - [MetricIntegrationUpdateRequest](./docs/MetricIntegrationUpdateRequest.md)
  - [MetricsMeasurement](./docs/MetricsMeasurement.md)
  - [MetricsMeasurementAtlas](./docs/MetricsMeasurementAtlas.md)
  - [MongoDBAccessLogs](./docs/MongoDBAccessLogs.md)
@@ -800,10 +834,13 @@ Class        | Method        | HTTP request  | Description   |
  - [ObjectStoragePrivateEndpointRequest](./docs/ObjectStoragePrivateEndpointRequest.md)
  - [ObjectStoragePrivateEndpointResponse](./docs/ObjectStoragePrivateEndpointResponse.md)
  - [OnlineArchiveSchedule](./docs/OnlineArchiveSchedule.md)
+ - [OrgAssociatedInvoiceResponse](./docs/OrgAssociatedInvoiceResponse.md)
  - [OrgDelegationSettingsResponse](./docs/OrgDelegationSettingsResponse.md)
  - [OrgDelegationSettingsUpdateRequest](./docs/OrgDelegationSettingsUpdateRequest.md)
  - [OrgFederationSettings](./docs/OrgFederationSettings.md)
  - [OrgGroup](./docs/OrgGroup.md)
+ - [OrgMcpConfigResponse](./docs/OrgMcpConfigResponse.md)
+ - [OrgMcpConfigUpdateRequest](./docs/OrgMcpConfigUpdateRequest.md)
  - [OrgPaginatedEvent](./docs/OrgPaginatedEvent.md)
  - [OrgServiceAccount](./docs/OrgServiceAccount.md)
  - [OrgServiceAccountRequest](./docs/OrgServiceAccountRequest.md)
@@ -864,15 +901,19 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedEventTypeDetailsResponse](./docs/PaginatedEventTypeDetailsResponse.md)
  - [PaginatedFederationIdentityProvider](./docs/PaginatedFederationIdentityProvider.md)
  - [PaginatedFlexClusters20241113](./docs/PaginatedFlexClusters20241113.md)
+ - [PaginatedGroupMcpConfig](./docs/PaginatedGroupMcpConfig.md)
  - [PaginatedGroupServiceAccounts](./docs/PaginatedGroupServiceAccounts.md)
  - [PaginatedGroupUser](./docs/PaginatedGroupUser.md)
  - [PaginatedHostViewAtlas](./docs/PaginatedHostViewAtlas.md)
  - [PaginatedIntegration](./docs/PaginatedIntegration.md)
  - [PaginatedInvoiceReport](./docs/PaginatedInvoiceReport.md)
  - [PaginatedLogIntegrationResponse](./docs/PaginatedLogIntegrationResponse.md)
+ - [PaginatedMcpConfigSecret](./docs/PaginatedMcpConfigSecret.md)
+ - [PaginatedMetricIntegrationResponse](./docs/PaginatedMetricIntegrationResponse.md)
  - [PaginatedNetworkAccess](./docs/PaginatedNetworkAccess.md)
  - [PaginatedOnlineArchive](./docs/PaginatedOnlineArchive.md)
  - [PaginatedOrgGroup](./docs/PaginatedOrgGroup.md)
+ - [PaginatedOrgMcpConfig](./docs/PaginatedOrgMcpConfig.md)
  - [PaginatedOrgServiceAccounts](./docs/PaginatedOrgServiceAccounts.md)
  - [PaginatedOrgUser](./docs/PaginatedOrgUser.md)
  - [PaginatedOrganization](./docs/PaginatedOrganization.md)
@@ -923,6 +964,7 @@ Class        | Method        | HTTP request  | Description   |
  - [RateLimitEndpointSetRefillRate](./docs/RateLimitEndpointSetRefillRate.md)
  - [RateLimitEndpointSetResponse](./docs/RateLimitEndpointSetResponse.md)
  - [Raw](./docs/Raw.md)
+ - [RedactedHeader](./docs/RedactedHeader.md)
  - [RegionSpec](./docs/RegionSpec.md)
  - [ReplicationSpec20240805](./docs/ReplicationSpec20240805.md)
  - [ResourceTag](./docs/ResourceTag.md)

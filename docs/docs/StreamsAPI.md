@@ -278,7 +278,7 @@ Other parameters are passed through a pointer to a apiCreatePrivateLinkConnectio
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **streamsPrivateLinkConnection** | [**StreamsPrivateLinkConnection**](StreamsPrivateLinkConnection.md) | Details to create one Private Link connection for a project. project. | 
+ **streamsPrivateLinkConnection** | [**StreamsPrivateLinkConnection**](StreamsPrivateLinkConnection.md) | Details to create one Private Link connection for a project. | 
 
 ### Return type
 

@@ -45,7 +45,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    aiModelApiKeyCreateRequest := *admin.NewAiModelApiKeyCreateRequest("ANY", "ANY", "Name_example") // AiModelApiKeyCreateRequest | 
+    aiModelApiKeyCreateRequest := *admin.NewAiModelApiKeyCreateRequest("Cloud_example", "Geography_example", "Name_example") // AiModelApiKeyCreateRequest | 
 
     resp, r, err := sdk.AIModelAPIKeysAPI.CreateGroupModelKey(context.Background(), groupId, &aiModelApiKeyCreateRequest).Execute()
     if err != nil {

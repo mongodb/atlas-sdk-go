@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**CloudProvider** | Pointer to **string** | Code identifying the cloud provider this line item&#39;s usage is attributed to. Values map as follows: AWS is Amazon Web Services, GCP is Google Cloud, AZURE is Microsoft Azure, and ATLAS is other Atlas usage not tied to a specific cloud provider. | [optional] [readonly] 
 **ClusterName** | Pointer to **string** | Human-readable label that identifies the cluster that incurred the charge. | [optional] [readonly] 
 **Created** | Pointer to **time.Time** | Date and time when MongoDB Cloud created this line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **DiscountCents** | Pointer to **int64** | Sum by which MongoDB discounted this line item. MongoDB Cloud expresses this value in cents (100ths of one US Dollar). The resource returns this parameter when a discount applies. | [optional] [readonly] 
@@ -41,6 +42,37 @@ will change when the set of required properties is changed
 NewInvoiceLineItemWithDefaults instantiates a new InvoiceLineItem object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetCloudProvider
+
+`func (o *InvoiceLineItem) GetCloudProvider() string`
+
+GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
+
+### GetCloudProviderOk
+
+`func (o *InvoiceLineItem) GetCloudProviderOk() (*string, bool)`
+
+GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudProvider
+
+`func (o *InvoiceLineItem) SetCloudProvider(v string)`
+
+SetCloudProvider sets CloudProvider field to given value.
+
+### HasCloudProvider
+
+`func (o *InvoiceLineItem) HasCloudProvider() bool`
+
+HasCloudProvider returns a boolean if a field has been set.
+
+### SetCloudProviderNil
+
+`func (o *InvoiceLineItem) SetCloudProviderNil()`
+
+SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProvider. Calling SetCloudProvider again clears the null override.
 
 ### GetClusterName
 

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AdditionalData** | Pointer to [**AdditionalData**](AdditionalData.md) |  | [optional] 
 **BillDate** | Pointer to **time.Time** | Billing date of the line item. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] 
+**CloudProvider** | Pointer to **string** | Code identifying the cloud provider this line item&#39;s usage is attributed to. Values map as follows: AWS is Amazon Web Services, GCP is Google Cloud, AZURE is Microsoft Azure, and ATLAS is other Atlas usage not tied to a specific cloud provider. | [optional] [readonly] 
 **ClusterName** | Pointer to **string** | Cluster associated with the line item. | [optional] 
 **Description** | Pointer to **string** | Description of the line item, which can include SKU name and other identifying information. | [optional] 
 **GroupId** | Pointer to **string** | Group id associated with the line item. | [optional] 
@@ -94,6 +95,37 @@ HasBillDate returns a boolean if a field has been set.
 `func (o *PublicApiUsageDetailsLineItem) SetBillDateNil()`
 
 SetBillDateNil sets BillDate to an explicit JSON null when marshaled, overriding any value previously set with SetBillDate. Calling SetBillDate again clears the null override.
+
+### GetCloudProvider
+
+`func (o *PublicApiUsageDetailsLineItem) GetCloudProvider() string`
+
+GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
+
+### GetCloudProviderOk
+
+`func (o *PublicApiUsageDetailsLineItem) GetCloudProviderOk() (*string, bool)`
+
+GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudProvider
+
+`func (o *PublicApiUsageDetailsLineItem) SetCloudProvider(v string)`
+
+SetCloudProvider sets CloudProvider field to given value.
+
+### HasCloudProvider
+
+`func (o *PublicApiUsageDetailsLineItem) HasCloudProvider() bool`
+
+HasCloudProvider returns a boolean if a field has been set.
+
+### SetCloudProviderNil
+
+`func (o *PublicApiUsageDetailsLineItem) SetCloudProviderNil()`
+
+SetCloudProviderNil sets CloudProvider to an explicit JSON null when marshaled, overriding any value previously set with SetCloudProvider. Calling SetCloudProvider again clears the null override.
 
 ### GetClusterName
 
