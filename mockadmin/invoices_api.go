@@ -834,6 +834,167 @@ func (_c *InvoicesAPI_GetInvoiceWithParams_Call) RunAndReturn(run func(context.C
 	return _c
 }
 
+// GetOrgAssociatedInvoices provides a mock function with given fields: ctx, orgId
+func (_m *InvoicesAPI) GetOrgAssociatedInvoices(ctx context.Context, orgId string) admin.GetOrgAssociatedInvoicesApiRequest {
+	ret := _m.Called(ctx, orgId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetOrgAssociatedInvoices")
+	}
+
+	var r0 admin.GetOrgAssociatedInvoicesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetOrgAssociatedInvoicesApiRequest); ok {
+		r0 = rf(ctx, orgId)
+	} else {
+		r0 = ret.Get(0).(admin.GetOrgAssociatedInvoicesApiRequest)
+	}
+
+	return r0
+}
+
+// InvoicesAPI_GetOrgAssociatedInvoices_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgAssociatedInvoices'
+type InvoicesAPI_GetOrgAssociatedInvoices_Call struct {
+	*mock.Call
+}
+
+// GetOrgAssociatedInvoices is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+func (_e *InvoicesAPI_Expecter) GetOrgAssociatedInvoices(ctx any, orgId any) *InvoicesAPI_GetOrgAssociatedInvoices_Call {
+	return &InvoicesAPI_GetOrgAssociatedInvoices_Call{Call: _e.mock.On("GetOrgAssociatedInvoices", ctx, orgId)}
+}
+
+func (_c *InvoicesAPI_GetOrgAssociatedInvoices_Call) Run(run func(ctx context.Context, orgId string)) *InvoicesAPI_GetOrgAssociatedInvoices_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *InvoicesAPI_GetOrgAssociatedInvoices_Call) Return(_a0 admin.GetOrgAssociatedInvoicesApiRequest) *InvoicesAPI_GetOrgAssociatedInvoices_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *InvoicesAPI_GetOrgAssociatedInvoices_Call) RunAndReturn(run func(context.Context, string) admin.GetOrgAssociatedInvoicesApiRequest) *InvoicesAPI_GetOrgAssociatedInvoices_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetOrgAssociatedInvoicesExecute provides a mock function with given fields: r
+func (_m *InvoicesAPI) GetOrgAssociatedInvoicesExecute(r admin.GetOrgAssociatedInvoicesApiRequest) (*admin.OrgAssociatedInvoiceResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetOrgAssociatedInvoicesExecute")
+	}
+
+	var r0 *admin.OrgAssociatedInvoiceResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetOrgAssociatedInvoicesApiRequest) (*admin.OrgAssociatedInvoiceResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetOrgAssociatedInvoicesApiRequest) *admin.OrgAssociatedInvoiceResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.OrgAssociatedInvoiceResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetOrgAssociatedInvoicesApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetOrgAssociatedInvoicesApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// InvoicesAPI_GetOrgAssociatedInvoicesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgAssociatedInvoicesExecute'
+type InvoicesAPI_GetOrgAssociatedInvoicesExecute_Call struct {
+	*mock.Call
+}
+
+// GetOrgAssociatedInvoicesExecute is a helper method to define mock.On call
+//   - r admin.GetOrgAssociatedInvoicesApiRequest
+func (_e *InvoicesAPI_Expecter) GetOrgAssociatedInvoicesExecute(r any) *InvoicesAPI_GetOrgAssociatedInvoicesExecute_Call {
+	return &InvoicesAPI_GetOrgAssociatedInvoicesExecute_Call{Call: _e.mock.On("GetOrgAssociatedInvoicesExecute", r)}
+}
+
+func (_c *InvoicesAPI_GetOrgAssociatedInvoicesExecute_Call) Run(run func(r admin.GetOrgAssociatedInvoicesApiRequest)) *InvoicesAPI_GetOrgAssociatedInvoicesExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetOrgAssociatedInvoicesApiRequest))
+	})
+	return _c
+}
+
+func (_c *InvoicesAPI_GetOrgAssociatedInvoicesExecute_Call) Return(_a0 *admin.OrgAssociatedInvoiceResponse, _a1 *http.Response, _a2 error) *InvoicesAPI_GetOrgAssociatedInvoicesExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *InvoicesAPI_GetOrgAssociatedInvoicesExecute_Call) RunAndReturn(run func(admin.GetOrgAssociatedInvoicesApiRequest) (*admin.OrgAssociatedInvoiceResponse, *http.Response, error)) *InvoicesAPI_GetOrgAssociatedInvoicesExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetOrgAssociatedInvoicesWithParams provides a mock function with given fields: ctx, args
+func (_m *InvoicesAPI) GetOrgAssociatedInvoicesWithParams(ctx context.Context, args *admin.GetOrgAssociatedInvoicesApiParams) admin.GetOrgAssociatedInvoicesApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetOrgAssociatedInvoicesWithParams")
+	}
+
+	var r0 admin.GetOrgAssociatedInvoicesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetOrgAssociatedInvoicesApiParams) admin.GetOrgAssociatedInvoicesApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetOrgAssociatedInvoicesApiRequest)
+	}
+
+	return r0
+}
+
+// InvoicesAPI_GetOrgAssociatedInvoicesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgAssociatedInvoicesWithParams'
+type InvoicesAPI_GetOrgAssociatedInvoicesWithParams_Call struct {
+	*mock.Call
+}
+
+// GetOrgAssociatedInvoicesWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetOrgAssociatedInvoicesApiParams
+func (_e *InvoicesAPI_Expecter) GetOrgAssociatedInvoicesWithParams(ctx any, args any) *InvoicesAPI_GetOrgAssociatedInvoicesWithParams_Call {
+	return &InvoicesAPI_GetOrgAssociatedInvoicesWithParams_Call{Call: _e.mock.On("GetOrgAssociatedInvoicesWithParams", ctx, args)}
+}
+
+func (_c *InvoicesAPI_GetOrgAssociatedInvoicesWithParams_Call) Run(run func(ctx context.Context, args *admin.GetOrgAssociatedInvoicesApiParams)) *InvoicesAPI_GetOrgAssociatedInvoicesWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetOrgAssociatedInvoicesApiParams))
+	})
+	return _c
+}
+
+func (_c *InvoicesAPI_GetOrgAssociatedInvoicesWithParams_Call) Return(_a0 admin.GetOrgAssociatedInvoicesApiRequest) *InvoicesAPI_GetOrgAssociatedInvoicesWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *InvoicesAPI_GetOrgAssociatedInvoicesWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetOrgAssociatedInvoicesApiParams) admin.GetOrgAssociatedInvoicesApiRequest) *InvoicesAPI_GetOrgAssociatedInvoicesWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetOrgInvoiceReport provides a mock function with given fields: ctx, orgId, invoiceId, reportId
 func (_m *InvoicesAPI) GetOrgInvoiceReport(ctx context.Context, orgId string, invoiceId string, reportId string) admin.GetOrgInvoiceReportApiRequest {
 	ret := _m.Called(ctx, orgId, invoiceId, reportId)
