@@ -61,6 +61,7 @@ if agent, ok := detectaiagent.Detect(); ok {
 	userAgent += " " + agent.UserAgentIdentifier
 	// agent.ID can also be used for telemetry.
 }
+// pass userAgent to the SDK via admin.UseUserAgent(userAgent).
 ```
 
 ## Documentation

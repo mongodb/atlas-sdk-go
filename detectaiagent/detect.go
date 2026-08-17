@@ -131,8 +131,8 @@ func Detect() (DetectedAgent, bool) {
 			found := false
 
 			if marker.envVar != "" {
-				value, ok := os.LookupEnv(marker.envVar)
-				found = ok && value != "" && (marker.value == "" || value == marker.value)
+				value := os.Getenv(marker.envVar)
+				found = value != "" && (marker.value == "" || value == marker.value)
 			} else {
 				_, err := os.Stat(marker.filePath)
 				found = err == nil
