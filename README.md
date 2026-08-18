@@ -48,6 +48,22 @@ The services of a client divide the API into logical chunks and correspond to
 the structure of the Atlas API documentation at
 https://www.mongodb.com/docs/atlas/reference/api-resources-spec/.
 
+### AI agent detection
+
+The SDK provides an opt-in helper for tools to detect known AI agents that invoke them and add
+an identifier to their User-Agent:
+
+```go
+import "go.mongodb.org/atlas-sdk/v20250312023/detectaiagent"
+
+userAgent := "my-tool/1.0"
+if agent, ok := detectaiagent.Detect(); ok {
+	userAgent += " " + agent.UserAgentIdentifier
+	// agent.ID can also be used for telemetry.
+}
+// pass userAgent to the SDK via admin.UseUserAgent(userAgent).
+```
+
 ## Documentation
 
 Please refer to the [docs](./docs)
