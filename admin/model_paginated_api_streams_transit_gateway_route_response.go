@@ -2,14 +2,14 @@
 
 package admin
 
-// PaginatedApiAtlasServerlessBackupSnapshot struct for PaginatedApiAtlasServerlessBackupSnapshot
-type PaginatedApiAtlasServerlessBackupSnapshot struct {
+// PaginatedApiStreamsTransitGatewayRouteResponse struct for PaginatedApiStreamsTransitGatewayRouteResponse
+type PaginatedApiStreamsTransitGatewayRouteResponse struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results []ServerlessBackupSnapshot `json:"results"`
+	Results []StreamsTransitGatewayRouteResponse `json:"results"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
@@ -19,31 +19,31 @@ type PaginatedApiAtlasServerlessBackupSnapshot struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedApiAtlasServerlessBackupSnapshot) MarshalJSON() ([]byte, error) {
-	type noMethod PaginatedApiAtlasServerlessBackupSnapshot
+func (o *PaginatedApiStreamsTransitGatewayRouteResponse) MarshalJSON() ([]byte, error) {
+	type noMethod PaginatedApiStreamsTransitGatewayRouteResponse
 	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
-// NewPaginatedApiAtlasServerlessBackupSnapshot instantiates a new PaginatedApiAtlasServerlessBackupSnapshot object
+// NewPaginatedApiStreamsTransitGatewayRouteResponse instantiates a new PaginatedApiStreamsTransitGatewayRouteResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedApiAtlasServerlessBackupSnapshot(results []ServerlessBackupSnapshot) *PaginatedApiAtlasServerlessBackupSnapshot {
-	this := PaginatedApiAtlasServerlessBackupSnapshot{}
+func NewPaginatedApiStreamsTransitGatewayRouteResponse(results []StreamsTransitGatewayRouteResponse) *PaginatedApiStreamsTransitGatewayRouteResponse {
+	this := PaginatedApiStreamsTransitGatewayRouteResponse{}
 	this.Results = results
 	return &this
 }
 
-// NewPaginatedApiAtlasServerlessBackupSnapshotWithDefaults instantiates a new PaginatedApiAtlasServerlessBackupSnapshot object
+// NewPaginatedApiStreamsTransitGatewayRouteResponseWithDefaults instantiates a new PaginatedApiStreamsTransitGatewayRouteResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPaginatedApiAtlasServerlessBackupSnapshotWithDefaults() *PaginatedApiAtlasServerlessBackupSnapshot {
-	this := PaginatedApiAtlasServerlessBackupSnapshot{}
+func NewPaginatedApiStreamsTransitGatewayRouteResponseWithDefaults() *PaginatedApiStreamsTransitGatewayRouteResponse {
+	this := PaginatedApiStreamsTransitGatewayRouteResponse{}
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
-func (o *PaginatedApiAtlasServerlessBackupSnapshot) GetLinks() []Link {
+func (o *PaginatedApiStreamsTransitGatewayRouteResponse) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -53,7 +53,7 @@ func (o *PaginatedApiAtlasServerlessBackupSnapshot) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedApiAtlasServerlessBackupSnapshot) GetLinksOk() (*[]Link, bool) {
+func (o *PaginatedApiStreamsTransitGatewayRouteResponse) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *PaginatedApiAtlasServerlessBackupSnapshot) GetLinksOk() (*[]Link, bool)
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *PaginatedApiAtlasServerlessBackupSnapshot) HasLinks() bool {
+func (o *PaginatedApiStreamsTransitGatewayRouteResponse) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -71,21 +71,21 @@ func (o *PaginatedApiAtlasServerlessBackupSnapshot) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *PaginatedApiAtlasServerlessBackupSnapshot) SetLinks(v []Link) {
+func (o *PaginatedApiStreamsTransitGatewayRouteResponse) SetLinks(v []Link) {
 	o.Links = &v
 	o.NullFields = removeNullField(o.NullFields, "Links")
 }
 
 // SetLinksNil sets Links to an explicit JSON null when marshaled.
-func (o *PaginatedApiAtlasServerlessBackupSnapshot) SetLinksNil() {
+func (o *PaginatedApiStreamsTransitGatewayRouteResponse) SetLinksNil() {
 	o.Links = nil
 	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetResults returns the Results field value
-func (o *PaginatedApiAtlasServerlessBackupSnapshot) GetResults() []ServerlessBackupSnapshot {
+func (o *PaginatedApiStreamsTransitGatewayRouteResponse) GetResults() []StreamsTransitGatewayRouteResponse {
 	if o == nil {
-		var ret []ServerlessBackupSnapshot
+		var ret []StreamsTransitGatewayRouteResponse
 		return ret
 	}
 
@@ -94,7 +94,7 @@ func (o *PaginatedApiAtlasServerlessBackupSnapshot) GetResults() []ServerlessBac
 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedApiAtlasServerlessBackupSnapshot) GetResultsOk() (*[]ServerlessBackupSnapshot, bool) {
+func (o *PaginatedApiStreamsTransitGatewayRouteResponse) GetResultsOk() (*[]StreamsTransitGatewayRouteResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -102,12 +102,12 @@ func (o *PaginatedApiAtlasServerlessBackupSnapshot) GetResultsOk() (*[]Serverles
 }
 
 // SetResults sets field value
-func (o *PaginatedApiAtlasServerlessBackupSnapshot) SetResults(v []ServerlessBackupSnapshot) {
+func (o *PaginatedApiStreamsTransitGatewayRouteResponse) SetResults(v []StreamsTransitGatewayRouteResponse) {
 	o.Results = v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise
-func (o *PaginatedApiAtlasServerlessBackupSnapshot) GetTotalCount() int {
+func (o *PaginatedApiStreamsTransitGatewayRouteResponse) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
 		return ret
@@ -117,7 +117,7 @@ func (o *PaginatedApiAtlasServerlessBackupSnapshot) GetTotalCount() int {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedApiAtlasServerlessBackupSnapshot) GetTotalCountOk() (*int, bool) {
+func (o *PaginatedApiStreamsTransitGatewayRouteResponse) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -126,7 +126,7 @@ func (o *PaginatedApiAtlasServerlessBackupSnapshot) GetTotalCountOk() (*int, boo
 }
 
 // HasTotalCount returns a boolean if a field has been set.
-func (o *PaginatedApiAtlasServerlessBackupSnapshot) HasTotalCount() bool {
+func (o *PaginatedApiStreamsTransitGatewayRouteResponse) HasTotalCount() bool {
 	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
@@ -135,13 +135,13 @@ func (o *PaginatedApiAtlasServerlessBackupSnapshot) HasTotalCount() bool {
 }
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
-func (o *PaginatedApiAtlasServerlessBackupSnapshot) SetTotalCount(v int) {
+func (o *PaginatedApiStreamsTransitGatewayRouteResponse) SetTotalCount(v int) {
 	o.TotalCount = &v
 	o.NullFields = removeNullField(o.NullFields, "TotalCount")
 }
 
 // SetTotalCountNil sets TotalCount to an explicit JSON null when marshaled.
-func (o *PaginatedApiAtlasServerlessBackupSnapshot) SetTotalCountNil() {
+func (o *PaginatedApiStreamsTransitGatewayRouteResponse) SetTotalCountNil() {
 	o.TotalCount = nil
 	o.NullFields = addNullField(o.NullFields, "TotalCount")
 }

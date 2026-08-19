@@ -4,6 +4,8 @@ package admin
 
 // GroupSettings Collection of settings that configures the project.
 type GroupSettings struct {
+	// Flag that indicates whether the MongoDB Assistant on the Atlas Home Page is enabled for the specified project.
+	IsAtlasHomePageAiAssistantEnabled *bool `json:"isAtlasHomePageAiAssistantEnabled,omitempty"`
 	// Flag that indicates whether the AI Cluster Assistant is enabled for the specified project.
 	IsClusterAiAssistantEnabled *bool `json:"isClusterAiAssistantEnabled,omitempty"`
 	// Flag that indicates whether to collect database-specific metrics for the specified project.
@@ -56,6 +58,46 @@ func NewGroupSettingsWithDefaults() *GroupSettings {
 	var isDataExplorerGenAISampleDocumentPassingEnabled bool = false
 	this.IsDataExplorerGenAISampleDocumentPassingEnabled = &isDataExplorerGenAISampleDocumentPassingEnabled
 	return &this
+}
+
+// GetIsAtlasHomePageAiAssistantEnabled returns the IsAtlasHomePageAiAssistantEnabled field value if set, zero value otherwise
+func (o *GroupSettings) GetIsAtlasHomePageAiAssistantEnabled() bool {
+	if o == nil || IsNil(o.IsAtlasHomePageAiAssistantEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsAtlasHomePageAiAssistantEnabled
+}
+
+// GetIsAtlasHomePageAiAssistantEnabledOk returns a tuple with the IsAtlasHomePageAiAssistantEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupSettings) GetIsAtlasHomePageAiAssistantEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsAtlasHomePageAiAssistantEnabled) {
+		return nil, false
+	}
+
+	return o.IsAtlasHomePageAiAssistantEnabled, true
+}
+
+// HasIsAtlasHomePageAiAssistantEnabled returns a boolean if a field has been set.
+func (o *GroupSettings) HasIsAtlasHomePageAiAssistantEnabled() bool {
+	if o != nil && !IsNil(o.IsAtlasHomePageAiAssistantEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsAtlasHomePageAiAssistantEnabled gets a reference to the given bool and assigns it to the IsAtlasHomePageAiAssistantEnabled field.
+func (o *GroupSettings) SetIsAtlasHomePageAiAssistantEnabled(v bool) {
+	o.IsAtlasHomePageAiAssistantEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "IsAtlasHomePageAiAssistantEnabled")
+}
+
+// SetIsAtlasHomePageAiAssistantEnabledNil sets IsAtlasHomePageAiAssistantEnabled to an explicit JSON null when marshaled.
+func (o *GroupSettings) SetIsAtlasHomePageAiAssistantEnabledNil() {
+	o.IsAtlasHomePageAiAssistantEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "IsAtlasHomePageAiAssistantEnabled")
 }
 
 // GetIsClusterAiAssistantEnabled returns the IsClusterAiAssistantEnabled field value if set, zero value otherwise

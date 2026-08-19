@@ -58,6 +58,8 @@ type APIClient struct {
 
 	AuditingAPI AuditingAPI
 
+	ChartsDashboardsAPI ChartsDashboardsAPI
+
 	CloudBackupsAPI CloudBackupsAPI
 
 	CloudMigrationServiceAPI CloudMigrationServiceAPI
@@ -78,6 +80,8 @@ type APIClient struct {
 
 	EncryptionAtRestUsingCustomerKeyManagementAPI EncryptionAtRestUsingCustomerKeyManagementAPI
 
+	EphemeralClustersAPI EphemeralClustersAPI
+
 	EventsAPI EventsAPI
 
 	FederatedAuthenticationAPI FederatedAuthenticationAPI
@@ -96,6 +100,8 @@ type APIClient struct {
 
 	LegacyBackupAPI LegacyBackupAPI
 
+	LimitDescriptionAPI LimitDescriptionAPI
+
 	MaintenanceWindowsAPI MaintenanceWindowsAPI
 
 	MetricIntegrationsAPI MetricIntegrationsAPI
@@ -108,7 +114,11 @@ type APIClient struct {
 
 	OnlineArchiveAPI OnlineArchiveAPI
 
+	OpenAPIAPI OpenAPIAPI
+
 	OrganizationsAPI OrganizationsAPI
+
+	OverloadProtectionSimulationAPI OverloadProtectionSimulationAPI
 
 	PerformanceAdvisorAPI PerformanceAdvisorAPI
 
@@ -134,11 +144,15 @@ type APIClient struct {
 
 	RootAPI RootAPI
 
+	SandboxAPI SandboxAPI
+
 	ServerlessInstancesAPI ServerlessInstancesAPI
 
 	ServerlessPrivateEndpointsAPI ServerlessPrivateEndpointsAPI
 
 	ServiceAccountsAPI ServiceAccountsAPI
+
+	StandbyLinksAPI StandbyLinksAPI
 
 	StreamsAPI StreamsAPI
 
@@ -175,6 +189,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AlertsAPI = (*AlertsAPIService)(&c.common)
 	c.AtlasSearchAPI = (*AtlasSearchAPIService)(&c.common)
 	c.AuditingAPI = (*AuditingAPIService)(&c.common)
+	c.ChartsDashboardsAPI = (*ChartsDashboardsAPIService)(&c.common)
 	c.CloudBackupsAPI = (*CloudBackupsAPIService)(&c.common)
 	c.CloudMigrationServiceAPI = (*CloudMigrationServiceAPIService)(&c.common)
 	c.CloudProviderAccessAPI = (*CloudProviderAccessAPIService)(&c.common)
@@ -185,6 +200,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DataFederationAPI = (*DataFederationAPIService)(&c.common)
 	c.DatabaseUsersAPI = (*DatabaseUsersAPIService)(&c.common)
 	c.EncryptionAtRestUsingCustomerKeyManagementAPI = (*EncryptionAtRestUsingCustomerKeyManagementAPIService)(&c.common)
+	c.EphemeralClustersAPI = (*EphemeralClustersAPIService)(&c.common)
 	c.EventsAPI = (*EventsAPIService)(&c.common)
 	c.FederatedAuthenticationAPI = (*FederatedAuthenticationAPIService)(&c.common)
 	c.FlexClustersAPI = (*FlexClustersAPIService)(&c.common)
@@ -194,13 +210,16 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.InvoicesAPI = (*InvoicesAPIService)(&c.common)
 	c.LDAPConfigurationAPI = (*LDAPConfigurationAPIService)(&c.common)
 	c.LegacyBackupAPI = (*LegacyBackupAPIService)(&c.common)
+	c.LimitDescriptionAPI = (*LimitDescriptionAPIService)(&c.common)
 	c.MaintenanceWindowsAPI = (*MaintenanceWindowsAPIService)(&c.common)
 	c.MetricIntegrationsAPI = (*MetricIntegrationsAPIService)(&c.common)
 	c.MongoDBCloudUsersAPI = (*MongoDBCloudUsersAPIService)(&c.common)
 	c.MonitoringAndLogsAPI = (*MonitoringAndLogsAPIService)(&c.common)
 	c.NetworkPeeringAPI = (*NetworkPeeringAPIService)(&c.common)
 	c.OnlineArchiveAPI = (*OnlineArchiveAPIService)(&c.common)
+	c.OpenAPIAPI = (*OpenAPIAPIService)(&c.common)
 	c.OrganizationsAPI = (*OrganizationsAPIService)(&c.common)
+	c.OverloadProtectionSimulationAPI = (*OverloadProtectionSimulationAPIService)(&c.common)
 	c.PerformanceAdvisorAPI = (*PerformanceAdvisorAPIService)(&c.common)
 	c.PrivateEndpointServicesAPI = (*PrivateEndpointServicesAPIService)(&c.common)
 	c.ProgrammaticAPIKeysAPI = (*ProgrammaticAPIKeysAPIService)(&c.common)
@@ -213,9 +232,11 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ResourcePoliciesAPI = (*ResourcePoliciesAPIService)(&c.common)
 	c.RollingIndexAPI = (*RollingIndexAPIService)(&c.common)
 	c.RootAPI = (*RootAPIService)(&c.common)
+	c.SandboxAPI = (*SandboxAPIService)(&c.common)
 	c.ServerlessInstancesAPI = (*ServerlessInstancesAPIService)(&c.common)
 	c.ServerlessPrivateEndpointsAPI = (*ServerlessPrivateEndpointsAPIService)(&c.common)
 	c.ServiceAccountsAPI = (*ServiceAccountsAPIService)(&c.common)
+	c.StandbyLinksAPI = (*StandbyLinksAPIService)(&c.common)
 	c.StreamsAPI = (*StreamsAPIService)(&c.common)
 	c.TeamsAPI = (*TeamsAPIService)(&c.common)
 	c.ThirdPartyIntegrationsAPI = (*ThirdPartyIntegrationsAPIService)(&c.common)

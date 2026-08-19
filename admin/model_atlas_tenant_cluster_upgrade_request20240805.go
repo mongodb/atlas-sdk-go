@@ -27,8 +27,13 @@ type AtlasTenantClusterUpgradeRequest20240805 struct {
 	// Date and time when MongoDB Cloud created this cluster. This parameter expresses its value in ISO 8601 format in UTC.
 	// Read only field.
 	CreateDate *time.Time `json:"createDate,omitempty"`
+	// Available in Public Preview: Optional field that indicates whether your cluster will be Atlas INFINITE or CORE. You can set it only when you create the cluster, or when you upgrade a flex cluster to a dedicated cluster. This value is immutable once the dedicated cluster exists; attempting to change it on an update request returns an error.
+	DatabaseEdition *string `json:"databaseEdition,omitempty"`
 	// Disk warming mode selection.
 	DiskWarmingMode *string `json:"diskWarmingMode,omitempty"`
+	// Available in Public Preview: Field that represents whether your cluster is Atlas INFINITE or CORE. This is read-only and always returned in the response. It reflects the actual cluster state. This value matches `databaseEdition` if it was set, otherwise it reflects the default database edition assigned to the cluster.
+	// Read only field.
+	EffectiveDatabaseEdition *string `json:"effectiveDatabaseEdition,omitempty"`
 	// List of settings that represent the actual cluster state. This is read-only and always returned in the response. It reflects the current cluster configuration, which may differ from `replicationSpecs` due to system-managed changes.
 	// Read only field.
 	EffectiveReplicationSpecs *[]ReplicationSpec20240805 `json:"effectiveReplicationSpecs,omitempty"`
@@ -555,6 +560,46 @@ func (o *AtlasTenantClusterUpgradeRequest20240805) SetCreateDateNil() {
 	o.NullFields = addNullField(o.NullFields, "CreateDate")
 }
 
+// GetDatabaseEdition returns the DatabaseEdition field value if set, zero value otherwise
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetDatabaseEdition() string {
+	if o == nil || IsNil(o.DatabaseEdition) {
+		var ret string
+		return ret
+	}
+	return *o.DatabaseEdition
+}
+
+// GetDatabaseEditionOk returns a tuple with the DatabaseEdition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetDatabaseEditionOk() (*string, bool) {
+	if o == nil || IsNil(o.DatabaseEdition) {
+		return nil, false
+	}
+
+	return o.DatabaseEdition, true
+}
+
+// HasDatabaseEdition returns a boolean if a field has been set.
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasDatabaseEdition() bool {
+	if o != nil && !IsNil(o.DatabaseEdition) {
+		return true
+	}
+
+	return false
+}
+
+// SetDatabaseEdition gets a reference to the given string and assigns it to the DatabaseEdition field.
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetDatabaseEdition(v string) {
+	o.DatabaseEdition = &v
+	o.NullFields = removeNullField(o.NullFields, "DatabaseEdition")
+}
+
+// SetDatabaseEditionNil sets DatabaseEdition to an explicit JSON null when marshaled.
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetDatabaseEditionNil() {
+	o.DatabaseEdition = nil
+	o.NullFields = addNullField(o.NullFields, "DatabaseEdition")
+}
+
 // GetDiskWarmingMode returns the DiskWarmingMode field value if set, zero value otherwise
 func (o *AtlasTenantClusterUpgradeRequest20240805) GetDiskWarmingMode() string {
 	if o == nil || IsNil(o.DiskWarmingMode) {
@@ -593,6 +638,46 @@ func (o *AtlasTenantClusterUpgradeRequest20240805) SetDiskWarmingMode(v string) 
 func (o *AtlasTenantClusterUpgradeRequest20240805) SetDiskWarmingModeNil() {
 	o.DiskWarmingMode = nil
 	o.NullFields = addNullField(o.NullFields, "DiskWarmingMode")
+}
+
+// GetEffectiveDatabaseEdition returns the EffectiveDatabaseEdition field value if set, zero value otherwise
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetEffectiveDatabaseEdition() string {
+	if o == nil || IsNil(o.EffectiveDatabaseEdition) {
+		var ret string
+		return ret
+	}
+	return *o.EffectiveDatabaseEdition
+}
+
+// GetEffectiveDatabaseEditionOk returns a tuple with the EffectiveDatabaseEdition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AtlasTenantClusterUpgradeRequest20240805) GetEffectiveDatabaseEditionOk() (*string, bool) {
+	if o == nil || IsNil(o.EffectiveDatabaseEdition) {
+		return nil, false
+	}
+
+	return o.EffectiveDatabaseEdition, true
+}
+
+// HasEffectiveDatabaseEdition returns a boolean if a field has been set.
+func (o *AtlasTenantClusterUpgradeRequest20240805) HasEffectiveDatabaseEdition() bool {
+	if o != nil && !IsNil(o.EffectiveDatabaseEdition) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveDatabaseEdition gets a reference to the given string and assigns it to the EffectiveDatabaseEdition field.
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetEffectiveDatabaseEdition(v string) {
+	o.EffectiveDatabaseEdition = &v
+	o.NullFields = removeNullField(o.NullFields, "EffectiveDatabaseEdition")
+}
+
+// SetEffectiveDatabaseEditionNil sets EffectiveDatabaseEdition to an explicit JSON null when marshaled.
+func (o *AtlasTenantClusterUpgradeRequest20240805) SetEffectiveDatabaseEditionNil() {
+	o.EffectiveDatabaseEdition = nil
+	o.NullFields = addNullField(o.NullFields, "EffectiveDatabaseEdition")
 }
 
 // GetEffectiveReplicationSpecs returns the EffectiveReplicationSpecs field value if set, zero value otherwise

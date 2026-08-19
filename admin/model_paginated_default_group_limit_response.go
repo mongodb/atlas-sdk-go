@@ -2,14 +2,14 @@
 
 package admin
 
-// PaginatedApiAtlasServerlessBackupRestoreJob struct for PaginatedApiAtlasServerlessBackupRestoreJob
-type PaginatedApiAtlasServerlessBackupRestoreJob struct {
+// PaginatedDefaultGroupLimitResponse A list of user-configurable, project-level limits with descriptions.
+type PaginatedDefaultGroupLimitResponse struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results []ServerlessBackupRestoreJob `json:"results"`
+	Results []DefaultGroupLimitResponse `json:"results"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
@@ -19,31 +19,31 @@ type PaginatedApiAtlasServerlessBackupRestoreJob struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedApiAtlasServerlessBackupRestoreJob) MarshalJSON() ([]byte, error) {
-	type noMethod PaginatedApiAtlasServerlessBackupRestoreJob
+func (o *PaginatedDefaultGroupLimitResponse) MarshalJSON() ([]byte, error) {
+	type noMethod PaginatedDefaultGroupLimitResponse
 	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
-// NewPaginatedApiAtlasServerlessBackupRestoreJob instantiates a new PaginatedApiAtlasServerlessBackupRestoreJob object
+// NewPaginatedDefaultGroupLimitResponse instantiates a new PaginatedDefaultGroupLimitResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginatedApiAtlasServerlessBackupRestoreJob(results []ServerlessBackupRestoreJob) *PaginatedApiAtlasServerlessBackupRestoreJob {
-	this := PaginatedApiAtlasServerlessBackupRestoreJob{}
+func NewPaginatedDefaultGroupLimitResponse(results []DefaultGroupLimitResponse) *PaginatedDefaultGroupLimitResponse {
+	this := PaginatedDefaultGroupLimitResponse{}
 	this.Results = results
 	return &this
 }
 
-// NewPaginatedApiAtlasServerlessBackupRestoreJobWithDefaults instantiates a new PaginatedApiAtlasServerlessBackupRestoreJob object
+// NewPaginatedDefaultGroupLimitResponseWithDefaults instantiates a new PaginatedDefaultGroupLimitResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPaginatedApiAtlasServerlessBackupRestoreJobWithDefaults() *PaginatedApiAtlasServerlessBackupRestoreJob {
-	this := PaginatedApiAtlasServerlessBackupRestoreJob{}
+func NewPaginatedDefaultGroupLimitResponseWithDefaults() *PaginatedDefaultGroupLimitResponse {
+	this := PaginatedDefaultGroupLimitResponse{}
 	return &this
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
-func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetLinks() []Link {
+func (o *PaginatedDefaultGroupLimitResponse) GetLinks() []Link {
 	if o == nil || IsNil(o.Links) {
 		var ret []Link
 		return ret
@@ -53,7 +53,7 @@ func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetLinks() []Link {
 
 // GetLinksOk returns a tuple with the Links field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetLinksOk() (*[]Link, bool) {
+func (o *PaginatedDefaultGroupLimitResponse) GetLinksOk() (*[]Link, bool) {
 	if o == nil || IsNil(o.Links) {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetLinksOk() (*[]Link, boo
 }
 
 // HasLinks returns a boolean if a field has been set.
-func (o *PaginatedApiAtlasServerlessBackupRestoreJob) HasLinks() bool {
+func (o *PaginatedDefaultGroupLimitResponse) HasLinks() bool {
 	if o != nil && !IsNil(o.Links) {
 		return true
 	}
@@ -71,21 +71,21 @@ func (o *PaginatedApiAtlasServerlessBackupRestoreJob) HasLinks() bool {
 }
 
 // SetLinks gets a reference to the given []Link and assigns it to the Links field.
-func (o *PaginatedApiAtlasServerlessBackupRestoreJob) SetLinks(v []Link) {
+func (o *PaginatedDefaultGroupLimitResponse) SetLinks(v []Link) {
 	o.Links = &v
 	o.NullFields = removeNullField(o.NullFields, "Links")
 }
 
 // SetLinksNil sets Links to an explicit JSON null when marshaled.
-func (o *PaginatedApiAtlasServerlessBackupRestoreJob) SetLinksNil() {
+func (o *PaginatedDefaultGroupLimitResponse) SetLinksNil() {
 	o.Links = nil
 	o.NullFields = addNullField(o.NullFields, "Links")
 }
 
 // GetResults returns the Results field value
-func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetResults() []ServerlessBackupRestoreJob {
+func (o *PaginatedDefaultGroupLimitResponse) GetResults() []DefaultGroupLimitResponse {
 	if o == nil {
-		var ret []ServerlessBackupRestoreJob
+		var ret []DefaultGroupLimitResponse
 		return ret
 	}
 
@@ -94,7 +94,7 @@ func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetResults() []ServerlessB
 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetResultsOk() (*[]ServerlessBackupRestoreJob, bool) {
+func (o *PaginatedDefaultGroupLimitResponse) GetResultsOk() (*[]DefaultGroupLimitResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -102,12 +102,12 @@ func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetResultsOk() (*[]Serverl
 }
 
 // SetResults sets field value
-func (o *PaginatedApiAtlasServerlessBackupRestoreJob) SetResults(v []ServerlessBackupRestoreJob) {
+func (o *PaginatedDefaultGroupLimitResponse) SetResults(v []DefaultGroupLimitResponse) {
 	o.Results = v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise
-func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetTotalCount() int {
+func (o *PaginatedDefaultGroupLimitResponse) GetTotalCount() int {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int
 		return ret
@@ -117,7 +117,7 @@ func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetTotalCount() int {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetTotalCountOk() (*int, bool) {
+func (o *PaginatedDefaultGroupLimitResponse) GetTotalCountOk() (*int, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -126,7 +126,7 @@ func (o *PaginatedApiAtlasServerlessBackupRestoreJob) GetTotalCountOk() (*int, b
 }
 
 // HasTotalCount returns a boolean if a field has been set.
-func (o *PaginatedApiAtlasServerlessBackupRestoreJob) HasTotalCount() bool {
+func (o *PaginatedDefaultGroupLimitResponse) HasTotalCount() bool {
 	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
@@ -135,13 +135,13 @@ func (o *PaginatedApiAtlasServerlessBackupRestoreJob) HasTotalCount() bool {
 }
 
 // SetTotalCount gets a reference to the given int and assigns it to the TotalCount field.
-func (o *PaginatedApiAtlasServerlessBackupRestoreJob) SetTotalCount(v int) {
+func (o *PaginatedDefaultGroupLimitResponse) SetTotalCount(v int) {
 	o.TotalCount = &v
 	o.NullFields = removeNullField(o.NullFields, "TotalCount")
 }
 
 // SetTotalCountNil sets TotalCount to an explicit JSON null when marshaled.
-func (o *PaginatedApiAtlasServerlessBackupRestoreJob) SetTotalCountNil() {
+func (o *PaginatedDefaultGroupLimitResponse) SetTotalCountNil() {
 	o.TotalCount = nil
 	o.NullFields = addNullField(o.NullFields, "TotalCount")
 }

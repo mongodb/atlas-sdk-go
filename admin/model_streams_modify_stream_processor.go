@@ -14,7 +14,7 @@ type StreamsModifyStreamProcessor struct {
 	Options *StreamsModifyStreamProcessorOptions `json:"options,omitempty"`
 	// New pipeline for the stream processor.
 	Pipeline *[]any `json:"pipeline,omitempty"`
-	// Selected tier for the Stream Workspace. Configures Memory / VCPU allowances.
+	// Selected tier for the Stream Workspace. Configures Memory or VCPU allowances.
 	Tier *string `json:"tier,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.

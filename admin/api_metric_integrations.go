@@ -12,14 +12,18 @@ import (
 type MetricIntegrationsAPI interface {
 
 	/*
-		CreateGroupMetricIntegration Create One Metric Integration
+			CreateGroupMetricIntegration Create One Metric Integration
 
-		Creates a new metric integration configuration identified by a unique ID.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param metricIntegrationRequest Metric integration configuration to create.
-		@return CreateGroupMetricIntegrationApiRequest
+		 Creates a new metric integration configuration identified by a unique ID. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param metricIntegrationRequest Metric integration configuration to create.
+			@return CreateGroupMetricIntegrationApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for MetricIntegrationsAPI
 	*/
 	CreateGroupMetricIntegration(ctx context.Context, groupId string, metricIntegrationRequest *MetricIntegrationRequest) CreateGroupMetricIntegrationApiRequest
 	/*
@@ -29,6 +33,8 @@ type MetricIntegrationsAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param CreateGroupMetricIntegrationApiParams - Parameters for the request
 		@return CreateGroupMetricIntegrationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for MetricIntegrationsAPI
 	*/
 	CreateGroupMetricIntegrationWithParams(ctx context.Context, args *CreateGroupMetricIntegrationApiParams) CreateGroupMetricIntegrationApiRequest
 
@@ -36,14 +42,18 @@ type MetricIntegrationsAPI interface {
 	CreateGroupMetricIntegrationExecute(r CreateGroupMetricIntegrationApiRequest) (*MetricIntegrationResponse, *http.Response, error)
 
 	/*
-		DeleteGroupMetricIntegration Remove One Metric Integration
+			DeleteGroupMetricIntegration Remove One Metric Integration
 
-		Removes the configuration for one metric integration identified by its unique ID.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param metricIntegrationId Unique identifier of the metric integration configuration.
-		@return DeleteGroupMetricIntegrationApiRequest
+		 Removes the configuration for one metric integration identified by its unique ID. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param metricIntegrationId Unique identifier of the metric integration configuration.
+			@return DeleteGroupMetricIntegrationApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for MetricIntegrationsAPI
 	*/
 	DeleteGroupMetricIntegration(ctx context.Context, groupId string, metricIntegrationId string) DeleteGroupMetricIntegrationApiRequest
 	/*
@@ -53,6 +63,8 @@ type MetricIntegrationsAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param DeleteGroupMetricIntegrationApiParams - Parameters for the request
 		@return DeleteGroupMetricIntegrationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for MetricIntegrationsAPI
 	*/
 	DeleteGroupMetricIntegrationWithParams(ctx context.Context, args *DeleteGroupMetricIntegrationApiParams) DeleteGroupMetricIntegrationApiRequest
 
@@ -60,14 +72,18 @@ type MetricIntegrationsAPI interface {
 	DeleteGroupMetricIntegrationExecute(r DeleteGroupMetricIntegrationApiRequest) (*http.Response, error)
 
 	/*
-		GetGroupMetricIntegration Return One Metric Integration
+			GetGroupMetricIntegration Return One Metric Integration
 
-		Returns the configuration for one metric integration identified by its unique ID.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param metricIntegrationId Unique identifier of the metric integration configuration.
-		@return GetGroupMetricIntegrationApiRequest
+		 Returns the configuration for one metric integration identified by its unique ID. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param metricIntegrationId Unique identifier of the metric integration configuration.
+			@return GetGroupMetricIntegrationApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for MetricIntegrationsAPI
 	*/
 	GetGroupMetricIntegration(ctx context.Context, groupId string, metricIntegrationId string) GetGroupMetricIntegrationApiRequest
 	/*
@@ -77,6 +93,8 @@ type MetricIntegrationsAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetGroupMetricIntegrationApiParams - Parameters for the request
 		@return GetGroupMetricIntegrationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for MetricIntegrationsAPI
 	*/
 	GetGroupMetricIntegrationWithParams(ctx context.Context, args *GetGroupMetricIntegrationApiParams) GetGroupMetricIntegrationApiRequest
 
@@ -84,13 +102,17 @@ type MetricIntegrationsAPI interface {
 	GetGroupMetricIntegrationExecute(r GetGroupMetricIntegrationApiRequest) (*MetricIntegrationResponse, *http.Response, error)
 
 	/*
-		ListGroupMetricIntegrations Return All Active Metric Integrations
+			ListGroupMetricIntegrations Return All Active Metric Integrations
 
-		Returns all metric integration configurations for the project. Optionally filter by integration type and provider type.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return ListGroupMetricIntegrationsApiRequest
+		 Returns all metric integration configurations for the project. Optionally filter by integration type and provider type. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@return ListGroupMetricIntegrationsApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for MetricIntegrationsAPI
 	*/
 	ListGroupMetricIntegrations(ctx context.Context, groupId string) ListGroupMetricIntegrationsApiRequest
 	/*
@@ -100,6 +122,8 @@ type MetricIntegrationsAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param ListGroupMetricIntegrationsApiParams - Parameters for the request
 		@return ListGroupMetricIntegrationsApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for MetricIntegrationsAPI
 	*/
 	ListGroupMetricIntegrationsWithParams(ctx context.Context, args *ListGroupMetricIntegrationsApiParams) ListGroupMetricIntegrationsApiRequest
 
@@ -107,15 +131,19 @@ type MetricIntegrationsAPI interface {
 	ListGroupMetricIntegrationsExecute(r ListGroupMetricIntegrationsApiRequest) (*PaginatedMetricIntegrationResponse, *http.Response, error)
 
 	/*
-		UpdateGroupMetricIntegration Update One Metric Integration
+			UpdateGroupMetricIntegration Update One Metric Integration
 
-		Updates the configuration for one metric integration identified by its unique ID.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param metricIntegrationId Unique identifier of the metric integration configuration.
-		@param metricIntegrationUpdateRequest Updated metric integration configuration.
-		@return UpdateGroupMetricIntegrationApiRequest
+		 Updates the configuration for one metric integration identified by its unique ID. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param metricIntegrationId Unique identifier of the metric integration configuration.
+			@param metricIntegrationUpdateRequest Updated metric integration configuration.
+			@return UpdateGroupMetricIntegrationApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for MetricIntegrationsAPI
 	*/
 	UpdateGroupMetricIntegration(ctx context.Context, groupId string, metricIntegrationId string, metricIntegrationUpdateRequest *MetricIntegrationUpdateRequest) UpdateGroupMetricIntegrationApiRequest
 	/*
@@ -125,6 +153,8 @@ type MetricIntegrationsAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param UpdateGroupMetricIntegrationApiParams - Parameters for the request
 		@return UpdateGroupMetricIntegrationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for MetricIntegrationsAPI
 	*/
 	UpdateGroupMetricIntegrationWithParams(ctx context.Context, args *UpdateGroupMetricIntegrationApiParams) UpdateGroupMetricIntegrationApiRequest
 
@@ -163,11 +193,15 @@ func (r CreateGroupMetricIntegrationApiRequest) Execute() (*MetricIntegrationRes
 /*
 CreateGroupMetricIntegration Create One Metric Integration
 
-Creates a new metric integration configuration identified by a unique ID.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Creates a new metric integration configuration identified by a unique ID. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateGroupMetricIntegrationApiRequest
+
+Deprecated
 */
 func (a *MetricIntegrationsAPIService) CreateGroupMetricIntegration(ctx context.Context, groupId string, metricIntegrationRequest *MetricIntegrationRequest) CreateGroupMetricIntegrationApiRequest {
 	return CreateGroupMetricIntegrationApiRequest{
@@ -181,6 +215,8 @@ func (a *MetricIntegrationsAPIService) CreateGroupMetricIntegration(ctx context.
 // CreateGroupMetricIntegrationExecute executes the request
 //
 //	@return MetricIntegrationResponse
+//
+// Deprecated
 func (a *MetricIntegrationsAPIService) CreateGroupMetricIntegrationExecute(r CreateGroupMetricIntegrationApiRequest) (*MetricIntegrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -208,7 +244,7 @@ func (a *MetricIntegrationsAPIService) CreateGroupMetricIntegrationExecute(r Cre
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -217,7 +253,7 @@ func (a *MetricIntegrationsAPIService) CreateGroupMetricIntegrationExecute(r Cre
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -286,12 +322,16 @@ func (r DeleteGroupMetricIntegrationApiRequest) Execute() (*http.Response, error
 /*
 DeleteGroupMetricIntegration Remove One Metric Integration
 
-Removes the configuration for one metric integration identified by its unique ID.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Removes the configuration for one metric integration identified by its unique ID. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param metricIntegrationId Unique identifier of the metric integration configuration.
 	@return DeleteGroupMetricIntegrationApiRequest
+
+Deprecated
 */
 func (a *MetricIntegrationsAPIService) DeleteGroupMetricIntegration(ctx context.Context, groupId string, metricIntegrationId string) DeleteGroupMetricIntegrationApiRequest {
 	return DeleteGroupMetricIntegrationApiRequest{
@@ -303,6 +343,7 @@ func (a *MetricIntegrationsAPIService) DeleteGroupMetricIntegration(ctx context.
 }
 
 // DeleteGroupMetricIntegrationExecute executes the request
+// Deprecated
 func (a *MetricIntegrationsAPIService) DeleteGroupMetricIntegrationExecute(r DeleteGroupMetricIntegrationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -339,7 +380,7 @@ func (a *MetricIntegrationsAPIService) DeleteGroupMetricIntegrationExecute(r Del
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -392,12 +433,16 @@ func (r GetGroupMetricIntegrationApiRequest) Execute() (*MetricIntegrationRespon
 /*
 GetGroupMetricIntegration Return One Metric Integration
 
-Returns the configuration for one metric integration identified by its unique ID.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns the configuration for one metric integration identified by its unique ID. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param metricIntegrationId Unique identifier of the metric integration configuration.
 	@return GetGroupMetricIntegrationApiRequest
+
+Deprecated
 */
 func (a *MetricIntegrationsAPIService) GetGroupMetricIntegration(ctx context.Context, groupId string, metricIntegrationId string) GetGroupMetricIntegrationApiRequest {
 	return GetGroupMetricIntegrationApiRequest{
@@ -411,6 +456,8 @@ func (a *MetricIntegrationsAPIService) GetGroupMetricIntegration(ctx context.Con
 // GetGroupMetricIntegrationExecute executes the request
 //
 //	@return MetricIntegrationResponse
+//
+// Deprecated
 func (a *MetricIntegrationsAPIService) GetGroupMetricIntegrationExecute(r GetGroupMetricIntegrationApiRequest) (*MetricIntegrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -448,7 +495,7 @@ func (a *MetricIntegrationsAPIService) GetGroupMetricIntegrationExecute(r GetGro
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -557,11 +604,15 @@ func (r ListGroupMetricIntegrationsApiRequest) Execute() (*PaginatedMetricIntegr
 /*
 ListGroupMetricIntegrations Return All Active Metric Integrations
 
-Returns all metric integration configurations for the project. Optionally filter by integration type and provider type.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns all metric integration configurations for the project. Optionally filter by integration type and provider type. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return ListGroupMetricIntegrationsApiRequest
+
+Deprecated
 */
 func (a *MetricIntegrationsAPIService) ListGroupMetricIntegrations(ctx context.Context, groupId string) ListGroupMetricIntegrationsApiRequest {
 	return ListGroupMetricIntegrationsApiRequest{
@@ -574,6 +625,8 @@ func (a *MetricIntegrationsAPIService) ListGroupMetricIntegrations(ctx context.C
 // ListGroupMetricIntegrationsExecute executes the request
 //
 //	@return PaginatedMetricIntegrationResponse
+//
+// Deprecated
 func (a *MetricIntegrationsAPIService) ListGroupMetricIntegrationsExecute(r ListGroupMetricIntegrationsApiRequest) (*PaginatedMetricIntegrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -634,7 +687,7 @@ func (a *MetricIntegrationsAPIService) ListGroupMetricIntegrationsExecute(r List
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -704,12 +757,16 @@ func (r UpdateGroupMetricIntegrationApiRequest) Execute() (*MetricIntegrationRes
 /*
 UpdateGroupMetricIntegration Update One Metric Integration
 
-Updates the configuration for one metric integration identified by its unique ID.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Updates the configuration for one metric integration identified by its unique ID. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param metricIntegrationId Unique identifier of the metric integration configuration.
 	@return UpdateGroupMetricIntegrationApiRequest
+
+Deprecated
 */
 func (a *MetricIntegrationsAPIService) UpdateGroupMetricIntegration(ctx context.Context, groupId string, metricIntegrationId string, metricIntegrationUpdateRequest *MetricIntegrationUpdateRequest) UpdateGroupMetricIntegrationApiRequest {
 	return UpdateGroupMetricIntegrationApiRequest{
@@ -724,6 +781,8 @@ func (a *MetricIntegrationsAPIService) UpdateGroupMetricIntegration(ctx context.
 // UpdateGroupMetricIntegrationExecute executes the request
 //
 //	@return MetricIntegrationResponse
+//
+// Deprecated
 func (a *MetricIntegrationsAPIService) UpdateGroupMetricIntegrationExecute(r UpdateGroupMetricIntegrationApiRequest) (*MetricIntegrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -755,7 +814,7 @@ func (a *MetricIntegrationsAPIService) UpdateGroupMetricIntegrationExecute(r Upd
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -764,7 +823,7 @@ func (a *MetricIntegrationsAPIService) UpdateGroupMetricIntegrationExecute(r Upd
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

@@ -4,9 +4,9 @@ package admin
 
 // ProtectedHours Defines the a window where maintenance will not begin within.
 type ProtectedHours struct {
-	// Zero-based integer that represents the end hour of the of the day that the maintenance will not begin in.
+	// Zero-based integer, in the project's configured time zone (see `timeZoneId`), that represents the end hour of the day that maintenance will not begin in.
 	EndHourOfDay *int `json:"endHourOfDay,omitempty"`
-	// Zero-based integer that represents the beginning hour of the of the day that the maintenance will not begin in.
+	// Zero-based integer, in the project's configured time zone (see `timeZoneId`), that represents the beginning hour of the day that maintenance will not begin in.
 	StartHourOfDay *int `json:"startHourOfDay,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
