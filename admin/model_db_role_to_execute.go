@@ -2,7 +2,7 @@
 
 package admin
 
-// DBRoleToExecute The name of a built-in or custom DB Role to connect to an Atlas Cluster.
+// DBRoleToExecute Name of a built-in or custom DB Role to connect to a MongoDB Cloud Cluster.
 type DBRoleToExecute struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.

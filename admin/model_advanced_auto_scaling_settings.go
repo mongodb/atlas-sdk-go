@@ -6,6 +6,8 @@ package admin
 type AdvancedAutoScalingSettings struct {
 	Compute *AdvancedComputeAutoScaling `json:"compute,omitempty"`
 	DiskGB  *DiskGBAutoScaling          `json:"diskGB,omitempty"`
+	// Available in Public Preview: Settings that determine the per-shard data-size limit for this cluster. Applies only to Atlas INFINITE clusters. MongoDB Cloud accepts these settings only on `autoScaling` and rejects them on `analyticsAutoScaling`. Set this to `null` to remove every setting it contains.
+	StorageConfig *StorageConfig `json:"storageConfig,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`
@@ -112,4 +114,44 @@ func (o *AdvancedAutoScalingSettings) SetDiskGB(v DiskGBAutoScaling) {
 func (o *AdvancedAutoScalingSettings) SetDiskGBNil() {
 	o.DiskGB = nil
 	o.NullFields = addNullField(o.NullFields, "DiskGB")
+}
+
+// GetStorageConfig returns the StorageConfig field value if set, zero value otherwise
+func (o *AdvancedAutoScalingSettings) GetStorageConfig() StorageConfig {
+	if o == nil || IsNil(o.StorageConfig) {
+		var ret StorageConfig
+		return ret
+	}
+	return *o.StorageConfig
+}
+
+// GetStorageConfigOk returns a tuple with the StorageConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AdvancedAutoScalingSettings) GetStorageConfigOk() (*StorageConfig, bool) {
+	if o == nil || IsNil(o.StorageConfig) {
+		return nil, false
+	}
+
+	return o.StorageConfig, true
+}
+
+// HasStorageConfig returns a boolean if a field has been set.
+func (o *AdvancedAutoScalingSettings) HasStorageConfig() bool {
+	if o != nil && !IsNil(o.StorageConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetStorageConfig gets a reference to the given StorageConfig and assigns it to the StorageConfig field.
+func (o *AdvancedAutoScalingSettings) SetStorageConfig(v StorageConfig) {
+	o.StorageConfig = &v
+	o.NullFields = removeNullField(o.NullFields, "StorageConfig")
+}
+
+// SetStorageConfigNil sets StorageConfig to an explicit JSON null when marshaled.
+func (o *AdvancedAutoScalingSettings) SetStorageConfigNil() {
+	o.StorageConfig = nil
+	o.NullFields = addNullField(o.NullFields, "StorageConfig")
 }
