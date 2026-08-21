@@ -9,7 +9,7 @@ type AccessListItem struct {
 	CidrBlock *string `json:"cidrBlock,omitempty"`
 	// IP address included in the API access list.
 	// Read only field.
-	IpAddress string `json:"ipAddress"`
+	IpAddress string `json:"ipAddress,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`

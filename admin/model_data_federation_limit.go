@@ -15,7 +15,7 @@ type DataFederationLimit struct {
 	MaximumLimit *int64 `json:"maximumLimit,omitempty"`
 	// Human-readable label that identifies the user-managed limit to modify.
 	// Read only field.
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// Amount to set the limit to.
 	Value int64 `json:"value"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).

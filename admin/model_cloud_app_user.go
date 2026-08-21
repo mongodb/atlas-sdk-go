@@ -16,7 +16,7 @@ type CloudAppUser struct {
 	// Email address that belongs to the MongoDB Cloud user.
 	// Read only field.
 	// Deprecated
-	EmailAddress string `json:"emailAddress"`
+	EmailAddress string `json:"emailAddress,omitempty"`
 	// First or given name that belongs to the MongoDB Cloud user.
 	FirstName string `json:"firstName"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud user.

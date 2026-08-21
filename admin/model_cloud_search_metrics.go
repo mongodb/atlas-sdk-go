@@ -6,19 +6,19 @@ package admin
 type CloudSearchMetrics struct {
 	// Unique 24-hexadecimal digit string that identifies the project.
 	// Read only field.
-	GroupId string `json:"groupId"`
+	GroupId string `json:"groupId,omitempty"`
 	// List that contains all host compute, memory, and storage utilization dedicated to Atlas Search when MongoDB Atlas received this request.
 	// Read only field.
-	HardwareMetrics []FTSMetric `json:"hardwareMetrics"`
+	HardwareMetrics []FTSMetric `json:"hardwareMetrics,omitempty"`
 	// List that contains all performance and utilization measurements that Atlas Search index performed by the time MongoDB Atlas received this request.
 	// Read only field.
-	IndexMetrics []FTSMetric `json:"indexMetrics"`
+	IndexMetrics []FTSMetric `json:"indexMetrics,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Hostname and port that identifies the process.
 	// Read only field.
-	ProcessId string `json:"processId"`
+	ProcessId string `json:"processId,omitempty"`
 	// List that contains all available Atlas Search status metrics when MongoDB Atlas received this request.
 	StatusMetrics []FTSMetric `json:"statusMetrics"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).

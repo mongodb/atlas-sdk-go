@@ -9,7 +9,7 @@ type PaginatedApiAtlasFlexBackupSnapshot20241113 struct {
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results []FlexBackupSnapshot20241113 `json:"results"`
+	Results []FlexBackupSnapshot20241113 `json:"results,omitempty"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`

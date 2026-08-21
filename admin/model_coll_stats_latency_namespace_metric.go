@@ -6,10 +6,10 @@ package admin
 type CollStatsLatencyNamespaceMetric struct {
 	// Human-readable label that identifies this metric.
 	// Read only field.
-	MetricName string `json:"metricName"`
+	MetricName string `json:"metricName,omitempty"`
 	// Unit of measurement that applies to this metric.
 	// Read only field.
-	Units string `json:"units"`
+	Units string `json:"units,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`

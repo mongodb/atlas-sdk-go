@@ -22,7 +22,7 @@ type DataFederationTenantQueryLimit struct {
 	MaximumLimit *int64 `json:"maximumLimit,omitempty"`
 	// Human-readable label that identifies the user-managed limit to modify.
 	// Read only field.
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// Only used for Data Federation limits. Action to take when the usage limit is exceeded. If limit span is set to QUERY, this is ignored because MongoDB Cloud stops the query when it exceeds the usage limit.
 	OverrunPolicy *string `json:"overrunPolicy,omitempty"`
 	// Human-readable label that identifies the Federated Database Instance. If specified, the usage limit is for the specified federated database instance only. If omitted, the usage limit is for all federated database instances in the project.
