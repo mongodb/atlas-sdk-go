@@ -6,7 +6,7 @@ package admin
 type EndpointService struct {
 	// Cloud service provider that serves the requested endpoint service.
 	// Read only field.
-	CloudProvider string `json:"cloudProvider"`
+	CloudProvider string `json:"cloudProvider,omitempty"`
 	// Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
 	// Read only field.
 	ErrorMessage *string `json:"errorMessage,omitempty"`

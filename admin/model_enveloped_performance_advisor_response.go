@@ -13,7 +13,7 @@ type EnvelopedPerformanceAdvisorResponse struct {
 	Locations *[]string `json:"locations,omitempty"`
 	// HTTP status code returned with this response.
 	// Read only field.
-	Status int `json:"status"`
+	Status int `json:"status,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`

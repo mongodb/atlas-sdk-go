@@ -9,10 +9,10 @@ type ApiError struct {
 	Detail *string `json:"detail,omitempty"`
 	// HTTP status code returned with this error.
 	// Read only field.
-	Error int `json:"error"`
+	Error int `json:"error,omitempty"`
 	// Application error code returned with this error.
 	// Read only field.
-	ErrorCode string `json:"errorCode"`
+	ErrorCode string `json:"errorCode,omitempty"`
 	// Parameters used to give more information about the error.
 	// Read only field.
 	Parameters *[]any `json:"parameters,omitempty"`

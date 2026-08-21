@@ -17,7 +17,7 @@ type MetricIntegrationResponse struct {
 	IntegrationType string `json:"integrationType"`
 	// Unique identifier of the metric integration configuration.
 	// Read only field.
-	MetricIntegrationId string `json:"metricIntegrationId"`
+	MetricIntegrationId string `json:"metricIntegrationId,omitempty"`
 	// Array of metric categories to export. Determines which types of metrics are sent to the integration.
 	MetricSelection []string `json:"metricSelection"`
 	// The provider type for the metric integration. Identifies the third-party service provider.

@@ -12,7 +12,7 @@ type CollStatsRankedNamespaces struct {
 	IdentifierId *string `json:"identifierId,omitempty"`
 	// Ordered list of the hottest namespaces, highest value first.
 	// Read only field.
-	RankedNamespaces []string `json:"rankedNamespaces"`
+	RankedNamespaces []string `json:"rankedNamespaces,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`

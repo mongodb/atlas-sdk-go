@@ -6,16 +6,16 @@ package admin
 type ApiKey struct {
 	// List of network addresses granted access to this API using this API key.
 	// Read only field.
-	AccessList []AccessListItem `json:"accessList"`
+	AccessList []AccessListItem `json:"accessList,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this organization API key.
 	// Read only field.
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// Public API key value set for the specified organization API key.
 	// Read only field.
-	PublicKey string `json:"publicKey"`
+	PublicKey string `json:"publicKey,omitempty"`
 	// List that contains roles that the API key needs to have. All roles you provide must be valid for the specified project or organization. Each request must include a minimum of one valid role. The resource returns all project and organization roles assigned to the Cloud user.
 	// Read only field.
-	Roles []CloudAccessRoleAssignment `json:"roles"`
+	Roles []CloudAccessRoleAssignment `json:"roles,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`

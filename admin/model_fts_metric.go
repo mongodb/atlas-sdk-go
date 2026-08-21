@@ -6,10 +6,10 @@ package admin
 type FTSMetric struct {
 	// Human-readable label that identifies this Atlas Search hardware, status, or index measurement.
 	// Read only field.
-	MetricName string `json:"metricName"`
+	MetricName string `json:"metricName,omitempty"`
 	// Unit of measurement that applies to this Atlas Search metric.
 	// Read only field.
-	Units string `json:"units"`
+	Units string `json:"units,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`
