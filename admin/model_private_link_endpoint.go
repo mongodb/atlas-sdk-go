@@ -6,7 +6,7 @@ package admin
 type PrivateLinkEndpoint struct {
 	// Cloud service provider that serves the requested endpoint.
 	// Read only field.
-	CloudProvider string `json:"cloudProvider"`
+	CloudProvider string `json:"cloudProvider,omitempty"`
 	// Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service.
 	// Read only field.
 	DeleteRequested *bool `json:"deleteRequested,omitempty"`

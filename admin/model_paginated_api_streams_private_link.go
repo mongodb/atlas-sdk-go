@@ -9,7 +9,7 @@ type PaginatedApiStreamsPrivateLink struct {
 	Links *[]Link `json:"links,omitempty"`
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
-	Results []StreamsPrivateLinkConnection `json:"results"`
+	Results []StreamsPrivateLinkConnection `json:"results,omitempty"`
 	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`

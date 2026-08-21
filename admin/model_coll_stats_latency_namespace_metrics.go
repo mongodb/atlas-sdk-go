@@ -6,13 +6,13 @@ package admin
 type CollStatsLatencyNamespaceMetrics struct {
 	// Unique 24-hexadecimal digit string that identifies the project.
 	// Read only field.
-	GroupId string `json:"groupId"`
+	GroupId string `json:"groupId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// List of Coll Stats Latency metric names and their respective units.
 	// Read only field.
-	Metrics []CollStatsLatencyNamespaceMetric `json:"metrics"`
+	Metrics []CollStatsLatencyNamespaceMetric `json:"metrics,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`

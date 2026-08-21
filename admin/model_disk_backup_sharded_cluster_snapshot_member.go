@@ -6,13 +6,13 @@ package admin
 type DiskBackupShardedClusterSnapshotMember struct {
 	// Human-readable label that identifies the cloud provider.
 	// Read only field.
-	CloudProvider string `json:"cloudProvider"`
+	CloudProvider string `json:"cloudProvider,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the snapshot.
 	// Read only field.
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// Human-readable label that identifies the shard or config host from which MongoDB Cloud took this snapshot.
 	// Read only field.
-	ReplicaSetName string `json:"replicaSetName"`
+	ReplicaSetName string `json:"replicaSetName,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`

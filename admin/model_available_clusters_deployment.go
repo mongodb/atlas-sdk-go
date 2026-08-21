@@ -15,28 +15,28 @@ type AvailableClustersDeployment struct {
 	DbSizeBytes *int64 `json:"dbSizeBytes,omitempty"`
 	// Version of MongoDB features that this cluster supports.
 	// Read only field.
-	FeatureCompatibilityVersion string `json:"featureCompatibilityVersion"`
+	FeatureCompatibilityVersion string `json:"featureCompatibilityVersion,omitempty"`
 	// Flag that indicates whether Automation manages this cluster.
 	// Read only field.
-	Managed bool `json:"managed"`
+	Managed bool `json:"managed,omitempty"`
 	// Version of MongoDB that this cluster runs.
 	// Read only field.
-	MongoDBVersion string `json:"mongoDBVersion"`
+	MongoDBVersion string `json:"mongoDBVersion,omitempty"`
 	// Human-readable label that identifies this cluster.
 	// Read only field.
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// Size of the Oplog on disk at the time of the request expressed in MB.
 	// Read only field.
 	OplogSizeMB *int `json:"oplogSizeMB,omitempty"`
 	// Flag that indicates whether someone configured this cluster as a sharded cluster.  - If `true`, this cluster serves as a sharded cluster. - If `false`, this cluster serves as a replica set.
 	// Read only field.
-	Sharded bool `json:"sharded"`
+	Sharded bool `json:"sharded,omitempty"`
 	// Number of shards that comprise this cluster.
 	// Read only field.
 	ShardsSize *int `json:"shardsSize,omitempty"`
 	// Flag that indicates whether someone enabled TLS for this cluster.
 	// Read only field.
-	TlsEnabled bool `json:"tlsEnabled"`
+	TlsEnabled bool `json:"tlsEnabled,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`

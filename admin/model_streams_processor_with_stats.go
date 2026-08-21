@@ -6,7 +6,7 @@ package admin
 type StreamsProcessorWithStats struct {
 	// Unique 24-hexadecimal character string that identifies the stream processor.
 	// Read only field.
-	Id string `json:"_id"`
+	Id string `json:"_id,omitempty"`
 	// Flag that indicates whether the stream processor is eligible for failover.
 	// Read only field.
 	EligibleForFailover *bool `json:"eligibleForFailover,omitempty"`
@@ -18,14 +18,14 @@ type StreamsProcessorWithStats struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable name of the stream processor.
 	// Read only field.
-	Name    string          `json:"name"`
+	Name    string          `json:"name,omitempty"`
 	Options *StreamsOptions `json:"options,omitempty"`
 	// Stream aggregation pipeline you want to apply to your streaming data.
 	// Read only field.
-	Pipeline []any `json:"pipeline"`
+	Pipeline []any `json:"pipeline,omitempty"`
 	// The state of the stream processor. Commonly occurring states are 'CREATED', 'STARTED', 'STOPPED' and 'FAILED'.
 	// Read only field.
-	State string `json:"state"`
+	State string `json:"state,omitempty"`
 	// The stats associated with the stream processor.
 	// Read only field.
 	Stats any `json:"stats,omitempty"`

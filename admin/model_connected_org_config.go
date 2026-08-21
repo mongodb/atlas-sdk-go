@@ -16,7 +16,7 @@ type ConnectedOrgConfig struct {
 	InstantUserProvisioningDisabled *bool `json:"instantUserProvisioningDisabled,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the connected organization configuration.
 	// Read only field.
-	OrgId string `json:"orgId"`
+	OrgId string `json:"orgId,omitempty"`
 	// Atlas roles that are granted to a user in this organization after authenticating. Roles are a human-readable label that identifies the collection of privileges that MongoDB Cloud grants a specific MongoDB Cloud user. These roles can only be organization specific roles.
 	PostAuthRoleGrants *[]string `json:"postAuthRoleGrants,omitempty"`
 	// Role mappings that are configured in this organization.

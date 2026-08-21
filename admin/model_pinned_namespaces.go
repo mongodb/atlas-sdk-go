@@ -12,7 +12,7 @@ type PinnedNamespaces struct {
 	GroupId *string `json:"groupId,omitempty"`
 	// List of all pinned namespaces.
 	// Read only field.
-	PinnedNamespaces []string `json:"pinnedNamespaces"`
+	PinnedNamespaces []string `json:"pinnedNamespaces,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`

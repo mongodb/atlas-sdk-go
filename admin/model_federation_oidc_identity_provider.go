@@ -25,7 +25,7 @@ type FederationOidcIdentityProvider struct {
 	GroupsClaim *string `json:"groupsClaim,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the identity provider.
 	// Read only field.
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// String enum that indicates the type of the identity provider. Default is WORKFORCE.
 	IdpType *string `json:"idpType,omitempty"`
 	// Unique string that identifies the issuer of the SAML Assertion or OIDC metadata/discovery document URL.

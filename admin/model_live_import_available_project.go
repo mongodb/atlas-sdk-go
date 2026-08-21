@@ -10,10 +10,10 @@ type LiveImportAvailableProject struct {
 	MigrationHosts []string `json:"migrationHosts"`
 	// Human-readable label that identifies this project.
 	// Read only field.
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project to be migrated.
 	// Read only field.
-	ProjectId string `json:"projectId"`
+	ProjectId string `json:"projectId,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`

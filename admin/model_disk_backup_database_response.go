@@ -9,7 +9,7 @@ type DiskBackupDatabaseResponse struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the database within the snapshot.
 	// Read only field.
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`

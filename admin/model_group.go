@@ -10,10 +10,10 @@ import (
 type Group struct {
 	// Quantity of MongoDB Cloud clusters deployed in this project.
 	// Read only field.
-	ClusterCount int64 `json:"clusterCount"`
+	ClusterCount int64 `json:"clusterCount,omitempty"`
 	// Date and time when MongoDB Cloud created this project. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
-	Created time.Time `json:"created"`
+	Created time.Time `json:"created,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the MongoDB Cloud project.
 	// Read only field.
 	Id *string `json:"id,omitempty"`

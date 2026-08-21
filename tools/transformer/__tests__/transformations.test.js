@@ -6,6 +6,7 @@ const {
   transformOneOf,
   applyOperationIdOverrides,
   applyServersValidation,
+  applyFieldTransformations,
 } = require("../src/transformations");
 const cases = require("./transformations-snapshots");
 
@@ -91,6 +92,58 @@ test("applyOperationIdOverrides", () => {
   expect(
     api.paths["/api/atlas/v2/example/info"].get["x-xgen-operation-id-override"],
   ).toBeFalsy();
+});
+
+describe("applyFieldTransformations", () => {
+  const apiWithStreamsProcessor = () => ({
+    components: {
+      schemas: {
+        StreamsProcessor: {
+          description: "An atlas stream processor.",
+          properties: {
+            effectiveTier: {
+              description: "Effective tier of the stream processor.",
+              enum: ["SP30", "SP50"],
+              readOnly: true,
+              type: "string",
+            },
+            name: {
+              description: "Human-readable name of the stream processor.",
+              type: "string",
+            },
+          },
+          required: ["effectiveTier", "name"],
+          type: "object",
+        },
+      },
+    },
+  });
+
+  test("removes configured readOnly field from required, keeping the rest", () => {
+    const result = applyFieldTransformations(apiWithStreamsProcessor());
+    // effectiveTier is a readOnly field, so it must not be required in request bodies
+    expect(result.components.schemas.StreamsProcessor.required).toEqual([
+      "name",
+    ]);
+  });
+
+  test("drops the required array when no required fields remain", () => {
+    const input = apiWithStreamsProcessor();
+    input.components.schemas.StreamsProcessor.required = ["effectiveTier"];
+    const result = applyFieldTransformations(input);
+    expect(result.components.schemas.StreamsProcessor.required).toBeUndefined();
+  });
+
+  test("leaves schemas without configured fields untouched", () => {
+    const input = apiWithStreamsProcessor();
+    input.components.schemas.Unrelated = {
+      properties: { id: { type: "string" } },
+      required: ["id"],
+      type: "object",
+    };
+    const result = applyFieldTransformations(input);
+    expect(result.components.schemas.Unrelated.required).toEqual(["id"]);
+  });
 });
 
 describe("applyServersValidation", () => {
