@@ -15,7 +15,7 @@ type QueryShapeResponse struct {
 	QueryShape *string `json:"queryShape,omitempty"`
 	// A hexadecimal string that represents the hash of a MongoDB query shape.
 	// Read only field.
-	QueryShapeHash string `json:"queryShapeHash"`
+	QueryShapeHash string `json:"queryShapeHash,omitempty"`
 	// The rejection status of a query shape. Use REJECTED to prevent the query shape from executing on the cluster, or UNREJECTED to allow it to execute.
 	Status string `json:"status"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).

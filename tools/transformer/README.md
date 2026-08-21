@@ -95,6 +95,12 @@ Useful for situations for schemas where nullability handling is not desired.
 
 This transformation updates the operation IDs in the OpenAPI file if the operation has an `x-xgen-operation-id-override` extension. Then, it removes the Operation ID override extension from the OpenAPI file.
 
+7. Field transformations (optional fields)
+
+Driven by [field.transformations.json](./src/field.transformations.json). Each entry under `optionalFields` maps a schema name to a list of property names to strip from that schema's `required` array, making them optional in the generated SDK (pointer type, `omitempty`, no constructor argument).
+
+Main use case: properties that are both `required` and `readOnly: true` in the spec. Per OpenAPI 3.0, read-only properties must not be sent in requests, and `required` on them applies to responses only. The generated JSON tags already carry `omitempty` for required read-only fields, so unset values are never serialized in request bodies, but the field still appears as a mandatory constructor argument. Add an entry here for each such field on a request schema to also remove it from the constructor (see `StreamsProcessor.effectiveTier`, CLOUDP-437811).
+
 ## Transformation Validation
 
 Transformation engine does perform validation for invalid cases.

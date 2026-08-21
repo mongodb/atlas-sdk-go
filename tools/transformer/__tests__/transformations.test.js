@@ -6,6 +6,7 @@ const {
   transformOneOf,
   applyOperationIdOverrides,
   applyServersValidation,
+  applyFieldTransformations,
 } = require("../src/transformations");
 const cases = require("./transformations-snapshots");
 
@@ -91,6 +92,45 @@ test("applyOperationIdOverrides", () => {
   expect(
     api.paths["/api/atlas/v2/example/info"].get["x-xgen-operation-id-override"],
   ).toBeFalsy();
+});
+
+test("applyFieldTransformations strips StreamsProcessor.effectiveTier from required", () => {
+  // Simulates the upcoming spec where effectiveTier is required + readOnly
+  // on the createStreamProcessor request body schema (CLOUDP-437811).
+  const spec = {
+    components: {
+      schemas: {
+        StreamsProcessor: {
+          type: "object",
+          properties: {
+            effectiveTier: { type: "string", readOnly: true },
+            name: { type: "string" },
+          },
+          required: ["effectiveTier", "name"],
+        },
+      },
+    },
+  };
+  const result = applyFieldTransformations(spec);
+  expect(result.components.schemas.StreamsProcessor.required).toEqual(["name"]);
+});
+
+test("applyFieldTransformations removes required entirely when it empties out", () => {
+  const spec = {
+    components: {
+      schemas: {
+        StreamsProcessor: {
+          type: "object",
+          properties: {
+            effectiveTier: { type: "string", readOnly: true },
+          },
+          required: ["effectiveTier"],
+        },
+      },
+    },
+  };
+  const result = applyFieldTransformations(spec);
+  expect(result.components.schemas.StreamsProcessor.required).toBeUndefined();
 });
 
 describe("applyServersValidation", () => {

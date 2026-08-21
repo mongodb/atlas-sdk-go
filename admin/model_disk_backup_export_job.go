@@ -18,7 +18,7 @@ type DiskBackupExportJob struct {
 	CustomData *[]BackupLabel `json:"customData,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the Export Bucket.
 	// Read only field.
-	ExportBucketId string        `json:"exportBucketId"`
+	ExportBucketId string        `json:"exportBucketId,omitempty"`
 	ExportStatus   *ExportStatus `json:"exportStatus,omitempty"`
 	// Date and time when this Export Job completed. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	// Read only field.

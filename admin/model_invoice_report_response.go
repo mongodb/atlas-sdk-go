@@ -21,17 +21,17 @@ type InvoiceReportResponse struct {
 	FormatSpecVersion *string `json:"formatSpecVersion,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the invoice.
 	// Read only field.
-	InvoiceId string `json:"invoiceId"`
+	InvoiceId string `json:"invoiceId,omitempty"`
 	// Format of the generated report.
 	ReportFormat string `json:"reportFormat"`
 	// Unique 24-hexadecimal digit string that identifies the report.
 	// Read only field.
-	ReportId string `json:"reportId"`
+	ReportId string `json:"reportId,omitempty"`
 	// Type of the generated report.
 	ReportType string `json:"reportType"`
 	// Current state of the report generation.
 	// Read only field.
-	State string `json:"state"`
+	State string `json:"state,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`
