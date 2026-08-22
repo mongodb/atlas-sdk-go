@@ -18,7 +18,7 @@ type CloudProviderAccessAPI interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param roleId Unique 24-hexadecimal digit string that identifies the role.
+		@param roleId Unique 24-hexadecimal digit string that identifies the role. Amazon Web Services (AWS) IAM roles and Google Service Accounts return this value as `roleId`. Azure Service Principals return it as `_id`.
 		@param cloudProviderAccessRoleRequestUpdate Grants access to the specified project for the specified access role.
 		@return AuthorizeProviderAccessRoleApiRequest
 	*/
@@ -68,7 +68,7 @@ type CloudProviderAccessAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@param cloudProvider Human-readable label that identifies the cloud provider of the role to deauthorize.
-		@param roleId Unique 24-hexadecimal digit string that identifies the role.
+		@param roleId Unique 24-hexadecimal digit string that identifies the role. Amazon Web Services (AWS) IAM roles and Google Service Accounts return this value as `roleId`. Azure Service Principals return it as `_id`.
 		@return DeauthorizeProviderAccessRoleApiRequest
 	*/
 	DeauthorizeProviderAccessRole(ctx context.Context, groupId string, cloudProvider string, roleId string) DeauthorizeProviderAccessRoleApiRequest
@@ -92,7 +92,7 @@ type CloudProviderAccessAPI interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param roleId Unique 24-hexadecimal digit string that identifies the role.
+		@param roleId Unique 24-hexadecimal digit string that identifies the role. Amazon Web Services (AWS) IAM roles and Google Service Accounts return this value as `roleId`. Azure Service Principals return it as `_id`.
 		@return GetCloudProviderAccessApiRequest
 	*/
 	GetCloudProviderAccess(ctx context.Context, groupId string, roleId string) GetCloudProviderAccessApiRequest
@@ -171,7 +171,7 @@ Grants access to the specified project for the specified access role. This API e
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param roleId Unique 24-hexadecimal digit string that identifies the role.
+	@param roleId Unique 24-hexadecimal digit string that identifies the role. Amazon Web Services (AWS) IAM roles and Google Service Accounts return this value as `roleId`. Azure Service Principals return it as `_id`.
 	@return AuthorizeProviderAccessRoleApiRequest
 */
 func (a *CloudProviderAccessAPIService) AuthorizeProviderAccessRole(ctx context.Context, groupId string, roleId string, cloudProviderAccessRoleRequestUpdate *CloudProviderAccessRoleRequestUpdate) AuthorizeProviderAccessRoleApiRequest {
@@ -427,7 +427,7 @@ Revokes access to the specified project for the specified access role.
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param cloudProvider Human-readable label that identifies the cloud provider of the role to deauthorize.
-	@param roleId Unique 24-hexadecimal digit string that identifies the role.
+	@param roleId Unique 24-hexadecimal digit string that identifies the role. Amazon Web Services (AWS) IAM roles and Google Service Accounts return this value as `roleId`. Azure Service Principals return it as `_id`.
 	@return DeauthorizeProviderAccessRoleApiRequest
 */
 func (a *CloudProviderAccessAPIService) DeauthorizeProviderAccessRole(ctx context.Context, groupId string, cloudProvider string, roleId string) DeauthorizeProviderAccessRoleApiRequest {
@@ -538,7 +538,7 @@ Returns the access role with the specified id and with access to the specified p
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param roleId Unique 24-hexadecimal digit string that identifies the role.
+	@param roleId Unique 24-hexadecimal digit string that identifies the role. Amazon Web Services (AWS) IAM roles and Google Service Accounts return this value as `roleId`. Azure Service Principals return it as `_id`.
 	@return GetCloudProviderAccessApiRequest
 */
 func (a *CloudProviderAccessAPIService) GetCloudProviderAccess(ctx context.Context, groupId string, roleId string) GetCloudProviderAccessApiRequest {

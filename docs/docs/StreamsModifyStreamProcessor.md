@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | New name for the stream processor. | [optional] 
 **Options** | Pointer to [**StreamsModifyStreamProcessorOptions**](StreamsModifyStreamProcessorOptions.md) |  | [optional] 
 **Pipeline** | Pointer to [**[]any**](any.md) | New pipeline for the stream processor. | [optional] 
-**Tier** | Pointer to **string** | Selected tier for the Stream Workspace. Configures Memory / VCPU allowances. | [optional] 
+**Tier** | Pointer to **string** | Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. | [optional] 
 
 ## Methods
 

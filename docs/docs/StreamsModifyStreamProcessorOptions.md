@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Autoscaling** | Pointer to [**StreamsAutoscaling**](StreamsAutoscaling.md) |  | [optional] 
 **Dlq** | Pointer to [**StreamsDLQ**](StreamsDLQ.md) |  | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **ResumeFromCheckpoint** | Pointer to **bool** | When true, the modified stream processor resumes from its last checkpoint. | [optional] 
@@ -26,6 +27,37 @@ will change when the set of required properties is changed
 NewStreamsModifyStreamProcessorOptionsWithDefaults instantiates a new StreamsModifyStreamProcessorOptions object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAutoscaling
+
+`func (o *StreamsModifyStreamProcessorOptions) GetAutoscaling() StreamsAutoscaling`
+
+GetAutoscaling returns the Autoscaling field if non-nil, zero value otherwise.
+
+### GetAutoscalingOk
+
+`func (o *StreamsModifyStreamProcessorOptions) GetAutoscalingOk() (*StreamsAutoscaling, bool)`
+
+GetAutoscalingOk returns a tuple with the Autoscaling field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoscaling
+
+`func (o *StreamsModifyStreamProcessorOptions) SetAutoscaling(v StreamsAutoscaling)`
+
+SetAutoscaling sets Autoscaling field to given value.
+
+### HasAutoscaling
+
+`func (o *StreamsModifyStreamProcessorOptions) HasAutoscaling() bool`
+
+HasAutoscaling returns a boolean if a field has been set.
+
+### SetAutoscalingNil
+
+`func (o *StreamsModifyStreamProcessorOptions) SetAutoscalingNil()`
+
+SetAutoscalingNil sets Autoscaling to an explicit JSON null when marshaled, overriding any value previously set with SetAutoscaling. Calling SetAutoscaling again clears the null override.
 
 ### GetDlq
 

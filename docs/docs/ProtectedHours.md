@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EndHourOfDay** | Pointer to **int** | Zero-based integer that represents the end hour of the of the day that the maintenance will not begin in. | [optional] 
-**StartHourOfDay** | Pointer to **int** | Zero-based integer that represents the beginning hour of the of the day that the maintenance will not begin in. | [optional] 
+**EndHourOfDay** | Pointer to **int** | Zero-based integer, in the project&#39;s configured time zone (see &#x60;timeZoneId&#x60;), that represents the end hour of the day that maintenance will not begin in. | [optional] 
+**StartHourOfDay** | Pointer to **int** | Zero-based integer, in the project&#39;s configured time zone (see &#x60;timeZoneId&#x60;), that represents the beginning hour of the day that maintenance will not begin in. | [optional] 
 
 ## Methods
 

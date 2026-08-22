@@ -10,7 +10,6 @@ Method | HTTP request | Description
 [**CreateBackupRestoreJob**](CloudBackupsAPI.md#CreateBackupRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs | Create One Restore Job of One Cluster
 [**CreateCollectionRestoreJob**](CloudBackupsAPI.md#CreateCollectionRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs | Create One Collection Restore Job
 [**CreateExportBucket**](CloudBackupsAPI.md#CreateExportBucket) | **Post** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Create One Snapshot Export Bucket
-[**CreateServerlessRestoreJob**](CloudBackupsAPI.md#CreateServerlessRestoreJob) | **Post** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Create One Restore Job for One Serverless Instance
 [**DeleteBackupPrivateEndpoint**](CloudBackupsAPI.md#DeleteBackupPrivateEndpoint) | **Delete** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId} | Delete One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider from One Project
 [**DeleteBackupShardedCluster**](CloudBackupsAPI.md#DeleteBackupShardedCluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId} | Remove One Sharded Cluster Cloud Backup
 [**DeleteClusterBackupSchedule**](CloudBackupsAPI.md#DeleteClusterBackupSchedule) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Remove All Cloud Backup Schedules
@@ -28,8 +27,6 @@ Method | HTTP request | Description
 [**GetCompliancePolicy**](CloudBackupsAPI.md#GetCompliancePolicy) | **Get** /api/atlas/v2/groups/{groupId}/backupCompliancePolicy | Return Backup Compliance Policy Settings
 [**GetExportBucket**](CloudBackupsAPI.md#GetExportBucket) | **Get** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Return One Snapshot Export Bucket
 [**GetRestoreJobCollection**](CloudBackupsAPI.md#GetRestoreJobCollection) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections/{sourceNamespace} | Return One Collection State for One Collection Restore Job
-[**GetServerlessBackupSnapshot**](CloudBackupsAPI.md#GetServerlessBackupSnapshot) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots/{snapshotId} | Return One Snapshot of One Serverless Instance
-[**GetServerlessRestoreJob**](CloudBackupsAPI.md#GetServerlessRestoreJob) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Serverless Instance
 [**GetSnapshotDatabaseCollection**](CloudBackupsAPI.md#GetSnapshotDatabaseCollection) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections/{collectionName} | Return One Collection in One Database in One Snapshot
 [**ListBackupExports**](CloudBackupsAPI.md#ListBackupExports) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports | Return All Snapshot Export Jobs
 [**ListBackupPrivateEndpoints**](CloudBackupsAPI.md#ListBackupPrivateEndpoints) | **Get** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints | Return Object Storage Private Endpoints for Cloud Backups for One Cloud Provider in One Project
@@ -40,8 +37,6 @@ Method | HTTP request | Description
 [**ListCollectionRestoreJobs**](CloudBackupsAPI.md#ListCollectionRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs | Return All Collection Restore Jobs for One Cluster
 [**ListExportBuckets**](CloudBackupsAPI.md#ListExportBuckets) | **Get** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Return All Snapshot Export Buckets
 [**ListRestoreJobCollections**](CloudBackupsAPI.md#ListRestoreJobCollections) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections | Return All Collection States for One Collection Restore Job
-[**ListServerlessBackupSnapshots**](CloudBackupsAPI.md#ListServerlessBackupSnapshots) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots | Return All Snapshots of One Serverless Instance
-[**ListServerlessRestoreJobs**](CloudBackupsAPI.md#ListServerlessRestoreJobs) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Return All Restore Jobs for One Serverless Instance
 [**ListSnapshotDatabaseCollections**](CloudBackupsAPI.md#ListSnapshotDatabaseCollections) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections | Return Collections in One Database in One Snapshot
 [**TakeSnapshots**](CloudBackupsAPI.md#TakeSnapshots) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots | Take One On-Demand Snapshot
 [**UpdateBackupExportBucket**](CloudBackupsAPI.md#UpdateBackupExportBucket) | **Patch** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Update One Export Bucket Private Networking Settings
@@ -68,7 +63,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -152,7 +147,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -237,7 +232,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -322,7 +317,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -407,7 +402,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -492,7 +487,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -557,91 +552,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## CreateServerlessRestoreJob
-
-> ServerlessBackupRestoreJob CreateServerlessRestoreJob(ctx, groupId, clusterName, serverlessBackupRestoreJob ServerlessBackupRestoreJob).Execute()
-
-Create One Restore Job for One Serverless Instance
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    clusterName := "clusterName_example" // string | 
-    serverlessBackupRestoreJob := *admin.NewServerlessBackupRestoreJob("DeliveryType_example", "TargetClusterName_example", "32b6e34b3d91647abb20e7b8") // ServerlessBackupRestoreJob | 
-
-    resp, r, err := sdk.CloudBackupsAPI.CreateServerlessRestoreJob(context.Background(), groupId, clusterName, &serverlessBackupRestoreJob).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.CreateServerlessRestoreJob`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `CreateServerlessRestoreJob`: ServerlessBackupRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.CreateServerlessRestoreJob`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**clusterName** | **string** | Human-readable label that identifies the serverless instance whose snapshot you want to restore. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateServerlessRestoreJobRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **serverlessBackupRestoreJob** | [**ServerlessBackupRestoreJob**](ServerlessBackupRestoreJob.md) | Restores one snapshot of one serverless instance from the specified project. | 
-
-### Return type
-
-[**ServerlessBackupRestoreJob**](ServerlessBackupRestoreJob.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: application/vnd.atlas.2023-01-01+json
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## DeleteBackupPrivateEndpoint
 
 > DeleteBackupPrivateEndpoint(ctx, groupId, cloudProvider, endpointId).Execute()
@@ -659,7 +569,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -743,7 +653,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -827,7 +737,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -910,7 +820,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -994,7 +904,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -1075,7 +985,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -1153,7 +1063,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -1239,7 +1149,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -1325,7 +1235,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -1411,7 +1321,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -1494,7 +1404,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -1580,7 +1490,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -1669,7 +1579,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -1755,7 +1665,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -1841,7 +1751,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -1921,7 +1831,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -2004,7 +1914,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -2076,178 +1986,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetServerlessBackupSnapshot
-
-> ServerlessBackupSnapshot GetServerlessBackupSnapshot(ctx, groupId, clusterName, snapshotId).Execute()
-
-Return One Snapshot of One Serverless Instance
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    clusterName := "clusterName_example" // string | 
-    snapshotId := "32b6e34b3d91647abb20e7b8" // string | 
-
-    resp, r, err := sdk.CloudBackupsAPI.GetServerlessBackupSnapshot(context.Background(), groupId, clusterName, snapshotId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.GetServerlessBackupSnapshot`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `GetServerlessBackupSnapshot`: ServerlessBackupSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.GetServerlessBackupSnapshot`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**clusterName** | **string** | Human-readable label that identifies the serverless instance. | 
-**snapshotId** | **string** | Unique 24-hexadecimal digit string that identifies the desired snapshot. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetServerlessBackupSnapshotRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-
-### Return type
-
-[**ServerlessBackupSnapshot**](ServerlessBackupSnapshot.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetServerlessRestoreJob
-
-> ServerlessBackupRestoreJob GetServerlessRestoreJob(ctx, groupId, clusterName, restoreJobId).Execute()
-
-Return One Restore Job for One Serverless Instance
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    clusterName := "clusterName_example" // string | 
-    restoreJobId := "restoreJobId_example" // string | 
-
-    resp, r, err := sdk.CloudBackupsAPI.GetServerlessRestoreJob(context.Background(), groupId, clusterName, restoreJobId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.GetServerlessRestoreJob`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `GetServerlessRestoreJob`: ServerlessBackupRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.GetServerlessRestoreJob`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**clusterName** | **string** | Human-readable label that identifies the serverless instance. | 
-**restoreJobId** | **string** | Unique 24-hexadecimal digit string that identifies the restore job to return. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetServerlessRestoreJobRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-
-### Return type
-
-[**ServerlessBackupRestoreJob**](ServerlessBackupRestoreJob.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GetSnapshotDatabaseCollection
 
 > DiskBackupCollectionResponse GetSnapshotDatabaseCollection(ctx, groupId, clusterName, snapshotId, databaseName, collectionName).Execute()
@@ -2265,7 +2003,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -2357,7 +2095,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -2446,7 +2184,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -2535,7 +2273,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -2624,7 +2362,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -2707,7 +2445,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -2799,7 +2537,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -2894,7 +2632,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -2981,7 +2719,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -3067,7 +2805,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -3146,184 +2884,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListServerlessBackupSnapshots
-
-> PaginatedApiAtlasServerlessBackupSnapshot ListServerlessBackupSnapshots(ctx, groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
-
-Return All Snapshots of One Serverless Instance
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    clusterName := "clusterName_example" // string | 
-    includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(56) // int |  (optional) (default to 100)
-    pageNum := int(56) // int |  (optional) (default to 1)
-
-    resp, r, err := sdk.CloudBackupsAPI.ListServerlessBackupSnapshots(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.ListServerlessBackupSnapshots`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `ListServerlessBackupSnapshots`: PaginatedApiAtlasServerlessBackupSnapshot
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.ListServerlessBackupSnapshots`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**clusterName** | **string** | Human-readable label that identifies the serverless instance. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListServerlessBackupSnapshotsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
- **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
- **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
-
-### Return type
-
-[**PaginatedApiAtlasServerlessBackupSnapshot**](PaginatedApiAtlasServerlessBackupSnapshot.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListServerlessRestoreJobs
-
-> PaginatedApiAtlasServerlessBackupRestoreJob ListServerlessRestoreJobs(ctx, groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
-
-Return All Restore Jobs for One Serverless Instance
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
-)
-
-func main() {
-    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
-    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
-
-    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
-        return
-    }
-
-    groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    clusterName := "clusterName_example" // string | 
-    includeCount := true // bool |  (optional) (default to true)
-    itemsPerPage := int(56) // int |  (optional) (default to 100)
-    pageNum := int(56) // int |  (optional) (default to 1)
-
-    resp, r, err := sdk.CloudBackupsAPI.ListServerlessRestoreJobs(context.Background(), groupId, clusterName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudBackupsAPI.ListServerlessRestoreJobs`: %v (%v)\n", err, r)
-        apiError, ok := admin.AsError(err)
-        if ok {
-            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
-        }
-        return
-    }
-    // response from `ListServerlessRestoreJobs`: PaginatedApiAtlasServerlessBackupRestoreJob
-    fmt.Fprintf(os.Stdout, "Response from `CloudBackupsAPI.ListServerlessRestoreJobs`: %v (%v)\n", resp, r)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
-**clusterName** | **string** | Human-readable label that identifies the serverless instance. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListServerlessRestoreJobsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
- **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
- **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
-
-### Return type
-
-[**PaginatedApiAtlasServerlessBackupRestoreJob**](PaginatedApiAtlasServerlessBackupRestoreJob.md)
-
-### Authorization
-[DigestAuth](../README.md#Authentication)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/vnd.atlas.2023-01-01+json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ListSnapshotDatabaseCollections
 
 > PaginatedApiAtlasDiskBackupCollection ListSnapshotDatabaseCollections(ctx, groupId, clusterName, snapshotId, databaseName).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
@@ -3341,7 +2901,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -3436,7 +2996,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -3521,7 +3081,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -3606,7 +3166,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -3691,7 +3251,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
@@ -3779,7 +3339,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312023/admin"
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
 )
 
 func main() {
