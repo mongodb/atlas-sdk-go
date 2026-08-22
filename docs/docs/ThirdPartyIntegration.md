@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **SendCollectionLatencyMetrics** | Pointer to **bool** | Toggle sending collection latency metrics that includes database names and collection names and latency metrics on reads, writes, commands, and transactions. | [optional] [default to false]
 **SendDatabaseMetrics** | Pointer to **bool** | Toggle sending database metrics that includes database names and metrics on the number of collections, storage size, and index size. | [optional] [default to false]
 **SendQueryStatsMetrics** | Pointer to **bool** | Toggle sending query shape metrics that includes query hash and metrics on latency, execution frequency, documents returned, and timestamps. | [optional] [default to false]
+**SendShardingMetrics** | Pointer to **bool** | Toggle sending sharding metrics that includes sharding distribution and chunk metrics per cluster, shard, and collection. | [optional] [default to false]
 **SendUserProvidedResourceTags** | Pointer to **bool** | Toggle sending user provided group and cluster resource tags with the Datadog metrics. | [optional] [default to false]
 **AccountId** | Pointer to **string** | Unique 40-hexadecimal digit string that identifies your New Relic account. | [optional] 
 **LicenseKey** | Pointer to **string** | Unique 40-hexadecimal digit string that identifies your New Relic license.  **IMPORTANT**: Effective Wednesday, June 16th, 2021, New Relic no longer supports the plugin-based integration with MongoDB. We do not recommend that you sign up for the plugin-based integration. Consider configuring an alternative monitoring integration before June 16th to maintain visibility into your MongoDB deployments. | [optional] 
@@ -391,6 +392,37 @@ HasSendQueryStatsMetrics returns a boolean if a field has been set.
 `func (o *ThirdPartyIntegration) SetSendQueryStatsMetricsNil()`
 
 SetSendQueryStatsMetricsNil sets SendQueryStatsMetrics to an explicit JSON null when marshaled, overriding any value previously set with SetSendQueryStatsMetrics. Calling SetSendQueryStatsMetrics again clears the null override.
+
+### GetSendShardingMetrics
+
+`func (o *ThirdPartyIntegration) GetSendShardingMetrics() bool`
+
+GetSendShardingMetrics returns the SendShardingMetrics field if non-nil, zero value otherwise.
+
+### GetSendShardingMetricsOk
+
+`func (o *ThirdPartyIntegration) GetSendShardingMetricsOk() (*bool, bool)`
+
+GetSendShardingMetricsOk returns a tuple with the SendShardingMetrics field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSendShardingMetrics
+
+`func (o *ThirdPartyIntegration) SetSendShardingMetrics(v bool)`
+
+SetSendShardingMetrics sets SendShardingMetrics field to given value.
+
+### HasSendShardingMetrics
+
+`func (o *ThirdPartyIntegration) HasSendShardingMetrics() bool`
+
+HasSendShardingMetrics returns a boolean if a field has been set.
+
+### SetSendShardingMetricsNil
+
+`func (o *ThirdPartyIntegration) SetSendShardingMetricsNil()`
+
+SetSendShardingMetricsNil sets SendShardingMetrics to an explicit JSON null when marshaled, overriding any value previously set with SetSendShardingMetrics. Calling SetSendShardingMetrics again clears the null override.
 
 ### GetSendUserProvidedResourceTags
 

@@ -16,7 +16,7 @@ type CreateEndpointRequest struct {
 	EndpointGroupName *string `json:"endpointGroupName,omitempty"`
 	// List of individual private endpoints that comprise this endpoint group. If this endpoint belongs to a port-mapped endpoint service, this field will only take in a list of one private endpoint.
 	Endpoints *[]CreateGCPForwardingRuleRequest `json:"endpoints,omitempty"`
-	// Unique string that identifies the Google Cloud project in which you created the endpoints.
+	// Unique string that identifies the Google Cloud project in which you created the endpoints. Specify the Google Cloud project ID or project number.
 	// Write only field.
 	GcpProjectId *string `json:"gcpProjectId,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).

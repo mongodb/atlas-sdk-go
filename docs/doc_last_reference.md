@@ -64,7 +64,6 @@ Class        | Method        | HTTP request  | Description   |
 *CloudBackupsAPI* | [CreateBackupRestoreJob](./docs/CloudBackupsAPI.md#createbackuprestorejob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs | Create One Restore Job of One Cluster |
 *CloudBackupsAPI* | [CreateCollectionRestoreJob](./docs/CloudBackupsAPI.md#createcollectionrestorejob) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs | Create One Collection Restore Job |
 *CloudBackupsAPI* | [CreateExportBucket](./docs/CloudBackupsAPI.md#createexportbucket) | **Post** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Create One Snapshot Export Bucket |
-*CloudBackupsAPI* | [CreateServerlessRestoreJob](./docs/CloudBackupsAPI.md#createserverlessrestorejob) | **Post** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Create One Restore Job for One Serverless Instance |
 *CloudBackupsAPI* | [DeleteBackupPrivateEndpoint](./docs/CloudBackupsAPI.md#deletebackupprivateendpoint) | **Delete** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints/{endpointId} | Delete One Object Storage Private Endpoint for Cloud Backups for One Cloud Provider from One Project |
 *CloudBackupsAPI* | [DeleteBackupShardedCluster](./docs/CloudBackupsAPI.md#deletebackupshardedcluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/shardedCluster/{snapshotId} | Remove One Sharded Cluster Cloud Backup |
 *CloudBackupsAPI* | [DeleteClusterBackupSchedule](./docs/CloudBackupsAPI.md#deleteclusterbackupschedule) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/schedule | Remove All Cloud Backup Schedules |
@@ -82,8 +81,6 @@ Class        | Method        | HTTP request  | Description   |
 *CloudBackupsAPI* | [GetCompliancePolicy](./docs/CloudBackupsAPI.md#getcompliancepolicy) | **Get** /api/atlas/v2/groups/{groupId}/backupCompliancePolicy | Return Backup Compliance Policy Settings |
 *CloudBackupsAPI* | [GetExportBucket](./docs/CloudBackupsAPI.md#getexportbucket) | **Get** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Return One Snapshot Export Bucket |
 *CloudBackupsAPI* | [GetRestoreJobCollection](./docs/CloudBackupsAPI.md#getrestorejobcollection) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections/{sourceNamespace} | Return One Collection State for One Collection Restore Job |
-*CloudBackupsAPI* | [GetServerlessBackupSnapshot](./docs/CloudBackupsAPI.md#getserverlessbackupsnapshot) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots/{snapshotId} | Return One Snapshot of One Serverless Instance |
-*CloudBackupsAPI* | [GetServerlessRestoreJob](./docs/CloudBackupsAPI.md#getserverlessrestorejob) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs/{restoreJobId} | Return One Restore Job for One Serverless Instance |
 *CloudBackupsAPI* | [GetSnapshotDatabaseCollection](./docs/CloudBackupsAPI.md#getsnapshotdatabasecollection) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections/{collectionName} | Return One Collection in One Database in One Snapshot |
 *CloudBackupsAPI* | [ListBackupExports](./docs/CloudBackupsAPI.md#listbackupexports) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports | Return All Snapshot Export Jobs |
 *CloudBackupsAPI* | [ListBackupPrivateEndpoints](./docs/CloudBackupsAPI.md#listbackupprivateendpoints) | **Get** /api/atlas/v2/groups/{groupId}/backup/{cloudProvider}/privateEndpoints | Return Object Storage Private Endpoints for Cloud Backups for One Cloud Provider in One Project |
@@ -94,8 +91,6 @@ Class        | Method        | HTTP request  | Description   |
 *CloudBackupsAPI* | [ListCollectionRestoreJobs](./docs/CloudBackupsAPI.md#listcollectionrestorejobs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs | Return All Collection Restore Jobs for One Cluster |
 *CloudBackupsAPI* | [ListExportBuckets](./docs/CloudBackupsAPI.md#listexportbuckets) | **Get** /api/atlas/v2/groups/{groupId}/backup/exportBuckets | Return All Snapshot Export Buckets |
 *CloudBackupsAPI* | [ListRestoreJobCollections](./docs/CloudBackupsAPI.md#listrestorejobcollections) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}/collections | Return All Collection States for One Collection Restore Job |
-*CloudBackupsAPI* | [ListServerlessBackupSnapshots](./docs/CloudBackupsAPI.md#listserverlessbackupsnapshots) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/snapshots | Return All Snapshots of One Serverless Instance |
-*CloudBackupsAPI* | [ListServerlessRestoreJobs](./docs/CloudBackupsAPI.md#listserverlessrestorejobs) | **Get** /api/atlas/v2/groups/{groupId}/serverless/{clusterName}/backup/restoreJobs | Return All Restore Jobs for One Serverless Instance |
 *CloudBackupsAPI* | [ListSnapshotDatabaseCollections](./docs/CloudBackupsAPI.md#listsnapshotdatabasecollections) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}/databases/{databaseName}/collections | Return Collections in One Database in One Snapshot |
 *CloudBackupsAPI* | [TakeSnapshots](./docs/CloudBackupsAPI.md#takesnapshots) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots | Take One On-Demand Snapshot |
 *CloudBackupsAPI* | [UpdateBackupExportBucket](./docs/CloudBackupsAPI.md#updatebackupexportbucket) | **Patch** /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId} | Update One Export Bucket Private Networking Settings |
@@ -138,7 +133,6 @@ Class        | Method        | HTTP request  | Description   |
 *ClustersAPI* | [UpdateProcessArgs](./docs/ClustersAPI.md#updateprocessargs) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Update Advanced Configuration Options for One Cluster |
 *ClustersAPI* | [UpgradeClusterToServerless](./docs/ClustersAPI.md#upgradeclustertoserverless) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgradeToServerless | Upgrade One Shared-Tier Cluster to One Serverless Instance |
 *ClustersAPI* | [UpgradeTenantUpgrade](./docs/ClustersAPI.md#upgradetenantupgrade) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade | Upgrade One Shared-Tier Cluster |
-*ClustersAPI* | [ValidateGroupClusterConfigurations](./docs/ClustersAPI.md#validategroupclusterconfigurations) | **Post** /api/atlas/v2/groups/{groupId}/clusterConfigurations:validate | Validate One Cluster Configuration |
 *CollectionLevelMetricsAPI* | [GetClusterNamespaces](./docs/CollectionLevelMetricsAPI.md#getclusternamespaces) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/collStats/namespaces | Return Ranked Namespaces from One Cluster |
 *CollectionLevelMetricsAPI* | [GetProcessNamespaces](./docs/CollectionLevelMetricsAPI.md#getprocessnamespaces) | **Get** /api/atlas/v2/groups/{groupId}/processes/{processId}/collStats/namespaces | Return Ranked Namespaces from One Host |
 *CollectionLevelMetricsAPI* | [ListCollStatMeasurements](./docs/CollectionLevelMetricsAPI.md#listcollstatmeasurements) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/{clusterView}/{databaseName}/{collectionName}/collStats/measurements | Return Cluster-Level Query Latency |
@@ -326,6 +320,10 @@ Class        | Method        | HTTP request  | Description   |
 *OrganizationsAPI* | [UpdateOrgInvites](./docs/OrganizationsAPI.md#updateorginvites) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Invitation in One Organization |
 *OrganizationsAPI* | [UpdateOrgSettings](./docs/OrganizationsAPI.md#updateorgsettings) | **Patch** /api/atlas/v2/orgs/{orgId}/settings | Update Settings for One Organization |
 *OrganizationsAPI* | [UpdateOrgUserRoles](./docs/OrganizationsAPI.md#updateorguserroles) | **Put** /api/atlas/v2/orgs/{orgId}/users/{userId}/roles | Update Organization Roles for One MongoDB Cloud User |
+*OverloadProtectionSimulationAPI* | [CreateClusterOverloadSimulation](./docs/OverloadProtectionSimulationAPI.md#createclusteroverloadsimulation) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/overloadSimulations | Create One Overload Protection Simulation |
+*OverloadProtectionSimulationAPI* | [DeleteClusterOverloadSimulation](./docs/OverloadProtectionSimulationAPI.md#deleteclusteroverloadsimulation) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/overloadSimulations/{simulationId} | Delete One Overload Protection Simulation |
+*OverloadProtectionSimulationAPI* | [GetClusterOverloadSimulation](./docs/OverloadProtectionSimulationAPI.md#getclusteroverloadsimulation) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/overloadSimulations/{simulationId} | Return One Overload Protection Simulation |
+*OverloadProtectionSimulationAPI* | [ListClusterOverloadSimulations](./docs/OverloadProtectionSimulationAPI.md#listclusteroverloadsimulations) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/overloadSimulations | Return All Overload Protection Simulations |
 *PerformanceAdvisorAPI* | [DisableManagedSlowMs](./docs/PerformanceAdvisorAPI.md#disablemanagedslowms) | **Delete** /api/atlas/v2/groups/{groupId}/managedSlowMs/disable | Disable Managed Slow Operation Threshold |
 *PerformanceAdvisorAPI* | [EnableManagedSlowMs](./docs/PerformanceAdvisorAPI.md#enablemanagedslowms) | **Post** /api/atlas/v2/groups/{groupId}/managedSlowMs/enable | Enable Managed Slow Operation Threshold |
 *PerformanceAdvisorAPI* | [GetManagedSlowMs](./docs/PerformanceAdvisorAPI.md#getmanagedslowms) | **Get** /api/atlas/v2/groups/{groupId}/managedSlowMs | Return Managed Slow Operation Threshold Status |
@@ -637,9 +635,6 @@ Class        | Method        | HTTP request  | Description   |
  - [ClusterAutoScalingSettings](./docs/ClusterAutoScalingSettings.md)
  - [ClusterCloudProviderInstanceSize](./docs/ClusterCloudProviderInstanceSize.md)
  - [ClusterComputeAutoScaling](./docs/ClusterComputeAutoScaling.md)
- - [ClusterConfigurationValidation](./docs/ClusterConfigurationValidation.md)
- - [ClusterConfigurationValidationError](./docs/ClusterConfigurationValidationError.md)
- - [ClusterConfigurationValidationResult](./docs/ClusterConfigurationValidationResult.md)
  - [ClusterConnectionStrings](./docs/ClusterConnectionStrings.md)
  - [ClusterDescription20240805](./docs/ClusterDescription20240805.md)
  - [ClusterDescriptionAutoScalingModeConfiguration](./docs/ClusterDescriptionAutoScalingModeConfiguration.md)
@@ -856,6 +851,8 @@ Class        | Method        | HTTP request  | Description   |
  - [OrganizationInvitationUpdateRequest](./docs/OrganizationInvitationUpdateRequest.md)
  - [OrganizationSettings](./docs/OrganizationSettings.md)
  - [OutboundControlPlaneCloudProviderIPAddresses](./docs/OutboundControlPlaneCloudProviderIPAddresses.md)
+ - [OverloadProtectionSimulationRequest](./docs/OverloadProtectionSimulationRequest.md)
+ - [OverloadProtectionSimulationResponse](./docs/OverloadProtectionSimulationResponse.md)
  - [PaginatedAlert](./docs/PaginatedAlert.md)
  - [PaginatedAlertConfig](./docs/PaginatedAlertConfig.md)
  - [PaginatedApiApiUser](./docs/PaginatedApiApiUser.md)
@@ -872,8 +869,6 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedApiAtlasFlexBackupSnapshot20241113](./docs/PaginatedApiAtlasFlexBackupSnapshot20241113.md)
  - [PaginatedApiAtlasObjectStoragePrivateEndpointResponse](./docs/PaginatedApiAtlasObjectStoragePrivateEndpointResponse.md)
  - [PaginatedApiAtlasProviderRegions](./docs/PaginatedApiAtlasProviderRegions.md)
- - [PaginatedApiAtlasServerlessBackupRestoreJob](./docs/PaginatedApiAtlasServerlessBackupRestoreJob.md)
- - [PaginatedApiAtlasServerlessBackupSnapshot](./docs/PaginatedApiAtlasServerlessBackupSnapshot.md)
  - [PaginatedApiInvoice](./docs/PaginatedApiInvoice.md)
  - [PaginatedApiInvoiceMetadata](./docs/PaginatedApiInvoiceMetadata.md)
  - [PaginatedApiSKU](./docs/PaginatedApiSKU.md)
@@ -917,6 +912,7 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedOrgServiceAccounts](./docs/PaginatedOrgServiceAccounts.md)
  - [PaginatedOrgUser](./docs/PaginatedOrgUser.md)
  - [PaginatedOrganization](./docs/PaginatedOrganization.md)
+ - [PaginatedOverloadProtectionSimulationResponse](./docs/PaginatedOverloadProtectionSimulationResponse.md)
  - [PaginatedPrivateNetworkEndpointIdEntry](./docs/PaginatedPrivateNetworkEndpointIdEntry.md)
  - [PaginatedPublicApiUsageDetailsLineItem](./docs/PaginatedPublicApiUsageDetailsLineItem.md)
  - [PaginatedQueryShapes](./docs/PaginatedQueryShapes.md)
@@ -983,8 +979,6 @@ Class        | Method        | HTTP request  | Description   |
  - [SearchMappings](./docs/SearchMappings.md)
  - [SearchSynonymMappingDefinition](./docs/SearchSynonymMappingDefinition.md)
  - [SearchTypeSets](./docs/SearchTypeSets.md)
- - [ServerlessBackupRestoreJob](./docs/ServerlessBackupRestoreJob.md)
- - [ServerlessBackupSnapshot](./docs/ServerlessBackupSnapshot.md)
  - [ServerlessConnectionStringsPrivateEndpointItem](./docs/ServerlessConnectionStringsPrivateEndpointItem.md)
  - [ServerlessConnectionStringsPrivateEndpointList](./docs/ServerlessConnectionStringsPrivateEndpointList.md)
  - [ServerlessInstanceDescription](./docs/ServerlessInstanceDescription.md)
@@ -1006,6 +1000,7 @@ Class        | Method        | HTTP request  | Description   |
  - [StreamConfig](./docs/StreamConfig.md)
  - [StreamProcessorMetricThreshold](./docs/StreamProcessorMetricThreshold.md)
  - [StreamsAWSConnectionConfig](./docs/StreamsAWSConnectionConfig.md)
+ - [StreamsAutoscaling](./docs/StreamsAutoscaling.md)
  - [StreamsConnection](./docs/StreamsConnection.md)
  - [StreamsDLQ](./docs/StreamsDLQ.md)
  - [StreamsDataProcessRegion](./docs/StreamsDataProcessRegion.md)

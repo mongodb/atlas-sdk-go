@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **FeatureUsages** | Pointer to [**[]CloudProviderAccessFeatureUsage**](CloudProviderAccessFeatureUsage.md) | List that contains application features associated with this Azure Service Principal. | [optional] [readonly] 
 **IamAssumedRoleArn** | Pointer to **string** | Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account. | [optional] 
 **RoleId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the role. | [optional] [readonly] 
-**Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the role. | [optional] [readonly] 
+**Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the role. Pass this value as the &#x60;roleId&#x60; path parameter when you request, update, or remove this Azure Service Principal. Azure Service Principals return this identifier as &#x60;_id&#x60;, while Amazon Web Services (AWS) IAM roles and Google Service Accounts return it as &#x60;roleId&#x60;. | [optional] [readonly] 
 **AtlasAzureAppId** | Pointer to **string** | Azure Active Directory Application ID of Atlas. This field is optional and will be derived from the Azure subscription if not provided. | [optional] 
 **LastUpdatedDate** | Pointer to **time.Time** | Date and time when this Azure Service Principal was last updated. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **ServicePrincipalId** | Pointer to **string** | UUID string that identifies the Azure Service Principal. | [optional] 

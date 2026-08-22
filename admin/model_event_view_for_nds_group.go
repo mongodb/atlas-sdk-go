@@ -123,9 +123,6 @@ type EventViewForNdsGroup struct {
 	// Tier the stream processor scaled from.
 	// Read only field.
 	FromTier *string `json:"fromTier,omitempty"`
-	// Username of the user who modified the stream processor.
-	// Read only field.
-	ModifiedBy *string `json:"modifiedBy,omitempty"`
 	// Error message linked to the stream processor associated with the event.
 	// Read only field.
 	ProcessorErrorMsg *string `json:"processorErrorMsg,omitempty"`
@@ -1818,46 +1815,6 @@ func (o *EventViewForNdsGroup) SetFromTier(v string) {
 func (o *EventViewForNdsGroup) SetFromTierNil() {
 	o.FromTier = nil
 	o.NullFields = addNullField(o.NullFields, "FromTier")
-}
-
-// GetModifiedBy returns the ModifiedBy field value if set, zero value otherwise
-func (o *EventViewForNdsGroup) GetModifiedBy() string {
-	if o == nil || IsNil(o.ModifiedBy) {
-		var ret string
-		return ret
-	}
-	return *o.ModifiedBy
-}
-
-// GetModifiedByOk returns a tuple with the ModifiedBy field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EventViewForNdsGroup) GetModifiedByOk() (*string, bool) {
-	if o == nil || IsNil(o.ModifiedBy) {
-		return nil, false
-	}
-
-	return o.ModifiedBy, true
-}
-
-// HasModifiedBy returns a boolean if a field has been set.
-func (o *EventViewForNdsGroup) HasModifiedBy() bool {
-	if o != nil && !IsNil(o.ModifiedBy) {
-		return true
-	}
-
-	return false
-}
-
-// SetModifiedBy gets a reference to the given string and assigns it to the ModifiedBy field.
-func (o *EventViewForNdsGroup) SetModifiedBy(v string) {
-	o.ModifiedBy = &v
-	o.NullFields = removeNullField(o.NullFields, "ModifiedBy")
-}
-
-// SetModifiedByNil sets ModifiedBy to an explicit JSON null when marshaled.
-func (o *EventViewForNdsGroup) SetModifiedByNil() {
-	o.ModifiedBy = nil
-	o.NullFields = addNullField(o.NullFields, "ModifiedBy")
 }
 
 // GetProcessorErrorMsg returns the ProcessorErrorMsg field value if set, zero value otherwise

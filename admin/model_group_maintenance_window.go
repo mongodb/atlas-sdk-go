@@ -6,9 +6,9 @@ package admin
 type GroupMaintenanceWindow struct {
 	// Flag that indicates whether MongoDB Cloud should defer all maintenance windows for one week after you enable them. This setting controls the same underlying auto-deferral feature as the `/maintenanceWindow/autoDefer` endpoint. Use either this field (to set a specific value) or that endpoint (to toggle the current value). For most use cases, this field in the PATCH request is preferred because it allows setting an explicit value rather than toggling.
 	AutoDeferOnceEnabled *bool `json:"autoDeferOnceEnabled,omitempty"`
-	// One-based integer that represents the day of the week that the maintenance window starts.  - `1`: Sunday. - `2`: Monday. - `3`: Tuesday. - `4`: Wednesday. - `5`: Thursday. - `6`: Friday. - `7`: Saturday.
+	// One-based integer that represents the day of the week, in the project's configured time zone (see `timeZoneId`), that the maintenance window starts.  - `1`: Sunday. - `2`: Monday. - `3`: Tuesday. - `4`: Wednesday. - `5`: Thursday. - `6`: Friday. - `7`: Saturday.
 	DayOfWeek int `json:"dayOfWeek"`
-	// Zero-based integer that represents the hour of the of the day that the maintenance window starts according to a 24-hour clock. Use `0` for midnight and `12` for noon.
+	// Zero-based integer that represents the hour of the day, in the project's configured time zone (see `timeZoneId`), that the maintenance window starts according to a 24-hour clock. Use `0` for midnight and `12` for noon. If you haven't changed your project's time zone, this defaults to UTC.
 	HourOfDay *int `json:"hourOfDay,omitempty"`
 	// Number of times the current maintenance event for this project has been deferred.
 	// Read only field.

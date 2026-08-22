@@ -414,7 +414,7 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
-    streamsProcessor := *admin.NewStreamsProcessor() // StreamsProcessor | 
+    streamsProcessor := *admin.NewStreamsProcessor("EffectiveTier_example") // StreamsProcessor | 
 
     resp, r, err := sdk.StreamsAPI.CreateStreamProcessor(context.Background(), groupId, tenantName, &streamsProcessor).Execute()
     if err != nil {
