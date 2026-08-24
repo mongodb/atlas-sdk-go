@@ -13,6 +13,9 @@ type PrivateLinkEndpoint struct {
 	// Error message returned when requesting private connection resource. The resource returns `null` if the request succeeded.
 	// Read only field.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
+	// Region name of the private endpoint.
+	// Read only field.
+	RegionName *string `json:"regionName,omitempty"`
 	// State of the Amazon Web Service PrivateLink connection when MongoDB Cloud received this request.
 	// Read only field.
 	ConnectionStatus *string `json:"connectionStatus,omitempty"`
@@ -172,6 +175,46 @@ func (o *PrivateLinkEndpoint) SetErrorMessage(v string) {
 func (o *PrivateLinkEndpoint) SetErrorMessageNil() {
 	o.ErrorMessage = nil
 	o.NullFields = addNullField(o.NullFields, "ErrorMessage")
+}
+
+// GetRegionName returns the RegionName field value if set, zero value otherwise
+func (o *PrivateLinkEndpoint) GetRegionName() string {
+	if o == nil || IsNil(o.RegionName) {
+		var ret string
+		return ret
+	}
+	return *o.RegionName
+}
+
+// GetRegionNameOk returns a tuple with the RegionName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetRegionNameOk() (*string, bool) {
+	if o == nil || IsNil(o.RegionName) {
+		return nil, false
+	}
+
+	return o.RegionName, true
+}
+
+// HasRegionName returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasRegionName() bool {
+	if o != nil && !IsNil(o.RegionName) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegionName gets a reference to the given string and assigns it to the RegionName field.
+func (o *PrivateLinkEndpoint) SetRegionName(v string) {
+	o.RegionName = &v
+	o.NullFields = removeNullField(o.NullFields, "RegionName")
+}
+
+// SetRegionNameNil sets RegionName to an explicit JSON null when marshaled.
+func (o *PrivateLinkEndpoint) SetRegionNameNil() {
+	o.RegionName = nil
+	o.NullFields = addNullField(o.NullFields, "RegionName")
 }
 
 // GetConnectionStatus returns the ConnectionStatus field value if set, zero value otherwise

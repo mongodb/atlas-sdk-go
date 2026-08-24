@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ConnectionId** | Pointer to **string** | Reserved. Will be used by &#x60;PRIVATE_LINK&#x60; connection type. | [optional] 
+**ConnectionId** | Pointer to **string** | Reserved. Will be used by &#x60;PRIVATE_LINK&#x60; connection type. Setting this field with any other networking access type returns a validation error. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Reserved. Will be used by &#x60;PRIVATE_LINK&#x60; connection type. | [optional] 
 **TgwRouteId** | Pointer to **string** | Reserved. Will be used by &#x60;TRANSIT_GATEWAY&#x60; connection type. | [optional] 

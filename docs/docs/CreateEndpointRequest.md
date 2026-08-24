@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **PrivateEndpointIPAddress** | Pointer to **string** | IPv4 address of the private endpoint in your Azure VNet that someone added to this private endpoint service. | [optional] 
 **EndpointGroupName** | Pointer to **string** | Human-readable label that identifies a set of endpoints. If this private endpoint belongs to a port-mapped endpoint service, this field is still required but ignored. | [optional] 
 **Endpoints** | Pointer to [**[]CreateGCPForwardingRuleRequest**](CreateGCPForwardingRuleRequest.md) | List of individual private endpoints that comprise this endpoint group. If this endpoint belongs to a port-mapped endpoint service, this field will only take in a list of one private endpoint. | [optional] 
-**GcpProjectId** | Pointer to **string** | Unique string that identifies the Google Cloud project in which you created the endpoints. | [optional] 
+**GcpProjectId** | Pointer to **string** | Unique string that identifies the Google Cloud project in which you created the endpoints. Specify the Google Cloud project ID or project number. | [optional] 
 
 ## Methods
 

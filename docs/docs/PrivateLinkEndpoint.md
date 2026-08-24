@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **CloudProvider** | **string** | Cloud service provider that serves the requested endpoint. | [readonly] 
 **DeleteRequested** | Pointer to **bool** | Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service. | [optional] [readonly] 
 **ErrorMessage** | Pointer to **string** | Error message returned when requesting private connection resource. The resource returns &#x60;null&#x60; if the request succeeded. | [optional] [readonly] 
+**RegionName** | Pointer to **string** | Region name of the private endpoint. | [optional] [readonly] 
 **ConnectionStatus** | Pointer to **string** | State of the Amazon Web Service PrivateLink connection when MongoDB Cloud received this request. | [optional] [readonly] 
 **InterfaceEndpointId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the interface endpoint. | [optional] [readonly] 
 **PrivateEndpointConnectionName** | Pointer to **string** | Human-readable label that MongoDB Cloud generates that identifies the private endpoint connection. | [optional] [readonly] 
@@ -117,6 +118,37 @@ HasErrorMessage returns a boolean if a field has been set.
 `func (o *PrivateLinkEndpoint) SetErrorMessageNil()`
 
 SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled, overriding any value previously set with SetErrorMessage. Calling SetErrorMessage again clears the null override.
+
+### GetRegionName
+
+`func (o *PrivateLinkEndpoint) GetRegionName() string`
+
+GetRegionName returns the RegionName field if non-nil, zero value otherwise.
+
+### GetRegionNameOk
+
+`func (o *PrivateLinkEndpoint) GetRegionNameOk() (*string, bool)`
+
+GetRegionNameOk returns a tuple with the RegionName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegionName
+
+`func (o *PrivateLinkEndpoint) SetRegionName(v string)`
+
+SetRegionName sets RegionName field to given value.
+
+### HasRegionName
+
+`func (o *PrivateLinkEndpoint) HasRegionName() bool`
+
+HasRegionName returns a boolean if a field has been set.
+
+### SetRegionNameNil
+
+`func (o *PrivateLinkEndpoint) SetRegionNameNil()`
+
+SetRegionNameNil sets RegionName to an explicit JSON null when marshaled, overriding any value previously set with SetRegionName. Calling SetRegionName again clears the null override.
 
 ### GetConnectionStatus
 

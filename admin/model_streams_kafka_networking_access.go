@@ -4,7 +4,7 @@ package admin
 
 // StreamsKafkaNetworkingAccess Information about networking access.
 type StreamsKafkaNetworkingAccess struct {
-	// Reserved. Will be used by `PRIVATE_LINK` connection type.
+	// Reserved. Will be used by `PRIVATE_LINK` connection type. Setting this field with any other networking access type returns a validation error.
 	ConnectionId *string `json:"connectionId,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.

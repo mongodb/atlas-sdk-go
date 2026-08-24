@@ -4,7 +4,8 @@ package admin
 
 // StreamsModifyStreamProcessorOptions Additional options for modifying a stream processor.
 type StreamsModifyStreamProcessorOptions struct {
-	Dlq *StreamsDLQ `json:"dlq,omitempty"`
+	Autoscaling *StreamsAutoscaling `json:"autoscaling,omitempty"`
+	Dlq         *StreamsDLQ         `json:"dlq,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -36,6 +37,46 @@ func NewStreamsModifyStreamProcessorOptions() *StreamsModifyStreamProcessorOptio
 func NewStreamsModifyStreamProcessorOptionsWithDefaults() *StreamsModifyStreamProcessorOptions {
 	this := StreamsModifyStreamProcessorOptions{}
 	return &this
+}
+
+// GetAutoscaling returns the Autoscaling field value if set, zero value otherwise
+func (o *StreamsModifyStreamProcessorOptions) GetAutoscaling() StreamsAutoscaling {
+	if o == nil || IsNil(o.Autoscaling) {
+		var ret StreamsAutoscaling
+		return ret
+	}
+	return *o.Autoscaling
+}
+
+// GetAutoscalingOk returns a tuple with the Autoscaling field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsModifyStreamProcessorOptions) GetAutoscalingOk() (*StreamsAutoscaling, bool) {
+	if o == nil || IsNil(o.Autoscaling) {
+		return nil, false
+	}
+
+	return o.Autoscaling, true
+}
+
+// HasAutoscaling returns a boolean if a field has been set.
+func (o *StreamsModifyStreamProcessorOptions) HasAutoscaling() bool {
+	if o != nil && !IsNil(o.Autoscaling) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoscaling gets a reference to the given StreamsAutoscaling and assigns it to the Autoscaling field.
+func (o *StreamsModifyStreamProcessorOptions) SetAutoscaling(v StreamsAutoscaling) {
+	o.Autoscaling = &v
+	o.NullFields = removeNullField(o.NullFields, "Autoscaling")
+}
+
+// SetAutoscalingNil sets Autoscaling to an explicit JSON null when marshaled.
+func (o *StreamsModifyStreamProcessorOptions) SetAutoscalingNil() {
+	o.Autoscaling = nil
+	o.NullFields = addNullField(o.NullFields, "Autoscaling")
 }
 
 // GetDlq returns the Dlq field value if set, zero value otherwise

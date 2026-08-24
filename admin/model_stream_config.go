@@ -7,9 +7,9 @@ type StreamConfig struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Max tier size for the Stream Workspace. Configures Memory / VCPU allowances.
+	// Max tier size for the Stream Workspace. Configures Memory or VCPU allowances.
 	MaxTierSize *string `json:"maxTierSize,omitempty"`
-	// Selected tier for the Stream Workspace. Configures Memory / VCPU allowances.
+	// Selected tier for the Stream Workspace. Configures Memory or VCPU allowances.
 	Tier *string `json:"tier,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
