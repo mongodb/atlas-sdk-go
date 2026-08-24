@@ -1,5 +1,6 @@
 {
   "optionalFields": {
-    "StreamProcessorMetricThreshold": ["metricName"]
+    "StreamProcessorMetricThreshold": ["metricName"],
+    "StreamsProcessor": ["effectiveTier"]
   }
 }
