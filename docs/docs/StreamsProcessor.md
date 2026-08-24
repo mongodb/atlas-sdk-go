@@ -5,12 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the stream processor. | [optional] [readonly] 
+**EffectiveTier** | Pointer to **string** | Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. | [optional] [readonly] 
 **FailoverEnabled** | Pointer to **bool** | Flag that enables or disables failover for the stream processor. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable name of the stream processor. | [optional] 
 **Options** | Pointer to [**StreamsOptions**](StreamsOptions.md) |  | [optional] 
 **Pipeline** | Pointer to [**[]any**](any.md) | Stream aggregation pipeline you want to apply to your streaming data. | [optional] 
-**Tier** | Pointer to **string** | Selected tier for the Stream Workspace. Configures Memory / VCPU allowances. | [optional] 
+**Tier** | Pointer to **string** | Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. | [optional] 
 
 ## Methods
 
@@ -61,6 +62,37 @@ HasId returns a boolean if a field has been set.
 `func (o *StreamsProcessor) SetIdNil()`
 
 SetIdNil sets Id to an explicit JSON null when marshaled, overriding any value previously set with SetId. Calling SetId again clears the null override.
+
+### GetEffectiveTier
+
+`func (o *StreamsProcessor) GetEffectiveTier() string`
+
+GetEffectiveTier returns the EffectiveTier field if non-nil, zero value otherwise.
+
+### GetEffectiveTierOk
+
+`func (o *StreamsProcessor) GetEffectiveTierOk() (*string, bool)`
+
+GetEffectiveTierOk returns a tuple with the EffectiveTier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEffectiveTier
+
+`func (o *StreamsProcessor) SetEffectiveTier(v string)`
+
+SetEffectiveTier sets EffectiveTier field to given value.
+
+### HasEffectiveTier
+
+`func (o *StreamsProcessor) HasEffectiveTier() bool`
+
+HasEffectiveTier returns a boolean if a field has been set.
+
+### SetEffectiveTierNil
+
+`func (o *StreamsProcessor) SetEffectiveTierNil()`
+
+SetEffectiveTierNil sets EffectiveTier to an explicit JSON null when marshaled, overriding any value previously set with SetEffectiveTier. Calling SetEffectiveTier again clears the null override.
 
 ### GetFailoverEnabled
 

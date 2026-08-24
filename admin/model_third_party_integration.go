@@ -26,6 +26,8 @@ type ThirdPartyIntegration struct {
 	SendDatabaseMetrics *bool `json:"sendDatabaseMetrics,omitempty"`
 	// Toggle sending query shape metrics that includes query hash and metrics on latency, execution frequency, documents returned, and timestamps.
 	SendQueryStatsMetrics *bool `json:"sendQueryStatsMetrics,omitempty"`
+	// Toggle sending sharding metrics that includes sharding distribution and chunk metrics per cluster, shard, and collection.
+	SendShardingMetrics *bool `json:"sendShardingMetrics,omitempty"`
 	// Toggle sending user provided group and cluster resource tags with the Datadog metrics.
 	SendUserProvidedResourceTags *bool `json:"sendUserProvidedResourceTags,omitempty"`
 	// Unique 40-hexadecimal digit string that identifies your New Relic account.
@@ -84,6 +86,8 @@ func NewThirdPartyIntegration() *ThirdPartyIntegration {
 	this.SendDatabaseMetrics = &sendDatabaseMetrics
 	var sendQueryStatsMetrics bool = false
 	this.SendQueryStatsMetrics = &sendQueryStatsMetrics
+	var sendShardingMetrics bool = false
+	this.SendShardingMetrics = &sendShardingMetrics
 	var sendUserProvidedResourceTags bool = false
 	this.SendUserProvidedResourceTags = &sendUserProvidedResourceTags
 	var sendUserProvidedResourceTagsEnabled bool = false
@@ -104,6 +108,8 @@ func NewThirdPartyIntegrationWithDefaults() *ThirdPartyIntegration {
 	this.SendDatabaseMetrics = &sendDatabaseMetrics
 	var sendQueryStatsMetrics bool = false
 	this.SendQueryStatsMetrics = &sendQueryStatsMetrics
+	var sendShardingMetrics bool = false
+	this.SendShardingMetrics = &sendShardingMetrics
 	var sendUserProvidedResourceTags bool = false
 	this.SendUserProvidedResourceTags = &sendUserProvidedResourceTags
 	var sendUserProvidedResourceTagsEnabled bool = false
@@ -549,6 +555,46 @@ func (o *ThirdPartyIntegration) SetSendQueryStatsMetrics(v bool) {
 func (o *ThirdPartyIntegration) SetSendQueryStatsMetricsNil() {
 	o.SendQueryStatsMetrics = nil
 	o.NullFields = addNullField(o.NullFields, "SendQueryStatsMetrics")
+}
+
+// GetSendShardingMetrics returns the SendShardingMetrics field value if set, zero value otherwise
+func (o *ThirdPartyIntegration) GetSendShardingMetrics() bool {
+	if o == nil || IsNil(o.SendShardingMetrics) {
+		var ret bool
+		return ret
+	}
+	return *o.SendShardingMetrics
+}
+
+// GetSendShardingMetricsOk returns a tuple with the SendShardingMetrics field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThirdPartyIntegration) GetSendShardingMetricsOk() (*bool, bool) {
+	if o == nil || IsNil(o.SendShardingMetrics) {
+		return nil, false
+	}
+
+	return o.SendShardingMetrics, true
+}
+
+// HasSendShardingMetrics returns a boolean if a field has been set.
+func (o *ThirdPartyIntegration) HasSendShardingMetrics() bool {
+	if o != nil && !IsNil(o.SendShardingMetrics) {
+		return true
+	}
+
+	return false
+}
+
+// SetSendShardingMetrics gets a reference to the given bool and assigns it to the SendShardingMetrics field.
+func (o *ThirdPartyIntegration) SetSendShardingMetrics(v bool) {
+	o.SendShardingMetrics = &v
+	o.NullFields = removeNullField(o.NullFields, "SendShardingMetrics")
+}
+
+// SetSendShardingMetricsNil sets SendShardingMetrics to an explicit JSON null when marshaled.
+func (o *ThirdPartyIntegration) SetSendShardingMetricsNil() {
+	o.SendShardingMetrics = nil
+	o.NullFields = addNullField(o.NullFields, "SendShardingMetrics")
 }
 
 // GetSendUserProvidedResourceTags returns the SendUserProvidedResourceTags field value if set, zero value otherwise

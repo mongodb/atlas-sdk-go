@@ -110,6 +110,8 @@ type APIClient struct {
 
 	OrganizationsAPI OrganizationsAPI
 
+	OverloadProtectionSimulationAPI OverloadProtectionSimulationAPI
+
 	PerformanceAdvisorAPI PerformanceAdvisorAPI
 
 	PrivateEndpointServicesAPI PrivateEndpointServicesAPI
@@ -201,6 +203,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.NetworkPeeringAPI = (*NetworkPeeringAPIService)(&c.common)
 	c.OnlineArchiveAPI = (*OnlineArchiveAPIService)(&c.common)
 	c.OrganizationsAPI = (*OrganizationsAPIService)(&c.common)
+	c.OverloadProtectionSimulationAPI = (*OverloadProtectionSimulationAPIService)(&c.common)
 	c.PerformanceAdvisorAPI = (*PerformanceAdvisorAPIService)(&c.common)
 	c.PrivateEndpointServicesAPI = (*PrivateEndpointServicesAPIService)(&c.common)
 	c.ProgrammaticAPIKeysAPI = (*ProgrammaticAPIKeysAPIService)(&c.common)

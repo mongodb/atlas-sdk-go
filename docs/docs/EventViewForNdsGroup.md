@@ -45,7 +45,6 @@ Name | Type | Description | Notes
 **ResourceType** | Pointer to **string** | Unique identifier of resource type. | [optional] 
 **InstanceName** | Pointer to **string** | Name of the stream processing workspace associated with the event. | [optional] [readonly] 
 **FromTier** | Pointer to **string** | Tier the stream processor scaled from. | [optional] [readonly] 
-**ModifiedBy** | Pointer to **string** | Username of the user who modified the stream processor. | [optional] [readonly] 
 **ProcessorErrorMsg** | Pointer to **string** | Error message linked to the stream processor associated with the event. | [optional] [readonly] 
 **ProcessorName** | Pointer to **string** | Name of the stream processor associated with the event. | [optional] [readonly] 
 **ProcessorState** | Pointer to **string** | State of the stream processor associated with the event. | [optional] [readonly] 
@@ -1345,37 +1344,6 @@ HasFromTier returns a boolean if a field has been set.
 `func (o *EventViewForNdsGroup) SetFromTierNil()`
 
 SetFromTierNil sets FromTier to an explicit JSON null when marshaled, overriding any value previously set with SetFromTier. Calling SetFromTier again clears the null override.
-
-### GetModifiedBy
-
-`func (o *EventViewForNdsGroup) GetModifiedBy() string`
-
-GetModifiedBy returns the ModifiedBy field if non-nil, zero value otherwise.
-
-### GetModifiedByOk
-
-`func (o *EventViewForNdsGroup) GetModifiedByOk() (*string, bool)`
-
-GetModifiedByOk returns a tuple with the ModifiedBy field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetModifiedBy
-
-`func (o *EventViewForNdsGroup) SetModifiedBy(v string)`
-
-SetModifiedBy sets ModifiedBy field to given value.
-
-### HasModifiedBy
-
-`func (o *EventViewForNdsGroup) HasModifiedBy() bool`
-
-HasModifiedBy returns a boolean if a field has been set.
-
-### SetModifiedByNil
-
-`func (o *EventViewForNdsGroup) SetModifiedByNil()`
-
-SetModifiedByNil sets ModifiedBy to an explicit JSON null when marshaled, overriding any value previously set with SetModifiedBy. Calling SetModifiedBy again clears the null override.
 
 ### GetProcessorErrorMsg
 

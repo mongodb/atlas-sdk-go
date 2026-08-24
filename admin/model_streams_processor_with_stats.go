@@ -7,6 +7,9 @@ type StreamsProcessorWithStats struct {
 	// Unique 24-hexadecimal character string that identifies the stream processor.
 	// Read only field.
 	Id string `json:"_id"`
+	// Selected tier for the Stream Workspace. Configures Memory or VCPU allowances.
+	// Read only field.
+	EffectiveTier string `json:"effectiveTier"`
 	// Flag that indicates whether the stream processor is eligible for failover.
 	// Read only field.
 	EligibleForFailover *bool `json:"eligibleForFailover,omitempty"`
@@ -29,7 +32,7 @@ type StreamsProcessorWithStats struct {
 	// The stats associated with the stream processor.
 	// Read only field.
 	Stats any `json:"stats,omitempty"`
-	// Selected tier for the Stream Workspace. Configures Memory / VCPU allowances.
+	// Selected tier for the Stream Workspace. Configures Memory or VCPU allowances.
 	Tier *string `json:"tier,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
@@ -46,9 +49,10 @@ func (o *StreamsProcessorWithStats) MarshalJSON() ([]byte, error) {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStreamsProcessorWithStats(id string, name string, pipeline []any, state string) *StreamsProcessorWithStats {
+func NewStreamsProcessorWithStats(id string, effectiveTier string, name string, pipeline []any, state string) *StreamsProcessorWithStats {
 	this := StreamsProcessorWithStats{}
 	this.Id = id
+	this.EffectiveTier = effectiveTier
 	this.Name = name
 	this.Pipeline = pipeline
 	this.State = state
@@ -85,6 +89,30 @@ func (o *StreamsProcessorWithStats) GetIdOk() (*string, bool) {
 // SetId sets field value
 func (o *StreamsProcessorWithStats) SetId(v string) {
 	o.Id = v
+}
+
+// GetEffectiveTier returns the EffectiveTier field value
+func (o *StreamsProcessorWithStats) GetEffectiveTier() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.EffectiveTier
+}
+
+// GetEffectiveTierOk returns a tuple with the EffectiveTier field value
+// and a boolean to check if the value has been set.
+func (o *StreamsProcessorWithStats) GetEffectiveTierOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EffectiveTier, true
+}
+
+// SetEffectiveTier sets field value
+func (o *StreamsProcessorWithStats) SetEffectiveTier(v string) {
+	o.EffectiveTier = v
 }
 
 // GetEligibleForFailover returns the EligibleForFailover field value if set, zero value otherwise

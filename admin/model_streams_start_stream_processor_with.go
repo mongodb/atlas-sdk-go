@@ -8,7 +8,8 @@ import (
 
 // StreamsStartStreamProcessorWith A request to start a stream processor.
 type StreamsStartStreamProcessorWith struct {
-	Failover *StreamsStartProcessorFailover `json:"failover,omitempty"`
+	Autoscaling *StreamsAutoscaling            `json:"autoscaling,omitempty"`
+	Failover    *StreamsStartProcessorFailover `json:"failover,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -16,7 +17,7 @@ type StreamsStartStreamProcessorWith struct {
 	ResumeFromCheckpoint *bool `json:"resumeFromCheckpoint,omitempty"`
 	// The operation time after which the change stream source should begin reporting. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	StartAtOperationTime *time.Time `json:"startAtOperationTime,omitempty"`
-	// Selected tier for the Stream Workspace. Configures Memory / VCPU allowances.
+	// Selected tier for the Stream Workspace. Configures Memory or VCPU allowances.
 	Tier *string `json:"tier,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
@@ -44,6 +45,46 @@ func NewStreamsStartStreamProcessorWith() *StreamsStartStreamProcessorWith {
 func NewStreamsStartStreamProcessorWithWithDefaults() *StreamsStartStreamProcessorWith {
 	this := StreamsStartStreamProcessorWith{}
 	return &this
+}
+
+// GetAutoscaling returns the Autoscaling field value if set, zero value otherwise
+func (o *StreamsStartStreamProcessorWith) GetAutoscaling() StreamsAutoscaling {
+	if o == nil || IsNil(o.Autoscaling) {
+		var ret StreamsAutoscaling
+		return ret
+	}
+	return *o.Autoscaling
+}
+
+// GetAutoscalingOk returns a tuple with the Autoscaling field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsStartStreamProcessorWith) GetAutoscalingOk() (*StreamsAutoscaling, bool) {
+	if o == nil || IsNil(o.Autoscaling) {
+		return nil, false
+	}
+
+	return o.Autoscaling, true
+}
+
+// HasAutoscaling returns a boolean if a field has been set.
+func (o *StreamsStartStreamProcessorWith) HasAutoscaling() bool {
+	if o != nil && !IsNil(o.Autoscaling) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoscaling gets a reference to the given StreamsAutoscaling and assigns it to the Autoscaling field.
+func (o *StreamsStartStreamProcessorWith) SetAutoscaling(v StreamsAutoscaling) {
+	o.Autoscaling = &v
+	o.NullFields = removeNullField(o.NullFields, "Autoscaling")
+}
+
+// SetAutoscalingNil sets Autoscaling to an explicit JSON null when marshaled.
+func (o *StreamsStartStreamProcessorWith) SetAutoscalingNil() {
+	o.Autoscaling = nil
+	o.NullFields = addNullField(o.NullFields, "Autoscaling")
 }
 
 // GetFailover returns the Failover field value if set, zero value otherwise

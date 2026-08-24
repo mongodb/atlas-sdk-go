@@ -12,12 +12,12 @@ type StreamsFailoverConnection struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Human-readable label that identifies the stream connection.
 	Name *string `json:"name,omitempty"`
-	// The connection region.
+	// Connection region.
 	Region *string `json:"region,omitempty"`
-	// The connection state.
+	// Connection state.
 	// Read only field.
 	State *string `json:"state,omitempty"`
-	// The connection type.
+	// Connection type.
 	Type *string `json:"type,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the project that contains the configured cluster. Required if the ID does not match the project containing the streams workspace. You must first enable the organization setting.
 	ClusterGroupId *string `json:"clusterGroupId,omitempty"`
@@ -27,7 +27,7 @@ type StreamsFailoverConnection struct {
 	Authentication  *StreamsKafkaAuthentication `json:"authentication,omitempty"`
 	// Comma separated list of server addresses.
 	BootstrapServers *string `json:"bootstrapServers,omitempty"`
-	// A map of Kafka key-value pairs for optional configuration. This is a flat object, and keys can have '.' characters.
+	// Map of Kafka key-value pairs for optional configuration. This object is flat, and keys can have '.' characters.
 	Config     *map[string]string      `json:"config,omitempty"`
 	Networking *StreamsKafkaNetworking `json:"networking,omitempty"`
 	Security   *StreamsKafkaSecurity   `json:"security,omitempty"`

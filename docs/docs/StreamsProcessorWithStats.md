@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Unique 24-hexadecimal character string that identifies the stream processor. | [readonly] 
+**EffectiveTier** | **string** | Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. | [readonly] 
 **EligibleForFailover** | Pointer to **bool** | Flag that indicates whether the stream processor is eligible for failover. | [optional] [readonly] 
 **FailoverEnabled** | Pointer to **bool** | Flag that enables or disables failover for the stream processor. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
@@ -13,13 +14,13 @@ Name | Type | Description | Notes
 **Pipeline** | [**[]any**](any.md) | Stream aggregation pipeline you want to apply to your streaming data. | [readonly] 
 **State** | **string** | The state of the stream processor. Commonly occurring states are &#39;CREATED&#39;, &#39;STARTED&#39;, &#39;STOPPED&#39; and &#39;FAILED&#39;. | [readonly] 
 **Stats** | Pointer to [**any**](interface{}.md) | The stats associated with the stream processor. | [optional] [readonly] 
-**Tier** | Pointer to **string** | Selected tier for the Stream Workspace. Configures Memory / VCPU allowances. | [optional] 
+**Tier** | Pointer to **string** | Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. | [optional] 
 
 ## Methods
 
 ### NewStreamsProcessorWithStats
 
-`func NewStreamsProcessorWithStats(id string, name string, pipeline []any, state string, ) *StreamsProcessorWithStats`
+`func NewStreamsProcessorWithStats(id string, effectiveTier string, name string, pipeline []any, state string, ) *StreamsProcessorWithStats`
 
 NewStreamsProcessorWithStats instantiates a new StreamsProcessorWithStats object
 This constructor will assign default values to properties that have it defined,
@@ -52,6 +53,25 @@ and a boolean to check if the value has been set.
 `func (o *StreamsProcessorWithStats) SetId(v string)`
 
 SetId sets Id field to given value.
+
+### GetEffectiveTier
+
+`func (o *StreamsProcessorWithStats) GetEffectiveTier() string`
+
+GetEffectiveTier returns the EffectiveTier field if non-nil, zero value otherwise.
+
+### GetEffectiveTierOk
+
+`func (o *StreamsProcessorWithStats) GetEffectiveTierOk() (*string, bool)`
+
+GetEffectiveTierOk returns a tuple with the EffectiveTier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEffectiveTier
+
+`func (o *StreamsProcessorWithStats) SetEffectiveTier(v string)`
+
+SetEffectiveTier sets EffectiveTier field to given value.
 
 ### GetEligibleForFailover
 

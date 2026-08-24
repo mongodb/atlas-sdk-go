@@ -30,7 +30,7 @@ type CloudProviderAccessGCPServiceAccount struct {
 	// Unique 24-hexadecimal digit string that identifies the role.
 	// Read only field.
 	RoleId *string `json:"roleId,omitempty"`
-	// Unique 24-hexadecimal digit string that identifies the role.
+	// Unique 24-hexadecimal digit string that identifies the role. Pass this value as the `roleId` path parameter when you request, update, or remove this Azure Service Principal. Azure Service Principals return this identifier as `_id`, while Amazon Web Services (AWS) IAM roles and Google Service Accounts return it as `roleId`.
 	// Read only field.
 	Id *string `json:"_id,omitempty"`
 	// Azure Active Directory Application ID of Atlas. This field is optional and will be derived from the Azure subscription if not provided.

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**IsAtlasHomePageAiAssistantEnabled** | Pointer to **bool** | Flag that indicates whether the MongoDB Assistant on the Atlas Home Page is enabled for the specified project. | [optional] 
 **IsClusterAiAssistantEnabled** | Pointer to **bool** | Flag that indicates whether the AI Cluster Assistant is enabled for the specified project. | [optional] 
 **IsCollectDatabaseSpecificsStatisticsEnabled** | Pointer to **bool** | Flag that indicates whether to collect database-specific metrics for the specified project. | [optional] 
 **IsDataExplorerEnabled** | Pointer to **bool** | Flag that indicates whether to enable the Data Explorer for the specified project. | [optional] 
@@ -34,6 +35,37 @@ will change when the set of required properties is changed
 NewGroupSettingsWithDefaults instantiates a new GroupSettings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetIsAtlasHomePageAiAssistantEnabled
+
+`func (o *GroupSettings) GetIsAtlasHomePageAiAssistantEnabled() bool`
+
+GetIsAtlasHomePageAiAssistantEnabled returns the IsAtlasHomePageAiAssistantEnabled field if non-nil, zero value otherwise.
+
+### GetIsAtlasHomePageAiAssistantEnabledOk
+
+`func (o *GroupSettings) GetIsAtlasHomePageAiAssistantEnabledOk() (*bool, bool)`
+
+GetIsAtlasHomePageAiAssistantEnabledOk returns a tuple with the IsAtlasHomePageAiAssistantEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsAtlasHomePageAiAssistantEnabled
+
+`func (o *GroupSettings) SetIsAtlasHomePageAiAssistantEnabled(v bool)`
+
+SetIsAtlasHomePageAiAssistantEnabled sets IsAtlasHomePageAiAssistantEnabled field to given value.
+
+### HasIsAtlasHomePageAiAssistantEnabled
+
+`func (o *GroupSettings) HasIsAtlasHomePageAiAssistantEnabled() bool`
+
+HasIsAtlasHomePageAiAssistantEnabled returns a boolean if a field has been set.
+
+### SetIsAtlasHomePageAiAssistantEnabledNil
+
+`func (o *GroupSettings) SetIsAtlasHomePageAiAssistantEnabledNil()`
+
+SetIsAtlasHomePageAiAssistantEnabledNil sets IsAtlasHomePageAiAssistantEnabled to an explicit JSON null when marshaled, overriding any value previously set with SetIsAtlasHomePageAiAssistantEnabled. Calling SetIsAtlasHomePageAiAssistantEnabled again clears the null override.
 
 ### GetIsClusterAiAssistantEnabled
 
