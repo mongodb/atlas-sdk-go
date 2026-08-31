@@ -50,7 +50,6 @@ func main() {
 	}()
 	sdk, err := admin.NewClient(
 		admin.UseBaseURL(host),
-		admin.UseDebug(true),
 		admin.UseHTTPClient(auth.NewClient(ctx, src)),
 	)
 

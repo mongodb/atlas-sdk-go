@@ -34,8 +34,7 @@ func main() {
 
 	sdk, err := admin.NewClient(
 		admin.UseBaseURL(url),
-		admin.UseOAuthAuth(ctx, clientID, clientSecret),
-		admin.UseDebug(true))
+		admin.UseOAuthAuth(ctx, clientID, clientSecret))
 	examples.HandleErr(err, nil)
 
 	current := new(admin.CloudDatabaseUser)

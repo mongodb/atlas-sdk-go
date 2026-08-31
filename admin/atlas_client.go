@@ -96,6 +96,11 @@ func UseHTTPClient(client *http.Client) ClientModifier {
 }
 
 // UseDebug enable debug level logging.
+//
+// Warning: debug logging writes full unredacted HTTP requests and responses,
+// including credentials and other secrets (for example database user passwords),
+// to the process logs. Enable it only for local troubleshooting, never in
+// production or shared environments.
 func UseDebug(debug bool) ClientModifier {
 	return func(c *Configuration) error {
 		c.Debug = debug
