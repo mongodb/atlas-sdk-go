@@ -19,6 +19,14 @@ import (
 	"go.mongodb.org/atlas-sdk/v20250312023/admin"
 )
 
+// closeBody closes the response body when present and returns the call error.
+func closeBody(resp *http.Response, err error) error {
+	if resp != nil {
+		_ = resp.Body.Close()
+	}
+	return err
+}
+
 func TestDotSegmentPathParamsRejected(t *testing.T) {
 	var hits int32
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
@@ -39,20 +47,20 @@ func TestDotSegmentPathParamsRejected(t *testing.T) {
 		call      func() error
 	}{
 		{"DeleteIndexByName groupId=..", "groupId", func() error {
-			_, err := sdk.AtlasSearchAPI.DeleteIndexByName(ctx, "..", "cluster0", "coll", "db", "idx").Execute()
-			return err
+			resp, err := sdk.AtlasSearchAPI.DeleteIndexByName(ctx, "..", "cluster0", "coll", "db", "idx").Execute()
+			return closeBody(resp, err)
 		}},
 		{"DeleteIndexByName collectionName=..", "collectionName", func() error {
-			_, err := sdk.AtlasSearchAPI.DeleteIndexByName(ctx, "group1", "cluster0", "..", "db", "idx").Execute()
-			return err
+			resp, err := sdk.AtlasSearchAPI.DeleteIndexByName(ctx, "group1", "cluster0", "..", "db", "idx").Execute()
+			return closeBody(resp, err)
 		}},
 		{"DeleteIndexByName collectionName=.", "collectionName", func() error {
-			_, err := sdk.AtlasSearchAPI.DeleteIndexByName(ctx, "group1", "cluster0", ".", "db", "idx").Execute()
-			return err
+			resp, err := sdk.AtlasSearchAPI.DeleteIndexByName(ctx, "group1", "cluster0", ".", "db", "idx").Execute()
+			return closeBody(resp, err)
 		}},
 		{"GetDatabaseUser username=..", "username", func() error {
-			_, _, err := sdk.DatabaseUsersAPI.GetDatabaseUser(ctx, "group1", "admin", "..").Execute()
-			return err
+			_, resp, err := sdk.DatabaseUsersAPI.GetDatabaseUser(ctx, "group1", "admin", "..").Execute()
+			return closeBody(resp, err)
 		}},
 	}
 	for _, tc := range cases {
@@ -93,8 +101,9 @@ func TestNonDotSegmentPathParamsStillWork(t *testing.T) {
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
 			capturedURI = ""
-			_, err := sdk.AtlasSearchAPI.DeleteIndexByName(ctx, "group1", "cluster0", tc.collection, "db", "idx").Execute()
+			resp, err := sdk.AtlasSearchAPI.DeleteIndexByName(ctx, "group1", "cluster0", tc.collection, "db", "idx").Execute()
 			require.NoError(t, err)
+			require.NoError(t, resp.Body.Close())
 			assert.Contains(t, capturedURI, tc.wantInURI)
 		})
 	}
