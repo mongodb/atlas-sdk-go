@@ -313,6 +313,19 @@ func (c *APIClient) prepareRequest(
 		return nil, err
 	}
 
+	// Defense-in-depth: refuse to send paths with dot-segments, which the
+	// server would normalize per RFC 3986, retargeting the request to a
+	// different endpoint. Typed methods validate path parameters before
+	// splicing; callers of UntypedClient.PrepareRequest supply raw paths
+	// directly, so this is the only layer that protects them. The check runs
+	// on the encoded path: a segment is rejected only if it is exactly "."
+	// or ".." once decoded, so escaped values like "a%2F..%2Fb" stay valid.
+	for _, segment := range strings.Split(urlData.EscapedPath(), "/") {
+		if decoded, err := url.PathUnescape(segment); err == nil && (decoded == "." || decoded == "..") {
+			return nil, reportError("refusing to send request: path %q contains a dot-segment", urlData.EscapedPath())
+		}
+	}
+
 	// Override request host, if applicable
 	if c.cfg.Host != "" {
 		urlData.Host = c.cfg.Host

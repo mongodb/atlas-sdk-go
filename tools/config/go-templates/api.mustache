@@ -157,6 +157,9 @@ func (a *{{{classname}}}Service) {{{nickname}}}Execute(r {{operationId}}ApiReque
 	if r.{{paramName}} == "" {
 		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, reportError("{{paramName}} is empty and must be specified")
 	}
+	if r.{{paramName}} == "." || r.{{paramName}} == ".." {
+		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, reportError("{{paramName}} must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"{{baseName}}"+"}", url.PathEscape(r.{{paramName}}), -1){{/pathParams}}
 
 	localVarHeaderParams := make(map[string]string)
