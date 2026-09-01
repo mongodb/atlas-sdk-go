@@ -10,8 +10,10 @@ type OrgServiceAccountRequest struct {
 	Name string `json:"name"`
 	// A list of organization-level roles for the Service Account.
 	Roles []string `json:"roles"`
-	// The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization's settings.
-	SecretExpiresAfterHours int `json:"secretExpiresAfterHours"`
+	// The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization's settings. Required unless `withoutInitialSecret` is true.
+	SecretExpiresAfterHours *int `json:"secretExpiresAfterHours,omitempty"`
+	// If true, creates the Service Account without generating an initial secret. `secretExpiresAfterHours` must not be set when this is true. Defaults to false, which preserves existing behavior: a secret is generated and returned in the response. Use the `CreateOrgServiceAccountSecret` endpoint to add a secret later.
+	WithoutInitialSecret *bool `json:"withoutInitialSecret,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`
@@ -27,12 +29,13 @@ func (o *OrgServiceAccountRequest) MarshalJSON() ([]byte, error) {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrgServiceAccountRequest(description string, name string, roles []string, secretExpiresAfterHours int) *OrgServiceAccountRequest {
+func NewOrgServiceAccountRequest(description string, name string, roles []string) *OrgServiceAccountRequest {
 	this := OrgServiceAccountRequest{}
 	this.Description = description
 	this.Name = name
 	this.Roles = roles
-	this.SecretExpiresAfterHours = secretExpiresAfterHours
+	var withoutInitialSecret bool = false
+	this.WithoutInitialSecret = &withoutInitialSecret
 	return &this
 }
 
@@ -41,6 +44,8 @@ func NewOrgServiceAccountRequest(description string, name string, roles []string
 // but it doesn't guarantee that properties required by API are set
 func NewOrgServiceAccountRequestWithDefaults() *OrgServiceAccountRequest {
 	this := OrgServiceAccountRequest{}
+	var withoutInitialSecret bool = false
+	this.WithoutInitialSecret = &withoutInitialSecret
 	return &this
 }
 
@@ -116,26 +121,82 @@ func (o *OrgServiceAccountRequest) SetRoles(v []string) {
 	o.Roles = v
 }
 
-// GetSecretExpiresAfterHours returns the SecretExpiresAfterHours field value
+// GetSecretExpiresAfterHours returns the SecretExpiresAfterHours field value if set, zero value otherwise
 func (o *OrgServiceAccountRequest) GetSecretExpiresAfterHours() int {
-	if o == nil {
+	if o == nil || IsNil(o.SecretExpiresAfterHours) {
 		var ret int
 		return ret
 	}
-
-	return o.SecretExpiresAfterHours
+	return *o.SecretExpiresAfterHours
 }
 
-// GetSecretExpiresAfterHoursOk returns a tuple with the SecretExpiresAfterHours field value
+// GetSecretExpiresAfterHoursOk returns a tuple with the SecretExpiresAfterHours field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *OrgServiceAccountRequest) GetSecretExpiresAfterHoursOk() (*int, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SecretExpiresAfterHours) {
 		return nil, false
 	}
-	return &o.SecretExpiresAfterHours, true
+
+	return o.SecretExpiresAfterHours, true
 }
 
-// SetSecretExpiresAfterHours sets field value
+// HasSecretExpiresAfterHours returns a boolean if a field has been set.
+func (o *OrgServiceAccountRequest) HasSecretExpiresAfterHours() bool {
+	if o != nil && !IsNil(o.SecretExpiresAfterHours) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecretExpiresAfterHours gets a reference to the given int and assigns it to the SecretExpiresAfterHours field.
 func (o *OrgServiceAccountRequest) SetSecretExpiresAfterHours(v int) {
-	o.SecretExpiresAfterHours = v
+	o.SecretExpiresAfterHours = &v
+	o.NullFields = removeNullField(o.NullFields, "SecretExpiresAfterHours")
+}
+
+// SetSecretExpiresAfterHoursNil sets SecretExpiresAfterHours to an explicit JSON null when marshaled.
+func (o *OrgServiceAccountRequest) SetSecretExpiresAfterHoursNil() {
+	o.SecretExpiresAfterHours = nil
+	o.NullFields = addNullField(o.NullFields, "SecretExpiresAfterHours")
+}
+
+// GetWithoutInitialSecret returns the WithoutInitialSecret field value if set, zero value otherwise
+func (o *OrgServiceAccountRequest) GetWithoutInitialSecret() bool {
+	if o == nil || IsNil(o.WithoutInitialSecret) {
+		var ret bool
+		return ret
+	}
+	return *o.WithoutInitialSecret
+}
+
+// GetWithoutInitialSecretOk returns a tuple with the WithoutInitialSecret field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrgServiceAccountRequest) GetWithoutInitialSecretOk() (*bool, bool) {
+	if o == nil || IsNil(o.WithoutInitialSecret) {
+		return nil, false
+	}
+
+	return o.WithoutInitialSecret, true
+}
+
+// HasWithoutInitialSecret returns a boolean if a field has been set.
+func (o *OrgServiceAccountRequest) HasWithoutInitialSecret() bool {
+	if o != nil && !IsNil(o.WithoutInitialSecret) {
+		return true
+	}
+
+	return false
+}
+
+// SetWithoutInitialSecret gets a reference to the given bool and assigns it to the WithoutInitialSecret field.
+func (o *OrgServiceAccountRequest) SetWithoutInitialSecret(v bool) {
+	o.WithoutInitialSecret = &v
+	o.NullFields = removeNullField(o.NullFields, "WithoutInitialSecret")
+}
+
+// SetWithoutInitialSecretNil sets WithoutInitialSecret to an explicit JSON null when marshaled.
+func (o *OrgServiceAccountRequest) SetWithoutInitialSecretNil() {
+	o.WithoutInitialSecret = nil
+	o.NullFields = addNullField(o.NullFields, "WithoutInitialSecret")
 }

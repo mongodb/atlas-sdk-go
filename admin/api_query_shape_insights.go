@@ -700,7 +700,7 @@ func (r ListQueryShapeSummariesApiRequest) Namespaces(namespaces []string) ListQ
 	return r
 }
 
-// Retrieve query shape statistics matching specified MongoDB commands. To include multiple commands, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each command. The currently supported parameters are find, distinct, and aggregate. Omit this parameter to return results for all supported commands.
+// Retrieve query shape statistics matching specified MongoDB commands. To include multiple commands, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each command. The currently supported parameters are: find, distinct, aggregate, count, insert, update, and delete. The insert, update, and delete commands return results only for clusters running MongoDB 9.0 or later with write query shape statistics enabled for the project. Omit this parameter to return results for all supported commands.
 func (r ListQueryShapeSummariesApiRequest) Commands(commands []string) ListQueryShapeSummariesApiRequest {
 	r.commands = &commands
 	return r
