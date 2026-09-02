@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312024/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -23,6 +23,328 @@ type RateLimitingAPI_Expecter struct {
 
 func (_m *RateLimitingAPI) EXPECT() *RateLimitingAPI_Expecter {
 	return &RateLimitingAPI_Expecter{mock: &_m.Mock}
+}
+
+// GetGroupRatelimits provides a mock function with given fields: ctx, groupId
+func (_m *RateLimitingAPI) GetGroupRatelimits(ctx context.Context, groupId string) admin.GetGroupRatelimitsApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetGroupRatelimits")
+	}
+
+	var r0 admin.GetGroupRatelimitsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetGroupRatelimitsApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.GetGroupRatelimitsApiRequest)
+	}
+
+	return r0
+}
+
+// RateLimitingAPI_GetGroupRatelimits_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupRatelimits'
+type RateLimitingAPI_GetGroupRatelimits_Call struct {
+	*mock.Call
+}
+
+// GetGroupRatelimits is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *RateLimitingAPI_Expecter) GetGroupRatelimits(ctx any, groupId any) *RateLimitingAPI_GetGroupRatelimits_Call {
+	return &RateLimitingAPI_GetGroupRatelimits_Call{Call: _e.mock.On("GetGroupRatelimits", ctx, groupId)}
+}
+
+func (_c *RateLimitingAPI_GetGroupRatelimits_Call) Run(run func(ctx context.Context, groupId string)) *RateLimitingAPI_GetGroupRatelimits_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *RateLimitingAPI_GetGroupRatelimits_Call) Return(_a0 admin.GetGroupRatelimitsApiRequest) *RateLimitingAPI_GetGroupRatelimits_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *RateLimitingAPI_GetGroupRatelimits_Call) RunAndReturn(run func(context.Context, string) admin.GetGroupRatelimitsApiRequest) *RateLimitingAPI_GetGroupRatelimits_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetGroupRatelimitsExecute provides a mock function with given fields: r
+func (_m *RateLimitingAPI) GetGroupRatelimitsExecute(r admin.GetGroupRatelimitsApiRequest) (*admin.AtlasRateLimitInspectionResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetGroupRatelimitsExecute")
+	}
+
+	var r0 *admin.AtlasRateLimitInspectionResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetGroupRatelimitsApiRequest) (*admin.AtlasRateLimitInspectionResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetGroupRatelimitsApiRequest) *admin.AtlasRateLimitInspectionResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.AtlasRateLimitInspectionResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetGroupRatelimitsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetGroupRatelimitsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// RateLimitingAPI_GetGroupRatelimitsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupRatelimitsExecute'
+type RateLimitingAPI_GetGroupRatelimitsExecute_Call struct {
+	*mock.Call
+}
+
+// GetGroupRatelimitsExecute is a helper method to define mock.On call
+//   - r admin.GetGroupRatelimitsApiRequest
+func (_e *RateLimitingAPI_Expecter) GetGroupRatelimitsExecute(r any) *RateLimitingAPI_GetGroupRatelimitsExecute_Call {
+	return &RateLimitingAPI_GetGroupRatelimitsExecute_Call{Call: _e.mock.On("GetGroupRatelimitsExecute", r)}
+}
+
+func (_c *RateLimitingAPI_GetGroupRatelimitsExecute_Call) Run(run func(r admin.GetGroupRatelimitsApiRequest)) *RateLimitingAPI_GetGroupRatelimitsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetGroupRatelimitsApiRequest))
+	})
+	return _c
+}
+
+func (_c *RateLimitingAPI_GetGroupRatelimitsExecute_Call) Return(_a0 *admin.AtlasRateLimitInspectionResponse, _a1 *http.Response, _a2 error) *RateLimitingAPI_GetGroupRatelimitsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *RateLimitingAPI_GetGroupRatelimitsExecute_Call) RunAndReturn(run func(admin.GetGroupRatelimitsApiRequest) (*admin.AtlasRateLimitInspectionResponse, *http.Response, error)) *RateLimitingAPI_GetGroupRatelimitsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetGroupRatelimitsWithParams provides a mock function with given fields: ctx, args
+func (_m *RateLimitingAPI) GetGroupRatelimitsWithParams(ctx context.Context, args *admin.GetGroupRatelimitsApiParams) admin.GetGroupRatelimitsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetGroupRatelimitsWithParams")
+	}
+
+	var r0 admin.GetGroupRatelimitsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetGroupRatelimitsApiParams) admin.GetGroupRatelimitsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetGroupRatelimitsApiRequest)
+	}
+
+	return r0
+}
+
+// RateLimitingAPI_GetGroupRatelimitsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetGroupRatelimitsWithParams'
+type RateLimitingAPI_GetGroupRatelimitsWithParams_Call struct {
+	*mock.Call
+}
+
+// GetGroupRatelimitsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetGroupRatelimitsApiParams
+func (_e *RateLimitingAPI_Expecter) GetGroupRatelimitsWithParams(ctx any, args any) *RateLimitingAPI_GetGroupRatelimitsWithParams_Call {
+	return &RateLimitingAPI_GetGroupRatelimitsWithParams_Call{Call: _e.mock.On("GetGroupRatelimitsWithParams", ctx, args)}
+}
+
+func (_c *RateLimitingAPI_GetGroupRatelimitsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetGroupRatelimitsApiParams)) *RateLimitingAPI_GetGroupRatelimitsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetGroupRatelimitsApiParams))
+	})
+	return _c
+}
+
+func (_c *RateLimitingAPI_GetGroupRatelimitsWithParams_Call) Return(_a0 admin.GetGroupRatelimitsApiRequest) *RateLimitingAPI_GetGroupRatelimitsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *RateLimitingAPI_GetGroupRatelimitsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetGroupRatelimitsApiParams) admin.GetGroupRatelimitsApiRequest) *RateLimitingAPI_GetGroupRatelimitsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetOrgRatelimits provides a mock function with given fields: ctx, orgId
+func (_m *RateLimitingAPI) GetOrgRatelimits(ctx context.Context, orgId string) admin.GetOrgRatelimitsApiRequest {
+	ret := _m.Called(ctx, orgId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetOrgRatelimits")
+	}
+
+	var r0 admin.GetOrgRatelimitsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.GetOrgRatelimitsApiRequest); ok {
+		r0 = rf(ctx, orgId)
+	} else {
+		r0 = ret.Get(0).(admin.GetOrgRatelimitsApiRequest)
+	}
+
+	return r0
+}
+
+// RateLimitingAPI_GetOrgRatelimits_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgRatelimits'
+type RateLimitingAPI_GetOrgRatelimits_Call struct {
+	*mock.Call
+}
+
+// GetOrgRatelimits is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+func (_e *RateLimitingAPI_Expecter) GetOrgRatelimits(ctx any, orgId any) *RateLimitingAPI_GetOrgRatelimits_Call {
+	return &RateLimitingAPI_GetOrgRatelimits_Call{Call: _e.mock.On("GetOrgRatelimits", ctx, orgId)}
+}
+
+func (_c *RateLimitingAPI_GetOrgRatelimits_Call) Run(run func(ctx context.Context, orgId string)) *RateLimitingAPI_GetOrgRatelimits_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *RateLimitingAPI_GetOrgRatelimits_Call) Return(_a0 admin.GetOrgRatelimitsApiRequest) *RateLimitingAPI_GetOrgRatelimits_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *RateLimitingAPI_GetOrgRatelimits_Call) RunAndReturn(run func(context.Context, string) admin.GetOrgRatelimitsApiRequest) *RateLimitingAPI_GetOrgRatelimits_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetOrgRatelimitsExecute provides a mock function with given fields: r
+func (_m *RateLimitingAPI) GetOrgRatelimitsExecute(r admin.GetOrgRatelimitsApiRequest) (*admin.AtlasRateLimitInspectionResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetOrgRatelimitsExecute")
+	}
+
+	var r0 *admin.AtlasRateLimitInspectionResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetOrgRatelimitsApiRequest) (*admin.AtlasRateLimitInspectionResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetOrgRatelimitsApiRequest) *admin.AtlasRateLimitInspectionResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.AtlasRateLimitInspectionResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetOrgRatelimitsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetOrgRatelimitsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// RateLimitingAPI_GetOrgRatelimitsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgRatelimitsExecute'
+type RateLimitingAPI_GetOrgRatelimitsExecute_Call struct {
+	*mock.Call
+}
+
+// GetOrgRatelimitsExecute is a helper method to define mock.On call
+//   - r admin.GetOrgRatelimitsApiRequest
+func (_e *RateLimitingAPI_Expecter) GetOrgRatelimitsExecute(r any) *RateLimitingAPI_GetOrgRatelimitsExecute_Call {
+	return &RateLimitingAPI_GetOrgRatelimitsExecute_Call{Call: _e.mock.On("GetOrgRatelimitsExecute", r)}
+}
+
+func (_c *RateLimitingAPI_GetOrgRatelimitsExecute_Call) Run(run func(r admin.GetOrgRatelimitsApiRequest)) *RateLimitingAPI_GetOrgRatelimitsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetOrgRatelimitsApiRequest))
+	})
+	return _c
+}
+
+func (_c *RateLimitingAPI_GetOrgRatelimitsExecute_Call) Return(_a0 *admin.AtlasRateLimitInspectionResponse, _a1 *http.Response, _a2 error) *RateLimitingAPI_GetOrgRatelimitsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *RateLimitingAPI_GetOrgRatelimitsExecute_Call) RunAndReturn(run func(admin.GetOrgRatelimitsApiRequest) (*admin.AtlasRateLimitInspectionResponse, *http.Response, error)) *RateLimitingAPI_GetOrgRatelimitsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetOrgRatelimitsWithParams provides a mock function with given fields: ctx, args
+func (_m *RateLimitingAPI) GetOrgRatelimitsWithParams(ctx context.Context, args *admin.GetOrgRatelimitsApiParams) admin.GetOrgRatelimitsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetOrgRatelimitsWithParams")
+	}
+
+	var r0 admin.GetOrgRatelimitsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetOrgRatelimitsApiParams) admin.GetOrgRatelimitsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetOrgRatelimitsApiRequest)
+	}
+
+	return r0
+}
+
+// RateLimitingAPI_GetOrgRatelimitsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgRatelimitsWithParams'
+type RateLimitingAPI_GetOrgRatelimitsWithParams_Call struct {
+	*mock.Call
+}
+
+// GetOrgRatelimitsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetOrgRatelimitsApiParams
+func (_e *RateLimitingAPI_Expecter) GetOrgRatelimitsWithParams(ctx any, args any) *RateLimitingAPI_GetOrgRatelimitsWithParams_Call {
+	return &RateLimitingAPI_GetOrgRatelimitsWithParams_Call{Call: _e.mock.On("GetOrgRatelimitsWithParams", ctx, args)}
+}
+
+func (_c *RateLimitingAPI_GetOrgRatelimitsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetOrgRatelimitsApiParams)) *RateLimitingAPI_GetOrgRatelimitsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetOrgRatelimitsApiParams))
+	})
+	return _c
+}
+
+func (_c *RateLimitingAPI_GetOrgRatelimitsWithParams_Call) Return(_a0 admin.GetOrgRatelimitsApiRequest) *RateLimitingAPI_GetOrgRatelimitsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *RateLimitingAPI_GetOrgRatelimitsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetOrgRatelimitsApiParams) admin.GetOrgRatelimitsApiRequest) *RateLimitingAPI_GetOrgRatelimitsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
 }
 
 // GetRateLimit provides a mock function with given fields: ctx, endpointSetId
@@ -342,6 +664,326 @@ func (_c *RateLimitingAPI_ListRateLimitsWithParams_Call) Return(_a0 admin.ListRa
 }
 
 func (_c *RateLimitingAPI_ListRateLimitsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListRateLimitsApiParams) admin.ListRateLimitsApiRequest) *RateLimitingAPI_ListRateLimitsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListRatelimits provides a mock function with given fields: ctx
+func (_m *RateLimitingAPI) ListRatelimits(ctx context.Context) admin.ListRatelimitsApiRequest {
+	ret := _m.Called(ctx)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListRatelimits")
+	}
+
+	var r0 admin.ListRatelimitsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context) admin.ListRatelimitsApiRequest); ok {
+		r0 = rf(ctx)
+	} else {
+		r0 = ret.Get(0).(admin.ListRatelimitsApiRequest)
+	}
+
+	return r0
+}
+
+// RateLimitingAPI_ListRatelimits_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListRatelimits'
+type RateLimitingAPI_ListRatelimits_Call struct {
+	*mock.Call
+}
+
+// ListRatelimits is a helper method to define mock.On call
+//   - ctx context.Context
+func (_e *RateLimitingAPI_Expecter) ListRatelimits(ctx any) *RateLimitingAPI_ListRatelimits_Call {
+	return &RateLimitingAPI_ListRatelimits_Call{Call: _e.mock.On("ListRatelimits", ctx)}
+}
+
+func (_c *RateLimitingAPI_ListRatelimits_Call) Run(run func(ctx context.Context)) *RateLimitingAPI_ListRatelimits_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context))
+	})
+	return _c
+}
+
+func (_c *RateLimitingAPI_ListRatelimits_Call) Return(_a0 admin.ListRatelimitsApiRequest) *RateLimitingAPI_ListRatelimits_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *RateLimitingAPI_ListRatelimits_Call) RunAndReturn(run func(context.Context) admin.ListRatelimitsApiRequest) *RateLimitingAPI_ListRatelimits_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListRatelimitsExecute provides a mock function with given fields: r
+func (_m *RateLimitingAPI) ListRatelimitsExecute(r admin.ListRatelimitsApiRequest) (*admin.AtlasRateLimitInspectionResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListRatelimitsExecute")
+	}
+
+	var r0 *admin.AtlasRateLimitInspectionResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListRatelimitsApiRequest) (*admin.AtlasRateLimitInspectionResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListRatelimitsApiRequest) *admin.AtlasRateLimitInspectionResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.AtlasRateLimitInspectionResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListRatelimitsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListRatelimitsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// RateLimitingAPI_ListRatelimitsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListRatelimitsExecute'
+type RateLimitingAPI_ListRatelimitsExecute_Call struct {
+	*mock.Call
+}
+
+// ListRatelimitsExecute is a helper method to define mock.On call
+//   - r admin.ListRatelimitsApiRequest
+func (_e *RateLimitingAPI_Expecter) ListRatelimitsExecute(r any) *RateLimitingAPI_ListRatelimitsExecute_Call {
+	return &RateLimitingAPI_ListRatelimitsExecute_Call{Call: _e.mock.On("ListRatelimitsExecute", r)}
+}
+
+func (_c *RateLimitingAPI_ListRatelimitsExecute_Call) Run(run func(r admin.ListRatelimitsApiRequest)) *RateLimitingAPI_ListRatelimitsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListRatelimitsApiRequest))
+	})
+	return _c
+}
+
+func (_c *RateLimitingAPI_ListRatelimitsExecute_Call) Return(_a0 *admin.AtlasRateLimitInspectionResponse, _a1 *http.Response, _a2 error) *RateLimitingAPI_ListRatelimitsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *RateLimitingAPI_ListRatelimitsExecute_Call) RunAndReturn(run func(admin.ListRatelimitsApiRequest) (*admin.AtlasRateLimitInspectionResponse, *http.Response, error)) *RateLimitingAPI_ListRatelimitsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListRatelimitsWithParams provides a mock function with given fields: ctx, args
+func (_m *RateLimitingAPI) ListRatelimitsWithParams(ctx context.Context, args *admin.ListRatelimitsApiParams) admin.ListRatelimitsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListRatelimitsWithParams")
+	}
+
+	var r0 admin.ListRatelimitsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListRatelimitsApiParams) admin.ListRatelimitsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListRatelimitsApiRequest)
+	}
+
+	return r0
+}
+
+// RateLimitingAPI_ListRatelimitsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListRatelimitsWithParams'
+type RateLimitingAPI_ListRatelimitsWithParams_Call struct {
+	*mock.Call
+}
+
+// ListRatelimitsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListRatelimitsApiParams
+func (_e *RateLimitingAPI_Expecter) ListRatelimitsWithParams(ctx any, args any) *RateLimitingAPI_ListRatelimitsWithParams_Call {
+	return &RateLimitingAPI_ListRatelimitsWithParams_Call{Call: _e.mock.On("ListRatelimitsWithParams", ctx, args)}
+}
+
+func (_c *RateLimitingAPI_ListRatelimitsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListRatelimitsApiParams)) *RateLimitingAPI_ListRatelimitsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListRatelimitsApiParams))
+	})
+	return _c
+}
+
+func (_c *RateLimitingAPI_ListRatelimitsWithParams_Call) Return(_a0 admin.ListRatelimitsApiRequest) *RateLimitingAPI_ListRatelimitsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *RateLimitingAPI_ListRatelimitsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListRatelimitsApiParams) admin.ListRatelimitsApiRequest) *RateLimitingAPI_ListRatelimitsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListUserRatelimits provides a mock function with given fields: ctx
+func (_m *RateLimitingAPI) ListUserRatelimits(ctx context.Context) admin.ListUserRatelimitsApiRequest {
+	ret := _m.Called(ctx)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListUserRatelimits")
+	}
+
+	var r0 admin.ListUserRatelimitsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context) admin.ListUserRatelimitsApiRequest); ok {
+		r0 = rf(ctx)
+	} else {
+		r0 = ret.Get(0).(admin.ListUserRatelimitsApiRequest)
+	}
+
+	return r0
+}
+
+// RateLimitingAPI_ListUserRatelimits_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListUserRatelimits'
+type RateLimitingAPI_ListUserRatelimits_Call struct {
+	*mock.Call
+}
+
+// ListUserRatelimits is a helper method to define mock.On call
+//   - ctx context.Context
+func (_e *RateLimitingAPI_Expecter) ListUserRatelimits(ctx any) *RateLimitingAPI_ListUserRatelimits_Call {
+	return &RateLimitingAPI_ListUserRatelimits_Call{Call: _e.mock.On("ListUserRatelimits", ctx)}
+}
+
+func (_c *RateLimitingAPI_ListUserRatelimits_Call) Run(run func(ctx context.Context)) *RateLimitingAPI_ListUserRatelimits_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context))
+	})
+	return _c
+}
+
+func (_c *RateLimitingAPI_ListUserRatelimits_Call) Return(_a0 admin.ListUserRatelimitsApiRequest) *RateLimitingAPI_ListUserRatelimits_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *RateLimitingAPI_ListUserRatelimits_Call) RunAndReturn(run func(context.Context) admin.ListUserRatelimitsApiRequest) *RateLimitingAPI_ListUserRatelimits_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListUserRatelimitsExecute provides a mock function with given fields: r
+func (_m *RateLimitingAPI) ListUserRatelimitsExecute(r admin.ListUserRatelimitsApiRequest) (*admin.AtlasRateLimitInspectionResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListUserRatelimitsExecute")
+	}
+
+	var r0 *admin.AtlasRateLimitInspectionResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListUserRatelimitsApiRequest) (*admin.AtlasRateLimitInspectionResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListUserRatelimitsApiRequest) *admin.AtlasRateLimitInspectionResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.AtlasRateLimitInspectionResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListUserRatelimitsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListUserRatelimitsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// RateLimitingAPI_ListUserRatelimitsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListUserRatelimitsExecute'
+type RateLimitingAPI_ListUserRatelimitsExecute_Call struct {
+	*mock.Call
+}
+
+// ListUserRatelimitsExecute is a helper method to define mock.On call
+//   - r admin.ListUserRatelimitsApiRequest
+func (_e *RateLimitingAPI_Expecter) ListUserRatelimitsExecute(r any) *RateLimitingAPI_ListUserRatelimitsExecute_Call {
+	return &RateLimitingAPI_ListUserRatelimitsExecute_Call{Call: _e.mock.On("ListUserRatelimitsExecute", r)}
+}
+
+func (_c *RateLimitingAPI_ListUserRatelimitsExecute_Call) Run(run func(r admin.ListUserRatelimitsApiRequest)) *RateLimitingAPI_ListUserRatelimitsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListUserRatelimitsApiRequest))
+	})
+	return _c
+}
+
+func (_c *RateLimitingAPI_ListUserRatelimitsExecute_Call) Return(_a0 *admin.AtlasRateLimitInspectionResponse, _a1 *http.Response, _a2 error) *RateLimitingAPI_ListUserRatelimitsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *RateLimitingAPI_ListUserRatelimitsExecute_Call) RunAndReturn(run func(admin.ListUserRatelimitsApiRequest) (*admin.AtlasRateLimitInspectionResponse, *http.Response, error)) *RateLimitingAPI_ListUserRatelimitsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListUserRatelimitsWithParams provides a mock function with given fields: ctx, args
+func (_m *RateLimitingAPI) ListUserRatelimitsWithParams(ctx context.Context, args *admin.ListUserRatelimitsApiParams) admin.ListUserRatelimitsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListUserRatelimitsWithParams")
+	}
+
+	var r0 admin.ListUserRatelimitsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListUserRatelimitsApiParams) admin.ListUserRatelimitsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListUserRatelimitsApiRequest)
+	}
+
+	return r0
+}
+
+// RateLimitingAPI_ListUserRatelimitsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListUserRatelimitsWithParams'
+type RateLimitingAPI_ListUserRatelimitsWithParams_Call struct {
+	*mock.Call
+}
+
+// ListUserRatelimitsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListUserRatelimitsApiParams
+func (_e *RateLimitingAPI_Expecter) ListUserRatelimitsWithParams(ctx any, args any) *RateLimitingAPI_ListUserRatelimitsWithParams_Call {
+	return &RateLimitingAPI_ListUserRatelimitsWithParams_Call{Call: _e.mock.On("ListUserRatelimitsWithParams", ctx, args)}
+}
+
+func (_c *RateLimitingAPI_ListUserRatelimitsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListUserRatelimitsApiParams)) *RateLimitingAPI_ListUserRatelimitsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListUserRatelimitsApiParams))
+	})
+	return _c
+}
+
+func (_c *RateLimitingAPI_ListUserRatelimitsWithParams_Call) Return(_a0 admin.ListUserRatelimitsApiRequest) *RateLimitingAPI_ListUserRatelimitsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *RateLimitingAPI_ListUserRatelimitsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListUserRatelimitsApiParams) admin.ListUserRatelimitsApiRequest) *RateLimitingAPI_ListUserRatelimitsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

@@ -224,6 +224,9 @@ func (a *ProjectIPAccessListAPIService) CreateAccessListEntryExecute(r CreateAcc
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -366,9 +369,15 @@ func (a *ProjectIPAccessListAPIService) DeleteAccessListEntryExecute(r DeleteAcc
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.entryValue == "" {
 		return nil, reportError("entryValue is empty and must be specified")
+	}
+	if r.entryValue == "." || r.entryValue == ".." {
+		return nil, reportError("entryValue must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"entryValue"+"}", url.PathEscape(r.entryValue), -1)
 
@@ -475,9 +484,15 @@ func (a *ProjectIPAccessListAPIService) GetAccessListEntryExecute(r GetAccessLis
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.entryValue == "" {
 		return localVarReturnValue, nil, reportError("entryValue is empty and must be specified")
+	}
+	if r.entryValue == "." || r.entryValue == ".." {
+		return localVarReturnValue, nil, reportError("entryValue must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"entryValue"+"}", url.PathEscape(r.entryValue), -1)
 
@@ -598,9 +613,15 @@ func (a *ProjectIPAccessListAPIService) GetAccessListStatusExecute(r GetAccessLi
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.entryValue == "" {
 		return localVarReturnValue, nil, reportError("entryValue is empty and must be specified")
+	}
+	if r.entryValue == "." || r.entryValue == ".." {
+		return localVarReturnValue, nil, reportError("entryValue must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"entryValue"+"}", url.PathEscape(r.entryValue), -1)
 
@@ -742,6 +763,9 @@ func (a *ProjectIPAccessListAPIService) ListAccessListEntriesExecute(r ListAcces
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/accessList"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 

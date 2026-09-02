@@ -58,6 +58,8 @@ type APIClient struct {
 
 	AuditingAPI AuditingAPI
 
+	ChartsDashboardsAPI ChartsDashboardsAPI
+
 	CloudBackupsAPI CloudBackupsAPI
 
 	CloudMigrationServiceAPI CloudMigrationServiceAPI
@@ -78,6 +80,8 @@ type APIClient struct {
 
 	EncryptionAtRestUsingCustomerKeyManagementAPI EncryptionAtRestUsingCustomerKeyManagementAPI
 
+	EphemeralClustersAPI EphemeralClustersAPI
+
 	EventsAPI EventsAPI
 
 	FederatedAuthenticationAPI FederatedAuthenticationAPI
@@ -96,6 +100,8 @@ type APIClient struct {
 
 	LegacyBackupAPI LegacyBackupAPI
 
+	LimitDescriptionAPI LimitDescriptionAPI
+
 	MaintenanceWindowsAPI MaintenanceWindowsAPI
 
 	MetricIntegrationsAPI MetricIntegrationsAPI
@@ -107,6 +113,8 @@ type APIClient struct {
 	NetworkPeeringAPI NetworkPeeringAPI
 
 	OnlineArchiveAPI OnlineArchiveAPI
+
+	OpenAPIAPI OpenAPIAPI
 
 	OrganizationsAPI OrganizationsAPI
 
@@ -136,11 +144,15 @@ type APIClient struct {
 
 	RootAPI RootAPI
 
+	SandboxAPI SandboxAPI
+
 	ServerlessInstancesAPI ServerlessInstancesAPI
 
 	ServerlessPrivateEndpointsAPI ServerlessPrivateEndpointsAPI
 
 	ServiceAccountsAPI ServiceAccountsAPI
+
+	StandbyLinksAPI StandbyLinksAPI
 
 	StreamsAPI StreamsAPI
 
@@ -177,6 +189,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AlertsAPI = (*AlertsAPIService)(&c.common)
 	c.AtlasSearchAPI = (*AtlasSearchAPIService)(&c.common)
 	c.AuditingAPI = (*AuditingAPIService)(&c.common)
+	c.ChartsDashboardsAPI = (*ChartsDashboardsAPIService)(&c.common)
 	c.CloudBackupsAPI = (*CloudBackupsAPIService)(&c.common)
 	c.CloudMigrationServiceAPI = (*CloudMigrationServiceAPIService)(&c.common)
 	c.CloudProviderAccessAPI = (*CloudProviderAccessAPIService)(&c.common)
@@ -187,6 +200,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DataFederationAPI = (*DataFederationAPIService)(&c.common)
 	c.DatabaseUsersAPI = (*DatabaseUsersAPIService)(&c.common)
 	c.EncryptionAtRestUsingCustomerKeyManagementAPI = (*EncryptionAtRestUsingCustomerKeyManagementAPIService)(&c.common)
+	c.EphemeralClustersAPI = (*EphemeralClustersAPIService)(&c.common)
 	c.EventsAPI = (*EventsAPIService)(&c.common)
 	c.FederatedAuthenticationAPI = (*FederatedAuthenticationAPIService)(&c.common)
 	c.FlexClustersAPI = (*FlexClustersAPIService)(&c.common)
@@ -196,12 +210,14 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.InvoicesAPI = (*InvoicesAPIService)(&c.common)
 	c.LDAPConfigurationAPI = (*LDAPConfigurationAPIService)(&c.common)
 	c.LegacyBackupAPI = (*LegacyBackupAPIService)(&c.common)
+	c.LimitDescriptionAPI = (*LimitDescriptionAPIService)(&c.common)
 	c.MaintenanceWindowsAPI = (*MaintenanceWindowsAPIService)(&c.common)
 	c.MetricIntegrationsAPI = (*MetricIntegrationsAPIService)(&c.common)
 	c.MongoDBCloudUsersAPI = (*MongoDBCloudUsersAPIService)(&c.common)
 	c.MonitoringAndLogsAPI = (*MonitoringAndLogsAPIService)(&c.common)
 	c.NetworkPeeringAPI = (*NetworkPeeringAPIService)(&c.common)
 	c.OnlineArchiveAPI = (*OnlineArchiveAPIService)(&c.common)
+	c.OpenAPIAPI = (*OpenAPIAPIService)(&c.common)
 	c.OrganizationsAPI = (*OrganizationsAPIService)(&c.common)
 	c.OverloadProtectionSimulationAPI = (*OverloadProtectionSimulationAPIService)(&c.common)
 	c.PerformanceAdvisorAPI = (*PerformanceAdvisorAPIService)(&c.common)
@@ -216,9 +232,11 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ResourcePoliciesAPI = (*ResourcePoliciesAPIService)(&c.common)
 	c.RollingIndexAPI = (*RollingIndexAPIService)(&c.common)
 	c.RootAPI = (*RootAPIService)(&c.common)
+	c.SandboxAPI = (*SandboxAPIService)(&c.common)
 	c.ServerlessInstancesAPI = (*ServerlessInstancesAPIService)(&c.common)
 	c.ServerlessPrivateEndpointsAPI = (*ServerlessPrivateEndpointsAPIService)(&c.common)
 	c.ServiceAccountsAPI = (*ServiceAccountsAPIService)(&c.common)
+	c.StandbyLinksAPI = (*StandbyLinksAPIService)(&c.common)
 	c.StreamsAPI = (*StreamsAPIService)(&c.common)
 	c.TeamsAPI = (*TeamsAPIService)(&c.common)
 	c.ThirdPartyIntegrationsAPI = (*ThirdPartyIntegrationsAPIService)(&c.common)
@@ -455,6 +473,19 @@ func (c *APIClient) prepareRequest(
 	urlData, err := url.Parse(path)
 	if err != nil {
 		return nil, err
+	}
+
+	// Defense-in-depth: refuse to send paths with dot-segments, which the
+	// server would normalize per RFC 3986, retargeting the request to a
+	// different endpoint. Typed methods validate path parameters before
+	// splicing; callers of UntypedClient.PrepareRequest supply raw paths
+	// directly, so this is the only layer that protects them. The check runs
+	// on the encoded path: a segment is rejected only if it is exactly "."
+	// or ".." once decoded, so escaped values like "a%2F..%2Fb" stay valid.
+	for _, segment := range strings.Split(urlData.EscapedPath(), "/") {
+		if decoded, err := url.PathUnescape(segment); err == nil && (decoded == "." || decoded == "..") {
+			return nil, reportError("refusing to send request: path %q contains a dot-segment", urlData.EscapedPath())
+		}
 	}
 
 	// Override request host, if applicable

@@ -8,9 +8,9 @@ type DedicatedHardwareSpec20240805 struct {
 	DiskSizeGB *float64 `json:"diskSizeGB,omitempty"`
 	// Number of nodes of the given type for MongoDB Cloud to deploy to the region.
 	NodeCount *int `json:"nodeCount,omitempty"`
-	// Target throughput desired for storage attached to your Azure-provisioned cluster. Change this parameter if you:  - set `replicationSpecs[n].regionConfigs[m].providerName` : `Azure`. - set `replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize` : `M40` or greater not including `Mxx_NVME` tiers.  The maximum input/output operations per second (IOPS) depend on the selected `.instanceSize` and `.diskSizeGB`. This parameter defaults to the cluster tier's standard IOPS value. Changing this value impacts cluster cost.
+	// Target IOPS (Input/Output Operations Per Second) desired for storage attached to this hardware. Only configurable for Gen 2 instance sizes.   Change this parameter if you:  - set `\"replicationSpecs[n].regionConfigs[m].providerName\" : \"GCP\"`. - set `\"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize\"` to a Gen 2 instance size (`\"M30_GEN_2\"` or greater).  The maximum input/output operations per second (IOPS) depend on the selected `.instanceSize` and `.diskSizeGB`. This parameter defaults to the standard IOPS value for the selected `.diskSizeGB`. Changing this value impacts cluster cost.
 	DiskIOPS *int `json:"diskIOPS,omitempty"`
-	// Target throughput desired for storage attached to this hardware. Only returned for Gen 2 instance sizes with Standard (GP3) volume type.
+	// Throughput (in MiB/s) provisioned for storage attached to this hardware. Only returned for Gen 2 instance sizes.
 	// Read only field.
 	DiskThroughput *int `json:"diskThroughput,omitempty"`
 	// Type of storage you want to attach to your AWS-provisioned cluster.  - `STANDARD` volume types can't exceed the default input/output operations per second (IOPS) rate for the selected volume size.   - `PROVISIONED` volume types must fall within the allowable IOPS range for the selected volume size.  - `HIGH_PERFORMANCE` volume types use IO2 EBS volumes and must fall within the allowable IOPS range for the selected volume size.  NVMe clusters require either `PROVISIONED` or `HIGH_PERFORMANCE`.

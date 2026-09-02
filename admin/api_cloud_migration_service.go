@@ -280,6 +280,9 @@ func (a *CloudMigrationServiceAPIService) CreateGroupLiveMigrationExecute(r Crea
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -403,6 +406,9 @@ func (a *CloudMigrationServiceAPIService) CreateLinkTokenExecute(r CreateLinkTok
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -524,9 +530,15 @@ func (a *CloudMigrationServiceAPIService) CutoverMigrationExecute(r CutoverMigra
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.liveMigrationId == "" {
 		return nil, reportError("liveMigrationId is empty and must be specified")
+	}
+	if r.liveMigrationId == "." || r.liveMigrationId == ".." {
+		return nil, reportError("liveMigrationId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"liveMigrationId"+"}", url.PathEscape(r.liveMigrationId), -1)
 
@@ -624,6 +636,9 @@ func (a *CloudMigrationServiceAPIService) DeleteLinkTokensExecute(r DeleteLinkTo
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/liveMigrations/linkTokens"
 	if r.orgId == "" {
 		return nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -730,9 +745,15 @@ func (a *CloudMigrationServiceAPIService) GetGroupLiveMigrationExecute(r GetGrou
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.liveMigrationId == "" {
 		return localVarReturnValue, nil, reportError("liveMigrationId is empty and must be specified")
+	}
+	if r.liveMigrationId == "." || r.liveMigrationId == ".." {
+		return localVarReturnValue, nil, reportError("liveMigrationId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"liveMigrationId"+"}", url.PathEscape(r.liveMigrationId), -1)
 
@@ -853,9 +874,15 @@ func (a *CloudMigrationServiceAPIService) GetMigrationValidateStatusExecute(r Ge
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.validationId == "" {
 		return localVarReturnValue, nil, reportError("validationId is empty and must be specified")
+	}
+	if r.validationId == "." || r.validationId == ".." {
+		return localVarReturnValue, nil, reportError("validationId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"validationId"+"}", url.PathEscape(r.validationId), -1)
 
@@ -970,6 +997,9 @@ func (a *CloudMigrationServiceAPIService) ListAvailableProjectsExecute(r ListAva
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/liveMigrations/availableProjects"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1088,6 +1118,9 @@ func (a *CloudMigrationServiceAPIService) ValidateLiveMigrationsExecute(r Valida
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/liveMigrations/validate"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 

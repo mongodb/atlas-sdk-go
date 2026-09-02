@@ -62,6 +62,33 @@ type InvoicesAPI interface {
 	CreateOrgInvoiceReportExecute(r CreateOrgInvoiceReportApiRequest) (*InvoiceReportResponse, *http.Response, error)
 
 	/*
+			GenerateInvoiceReport Generate and Download Invoice Report
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Generates and downloads a report for the specified invoice.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param invoiceId Unique string that identifies the invoice for which to generate the report.
+			@param reportGenerationRequest Generate and Download Invoice Report request body.
+			@return GenerateInvoiceReportApiRequest
+	*/
+	GenerateInvoiceReport(ctx context.Context, orgId string, invoiceId string, reportGenerationRequest *ReportGenerationRequest) GenerateInvoiceReportApiRequest
+	/*
+		GenerateInvoiceReport Generate and Download Invoice Report
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GenerateInvoiceReportApiParams - Parameters for the request
+		@return GenerateInvoiceReportApiRequest
+	*/
+	GenerateInvoiceReportWithParams(ctx context.Context, args *GenerateInvoiceReportApiParams) GenerateInvoiceReportApiRequest
+
+	// Method available only for mocking purposes
+	GenerateInvoiceReportExecute(r GenerateInvoiceReportApiRequest) (string, *http.Response, error)
+
+	/*
 		GetCostExplorerUsage Return Usage Details for One Cost Explorer Query
 
 		Returns the usage details for a Cost Explorer query, if the query is finished and the data is ready to be viewed. If the data is not ready, a 'processing' response will indicate that another request should be sent later to view the data.
@@ -136,13 +163,17 @@ type InvoicesAPI interface {
 	GetInvoiceCsvExecute(r GetInvoiceCsvApiRequest) (string, *http.Response, error)
 
 	/*
-		GetOrgAssociatedInvoices Return Associated Invoices
+			GetOrgAssociatedInvoices Return Associated Invoices
 
-		Returns a list of invoice IDs for the specified organization and month/year. Optionally includes invoices from linked organizations.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@return GetOrgAssociatedInvoicesApiRequest
+		 Returns a list of invoice IDs for the specified organization and month/year. Optionally includes invoices from linked organizations. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@return GetOrgAssociatedInvoicesApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for InvoicesAPI
 	*/
 	GetOrgAssociatedInvoices(ctx context.Context, orgId string) GetOrgAssociatedInvoicesApiRequest
 	/*
@@ -152,6 +183,8 @@ type InvoicesAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetOrgAssociatedInvoicesApiParams - Parameters for the request
 		@return GetOrgAssociatedInvoicesApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for InvoicesAPI
 	*/
 	GetOrgAssociatedInvoicesWithParams(ctx context.Context, args *GetOrgAssociatedInvoicesApiParams) GetOrgAssociatedInvoicesApiRequest
 
@@ -391,6 +424,9 @@ func (a *InvoicesAPIService) CreateCostExplorerProcessExecute(r CreateCostExplor
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -519,9 +555,15 @@ func (a *InvoicesAPIService) CreateOrgInvoiceReportExecute(r CreateOrgInvoiceRep
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invoiceId == "" {
 		return localVarReturnValue, nil, reportError("invoiceId is empty and must be specified")
+	}
+	if r.invoiceId == "." || r.invoiceId == ".." {
+		return localVarReturnValue, nil, reportError("invoiceId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
 
@@ -551,6 +593,146 @@ func (a *InvoicesAPIService) CreateOrgInvoiceReportExecute(r CreateOrgInvoiceRep
 	}
 	// body params
 	localVarPostBody = r.invoiceReportRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GenerateInvoiceReportApiRequest struct {
+	ctx                     context.Context
+	ApiService              InvoicesAPI
+	orgId                   string
+	invoiceId               string
+	reportGenerationRequest *ReportGenerationRequest
+}
+
+type GenerateInvoiceReportApiParams struct {
+	OrgId                   string
+	InvoiceId               string
+	ReportGenerationRequest *ReportGenerationRequest
+}
+
+func (a *InvoicesAPIService) GenerateInvoiceReportWithParams(ctx context.Context, args *GenerateInvoiceReportApiParams) GenerateInvoiceReportApiRequest {
+	return GenerateInvoiceReportApiRequest{
+		ApiService:              a,
+		ctx:                     ctx,
+		orgId:                   args.OrgId,
+		invoiceId:               args.InvoiceId,
+		reportGenerationRequest: args.ReportGenerationRequest,
+	}
+}
+
+func (r GenerateInvoiceReportApiRequest) Execute() (string, *http.Response, error) {
+	return r.ApiService.GenerateInvoiceReportExecute(r)
+}
+
+/*
+GenerateInvoiceReport Generate and Download Invoice Report
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Generates and downloads a report for the specified invoice.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param invoiceId Unique string that identifies the invoice for which to generate the report.
+	@return GenerateInvoiceReportApiRequest
+*/
+func (a *InvoicesAPIService) GenerateInvoiceReport(ctx context.Context, orgId string, invoiceId string, reportGenerationRequest *ReportGenerationRequest) GenerateInvoiceReportApiRequest {
+	return GenerateInvoiceReportApiRequest{
+		ApiService:              a,
+		ctx:                     ctx,
+		orgId:                   orgId,
+		invoiceId:               invoiceId,
+		reportGenerationRequest: reportGenerationRequest,
+	}
+}
+
+// GenerateInvoiceReportExecute executes the request
+//
+//	@return string
+func (a *InvoicesAPIService) GenerateInvoiceReportExecute(r GenerateInvoiceReportApiRequest) (string, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue string
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.GenerateInvoiceReport")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}:generateAndDownloadReport"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.invoiceId == "" {
+		return localVarReturnValue, nil, reportError("invoiceId is empty and must be specified")
+	}
+	if r.invoiceId == "." || r.invoiceId == ".." {
+		return localVarReturnValue, nil, reportError("invoiceId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.reportGenerationRequest == nil {
+		return localVarReturnValue, nil, reportError("reportGenerationRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+gzip"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.reportGenerationRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -647,9 +829,15 @@ func (a *InvoicesAPIService) GetCostExplorerUsageExecute(r GetCostExplorerUsageA
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.token == "" {
 		return localVarReturnValue, nil, reportError("token is empty and must be specified")
+	}
+	if r.token == "." || r.token == ".." {
+		return localVarReturnValue, nil, reportError("token must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"token"+"}", url.PathEscape(r.token), -1)
 
@@ -771,9 +959,15 @@ func (a *InvoicesAPIService) GetInvoiceExecute(r GetInvoiceApiRequest) (*Billing
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invoiceId == "" {
 		return localVarReturnValue, nil, reportError("invoiceId is empty and must be specified")
+	}
+	if r.invoiceId == "." || r.invoiceId == ".." {
+		return localVarReturnValue, nil, reportError("invoiceId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
 
@@ -896,9 +1090,15 @@ func (a *InvoicesAPIService) GetInvoiceCsvExecute(r GetInvoiceCsvApiRequest) (st
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invoiceId == "" {
 		return localVarReturnValue, nil, reportError("invoiceId is empty and must be specified")
+	}
+	if r.invoiceId == "." || r.invoiceId == ".." {
+		return localVarReturnValue, nil, reportError("invoiceId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
 
@@ -1007,11 +1207,15 @@ func (r GetOrgAssociatedInvoicesApiRequest) Execute() (*OrgAssociatedInvoiceResp
 /*
 GetOrgAssociatedInvoices Return Associated Invoices
 
-Returns a list of invoice IDs for the specified organization and month/year. Optionally includes invoices from linked organizations.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns a list of invoice IDs for the specified organization and month/year. Optionally includes invoices from linked organizations. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return GetOrgAssociatedInvoicesApiRequest
+
+Deprecated
 */
 func (a *InvoicesAPIService) GetOrgAssociatedInvoices(ctx context.Context, orgId string) GetOrgAssociatedInvoicesApiRequest {
 	return GetOrgAssociatedInvoicesApiRequest{
@@ -1024,6 +1228,8 @@ func (a *InvoicesAPIService) GetOrgAssociatedInvoices(ctx context.Context, orgId
 // GetOrgAssociatedInvoicesExecute executes the request
 //
 //	@return OrgAssociatedInvoiceResponse
+//
+// Deprecated
 func (a *InvoicesAPIService) GetOrgAssociatedInvoicesExecute(r GetOrgAssociatedInvoicesApiRequest) (*OrgAssociatedInvoiceResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1040,6 +1246,9 @@ func (a *InvoicesAPIService) GetOrgAssociatedInvoicesExecute(r GetOrgAssociatedI
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/associatedInvoices"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1066,7 +1275,7 @@ func (a *InvoicesAPIService) GetOrgAssociatedInvoicesExecute(r GetOrgAssociatedI
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1174,13 +1383,22 @@ func (a *InvoicesAPIService) GetOrgInvoiceReportExecute(r GetOrgInvoiceReportApi
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invoiceId == "" {
 		return localVarReturnValue, nil, reportError("invoiceId is empty and must be specified")
 	}
+	if r.invoiceId == "." || r.invoiceId == ".." {
+		return localVarReturnValue, nil, reportError("invoiceId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
 	if r.reportId == "" {
 		return localVarReturnValue, nil, reportError("reportId is empty and must be specified")
+	}
+	if r.reportId == "." || r.reportId == ".." {
+		return localVarReturnValue, nil, reportError("reportId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"reportId"+"}", url.PathEscape(r.reportId), -1)
 
@@ -1296,6 +1514,9 @@ func (a *InvoicesAPIService) GetSkuExecute(r GetSkuApiRequest) (*SkuResponse, *h
 	if r.skuId == "" {
 		return localVarReturnValue, nil, reportError("skuId is empty and must be specified")
 	}
+	if r.skuId == "." || r.skuId == ".." {
+		return localVarReturnValue, nil, reportError("skuId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"skuId"+"}", url.PathEscape(r.skuId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1409,6 +1630,9 @@ func (a *InvoicesAPIService) ListInvoicePendingExecute(r ListInvoicePendingApiRe
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invoices/pending"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1605,6 +1829,9 @@ func (a *InvoicesAPIService) ListInvoicesExecute(r ListInvoicesApiRequest) (*Pag
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invoices"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1807,9 +2034,15 @@ func (a *InvoicesAPIService) ListOrgInvoiceReportsExecute(r ListOrgInvoiceReport
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invoiceId == "" {
 		return localVarReturnValue, nil, reportError("invoiceId is empty and must be specified")
+	}
+	if r.invoiceId == "." || r.invoiceId == ".." {
+		return localVarReturnValue, nil, reportError("invoiceId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
 
@@ -2126,9 +2359,15 @@ func (a *InvoicesAPIService) SearchInvoiceLineItemsExecute(r SearchInvoiceLineIt
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invoiceId == "" {
 		return localVarReturnValue, nil, reportError("invoiceId is empty and must be specified")
+	}
+	if r.invoiceId == "." || r.invoiceId == ".." {
+		return localVarReturnValue, nil, reportError("invoiceId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
 

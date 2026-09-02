@@ -225,6 +225,35 @@ type OrganizationsAPI interface {
 	GetOrgInviteExecute(r GetOrgInviteApiRequest) (*OrganizationInvitation, *http.Response, error)
 
 	/*
+			GetOrgMaintenanceSettings Return Maintenance Settings for One Organization
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Returns maintenance settings for the specified organization. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@return GetOrgMaintenanceSettingsApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+	*/
+	GetOrgMaintenanceSettings(ctx context.Context, orgId string) GetOrgMaintenanceSettingsApiRequest
+	/*
+		GetOrgMaintenanceSettings Return Maintenance Settings for One Organization
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetOrgMaintenanceSettingsApiParams - Parameters for the request
+		@return GetOrgMaintenanceSettingsApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+	*/
+	GetOrgMaintenanceSettingsWithParams(ctx context.Context, args *GetOrgMaintenanceSettingsApiParams) GetOrgMaintenanceSettingsApiRequest
+
+	// Method available only for mocking purposes
+	GetOrgMaintenanceSettingsExecute(r GetOrgMaintenanceSettingsApiRequest) (*OrganizationMaintenanceSettingsResponse, *http.Response, error)
+
+	/*
 		GetOrgSettings Return Settings for One Organization
 
 		Returns details about the specified organization's settings.
@@ -297,6 +326,35 @@ type OrganizationsAPI interface {
 
 	// Method available only for mocking purposes
 	ListOrgsExecute(r ListOrgsApiRequest) (*PaginatedOrganization, *http.Response, error)
+
+	/*
+			ResetOrgMaintenanceSettings Reset Maintenance Settings for One Organization
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Resets maintenance settings for the specified organization to their default values. Restores the wave assignment mode to the default manual mode. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@return ResetOrgMaintenanceSettingsApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+	*/
+	ResetOrgMaintenanceSettings(ctx context.Context, orgId string) ResetOrgMaintenanceSettingsApiRequest
+	/*
+		ResetOrgMaintenanceSettings Reset Maintenance Settings for One Organization
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ResetOrgMaintenanceSettingsApiParams - Parameters for the request
+		@return ResetOrgMaintenanceSettingsApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+	*/
+	ResetOrgMaintenanceSettingsWithParams(ctx context.Context, args *ResetOrgMaintenanceSettingsApiParams) ResetOrgMaintenanceSettingsApiRequest
+
+	// Method available only for mocking purposes
+	ResetOrgMaintenanceSettingsExecute(r ResetOrgMaintenanceSettingsApiRequest) (*OrganizationMaintenanceSettingsResponse, *http.Response, error)
 
 	/*
 		UpdateOrg Update One Organization
@@ -406,6 +464,36 @@ type OrganizationsAPI interface {
 
 	// Method available only for mocking purposes
 	UpdateOrgInvitesExecute(r UpdateOrgInvitesApiRequest) (*OrganizationInvitation, *http.Response, error)
+
+	/*
+			UpdateOrgMaintenanceSettings Update Maintenance Settings for One Organization
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Updates maintenance settings for the specified organization. Omit optional fields from the request body to leave their current values unchanged. Specify null on an optional field to reset it to its default value. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param organizationMaintenanceSettingsUpdateRequest Maintenance settings to update for the specified organization.
+			@return UpdateOrgMaintenanceSettingsApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+	*/
+	UpdateOrgMaintenanceSettings(ctx context.Context, orgId string, organizationMaintenanceSettingsUpdateRequest *OrganizationMaintenanceSettingsUpdateRequest) UpdateOrgMaintenanceSettingsApiRequest
+	/*
+		UpdateOrgMaintenanceSettings Update Maintenance Settings for One Organization
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdateOrgMaintenanceSettingsApiParams - Parameters for the request
+		@return UpdateOrgMaintenanceSettingsApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
+	*/
+	UpdateOrgMaintenanceSettingsWithParams(ctx context.Context, args *UpdateOrgMaintenanceSettingsApiParams) UpdateOrgMaintenanceSettingsApiRequest
+
+	// Method available only for mocking purposes
+	UpdateOrgMaintenanceSettingsExecute(r UpdateOrgMaintenanceSettingsApiRequest) (*OrganizationMaintenanceSettingsResponse, *http.Response, error)
 
 	/*
 		UpdateOrgSettings Update Settings for One Organization
@@ -647,6 +735,9 @@ func (a *OrganizationsAPIService) CreateOrgInviteExecute(r CreateOrgInviteApiReq
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -767,6 +858,9 @@ func (a *OrganizationsAPIService) DeleteOrgExecute(r DeleteOrgApiRequest) (*http
 	if r.orgId == "" {
 		return nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -874,9 +968,15 @@ func (a *OrganizationsAPIService) DeleteOrgInviteExecute(r DeleteOrgInviteApiReq
 	if r.orgId == "" {
 		return nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invitationId == "" {
 		return nil, reportError("invitationId is empty and must be specified")
+	}
+	if r.invitationId == "." || r.invitationId == ".." {
+		return nil, reportError("invitationId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 
@@ -977,6 +1077,9 @@ func (a *OrganizationsAPIService) GetOrgExecute(r GetOrgApiRequest) (*AtlasOrgan
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1091,6 +1194,9 @@ func (a *OrganizationsAPIService) GetOrgDelegationSettingsExecute(r GetOrgDelega
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/delegationSettings"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1247,6 +1353,9 @@ func (a *OrganizationsAPIService) GetOrgGroupsExecute(r GetOrgGroupsApiRequest) 
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1396,9 +1505,15 @@ func (a *OrganizationsAPIService) GetOrgInviteExecute(r GetOrgInviteApiRequest) 
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invitationId == "" {
 		return localVarReturnValue, nil, reportError("invitationId is empty and must be specified")
+	}
+	if r.invitationId == "." || r.invitationId == ".." {
+		return localVarReturnValue, nil, reportError("invitationId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 
@@ -1417,6 +1532,129 @@ func (a *OrganizationsAPIService) GetOrgInviteExecute(r GetOrgInviteApiRequest) 
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetOrgMaintenanceSettingsApiRequest struct {
+	ctx        context.Context
+	ApiService OrganizationsAPI
+	orgId      string
+}
+
+type GetOrgMaintenanceSettingsApiParams struct {
+	OrgId string
+}
+
+func (a *OrganizationsAPIService) GetOrgMaintenanceSettingsWithParams(ctx context.Context, args *GetOrgMaintenanceSettingsApiParams) GetOrgMaintenanceSettingsApiRequest {
+	return GetOrgMaintenanceSettingsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      args.OrgId,
+	}
+}
+
+func (r GetOrgMaintenanceSettingsApiRequest) Execute() (*OrganizationMaintenanceSettingsResponse, *http.Response, error) {
+	return r.ApiService.GetOrgMaintenanceSettingsExecute(r)
+}
+
+/*
+GetOrgMaintenanceSettings Return Maintenance Settings for One Organization
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns maintenance settings for the specified organization. Deprecated versions: v2-{2025-03-12}
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return GetOrgMaintenanceSettingsApiRequest
+
+Deprecated
+*/
+func (a *OrganizationsAPIService) GetOrgMaintenanceSettings(ctx context.Context, orgId string) GetOrgMaintenanceSettingsApiRequest {
+	return GetOrgMaintenanceSettingsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+	}
+}
+
+// GetOrgMaintenanceSettingsExecute executes the request
+//
+//	@return OrganizationMaintenanceSettingsResponse
+//
+// Deprecated
+func (a *OrganizationsAPIService) GetOrgMaintenanceSettingsExecute(r GetOrgMaintenanceSettingsApiRequest) (*OrganizationMaintenanceSettingsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *OrganizationMaintenanceSettingsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.GetOrgMaintenanceSettings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/maintenanceSettings"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1513,6 +1751,9 @@ func (a *OrganizationsAPIService) GetOrgSettingsExecute(r GetOrgSettingsApiReque
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/settings"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1642,6 +1883,9 @@ func (a *OrganizationsAPIService) ListOrgInvitesExecute(r ListOrgInvitesApiReque
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invites"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1866,6 +2110,129 @@ func (a *OrganizationsAPIService) ListOrgsExecute(r ListOrgsApiRequest) (*Pagina
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ResetOrgMaintenanceSettingsApiRequest struct {
+	ctx        context.Context
+	ApiService OrganizationsAPI
+	orgId      string
+}
+
+type ResetOrgMaintenanceSettingsApiParams struct {
+	OrgId string
+}
+
+func (a *OrganizationsAPIService) ResetOrgMaintenanceSettingsWithParams(ctx context.Context, args *ResetOrgMaintenanceSettingsApiParams) ResetOrgMaintenanceSettingsApiRequest {
+	return ResetOrgMaintenanceSettingsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      args.OrgId,
+	}
+}
+
+func (r ResetOrgMaintenanceSettingsApiRequest) Execute() (*OrganizationMaintenanceSettingsResponse, *http.Response, error) {
+	return r.ApiService.ResetOrgMaintenanceSettingsExecute(r)
+}
+
+/*
+ResetOrgMaintenanceSettings Reset Maintenance Settings for One Organization
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Resets maintenance settings for the specified organization to their default values. Restores the wave assignment mode to the default manual mode. Deprecated versions: v2-{2025-03-12}
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return ResetOrgMaintenanceSettingsApiRequest
+
+Deprecated
+*/
+func (a *OrganizationsAPIService) ResetOrgMaintenanceSettings(ctx context.Context, orgId string) ResetOrgMaintenanceSettingsApiRequest {
+	return ResetOrgMaintenanceSettingsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+	}
+}
+
+// ResetOrgMaintenanceSettingsExecute executes the request
+//
+//	@return OrganizationMaintenanceSettingsResponse
+//
+// Deprecated
+func (a *OrganizationsAPIService) ResetOrgMaintenanceSettingsExecute(r ResetOrgMaintenanceSettingsApiRequest) (*OrganizationMaintenanceSettingsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *OrganizationMaintenanceSettingsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.ResetOrgMaintenanceSettings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/maintenanceSettings:reset"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type UpdateOrgApiRequest struct {
 	ctx               context.Context
 	ApiService        OrganizationsAPI
@@ -1928,6 +2295,9 @@ func (a *OrganizationsAPIService) UpdateOrgExecute(r UpdateOrgApiRequest) (*Atla
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -2051,6 +2421,9 @@ func (a *OrganizationsAPIService) UpdateOrgDelegationSettingsExecute(r UpdateOrg
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/delegationSettings"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -2186,9 +2559,15 @@ func (a *OrganizationsAPIService) UpdateOrgInviteByIdExecute(r UpdateOrgInviteBy
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invitationId == "" {
 		return localVarReturnValue, nil, reportError("invitationId is empty and must be specified")
+	}
+	if r.invitationId == "." || r.invitationId == ".." {
+		return localVarReturnValue, nil, reportError("invitationId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 
@@ -2319,6 +2698,9 @@ func (a *OrganizationsAPIService) UpdateOrgInvitesExecute(r UpdateOrgInvitesApiR
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2347,6 +2729,138 @@ func (a *OrganizationsAPIService) UpdateOrgInvitesExecute(r UpdateOrgInvitesApiR
 	}
 	// body params
 	localVarPostBody = r.organizationInvitationRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UpdateOrgMaintenanceSettingsApiRequest struct {
+	ctx                                          context.Context
+	ApiService                                   OrganizationsAPI
+	orgId                                        string
+	organizationMaintenanceSettingsUpdateRequest *OrganizationMaintenanceSettingsUpdateRequest
+}
+
+type UpdateOrgMaintenanceSettingsApiParams struct {
+	OrgId                                        string
+	OrganizationMaintenanceSettingsUpdateRequest *OrganizationMaintenanceSettingsUpdateRequest
+}
+
+func (a *OrganizationsAPIService) UpdateOrgMaintenanceSettingsWithParams(ctx context.Context, args *UpdateOrgMaintenanceSettingsApiParams) UpdateOrgMaintenanceSettingsApiRequest {
+	return UpdateOrgMaintenanceSettingsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      args.OrgId,
+		organizationMaintenanceSettingsUpdateRequest: args.OrganizationMaintenanceSettingsUpdateRequest,
+	}
+}
+
+func (r UpdateOrgMaintenanceSettingsApiRequest) Execute() (*OrganizationMaintenanceSettingsResponse, *http.Response, error) {
+	return r.ApiService.UpdateOrgMaintenanceSettingsExecute(r)
+}
+
+/*
+UpdateOrgMaintenanceSettings Update Maintenance Settings for One Organization
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Updates maintenance settings for the specified organization. Omit optional fields from the request body to leave their current values unchanged. Specify null on an optional field to reset it to its default value. Deprecated versions: v2-{2025-03-12}
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return UpdateOrgMaintenanceSettingsApiRequest
+
+Deprecated
+*/
+func (a *OrganizationsAPIService) UpdateOrgMaintenanceSettings(ctx context.Context, orgId string, organizationMaintenanceSettingsUpdateRequest *OrganizationMaintenanceSettingsUpdateRequest) UpdateOrgMaintenanceSettingsApiRequest {
+	return UpdateOrgMaintenanceSettingsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+		organizationMaintenanceSettingsUpdateRequest: organizationMaintenanceSettingsUpdateRequest,
+	}
+}
+
+// UpdateOrgMaintenanceSettingsExecute executes the request
+//
+//	@return OrganizationMaintenanceSettingsResponse
+//
+// Deprecated
+func (a *OrganizationsAPIService) UpdateOrgMaintenanceSettingsExecute(r UpdateOrgMaintenanceSettingsApiRequest) (*OrganizationMaintenanceSettingsResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *OrganizationMaintenanceSettingsResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationsAPIService.UpdateOrgMaintenanceSettings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/maintenanceSettings"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.organizationMaintenanceSettingsUpdateRequest == nil {
+		return localVarReturnValue, nil, reportError("organizationMaintenanceSettingsUpdateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.organizationMaintenanceSettingsUpdateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -2441,6 +2955,9 @@ func (a *OrganizationsAPIService) UpdateOrgSettingsExecute(r UpdateOrgSettingsAp
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/settings"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -2574,9 +3091,15 @@ func (a *OrganizationsAPIService) UpdateOrgUserRolesExecute(r UpdateOrgUserRoles
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.userId == "" {
 		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
+	if r.userId == "." || r.userId == ".." {
+		return localVarReturnValue, nil, reportError("userId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 

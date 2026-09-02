@@ -204,9 +204,15 @@ func (a *CloudProviderAccessAPIService) AuthorizeProviderAccessRoleExecute(r Aut
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.roleId == "" {
 		return localVarReturnValue, nil, reportError("roleId is empty and must be specified")
+	}
+	if r.roleId == "." || r.roleId == ".." {
+		return localVarReturnValue, nil, reportError("roleId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"roleId"+"}", url.PathEscape(r.roleId), -1)
 
@@ -330,6 +336,9 @@ func (a *CloudProviderAccessAPIService) CreateCloudProviderAccessExecute(r Creat
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/cloudProviderAccess"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -457,13 +466,22 @@ func (a *CloudProviderAccessAPIService) DeauthorizeProviderAccessRoleExecute(r D
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.cloudProvider == "" {
 		return nil, reportError("cloudProvider is empty and must be specified")
 	}
+	if r.cloudProvider == "." || r.cloudProvider == ".." {
+		return nil, reportError("cloudProvider must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(r.cloudProvider), -1)
 	if r.roleId == "" {
 		return nil, reportError("roleId is empty and must be specified")
+	}
+	if r.roleId == "." || r.roleId == ".." {
+		return nil, reportError("roleId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"roleId"+"}", url.PathEscape(r.roleId), -1)
 
@@ -570,9 +588,15 @@ func (a *CloudProviderAccessAPIService) GetCloudProviderAccessExecute(r GetCloud
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.roleId == "" {
 		return localVarReturnValue, nil, reportError("roleId is empty and must be specified")
+	}
+	if r.roleId == "." || r.roleId == ".." {
+		return localVarReturnValue, nil, reportError("roleId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"roleId"+"}", url.PathEscape(r.roleId), -1)
 
@@ -687,6 +711,9 @@ func (a *CloudProviderAccessAPIService) ListCloudProviderAccessExecute(r ListClo
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/cloudProviderAccess"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
