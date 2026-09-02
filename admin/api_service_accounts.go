@@ -162,7 +162,7 @@ type ServiceAccountsAPI interface {
 	/*
 		DeleteGroupAccessEntry Remove One Access List Entry from One Project Service Account
 
-		Removes the specified access list entry from the specified Service Account for the project. You can't remove the requesting IP address from the access list.
+		Removes the specified access list entry from the specified Service Account for the project. A Service Account cannot remove its own IP address from its access list.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -236,7 +236,7 @@ type ServiceAccountsAPI interface {
 	/*
 		DeleteOrgAccessEntry Remove One Access List Entry from One Organization Service Account
 
-		Removes the specified access list entry from the specified Service Account for the organization. You can't remove the requesting IP address from the access list.
+		Removes the specified access list entry from the specified Service Account for the organization. A Service Account cannot remove its own IP address from its access list.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -647,9 +647,15 @@ func (a *ServiceAccountsAPIService) CreateAccessListExecute(r CreateAccessListAp
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clientId == "" {
 		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
+	}
+	if r.clientId == "." || r.clientId == ".." {
+		return localVarReturnValue, nil, reportError("clientId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 
@@ -800,9 +806,15 @@ func (a *ServiceAccountsAPIService) CreateGroupSecretExecute(r CreateGroupSecret
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clientId == "" {
 		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
+	}
+	if r.clientId == "." || r.clientId == ".." {
+		return localVarReturnValue, nil, reportError("clientId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 
@@ -926,6 +938,9 @@ func (a *ServiceAccountsAPIService) CreateGroupServiceAccountExecute(r CreateGro
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serviceAccounts"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -1082,9 +1097,15 @@ func (a *ServiceAccountsAPIService) CreateOrgAccessListExecute(r CreateOrgAccess
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.clientId == "" {
 		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
+	}
+	if r.clientId == "." || r.clientId == ".." {
+		return localVarReturnValue, nil, reportError("clientId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 
@@ -1235,9 +1256,15 @@ func (a *ServiceAccountsAPIService) CreateOrgSecretExecute(r CreateOrgSecretApiR
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.clientId == "" {
 		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
+	}
+	if r.clientId == "." || r.clientId == ".." {
+		return localVarReturnValue, nil, reportError("clientId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 
@@ -1362,6 +1389,9 @@ func (a *ServiceAccountsAPIService) CreateOrgServiceAccountExecute(r CreateOrgSe
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1453,7 +1483,7 @@ func (r DeleteGroupAccessEntryApiRequest) Execute() (*http.Response, error) {
 /*
 DeleteGroupAccessEntry Remove One Access List Entry from One Project Service Account
 
-Removes the specified access list entry from the specified Service Account for the project. You can't remove the requesting IP address from the access list.
+Removes the specified access list entry from the specified Service Account for the project. A Service Account cannot remove its own IP address from its access list.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1488,13 +1518,22 @@ func (a *ServiceAccountsAPIService) DeleteGroupAccessEntryExecute(r DeleteGroupA
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clientId == "" {
 		return nil, reportError("clientId is empty and must be specified")
 	}
+	if r.clientId == "." || r.clientId == ".." {
+		return nil, reportError("clientId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 	if r.ipAddress == "" {
 		return nil, reportError("ipAddress is empty and must be specified")
+	}
+	if r.ipAddress == "." || r.ipAddress == ".." {
+		return nil, reportError("ipAddress must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"ipAddress"+"}", url.PathEscape(r.ipAddress), -1)
 
@@ -1603,13 +1642,22 @@ func (a *ServiceAccountsAPIService) DeleteGroupSecretExecute(r DeleteGroupSecret
 	if r.clientId == "" {
 		return nil, reportError("clientId is empty and must be specified")
 	}
+	if r.clientId == "." || r.clientId == ".." {
+		return nil, reportError("clientId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 	if r.secretId == "" {
 		return nil, reportError("secretId is empty and must be specified")
 	}
+	if r.secretId == "." || r.secretId == ".." {
+		return nil, reportError("secretId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(r.secretId), -1)
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -1713,9 +1761,15 @@ func (a *ServiceAccountsAPIService) DeleteGroupServiceAccountExecute(r DeleteGro
 	if r.clientId == "" {
 		return nil, reportError("clientId is empty and must be specified")
 	}
+	if r.clientId == "." || r.clientId == ".." {
+		return nil, reportError("clientId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -1789,7 +1843,7 @@ func (r DeleteOrgAccessEntryApiRequest) Execute() (*http.Response, error) {
 /*
 DeleteOrgAccessEntry Remove One Access List Entry from One Organization Service Account
 
-Removes the specified access list entry from the specified Service Account for the organization. You can't remove the requesting IP address from the access list.
+Removes the specified access list entry from the specified Service Account for the organization. A Service Account cannot remove its own IP address from its access list.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
@@ -1824,13 +1878,22 @@ func (a *ServiceAccountsAPIService) DeleteOrgAccessEntryExecute(r DeleteOrgAcces
 	if r.orgId == "" {
 		return nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.clientId == "" {
 		return nil, reportError("clientId is empty and must be specified")
 	}
+	if r.clientId == "." || r.clientId == ".." {
+		return nil, reportError("clientId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 	if r.ipAddress == "" {
 		return nil, reportError("ipAddress is empty and must be specified")
+	}
+	if r.ipAddress == "." || r.ipAddress == ".." {
+		return nil, reportError("ipAddress must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"ipAddress"+"}", url.PathEscape(r.ipAddress), -1)
 
@@ -1939,13 +2002,22 @@ func (a *ServiceAccountsAPIService) DeleteOrgSecretExecute(r DeleteOrgSecretApiR
 	if r.clientId == "" {
 		return nil, reportError("clientId is empty and must be specified")
 	}
+	if r.clientId == "." || r.clientId == ".." {
+		return nil, reportError("clientId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 	if r.secretId == "" {
 		return nil, reportError("secretId is empty and must be specified")
 	}
+	if r.secretId == "." || r.secretId == ".." {
+		return nil, reportError("secretId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(r.secretId), -1)
 	if r.orgId == "" {
 		return nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -2049,9 +2121,15 @@ func (a *ServiceAccountsAPIService) DeleteOrgServiceAccountExecute(r DeleteOrgSe
 	if r.clientId == "" {
 		return nil, reportError("clientId is empty and must be specified")
 	}
+	if r.clientId == "." || r.clientId == ".." {
+		return nil, reportError("clientId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 	if r.orgId == "" {
 		return nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -2158,9 +2236,15 @@ func (a *ServiceAccountsAPIService) GetGroupServiceAccountExecute(r GetGroupServ
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clientId == "" {
 		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
+	}
+	if r.clientId == "." || r.clientId == ".." {
+		return localVarReturnValue, nil, reportError("clientId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 
@@ -2281,9 +2365,15 @@ func (a *ServiceAccountsAPIService) GetOrgServiceAccountExecute(r GetOrgServiceA
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.clientId == "" {
 		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
+	}
+	if r.clientId == "." || r.clientId == ".." {
+		return localVarReturnValue, nil, reportError("clientId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 
@@ -2422,9 +2512,15 @@ func (a *ServiceAccountsAPIService) GetServiceAccountGroupsExecute(r GetServiceA
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.clientId == "" {
 		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
+	}
+	if r.clientId == "." || r.clientId == ".." {
+		return localVarReturnValue, nil, reportError("clientId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 
@@ -2563,9 +2659,15 @@ func (a *ServiceAccountsAPIService) InviteGroupServiceAccountExecute(r InviteGro
 	if r.clientId == "" {
 		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
 	}
+	if r.clientId == "." || r.clientId == ".." {
+		return localVarReturnValue, nil, reportError("clientId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -2718,9 +2820,15 @@ func (a *ServiceAccountsAPIService) ListAccessListExecute(r ListAccessListApiReq
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clientId == "" {
 		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
+	}
+	if r.clientId == "." || r.clientId == ".." {
+		return localVarReturnValue, nil, reportError("clientId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 
@@ -2883,6 +2991,9 @@ func (a *ServiceAccountsAPIService) ListGroupServiceAccountsExecute(r ListGroupS
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serviceAccounts"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -3051,9 +3162,15 @@ func (a *ServiceAccountsAPIService) ListOrgAccessListExecute(r ListOrgAccessList
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.clientId == "" {
 		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
+	}
+	if r.clientId == "." || r.clientId == ".." {
+		return localVarReturnValue, nil, reportError("clientId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 
@@ -3217,6 +3334,9 @@ func (a *ServiceAccountsAPIService) ListOrgServiceAccountsExecute(r ListOrgServi
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3361,9 +3481,15 @@ func (a *ServiceAccountsAPIService) UpdateGroupServiceAccountExecute(r UpdateGro
 	if r.clientId == "" {
 		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
 	}
+	if r.clientId == "." || r.clientId == ".." {
+		return localVarReturnValue, nil, reportError("clientId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -3493,9 +3619,15 @@ func (a *ServiceAccountsAPIService) UpdateOrgServiceAccountExecute(r UpdateOrgSe
 	if r.clientId == "" {
 		return localVarReturnValue, nil, reportError("clientId is empty and must be specified")
 	}
+	if r.clientId == "." || r.clientId == ".." {
+		return localVarReturnValue, nil, reportError("clientId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clientId"+"}", url.PathEscape(r.clientId), -1)
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 

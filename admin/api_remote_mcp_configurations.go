@@ -516,6 +516,9 @@ func (a *RemoteMCPConfigurationsAPIService) CreateGroupMcpConfigExecute(r Create
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -644,9 +647,15 @@ func (a *RemoteMCPConfigurationsAPIService) CreateGroupMcpSecretExecute(r Create
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.mcpConfigId == "" {
 		return localVarReturnValue, nil, reportError("mcpConfigId is empty and must be specified")
+	}
+	if r.mcpConfigId == "." || r.mcpConfigId == ".." {
+		return localVarReturnValue, nil, reportError("mcpConfigId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"mcpConfigId"+"}", url.PathEscape(r.mcpConfigId), -1)
 
@@ -770,6 +779,9 @@ func (a *RemoteMCPConfigurationsAPIService) CreateOrgMcpConfigExecute(r CreateOr
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/mcpConfigs"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -899,9 +911,15 @@ func (a *RemoteMCPConfigurationsAPIService) CreateOrgMcpSecretExecute(r CreateOr
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.mcpConfigId == "" {
 		return localVarReturnValue, nil, reportError("mcpConfigId is empty and must be specified")
+	}
+	if r.mcpConfigId == "." || r.mcpConfigId == ".." {
+		return localVarReturnValue, nil, reportError("mcpConfigId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"mcpConfigId"+"}", url.PathEscape(r.mcpConfigId), -1)
 
@@ -1033,9 +1051,15 @@ func (a *RemoteMCPConfigurationsAPIService) DeleteGroupMcpConfigExecute(r Delete
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.mcpConfigId == "" {
 		return nil, reportError("mcpConfigId is empty and must be specified")
+	}
+	if r.mcpConfigId == "." || r.mcpConfigId == ".." {
+		return nil, reportError("mcpConfigId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"mcpConfigId"+"}", url.PathEscape(r.mcpConfigId), -1)
 
@@ -1151,13 +1175,22 @@ func (a *RemoteMCPConfigurationsAPIService) DeleteGroupMcpSecretExecute(r Delete
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.mcpConfigId == "" {
 		return nil, reportError("mcpConfigId is empty and must be specified")
 	}
+	if r.mcpConfigId == "." || r.mcpConfigId == ".." {
+		return nil, reportError("mcpConfigId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"mcpConfigId"+"}", url.PathEscape(r.mcpConfigId), -1)
 	if r.secretId == "" {
 		return nil, reportError("secretId is empty and must be specified")
+	}
+	if r.secretId == "." || r.secretId == ".." {
+		return nil, reportError("secretId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(r.secretId), -1)
 
@@ -1270,9 +1303,15 @@ func (a *RemoteMCPConfigurationsAPIService) DeleteOrgMcpConfigExecute(r DeleteOr
 	if r.orgId == "" {
 		return nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.mcpConfigId == "" {
 		return nil, reportError("mcpConfigId is empty and must be specified")
+	}
+	if r.mcpConfigId == "." || r.mcpConfigId == ".." {
+		return nil, reportError("mcpConfigId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"mcpConfigId"+"}", url.PathEscape(r.mcpConfigId), -1)
 
@@ -1388,13 +1427,22 @@ func (a *RemoteMCPConfigurationsAPIService) DeleteOrgMcpSecretExecute(r DeleteOr
 	if r.orgId == "" {
 		return nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.mcpConfigId == "" {
 		return nil, reportError("mcpConfigId is empty and must be specified")
 	}
+	if r.mcpConfigId == "." || r.mcpConfigId == ".." {
+		return nil, reportError("mcpConfigId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"mcpConfigId"+"}", url.PathEscape(r.mcpConfigId), -1)
 	if r.secretId == "" {
 		return nil, reportError("secretId is empty and must be specified")
+	}
+	if r.secretId == "." || r.secretId == ".." {
+		return nil, reportError("secretId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(r.secretId), -1)
 
@@ -1501,9 +1549,15 @@ func (a *RemoteMCPConfigurationsAPIService) GetGroupMcpConfigExecute(r GetGroupM
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.mcpConfigId == "" {
 		return localVarReturnValue, nil, reportError("mcpConfigId is empty and must be specified")
+	}
+	if r.mcpConfigId == "." || r.mcpConfigId == ".." {
+		return localVarReturnValue, nil, reportError("mcpConfigId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"mcpConfigId"+"}", url.PathEscape(r.mcpConfigId), -1)
 
@@ -1629,13 +1683,22 @@ func (a *RemoteMCPConfigurationsAPIService) GetGroupMcpSecretExecute(r GetGroupM
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.mcpConfigId == "" {
 		return localVarReturnValue, nil, reportError("mcpConfigId is empty and must be specified")
 	}
+	if r.mcpConfigId == "." || r.mcpConfigId == ".." {
+		return localVarReturnValue, nil, reportError("mcpConfigId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"mcpConfigId"+"}", url.PathEscape(r.mcpConfigId), -1)
 	if r.secretId == "" {
 		return localVarReturnValue, nil, reportError("secretId is empty and must be specified")
+	}
+	if r.secretId == "." || r.secretId == ".." {
+		return localVarReturnValue, nil, reportError("secretId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(r.secretId), -1)
 
@@ -1756,9 +1819,15 @@ func (a *RemoteMCPConfigurationsAPIService) GetOrgMcpConfigExecute(r GetOrgMcpCo
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.mcpConfigId == "" {
 		return localVarReturnValue, nil, reportError("mcpConfigId is empty and must be specified")
+	}
+	if r.mcpConfigId == "." || r.mcpConfigId == ".." {
+		return localVarReturnValue, nil, reportError("mcpConfigId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"mcpConfigId"+"}", url.PathEscape(r.mcpConfigId), -1)
 
@@ -1884,13 +1953,22 @@ func (a *RemoteMCPConfigurationsAPIService) GetOrgMcpSecretExecute(r GetOrgMcpSe
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.mcpConfigId == "" {
 		return localVarReturnValue, nil, reportError("mcpConfigId is empty and must be specified")
 	}
+	if r.mcpConfigId == "." || r.mcpConfigId == ".." {
+		return localVarReturnValue, nil, reportError("mcpConfigId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"mcpConfigId"+"}", url.PathEscape(r.mcpConfigId), -1)
 	if r.secretId == "" {
 		return localVarReturnValue, nil, reportError("secretId is empty and must be specified")
+	}
+	if r.secretId == "." || r.secretId == ".." {
+		return localVarReturnValue, nil, reportError("secretId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"secretId"+"}", url.PathEscape(r.secretId), -1)
 
@@ -2032,6 +2110,9 @@ func (a *RemoteMCPConfigurationsAPIService) ListGroupMcpConfigsExecute(r ListGro
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/mcpConfigs"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -2200,9 +2281,15 @@ func (a *RemoteMCPConfigurationsAPIService) ListGroupMcpSecretsExecute(r ListGro
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.mcpConfigId == "" {
 		return localVarReturnValue, nil, reportError("mcpConfigId is empty and must be specified")
+	}
+	if r.mcpConfigId == "." || r.mcpConfigId == ".." {
+		return localVarReturnValue, nil, reportError("mcpConfigId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"mcpConfigId"+"}", url.PathEscape(r.mcpConfigId), -1)
 
@@ -2365,6 +2452,9 @@ func (a *RemoteMCPConfigurationsAPIService) ListOrgMcpConfigsExecute(r ListOrgMc
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/mcpConfigs"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -2533,9 +2623,15 @@ func (a *RemoteMCPConfigurationsAPIService) ListOrgMcpSecretsExecute(r ListOrgMc
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.mcpConfigId == "" {
 		return localVarReturnValue, nil, reportError("mcpConfigId is empty and must be specified")
+	}
+	if r.mcpConfigId == "." || r.mcpConfigId == ".." {
+		return localVarReturnValue, nil, reportError("mcpConfigId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"mcpConfigId"+"}", url.PathEscape(r.mcpConfigId), -1)
 
@@ -2681,9 +2777,15 @@ func (a *RemoteMCPConfigurationsAPIService) UpdateGroupMcpConfigExecute(r Update
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.mcpConfigId == "" {
 		return localVarReturnValue, nil, reportError("mcpConfigId is empty and must be specified")
+	}
+	if r.mcpConfigId == "." || r.mcpConfigId == ".." {
+		return localVarReturnValue, nil, reportError("mcpConfigId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"mcpConfigId"+"}", url.PathEscape(r.mcpConfigId), -1)
 
@@ -2813,9 +2915,15 @@ func (a *RemoteMCPConfigurationsAPIService) UpdateOrgMcpConfigExecute(r UpdateOr
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.mcpConfigId == "" {
 		return localVarReturnValue, nil, reportError("mcpConfigId is empty and must be specified")
+	}
+	if r.mcpConfigId == "." || r.mcpConfigId == ".." {
+		return localVarReturnValue, nil, reportError("mcpConfigId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"mcpConfigId"+"}", url.PathEscape(r.mcpConfigId), -1)
 

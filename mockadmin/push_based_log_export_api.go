@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312024/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -340,6 +340,168 @@ func (_c *PushBasedLogExportAPI_CreateLogExportWithParams_Call) RunAndReturn(run
 	return _c
 }
 
+// CreateOrgLogIntegration provides a mock function with given fields: ctx, orgId, orgLogIntegrationRequest
+func (_m *PushBasedLogExportAPI) CreateOrgLogIntegration(ctx context.Context, orgId string, orgLogIntegrationRequest *admin.OrgLogIntegrationRequest) admin.CreateOrgLogIntegrationApiRequest {
+	ret := _m.Called(ctx, orgId, orgLogIntegrationRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateOrgLogIntegration")
+	}
+
+	var r0 admin.CreateOrgLogIntegrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.OrgLogIntegrationRequest) admin.CreateOrgLogIntegrationApiRequest); ok {
+		r0 = rf(ctx, orgId, orgLogIntegrationRequest)
+	} else {
+		r0 = ret.Get(0).(admin.CreateOrgLogIntegrationApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportAPI_CreateOrgLogIntegration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgLogIntegration'
+type PushBasedLogExportAPI_CreateOrgLogIntegration_Call struct {
+	*mock.Call
+}
+
+// CreateOrgLogIntegration is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - orgLogIntegrationRequest *admin.OrgLogIntegrationRequest
+func (_e *PushBasedLogExportAPI_Expecter) CreateOrgLogIntegration(ctx any, orgId any, orgLogIntegrationRequest any) *PushBasedLogExportAPI_CreateOrgLogIntegration_Call {
+	return &PushBasedLogExportAPI_CreateOrgLogIntegration_Call{Call: _e.mock.On("CreateOrgLogIntegration", ctx, orgId, orgLogIntegrationRequest)}
+}
+
+func (_c *PushBasedLogExportAPI_CreateOrgLogIntegration_Call) Run(run func(ctx context.Context, orgId string, orgLogIntegrationRequest *admin.OrgLogIntegrationRequest)) *PushBasedLogExportAPI_CreateOrgLogIntegration_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.OrgLogIntegrationRequest))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_CreateOrgLogIntegration_Call) Return(_a0 admin.CreateOrgLogIntegrationApiRequest) *PushBasedLogExportAPI_CreateOrgLogIntegration_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_CreateOrgLogIntegration_Call) RunAndReturn(run func(context.Context, string, *admin.OrgLogIntegrationRequest) admin.CreateOrgLogIntegrationApiRequest) *PushBasedLogExportAPI_CreateOrgLogIntegration_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateOrgLogIntegrationExecute provides a mock function with given fields: r
+func (_m *PushBasedLogExportAPI) CreateOrgLogIntegrationExecute(r admin.CreateOrgLogIntegrationApiRequest) (*admin.OrgLogIntegrationResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateOrgLogIntegrationExecute")
+	}
+
+	var r0 *admin.OrgLogIntegrationResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.CreateOrgLogIntegrationApiRequest) (*admin.OrgLogIntegrationResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateOrgLogIntegrationApiRequest) *admin.OrgLogIntegrationResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.OrgLogIntegrationResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateOrgLogIntegrationApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.CreateOrgLogIntegrationApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// PushBasedLogExportAPI_CreateOrgLogIntegrationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgLogIntegrationExecute'
+type PushBasedLogExportAPI_CreateOrgLogIntegrationExecute_Call struct {
+	*mock.Call
+}
+
+// CreateOrgLogIntegrationExecute is a helper method to define mock.On call
+//   - r admin.CreateOrgLogIntegrationApiRequest
+func (_e *PushBasedLogExportAPI_Expecter) CreateOrgLogIntegrationExecute(r any) *PushBasedLogExportAPI_CreateOrgLogIntegrationExecute_Call {
+	return &PushBasedLogExportAPI_CreateOrgLogIntegrationExecute_Call{Call: _e.mock.On("CreateOrgLogIntegrationExecute", r)}
+}
+
+func (_c *PushBasedLogExportAPI_CreateOrgLogIntegrationExecute_Call) Run(run func(r admin.CreateOrgLogIntegrationApiRequest)) *PushBasedLogExportAPI_CreateOrgLogIntegrationExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateOrgLogIntegrationApiRequest))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_CreateOrgLogIntegrationExecute_Call) Return(_a0 *admin.OrgLogIntegrationResponse, _a1 *http.Response, _a2 error) *PushBasedLogExportAPI_CreateOrgLogIntegrationExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_CreateOrgLogIntegrationExecute_Call) RunAndReturn(run func(admin.CreateOrgLogIntegrationApiRequest) (*admin.OrgLogIntegrationResponse, *http.Response, error)) *PushBasedLogExportAPI_CreateOrgLogIntegrationExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateOrgLogIntegrationWithParams provides a mock function with given fields: ctx, args
+func (_m *PushBasedLogExportAPI) CreateOrgLogIntegrationWithParams(ctx context.Context, args *admin.CreateOrgLogIntegrationApiParams) admin.CreateOrgLogIntegrationApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateOrgLogIntegrationWithParams")
+	}
+
+	var r0 admin.CreateOrgLogIntegrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateOrgLogIntegrationApiParams) admin.CreateOrgLogIntegrationApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateOrgLogIntegrationApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportAPI_CreateOrgLogIntegrationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateOrgLogIntegrationWithParams'
+type PushBasedLogExportAPI_CreateOrgLogIntegrationWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateOrgLogIntegrationWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateOrgLogIntegrationApiParams
+func (_e *PushBasedLogExportAPI_Expecter) CreateOrgLogIntegrationWithParams(ctx any, args any) *PushBasedLogExportAPI_CreateOrgLogIntegrationWithParams_Call {
+	return &PushBasedLogExportAPI_CreateOrgLogIntegrationWithParams_Call{Call: _e.mock.On("CreateOrgLogIntegrationWithParams", ctx, args)}
+}
+
+func (_c *PushBasedLogExportAPI_CreateOrgLogIntegrationWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateOrgLogIntegrationApiParams)) *PushBasedLogExportAPI_CreateOrgLogIntegrationWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateOrgLogIntegrationApiParams))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_CreateOrgLogIntegrationWithParams_Call) Return(_a0 admin.CreateOrgLogIntegrationApiRequest) *PushBasedLogExportAPI_CreateOrgLogIntegrationWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_CreateOrgLogIntegrationWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateOrgLogIntegrationApiParams) admin.CreateOrgLogIntegrationApiRequest) *PushBasedLogExportAPI_CreateOrgLogIntegrationWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // DeleteGroupLogIntegration provides a mock function with given fields: ctx, groupId, id
 func (_m *PushBasedLogExportAPI) DeleteGroupLogIntegration(ctx context.Context, groupId string, id string) admin.DeleteGroupLogIntegrationApiRequest {
 	ret := _m.Called(ctx, groupId, id)
@@ -641,6 +803,159 @@ func (_c *PushBasedLogExportAPI_DeleteLogExportWithParams_Call) Return(_a0 admin
 }
 
 func (_c *PushBasedLogExportAPI_DeleteLogExportWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteLogExportApiParams) admin.DeleteLogExportApiRequest) *PushBasedLogExportAPI_DeleteLogExportWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteOrgLogIntegration provides a mock function with given fields: ctx, orgId, logIntegrationId
+func (_m *PushBasedLogExportAPI) DeleteOrgLogIntegration(ctx context.Context, orgId string, logIntegrationId string) admin.DeleteOrgLogIntegrationApiRequest {
+	ret := _m.Called(ctx, orgId, logIntegrationId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteOrgLogIntegration")
+	}
+
+	var r0 admin.DeleteOrgLogIntegrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteOrgLogIntegrationApiRequest); ok {
+		r0 = rf(ctx, orgId, logIntegrationId)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteOrgLogIntegrationApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportAPI_DeleteOrgLogIntegration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgLogIntegration'
+type PushBasedLogExportAPI_DeleteOrgLogIntegration_Call struct {
+	*mock.Call
+}
+
+// DeleteOrgLogIntegration is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - logIntegrationId string
+func (_e *PushBasedLogExportAPI_Expecter) DeleteOrgLogIntegration(ctx any, orgId any, logIntegrationId any) *PushBasedLogExportAPI_DeleteOrgLogIntegration_Call {
+	return &PushBasedLogExportAPI_DeleteOrgLogIntegration_Call{Call: _e.mock.On("DeleteOrgLogIntegration", ctx, orgId, logIntegrationId)}
+}
+
+func (_c *PushBasedLogExportAPI_DeleteOrgLogIntegration_Call) Run(run func(ctx context.Context, orgId string, logIntegrationId string)) *PushBasedLogExportAPI_DeleteOrgLogIntegration_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_DeleteOrgLogIntegration_Call) Return(_a0 admin.DeleteOrgLogIntegrationApiRequest) *PushBasedLogExportAPI_DeleteOrgLogIntegration_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_DeleteOrgLogIntegration_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteOrgLogIntegrationApiRequest) *PushBasedLogExportAPI_DeleteOrgLogIntegration_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteOrgLogIntegrationExecute provides a mock function with given fields: r
+func (_m *PushBasedLogExportAPI) DeleteOrgLogIntegrationExecute(r admin.DeleteOrgLogIntegrationApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteOrgLogIntegrationExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrgLogIntegrationApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeleteOrgLogIntegrationApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeleteOrgLogIntegrationApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// PushBasedLogExportAPI_DeleteOrgLogIntegrationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgLogIntegrationExecute'
+type PushBasedLogExportAPI_DeleteOrgLogIntegrationExecute_Call struct {
+	*mock.Call
+}
+
+// DeleteOrgLogIntegrationExecute is a helper method to define mock.On call
+//   - r admin.DeleteOrgLogIntegrationApiRequest
+func (_e *PushBasedLogExportAPI_Expecter) DeleteOrgLogIntegrationExecute(r any) *PushBasedLogExportAPI_DeleteOrgLogIntegrationExecute_Call {
+	return &PushBasedLogExportAPI_DeleteOrgLogIntegrationExecute_Call{Call: _e.mock.On("DeleteOrgLogIntegrationExecute", r)}
+}
+
+func (_c *PushBasedLogExportAPI_DeleteOrgLogIntegrationExecute_Call) Run(run func(r admin.DeleteOrgLogIntegrationApiRequest)) *PushBasedLogExportAPI_DeleteOrgLogIntegrationExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeleteOrgLogIntegrationApiRequest))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_DeleteOrgLogIntegrationExecute_Call) Return(_a0 *http.Response, _a1 error) *PushBasedLogExportAPI_DeleteOrgLogIntegrationExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_DeleteOrgLogIntegrationExecute_Call) RunAndReturn(run func(admin.DeleteOrgLogIntegrationApiRequest) (*http.Response, error)) *PushBasedLogExportAPI_DeleteOrgLogIntegrationExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteOrgLogIntegrationWithParams provides a mock function with given fields: ctx, args
+func (_m *PushBasedLogExportAPI) DeleteOrgLogIntegrationWithParams(ctx context.Context, args *admin.DeleteOrgLogIntegrationApiParams) admin.DeleteOrgLogIntegrationApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteOrgLogIntegrationWithParams")
+	}
+
+	var r0 admin.DeleteOrgLogIntegrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteOrgLogIntegrationApiParams) admin.DeleteOrgLogIntegrationApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteOrgLogIntegrationApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportAPI_DeleteOrgLogIntegrationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteOrgLogIntegrationWithParams'
+type PushBasedLogExportAPI_DeleteOrgLogIntegrationWithParams_Call struct {
+	*mock.Call
+}
+
+// DeleteOrgLogIntegrationWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeleteOrgLogIntegrationApiParams
+func (_e *PushBasedLogExportAPI_Expecter) DeleteOrgLogIntegrationWithParams(ctx any, args any) *PushBasedLogExportAPI_DeleteOrgLogIntegrationWithParams_Call {
+	return &PushBasedLogExportAPI_DeleteOrgLogIntegrationWithParams_Call{Call: _e.mock.On("DeleteOrgLogIntegrationWithParams", ctx, args)}
+}
+
+func (_c *PushBasedLogExportAPI_DeleteOrgLogIntegrationWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteOrgLogIntegrationApiParams)) *PushBasedLogExportAPI_DeleteOrgLogIntegrationWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeleteOrgLogIntegrationApiParams))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_DeleteOrgLogIntegrationWithParams_Call) Return(_a0 admin.DeleteOrgLogIntegrationApiRequest) *PushBasedLogExportAPI_DeleteOrgLogIntegrationWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_DeleteOrgLogIntegrationWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteOrgLogIntegrationApiParams) admin.DeleteOrgLogIntegrationApiRequest) *PushBasedLogExportAPI_DeleteOrgLogIntegrationWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -968,6 +1283,168 @@ func (_c *PushBasedLogExportAPI_GetLogExportWithParams_Call) RunAndReturn(run fu
 	return _c
 }
 
+// GetOrgLogIntegration provides a mock function with given fields: ctx, orgId, logIntegrationId
+func (_m *PushBasedLogExportAPI) GetOrgLogIntegration(ctx context.Context, orgId string, logIntegrationId string) admin.GetOrgLogIntegrationApiRequest {
+	ret := _m.Called(ctx, orgId, logIntegrationId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetOrgLogIntegration")
+	}
+
+	var r0 admin.GetOrgLogIntegrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetOrgLogIntegrationApiRequest); ok {
+		r0 = rf(ctx, orgId, logIntegrationId)
+	} else {
+		r0 = ret.Get(0).(admin.GetOrgLogIntegrationApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportAPI_GetOrgLogIntegration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgLogIntegration'
+type PushBasedLogExportAPI_GetOrgLogIntegration_Call struct {
+	*mock.Call
+}
+
+// GetOrgLogIntegration is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - logIntegrationId string
+func (_e *PushBasedLogExportAPI_Expecter) GetOrgLogIntegration(ctx any, orgId any, logIntegrationId any) *PushBasedLogExportAPI_GetOrgLogIntegration_Call {
+	return &PushBasedLogExportAPI_GetOrgLogIntegration_Call{Call: _e.mock.On("GetOrgLogIntegration", ctx, orgId, logIntegrationId)}
+}
+
+func (_c *PushBasedLogExportAPI_GetOrgLogIntegration_Call) Run(run func(ctx context.Context, orgId string, logIntegrationId string)) *PushBasedLogExportAPI_GetOrgLogIntegration_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_GetOrgLogIntegration_Call) Return(_a0 admin.GetOrgLogIntegrationApiRequest) *PushBasedLogExportAPI_GetOrgLogIntegration_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_GetOrgLogIntegration_Call) RunAndReturn(run func(context.Context, string, string) admin.GetOrgLogIntegrationApiRequest) *PushBasedLogExportAPI_GetOrgLogIntegration_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetOrgLogIntegrationExecute provides a mock function with given fields: r
+func (_m *PushBasedLogExportAPI) GetOrgLogIntegrationExecute(r admin.GetOrgLogIntegrationApiRequest) (*admin.OrgLogIntegrationResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetOrgLogIntegrationExecute")
+	}
+
+	var r0 *admin.OrgLogIntegrationResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetOrgLogIntegrationApiRequest) (*admin.OrgLogIntegrationResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetOrgLogIntegrationApiRequest) *admin.OrgLogIntegrationResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.OrgLogIntegrationResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetOrgLogIntegrationApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetOrgLogIntegrationApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// PushBasedLogExportAPI_GetOrgLogIntegrationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgLogIntegrationExecute'
+type PushBasedLogExportAPI_GetOrgLogIntegrationExecute_Call struct {
+	*mock.Call
+}
+
+// GetOrgLogIntegrationExecute is a helper method to define mock.On call
+//   - r admin.GetOrgLogIntegrationApiRequest
+func (_e *PushBasedLogExportAPI_Expecter) GetOrgLogIntegrationExecute(r any) *PushBasedLogExportAPI_GetOrgLogIntegrationExecute_Call {
+	return &PushBasedLogExportAPI_GetOrgLogIntegrationExecute_Call{Call: _e.mock.On("GetOrgLogIntegrationExecute", r)}
+}
+
+func (_c *PushBasedLogExportAPI_GetOrgLogIntegrationExecute_Call) Run(run func(r admin.GetOrgLogIntegrationApiRequest)) *PushBasedLogExportAPI_GetOrgLogIntegrationExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetOrgLogIntegrationApiRequest))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_GetOrgLogIntegrationExecute_Call) Return(_a0 *admin.OrgLogIntegrationResponse, _a1 *http.Response, _a2 error) *PushBasedLogExportAPI_GetOrgLogIntegrationExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_GetOrgLogIntegrationExecute_Call) RunAndReturn(run func(admin.GetOrgLogIntegrationApiRequest) (*admin.OrgLogIntegrationResponse, *http.Response, error)) *PushBasedLogExportAPI_GetOrgLogIntegrationExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetOrgLogIntegrationWithParams provides a mock function with given fields: ctx, args
+func (_m *PushBasedLogExportAPI) GetOrgLogIntegrationWithParams(ctx context.Context, args *admin.GetOrgLogIntegrationApiParams) admin.GetOrgLogIntegrationApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetOrgLogIntegrationWithParams")
+	}
+
+	var r0 admin.GetOrgLogIntegrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetOrgLogIntegrationApiParams) admin.GetOrgLogIntegrationApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetOrgLogIntegrationApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportAPI_GetOrgLogIntegrationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetOrgLogIntegrationWithParams'
+type PushBasedLogExportAPI_GetOrgLogIntegrationWithParams_Call struct {
+	*mock.Call
+}
+
+// GetOrgLogIntegrationWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetOrgLogIntegrationApiParams
+func (_e *PushBasedLogExportAPI_Expecter) GetOrgLogIntegrationWithParams(ctx any, args any) *PushBasedLogExportAPI_GetOrgLogIntegrationWithParams_Call {
+	return &PushBasedLogExportAPI_GetOrgLogIntegrationWithParams_Call{Call: _e.mock.On("GetOrgLogIntegrationWithParams", ctx, args)}
+}
+
+func (_c *PushBasedLogExportAPI_GetOrgLogIntegrationWithParams_Call) Run(run func(ctx context.Context, args *admin.GetOrgLogIntegrationApiParams)) *PushBasedLogExportAPI_GetOrgLogIntegrationWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetOrgLogIntegrationApiParams))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_GetOrgLogIntegrationWithParams_Call) Return(_a0 admin.GetOrgLogIntegrationApiRequest) *PushBasedLogExportAPI_GetOrgLogIntegrationWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_GetOrgLogIntegrationWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetOrgLogIntegrationApiParams) admin.GetOrgLogIntegrationApiRequest) *PushBasedLogExportAPI_GetOrgLogIntegrationWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListGroupLogIntegrations provides a mock function with given fields: ctx, groupId
 func (_m *PushBasedLogExportAPI) ListGroupLogIntegrations(ctx context.Context, groupId string) admin.ListGroupLogIntegrationsApiRequest {
 	ret := _m.Called(ctx, groupId)
@@ -1125,6 +1602,167 @@ func (_c *PushBasedLogExportAPI_ListGroupLogIntegrationsWithParams_Call) Return(
 }
 
 func (_c *PushBasedLogExportAPI_ListGroupLogIntegrationsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListGroupLogIntegrationsApiParams) admin.ListGroupLogIntegrationsApiRequest) *PushBasedLogExportAPI_ListGroupLogIntegrationsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListOrgLogIntegrations provides a mock function with given fields: ctx, orgId
+func (_m *PushBasedLogExportAPI) ListOrgLogIntegrations(ctx context.Context, orgId string) admin.ListOrgLogIntegrationsApiRequest {
+	ret := _m.Called(ctx, orgId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListOrgLogIntegrations")
+	}
+
+	var r0 admin.ListOrgLogIntegrationsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListOrgLogIntegrationsApiRequest); ok {
+		r0 = rf(ctx, orgId)
+	} else {
+		r0 = ret.Get(0).(admin.ListOrgLogIntegrationsApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportAPI_ListOrgLogIntegrations_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgLogIntegrations'
+type PushBasedLogExportAPI_ListOrgLogIntegrations_Call struct {
+	*mock.Call
+}
+
+// ListOrgLogIntegrations is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+func (_e *PushBasedLogExportAPI_Expecter) ListOrgLogIntegrations(ctx any, orgId any) *PushBasedLogExportAPI_ListOrgLogIntegrations_Call {
+	return &PushBasedLogExportAPI_ListOrgLogIntegrations_Call{Call: _e.mock.On("ListOrgLogIntegrations", ctx, orgId)}
+}
+
+func (_c *PushBasedLogExportAPI_ListOrgLogIntegrations_Call) Run(run func(ctx context.Context, orgId string)) *PushBasedLogExportAPI_ListOrgLogIntegrations_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_ListOrgLogIntegrations_Call) Return(_a0 admin.ListOrgLogIntegrationsApiRequest) *PushBasedLogExportAPI_ListOrgLogIntegrations_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_ListOrgLogIntegrations_Call) RunAndReturn(run func(context.Context, string) admin.ListOrgLogIntegrationsApiRequest) *PushBasedLogExportAPI_ListOrgLogIntegrations_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListOrgLogIntegrationsExecute provides a mock function with given fields: r
+func (_m *PushBasedLogExportAPI) ListOrgLogIntegrationsExecute(r admin.ListOrgLogIntegrationsApiRequest) (*admin.PaginatedOrgLogIntegrationResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListOrgLogIntegrationsExecute")
+	}
+
+	var r0 *admin.PaginatedOrgLogIntegrationResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListOrgLogIntegrationsApiRequest) (*admin.PaginatedOrgLogIntegrationResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListOrgLogIntegrationsApiRequest) *admin.PaginatedOrgLogIntegrationResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedOrgLogIntegrationResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListOrgLogIntegrationsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListOrgLogIntegrationsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// PushBasedLogExportAPI_ListOrgLogIntegrationsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgLogIntegrationsExecute'
+type PushBasedLogExportAPI_ListOrgLogIntegrationsExecute_Call struct {
+	*mock.Call
+}
+
+// ListOrgLogIntegrationsExecute is a helper method to define mock.On call
+//   - r admin.ListOrgLogIntegrationsApiRequest
+func (_e *PushBasedLogExportAPI_Expecter) ListOrgLogIntegrationsExecute(r any) *PushBasedLogExportAPI_ListOrgLogIntegrationsExecute_Call {
+	return &PushBasedLogExportAPI_ListOrgLogIntegrationsExecute_Call{Call: _e.mock.On("ListOrgLogIntegrationsExecute", r)}
+}
+
+func (_c *PushBasedLogExportAPI_ListOrgLogIntegrationsExecute_Call) Run(run func(r admin.ListOrgLogIntegrationsApiRequest)) *PushBasedLogExportAPI_ListOrgLogIntegrationsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListOrgLogIntegrationsApiRequest))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_ListOrgLogIntegrationsExecute_Call) Return(_a0 *admin.PaginatedOrgLogIntegrationResponse, _a1 *http.Response, _a2 error) *PushBasedLogExportAPI_ListOrgLogIntegrationsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_ListOrgLogIntegrationsExecute_Call) RunAndReturn(run func(admin.ListOrgLogIntegrationsApiRequest) (*admin.PaginatedOrgLogIntegrationResponse, *http.Response, error)) *PushBasedLogExportAPI_ListOrgLogIntegrationsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListOrgLogIntegrationsWithParams provides a mock function with given fields: ctx, args
+func (_m *PushBasedLogExportAPI) ListOrgLogIntegrationsWithParams(ctx context.Context, args *admin.ListOrgLogIntegrationsApiParams) admin.ListOrgLogIntegrationsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListOrgLogIntegrationsWithParams")
+	}
+
+	var r0 admin.ListOrgLogIntegrationsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListOrgLogIntegrationsApiParams) admin.ListOrgLogIntegrationsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListOrgLogIntegrationsApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportAPI_ListOrgLogIntegrationsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListOrgLogIntegrationsWithParams'
+type PushBasedLogExportAPI_ListOrgLogIntegrationsWithParams_Call struct {
+	*mock.Call
+}
+
+// ListOrgLogIntegrationsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListOrgLogIntegrationsApiParams
+func (_e *PushBasedLogExportAPI_Expecter) ListOrgLogIntegrationsWithParams(ctx any, args any) *PushBasedLogExportAPI_ListOrgLogIntegrationsWithParams_Call {
+	return &PushBasedLogExportAPI_ListOrgLogIntegrationsWithParams_Call{Call: _e.mock.On("ListOrgLogIntegrationsWithParams", ctx, args)}
+}
+
+func (_c *PushBasedLogExportAPI_ListOrgLogIntegrationsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListOrgLogIntegrationsApiParams)) *PushBasedLogExportAPI_ListOrgLogIntegrationsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListOrgLogIntegrationsApiParams))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_ListOrgLogIntegrationsWithParams_Call) Return(_a0 admin.ListOrgLogIntegrationsApiRequest) *PushBasedLogExportAPI_ListOrgLogIntegrationsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_ListOrgLogIntegrationsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListOrgLogIntegrationsApiParams) admin.ListOrgLogIntegrationsApiRequest) *PushBasedLogExportAPI_ListOrgLogIntegrationsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1441,6 +2079,169 @@ func (_c *PushBasedLogExportAPI_UpdateLogExportWithParams_Call) Return(_a0 admin
 }
 
 func (_c *PushBasedLogExportAPI_UpdateLogExportWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateLogExportApiParams) admin.UpdateLogExportApiRequest) *PushBasedLogExportAPI_UpdateLogExportWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateOrgLogIntegration provides a mock function with given fields: ctx, orgId, logIntegrationId, orgLogIntegrationUpdateRequest
+func (_m *PushBasedLogExportAPI) UpdateOrgLogIntegration(ctx context.Context, orgId string, logIntegrationId string, orgLogIntegrationUpdateRequest *admin.OrgLogIntegrationUpdateRequest) admin.UpdateOrgLogIntegrationApiRequest {
+	ret := _m.Called(ctx, orgId, logIntegrationId, orgLogIntegrationUpdateRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateOrgLogIntegration")
+	}
+
+	var r0 admin.UpdateOrgLogIntegrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.OrgLogIntegrationUpdateRequest) admin.UpdateOrgLogIntegrationApiRequest); ok {
+		r0 = rf(ctx, orgId, logIntegrationId, orgLogIntegrationUpdateRequest)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateOrgLogIntegrationApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportAPI_UpdateOrgLogIntegration_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateOrgLogIntegration'
+type PushBasedLogExportAPI_UpdateOrgLogIntegration_Call struct {
+	*mock.Call
+}
+
+// UpdateOrgLogIntegration is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - logIntegrationId string
+//   - orgLogIntegrationUpdateRequest *admin.OrgLogIntegrationUpdateRequest
+func (_e *PushBasedLogExportAPI_Expecter) UpdateOrgLogIntegration(ctx any, orgId any, logIntegrationId any, orgLogIntegrationUpdateRequest any) *PushBasedLogExportAPI_UpdateOrgLogIntegration_Call {
+	return &PushBasedLogExportAPI_UpdateOrgLogIntegration_Call{Call: _e.mock.On("UpdateOrgLogIntegration", ctx, orgId, logIntegrationId, orgLogIntegrationUpdateRequest)}
+}
+
+func (_c *PushBasedLogExportAPI_UpdateOrgLogIntegration_Call) Run(run func(ctx context.Context, orgId string, logIntegrationId string, orgLogIntegrationUpdateRequest *admin.OrgLogIntegrationUpdateRequest)) *PushBasedLogExportAPI_UpdateOrgLogIntegration_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.OrgLogIntegrationUpdateRequest))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_UpdateOrgLogIntegration_Call) Return(_a0 admin.UpdateOrgLogIntegrationApiRequest) *PushBasedLogExportAPI_UpdateOrgLogIntegration_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_UpdateOrgLogIntegration_Call) RunAndReturn(run func(context.Context, string, string, *admin.OrgLogIntegrationUpdateRequest) admin.UpdateOrgLogIntegrationApiRequest) *PushBasedLogExportAPI_UpdateOrgLogIntegration_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateOrgLogIntegrationExecute provides a mock function with given fields: r
+func (_m *PushBasedLogExportAPI) UpdateOrgLogIntegrationExecute(r admin.UpdateOrgLogIntegrationApiRequest) (*admin.OrgLogIntegrationResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateOrgLogIntegrationExecute")
+	}
+
+	var r0 *admin.OrgLogIntegrationResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdateOrgLogIntegrationApiRequest) (*admin.OrgLogIntegrationResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdateOrgLogIntegrationApiRequest) *admin.OrgLogIntegrationResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.OrgLogIntegrationResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdateOrgLogIntegrationApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdateOrgLogIntegrationApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// PushBasedLogExportAPI_UpdateOrgLogIntegrationExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateOrgLogIntegrationExecute'
+type PushBasedLogExportAPI_UpdateOrgLogIntegrationExecute_Call struct {
+	*mock.Call
+}
+
+// UpdateOrgLogIntegrationExecute is a helper method to define mock.On call
+//   - r admin.UpdateOrgLogIntegrationApiRequest
+func (_e *PushBasedLogExportAPI_Expecter) UpdateOrgLogIntegrationExecute(r any) *PushBasedLogExportAPI_UpdateOrgLogIntegrationExecute_Call {
+	return &PushBasedLogExportAPI_UpdateOrgLogIntegrationExecute_Call{Call: _e.mock.On("UpdateOrgLogIntegrationExecute", r)}
+}
+
+func (_c *PushBasedLogExportAPI_UpdateOrgLogIntegrationExecute_Call) Run(run func(r admin.UpdateOrgLogIntegrationApiRequest)) *PushBasedLogExportAPI_UpdateOrgLogIntegrationExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdateOrgLogIntegrationApiRequest))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_UpdateOrgLogIntegrationExecute_Call) Return(_a0 *admin.OrgLogIntegrationResponse, _a1 *http.Response, _a2 error) *PushBasedLogExportAPI_UpdateOrgLogIntegrationExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_UpdateOrgLogIntegrationExecute_Call) RunAndReturn(run func(admin.UpdateOrgLogIntegrationApiRequest) (*admin.OrgLogIntegrationResponse, *http.Response, error)) *PushBasedLogExportAPI_UpdateOrgLogIntegrationExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateOrgLogIntegrationWithParams provides a mock function with given fields: ctx, args
+func (_m *PushBasedLogExportAPI) UpdateOrgLogIntegrationWithParams(ctx context.Context, args *admin.UpdateOrgLogIntegrationApiParams) admin.UpdateOrgLogIntegrationApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateOrgLogIntegrationWithParams")
+	}
+
+	var r0 admin.UpdateOrgLogIntegrationApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateOrgLogIntegrationApiParams) admin.UpdateOrgLogIntegrationApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateOrgLogIntegrationApiRequest)
+	}
+
+	return r0
+}
+
+// PushBasedLogExportAPI_UpdateOrgLogIntegrationWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateOrgLogIntegrationWithParams'
+type PushBasedLogExportAPI_UpdateOrgLogIntegrationWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdateOrgLogIntegrationWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdateOrgLogIntegrationApiParams
+func (_e *PushBasedLogExportAPI_Expecter) UpdateOrgLogIntegrationWithParams(ctx any, args any) *PushBasedLogExportAPI_UpdateOrgLogIntegrationWithParams_Call {
+	return &PushBasedLogExportAPI_UpdateOrgLogIntegrationWithParams_Call{Call: _e.mock.On("UpdateOrgLogIntegrationWithParams", ctx, args)}
+}
+
+func (_c *PushBasedLogExportAPI_UpdateOrgLogIntegrationWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateOrgLogIntegrationApiParams)) *PushBasedLogExportAPI_UpdateOrgLogIntegrationWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdateOrgLogIntegrationApiParams))
+	})
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_UpdateOrgLogIntegrationWithParams_Call) Return(_a0 admin.UpdateOrgLogIntegrationApiRequest) *PushBasedLogExportAPI_UpdateOrgLogIntegrationWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *PushBasedLogExportAPI_UpdateOrgLogIntegrationWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateOrgLogIntegrationApiParams) admin.UpdateOrgLogIntegrationApiRequest) *PushBasedLogExportAPI_UpdateOrgLogIntegrationWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

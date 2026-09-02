@@ -404,6 +404,9 @@ func (a *TeamsAPIService) AddGroupTeamsExecute(r AddGroupTeamsApiRequest) (*Pagi
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -538,9 +541,15 @@ func (a *TeamsAPIService) AddTeamUsersExecute(r AddTeamUsersApiRequest) (*Pagina
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.teamId == "" {
 		return localVarReturnValue, nil, reportError("teamId is empty and must be specified")
+	}
+	if r.teamId == "." || r.teamId == ".." {
+		return localVarReturnValue, nil, reportError("teamId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
@@ -665,6 +674,9 @@ func (a *TeamsAPIService) CreateOrgTeamExecute(r CreateOrgTeamApiRequest) (*Team
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -786,9 +798,15 @@ func (a *TeamsAPIService) DeleteOrgTeamExecute(r DeleteOrgTeamApiRequest) (*http
 	if r.orgId == "" {
 		return nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.teamId == "" {
 		return nil, reportError("teamId is empty and must be specified")
+	}
+	if r.teamId == "." || r.teamId == ".." {
+		return nil, reportError("teamId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
@@ -895,9 +913,15 @@ func (a *TeamsAPIService) GetGroupTeamExecute(r GetGroupTeamApiRequest) (*TeamRo
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.teamId == "" {
 		return localVarReturnValue, nil, reportError("teamId is empty and must be specified")
+	}
+	if r.teamId == "." || r.teamId == ".." {
+		return localVarReturnValue, nil, reportError("teamId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
@@ -1018,9 +1042,15 @@ func (a *TeamsAPIService) GetOrgTeamExecute(r GetOrgTeamApiRequest) (*TeamRespon
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.teamId == "" {
 		return localVarReturnValue, nil, reportError("teamId is empty and must be specified")
+	}
+	if r.teamId == "." || r.teamId == ".." {
+		return localVarReturnValue, nil, reportError("teamId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
@@ -1141,9 +1171,15 @@ func (a *TeamsAPIService) GetTeamByNameExecute(r GetTeamByNameApiRequest) (*Team
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.teamName == "" {
 		return localVarReturnValue, nil, reportError("teamName is empty and must be specified")
+	}
+	if r.teamName == "." || r.teamName == ".." {
+		return localVarReturnValue, nil, reportError("teamName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamName"+"}", url.PathEscape(r.teamName), -1)
 
@@ -1285,6 +1321,9 @@ func (a *TeamsAPIService) ListGroupTeamsExecute(r ListGroupTeamsApiRequest) (*Pa
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/teams"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -1448,6 +1487,9 @@ func (a *TeamsAPIService) ListOrgTeamsExecute(r ListOrgTeamsApiRequest) (*Pagina
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1585,9 +1627,15 @@ func (a *TeamsAPIService) RemoveGroupTeamExecute(r RemoveGroupTeamApiRequest) (*
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.teamId == "" {
 		return nil, reportError("teamId is empty and must be specified")
+	}
+	if r.teamId == "." || r.teamId == ".." {
+		return nil, reportError("teamId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
@@ -1701,13 +1749,22 @@ func (a *TeamsAPIService) RemoveUserFromTeamExecute(r RemoveUserFromTeamApiReque
 	if r.orgId == "" {
 		return nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.teamId == "" {
 		return nil, reportError("teamId is empty and must be specified")
 	}
+	if r.teamId == "." || r.teamId == ".." {
+		return nil, reportError("teamId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 	if r.userId == "" {
 		return nil, reportError("userId is empty and must be specified")
+	}
+	if r.userId == "." || r.userId == ".." {
+		return nil, reportError("userId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
@@ -1818,9 +1875,15 @@ func (a *TeamsAPIService) RenameOrgTeamExecute(r RenameOrgTeamApiRequest) (*Team
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.teamId == "" {
 		return localVarReturnValue, nil, reportError("teamId is empty and must be specified")
+	}
+	if r.teamId == "." || r.teamId == ".." {
+		return localVarReturnValue, nil, reportError("teamId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
@@ -1950,9 +2013,15 @@ func (a *TeamsAPIService) UpdateGroupTeamExecute(r UpdateGroupTeamApiRequest) (*
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.teamId == "" {
 		return localVarReturnValue, nil, reportError("teamId is empty and must be specified")
+	}
+	if r.teamId == "." || r.teamId == ".." {
+		return localVarReturnValue, nil, reportError("teamId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 

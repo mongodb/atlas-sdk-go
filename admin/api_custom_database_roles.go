@@ -198,6 +198,9 @@ func (a *CustomDatabaseRolesAPIService) CreateCustomDbRoleExecute(r CreateCustom
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -319,9 +322,15 @@ func (a *CustomDatabaseRolesAPIService) DeleteCustomDbRoleExecute(r DeleteCustom
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.roleName == "" {
 		return nil, reportError("roleName is empty and must be specified")
+	}
+	if r.roleName == "." || r.roleName == ".." {
+		return nil, reportError("roleName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"roleName"+"}", url.PathEscape(r.roleName), -1)
 
@@ -428,9 +437,15 @@ func (a *CustomDatabaseRolesAPIService) GetCustomDbRoleExecute(r GetCustomDbRole
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.roleName == "" {
 		return localVarReturnValue, nil, reportError("roleName is empty and must be specified")
+	}
+	if r.roleName == "." || r.roleName == ".." {
+		return localVarReturnValue, nil, reportError("roleName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"roleName"+"}", url.PathEscape(r.roleName), -1)
 
@@ -545,6 +560,9 @@ func (a *CustomDatabaseRolesAPIService) ListCustomDbRolesExecute(r ListCustomDbR
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/customDBRoles/roles"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -669,9 +687,15 @@ func (a *CustomDatabaseRolesAPIService) UpdateCustomDbRoleExecute(r UpdateCustom
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.roleName == "" {
 		return localVarReturnValue, nil, reportError("roleName is empty and must be specified")
+	}
+	if r.roleName == "." || r.roleName == ".." {
+		return localVarReturnValue, nil, reportError("roleName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"roleName"+"}", url.PathEscape(r.roleName), -1)
 

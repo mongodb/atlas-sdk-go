@@ -8,22 +8,36 @@ type QueryStatsSummary struct {
 	AvgWorkingMillis *float64 `json:"avgWorkingMillis,omitempty"`
 	// The number of bytes read by the given query shape from the disk to the cache.
 	BytesRead *float64 `json:"bytesRead,omitempty"`
-	// The MongoDB command issued for this query shape.
+	// The MongoDB command issued for this query shape. The insert, update, and delete commands appear only for clusters running MongoDB 9.0 or later.
 	Command *string `json:"command,omitempty"`
 	// Total CPU time in nanoseconds consumed by queries with the given query shape. Available for MDB 8.2 and higher.
 	CpuTime *float64 `json:"cpuTime,omitempty"`
+	// Total number of documents deleted by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+	DocsDeleted *float64 `json:"docsDeleted,omitempty"`
 	// Total number of documents examined by queries with the given query shape.
 	DocsExamined *float64 `json:"docsExamined,omitempty"`
 	// Ratio of documents examined to documents returned by queries with the given query shape.
 	DocsExaminedRatio *float64 `json:"docsExaminedRatio,omitempty"`
+	// Total number of documents inserted by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+	DocsInserted *float64 `json:"docsInserted,omitempty"`
+	// Total number of documents matched by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+	DocsMatched *float64 `json:"docsMatched,omitempty"`
+	// Total number of documents modified by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+	DocsModified *float64 `json:"docsModified,omitempty"`
 	// Total number of documents returned by queries with the given query shape.
 	DocsReturned *float64 `json:"docsReturned,omitempty"`
+	// Total number of documents upserted by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+	DocsUpserted *float64 `json:"docsUpserted,omitempty"`
 	// Total number of times that queries with the given query shape have been executed.
 	ExecCount *float64 `json:"execCount,omitempty"`
+	// Total number of index keys deleted by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+	KeysDeleted *float64 `json:"keysDeleted,omitempty"`
 	// Total number of in-bounds and out-of-bounds index keys examined by queries with the given query shape.
 	KeysExamined *float64 `json:"keysExamined,omitempty"`
 	// Ratio of in-bounds and out-of-bounds index keys examined to indexes containing documents returned by queries with the given query shape.
 	KeysExaminedRatio *float64 `json:"keysExaminedRatio,omitempty"`
+	// Total number of index keys inserted by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+	KeysInserted *float64 `json:"keysInserted,omitempty"`
 	// Execution runtime in microseconds for the most recent query with the given query shape.
 	LastExecMicros *float64 `json:"lastExecMicros,omitempty"`
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
@@ -235,6 +249,46 @@ func (o *QueryStatsSummary) SetCpuTimeNil() {
 	o.NullFields = addNullField(o.NullFields, "CpuTime")
 }
 
+// GetDocsDeleted returns the DocsDeleted field value if set, zero value otherwise
+func (o *QueryStatsSummary) GetDocsDeleted() float64 {
+	if o == nil || IsNil(o.DocsDeleted) {
+		var ret float64
+		return ret
+	}
+	return *o.DocsDeleted
+}
+
+// GetDocsDeletedOk returns a tuple with the DocsDeleted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummary) GetDocsDeletedOk() (*float64, bool) {
+	if o == nil || IsNil(o.DocsDeleted) {
+		return nil, false
+	}
+
+	return o.DocsDeleted, true
+}
+
+// HasDocsDeleted returns a boolean if a field has been set.
+func (o *QueryStatsSummary) HasDocsDeleted() bool {
+	if o != nil && !IsNil(o.DocsDeleted) {
+		return true
+	}
+
+	return false
+}
+
+// SetDocsDeleted gets a reference to the given float64 and assigns it to the DocsDeleted field.
+func (o *QueryStatsSummary) SetDocsDeleted(v float64) {
+	o.DocsDeleted = &v
+	o.NullFields = removeNullField(o.NullFields, "DocsDeleted")
+}
+
+// SetDocsDeletedNil sets DocsDeleted to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetDocsDeletedNil() {
+	o.DocsDeleted = nil
+	o.NullFields = addNullField(o.NullFields, "DocsDeleted")
+}
+
 // GetDocsExamined returns the DocsExamined field value if set, zero value otherwise
 func (o *QueryStatsSummary) GetDocsExamined() float64 {
 	if o == nil || IsNil(o.DocsExamined) {
@@ -315,6 +369,126 @@ func (o *QueryStatsSummary) SetDocsExaminedRatioNil() {
 	o.NullFields = addNullField(o.NullFields, "DocsExaminedRatio")
 }
 
+// GetDocsInserted returns the DocsInserted field value if set, zero value otherwise
+func (o *QueryStatsSummary) GetDocsInserted() float64 {
+	if o == nil || IsNil(o.DocsInserted) {
+		var ret float64
+		return ret
+	}
+	return *o.DocsInserted
+}
+
+// GetDocsInsertedOk returns a tuple with the DocsInserted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummary) GetDocsInsertedOk() (*float64, bool) {
+	if o == nil || IsNil(o.DocsInserted) {
+		return nil, false
+	}
+
+	return o.DocsInserted, true
+}
+
+// HasDocsInserted returns a boolean if a field has been set.
+func (o *QueryStatsSummary) HasDocsInserted() bool {
+	if o != nil && !IsNil(o.DocsInserted) {
+		return true
+	}
+
+	return false
+}
+
+// SetDocsInserted gets a reference to the given float64 and assigns it to the DocsInserted field.
+func (o *QueryStatsSummary) SetDocsInserted(v float64) {
+	o.DocsInserted = &v
+	o.NullFields = removeNullField(o.NullFields, "DocsInserted")
+}
+
+// SetDocsInsertedNil sets DocsInserted to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetDocsInsertedNil() {
+	o.DocsInserted = nil
+	o.NullFields = addNullField(o.NullFields, "DocsInserted")
+}
+
+// GetDocsMatched returns the DocsMatched field value if set, zero value otherwise
+func (o *QueryStatsSummary) GetDocsMatched() float64 {
+	if o == nil || IsNil(o.DocsMatched) {
+		var ret float64
+		return ret
+	}
+	return *o.DocsMatched
+}
+
+// GetDocsMatchedOk returns a tuple with the DocsMatched field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummary) GetDocsMatchedOk() (*float64, bool) {
+	if o == nil || IsNil(o.DocsMatched) {
+		return nil, false
+	}
+
+	return o.DocsMatched, true
+}
+
+// HasDocsMatched returns a boolean if a field has been set.
+func (o *QueryStatsSummary) HasDocsMatched() bool {
+	if o != nil && !IsNil(o.DocsMatched) {
+		return true
+	}
+
+	return false
+}
+
+// SetDocsMatched gets a reference to the given float64 and assigns it to the DocsMatched field.
+func (o *QueryStatsSummary) SetDocsMatched(v float64) {
+	o.DocsMatched = &v
+	o.NullFields = removeNullField(o.NullFields, "DocsMatched")
+}
+
+// SetDocsMatchedNil sets DocsMatched to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetDocsMatchedNil() {
+	o.DocsMatched = nil
+	o.NullFields = addNullField(o.NullFields, "DocsMatched")
+}
+
+// GetDocsModified returns the DocsModified field value if set, zero value otherwise
+func (o *QueryStatsSummary) GetDocsModified() float64 {
+	if o == nil || IsNil(o.DocsModified) {
+		var ret float64
+		return ret
+	}
+	return *o.DocsModified
+}
+
+// GetDocsModifiedOk returns a tuple with the DocsModified field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummary) GetDocsModifiedOk() (*float64, bool) {
+	if o == nil || IsNil(o.DocsModified) {
+		return nil, false
+	}
+
+	return o.DocsModified, true
+}
+
+// HasDocsModified returns a boolean if a field has been set.
+func (o *QueryStatsSummary) HasDocsModified() bool {
+	if o != nil && !IsNil(o.DocsModified) {
+		return true
+	}
+
+	return false
+}
+
+// SetDocsModified gets a reference to the given float64 and assigns it to the DocsModified field.
+func (o *QueryStatsSummary) SetDocsModified(v float64) {
+	o.DocsModified = &v
+	o.NullFields = removeNullField(o.NullFields, "DocsModified")
+}
+
+// SetDocsModifiedNil sets DocsModified to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetDocsModifiedNil() {
+	o.DocsModified = nil
+	o.NullFields = addNullField(o.NullFields, "DocsModified")
+}
+
 // GetDocsReturned returns the DocsReturned field value if set, zero value otherwise
 func (o *QueryStatsSummary) GetDocsReturned() float64 {
 	if o == nil || IsNil(o.DocsReturned) {
@@ -355,6 +529,46 @@ func (o *QueryStatsSummary) SetDocsReturnedNil() {
 	o.NullFields = addNullField(o.NullFields, "DocsReturned")
 }
 
+// GetDocsUpserted returns the DocsUpserted field value if set, zero value otherwise
+func (o *QueryStatsSummary) GetDocsUpserted() float64 {
+	if o == nil || IsNil(o.DocsUpserted) {
+		var ret float64
+		return ret
+	}
+	return *o.DocsUpserted
+}
+
+// GetDocsUpsertedOk returns a tuple with the DocsUpserted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummary) GetDocsUpsertedOk() (*float64, bool) {
+	if o == nil || IsNil(o.DocsUpserted) {
+		return nil, false
+	}
+
+	return o.DocsUpserted, true
+}
+
+// HasDocsUpserted returns a boolean if a field has been set.
+func (o *QueryStatsSummary) HasDocsUpserted() bool {
+	if o != nil && !IsNil(o.DocsUpserted) {
+		return true
+	}
+
+	return false
+}
+
+// SetDocsUpserted gets a reference to the given float64 and assigns it to the DocsUpserted field.
+func (o *QueryStatsSummary) SetDocsUpserted(v float64) {
+	o.DocsUpserted = &v
+	o.NullFields = removeNullField(o.NullFields, "DocsUpserted")
+}
+
+// SetDocsUpsertedNil sets DocsUpserted to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetDocsUpsertedNil() {
+	o.DocsUpserted = nil
+	o.NullFields = addNullField(o.NullFields, "DocsUpserted")
+}
+
 // GetExecCount returns the ExecCount field value if set, zero value otherwise
 func (o *QueryStatsSummary) GetExecCount() float64 {
 	if o == nil || IsNil(o.ExecCount) {
@@ -393,6 +607,46 @@ func (o *QueryStatsSummary) SetExecCount(v float64) {
 func (o *QueryStatsSummary) SetExecCountNil() {
 	o.ExecCount = nil
 	o.NullFields = addNullField(o.NullFields, "ExecCount")
+}
+
+// GetKeysDeleted returns the KeysDeleted field value if set, zero value otherwise
+func (o *QueryStatsSummary) GetKeysDeleted() float64 {
+	if o == nil || IsNil(o.KeysDeleted) {
+		var ret float64
+		return ret
+	}
+	return *o.KeysDeleted
+}
+
+// GetKeysDeletedOk returns a tuple with the KeysDeleted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummary) GetKeysDeletedOk() (*float64, bool) {
+	if o == nil || IsNil(o.KeysDeleted) {
+		return nil, false
+	}
+
+	return o.KeysDeleted, true
+}
+
+// HasKeysDeleted returns a boolean if a field has been set.
+func (o *QueryStatsSummary) HasKeysDeleted() bool {
+	if o != nil && !IsNil(o.KeysDeleted) {
+		return true
+	}
+
+	return false
+}
+
+// SetKeysDeleted gets a reference to the given float64 and assigns it to the KeysDeleted field.
+func (o *QueryStatsSummary) SetKeysDeleted(v float64) {
+	o.KeysDeleted = &v
+	o.NullFields = removeNullField(o.NullFields, "KeysDeleted")
+}
+
+// SetKeysDeletedNil sets KeysDeleted to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetKeysDeletedNil() {
+	o.KeysDeleted = nil
+	o.NullFields = addNullField(o.NullFields, "KeysDeleted")
 }
 
 // GetKeysExamined returns the KeysExamined field value if set, zero value otherwise
@@ -473,6 +727,46 @@ func (o *QueryStatsSummary) SetKeysExaminedRatio(v float64) {
 func (o *QueryStatsSummary) SetKeysExaminedRatioNil() {
 	o.KeysExaminedRatio = nil
 	o.NullFields = addNullField(o.NullFields, "KeysExaminedRatio")
+}
+
+// GetKeysInserted returns the KeysInserted field value if set, zero value otherwise
+func (o *QueryStatsSummary) GetKeysInserted() float64 {
+	if o == nil || IsNil(o.KeysInserted) {
+		var ret float64
+		return ret
+	}
+	return *o.KeysInserted
+}
+
+// GetKeysInsertedOk returns a tuple with the KeysInserted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummary) GetKeysInsertedOk() (*float64, bool) {
+	if o == nil || IsNil(o.KeysInserted) {
+		return nil, false
+	}
+
+	return o.KeysInserted, true
+}
+
+// HasKeysInserted returns a boolean if a field has been set.
+func (o *QueryStatsSummary) HasKeysInserted() bool {
+	if o != nil && !IsNil(o.KeysInserted) {
+		return true
+	}
+
+	return false
+}
+
+// SetKeysInserted gets a reference to the given float64 and assigns it to the KeysInserted field.
+func (o *QueryStatsSummary) SetKeysInserted(v float64) {
+	o.KeysInserted = &v
+	o.NullFields = removeNullField(o.NullFields, "KeysInserted")
+}
+
+// SetKeysInsertedNil sets KeysInserted to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetKeysInsertedNil() {
+	o.KeysInserted = nil
+	o.NullFields = addNullField(o.NullFields, "KeysInserted")
 }
 
 // GetLastExecMicros returns the LastExecMicros field value if set, zero value otherwise

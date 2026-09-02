@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312024/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -187,17 +187,17 @@ func (_c *ClustersAPI_AutoScalingConfigurationWithParams_Call) RunAndReturn(run 
 	return _c
 }
 
-// CreateCluster provides a mock function with given fields: ctx, groupId, clusterDescription20240805
-func (_m *ClustersAPI) CreateCluster(ctx context.Context, groupId string, clusterDescription20240805 *admin.ClusterDescription20240805) admin.CreateClusterApiRequest {
-	ret := _m.Called(ctx, groupId, clusterDescription20240805)
+// CreateCluster provides a mock function with given fields: ctx, groupId, apiAtlasClusterDescriptionPreview
+func (_m *ClustersAPI) CreateCluster(ctx context.Context, groupId string, apiAtlasClusterDescriptionPreview *admin.ApiAtlasClusterDescriptionPreview) admin.CreateClusterApiRequest {
+	ret := _m.Called(ctx, groupId, apiAtlasClusterDescriptionPreview)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CreateCluster")
 	}
 
 	var r0 admin.CreateClusterApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.ClusterDescription20240805) admin.CreateClusterApiRequest); ok {
-		r0 = rf(ctx, groupId, clusterDescription20240805)
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.ApiAtlasClusterDescriptionPreview) admin.CreateClusterApiRequest); ok {
+		r0 = rf(ctx, groupId, apiAtlasClusterDescriptionPreview)
 	} else {
 		r0 = ret.Get(0).(admin.CreateClusterApiRequest)
 	}
@@ -213,14 +213,14 @@ type ClustersAPI_CreateCluster_Call struct {
 // CreateCluster is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-//   - clusterDescription20240805 *admin.ClusterDescription20240805
-func (_e *ClustersAPI_Expecter) CreateCluster(ctx any, groupId any, clusterDescription20240805 any) *ClustersAPI_CreateCluster_Call {
-	return &ClustersAPI_CreateCluster_Call{Call: _e.mock.On("CreateCluster", ctx, groupId, clusterDescription20240805)}
+//   - apiAtlasClusterDescriptionPreview *admin.ApiAtlasClusterDescriptionPreview
+func (_e *ClustersAPI_Expecter) CreateCluster(ctx any, groupId any, apiAtlasClusterDescriptionPreview any) *ClustersAPI_CreateCluster_Call {
+	return &ClustersAPI_CreateCluster_Call{Call: _e.mock.On("CreateCluster", ctx, groupId, apiAtlasClusterDescriptionPreview)}
 }
 
-func (_c *ClustersAPI_CreateCluster_Call) Run(run func(ctx context.Context, groupId string, clusterDescription20240805 *admin.ClusterDescription20240805)) *ClustersAPI_CreateCluster_Call {
+func (_c *ClustersAPI_CreateCluster_Call) Run(run func(ctx context.Context, groupId string, apiAtlasClusterDescriptionPreview *admin.ApiAtlasClusterDescriptionPreview)) *ClustersAPI_CreateCluster_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.ClusterDescription20240805))
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.ApiAtlasClusterDescriptionPreview))
 	})
 	return _c
 }
@@ -230,30 +230,30 @@ func (_c *ClustersAPI_CreateCluster_Call) Return(_a0 admin.CreateClusterApiReque
 	return _c
 }
 
-func (_c *ClustersAPI_CreateCluster_Call) RunAndReturn(run func(context.Context, string, *admin.ClusterDescription20240805) admin.CreateClusterApiRequest) *ClustersAPI_CreateCluster_Call {
+func (_c *ClustersAPI_CreateCluster_Call) RunAndReturn(run func(context.Context, string, *admin.ApiAtlasClusterDescriptionPreview) admin.CreateClusterApiRequest) *ClustersAPI_CreateCluster_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // CreateClusterExecute provides a mock function with given fields: r
-func (_m *ClustersAPI) CreateClusterExecute(r admin.CreateClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error) {
+func (_m *ClustersAPI) CreateClusterExecute(r admin.CreateClusterApiRequest) (*admin.ApiAtlasClusterDescriptionPreview, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CreateClusterExecute")
 	}
 
-	var r0 *admin.ClusterDescription20240805
+	var r0 *admin.ApiAtlasClusterDescriptionPreview
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateClusterApiRequest) (*admin.ApiAtlasClusterDescriptionPreview, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateClusterApiRequest) *admin.ClusterDescription20240805); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateClusterApiRequest) *admin.ApiAtlasClusterDescriptionPreview); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.ClusterDescription20240805)
+			r0 = ret.Get(0).(*admin.ApiAtlasClusterDescriptionPreview)
 		}
 	}
 
@@ -292,12 +292,12 @@ func (_c *ClustersAPI_CreateClusterExecute_Call) Run(run func(r admin.CreateClus
 	return _c
 }
 
-func (_c *ClustersAPI_CreateClusterExecute_Call) Return(_a0 *admin.ClusterDescription20240805, _a1 *http.Response, _a2 error) *ClustersAPI_CreateClusterExecute_Call {
+func (_c *ClustersAPI_CreateClusterExecute_Call) Return(_a0 *admin.ApiAtlasClusterDescriptionPreview, _a1 *http.Response, _a2 error) *ClustersAPI_CreateClusterExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ClustersAPI_CreateClusterExecute_Call) RunAndReturn(run func(admin.CreateClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error)) *ClustersAPI_CreateClusterExecute_Call {
+func (_c *ClustersAPI_CreateClusterExecute_Call) RunAndReturn(run func(admin.CreateClusterApiRequest) (*admin.ApiAtlasClusterDescriptionPreview, *http.Response, error)) *ClustersAPI_CreateClusterExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -502,6 +502,654 @@ func (_c *ClustersAPI_DeleteClusterWithParams_Call) RunAndReturn(run func(contex
 	return _c
 }
 
+// EstimateClusterCost provides a mock function with given fields: ctx, unauthClusterCostEstimateRequest
+func (_m *ClustersAPI) EstimateClusterCost(ctx context.Context, unauthClusterCostEstimateRequest *admin.UnauthClusterCostEstimateRequest) admin.EstimateClusterCostApiRequest {
+	ret := _m.Called(ctx, unauthClusterCostEstimateRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateClusterCost")
+	}
+
+	var r0 admin.EstimateClusterCostApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UnauthClusterCostEstimateRequest) admin.EstimateClusterCostApiRequest); ok {
+		r0 = rf(ctx, unauthClusterCostEstimateRequest)
+	} else {
+		r0 = ret.Get(0).(admin.EstimateClusterCostApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_EstimateClusterCost_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateClusterCost'
+type ClustersAPI_EstimateClusterCost_Call struct {
+	*mock.Call
+}
+
+// EstimateClusterCost is a helper method to define mock.On call
+//   - ctx context.Context
+//   - unauthClusterCostEstimateRequest *admin.UnauthClusterCostEstimateRequest
+func (_e *ClustersAPI_Expecter) EstimateClusterCost(ctx any, unauthClusterCostEstimateRequest any) *ClustersAPI_EstimateClusterCost_Call {
+	return &ClustersAPI_EstimateClusterCost_Call{Call: _e.mock.On("EstimateClusterCost", ctx, unauthClusterCostEstimateRequest)}
+}
+
+func (_c *ClustersAPI_EstimateClusterCost_Call) Run(run func(ctx context.Context, unauthClusterCostEstimateRequest *admin.UnauthClusterCostEstimateRequest)) *ClustersAPI_EstimateClusterCost_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UnauthClusterCostEstimateRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateClusterCost_Call) Return(_a0 admin.EstimateClusterCostApiRequest) *ClustersAPI_EstimateClusterCost_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateClusterCost_Call) RunAndReturn(run func(context.Context, *admin.UnauthClusterCostEstimateRequest) admin.EstimateClusterCostApiRequest) *ClustersAPI_EstimateClusterCost_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EstimateClusterCostExecute provides a mock function with given fields: r
+func (_m *ClustersAPI) EstimateClusterCostExecute(r admin.EstimateClusterCostApiRequest) (*admin.UnauthClusterCostEstimateResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateClusterCostExecute")
+	}
+
+	var r0 *admin.UnauthClusterCostEstimateResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.EstimateClusterCostApiRequest) (*admin.UnauthClusterCostEstimateResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.EstimateClusterCostApiRequest) *admin.UnauthClusterCostEstimateResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.UnauthClusterCostEstimateResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.EstimateClusterCostApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.EstimateClusterCostApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ClustersAPI_EstimateClusterCostExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateClusterCostExecute'
+type ClustersAPI_EstimateClusterCostExecute_Call struct {
+	*mock.Call
+}
+
+// EstimateClusterCostExecute is a helper method to define mock.On call
+//   - r admin.EstimateClusterCostApiRequest
+func (_e *ClustersAPI_Expecter) EstimateClusterCostExecute(r any) *ClustersAPI_EstimateClusterCostExecute_Call {
+	return &ClustersAPI_EstimateClusterCostExecute_Call{Call: _e.mock.On("EstimateClusterCostExecute", r)}
+}
+
+func (_c *ClustersAPI_EstimateClusterCostExecute_Call) Run(run func(r admin.EstimateClusterCostApiRequest)) *ClustersAPI_EstimateClusterCostExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.EstimateClusterCostApiRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateClusterCostExecute_Call) Return(_a0 *admin.UnauthClusterCostEstimateResponse, _a1 *http.Response, _a2 error) *ClustersAPI_EstimateClusterCostExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateClusterCostExecute_Call) RunAndReturn(run func(admin.EstimateClusterCostApiRequest) (*admin.UnauthClusterCostEstimateResponse, *http.Response, error)) *ClustersAPI_EstimateClusterCostExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EstimateClusterCostWithParams provides a mock function with given fields: ctx, args
+func (_m *ClustersAPI) EstimateClusterCostWithParams(ctx context.Context, args *admin.EstimateClusterCostApiParams) admin.EstimateClusterCostApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateClusterCostWithParams")
+	}
+
+	var r0 admin.EstimateClusterCostApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.EstimateClusterCostApiParams) admin.EstimateClusterCostApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.EstimateClusterCostApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_EstimateClusterCostWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateClusterCostWithParams'
+type ClustersAPI_EstimateClusterCostWithParams_Call struct {
+	*mock.Call
+}
+
+// EstimateClusterCostWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.EstimateClusterCostApiParams
+func (_e *ClustersAPI_Expecter) EstimateClusterCostWithParams(ctx any, args any) *ClustersAPI_EstimateClusterCostWithParams_Call {
+	return &ClustersAPI_EstimateClusterCostWithParams_Call{Call: _e.mock.On("EstimateClusterCostWithParams", ctx, args)}
+}
+
+func (_c *ClustersAPI_EstimateClusterCostWithParams_Call) Run(run func(ctx context.Context, args *admin.EstimateClusterCostApiParams)) *ClustersAPI_EstimateClusterCostWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.EstimateClusterCostApiParams))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateClusterCostWithParams_Call) Return(_a0 admin.EstimateClusterCostApiRequest) *ClustersAPI_EstimateClusterCostWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateClusterCostWithParams_Call) RunAndReturn(run func(context.Context, *admin.EstimateClusterCostApiParams) admin.EstimateClusterCostApiRequest) *ClustersAPI_EstimateClusterCostWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EstimateCreateClusterCost provides a mock function with given fields: ctx, groupId, clusterDescription20240805
+func (_m *ClustersAPI) EstimateCreateClusterCost(ctx context.Context, groupId string, clusterDescription20240805 *admin.ClusterDescription20240805) admin.EstimateCreateClusterCostApiRequest {
+	ret := _m.Called(ctx, groupId, clusterDescription20240805)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateCreateClusterCost")
+	}
+
+	var r0 admin.EstimateCreateClusterCostApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.ClusterDescription20240805) admin.EstimateCreateClusterCostApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterDescription20240805)
+	} else {
+		r0 = ret.Get(0).(admin.EstimateCreateClusterCostApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_EstimateCreateClusterCost_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateCreateClusterCost'
+type ClustersAPI_EstimateCreateClusterCost_Call struct {
+	*mock.Call
+}
+
+// EstimateCreateClusterCost is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterDescription20240805 *admin.ClusterDescription20240805
+func (_e *ClustersAPI_Expecter) EstimateCreateClusterCost(ctx any, groupId any, clusterDescription20240805 any) *ClustersAPI_EstimateCreateClusterCost_Call {
+	return &ClustersAPI_EstimateCreateClusterCost_Call{Call: _e.mock.On("EstimateCreateClusterCost", ctx, groupId, clusterDescription20240805)}
+}
+
+func (_c *ClustersAPI_EstimateCreateClusterCost_Call) Run(run func(ctx context.Context, groupId string, clusterDescription20240805 *admin.ClusterDescription20240805)) *ClustersAPI_EstimateCreateClusterCost_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.ClusterDescription20240805))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateCreateClusterCost_Call) Return(_a0 admin.EstimateCreateClusterCostApiRequest) *ClustersAPI_EstimateCreateClusterCost_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateCreateClusterCost_Call) RunAndReturn(run func(context.Context, string, *admin.ClusterDescription20240805) admin.EstimateCreateClusterCostApiRequest) *ClustersAPI_EstimateCreateClusterCost_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EstimateCreateClusterCostExecute provides a mock function with given fields: r
+func (_m *ClustersAPI) EstimateCreateClusterCostExecute(r admin.EstimateCreateClusterCostApiRequest) (*admin.ClusterCostEstimate, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateCreateClusterCostExecute")
+	}
+
+	var r0 *admin.ClusterCostEstimate
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.EstimateCreateClusterCostApiRequest) (*admin.ClusterCostEstimate, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.EstimateCreateClusterCostApiRequest) *admin.ClusterCostEstimate); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ClusterCostEstimate)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.EstimateCreateClusterCostApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.EstimateCreateClusterCostApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ClustersAPI_EstimateCreateClusterCostExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateCreateClusterCostExecute'
+type ClustersAPI_EstimateCreateClusterCostExecute_Call struct {
+	*mock.Call
+}
+
+// EstimateCreateClusterCostExecute is a helper method to define mock.On call
+//   - r admin.EstimateCreateClusterCostApiRequest
+func (_e *ClustersAPI_Expecter) EstimateCreateClusterCostExecute(r any) *ClustersAPI_EstimateCreateClusterCostExecute_Call {
+	return &ClustersAPI_EstimateCreateClusterCostExecute_Call{Call: _e.mock.On("EstimateCreateClusterCostExecute", r)}
+}
+
+func (_c *ClustersAPI_EstimateCreateClusterCostExecute_Call) Run(run func(r admin.EstimateCreateClusterCostApiRequest)) *ClustersAPI_EstimateCreateClusterCostExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.EstimateCreateClusterCostApiRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateCreateClusterCostExecute_Call) Return(_a0 *admin.ClusterCostEstimate, _a1 *http.Response, _a2 error) *ClustersAPI_EstimateCreateClusterCostExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateCreateClusterCostExecute_Call) RunAndReturn(run func(admin.EstimateCreateClusterCostApiRequest) (*admin.ClusterCostEstimate, *http.Response, error)) *ClustersAPI_EstimateCreateClusterCostExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EstimateCreateClusterCostWithParams provides a mock function with given fields: ctx, args
+func (_m *ClustersAPI) EstimateCreateClusterCostWithParams(ctx context.Context, args *admin.EstimateCreateClusterCostApiParams) admin.EstimateCreateClusterCostApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateCreateClusterCostWithParams")
+	}
+
+	var r0 admin.EstimateCreateClusterCostApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.EstimateCreateClusterCostApiParams) admin.EstimateCreateClusterCostApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.EstimateCreateClusterCostApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_EstimateCreateClusterCostWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateCreateClusterCostWithParams'
+type ClustersAPI_EstimateCreateClusterCostWithParams_Call struct {
+	*mock.Call
+}
+
+// EstimateCreateClusterCostWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.EstimateCreateClusterCostApiParams
+func (_e *ClustersAPI_Expecter) EstimateCreateClusterCostWithParams(ctx any, args any) *ClustersAPI_EstimateCreateClusterCostWithParams_Call {
+	return &ClustersAPI_EstimateCreateClusterCostWithParams_Call{Call: _e.mock.On("EstimateCreateClusterCostWithParams", ctx, args)}
+}
+
+func (_c *ClustersAPI_EstimateCreateClusterCostWithParams_Call) Run(run func(ctx context.Context, args *admin.EstimateCreateClusterCostApiParams)) *ClustersAPI_EstimateCreateClusterCostWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.EstimateCreateClusterCostApiParams))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateCreateClusterCostWithParams_Call) Return(_a0 admin.EstimateCreateClusterCostApiRequest) *ClustersAPI_EstimateCreateClusterCostWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateCreateClusterCostWithParams_Call) RunAndReturn(run func(context.Context, *admin.EstimateCreateClusterCostApiParams) admin.EstimateCreateClusterCostApiRequest) *ClustersAPI_EstimateCreateClusterCostWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EstimateTenantUpgradeCost provides a mock function with given fields: ctx, groupId, legacyAtlasTenantClusterUpgradeRequest
+func (_m *ClustersAPI) EstimateTenantUpgradeCost(ctx context.Context, groupId string, legacyAtlasTenantClusterUpgradeRequest *admin.LegacyAtlasTenantClusterUpgradeRequest) admin.EstimateTenantUpgradeCostApiRequest {
+	ret := _m.Called(ctx, groupId, legacyAtlasTenantClusterUpgradeRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateTenantUpgradeCost")
+	}
+
+	var r0 admin.EstimateTenantUpgradeCostApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.LegacyAtlasTenantClusterUpgradeRequest) admin.EstimateTenantUpgradeCostApiRequest); ok {
+		r0 = rf(ctx, groupId, legacyAtlasTenantClusterUpgradeRequest)
+	} else {
+		r0 = ret.Get(0).(admin.EstimateTenantUpgradeCostApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_EstimateTenantUpgradeCost_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateTenantUpgradeCost'
+type ClustersAPI_EstimateTenantUpgradeCost_Call struct {
+	*mock.Call
+}
+
+// EstimateTenantUpgradeCost is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - legacyAtlasTenantClusterUpgradeRequest *admin.LegacyAtlasTenantClusterUpgradeRequest
+func (_e *ClustersAPI_Expecter) EstimateTenantUpgradeCost(ctx any, groupId any, legacyAtlasTenantClusterUpgradeRequest any) *ClustersAPI_EstimateTenantUpgradeCost_Call {
+	return &ClustersAPI_EstimateTenantUpgradeCost_Call{Call: _e.mock.On("EstimateTenantUpgradeCost", ctx, groupId, legacyAtlasTenantClusterUpgradeRequest)}
+}
+
+func (_c *ClustersAPI_EstimateTenantUpgradeCost_Call) Run(run func(ctx context.Context, groupId string, legacyAtlasTenantClusterUpgradeRequest *admin.LegacyAtlasTenantClusterUpgradeRequest)) *ClustersAPI_EstimateTenantUpgradeCost_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.LegacyAtlasTenantClusterUpgradeRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateTenantUpgradeCost_Call) Return(_a0 admin.EstimateTenantUpgradeCostApiRequest) *ClustersAPI_EstimateTenantUpgradeCost_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateTenantUpgradeCost_Call) RunAndReturn(run func(context.Context, string, *admin.LegacyAtlasTenantClusterUpgradeRequest) admin.EstimateTenantUpgradeCostApiRequest) *ClustersAPI_EstimateTenantUpgradeCost_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EstimateTenantUpgradeCostExecute provides a mock function with given fields: r
+func (_m *ClustersAPI) EstimateTenantUpgradeCostExecute(r admin.EstimateTenantUpgradeCostApiRequest) (*admin.ClusterCostEstimate, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateTenantUpgradeCostExecute")
+	}
+
+	var r0 *admin.ClusterCostEstimate
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.EstimateTenantUpgradeCostApiRequest) (*admin.ClusterCostEstimate, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.EstimateTenantUpgradeCostApiRequest) *admin.ClusterCostEstimate); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ClusterCostEstimate)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.EstimateTenantUpgradeCostApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.EstimateTenantUpgradeCostApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ClustersAPI_EstimateTenantUpgradeCostExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateTenantUpgradeCostExecute'
+type ClustersAPI_EstimateTenantUpgradeCostExecute_Call struct {
+	*mock.Call
+}
+
+// EstimateTenantUpgradeCostExecute is a helper method to define mock.On call
+//   - r admin.EstimateTenantUpgradeCostApiRequest
+func (_e *ClustersAPI_Expecter) EstimateTenantUpgradeCostExecute(r any) *ClustersAPI_EstimateTenantUpgradeCostExecute_Call {
+	return &ClustersAPI_EstimateTenantUpgradeCostExecute_Call{Call: _e.mock.On("EstimateTenantUpgradeCostExecute", r)}
+}
+
+func (_c *ClustersAPI_EstimateTenantUpgradeCostExecute_Call) Run(run func(r admin.EstimateTenantUpgradeCostApiRequest)) *ClustersAPI_EstimateTenantUpgradeCostExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.EstimateTenantUpgradeCostApiRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateTenantUpgradeCostExecute_Call) Return(_a0 *admin.ClusterCostEstimate, _a1 *http.Response, _a2 error) *ClustersAPI_EstimateTenantUpgradeCostExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateTenantUpgradeCostExecute_Call) RunAndReturn(run func(admin.EstimateTenantUpgradeCostApiRequest) (*admin.ClusterCostEstimate, *http.Response, error)) *ClustersAPI_EstimateTenantUpgradeCostExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EstimateTenantUpgradeCostWithParams provides a mock function with given fields: ctx, args
+func (_m *ClustersAPI) EstimateTenantUpgradeCostWithParams(ctx context.Context, args *admin.EstimateTenantUpgradeCostApiParams) admin.EstimateTenantUpgradeCostApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateTenantUpgradeCostWithParams")
+	}
+
+	var r0 admin.EstimateTenantUpgradeCostApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.EstimateTenantUpgradeCostApiParams) admin.EstimateTenantUpgradeCostApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.EstimateTenantUpgradeCostApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_EstimateTenantUpgradeCostWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateTenantUpgradeCostWithParams'
+type ClustersAPI_EstimateTenantUpgradeCostWithParams_Call struct {
+	*mock.Call
+}
+
+// EstimateTenantUpgradeCostWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.EstimateTenantUpgradeCostApiParams
+func (_e *ClustersAPI_Expecter) EstimateTenantUpgradeCostWithParams(ctx any, args any) *ClustersAPI_EstimateTenantUpgradeCostWithParams_Call {
+	return &ClustersAPI_EstimateTenantUpgradeCostWithParams_Call{Call: _e.mock.On("EstimateTenantUpgradeCostWithParams", ctx, args)}
+}
+
+func (_c *ClustersAPI_EstimateTenantUpgradeCostWithParams_Call) Run(run func(ctx context.Context, args *admin.EstimateTenantUpgradeCostApiParams)) *ClustersAPI_EstimateTenantUpgradeCostWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.EstimateTenantUpgradeCostApiParams))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateTenantUpgradeCostWithParams_Call) Return(_a0 admin.EstimateTenantUpgradeCostApiRequest) *ClustersAPI_EstimateTenantUpgradeCostWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateTenantUpgradeCostWithParams_Call) RunAndReturn(run func(context.Context, *admin.EstimateTenantUpgradeCostApiParams) admin.EstimateTenantUpgradeCostApiRequest) *ClustersAPI_EstimateTenantUpgradeCostWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EstimateUpdateClusterCost provides a mock function with given fields: ctx, groupId, clusterName, clusterDescription20240805
+func (_m *ClustersAPI) EstimateUpdateClusterCost(ctx context.Context, groupId string, clusterName string, clusterDescription20240805 *admin.ClusterDescription20240805) admin.EstimateUpdateClusterCostApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName, clusterDescription20240805)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateUpdateClusterCost")
+	}
+
+	var r0 admin.EstimateUpdateClusterCostApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ClusterDescription20240805) admin.EstimateUpdateClusterCostApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName, clusterDescription20240805)
+	} else {
+		r0 = ret.Get(0).(admin.EstimateUpdateClusterCostApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_EstimateUpdateClusterCost_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateUpdateClusterCost'
+type ClustersAPI_EstimateUpdateClusterCost_Call struct {
+	*mock.Call
+}
+
+// EstimateUpdateClusterCost is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+//   - clusterDescription20240805 *admin.ClusterDescription20240805
+func (_e *ClustersAPI_Expecter) EstimateUpdateClusterCost(ctx any, groupId any, clusterName any, clusterDescription20240805 any) *ClustersAPI_EstimateUpdateClusterCost_Call {
+	return &ClustersAPI_EstimateUpdateClusterCost_Call{Call: _e.mock.On("EstimateUpdateClusterCost", ctx, groupId, clusterName, clusterDescription20240805)}
+}
+
+func (_c *ClustersAPI_EstimateUpdateClusterCost_Call) Run(run func(ctx context.Context, groupId string, clusterName string, clusterDescription20240805 *admin.ClusterDescription20240805)) *ClustersAPI_EstimateUpdateClusterCost_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ClusterDescription20240805))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateUpdateClusterCost_Call) Return(_a0 admin.EstimateUpdateClusterCostApiRequest) *ClustersAPI_EstimateUpdateClusterCost_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateUpdateClusterCost_Call) RunAndReturn(run func(context.Context, string, string, *admin.ClusterDescription20240805) admin.EstimateUpdateClusterCostApiRequest) *ClustersAPI_EstimateUpdateClusterCost_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EstimateUpdateClusterCostExecute provides a mock function with given fields: r
+func (_m *ClustersAPI) EstimateUpdateClusterCostExecute(r admin.EstimateUpdateClusterCostApiRequest) (*admin.ClusterCostEstimate, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateUpdateClusterCostExecute")
+	}
+
+	var r0 *admin.ClusterCostEstimate
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.EstimateUpdateClusterCostApiRequest) (*admin.ClusterCostEstimate, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.EstimateUpdateClusterCostApiRequest) *admin.ClusterCostEstimate); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ClusterCostEstimate)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.EstimateUpdateClusterCostApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.EstimateUpdateClusterCostApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ClustersAPI_EstimateUpdateClusterCostExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateUpdateClusterCostExecute'
+type ClustersAPI_EstimateUpdateClusterCostExecute_Call struct {
+	*mock.Call
+}
+
+// EstimateUpdateClusterCostExecute is a helper method to define mock.On call
+//   - r admin.EstimateUpdateClusterCostApiRequest
+func (_e *ClustersAPI_Expecter) EstimateUpdateClusterCostExecute(r any) *ClustersAPI_EstimateUpdateClusterCostExecute_Call {
+	return &ClustersAPI_EstimateUpdateClusterCostExecute_Call{Call: _e.mock.On("EstimateUpdateClusterCostExecute", r)}
+}
+
+func (_c *ClustersAPI_EstimateUpdateClusterCostExecute_Call) Run(run func(r admin.EstimateUpdateClusterCostApiRequest)) *ClustersAPI_EstimateUpdateClusterCostExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.EstimateUpdateClusterCostApiRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateUpdateClusterCostExecute_Call) Return(_a0 *admin.ClusterCostEstimate, _a1 *http.Response, _a2 error) *ClustersAPI_EstimateUpdateClusterCostExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateUpdateClusterCostExecute_Call) RunAndReturn(run func(admin.EstimateUpdateClusterCostApiRequest) (*admin.ClusterCostEstimate, *http.Response, error)) *ClustersAPI_EstimateUpdateClusterCostExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// EstimateUpdateClusterCostWithParams provides a mock function with given fields: ctx, args
+func (_m *ClustersAPI) EstimateUpdateClusterCostWithParams(ctx context.Context, args *admin.EstimateUpdateClusterCostApiParams) admin.EstimateUpdateClusterCostApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for EstimateUpdateClusterCostWithParams")
+	}
+
+	var r0 admin.EstimateUpdateClusterCostApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.EstimateUpdateClusterCostApiParams) admin.EstimateUpdateClusterCostApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.EstimateUpdateClusterCostApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_EstimateUpdateClusterCostWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'EstimateUpdateClusterCostWithParams'
+type ClustersAPI_EstimateUpdateClusterCostWithParams_Call struct {
+	*mock.Call
+}
+
+// EstimateUpdateClusterCostWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.EstimateUpdateClusterCostApiParams
+func (_e *ClustersAPI_Expecter) EstimateUpdateClusterCostWithParams(ctx any, args any) *ClustersAPI_EstimateUpdateClusterCostWithParams_Call {
+	return &ClustersAPI_EstimateUpdateClusterCostWithParams_Call{Call: _e.mock.On("EstimateUpdateClusterCostWithParams", ctx, args)}
+}
+
+func (_c *ClustersAPI_EstimateUpdateClusterCostWithParams_Call) Run(run func(ctx context.Context, args *admin.EstimateUpdateClusterCostApiParams)) *ClustersAPI_EstimateUpdateClusterCostWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.EstimateUpdateClusterCostApiParams))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateUpdateClusterCostWithParams_Call) Return(_a0 admin.EstimateUpdateClusterCostApiRequest) *ClustersAPI_EstimateUpdateClusterCostWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_EstimateUpdateClusterCostWithParams_Call) RunAndReturn(run func(context.Context, *admin.EstimateUpdateClusterCostApiParams) admin.EstimateUpdateClusterCostApiRequest) *ClustersAPI_EstimateUpdateClusterCostWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetCluster provides a mock function with given fields: ctx, groupId, clusterName
 func (_m *ClustersAPI) GetCluster(ctx context.Context, groupId string, clusterName string) admin.GetClusterApiRequest {
 	ret := _m.Called(ctx, groupId, clusterName)
@@ -550,25 +1198,187 @@ func (_c *ClustersAPI_GetCluster_Call) RunAndReturn(run func(context.Context, st
 	return _c
 }
 
+// GetClusterAdaptiveSettings provides a mock function with given fields: ctx, groupId, clusterName
+func (_m *ClustersAPI) GetClusterAdaptiveSettings(ctx context.Context, groupId string, clusterName string) admin.GetClusterAdaptiveSettingsApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetClusterAdaptiveSettings")
+	}
+
+	var r0 admin.GetClusterAdaptiveSettingsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetClusterAdaptiveSettingsApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName)
+	} else {
+		r0 = ret.Get(0).(admin.GetClusterAdaptiveSettingsApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_GetClusterAdaptiveSettings_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterAdaptiveSettings'
+type ClustersAPI_GetClusterAdaptiveSettings_Call struct {
+	*mock.Call
+}
+
+// GetClusterAdaptiveSettings is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+func (_e *ClustersAPI_Expecter) GetClusterAdaptiveSettings(ctx any, groupId any, clusterName any) *ClustersAPI_GetClusterAdaptiveSettings_Call {
+	return &ClustersAPI_GetClusterAdaptiveSettings_Call{Call: _e.mock.On("GetClusterAdaptiveSettings", ctx, groupId, clusterName)}
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettings_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *ClustersAPI_GetClusterAdaptiveSettings_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettings_Call) Return(_a0 admin.GetClusterAdaptiveSettingsApiRequest) *ClustersAPI_GetClusterAdaptiveSettings_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettings_Call) RunAndReturn(run func(context.Context, string, string) admin.GetClusterAdaptiveSettingsApiRequest) *ClustersAPI_GetClusterAdaptiveSettings_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetClusterAdaptiveSettingsExecute provides a mock function with given fields: r
+func (_m *ClustersAPI) GetClusterAdaptiveSettingsExecute(r admin.GetClusterAdaptiveSettingsApiRequest) (*admin.AdaptiveSettingsResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetClusterAdaptiveSettingsExecute")
+	}
+
+	var r0 *admin.AdaptiveSettingsResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetClusterAdaptiveSettingsApiRequest) (*admin.AdaptiveSettingsResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetClusterAdaptiveSettingsApiRequest) *admin.AdaptiveSettingsResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.AdaptiveSettingsResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetClusterAdaptiveSettingsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetClusterAdaptiveSettingsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ClustersAPI_GetClusterAdaptiveSettingsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterAdaptiveSettingsExecute'
+type ClustersAPI_GetClusterAdaptiveSettingsExecute_Call struct {
+	*mock.Call
+}
+
+// GetClusterAdaptiveSettingsExecute is a helper method to define mock.On call
+//   - r admin.GetClusterAdaptiveSettingsApiRequest
+func (_e *ClustersAPI_Expecter) GetClusterAdaptiveSettingsExecute(r any) *ClustersAPI_GetClusterAdaptiveSettingsExecute_Call {
+	return &ClustersAPI_GetClusterAdaptiveSettingsExecute_Call{Call: _e.mock.On("GetClusterAdaptiveSettingsExecute", r)}
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettingsExecute_Call) Run(run func(r admin.GetClusterAdaptiveSettingsApiRequest)) *ClustersAPI_GetClusterAdaptiveSettingsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetClusterAdaptiveSettingsApiRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettingsExecute_Call) Return(_a0 *admin.AdaptiveSettingsResponse, _a1 *http.Response, _a2 error) *ClustersAPI_GetClusterAdaptiveSettingsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettingsExecute_Call) RunAndReturn(run func(admin.GetClusterAdaptiveSettingsApiRequest) (*admin.AdaptiveSettingsResponse, *http.Response, error)) *ClustersAPI_GetClusterAdaptiveSettingsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetClusterAdaptiveSettingsWithParams provides a mock function with given fields: ctx, args
+func (_m *ClustersAPI) GetClusterAdaptiveSettingsWithParams(ctx context.Context, args *admin.GetClusterAdaptiveSettingsApiParams) admin.GetClusterAdaptiveSettingsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetClusterAdaptiveSettingsWithParams")
+	}
+
+	var r0 admin.GetClusterAdaptiveSettingsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetClusterAdaptiveSettingsApiParams) admin.GetClusterAdaptiveSettingsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetClusterAdaptiveSettingsApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterAdaptiveSettingsWithParams'
+type ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call struct {
+	*mock.Call
+}
+
+// GetClusterAdaptiveSettingsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetClusterAdaptiveSettingsApiParams
+func (_e *ClustersAPI_Expecter) GetClusterAdaptiveSettingsWithParams(ctx any, args any) *ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call {
+	return &ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call{Call: _e.mock.On("GetClusterAdaptiveSettingsWithParams", ctx, args)}
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetClusterAdaptiveSettingsApiParams)) *ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetClusterAdaptiveSettingsApiParams))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call) Return(_a0 admin.GetClusterAdaptiveSettingsApiRequest) *ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetClusterAdaptiveSettingsApiParams) admin.GetClusterAdaptiveSettingsApiRequest) *ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // GetClusterExecute provides a mock function with given fields: r
-func (_m *ClustersAPI) GetClusterExecute(r admin.GetClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error) {
+func (_m *ClustersAPI) GetClusterExecute(r admin.GetClusterApiRequest) (*admin.ApiAtlasClusterDescriptionPreview, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for GetClusterExecute")
 	}
 
-	var r0 *admin.ClusterDescription20240805
+	var r0 *admin.ApiAtlasClusterDescriptionPreview
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetClusterApiRequest) (*admin.ApiAtlasClusterDescriptionPreview, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetClusterApiRequest) *admin.ClusterDescription20240805); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetClusterApiRequest) *admin.ApiAtlasClusterDescriptionPreview); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.ClusterDescription20240805)
+			r0 = ret.Get(0).(*admin.ApiAtlasClusterDescriptionPreview)
 		}
 	}
 
@@ -607,12 +1417,174 @@ func (_c *ClustersAPI_GetClusterExecute_Call) Run(run func(r admin.GetClusterApi
 	return _c
 }
 
-func (_c *ClustersAPI_GetClusterExecute_Call) Return(_a0 *admin.ClusterDescription20240805, _a1 *http.Response, _a2 error) *ClustersAPI_GetClusterExecute_Call {
+func (_c *ClustersAPI_GetClusterExecute_Call) Return(_a0 *admin.ApiAtlasClusterDescriptionPreview, _a1 *http.Response, _a2 error) *ClustersAPI_GetClusterExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ClustersAPI_GetClusterExecute_Call) RunAndReturn(run func(admin.GetClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error)) *ClustersAPI_GetClusterExecute_Call {
+func (_c *ClustersAPI_GetClusterExecute_Call) RunAndReturn(run func(admin.GetClusterApiRequest) (*admin.ApiAtlasClusterDescriptionPreview, *http.Response, error)) *ClustersAPI_GetClusterExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetClusterSqlInterface provides a mock function with given fields: ctx, groupId, clusterName
+func (_m *ClustersAPI) GetClusterSqlInterface(ctx context.Context, groupId string, clusterName string) admin.GetClusterSqlInterfaceApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetClusterSqlInterface")
+	}
+
+	var r0 admin.GetClusterSqlInterfaceApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetClusterSqlInterfaceApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName)
+	} else {
+		r0 = ret.Get(0).(admin.GetClusterSqlInterfaceApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_GetClusterSqlInterface_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterSqlInterface'
+type ClustersAPI_GetClusterSqlInterface_Call struct {
+	*mock.Call
+}
+
+// GetClusterSqlInterface is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+func (_e *ClustersAPI_Expecter) GetClusterSqlInterface(ctx any, groupId any, clusterName any) *ClustersAPI_GetClusterSqlInterface_Call {
+	return &ClustersAPI_GetClusterSqlInterface_Call{Call: _e.mock.On("GetClusterSqlInterface", ctx, groupId, clusterName)}
+}
+
+func (_c *ClustersAPI_GetClusterSqlInterface_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *ClustersAPI_GetClusterSqlInterface_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterSqlInterface_Call) Return(_a0 admin.GetClusterSqlInterfaceApiRequest) *ClustersAPI_GetClusterSqlInterface_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterSqlInterface_Call) RunAndReturn(run func(context.Context, string, string) admin.GetClusterSqlInterfaceApiRequest) *ClustersAPI_GetClusterSqlInterface_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetClusterSqlInterfaceExecute provides a mock function with given fields: r
+func (_m *ClustersAPI) GetClusterSqlInterfaceExecute(r admin.GetClusterSqlInterfaceApiRequest) (*admin.SqlInterfaceStatusResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetClusterSqlInterfaceExecute")
+	}
+
+	var r0 *admin.SqlInterfaceStatusResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetClusterSqlInterfaceApiRequest) (*admin.SqlInterfaceStatusResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetClusterSqlInterfaceApiRequest) *admin.SqlInterfaceStatusResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.SqlInterfaceStatusResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetClusterSqlInterfaceApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetClusterSqlInterfaceApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ClustersAPI_GetClusterSqlInterfaceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterSqlInterfaceExecute'
+type ClustersAPI_GetClusterSqlInterfaceExecute_Call struct {
+	*mock.Call
+}
+
+// GetClusterSqlInterfaceExecute is a helper method to define mock.On call
+//   - r admin.GetClusterSqlInterfaceApiRequest
+func (_e *ClustersAPI_Expecter) GetClusterSqlInterfaceExecute(r any) *ClustersAPI_GetClusterSqlInterfaceExecute_Call {
+	return &ClustersAPI_GetClusterSqlInterfaceExecute_Call{Call: _e.mock.On("GetClusterSqlInterfaceExecute", r)}
+}
+
+func (_c *ClustersAPI_GetClusterSqlInterfaceExecute_Call) Run(run func(r admin.GetClusterSqlInterfaceApiRequest)) *ClustersAPI_GetClusterSqlInterfaceExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetClusterSqlInterfaceApiRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterSqlInterfaceExecute_Call) Return(_a0 *admin.SqlInterfaceStatusResponse, _a1 *http.Response, _a2 error) *ClustersAPI_GetClusterSqlInterfaceExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterSqlInterfaceExecute_Call) RunAndReturn(run func(admin.GetClusterSqlInterfaceApiRequest) (*admin.SqlInterfaceStatusResponse, *http.Response, error)) *ClustersAPI_GetClusterSqlInterfaceExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetClusterSqlInterfaceWithParams provides a mock function with given fields: ctx, args
+func (_m *ClustersAPI) GetClusterSqlInterfaceWithParams(ctx context.Context, args *admin.GetClusterSqlInterfaceApiParams) admin.GetClusterSqlInterfaceApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetClusterSqlInterfaceWithParams")
+	}
+
+	var r0 admin.GetClusterSqlInterfaceApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetClusterSqlInterfaceApiParams) admin.GetClusterSqlInterfaceApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetClusterSqlInterfaceApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_GetClusterSqlInterfaceWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterSqlInterfaceWithParams'
+type ClustersAPI_GetClusterSqlInterfaceWithParams_Call struct {
+	*mock.Call
+}
+
+// GetClusterSqlInterfaceWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetClusterSqlInterfaceApiParams
+func (_e *ClustersAPI_Expecter) GetClusterSqlInterfaceWithParams(ctx any, args any) *ClustersAPI_GetClusterSqlInterfaceWithParams_Call {
+	return &ClustersAPI_GetClusterSqlInterfaceWithParams_Call{Call: _e.mock.On("GetClusterSqlInterfaceWithParams", ctx, args)}
+}
+
+func (_c *ClustersAPI_GetClusterSqlInterfaceWithParams_Call) Run(run func(ctx context.Context, args *admin.GetClusterSqlInterfaceApiParams)) *ClustersAPI_GetClusterSqlInterfaceWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetClusterSqlInterfaceApiParams))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterSqlInterfaceWithParams_Call) Return(_a0 admin.GetClusterSqlInterfaceApiRequest) *ClustersAPI_GetClusterSqlInterfaceWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterSqlInterfaceWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetClusterSqlInterfaceApiParams) admin.GetClusterSqlInterfaceApiRequest) *ClustersAPI_GetClusterSqlInterfaceWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2561,17 +3533,17 @@ func (_c *ClustersAPI_UnpinFeatureCompatibilityVersionWithParams_Call) RunAndRet
 	return _c
 }
 
-// UpdateCluster provides a mock function with given fields: ctx, groupId, clusterName, clusterDescription20240805
-func (_m *ClustersAPI) UpdateCluster(ctx context.Context, groupId string, clusterName string, clusterDescription20240805 *admin.ClusterDescription20240805) admin.UpdateClusterApiRequest {
-	ret := _m.Called(ctx, groupId, clusterName, clusterDescription20240805)
+// UpdateCluster provides a mock function with given fields: ctx, groupId, clusterName, apiAtlasClusterDescriptionPreview
+func (_m *ClustersAPI) UpdateCluster(ctx context.Context, groupId string, clusterName string, apiAtlasClusterDescriptionPreview *admin.ApiAtlasClusterDescriptionPreview) admin.UpdateClusterApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName, apiAtlasClusterDescriptionPreview)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpdateCluster")
 	}
 
 	var r0 admin.UpdateClusterApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ClusterDescription20240805) admin.UpdateClusterApiRequest); ok {
-		r0 = rf(ctx, groupId, clusterName, clusterDescription20240805)
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ApiAtlasClusterDescriptionPreview) admin.UpdateClusterApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName, apiAtlasClusterDescriptionPreview)
 	} else {
 		r0 = ret.Get(0).(admin.UpdateClusterApiRequest)
 	}
@@ -2588,14 +3560,14 @@ type ClustersAPI_UpdateCluster_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - clusterName string
-//   - clusterDescription20240805 *admin.ClusterDescription20240805
-func (_e *ClustersAPI_Expecter) UpdateCluster(ctx any, groupId any, clusterName any, clusterDescription20240805 any) *ClustersAPI_UpdateCluster_Call {
-	return &ClustersAPI_UpdateCluster_Call{Call: _e.mock.On("UpdateCluster", ctx, groupId, clusterName, clusterDescription20240805)}
+//   - apiAtlasClusterDescriptionPreview *admin.ApiAtlasClusterDescriptionPreview
+func (_e *ClustersAPI_Expecter) UpdateCluster(ctx any, groupId any, clusterName any, apiAtlasClusterDescriptionPreview any) *ClustersAPI_UpdateCluster_Call {
+	return &ClustersAPI_UpdateCluster_Call{Call: _e.mock.On("UpdateCluster", ctx, groupId, clusterName, apiAtlasClusterDescriptionPreview)}
 }
 
-func (_c *ClustersAPI_UpdateCluster_Call) Run(run func(ctx context.Context, groupId string, clusterName string, clusterDescription20240805 *admin.ClusterDescription20240805)) *ClustersAPI_UpdateCluster_Call {
+func (_c *ClustersAPI_UpdateCluster_Call) Run(run func(ctx context.Context, groupId string, clusterName string, apiAtlasClusterDescriptionPreview *admin.ApiAtlasClusterDescriptionPreview)) *ClustersAPI_UpdateCluster_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ClusterDescription20240805))
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ApiAtlasClusterDescriptionPreview))
 	})
 	return _c
 }
@@ -2605,30 +3577,193 @@ func (_c *ClustersAPI_UpdateCluster_Call) Return(_a0 admin.UpdateClusterApiReque
 	return _c
 }
 
-func (_c *ClustersAPI_UpdateCluster_Call) RunAndReturn(run func(context.Context, string, string, *admin.ClusterDescription20240805) admin.UpdateClusterApiRequest) *ClustersAPI_UpdateCluster_Call {
+func (_c *ClustersAPI_UpdateCluster_Call) RunAndReturn(run func(context.Context, string, string, *admin.ApiAtlasClusterDescriptionPreview) admin.UpdateClusterApiRequest) *ClustersAPI_UpdateCluster_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateClusterAdaptiveSettings provides a mock function with given fields: ctx, groupId, clusterName, adaptiveSettingsUpdateRequest
+func (_m *ClustersAPI) UpdateClusterAdaptiveSettings(ctx context.Context, groupId string, clusterName string, adaptiveSettingsUpdateRequest *admin.AdaptiveSettingsUpdateRequest) admin.UpdateClusterAdaptiveSettingsApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName, adaptiveSettingsUpdateRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateClusterAdaptiveSettings")
+	}
+
+	var r0 admin.UpdateClusterAdaptiveSettingsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.AdaptiveSettingsUpdateRequest) admin.UpdateClusterAdaptiveSettingsApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName, adaptiveSettingsUpdateRequest)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateClusterAdaptiveSettingsApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_UpdateClusterAdaptiveSettings_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateClusterAdaptiveSettings'
+type ClustersAPI_UpdateClusterAdaptiveSettings_Call struct {
+	*mock.Call
+}
+
+// UpdateClusterAdaptiveSettings is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+//   - adaptiveSettingsUpdateRequest *admin.AdaptiveSettingsUpdateRequest
+func (_e *ClustersAPI_Expecter) UpdateClusterAdaptiveSettings(ctx any, groupId any, clusterName any, adaptiveSettingsUpdateRequest any) *ClustersAPI_UpdateClusterAdaptiveSettings_Call {
+	return &ClustersAPI_UpdateClusterAdaptiveSettings_Call{Call: _e.mock.On("UpdateClusterAdaptiveSettings", ctx, groupId, clusterName, adaptiveSettingsUpdateRequest)}
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettings_Call) Run(run func(ctx context.Context, groupId string, clusterName string, adaptiveSettingsUpdateRequest *admin.AdaptiveSettingsUpdateRequest)) *ClustersAPI_UpdateClusterAdaptiveSettings_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.AdaptiveSettingsUpdateRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettings_Call) Return(_a0 admin.UpdateClusterAdaptiveSettingsApiRequest) *ClustersAPI_UpdateClusterAdaptiveSettings_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettings_Call) RunAndReturn(run func(context.Context, string, string, *admin.AdaptiveSettingsUpdateRequest) admin.UpdateClusterAdaptiveSettingsApiRequest) *ClustersAPI_UpdateClusterAdaptiveSettings_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateClusterAdaptiveSettingsExecute provides a mock function with given fields: r
+func (_m *ClustersAPI) UpdateClusterAdaptiveSettingsExecute(r admin.UpdateClusterAdaptiveSettingsApiRequest) (*admin.AdaptiveSettingsResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateClusterAdaptiveSettingsExecute")
+	}
+
+	var r0 *admin.AdaptiveSettingsResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdateClusterAdaptiveSettingsApiRequest) (*admin.AdaptiveSettingsResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdateClusterAdaptiveSettingsApiRequest) *admin.AdaptiveSettingsResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.AdaptiveSettingsResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdateClusterAdaptiveSettingsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdateClusterAdaptiveSettingsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateClusterAdaptiveSettingsExecute'
+type ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call struct {
+	*mock.Call
+}
+
+// UpdateClusterAdaptiveSettingsExecute is a helper method to define mock.On call
+//   - r admin.UpdateClusterAdaptiveSettingsApiRequest
+func (_e *ClustersAPI_Expecter) UpdateClusterAdaptiveSettingsExecute(r any) *ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call {
+	return &ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call{Call: _e.mock.On("UpdateClusterAdaptiveSettingsExecute", r)}
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call) Run(run func(r admin.UpdateClusterAdaptiveSettingsApiRequest)) *ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdateClusterAdaptiveSettingsApiRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call) Return(_a0 *admin.AdaptiveSettingsResponse, _a1 *http.Response, _a2 error) *ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call) RunAndReturn(run func(admin.UpdateClusterAdaptiveSettingsApiRequest) (*admin.AdaptiveSettingsResponse, *http.Response, error)) *ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateClusterAdaptiveSettingsWithParams provides a mock function with given fields: ctx, args
+func (_m *ClustersAPI) UpdateClusterAdaptiveSettingsWithParams(ctx context.Context, args *admin.UpdateClusterAdaptiveSettingsApiParams) admin.UpdateClusterAdaptiveSettingsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateClusterAdaptiveSettingsWithParams")
+	}
+
+	var r0 admin.UpdateClusterAdaptiveSettingsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateClusterAdaptiveSettingsApiParams) admin.UpdateClusterAdaptiveSettingsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateClusterAdaptiveSettingsApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateClusterAdaptiveSettingsWithParams'
+type ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdateClusterAdaptiveSettingsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdateClusterAdaptiveSettingsApiParams
+func (_e *ClustersAPI_Expecter) UpdateClusterAdaptiveSettingsWithParams(ctx any, args any) *ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call {
+	return &ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call{Call: _e.mock.On("UpdateClusterAdaptiveSettingsWithParams", ctx, args)}
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateClusterAdaptiveSettingsApiParams)) *ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdateClusterAdaptiveSettingsApiParams))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call) Return(_a0 admin.UpdateClusterAdaptiveSettingsApiRequest) *ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateClusterAdaptiveSettingsApiParams) admin.UpdateClusterAdaptiveSettingsApiRequest) *ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // UpdateClusterExecute provides a mock function with given fields: r
-func (_m *ClustersAPI) UpdateClusterExecute(r admin.UpdateClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error) {
+func (_m *ClustersAPI) UpdateClusterExecute(r admin.UpdateClusterApiRequest) (*admin.ApiAtlasClusterDescriptionPreview, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpdateClusterExecute")
 	}
 
-	var r0 *admin.ClusterDescription20240805
+	var r0 *admin.ApiAtlasClusterDescriptionPreview
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateClusterApiRequest) (*admin.ApiAtlasClusterDescriptionPreview, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateClusterApiRequest) *admin.ClusterDescription20240805); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateClusterApiRequest) *admin.ApiAtlasClusterDescriptionPreview); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.ClusterDescription20240805)
+			r0 = ret.Get(0).(*admin.ApiAtlasClusterDescriptionPreview)
 		}
 	}
 
@@ -2667,12 +3802,175 @@ func (_c *ClustersAPI_UpdateClusterExecute_Call) Run(run func(r admin.UpdateClus
 	return _c
 }
 
-func (_c *ClustersAPI_UpdateClusterExecute_Call) Return(_a0 *admin.ClusterDescription20240805, _a1 *http.Response, _a2 error) *ClustersAPI_UpdateClusterExecute_Call {
+func (_c *ClustersAPI_UpdateClusterExecute_Call) Return(_a0 *admin.ApiAtlasClusterDescriptionPreview, _a1 *http.Response, _a2 error) *ClustersAPI_UpdateClusterExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ClustersAPI_UpdateClusterExecute_Call) RunAndReturn(run func(admin.UpdateClusterApiRequest) (*admin.ClusterDescription20240805, *http.Response, error)) *ClustersAPI_UpdateClusterExecute_Call {
+func (_c *ClustersAPI_UpdateClusterExecute_Call) RunAndReturn(run func(admin.UpdateClusterApiRequest) (*admin.ApiAtlasClusterDescriptionPreview, *http.Response, error)) *ClustersAPI_UpdateClusterExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateClusterSqlInterface provides a mock function with given fields: ctx, groupId, clusterName, sqlInterfaceStatusUpdateRequest
+func (_m *ClustersAPI) UpdateClusterSqlInterface(ctx context.Context, groupId string, clusterName string, sqlInterfaceStatusUpdateRequest *admin.SqlInterfaceStatusUpdateRequest) admin.UpdateClusterSqlInterfaceApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName, sqlInterfaceStatusUpdateRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateClusterSqlInterface")
+	}
+
+	var r0 admin.UpdateClusterSqlInterfaceApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.SqlInterfaceStatusUpdateRequest) admin.UpdateClusterSqlInterfaceApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName, sqlInterfaceStatusUpdateRequest)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateClusterSqlInterfaceApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_UpdateClusterSqlInterface_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateClusterSqlInterface'
+type ClustersAPI_UpdateClusterSqlInterface_Call struct {
+	*mock.Call
+}
+
+// UpdateClusterSqlInterface is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+//   - sqlInterfaceStatusUpdateRequest *admin.SqlInterfaceStatusUpdateRequest
+func (_e *ClustersAPI_Expecter) UpdateClusterSqlInterface(ctx any, groupId any, clusterName any, sqlInterfaceStatusUpdateRequest any) *ClustersAPI_UpdateClusterSqlInterface_Call {
+	return &ClustersAPI_UpdateClusterSqlInterface_Call{Call: _e.mock.On("UpdateClusterSqlInterface", ctx, groupId, clusterName, sqlInterfaceStatusUpdateRequest)}
+}
+
+func (_c *ClustersAPI_UpdateClusterSqlInterface_Call) Run(run func(ctx context.Context, groupId string, clusterName string, sqlInterfaceStatusUpdateRequest *admin.SqlInterfaceStatusUpdateRequest)) *ClustersAPI_UpdateClusterSqlInterface_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.SqlInterfaceStatusUpdateRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterSqlInterface_Call) Return(_a0 admin.UpdateClusterSqlInterfaceApiRequest) *ClustersAPI_UpdateClusterSqlInterface_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterSqlInterface_Call) RunAndReturn(run func(context.Context, string, string, *admin.SqlInterfaceStatusUpdateRequest) admin.UpdateClusterSqlInterfaceApiRequest) *ClustersAPI_UpdateClusterSqlInterface_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateClusterSqlInterfaceExecute provides a mock function with given fields: r
+func (_m *ClustersAPI) UpdateClusterSqlInterfaceExecute(r admin.UpdateClusterSqlInterfaceApiRequest) (*admin.SqlInterfaceStatusResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateClusterSqlInterfaceExecute")
+	}
+
+	var r0 *admin.SqlInterfaceStatusResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdateClusterSqlInterfaceApiRequest) (*admin.SqlInterfaceStatusResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdateClusterSqlInterfaceApiRequest) *admin.SqlInterfaceStatusResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.SqlInterfaceStatusResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdateClusterSqlInterfaceApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdateClusterSqlInterfaceApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ClustersAPI_UpdateClusterSqlInterfaceExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateClusterSqlInterfaceExecute'
+type ClustersAPI_UpdateClusterSqlInterfaceExecute_Call struct {
+	*mock.Call
+}
+
+// UpdateClusterSqlInterfaceExecute is a helper method to define mock.On call
+//   - r admin.UpdateClusterSqlInterfaceApiRequest
+func (_e *ClustersAPI_Expecter) UpdateClusterSqlInterfaceExecute(r any) *ClustersAPI_UpdateClusterSqlInterfaceExecute_Call {
+	return &ClustersAPI_UpdateClusterSqlInterfaceExecute_Call{Call: _e.mock.On("UpdateClusterSqlInterfaceExecute", r)}
+}
+
+func (_c *ClustersAPI_UpdateClusterSqlInterfaceExecute_Call) Run(run func(r admin.UpdateClusterSqlInterfaceApiRequest)) *ClustersAPI_UpdateClusterSqlInterfaceExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdateClusterSqlInterfaceApiRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterSqlInterfaceExecute_Call) Return(_a0 *admin.SqlInterfaceStatusResponse, _a1 *http.Response, _a2 error) *ClustersAPI_UpdateClusterSqlInterfaceExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterSqlInterfaceExecute_Call) RunAndReturn(run func(admin.UpdateClusterSqlInterfaceApiRequest) (*admin.SqlInterfaceStatusResponse, *http.Response, error)) *ClustersAPI_UpdateClusterSqlInterfaceExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateClusterSqlInterfaceWithParams provides a mock function with given fields: ctx, args
+func (_m *ClustersAPI) UpdateClusterSqlInterfaceWithParams(ctx context.Context, args *admin.UpdateClusterSqlInterfaceApiParams) admin.UpdateClusterSqlInterfaceApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateClusterSqlInterfaceWithParams")
+	}
+
+	var r0 admin.UpdateClusterSqlInterfaceApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateClusterSqlInterfaceApiParams) admin.UpdateClusterSqlInterfaceApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateClusterSqlInterfaceApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_UpdateClusterSqlInterfaceWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateClusterSqlInterfaceWithParams'
+type ClustersAPI_UpdateClusterSqlInterfaceWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdateClusterSqlInterfaceWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdateClusterSqlInterfaceApiParams
+func (_e *ClustersAPI_Expecter) UpdateClusterSqlInterfaceWithParams(ctx any, args any) *ClustersAPI_UpdateClusterSqlInterfaceWithParams_Call {
+	return &ClustersAPI_UpdateClusterSqlInterfaceWithParams_Call{Call: _e.mock.On("UpdateClusterSqlInterfaceWithParams", ctx, args)}
+}
+
+func (_c *ClustersAPI_UpdateClusterSqlInterfaceWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateClusterSqlInterfaceApiParams)) *ClustersAPI_UpdateClusterSqlInterfaceWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdateClusterSqlInterfaceApiParams))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterSqlInterfaceWithParams_Call) Return(_a0 admin.UpdateClusterSqlInterfaceApiRequest) *ClustersAPI_UpdateClusterSqlInterfaceWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterSqlInterfaceWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateClusterSqlInterfaceApiParams) admin.UpdateClusterSqlInterfaceApiRequest) *ClustersAPI_UpdateClusterSqlInterfaceWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -3207,6 +4505,168 @@ func (_c *ClustersAPI_UpgradeTenantUpgradeWithParams_Call) Return(_a0 admin.Upgr
 }
 
 func (_c *ClustersAPI_UpgradeTenantUpgradeWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpgradeTenantUpgradeApiParams) admin.UpgradeTenantUpgradeApiRequest) *ClustersAPI_UpgradeTenantUpgradeWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ValidateGroupClusterConfigurations provides a mock function with given fields: ctx, groupId, clusterConfigurationValidation
+func (_m *ClustersAPI) ValidateGroupClusterConfigurations(ctx context.Context, groupId string, clusterConfigurationValidation *admin.ClusterConfigurationValidation) admin.ValidateGroupClusterConfigurationsApiRequest {
+	ret := _m.Called(ctx, groupId, clusterConfigurationValidation)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ValidateGroupClusterConfigurations")
+	}
+
+	var r0 admin.ValidateGroupClusterConfigurationsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.ClusterConfigurationValidation) admin.ValidateGroupClusterConfigurationsApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterConfigurationValidation)
+	} else {
+		r0 = ret.Get(0).(admin.ValidateGroupClusterConfigurationsApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_ValidateGroupClusterConfigurations_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ValidateGroupClusterConfigurations'
+type ClustersAPI_ValidateGroupClusterConfigurations_Call struct {
+	*mock.Call
+}
+
+// ValidateGroupClusterConfigurations is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterConfigurationValidation *admin.ClusterConfigurationValidation
+func (_e *ClustersAPI_Expecter) ValidateGroupClusterConfigurations(ctx any, groupId any, clusterConfigurationValidation any) *ClustersAPI_ValidateGroupClusterConfigurations_Call {
+	return &ClustersAPI_ValidateGroupClusterConfigurations_Call{Call: _e.mock.On("ValidateGroupClusterConfigurations", ctx, groupId, clusterConfigurationValidation)}
+}
+
+func (_c *ClustersAPI_ValidateGroupClusterConfigurations_Call) Run(run func(ctx context.Context, groupId string, clusterConfigurationValidation *admin.ClusterConfigurationValidation)) *ClustersAPI_ValidateGroupClusterConfigurations_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.ClusterConfigurationValidation))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_ValidateGroupClusterConfigurations_Call) Return(_a0 admin.ValidateGroupClusterConfigurationsApiRequest) *ClustersAPI_ValidateGroupClusterConfigurations_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_ValidateGroupClusterConfigurations_Call) RunAndReturn(run func(context.Context, string, *admin.ClusterConfigurationValidation) admin.ValidateGroupClusterConfigurationsApiRequest) *ClustersAPI_ValidateGroupClusterConfigurations_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ValidateGroupClusterConfigurationsExecute provides a mock function with given fields: r
+func (_m *ClustersAPI) ValidateGroupClusterConfigurationsExecute(r admin.ValidateGroupClusterConfigurationsApiRequest) (*admin.ClusterConfigurationValidationResult, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ValidateGroupClusterConfigurationsExecute")
+	}
+
+	var r0 *admin.ClusterConfigurationValidationResult
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ValidateGroupClusterConfigurationsApiRequest) (*admin.ClusterConfigurationValidationResult, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ValidateGroupClusterConfigurationsApiRequest) *admin.ClusterConfigurationValidationResult); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ClusterConfigurationValidationResult)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ValidateGroupClusterConfigurationsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ValidateGroupClusterConfigurationsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ClustersAPI_ValidateGroupClusterConfigurationsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ValidateGroupClusterConfigurationsExecute'
+type ClustersAPI_ValidateGroupClusterConfigurationsExecute_Call struct {
+	*mock.Call
+}
+
+// ValidateGroupClusterConfigurationsExecute is a helper method to define mock.On call
+//   - r admin.ValidateGroupClusterConfigurationsApiRequest
+func (_e *ClustersAPI_Expecter) ValidateGroupClusterConfigurationsExecute(r any) *ClustersAPI_ValidateGroupClusterConfigurationsExecute_Call {
+	return &ClustersAPI_ValidateGroupClusterConfigurationsExecute_Call{Call: _e.mock.On("ValidateGroupClusterConfigurationsExecute", r)}
+}
+
+func (_c *ClustersAPI_ValidateGroupClusterConfigurationsExecute_Call) Run(run func(r admin.ValidateGroupClusterConfigurationsApiRequest)) *ClustersAPI_ValidateGroupClusterConfigurationsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ValidateGroupClusterConfigurationsApiRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_ValidateGroupClusterConfigurationsExecute_Call) Return(_a0 *admin.ClusterConfigurationValidationResult, _a1 *http.Response, _a2 error) *ClustersAPI_ValidateGroupClusterConfigurationsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ClustersAPI_ValidateGroupClusterConfigurationsExecute_Call) RunAndReturn(run func(admin.ValidateGroupClusterConfigurationsApiRequest) (*admin.ClusterConfigurationValidationResult, *http.Response, error)) *ClustersAPI_ValidateGroupClusterConfigurationsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ValidateGroupClusterConfigurationsWithParams provides a mock function with given fields: ctx, args
+func (_m *ClustersAPI) ValidateGroupClusterConfigurationsWithParams(ctx context.Context, args *admin.ValidateGroupClusterConfigurationsApiParams) admin.ValidateGroupClusterConfigurationsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ValidateGroupClusterConfigurationsWithParams")
+	}
+
+	var r0 admin.ValidateGroupClusterConfigurationsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ValidateGroupClusterConfigurationsApiParams) admin.ValidateGroupClusterConfigurationsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ValidateGroupClusterConfigurationsApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_ValidateGroupClusterConfigurationsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ValidateGroupClusterConfigurationsWithParams'
+type ClustersAPI_ValidateGroupClusterConfigurationsWithParams_Call struct {
+	*mock.Call
+}
+
+// ValidateGroupClusterConfigurationsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ValidateGroupClusterConfigurationsApiParams
+func (_e *ClustersAPI_Expecter) ValidateGroupClusterConfigurationsWithParams(ctx any, args any) *ClustersAPI_ValidateGroupClusterConfigurationsWithParams_Call {
+	return &ClustersAPI_ValidateGroupClusterConfigurationsWithParams_Call{Call: _e.mock.On("ValidateGroupClusterConfigurationsWithParams", ctx, args)}
+}
+
+func (_c *ClustersAPI_ValidateGroupClusterConfigurationsWithParams_Call) Run(run func(ctx context.Context, args *admin.ValidateGroupClusterConfigurationsApiParams)) *ClustersAPI_ValidateGroupClusterConfigurationsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ValidateGroupClusterConfigurationsApiParams))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_ValidateGroupClusterConfigurationsWithParams_Call) Return(_a0 admin.ValidateGroupClusterConfigurationsApiRequest) *ClustersAPI_ValidateGroupClusterConfigurationsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_ValidateGroupClusterConfigurationsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ValidateGroupClusterConfigurationsApiParams) admin.ValidateGroupClusterConfigurationsApiRequest) *ClustersAPI_ValidateGroupClusterConfigurationsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

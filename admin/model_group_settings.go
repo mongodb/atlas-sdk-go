@@ -24,6 +24,8 @@ type GroupSettings struct {
 	IsNativeRerankingEnabled *bool `json:"isNativeRerankingEnabled,omitempty"`
 	// Flag that indicates whether to enable the Performance Advisor and Profiler for the specified project.
 	IsPerformanceAdvisorEnabled *bool `json:"isPerformanceAdvisorEnabled,omitempty"`
+	// Flag that indicates whether to enable AI features in Query Insights for the specified project.
+	IsQueryInsightsGenAiFeaturesEnabled *bool `json:"isQueryInsightsGenAiFeaturesEnabled,omitempty"`
 	// Flag that indicates whether to enable the Real Time Performance Panel for the specified project.
 	IsRealtimePerformancePanelEnabled *bool `json:"isRealtimePerformancePanelEnabled,omitempty"`
 	// Flag that indicates whether to enable the Schema Advisor for the specified project.
@@ -458,6 +460,46 @@ func (o *GroupSettings) SetIsPerformanceAdvisorEnabled(v bool) {
 func (o *GroupSettings) SetIsPerformanceAdvisorEnabledNil() {
 	o.IsPerformanceAdvisorEnabled = nil
 	o.NullFields = addNullField(o.NullFields, "IsPerformanceAdvisorEnabled")
+}
+
+// GetIsQueryInsightsGenAiFeaturesEnabled returns the IsQueryInsightsGenAiFeaturesEnabled field value if set, zero value otherwise
+func (o *GroupSettings) GetIsQueryInsightsGenAiFeaturesEnabled() bool {
+	if o == nil || IsNil(o.IsQueryInsightsGenAiFeaturesEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsQueryInsightsGenAiFeaturesEnabled
+}
+
+// GetIsQueryInsightsGenAiFeaturesEnabledOk returns a tuple with the IsQueryInsightsGenAiFeaturesEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupSettings) GetIsQueryInsightsGenAiFeaturesEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsQueryInsightsGenAiFeaturesEnabled) {
+		return nil, false
+	}
+
+	return o.IsQueryInsightsGenAiFeaturesEnabled, true
+}
+
+// HasIsQueryInsightsGenAiFeaturesEnabled returns a boolean if a field has been set.
+func (o *GroupSettings) HasIsQueryInsightsGenAiFeaturesEnabled() bool {
+	if o != nil && !IsNil(o.IsQueryInsightsGenAiFeaturesEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsQueryInsightsGenAiFeaturesEnabled gets a reference to the given bool and assigns it to the IsQueryInsightsGenAiFeaturesEnabled field.
+func (o *GroupSettings) SetIsQueryInsightsGenAiFeaturesEnabled(v bool) {
+	o.IsQueryInsightsGenAiFeaturesEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "IsQueryInsightsGenAiFeaturesEnabled")
+}
+
+// SetIsQueryInsightsGenAiFeaturesEnabledNil sets IsQueryInsightsGenAiFeaturesEnabled to an explicit JSON null when marshaled.
+func (o *GroupSettings) SetIsQueryInsightsGenAiFeaturesEnabledNil() {
+	o.IsQueryInsightsGenAiFeaturesEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "IsQueryInsightsGenAiFeaturesEnabled")
 }
 
 // GetIsRealtimePerformancePanelEnabled returns the IsRealtimePerformancePanelEnabled field value if set, zero value otherwise

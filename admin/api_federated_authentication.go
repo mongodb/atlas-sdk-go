@@ -534,6 +534,9 @@ func (a *FederatedAuthenticationAPIService) CreateIdentityProviderExecute(r Crea
 	if r.federationSettingsId == "" {
 		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
 	}
+	if r.federationSettingsId == "." || r.federationSettingsId == ".." {
+		return localVarReturnValue, nil, reportError("federationSettingsId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -662,9 +665,15 @@ func (a *FederatedAuthenticationAPIService) CreateRoleMappingExecute(r CreateRol
 	if r.federationSettingsId == "" {
 		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
 	}
+	if r.federationSettingsId == "." || r.federationSettingsId == ".." {
+		return localVarReturnValue, nil, reportError("federationSettingsId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -782,6 +791,9 @@ func (a *FederatedAuthenticationAPIService) DeleteFederationSettingExecute(r Del
 	if r.federationSettingsId == "" {
 		return nil, reportError("federationSettingsId is empty and must be specified")
 	}
+	if r.federationSettingsId == "." || r.federationSettingsId == ".." {
+		return nil, reportError("federationSettingsId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -886,9 +898,15 @@ func (a *FederatedAuthenticationAPIService) DeleteIdentityProviderExecute(r Dele
 	if r.federationSettingsId == "" {
 		return nil, reportError("federationSettingsId is empty and must be specified")
 	}
+	if r.federationSettingsId == "." || r.federationSettingsId == ".." {
+		return nil, reportError("federationSettingsId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 	if r.identityProviderId == "" {
 		return nil, reportError("identityProviderId is empty and must be specified")
+	}
+	if r.identityProviderId == "." || r.identityProviderId == ".." {
+		return nil, reportError("identityProviderId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(r.identityProviderId), -1)
 
@@ -997,13 +1015,22 @@ func (a *FederatedAuthenticationAPIService) DeleteRoleMappingExecute(r DeleteRol
 	if r.federationSettingsId == "" {
 		return nil, reportError("federationSettingsId is empty and must be specified")
 	}
+	if r.federationSettingsId == "." || r.federationSettingsId == ".." {
+		return nil, reportError("federationSettingsId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 	if r.id == "" {
 		return nil, reportError("id is empty and must be specified")
 	}
+	if r.id == "." || r.id == ".." {
+		return nil, reportError("id must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
 	if r.orgId == "" {
 		return nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1110,9 +1137,15 @@ func (a *FederatedAuthenticationAPIService) GetConnectedOrgConfigExecute(r GetCo
 	if r.federationSettingsId == "" {
 		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
 	}
+	if r.federationSettingsId == "." || r.federationSettingsId == ".." {
+		return localVarReturnValue, nil, reportError("federationSettingsId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1227,6 +1260,9 @@ func (a *FederatedAuthenticationAPIService) GetFederationSettingsExecute(r GetFe
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/federationSettings"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1347,9 +1383,15 @@ func (a *FederatedAuthenticationAPIService) GetIdentityProviderExecute(r GetIden
 	if r.federationSettingsId == "" {
 		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
 	}
+	if r.federationSettingsId == "." || r.federationSettingsId == ".." {
+		return localVarReturnValue, nil, reportError("federationSettingsId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 	if r.identityProviderId == "" {
 		return localVarReturnValue, nil, reportError("identityProviderId is empty and must be specified")
+	}
+	if r.identityProviderId == "." || r.identityProviderId == ".." {
+		return localVarReturnValue, nil, reportError("identityProviderId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(r.identityProviderId), -1)
 
@@ -1470,9 +1512,15 @@ func (a *FederatedAuthenticationAPIService) GetIdentityProviderMetadataExecute(r
 	if r.federationSettingsId == "" {
 		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
 	}
+	if r.federationSettingsId == "." || r.federationSettingsId == ".." {
+		return localVarReturnValue, nil, reportError("federationSettingsId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 	if r.identityProviderId == "" {
 		return localVarReturnValue, nil, reportError("identityProviderId is empty and must be specified")
+	}
+	if r.identityProviderId == "." || r.identityProviderId == ".." {
+		return localVarReturnValue, nil, reportError("identityProviderId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(r.identityProviderId), -1)
 
@@ -1598,13 +1646,22 @@ func (a *FederatedAuthenticationAPIService) GetRoleMappingExecute(r GetRoleMappi
 	if r.federationSettingsId == "" {
 		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
 	}
+	if r.federationSettingsId == "." || r.federationSettingsId == ".." {
+		return localVarReturnValue, nil, reportError("federationSettingsId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 	if r.id == "" {
 		return localVarReturnValue, nil, reportError("id is empty and must be specified")
 	}
+	if r.id == "." || r.id == ".." {
+		return localVarReturnValue, nil, reportError("id must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1737,6 +1794,9 @@ func (a *FederatedAuthenticationAPIService) ListConnectedOrgConfigsExecute(r Lis
 	localVarPath := localBasePath + "/api/atlas/v2/federationSettings/{federationSettingsId}/connectedOrgConfigs"
 	if r.federationSettingsId == "" {
 		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
+	}
+	if r.federationSettingsId == "." || r.federationSettingsId == ".." {
+		return localVarReturnValue, nil, reportError("federationSettingsId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 
@@ -1902,6 +1962,9 @@ func (a *FederatedAuthenticationAPIService) ListIdentityProvidersExecute(r ListI
 	if r.federationSettingsId == "" {
 		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
 	}
+	if r.federationSettingsId == "." || r.federationSettingsId == ".." {
+		return localVarReturnValue, nil, reportError("federationSettingsId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2049,9 +2112,15 @@ func (a *FederatedAuthenticationAPIService) ListRoleMappingsExecute(r ListRoleMa
 	if r.federationSettingsId == "" {
 		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
 	}
+	if r.federationSettingsId == "." || r.federationSettingsId == ".." {
+		return localVarReturnValue, nil, reportError("federationSettingsId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -2169,9 +2238,15 @@ func (a *FederatedAuthenticationAPIService) RemoveConnectedOrgConfigExecute(r Re
 	if r.federationSettingsId == "" {
 		return nil, reportError("federationSettingsId is empty and must be specified")
 	}
+	if r.federationSettingsId == "." || r.federationSettingsId == ".." {
+		return nil, reportError("federationSettingsId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 	if r.orgId == "" {
 		return nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -2277,9 +2352,15 @@ func (a *FederatedAuthenticationAPIService) RevokeIdentityProviderJwksExecute(r 
 	if r.federationSettingsId == "" {
 		return nil, reportError("federationSettingsId is empty and must be specified")
 	}
+	if r.federationSettingsId == "." || r.federationSettingsId == ".." {
+		return nil, reportError("federationSettingsId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 	if r.identityProviderId == "" {
 		return nil, reportError("identityProviderId is empty and must be specified")
+	}
+	if r.identityProviderId == "." || r.identityProviderId == ".." {
+		return nil, reportError("identityProviderId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(r.identityProviderId), -1)
 
@@ -2398,9 +2479,15 @@ func (a *FederatedAuthenticationAPIService) UpdateConnectedOrgConfigExecute(r Up
 	if r.federationSettingsId == "" {
 		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
 	}
+	if r.federationSettingsId == "." || r.federationSettingsId == ".." {
+		return localVarReturnValue, nil, reportError("federationSettingsId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -2534,9 +2621,15 @@ func (a *FederatedAuthenticationAPIService) UpdateIdentityProviderExecute(r Upda
 	if r.federationSettingsId == "" {
 		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
 	}
+	if r.federationSettingsId == "." || r.federationSettingsId == ".." {
+		return localVarReturnValue, nil, reportError("federationSettingsId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 	if r.identityProviderId == "" {
 		return localVarReturnValue, nil, reportError("identityProviderId is empty and must be specified")
+	}
+	if r.identityProviderId == "." || r.identityProviderId == ".." {
+		return localVarReturnValue, nil, reportError("identityProviderId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"identityProviderId"+"}", url.PathEscape(r.identityProviderId), -1)
 
@@ -2671,13 +2764,22 @@ func (a *FederatedAuthenticationAPIService) UpdateRoleMappingExecute(r UpdateRol
 	if r.federationSettingsId == "" {
 		return localVarReturnValue, nil, reportError("federationSettingsId is empty and must be specified")
 	}
+	if r.federationSettingsId == "." || r.federationSettingsId == ".." {
+		return localVarReturnValue, nil, reportError("federationSettingsId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"federationSettingsId"+"}", url.PathEscape(r.federationSettingsId), -1)
 	if r.id == "" {
 		return localVarReturnValue, nil, reportError("id is empty and must be specified")
 	}
+	if r.id == "." || r.id == ".." {
+		return localVarReturnValue, nil, reportError("id must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 

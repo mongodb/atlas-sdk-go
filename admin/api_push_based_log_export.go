@@ -64,6 +64,32 @@ type PushBasedLogExportAPI interface {
 	CreateLogExportExecute(r CreateLogExportApiRequest) (*http.Response, error)
 
 	/*
+			CreateOrgLogIntegration Create One Organization Log Integration
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Creates a new organization-level log integration configuration identified by a unique ID.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param orgLogIntegrationRequest Log integration configuration to create.
+			@return CreateOrgLogIntegrationApiRequest
+	*/
+	CreateOrgLogIntegration(ctx context.Context, orgId string, orgLogIntegrationRequest *OrgLogIntegrationRequest) CreateOrgLogIntegrationApiRequest
+	/*
+		CreateOrgLogIntegration Create One Organization Log Integration
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param CreateOrgLogIntegrationApiParams - Parameters for the request
+		@return CreateOrgLogIntegrationApiRequest
+	*/
+	CreateOrgLogIntegrationWithParams(ctx context.Context, args *CreateOrgLogIntegrationApiParams) CreateOrgLogIntegrationApiRequest
+
+	// Method available only for mocking purposes
+	CreateOrgLogIntegrationExecute(r CreateOrgLogIntegrationApiRequest) (*OrgLogIntegrationResponse, *http.Response, error)
+
+	/*
 		DeleteGroupLogIntegration Remove One Log Integration
 
 		Removes the configuration for one log integration identified by its unique ID.
@@ -113,6 +139,32 @@ type PushBasedLogExportAPI interface {
 
 	// Method available only for mocking purposes
 	DeleteLogExportExecute(r DeleteLogExportApiRequest) (*http.Response, error)
+
+	/*
+			DeleteOrgLogIntegration Remove One Organization Log Integration
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Removes one organization-level log integration configuration identified by its unique ID.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param logIntegrationId Unique identifier of the log integration configuration.
+			@return DeleteOrgLogIntegrationApiRequest
+	*/
+	DeleteOrgLogIntegration(ctx context.Context, orgId string, logIntegrationId string) DeleteOrgLogIntegrationApiRequest
+	/*
+		DeleteOrgLogIntegration Remove One Organization Log Integration
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeleteOrgLogIntegrationApiParams - Parameters for the request
+		@return DeleteOrgLogIntegrationApiRequest
+	*/
+	DeleteOrgLogIntegrationWithParams(ctx context.Context, args *DeleteOrgLogIntegrationApiParams) DeleteOrgLogIntegrationApiRequest
+
+	// Method available only for mocking purposes
+	DeleteOrgLogIntegrationExecute(r DeleteOrgLogIntegrationApiRequest) (*http.Response, error)
 
 	/*
 		GetGroupLogIntegration Return One Log Integration
@@ -166,6 +218,32 @@ type PushBasedLogExportAPI interface {
 	GetLogExportExecute(r GetLogExportApiRequest) (*PushBasedLogExportProject, *http.Response, error)
 
 	/*
+			GetOrgLogIntegration Return One Organization Log Integration
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Returns the configuration for one organization-level log integration identified by its unique ID.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param logIntegrationId Unique identifier of the log integration configuration.
+			@return GetOrgLogIntegrationApiRequest
+	*/
+	GetOrgLogIntegration(ctx context.Context, orgId string, logIntegrationId string) GetOrgLogIntegrationApiRequest
+	/*
+		GetOrgLogIntegration Return One Organization Log Integration
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetOrgLogIntegrationApiParams - Parameters for the request
+		@return GetOrgLogIntegrationApiRequest
+	*/
+	GetOrgLogIntegrationWithParams(ctx context.Context, args *GetOrgLogIntegrationApiParams) GetOrgLogIntegrationApiRequest
+
+	// Method available only for mocking purposes
+	GetOrgLogIntegrationExecute(r GetOrgLogIntegrationApiRequest) (*OrgLogIntegrationResponse, *http.Response, error)
+
+	/*
 		ListGroupLogIntegrations Return All Active Log Integrations
 
 		Returns all log integration configurations for the project. Optionally filter by integration type.
@@ -187,6 +265,31 @@ type PushBasedLogExportAPI interface {
 
 	// Method available only for mocking purposes
 	ListGroupLogIntegrationsExecute(r ListGroupLogIntegrationsApiRequest) (*PaginatedLogIntegrationResponse, *http.Response, error)
+
+	/*
+			ListOrgLogIntegrations Return All Organization Log Integrations
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Returns all log integration configurations for the organization.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@return ListOrgLogIntegrationsApiRequest
+	*/
+	ListOrgLogIntegrations(ctx context.Context, orgId string) ListOrgLogIntegrationsApiRequest
+	/*
+		ListOrgLogIntegrations Return All Organization Log Integrations
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListOrgLogIntegrationsApiParams - Parameters for the request
+		@return ListOrgLogIntegrationsApiRequest
+	*/
+	ListOrgLogIntegrationsWithParams(ctx context.Context, args *ListOrgLogIntegrationsApiParams) ListOrgLogIntegrationsApiRequest
+
+	// Method available only for mocking purposes
+	ListOrgLogIntegrationsExecute(r ListOrgLogIntegrationsApiRequest) (*PaginatedOrgLogIntegrationResponse, *http.Response, error)
 
 	/*
 		UpdateGroupLogIntegration Update One Log Integration
@@ -240,6 +343,33 @@ type PushBasedLogExportAPI interface {
 
 	// Method available only for mocking purposes
 	UpdateLogExportExecute(r UpdateLogExportApiRequest) (*http.Response, error)
+
+	/*
+			UpdateOrgLogIntegration Update One Organization Log Integration
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Updates one organization-level log integration configuration identified by its unique ID. Read endpoints redact header values; a redacted value sent back unchanged leaves the stored value in place, so supply a header value in full only when changing it.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param logIntegrationId Unique identifier of the log integration configuration.
+			@param orgLogIntegrationUpdateRequest Log integration configuration to update.
+			@return UpdateOrgLogIntegrationApiRequest
+	*/
+	UpdateOrgLogIntegration(ctx context.Context, orgId string, logIntegrationId string, orgLogIntegrationUpdateRequest *OrgLogIntegrationUpdateRequest) UpdateOrgLogIntegrationApiRequest
+	/*
+		UpdateOrgLogIntegration Update One Organization Log Integration
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdateOrgLogIntegrationApiParams - Parameters for the request
+		@return UpdateOrgLogIntegrationApiRequest
+	*/
+	UpdateOrgLogIntegrationWithParams(ctx context.Context, args *UpdateOrgLogIntegrationApiParams) UpdateOrgLogIntegrationApiRequest
+
+	// Method available only for mocking purposes
+	UpdateOrgLogIntegrationExecute(r UpdateOrgLogIntegrationApiRequest) (*OrgLogIntegrationResponse, *http.Response, error)
 }
 
 // PushBasedLogExportAPIService PushBasedLogExportAPI service
@@ -307,6 +437,9 @@ func (a *PushBasedLogExportAPIService) CreateGroupLogIntegrationExecute(r Create
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/logIntegrations"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -431,6 +564,9 @@ func (a *PushBasedLogExportAPIService) CreateLogExportExecute(r CreateLogExportA
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -475,6 +611,134 @@ func (a *PushBasedLogExportAPIService) CreateLogExportExecute(r CreateLogExportA
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type CreateOrgLogIntegrationApiRequest struct {
+	ctx                      context.Context
+	ApiService               PushBasedLogExportAPI
+	orgId                    string
+	orgLogIntegrationRequest *OrgLogIntegrationRequest
+}
+
+type CreateOrgLogIntegrationApiParams struct {
+	OrgId                    string
+	OrgLogIntegrationRequest *OrgLogIntegrationRequest
+}
+
+func (a *PushBasedLogExportAPIService) CreateOrgLogIntegrationWithParams(ctx context.Context, args *CreateOrgLogIntegrationApiParams) CreateOrgLogIntegrationApiRequest {
+	return CreateOrgLogIntegrationApiRequest{
+		ApiService:               a,
+		ctx:                      ctx,
+		orgId:                    args.OrgId,
+		orgLogIntegrationRequest: args.OrgLogIntegrationRequest,
+	}
+}
+
+func (r CreateOrgLogIntegrationApiRequest) Execute() (*OrgLogIntegrationResponse, *http.Response, error) {
+	return r.ApiService.CreateOrgLogIntegrationExecute(r)
+}
+
+/*
+CreateOrgLogIntegration Create One Organization Log Integration
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Creates a new organization-level log integration configuration identified by a unique ID.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return CreateOrgLogIntegrationApiRequest
+*/
+func (a *PushBasedLogExportAPIService) CreateOrgLogIntegration(ctx context.Context, orgId string, orgLogIntegrationRequest *OrgLogIntegrationRequest) CreateOrgLogIntegrationApiRequest {
+	return CreateOrgLogIntegrationApiRequest{
+		ApiService:               a,
+		ctx:                      ctx,
+		orgId:                    orgId,
+		orgLogIntegrationRequest: orgLogIntegrationRequest,
+	}
+}
+
+// CreateOrgLogIntegrationExecute executes the request
+//
+//	@return OrgLogIntegrationResponse
+func (a *PushBasedLogExportAPIService) CreateOrgLogIntegrationExecute(r CreateOrgLogIntegrationApiRequest) (*OrgLogIntegrationResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *OrgLogIntegrationResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportAPIService.CreateOrgLogIntegration")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/logIntegrations"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.orgLogIntegrationRequest == nil {
+		return localVarReturnValue, nil, reportError("orgLogIntegrationRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.orgLogIntegrationRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type DeleteGroupLogIntegrationApiRequest struct {
@@ -538,9 +802,15 @@ func (a *PushBasedLogExportAPIService) DeleteGroupLogIntegrationExecute(r Delete
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.id == "" {
 		return nil, reportError("id is empty and must be specified")
+	}
+	if r.id == "." || r.id == ".." {
+		return nil, reportError("id must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
 
@@ -642,6 +912,9 @@ func (a *PushBasedLogExportAPIService) DeleteLogExportExecute(r DeleteLogExportA
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -659,6 +932,120 @@ func (a *PushBasedLogExportAPIService) DeleteLogExportExecute(r DeleteLogExportA
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type DeleteOrgLogIntegrationApiRequest struct {
+	ctx              context.Context
+	ApiService       PushBasedLogExportAPI
+	orgId            string
+	logIntegrationId string
+}
+
+type DeleteOrgLogIntegrationApiParams struct {
+	OrgId            string
+	LogIntegrationId string
+}
+
+func (a *PushBasedLogExportAPIService) DeleteOrgLogIntegrationWithParams(ctx context.Context, args *DeleteOrgLogIntegrationApiParams) DeleteOrgLogIntegrationApiRequest {
+	return DeleteOrgLogIntegrationApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		orgId:            args.OrgId,
+		logIntegrationId: args.LogIntegrationId,
+	}
+}
+
+func (r DeleteOrgLogIntegrationApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteOrgLogIntegrationExecute(r)
+}
+
+/*
+DeleteOrgLogIntegration Remove One Organization Log Integration
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Removes one organization-level log integration configuration identified by its unique ID.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param logIntegrationId Unique identifier of the log integration configuration.
+	@return DeleteOrgLogIntegrationApiRequest
+*/
+func (a *PushBasedLogExportAPIService) DeleteOrgLogIntegration(ctx context.Context, orgId string, logIntegrationId string) DeleteOrgLogIntegrationApiRequest {
+	return DeleteOrgLogIntegrationApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		orgId:            orgId,
+		logIntegrationId: logIntegrationId,
+	}
+}
+
+// DeleteOrgLogIntegrationExecute executes the request
+func (a *PushBasedLogExportAPIService) DeleteOrgLogIntegrationExecute(r DeleteOrgLogIntegrationApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportAPIService.DeleteOrgLogIntegration")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId}"
+	if r.orgId == "" {
+		return nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return nil, reportError("orgId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.logIntegrationId == "" {
+		return nil, reportError("logIntegrationId is empty and must be specified")
+	}
+	if r.logIntegrationId == "." || r.logIntegrationId == ".." {
+		return nil, reportError("logIntegrationId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"logIntegrationId"+"}", url.PathEscape(r.logIntegrationId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -747,9 +1134,15 @@ func (a *PushBasedLogExportAPIService) GetGroupLogIntegrationExecute(r GetGroupL
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.id == "" {
 		return localVarReturnValue, nil, reportError("id is empty and must be specified")
+	}
+	if r.id == "." || r.id == ".." {
+		return localVarReturnValue, nil, reportError("id must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
 
@@ -869,6 +1262,9 @@ func (a *PushBasedLogExportAPIService) GetLogExportExecute(r GetLogExportApiRequ
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -886,6 +1282,137 @@ func (a *PushBasedLogExportAPIService) GetLogExportExecute(r GetLogExportApiRequ
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetOrgLogIntegrationApiRequest struct {
+	ctx              context.Context
+	ApiService       PushBasedLogExportAPI
+	orgId            string
+	logIntegrationId string
+}
+
+type GetOrgLogIntegrationApiParams struct {
+	OrgId            string
+	LogIntegrationId string
+}
+
+func (a *PushBasedLogExportAPIService) GetOrgLogIntegrationWithParams(ctx context.Context, args *GetOrgLogIntegrationApiParams) GetOrgLogIntegrationApiRequest {
+	return GetOrgLogIntegrationApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		orgId:            args.OrgId,
+		logIntegrationId: args.LogIntegrationId,
+	}
+}
+
+func (r GetOrgLogIntegrationApiRequest) Execute() (*OrgLogIntegrationResponse, *http.Response, error) {
+	return r.ApiService.GetOrgLogIntegrationExecute(r)
+}
+
+/*
+GetOrgLogIntegration Return One Organization Log Integration
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns the configuration for one organization-level log integration identified by its unique ID.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param logIntegrationId Unique identifier of the log integration configuration.
+	@return GetOrgLogIntegrationApiRequest
+*/
+func (a *PushBasedLogExportAPIService) GetOrgLogIntegration(ctx context.Context, orgId string, logIntegrationId string) GetOrgLogIntegrationApiRequest {
+	return GetOrgLogIntegrationApiRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		orgId:            orgId,
+		logIntegrationId: logIntegrationId,
+	}
+}
+
+// GetOrgLogIntegrationExecute executes the request
+//
+//	@return OrgLogIntegrationResponse
+func (a *PushBasedLogExportAPIService) GetOrgLogIntegrationExecute(r GetOrgLogIntegrationApiRequest) (*OrgLogIntegrationResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *OrgLogIntegrationResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportAPIService.GetOrgLogIntegration")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.logIntegrationId == "" {
+		return localVarReturnValue, nil, reportError("logIntegrationId is empty and must be specified")
+	}
+	if r.logIntegrationId == "." || r.logIntegrationId == ".." {
+		return localVarReturnValue, nil, reportError("logIntegrationId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"logIntegrationId"+"}", url.PathEscape(r.logIntegrationId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1019,6 +1546,9 @@ func (a *PushBasedLogExportAPIService) ListGroupLogIntegrationsExecute(r ListGro
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1060,6 +1590,173 @@ func (a *PushBasedLogExportAPIService) ListGroupLogIntegrationsExecute(r ListGro
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListOrgLogIntegrationsApiRequest struct {
+	ctx          context.Context
+	ApiService   PushBasedLogExportAPI
+	orgId        string
+	includeCount *bool
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListOrgLogIntegrationsApiParams struct {
+	OrgId        string
+	IncludeCount *bool
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *PushBasedLogExportAPIService) ListOrgLogIntegrationsWithParams(ctx context.Context, args *ListOrgLogIntegrationsApiParams) ListOrgLogIntegrationsApiRequest {
+	return ListOrgLogIntegrationsApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		orgId:        args.OrgId,
+		includeCount: args.IncludeCount,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+func (r ListOrgLogIntegrationsApiRequest) IncludeCount(includeCount bool) ListOrgLogIntegrationsApiRequest {
+	r.includeCount = &includeCount
+	return r
+}
+
+// Number of items that the response returns per page.
+func (r ListOrgLogIntegrationsApiRequest) ItemsPerPage(itemsPerPage int) ListOrgLogIntegrationsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListOrgLogIntegrationsApiRequest) PageNum(pageNum int) ListOrgLogIntegrationsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListOrgLogIntegrationsApiRequest) Execute() (*PaginatedOrgLogIntegrationResponse, *http.Response, error) {
+	return r.ApiService.ListOrgLogIntegrationsExecute(r)
+}
+
+/*
+ListOrgLogIntegrations Return All Organization Log Integrations
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns all log integration configurations for the organization.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@return ListOrgLogIntegrationsApiRequest
+*/
+func (a *PushBasedLogExportAPIService) ListOrgLogIntegrations(ctx context.Context, orgId string) ListOrgLogIntegrationsApiRequest {
+	return ListOrgLogIntegrationsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		orgId:      orgId,
+	}
+}
+
+// ListOrgLogIntegrationsExecute executes the request
+//
+//	@return PaginatedOrgLogIntegrationResponse
+func (a *PushBasedLogExportAPIService) ListOrgLogIntegrationsExecute(r ListOrgLogIntegrationsApiRequest) (*PaginatedOrgLogIntegrationResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedOrgLogIntegrationResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportAPIService.ListOrgLogIntegrations")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/logIntegrations"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.includeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCount = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	}
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1166,9 +1863,15 @@ func (a *PushBasedLogExportAPIService) UpdateGroupLogIntegrationExecute(r Update
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.id == "" {
 		return localVarReturnValue, nil, reportError("id is empty and must be specified")
+	}
+	if r.id == "." || r.id == ".." {
+		return localVarReturnValue, nil, reportError("id must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
 
@@ -1293,6 +1996,9 @@ func (a *PushBasedLogExportAPIService) UpdateLogExportExecute(r UpdateLogExportA
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1337,4 +2043,144 @@ func (a *PushBasedLogExportAPIService) UpdateLogExportExecute(r UpdateLogExportA
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type UpdateOrgLogIntegrationApiRequest struct {
+	ctx                            context.Context
+	ApiService                     PushBasedLogExportAPI
+	orgId                          string
+	logIntegrationId               string
+	orgLogIntegrationUpdateRequest *OrgLogIntegrationUpdateRequest
+}
+
+type UpdateOrgLogIntegrationApiParams struct {
+	OrgId                          string
+	LogIntegrationId               string
+	OrgLogIntegrationUpdateRequest *OrgLogIntegrationUpdateRequest
+}
+
+func (a *PushBasedLogExportAPIService) UpdateOrgLogIntegrationWithParams(ctx context.Context, args *UpdateOrgLogIntegrationApiParams) UpdateOrgLogIntegrationApiRequest {
+	return UpdateOrgLogIntegrationApiRequest{
+		ApiService:                     a,
+		ctx:                            ctx,
+		orgId:                          args.OrgId,
+		logIntegrationId:               args.LogIntegrationId,
+		orgLogIntegrationUpdateRequest: args.OrgLogIntegrationUpdateRequest,
+	}
+}
+
+func (r UpdateOrgLogIntegrationApiRequest) Execute() (*OrgLogIntegrationResponse, *http.Response, error) {
+	return r.ApiService.UpdateOrgLogIntegrationExecute(r)
+}
+
+/*
+UpdateOrgLogIntegration Update One Organization Log Integration
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Updates one organization-level log integration configuration identified by its unique ID. Read endpoints redact header values; a redacted value sent back unchanged leaves the stored value in place, so supply a header value in full only when changing it.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+	@param logIntegrationId Unique identifier of the log integration configuration.
+	@return UpdateOrgLogIntegrationApiRequest
+*/
+func (a *PushBasedLogExportAPIService) UpdateOrgLogIntegration(ctx context.Context, orgId string, logIntegrationId string, orgLogIntegrationUpdateRequest *OrgLogIntegrationUpdateRequest) UpdateOrgLogIntegrationApiRequest {
+	return UpdateOrgLogIntegrationApiRequest{
+		ApiService:                     a,
+		ctx:                            ctx,
+		orgId:                          orgId,
+		logIntegrationId:               logIntegrationId,
+		orgLogIntegrationUpdateRequest: orgLogIntegrationUpdateRequest,
+	}
+}
+
+// UpdateOrgLogIntegrationExecute executes the request
+//
+//	@return OrgLogIntegrationResponse
+func (a *PushBasedLogExportAPIService) UpdateOrgLogIntegrationExecute(r UpdateOrgLogIntegrationApiRequest) (*OrgLogIntegrationResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *OrgLogIntegrationResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PushBasedLogExportAPIService.UpdateOrgLogIntegration")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId}"
+	if r.orgId == "" {
+		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
+	if r.logIntegrationId == "" {
+		return localVarReturnValue, nil, reportError("logIntegrationId is empty and must be specified")
+	}
+	if r.logIntegrationId == "." || r.logIntegrationId == ".." {
+		return localVarReturnValue, nil, reportError("logIntegrationId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"logIntegrationId"+"}", url.PathEscape(r.logIntegrationId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.orgLogIntegrationUpdateRequest == nil {
+		return localVarReturnValue, nil, reportError("orgLogIntegrationUpdateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.orgLogIntegrationUpdateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

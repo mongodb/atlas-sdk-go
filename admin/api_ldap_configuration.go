@@ -194,6 +194,9 @@ func (a *LDAPConfigurationAPIService) DeleteLdapUserMappingExecute(r DeleteLdapU
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -307,6 +310,9 @@ func (a *LDAPConfigurationAPIService) GetUserSecurityExecute(r GetUserSecurityAp
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/userSecurity"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -427,9 +433,15 @@ func (a *LDAPConfigurationAPIService) GetUserSecurityVerifyExecute(r GetUserSecu
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.requestId == "" {
 		return localVarReturnValue, nil, reportError("requestId is empty and must be specified")
+	}
+	if r.requestId == "." || r.requestId == ".." {
+		return localVarReturnValue, nil, reportError("requestId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"requestId"+"}", url.PathEscape(r.requestId), -1)
 
@@ -550,6 +562,9 @@ func (a *LDAPConfigurationAPIService) UpdateUserSecurityExecute(r UpdateUserSecu
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/userSecurity"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -673,6 +688,9 @@ func (a *LDAPConfigurationAPIService) VerifyUserSecurityLdapExecute(r VerifyUser
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
