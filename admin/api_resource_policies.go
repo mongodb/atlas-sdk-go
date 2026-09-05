@@ -245,6 +245,9 @@ func (a *ResourcePoliciesAPIService) CreateOrgResourcePolicyExecute(r CreateOrgR
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -366,9 +369,15 @@ func (a *ResourcePoliciesAPIService) DeleteOrgResourcePolicyExecute(r DeleteOrgR
 	if r.orgId == "" {
 		return nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.resourcePolicyId == "" {
 		return nil, reportError("resourcePolicyId is empty and must be specified")
+	}
+	if r.resourcePolicyId == "." || r.resourcePolicyId == ".." {
+		return nil, reportError("resourcePolicyId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"resourcePolicyId"+"}", url.PathEscape(r.resourcePolicyId), -1)
 
@@ -469,6 +478,9 @@ func (a *ResourcePoliciesAPIService) GetNonCompliantResourcesExecute(r GetNonCom
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/nonCompliantResources"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -589,9 +601,15 @@ func (a *ResourcePoliciesAPIService) GetOrgResourcePolicyExecute(r GetOrgResourc
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.resourcePolicyId == "" {
 		return localVarReturnValue, nil, reportError("resourcePolicyId is empty and must be specified")
+	}
+	if r.resourcePolicyId == "." || r.resourcePolicyId == ".." {
+		return localVarReturnValue, nil, reportError("resourcePolicyId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"resourcePolicyId"+"}", url.PathEscape(r.resourcePolicyId), -1)
 
@@ -706,6 +724,9 @@ func (a *ResourcePoliciesAPIService) ListOrgResourcePoliciesExecute(r ListOrgRes
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -830,9 +851,15 @@ func (a *ResourcePoliciesAPIService) UpdateOrgResourcePolicyExecute(r UpdateOrgR
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.resourcePolicyId == "" {
 		return localVarReturnValue, nil, reportError("resourcePolicyId is empty and must be specified")
+	}
+	if r.resourcePolicyId == "." || r.resourcePolicyId == ".." {
+		return localVarReturnValue, nil, reportError("resourcePolicyId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"resourcePolicyId"+"}", url.PathEscape(r.resourcePolicyId), -1)
 
@@ -956,6 +983,9 @@ func (a *ResourcePoliciesAPIService) ValidateResourcePoliciesExecute(r ValidateR
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/resourcePolicies:validate"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 

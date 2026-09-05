@@ -990,9 +990,15 @@ func (a *StreamsAPIService) AcceptVpcPeeringConnectionExecute(r AcceptVpcPeering
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.id == "" {
 		return nil, reportError("id is empty and must be specified")
+	}
+	if r.id == "." || r.id == ".." {
+		return nil, reportError("id must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
 
@@ -1113,13 +1119,22 @@ func (a *StreamsAPIService) CreateFailoverConnectionExecute(r CreateFailoverConn
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
 	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 	if r.connectionName == "" {
 		return localVarReturnValue, nil, reportError("connectionName is empty and must be specified")
+	}
+	if r.connectionName == "." || r.connectionName == ".." {
+		return localVarReturnValue, nil, reportError("connectionName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"connectionName"+"}", url.PathEscape(r.connectionName), -1)
 
@@ -1243,6 +1258,9 @@ func (a *StreamsAPIService) CreatePrivateLinkConnectionExecute(r CreatePrivateLi
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -1372,9 +1390,15 @@ func (a *StreamsAPIService) CreateStreamConnectionExecute(r CreateStreamConnecti
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
@@ -1504,9 +1528,15 @@ func (a *StreamsAPIService) CreateStreamProcessorExecute(r CreateStreamProcessor
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
@@ -1631,6 +1661,9 @@ func (a *StreamsAPIService) CreateStreamWorkspaceExecute(r CreateStreamWorkspace
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1752,9 +1785,15 @@ func (a *StreamsAPIService) DeletePrivateLinkConnectionExecute(r DeletePrivateLi
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.connectionId == "" {
 		return nil, reportError("connectionId is empty and must be specified")
+	}
+	if r.connectionId == "." || r.connectionId == ".." {
+		return nil, reportError("connectionId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"connectionId"+"}", url.PathEscape(r.connectionId), -1)
 
@@ -1863,13 +1902,22 @@ func (a *StreamsAPIService) DeleteStreamConnectionExecute(r DeleteStreamConnecti
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return nil, reportError("tenantName is empty and must be specified")
 	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return nil, reportError("tenantName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 	if r.connectionName == "" {
 		return nil, reportError("connectionName is empty and must be specified")
+	}
+	if r.connectionName == "." || r.connectionName == ".." {
+		return nil, reportError("connectionName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"connectionName"+"}", url.PathEscape(r.connectionName), -1)
 
@@ -1983,17 +2031,29 @@ func (a *StreamsAPIService) DeleteStreamFailoverConnectionExecute(r DeleteStream
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return nil, reportError("tenantName is empty and must be specified")
+	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return nil, reportError("tenantName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 	if r.connectionName == "" {
 		return nil, reportError("connectionName is empty and must be specified")
 	}
+	if r.connectionName == "." || r.connectionName == ".." {
+		return nil, reportError("connectionName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"connectionName"+"}", url.PathEscape(r.connectionName), -1)
 	if r.failoverConnectionId == "" {
 		return nil, reportError("failoverConnectionId is empty and must be specified")
+	}
+	if r.failoverConnectionId == "." || r.failoverConnectionId == ".." {
+		return nil, reportError("failoverConnectionId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"failoverConnectionId"+"}", url.PathEscape(r.failoverConnectionId), -1)
 
@@ -2102,13 +2162,22 @@ func (a *StreamsAPIService) DeleteStreamProcessorExecute(r DeleteStreamProcessor
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return nil, reportError("tenantName is empty and must be specified")
 	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return nil, reportError("tenantName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 	if r.processorName == "" {
 		return nil, reportError("processorName is empty and must be specified")
+	}
+	if r.processorName == "." || r.processorName == ".." {
+		return nil, reportError("processorName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processorName"+"}", url.PathEscape(r.processorName), -1)
 
@@ -2212,9 +2281,15 @@ func (a *StreamsAPIService) DeleteStreamWorkspaceExecute(r DeleteStreamWorkspace
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return nil, reportError("tenantName is empty and must be specified")
+	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return nil, reportError("tenantName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
@@ -2318,9 +2393,15 @@ func (a *StreamsAPIService) DeleteVpcPeeringConnectionExecute(r DeleteVpcPeering
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.id == "" {
 		return nil, reportError("id is empty and must be specified")
+	}
+	if r.id == "." || r.id == ".." {
+		return nil, reportError("id must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
 
@@ -2454,9 +2535,15 @@ func (a *StreamsAPIService) DownloadAuditLogsExecute(r DownloadAuditLogsApiReque
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
@@ -2613,9 +2700,15 @@ func (a *StreamsAPIService) DownloadOperationalLogsExecute(r DownloadOperational
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
@@ -2758,6 +2851,9 @@ func (a *StreamsAPIService) GetAccountDetailsExecute(r GetAccountDetailsApiReque
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2885,9 +2981,15 @@ func (a *StreamsAPIService) GetPrivateLinkConnectionExecute(r GetPrivateLinkConn
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.connectionId == "" {
 		return localVarReturnValue, nil, reportError("connectionId is empty and must be specified")
+	}
+	if r.connectionId == "." || r.connectionId == ".." {
+		return localVarReturnValue, nil, reportError("connectionId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"connectionId"+"}", url.PathEscape(r.connectionId), -1)
 
@@ -3013,13 +3115,22 @@ func (a *StreamsAPIService) GetStreamConnectionExecute(r GetStreamConnectionApiR
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
 	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 	if r.connectionName == "" {
 		return localVarReturnValue, nil, reportError("connectionName is empty and must be specified")
+	}
+	if r.connectionName == "." || r.connectionName == ".." {
+		return localVarReturnValue, nil, reportError("connectionName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"connectionName"+"}", url.PathEscape(r.connectionName), -1)
 
@@ -3150,17 +3261,29 @@ func (a *StreamsAPIService) GetStreamFailoverConnectionExecute(r GetStreamFailov
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 	if r.connectionName == "" {
 		return localVarReturnValue, nil, reportError("connectionName is empty and must be specified")
 	}
+	if r.connectionName == "." || r.connectionName == ".." {
+		return localVarReturnValue, nil, reportError("connectionName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"connectionName"+"}", url.PathEscape(r.connectionName), -1)
 	if r.failoverConnectionId == "" {
 		return localVarReturnValue, nil, reportError("failoverConnectionId is empty and must be specified")
+	}
+	if r.failoverConnectionId == "." || r.failoverConnectionId == ".." {
+		return localVarReturnValue, nil, reportError("failoverConnectionId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"failoverConnectionId"+"}", url.PathEscape(r.failoverConnectionId), -1)
 
@@ -3286,13 +3409,22 @@ func (a *StreamsAPIService) GetStreamProcessorExecute(r GetStreamProcessorApiReq
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
 	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 	if r.processorName == "" {
 		return localVarReturnValue, nil, reportError("processorName is empty and must be specified")
+	}
+	if r.processorName == "." || r.processorName == ".." {
+		return localVarReturnValue, nil, reportError("processorName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processorName"+"}", url.PathEscape(r.processorName), -1)
 
@@ -3440,9 +3572,15 @@ func (a *StreamsAPIService) GetStreamProcessorsExecute(r GetStreamProcessorsApiR
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
@@ -3593,9 +3731,15 @@ func (a *StreamsAPIService) GetStreamWorkspaceExecute(r GetStreamWorkspaceApiReq
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
@@ -3731,6 +3875,9 @@ func (a *StreamsAPIService) ListActivePeeringConnectionsExecute(r ListActivePeer
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/activeVpcPeeringConnections"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -3888,13 +4035,22 @@ func (a *StreamsAPIService) ListFailoverConnectionsExecute(r ListFailoverConnect
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
 	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 	if r.connectionName == "" {
 		return localVarReturnValue, nil, reportError("connectionName is empty and must be specified")
+	}
+	if r.connectionName == "." || r.connectionName == ".." {
+		return localVarReturnValue, nil, reportError("connectionName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"connectionName"+"}", url.PathEscape(r.connectionName), -1)
 
@@ -4041,6 +4197,9 @@ func (a *StreamsAPIService) ListPrivateLinkConnectionsExecute(r ListPrivateLinkC
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams/privateLinkConnections"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -4193,9 +4352,15 @@ func (a *StreamsAPIService) ListStreamConnectionsExecute(r ListStreamConnections
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
@@ -4342,6 +4507,9 @@ func (a *StreamsAPIService) ListStreamWorkspacesExecute(r ListStreamWorkspacesAp
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -4498,6 +4666,9 @@ func (a *StreamsAPIService) ListVpcPeeringConnectionsExecute(r ListVpcPeeringCon
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -4632,9 +4803,15 @@ func (a *StreamsAPIService) RejectVpcPeeringConnectionExecute(r RejectVpcPeering
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.id == "" {
 		return nil, reportError("id is empty and must be specified")
+	}
+	if r.id == "." || r.id == ".." {
+		return nil, reportError("id must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
 
@@ -4743,13 +4920,22 @@ func (a *StreamsAPIService) StartStreamProcessorExecute(r StartStreamProcessorAp
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return nil, reportError("tenantName is empty and must be specified")
 	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return nil, reportError("tenantName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 	if r.processorName == "" {
 		return nil, reportError("processorName is empty and must be specified")
+	}
+	if r.processorName == "." || r.processorName == ".." {
+		return nil, reportError("processorName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processorName"+"}", url.PathEscape(r.processorName), -1)
 
@@ -4862,13 +5048,22 @@ func (a *StreamsAPIService) StartStreamProcessorWithExecute(r StartStreamProcess
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return nil, reportError("tenantName is empty and must be specified")
 	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return nil, reportError("tenantName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 	if r.processorName == "" {
 		return nil, reportError("processorName is empty and must be specified")
+	}
+	if r.processorName == "." || r.processorName == ".." {
+		return nil, reportError("processorName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processorName"+"}", url.PathEscape(r.processorName), -1)
 
@@ -4979,13 +5174,22 @@ func (a *StreamsAPIService) StopStreamProcessorExecute(r StopStreamProcessorApiR
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return nil, reportError("tenantName is empty and must be specified")
 	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return nil, reportError("tenantName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 	if r.processorName == "" {
 		return nil, reportError("processorName is empty and must be specified")
+	}
+	if r.processorName == "." || r.processorName == ".." {
+		return nil, reportError("processorName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processorName"+"}", url.PathEscape(r.processorName), -1)
 
@@ -5096,9 +5300,15 @@ func (a *StreamsAPIService) UpdatePrivateLinkConnectionExecute(r UpdatePrivateLi
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.connectionId == "" {
 		return localVarReturnValue, nil, reportError("connectionId is empty and must be specified")
+	}
+	if r.connectionId == "." || r.connectionId == ".." {
+		return localVarReturnValue, nil, reportError("connectionId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"connectionId"+"}", url.PathEscape(r.connectionId), -1)
 
@@ -5233,13 +5443,22 @@ func (a *StreamsAPIService) UpdateStreamConnectionExecute(r UpdateStreamConnecti
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
 	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 	if r.connectionName == "" {
 		return localVarReturnValue, nil, reportError("connectionName is empty and must be specified")
+	}
+	if r.connectionName == "." || r.connectionName == ".." {
+		return localVarReturnValue, nil, reportError("connectionName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"connectionName"+"}", url.PathEscape(r.connectionName), -1)
 
@@ -5379,17 +5598,29 @@ func (a *StreamsAPIService) UpdateStreamFailoverConnectionExecute(r UpdateStream
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 	if r.connectionName == "" {
 		return localVarReturnValue, nil, reportError("connectionName is empty and must be specified")
 	}
+	if r.connectionName == "." || r.connectionName == ".." {
+		return localVarReturnValue, nil, reportError("connectionName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"connectionName"+"}", url.PathEscape(r.connectionName), -1)
 	if r.failoverConnectionId == "" {
 		return localVarReturnValue, nil, reportError("failoverConnectionId is empty and must be specified")
+	}
+	if r.failoverConnectionId == "." || r.failoverConnectionId == ".." {
+		return localVarReturnValue, nil, reportError("failoverConnectionId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"failoverConnectionId"+"}", url.PathEscape(r.failoverConnectionId), -1)
 
@@ -5524,13 +5755,22 @@ func (a *StreamsAPIService) UpdateStreamProcessorExecute(r UpdateStreamProcessor
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
 	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 	if r.processorName == "" {
 		return localVarReturnValue, nil, reportError("processorName is empty and must be specified")
+	}
+	if r.processorName == "." || r.processorName == ".." {
+		return localVarReturnValue, nil, reportError("processorName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processorName"+"}", url.PathEscape(r.processorName), -1)
 
@@ -5660,9 +5900,15 @@ func (a *StreamsAPIService) UpdateStreamWorkspaceExecute(r UpdateStreamWorkspace
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
@@ -5786,6 +6032,9 @@ func (a *StreamsAPIService) WithStreamSampleConnectionsExecute(r WithStreamSampl
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streams:withSampleConnections"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 

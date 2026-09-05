@@ -209,13 +209,22 @@ func (a *QueryShapeInsightsAPIService) GetClusterQueryShapeExecute(r GetClusterQ
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
 	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 	if r.queryShapeHash == "" {
 		return localVarReturnValue, nil, reportError("queryShapeHash is empty and must be specified")
+	}
+	if r.queryShapeHash == "." || r.queryShapeHash == ".." {
+		return localVarReturnValue, nil, reportError("queryShapeHash must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"queryShapeHash"+"}", url.PathEscape(r.queryShapeHash), -1)
 
@@ -368,13 +377,22 @@ func (a *QueryShapeInsightsAPIService) GetQueryShapeDetailsExecute(r GetQuerySha
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
 	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 	if r.queryShapeHash == "" {
 		return localVarReturnValue, nil, reportError("queryShapeHash is empty and must be specified")
+	}
+	if r.queryShapeHash == "." || r.queryShapeHash == ".." {
+		return localVarReturnValue, nil, reportError("queryShapeHash must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"queryShapeHash"+"}", url.PathEscape(r.queryShapeHash), -1)
 
@@ -544,9 +562,15 @@ func (a *QueryShapeInsightsAPIService) ListClusterQueryShapesExecute(r ListClust
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -767,9 +791,15 @@ func (a *QueryShapeInsightsAPIService) ListQueryShapeSummariesExecute(r ListQuer
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -947,13 +977,22 @@ func (a *QueryShapeInsightsAPIService) UpdateClusterQueryShapeExecute(r UpdateCl
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
 	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 	if r.queryShapeHash == "" {
 		return localVarReturnValue, nil, reportError("queryShapeHash is empty and must be specified")
+	}
+	if r.queryShapeHash == "." || r.queryShapeHash == ".." {
+		return localVarReturnValue, nil, reportError("queryShapeHash must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"queryShapeHash"+"}", url.PathEscape(r.queryShapeHash), -1)
 

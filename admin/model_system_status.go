@@ -4,19 +4,23 @@ package admin
 
 // SystemStatus struct for SystemStatus
 type SystemStatus struct {
-	ApiKey ApiKey `json:"apiKey"`
+	ApiKey *ApiKey `json:"apiKey,omitempty"`
 	// Human-readable label that identifies the service from which you requested this response.
 	// Read only field.
 	AppName string `json:"appName"`
 	// Unique 40-hexadecimal digit hash that identifies the latest git commit merged for this application.
 	// Read only field.
 	Build string `json:"build"`
+	// IPv4 or IPv6 address from which you requested this response. Use this value to confirm which address IP access lists evaluate for your requests.
+	// Read only field.
+	IpAddress string `json:"ipAddress"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// Flag that indicates whether someone enabled throttling on this service.
 	// Read only field.
-	Throttling bool `json:"throttling"`
+	Throttling bool               `json:"throttling"`
+	User       *AuthenticatedUser `json:"user,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`
@@ -32,11 +36,11 @@ func (o *SystemStatus) MarshalJSON() ([]byte, error) {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSystemStatus(apiKey ApiKey, appName string, build string, throttling bool) *SystemStatus {
+func NewSystemStatus(appName string, build string, ipAddress string, throttling bool) *SystemStatus {
 	this := SystemStatus{}
-	this.ApiKey = apiKey
 	this.AppName = appName
 	this.Build = build
+	this.IpAddress = ipAddress
 	this.Throttling = throttling
 	return &this
 }
@@ -49,28 +53,44 @@ func NewSystemStatusWithDefaults() *SystemStatus {
 	return &this
 }
 
-// GetApiKey returns the ApiKey field value
+// GetApiKey returns the ApiKey field value if set, zero value otherwise
 func (o *SystemStatus) GetApiKey() ApiKey {
-	if o == nil {
+	if o == nil || IsNil(o.ApiKey) {
 		var ret ApiKey
 		return ret
 	}
-
-	return o.ApiKey
+	return *o.ApiKey
 }
 
-// GetApiKeyOk returns a tuple with the ApiKey field value
+// GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *SystemStatus) GetApiKeyOk() (*ApiKey, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ApiKey) {
 		return nil, false
 	}
-	return &o.ApiKey, true
+
+	return o.ApiKey, true
 }
 
-// SetApiKey sets field value
+// HasApiKey returns a boolean if a field has been set.
+func (o *SystemStatus) HasApiKey() bool {
+	if o != nil && !IsNil(o.ApiKey) {
+		return true
+	}
+
+	return false
+}
+
+// SetApiKey gets a reference to the given ApiKey and assigns it to the ApiKey field.
 func (o *SystemStatus) SetApiKey(v ApiKey) {
-	o.ApiKey = v
+	o.ApiKey = &v
+	o.NullFields = removeNullField(o.NullFields, "ApiKey")
+}
+
+// SetApiKeyNil sets ApiKey to an explicit JSON null when marshaled.
+func (o *SystemStatus) SetApiKeyNil() {
+	o.ApiKey = nil
+	o.NullFields = addNullField(o.NullFields, "ApiKey")
 }
 
 // GetAppName returns the AppName field value
@@ -119,6 +139,30 @@ func (o *SystemStatus) GetBuildOk() (*string, bool) {
 // SetBuild sets field value
 func (o *SystemStatus) SetBuild(v string) {
 	o.Build = v
+}
+
+// GetIpAddress returns the IpAddress field value
+func (o *SystemStatus) GetIpAddress() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.IpAddress
+}
+
+// GetIpAddressOk returns a tuple with the IpAddress field value
+// and a boolean to check if the value has been set.
+func (o *SystemStatus) GetIpAddressOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IpAddress, true
+}
+
+// SetIpAddress sets field value
+func (o *SystemStatus) SetIpAddress(v string) {
+	o.IpAddress = v
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise
@@ -183,4 +227,44 @@ func (o *SystemStatus) GetThrottlingOk() (*bool, bool) {
 // SetThrottling sets field value
 func (o *SystemStatus) SetThrottling(v bool) {
 	o.Throttling = v
+}
+
+// GetUser returns the User field value if set, zero value otherwise
+func (o *SystemStatus) GetUser() AuthenticatedUser {
+	if o == nil || IsNil(o.User) {
+		var ret AuthenticatedUser
+		return ret
+	}
+	return *o.User
+}
+
+// GetUserOk returns a tuple with the User field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SystemStatus) GetUserOk() (*AuthenticatedUser, bool) {
+	if o == nil || IsNil(o.User) {
+		return nil, false
+	}
+
+	return o.User, true
+}
+
+// HasUser returns a boolean if a field has been set.
+func (o *SystemStatus) HasUser() bool {
+	if o != nil && !IsNil(o.User) {
+		return true
+	}
+
+	return false
+}
+
+// SetUser gets a reference to the given AuthenticatedUser and assigns it to the User field.
+func (o *SystemStatus) SetUser(v AuthenticatedUser) {
+	o.User = &v
+	o.NullFields = removeNullField(o.NullFields, "User")
+}
+
+// SetUserNil sets User to an explicit JSON null when marshaled.
+func (o *SystemStatus) SetUserNil() {
+	o.User = nil
+	o.NullFields = addNullField(o.NullFields, "User")
 }

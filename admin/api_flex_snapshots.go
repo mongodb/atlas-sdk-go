@@ -157,9 +157,15 @@ func (a *FlexSnapshotsAPIService) DownloadFlexBackupExecute(r DownloadFlexBackup
 	if r.name == "" {
 		return localVarReturnValue, nil, reportError("name is empty and must be specified")
 	}
+	if r.name == "." || r.name == ".." {
+		return localVarReturnValue, nil, reportError("name must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -290,13 +296,22 @@ func (a *FlexSnapshotsAPIService) GetFlexBackupSnapshotExecute(r GetFlexBackupSn
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.name == "" {
 		return localVarReturnValue, nil, reportError("name is empty and must be specified")
 	}
+	if r.name == "." || r.name == ".." {
+		return localVarReturnValue, nil, reportError("name must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 	if r.snapshotId == "" {
 		return localVarReturnValue, nil, reportError("snapshotId is empty and must be specified")
+	}
+	if r.snapshotId == "." || r.snapshotId == ".." {
+		return localVarReturnValue, nil, reportError("snapshotId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"snapshotId"+"}", url.PathEscape(r.snapshotId), -1)
 
@@ -444,9 +459,15 @@ func (a *FlexSnapshotsAPIService) ListFlexBackupSnapshotsExecute(r ListFlexBacku
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.name == "" {
 		return localVarReturnValue, nil, reportError("name is empty and must be specified")
+	}
+	if r.name == "." || r.name == ".." {
+		return localVarReturnValue, nil, reportError("name must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 

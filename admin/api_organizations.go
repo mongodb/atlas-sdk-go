@@ -647,6 +647,9 @@ func (a *OrganizationsAPIService) CreateOrgInviteExecute(r CreateOrgInviteApiReq
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -767,6 +770,9 @@ func (a *OrganizationsAPIService) DeleteOrgExecute(r DeleteOrgApiRequest) (*http
 	if r.orgId == "" {
 		return nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -874,9 +880,15 @@ func (a *OrganizationsAPIService) DeleteOrgInviteExecute(r DeleteOrgInviteApiReq
 	if r.orgId == "" {
 		return nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invitationId == "" {
 		return nil, reportError("invitationId is empty and must be specified")
+	}
+	if r.invitationId == "." || r.invitationId == ".." {
+		return nil, reportError("invitationId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 
@@ -977,6 +989,9 @@ func (a *OrganizationsAPIService) GetOrgExecute(r GetOrgApiRequest) (*AtlasOrgan
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1091,6 +1106,9 @@ func (a *OrganizationsAPIService) GetOrgDelegationSettingsExecute(r GetOrgDelega
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/delegationSettings"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1247,6 +1265,9 @@ func (a *OrganizationsAPIService) GetOrgGroupsExecute(r GetOrgGroupsApiRequest) 
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1396,9 +1417,15 @@ func (a *OrganizationsAPIService) GetOrgInviteExecute(r GetOrgInviteApiRequest) 
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invitationId == "" {
 		return localVarReturnValue, nil, reportError("invitationId is empty and must be specified")
+	}
+	if r.invitationId == "." || r.invitationId == ".." {
+		return localVarReturnValue, nil, reportError("invitationId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 
@@ -1513,6 +1540,9 @@ func (a *OrganizationsAPIService) GetOrgSettingsExecute(r GetOrgSettingsApiReque
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/settings"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1642,6 +1672,9 @@ func (a *OrganizationsAPIService) ListOrgInvitesExecute(r ListOrgInvitesApiReque
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invites"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1929,6 +1962,9 @@ func (a *OrganizationsAPIService) UpdateOrgExecute(r UpdateOrgApiRequest) (*Atla
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2051,6 +2087,9 @@ func (a *OrganizationsAPIService) UpdateOrgDelegationSettingsExecute(r UpdateOrg
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/delegationSettings"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -2186,9 +2225,15 @@ func (a *OrganizationsAPIService) UpdateOrgInviteByIdExecute(r UpdateOrgInviteBy
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invitationId == "" {
 		return localVarReturnValue, nil, reportError("invitationId is empty and must be specified")
+	}
+	if r.invitationId == "." || r.invitationId == ".." {
+		return localVarReturnValue, nil, reportError("invitationId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 
@@ -2319,6 +2364,9 @@ func (a *OrganizationsAPIService) UpdateOrgInvitesExecute(r UpdateOrgInvitesApiR
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2441,6 +2489,9 @@ func (a *OrganizationsAPIService) UpdateOrgSettingsExecute(r UpdateOrgSettingsAp
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/settings"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -2574,9 +2625,15 @@ func (a *OrganizationsAPIService) UpdateOrgUserRolesExecute(r UpdateOrgUserRoles
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.userId == "" {
 		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
+	if r.userId == "." || r.userId == ".." {
+		return localVarReturnValue, nil, reportError("userId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 

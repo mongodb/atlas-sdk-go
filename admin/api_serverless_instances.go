@@ -144,9 +144,15 @@ func (a *ServerlessInstancesAPIService) GetServerlessInstanceExecute(r GetServer
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.name == "" {
 		return localVarReturnValue, nil, reportError("name is empty and must be specified")
+	}
+	if r.name == "." || r.name == ".." {
+		return localVarReturnValue, nil, reportError("name must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 
@@ -294,6 +300,9 @@ func (a *ServerlessInstancesAPIService) ListServerlessInstancesExecute(r ListSer
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/serverless"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 

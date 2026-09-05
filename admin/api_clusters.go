@@ -584,9 +584,15 @@ func (a *ClustersAPIService) AutoScalingConfigurationExecute(r AutoScalingConfig
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -726,6 +732,9 @@ func (a *ClustersAPIService) CreateClusterExecute(r CreateClusterApiRequest) (*C
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -864,9 +873,15 @@ func (a *ClustersAPIService) DeleteClusterExecute(r DeleteClusterApiRequest) (*h
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -996,9 +1011,15 @@ func (a *ClustersAPIService) GetClusterExecute(r GetClusterApiRequest) (*Cluster
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -1125,9 +1146,15 @@ func (a *ClustersAPIService) GetClusterStatusExecute(r GetClusterStatusApiReques
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -1248,9 +1275,15 @@ func (a *ClustersAPIService) GetProcessArgsExecute(r GetProcessArgsApiRequest) (
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -1371,9 +1404,15 @@ func (a *ClustersAPIService) GetSampleDatasetLoadExecute(r GetSampleDatasetLoadA
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.sampleDatasetId == "" {
 		return localVarReturnValue, nil, reportError("sampleDatasetId is empty and must be specified")
+	}
+	if r.sampleDatasetId == "." || r.sampleDatasetId == ".." {
+		return localVarReturnValue, nil, reportError("sampleDatasetId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"sampleDatasetId"+"}", url.PathEscape(r.sampleDatasetId), -1)
 
@@ -1495,9 +1534,15 @@ func (a *ClustersAPIService) GrantMongoEmployeeAccessExecute(r GrantMongoEmploye
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -1802,6 +1847,9 @@ func (a *ClustersAPIService) ListClusterProviderRegionsExecute(r ListClusterProv
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1994,6 +2042,9 @@ func (a *ClustersAPIService) ListClustersExecute(r ListClustersApiRequest) (*Pag
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2145,9 +2196,15 @@ func (a *ClustersAPIService) PinFeatureCompatibilityVersionExecute(r PinFeatureC
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -2256,9 +2313,15 @@ func (a *ClustersAPIService) RequestSampleDatasetLoadExecute(r RequestSampleData
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.name == "" {
 		return localVarReturnValue, nil, reportError("name is empty and must be specified")
+	}
+	if r.name == "." || r.name == ".." {
+		return localVarReturnValue, nil, reportError("name must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 
@@ -2376,9 +2439,15 @@ func (a *ClustersAPIService) RestartPrimariesExecute(r RestartPrimariesApiReques
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -2482,9 +2551,15 @@ func (a *ClustersAPIService) RevokeMongoEmployeeAccessExecute(r RevokeMongoEmplo
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -2588,9 +2663,15 @@ func (a *ClustersAPIService) UnpinFeatureCompatibilityVersionExecute(r UnpinFeat
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -2719,9 +2800,15 @@ func (a *ClustersAPIService) UpdateClusterExecute(r UpdateClusterApiRequest) (*C
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -2857,9 +2944,15 @@ func (a *ClustersAPIService) UpdateProcessArgsExecute(r UpdateProcessArgsApiRequ
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -2990,6 +3083,9 @@ func (a *ClustersAPIService) UpgradeClusterToServerlessExecute(r UpgradeClusterT
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3114,6 +3210,9 @@ func (a *ClustersAPIService) UpgradeTenantUpgradeExecute(r UpgradeTenantUpgradeA
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 

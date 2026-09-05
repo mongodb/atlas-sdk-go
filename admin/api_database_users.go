@@ -201,6 +201,9 @@ func (a *DatabaseUsersAPIService) CreateDatabaseUserExecute(r CreateDatabaseUser
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -327,13 +330,22 @@ func (a *DatabaseUsersAPIService) DeleteDatabaseUserExecute(r DeleteDatabaseUser
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.databaseName == "" {
 		return nil, reportError("databaseName is empty and must be specified")
 	}
+	if r.databaseName == "." || r.databaseName == ".." {
+		return nil, reportError("databaseName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
 	if r.username == "" {
 		return nil, reportError("username is empty and must be specified")
+	}
+	if r.username == "." || r.username == ".." {
+		return nil, reportError("username must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(r.username), -1)
 
@@ -445,13 +457,22 @@ func (a *DatabaseUsersAPIService) GetDatabaseUserExecute(r GetDatabaseUserApiReq
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.databaseName == "" {
 		return localVarReturnValue, nil, reportError("databaseName is empty and must be specified")
 	}
+	if r.databaseName == "." || r.databaseName == ".." {
+		return localVarReturnValue, nil, reportError("databaseName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
 	if r.username == "" {
 		return localVarReturnValue, nil, reportError("username is empty and must be specified")
+	}
+	if r.username == "." || r.username == ".." {
+		return localVarReturnValue, nil, reportError("username must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(r.username), -1)
 
@@ -593,6 +614,9 @@ func (a *DatabaseUsersAPIService) ListDatabaseUsersExecute(r ListDatabaseUsersAp
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/databaseUsers"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -743,13 +767,22 @@ func (a *DatabaseUsersAPIService) UpdateDatabaseUserExecute(r UpdateDatabaseUser
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.databaseName == "" {
 		return localVarReturnValue, nil, reportError("databaseName is empty and must be specified")
 	}
+	if r.databaseName == "." || r.databaseName == ".." {
+		return localVarReturnValue, nil, reportError("databaseName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
 	if r.username == "" {
 		return localVarReturnValue, nil, reportError("username is empty and must be specified")
+	}
+	if r.username == "." || r.username == ".." {
+		return localVarReturnValue, nil, reportError("username must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(r.username), -1)
 

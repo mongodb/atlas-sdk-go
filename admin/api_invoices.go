@@ -391,6 +391,9 @@ func (a *InvoicesAPIService) CreateCostExplorerProcessExecute(r CreateCostExplor
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -519,9 +522,15 @@ func (a *InvoicesAPIService) CreateOrgInvoiceReportExecute(r CreateOrgInvoiceRep
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invoiceId == "" {
 		return localVarReturnValue, nil, reportError("invoiceId is empty and must be specified")
+	}
+	if r.invoiceId == "." || r.invoiceId == ".." {
+		return localVarReturnValue, nil, reportError("invoiceId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
 
@@ -647,9 +656,15 @@ func (a *InvoicesAPIService) GetCostExplorerUsageExecute(r GetCostExplorerUsageA
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.token == "" {
 		return localVarReturnValue, nil, reportError("token is empty and must be specified")
+	}
+	if r.token == "." || r.token == ".." {
+		return localVarReturnValue, nil, reportError("token must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"token"+"}", url.PathEscape(r.token), -1)
 
@@ -771,9 +786,15 @@ func (a *InvoicesAPIService) GetInvoiceExecute(r GetInvoiceApiRequest) (*Billing
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invoiceId == "" {
 		return localVarReturnValue, nil, reportError("invoiceId is empty and must be specified")
+	}
+	if r.invoiceId == "." || r.invoiceId == ".." {
+		return localVarReturnValue, nil, reportError("invoiceId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
 
@@ -896,9 +917,15 @@ func (a *InvoicesAPIService) GetInvoiceCsvExecute(r GetInvoiceCsvApiRequest) (st
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invoiceId == "" {
 		return localVarReturnValue, nil, reportError("invoiceId is empty and must be specified")
+	}
+	if r.invoiceId == "." || r.invoiceId == ".." {
+		return localVarReturnValue, nil, reportError("invoiceId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
 
@@ -1041,6 +1068,9 @@ func (a *InvoicesAPIService) GetOrgAssociatedInvoicesExecute(r GetOrgAssociatedI
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1174,13 +1204,22 @@ func (a *InvoicesAPIService) GetOrgInvoiceReportExecute(r GetOrgInvoiceReportApi
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invoiceId == "" {
 		return localVarReturnValue, nil, reportError("invoiceId is empty and must be specified")
 	}
+	if r.invoiceId == "." || r.invoiceId == ".." {
+		return localVarReturnValue, nil, reportError("invoiceId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
 	if r.reportId == "" {
 		return localVarReturnValue, nil, reportError("reportId is empty and must be specified")
+	}
+	if r.reportId == "." || r.reportId == ".." {
+		return localVarReturnValue, nil, reportError("reportId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"reportId"+"}", url.PathEscape(r.reportId), -1)
 
@@ -1296,6 +1335,9 @@ func (a *InvoicesAPIService) GetSkuExecute(r GetSkuApiRequest) (*SkuResponse, *h
 	if r.skuId == "" {
 		return localVarReturnValue, nil, reportError("skuId is empty and must be specified")
 	}
+	if r.skuId == "." || r.skuId == ".." {
+		return localVarReturnValue, nil, reportError("skuId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"skuId"+"}", url.PathEscape(r.skuId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1409,6 +1451,9 @@ func (a *InvoicesAPIService) ListInvoicePendingExecute(r ListInvoicePendingApiRe
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invoices/pending"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1605,6 +1650,9 @@ func (a *InvoicesAPIService) ListInvoicesExecute(r ListInvoicesApiRequest) (*Pag
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/invoices"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1807,9 +1855,15 @@ func (a *InvoicesAPIService) ListOrgInvoiceReportsExecute(r ListOrgInvoiceReport
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invoiceId == "" {
 		return localVarReturnValue, nil, reportError("invoiceId is empty and must be specified")
+	}
+	if r.invoiceId == "." || r.invoiceId == ".." {
+		return localVarReturnValue, nil, reportError("invoiceId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
 
@@ -2126,9 +2180,15 @@ func (a *InvoicesAPIService) SearchInvoiceLineItemsExecute(r SearchInvoiceLineIt
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.invoiceId == "" {
 		return localVarReturnValue, nil, reportError("invoiceId is empty and must be specified")
+	}
+	if r.invoiceId == "." || r.invoiceId == ".." {
+		return localVarReturnValue, nil, reportError("invoiceId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
 

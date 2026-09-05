@@ -617,9 +617,15 @@ func (a *MongoDBCloudUsersAPIService) AddGroupUserRoleExecute(r AddGroupUserRole
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.userId == "" {
 		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
+	if r.userId == "." || r.userId == ".." {
+		return localVarReturnValue, nil, reportError("userId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
@@ -747,6 +753,9 @@ func (a *MongoDBCloudUsersAPIService) AddGroupUsersExecute(r AddGroupUsersApiReq
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -880,9 +889,15 @@ func (a *MongoDBCloudUsersAPIService) AddOrgRoleExecute(r AddOrgRoleApiRequest) 
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.userId == "" {
 		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
+	if r.userId == "." || r.userId == ".." {
+		return localVarReturnValue, nil, reportError("userId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
@@ -1016,9 +1031,15 @@ func (a *MongoDBCloudUsersAPIService) AddOrgTeamUserExecute(r AddOrgTeamUserApiR
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.teamId == "" {
 		return localVarReturnValue, nil, reportError("teamId is empty and must be specified")
+	}
+	if r.teamId == "." || r.teamId == ".." {
+		return localVarReturnValue, nil, reportError("teamId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
@@ -1146,6 +1167,9 @@ func (a *MongoDBCloudUsersAPIService) CreateOrgUserExecute(r CreateOrgUserApiReq
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/users"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -1404,9 +1428,15 @@ func (a *MongoDBCloudUsersAPIService) GetGroupUserExecute(r GetGroupUserApiReque
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.userId == "" {
 		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
+	if r.userId == "." || r.userId == ".." {
+		return localVarReturnValue, nil, reportError("userId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
@@ -1547,9 +1577,15 @@ func (a *MongoDBCloudUsersAPIService) GetOrgUserExecute(r GetOrgUserApiRequest) 
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.userId == "" {
 		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
+	if r.userId == "." || r.userId == ".." {
+		return localVarReturnValue, nil, reportError("userId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
@@ -1676,6 +1712,9 @@ func (a *MongoDBCloudUsersAPIService) GetUserExecute(r GetUserApiRequest) (*Clou
 	if r.userId == "" {
 		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
 	}
+	if r.userId == "." || r.userId == ".." {
+		return localVarReturnValue, nil, reportError("userId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1793,6 +1832,9 @@ func (a *MongoDBCloudUsersAPIService) GetUserByNameExecute(r GetUserByNameApiReq
 	localVarPath := localBasePath + "/api/atlas/v2/users/byName/{userName}"
 	if r.userName == "" {
 		return localVarReturnValue, nil, reportError("userName is empty and must be specified")
+	}
+	if r.userName == "." || r.userName == ".." {
+		return localVarReturnValue, nil, reportError("userName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userName"+"}", url.PathEscape(r.userName), -1)
 
@@ -1984,6 +2026,9 @@ func (a *MongoDBCloudUsersAPIService) ListGroupUsersExecute(r ListGroupUsersApiR
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/users"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -2206,6 +2251,9 @@ func (a *MongoDBCloudUsersAPIService) ListOrgUsersExecute(r ListOrgUsersApiReque
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2418,9 +2466,15 @@ func (a *MongoDBCloudUsersAPIService) ListTeamUsersExecute(r ListTeamUsersApiReq
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.teamId == "" {
 		return localVarReturnValue, nil, reportError("teamId is empty and must be specified")
+	}
+	if r.teamId == "." || r.teamId == ".." {
+		return localVarReturnValue, nil, reportError("teamId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
@@ -2572,9 +2626,15 @@ func (a *MongoDBCloudUsersAPIService) RemoveGroupUserExecute(r RemoveGroupUserAp
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.userId == "" {
 		return nil, reportError("userId is empty and must be specified")
+	}
+	if r.userId == "." || r.userId == ".." {
+		return nil, reportError("userId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
@@ -2687,9 +2747,15 @@ func (a *MongoDBCloudUsersAPIService) RemoveGroupUserRoleExecute(r RemoveGroupUs
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.userId == "" {
 		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
+	if r.userId == "." || r.userId == ".." {
+		return localVarReturnValue, nil, reportError("userId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
@@ -2823,9 +2889,15 @@ func (a *MongoDBCloudUsersAPIService) RemoveOrgRoleExecute(r RemoveOrgRoleApiReq
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.userId == "" {
 		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
+	if r.userId == "." || r.userId == ".." {
+		return localVarReturnValue, nil, reportError("userId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
@@ -2957,9 +3029,15 @@ func (a *MongoDBCloudUsersAPIService) RemoveOrgTeamUserExecute(r RemoveOrgTeamUs
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.teamId == "" {
 		return localVarReturnValue, nil, reportError("teamId is empty and must be specified")
+	}
+	if r.teamId == "." || r.teamId == ".." {
+		return localVarReturnValue, nil, reportError("teamId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"teamId"+"}", url.PathEscape(r.teamId), -1)
 
@@ -3086,9 +3164,15 @@ func (a *MongoDBCloudUsersAPIService) RemoveOrgUserExecute(r RemoveOrgUserApiReq
 	if r.orgId == "" {
 		return nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.userId == "" {
 		return nil, reportError("userId is empty and must be specified")
+	}
+	if r.userId == "." || r.userId == ".." {
+		return nil, reportError("userId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
@@ -3203,9 +3287,15 @@ func (a *MongoDBCloudUsersAPIService) UpdateOrgUserExecute(r UpdateOrgUserApiReq
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.userId == "" {
 		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
+	if r.userId == "." || r.userId == ".." {
+		return localVarReturnValue, nil, reportError("userId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 

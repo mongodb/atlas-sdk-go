@@ -245,6 +245,9 @@ func (a *AIModelAPIKeysAPIService) CreateGroupModelKeyExecute(r CreateGroupModel
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -366,9 +369,15 @@ func (a *AIModelAPIKeysAPIService) DeleteGroupModelKeyExecute(r DeleteGroupModel
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.apiKeyId == "" {
 		return nil, reportError("apiKeyId is empty and must be specified")
+	}
+	if r.apiKeyId == "." || r.apiKeyId == ".." {
+		return nil, reportError("apiKeyId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"apiKeyId"+"}", url.PathEscape(r.apiKeyId), -1)
 
@@ -475,9 +484,15 @@ func (a *AIModelAPIKeysAPIService) GetGroupModelKeyExecute(r GetGroupModelKeyApi
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.apiKeyId == "" {
 		return localVarReturnValue, nil, reportError("apiKeyId is empty and must be specified")
+	}
+	if r.apiKeyId == "." || r.apiKeyId == ".." {
+		return localVarReturnValue, nil, reportError("apiKeyId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"apiKeyId"+"}", url.PathEscape(r.apiKeyId), -1)
 
@@ -598,9 +613,15 @@ func (a *AIModelAPIKeysAPIService) GetOrgModelKeyExecute(r GetOrgModelKeyApiRequ
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.apiKeyId == "" {
 		return localVarReturnValue, nil, reportError("apiKeyId is empty and must be specified")
+	}
+	if r.apiKeyId == "." || r.apiKeyId == ".." {
+		return localVarReturnValue, nil, reportError("apiKeyId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"apiKeyId"+"}", url.PathEscape(r.apiKeyId), -1)
 
@@ -733,6 +754,9 @@ func (a *AIModelAPIKeysAPIService) ListGroupModelKeysExecute(r ListGroupModelKey
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/aiModelApiKeys"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -880,6 +904,9 @@ func (a *AIModelAPIKeysAPIService) ListOrgModelKeysExecute(r ListOrgModelKeysApi
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1017,9 +1044,15 @@ func (a *AIModelAPIKeysAPIService) UpdateGroupModelKeyExecute(r UpdateGroupModel
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.apiKeyId == "" {
 		return localVarReturnValue, nil, reportError("apiKeyId is empty and must be specified")
+	}
+	if r.apiKeyId == "." || r.apiKeyId == ".." {
+		return localVarReturnValue, nil, reportError("apiKeyId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"apiKeyId"+"}", url.PathEscape(r.apiKeyId), -1)
 
