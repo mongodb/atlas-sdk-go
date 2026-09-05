@@ -4,17 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ApiKey** | [**ApiKey**](ApiKey.md) |  | 
+**ApiKey** | Pointer to [**ApiKey**](ApiKey.md) |  | [optional] 
 **AppName** | **string** | Human-readable label that identifies the service from which you requested this response. | [readonly] 
 **Build** | **string** | Unique 40-hexadecimal digit hash that identifies the latest git commit merged for this application. | [readonly] 
+**IpAddress** | **string** | IPv4 or IPv6 address from which you requested this response. Use this value to confirm which address IP access lists evaluate for your requests. | [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Throttling** | **bool** | Flag that indicates whether someone enabled throttling on this service. | [readonly] 
+**User** | Pointer to [**AuthenticatedUser**](AuthenticatedUser.md) |  | [optional] 
 
 ## Methods
 
 ### NewSystemStatus
 
-`func NewSystemStatus(apiKey ApiKey, appName string, build string, throttling bool, ) *SystemStatus`
+`func NewSystemStatus(appName string, build string, ipAddress string, throttling bool, ) *SystemStatus`
 
 NewSystemStatus instantiates a new SystemStatus object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +49,18 @@ and a boolean to check if the value has been set.
 `func (o *SystemStatus) SetApiKey(v ApiKey)`
 
 SetApiKey sets ApiKey field to given value.
+
+### HasApiKey
+
+`func (o *SystemStatus) HasApiKey() bool`
+
+HasApiKey returns a boolean if a field has been set.
+
+### SetApiKeyNil
+
+`func (o *SystemStatus) SetApiKeyNil()`
+
+SetApiKeyNil sets ApiKey to an explicit JSON null when marshaled, overriding any value previously set with SetApiKey. Calling SetApiKey again clears the null override.
 
 ### GetAppName
 
@@ -85,6 +99,25 @@ and a boolean to check if the value has been set.
 `func (o *SystemStatus) SetBuild(v string)`
 
 SetBuild sets Build field to given value.
+
+### GetIpAddress
+
+`func (o *SystemStatus) GetIpAddress() string`
+
+GetIpAddress returns the IpAddress field if non-nil, zero value otherwise.
+
+### GetIpAddressOk
+
+`func (o *SystemStatus) GetIpAddressOk() (*string, bool)`
+
+GetIpAddressOk returns a tuple with the IpAddress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpAddress
+
+`func (o *SystemStatus) SetIpAddress(v string)`
+
+SetIpAddress sets IpAddress field to given value.
 
 ### GetLinks
 
@@ -135,6 +168,37 @@ and a boolean to check if the value has been set.
 `func (o *SystemStatus) SetThrottling(v bool)`
 
 SetThrottling sets Throttling field to given value.
+
+### GetUser
+
+`func (o *SystemStatus) GetUser() AuthenticatedUser`
+
+GetUser returns the User field if non-nil, zero value otherwise.
+
+### GetUserOk
+
+`func (o *SystemStatus) GetUserOk() (*AuthenticatedUser, bool)`
+
+GetUserOk returns a tuple with the User field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUser
+
+`func (o *SystemStatus) SetUser(v AuthenticatedUser)`
+
+SetUser sets User field to given value.
+
+### HasUser
+
+`func (o *SystemStatus) HasUser() bool`
+
+HasUser returns a boolean if a field has been set.
+
+### SetUserNil
+
+`func (o *SystemStatus) SetUserNil()`
+
+SetUserNil sets User to an explicit JSON null when marshaled, overriding any value previously set with SetUser. Calling SetUser again clears the null override.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

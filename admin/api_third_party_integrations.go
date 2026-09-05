@@ -231,9 +231,15 @@ func (a *ThirdPartyIntegrationsAPIService) CreateGroupIntegrationExecute(r Creat
 	if r.integrationType == "" {
 		return localVarReturnValue, nil, reportError("integrationType is empty and must be specified")
 	}
+	if r.integrationType == "." || r.integrationType == ".." {
+		return localVarReturnValue, nil, reportError("integrationType must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"integrationType"+"}", url.PathEscape(r.integrationType), -1)
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -377,9 +383,15 @@ func (a *ThirdPartyIntegrationsAPIService) DeleteGroupIntegrationExecute(r Delet
 	if r.integrationType == "" {
 		return nil, reportError("integrationType is empty and must be specified")
 	}
+	if r.integrationType == "." || r.integrationType == ".." {
+		return nil, reportError("integrationType must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"integrationType"+"}", url.PathEscape(r.integrationType), -1)
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -486,9 +498,15 @@ func (a *ThirdPartyIntegrationsAPIService) GetGroupIntegrationExecute(r GetGroup
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.integrationType == "" {
 		return localVarReturnValue, nil, reportError("integrationType is empty and must be specified")
+	}
+	if r.integrationType == "." || r.integrationType == ".." {
+		return localVarReturnValue, nil, reportError("integrationType must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"integrationType"+"}", url.PathEscape(r.integrationType), -1)
 
@@ -630,6 +648,9 @@ func (a *ThirdPartyIntegrationsAPIService) ListGroupIntegrationsExecute(r ListGr
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/integrations"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -802,9 +823,15 @@ func (a *ThirdPartyIntegrationsAPIService) UpdateGroupIntegrationExecute(r Updat
 	if r.integrationType == "" {
 		return localVarReturnValue, nil, reportError("integrationType is empty and must be specified")
 	}
+	if r.integrationType == "." || r.integrationType == ".." {
+		return localVarReturnValue, nil, reportError("integrationType must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"integrationType"+"}", url.PathEscape(r.integrationType), -1)
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 

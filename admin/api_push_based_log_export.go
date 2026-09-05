@@ -308,6 +308,9 @@ func (a *PushBasedLogExportAPIService) CreateGroupLogIntegrationExecute(r Create
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -431,6 +434,9 @@ func (a *PushBasedLogExportAPIService) CreateLogExportExecute(r CreateLogExportA
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -538,9 +544,15 @@ func (a *PushBasedLogExportAPIService) DeleteGroupLogIntegrationExecute(r Delete
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.id == "" {
 		return nil, reportError("id is empty and must be specified")
+	}
+	if r.id == "." || r.id == ".." {
+		return nil, reportError("id must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
 
@@ -641,6 +653,9 @@ func (a *PushBasedLogExportAPIService) DeleteLogExportExecute(r DeleteLogExportA
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pushBasedLogExport"
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -747,9 +762,15 @@ func (a *PushBasedLogExportAPIService) GetGroupLogIntegrationExecute(r GetGroupL
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.id == "" {
 		return localVarReturnValue, nil, reportError("id is empty and must be specified")
+	}
+	if r.id == "." || r.id == ".." {
+		return localVarReturnValue, nil, reportError("id must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
 
@@ -868,6 +889,9 @@ func (a *PushBasedLogExportAPIService) GetLogExportExecute(r GetLogExportApiRequ
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pushBasedLogExport"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -1019,6 +1043,9 @@ func (a *PushBasedLogExportAPIService) ListGroupLogIntegrationsExecute(r ListGro
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1166,9 +1193,15 @@ func (a *PushBasedLogExportAPIService) UpdateGroupLogIntegrationExecute(r Update
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.id == "" {
 		return localVarReturnValue, nil, reportError("id is empty and must be specified")
+	}
+	if r.id == "." || r.id == ".." {
+		return localVarReturnValue, nil, reportError("id must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(r.id), -1)
 
@@ -1292,6 +1325,9 @@ func (a *PushBasedLogExportAPIService) UpdateLogExportExecute(r UpdateLogExportA
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/pushBasedLogExport"
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 

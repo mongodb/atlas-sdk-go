@@ -248,9 +248,15 @@ func (a *ServerlessPrivateEndpointsAPIService) CreateServerlessPrivateEndpointEx
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.instanceName == "" {
 		return localVarReturnValue, nil, reportError("instanceName is empty and must be specified")
+	}
+	if r.instanceName == "." || r.instanceName == ".." {
+		return localVarReturnValue, nil, reportError("instanceName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(r.instanceName), -1)
 
@@ -383,13 +389,22 @@ func (a *ServerlessPrivateEndpointsAPIService) DeleteServerlessPrivateEndpointEx
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.instanceName == "" {
 		return nil, reportError("instanceName is empty and must be specified")
 	}
+	if r.instanceName == "." || r.instanceName == ".." {
+		return nil, reportError("instanceName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(r.instanceName), -1)
 	if r.endpointId == "" {
 		return nil, reportError("endpointId is empty and must be specified")
+	}
+	if r.endpointId == "." || r.endpointId == ".." {
+		return nil, reportError("endpointId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
 
@@ -507,13 +522,22 @@ func (a *ServerlessPrivateEndpointsAPIService) GetServerlessPrivateEndpointExecu
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.instanceName == "" {
 		return localVarReturnValue, nil, reportError("instanceName is empty and must be specified")
 	}
+	if r.instanceName == "." || r.instanceName == ".." {
+		return localVarReturnValue, nil, reportError("instanceName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(r.instanceName), -1)
 	if r.endpointId == "" {
 		return localVarReturnValue, nil, reportError("endpointId is empty and must be specified")
+	}
+	if r.endpointId == "." || r.endpointId == ".." {
+		return localVarReturnValue, nil, reportError("endpointId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
 
@@ -640,9 +664,15 @@ func (a *ServerlessPrivateEndpointsAPIService) ListServerlessPrivateEndpointExec
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.instanceName == "" {
 		return localVarReturnValue, nil, reportError("instanceName is empty and must be specified")
+	}
+	if r.instanceName == "." || r.instanceName == ".." {
+		return localVarReturnValue, nil, reportError("instanceName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(r.instanceName), -1)
 
@@ -778,13 +808,22 @@ func (a *ServerlessPrivateEndpointsAPIService) UpdateServerlessPrivateEndpointEx
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.instanceName == "" {
 		return localVarReturnValue, nil, reportError("instanceName is empty and must be specified")
 	}
+	if r.instanceName == "." || r.instanceName == ".." {
+		return localVarReturnValue, nil, reportError("instanceName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"instanceName"+"}", url.PathEscape(r.instanceName), -1)
 	if r.endpointId == "" {
 		return localVarReturnValue, nil, reportError("endpointId is empty and must be specified")
+	}
+	if r.endpointId == "." || r.endpointId == ".." {
+		return localVarReturnValue, nil, reportError("endpointId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
 

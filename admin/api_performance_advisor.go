@@ -341,6 +341,9 @@ func (a *PerformanceAdvisorAPIService) DisableManagedSlowMsExecute(r DisableMana
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -437,6 +440,9 @@ func (a *PerformanceAdvisorAPIService) EnableManagedSlowMsExecute(r EnableManage
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/managedSlowMs/enable"
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -537,6 +543,9 @@ func (a *PerformanceAdvisorAPIService) GetManagedSlowMsExecute(r GetManagedSlowM
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/managedSlowMs"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -661,9 +670,15 @@ func (a *PerformanceAdvisorAPIService) GetServerlessAutoIndexingExecute(r GetSer
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -829,9 +844,15 @@ func (a *PerformanceAdvisorAPIService) ListClusterSuggestedIndexesExecute(r List
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -988,9 +1009,15 @@ func (a *PerformanceAdvisorAPIService) ListDropIndexSuggestionsExecute(r ListDro
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -1136,9 +1163,15 @@ func (a *PerformanceAdvisorAPIService) ListPerformanceAdvisorNamespacesExecute(r
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
+	}
+	if r.processId == "." || r.processId == ".." {
+		return localVarReturnValue, nil, reportError("processId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
@@ -1274,9 +1307,15 @@ func (a *PerformanceAdvisorAPIService) ListSchemaAdviceExecute(r ListSchemaAdvic
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 
@@ -1467,9 +1506,15 @@ func (a *PerformanceAdvisorAPIService) ListSlowQueryLogsExecute(r ListSlowQueryL
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
+	}
+	if r.processId == "." || r.processId == ".." {
+		return localVarReturnValue, nil, reportError("processId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
@@ -1703,9 +1748,15 @@ func (a *PerformanceAdvisorAPIService) ListSuggestedIndexesExecute(r ListSuggest
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
+	}
+	if r.processId == "." || r.processId == ".." {
+		return localVarReturnValue, nil, reportError("processId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
@@ -1879,9 +1930,15 @@ func (a *PerformanceAdvisorAPIService) SetServerlessAutoIndexingExecute(r SetSer
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.clusterName == "" {
 		return nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return nil, reportError("clusterName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
 

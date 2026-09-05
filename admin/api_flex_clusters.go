@@ -222,6 +222,9 @@ func (a *FlexClustersAPIService) CreateFlexClusterExecute(r CreateFlexClusterApi
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -343,9 +346,15 @@ func (a *FlexClustersAPIService) DeleteFlexClusterExecute(r DeleteFlexClusterApi
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.name == "" {
 		return nil, reportError("name is empty and must be specified")
+	}
+	if r.name == "." || r.name == ".." {
+		return nil, reportError("name must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 
@@ -452,9 +461,15 @@ func (a *FlexClustersAPIService) GetFlexClusterExecute(r GetFlexClusterApiReques
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.name == "" {
 		return localVarReturnValue, nil, reportError("name is empty and must be specified")
+	}
+	if r.name == "." || r.name == ".." {
+		return localVarReturnValue, nil, reportError("name must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 
@@ -597,6 +612,9 @@ func (a *FlexClustersAPIService) ListFlexClustersExecute(r ListFlexClustersApiRe
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -736,6 +754,9 @@ func (a *FlexClustersAPIService) TenantUpgradeExecute(r TenantUpgradeApiRequest)
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -864,9 +885,15 @@ func (a *FlexClustersAPIService) UpdateFlexClusterExecute(r UpdateFlexClusterApi
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.name == "" {
 		return localVarReturnValue, nil, reportError("name is empty and must be specified")
+	}
+	if r.name == "." || r.name == ".." {
+		return localVarReturnValue, nil, reportError("name must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 

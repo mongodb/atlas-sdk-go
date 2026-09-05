@@ -157,9 +157,15 @@ func (a *FlexRestoreJobsAPIService) CreateFlexRestoreJobExecute(r CreateFlexRest
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.name == "" {
 		return localVarReturnValue, nil, reportError("name is empty and must be specified")
+	}
+	if r.name == "." || r.name == ".." {
+		return localVarReturnValue, nil, reportError("name must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 
@@ -290,13 +296,22 @@ func (a *FlexRestoreJobsAPIService) GetFlexRestoreJobExecute(r GetFlexRestoreJob
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.name == "" {
 		return localVarReturnValue, nil, reportError("name is empty and must be specified")
 	}
+	if r.name == "." || r.name == ".." {
+		return localVarReturnValue, nil, reportError("name must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 	if r.restoreJobId == "" {
 		return localVarReturnValue, nil, reportError("restoreJobId is empty and must be specified")
+	}
+	if r.restoreJobId == "." || r.restoreJobId == ".." {
+		return localVarReturnValue, nil, reportError("restoreJobId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"restoreJobId"+"}", url.PathEscape(r.restoreJobId), -1)
 
@@ -444,9 +459,15 @@ func (a *FlexRestoreJobsAPIService) ListFlexRestoreJobsExecute(r ListFlexRestore
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.name == "" {
 		return localVarReturnValue, nil, reportError("name is empty and must be specified")
+	}
+	if r.name == "." || r.name == ".." {
+		return localVarReturnValue, nil, reportError("name must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(r.name), -1)
 

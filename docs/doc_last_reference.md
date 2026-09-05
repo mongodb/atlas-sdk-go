@@ -590,6 +590,7 @@ Class        | Method        | HTTP request  | Description   |
  - [AtlasTenantClusterUpgradeRequest20240805](./docs/AtlasTenantClusterUpgradeRequest20240805.md)
  - [AuditLog](./docs/AuditLog.md)
  - [AuthFederationRoleMapping](./docs/AuthFederationRoleMapping.md)
+ - [AuthenticatedUser](./docs/AuthenticatedUser.md)
  - [AutoExportPolicy](./docs/AutoExportPolicy.md)
  - [AvailableCloudProviderRegion](./docs/AvailableCloudProviderRegion.md)
  - [AvailableClustersDeployment](./docs/AvailableClustersDeployment.md)
