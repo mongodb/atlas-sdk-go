@@ -3264,6 +3264,9 @@ components:
                 - westeurope
                 - brazilsouth
                 - australiaeast
+                - northeurope
+                - eastasia
+                - southeastasia
             type: string
         ApiStreamsGCPRegionView:
             description: Atlas Streams GCP Regions.
@@ -3271,6 +3274,7 @@ components:
                 - US_CENTRAL1
                 - EUROPE_WEST1
                 - US_EAST4
+                - US_WEST1
             type: string
         ApiUserEventTypeViewForNdsGroup:
             description: Unique identifier of event type.
@@ -4732,6 +4736,17 @@ components:
                 - externalGroupName
                 - roleAssignments
             title: Federated Authentication Role Mapping
+            type: object
+        AuthenticatedUser:
+            description: Details about the MongoDB Cloud user that this request is authenticated as.
+            nullable: true
+            properties:
+                username:
+                    description: Email address that represents the username of the MongoDB Cloud user.
+                    format: email
+                    readOnly: true
+                    type: string
+            readOnly: true
             type: object
         AutoExportPolicyView:
             description: Policy for automatically exporting Cloud Backup Snapshots.
@@ -39774,6 +39789,12 @@ components:
                     example: 83be55e140f493c88e7f578aae96548dd881587b
                     readOnly: true
                     type: string
+                ipAddress:
+                    description: IPv4 or IPv6 address from which you requested this response. Use this value to confirm which address IP access lists evaluate for your requests.
+                    example: 216.172.40.186
+                    pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$
+                    readOnly: true
+                    type: string
                 links:
                     description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
                     externalDocs:
@@ -39787,10 +39808,12 @@ components:
                     description: Flag that indicates whether someone enabled throttling on this service.
                     readOnly: true
                     type: boolean
+                user:
+                    $ref: '#/components/schemas/AuthenticatedUser'
             required:
-                - apiKey
                 - appName
                 - build
+                - ipAddress
                 - throttling
             type: object
         TargetOrg:
@@ -42832,7 +42855,7 @@ info:
     termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
     title: MongoDB Atlas Administration API
     version: "2.0"
-    x-xgen-sha: a60757263174cd52b7a5ba825d8b8034a936578d
+    x-xgen-sha: 68f74d56381e65b3c59f1f717c5fe39e9727a685
 openapi: 3.0.1
 paths:
     /api/atlas/v2:
