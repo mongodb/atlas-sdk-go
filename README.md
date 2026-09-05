@@ -12,7 +12,7 @@ Note that `atlas-sdk-go` only supports the two most recent major versions of Go.
 ### Adding Dependency
 
 ```terminal
-go get go.mongodb.org/atlas-sdk/v20250312024
+go get go.mongodb.org/atlas-sdk/v20250312025
 ```
 
 ### Using in the code
@@ -21,7 +21,7 @@ Construct a new Atlas SDK client, then use the various services on the client to
 access different parts of the Atlas API. For example:
 
 ```go
-import "go.mongodb.org/atlas-sdk/v20250312024/admin"
+import "go.mongodb.org/atlas-sdk/v20250312025/admin"
 
 func example() {
 	ctx := context.Background()
@@ -54,7 +54,7 @@ The SDK provides an opt-in helper for tools to detect known AI agents that invok
 an identifier to their User-Agent:
 
 ```go
-import "go.mongodb.org/atlas-sdk/v20250312024/detectaiagent"
+import "go.mongodb.org/atlas-sdk/v20250312025/detectaiagent"
 
 userAgent := "my-tool/1.0"
 if agent, ok := detectaiagent.Detect(); ok {

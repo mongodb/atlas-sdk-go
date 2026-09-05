@@ -17,7 +17,7 @@ Overview:
 
 - **Dependency Information**
 	  - See SBOM Lite manifests (CycloneDX in JSON format):
-      - https://github.com/mongodb/atlas-cli-plugin-terraform/releases/download/v20250312024.0.0/sbom.json
+      - https://github.com/mongodb/atlas-cli-plugin-terraform/releases/download/v20250312025.0.0/sbom.json
 
 - **Security Testing Report**
 	- Available as needed from Cloud Security.
