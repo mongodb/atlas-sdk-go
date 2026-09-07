@@ -59,6 +59,9 @@ TAG=$(patsubst v%,%,$(shell git describe --tags --dirty --always))
 check-version:
 	scripts/check-version.sh "$(TAG)"
 
+# Consumed by downstream CI pipelines to validate their OpenAPI specs against
+# the Go SDK. Changes to this target or the scripts it invokes can break
+# external consumers.
 .PHONY: openapi-pipeline
 openapi-pipeline: install-goimports
 	echo "Running OpenAPI Generation and Validation process"
