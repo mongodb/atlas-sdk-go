@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CollectionSuffix** | Pointer to **string** | Suffix applied to restored collection names. | [optional] 
-**Collections** | Pointer to [**[]ApiAtlasRestoreNamespace**](ApiAtlasRestoreNamespace.md) | List of collections in the restore scope (up to 100 items). | [optional] 
+**Collections** | Pointer to [**[]ApiAtlasRestoreCollectionNamespace**](ApiAtlasRestoreCollectionNamespace.md) | List of collections in the restore scope (up to 100 items). | [optional] 
 **CreatedAt** | Pointer to **time.Time** | Date and time when the restore job was created (ISO 8601 format in UTC). | [optional] [readonly] 
 **DatabaseSuffix** | Pointer to **string** | Suffix applied to restored database names. | [optional] 
-**Databases** | Pointer to [**[]ApiAtlasRestoreNamespace**](ApiAtlasRestoreNamespace.md) | List of databases in the restore scope (up to 100 items). | [optional] 
+**Databases** | Pointer to [**[]ApiAtlasRestoreDatabaseNamespace**](ApiAtlasRestoreDatabaseNamespace.md) | List of databases in the restore scope (up to 100 items). | [optional] 
 **ErrorMessage** | Pointer to **string** | Error message when the job has failed or been canceled. | [optional] [readonly] 
 **FinishedAt** | Pointer to **time.Time** | Date and time when the restore job finished (ISO 8601 format in UTC). | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the collection restore job. | [optional] [readonly] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **PointInTimeUtcSeconds** | Pointer to **int** | Point-in-time restore time in seconds since UNIX epoch. | [optional] 
 **RestoredDocuments** | Pointer to **int64** | Number of documents restored so far across all supported collections. | [optional] [readonly] 
 **SnapshotId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the snapshot being restored. | [optional] 
-**State** | Pointer to **string** | Current state of the collection restore job. | [optional] [readonly] 
+**State** | Pointer to **string** | Current state of the collection restore job. A &#x60;SUCCESSFUL&#x60; job can include individual &#x60;UNSUPPORTED&#x60; collection restores. Use the restore job collections endpoint to get per-collection detailed states. | [optional] [readonly] 
 **TargetClusterName** | Pointer to **string** | Human-readable label that identifies the target cluster. | [optional] 
 **TargetGroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the target group. | [optional] 
 **TotalDocuments** | Pointer to **int64** | Total number of documents across all supported collections in the restore job. This value may initially reflect an estimate based on collection metadata and can change as accurate document counts become available during the restore. | [optional] [readonly] 
@@ -77,20 +77,20 @@ SetCollectionSuffixNil sets CollectionSuffix to an explicit JSON null when marsh
 
 ### GetCollections
 
-`func (o *ApiAtlasCollectionRestoreJobResponse) GetCollections() []ApiAtlasRestoreNamespace`
+`func (o *ApiAtlasCollectionRestoreJobResponse) GetCollections() []ApiAtlasRestoreCollectionNamespace`
 
 GetCollections returns the Collections field if non-nil, zero value otherwise.
 
 ### GetCollectionsOk
 
-`func (o *ApiAtlasCollectionRestoreJobResponse) GetCollectionsOk() (*[]ApiAtlasRestoreNamespace, bool)`
+`func (o *ApiAtlasCollectionRestoreJobResponse) GetCollectionsOk() (*[]ApiAtlasRestoreCollectionNamespace, bool)`
 
 GetCollectionsOk returns a tuple with the Collections field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCollections
 
-`func (o *ApiAtlasCollectionRestoreJobResponse) SetCollections(v []ApiAtlasRestoreNamespace)`
+`func (o *ApiAtlasCollectionRestoreJobResponse) SetCollections(v []ApiAtlasRestoreCollectionNamespace)`
 
 SetCollections sets Collections field to given value.
 
@@ -170,20 +170,20 @@ SetDatabaseSuffixNil sets DatabaseSuffix to an explicit JSON null when marshaled
 
 ### GetDatabases
 
-`func (o *ApiAtlasCollectionRestoreJobResponse) GetDatabases() []ApiAtlasRestoreNamespace`
+`func (o *ApiAtlasCollectionRestoreJobResponse) GetDatabases() []ApiAtlasRestoreDatabaseNamespace`
 
 GetDatabases returns the Databases field if non-nil, zero value otherwise.
 
 ### GetDatabasesOk
 
-`func (o *ApiAtlasCollectionRestoreJobResponse) GetDatabasesOk() (*[]ApiAtlasRestoreNamespace, bool)`
+`func (o *ApiAtlasCollectionRestoreJobResponse) GetDatabasesOk() (*[]ApiAtlasRestoreDatabaseNamespace, bool)`
 
 GetDatabasesOk returns a tuple with the Databases field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDatabases
 
-`func (o *ApiAtlasCollectionRestoreJobResponse) SetDatabases(v []ApiAtlasRestoreNamespace)`
+`func (o *ApiAtlasCollectionRestoreJobResponse) SetDatabases(v []ApiAtlasRestoreDatabaseNamespace)`
 
 SetDatabases sets Databases field to given value.
 

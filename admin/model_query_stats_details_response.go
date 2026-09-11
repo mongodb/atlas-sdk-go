@@ -4,9 +4,10 @@ package admin
 
 // QueryStatsDetailsResponse Metadata and summary statistics for a given query shape.
 type QueryStatsDetailsResponse struct {
-	FirstSeen  *QueryShapeSeenMetadata `json:"firstSeen,omitempty"`
-	LastSeen   *QueryShapeSeenMetadata `json:"lastSeen,omitempty"`
-	QueryStats *QueryStatsSummary      `json:"queryStats,omitempty"`
+	FirstSeen            *QueryShapeSeenMetadata       `json:"firstSeen,omitempty"`
+	LastSeen             *QueryShapeSeenMetadata       `json:"lastSeen,omitempty"`
+	QueryStats           *QueryStatsSummary            `json:"queryStats,omitempty"`
+	QueryStatsCollection *QueryStatsCollectionResponse `json:"queryStatsCollection,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`
@@ -153,4 +154,44 @@ func (o *QueryStatsDetailsResponse) SetQueryStats(v QueryStatsSummary) {
 func (o *QueryStatsDetailsResponse) SetQueryStatsNil() {
 	o.QueryStats = nil
 	o.NullFields = addNullField(o.NullFields, "QueryStats")
+}
+
+// GetQueryStatsCollection returns the QueryStatsCollection field value if set, zero value otherwise
+func (o *QueryStatsDetailsResponse) GetQueryStatsCollection() QueryStatsCollectionResponse {
+	if o == nil || IsNil(o.QueryStatsCollection) {
+		var ret QueryStatsCollectionResponse
+		return ret
+	}
+	return *o.QueryStatsCollection
+}
+
+// GetQueryStatsCollectionOk returns a tuple with the QueryStatsCollection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsDetailsResponse) GetQueryStatsCollectionOk() (*QueryStatsCollectionResponse, bool) {
+	if o == nil || IsNil(o.QueryStatsCollection) {
+		return nil, false
+	}
+
+	return o.QueryStatsCollection, true
+}
+
+// HasQueryStatsCollection returns a boolean if a field has been set.
+func (o *QueryStatsDetailsResponse) HasQueryStatsCollection() bool {
+	if o != nil && !IsNil(o.QueryStatsCollection) {
+		return true
+	}
+
+	return false
+}
+
+// SetQueryStatsCollection gets a reference to the given QueryStatsCollectionResponse and assigns it to the QueryStatsCollection field.
+func (o *QueryStatsDetailsResponse) SetQueryStatsCollection(v QueryStatsCollectionResponse) {
+	o.QueryStatsCollection = &v
+	o.NullFields = removeNullField(o.NullFields, "QueryStatsCollection")
+}
+
+// SetQueryStatsCollectionNil sets QueryStatsCollection to an explicit JSON null when marshaled.
+func (o *QueryStatsDetailsResponse) SetQueryStatsCollectionNil() {
+	o.QueryStatsCollection = nil
+	o.NullFields = addNullField(o.NullFields, "QueryStatsCollection")
 }

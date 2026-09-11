@@ -233,9 +233,15 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) CreateRestPrivate
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.cloudProvider == "" {
 		return localVarReturnValue, nil, reportError("cloudProvider is empty and must be specified")
+	}
+	if r.cloudProvider == "." || r.cloudProvider == ".." {
+		return localVarReturnValue, nil, reportError("cloudProvider must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(r.cloudProvider), -1)
 
@@ -357,6 +363,9 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) GetEncryptionAtRe
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/encryptionAtRest"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -482,13 +491,22 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) GetRestPrivateEnd
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.cloudProvider == "" {
 		return localVarReturnValue, nil, reportError("cloudProvider is empty and must be specified")
 	}
+	if r.cloudProvider == "." || r.cloudProvider == ".." {
+		return localVarReturnValue, nil, reportError("cloudProvider must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(r.cloudProvider), -1)
 	if r.endpointId == "" {
 		return localVarReturnValue, nil, reportError("endpointId is empty and must be specified")
+	}
+	if r.endpointId == "." || r.endpointId == ".." {
+		return localVarReturnValue, nil, reportError("endpointId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
 
@@ -636,9 +654,15 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) ListRestPrivateEn
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.cloudProvider == "" {
 		return localVarReturnValue, nil, reportError("cloudProvider is empty and must be specified")
+	}
+	if r.cloudProvider == "." || r.cloudProvider == ".." {
+		return localVarReturnValue, nil, reportError("cloudProvider must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(r.cloudProvider), -1)
 
@@ -782,13 +806,22 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) RequestPrivateEnd
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.cloudProvider == "" {
 		return nil, reportError("cloudProvider is empty and must be specified")
 	}
+	if r.cloudProvider == "." || r.cloudProvider == ".." {
+		return nil, reportError("cloudProvider must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"cloudProvider"+"}", url.PathEscape(r.cloudProvider), -1)
 	if r.endpointId == "" {
 		return nil, reportError("endpointId is empty and must be specified")
+	}
+	if r.endpointId == "." || r.endpointId == ".." {
+		return nil, reportError("endpointId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
 
@@ -895,6 +928,9 @@ func (a *EncryptionAtRestUsingCustomerKeyManagementAPIService) UpdateEncryptionA
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/encryptionAtRest"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 

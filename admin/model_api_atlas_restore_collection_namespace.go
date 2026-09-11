@@ -2,11 +2,11 @@
 
 package admin
 
-// ApiAtlasRestoreNamespace Source and optional target namespace for a restore.
-type ApiAtlasRestoreNamespace struct {
-	// Namespace requested to restore (e.g. database name or `database.collection`).
+// ApiAtlasRestoreCollectionNamespace Source and optional target collection for a restore.
+type ApiAtlasRestoreCollectionNamespace struct {
+	// Collection requested to restore, as `database.collection`.
 	SourceNamespace string `json:"sourceNamespace"`
-	// Requested target namespace for the restored data; if empty, source namespace is used.
+	// Requested target collection as `database.collection`; if empty, source namespace is used.
 	TargetNamespace *string `json:"targetNamespace,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
@@ -14,31 +14,31 @@ type ApiAtlasRestoreNamespace struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiAtlasRestoreNamespace) MarshalJSON() ([]byte, error) {
-	type noMethod ApiAtlasRestoreNamespace
+func (o *ApiAtlasRestoreCollectionNamespace) MarshalJSON() ([]byte, error) {
+	type noMethod ApiAtlasRestoreCollectionNamespace
 	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
-// NewApiAtlasRestoreNamespace instantiates a new ApiAtlasRestoreNamespace object
+// NewApiAtlasRestoreCollectionNamespace instantiates a new ApiAtlasRestoreCollectionNamespace object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApiAtlasRestoreNamespace(sourceNamespace string) *ApiAtlasRestoreNamespace {
-	this := ApiAtlasRestoreNamespace{}
+func NewApiAtlasRestoreCollectionNamespace(sourceNamespace string) *ApiAtlasRestoreCollectionNamespace {
+	this := ApiAtlasRestoreCollectionNamespace{}
 	this.SourceNamespace = sourceNamespace
 	return &this
 }
 
-// NewApiAtlasRestoreNamespaceWithDefaults instantiates a new ApiAtlasRestoreNamespace object
+// NewApiAtlasRestoreCollectionNamespaceWithDefaults instantiates a new ApiAtlasRestoreCollectionNamespace object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewApiAtlasRestoreNamespaceWithDefaults() *ApiAtlasRestoreNamespace {
-	this := ApiAtlasRestoreNamespace{}
+func NewApiAtlasRestoreCollectionNamespaceWithDefaults() *ApiAtlasRestoreCollectionNamespace {
+	this := ApiAtlasRestoreCollectionNamespace{}
 	return &this
 }
 
 // GetSourceNamespace returns the SourceNamespace field value
-func (o *ApiAtlasRestoreNamespace) GetSourceNamespace() string {
+func (o *ApiAtlasRestoreCollectionNamespace) GetSourceNamespace() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -49,7 +49,7 @@ func (o *ApiAtlasRestoreNamespace) GetSourceNamespace() string {
 
 // GetSourceNamespaceOk returns a tuple with the SourceNamespace field value
 // and a boolean to check if the value has been set.
-func (o *ApiAtlasRestoreNamespace) GetSourceNamespaceOk() (*string, bool) {
+func (o *ApiAtlasRestoreCollectionNamespace) GetSourceNamespaceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -57,12 +57,12 @@ func (o *ApiAtlasRestoreNamespace) GetSourceNamespaceOk() (*string, bool) {
 }
 
 // SetSourceNamespace sets field value
-func (o *ApiAtlasRestoreNamespace) SetSourceNamespace(v string) {
+func (o *ApiAtlasRestoreCollectionNamespace) SetSourceNamespace(v string) {
 	o.SourceNamespace = v
 }
 
 // GetTargetNamespace returns the TargetNamespace field value if set, zero value otherwise
-func (o *ApiAtlasRestoreNamespace) GetTargetNamespace() string {
+func (o *ApiAtlasRestoreCollectionNamespace) GetTargetNamespace() string {
 	if o == nil || IsNil(o.TargetNamespace) {
 		var ret string
 		return ret
@@ -72,7 +72,7 @@ func (o *ApiAtlasRestoreNamespace) GetTargetNamespace() string {
 
 // GetTargetNamespaceOk returns a tuple with the TargetNamespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiAtlasRestoreNamespace) GetTargetNamespaceOk() (*string, bool) {
+func (o *ApiAtlasRestoreCollectionNamespace) GetTargetNamespaceOk() (*string, bool) {
 	if o == nil || IsNil(o.TargetNamespace) {
 		return nil, false
 	}
@@ -81,7 +81,7 @@ func (o *ApiAtlasRestoreNamespace) GetTargetNamespaceOk() (*string, bool) {
 }
 
 // HasTargetNamespace returns a boolean if a field has been set.
-func (o *ApiAtlasRestoreNamespace) HasTargetNamespace() bool {
+func (o *ApiAtlasRestoreCollectionNamespace) HasTargetNamespace() bool {
 	if o != nil && !IsNil(o.TargetNamespace) {
 		return true
 	}
@@ -90,13 +90,13 @@ func (o *ApiAtlasRestoreNamespace) HasTargetNamespace() bool {
 }
 
 // SetTargetNamespace gets a reference to the given string and assigns it to the TargetNamespace field.
-func (o *ApiAtlasRestoreNamespace) SetTargetNamespace(v string) {
+func (o *ApiAtlasRestoreCollectionNamespace) SetTargetNamespace(v string) {
 	o.TargetNamespace = &v
 	o.NullFields = removeNullField(o.NullFields, "TargetNamespace")
 }
 
 // SetTargetNamespaceNil sets TargetNamespace to an explicit JSON null when marshaled.
-func (o *ApiAtlasRestoreNamespace) SetTargetNamespaceNil() {
+func (o *ApiAtlasRestoreCollectionNamespace) SetTargetNamespaceNil() {
 	o.TargetNamespace = nil
 	o.NullFields = addNullField(o.NullFields, "TargetNamespace")
 }

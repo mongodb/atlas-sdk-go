@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CollectionSuffix** | Pointer to **string** | Optional suffix applied to restored collection names. | [optional] 
-**Collections** | Pointer to [**[]ApiAtlasRestoreNamespace**](ApiAtlasRestoreNamespace.md) | List of collections to restore (up to 100 items). | [optional] 
+**Collections** | Pointer to [**[]ApiAtlasRestoreCollectionNamespace**](ApiAtlasRestoreCollectionNamespace.md) | List of collections to restore (up to 100 items). | [optional] 
 **DatabaseSuffix** | Pointer to **string** | Optional suffix applied to restored database names. | [optional] 
-**Databases** | Pointer to [**[]ApiAtlasRestoreNamespace**](ApiAtlasRestoreNamespace.md) | List of databases to restore (up to 100 items). | [optional] 
+**Databases** | Pointer to [**[]ApiAtlasRestoreDatabaseNamespace**](ApiAtlasRestoreDatabaseNamespace.md) | List of databases to restore (up to 100 items). | [optional] 
 **IndexStrategy** | **string** | Strategy for restoring indexes (all, none, or all except TTL). | 
 **OplogInc** | Pointer to **int** | Oplog increment for point-in-time restore. | [optional] 
 **OplogTs** | Pointer to **int** | Oplog timestamp (seconds part) for point-in-time restore. | [optional] 
@@ -69,20 +69,20 @@ SetCollectionSuffixNil sets CollectionSuffix to an explicit JSON null when marsh
 
 ### GetCollections
 
-`func (o *ApiAtlasCollectionRestoreJobRequest) GetCollections() []ApiAtlasRestoreNamespace`
+`func (o *ApiAtlasCollectionRestoreJobRequest) GetCollections() []ApiAtlasRestoreCollectionNamespace`
 
 GetCollections returns the Collections field if non-nil, zero value otherwise.
 
 ### GetCollectionsOk
 
-`func (o *ApiAtlasCollectionRestoreJobRequest) GetCollectionsOk() (*[]ApiAtlasRestoreNamespace, bool)`
+`func (o *ApiAtlasCollectionRestoreJobRequest) GetCollectionsOk() (*[]ApiAtlasRestoreCollectionNamespace, bool)`
 
 GetCollectionsOk returns a tuple with the Collections field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCollections
 
-`func (o *ApiAtlasCollectionRestoreJobRequest) SetCollections(v []ApiAtlasRestoreNamespace)`
+`func (o *ApiAtlasCollectionRestoreJobRequest) SetCollections(v []ApiAtlasRestoreCollectionNamespace)`
 
 SetCollections sets Collections field to given value.
 
@@ -131,20 +131,20 @@ SetDatabaseSuffixNil sets DatabaseSuffix to an explicit JSON null when marshaled
 
 ### GetDatabases
 
-`func (o *ApiAtlasCollectionRestoreJobRequest) GetDatabases() []ApiAtlasRestoreNamespace`
+`func (o *ApiAtlasCollectionRestoreJobRequest) GetDatabases() []ApiAtlasRestoreDatabaseNamespace`
 
 GetDatabases returns the Databases field if non-nil, zero value otherwise.
 
 ### GetDatabasesOk
 
-`func (o *ApiAtlasCollectionRestoreJobRequest) GetDatabasesOk() (*[]ApiAtlasRestoreNamespace, bool)`
+`func (o *ApiAtlasCollectionRestoreJobRequest) GetDatabasesOk() (*[]ApiAtlasRestoreDatabaseNamespace, bool)`
 
 GetDatabasesOk returns a tuple with the Databases field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDatabases
 
-`func (o *ApiAtlasCollectionRestoreJobRequest) SetDatabases(v []ApiAtlasRestoreNamespace)`
+`func (o *ApiAtlasCollectionRestoreJobRequest) SetDatabases(v []ApiAtlasRestoreDatabaseNamespace)`
 
 SetDatabases sets Databases field to given value.
 

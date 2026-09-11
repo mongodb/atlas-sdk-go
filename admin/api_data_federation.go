@@ -426,6 +426,9 @@ func (a *DataFederationAPIService) CreateDataFederationExecute(r CreateDataFeder
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -556,6 +559,9 @@ func (a *DataFederationAPIService) CreatePrivateEndpointIdExecute(r CreatePrivat
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -677,9 +683,15 @@ func (a *DataFederationAPIService) DeleteDataFederationExecute(r DeleteDataFeder
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return nil, reportError("tenantName is empty and must be specified")
+	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return nil, reportError("tenantName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
@@ -788,13 +800,22 @@ func (a *DataFederationAPIService) DeleteDataFederationLimitExecute(r DeleteData
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return nil, reportError("tenantName is empty and must be specified")
 	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return nil, reportError("tenantName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 	if r.limitName == "" {
 		return nil, reportError("limitName is empty and must be specified")
+	}
+	if r.limitName == "." || r.limitName == ".." {
+		return nil, reportError("limitName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(r.limitName), -1)
 
@@ -898,9 +919,15 @@ func (a *DataFederationAPIService) DeletePrivateEndpointIdExecute(r DeletePrivat
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.endpointId == "" {
 		return nil, reportError("endpointId is empty and must be specified")
+	}
+	if r.endpointId == "." || r.endpointId == ".." {
+		return nil, reportError("endpointId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
 
@@ -1025,9 +1052,15 @@ func (a *DataFederationAPIService) DownloadFederationQueryLogsExecute(r Download
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
@@ -1154,9 +1187,15 @@ func (a *DataFederationAPIService) GetDataFederationExecute(r GetDataFederationA
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
@@ -1282,13 +1321,22 @@ func (a *DataFederationAPIService) GetDataFederationLimitExecute(r GetDataFedera
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
 	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 	if r.limitName == "" {
 		return localVarReturnValue, nil, reportError("limitName is empty and must be specified")
+	}
+	if r.limitName == "." || r.limitName == ".." {
+		return localVarReturnValue, nil, reportError("limitName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(r.limitName), -1)
 
@@ -1409,9 +1457,15 @@ func (a *DataFederationAPIService) GetPrivateEndpointIdExecute(r GetPrivateEndpo
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.endpointId == "" {
 		return localVarReturnValue, nil, reportError("endpointId is empty and must be specified")
+	}
+	if r.endpointId == "." || r.endpointId == ".." {
+		return localVarReturnValue, nil, reportError("endpointId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
 
@@ -1535,6 +1589,9 @@ func (a *DataFederationAPIService) ListDataFederationExecute(r ListDataFederatio
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/dataFederation"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -1662,9 +1719,15 @@ func (a *DataFederationAPIService) ListDataFederationLimitsExecute(r ListDataFed
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 
@@ -1806,6 +1869,9 @@ func (a *DataFederationAPIService) ListPrivateEndpointIdsExecute(r ListPrivateEn
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -1956,13 +2022,22 @@ func (a *DataFederationAPIService) SetDataFederationLimitExecute(r SetDataFedera
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
 	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 	if r.limitName == "" {
 		return localVarReturnValue, nil, reportError("limitName is empty and must be specified")
+	}
+	if r.limitName == "." || r.limitName == ".." {
+		return localVarReturnValue, nil, reportError("limitName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(r.limitName), -1)
 
@@ -2101,9 +2176,15 @@ func (a *DataFederationAPIService) UpdateDataFederationExecute(r UpdateDataFeder
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.tenantName == "" {
 		return localVarReturnValue, nil, reportError("tenantName is empty and must be specified")
+	}
+	if r.tenantName == "." || r.tenantName == ".." {
+		return localVarReturnValue, nil, reportError("tenantName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"tenantName"+"}", url.PathEscape(r.tenantName), -1)
 

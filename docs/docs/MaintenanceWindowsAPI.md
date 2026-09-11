@@ -357,7 +357,7 @@ func main() {
     }
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
-    groupMaintenanceWindow := *admin.NewGroupMaintenanceWindow(int(123)) // GroupMaintenanceWindow | 
+    groupMaintenanceWindow := *admin.NewGroupMaintenanceWindow() // GroupMaintenanceWindow | 
 
     r, err := sdk.MaintenanceWindowsAPI.UpdateMaintenanceWindow(context.Background(), groupId, &groupMaintenanceWindow).Execute()
     if err != nil {

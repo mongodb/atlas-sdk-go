@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **FirstSeen** | Pointer to [**QueryShapeSeenMetadata**](QueryShapeSeenMetadata.md) |  | [optional] 
 **LastSeen** | Pointer to [**QueryShapeSeenMetadata**](QueryShapeSeenMetadata.md) |  | [optional] 
 **QueryStats** | Pointer to [**QueryStatsSummary**](QueryStatsSummary.md) |  | [optional] 
+**QueryStatsCollection** | Pointer to [**QueryStatsCollectionResponse**](QueryStatsCollectionResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -119,6 +120,37 @@ HasQueryStats returns a boolean if a field has been set.
 `func (o *QueryStatsDetailsResponse) SetQueryStatsNil()`
 
 SetQueryStatsNil sets QueryStats to an explicit JSON null when marshaled, overriding any value previously set with SetQueryStats. Calling SetQueryStats again clears the null override.
+
+### GetQueryStatsCollection
+
+`func (o *QueryStatsDetailsResponse) GetQueryStatsCollection() QueryStatsCollectionResponse`
+
+GetQueryStatsCollection returns the QueryStatsCollection field if non-nil, zero value otherwise.
+
+### GetQueryStatsCollectionOk
+
+`func (o *QueryStatsDetailsResponse) GetQueryStatsCollectionOk() (*QueryStatsCollectionResponse, bool)`
+
+GetQueryStatsCollectionOk returns a tuple with the QueryStatsCollection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQueryStatsCollection
+
+`func (o *QueryStatsDetailsResponse) SetQueryStatsCollection(v QueryStatsCollectionResponse)`
+
+SetQueryStatsCollection sets QueryStatsCollection field to given value.
+
+### HasQueryStatsCollection
+
+`func (o *QueryStatsDetailsResponse) HasQueryStatsCollection() bool`
+
+HasQueryStatsCollection returns a boolean if a field has been set.
+
+### SetQueryStatsCollectionNil
+
+`func (o *QueryStatsDetailsResponse) SetQueryStatsCollectionNil()`
+
+SetQueryStatsCollectionNil sets QueryStatsCollection to an explicit JSON null when marshaled, overriding any value previously set with SetQueryStatsCollection. Calling SetQueryStatsCollection again clears the null override.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**CreateCluster**](ClustersAPI.md#CreateCluster) | **Post** /api/atlas/v2/groups/{groupId}/clusters | Create One Cluster in One Project
 [**DeleteCluster**](ClustersAPI.md#DeleteCluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Remove One Cluster from One Project
 [**GetCluster**](ClustersAPI.md#GetCluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Return One Cluster from One Project
+[**GetClusterAdaptiveSettings**](ClustersAPI.md#GetClusterAdaptiveSettings) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/adaptiveSettings | Return Adaptive Settings for One Cluster
 [**GetClusterStatus**](ClustersAPI.md#GetClusterStatus) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/status | Return Status of All Cluster Operations
 [**GetProcessArgs**](ClustersAPI.md#GetProcessArgs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Return Advanced Configuration Options for One Cluster
 [**GetSampleDatasetLoad**](ClustersAPI.md#GetSampleDatasetLoad) | **Get** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{sampleDatasetId} | Return Status of Sample Dataset Load for One Cluster
@@ -21,6 +22,7 @@ Method | HTTP request | Description
 [**RevokeMongoEmployeeAccess**](ClustersAPI.md#RevokeMongoEmployeeAccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess | Revoke MongoDB Employee Cluster Access for One Cluster
 [**UnpinFeatureCompatibilityVersion**](ClustersAPI.md#UnpinFeatureCompatibilityVersion) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:unpinFeatureCompatibilityVersion | Unpin Feature Compatibility Version for One Cluster in One Project
 [**UpdateCluster**](ClustersAPI.md#UpdateCluster) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Update One Cluster in One Project
+[**UpdateClusterAdaptiveSettings**](ClustersAPI.md#UpdateClusterAdaptiveSettings) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/adaptiveSettings | Update Adaptive Settings for One Cluster
 [**UpdateProcessArgs**](ClustersAPI.md#UpdateProcessArgs) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Update Advanced Configuration Options for One Cluster
 [**UpgradeClusterToServerless**](ClustersAPI.md#UpgradeClusterToServerless) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgradeToServerless | Upgrade One Shared-Tier Cluster to One Serverless Instance
 [**UpgradeTenantUpgrade**](ClustersAPI.md#UpgradeTenantUpgrade) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade | Upgrade One Shared-Tier Cluster
@@ -360,6 +362,89 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2024-08-05+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetClusterAdaptiveSettings
+
+> AdaptiveSettingsResponse GetClusterAdaptiveSettings(ctx, groupId, clusterName).Execute()
+
+Return Adaptive Settings for One Cluster
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+
+    resp, r, err := sdk.ClustersAPI.GetClusterAdaptiveSettings(context.Background(), groupId, clusterName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterAdaptiveSettings`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetClusterAdaptiveSettings`: AdaptiveSettingsResponse
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetClusterAdaptiveSettings`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetClusterAdaptiveSettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**AdaptiveSettingsResponse**](AdaptiveSettingsResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -1450,6 +1535,91 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/vnd.atlas.2024-10-23+json
 - **Accept**: application/vnd.atlas.2024-10-23+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateClusterAdaptiveSettings
+
+> AdaptiveSettingsResponse UpdateClusterAdaptiveSettings(ctx, groupId, clusterName, adaptiveSettingsUpdateRequest AdaptiveSettingsUpdateRequest).Execute()
+
+Update Adaptive Settings for One Cluster
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterName := "clusterName_example" // string | 
+    adaptiveSettingsUpdateRequest := *admin.NewAdaptiveSettingsUpdateRequest() // AdaptiveSettingsUpdateRequest | 
+
+    resp, r, err := sdk.ClustersAPI.UpdateClusterAdaptiveSettings(context.Background(), groupId, clusterName, &adaptiveSettingsUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.UpdateClusterAdaptiveSettings`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `UpdateClusterAdaptiveSettings`: AdaptiveSettingsResponse
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.UpdateClusterAdaptiveSettings`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**clusterName** | **string** | Human-readable label that identifies the cluster. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateClusterAdaptiveSettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **adaptiveSettingsUpdateRequest** | [**AdaptiveSettingsUpdateRequest**](AdaptiveSettingsUpdateRequest.md) | Adaptive Settings overrides to apply to the specified cluster. The supplied &#x60;adaptiveSettingsOverrides&#x60; map fully replaces the existing overrides: any override omitted from the map returns to its Atlas-managed default. Omitting the &#x60;adaptiveSettingsOverrides&#x60; field entirely preserves the existing overrides, an empty map clears all overrides, and &#x60;null&#x60; resets the field and omits it from responses until it is set again. | 
+
+### Return type
+
+[**AdaptiveSettingsResponse**](AdaptiveSettingsResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2025-03-12+json
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

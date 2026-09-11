@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**QueryStatsCollection** | Pointer to [**QueryStatsCollectionResponse**](QueryStatsCollectionResponse.md) |  | [optional] 
 **Summaries** | Pointer to [**[]QueryStatsSummary**](QueryStatsSummary.md) | List of query shape statistic summaries from Query Shape Insights. | [optional] 
 
 ## Methods
@@ -24,6 +25,37 @@ will change when the set of required properties is changed
 NewQueryStatsSummaryListResponseWithDefaults instantiates a new QueryStatsSummaryListResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetQueryStatsCollection
+
+`func (o *QueryStatsSummaryListResponse) GetQueryStatsCollection() QueryStatsCollectionResponse`
+
+GetQueryStatsCollection returns the QueryStatsCollection field if non-nil, zero value otherwise.
+
+### GetQueryStatsCollectionOk
+
+`func (o *QueryStatsSummaryListResponse) GetQueryStatsCollectionOk() (*QueryStatsCollectionResponse, bool)`
+
+GetQueryStatsCollectionOk returns a tuple with the QueryStatsCollection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQueryStatsCollection
+
+`func (o *QueryStatsSummaryListResponse) SetQueryStatsCollection(v QueryStatsCollectionResponse)`
+
+SetQueryStatsCollection sets QueryStatsCollection field to given value.
+
+### HasQueryStatsCollection
+
+`func (o *QueryStatsSummaryListResponse) HasQueryStatsCollection() bool`
+
+HasQueryStatsCollection returns a boolean if a field has been set.
+
+### SetQueryStatsCollectionNil
+
+`func (o *QueryStatsSummaryListResponse) SetQueryStatsCollectionNil()`
+
+SetQueryStatsCollectionNil sets QueryStatsCollection to an explicit JSON null when marshaled, overriding any value previously set with SetQueryStatsCollection. Calling SetQueryStatsCollection again clears the null override.
 
 ### GetSummaries
 

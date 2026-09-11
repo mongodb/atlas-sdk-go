@@ -660,6 +660,9 @@ func (a *ProjectsAPIService) AddGroupUserExecute(r AddGroupUserApiRequest) (*Org
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -913,6 +916,9 @@ func (a *ProjectsAPIService) CreateGroupInviteExecute(r CreateGroupInviteApiRequ
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1029,6 +1035,9 @@ func (a *ProjectsAPIService) DeleteGroupExecute(r DeleteGroupApiRequest) (*http.
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1134,9 +1143,15 @@ func (a *ProjectsAPIService) DeleteGroupInviteExecute(r DeleteGroupInviteApiRequ
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.invitationId == "" {
 		return nil, reportError("invitationId is empty and must be specified")
+	}
+	if r.invitationId == "." || r.invitationId == ".." {
+		return nil, reportError("invitationId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 
@@ -1240,9 +1255,15 @@ func (a *ProjectsAPIService) DeleteGroupLimitExecute(r DeleteGroupLimitApiReques
 	if r.limitName == "" {
 		return nil, reportError("limitName is empty and must be specified")
 	}
+	if r.limitName == "." || r.limitName == ".." {
+		return nil, reportError("limitName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(r.limitName), -1)
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -1343,6 +1364,9 @@ func (a *ProjectsAPIService) GetGroupExecute(r GetGroupApiRequest) (*Group, *htt
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -1457,6 +1481,9 @@ func (a *ProjectsAPIService) GetGroupByNameExecute(r GetGroupByNameApiRequest) (
 	localVarPath := localBasePath + "/api/atlas/v2/groups/byName/{groupName}"
 	if r.groupName == "" {
 		return localVarReturnValue, nil, reportError("groupName is empty and must be specified")
+	}
+	if r.groupName == "." || r.groupName == ".." {
+		return localVarReturnValue, nil, reportError("groupName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupName"+"}", url.PathEscape(r.groupName), -1)
 
@@ -1581,9 +1608,15 @@ func (a *ProjectsAPIService) GetGroupInviteExecute(r GetGroupInviteApiRequest) (
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.invitationId == "" {
 		return localVarReturnValue, nil, reportError("invitationId is empty and must be specified")
+	}
+	if r.invitationId == "." || r.invitationId == ".." {
+		return localVarReturnValue, nil, reportError("invitationId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 
@@ -1698,6 +1731,9 @@ func (a *ProjectsAPIService) GetGroupIpAddressesExecute(r GetGroupIpAddressesApi
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/ipAddresses"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -1818,9 +1854,15 @@ func (a *ProjectsAPIService) GetGroupLimitExecute(r GetGroupLimitApiRequest) (*D
 	if r.limitName == "" {
 		return localVarReturnValue, nil, reportError("limitName is empty and must be specified")
 	}
+	if r.limitName == "." || r.limitName == ".." {
+		return localVarReturnValue, nil, reportError("limitName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(r.limitName), -1)
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -1935,6 +1977,9 @@ func (a *ProjectsAPIService) GetGroupSettingsExecute(r GetGroupSettingsApiReques
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/settings"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -2095,6 +2140,9 @@ func (a *ProjectsAPIService) GetMongoDbVersionsExecute(r GetMongoDbVersionsApiRe
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2245,6 +2293,9 @@ func (a *ProjectsAPIService) ListGroupInvitesExecute(r ListGroupInvitesApiReques
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2361,6 +2412,9 @@ func (a *ProjectsAPIService) ListGroupLimitsExecute(r ListGroupLimitsApiRequest)
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/limits"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -2633,6 +2687,9 @@ func (a *ProjectsAPIService) MigrateGroupExecute(r MigrateGroupApiRequest) (*Gro
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2763,9 +2820,15 @@ func (a *ProjectsAPIService) SetGroupLimitExecute(r SetGroupLimitApiRequest) (*D
 	if r.limitName == "" {
 		return localVarReturnValue, nil, reportError("limitName is empty and must be specified")
 	}
+	if r.limitName == "." || r.limitName == ".." {
+		return localVarReturnValue, nil, reportError("limitName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"limitName"+"}", url.PathEscape(r.limitName), -1)
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -2889,6 +2952,9 @@ func (a *ProjectsAPIService) UpdateGroupExecute(r UpdateGroupApiRequest) (*Group
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -3017,6 +3083,9 @@ func (a *ProjectsAPIService) UpdateGroupInvitesExecute(r UpdateGroupInvitesApiRe
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -3139,6 +3208,9 @@ func (a *ProjectsAPIService) UpdateGroupSettingsExecute(r UpdateGroupSettingsApi
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/settings"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -3272,9 +3344,15 @@ func (a *ProjectsAPIService) UpdateGroupUserRolesExecute(r UpdateGroupUserRolesA
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.userId == "" {
 		return localVarReturnValue, nil, reportError("userId is empty and must be specified")
+	}
+	if r.userId == "." || r.userId == ".." {
+		return localVarReturnValue, nil, reportError("userId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"userId"+"}", url.PathEscape(r.userId), -1)
 
@@ -3408,9 +3486,15 @@ func (a *ProjectsAPIService) UpdateInviteByIdExecute(r UpdateInviteByIdApiReques
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.invitationId == "" {
 		return localVarReturnValue, nil, reportError("invitationId is empty and must be specified")
+	}
+	if r.invitationId == "." || r.invitationId == ".." {
+		return localVarReturnValue, nil, reportError("invitationId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invitationId"+"}", url.PathEscape(r.invitationId), -1)
 

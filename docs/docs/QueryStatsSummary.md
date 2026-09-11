@@ -6,15 +6,22 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AvgWorkingMillis** | Pointer to **float64** | Average total time in milliseconds spent running queries with the given query shape. If the query resulted in &#x60;getMore&#x60; commands, this metric includes the time spent processing the &#x60;getMore&#x60; requests. This metric does not include time spent waiting for the client. | [optional] 
 **BytesRead** | Pointer to **float64** | The number of bytes read by the given query shape from the disk to the cache. | [optional] 
-**Command** | Pointer to **string** | The MongoDB command issued for this query shape. | [optional] 
+**Command** | Pointer to **string** | The MongoDB command issued for this query shape. The insert, update, and delete commands appear only for clusters running MongoDB 9.0 or later. | [optional] 
 **CpuTime** | Pointer to **float64** | Total CPU time in nanoseconds consumed by queries with the given query shape. Available for MDB 8.2 and higher. | [optional] 
 **DocsExamined** | Pointer to **float64** | Total number of documents examined by queries with the given query shape. | [optional] 
 **DocsExaminedRatio** | Pointer to **float64** | Ratio of documents examined to documents returned by queries with the given query shape. | [optional] 
 **DocsReturned** | Pointer to **float64** | Total number of documents returned by queries with the given query shape. | [optional] 
 **ExecCount** | Pointer to **float64** | Total number of times that queries with the given query shape have been executed. | [optional] 
+**KeysDeleted** | Pointer to **float64** | Total number of index keys deleted by queries with the given query shape. Available for MongoDB 9.0+ write commands. | [optional] 
 **KeysExamined** | Pointer to **float64** | Total number of in-bounds and out-of-bounds index keys examined by queries with the given query shape. | [optional] 
 **KeysExaminedRatio** | Pointer to **float64** | Ratio of in-bounds and out-of-bounds index keys examined to indexes containing documents returned by queries with the given query shape. | [optional] 
+**KeysInserted** | Pointer to **float64** | Total number of index keys inserted by queries with the given query shape. Available for MongoDB 9.0+ write commands. | [optional] 
 **LastExecMicros** | Pointer to **float64** | Execution runtime in microseconds for the most recent query with the given query shape. | [optional] 
+**NDeleted** | Pointer to **float64** | Total number of documents deleted by queries with the given query shape. Available for MongoDB 9.0+ write commands. | [optional] 
+**NInserted** | Pointer to **float64** | Total number of documents inserted by queries with the given query shape. Available for MongoDB 9.0+ write commands. | [optional] 
+**NMatched** | Pointer to **float64** | Total number of documents matched by queries with the given query shape. Available for MongoDB 9.0+ write commands. | [optional] 
+**NModified** | Pointer to **float64** | Total number of documents modified by queries with the given query shape. Available for MongoDB 9.0+ write commands. | [optional] 
+**NUpserted** | Pointer to **float64** | Total number of documents upserted by queries with the given query shape. Available for MongoDB 9.0+ write commands. | [optional] 
 **Namespace** | Pointer to **string** | Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as &#x60;&lt;database&gt;.&lt;collection&gt;&#x60;. | [optional] 
 **P50ExecMicros** | Pointer to **float64** | The 50th percentile value of execution time in microseconds. This field is deprecated as the values it reports may be inaccurate. It will be removed in a future release. | [optional] 
 **P90ExecMicros** | Pointer to **float64** | The 90th percentile value of execution time in microseconds. This field is deprecated as the values it reports may be inaccurate. It will be removed in a future release. | [optional] 
@@ -292,6 +299,37 @@ HasExecCount returns a boolean if a field has been set.
 
 SetExecCountNil sets ExecCount to an explicit JSON null when marshaled, overriding any value previously set with SetExecCount. Calling SetExecCount again clears the null override.
 
+### GetKeysDeleted
+
+`func (o *QueryStatsSummary) GetKeysDeleted() float64`
+
+GetKeysDeleted returns the KeysDeleted field if non-nil, zero value otherwise.
+
+### GetKeysDeletedOk
+
+`func (o *QueryStatsSummary) GetKeysDeletedOk() (*float64, bool)`
+
+GetKeysDeletedOk returns a tuple with the KeysDeleted field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeysDeleted
+
+`func (o *QueryStatsSummary) SetKeysDeleted(v float64)`
+
+SetKeysDeleted sets KeysDeleted field to given value.
+
+### HasKeysDeleted
+
+`func (o *QueryStatsSummary) HasKeysDeleted() bool`
+
+HasKeysDeleted returns a boolean if a field has been set.
+
+### SetKeysDeletedNil
+
+`func (o *QueryStatsSummary) SetKeysDeletedNil()`
+
+SetKeysDeletedNil sets KeysDeleted to an explicit JSON null when marshaled, overriding any value previously set with SetKeysDeleted. Calling SetKeysDeleted again clears the null override.
+
 ### GetKeysExamined
 
 `func (o *QueryStatsSummary) GetKeysExamined() float64`
@@ -354,6 +392,37 @@ HasKeysExaminedRatio returns a boolean if a field has been set.
 
 SetKeysExaminedRatioNil sets KeysExaminedRatio to an explicit JSON null when marshaled, overriding any value previously set with SetKeysExaminedRatio. Calling SetKeysExaminedRatio again clears the null override.
 
+### GetKeysInserted
+
+`func (o *QueryStatsSummary) GetKeysInserted() float64`
+
+GetKeysInserted returns the KeysInserted field if non-nil, zero value otherwise.
+
+### GetKeysInsertedOk
+
+`func (o *QueryStatsSummary) GetKeysInsertedOk() (*float64, bool)`
+
+GetKeysInsertedOk returns a tuple with the KeysInserted field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeysInserted
+
+`func (o *QueryStatsSummary) SetKeysInserted(v float64)`
+
+SetKeysInserted sets KeysInserted field to given value.
+
+### HasKeysInserted
+
+`func (o *QueryStatsSummary) HasKeysInserted() bool`
+
+HasKeysInserted returns a boolean if a field has been set.
+
+### SetKeysInsertedNil
+
+`func (o *QueryStatsSummary) SetKeysInsertedNil()`
+
+SetKeysInsertedNil sets KeysInserted to an explicit JSON null when marshaled, overriding any value previously set with SetKeysInserted. Calling SetKeysInserted again clears the null override.
+
 ### GetLastExecMicros
 
 `func (o *QueryStatsSummary) GetLastExecMicros() float64`
@@ -384,6 +453,161 @@ HasLastExecMicros returns a boolean if a field has been set.
 `func (o *QueryStatsSummary) SetLastExecMicrosNil()`
 
 SetLastExecMicrosNil sets LastExecMicros to an explicit JSON null when marshaled, overriding any value previously set with SetLastExecMicros. Calling SetLastExecMicros again clears the null override.
+
+### GetNDeleted
+
+`func (o *QueryStatsSummary) GetNDeleted() float64`
+
+GetNDeleted returns the NDeleted field if non-nil, zero value otherwise.
+
+### GetNDeletedOk
+
+`func (o *QueryStatsSummary) GetNDeletedOk() (*float64, bool)`
+
+GetNDeletedOk returns a tuple with the NDeleted field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNDeleted
+
+`func (o *QueryStatsSummary) SetNDeleted(v float64)`
+
+SetNDeleted sets NDeleted field to given value.
+
+### HasNDeleted
+
+`func (o *QueryStatsSummary) HasNDeleted() bool`
+
+HasNDeleted returns a boolean if a field has been set.
+
+### SetNDeletedNil
+
+`func (o *QueryStatsSummary) SetNDeletedNil()`
+
+SetNDeletedNil sets NDeleted to an explicit JSON null when marshaled, overriding any value previously set with SetNDeleted. Calling SetNDeleted again clears the null override.
+
+### GetNInserted
+
+`func (o *QueryStatsSummary) GetNInserted() float64`
+
+GetNInserted returns the NInserted field if non-nil, zero value otherwise.
+
+### GetNInsertedOk
+
+`func (o *QueryStatsSummary) GetNInsertedOk() (*float64, bool)`
+
+GetNInsertedOk returns a tuple with the NInserted field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNInserted
+
+`func (o *QueryStatsSummary) SetNInserted(v float64)`
+
+SetNInserted sets NInserted field to given value.
+
+### HasNInserted
+
+`func (o *QueryStatsSummary) HasNInserted() bool`
+
+HasNInserted returns a boolean if a field has been set.
+
+### SetNInsertedNil
+
+`func (o *QueryStatsSummary) SetNInsertedNil()`
+
+SetNInsertedNil sets NInserted to an explicit JSON null when marshaled, overriding any value previously set with SetNInserted. Calling SetNInserted again clears the null override.
+
+### GetNMatched
+
+`func (o *QueryStatsSummary) GetNMatched() float64`
+
+GetNMatched returns the NMatched field if non-nil, zero value otherwise.
+
+### GetNMatchedOk
+
+`func (o *QueryStatsSummary) GetNMatchedOk() (*float64, bool)`
+
+GetNMatchedOk returns a tuple with the NMatched field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNMatched
+
+`func (o *QueryStatsSummary) SetNMatched(v float64)`
+
+SetNMatched sets NMatched field to given value.
+
+### HasNMatched
+
+`func (o *QueryStatsSummary) HasNMatched() bool`
+
+HasNMatched returns a boolean if a field has been set.
+
+### SetNMatchedNil
+
+`func (o *QueryStatsSummary) SetNMatchedNil()`
+
+SetNMatchedNil sets NMatched to an explicit JSON null when marshaled, overriding any value previously set with SetNMatched. Calling SetNMatched again clears the null override.
+
+### GetNModified
+
+`func (o *QueryStatsSummary) GetNModified() float64`
+
+GetNModified returns the NModified field if non-nil, zero value otherwise.
+
+### GetNModifiedOk
+
+`func (o *QueryStatsSummary) GetNModifiedOk() (*float64, bool)`
+
+GetNModifiedOk returns a tuple with the NModified field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNModified
+
+`func (o *QueryStatsSummary) SetNModified(v float64)`
+
+SetNModified sets NModified field to given value.
+
+### HasNModified
+
+`func (o *QueryStatsSummary) HasNModified() bool`
+
+HasNModified returns a boolean if a field has been set.
+
+### SetNModifiedNil
+
+`func (o *QueryStatsSummary) SetNModifiedNil()`
+
+SetNModifiedNil sets NModified to an explicit JSON null when marshaled, overriding any value previously set with SetNModified. Calling SetNModified again clears the null override.
+
+### GetNUpserted
+
+`func (o *QueryStatsSummary) GetNUpserted() float64`
+
+GetNUpserted returns the NUpserted field if non-nil, zero value otherwise.
+
+### GetNUpsertedOk
+
+`func (o *QueryStatsSummary) GetNUpsertedOk() (*float64, bool)`
+
+GetNUpsertedOk returns a tuple with the NUpserted field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNUpserted
+
+`func (o *QueryStatsSummary) SetNUpserted(v float64)`
+
+SetNUpserted sets NUpserted field to given value.
+
+### HasNUpserted
+
+`func (o *QueryStatsSummary) HasNUpserted() bool`
+
+HasNUpserted returns a boolean if a field has been set.
+
+### SetNUpsertedNil
+
+`func (o *QueryStatsSummary) SetNUpsertedNil()`
+
+SetNUpsertedNil sets NUpserted to an explicit JSON null when marshaled, overriding any value previously set with SetNUpserted. Calling SetNUpserted again clears the null override.
 
 ### GetNamespace
 
