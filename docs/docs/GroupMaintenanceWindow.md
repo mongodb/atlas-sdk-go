@@ -5,18 +5,20 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AutoDeferOnceEnabled** | Pointer to **bool** | Flag that indicates whether MongoDB Cloud should defer all maintenance windows for one week after you enable them. This setting controls the same underlying auto-deferral feature as the &#x60;/maintenanceWindow/autoDefer&#x60; endpoint. Use either this field (to set a specific value) or that endpoint (to toggle the current value). For most use cases, this field in the PATCH request is preferred because it allows setting an explicit value rather than toggling. | [optional] 
-**DayOfWeek** | **int** | One-based integer that represents the day of the week, in the project&#39;s configured time zone (see &#x60;timeZoneId&#x60;), that the maintenance window starts.  - &#x60;1&#x60;: Sunday. - &#x60;2&#x60;: Monday. - &#x60;3&#x60;: Tuesday. - &#x60;4&#x60;: Wednesday. - &#x60;5&#x60;: Thursday. - &#x60;6&#x60;: Friday. - &#x60;7&#x60;: Saturday. | 
+**DayOfWeek** | Pointer to **int** | One-based integer that represents the day of the week, in the project&#39;s configured time zone (see &#x60;timeZoneId&#x60;), that the maintenance window starts.  - &#x60;1&#x60;: Sunday. - &#x60;2&#x60;: Monday. - &#x60;3&#x60;: Tuesday. - &#x60;4&#x60;: Wednesday. - &#x60;5&#x60;: Thursday. - &#x60;6&#x60;: Friday. - &#x60;7&#x60;: Saturday. | [optional] 
+**EffectiveWaveAssignment** | Pointer to **int** | Maintenance wave that Atlas uses when scheduling maintenance for this project. This read-only value can differ from &#x60;waveAssignment&#x60; in two scenarios: (1) when the organization&#39;s &#x60;effectiveWaveAssignmentMode&#x60; is &#x60;ENV_TAG_MAPPING&#x60;, the effective wave is derived from environment tags regardless of any explicit assignment; (2) when cross-organization maintenance sequencing is active and this project&#39;s organization is a linked non-paying organization, the effective wave reflects the paying organization&#39;s mode. | [optional] [readonly] 
 **HourOfDay** | Pointer to **int** | Zero-based integer that represents the hour of the day, in the project&#39;s configured time zone (see &#x60;timeZoneId&#x60;), that the maintenance window starts according to a 24-hour clock. Use &#x60;0&#x60; for midnight and &#x60;12&#x60; for noon. If you haven&#39;t changed your project&#39;s time zone, this defaults to UTC. | [optional] 
 **NumberOfDeferrals** | Pointer to **int** | Number of times the current maintenance event for this project has been deferred. | [optional] [readonly] 
 **ProtectedHours** | Pointer to [**ProtectedHours**](ProtectedHours.md) |  | [optional] 
 **StartASAP** | Pointer to **bool** | Flag that indicates whether MongoDB Cloud starts the maintenance window immediately upon receiving this request. To start the maintenance window immediately for your project, MongoDB Cloud must have maintenance scheduled and you must set a maintenance window. This flag resets to &#x60;false&#x60; after MongoDB Cloud completes maintenance. | [optional] 
 **TimeZoneId** | Pointer to **string** | Identifier for the current time zone of the maintenance window. This can only be updated via the Project Settings UI. | [optional] [readonly] 
+**WaveAssignment** | Pointer to **int** | Maintenance wave explicitly assigned to this project. Always returned in GET responses when a value has been set, regardless of the organization&#39;s &#x60;effectiveWaveAssignmentMode&#x60;. When the mode is &#x60;ENV_TAG_MAPPING&#x60;, this stored assignment is preserved but not used for scheduling — the effective wave is derived from environment tags instead. Not editable when the mode is &#x60;ENV_TAG_MAPPING&#x60;. Switching back to &#x60;MANUAL&#x60; restores this value as the effective wave. Must be between 1 and 3, inclusive. Pass &#x60;null&#x60; to clear an explicit assignment. | [optional] 
 
 ## Methods
 
 ### NewGroupMaintenanceWindow
 
-`func NewGroupMaintenanceWindow(dayOfWeek int, ) *GroupMaintenanceWindow`
+`func NewGroupMaintenanceWindow() *GroupMaintenanceWindow`
 
 NewGroupMaintenanceWindow instantiates a new GroupMaintenanceWindow object
 This constructor will assign default values to properties that have it defined,
@@ -80,6 +82,49 @@ and a boolean to check if the value has been set.
 `func (o *GroupMaintenanceWindow) SetDayOfWeek(v int)`
 
 SetDayOfWeek sets DayOfWeek field to given value.
+
+### HasDayOfWeek
+
+`func (o *GroupMaintenanceWindow) HasDayOfWeek() bool`
+
+HasDayOfWeek returns a boolean if a field has been set.
+
+### SetDayOfWeekNil
+
+`func (o *GroupMaintenanceWindow) SetDayOfWeekNil()`
+
+SetDayOfWeekNil sets DayOfWeek to an explicit JSON null when marshaled, overriding any value previously set with SetDayOfWeek. Calling SetDayOfWeek again clears the null override.
+
+### GetEffectiveWaveAssignment
+
+`func (o *GroupMaintenanceWindow) GetEffectiveWaveAssignment() int`
+
+GetEffectiveWaveAssignment returns the EffectiveWaveAssignment field if non-nil, zero value otherwise.
+
+### GetEffectiveWaveAssignmentOk
+
+`func (o *GroupMaintenanceWindow) GetEffectiveWaveAssignmentOk() (*int, bool)`
+
+GetEffectiveWaveAssignmentOk returns a tuple with the EffectiveWaveAssignment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEffectiveWaveAssignment
+
+`func (o *GroupMaintenanceWindow) SetEffectiveWaveAssignment(v int)`
+
+SetEffectiveWaveAssignment sets EffectiveWaveAssignment field to given value.
+
+### HasEffectiveWaveAssignment
+
+`func (o *GroupMaintenanceWindow) HasEffectiveWaveAssignment() bool`
+
+HasEffectiveWaveAssignment returns a boolean if a field has been set.
+
+### SetEffectiveWaveAssignmentNil
+
+`func (o *GroupMaintenanceWindow) SetEffectiveWaveAssignmentNil()`
+
+SetEffectiveWaveAssignmentNil sets EffectiveWaveAssignment to an explicit JSON null when marshaled, overriding any value previously set with SetEffectiveWaveAssignment. Calling SetEffectiveWaveAssignment again clears the null override.
 
 ### GetHourOfDay
 
@@ -235,6 +280,37 @@ HasTimeZoneId returns a boolean if a field has been set.
 `func (o *GroupMaintenanceWindow) SetTimeZoneIdNil()`
 
 SetTimeZoneIdNil sets TimeZoneId to an explicit JSON null when marshaled, overriding any value previously set with SetTimeZoneId. Calling SetTimeZoneId again clears the null override.
+
+### GetWaveAssignment
+
+`func (o *GroupMaintenanceWindow) GetWaveAssignment() int`
+
+GetWaveAssignment returns the WaveAssignment field if non-nil, zero value otherwise.
+
+### GetWaveAssignmentOk
+
+`func (o *GroupMaintenanceWindow) GetWaveAssignmentOk() (*int, bool)`
+
+GetWaveAssignmentOk returns a tuple with the WaveAssignment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWaveAssignment
+
+`func (o *GroupMaintenanceWindow) SetWaveAssignment(v int)`
+
+SetWaveAssignment sets WaveAssignment field to given value.
+
+### HasWaveAssignment
+
+`func (o *GroupMaintenanceWindow) HasWaveAssignment() bool`
+
+HasWaveAssignment returns a boolean if a field has been set.
+
+### SetWaveAssignmentNil
+
+`func (o *GroupMaintenanceWindow) SetWaveAssignmentNil()`
+
+SetWaveAssignmentNil sets WaveAssignment to an explicit JSON null when marshaled, overriding any value previously set with SetWaveAssignment. Calling SetWaveAssignment again clears the null override.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

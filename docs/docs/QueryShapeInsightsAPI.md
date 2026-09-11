@@ -29,7 +29,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -115,7 +115,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -207,7 +207,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -298,7 +298,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -358,7 +358,7 @@ Name | Type | Description  | Notes
  **until** | **int64** | Date and time up until which to retrieve query shape statistics. This parameter expresses its value in the number of milliseconds that have elapsed since the [UNIX epoch](https://en.wikipedia.org/wiki/Unix_time).  - If you specify the **until** parameter, you must specify the **since** parameter. - If you specify neither the **since** nor the **until** parameters, the endpoint returns data from the previous 24 hours. | 
  **processIds** | **[]string** | Process IDs from which to retrieve query shape statistics. A &#x60;processId&#x60; is a combination of host and port that serves the MongoDB process. The host must be the hostname, FQDN, IPv4 address, or IPv6 address of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. To include multiple &#x60;processId&#x60;, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each &#x60;processId&#x60;. | 
  **namespaces** | **[]string** | Namespaces from which to retrieve query shape statistics. A namespace consists of one database and one collection resource written as &#x60;.&#x60;: &#x60;&lt;database&gt;.&lt;collection&gt;&#x60;. To include multiple namespaces, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each namespace. Omit this parameter to return results for all namespaces. | 
- **commands** | **[]string** | Retrieve query shape statistics matching specified MongoDB commands. To include multiple commands, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each command. The currently supported parameters are find, distinct, and aggregate. Omit this parameter to return results for all supported commands. | 
+ **commands** | **[]string** | Retrieve query shape statistics matching specified MongoDB commands. To include multiple commands, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each command. The currently supported parameters are: find, distinct, aggregate, count, insert, update, and delete. The insert, update, and delete commands return results only for clusters running MongoDB 9.0 or later with write query shape statistics enabled for the project. Omit this parameter to return results for all supported commands. | 
  **nSummaries** | **int64** | Maximum number of query statistic summaries to return. | [default to 100]
  **series** | **[]string** | Query shape statistics data series to retrieve. A series represents a specific metric about query execution. To include multiple series, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each series. Omit this parameter to return results for all available series. The &#x60;P50_EXECUTION_TIME&#x60;, &#x60;P90_EXECUTION_TIME&#x60;, and &#x60;P99_EXECUTION_TIME&#x60; series are deprecated as the values they report may be inaccurate. They will be removed in a future release. | 
  **queryShapeHashes** | **[]string** | A list of SHA256 hashes of desired query shapes, output by MongoDB commands like &#x60;$queryStats&#x60; and $explain or slow query logs. To include multiple series, pass the parameter multiple times delimited with an ampersand (&#x60;&amp;&#x60;) between each series. Omit this parameter to return results for all available series. | 
@@ -397,7 +397,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {

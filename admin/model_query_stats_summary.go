@@ -8,7 +8,7 @@ type QueryStatsSummary struct {
 	AvgWorkingMillis *float64 `json:"avgWorkingMillis,omitempty"`
 	// The number of bytes read by the given query shape from the disk to the cache.
 	BytesRead *float64 `json:"bytesRead,omitempty"`
-	// The MongoDB command issued for this query shape.
+	// The MongoDB command issued for this query shape. The insert, update, and delete commands appear only for clusters running MongoDB 9.0 or later.
 	Command *string `json:"command,omitempty"`
 	// Total CPU time in nanoseconds consumed by queries with the given query shape. Available for MDB 8.2 and higher.
 	CpuTime *float64 `json:"cpuTime,omitempty"`
@@ -20,12 +20,26 @@ type QueryStatsSummary struct {
 	DocsReturned *float64 `json:"docsReturned,omitempty"`
 	// Total number of times that queries with the given query shape have been executed.
 	ExecCount *float64 `json:"execCount,omitempty"`
+	// Total number of index keys deleted by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+	KeysDeleted *float64 `json:"keysDeleted,omitempty"`
 	// Total number of in-bounds and out-of-bounds index keys examined by queries with the given query shape.
 	KeysExamined *float64 `json:"keysExamined,omitempty"`
 	// Ratio of in-bounds and out-of-bounds index keys examined to indexes containing documents returned by queries with the given query shape.
 	KeysExaminedRatio *float64 `json:"keysExaminedRatio,omitempty"`
+	// Total number of index keys inserted by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+	KeysInserted *float64 `json:"keysInserted,omitempty"`
 	// Execution runtime in microseconds for the most recent query with the given query shape.
 	LastExecMicros *float64 `json:"lastExecMicros,omitempty"`
+	// Total number of documents deleted by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+	NDeleted *float64 `json:"nDeleted,omitempty"`
+	// Total number of documents inserted by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+	NInserted *float64 `json:"nInserted,omitempty"`
+	// Total number of documents matched by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+	NMatched *float64 `json:"nMatched,omitempty"`
+	// Total number of documents modified by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+	NModified *float64 `json:"nModified,omitempty"`
+	// Total number of documents upserted by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+	NUpserted *float64 `json:"nUpserted,omitempty"`
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
 	Namespace *string `json:"namespace,omitempty"`
 	// The 50th percentile value of execution time in microseconds. This field is deprecated as the values it reports may be inaccurate. It will be removed in a future release.
@@ -395,6 +409,46 @@ func (o *QueryStatsSummary) SetExecCountNil() {
 	o.NullFields = addNullField(o.NullFields, "ExecCount")
 }
 
+// GetKeysDeleted returns the KeysDeleted field value if set, zero value otherwise
+func (o *QueryStatsSummary) GetKeysDeleted() float64 {
+	if o == nil || IsNil(o.KeysDeleted) {
+		var ret float64
+		return ret
+	}
+	return *o.KeysDeleted
+}
+
+// GetKeysDeletedOk returns a tuple with the KeysDeleted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummary) GetKeysDeletedOk() (*float64, bool) {
+	if o == nil || IsNil(o.KeysDeleted) {
+		return nil, false
+	}
+
+	return o.KeysDeleted, true
+}
+
+// HasKeysDeleted returns a boolean if a field has been set.
+func (o *QueryStatsSummary) HasKeysDeleted() bool {
+	if o != nil && !IsNil(o.KeysDeleted) {
+		return true
+	}
+
+	return false
+}
+
+// SetKeysDeleted gets a reference to the given float64 and assigns it to the KeysDeleted field.
+func (o *QueryStatsSummary) SetKeysDeleted(v float64) {
+	o.KeysDeleted = &v
+	o.NullFields = removeNullField(o.NullFields, "KeysDeleted")
+}
+
+// SetKeysDeletedNil sets KeysDeleted to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetKeysDeletedNil() {
+	o.KeysDeleted = nil
+	o.NullFields = addNullField(o.NullFields, "KeysDeleted")
+}
+
 // GetKeysExamined returns the KeysExamined field value if set, zero value otherwise
 func (o *QueryStatsSummary) GetKeysExamined() float64 {
 	if o == nil || IsNil(o.KeysExamined) {
@@ -475,6 +529,46 @@ func (o *QueryStatsSummary) SetKeysExaminedRatioNil() {
 	o.NullFields = addNullField(o.NullFields, "KeysExaminedRatio")
 }
 
+// GetKeysInserted returns the KeysInserted field value if set, zero value otherwise
+func (o *QueryStatsSummary) GetKeysInserted() float64 {
+	if o == nil || IsNil(o.KeysInserted) {
+		var ret float64
+		return ret
+	}
+	return *o.KeysInserted
+}
+
+// GetKeysInsertedOk returns a tuple with the KeysInserted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummary) GetKeysInsertedOk() (*float64, bool) {
+	if o == nil || IsNil(o.KeysInserted) {
+		return nil, false
+	}
+
+	return o.KeysInserted, true
+}
+
+// HasKeysInserted returns a boolean if a field has been set.
+func (o *QueryStatsSummary) HasKeysInserted() bool {
+	if o != nil && !IsNil(o.KeysInserted) {
+		return true
+	}
+
+	return false
+}
+
+// SetKeysInserted gets a reference to the given float64 and assigns it to the KeysInserted field.
+func (o *QueryStatsSummary) SetKeysInserted(v float64) {
+	o.KeysInserted = &v
+	o.NullFields = removeNullField(o.NullFields, "KeysInserted")
+}
+
+// SetKeysInsertedNil sets KeysInserted to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetKeysInsertedNil() {
+	o.KeysInserted = nil
+	o.NullFields = addNullField(o.NullFields, "KeysInserted")
+}
+
 // GetLastExecMicros returns the LastExecMicros field value if set, zero value otherwise
 func (o *QueryStatsSummary) GetLastExecMicros() float64 {
 	if o == nil || IsNil(o.LastExecMicros) {
@@ -513,6 +607,206 @@ func (o *QueryStatsSummary) SetLastExecMicros(v float64) {
 func (o *QueryStatsSummary) SetLastExecMicrosNil() {
 	o.LastExecMicros = nil
 	o.NullFields = addNullField(o.NullFields, "LastExecMicros")
+}
+
+// GetNDeleted returns the NDeleted field value if set, zero value otherwise
+func (o *QueryStatsSummary) GetNDeleted() float64 {
+	if o == nil || IsNil(o.NDeleted) {
+		var ret float64
+		return ret
+	}
+	return *o.NDeleted
+}
+
+// GetNDeletedOk returns a tuple with the NDeleted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummary) GetNDeletedOk() (*float64, bool) {
+	if o == nil || IsNil(o.NDeleted) {
+		return nil, false
+	}
+
+	return o.NDeleted, true
+}
+
+// HasNDeleted returns a boolean if a field has been set.
+func (o *QueryStatsSummary) HasNDeleted() bool {
+	if o != nil && !IsNil(o.NDeleted) {
+		return true
+	}
+
+	return false
+}
+
+// SetNDeleted gets a reference to the given float64 and assigns it to the NDeleted field.
+func (o *QueryStatsSummary) SetNDeleted(v float64) {
+	o.NDeleted = &v
+	o.NullFields = removeNullField(o.NullFields, "NDeleted")
+}
+
+// SetNDeletedNil sets NDeleted to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetNDeletedNil() {
+	o.NDeleted = nil
+	o.NullFields = addNullField(o.NullFields, "NDeleted")
+}
+
+// GetNInserted returns the NInserted field value if set, zero value otherwise
+func (o *QueryStatsSummary) GetNInserted() float64 {
+	if o == nil || IsNil(o.NInserted) {
+		var ret float64
+		return ret
+	}
+	return *o.NInserted
+}
+
+// GetNInsertedOk returns a tuple with the NInserted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummary) GetNInsertedOk() (*float64, bool) {
+	if o == nil || IsNil(o.NInserted) {
+		return nil, false
+	}
+
+	return o.NInserted, true
+}
+
+// HasNInserted returns a boolean if a field has been set.
+func (o *QueryStatsSummary) HasNInserted() bool {
+	if o != nil && !IsNil(o.NInserted) {
+		return true
+	}
+
+	return false
+}
+
+// SetNInserted gets a reference to the given float64 and assigns it to the NInserted field.
+func (o *QueryStatsSummary) SetNInserted(v float64) {
+	o.NInserted = &v
+	o.NullFields = removeNullField(o.NullFields, "NInserted")
+}
+
+// SetNInsertedNil sets NInserted to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetNInsertedNil() {
+	o.NInserted = nil
+	o.NullFields = addNullField(o.NullFields, "NInserted")
+}
+
+// GetNMatched returns the NMatched field value if set, zero value otherwise
+func (o *QueryStatsSummary) GetNMatched() float64 {
+	if o == nil || IsNil(o.NMatched) {
+		var ret float64
+		return ret
+	}
+	return *o.NMatched
+}
+
+// GetNMatchedOk returns a tuple with the NMatched field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummary) GetNMatchedOk() (*float64, bool) {
+	if o == nil || IsNil(o.NMatched) {
+		return nil, false
+	}
+
+	return o.NMatched, true
+}
+
+// HasNMatched returns a boolean if a field has been set.
+func (o *QueryStatsSummary) HasNMatched() bool {
+	if o != nil && !IsNil(o.NMatched) {
+		return true
+	}
+
+	return false
+}
+
+// SetNMatched gets a reference to the given float64 and assigns it to the NMatched field.
+func (o *QueryStatsSummary) SetNMatched(v float64) {
+	o.NMatched = &v
+	o.NullFields = removeNullField(o.NullFields, "NMatched")
+}
+
+// SetNMatchedNil sets NMatched to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetNMatchedNil() {
+	o.NMatched = nil
+	o.NullFields = addNullField(o.NullFields, "NMatched")
+}
+
+// GetNModified returns the NModified field value if set, zero value otherwise
+func (o *QueryStatsSummary) GetNModified() float64 {
+	if o == nil || IsNil(o.NModified) {
+		var ret float64
+		return ret
+	}
+	return *o.NModified
+}
+
+// GetNModifiedOk returns a tuple with the NModified field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummary) GetNModifiedOk() (*float64, bool) {
+	if o == nil || IsNil(o.NModified) {
+		return nil, false
+	}
+
+	return o.NModified, true
+}
+
+// HasNModified returns a boolean if a field has been set.
+func (o *QueryStatsSummary) HasNModified() bool {
+	if o != nil && !IsNil(o.NModified) {
+		return true
+	}
+
+	return false
+}
+
+// SetNModified gets a reference to the given float64 and assigns it to the NModified field.
+func (o *QueryStatsSummary) SetNModified(v float64) {
+	o.NModified = &v
+	o.NullFields = removeNullField(o.NullFields, "NModified")
+}
+
+// SetNModifiedNil sets NModified to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetNModifiedNil() {
+	o.NModified = nil
+	o.NullFields = addNullField(o.NullFields, "NModified")
+}
+
+// GetNUpserted returns the NUpserted field value if set, zero value otherwise
+func (o *QueryStatsSummary) GetNUpserted() float64 {
+	if o == nil || IsNil(o.NUpserted) {
+		var ret float64
+		return ret
+	}
+	return *o.NUpserted
+}
+
+// GetNUpsertedOk returns a tuple with the NUpserted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummary) GetNUpsertedOk() (*float64, bool) {
+	if o == nil || IsNil(o.NUpserted) {
+		return nil, false
+	}
+
+	return o.NUpserted, true
+}
+
+// HasNUpserted returns a boolean if a field has been set.
+func (o *QueryStatsSummary) HasNUpserted() bool {
+	if o != nil && !IsNil(o.NUpserted) {
+		return true
+	}
+
+	return false
+}
+
+// SetNUpserted gets a reference to the given float64 and assigns it to the NUpserted field.
+func (o *QueryStatsSummary) SetNUpserted(v float64) {
+	o.NUpserted = &v
+	o.NullFields = removeNullField(o.NullFields, "NUpserted")
+}
+
+// SetNUpsertedNil sets NUpserted to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetNUpsertedNil() {
+	o.NUpserted = nil
+	o.NullFields = addNullField(o.NullFields, "NUpserted")
 }
 
 // GetNamespace returns the Namespace field value if set, zero value otherwise

@@ -117,6 +117,7 @@ Class        | Method        | HTTP request  | Description   |
 *ClustersAPI* | [CreateCluster](./docs/ClustersAPI.md#createcluster) | **Post** /api/atlas/v2/groups/{groupId}/clusters | Create One Cluster in One Project |
 *ClustersAPI* | [DeleteCluster](./docs/ClustersAPI.md#deletecluster) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Remove One Cluster from One Project |
 *ClustersAPI* | [GetCluster](./docs/ClustersAPI.md#getcluster) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Return One Cluster from One Project |
+*ClustersAPI* | [GetClusterAdaptiveSettings](./docs/ClustersAPI.md#getclusteradaptivesettings) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/adaptiveSettings | Return Adaptive Settings for One Cluster |
 *ClustersAPI* | [GetClusterStatus](./docs/ClustersAPI.md#getclusterstatus) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/status | Return Status of All Cluster Operations |
 *ClustersAPI* | [GetProcessArgs](./docs/ClustersAPI.md#getprocessargs) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Return Advanced Configuration Options for One Cluster |
 *ClustersAPI* | [GetSampleDatasetLoad](./docs/ClustersAPI.md#getsampledatasetload) | **Get** /api/atlas/v2/groups/{groupId}/sampleDatasetLoad/{sampleDatasetId} | Return Status of Sample Dataset Load for One Cluster |
@@ -130,6 +131,7 @@ Class        | Method        | HTTP request  | Description   |
 *ClustersAPI* | [RevokeMongoEmployeeAccess](./docs/ClustersAPI.md#revokemongoemployeeaccess) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess | Revoke MongoDB Employee Cluster Access for One Cluster |
 *ClustersAPI* | [UnpinFeatureCompatibilityVersion](./docs/ClustersAPI.md#unpinfeaturecompatibilityversion) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}:unpinFeatureCompatibilityVersion | Unpin Feature Compatibility Version for One Cluster in One Project |
 *ClustersAPI* | [UpdateCluster](./docs/ClustersAPI.md#updatecluster) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName} | Update One Cluster in One Project |
+*ClustersAPI* | [UpdateClusterAdaptiveSettings](./docs/ClustersAPI.md#updateclusteradaptivesettings) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/adaptiveSettings | Update Adaptive Settings for One Cluster |
 *ClustersAPI* | [UpdateProcessArgs](./docs/ClustersAPI.md#updateprocessargs) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Update Advanced Configuration Options for One Cluster |
 *ClustersAPI* | [UpgradeClusterToServerless](./docs/ClustersAPI.md#upgradeclustertoserverless) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgradeToServerless | Upgrade One Shared-Tier Cluster to One Serverless Instance |
 *ClustersAPI* | [UpgradeTenantUpgrade](./docs/ClustersAPI.md#upgradetenantupgrade) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade | Upgrade One Shared-Tier Cluster |
@@ -311,13 +313,16 @@ Class        | Method        | HTTP request  | Description   |
 *OrganizationsAPI* | [GetOrgDelegationSettings](./docs/OrganizationsAPI.md#getorgdelegationsettings) | **Get** /api/atlas/v2/orgs/{orgId}/delegationSettings | Return Delegation Settings for One Organization |
 *OrganizationsAPI* | [GetOrgGroups](./docs/OrganizationsAPI.md#getorggroups) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return All Projects in One Organization |
 *OrganizationsAPI* | [GetOrgInvite](./docs/OrganizationsAPI.md#getorginvite) | **Get** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Return One Invitation in One Organization by Invitation ID |
+*OrganizationsAPI* | [GetOrgMaintenanceSettings](./docs/OrganizationsAPI.md#getorgmaintenancesettings) | **Get** /api/atlas/v2/orgs/{orgId}/maintenanceSettings | Return Maintenance Settings for One Organization |
 *OrganizationsAPI* | [GetOrgSettings](./docs/OrganizationsAPI.md#getorgsettings) | **Get** /api/atlas/v2/orgs/{orgId}/settings | Return Settings for One Organization |
 *OrganizationsAPI* | [ListOrgInvites](./docs/OrganizationsAPI.md#listorginvites) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Invitations in One Organization |
 *OrganizationsAPI* | [ListOrgs](./docs/OrganizationsAPI.md#listorgs) | **Get** /api/atlas/v2/orgs | Return All Organizations |
+*OrganizationsAPI* | [ResetOrgMaintenanceSettings](./docs/OrganizationsAPI.md#resetorgmaintenancesettings) | **Post** /api/atlas/v2/orgs/{orgId}/maintenanceSettings:reset | Reset Maintenance Settings for One Organization |
 *OrganizationsAPI* | [UpdateOrg](./docs/OrganizationsAPI.md#updateorg) | **Patch** /api/atlas/v2/orgs/{orgId} | Update One Organization |
 *OrganizationsAPI* | [UpdateOrgDelegationSettings](./docs/OrganizationsAPI.md#updateorgdelegationsettings) | **Patch** /api/atlas/v2/orgs/{orgId}/delegationSettings | Update Delegation Settings for One Organization |
 *OrganizationsAPI* | [UpdateOrgInviteById](./docs/OrganizationsAPI.md#updateorginvitebyid) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Invitation in One Organization by Invitation ID |
 *OrganizationsAPI* | [UpdateOrgInvites](./docs/OrganizationsAPI.md#updateorginvites) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Invitation in One Organization |
+*OrganizationsAPI* | [UpdateOrgMaintenanceSettings](./docs/OrganizationsAPI.md#updateorgmaintenancesettings) | **Patch** /api/atlas/v2/orgs/{orgId}/maintenanceSettings | Update Maintenance Settings for One Organization |
 *OrganizationsAPI* | [UpdateOrgSettings](./docs/OrganizationsAPI.md#updateorgsettings) | **Patch** /api/atlas/v2/orgs/{orgId}/settings | Update Settings for One Organization |
 *OrganizationsAPI* | [UpdateOrgUserRoles](./docs/OrganizationsAPI.md#updateorguserroles) | **Put** /api/atlas/v2/orgs/{orgId}/users/{userId}/roles | Update Organization Roles for One MongoDB Cloud User |
 *OverloadProtectionSimulationAPI* | [CreateClusterOverloadSimulation](./docs/OverloadProtectionSimulationAPI.md#createclusteroverloadsimulation) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/overloadSimulations | Create One Overload Protection Simulation |
@@ -528,6 +533,8 @@ Class        | Method        | HTTP request  | Description   |
  - [AccountDetails](./docs/AccountDetails.md)
  - [AcknowledgeAlert](./docs/AcknowledgeAlert.md)
  - [ActivityFeedLinkResponse](./docs/ActivityFeedLinkResponse.md)
+ - [AdaptiveSettingsResponse](./docs/AdaptiveSettingsResponse.md)
+ - [AdaptiveSettingsUpdateRequest](./docs/AdaptiveSettingsUpdateRequest.md)
  - [AddOrRemoveGroupRole](./docs/AddOrRemoveGroupRole.md)
  - [AddOrRemoveOrgRole](./docs/AddOrRemoveOrgRole.md)
  - [AddOrRemoveUserFromTeam](./docs/AddOrRemoveUserFromTeam.md)
@@ -566,7 +573,8 @@ Class        | Method        | HTTP request  | Description   |
  - [ApiAtlasResourcePolicyCreate](./docs/ApiAtlasResourcePolicyCreate.md)
  - [ApiAtlasResourcePolicyEdit](./docs/ApiAtlasResourcePolicyEdit.md)
  - [ApiAtlasResourcePolicyMetadata](./docs/ApiAtlasResourcePolicyMetadata.md)
- - [ApiAtlasRestoreNamespace](./docs/ApiAtlasRestoreNamespace.md)
+ - [ApiAtlasRestoreCollectionNamespace](./docs/ApiAtlasRestoreCollectionNamespace.md)
+ - [ApiAtlasRestoreDatabaseNamespace](./docs/ApiAtlasRestoreDatabaseNamespace.md)
  - [ApiAtlasSnapshotSchedule](./docs/ApiAtlasSnapshotSchedule.md)
  - [ApiAtlasUserMetadata](./docs/ApiAtlasUserMetadata.md)
  - [ApiBSONTimestamp](./docs/ApiBSONTimestamp.md)
@@ -590,6 +598,7 @@ Class        | Method        | HTTP request  | Description   |
  - [AtlasTenantClusterUpgradeRequest20240805](./docs/AtlasTenantClusterUpgradeRequest20240805.md)
  - [AuditLog](./docs/AuditLog.md)
  - [AuthFederationRoleMapping](./docs/AuthFederationRoleMapping.md)
+ - [AuthenticatedUser](./docs/AuthenticatedUser.md)
  - [AutoExportPolicy](./docs/AutoExportPolicy.md)
  - [AvailableCloudProviderRegion](./docs/AvailableCloudProviderRegion.md)
  - [AvailableClustersDeployment](./docs/AvailableClustersDeployment.md)
@@ -849,6 +858,8 @@ Class        | Method        | HTTP request  | Description   |
  - [OrganizationInvitationGroupRoleAssignmentsRequest](./docs/OrganizationInvitationGroupRoleAssignmentsRequest.md)
  - [OrganizationInvitationRequest](./docs/OrganizationInvitationRequest.md)
  - [OrganizationInvitationUpdateRequest](./docs/OrganizationInvitationUpdateRequest.md)
+ - [OrganizationMaintenanceSettingsResponse](./docs/OrganizationMaintenanceSettingsResponse.md)
+ - [OrganizationMaintenanceSettingsUpdateRequest](./docs/OrganizationMaintenanceSettingsUpdateRequest.md)
  - [OrganizationSettings](./docs/OrganizationSettings.md)
  - [OutboundControlPlaneCloudProviderIPAddresses](./docs/OutboundControlPlaneCloudProviderIPAddresses.md)
  - [OverloadProtectionSimulationRequest](./docs/OverloadProtectionSimulationRequest.md)
@@ -951,6 +962,7 @@ Class        | Method        | HTTP request  | Description   |
  - [QueryShapeResponse](./docs/QueryShapeResponse.md)
  - [QueryShapeSeenMetadata](./docs/QueryShapeSeenMetadata.md)
  - [QueryShapeUpdateRequest](./docs/QueryShapeUpdateRequest.md)
+ - [QueryStatsCollectionResponse](./docs/QueryStatsCollectionResponse.md)
  - [QueryStatsDetailsResponse](./docs/QueryStatsDetailsResponse.md)
  - [QueryStatsSummary](./docs/QueryStatsSummary.md)
  - [QueryStatsSummaryListResponse](./docs/QueryStatsSummaryListResponse.md)

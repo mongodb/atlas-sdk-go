@@ -198,6 +198,9 @@ func (a *MetricIntegrationsAPIService) CreateGroupMetricIntegrationExecute(r Cre
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -319,9 +322,15 @@ func (a *MetricIntegrationsAPIService) DeleteGroupMetricIntegrationExecute(r Del
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.metricIntegrationId == "" {
 		return nil, reportError("metricIntegrationId is empty and must be specified")
+	}
+	if r.metricIntegrationId == "." || r.metricIntegrationId == ".." {
+		return nil, reportError("metricIntegrationId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"metricIntegrationId"+"}", url.PathEscape(r.metricIntegrationId), -1)
 
@@ -428,9 +437,15 @@ func (a *MetricIntegrationsAPIService) GetGroupMetricIntegrationExecute(r GetGro
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.metricIntegrationId == "" {
 		return localVarReturnValue, nil, reportError("metricIntegrationId is empty and must be specified")
+	}
+	if r.metricIntegrationId == "." || r.metricIntegrationId == ".." {
+		return localVarReturnValue, nil, reportError("metricIntegrationId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"metricIntegrationId"+"}", url.PathEscape(r.metricIntegrationId), -1)
 
@@ -591,6 +606,9 @@ func (a *MetricIntegrationsAPIService) ListGroupMetricIntegrationsExecute(r List
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -741,9 +759,15 @@ func (a *MetricIntegrationsAPIService) UpdateGroupMetricIntegrationExecute(r Upd
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.metricIntegrationId == "" {
 		return localVarReturnValue, nil, reportError("metricIntegrationId is empty and must be specified")
+	}
+	if r.metricIntegrationId == "." || r.metricIntegrationId == ".." {
+		return localVarReturnValue, nil, reportError("metricIntegrationId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"metricIntegrationId"+"}", url.PathEscape(r.metricIntegrationId), -1)
 

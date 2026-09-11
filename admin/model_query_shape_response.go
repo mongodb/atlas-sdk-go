@@ -4,7 +4,7 @@ package admin
 
 // QueryShapeResponse Response containing the details and status of a query shape. The query shape field may be null if the user lacks PII view access.
 type QueryShapeResponse struct {
-	// The MongoDB command type issued for a query shape.
+	// The MongoDB command type issued for a query shape. The INSERT, UPDATE, and DELETE commands appear only for clusters running MongoDB 9.0 or later.
 	// Read only field.
 	Command *string `json:"command,omitempty"`
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.

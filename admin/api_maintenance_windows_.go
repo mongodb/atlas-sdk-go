@@ -187,6 +187,9 @@ func (a *MaintenanceWindowsAPIService) DeferMaintenanceWindowExecute(r DeferMain
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -286,6 +289,9 @@ func (a *MaintenanceWindowsAPIService) GetMaintenanceWindowExecute(r GetMaintena
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/maintenanceWindow"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -398,6 +404,9 @@ func (a *MaintenanceWindowsAPIService) ResetMaintenanceWindowExecute(r ResetMain
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -494,6 +503,9 @@ func (a *MaintenanceWindowsAPIService) ToggleMaintenanceAutoDeferExecute(r Toggl
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/maintenanceWindow/autoDefer"
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -595,6 +607,9 @@ func (a *MaintenanceWindowsAPIService) UpdateMaintenanceWindowExecute(r UpdateMa
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/maintenanceWindow"
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 

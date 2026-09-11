@@ -289,6 +289,9 @@ func (a *AlertConfigurationsAPIService) CreateAlertConfigExecute(r CreateAlertCo
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -412,9 +415,15 @@ func (a *AlertConfigurationsAPIService) DeleteAlertConfigExecute(r DeleteAlertCo
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.alertConfigId == "" {
 		return nil, reportError("alertConfigId is empty and must be specified")
+	}
+	if r.alertConfigId == "." || r.alertConfigId == ".." {
+		return nil, reportError("alertConfigId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"alertConfigId"+"}", url.PathEscape(r.alertConfigId), -1)
 
@@ -523,9 +532,15 @@ func (a *AlertConfigurationsAPIService) GetAlertConfigExecute(r GetAlertConfigAp
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.alertConfigId == "" {
 		return localVarReturnValue, nil, reportError("alertConfigId is empty and must be specified")
+	}
+	if r.alertConfigId == "." || r.alertConfigId == ".." {
+		return localVarReturnValue, nil, reportError("alertConfigId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"alertConfigId"+"}", url.PathEscape(r.alertConfigId), -1)
 
@@ -675,9 +690,15 @@ func (a *AlertConfigurationsAPIService) GetAlertConfigsExecute(r GetAlertConfigs
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.alertId == "" {
 		return localVarReturnValue, nil, reportError("alertId is empty and must be specified")
+	}
+	if r.alertId == "." || r.alertId == ".." {
+		return localVarReturnValue, nil, reportError("alertId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"alertId"+"}", url.PathEscape(r.alertId), -1)
 
@@ -842,6 +863,9 @@ func (a *AlertConfigurationsAPIService) ListAlertConfigsExecute(r ListAlertConfi
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/alertConfigs"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -1096,9 +1120,15 @@ func (a *AlertConfigurationsAPIService) ToggleAlertConfigExecute(r ToggleAlertCo
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.alertConfigId == "" {
 		return localVarReturnValue, nil, reportError("alertConfigId is empty and must be specified")
+	}
+	if r.alertConfigId == "." || r.alertConfigId == ".." {
+		return localVarReturnValue, nil, reportError("alertConfigId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"alertConfigId"+"}", url.PathEscape(r.alertConfigId), -1)
 
@@ -1232,9 +1262,15 @@ func (a *AlertConfigurationsAPIService) UpdateAlertConfigExecute(r UpdateAlertCo
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.alertConfigId == "" {
 		return localVarReturnValue, nil, reportError("alertConfigId is empty and must be specified")
+	}
+	if r.alertConfigId == "." || r.alertConfigId == ".." {
+		return localVarReturnValue, nil, reportError("alertConfigId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"alertConfigId"+"}", url.PathEscape(r.alertConfigId), -1)
 

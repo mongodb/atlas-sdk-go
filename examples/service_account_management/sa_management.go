@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"go.mongodb.org/atlas-sdk/v20250312024/admin"
+	"go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 // Example for Service Account Management API
@@ -52,15 +52,16 @@ func main() {
 	}
 	const oneYearHours = 365 * 24
 	// 1. Create Service Account
+	serviceAccountRequest := admin.NewOrgServiceAccountRequest(
+		"SA created by sdk-example",
+		"example",
+		[]string{"ORG_READ_ONLY"},
+	)
+	serviceAccountRequest.SetSecretExpiresAfterHours(oneYearHours)
 	request := sdk.ServiceAccountsAPI.CreateOrgServiceAccount(
 		ctx,
 		orgID,
-		admin.NewOrgServiceAccountRequest(
-			"SA created by sdk-example",
-			"example",
-			[]string{"ORG_READ_ONLY"},
-			oneYearHours,
-		),
+		serviceAccountRequest,
 	)
 	sa, _, err := request.Execute()
 	if err != nil {

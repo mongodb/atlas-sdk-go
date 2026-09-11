@@ -166,9 +166,15 @@ func (a *X509AuthenticationAPIService) CreateDatabaseUserCertExecute(r CreateDat
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.username == "" {
 		return localVarReturnValue, nil, reportError("username is empty and must be specified")
+	}
+	if r.username == "." || r.username == ".." {
+		return localVarReturnValue, nil, reportError("username must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(r.username), -1)
 
@@ -290,6 +296,9 @@ func (a *X509AuthenticationAPIService) DisableSecurityCustomerX509Execute(r Disa
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/userSecurity/customerX509"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -437,9 +446,15 @@ func (a *X509AuthenticationAPIService) ListDatabaseUserCertsExecute(r ListDataba
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.username == "" {
 		return localVarReturnValue, nil, reportError("username is empty and must be specified")
+	}
+	if r.username == "." || r.username == ".." {
+		return localVarReturnValue, nil, reportError("username must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"username"+"}", url.PathEscape(r.username), -1)
 

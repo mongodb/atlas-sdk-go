@@ -12,13 +12,16 @@ Method | HTTP request | Description
 [**GetOrgDelegationSettings**](OrganizationsAPI.md#GetOrgDelegationSettings) | **Get** /api/atlas/v2/orgs/{orgId}/delegationSettings | Return Delegation Settings for One Organization
 [**GetOrgGroups**](OrganizationsAPI.md#GetOrgGroups) | **Get** /api/atlas/v2/orgs/{orgId}/groups | Return All Projects in One Organization
 [**GetOrgInvite**](OrganizationsAPI.md#GetOrgInvite) | **Get** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Return One Invitation in One Organization by Invitation ID
+[**GetOrgMaintenanceSettings**](OrganizationsAPI.md#GetOrgMaintenanceSettings) | **Get** /api/atlas/v2/orgs/{orgId}/maintenanceSettings | Return Maintenance Settings for One Organization
 [**GetOrgSettings**](OrganizationsAPI.md#GetOrgSettings) | **Get** /api/atlas/v2/orgs/{orgId}/settings | Return Settings for One Organization
 [**ListOrgInvites**](OrganizationsAPI.md#ListOrgInvites) | **Get** /api/atlas/v2/orgs/{orgId}/invites | Return All Invitations in One Organization
 [**ListOrgs**](OrganizationsAPI.md#ListOrgs) | **Get** /api/atlas/v2/orgs | Return All Organizations
+[**ResetOrgMaintenanceSettings**](OrganizationsAPI.md#ResetOrgMaintenanceSettings) | **Post** /api/atlas/v2/orgs/{orgId}/maintenanceSettings:reset | Reset Maintenance Settings for One Organization
 [**UpdateOrg**](OrganizationsAPI.md#UpdateOrg) | **Patch** /api/atlas/v2/orgs/{orgId} | Update One Organization
 [**UpdateOrgDelegationSettings**](OrganizationsAPI.md#UpdateOrgDelegationSettings) | **Patch** /api/atlas/v2/orgs/{orgId}/delegationSettings | Update Delegation Settings for One Organization
 [**UpdateOrgInviteById**](OrganizationsAPI.md#UpdateOrgInviteById) | **Patch** /api/atlas/v2/orgs/{orgId}/invites/{invitationId} | Update One Invitation in One Organization by Invitation ID
 [**UpdateOrgInvites**](OrganizationsAPI.md#UpdateOrgInvites) | **Patch** /api/atlas/v2/orgs/{orgId}/invites | Update One Invitation in One Organization
+[**UpdateOrgMaintenanceSettings**](OrganizationsAPI.md#UpdateOrgMaintenanceSettings) | **Patch** /api/atlas/v2/orgs/{orgId}/maintenanceSettings | Update Maintenance Settings for One Organization
 [**UpdateOrgSettings**](OrganizationsAPI.md#UpdateOrgSettings) | **Patch** /api/atlas/v2/orgs/{orgId}/settings | Update Settings for One Organization
 [**UpdateOrgUserRoles**](OrganizationsAPI.md#UpdateOrgUserRoles) | **Put** /api/atlas/v2/orgs/{orgId}/users/{userId}/roles | Update Organization Roles for One MongoDB Cloud User
 
@@ -41,7 +44,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -117,7 +120,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -199,7 +202,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -277,7 +280,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -358,7 +361,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -438,7 +441,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -518,7 +521,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -606,7 +609,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -672,6 +675,86 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetOrgMaintenanceSettings
+
+> OrganizationMaintenanceSettingsResponse GetOrgMaintenanceSettings(ctx, orgId).Execute()
+
+Return Maintenance Settings for One Organization
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+
+    resp, r, err := sdk.OrganizationsAPI.GetOrgMaintenanceSettings(context.Background(), orgId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.GetOrgMaintenanceSettings`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetOrgMaintenanceSettings`: OrganizationMaintenanceSettingsResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.GetOrgMaintenanceSettings`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOrgMaintenanceSettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**OrganizationMaintenanceSettingsResponse**](OrganizationMaintenanceSettingsResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetOrgSettings
 
 > OrganizationSettings GetOrgSettings(ctx, orgId).Execute()
@@ -689,7 +772,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -769,7 +852,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -851,7 +934,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -916,6 +999,86 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ResetOrgMaintenanceSettings
+
+> OrganizationMaintenanceSettingsResponse ResetOrgMaintenanceSettings(ctx, orgId).Execute()
+
+Reset Maintenance Settings for One Organization
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+
+    resp, r, err := sdk.OrganizationsAPI.ResetOrgMaintenanceSettings(context.Background(), orgId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.ResetOrgMaintenanceSettings`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ResetOrgMaintenanceSettings`: OrganizationMaintenanceSettingsResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.ResetOrgMaintenanceSettings`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiResetOrgMaintenanceSettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**OrganizationMaintenanceSettingsResponse**](OrganizationMaintenanceSettingsResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateOrg
 
 > AtlasOrganization UpdateOrg(ctx, orgId, atlasOrganization AtlasOrganization).Execute()
@@ -933,7 +1096,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -1015,7 +1178,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -1097,7 +1260,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -1182,7 +1345,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -1247,6 +1410,88 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## UpdateOrgMaintenanceSettings
+
+> OrganizationMaintenanceSettingsResponse UpdateOrgMaintenanceSettings(ctx, orgId, organizationMaintenanceSettingsUpdateRequest OrganizationMaintenanceSettingsUpdateRequest).Execute()
+
+Update Maintenance Settings for One Organization
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    organizationMaintenanceSettingsUpdateRequest := *admin.NewOrganizationMaintenanceSettingsUpdateRequest() // OrganizationMaintenanceSettingsUpdateRequest | 
+
+    resp, r, err := sdk.OrganizationsAPI.UpdateOrgMaintenanceSettings(context.Background(), orgId, &organizationMaintenanceSettingsUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationsAPI.UpdateOrgMaintenanceSettings`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `UpdateOrgMaintenanceSettings`: OrganizationMaintenanceSettingsResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationsAPI.UpdateOrgMaintenanceSettings`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateOrgMaintenanceSettingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **organizationMaintenanceSettingsUpdateRequest** | [**OrganizationMaintenanceSettingsUpdateRequest**](OrganizationMaintenanceSettingsUpdateRequest.md) | Maintenance settings to update for the specified organization. | 
+
+### Return type
+
+[**OrganizationMaintenanceSettingsResponse**](OrganizationMaintenanceSettingsResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2025-03-12+json
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateOrgSettings
 
 > OrganizationSettings UpdateOrgSettings(ctx, orgId, organizationSettings OrganizationSettings).Execute()
@@ -1264,7 +1509,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {
@@ -1346,7 +1591,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312024/admin"
+    "go.mongodb.org/atlas-sdk/v20250312025/admin"
 )
 
 func main() {

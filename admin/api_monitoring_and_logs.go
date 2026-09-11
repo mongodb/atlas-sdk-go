@@ -458,13 +458,22 @@ func (a *MonitoringAndLogsAPIService) DownloadClusterLogExecute(r DownloadCluste
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.hostName == "" {
 		return localVarReturnValue, nil, reportError("hostName is empty and must be specified")
 	}
+	if r.hostName == "." || r.hostName == ".." {
+		return localVarReturnValue, nil, reportError("hostName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"hostName"+"}", url.PathEscape(r.hostName), -1)
 	if r.logName == "" {
 		return localVarReturnValue, nil, reportError("logName is empty and must be specified")
+	}
+	if r.logName == "." || r.logName == ".." {
+		return localVarReturnValue, nil, reportError("logName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"logName"+"}", url.PathEscape(r.logName), -1)
 
@@ -596,13 +605,22 @@ func (a *MonitoringAndLogsAPIService) GetDatabaseExecute(r GetDatabaseApiRequest
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.databaseName == "" {
 		return localVarReturnValue, nil, reportError("databaseName is empty and must be specified")
 	}
+	if r.databaseName == "." || r.databaseName == ".." {
+		return localVarReturnValue, nil, reportError("databaseName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
+	}
+	if r.processId == "." || r.processId == ".." {
+		return localVarReturnValue, nil, reportError("processId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
@@ -773,13 +791,22 @@ func (a *MonitoringAndLogsAPIService) GetDatabaseMeasurementsExecute(r GetDataba
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.databaseName == "" {
 		return localVarReturnValue, nil, reportError("databaseName is empty and must be specified")
 	}
+	if r.databaseName == "." || r.databaseName == ".." {
+		return localVarReturnValue, nil, reportError("databaseName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
+	}
+	if r.processId == "." || r.processId == ".." {
+		return localVarReturnValue, nil, reportError("processId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
@@ -920,9 +947,15 @@ func (a *MonitoringAndLogsAPIService) GetGroupProcessExecute(r GetGroupProcessAp
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
+	}
+	if r.processId == "." || r.processId == ".." {
+		return localVarReturnValue, nil, reportError("processId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
@@ -1103,21 +1136,36 @@ func (a *MonitoringAndLogsAPIService) GetIndexMeasurementsExecute(r GetIndexMeas
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
 	}
+	if r.processId == "." || r.processId == ".." {
+		return localVarReturnValue, nil, reportError("processId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 	if r.indexName == "" {
 		return localVarReturnValue, nil, reportError("indexName is empty and must be specified")
+	}
+	if r.indexName == "." || r.indexName == ".." {
+		return localVarReturnValue, nil, reportError("indexName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"indexName"+"}", url.PathEscape(r.indexName), -1)
 	if r.databaseName == "" {
 		return localVarReturnValue, nil, reportError("databaseName is empty and must be specified")
 	}
+	if r.databaseName == "." || r.databaseName == ".." {
+		return localVarReturnValue, nil, reportError("databaseName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
 	if r.collectionName == "" {
 		return localVarReturnValue, nil, reportError("collectionName is empty and must be specified")
 	}
+	if r.collectionName == "." || r.collectionName == ".." {
+		return localVarReturnValue, nil, reportError("collectionName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"collectionName"+"}", url.PathEscape(r.collectionName), -1)
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -1265,13 +1313,22 @@ func (a *MonitoringAndLogsAPIService) GetProcessDiskExecute(r GetProcessDiskApiR
 	if r.partitionName == "" {
 		return localVarReturnValue, nil, reportError("partitionName is empty and must be specified")
 	}
+	if r.partitionName == "." || r.partitionName == ".." {
+		return localVarReturnValue, nil, reportError("partitionName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"partitionName"+"}", url.PathEscape(r.partitionName), -1)
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
+	}
+	if r.processId == "." || r.processId == ".." {
+		return localVarReturnValue, nil, reportError("processId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
@@ -1446,13 +1503,22 @@ func (a *MonitoringAndLogsAPIService) GetProcessDiskMeasurementsExecute(r GetPro
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.partitionName == "" {
 		return localVarReturnValue, nil, reportError("partitionName is empty and must be specified")
 	}
+	if r.partitionName == "." || r.partitionName == ".." {
+		return localVarReturnValue, nil, reportError("partitionName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"partitionName"+"}", url.PathEscape(r.partitionName), -1)
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
+	}
+	if r.processId == "." || r.processId == ".." {
+		return localVarReturnValue, nil, reportError("processId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
@@ -1643,9 +1709,15 @@ func (a *MonitoringAndLogsAPIService) GetProcessMeasurementsExecute(r GetProcess
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
+	}
+	if r.processId == "." || r.processId == ".." {
+		return localVarReturnValue, nil, reportError("processId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
@@ -1813,9 +1885,15 @@ func (a *MonitoringAndLogsAPIService) ListDatabasesExecute(r ListDatabasesApiReq
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
+	}
+	if r.processId == "." || r.processId == ".." {
+		return localVarReturnValue, nil, reportError("processId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 
@@ -1979,6 +2057,9 @@ func (a *MonitoringAndLogsAPIService) ListGroupProcessesExecute(r ListGroupProce
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -2119,9 +2200,15 @@ func (a *MonitoringAndLogsAPIService) ListHostFtsMetricsExecute(r ListHostFtsMet
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
 	}
+	if r.processId == "." || r.processId == ".." {
+		return localVarReturnValue, nil, reportError("processId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -2297,17 +2384,29 @@ func (a *MonitoringAndLogsAPIService) ListIndexMeasurementsExecute(r ListIndexMe
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
 	}
+	if r.processId == "." || r.processId == ".." {
+		return localVarReturnValue, nil, reportError("processId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 	if r.databaseName == "" {
 		return localVarReturnValue, nil, reportError("databaseName is empty and must be specified")
+	}
+	if r.databaseName == "." || r.databaseName == ".." {
+		return localVarReturnValue, nil, reportError("databaseName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"databaseName"+"}", url.PathEscape(r.databaseName), -1)
 	if r.collectionName == "" {
 		return localVarReturnValue, nil, reportError("collectionName is empty and must be specified")
 	}
+	if r.collectionName == "." || r.collectionName == ".." {
+		return localVarReturnValue, nil, reportError("collectionName must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"collectionName"+"}", url.PathEscape(r.collectionName), -1)
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -2495,9 +2594,15 @@ func (a *MonitoringAndLogsAPIService) ListMeasurementsExecute(r ListMeasurements
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
 	}
+	if r.processId == "." || r.processId == ".." {
+		return localVarReturnValue, nil, reportError("processId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -2667,9 +2772,15 @@ func (a *MonitoringAndLogsAPIService) ListProcessDisksExecute(r ListProcessDisks
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.processId == "" {
 		return localVarReturnValue, nil, reportError("processId is empty and must be specified")
+	}
+	if r.processId == "." || r.processId == ".." {
+		return localVarReturnValue, nil, reportError("processId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"processId"+"}", url.PathEscape(r.processId), -1)
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Command** | Pointer to **string** | The MongoDB command type issued for a query shape. | [optional] [readonly] 
+**Command** | Pointer to **string** | The MongoDB command type issued for a query shape. The INSERT, UPDATE, and DELETE commands appear only for clusters running MongoDB 9.0 or later. | [optional] [readonly] 
 **Namespace** | Pointer to **string** | Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as &#x60;&lt;database&gt;.&lt;collection&gt;&#x60;. | [optional] [readonly] 
 **QueryShape** | Pointer to **string** | A query shape is a set of specifications that group similar queries together. Specifications can include filters, sorts, projections, aggregation pipeline stages, a namespace, and others. Queries that have similar specifications have the same query shape. This field may be null if the user lacks PII view access. | [optional] [readonly] 
 **QueryShapeHash** | **string** | A hexadecimal string that represents the hash of a MongoDB query shape. | [readonly] 

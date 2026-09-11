@@ -396,6 +396,9 @@ func (a *NetworkPeeringAPIService) CreateGroupContainerExecute(r CreateGroupCont
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -519,6 +522,9 @@ func (a *NetworkPeeringAPIService) CreateGroupPeerExecute(r CreateGroupPeerApiRe
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -640,9 +646,15 @@ func (a *NetworkPeeringAPIService) DeleteGroupContainerExecute(r DeleteGroupCont
 	if r.groupId == "" {
 		return nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.containerId == "" {
 		return nil, reportError("containerId is empty and must be specified")
+	}
+	if r.containerId == "." || r.containerId == ".." {
+		return nil, reportError("containerId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(r.containerId), -1)
 
@@ -749,9 +761,15 @@ func (a *NetworkPeeringAPIService) DeleteGroupPeerExecute(r DeleteGroupPeerApiRe
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.peerId == "" {
 		return localVarReturnValue, nil, reportError("peerId is empty and must be specified")
+	}
+	if r.peerId == "." || r.peerId == ".." {
+		return localVarReturnValue, nil, reportError("peerId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"peerId"+"}", url.PathEscape(r.peerId), -1)
 
@@ -874,6 +892,9 @@ func (a *NetworkPeeringAPIService) DisablePeeringExecute(r DisablePeeringApiRequ
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateIpMode"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -999,9 +1020,15 @@ func (a *NetworkPeeringAPIService) GetGroupContainerExecute(r GetGroupContainerA
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.containerId == "" {
 		return localVarReturnValue, nil, reportError("containerId is empty and must be specified")
+	}
+	if r.containerId == "." || r.containerId == ".." {
+		return localVarReturnValue, nil, reportError("containerId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(r.containerId), -1)
 
@@ -1122,9 +1149,15 @@ func (a *NetworkPeeringAPIService) GetGroupPeerExecute(r GetGroupPeerApiRequest)
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.peerId == "" {
 		return localVarReturnValue, nil, reportError("peerId is empty and must be specified")
+	}
+	if r.peerId == "." || r.peerId == ".." {
+		return localVarReturnValue, nil, reportError("peerId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"peerId"+"}", url.PathEscape(r.peerId), -1)
 
@@ -1266,6 +1299,9 @@ func (a *NetworkPeeringAPIService) ListGroupContainerAllExecute(r ListGroupConta
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers/all"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -1437,6 +1473,9 @@ func (a *NetworkPeeringAPIService) ListGroupContainersExecute(r ListGroupContain
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/containers"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -1613,6 +1652,9 @@ func (a *NetworkPeeringAPIService) ListGroupPeersExecute(r ListGroupPeersApiRequ
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1764,9 +1806,15 @@ func (a *NetworkPeeringAPIService) UpdateGroupContainerExecute(r UpdateGroupCont
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.containerId == "" {
 		return localVarReturnValue, nil, reportError("containerId is empty and must be specified")
+	}
+	if r.containerId == "." || r.containerId == ".." {
+		return localVarReturnValue, nil, reportError("containerId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(r.containerId), -1)
 
@@ -1896,9 +1944,15 @@ func (a *NetworkPeeringAPIService) UpdateGroupPeerExecute(r UpdateGroupPeerApiRe
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.peerId == "" {
 		return localVarReturnValue, nil, reportError("peerId is empty and must be specified")
+	}
+	if r.peerId == "." || r.peerId == ".." {
+		return localVarReturnValue, nil, reportError("peerId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"peerId"+"}", url.PathEscape(r.peerId), -1)
 
@@ -2022,6 +2076,9 @@ func (a *NetworkPeeringAPIService) VerifyPrivateIpModeExecute(r VerifyPrivateIpM
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/privateIpMode"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 

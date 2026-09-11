@@ -7,7 +7,10 @@ type GroupMaintenanceWindow struct {
 	// Flag that indicates whether MongoDB Cloud should defer all maintenance windows for one week after you enable them. This setting controls the same underlying auto-deferral feature as the `/maintenanceWindow/autoDefer` endpoint. Use either this field (to set a specific value) or that endpoint (to toggle the current value). For most use cases, this field in the PATCH request is preferred because it allows setting an explicit value rather than toggling.
 	AutoDeferOnceEnabled *bool `json:"autoDeferOnceEnabled,omitempty"`
 	// One-based integer that represents the day of the week, in the project's configured time zone (see `timeZoneId`), that the maintenance window starts.  - `1`: Sunday. - `2`: Monday. - `3`: Tuesday. - `4`: Wednesday. - `5`: Thursday. - `6`: Friday. - `7`: Saturday.
-	DayOfWeek int `json:"dayOfWeek"`
+	DayOfWeek *int `json:"dayOfWeek,omitempty"`
+	// Maintenance wave that Atlas uses when scheduling maintenance for this project. This read-only value can differ from `waveAssignment` in two scenarios: (1) when the organization's `effectiveWaveAssignmentMode` is `ENV_TAG_MAPPING`, the effective wave is derived from environment tags regardless of any explicit assignment; (2) when cross-organization maintenance sequencing is active and this project's organization is a linked non-paying organization, the effective wave reflects the paying organization's mode.
+	// Read only field.
+	EffectiveWaveAssignment *int `json:"effectiveWaveAssignment,omitempty"`
 	// Zero-based integer that represents the hour of the day, in the project's configured time zone (see `timeZoneId`), that the maintenance window starts according to a 24-hour clock. Use `0` for midnight and `12` for noon. If you haven't changed your project's time zone, this defaults to UTC.
 	HourOfDay *int `json:"hourOfDay,omitempty"`
 	// Number of times the current maintenance event for this project has been deferred.
@@ -19,6 +22,8 @@ type GroupMaintenanceWindow struct {
 	// Identifier for the current time zone of the maintenance window. This can only be updated via the Project Settings UI.
 	// Read only field.
 	TimeZoneId *string `json:"timeZoneId,omitempty"`
+	// Maintenance wave explicitly assigned to this project. Always returned in GET responses when a value has been set, regardless of the organization's `effectiveWaveAssignmentMode`. When the mode is `ENV_TAG_MAPPING`, this stored assignment is preserved but not used for scheduling — the effective wave is derived from environment tags instead. Not editable when the mode is `ENV_TAG_MAPPING`. Switching back to `MANUAL` restores this value as the effective wave. Must be between 1 and 3, inclusive. Pass `null` to clear an explicit assignment.
+	WaveAssignment *int `json:"waveAssignment,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`
@@ -34,9 +39,8 @@ func (o *GroupMaintenanceWindow) MarshalJSON() ([]byte, error) {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGroupMaintenanceWindow(dayOfWeek int) *GroupMaintenanceWindow {
+func NewGroupMaintenanceWindow() *GroupMaintenanceWindow {
 	this := GroupMaintenanceWindow{}
-	this.DayOfWeek = dayOfWeek
 	return &this
 }
 
@@ -88,28 +92,84 @@ func (o *GroupMaintenanceWindow) SetAutoDeferOnceEnabledNil() {
 	o.NullFields = addNullField(o.NullFields, "AutoDeferOnceEnabled")
 }
 
-// GetDayOfWeek returns the DayOfWeek field value
+// GetDayOfWeek returns the DayOfWeek field value if set, zero value otherwise
 func (o *GroupMaintenanceWindow) GetDayOfWeek() int {
-	if o == nil {
+	if o == nil || IsNil(o.DayOfWeek) {
 		var ret int
 		return ret
 	}
-
-	return o.DayOfWeek
+	return *o.DayOfWeek
 }
 
-// GetDayOfWeekOk returns a tuple with the DayOfWeek field value
+// GetDayOfWeekOk returns a tuple with the DayOfWeek field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *GroupMaintenanceWindow) GetDayOfWeekOk() (*int, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DayOfWeek) {
 		return nil, false
 	}
-	return &o.DayOfWeek, true
+
+	return o.DayOfWeek, true
 }
 
-// SetDayOfWeek sets field value
+// HasDayOfWeek returns a boolean if a field has been set.
+func (o *GroupMaintenanceWindow) HasDayOfWeek() bool {
+	if o != nil && !IsNil(o.DayOfWeek) {
+		return true
+	}
+
+	return false
+}
+
+// SetDayOfWeek gets a reference to the given int and assigns it to the DayOfWeek field.
 func (o *GroupMaintenanceWindow) SetDayOfWeek(v int) {
-	o.DayOfWeek = v
+	o.DayOfWeek = &v
+	o.NullFields = removeNullField(o.NullFields, "DayOfWeek")
+}
+
+// SetDayOfWeekNil sets DayOfWeek to an explicit JSON null when marshaled.
+func (o *GroupMaintenanceWindow) SetDayOfWeekNil() {
+	o.DayOfWeek = nil
+	o.NullFields = addNullField(o.NullFields, "DayOfWeek")
+}
+
+// GetEffectiveWaveAssignment returns the EffectiveWaveAssignment field value if set, zero value otherwise
+func (o *GroupMaintenanceWindow) GetEffectiveWaveAssignment() int {
+	if o == nil || IsNil(o.EffectiveWaveAssignment) {
+		var ret int
+		return ret
+	}
+	return *o.EffectiveWaveAssignment
+}
+
+// GetEffectiveWaveAssignmentOk returns a tuple with the EffectiveWaveAssignment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupMaintenanceWindow) GetEffectiveWaveAssignmentOk() (*int, bool) {
+	if o == nil || IsNil(o.EffectiveWaveAssignment) {
+		return nil, false
+	}
+
+	return o.EffectiveWaveAssignment, true
+}
+
+// HasEffectiveWaveAssignment returns a boolean if a field has been set.
+func (o *GroupMaintenanceWindow) HasEffectiveWaveAssignment() bool {
+	if o != nil && !IsNil(o.EffectiveWaveAssignment) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveWaveAssignment gets a reference to the given int and assigns it to the EffectiveWaveAssignment field.
+func (o *GroupMaintenanceWindow) SetEffectiveWaveAssignment(v int) {
+	o.EffectiveWaveAssignment = &v
+	o.NullFields = removeNullField(o.NullFields, "EffectiveWaveAssignment")
+}
+
+// SetEffectiveWaveAssignmentNil sets EffectiveWaveAssignment to an explicit JSON null when marshaled.
+func (o *GroupMaintenanceWindow) SetEffectiveWaveAssignmentNil() {
+	o.EffectiveWaveAssignment = nil
+	o.NullFields = addNullField(o.NullFields, "EffectiveWaveAssignment")
 }
 
 // GetHourOfDay returns the HourOfDay field value if set, zero value otherwise
@@ -310,4 +370,44 @@ func (o *GroupMaintenanceWindow) SetTimeZoneId(v string) {
 func (o *GroupMaintenanceWindow) SetTimeZoneIdNil() {
 	o.TimeZoneId = nil
 	o.NullFields = addNullField(o.NullFields, "TimeZoneId")
+}
+
+// GetWaveAssignment returns the WaveAssignment field value if set, zero value otherwise
+func (o *GroupMaintenanceWindow) GetWaveAssignment() int {
+	if o == nil || IsNil(o.WaveAssignment) {
+		var ret int
+		return ret
+	}
+	return *o.WaveAssignment
+}
+
+// GetWaveAssignmentOk returns a tuple with the WaveAssignment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupMaintenanceWindow) GetWaveAssignmentOk() (*int, bool) {
+	if o == nil || IsNil(o.WaveAssignment) {
+		return nil, false
+	}
+
+	return o.WaveAssignment, true
+}
+
+// HasWaveAssignment returns a boolean if a field has been set.
+func (o *GroupMaintenanceWindow) HasWaveAssignment() bool {
+	if o != nil && !IsNil(o.WaveAssignment) {
+		return true
+	}
+
+	return false
+}
+
+// SetWaveAssignment gets a reference to the given int and assigns it to the WaveAssignment field.
+func (o *GroupMaintenanceWindow) SetWaveAssignment(v int) {
+	o.WaveAssignment = &v
+	o.NullFields = removeNullField(o.NullFields, "WaveAssignment")
+}
+
+// SetWaveAssignmentNil sets WaveAssignment to an explicit JSON null when marshaled.
+func (o *GroupMaintenanceWindow) SetWaveAssignmentNil() {
+	o.WaveAssignment = nil
+	o.NullFields = addNullField(o.NullFields, "WaveAssignment")
 }

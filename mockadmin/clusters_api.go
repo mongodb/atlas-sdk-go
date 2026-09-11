@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312024/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312025/admin"
 
 	http "net/http"
 
@@ -546,6 +546,168 @@ func (_c *ClustersAPI_GetCluster_Call) Return(_a0 admin.GetClusterApiRequest) *C
 }
 
 func (_c *ClustersAPI_GetCluster_Call) RunAndReturn(run func(context.Context, string, string) admin.GetClusterApiRequest) *ClustersAPI_GetCluster_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetClusterAdaptiveSettings provides a mock function with given fields: ctx, groupId, clusterName
+func (_m *ClustersAPI) GetClusterAdaptiveSettings(ctx context.Context, groupId string, clusterName string) admin.GetClusterAdaptiveSettingsApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetClusterAdaptiveSettings")
+	}
+
+	var r0 admin.GetClusterAdaptiveSettingsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetClusterAdaptiveSettingsApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName)
+	} else {
+		r0 = ret.Get(0).(admin.GetClusterAdaptiveSettingsApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_GetClusterAdaptiveSettings_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterAdaptiveSettings'
+type ClustersAPI_GetClusterAdaptiveSettings_Call struct {
+	*mock.Call
+}
+
+// GetClusterAdaptiveSettings is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+func (_e *ClustersAPI_Expecter) GetClusterAdaptiveSettings(ctx any, groupId any, clusterName any) *ClustersAPI_GetClusterAdaptiveSettings_Call {
+	return &ClustersAPI_GetClusterAdaptiveSettings_Call{Call: _e.mock.On("GetClusterAdaptiveSettings", ctx, groupId, clusterName)}
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettings_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *ClustersAPI_GetClusterAdaptiveSettings_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettings_Call) Return(_a0 admin.GetClusterAdaptiveSettingsApiRequest) *ClustersAPI_GetClusterAdaptiveSettings_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettings_Call) RunAndReturn(run func(context.Context, string, string) admin.GetClusterAdaptiveSettingsApiRequest) *ClustersAPI_GetClusterAdaptiveSettings_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetClusterAdaptiveSettingsExecute provides a mock function with given fields: r
+func (_m *ClustersAPI) GetClusterAdaptiveSettingsExecute(r admin.GetClusterAdaptiveSettingsApiRequest) (*admin.AdaptiveSettingsResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetClusterAdaptiveSettingsExecute")
+	}
+
+	var r0 *admin.AdaptiveSettingsResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetClusterAdaptiveSettingsApiRequest) (*admin.AdaptiveSettingsResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetClusterAdaptiveSettingsApiRequest) *admin.AdaptiveSettingsResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.AdaptiveSettingsResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetClusterAdaptiveSettingsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetClusterAdaptiveSettingsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ClustersAPI_GetClusterAdaptiveSettingsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterAdaptiveSettingsExecute'
+type ClustersAPI_GetClusterAdaptiveSettingsExecute_Call struct {
+	*mock.Call
+}
+
+// GetClusterAdaptiveSettingsExecute is a helper method to define mock.On call
+//   - r admin.GetClusterAdaptiveSettingsApiRequest
+func (_e *ClustersAPI_Expecter) GetClusterAdaptiveSettingsExecute(r any) *ClustersAPI_GetClusterAdaptiveSettingsExecute_Call {
+	return &ClustersAPI_GetClusterAdaptiveSettingsExecute_Call{Call: _e.mock.On("GetClusterAdaptiveSettingsExecute", r)}
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettingsExecute_Call) Run(run func(r admin.GetClusterAdaptiveSettingsApiRequest)) *ClustersAPI_GetClusterAdaptiveSettingsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetClusterAdaptiveSettingsApiRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettingsExecute_Call) Return(_a0 *admin.AdaptiveSettingsResponse, _a1 *http.Response, _a2 error) *ClustersAPI_GetClusterAdaptiveSettingsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettingsExecute_Call) RunAndReturn(run func(admin.GetClusterAdaptiveSettingsApiRequest) (*admin.AdaptiveSettingsResponse, *http.Response, error)) *ClustersAPI_GetClusterAdaptiveSettingsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetClusterAdaptiveSettingsWithParams provides a mock function with given fields: ctx, args
+func (_m *ClustersAPI) GetClusterAdaptiveSettingsWithParams(ctx context.Context, args *admin.GetClusterAdaptiveSettingsApiParams) admin.GetClusterAdaptiveSettingsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetClusterAdaptiveSettingsWithParams")
+	}
+
+	var r0 admin.GetClusterAdaptiveSettingsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetClusterAdaptiveSettingsApiParams) admin.GetClusterAdaptiveSettingsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetClusterAdaptiveSettingsApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterAdaptiveSettingsWithParams'
+type ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call struct {
+	*mock.Call
+}
+
+// GetClusterAdaptiveSettingsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetClusterAdaptiveSettingsApiParams
+func (_e *ClustersAPI_Expecter) GetClusterAdaptiveSettingsWithParams(ctx any, args any) *ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call {
+	return &ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call{Call: _e.mock.On("GetClusterAdaptiveSettingsWithParams", ctx, args)}
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call) Run(run func(ctx context.Context, args *admin.GetClusterAdaptiveSettingsApiParams)) *ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetClusterAdaptiveSettingsApiParams))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call) Return(_a0 admin.GetClusterAdaptiveSettingsApiRequest) *ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetClusterAdaptiveSettingsApiParams) admin.GetClusterAdaptiveSettingsApiRequest) *ClustersAPI_GetClusterAdaptiveSettingsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2606,6 +2768,169 @@ func (_c *ClustersAPI_UpdateCluster_Call) Return(_a0 admin.UpdateClusterApiReque
 }
 
 func (_c *ClustersAPI_UpdateCluster_Call) RunAndReturn(run func(context.Context, string, string, *admin.ClusterDescription20240805) admin.UpdateClusterApiRequest) *ClustersAPI_UpdateCluster_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateClusterAdaptiveSettings provides a mock function with given fields: ctx, groupId, clusterName, adaptiveSettingsUpdateRequest
+func (_m *ClustersAPI) UpdateClusterAdaptiveSettings(ctx context.Context, groupId string, clusterName string, adaptiveSettingsUpdateRequest *admin.AdaptiveSettingsUpdateRequest) admin.UpdateClusterAdaptiveSettingsApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName, adaptiveSettingsUpdateRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateClusterAdaptiveSettings")
+	}
+
+	var r0 admin.UpdateClusterAdaptiveSettingsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.AdaptiveSettingsUpdateRequest) admin.UpdateClusterAdaptiveSettingsApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName, adaptiveSettingsUpdateRequest)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateClusterAdaptiveSettingsApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_UpdateClusterAdaptiveSettings_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateClusterAdaptiveSettings'
+type ClustersAPI_UpdateClusterAdaptiveSettings_Call struct {
+	*mock.Call
+}
+
+// UpdateClusterAdaptiveSettings is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+//   - adaptiveSettingsUpdateRequest *admin.AdaptiveSettingsUpdateRequest
+func (_e *ClustersAPI_Expecter) UpdateClusterAdaptiveSettings(ctx any, groupId any, clusterName any, adaptiveSettingsUpdateRequest any) *ClustersAPI_UpdateClusterAdaptiveSettings_Call {
+	return &ClustersAPI_UpdateClusterAdaptiveSettings_Call{Call: _e.mock.On("UpdateClusterAdaptiveSettings", ctx, groupId, clusterName, adaptiveSettingsUpdateRequest)}
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettings_Call) Run(run func(ctx context.Context, groupId string, clusterName string, adaptiveSettingsUpdateRequest *admin.AdaptiveSettingsUpdateRequest)) *ClustersAPI_UpdateClusterAdaptiveSettings_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.AdaptiveSettingsUpdateRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettings_Call) Return(_a0 admin.UpdateClusterAdaptiveSettingsApiRequest) *ClustersAPI_UpdateClusterAdaptiveSettings_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettings_Call) RunAndReturn(run func(context.Context, string, string, *admin.AdaptiveSettingsUpdateRequest) admin.UpdateClusterAdaptiveSettingsApiRequest) *ClustersAPI_UpdateClusterAdaptiveSettings_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateClusterAdaptiveSettingsExecute provides a mock function with given fields: r
+func (_m *ClustersAPI) UpdateClusterAdaptiveSettingsExecute(r admin.UpdateClusterAdaptiveSettingsApiRequest) (*admin.AdaptiveSettingsResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateClusterAdaptiveSettingsExecute")
+	}
+
+	var r0 *admin.AdaptiveSettingsResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdateClusterAdaptiveSettingsApiRequest) (*admin.AdaptiveSettingsResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdateClusterAdaptiveSettingsApiRequest) *admin.AdaptiveSettingsResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.AdaptiveSettingsResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdateClusterAdaptiveSettingsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdateClusterAdaptiveSettingsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateClusterAdaptiveSettingsExecute'
+type ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call struct {
+	*mock.Call
+}
+
+// UpdateClusterAdaptiveSettingsExecute is a helper method to define mock.On call
+//   - r admin.UpdateClusterAdaptiveSettingsApiRequest
+func (_e *ClustersAPI_Expecter) UpdateClusterAdaptiveSettingsExecute(r any) *ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call {
+	return &ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call{Call: _e.mock.On("UpdateClusterAdaptiveSettingsExecute", r)}
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call) Run(run func(r admin.UpdateClusterAdaptiveSettingsApiRequest)) *ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdateClusterAdaptiveSettingsApiRequest))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call) Return(_a0 *admin.AdaptiveSettingsResponse, _a1 *http.Response, _a2 error) *ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call) RunAndReturn(run func(admin.UpdateClusterAdaptiveSettingsApiRequest) (*admin.AdaptiveSettingsResponse, *http.Response, error)) *ClustersAPI_UpdateClusterAdaptiveSettingsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateClusterAdaptiveSettingsWithParams provides a mock function with given fields: ctx, args
+func (_m *ClustersAPI) UpdateClusterAdaptiveSettingsWithParams(ctx context.Context, args *admin.UpdateClusterAdaptiveSettingsApiParams) admin.UpdateClusterAdaptiveSettingsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateClusterAdaptiveSettingsWithParams")
+	}
+
+	var r0 admin.UpdateClusterAdaptiveSettingsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateClusterAdaptiveSettingsApiParams) admin.UpdateClusterAdaptiveSettingsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateClusterAdaptiveSettingsApiRequest)
+	}
+
+	return r0
+}
+
+// ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateClusterAdaptiveSettingsWithParams'
+type ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdateClusterAdaptiveSettingsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdateClusterAdaptiveSettingsApiParams
+func (_e *ClustersAPI_Expecter) UpdateClusterAdaptiveSettingsWithParams(ctx any, args any) *ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call {
+	return &ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call{Call: _e.mock.On("UpdateClusterAdaptiveSettingsWithParams", ctx, args)}
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateClusterAdaptiveSettingsApiParams)) *ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdateClusterAdaptiveSettingsApiParams))
+	})
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call) Return(_a0 admin.UpdateClusterAdaptiveSettingsApiRequest) *ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateClusterAdaptiveSettingsApiParams) admin.UpdateClusterAdaptiveSettingsApiRequest) *ClustersAPI_UpdateClusterAdaptiveSettingsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

@@ -9,7 +9,7 @@ type StreamsAWSConnectionConfig struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account.
 	RoleArn *string `json:"roleArn,omitempty"`
-	// The name of an S3 bucket used to check authorization of the passed-in IAM role ARN.
+	// The name of an S3 bucket used to check authorization of the passed-in IAM role ARN. This field applies only to S3 connections and is ignored for all other connection types and configurations.
 	TestBucket *string `json:"testBucket,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.

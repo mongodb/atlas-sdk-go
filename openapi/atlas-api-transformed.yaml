@@ -456,6 +456,35 @@ components:
       required:
         - link
       type: object
+    AdaptiveSettingsOverrides:
+      additionalProperties: true
+      description: Map of customer-specified overrides for Adaptive Settings, applied on a best-effort basis. Each supported entry that you specify in this object takes precedence over the corresponding Atlas-managed default. For example, if a setting is enabled by default, you can add an override to disable it for your cluster.
+      type: object
+    AdaptiveSettingsResponse:
+      description: Adaptive Settings for a cluster, including client-provided overrides and the effective settings derived from those overrides and Atlas-managed defaults.
+      externalDocs:
+        description: Adaptive Settings
+        url: https://dochub.mongodb.org/core/adaptive-settings
+      properties:
+        adaptiveSettingsOverrides:
+          $ref: "#/components/schemas/AdaptiveSettingsOverrides"
+        effectiveAdaptiveSettings:
+          additionalProperties: true
+          description: The effective state of Adaptive Settings currently applied to your cluster, based on your overrides and Atlas-managed defaults. Atlas-managed defaults can vary by MongoDB version, so the same setting may default differently across clusters running different versions. If you set an override for a setting that your cluster's current MongoDB version doesn't support, the override doesn't take effect and the effective value reflects the Atlas-managed default instead.
+          readOnly: true
+          type: object
+      required:
+        - effectiveAdaptiveSettings
+      type: object
+    AdaptiveSettingsUpdateRequest:
+      description: Adaptive Settings for a cluster, including client-provided overrides and the effective settings derived from those overrides and Atlas-managed defaults.
+      externalDocs:
+        description: Adaptive Settings
+        url: https://dochub.mongodb.org/core/adaptive-settings
+      properties:
+        adaptiveSettingsOverrides:
+          $ref: "#/components/schemas/AdaptiveSettingsOverrides"
+      type: object
     AddOrRemoveGroupRole:
       properties:
         groupRole:
@@ -1168,7 +1197,7 @@ components:
         collections:
           description: List of collections to restore (up to 100 items).
           items:
-            $ref: "#/components/schemas/ApiAtlasRestoreNamespace"
+            $ref: "#/components/schemas/ApiAtlasRestoreCollectionNamespace"
           maxItems: 100
           type: array
         databaseSuffix:
@@ -1177,7 +1206,7 @@ components:
         databases:
           description: List of databases to restore (up to 100 items).
           items:
-            $ref: "#/components/schemas/ApiAtlasRestoreNamespace"
+            $ref: "#/components/schemas/ApiAtlasRestoreDatabaseNamespace"
           maxItems: 100
           type: array
         indexStrategy:
@@ -1226,7 +1255,7 @@ components:
         collections:
           description: List of collections in the restore scope (up to 100 items).
           items:
-            $ref: "#/components/schemas/ApiAtlasRestoreNamespace"
+            $ref: "#/components/schemas/ApiAtlasRestoreCollectionNamespace"
           maxItems: 100
           type: array
         createdAt:
@@ -1240,7 +1269,7 @@ components:
         databases:
           description: List of databases in the restore scope (up to 100 items).
           items:
-            $ref: "#/components/schemas/ApiAtlasRestoreNamespace"
+            $ref: "#/components/schemas/ApiAtlasRestoreDatabaseNamespace"
           maxItems: 100
           type: array
         errorMessage:
@@ -1287,7 +1316,7 @@ components:
           pattern: ^([a-f0-9]{24})$
           type: string
         state:
-          description: Current state of the collection restore job.
+          description: Current state of the collection restore job. A `SUCCESSFUL` job can include individual `UNSUPPORTED` collection restores. Use the restore job collections endpoint to get per-collection detailed states.
           readOnly: true
           type: string
         targetClusterName:
@@ -1929,6 +1958,16 @@ components:
         - externalGroupName
         - roleAssignments
       title: Federated Authentication Role Mapping
+      type: object
+    AuthenticatedUser:
+      description: Details about the MongoDB Cloud user that this request is authenticated as.
+      properties:
+        username:
+          description: Email address that represents the username of the MongoDB Cloud user.
+          format: email
+          readOnly: true
+          type: string
+      readOnly: true
       type: object
     AvailableCloudProviderRegion:
       properties:
@@ -5450,6 +5489,7 @@ components:
             $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
           maxItems: 200
           type: array
+          x-xgen-array-semantic: set
         mcpConfigName:
           description: Human-readable name that identifies this MCP configuration.
           maxLength: 64
@@ -5465,6 +5505,7 @@ components:
           maxItems: 100
           minItems: 1
           type: array
+          x-xgen-array-semantic: set
       required:
         - mcpConfigName
         - roles
@@ -5477,6 +5518,7 @@ components:
             $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
           maxItems: 200
           type: array
+          x-xgen-array-semantic: set
         mcpConfigName:
           description: Human-readable name that identifies this MCP configuration.
           maxLength: 64
@@ -5490,6 +5532,7 @@ components:
           maxItems: 100
           minItems: 1
           type: array
+          x-xgen-array-semantic: set
       required:
         - mcpConfigName
         - roles
@@ -6346,21 +6389,20 @@ components:
           type: integer
         diskIOPS:
           description: |-
-            Target throughput desired for storage attached to your Azure-provisioned cluster. Change this parameter if you:
+            Target IOPS (Input/Output Operations Per Second) desired for storage attached to this hardware. Only configurable for Gen 2 instance sizes.
 
-            - set `replicationSpecs[n].regionConfigs[m].providerName` : `Azure`.
-            - set `replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize` : `M40` or greater not including `Mxx_NVME` tiers.
+             Change this parameter if you:
+
+            - set `"replicationSpecs[n].regionConfigs[m].providerName" : "GCP"`.
+            - set `"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize"` to a Gen 2 instance size (`"M30_GEN_2"` or greater).
 
             The maximum input/output operations per second (IOPS) depend on the selected `.instanceSize` and `.diskSizeGB`.
-            This parameter defaults to the cluster tier's standard IOPS value.
+            This parameter defaults to the standard IOPS value for the selected `.diskSizeGB`.
             Changing this value impacts cluster cost.
-          externalDocs:
-            description: Programmatic API Keys
-            url: https://www.mongodb.com/docs/atlas/customize-storage/#extend-iops-on-azure
           format: int32
           type: integer
         diskThroughput:
-          description: Target throughput desired for storage attached to this hardware. Only returned for Gen 2 instance sizes with Standard (GP3) volume type.
+          description: Throughput (in MiB/s) provisioned for storage attached to this hardware. Only returned for Gen 2 instance sizes.
           format: int32
           readOnly: true
           type: integer
@@ -9468,6 +9510,13 @@ components:
           maximum: 7
           minimum: 1
           type: integer
+        effectiveWaveAssignment:
+          description: "Maintenance wave that Atlas uses when scheduling maintenance for this project. This read-only value can differ from `waveAssignment` in two scenarios: (1) when the organization's `effectiveWaveAssignmentMode` is `ENV_TAG_MAPPING`, the effective wave is derived from environment tags regardless of any explicit assignment; (2) when cross-organization maintenance sequencing is active and this project's organization is a linked non-paying organization, the effective wave reflects the paying organization's mode."
+          format: int32
+          maximum: 3
+          minimum: 1
+          readOnly: true
+          type: integer
         hourOfDay:
           description: Zero-based integer that represents the hour of the day, in the project's configured time zone (see `timeZoneId`), that the maintenance window starts according to a 24-hour clock. Use `0` for midnight and `12` for noon. If you haven't changed your project's time zone, this defaults to UTC.
           format: int32
@@ -9488,8 +9537,12 @@ components:
           description: Identifier for the current time zone of the maintenance window. This can only be updated via the Project Settings UI.
           readOnly: true
           type: string
-      required:
-        - dayOfWeek
+        waveAssignment:
+          description: Maintenance wave explicitly assigned to this project. Always returned in GET responses when a value has been set, regardless of the organization's `effectiveWaveAssignmentMode`. When the mode is `ENV_TAG_MAPPING`, this stored assignment is preserved but not used for scheduling — the effective wave is derived from environment tags instead. Not editable when the mode is `ENV_TAG_MAPPING`. Switching back to `MANUAL` restores this value as the effective wave. Must be between 1 and 3, inclusive. Pass `null` to clear an explicit assignment.
+          format: int32
+          maximum: 3
+          minimum: 1
+          type: integer
       type: object
     GroupMcpConfigResponse:
       properties:
@@ -9511,6 +9564,7 @@ components:
             $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
           maxItems: 200
           type: array
+          x-xgen-array-semantic: set
         mcpConfigId:
           description: Unique identifier that identifies this MCP configuration.
           example: b9254bc4-d6cc-4325-abf4-fb9d2a9de00a
@@ -9529,6 +9583,7 @@ components:
             type: string
           maxItems: 100
           type: array
+          x-xgen-array-semantic: set
       type: object
     GroupMcpConfigUpdateRequest:
       properties:
@@ -9538,6 +9593,7 @@ components:
             $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
           maxItems: 200
           type: array
+          x-xgen-array-semantic: set
         mcpConfigName:
           description: Updated human-readable name for this MCP configuration.
           maxLength: 64
@@ -9554,6 +9610,7 @@ components:
           maxItems: 100
           minItems: 1
           type: array
+          x-xgen-array-semantic: set
       type: object
     GroupMigrationRequest:
       properties:
@@ -9679,17 +9736,20 @@ components:
           minItems: 1
           type: array
         secretExpiresAfterHours:
-          description: The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization's settings.
+          description: The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization's settings. Required unless `withoutInitialSecret` is true.
           example: 8
           exclusiveMinimum: true
           format: int32
           minimum: 0
           type: integer
+        withoutInitialSecret:
+          default: false
+          description: "If true, creates the Service Account without generating an initial secret. `secretExpiresAfterHours` must not be set when this is true. Defaults to false, which preserves existing behavior: a secret is generated and returned in the response. Use the `CreateGroupServiceAccountSecret` endpoint to add a secret later."
+          type: boolean
       required:
         - description
         - name
         - roles
-        - secretExpiresAfterHours
       type: object
     GroupServiceAccountRoleAssignment:
       properties:
@@ -9953,21 +10013,20 @@ components:
           type: number
         diskIOPS:
           description: |-
-            Target throughput desired for storage attached to your Azure-provisioned cluster. Change this parameter if you:
+            Target IOPS (Input/Output Operations Per Second) desired for storage attached to this hardware. Only configurable for Gen 2 instance sizes.
 
-            - set `replicationSpecs[n].regionConfigs[m].providerName` : `Azure`.
-            - set `replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize` : `M40` or greater not including `Mxx_NVME` tiers.
+             Change this parameter if you:
+
+            - set `"replicationSpecs[n].regionConfigs[m].providerName" : "GCP"`.
+            - set `"replicationSpecs[n].regionConfigs[m].electableSpecs.instanceSize"` to a Gen 2 instance size (`"M30_GEN_2"` or greater).
 
             The maximum input/output operations per second (IOPS) depend on the selected `.instanceSize` and `.diskSizeGB`.
-            This parameter defaults to the cluster tier's standard IOPS value.
+            This parameter defaults to the standard IOPS value for the selected `.diskSizeGB`.
             Changing this value impacts cluster cost.
-          externalDocs:
-            description: Programmatic API Keys
-            url: https://www.mongodb.com/docs/atlas/customize-storage/#extend-iops-on-azure
           format: int32
           type: integer
         diskThroughput:
-          description: Target throughput desired for storage attached to this hardware. Only returned for Gen 2 instance sizes with Standard (GP3) volume type.
+          description: Throughput (in MiB/s) provisioned for storage attached to this hardware. Only returned for Gen 2 instance sizes.
           format: int32
           readOnly: true
           type: integer
@@ -12492,6 +12551,7 @@ components:
             $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
           maxItems: 200
           type: array
+          x-xgen-array-semantic: set
         mcpConfigId:
           description: Unique identifier that identifies this MCP configuration.
           example: b9254bc4-d6cc-4325-abf4-fb9d2a9de00a
@@ -12508,6 +12568,7 @@ components:
             type: string
           maxItems: 100
           type: array
+          x-xgen-array-semantic: set
       type: object
     OrgMcpConfigUpdateRequest:
       properties:
@@ -12517,6 +12578,7 @@ components:
             $ref: "#/components/schemas/ServiceAccountIPAccessListEntry"
           maxItems: 200
           type: array
+          x-xgen-array-semantic: set
         mcpConfigName:
           description: Updated human-readable name for this MCP configuration.
           maxLength: 64
@@ -12531,6 +12593,7 @@ components:
           maxItems: 100
           minItems: 1
           type: array
+          x-xgen-array-semantic: set
       type: object
     OrgServiceAccount:
       description: Organization Service Account that Atlas created for the organization.
@@ -12588,17 +12651,20 @@ components:
           minItems: 1
           type: array
         secretExpiresAfterHours:
-          description: The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization's settings.
+          description: The expiration time of the new Service Account secret, provided in hours. The minimum and maximum allowed expiration times are subject to change and are controlled by the organization's settings. Required unless `withoutInitialSecret` is true.
           example: 8
           exclusiveMinimum: true
           format: int32
           minimum: 0
           type: integer
+        withoutInitialSecret:
+          default: false
+          description: "If true, creates the Service Account without generating an initial secret. `secretExpiresAfterHours` must not be set when this is true. Defaults to false, which preserves existing behavior: a secret is generated and returned in the response. Use the `CreateOrgServiceAccountSecret` endpoint to add a secret later."
+          type: boolean
       required:
         - description
         - name
         - roles
-        - secretExpiresAfterHours
       type: object
     OrgServiceAccountUpdateRequest:
       properties:
@@ -12942,6 +13008,23 @@ components:
             type: string
           type: array
           uniqueItems: true
+      type: object
+    OrganizationMaintenanceSettingsResponse:
+      description: Maintenance configuration settings for an organization.
+      properties:
+        effectiveWaveAssignmentMode:
+          description: Wave assignment mode that Atlas uses when scheduling maintenance for projects in this organization. This read-only field takes precedence over `waveAssignmentMode` for scheduling. It matches `waveAssignmentMode` except when cross-organization maintenance sequencing is enabled and this organization is a linked non-paying organization, in which case it reflects the paying organization's `waveAssignmentMode`. Possible values are `MANUAL` and `ENV_TAG_MAPPING`. Defaults to `MANUAL` when no mode is configured. Omitted from GET responses when maintenance sequencing is disabled for this organization.
+          readOnly: true
+          type: string
+        waveAssignmentMode:
+          description: Mode explicitly configured for this organization that determines how maintenance waves are assigned to projects. Possible values are `MANUAL` and `ENV_TAG_MAPPING`. Omitted from the response when no explicit preference has been set; in that case `effectiveWaveAssignmentMode` reflects the value the system uses (`MANUAL` by default). Atlas uses read-only `effectiveWaveAssignmentMode` (not this field) for scheduling. In a cross-organization billing hierarchy, a linked non-paying organization cannot update its `effectiveWaveAssignmentMode` field, which inherits from the paying organization's `waveAssignmentMode`. In this case, a linked non-paying organization's `effectiveWaveAssignmentMode` and `waveAssignmentMode` might differ.
+          type: string
+      type: object
+    OrganizationMaintenanceSettingsUpdateRequest:
+      properties:
+        waveAssignmentMode:
+          description: "Mode configured for this organization that determines how maintenance waves are assigned to projects. Possible values are `MANUAL` and `ENV_TAG_MAPPING`. Defaults to `MANUAL` when unset. Set the organization to `ENV_TAG_MAPPING` mode to have Atlas derive the maintenance wave from each project's environment tag. The tag key must be `environment`. The tag value determines the wave: `development` or `test` maps to Wave 1, `staging` maps to Wave 2, and `production` maps to Wave 3. Only this field can be updated; Atlas derives read-only `effectiveWaveAssignmentMode` on GET responses and uses that value for scheduling when it differs from `waveAssignmentMode`. Omit this field to leave the current value unchanged. Specify null to reset to the default value (`MANUAL`)."
+          type: string
       type: object
     OrganizationSettings:
       description: Collection of settings that configures the organization.
@@ -13999,7 +14082,7 @@ components:
       description: Response containing the details and status of a query shape. The query shape field may be null if the user lacks PII view access.
       properties:
         command:
-          description: The MongoDB command type issued for a query shape.
+          description: The MongoDB command type issued for a query shape. The INSERT, UPDATE, and DELETE commands appear only for clusters running MongoDB 9.0 or later.
           readOnly: true
           type: string
         namespace:
@@ -14047,6 +14130,42 @@ components:
       required:
         - status
       type: object
+    QueryStatsCollectionResponse:
+      description: How `queryStats` entries were collected on this cluster's processes. Reflects the collection mode of the cluster's processes regardless of any host or process type filters in the request. Omitted when the collection mode cannot be determined. Sample-based collection requires MongoDB 9.0 or later but may not be enabled on every such cluster; this reflects the mode in effect on the cluster.
+      properties:
+        mode:
+          description: Method used to collect `queryStats` entries on the cluster's processes.
+          readOnly: true
+          type: string
+        sampleRate:
+          description: Fraction of operations recorded. Dividing reported counts by this rate yields an unbiased estimate of the true totals.
+          example: 0.01
+          format: double
+          readOnly: true
+          type: number
+        rateLimitPerSecond:
+          description: Maximum read queries recorded per second.
+          example: 100
+          format: int32
+          readOnly: true
+          type: integer
+      readOnly: true
+      required:
+        - mode
+      type: object
+      x-xgen-discriminator:
+        propertyName: mode
+        mapping:
+          RATE_LIMITED:
+            properties:
+              - rateLimitPerSecond
+            required:
+              - rateLimitPerSecond
+          SAMPLED:
+            properties:
+              - sampleRate
+            required:
+              - sampleRate
     QueryStatsDetailsResponse:
       description: Metadata and summary statistics for a given query shape.
       properties:
@@ -14056,6 +14175,8 @@ components:
           $ref: "#/components/schemas/QueryShapeSeenMetadata"
         queryStats:
           $ref: "#/components/schemas/QueryStatsSummary"
+        queryStatsCollection:
+          $ref: "#/components/schemas/QueryStatsCollectionResponse"
       type: object
     QueryStatsSummary:
       description: A summary of execution statistics for a given query shape.
@@ -14069,7 +14190,7 @@ components:
           format: double
           type: number
         command:
-          description: The MongoDB command issued for this query shape.
+          description: The MongoDB command issued for this query shape. The insert, update, and delete commands appear only for clusters running MongoDB 9.0 or later.
           type: string
         cpuTime:
           description: Total CPU time in nanoseconds consumed by queries with the given query shape. Available for MDB 8.2 and higher.
@@ -14091,6 +14212,10 @@ components:
           description: Total number of times that queries with the given query shape have been executed.
           format: double
           type: number
+        keysDeleted:
+          description: Total number of index keys deleted by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+          format: double
+          type: number
         keysExamined:
           description: Total number of in-bounds and out-of-bounds index keys examined by queries with the given query shape.
           format: double
@@ -14099,8 +14224,32 @@ components:
           description: Ratio of in-bounds and out-of-bounds index keys examined to indexes containing documents returned by queries with the given query shape.
           format: double
           type: number
+        keysInserted:
+          description: Total number of index keys inserted by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+          format: double
+          type: number
         lastExecMicros:
           description: Execution runtime in microseconds for the most recent query with the given query shape.
+          format: double
+          type: number
+        nDeleted:
+          description: Total number of documents deleted by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+          format: double
+          type: number
+        nInserted:
+          description: Total number of documents inserted by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+          format: double
+          type: number
+        nMatched:
+          description: Total number of documents matched by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+          format: double
+          type: number
+        nModified:
+          description: Total number of documents modified by queries with the given query shape. Available for MongoDB 9.0+ write commands.
+          format: double
+          type: number
+        nUpserted:
+          description: Total number of documents upserted by queries with the given query shape. Available for MongoDB 9.0+ write commands.
           format: double
           type: number
         namespace:
@@ -14141,6 +14290,8 @@ components:
       type: object
     QueryStatsSummaryListResponse:
       properties:
+        queryStatsCollection:
+          $ref: "#/components/schemas/QueryStatsCollectionResponse"
         summaries:
           description: List of query shape statistic summaries from Query Shape Insights.
           items:
@@ -15234,7 +15385,7 @@ components:
           description: Amazon Resource Name (ARN) that identifies the Amazon Web Services (AWS) Identity and Access Management (IAM) role that MongoDB Cloud assumes when it accesses resources in your AWS account.
           type: string
         testBucket:
-          description: The name of an S3 bucket used to check authorization of the passed-in IAM role ARN.
+          description: The name of an S3 bucket used to check authorization of the passed-in IAM role ARN. This field applies only to S3 connections and is ignored for all other connection types and configurations.
           type: string
       type: object
     StreamsAutoscaling:
@@ -16236,6 +16387,12 @@ components:
           example: 83be55e140f493c88e7f578aae96548dd881587b
           readOnly: true
           type: string
+        ipAddress:
+          description: IPv4 or IPv6 address from which you requested this response. Use this value to confirm which address IP access lists evaluate for your requests.
+          example: 216.172.40.186
+          pattern: ^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)(\.(?!$)|$)){4}|([0-9a-f]{1,4}:){7}[0-9a-f]{1,4}$
+          readOnly: true
+          type: string
         links:
           description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
           externalDocs:
@@ -16249,10 +16406,12 @@ components:
           description: Flag that indicates whether someone enabled throttling on this service.
           readOnly: true
           type: boolean
+        user:
+          $ref: "#/components/schemas/AuthenticatedUser"
       required:
-        - apiKey
         - appName
         - build
+        - ipAddress
         - throttling
       type: object
     TargetOrg:
@@ -17693,14 +17852,26 @@ components:
           readOnly: true
           type: string
       type: object
-    ApiAtlasRestoreNamespace:
-      description: Source and optional target namespace for a restore.
+    ApiAtlasRestoreCollectionNamespace:
+      description: Source and optional target collection for a restore.
       properties:
         sourceNamespace:
-          description: Namespace requested to restore (e.g. database name or `database.collection`).
+          description: Collection requested to restore, as `database.collection`.
           type: string
         targetNamespace:
-          description: Requested target namespace for the restored data; if empty, source namespace is used.
+          description: Requested target collection as `database.collection`; if empty, source namespace is used.
+          type: string
+      required:
+        - sourceNamespace
+      type: object
+    ApiAtlasRestoreDatabaseNamespace:
+      description: Source and optional target database for a restore.
+      properties:
+        sourceNamespace:
+          description: Database name requested to restore.
+          type: string
+        targetNamespace:
+          description: Requested target database name; if empty, source database name is used.
           type: string
       required:
         - sourceNamespace
@@ -19959,7 +20130,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: a60757263174cd52b7a5ba825d8b8034a936578d
+  x-xgen-sha: 2a14aecfd9159beeac35cafd5ec3e6cee9f2d696
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -28293,6 +28464,188 @@ paths:
       x-xgen-method-verb-override:
         customMethod: false
         verb: get
+  /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/adaptiveSettings:
+    get:
+      description: Returns the Adaptive Settings for the specified cluster, including client-provided overrides and the effective settings derived from those overrides and Atlas-managed defaults. To use this resource, the requesting Service Account or API Key must have the Project Read Only role.
+      operationId: getClusterAdaptiveSettings
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/AdaptiveSettingsResponse"
+              x-xgen-version: 2025-03-12
+          description: OK.
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+      summary: Return Adaptive Settings for One Cluster
+      tags:
+        - Clusters
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api clusters getClusterAdaptiveSettings --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetGroupClusterAdaptiveSettingsApiParams{}
+            	sdkResp, httpResp, err := client.ClustersApi.
+            		GetGroupClusterAdaptiveSettingsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/adaptiveSettings?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/adaptiveSettings?pretty=true"
+      x-rolesRequirements:
+        - Project Read Only
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/getGroupClusterAdaptiveSettings
+    patch:
+      description: Updates the client-provided Adaptive Settings overrides for the specified cluster and returns the resulting Adaptive Settings, including the effective settings derived from those overrides and Atlas-managed defaults. To use this resource, the requesting Service Account or API Key must have the Project Owner role.
+      operationId: updateClusterAdaptiveSettings
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Human-readable label that identifies the cluster.
+          in: path
+          name: clusterName
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/AdaptiveSettingsUpdateRequest"
+        description: "Adaptive Settings overrides to apply to the specified cluster. The supplied `adaptiveSettingsOverrides` map fully replaces the existing overrides: any override omitted from the map returns to its Atlas-managed default. Omitting the `adaptiveSettingsOverrides` field entirely preserves the existing overrides, an empty map clears all overrides, and `null` resets the field and omits it from responses until it is set again."
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/AdaptiveSettingsResponse"
+              x-xgen-version: 2025-03-12
+          description: OK.
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+      summary: Update Adaptive Settings for One Cluster
+      tags:
+        - Clusters
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api clusters updateClusterAdaptiveSettings --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.UpdateGroupClusterAdaptiveSettingsApiParams{}
+            	sdkResp, httpResp, err := client.ClustersApi.
+            		UpdateGroupClusterAdaptiveSettingsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/adaptiveSettings" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/adaptiveSettings" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Project Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/updateGroupClusterAdaptiveSettings
   /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/autoScalingConfiguration:
     get:
       deprecated: true
@@ -34955,14 +35308,14 @@ paths:
             maxItems: 10
             type: array
           style: form
-        - description: Retrieve query shape statistics matching specified MongoDB commands. To include multiple commands, pass the parameter multiple times delimited with an ampersand (`&`) between each command. The currently supported parameters are find, distinct, and aggregate. Omit this parameter to return results for all supported commands.
+        - description: "Retrieve query shape statistics matching specified MongoDB commands. To include multiple commands, pass the parameter multiple times delimited with an ampersand (`&`) between each command. The currently supported parameters are: find, distinct, aggregate, count, insert, update, and delete. The insert, update, and delete commands return results only for clusters running MongoDB 9.0 or later with write query shape statistics enabled for the project. Omit this parameter to return results for all supported commands."
           in: query
           name: commands
           schema:
             description: MongoDB commands from which to retrieve query statistics. To include multiple commands, pass the parameter multiple times delimited with an ampersand (`&`) between each command. Omit this parameter to return results for all supported commands.
             items:
               type: string
-            maxItems: 3
+            maxItems: 7
             type: array
             uniqueItems: true
           style: form
@@ -34979,10 +35332,10 @@ paths:
           in: query
           name: series
           schema:
-            description: Query shape statistics data series to retrieve. A series represents a specific metric about query execution. To include multiple series, pass the parameter multiple times delimited with an ampersand (`&`) between each series. Omit this parameter to return results for all available series. The `P50_EXECUTION_TIME`, `P90_EXECUTION_TIME`, and `P99_EXECUTION_TIME` series are deprecated as the values they report may be inaccurate. They will be removed in a future release.
+            description: Query shape statistics data series to retrieve. A series represents a specific metric about query execution. To include multiple series, pass the parameter multiple times delimited with an ampersand (`&`) between each series. Omit this parameter to return results for all available series. The `P50_EXECUTION_TIME`, `P90_EXECUTION_TIME`, and `P99_EXECUTION_TIME` series are deprecated as the values they report may be inaccurate. They will be removed in a future release. The write command series (`DOCS_MATCHED`, `DOCS_MODIFIED`, `DOCS_UPSERTED`, `DOCS_DELETED`, `DOCS_INSERTED`, `KEYS_INSERTED`, `KEYS_DELETED`) return data only for clusters running MongoDB 9.0 or later with write query shape statistics enabled for the project.
             items:
               type: string
-            maxItems: 15
+            maxItems: 22
             type: array
             uniqueItems: true
           style: form
@@ -53960,7 +54313,7 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Service-Accounts/operation/createGroupServiceAccountAccessList
   /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress}:
     delete:
-      description: Removes the specified access list entry from the specified Service Account for the project. You can't remove the requesting IP address from the access list.
+      description: Removes the specified access list entry from the specified Service Account for the project. A Service Account cannot remove its own IP address from its access list.
       operationId: deleteGroupAccessEntry
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -64211,6 +64564,267 @@ paths:
       x-rolesRequirements:
         - Organization Owner
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Migration-Service/operation/createOrgLiveMigrationLinkToken
+  /api/atlas/v2/orgs/{orgId}/maintenanceSettings:
+    get:
+      description: Returns maintenance settings for the specified organization.
+      operationId: getOrgMaintenanceSettings
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/OrganizationMaintenanceSettingsResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return Maintenance Settings for One Organization
+      tags:
+        - Organizations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api organizations getOrgMaintenanceSettings --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetOrgMaintenanceSettingsApiParams{}
+            	sdkResp, httpResp, err := client.OrganizationsApi.
+            		GetOrgMaintenanceSettingsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/maintenanceSettings?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/maintenanceSettings?pretty=true"
+      x-rolesRequirements:
+        - Organization Member
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/getOrgMaintenanceSettings
+    patch:
+      description: Updates maintenance settings for the specified organization. Omit optional fields from the request body to leave their current values unchanged. Specify null on an optional field to reset it to its default value.
+      operationId: updateOrgMaintenanceSettings
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/OrganizationMaintenanceSettingsUpdateRequest"
+            x-xgen-version: 2025-03-12
+        description: Maintenance settings to update for the specified organization.
+        required: true
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/OrganizationMaintenanceSettingsResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Update Maintenance Settings for One Organization
+      tags:
+        - Organizations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api organizations updateOrgMaintenanceSettings --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.UpdateOrgMaintenanceSettingsApiParams{}
+            	sdkResp, httpResp, err := client.OrganizationsApi.
+            		UpdateOrgMaintenanceSettingsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/maintenanceSettings" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X PATCH "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/maintenanceSettings" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Organization Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/updateOrgMaintenanceSettings
+  /api/atlas/v2/orgs/{orgId}/maintenanceSettings:reset:
+    post:
+      description: Resets maintenance settings for the specified organization to their default values. Restores the wave assignment mode to the default manual mode.
+      operationId: resetOrgMaintenanceSettings
+      parameters:
+        - $ref: "#/components/parameters/orgId"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/OrganizationMaintenanceSettingsResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Reset Maintenance Settings for One Organization
+      tags:
+        - Organizations
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api organizations resetOrgMaintenanceSettings --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ResetOrgMaintenanceSettingsApiParams{}
+            	sdkResp, httpResp, err := client.OrganizationsApi.
+            		ResetOrgMaintenanceSettingsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/maintenanceSettings:reset" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/maintenanceSettings:reset" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Organization Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Organizations/operation/resetOrgMaintenanceSettings
+      x-xgen-method-verb-override:
+        customMethod: "True"
+        verb: reset
   /api/atlas/v2/orgs/{orgId}/mcpConfigs:
     get:
       description: Returns all MCP configurations associated with the specified organization.
@@ -66361,7 +66975,7 @@ paths:
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Service-Accounts/operation/createOrgServiceAccountAccessList
   /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress}:
     delete:
-      description: Removes the specified access list entry from the specified Service Account for the organization. You can't remove the requesting IP address from the access list.
+      description: Removes the specified access list entry from the specified Service Account for the organization. A Service Account cannot remove its own IP address from its access list.
       operationId: deleteOrgAccessEntry
       parameters:
         - $ref: "#/components/parameters/orgId"

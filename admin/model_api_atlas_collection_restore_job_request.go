@@ -7,11 +7,11 @@ type ApiAtlasCollectionRestoreJobRequest struct {
 	// Optional suffix applied to restored collection names.
 	CollectionSuffix *string `json:"collectionSuffix,omitempty"`
 	// List of collections to restore (up to 100 items).
-	Collections *[]ApiAtlasRestoreNamespace `json:"collections,omitempty"`
+	Collections *[]ApiAtlasRestoreCollectionNamespace `json:"collections,omitempty"`
 	// Optional suffix applied to restored database names.
 	DatabaseSuffix *string `json:"databaseSuffix,omitempty"`
 	// List of databases to restore (up to 100 items).
-	Databases *[]ApiAtlasRestoreNamespace `json:"databases,omitempty"`
+	Databases *[]ApiAtlasRestoreDatabaseNamespace `json:"databases,omitempty"`
 	// Strategy for restoring indexes (all, none, or all except TTL).
 	IndexStrategy string `json:"indexStrategy"`
 	// Oplog increment for point-in-time restore.
@@ -101,9 +101,9 @@ func (o *ApiAtlasCollectionRestoreJobRequest) SetCollectionSuffixNil() {
 }
 
 // GetCollections returns the Collections field value if set, zero value otherwise
-func (o *ApiAtlasCollectionRestoreJobRequest) GetCollections() []ApiAtlasRestoreNamespace {
+func (o *ApiAtlasCollectionRestoreJobRequest) GetCollections() []ApiAtlasRestoreCollectionNamespace {
 	if o == nil || IsNil(o.Collections) {
-		var ret []ApiAtlasRestoreNamespace
+		var ret []ApiAtlasRestoreCollectionNamespace
 		return ret
 	}
 	return *o.Collections
@@ -111,7 +111,7 @@ func (o *ApiAtlasCollectionRestoreJobRequest) GetCollections() []ApiAtlasRestore
 
 // GetCollectionsOk returns a tuple with the Collections field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiAtlasCollectionRestoreJobRequest) GetCollectionsOk() (*[]ApiAtlasRestoreNamespace, bool) {
+func (o *ApiAtlasCollectionRestoreJobRequest) GetCollectionsOk() (*[]ApiAtlasRestoreCollectionNamespace, bool) {
 	if o == nil || IsNil(o.Collections) {
 		return nil, false
 	}
@@ -128,8 +128,8 @@ func (o *ApiAtlasCollectionRestoreJobRequest) HasCollections() bool {
 	return false
 }
 
-// SetCollections gets a reference to the given []ApiAtlasRestoreNamespace and assigns it to the Collections field.
-func (o *ApiAtlasCollectionRestoreJobRequest) SetCollections(v []ApiAtlasRestoreNamespace) {
+// SetCollections gets a reference to the given []ApiAtlasRestoreCollectionNamespace and assigns it to the Collections field.
+func (o *ApiAtlasCollectionRestoreJobRequest) SetCollections(v []ApiAtlasRestoreCollectionNamespace) {
 	o.Collections = &v
 	o.NullFields = removeNullField(o.NullFields, "Collections")
 }
@@ -181,9 +181,9 @@ func (o *ApiAtlasCollectionRestoreJobRequest) SetDatabaseSuffixNil() {
 }
 
 // GetDatabases returns the Databases field value if set, zero value otherwise
-func (o *ApiAtlasCollectionRestoreJobRequest) GetDatabases() []ApiAtlasRestoreNamespace {
+func (o *ApiAtlasCollectionRestoreJobRequest) GetDatabases() []ApiAtlasRestoreDatabaseNamespace {
 	if o == nil || IsNil(o.Databases) {
-		var ret []ApiAtlasRestoreNamespace
+		var ret []ApiAtlasRestoreDatabaseNamespace
 		return ret
 	}
 	return *o.Databases
@@ -191,7 +191,7 @@ func (o *ApiAtlasCollectionRestoreJobRequest) GetDatabases() []ApiAtlasRestoreNa
 
 // GetDatabasesOk returns a tuple with the Databases field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiAtlasCollectionRestoreJobRequest) GetDatabasesOk() (*[]ApiAtlasRestoreNamespace, bool) {
+func (o *ApiAtlasCollectionRestoreJobRequest) GetDatabasesOk() (*[]ApiAtlasRestoreDatabaseNamespace, bool) {
 	if o == nil || IsNil(o.Databases) {
 		return nil, false
 	}
@@ -208,8 +208,8 @@ func (o *ApiAtlasCollectionRestoreJobRequest) HasDatabases() bool {
 	return false
 }
 
-// SetDatabases gets a reference to the given []ApiAtlasRestoreNamespace and assigns it to the Databases field.
-func (o *ApiAtlasCollectionRestoreJobRequest) SetDatabases(v []ApiAtlasRestoreNamespace) {
+// SetDatabases gets a reference to the given []ApiAtlasRestoreDatabaseNamespace and assigns it to the Databases field.
+func (o *ApiAtlasCollectionRestoreJobRequest) SetDatabases(v []ApiAtlasRestoreDatabaseNamespace) {
 	o.Databases = &v
 	o.NullFields = removeNullField(o.NullFields, "Databases")
 }

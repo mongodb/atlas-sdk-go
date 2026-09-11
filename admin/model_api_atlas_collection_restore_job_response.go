@@ -11,14 +11,14 @@ type ApiAtlasCollectionRestoreJobResponse struct {
 	// Suffix applied to restored collection names.
 	CollectionSuffix *string `json:"collectionSuffix,omitempty"`
 	// List of collections in the restore scope (up to 100 items).
-	Collections *[]ApiAtlasRestoreNamespace `json:"collections,omitempty"`
+	Collections *[]ApiAtlasRestoreCollectionNamespace `json:"collections,omitempty"`
 	// Date and time when the restore job was created (ISO 8601 format in UTC).
 	// Read only field.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
 	// Suffix applied to restored database names.
 	DatabaseSuffix *string `json:"databaseSuffix,omitempty"`
 	// List of databases in the restore scope (up to 100 items).
-	Databases *[]ApiAtlasRestoreNamespace `json:"databases,omitempty"`
+	Databases *[]ApiAtlasRestoreDatabaseNamespace `json:"databases,omitempty"`
 	// Error message when the job has failed or been canceled.
 	// Read only field.
 	ErrorMessage *string `json:"errorMessage,omitempty"`
@@ -42,7 +42,7 @@ type ApiAtlasCollectionRestoreJobResponse struct {
 	RestoredDocuments *int64 `json:"restoredDocuments,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the snapshot being restored.
 	SnapshotId *string `json:"snapshotId,omitempty"`
-	// Current state of the collection restore job.
+	// Current state of the collection restore job. A `SUCCESSFUL` job can include individual `UNSUPPORTED` collection restores. Use the restore job collections endpoint to get per-collection detailed states.
 	// Read only field.
 	State *string `json:"state,omitempty"`
 	// Human-readable label that identifies the target cluster.
@@ -123,9 +123,9 @@ func (o *ApiAtlasCollectionRestoreJobResponse) SetCollectionSuffixNil() {
 }
 
 // GetCollections returns the Collections field value if set, zero value otherwise
-func (o *ApiAtlasCollectionRestoreJobResponse) GetCollections() []ApiAtlasRestoreNamespace {
+func (o *ApiAtlasCollectionRestoreJobResponse) GetCollections() []ApiAtlasRestoreCollectionNamespace {
 	if o == nil || IsNil(o.Collections) {
-		var ret []ApiAtlasRestoreNamespace
+		var ret []ApiAtlasRestoreCollectionNamespace
 		return ret
 	}
 	return *o.Collections
@@ -133,7 +133,7 @@ func (o *ApiAtlasCollectionRestoreJobResponse) GetCollections() []ApiAtlasRestor
 
 // GetCollectionsOk returns a tuple with the Collections field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiAtlasCollectionRestoreJobResponse) GetCollectionsOk() (*[]ApiAtlasRestoreNamespace, bool) {
+func (o *ApiAtlasCollectionRestoreJobResponse) GetCollectionsOk() (*[]ApiAtlasRestoreCollectionNamespace, bool) {
 	if o == nil || IsNil(o.Collections) {
 		return nil, false
 	}
@@ -150,8 +150,8 @@ func (o *ApiAtlasCollectionRestoreJobResponse) HasCollections() bool {
 	return false
 }
 
-// SetCollections gets a reference to the given []ApiAtlasRestoreNamespace and assigns it to the Collections field.
-func (o *ApiAtlasCollectionRestoreJobResponse) SetCollections(v []ApiAtlasRestoreNamespace) {
+// SetCollections gets a reference to the given []ApiAtlasRestoreCollectionNamespace and assigns it to the Collections field.
+func (o *ApiAtlasCollectionRestoreJobResponse) SetCollections(v []ApiAtlasRestoreCollectionNamespace) {
 	o.Collections = &v
 	o.NullFields = removeNullField(o.NullFields, "Collections")
 }
@@ -243,9 +243,9 @@ func (o *ApiAtlasCollectionRestoreJobResponse) SetDatabaseSuffixNil() {
 }
 
 // GetDatabases returns the Databases field value if set, zero value otherwise
-func (o *ApiAtlasCollectionRestoreJobResponse) GetDatabases() []ApiAtlasRestoreNamespace {
+func (o *ApiAtlasCollectionRestoreJobResponse) GetDatabases() []ApiAtlasRestoreDatabaseNamespace {
 	if o == nil || IsNil(o.Databases) {
-		var ret []ApiAtlasRestoreNamespace
+		var ret []ApiAtlasRestoreDatabaseNamespace
 		return ret
 	}
 	return *o.Databases
@@ -253,7 +253,7 @@ func (o *ApiAtlasCollectionRestoreJobResponse) GetDatabases() []ApiAtlasRestoreN
 
 // GetDatabasesOk returns a tuple with the Databases field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiAtlasCollectionRestoreJobResponse) GetDatabasesOk() (*[]ApiAtlasRestoreNamespace, bool) {
+func (o *ApiAtlasCollectionRestoreJobResponse) GetDatabasesOk() (*[]ApiAtlasRestoreDatabaseNamespace, bool) {
 	if o == nil || IsNil(o.Databases) {
 		return nil, false
 	}
@@ -270,8 +270,8 @@ func (o *ApiAtlasCollectionRestoreJobResponse) HasDatabases() bool {
 	return false
 }
 
-// SetDatabases gets a reference to the given []ApiAtlasRestoreNamespace and assigns it to the Databases field.
-func (o *ApiAtlasCollectionRestoreJobResponse) SetDatabases(v []ApiAtlasRestoreNamespace) {
+// SetDatabases gets a reference to the given []ApiAtlasRestoreDatabaseNamespace and assigns it to the Databases field.
+func (o *ApiAtlasCollectionRestoreJobResponse) SetDatabases(v []ApiAtlasRestoreDatabaseNamespace) {
 	o.Databases = &v
 	o.NullFields = removeNullField(o.NullFields, "Databases")
 }

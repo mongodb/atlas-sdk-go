@@ -266,6 +266,9 @@ func (a *AIModelRateLimitsAPIService) GetGroupModelLimitsExecute(r GetGroupModel
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -409,17 +412,29 @@ func (a *AIModelRateLimitsAPIService) GetGroupRateLimitsExecute(r GetGroupRateLi
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.cloud == "" {
 		return localVarReturnValue, nil, reportError("cloud is empty and must be specified")
+	}
+	if r.cloud == "." || r.cloud == ".." {
+		return localVarReturnValue, nil, reportError("cloud must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"cloud"+"}", url.PathEscape(r.cloud), -1)
 	if r.geography == "" {
 		return localVarReturnValue, nil, reportError("geography is empty and must be specified")
 	}
+	if r.geography == "." || r.geography == ".." {
+		return localVarReturnValue, nil, reportError("geography must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"geography"+"}", url.PathEscape(r.geography), -1)
 	if r.modelGroupName == "" {
 		return localVarReturnValue, nil, reportError("modelGroupName is empty and must be specified")
+	}
+	if r.modelGroupName == "." || r.modelGroupName == ".." {
+		return localVarReturnValue, nil, reportError("modelGroupName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"modelGroupName"+"}", url.PathEscape(r.modelGroupName), -1)
 
@@ -552,6 +567,9 @@ func (a *AIModelRateLimitsAPIService) GetOrgModelLimitsExecute(r GetOrgModelLimi
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/aiModelApiRateLimits"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 
@@ -696,17 +714,29 @@ func (a *AIModelRateLimitsAPIService) GetOrgRateLimitsExecute(r GetOrgRateLimits
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.cloud == "" {
 		return localVarReturnValue, nil, reportError("cloud is empty and must be specified")
+	}
+	if r.cloud == "." || r.cloud == ".." {
+		return localVarReturnValue, nil, reportError("cloud must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"cloud"+"}", url.PathEscape(r.cloud), -1)
 	if r.geography == "" {
 		return localVarReturnValue, nil, reportError("geography is empty and must be specified")
 	}
+	if r.geography == "." || r.geography == ".." {
+		return localVarReturnValue, nil, reportError("geography must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"geography"+"}", url.PathEscape(r.geography), -1)
 	if r.modelGroupName == "" {
 		return localVarReturnValue, nil, reportError("modelGroupName is empty and must be specified")
+	}
+	if r.modelGroupName == "." || r.modelGroupName == ".." {
+		return localVarReturnValue, nil, reportError("modelGroupName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"modelGroupName"+"}", url.PathEscape(r.modelGroupName), -1)
 
@@ -837,17 +867,29 @@ func (a *AIModelRateLimitsAPIService) ResetGroupModelLimitsExecute(r ResetGroupM
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.cloud == "" {
 		return localVarReturnValue, nil, reportError("cloud is empty and must be specified")
+	}
+	if r.cloud == "." || r.cloud == ".." {
+		return localVarReturnValue, nil, reportError("cloud must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"cloud"+"}", url.PathEscape(r.cloud), -1)
 	if r.geography == "" {
 		return localVarReturnValue, nil, reportError("geography is empty and must be specified")
 	}
+	if r.geography == "." || r.geography == ".." {
+		return localVarReturnValue, nil, reportError("geography must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"geography"+"}", url.PathEscape(r.geography), -1)
 	if r.modelGroupName == "" {
 		return localVarReturnValue, nil, reportError("modelGroupName is empty and must be specified")
+	}
+	if r.modelGroupName == "." || r.modelGroupName == ".." {
+		return localVarReturnValue, nil, reportError("modelGroupName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"modelGroupName"+"}", url.PathEscape(r.modelGroupName), -1)
 
@@ -962,6 +1004,9 @@ func (a *AIModelRateLimitsAPIService) ResetGroupRateLimitsExecute(r ResetGroupRa
 	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/aiModelApiRateLimits:reset"
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
@@ -1096,17 +1141,29 @@ func (a *AIModelRateLimitsAPIService) UpdateGroupRateLimitsExecute(r UpdateGroup
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.cloud == "" {
 		return localVarReturnValue, nil, reportError("cloud is empty and must be specified")
+	}
+	if r.cloud == "." || r.cloud == ".." {
+		return localVarReturnValue, nil, reportError("cloud must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"cloud"+"}", url.PathEscape(r.cloud), -1)
 	if r.geography == "" {
 		return localVarReturnValue, nil, reportError("geography is empty and must be specified")
 	}
+	if r.geography == "." || r.geography == ".." {
+		return localVarReturnValue, nil, reportError("geography must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"geography"+"}", url.PathEscape(r.geography), -1)
 	if r.modelGroupName == "" {
 		return localVarReturnValue, nil, reportError("modelGroupName is empty and must be specified")
+	}
+	if r.modelGroupName == "." || r.modelGroupName == ".." {
+		return localVarReturnValue, nil, reportError("modelGroupName must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"modelGroupName"+"}", url.PathEscape(r.modelGroupName), -1)
 

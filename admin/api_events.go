@@ -216,9 +216,15 @@ func (a *EventsAPIService) GetGroupEventExecute(r GetGroupEventApiRequest) (*Eve
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 	if r.eventId == "" {
 		return localVarReturnValue, nil, reportError("eventId is empty and must be specified")
+	}
+	if r.eventId == "." || r.eventId == ".." {
+		return localVarReturnValue, nil, reportError("eventId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"eventId"+"}", url.PathEscape(r.eventId), -1)
 
@@ -357,9 +363,15 @@ func (a *EventsAPIService) GetOrgEventExecute(r GetOrgEventApiRequest) (*EventVi
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
 	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 	if r.eventId == "" {
 		return localVarReturnValue, nil, reportError("eventId is empty and must be specified")
+	}
+	if r.eventId == "." || r.eventId == ".." {
+		return localVarReturnValue, nil, reportError("eventId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"eventId"+"}", url.PathEscape(r.eventId), -1)
 
@@ -718,6 +730,9 @@ func (a *EventsAPIService) ListGroupEventsExecute(r ListGroupEventsApiRequest) (
 	if r.groupId == "" {
 		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
 	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -951,6 +966,9 @@ func (a *EventsAPIService) ListOrgEventsExecute(r ListOrgEventsApiRequest) (*Org
 	localVarPath := localBasePath + "/api/atlas/v2/orgs/{orgId}/events"
 	if r.orgId == "" {
 		return localVarReturnValue, nil, reportError("orgId is empty and must be specified")
+	}
+	if r.orgId == "." || r.orgId == ".." {
+		return localVarReturnValue, nil, reportError("orgId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"orgId"+"}", url.PathEscape(r.orgId), -1)
 

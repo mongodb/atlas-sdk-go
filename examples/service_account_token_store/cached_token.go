@@ -4,13 +4,13 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"go.mongodb.org/atlas-sdk/v20250312024/auth"
+	"go.mongodb.org/atlas-sdk/v20250312025/auth"
 	"log"
 	"os"
 	"strings"
 
-	"go.mongodb.org/atlas-sdk/v20250312024/admin"
-	"go.mongodb.org/atlas-sdk/v20250312024/auth/clientcredentials"
+	"go.mongodb.org/atlas-sdk/v20250312025/admin"
+	"go.mongodb.org/atlas-sdk/v20250312025/auth/clientcredentials"
 )
 
 // Variable provided as example.

@@ -155,6 +155,9 @@ func (a *RateLimitingAPIService) GetRateLimitExecute(r GetRateLimitApiRequest) (
 	if r.endpointSetId == "" {
 		return localVarReturnValue, nil, reportError("endpointSetId is empty and must be specified")
 	}
+	if r.endpointSetId == "." || r.endpointSetId == ".." {
+		return localVarReturnValue, nil, reportError("endpointSetId must not be a dot-segment path parameter")
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"endpointSetId"+"}", url.PathEscape(r.endpointSetId), -1)
 
 	localVarHeaderParams := make(map[string]string)
