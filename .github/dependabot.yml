@@ -1,7 +1,10 @@
 version: 2
 updates:
+  # Both modules share one dependency graph: bumping only the root breaks `make test-examples`.
   - package-ecosystem: gomod
-    directory: "/"
+    directories:
+      - "/"
+      - "/examples"
     schedule:
       interval: weekly
       day: sunday
@@ -11,17 +14,9 @@ updates:
       gomod:
         patterns:
           - "*"
-  - package-ecosystem: gomod
-    directory: "/examples"
-    schedule:
-      interval: monthly
-      day: sunday
-    allow:
-      - dependency-type: "all"
-    groups:
-      gomod:
-        patterns:
-          - "*"
+        # Without this, `directories` still opens one PR per directory, so a bump could land in
+        # `/` while `/examples` keeps the old pin and `make test-examples` fails.
+        group-by: dependency-name
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
