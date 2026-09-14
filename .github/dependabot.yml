@@ -8,6 +8,10 @@ updates:
     schedule:
       interval: weekly
       day: sunday
+    # Wait 7 days on new releases before proposing them, so a compromised or broken
+    # version has time to be caught. Security updates are never delayed. Set on every entry.
+    cooldown:
+      default-days: 7
     allow:
       - dependency-type: "all"
     groups:
@@ -22,6 +26,8 @@ updates:
     schedule:
       interval: monthly
       day: sunday
+    cooldown:
+      default-days: 7
     groups:
       github-actions:
         patterns:
@@ -31,6 +37,8 @@ updates:
     schedule:
       interval: weekly
       day: sunday
+    cooldown:
+      default-days: 7
     groups:
       npm:
         patterns:
