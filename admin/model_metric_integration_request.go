@@ -6,7 +6,7 @@ package admin
 type MetricIntegrationRequest struct {
 	// The temporality to send to the metric integration.
 	AggregationTemporality string `json:"aggregationTemporality"`
-	// Authentication method the integration uses when exporting metrics to the endpoint. `HEADER` authenticates with the static HTTP headers provided in the `headers` field, which must be set when this value is used.
+	// Authentication method the integration uses when exporting metrics to the endpoint. `HEADER` authenticates with the static HTTP headers provided in the `headers` field, which must be set when this value is used. `OAUTH2` acquires a bearer token from an OAuth 2.0 token endpoint using the `oauth` field.
 	AuthType string `json:"authType"`
 	// OpenTelemetry collector endpoint URL. Must use HTTPS.
 	Endpoint string `json:"endpoint"`
@@ -16,7 +16,8 @@ type MetricIntegrationRequest struct {
 	// Type of metric integration. Identifies which protocol will be used for the integration. This value cannot be modified after the integration is created.
 	IntegrationType string `json:"integrationType"`
 	// Array of metric categories to export. Determines which types of metrics are sent to the integration.
-	MetricSelection []string `json:"metricSelection"`
+	MetricSelection []string            `json:"metricSelection"`
+	Oauth           *OAuthConfigRequest `json:"oauth,omitempty"`
 	// The provider type for the metric integration. Identifies the third-party service provider.
 	ProviderType string `json:"providerType"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
@@ -211,6 +212,46 @@ func (o *MetricIntegrationRequest) GetMetricSelectionOk() (*[]string, bool) {
 // SetMetricSelection sets field value
 func (o *MetricIntegrationRequest) SetMetricSelection(v []string) {
 	o.MetricSelection = v
+}
+
+// GetOauth returns the Oauth field value if set, zero value otherwise
+func (o *MetricIntegrationRequest) GetOauth() OAuthConfigRequest {
+	if o == nil || IsNil(o.Oauth) {
+		var ret OAuthConfigRequest
+		return ret
+	}
+	return *o.Oauth
+}
+
+// GetOauthOk returns a tuple with the Oauth field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MetricIntegrationRequest) GetOauthOk() (*OAuthConfigRequest, bool) {
+	if o == nil || IsNil(o.Oauth) {
+		return nil, false
+	}
+
+	return o.Oauth, true
+}
+
+// HasOauth returns a boolean if a field has been set.
+func (o *MetricIntegrationRequest) HasOauth() bool {
+	if o != nil && !IsNil(o.Oauth) {
+		return true
+	}
+
+	return false
+}
+
+// SetOauth gets a reference to the given OAuthConfigRequest and assigns it to the Oauth field.
+func (o *MetricIntegrationRequest) SetOauth(v OAuthConfigRequest) {
+	o.Oauth = &v
+	o.NullFields = removeNullField(o.NullFields, "Oauth")
+}
+
+// SetOauthNil sets Oauth to an explicit JSON null when marshaled.
+func (o *MetricIntegrationRequest) SetOauthNil() {
+	o.Oauth = nil
+	o.NullFields = addNullField(o.NullFields, "Oauth")
 }
 
 // GetProviderType returns the ProviderType field value

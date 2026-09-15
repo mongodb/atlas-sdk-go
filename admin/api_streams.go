@@ -528,6 +528,30 @@ type StreamsAPI interface {
 	GetStreamWorkspaceExecute(r GetStreamWorkspaceApiRequest) (*StreamsTenant, *http.Response, error)
 
 	/*
+		GetWorkspacePrivateEndpoint Return One Workspace Private Endpoint for Atlas Stream Processing
+
+		Returns one private endpoint registered for Atlas Stream Processing in the specified project.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param endpointId Unique identifier of the customer's VPC endpoint.
+		@return GetWorkspacePrivateEndpointApiRequest
+	*/
+	GetWorkspacePrivateEndpoint(ctx context.Context, groupId string, endpointId string) GetWorkspacePrivateEndpointApiRequest
+	/*
+		GetWorkspacePrivateEndpoint Return One Workspace Private Endpoint for Atlas Stream Processing
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetWorkspacePrivateEndpointApiParams - Parameters for the request
+		@return GetWorkspacePrivateEndpointApiRequest
+	*/
+	GetWorkspacePrivateEndpointWithParams(ctx context.Context, args *GetWorkspacePrivateEndpointApiParams) GetWorkspacePrivateEndpointApiRequest
+
+	// Method available only for mocking purposes
+	GetWorkspacePrivateEndpointExecute(r GetWorkspacePrivateEndpointApiRequest) (*StreamsWorkspacePrivateEndpointResponse, *http.Response, error)
+
+	/*
 		ListActivePeeringConnections Return All Active Incoming VPC Peering Connections
 
 		Returns a list of active incoming VPC Peering Connections.
@@ -667,6 +691,29 @@ type StreamsAPI interface {
 
 	// Method available only for mocking purposes
 	ListVpcPeeringConnectionsExecute(r ListVpcPeeringConnectionsApiRequest) (*PaginatedApiStreamsVPCPeeringConnection, *http.Response, error)
+
+	/*
+		ListWorkspacePrivateEndpoints Return All Workspace Private Endpoints for Atlas Stream Processing
+
+		Returns all private endpoints registered for Atlas Stream Processing in the specified project.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@return ListWorkspacePrivateEndpointsApiRequest
+	*/
+	ListWorkspacePrivateEndpoints(ctx context.Context, groupId string) ListWorkspacePrivateEndpointsApiRequest
+	/*
+		ListWorkspacePrivateEndpoints Return All Workspace Private Endpoints for Atlas Stream Processing
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListWorkspacePrivateEndpointsApiParams - Parameters for the request
+		@return ListWorkspacePrivateEndpointsApiRequest
+	*/
+	ListWorkspacePrivateEndpointsWithParams(ctx context.Context, args *ListWorkspacePrivateEndpointsApiParams) ListWorkspacePrivateEndpointsApiRequest
+
+	// Method available only for mocking purposes
+	ListWorkspacePrivateEndpointsExecute(r ListWorkspacePrivateEndpointsApiRequest) (*PaginatedStreamsWorkspacePrivateEndpointResponse, *http.Response, error)
 
 	/*
 		RejectVpcPeeringConnection Reject One Incoming VPC Peering Connection
@@ -3799,6 +3846,135 @@ func (a *StreamsAPIService) GetStreamWorkspaceExecute(r GetStreamWorkspaceApiReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type GetWorkspacePrivateEndpointApiRequest struct {
+	ctx        context.Context
+	ApiService StreamsAPI
+	groupId    string
+	endpointId string
+}
+
+type GetWorkspacePrivateEndpointApiParams struct {
+	GroupId    string
+	EndpointId string
+}
+
+func (a *StreamsAPIService) GetWorkspacePrivateEndpointWithParams(ctx context.Context, args *GetWorkspacePrivateEndpointApiParams) GetWorkspacePrivateEndpointApiRequest {
+	return GetWorkspacePrivateEndpointApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    args.GroupId,
+		endpointId: args.EndpointId,
+	}
+}
+
+func (r GetWorkspacePrivateEndpointApiRequest) Execute() (*StreamsWorkspacePrivateEndpointResponse, *http.Response, error) {
+	return r.ApiService.GetWorkspacePrivateEndpointExecute(r)
+}
+
+/*
+GetWorkspacePrivateEndpoint Return One Workspace Private Endpoint for Atlas Stream Processing
+
+Returns one private endpoint registered for Atlas Stream Processing in the specified project.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param endpointId Unique identifier of the customer's VPC endpoint.
+	@return GetWorkspacePrivateEndpointApiRequest
+*/
+func (a *StreamsAPIService) GetWorkspacePrivateEndpoint(ctx context.Context, groupId string, endpointId string) GetWorkspacePrivateEndpointApiRequest {
+	return GetWorkspacePrivateEndpointApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+		endpointId: endpointId,
+	}
+}
+
+// GetWorkspacePrivateEndpointExecute executes the request
+//
+//	@return StreamsWorkspacePrivateEndpointResponse
+func (a *StreamsAPIService) GetWorkspacePrivateEndpointExecute(r GetWorkspacePrivateEndpointApiRequest) (*StreamsWorkspacePrivateEndpointResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *StreamsWorkspacePrivateEndpointResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.GetWorkspacePrivateEndpoint")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints/{endpointId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.endpointId == "" {
+		return localVarReturnValue, nil, reportError("endpointId is empty and must be specified")
+	}
+	if r.endpointId == "." || r.endpointId == ".." {
+		return localVarReturnValue, nil, reportError("endpointId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"endpointId"+"}", url.PathEscape(r.endpointId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ListActivePeeringConnectionsApiRequest struct {
 	ctx          context.Context
 	ApiService   StreamsAPI
@@ -4704,6 +4880,171 @@ func (a *StreamsAPIService) ListVpcPeeringConnectionsExecute(r ListVpcPeeringCon
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-02-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListWorkspacePrivateEndpointsApiRequest struct {
+	ctx          context.Context
+	ApiService   StreamsAPI
+	groupId      string
+	includeCount *bool
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListWorkspacePrivateEndpointsApiParams struct {
+	GroupId      string
+	IncludeCount *bool
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *StreamsAPIService) ListWorkspacePrivateEndpointsWithParams(ctx context.Context, args *ListWorkspacePrivateEndpointsApiParams) ListWorkspacePrivateEndpointsApiRequest {
+	return ListWorkspacePrivateEndpointsApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		groupId:      args.GroupId,
+		includeCount: args.IncludeCount,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+func (r ListWorkspacePrivateEndpointsApiRequest) IncludeCount(includeCount bool) ListWorkspacePrivateEndpointsApiRequest {
+	r.includeCount = &includeCount
+	return r
+}
+
+// Number of items that the response returns per page.
+func (r ListWorkspacePrivateEndpointsApiRequest) ItemsPerPage(itemsPerPage int) ListWorkspacePrivateEndpointsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListWorkspacePrivateEndpointsApiRequest) PageNum(pageNum int) ListWorkspacePrivateEndpointsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListWorkspacePrivateEndpointsApiRequest) Execute() (*PaginatedStreamsWorkspacePrivateEndpointResponse, *http.Response, error) {
+	return r.ApiService.ListWorkspacePrivateEndpointsExecute(r)
+}
+
+/*
+ListWorkspacePrivateEndpoints Return All Workspace Private Endpoints for Atlas Stream Processing
+
+Returns all private endpoints registered for Atlas Stream Processing in the specified project.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ListWorkspacePrivateEndpointsApiRequest
+*/
+func (a *StreamsAPIService) ListWorkspacePrivateEndpoints(ctx context.Context, groupId string) ListWorkspacePrivateEndpointsApiRequest {
+	return ListWorkspacePrivateEndpointsApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+		groupId:    groupId,
+	}
+}
+
+// ListWorkspacePrivateEndpointsExecute executes the request
+//
+//	@return PaginatedStreamsWorkspacePrivateEndpointResponse
+func (a *StreamsAPIService) ListWorkspacePrivateEndpointsExecute(r ListWorkspacePrivateEndpointsApiRequest) (*PaginatedStreamsWorkspacePrivateEndpointResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedStreamsWorkspacePrivateEndpointResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StreamsAPIService.ListWorkspacePrivateEndpoints")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.includeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCount = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	}
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

@@ -28,6 +28,8 @@ type GroupSettings struct {
 	IsRealtimePerformancePanelEnabled *bool `json:"isRealtimePerformancePanelEnabled,omitempty"`
 	// Flag that indicates whether to enable the Schema Advisor for the specified project.
 	IsSchemaAdvisorEnabled *bool `json:"isSchemaAdvisorEnabled,omitempty"`
+	// Flag that indicates whether the project uses the private endpoint connection strings resource.
+	PrivateEndpointConnectionStringsEnabled *bool `json:"privateEndpointConnectionStringsEnabled,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`
@@ -47,6 +49,8 @@ func NewGroupSettings() *GroupSettings {
 	this := GroupSettings{}
 	var isDataExplorerGenAISampleDocumentPassingEnabled bool = false
 	this.IsDataExplorerGenAISampleDocumentPassingEnabled = &isDataExplorerGenAISampleDocumentPassingEnabled
+	var privateEndpointConnectionStringsEnabled bool = false
+	this.PrivateEndpointConnectionStringsEnabled = &privateEndpointConnectionStringsEnabled
 	return &this
 }
 
@@ -57,6 +61,8 @@ func NewGroupSettingsWithDefaults() *GroupSettings {
 	this := GroupSettings{}
 	var isDataExplorerGenAISampleDocumentPassingEnabled bool = false
 	this.IsDataExplorerGenAISampleDocumentPassingEnabled = &isDataExplorerGenAISampleDocumentPassingEnabled
+	var privateEndpointConnectionStringsEnabled bool = false
+	this.PrivateEndpointConnectionStringsEnabled = &privateEndpointConnectionStringsEnabled
 	return &this
 }
 
@@ -538,4 +544,44 @@ func (o *GroupSettings) SetIsSchemaAdvisorEnabled(v bool) {
 func (o *GroupSettings) SetIsSchemaAdvisorEnabledNil() {
 	o.IsSchemaAdvisorEnabled = nil
 	o.NullFields = addNullField(o.NullFields, "IsSchemaAdvisorEnabled")
+}
+
+// GetPrivateEndpointConnectionStringsEnabled returns the PrivateEndpointConnectionStringsEnabled field value if set, zero value otherwise
+func (o *GroupSettings) GetPrivateEndpointConnectionStringsEnabled() bool {
+	if o == nil || IsNil(o.PrivateEndpointConnectionStringsEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.PrivateEndpointConnectionStringsEnabled
+}
+
+// GetPrivateEndpointConnectionStringsEnabledOk returns a tuple with the PrivateEndpointConnectionStringsEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GroupSettings) GetPrivateEndpointConnectionStringsEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.PrivateEndpointConnectionStringsEnabled) {
+		return nil, false
+	}
+
+	return o.PrivateEndpointConnectionStringsEnabled, true
+}
+
+// HasPrivateEndpointConnectionStringsEnabled returns a boolean if a field has been set.
+func (o *GroupSettings) HasPrivateEndpointConnectionStringsEnabled() bool {
+	if o != nil && !IsNil(o.PrivateEndpointConnectionStringsEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateEndpointConnectionStringsEnabled gets a reference to the given bool and assigns it to the PrivateEndpointConnectionStringsEnabled field.
+func (o *GroupSettings) SetPrivateEndpointConnectionStringsEnabled(v bool) {
+	o.PrivateEndpointConnectionStringsEnabled = &v
+	o.NullFields = removeNullField(o.NullFields, "PrivateEndpointConnectionStringsEnabled")
+}
+
+// SetPrivateEndpointConnectionStringsEnabledNil sets PrivateEndpointConnectionStringsEnabled to an explicit JSON null when marshaled.
+func (o *GroupSettings) SetPrivateEndpointConnectionStringsEnabledNil() {
+	o.PrivateEndpointConnectionStringsEnabled = nil
+	o.NullFields = addNullField(o.NullFields, "PrivateEndpointConnectionStringsEnabled")
 }

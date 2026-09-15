@@ -455,6 +455,7 @@ components:
                             - M140_GEN_2
                             - M200_GEN_2
                             - M300_GEN_2
+                            - M700_GEN_2
                             - R40_GEN_2
                             - R50_GEN_2
                             - R60_GEN_2
@@ -566,6 +567,7 @@ components:
                         - M140_GEN_2
                         - M200_GEN_2
                         - M300_GEN_2
+                        - M700_GEN_2
                         - R40_GEN_2
                         - R50_GEN_2
                         - R60_GEN_2
@@ -618,6 +620,7 @@ components:
                         - M140_GEN_2
                         - M200_GEN_2
                         - M300_GEN_2
+                        - M700_GEN_2
                         - R40_GEN_2
                         - R50_GEN_2
                         - R60_GEN_2
@@ -771,6 +774,7 @@ components:
                         - M140_GEN_2
                         - M200_GEN_2
                         - M300_GEN_2
+                        - M700_GEN_2
                         - R40_GEN_2
                         - R50_GEN_2
                         - R60_GEN_2
@@ -815,6 +819,15 @@ components:
                         - DELETING
                     readOnly: true
                     type: string
+                connectionStringIds:
+                    description: Identifiers of private endpoint connection strings that reference this private endpoint.
+                    items:
+                        pattern: ^([a-f0-9]{24})$
+                        type: string
+                    maxItems: 100
+                    readOnly: true
+                    type: array
+                    uniqueItems: true
                 deleteRequested:
                     description: Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service.
                     readOnly: true
@@ -1323,6 +1336,11 @@ components:
                     $ref: '#/components/schemas/AdvancedComputeAutoScaling'
                 diskGB:
                     $ref: '#/components/schemas/DiskGBAutoScaling'
+                storageConfig:
+                    allOf:
+                        - $ref: '#/components/schemas/StorageConfig'
+                    description: 'Available in Public Preview: Settings that determine the per-shard data-size limit for this cluster. Applies only to Atlas INFINITE clusters. MongoDB Cloud accepts these settings only on `autoScaling` and rejects them on `analyticsAutoScaling`, including when you send them as `null`. In a request that includes `replicationSpecs`, omitting `storageConfig` or sending it as `null` or `{}` clears the limit. Omitting `replicationSpecs` preserves it.'
+                    nullable: true
             title: Automatic Scaling Settings
             type: object
         AdvancedComputeAutoScaling:
@@ -3055,6 +3073,62 @@ components:
                         - DESCENDING
                     type: string
             type: object
+        ApiSearchAutoScalingView:
+            description: Settings that let Atlas change the Search Node tier on its own. Bounds apply to the whole deployment, and Atlas scales each region and shard independently within them. Omit to keep autoscaling off.
+            properties:
+                compute:
+                    $ref: '#/components/schemas/ApiSearchComputeAutoScalingView'
+            type: object
+        ApiSearchComputeAutoScalingView:
+            description: Settings that control Search Node tier scaling based on load.
+            properties:
+                enabled:
+                    default: false
+                    description: Flag that indicates whether Atlas raises the Search Node tier when the nodes are under sustained load. If set to `true`, you must also set `maxInstanceTier`.
+                    type: boolean
+                maxInstanceTier:
+                    description: Highest Search Node tier that Atlas can scale up to. Required when `enabled` is `true`.
+                    enum:
+                        - S10
+                        - S20
+                        - S30
+                        - S40
+                        - S50
+                        - S60
+                        - S70
+                        - S80
+                        - S90
+                        - S100
+                        - S110
+                        - S120
+                        - S130
+                        - S135
+                        - S140
+                    type: string
+                minInstanceTier:
+                    description: Lowest Search Node tier that Atlas can scale down to. Required when `scaleDownEnabled` is `true`. Scaling down is not supported yet, so setting this returns an error.
+                    enum:
+                        - S10
+                        - S20
+                        - S30
+                        - S40
+                        - S50
+                        - S60
+                        - S70
+                        - S80
+                        - S90
+                        - S100
+                        - S110
+                        - S120
+                        - S130
+                        - S135
+                        - S140
+                    type: string
+                scaleDownEnabled:
+                    default: false
+                    description: Flag that indicates whether Atlas lowers the Search Node tier when load drops. Takes effect only when `enabled` is `true`. If set to `true`, you must also set `minInstanceTier`. Scaling down is not supported yet, so setting this to `true` returns an error.
+                    type: boolean
+            type: object
         ApiSearchDeploymentEffectiveSpecView:
             properties:
                 cloudProvider:
@@ -3097,7 +3171,7 @@ components:
                     readOnly: true
                     type: string
                 nodeCount:
-                    description: Number of Search Nodes in this region.
+                    description: Number of Search Nodes for this configuration.
                     example: 2
                     format: int32
                     maximum: 32
@@ -3107,6 +3181,10 @@ components:
                 regionName:
                     description: Cloud provider region where Search Nodes are provisioned.
                     example: US_EAST_1
+                    readOnly: true
+                    type: string
+                shardId:
+                    description: Shard that owns this Search Node configuration.
                     readOnly: true
                     type: string
             type: object
@@ -3168,6 +3246,10 @@ components:
             type: object
         ApiSearchDeploymentRequestView:
             properties:
+                autoScaling:
+                    allOf:
+                        - $ref: '#/components/schemas/ApiSearchAutoScalingView'
+                    description: Settings that let Atlas change the Search Node tier on its own. Bounds apply to the whole deployment, and Atlas scales each region and shard independently within them. Omit to keep autoscaling off.
                 defaultNodeCount:
                     description: Default number of Search Nodes per region. Applied to a region without an explicit override.
                     example: 2
@@ -3187,8 +3269,19 @@ components:
             type: object
         ApiSearchDeploymentResponseView:
             properties:
+                autoScaling:
+                    allOf:
+                        - $ref: '#/components/schemas/ApiSearchAutoScalingView'
+                    description: Autoscaling settings configured for this Search deployment.
+                    readOnly: true
+                baselineSpecs:
+                    description: List of starting settings for the Search Nodes in each cluster region.
+                    items:
+                        $ref: '#/components/schemas/ApiSearchDeploymentEffectiveSpecView'
+                    readOnly: true
+                    type: array
                 effectiveSpecs:
-                    description: List of settings that configure the Search Nodes for your cluster, with per-region detail including the region name and cloud provider.
+                    description: List of settings that configure the Search Nodes for your cluster. Each entry describes one region or, when `shardId` is present, one shard in one region.
                     items:
                         $ref: '#/components/schemas/ApiSearchDeploymentEffectiveSpecView'
                     readOnly: true
@@ -3545,6 +3638,12 @@ components:
                 - id
             title: API User Events
             type: object
+        ApiVersion:
+            properties:
+                version:
+                    description: Object representing a version of the Atlas Admin API.
+                    type: string
+            type: object
         AppServiceAlertConfigViewForNdsGroup:
             description: App Services metric alert configuration allows to select which app service conditions and events trigger alerts and how users are notified.
             properties:
@@ -3692,6 +3791,15 @@ components:
                         description: ISO 8601
                         url: https://en.wikipedia.org/wiki/ISO_8601
                     format: date-time
+                    readOnly: true
+                    type: string
+                severity:
+                    description: Severity of the event.
+                    enum:
+                        - INFO
+                        - WARNING
+                        - ERROR
+                        - CRITICAL
                     readOnly: true
                     type: string
                 status:
@@ -4518,6 +4626,12 @@ components:
                     format: date-time
                     readOnly: true
                     type: string
+                databaseEdition:
+                    description: 'Available in Public Preview: Optional field that indicates whether your cluster will be Atlas INFINITE or CORE. You can set it only when you create the cluster, or when you upgrade a Free or Flex cluster to a dedicated cluster. This value is immutable once the dedicated cluster exists; attempting to change it on an update request returns an error.'
+                    enum:
+                        - CORE
+                        - INFINITE
+                    type: string
                 diskWarmingMode:
                     default: FULLY_WARMED
                     description: Disk warming mode selection.
@@ -4527,6 +4641,13 @@ components:
                     externalDocs:
                         description: Reduce Secondary Disk Warming Impact
                         url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
+                    type: string
+                effectiveDatabaseEdition:
+                    description: 'Available in Public Preview: Field that represents whether your cluster is Atlas INFINITE or CORE. This is read-only and always returned in the response. It reflects the actual cluster state. This value matches `databaseEdition` if it was set, otherwise it reflects the default database edition assigned to the cluster.'
+                    enum:
+                        - CORE
+                        - INFINITE
+                    readOnly: true
                     type: string
                 effectiveReplicationSpecs:
                     description: List of settings that represent the actual cluster state. This is read-only and always returned in the response. It reflects the current cluster configuration, which may differ from `replicationSpecs` due to system-managed changes.
@@ -5877,6 +5998,15 @@ components:
                         - GCP
                     readOnly: true
                     type: string
+                connectionStringIds:
+                    description: Identifiers of private endpoint connection strings that reference this private endpoint.
+                    items:
+                        pattern: ^([a-f0-9]{24})$
+                        type: string
+                    maxItems: 100
+                    readOnly: true
+                    type: array
+                    uniqueItems: true
                 deleteRequested:
                     description: Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service.
                     readOnly: true
@@ -6776,6 +6906,7 @@ components:
                     - M140_GEN_2
                     - M200_GEN_2
                     - M300_GEN_2
+                    - M700_GEN_2
                     - R40_GEN_2
                     - R50_GEN_2
                     - R60_GEN_2
@@ -6846,6 +6977,7 @@ components:
                     - M140_GEN_2
                     - M200_GEN_2
                     - M300_GEN_2
+                    - M700_GEN_2
                     - R40_GEN_2
                     - R50_GEN_2
                     - R60_GEN_2
@@ -6971,6 +7103,7 @@ components:
                 - CREDIT_PULLED_FWD
                 - CREDIT_END_DATE_MODIFIED
                 - PROMO_CODE_APPLIED
+                - PAYMENT_METHOD_DEACTIVATED
                 - PAYMENT_FORGIVEN
                 - REFUND_ISSUED
                 - ACCOUNT_DOWNGRADED
@@ -8144,6 +8277,7 @@ components:
                             - M140_GEN_2
                             - M200_GEN_2
                             - M300_GEN_2
+                            - M700_GEN_2
                             - R40_GEN_2
                             - R50_GEN_2
                             - R60_GEN_2
@@ -9283,6 +9417,15 @@ components:
                     format: date-time
                     readOnly: true
                     type: string
+                severity:
+                    description: Severity of the event.
+                    enum:
+                        - INFO
+                        - WARNING
+                        - ERROR
+                        - CRITICAL
+                    readOnly: true
+                    type: string
                 status:
                     description: State of this alert at the time you requested its details. TRACKING indicates the alert condition exists but has not persisted for the minimum notification delay. OPEN indicates the alert condition currently exists. CLOSED indicates the alert condition has been resolved.
                     enum:
@@ -9486,6 +9629,12 @@ components:
                     format: date-time
                     readOnly: true
                     type: string
+                databaseEdition:
+                    description: 'Available in Public Preview: Optional field that indicates whether your cluster will be Atlas INFINITE or CORE. You can set it only when you create the cluster, or when you upgrade a Free or Flex cluster to a dedicated cluster. This value is immutable once the dedicated cluster exists; attempting to change it on an update request returns an error.'
+                    enum:
+                        - CORE
+                        - INFINITE
+                    type: string
                 diskWarmingMode:
                     default: FULLY_WARMED
                     description: Disk warming mode selection.
@@ -9495,6 +9644,13 @@ components:
                     externalDocs:
                         description: Reduce Secondary Disk Warming Impact
                         url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
+                    type: string
+                effectiveDatabaseEdition:
+                    description: 'Available in Public Preview: Field that represents whether your cluster is Atlas INFINITE or CORE. This is read-only and always returned in the response. It reflects the actual cluster state. This value matches `databaseEdition` if it was set, otherwise it reflects the default database edition assigned to the cluster.'
+                    enum:
+                        - CORE
+                        - INFINITE
+                    readOnly: true
                     type: string
                 effectiveReplicationSpecs:
                     description: List of settings that represent the actual cluster state. This is read-only and always returned in the response. It reflects the current cluster configuration, which may differ from `replicationSpecs` due to system-managed changes.
@@ -12698,6 +12854,15 @@ components:
                     format: date-time
                     readOnly: true
                     type: string
+                severity:
+                    description: Severity of the event.
+                    enum:
+                        - INFO
+                        - WARNING
+                        - ERROR
+                        - CRITICAL
+                    readOnly: true
+                    type: string
                 status:
                     description: State of this alert at the time you requested its details. TRACKING indicates the alert condition exists but has not persisted for the minimum notification delay. OPEN indicates the alert condition currently exists. CLOSED indicates the alert condition has been resolved.
                     enum:
@@ -14046,6 +14211,15 @@ components:
                         description: ISO 8601
                         url: https://en.wikipedia.org/wiki/ISO_8601
                     format: date-time
+                    readOnly: true
+                    type: string
+                severity:
+                    description: Severity of the event.
+                    enum:
+                        - INFO
+                        - WARNING
+                        - ERROR
+                        - CRITICAL
                     readOnly: true
                     type: string
                 status:
@@ -16554,6 +16728,10 @@ components:
                     description: Usage count (since last restart) of index.
                     format: int64
                     type: integer
+                collation:
+                    additionalProperties: true
+                    description: Collation this index was built with. An index only serves a query that runs with the same collation. Absent when the index uses the default (simple) collation.
+                    type: object
                 index:
                     description: List that contains documents that specify a key in the index and its sort order.
                     items:
@@ -18055,6 +18233,7 @@ components:
                     - CREDIT_PULLED_FWD
                     - CREDIT_END_DATE_MODIFIED
                     - PROMO_CODE_APPLIED
+                    - PAYMENT_METHOD_DEACTIVATED
                     - PAYMENT_FORGIVEN
                     - REFUND_ISSUED
                     - ACCOUNT_DOWNGRADED
@@ -19656,6 +19835,12 @@ components:
                     format: date-time
                     readOnly: true
                     type: string
+                databaseEdition:
+                    description: 'Available in Public Preview: Optional field that indicates whether your tenant cluster will be upgraded to Atlas INFINITE or CORE.'
+                    enum:
+                        - CORE
+                        - INFINITE
+                    type: string
                 groupId:
                     description: Unique 24-hexadecimal character string that identifies the project.
                     example: 32b6e34b3d91647abb20e7b8
@@ -19732,6 +19917,12 @@ components:
         FlexClusterDescriptionCreate20241113:
             description: Settings that you can specify when you create a flex cluster.
             properties:
+                databaseEdition:
+                    description: 'Available in Public Preview: Optional field that indicates whether your tenant cluster will be upgraded to Atlas INFINITE or CORE.'
+                    enum:
+                        - CORE
+                        - INFINITE
+                    type: string
                 links:
                     description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
                     externalDocs:
@@ -19768,6 +19959,12 @@ components:
         FlexClusterDescriptionUpdate20241113:
             description: Settings that you can specify when you update a flex cluster.
             properties:
+                databaseEdition:
+                    description: 'Available in Public Preview: Optional field that indicates whether your tenant cluster will be upgraded to Atlas INFINITE or CORE.'
+                    enum:
+                        - CORE
+                        - INFINITE
+                    type: string
                 links:
                     description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
                     externalDocs:
@@ -20033,6 +20230,15 @@ components:
                         description: ISO 8601
                         url: https://en.wikipedia.org/wiki/ISO_8601
                     format: date-time
+                    readOnly: true
+                    type: string
+                severity:
+                    description: Severity of the event.
+                    enum:
+                        - INFO
+                        - WARNING
+                        - ERROR
+                        - CRITICAL
                     readOnly: true
                     type: string
                 status:
@@ -20860,6 +21066,7 @@ components:
                         - M140_GEN_2
                         - M200_GEN_2
                         - M300_GEN_2
+                        - M700_GEN_2
                         - R40_GEN_2
                         - R50_GEN_2
                         - R60_GEN_2
@@ -20900,6 +21107,7 @@ components:
                         - M140_GEN_2
                         - M200_GEN_2
                         - M300_GEN_2
+                        - M700_GEN_2
                         - R40_GEN_2
                         - R50_GEN_2
                         - R60_GEN_2
@@ -21080,6 +21288,7 @@ components:
                         - M140_GEN_2
                         - M200_GEN_2
                         - M300_GEN_2
+                        - M700_GEN_2
                         - R40_GEN_2
                         - R50_GEN_2
                         - R60_GEN_2
@@ -22154,6 +22363,12 @@ components:
                         $ref: '#/components/schemas/ServiceAccountSecret'
                     type: array
                     uniqueItems: true
+                systemManaged:
+                    description: Indicates whether the Service Account is system managed.
+                    readOnly: true
+                    type: boolean
+            required:
+                - systemManaged
             type: object
         GroupServiceAccountRequest:
             properties:
@@ -22275,6 +22490,10 @@ components:
                     type: boolean
                 isSchemaAdvisorEnabled:
                     description: Flag that indicates whether to enable the Schema Advisor for the specified project.
+                    type: boolean
+                privateEndpointConnectionStringsEnabled:
+                    default: false
+                    description: Flag that indicates whether the project uses the private endpoint connection strings resource.
                     type: boolean
             type: object
         GroupUpdate:
@@ -22609,6 +22828,15 @@ components:
                         description: ISO 8601
                         url: https://en.wikipedia.org/wiki/ISO_8601
                     format: date-time
+                    readOnly: true
+                    type: string
+                severity:
+                    description: Severity of the event.
+                    enum:
+                        - INFO
+                        - WARNING
+                        - ERROR
+                        - CRITICAL
                     readOnly: true
                     type: string
                 status:
@@ -23139,6 +23367,15 @@ components:
                         description: ISO 8601
                         url: https://en.wikipedia.org/wiki/ISO_8601
                     format: date-time
+                    readOnly: true
+                    type: string
+                severity:
+                    description: Severity of the event.
+                    enum:
+                        - INFO
+                        - WARNING
+                        - ERROR
+                        - CRITICAL
                     readOnly: true
                     type: string
                 status:
@@ -24247,6 +24484,28 @@ components:
                     type: object
             type: object
             writeOnly: true
+        Info:
+            description: Information about the MongoDB Atlas Administration API OpenAPI Specification.
+            properties:
+                description:
+                    description: Description of the MongoDB Atlas Administration API.
+                    example: The MongoDB Atlas Administration API allows developers to manage all components in MongoDB Atlas.
+                    type: string
+                license:
+                    $ref: '#/components/schemas/License'
+                termsOfService:
+                    description: Terms of Service URL.
+                    example: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
+                    type: string
+                title:
+                    description: Title of the MongoDB Atlas Administration API.
+                    example: MongoDB Atlas Administration API.
+                    type: string
+                version:
+                    description: Version of the MongoDB Atlas Administration API.
+                    example: "2.0"
+                    type: string
+            type: object
         InvoiceLineItem:
             description: One service included in this invoice.
             properties:
@@ -24755,6 +25014,12 @@ components:
                     format: date-time
                     readOnly: true
                     type: string
+                databaseEdition:
+                    description: 'Available in Public Preview: Optional field that indicates whether your cluster will be Atlas INFINITE or CORE. This field applies only to flex and shared clusters. You can set it only when you create the cluster, or when you upgrade a flex cluster to a dedicated cluster. This value is immutable once the dedicated cluster exists; attempting to change it on an update request returns an error.'
+                    enum:
+                        - CORE
+                        - INFINITE
+                    type: string
                 deleteAfterCreationHours:
                     description: |-
                         Number of hours after cluster creation that this cluster will be automatically deleted.
@@ -24795,6 +25060,13 @@ components:
                     externalDocs:
                         description: Reduce Secondary Disk Warming Impact
                         url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
+                    type: string
+                effectiveDatabaseEdition:
+                    description: 'Available in Public Preview: Field that represents whether your cluster is Atlas INFINITE or CORE. This field applies only to flex and shared clusters. This is read-only and always returned in the response. It reflects the actual cluster state. This value matches `databaseEdition` if it was set, otherwise it reflects the default database edition assigned to the cluster.'
+                    enum:
+                        - CORE
+                        - INFINITE
+                    readOnly: true
                     type: string
                 encryptionAtRestProvider:
                     description: 'Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster `replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize` setting must be `M10` or higher and `"backupEnabled" : false` or omitted entirely.'
@@ -25075,6 +25347,12 @@ components:
                     format: date-time
                     readOnly: true
                     type: string
+                databaseEdition:
+                    description: 'Available in Public Preview: Optional field that indicates whether your cluster will be Atlas INFINITE or CORE. This field applies only to flex and shared clusters. You can set it only when you create the cluster, or when you upgrade a flex cluster to a dedicated cluster. This value is immutable once the dedicated cluster exists; attempting to change it on an update request returns an error.'
+                    enum:
+                        - CORE
+                        - INFINITE
+                    type: string
                 deleteAfterCreationHours:
                     description: |-
                         Number of hours after cluster creation that this cluster will be automatically deleted.
@@ -25115,6 +25393,13 @@ components:
                     externalDocs:
                         description: Reduce Secondary Disk Warming Impact
                         url: https://docs.atlas.mongodb.com/reference/replica-set-tags/#reduce-secondary-disk-warming-impact
+                    type: string
+                effectiveDatabaseEdition:
+                    description: 'Available in Public Preview: Field that represents whether your cluster is Atlas INFINITE or CORE. This field applies only to flex and shared clusters. This is read-only and always returned in the response. It reflects the actual cluster state. This value matches `databaseEdition` if it was set, otherwise it reflects the default database edition assigned to the cluster.'
+                    enum:
+                        - CORE
+                        - INFINITE
+                    readOnly: true
                     type: string
                 encryptionAtRestProvider:
                     description: 'Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster `replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize` setting must be `M10` or higher and `"backupEnabled" : false` or omitted entirely.'
@@ -25474,6 +25759,18 @@ components:
             required:
                 - eventTypeName
                 - notifications
+            type: object
+        License:
+            description: License information of the MongoDB Atlas Administration API.
+            properties:
+                name:
+                    description: Name of the license.
+                    example: CC BY-NC-SA 3.0 US
+                    type: string
+                url:
+                    description: URL of the license.
+                    example: https://creativecommons.org/licenses/by-nc-sa/3.0/us/
+                    type: string
             type: object
         Link:
             properties:
@@ -26980,9 +27277,10 @@ components:
                         - CUMULATIVE
                     type: string
                 authType:
-                    description: Authentication method the integration uses when exporting metrics to the endpoint. `HEADER` authenticates with the static HTTP headers provided in the `headers` field, which must be set when this value is used.
+                    description: Authentication method the integration uses when exporting metrics to the endpoint. `HEADER` authenticates with the static HTTP headers provided in the `headers` field, which must be set when this value is used. `OAUTH2` acquires a bearer token from an OAuth 2.0 token endpoint using the `oauth` field.
                     enum:
                         - HEADER
+                        - OAUTH2
                     type: string
                 endpoint:
                     description: OpenTelemetry collector endpoint URL. Must use HTTPS.
@@ -27014,10 +27312,13 @@ components:
                     minItems: 1
                     type: array
                     uniqueItems: true
+                oauth:
+                    $ref: '#/components/schemas/OAuthConfigRequest'
                 providerType:
                     description: The provider type for the metric integration. Identifies the third-party service provider.
                     enum:
                         - CUSTOM
+                        - DATADOG
                         - DYNATRACE
                         - NEW_RELIC
                     type: string
@@ -27043,6 +27344,7 @@ components:
                     description: Authentication method the integration uses when exporting metrics to the endpoint.
                     enum:
                         - HEADER
+                        - OAUTH2
                     type: string
                 endpoint:
                     description: OpenTelemetry collector endpoint URL.
@@ -27082,10 +27384,13 @@ components:
                     minItems: 1
                     type: array
                     uniqueItems: true
+                oauth:
+                    $ref: '#/components/schemas/OAuthConfigResponse'
                 providerType:
                     description: The provider type for the metric integration. Identifies the third-party service provider.
                     enum:
                         - CUSTOM
+                        - DATADOG
                         - DYNATRACE
                         - NEW_RELIC
                     type: string
@@ -27100,7 +27405,7 @@ components:
             title: Metric Integration Response
             type: object
         MetricIntegrationUpdateRequest:
-            description: Request schema for updating a metric integration.
+            description: Request schema for updating a metric integration. Omitted OAuth fields keep their stored values. An explicit null, an empty `scopes` array, or an empty `tokenRequestParams` object clears that field. Omitting `clientSecret` keeps the stored secret.
             properties:
                 aggregationTemporality:
                     description: The temporality to send to the metric integration.
@@ -27109,9 +27414,10 @@ components:
                         - CUMULATIVE
                     type: string
                 authType:
-                    description: Authentication method the integration uses when exporting metrics to the endpoint. `HEADER` authenticates with the static HTTP headers provided in the `headers` field, which must be set when this value is used.
+                    description: Authentication method the integration uses when exporting metrics to the endpoint. `HEADER` authenticates with the static HTTP headers provided in the `headers` field, which must be set when this value is used. `OAUTH2` acquires a bearer token from an OAuth 2.0 token endpoint using the `oauth` field.
                     enum:
                         - HEADER
+                        - OAUTH2
                     type: string
                 endpoint:
                     description: OpenTelemetry collector endpoint URL. Must use HTTPS.
@@ -27143,10 +27449,13 @@ components:
                     minItems: 1
                     type: array
                     uniqueItems: true
+                oauth:
+                    $ref: '#/components/schemas/OAuthConfigRequest'
                 providerType:
                     description: The provider type for the metric integration. Identifies the third-party service provider.
                     enum:
                         - CUSTOM
+                        - DATADOG
                         - DYNATRACE
                         - NEW_RELIC
                     type: string
@@ -29101,6 +29410,15 @@ components:
                     format: date-time
                     readOnly: true
                     type: string
+                severity:
+                    description: Severity of the event.
+                    enum:
+                        - INFO
+                        - WARNING
+                        - ERROR
+                        - CRITICAL
+                    readOnly: true
+                    type: string
                 status:
                     description: State of this alert at the time you requested its details. TRACKING indicates the alert condition exists but has not persisted for the minimum notification delay. OPEN indicates the alert condition currently exists. CLOSED indicates the alert condition has been resolved.
                     enum:
@@ -29288,6 +29606,121 @@ components:
                     $ref: '#/components/schemas/NumberMetricUnits'
             readOnly: true
             title: Number Metric Value
+            type: object
+        OAuthConfigRequest:
+            description: OAuth 2.0 client credentials configuration. Required when `authType` is `OAUTH2`. Secrets are never returned.
+            properties:
+                clientAuthMethod:
+                    description: How the client authenticates to the token endpoint. `CLIENT_SECRET` sends a shared secret. `PRIVATE_KEY_JWT` signs a client assertion with an Atlas-generated, Atlas-managed key. Register the returned JWKS URL with your identity provider.
+                    enum:
+                        - CLIENT_SECRET
+                        - PRIVATE_KEY_JWT
+                    type: string
+                clientId:
+                    description: OAuth 2.0 client identifier registered with the token endpoint.
+                    example: atlas-otel
+                    maxLength: 2048
+                    type: string
+                clientSecret:
+                    description: Shared client secret. Required when `clientAuthMethod` is `CLIENT_SECRET`, and rejected for `PRIVATE_KEY_JWT`. Encrypted at rest and never returned.
+                    format: password
+                    type: string
+                    writeOnly: true
+                scopes:
+                    description: Optional OAuth 2.0 scopes requested on the token, sent as a space delimited `scope` parameter. Applies to both client authentication methods.
+                    items:
+                        maxLength: 256
+                        type: string
+                    maxItems: 20
+                    type: array
+                    uniqueItems: true
+                tokenEndpoint:
+                    description: OAuth 2.0 token endpoint URL. Must use HTTPS.
+                    example: https://idp.example.com/oauth2/token
+                    maxLength: 2048
+                    type: string
+                tokenRequestParams:
+                    additionalProperties:
+                        description: Optional provider-specific parameters added to the token request, for example a resource indicator. Applies to both client authentication methods.
+                        example: '{"resource":"https://otel.example.com/metrics"}'
+                        maxProperties: 10
+                        type: string
+                    description: Optional provider-specific parameters added to the token request, for example a resource indicator. Applies to both client authentication methods.
+                    example:
+                        resource: https://otel.example.com/metrics
+                    maxProperties: 10
+                    type: object
+            required:
+                - clientAuthMethod
+                - clientId
+                - tokenEndpoint
+            title: OAuth Config Request
+            type: object
+        OAuthConfigResponse:
+            description: OAuth 2.0 configuration returned for a metric integration. Secrets are never returned.
+            properties:
+                clientAuthMethod:
+                    description: How the client authenticates to the token endpoint.
+                    enum:
+                        - CLIENT_SECRET
+                        - PRIVATE_KEY_JWT
+                    type: string
+                clientId:
+                    description: OAuth 2.0 client identifier registered with the token endpoint.
+                    maxLength: 2048
+                    type: string
+                scopes:
+                    description: OAuth 2.0 scopes requested on the token.
+                    items:
+                        maxLength: 256
+                        type: string
+                    maxItems: 20
+                    type: array
+                    uniqueItems: true
+                signingKeyInfo:
+                    $ref: '#/components/schemas/OAuthSigningKeyInfo'
+                tokenEndpoint:
+                    description: OAuth 2.0 token endpoint URL.
+                    maxLength: 2048
+                    type: string
+                tokenRequestParams:
+                    additionalProperties:
+                        description: Provider-specific parameters added to the token request.
+                        maxProperties: 10
+                        type: string
+                    description: Provider-specific parameters added to the token request.
+                    maxProperties: 10
+                    type: object
+            required:
+                - clientAuthMethod
+                - clientId
+                - tokenEndpoint
+            title: OAuth Config Response
+            type: object
+        OAuthSigningKeyInfo:
+            description: Read-only metadata for the Atlas-managed signing key used by `PRIVATE_KEY_JWT`. Present only for that method. Register the `jwksUri` with your identity provider. Atlas rotates the underlying key without changing this URL.
+            properties:
+                algorithm:
+                    description: Signing algorithm of the Atlas-managed key.
+                    example: RS256
+                    readOnly: true
+                    type: string
+                createdAt:
+                    description: When the currently active signing key was created. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
+                    format: date-time
+                    readOnly: true
+                    type: string
+                jwksUri:
+                    description: Public JWKS URL serving this integration's signing keys. Fixed for the lifetime of the integration.
+                    example: https://cloud.mongodb.com/api/keys/clientJwks/9f6c2a1e-8b3d-4e7a-a2c5-1f0e9d41d000
+                    readOnly: true
+                    type: string
+                kid:
+                    description: Key ID stamped on client assertions, the `SHA-1` thumbprint of the key certificate in uppercase hexadecimal. Changes when Atlas rotates the key.
+                    readOnly: true
+                    type: string
+            readOnly: true
+            title: OAuth Signing Key Info
             type: object
         ObjectStoragePrivateEndpointRequest:
             properties:
@@ -29779,6 +30212,11 @@ components:
                     $ref: '#/components/schemas/RawMetricUnits'
             required:
                 - metricName
+            type: object
+        OpenApiInfo:
+            properties:
+                info:
+                    $ref: '#/components/schemas/Info'
             type: object
         OperationThrottlingRejectedOperationsRawMetricThresholdView:
             properties:
@@ -30688,7 +31126,13 @@ components:
                         $ref: '#/components/schemas/ServiceAccountSecret'
                     type: array
                     uniqueItems: true
+                systemManaged:
+                    description: Indicates whether the Service Account is system managed.
+                    readOnly: true
+                    type: boolean
             readOnly: true
+            required:
+                - systemManaged
             type: object
         OrgServiceAccountRequest:
             description: Organization Service Account that Atlas creates for this organization. If omitted, Atlas doesn't create an organization Service Account for this organization. If specified, this object requires all body parameters. Note that API Keys cannot be specified in the same request.
@@ -32052,6 +32496,32 @@ components:
             required:
                 - results
             type: object
+        PaginatedApiVersions:
+            properties:
+                links:
+                    description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+                    externalDocs:
+                        description: Web Linking Specification (RFC 5988)
+                        url: https://datatracker.ietf.org/doc/html/rfc5988
+                    items:
+                        $ref: '#/components/schemas/Link'
+                    readOnly: true
+                    type: array
+                results:
+                    description: List of returned documents that MongoDB Cloud provides when completing this request.
+                    items:
+                        $ref: '#/components/schemas/ApiVersion'
+                    readOnly: true
+                    type: array
+                totalCount:
+                    description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+                    format: int32
+                    minimum: 0
+                    readOnly: true
+                    type: integer
+            required:
+                - results
+            type: object
         PaginatedAtlasAiModelApiKeysResponse:
             description: List response for AI Model API keys at the organization and project level.
             properties:
@@ -33208,6 +33678,32 @@ components:
             required:
                 - results
             type: object
+        PaginatedStreamsWorkspacePrivateEndpointResponse:
+            properties:
+                links:
+                    description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+                    externalDocs:
+                        description: Web Linking Specification (RFC 5988)
+                        url: https://datatracker.ietf.org/doc/html/rfc5988
+                    items:
+                        $ref: '#/components/schemas/Link'
+                    readOnly: true
+                    type: array
+                results:
+                    description: List of returned documents that MongoDB Cloud provides when completing this request.
+                    items:
+                        $ref: '#/components/schemas/StreamsWorkspacePrivateEndpointResponse'
+                    readOnly: true
+                    type: array
+                totalCount:
+                    description: Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+                    format: int32
+                    minimum: 0
+                    readOnly: true
+                    type: integer
+            required:
+                - results
+            type: object
         PaginatedTeamRoleView:
             properties:
                 links:
@@ -33348,6 +33844,11 @@ components:
                     format: double
                     readOnly: true
                     type: number
+                collation:
+                    additionalProperties: true
+                    description: Collation the queries behind this suggestion run with. An index only serves a query when the two share a collation, so an index created from this suggestion must be created with it. Absent when those queries use the default (simple) collation.
+                    readOnly: true
+                    type: object
                 id:
                     description: Unique 24-hexadecimal digit string that identifies this index.
                     example: 32b6e34b3d91647abb20e7b8
@@ -33416,13 +33917,19 @@ components:
         PerformanceAdvisorOperationView:
             properties:
                 predicates:
-                    description: List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values.
+                    description: List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Observability Viewer** or **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values.
                     items:
-                        description: List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values.
+                        description: List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Observability Viewer** or **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values.
                         readOnly: true
                         type: object
                     readOnly: true
                     type: array
+                raw:
+                    description: Opaque serialized raw slow query log line or query shape for the query shape to be improved with index suggestions. The format isn't stable, so don't parse this value. Accessing this value requires **Project Observability Viewer** or **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud returns `null`.
+                    example: '{"t":{"$date":"2026-08-17T22:04:15.133+00:00"},"s":"I","c":"COMMAND","id":51803,"ctx":"conn0","msg":"Slow query","attr":{"type":"command","ns":"<db>.<collection>","command":{"find":"<collection>","filter":{"<field>":"<value>"},"$db":"<db>"},"planSummary":"COLLSCAN","keysExamined":0,"docsExamined":10000,"nreturned":1,"remote":"<client>","durationMillis":108}}'
+                    nullable: true
+                    readOnly: true
+                    type: string
                 stats:
                     $ref: '#/components/schemas/PerformanceAdvisorOpStats'
             type: object
@@ -33662,6 +34169,15 @@ components:
                         - GCP
                     readOnly: true
                     type: string
+                connectionStringIds:
+                    description: Identifiers of private endpoint connection strings that reference this private endpoint.
+                    items:
+                        pattern: ^([a-f0-9]{24})$
+                        type: string
+                    maxItems: 100
+                    readOnly: true
+                    type: array
+                    uniqueItems: true
                 deleteRequested:
                     description: Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service.
                     readOnly: true
@@ -33739,6 +34255,15 @@ components:
                         - GCP
                     readOnly: true
                     type: string
+                connectionStringIds:
+                    description: Identifiers of private endpoint connection strings that reference this private endpoint.
+                    items:
+                        pattern: ^([a-f0-9]{24})$
+                        type: string
+                    maxItems: 100
+                    readOnly: true
+                    type: array
+                    uniqueItems: true
                 deleteRequested:
                     description: Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service.
                     readOnly: true
@@ -34581,6 +35106,15 @@ components:
                     format: date-time
                     readOnly: true
                     type: string
+                severity:
+                    description: Severity of the event.
+                    enum:
+                        - INFO
+                        - WARNING
+                        - ERROR
+                        - CRITICAL
+                    readOnly: true
+                    type: string
                 status:
                     description: State of this alert at the time you requested its details. TRACKING indicates the alert condition exists but has not persisted for the minimum notification delay. OPEN indicates the alert condition currently exists. CLOSED indicates the alert condition has been resolved.
                     enum:
@@ -34990,6 +35524,15 @@ components:
                         description: ISO 8601
                         url: https://en.wikipedia.org/wiki/ISO_8601
                     format: date-time
+                    readOnly: true
+                    type: string
+                severity:
+                    description: Severity of the event.
+                    enum:
+                        - INFO
+                        - WARNING
+                        - ERROR
+                        - CRITICAL
                     readOnly: true
                     type: string
                 status:
@@ -38095,6 +38638,16 @@ components:
                     type: string
             readOnly: true
             type: object
+        StorageConfig:
+            nullable: true
+            properties:
+                shardSizeLimitGB:
+                    description: 'Available in Public Preview: Maximum data size that MongoDB Cloud allows each shard of this cluster to reach, expressed in gigabytes. MongoDB Cloud rejects writes to a shard that reaches the limit that it enforces. In `replicationSpecs`, this field reports the limit that you configured, and MongoDB Cloud omits it when you never configured one. In `effectiveReplicationSpecs`, this field reports the limit that MongoDB Cloud enforces: usually the limit that you configured, otherwise the default limit that MongoDB Cloud assigns when it creates or updates the cluster. This value may differ from the limit that you configured due to system-managed changes. This limit applies to every shard of the cluster; set the same value on each region configuration''s `autoScaling`, as MongoDB Cloud rejects requests that specify differing values. You can set this only on Atlas INFINITE clusters: MongoDB Cloud rejects any request that names this field, including as `null`, for a cluster or node type that doesn''t support it. In a request that includes `replicationSpecs`, omitting `shardSizeLimitGB` or sending it as `null` clears the limit. Omitting `replicationSpecs` preserves it.'
+                    format: int32
+                    minimum: 1
+                    nullable: true
+                    type: integer
+            type: object
         StreamConfig:
             description: Configuration options for an Atlas Stream Processing Workspace.
             nullable: true
@@ -38296,6 +38849,15 @@ components:
                         description: ISO 8601
                         url: https://en.wikipedia.org/wiki/ISO_8601
                     format: date-time
+                    readOnly: true
+                    type: string
+                severity:
+                    description: Severity of the event.
+                    enum:
+                        - INFO
+                        - WARNING
+                        - ERROR
+                        - CRITICAL
                     readOnly: true
                     type: string
                 status:
@@ -39833,6 +40395,44 @@ components:
                 streamConfig:
                     $ref: '#/components/schemas/StreamConfig'
             type: object
+        StreamsWorkspacePrivateEndpointResponse:
+            description: Customer VPC endpoint registered for inbound private connectivity to Atlas Stream Processing.
+            properties:
+                customerDnsName:
+                    description: DNS name of the customer's VPC endpoint.
+                    example: vpce-0abc123def4567890-abc123.us-east-1.vpce.amazonaws.com
+                    readOnly: true
+                    type: string
+                endpointServiceName:
+                    description: Name of the Atlas endpoint service the customer's VPC endpoint connects to. Absent when no endpoint service is configured for the endpoint's region.
+                    example: com.amazonaws.vpce.us-east-1.vpce-svc-0123456789abcdef0
+                    readOnly: true
+                    type: string
+                id:
+                    description: Unique identifier of the customer's VPC endpoint.
+                    example: vpce-0abc123def4567890
+                    readOnly: true
+                    type: string
+                provider:
+                    description: Cloud provider hosting the customer's VPC endpoint.
+                    example: AWS
+                    readOnly: true
+                    type: string
+                region:
+                    description: Human-readable label identifying the region of the customer's VPC endpoint.
+                    example: US_EAST_1
+                    readOnly: true
+                    type: string
+                status:
+                    description: Status of the endpoint registration.
+                    enum:
+                        - PENDING
+                        - OK
+                        - FAILED
+                        - DELETING
+                    readOnly: true
+                    type: string
+            type: object
         SwapUsageFreeDataMetricThresholdView:
             properties:
                 metricName:
@@ -41000,6 +41600,15 @@ components:
                         description: ISO 8601
                         url: https://en.wikipedia.org/wiki/ISO_8601
                     format: date-time
+                    readOnly: true
+                    type: string
+                severity:
+                    description: Severity of the event.
+                    enum:
+                        - INFO
+                        - WARNING
+                        - ERROR
+                        - CRITICAL
                     readOnly: true
                     type: string
                 status:
@@ -43121,7 +43730,7 @@ info:
     termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
     title: MongoDB Atlas Administration API
     version: "2.0"
-    x-xgen-sha: 2a14aecfd9159beeac35cafd5ec3e6cee9f2d696
+    x-xgen-sha: 9b453389bf3017b4639ccf370d74af7ac538e7f1
 openapi: 3.0.1
 paths:
     /api/atlas/v2:
@@ -57595,6 +58204,8 @@ paths:
                     $ref: '#/components/responses/forbidden'
                 "404":
                     $ref: '#/components/responses/notFound'
+                "409":
+                    $ref: '#/components/responses/conflict'
                 "429":
                     $ref: '#/components/responses/tooManyRequests'
                 "500":
@@ -64769,7 +65380,7 @@ paths:
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Database-Users/operation/listGroupDatabaseUsers
             x-xgen-operation-id-override: listDatabaseUsers
         post:
-            description: Creates one database user in the specified project. This MongoDB Cloud supports a maximum of 100 database users per project. If you require more than 100 database users on a project, contact Support.
+            description: Creates one database user in the specified project. This MongoDB Cloud supports a default limit of 100 and a maximum of 900 database users per project. If you require more than 900 database users on a project, contact Support.
             externalDocs:
                 description: Contact MongoDB Support
                 url: https://cloud.mongodb.com/support
@@ -69439,7 +70050,7 @@ paths:
                     | `atlas.project.deployment.clusters` | Limit on the number of clusters in this project | 25 | 100 |
                     | `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on AWS PrivateLink addressable target nodes per region in this project. For sharded clusters using optimized (load-balanced) connection strings, `currentUsage` doesn't grow with the number of `mongos` — the load balancer is counted as a single addressable target regardless of how many `mongos` sit behind it. | 50 | 90 |
                     | `atlas.project.security.databaseAccess.customRoles` | Limit on the number of custom roles in this project | 100 | 1400 |
-                    | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 100 |
+                    | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 900 |
                     | `atlas.project.security.networkAccess.crossRegionEntries` | Limit on the number of cross-region network access entries in this project | 40 | 220 |
                     | `atlas.project.security.networkAccess.entries` | Limit on the number of network access entries in this project | 200 | 20 |
                     | `dataFederation.bytesProcessed.query` | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A |
@@ -69557,7 +70168,7 @@ paths:
                     | `atlas.project.deployment.clusters` | Limit on the number of clusters in this project | 25 | 100 |
                     | `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on AWS PrivateLink addressable target nodes per region in this project. For sharded clusters using optimized (load-balanced) connection strings, `currentUsage` doesn't grow with the number of `mongos` — the load balancer is counted as a single addressable target regardless of how many `mongos` sit behind it. | 50 | 90 |
                     | `atlas.project.security.databaseAccess.customRoles` | Limit on the number of custom roles in this project | 100 | 1400 |
-                    | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 100 |
+                    | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 900 |
                     | `atlas.project.security.networkAccess.crossRegionEntries` | Limit on the number of cross-region network access entries in this project | 40 | 220 |
                     | `atlas.project.security.networkAccess.entries` | Limit on the number of network access entries in this project | 200 | 20 |
                     | `dataFederation.bytesProcessed.query` | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A |
@@ -69677,7 +70288,7 @@ paths:
                     | `atlas.project.deployment.clusters` | Limit on the number of clusters in this project | 25 | 100 |
                     | `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on AWS PrivateLink addressable target nodes per region in this project. For sharded clusters using optimized (load-balanced) connection strings, `currentUsage` doesn't grow with the number of `mongos` — the load balancer is counted as a single addressable target regardless of how many `mongos` sit behind it. | 50 | 90 |
                     | `atlas.project.security.databaseAccess.customRoles` | Limit on the number of custom roles in this project | 100 | 1400 |
-                    | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 100 |
+                    | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 900 |
                     | `atlas.project.security.networkAccess.crossRegionEntries` | Limit on the number of cross-region network access entries in this project | 40 | 220 |
                     | `atlas.project.security.networkAccess.entries` | Limit on the number of network access entries in this project | 200 | 20 |
                     | `dataFederation.bytesProcessed.query` | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A |
@@ -76594,6 +77205,15 @@ paths:
                             - TRANSACTIONS_STARTED
                             - CACHE_PRESSURE_PERCENTAGE
                             - INGRESS_QUEUE_WAIT_TIME
+                            - CONNECTION_RATE_LIMITING_SUCCESSFUL_ADMISSIONS
+                            - CONNECTION_RATE_LIMITING_REJECTED_ADMISSIONS
+                            - CONNECTION_RATE_LIMITING_AVERAGE_TIME_QUEUED
+                            - OPERATION_RATE_LIMITING_OFFERED_ADMISSIONS
+                            - OPERATION_RATE_LIMITING_SUCCESSFUL_ADMISSIONS
+                            - OPERATION_RATE_LIMITING_REJECTED_ADMISSIONS
+                            - OPERATION_RATE_LIMITING_ADDED_TO_QUEUE
+                            - OPERATION_RATE_LIMITING_CURRENT_QUEUE_DEPTH
+                            - OPERATION_RATE_LIMITING_AVERAGE_TIME_QUEUED
                         type: string
                     maxItems: 10
                     minItems: 1
@@ -80264,7 +80884,11 @@ paths:
                       --header "Accept: application/vnd.atlas.2025-03-12+json" \
                       -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}?pretty=true"
             x-rolesRequirements:
-                - Project Read Only
+                - Organization Stream Processing Admin
+                - Project Data Access Admin
+                - Project Data Access Read Only
+                - Project Data Access Read Write
+                - Project Stream Processing Manager
             x-xgen-changelog:
                 "2023-09-11": The MongoDB Atlas Streams Processing API is now exposed as part of private preview, but is subject to change until GA.
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/getGroupStreamConnection
@@ -82922,6 +83546,186 @@ paths:
                 - Project Stream Processing Manager
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/withGroupStreamSampleConnections
             x-xgen-operation-id-override: withStreamSampleConnections
+    /api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints:
+        get:
+            description: Returns all private endpoints registered for Atlas Stream Processing in the specified project.
+            operationId: listGroupStreamsWorkspacePrivateEndpoints
+            parameters:
+                - $ref: '#/components/parameters/groupId'
+                - $ref: '#/components/parameters/envelope'
+                - $ref: '#/components/parameters/includeCount'
+                - $ref: '#/components/parameters/itemsPerPage'
+                - $ref: '#/components/parameters/pageNum'
+                - $ref: '#/components/parameters/pretty'
+            responses:
+                "200":
+                    content:
+                        application/vnd.atlas.2025-03-12+json:
+                            schema:
+                                $ref: '#/components/schemas/PaginatedStreamsWorkspacePrivateEndpointResponse'
+                            x-xgen-version: "2025-03-12"
+                    description: OK
+                    headers:
+                        RateLimit-Limit:
+                            $ref: '#/components/headers/HeaderRateLimitLimit'
+                        RateLimit-Remaining:
+                            $ref: '#/components/headers/HeaderRateLimitRemaining'
+                "400":
+                    $ref: '#/components/responses/badRequest'
+                "401":
+                    $ref: '#/components/responses/unauthorized'
+                "403":
+                    $ref: '#/components/responses/forbidden'
+                "404":
+                    $ref: '#/components/responses/notFound'
+                "429":
+                    $ref: '#/components/responses/tooManyRequests'
+                "500":
+                    $ref: '#/components/responses/internalServerError'
+            summary: Return All Workspace Private Endpoints for Atlas Stream Processing
+            tags:
+                - Streams
+            x-codeSamples:
+                - label: Atlas CLI
+                  lang: cURL
+                  source: atlas api streams listWorkspacePrivateEndpoints --help
+                - label: Go
+                  lang: go
+                  source: |
+                    import (
+                    	"os"
+                    	"context"
+                    	"log"
+                    	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+                    )
+
+                    func main() {
+                    	ctx := context.Background()
+                    	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+                    	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+                    	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+                    	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+                    	if err != nil {
+                    		log.Fatalf("Error: %v", err)
+                    	}
+
+                    	params = &sdk.ListGroupStreamsWorkspacePrivateEndpointsApiParams{}
+                    	sdkResp, httpResp, err := client.StreamsApi.
+                    		ListGroupStreamsWorkspacePrivateEndpointsWithParams(ctx, params).
+                    		Execute()
+                    }
+                - label: curl (Service Accounts)
+                  lang: cURL
+                  source: |-
+                    curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints?pretty=true"
+                - label: curl (Digest)
+                  lang: cURL
+                  source: |-
+                    curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+                      --digest --include \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints?pretty=true"
+            x-rolesRequirements:
+                - Organization Stream Processing Admin
+                - Project Stream Processing Owner
+            x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/listGroupStreamsWorkspacePrivateEndpoints
+            x-xgen-operation-id-override: listWorkspacePrivateEndpoints
+    /api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints/{endpointId}:
+        get:
+            description: Returns one private endpoint registered for Atlas Stream Processing in the specified project.
+            operationId: getGroupStreamsWorkspacePrivateEndpoint
+            parameters:
+                - $ref: '#/components/parameters/groupId'
+                - $ref: '#/components/parameters/envelope'
+                - description: Unique identifier of the customer's VPC endpoint.
+                  in: path
+                  name: endpointId
+                  required: true
+                  schema:
+                    example: vpce-0abc123def4567890
+                    pattern: ^vpce-[a-z0-9]{17}$
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/vnd.atlas.2025-03-12+json:
+                            schema:
+                                $ref: '#/components/schemas/StreamsWorkspacePrivateEndpointResponse'
+                            x-xgen-version: "2025-03-12"
+                    description: OK
+                    headers:
+                        RateLimit-Limit:
+                            $ref: '#/components/headers/HeaderRateLimitLimit'
+                        RateLimit-Remaining:
+                            $ref: '#/components/headers/HeaderRateLimitRemaining'
+                "400":
+                    $ref: '#/components/responses/badRequest'
+                "401":
+                    $ref: '#/components/responses/unauthorized'
+                "403":
+                    $ref: '#/components/responses/forbidden'
+                "404":
+                    $ref: '#/components/responses/notFound'
+                "429":
+                    $ref: '#/components/responses/tooManyRequests'
+                "500":
+                    $ref: '#/components/responses/internalServerError'
+            summary: Return One Workspace Private Endpoint for Atlas Stream Processing
+            tags:
+                - Streams
+            x-codeSamples:
+                - label: Atlas CLI
+                  lang: cURL
+                  source: atlas api streams getWorkspacePrivateEndpoint --help
+                - label: Go
+                  lang: go
+                  source: |
+                    import (
+                    	"os"
+                    	"context"
+                    	"log"
+                    	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+                    )
+
+                    func main() {
+                    	ctx := context.Background()
+                    	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+                    	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+                    	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+                    	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+                    	if err != nil {
+                    		log.Fatalf("Error: %v", err)
+                    	}
+
+                    	params = &sdk.GetGroupStreamsWorkspacePrivateEndpointApiParams{}
+                    	sdkResp, httpResp, err := client.StreamsApi.
+                    		GetGroupStreamsWorkspacePrivateEndpointWithParams(ctx, params).
+                    		Execute()
+                    }
+                - label: curl (Service Accounts)
+                  lang: cURL
+                  source: |-
+                    curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints/{endpointId}?pretty=true"
+                - label: curl (Digest)
+                  lang: cURL
+                  source: |-
+                    curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+                      --digest --include \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints/{endpointId}?pretty=true"
+            x-rolesRequirements:
+                - Organization Stream Processing Admin
+                - Project Stream Processing Owner
+            x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/getGroupStreamsWorkspacePrivateEndpoint
+            x-xgen-operation-id-override: getWorkspacePrivateEndpoint
     /api/atlas/v2/groups/{groupId}/teams:
         get:
             description: Returns all teams to which the authenticated user has access in the project specified using its unique 24-hexadecimal digit identifier. All members of the team share the same project access.
@@ -84851,6 +85655,76 @@ paths:
                       --header "Accept: application/vnd.atlas.2025-03-12+json" \
                       -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/byName/{groupName}?pretty=true"
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Projects/operation/getGroupByName
+    /api/atlas/v2/openapi/info:
+        get:
+            description: 'This resource returns general information about the MongoDB Atlas Administration API OpenAPI Specification. Deprecated versions: v2-{2024-05-30}'
+            operationId: getOpenapiInfo
+            parameters:
+                - $ref: '#/components/parameters/pretty'
+            responses:
+                "200":
+                    content:
+                        application/vnd.atlas.2024-08-05+json:
+                            schema:
+                                $ref: '#/components/schemas/OpenApiInfo'
+                            x-xgen-version: "2024-08-05"
+                    description: OK
+                "401":
+                    $ref: '#/components/responses/unauthorized'
+                "403":
+                    $ref: '#/components/responses/forbidden'
+                "500":
+                    $ref: '#/components/responses/internalServerError'
+            summary: Return General Information on MongoDB Atlas Administration API OpenAPI Specification
+            tags:
+                - OpenAPI
+            x-codeSamples:
+                - label: Atlas CLI
+                  lang: cURL
+                  source: atlas api openApi getOpenapiInfo --help
+                - label: Go
+                  lang: go
+                  source: |
+                    import (
+                    	"os"
+                    	"context"
+                    	"log"
+                    	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+                    )
+
+                    func main() {
+                    	ctx := context.Background()
+                    	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+                    	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+                    	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+                    	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+                    	if err != nil {
+                    		log.Fatalf("Error: %v", err)
+                    	}
+
+                    	params = &sdk.GetOpenapiInfoApiParams{}
+                    	sdkResp, httpResp, err := client.OpenAPIApi.
+                    		GetOpenapiInfoWithParams(ctx, params).
+                    		Execute()
+                    }
+                - label: curl (Service Accounts)
+                  lang: cURL
+                  source: |-
+                    curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X GET "https://cloud.mongodb.com/api/atlas/v2/openapi/info?pretty=true"
+                - label: curl (Digest)
+                  lang: cURL
+                  source: |-
+                    curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+                      --digest --include \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X GET "https://cloud.mongodb.com/api/atlas/v2/openapi/info?pretty=true"
+            x-xgen-method-verb-override:
+                customMethod: "False"
+                verb: get
     /api/atlas/v2/orgs:
         get:
             description: Returns all organizations to which the requesting Service Account or API Key has access.
@@ -94651,6 +95525,86 @@ paths:
                       -X GET "https://cloud.mongodb.com/api/atlas/v2/unauth/controlPlaneIPAddresses?pretty=true"
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Root/operation/listControlPlaneIpAddresses
             x-xgen-operation-id-override: listControlPlaneAddresses
+    /api/atlas/v2/unauth/openapi/versions:
+        get:
+            description: API that provides a list of available versions for a given environment.
+            operationId: listOpenapiVersions
+            parameters:
+                - $ref: '#/components/parameters/envelope'
+                - $ref: '#/components/parameters/itemsPerPage'
+                - $ref: '#/components/parameters/pageNum'
+                - $ref: '#/components/parameters/pretty'
+                - description: The environment to get the versions from. If not provided, it returns the versions for the given MongoDB URL. (E.g. prod for cloud.mongodb.com).
+                  in: query
+                  name: env
+                  schema:
+                    enum:
+                        - dev
+                        - qa
+                        - prod
+                        - stage
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/vnd.atlas.2024-08-05+json:
+                            schema:
+                                $ref: '#/components/schemas/PaginatedApiVersions'
+                            x-xgen-version: "2024-08-05"
+                        application/vnd.atlas.2024-08-05+yaml:
+                            schema:
+                                $ref: '#/components/schemas/PaginatedApiVersions'
+                            x-xgen-version: "2024-08-05"
+                    description: OK
+                "500":
+                    $ref: '#/components/responses/internalServerError'
+            summary: Return All Versions for One Environment
+            tags:
+                - OpenAPI
+            x-codeSamples:
+                - label: Atlas CLI
+                  lang: cURL
+                  source: atlas api openApi listOpenapiVersions --help
+                - label: Go
+                  lang: go
+                  source: |
+                    import (
+                    	"os"
+                    	"context"
+                    	"log"
+                    	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+                    )
+
+                    func main() {
+                    	ctx := context.Background()
+                    	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+                    	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+                    	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+                    	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+                    	if err != nil {
+                    		log.Fatalf("Error: %v", err)
+                    	}
+
+                    	params = &sdk.ListOpenapiVersionsApiParams{}
+                    	sdkResp, httpResp, err := client.OpenAPIApi.
+                    		ListOpenapiVersionsWithParams(ctx, params).
+                    		Execute()
+                    }
+                - label: curl (Service Accounts)
+                  lang: cURL
+                  source: |-
+                    curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X GET "https://cloud.mongodb.com/api/atlas/v2/unauth/openapi/versions?pretty=true"
+                - label: curl (Digest)
+                  lang: cURL
+                  source: |-
+                    curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+                      --digest --include \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X GET "https://cloud.mongodb.com/api/atlas/v2/unauth/openapi/versions?pretty=true"
     /api/atlas/v2/users:
         post:
             deprecated: true
@@ -95003,6 +95957,8 @@ tags:
       name: Network Peering
     - description: Returns, adds, edits, or removes an online archive.
       name: Online Archive
+    - description: Returns information about the MongoDB Atlas Specification.
+      name: OpenAPI
     - description: Returns, adds, and edits organizational units in MongoDB Cloud.
       name: Organizations
     - description: Returns and starts overload protection simulations for a cluster.

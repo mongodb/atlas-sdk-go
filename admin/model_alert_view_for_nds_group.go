@@ -42,6 +42,9 @@ type AlertViewForNdsGroup struct {
 	// Date and time that this alert changed to `\"status\" : \"CLOSED\"`. This parameter expresses its value in the ISO 8601 timestamp format in UTC. The resource returns this parameter once `\"status\" : \"CLOSED\"`.
 	// Read only field.
 	Resolved *time.Time `json:"resolved,omitempty"`
+	// Severity of the event.
+	// Read only field.
+	Severity *string `json:"severity,omitempty"`
 	// State of this alert at the time you requested its details. TRACKING indicates the alert condition exists but has not persisted for the minimum notification delay. OPEN indicates the alert condition currently exists. CLOSED indicates the alert condition has been resolved.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
@@ -585,6 +588,46 @@ func (o *AlertViewForNdsGroup) SetResolved(v time.Time) {
 func (o *AlertViewForNdsGroup) SetResolvedNil() {
 	o.Resolved = nil
 	o.NullFields = addNullField(o.NullFields, "Resolved")
+}
+
+// GetSeverity returns the Severity field value if set, zero value otherwise
+func (o *AlertViewForNdsGroup) GetSeverity() string {
+	if o == nil || IsNil(o.Severity) {
+		var ret string
+		return ret
+	}
+	return *o.Severity
+}
+
+// GetSeverityOk returns a tuple with the Severity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlertViewForNdsGroup) GetSeverityOk() (*string, bool) {
+	if o == nil || IsNil(o.Severity) {
+		return nil, false
+	}
+
+	return o.Severity, true
+}
+
+// HasSeverity returns a boolean if a field has been set.
+func (o *AlertViewForNdsGroup) HasSeverity() bool {
+	if o != nil && !IsNil(o.Severity) {
+		return true
+	}
+
+	return false
+}
+
+// SetSeverity gets a reference to the given string and assigns it to the Severity field.
+func (o *AlertViewForNdsGroup) SetSeverity(v string) {
+	o.Severity = &v
+	o.NullFields = removeNullField(o.NullFields, "Severity")
+}
+
+// SetSeverityNil sets Severity to an explicit JSON null when marshaled.
+func (o *AlertViewForNdsGroup) SetSeverityNil() {
+	o.Severity = nil
+	o.NullFields = addNullField(o.NullFields, "Severity")
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise
