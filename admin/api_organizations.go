@@ -225,13 +225,17 @@ type OrganizationsAPI interface {
 	GetOrgInviteExecute(r GetOrgInviteApiRequest) (*OrganizationInvitation, *http.Response, error)
 
 	/*
-		GetOrgMaintenanceSettings Return Maintenance Settings for One Organization
+			GetOrgMaintenanceSettings Return Maintenance Settings for One Organization
 
-		Returns maintenance settings for the specified organization.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@return GetOrgMaintenanceSettingsApiRequest
+		 Returns maintenance settings for the specified organization. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@return GetOrgMaintenanceSettingsApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
 	*/
 	GetOrgMaintenanceSettings(ctx context.Context, orgId string) GetOrgMaintenanceSettingsApiRequest
 	/*
@@ -241,6 +245,8 @@ type OrganizationsAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetOrgMaintenanceSettingsApiParams - Parameters for the request
 		@return GetOrgMaintenanceSettingsApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
 	*/
 	GetOrgMaintenanceSettingsWithParams(ctx context.Context, args *GetOrgMaintenanceSettingsApiParams) GetOrgMaintenanceSettingsApiRequest
 
@@ -322,13 +328,17 @@ type OrganizationsAPI interface {
 	ListOrgsExecute(r ListOrgsApiRequest) (*PaginatedOrganization, *http.Response, error)
 
 	/*
-		ResetOrgMaintenanceSettings Reset Maintenance Settings for One Organization
+			ResetOrgMaintenanceSettings Reset Maintenance Settings for One Organization
 
-		Resets maintenance settings for the specified organization to their default values. Restores the wave assignment mode to the default manual mode.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@return ResetOrgMaintenanceSettingsApiRequest
+		 Resets maintenance settings for the specified organization to their default values. Restores the wave assignment mode to the default manual mode. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@return ResetOrgMaintenanceSettingsApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
 	*/
 	ResetOrgMaintenanceSettings(ctx context.Context, orgId string) ResetOrgMaintenanceSettingsApiRequest
 	/*
@@ -338,6 +348,8 @@ type OrganizationsAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param ResetOrgMaintenanceSettingsApiParams - Parameters for the request
 		@return ResetOrgMaintenanceSettingsApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
 	*/
 	ResetOrgMaintenanceSettingsWithParams(ctx context.Context, args *ResetOrgMaintenanceSettingsApiParams) ResetOrgMaintenanceSettingsApiRequest
 
@@ -454,14 +466,18 @@ type OrganizationsAPI interface {
 	UpdateOrgInvitesExecute(r UpdateOrgInvitesApiRequest) (*OrganizationInvitation, *http.Response, error)
 
 	/*
-		UpdateOrgMaintenanceSettings Update Maintenance Settings for One Organization
+			UpdateOrgMaintenanceSettings Update Maintenance Settings for One Organization
 
-		Updates maintenance settings for the specified organization. Omit optional fields from the request body to leave their current values unchanged. Specify null on an optional field to reset it to its default value.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@param organizationMaintenanceSettingsUpdateRequest Maintenance settings to update for the specified organization.
-		@return UpdateOrgMaintenanceSettingsApiRequest
+		 Updates maintenance settings for the specified organization. Omit optional fields from the request body to leave their current values unchanged. Specify null on an optional field to reset it to its default value. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param organizationMaintenanceSettingsUpdateRequest Maintenance settings to update for the specified organization.
+			@return UpdateOrgMaintenanceSettingsApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
 	*/
 	UpdateOrgMaintenanceSettings(ctx context.Context, orgId string, organizationMaintenanceSettingsUpdateRequest *OrganizationMaintenanceSettingsUpdateRequest) UpdateOrgMaintenanceSettingsApiRequest
 	/*
@@ -471,6 +487,8 @@ type OrganizationsAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param UpdateOrgMaintenanceSettingsApiParams - Parameters for the request
 		@return UpdateOrgMaintenanceSettingsApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for OrganizationsAPI
 	*/
 	UpdateOrgMaintenanceSettingsWithParams(ctx context.Context, args *UpdateOrgMaintenanceSettingsApiParams) UpdateOrgMaintenanceSettingsApiRequest
 
@@ -1577,11 +1595,15 @@ func (r GetOrgMaintenanceSettingsApiRequest) Execute() (*OrganizationMaintenance
 /*
 GetOrgMaintenanceSettings Return Maintenance Settings for One Organization
 
-Returns maintenance settings for the specified organization.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns maintenance settings for the specified organization. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return GetOrgMaintenanceSettingsApiRequest
+
+Deprecated
 */
 func (a *OrganizationsAPIService) GetOrgMaintenanceSettings(ctx context.Context, orgId string) GetOrgMaintenanceSettingsApiRequest {
 	return GetOrgMaintenanceSettingsApiRequest{
@@ -1594,6 +1616,8 @@ func (a *OrganizationsAPIService) GetOrgMaintenanceSettings(ctx context.Context,
 // GetOrgMaintenanceSettingsExecute executes the request
 //
 //	@return OrganizationMaintenanceSettingsResponse
+//
+// Deprecated
 func (a *OrganizationsAPIService) GetOrgMaintenanceSettingsExecute(r GetOrgMaintenanceSettingsApiRequest) (*OrganizationMaintenanceSettingsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1630,7 +1654,7 @@ func (a *OrganizationsAPIService) GetOrgMaintenanceSettingsExecute(r GetOrgMaint
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2111,11 +2135,15 @@ func (r ResetOrgMaintenanceSettingsApiRequest) Execute() (*OrganizationMaintenan
 /*
 ResetOrgMaintenanceSettings Reset Maintenance Settings for One Organization
 
-Resets maintenance settings for the specified organization to their default values. Restores the wave assignment mode to the default manual mode.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Resets maintenance settings for the specified organization to their default values. Restores the wave assignment mode to the default manual mode. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ResetOrgMaintenanceSettingsApiRequest
+
+Deprecated
 */
 func (a *OrganizationsAPIService) ResetOrgMaintenanceSettings(ctx context.Context, orgId string) ResetOrgMaintenanceSettingsApiRequest {
 	return ResetOrgMaintenanceSettingsApiRequest{
@@ -2128,6 +2156,8 @@ func (a *OrganizationsAPIService) ResetOrgMaintenanceSettings(ctx context.Contex
 // ResetOrgMaintenanceSettingsExecute executes the request
 //
 //	@return OrganizationMaintenanceSettingsResponse
+//
+// Deprecated
 func (a *OrganizationsAPIService) ResetOrgMaintenanceSettingsExecute(r ResetOrgMaintenanceSettingsApiRequest) (*OrganizationMaintenanceSettingsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -2164,7 +2194,7 @@ func (a *OrganizationsAPIService) ResetOrgMaintenanceSettingsExecute(r ResetOrgM
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2759,11 +2789,15 @@ func (r UpdateOrgMaintenanceSettingsApiRequest) Execute() (*OrganizationMaintena
 /*
 UpdateOrgMaintenanceSettings Update Maintenance Settings for One Organization
 
-Updates maintenance settings for the specified organization. Omit optional fields from the request body to leave their current values unchanged. Specify null on an optional field to reset it to its default value.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Updates maintenance settings for the specified organization. Omit optional fields from the request body to leave their current values unchanged. Specify null on an optional field to reset it to its default value. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return UpdateOrgMaintenanceSettingsApiRequest
+
+Deprecated
 */
 func (a *OrganizationsAPIService) UpdateOrgMaintenanceSettings(ctx context.Context, orgId string, organizationMaintenanceSettingsUpdateRequest *OrganizationMaintenanceSettingsUpdateRequest) UpdateOrgMaintenanceSettingsApiRequest {
 	return UpdateOrgMaintenanceSettingsApiRequest{
@@ -2777,6 +2811,8 @@ func (a *OrganizationsAPIService) UpdateOrgMaintenanceSettings(ctx context.Conte
 // UpdateOrgMaintenanceSettingsExecute executes the request
 //
 //	@return OrganizationMaintenanceSettingsResponse
+//
+// Deprecated
 func (a *OrganizationsAPIService) UpdateOrgMaintenanceSettingsExecute(r UpdateOrgMaintenanceSettingsApiRequest) (*OrganizationMaintenanceSettingsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
@@ -2807,7 +2843,7 @@ func (a *OrganizationsAPIService) UpdateOrgMaintenanceSettingsExecute(r UpdateOr
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2816,7 +2852,7 @@ func (a *OrganizationsAPIService) UpdateOrgMaintenanceSettingsExecute(r UpdateOr
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
