@@ -4,10 +4,13 @@ package admin
 
 // PerformanceAdvisorOperation struct for PerformanceAdvisorOperation
 type PerformanceAdvisorOperation struct {
-	// List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values.
+	// List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Observability Viewer** or **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values.
 	// Read only field.
-	Predicates *[]any                     `json:"predicates,omitempty"`
-	Stats      *PerformanceAdvisorOpStats `json:"stats,omitempty"`
+	Predicates *[]any `json:"predicates,omitempty"`
+	// Opaque serialized raw slow query log line or query shape for the query shape to be improved with index suggestions. The format isn't stable, so don't parse this value. Accessing this value requires **Project Observability Viewer** or **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud returns `null`.
+	// Read only field.
+	Raw   *string                    `json:"raw,omitempty"`
+	Stats *PerformanceAdvisorOpStats `json:"stats,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`
@@ -74,6 +77,46 @@ func (o *PerformanceAdvisorOperation) SetPredicates(v []any) {
 func (o *PerformanceAdvisorOperation) SetPredicatesNil() {
 	o.Predicates = nil
 	o.NullFields = addNullField(o.NullFields, "Predicates")
+}
+
+// GetRaw returns the Raw field value if set, zero value otherwise
+func (o *PerformanceAdvisorOperation) GetRaw() string {
+	if o == nil || IsNil(o.Raw) {
+		var ret string
+		return ret
+	}
+	return *o.Raw
+}
+
+// GetRawOk returns a tuple with the Raw field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PerformanceAdvisorOperation) GetRawOk() (*string, bool) {
+	if o == nil || IsNil(o.Raw) {
+		return nil, false
+	}
+
+	return o.Raw, true
+}
+
+// HasRaw returns a boolean if a field has been set.
+func (o *PerformanceAdvisorOperation) HasRaw() bool {
+	if o != nil && !IsNil(o.Raw) {
+		return true
+	}
+
+	return false
+}
+
+// SetRaw gets a reference to the given string and assigns it to the Raw field.
+func (o *PerformanceAdvisorOperation) SetRaw(v string) {
+	o.Raw = &v
+	o.NullFields = removeNullField(o.NullFields, "Raw")
+}
+
+// SetRawNil sets Raw to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorOperation) SetRawNil() {
+	o.Raw = nil
+	o.NullFields = addNullField(o.NullFields, "Raw")
 }
 
 // GetStats returns the Stats field value if set, zero value otherwise

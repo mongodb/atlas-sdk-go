@@ -7,6 +7,9 @@ type PerformanceAdvisorIndex struct {
 	// The average size of an object in the collection of this index.
 	// Read only field.
 	AvgObjSize *float64 `json:"avgObjSize,omitempty"`
+	// Collation the queries behind this suggestion run with. An index only serves a query when the two share a collation, so an index created from this suggestion must be created with it. Absent when those queries use the default (simple) collation.
+	// Read only field.
+	Collation *map[string]any `json:"collation,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies this index.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
@@ -88,6 +91,46 @@ func (o *PerformanceAdvisorIndex) SetAvgObjSize(v float64) {
 func (o *PerformanceAdvisorIndex) SetAvgObjSizeNil() {
 	o.AvgObjSize = nil
 	o.NullFields = addNullField(o.NullFields, "AvgObjSize")
+}
+
+// GetCollation returns the Collation field value if set, zero value otherwise
+func (o *PerformanceAdvisorIndex) GetCollation() map[string]any {
+	if o == nil || IsNil(o.Collation) {
+		var ret map[string]any
+		return ret
+	}
+	return *o.Collation
+}
+
+// GetCollationOk returns a tuple with the Collation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PerformanceAdvisorIndex) GetCollationOk() (*map[string]any, bool) {
+	if o == nil || IsNil(o.Collation) {
+		return nil, false
+	}
+
+	return o.Collation, true
+}
+
+// HasCollation returns a boolean if a field has been set.
+func (o *PerformanceAdvisorIndex) HasCollation() bool {
+	if o != nil && !IsNil(o.Collation) {
+		return true
+	}
+
+	return false
+}
+
+// SetCollation gets a reference to the given map[string]any and assigns it to the Collation field.
+func (o *PerformanceAdvisorIndex) SetCollation(v map[string]any) {
+	o.Collation = &v
+	o.NullFields = removeNullField(o.NullFields, "Collation")
+}
+
+// SetCollationNil sets Collation to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorIndex) SetCollationNil() {
+	o.Collation = nil
+	o.NullFields = addNullField(o.NullFields, "Collation")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
