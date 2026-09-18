@@ -147,7 +147,7 @@ type ProjectsAPI interface {
 		Removes the specified project limit. Depending on the limit, Atlas either resets the limit to its default value or removes the limit entirely.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param limitName Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | `atlas.project.deployment.clusters` | Limit on the number of clusters in this project | 25 | 100 | | `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on AWS PrivateLink addressable target nodes per region in this project. For sharded clusters using optimized (load-balanced) connection strings, `currentUsage` doesn't grow with the number of `mongos` — the load balancer is counted as a single addressable target regardless of how many `mongos` sit behind it. | 50 | 90 | | `atlas.project.security.databaseAccess.customRoles` | Limit on the number of custom roles in this project | 100 | 1400 | | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 100 | | `atlas.project.security.networkAccess.crossRegionEntries` | Limit on the number of cross-region network access entries in this project | 40 | 220 | | `atlas.project.security.networkAccess.entries` | Limit on the number of network access entries in this project | 200 | 20 | | `dataFederation.bytesProcessed.query` | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | `dataFederation.bytesProcessed.daily` | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | `dataFederation.bytesProcessed.weekly` | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | `dataFederation.bytesProcessed.monthly` | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | `atlas.project.deployment.privateServiceConnectionsPerRegionGroup` | Number of Private Service Connections per Region Group | 50 | 100| | `atlas.project.deployment.privateServiceConnectionsSubnetMask` | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
+		@param limitName Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | `atlas.project.deployment.clusters` | Limit on the number of clusters in this project | 25 | 100 | | `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on AWS PrivateLink addressable target nodes per region in this project. For sharded clusters using optimized (load-balanced) connection strings, `currentUsage` doesn't grow with the number of `mongos` — the load balancer is counted as a single addressable target regardless of how many `mongos` sit behind it. | 50 | 90 | | `atlas.project.security.databaseAccess.customRoles` | Limit on the number of custom roles in this project | 100 | 1400 | | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 900 | | `atlas.project.security.networkAccess.crossRegionEntries` | Limit on the number of cross-region network access entries in this project | 40 | 220 | | `atlas.project.security.networkAccess.entries` | Limit on the number of network access entries in this project | 200 | 20 | | `dataFederation.bytesProcessed.query` | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | `dataFederation.bytesProcessed.daily` | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | `dataFederation.bytesProcessed.weekly` | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | `dataFederation.bytesProcessed.monthly` | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | `atlas.project.deployment.privateServiceConnectionsPerRegionGroup` | Number of Private Service Connections per Region Group | 50 | 100| | `atlas.project.deployment.privateServiceConnectionsSubnetMask` | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return DeleteGroupLimitApiRequest
 	*/
@@ -268,7 +268,7 @@ type ProjectsAPI interface {
 		Returns the specified limit for the specified project.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param limitName Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | `atlas.project.deployment.clusters` | Limit on the number of clusters in this project | 25 | 100 | | `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on AWS PrivateLink addressable target nodes per region in this project. For sharded clusters using optimized (load-balanced) connection strings, `currentUsage` doesn't grow with the number of `mongos` — the load balancer is counted as a single addressable target regardless of how many `mongos` sit behind it. | 50 | 90 | | `atlas.project.security.databaseAccess.customRoles` | Limit on the number of custom roles in this project | 100 | 1400 | | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 100 | | `atlas.project.security.networkAccess.crossRegionEntries` | Limit on the number of cross-region network access entries in this project | 40 | 220 | | `atlas.project.security.networkAccess.entries` | Limit on the number of network access entries in this project | 200 | 20 | | `dataFederation.bytesProcessed.query` | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | `dataFederation.bytesProcessed.daily` | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | `dataFederation.bytesProcessed.weekly` | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | `dataFederation.bytesProcessed.monthly` | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | `atlas.project.deployment.privateServiceConnectionsPerRegionGroup` | Number of Private Service Connections per Region Group | 50 | 100| | `atlas.project.deployment.privateServiceConnectionsSubnetMask` | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
+		@param limitName Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | `atlas.project.deployment.clusters` | Limit on the number of clusters in this project | 25 | 100 | | `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on AWS PrivateLink addressable target nodes per region in this project. For sharded clusters using optimized (load-balanced) connection strings, `currentUsage` doesn't grow with the number of `mongos` — the load balancer is counted as a single addressable target regardless of how many `mongos` sit behind it. | 50 | 90 | | `atlas.project.security.databaseAccess.customRoles` | Limit on the number of custom roles in this project | 100 | 1400 | | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 900 | | `atlas.project.security.networkAccess.crossRegionEntries` | Limit on the number of cross-region network access entries in this project | 40 | 220 | | `atlas.project.security.networkAccess.entries` | Limit on the number of network access entries in this project | 200 | 20 | | `dataFederation.bytesProcessed.query` | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | `dataFederation.bytesProcessed.daily` | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | `dataFederation.bytesProcessed.weekly` | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | `dataFederation.bytesProcessed.monthly` | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | `atlas.project.deployment.privateServiceConnectionsPerRegionGroup` | Number of Private Service Connections per Region Group | 50 | 100| | `atlas.project.deployment.privateServiceConnectionsSubnetMask` | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 		@return GetGroupLimitApiRequest
 	*/
@@ -287,13 +287,15 @@ type ProjectsAPI interface {
 	GetGroupLimitExecute(r GetGroupLimitApiRequest) (*DataFederationLimit, *http.Response, error)
 
 	/*
-		GetGroupSettings Return Project Settings
+			GetGroupSettings Return Project Settings
 
-		Returns details about the specified project's settings.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return GetGroupSettingsApiRequest
+		 Returns details about the specified project's settings. Deprecated versions: v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@return GetGroupSettingsApiRequest
 	*/
 	GetGroupSettings(ctx context.Context, groupId string) GetGroupSettingsApiRequest
 	/*
@@ -307,7 +309,7 @@ type ProjectsAPI interface {
 	GetGroupSettingsWithParams(ctx context.Context, args *GetGroupSettingsApiParams) GetGroupSettingsApiRequest
 
 	// Method available only for mocking purposes
-	GetGroupSettingsExecute(r GetGroupSettingsApiRequest) (*GroupSettings, *http.Response, error)
+	GetGroupSettingsExecute(r GetGroupSettingsApiRequest) (*GroupSettingsPreview, *http.Response, error)
 
 	/*
 		GetMongoDbVersions Return All Available MongoDB LTS Versions for Clusters in One Project
@@ -436,7 +438,7 @@ type ProjectsAPI interface {
 		**NOTE**: Increasing the following configuration limits might lead to slower response times in the MongoDB Cloud UI or increased user management overhead leading to authentication or authorization re-architecture. If possible, we recommend that you create additional projects to gain access to more of these resources for a more sustainable growth pattern.
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-			@param limitName Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | `atlas.project.deployment.clusters` | Limit on the number of clusters in this project | 25 | 100 | | `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on AWS PrivateLink addressable target nodes per region in this project. For sharded clusters using optimized (load-balanced) connection strings, `currentUsage` doesn't grow with the number of `mongos` — the load balancer is counted as a single addressable target regardless of how many `mongos` sit behind it. | 50 | 90 | | `atlas.project.security.databaseAccess.customRoles` | Limit on the number of custom roles in this project | 100 | 1400 | | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 100 | | `atlas.project.security.networkAccess.crossRegionEntries` | Limit on the number of cross-region network access entries in this project | 40 | 220 | | `atlas.project.security.networkAccess.entries` | Limit on the number of network access entries in this project | 200 | 20 | | `dataFederation.bytesProcessed.query` | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | `dataFederation.bytesProcessed.daily` | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | `dataFederation.bytesProcessed.weekly` | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | `dataFederation.bytesProcessed.monthly` | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | `atlas.project.deployment.privateServiceConnectionsPerRegionGroup` | Number of Private Service Connections per Region Group | 50 | 100| | `atlas.project.deployment.privateServiceConnectionsSubnetMask` | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
+			@param limitName Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | `atlas.project.deployment.clusters` | Limit on the number of clusters in this project | 25 | 100 | | `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on AWS PrivateLink addressable target nodes per region in this project. For sharded clusters using optimized (load-balanced) connection strings, `currentUsage` doesn't grow with the number of `mongos` — the load balancer is counted as a single addressable target regardless of how many `mongos` sit behind it. | 50 | 90 | | `atlas.project.security.databaseAccess.customRoles` | Limit on the number of custom roles in this project | 100 | 1400 | | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 900 | | `atlas.project.security.networkAccess.crossRegionEntries` | Limit on the number of cross-region network access entries in this project | 40 | 220 | | `atlas.project.security.networkAccess.entries` | Limit on the number of network access entries in this project | 200 | 20 | | `dataFederation.bytesProcessed.query` | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | `dataFederation.bytesProcessed.daily` | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | `dataFederation.bytesProcessed.weekly` | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | `dataFederation.bytesProcessed.monthly` | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | `atlas.project.deployment.privateServiceConnectionsPerRegionGroup` | Number of Private Service Connections per Region Group | 50 | 100| | `atlas.project.deployment.privateServiceConnectionsSubnetMask` | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 			@param dataFederationLimit Limit to update.
 			@return SetGroupLimitApiRequest
@@ -508,16 +510,18 @@ type ProjectsAPI interface {
 	UpdateGroupInvitesExecute(r UpdateGroupInvitesApiRequest) (*GroupInvitation, *http.Response, error)
 
 	/*
-		UpdateGroupSettings Update Project Settings
+			UpdateGroupSettings Update Project Settings
 
-		Updates the settings of the specified project. You can update any of the options available. MongoDB cloud only updates the options provided in the request.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param groupSettings Settings to update.
-		@return UpdateGroupSettingsApiRequest
+		 Updates the settings of the specified project. You can update any of the options available. MongoDB cloud only updates the options provided in the request. Deprecated versions: v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param groupSettingsPreview Settings to update.
+			@return UpdateGroupSettingsApiRequest
 	*/
-	UpdateGroupSettings(ctx context.Context, groupId string, groupSettings *GroupSettings) UpdateGroupSettingsApiRequest
+	UpdateGroupSettings(ctx context.Context, groupId string, groupSettingsPreview *GroupSettingsPreview) UpdateGroupSettingsApiRequest
 	/*
 		UpdateGroupSettings Update Project Settings
 
@@ -529,7 +533,7 @@ type ProjectsAPI interface {
 	UpdateGroupSettingsWithParams(ctx context.Context, args *UpdateGroupSettingsApiParams) UpdateGroupSettingsApiRequest
 
 	// Method available only for mocking purposes
-	UpdateGroupSettingsExecute(r UpdateGroupSettingsApiRequest) (*GroupSettings, *http.Response, error)
+	UpdateGroupSettingsExecute(r UpdateGroupSettingsApiRequest) (*GroupSettingsPreview, *http.Response, error)
 
 	/*
 		UpdateGroupUserRoles Update Project Roles for One MongoDB Cloud User
@@ -1225,7 +1229,7 @@ DeleteGroupLimit Remove One Project Limit
 Removes the specified project limit. Depending on the limit, Atlas either resets the limit to its default value or removes the limit entirely.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param limitName Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | `atlas.project.deployment.clusters` | Limit on the number of clusters in this project | 25 | 100 | | `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on AWS PrivateLink addressable target nodes per region in this project. For sharded clusters using optimized (load-balanced) connection strings, `currentUsage` doesn't grow with the number of `mongos` — the load balancer is counted as a single addressable target regardless of how many `mongos` sit behind it. | 50 | 90 | | `atlas.project.security.databaseAccess.customRoles` | Limit on the number of custom roles in this project | 100 | 1400 | | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 100 | | `atlas.project.security.networkAccess.crossRegionEntries` | Limit on the number of cross-region network access entries in this project | 40 | 220 | | `atlas.project.security.networkAccess.entries` | Limit on the number of network access entries in this project | 200 | 20 | | `dataFederation.bytesProcessed.query` | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | `dataFederation.bytesProcessed.daily` | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | `dataFederation.bytesProcessed.weekly` | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | `dataFederation.bytesProcessed.monthly` | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | `atlas.project.deployment.privateServiceConnectionsPerRegionGroup` | Number of Private Service Connections per Region Group | 50 | 100| | `atlas.project.deployment.privateServiceConnectionsSubnetMask` | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
+	@param limitName Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | `atlas.project.deployment.clusters` | Limit on the number of clusters in this project | 25 | 100 | | `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on AWS PrivateLink addressable target nodes per region in this project. For sharded clusters using optimized (load-balanced) connection strings, `currentUsage` doesn't grow with the number of `mongos` — the load balancer is counted as a single addressable target regardless of how many `mongos` sit behind it. | 50 | 90 | | `atlas.project.security.databaseAccess.customRoles` | Limit on the number of custom roles in this project | 100 | 1400 | | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 900 | | `atlas.project.security.networkAccess.crossRegionEntries` | Limit on the number of cross-region network access entries in this project | 40 | 220 | | `atlas.project.security.networkAccess.entries` | Limit on the number of network access entries in this project | 200 | 20 | | `dataFederation.bytesProcessed.query` | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | `dataFederation.bytesProcessed.daily` | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | `dataFederation.bytesProcessed.weekly` | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | `dataFederation.bytesProcessed.monthly` | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | `atlas.project.deployment.privateServiceConnectionsPerRegionGroup` | Number of Private Service Connections per Region Group | 50 | 100| | `atlas.project.deployment.privateServiceConnectionsSubnetMask` | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return DeleteGroupLimitApiRequest
 */
@@ -1821,7 +1825,7 @@ GetGroupLimit Return One Limit for One Project
 Returns the specified limit for the specified project.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param limitName Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | `atlas.project.deployment.clusters` | Limit on the number of clusters in this project | 25 | 100 | | `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on AWS PrivateLink addressable target nodes per region in this project. For sharded clusters using optimized (load-balanced) connection strings, `currentUsage` doesn't grow with the number of `mongos` — the load balancer is counted as a single addressable target regardless of how many `mongos` sit behind it. | 50 | 90 | | `atlas.project.security.databaseAccess.customRoles` | Limit on the number of custom roles in this project | 100 | 1400 | | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 100 | | `atlas.project.security.networkAccess.crossRegionEntries` | Limit on the number of cross-region network access entries in this project | 40 | 220 | | `atlas.project.security.networkAccess.entries` | Limit on the number of network access entries in this project | 200 | 20 | | `dataFederation.bytesProcessed.query` | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | `dataFederation.bytesProcessed.daily` | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | `dataFederation.bytesProcessed.weekly` | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | `dataFederation.bytesProcessed.monthly` | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | `atlas.project.deployment.privateServiceConnectionsPerRegionGroup` | Number of Private Service Connections per Region Group | 50 | 100| | `atlas.project.deployment.privateServiceConnectionsSubnetMask` | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
+	@param limitName Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | `atlas.project.deployment.clusters` | Limit on the number of clusters in this project | 25 | 100 | | `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on AWS PrivateLink addressable target nodes per region in this project. For sharded clusters using optimized (load-balanced) connection strings, `currentUsage` doesn't grow with the number of `mongos` — the load balancer is counted as a single addressable target regardless of how many `mongos` sit behind it. | 50 | 90 | | `atlas.project.security.databaseAccess.customRoles` | Limit on the number of custom roles in this project | 100 | 1400 | | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 900 | | `atlas.project.security.networkAccess.crossRegionEntries` | Limit on the number of cross-region network access entries in this project | 40 | 220 | | `atlas.project.security.networkAccess.entries` | Limit on the number of network access entries in this project | 200 | 20 | | `dataFederation.bytesProcessed.query` | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | `dataFederation.bytesProcessed.daily` | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | `dataFederation.bytesProcessed.weekly` | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | `dataFederation.bytesProcessed.monthly` | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | `atlas.project.deployment.privateServiceConnectionsPerRegionGroup` | Number of Private Service Connections per Region Group | 50 | 100| | `atlas.project.deployment.privateServiceConnectionsSubnetMask` | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return GetGroupLimitApiRequest
 */
@@ -1937,14 +1941,16 @@ func (a *ProjectsAPIService) GetGroupSettingsWithParams(ctx context.Context, arg
 	}
 }
 
-func (r GetGroupSettingsApiRequest) Execute() (*GroupSettings, *http.Response, error) {
+func (r GetGroupSettingsApiRequest) Execute() (*GroupSettingsPreview, *http.Response, error) {
 	return r.ApiService.GetGroupSettingsExecute(r)
 }
 
 /*
 GetGroupSettings Return Project Settings
 
-Returns details about the specified project's settings.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns details about the specified project's settings. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1960,13 +1966,13 @@ func (a *ProjectsAPIService) GetGroupSettings(ctx context.Context, groupId strin
 
 // GetGroupSettingsExecute executes the request
 //
-//	@return GroupSettings
-func (a *ProjectsAPIService) GetGroupSettingsExecute(r GetGroupSettingsApiRequest) (*GroupSettings, *http.Response, error) {
+//	@return GroupSettingsPreview
+func (a *ProjectsAPIService) GetGroupSettingsExecute(r GetGroupSettingsApiRequest) (*GroupSettingsPreview, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *GroupSettings
+		localVarReturnValue *GroupSettingsPreview
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.GetGroupSettings")
@@ -1997,7 +2003,7 @@ func (a *ProjectsAPIService) GetGroupSettingsExecute(r GetGroupSettingsApiReques
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2786,7 +2792,7 @@ Sets the specified project limit.
 **NOTE**: Increasing the following configuration limits might lead to slower response times in the MongoDB Cloud UI or increased user management overhead leading to authentication or authorization re-architecture. If possible, we recommend that you create additional projects to gain access to more of these resources for a more sustainable growth pattern.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param limitName Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | `atlas.project.deployment.clusters` | Limit on the number of clusters in this project | 25 | 100 | | `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on AWS PrivateLink addressable target nodes per region in this project. For sharded clusters using optimized (load-balanced) connection strings, `currentUsage` doesn't grow with the number of `mongos` — the load balancer is counted as a single addressable target regardless of how many `mongos` sit behind it. | 50 | 90 | | `atlas.project.security.databaseAccess.customRoles` | Limit on the number of custom roles in this project | 100 | 1400 | | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 100 | | `atlas.project.security.networkAccess.crossRegionEntries` | Limit on the number of cross-region network access entries in this project | 40 | 220 | | `atlas.project.security.networkAccess.entries` | Limit on the number of network access entries in this project | 200 | 20 | | `dataFederation.bytesProcessed.query` | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | `dataFederation.bytesProcessed.daily` | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | `dataFederation.bytesProcessed.weekly` | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | `dataFederation.bytesProcessed.monthly` | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | `atlas.project.deployment.privateServiceConnectionsPerRegionGroup` | Number of Private Service Connections per Region Group | 50 | 100| | `atlas.project.deployment.privateServiceConnectionsSubnetMask` | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
+	@param limitName Human-readable label that identifies this project limit.  | Limit Name | Description | Default | API Override Limit | | --- | --- | --- | --- | | `atlas.project.deployment.clusters` | Limit on the number of clusters in this project | 25 | 100 | | `atlas.project.deployment.nodesPerPrivateLinkRegion` | Limit on AWS PrivateLink addressable target nodes per region in this project. For sharded clusters using optimized (load-balanced) connection strings, `currentUsage` doesn't grow with the number of `mongos` — the load balancer is counted as a single addressable target regardless of how many `mongos` sit behind it. | 50 | 90 | | `atlas.project.security.databaseAccess.customRoles` | Limit on the number of custom roles in this project | 100 | 1400 | | `atlas.project.security.databaseAccess.users` | Limit on the number of database users in this project | 100 | 900 | | `atlas.project.security.networkAccess.crossRegionEntries` | Limit on the number of cross-region network access entries in this project | 40 | 220 | | `atlas.project.security.networkAccess.entries` | Limit on the number of network access entries in this project | 200 | 20 | | `dataFederation.bytesProcessed.query` | Limit on the number of bytes processed during a single Data Federation query | N/A | N/A | | `dataFederation.bytesProcessed.daily` | Limit on the number of bytes processed across all Data Federation tenants for the current day | N/A | N/A | | `dataFederation.bytesProcessed.weekly` | Limit on the number of bytes processed across all Data Federation tenants for the current week | N/A | N/A | | `dataFederation.bytesProcessed.monthly` | Limit on the number of bytes processed across all Data Federation tenants for the current month | N/A | N/A | | `atlas.project.deployment.privateServiceConnectionsPerRegionGroup` | Number of Private Service Connections per Region Group | 50 | 100| | `atlas.project.deployment.privateServiceConnectionsSubnetMask` | Subnet mask for GCP PSC Networks. Has lower limit of 20. | 27 | 27|
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return SetGroupLimitApiRequest
 */
@@ -3147,57 +3153,59 @@ func (a *ProjectsAPIService) UpdateGroupInvitesExecute(r UpdateGroupInvitesApiRe
 }
 
 type UpdateGroupSettingsApiRequest struct {
-	ctx           context.Context
-	ApiService    ProjectsAPI
-	groupId       string
-	groupSettings *GroupSettings
+	ctx                  context.Context
+	ApiService           ProjectsAPI
+	groupId              string
+	groupSettingsPreview *GroupSettingsPreview
 }
 
 type UpdateGroupSettingsApiParams struct {
-	GroupId       string
-	GroupSettings *GroupSettings
+	GroupId              string
+	GroupSettingsPreview *GroupSettingsPreview
 }
 
 func (a *ProjectsAPIService) UpdateGroupSettingsWithParams(ctx context.Context, args *UpdateGroupSettingsApiParams) UpdateGroupSettingsApiRequest {
 	return UpdateGroupSettingsApiRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		groupId:       args.GroupId,
-		groupSettings: args.GroupSettings,
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              args.GroupId,
+		groupSettingsPreview: args.GroupSettingsPreview,
 	}
 }
 
-func (r UpdateGroupSettingsApiRequest) Execute() (*GroupSettings, *http.Response, error) {
+func (r UpdateGroupSettingsApiRequest) Execute() (*GroupSettingsPreview, *http.Response, error) {
 	return r.ApiService.UpdateGroupSettingsExecute(r)
 }
 
 /*
 UpdateGroupSettings Update Project Settings
 
-Updates the settings of the specified project. You can update any of the options available. MongoDB cloud only updates the options provided in the request.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Updates the settings of the specified project. You can update any of the options available. MongoDB cloud only updates the options provided in the request. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return UpdateGroupSettingsApiRequest
 */
-func (a *ProjectsAPIService) UpdateGroupSettings(ctx context.Context, groupId string, groupSettings *GroupSettings) UpdateGroupSettingsApiRequest {
+func (a *ProjectsAPIService) UpdateGroupSettings(ctx context.Context, groupId string, groupSettingsPreview *GroupSettingsPreview) UpdateGroupSettingsApiRequest {
 	return UpdateGroupSettingsApiRequest{
-		ApiService:    a,
-		ctx:           ctx,
-		groupId:       groupId,
-		groupSettings: groupSettings,
+		ApiService:           a,
+		ctx:                  ctx,
+		groupId:              groupId,
+		groupSettingsPreview: groupSettingsPreview,
 	}
 }
 
 // UpdateGroupSettingsExecute executes the request
 //
-//	@return GroupSettings
-func (a *ProjectsAPIService) UpdateGroupSettingsExecute(r UpdateGroupSettingsApiRequest) (*GroupSettings, *http.Response, error) {
+//	@return GroupSettingsPreview
+func (a *ProjectsAPIService) UpdateGroupSettingsExecute(r UpdateGroupSettingsApiRequest) (*GroupSettingsPreview, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *GroupSettings
+		localVarReturnValue *GroupSettingsPreview
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.UpdateGroupSettings")
@@ -3217,12 +3225,12 @@ func (a *ProjectsAPIService) UpdateGroupSettingsExecute(r UpdateGroupSettingsApi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.groupSettings == nil {
-		return localVarReturnValue, nil, reportError("groupSettings is required and must be specified")
+	if r.groupSettingsPreview == nil {
+		return localVarReturnValue, nil, reportError("groupSettingsPreview is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -3231,7 +3239,7 @@ func (a *ProjectsAPIService) UpdateGroupSettingsExecute(r UpdateGroupSettingsApi
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -3239,7 +3247,7 @@ func (a *ProjectsAPIService) UpdateGroupSettingsExecute(r UpdateGroupSettingsApi
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.groupSettings
+	localVarPostBody = r.groupSettingsPreview
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

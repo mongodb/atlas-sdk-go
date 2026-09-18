@@ -43,16 +43,18 @@ type ClustersAPI interface {
 	/*
 			CreateCluster Create One Cluster in One Project
 
-			Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. This feature is not available for serverless clusters.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		Please note that using an `instanceSize` of M2 or M5 will create a Flex cluster instead. Support for the `instanceSize` of M2 or M5 will be discontinued in January 2026. We recommend using the Create Flex Cluster API for such configurations moving forward. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
+		 Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. This feature is not available for serverless clusters.
+
+		Please note that using an `instanceSize` of M2 or M5 will create a Flex cluster instead. Support for the `instanceSize` of M2 or M5 will be discontinued in January 2026. We recommend using the Create Flex Cluster API for such configurations moving forward. Deprecated versions: v2-{2024-10-23}, v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-			@param clusterDescription20240805 Cluster to create in this project.
+			@param apiAtlasClusterDescriptionPreview Cluster to create in this project.
 			@return CreateClusterApiRequest
 	*/
-	CreateCluster(ctx context.Context, groupId string, clusterDescription20240805 *ClusterDescription20240805) CreateClusterApiRequest
+	CreateCluster(ctx context.Context, groupId string, apiAtlasClusterDescriptionPreview *ApiAtlasClusterDescriptionPreview) CreateClusterApiRequest
 	/*
 		CreateCluster Create One Cluster in One Project
 
@@ -64,7 +66,7 @@ type ClustersAPI interface {
 	CreateClusterWithParams(ctx context.Context, args *CreateClusterApiParams) CreateClusterApiRequest
 
 	// Method available only for mocking purposes
-	CreateClusterExecute(r CreateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error)
+	CreateClusterExecute(r CreateClusterApiRequest) (*ApiAtlasClusterDescriptionPreview, *http.Response, error)
 
 	/*
 			DeleteCluster Remove One Cluster from One Project
@@ -93,11 +95,144 @@ type ClustersAPI interface {
 	DeleteClusterExecute(r DeleteClusterApiRequest) (*http.Response, error)
 
 	/*
+			DeleteEndpointConnectionString Delete One Private Endpoint Connection String from One Cluster
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Deletes one private endpoint connection string from the specified cluster.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the cluster.
+			@param connectionStringId Unique 24-hexadecimal digit string that identifies this private endpoint connection string.
+			@return DeleteEndpointConnectionStringApiRequest
+	*/
+	DeleteEndpointConnectionString(ctx context.Context, groupId string, clusterName string, connectionStringId string) DeleteEndpointConnectionStringApiRequest
+	/*
+		DeleteEndpointConnectionString Delete One Private Endpoint Connection String from One Cluster
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param DeleteEndpointConnectionStringApiParams - Parameters for the request
+		@return DeleteEndpointConnectionStringApiRequest
+	*/
+	DeleteEndpointConnectionStringWithParams(ctx context.Context, args *DeleteEndpointConnectionStringApiParams) DeleteEndpointConnectionStringApiRequest
+
+	// Method available only for mocking purposes
+	DeleteEndpointConnectionStringExecute(r DeleteEndpointConnectionStringApiRequest) (*http.Response, error)
+
+	/*
+			EstimateClusterCost Estimate the Cost of One Cluster
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Estimates the hourly and monthly compute cost of a cluster of the requested tier in the requested cloud provider and region, applying standard defaults. This unauthenticated endpoint prices a fixed set of representative tiers and does not create a cluster. To estimate arbitrary configurations, use the authenticated cost-estimate endpoints.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param unauthClusterCostEstimateRequest Tier, cloud provider, and region to estimate.
+			@return EstimateClusterCostApiRequest
+	*/
+	EstimateClusterCost(ctx context.Context, unauthClusterCostEstimateRequest *UnauthClusterCostEstimateRequest) EstimateClusterCostApiRequest
+	/*
+		EstimateClusterCost Estimate the Cost of One Cluster
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param EstimateClusterCostApiParams - Parameters for the request
+		@return EstimateClusterCostApiRequest
+	*/
+	EstimateClusterCostWithParams(ctx context.Context, args *EstimateClusterCostApiParams) EstimateClusterCostApiRequest
+
+	// Method available only for mocking purposes
+	EstimateClusterCostExecute(r EstimateClusterCostApiRequest) (*UnauthClusterCostEstimateResponse, *http.Response, error)
+
+	/*
+			EstimateCreateClusterCost Estimate the Cost of Creating One Cluster
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 This endpoint validates a supplied cluster configuration and returns an estimated hourly and monthly compute cost without creating or modifying the cluster. It applies the same validation as the Create One Cluster endpoint, so invalid configurations are rejected with the same errors. The estimate excludes backup storage, disk storage, data transfer, and premium feature surcharges, which are billed based on actual usage. Subscription, payment, and resource policy checks are not performed, so a configuration that can be priced here may still be rejected during the actual operation.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterDescription20240805 Cluster configuration to estimate.
+			@return EstimateCreateClusterCostApiRequest
+	*/
+	EstimateCreateClusterCost(ctx context.Context, groupId string, clusterDescription20240805 *ClusterDescription20240805) EstimateCreateClusterCostApiRequest
+	/*
+		EstimateCreateClusterCost Estimate the Cost of Creating One Cluster
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param EstimateCreateClusterCostApiParams - Parameters for the request
+		@return EstimateCreateClusterCostApiRequest
+	*/
+	EstimateCreateClusterCostWithParams(ctx context.Context, args *EstimateCreateClusterCostApiParams) EstimateCreateClusterCostApiRequest
+
+	// Method available only for mocking purposes
+	EstimateCreateClusterCostExecute(r EstimateCreateClusterCostApiRequest) (*ClusterCostEstimate, *http.Response, error)
+
+	/*
+			EstimateTenantUpgradeCost Estimate the Cost of Upgrading One Shared-Tier Cluster
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 This endpoint validates a supplied cluster configuration and returns an estimated hourly and monthly compute cost without creating or modifying the cluster. It applies the same validation as the Upgrade One Shared-Tier Cluster endpoint, so invalid configurations are rejected with the same errors. The estimate excludes backup storage, disk storage, data transfer, and premium feature surcharges, which are billed based on actual usage. Subscription, payment, and resource policy checks are not performed, so a configuration that can be priced here may still be rejected during the actual operation.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param legacyAtlasTenantClusterUpgradeRequest Shared-tier cluster upgrade to estimate.
+			@return EstimateTenantUpgradeCostApiRequest
+	*/
+	EstimateTenantUpgradeCost(ctx context.Context, groupId string, legacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest) EstimateTenantUpgradeCostApiRequest
+	/*
+		EstimateTenantUpgradeCost Estimate the Cost of Upgrading One Shared-Tier Cluster
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param EstimateTenantUpgradeCostApiParams - Parameters for the request
+		@return EstimateTenantUpgradeCostApiRequest
+	*/
+	EstimateTenantUpgradeCostWithParams(ctx context.Context, args *EstimateTenantUpgradeCostApiParams) EstimateTenantUpgradeCostApiRequest
+
+	// Method available only for mocking purposes
+	EstimateTenantUpgradeCostExecute(r EstimateTenantUpgradeCostApiRequest) (*ClusterCostEstimate, *http.Response, error)
+
+	/*
+			EstimateUpdateClusterCost Estimate the Cost of Updating One Cluster
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 This endpoint validates a supplied cluster configuration and returns an estimated hourly and monthly compute cost without creating or modifying the cluster. It applies the same validation as the Update One Cluster endpoint, so invalid configurations are rejected with the same errors. The estimate excludes backup storage, disk storage, data transfer, and premium feature surcharges, which are billed based on actual usage. Subscription, payment, and resource policy checks are not performed, so a configuration that can be priced here may still be rejected during the actual operation.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the cluster.
+			@param clusterDescription20240805 Cluster update to estimate pricing for.
+			@return EstimateUpdateClusterCostApiRequest
+	*/
+	EstimateUpdateClusterCost(ctx context.Context, groupId string, clusterName string, clusterDescription20240805 *ClusterDescription20240805) EstimateUpdateClusterCostApiRequest
+	/*
+		EstimateUpdateClusterCost Estimate the Cost of Updating One Cluster
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param EstimateUpdateClusterCostApiParams - Parameters for the request
+		@return EstimateUpdateClusterCostApiRequest
+	*/
+	EstimateUpdateClusterCostWithParams(ctx context.Context, args *EstimateUpdateClusterCostApiParams) EstimateUpdateClusterCostApiRequest
+
+	// Method available only for mocking purposes
+	EstimateUpdateClusterCostExecute(r EstimateUpdateClusterCostApiRequest) (*ClusterCostEstimate, *http.Response, error)
+
+	/*
 			GetCluster Return One Cluster from One Project
 
-			Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. This feature is not available for serverless clusters.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		This endpoint can also be used on Flex clusters that were created using the [Create Cluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the Get Flex Cluster endpoint for Flex clusters instead. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
+		 Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. This feature is not available for serverless clusters.
+
+		This endpoint can also be used on Flex clusters that were created using the [Create Cluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the Get Flex Cluster endpoint for Flex clusters instead. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
 
 			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -116,7 +251,7 @@ type ClustersAPI interface {
 	GetClusterWithParams(ctx context.Context, args *GetClusterApiParams) GetClusterApiRequest
 
 	// Method available only for mocking purposes
-	GetClusterExecute(r GetClusterApiRequest) (*ClusterDescription20240805, *http.Response, error)
+	GetClusterExecute(r GetClusterApiRequest) (*ApiAtlasClusterDescriptionPreview, *http.Response, error)
 
 	/*
 		GetClusterAdaptiveSettings Return Adaptive Settings for One Cluster
@@ -143,6 +278,32 @@ type ClustersAPI interface {
 	GetClusterAdaptiveSettingsExecute(r GetClusterAdaptiveSettingsApiRequest) (*AdaptiveSettingsResponse, *http.Response, error)
 
 	/*
+			GetClusterSqlInterface Return SQL Interface Status
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Returns the current SQL Interface status, either ON or OFF, for the specified cluster. If no status is configured, this resource returns OFF. The response also indicates whether SQL Interface is supported for this cluster.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the cluster.
+			@return GetClusterSqlInterfaceApiRequest
+	*/
+	GetClusterSqlInterface(ctx context.Context, groupId string, clusterName string) GetClusterSqlInterfaceApiRequest
+	/*
+		GetClusterSqlInterface Return SQL Interface Status
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetClusterSqlInterfaceApiParams - Parameters for the request
+		@return GetClusterSqlInterfaceApiRequest
+	*/
+	GetClusterSqlInterfaceWithParams(ctx context.Context, args *GetClusterSqlInterfaceApiParams) GetClusterSqlInterfaceApiRequest
+
+	// Method available only for mocking purposes
+	GetClusterSqlInterfaceExecute(r GetClusterSqlInterfaceApiRequest) (*SqlInterfaceStatusResponse, *http.Response, error)
+
+	/*
 		GetClusterStatus Return Status of All Cluster Operations
 
 		Returns the status of all changes that you made to the specified cluster in the specified project. Use this resource to check the progress MongoDB Cloud has made in processing your changes. The response does not include the deployment of new dedicated clusters.
@@ -165,6 +326,33 @@ type ClustersAPI interface {
 
 	// Method available only for mocking purposes
 	GetClusterStatusExecute(r GetClusterStatusApiRequest) (*ClusterStatus, *http.Response, error)
+
+	/*
+			GetEndpointConnectionString Return One Private Endpoint Connection String for One Cluster
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Returns one private endpoint connection string from the specified cluster. This endpoint treats `deleteRequested = true` records as not found.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the cluster.
+			@param connectionStringId Unique 24-hexadecimal digit string that identifies this private endpoint connection string.
+			@return GetEndpointConnectionStringApiRequest
+	*/
+	GetEndpointConnectionString(ctx context.Context, groupId string, clusterName string, connectionStringId string) GetEndpointConnectionStringApiRequest
+	/*
+		GetEndpointConnectionString Return One Private Endpoint Connection String for One Cluster
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param GetEndpointConnectionStringApiParams - Parameters for the request
+		@return GetEndpointConnectionStringApiRequest
+	*/
+	GetEndpointConnectionStringWithParams(ctx context.Context, args *GetEndpointConnectionStringApiParams) GetEndpointConnectionStringApiRequest
+
+	// Method available only for mocking purposes
+	GetEndpointConnectionStringExecute(r GetEndpointConnectionStringApiRequest) (*PrivateEndpointConnectionStringResponse, *http.Response, error)
 
 	/*
 		GetProcessArgs Return Advanced Configuration Options for One Cluster
@@ -310,6 +498,32 @@ type ClustersAPI interface {
 	ListClustersExecute(r ListClustersApiRequest) (*PaginatedClusterDescription20240805, *http.Response, error)
 
 	/*
+			ListEndpointConnectionStrings Return All Private Endpoint Connection Strings for One Cluster
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Returns all private endpoint connection strings for the specified cluster.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the cluster.
+			@return ListEndpointConnectionStringsApiRequest
+	*/
+	ListEndpointConnectionStrings(ctx context.Context, groupId string, clusterName string) ListEndpointConnectionStringsApiRequest
+	/*
+		ListEndpointConnectionStrings Return All Private Endpoint Connection Strings for One Cluster
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListEndpointConnectionStringsApiParams - Parameters for the request
+		@return ListEndpointConnectionStringsApiRequest
+	*/
+	ListEndpointConnectionStringsWithParams(ctx context.Context, args *ListEndpointConnectionStringsApiParams) ListEndpointConnectionStringsApiRequest
+
+	// Method available only for mocking purposes
+	ListEndpointConnectionStringsExecute(r ListEndpointConnectionStringsApiRequest) (*PaginatedPrivateEndpointConnectionStringResponse, *http.Response, error)
+
+	/*
 		PinFeatureCompatibilityVersion Pin Feature Compatibility Version for One Cluster in One Project
 
 		Pins the Feature Compatibility Version (FCV) to the current MongoDB version and sets the pin expiration date. If an FCV pin already exists for the cluster, calling this method will only update the expiration date of the existing pin and will not re-pin the FCV.
@@ -431,17 +645,19 @@ type ClustersAPI interface {
 	UnpinFeatureCompatibilityVersionExecute(r UnpinFeatureCompatibilityVersionApiRequest) (*http.Response, error)
 
 	/*
-		UpdateCluster Update One Cluster in One Project
+			UpdateCluster Update One Cluster in One Project
 
-		Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update clusters with asymmetrically-sized shards. To update a cluster's termination protection, the requesting Service Account or API Key must have the Project Owner role. For all other updates, the requesting Service Account or API Key must have the Project Cluster Manager role, the Project Cluster Resilience Tester role, or the Project Replica Set Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Human-readable label that identifies the cluster.
-		@param clusterDescription20240805 Cluster to update in the specified project.
-		@return UpdateClusterApiRequest
+		 Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update clusters with asymmetrically-sized shards. To update a cluster's termination protection, the requesting Service Account or API Key must have the Project Owner role. For all other updates, the requesting Service Account or API Key must have the Project Cluster Manager role, the Project Cluster Resilience Tester role, or the Project Replica Set Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2024-10-23}, v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the cluster.
+			@param apiAtlasClusterDescriptionPreview Cluster to update in the specified project.
+			@return UpdateClusterApiRequest
 	*/
-	UpdateCluster(ctx context.Context, groupId string, clusterName string, clusterDescription20240805 *ClusterDescription20240805) UpdateClusterApiRequest
+	UpdateCluster(ctx context.Context, groupId string, clusterName string, apiAtlasClusterDescriptionPreview *ApiAtlasClusterDescriptionPreview) UpdateClusterApiRequest
 	/*
 		UpdateCluster Update One Cluster in One Project
 
@@ -453,7 +669,7 @@ type ClustersAPI interface {
 	UpdateClusterWithParams(ctx context.Context, args *UpdateClusterApiParams) UpdateClusterApiRequest
 
 	// Method available only for mocking purposes
-	UpdateClusterExecute(r UpdateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error)
+	UpdateClusterExecute(r UpdateClusterApiRequest) (*ApiAtlasClusterDescriptionPreview, *http.Response, error)
 
 	/*
 		UpdateClusterAdaptiveSettings Update Adaptive Settings for One Cluster
@@ -479,6 +695,33 @@ type ClustersAPI interface {
 
 	// Method available only for mocking purposes
 	UpdateClusterAdaptiveSettingsExecute(r UpdateClusterAdaptiveSettingsApiRequest) (*AdaptiveSettingsResponse, *http.Response, error)
+
+	/*
+			UpdateClusterSqlInterface Update SQL Interface Status
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Enables or disables the SQL Interface for the specified cluster by setting its status to ON or OFF. Returns a conflict if SQL Interface can't be enabled for this cluster or project.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Human-readable label that identifies the cluster.
+			@param sqlInterfaceStatusUpdateRequest Desired SQL Interface status for the cluster.
+			@return UpdateClusterSqlInterfaceApiRequest
+	*/
+	UpdateClusterSqlInterface(ctx context.Context, groupId string, clusterName string, sqlInterfaceStatusUpdateRequest *SqlInterfaceStatusUpdateRequest) UpdateClusterSqlInterfaceApiRequest
+	/*
+		UpdateClusterSqlInterface Update SQL Interface Status
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param UpdateClusterSqlInterfaceApiParams - Parameters for the request
+		@return UpdateClusterSqlInterfaceApiRequest
+	*/
+	UpdateClusterSqlInterfaceWithParams(ctx context.Context, args *UpdateClusterSqlInterfaceApiParams) UpdateClusterSqlInterfaceApiRequest
+
+	// Method available only for mocking purposes
+	UpdateClusterSqlInterfaceExecute(r UpdateClusterSqlInterfaceApiRequest) (*SqlInterfaceStatusResponse, *http.Response, error)
 
 	/*
 		UpdateProcessArgs Update Advanced Configuration Options for One Cluster
@@ -560,6 +803,32 @@ type ClustersAPI interface {
 
 	// Method available only for mocking purposes
 	UpgradeTenantUpgradeExecute(r UpgradeTenantUpgradeApiRequest) (*LegacyAtlasCluster, *http.Response, error)
+
+	/*
+			ValidateGroupClusterConfigurations Validate One Cluster Configuration
+
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+		 Checks if the given cluster configuration is valid and ready to be used to create or edit a cluster.
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterConfigurationValidation Cluster configuration to validate.
+			@return ValidateGroupClusterConfigurationsApiRequest
+	*/
+	ValidateGroupClusterConfigurations(ctx context.Context, groupId string, clusterConfigurationValidation *ClusterConfigurationValidation) ValidateGroupClusterConfigurationsApiRequest
+	/*
+		ValidateGroupClusterConfigurations Validate One Cluster Configuration
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ValidateGroupClusterConfigurationsApiParams - Parameters for the request
+		@return ValidateGroupClusterConfigurationsApiRequest
+	*/
+	ValidateGroupClusterConfigurationsWithParams(ctx context.Context, args *ValidateGroupClusterConfigurationsApiParams) ValidateGroupClusterConfigurationsApiRequest
+
+	// Method available only for mocking purposes
+	ValidateGroupClusterConfigurationsExecute(r ValidateGroupClusterConfigurationsApiRequest) (*ClusterConfigurationValidationResult, *http.Response, error)
 }
 
 // ClustersAPIService ClustersAPI service
@@ -702,14 +971,14 @@ type CreateClusterApiRequest struct {
 	ctx                                context.Context
 	ApiService                         ClustersAPI
 	groupId                            string
-	clusterDescription20240805         *ClusterDescription20240805
+	apiAtlasClusterDescriptionPreview  *ApiAtlasClusterDescriptionPreview
 	useEffectiveInstanceFields         *bool
 	useEffectiveFieldsReplicationSpecs *bool
 }
 
 type CreateClusterApiParams struct {
 	GroupId                            string
-	ClusterDescription20240805         *ClusterDescription20240805
+	ApiAtlasClusterDescriptionPreview  *ApiAtlasClusterDescriptionPreview
 	UseEffectiveInstanceFields         *bool
 	UseEffectiveFieldsReplicationSpecs *bool
 }
@@ -719,7 +988,7 @@ func (a *ClustersAPIService) CreateClusterWithParams(ctx context.Context, args *
 		ApiService:                         a,
 		ctx:                                ctx,
 		groupId:                            args.GroupId,
-		clusterDescription20240805:         args.ClusterDescription20240805,
+		apiAtlasClusterDescriptionPreview:  args.ApiAtlasClusterDescriptionPreview,
 		useEffectiveInstanceFields:         args.UseEffectiveInstanceFields,
 		useEffectiveFieldsReplicationSpecs: args.UseEffectiveFieldsReplicationSpecs,
 	}
@@ -737,39 +1006,41 @@ func (r CreateClusterApiRequest) UseEffectiveFieldsReplicationSpecs(useEffective
 	return r
 }
 
-func (r CreateClusterApiRequest) Execute() (*ClusterDescription20240805, *http.Response, error) {
+func (r CreateClusterApiRequest) Execute() (*ApiAtlasClusterDescriptionPreview, *http.Response, error) {
 	return r.ApiService.CreateClusterExecute(r)
 }
 
 /*
 CreateCluster Create One Cluster in One Project
 
-Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. This feature is not available for serverless clusters.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-Please note that using an `instanceSize` of M2 or M5 will create a Flex cluster instead. Support for the `instanceSize` of M2 or M5 will be discontinued in January 2026. We recommend using the Create Flex Cluster API for such configurations moving forward. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
+	Creates one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can create clusters with asymmetrically-sized shards. Each project supports up to 25 database deployments. This feature is not available for serverless clusters.
+
+Please note that using an `instanceSize` of M2 or M5 will create a Flex cluster instead. Support for the `instanceSize` of M2 or M5 will be discontinued in January 2026. We recommend using the Create Flex Cluster API for such configurations moving forward. Deprecated versions: v2-{2024-10-23}, v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@return CreateClusterApiRequest
 */
-func (a *ClustersAPIService) CreateCluster(ctx context.Context, groupId string, clusterDescription20240805 *ClusterDescription20240805) CreateClusterApiRequest {
+func (a *ClustersAPIService) CreateCluster(ctx context.Context, groupId string, apiAtlasClusterDescriptionPreview *ApiAtlasClusterDescriptionPreview) CreateClusterApiRequest {
 	return CreateClusterApiRequest{
-		ApiService:                 a,
-		ctx:                        ctx,
-		groupId:                    groupId,
-		clusterDescription20240805: clusterDescription20240805,
+		ApiService:                        a,
+		ctx:                               ctx,
+		groupId:                           groupId,
+		apiAtlasClusterDescriptionPreview: apiAtlasClusterDescriptionPreview,
 	}
 }
 
 // CreateClusterExecute executes the request
 //
-//	@return ClusterDescription20240805
-func (a *ClustersAPIService) CreateClusterExecute(r CreateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
+//	@return ApiAtlasClusterDescriptionPreview
+func (a *ClustersAPIService) CreateClusterExecute(r CreateClusterApiRequest) (*ApiAtlasClusterDescriptionPreview, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *ClusterDescription20240805
+		localVarReturnValue *ApiAtlasClusterDescriptionPreview
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.CreateCluster")
@@ -789,12 +1060,12 @@ func (a *ClustersAPIService) CreateClusterExecute(r CreateClusterApiRequest) (*C
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.clusterDescription20240805 == nil {
-		return localVarReturnValue, nil, reportError("clusterDescription20240805 is required and must be specified")
+	if r.apiAtlasClusterDescriptionPreview == nil {
+		return localVarReturnValue, nil, reportError("apiAtlasClusterDescriptionPreview is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-10-23+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -803,7 +1074,7 @@ func (a *ClustersAPIService) CreateClusterExecute(r CreateClusterApiRequest) (*C
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-10-23+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -817,7 +1088,7 @@ func (a *ClustersAPIService) CreateClusterExecute(r CreateClusterApiRequest) (*C
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Fields-Replication-Specs", r.useEffectiveFieldsReplicationSpecs, "")
 	}
 	// body params
-	localVarPostBody = r.clusterDescription20240805
+	localVarPostBody = r.apiAtlasClusterDescriptionPreview
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -976,6 +1247,668 @@ func (a *ClustersAPIService) DeleteClusterExecute(r DeleteClusterApiRequest) (*h
 	return localVarHTTPResponse, nil
 }
 
+type DeleteEndpointConnectionStringApiRequest struct {
+	ctx                context.Context
+	ApiService         ClustersAPI
+	groupId            string
+	clusterName        string
+	connectionStringId string
+}
+
+type DeleteEndpointConnectionStringApiParams struct {
+	GroupId            string
+	ClusterName        string
+	ConnectionStringId string
+}
+
+func (a *ClustersAPIService) DeleteEndpointConnectionStringWithParams(ctx context.Context, args *DeleteEndpointConnectionStringApiParams) DeleteEndpointConnectionStringApiRequest {
+	return DeleteEndpointConnectionStringApiRequest{
+		ApiService:         a,
+		ctx:                ctx,
+		groupId:            args.GroupId,
+		clusterName:        args.ClusterName,
+		connectionStringId: args.ConnectionStringId,
+	}
+}
+
+func (r DeleteEndpointConnectionStringApiRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteEndpointConnectionStringExecute(r)
+}
+
+/*
+DeleteEndpointConnectionString Delete One Private Endpoint Connection String from One Cluster
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Deletes one private endpoint connection string from the specified cluster.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@param connectionStringId Unique 24-hexadecimal digit string that identifies this private endpoint connection string.
+	@return DeleteEndpointConnectionStringApiRequest
+*/
+func (a *ClustersAPIService) DeleteEndpointConnectionString(ctx context.Context, groupId string, clusterName string, connectionStringId string) DeleteEndpointConnectionStringApiRequest {
+	return DeleteEndpointConnectionStringApiRequest{
+		ApiService:         a,
+		ctx:                ctx,
+		groupId:            groupId,
+		clusterName:        clusterName,
+		connectionStringId: connectionStringId,
+	}
+}
+
+// DeleteEndpointConnectionStringExecute executes the request
+func (a *ClustersAPIService) DeleteEndpointConnectionStringExecute(r DeleteEndpointConnectionStringApiRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   any
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.DeleteEndpointConnectionString")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/privateEndpointConnectionStrings/{connectionStringId}"
+	if r.groupId == "" {
+		return nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return nil, reportError("groupId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return nil, reportError("clusterName must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+	if r.connectionStringId == "" {
+		return nil, reportError("connectionStringId is empty and must be specified")
+	}
+	if r.connectionStringId == "." || r.connectionStringId == ".." {
+		return nil, reportError("connectionStringId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionStringId"+"}", url.PathEscape(r.connectionStringId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type EstimateClusterCostApiRequest struct {
+	ctx                              context.Context
+	ApiService                       ClustersAPI
+	unauthClusterCostEstimateRequest *UnauthClusterCostEstimateRequest
+}
+
+type EstimateClusterCostApiParams struct {
+	UnauthClusterCostEstimateRequest *UnauthClusterCostEstimateRequest
+}
+
+func (a *ClustersAPIService) EstimateClusterCostWithParams(ctx context.Context, args *EstimateClusterCostApiParams) EstimateClusterCostApiRequest {
+	return EstimateClusterCostApiRequest{
+		ApiService:                       a,
+		ctx:                              ctx,
+		unauthClusterCostEstimateRequest: args.UnauthClusterCostEstimateRequest,
+	}
+}
+
+func (r EstimateClusterCostApiRequest) Execute() (*UnauthClusterCostEstimateResponse, *http.Response, error) {
+	return r.ApiService.EstimateClusterCostExecute(r)
+}
+
+/*
+EstimateClusterCost Estimate the Cost of One Cluster
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Estimates the hourly and monthly compute cost of a cluster of the requested tier in the requested cloud provider and region, applying standard defaults. This unauthenticated endpoint prices a fixed set of representative tiers and does not create a cluster. To estimate arbitrary configurations, use the authenticated cost-estimate endpoints.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return EstimateClusterCostApiRequest
+*/
+func (a *ClustersAPIService) EstimateClusterCost(ctx context.Context, unauthClusterCostEstimateRequest *UnauthClusterCostEstimateRequest) EstimateClusterCostApiRequest {
+	return EstimateClusterCostApiRequest{
+		ApiService:                       a,
+		ctx:                              ctx,
+		unauthClusterCostEstimateRequest: unauthClusterCostEstimateRequest,
+	}
+}
+
+// EstimateClusterCostExecute executes the request
+//
+//	@return UnauthClusterCostEstimateResponse
+func (a *ClustersAPIService) EstimateClusterCostExecute(r EstimateClusterCostApiRequest) (*UnauthClusterCostEstimateResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *UnauthClusterCostEstimateResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.EstimateClusterCost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/unauth/clusters:estimateCost"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.unauthClusterCostEstimateRequest == nil {
+		return localVarReturnValue, nil, reportError("unauthClusterCostEstimateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.unauthClusterCostEstimateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type EstimateCreateClusterCostApiRequest struct {
+	ctx                        context.Context
+	ApiService                 ClustersAPI
+	groupId                    string
+	clusterDescription20240805 *ClusterDescription20240805
+}
+
+type EstimateCreateClusterCostApiParams struct {
+	GroupId                    string
+	ClusterDescription20240805 *ClusterDescription20240805
+}
+
+func (a *ClustersAPIService) EstimateCreateClusterCostWithParams(ctx context.Context, args *EstimateCreateClusterCostApiParams) EstimateCreateClusterCostApiRequest {
+	return EstimateCreateClusterCostApiRequest{
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    args.GroupId,
+		clusterDescription20240805: args.ClusterDescription20240805,
+	}
+}
+
+func (r EstimateCreateClusterCostApiRequest) Execute() (*ClusterCostEstimate, *http.Response, error) {
+	return r.ApiService.EstimateCreateClusterCostExecute(r)
+}
+
+/*
+EstimateCreateClusterCost Estimate the Cost of Creating One Cluster
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	This endpoint validates a supplied cluster configuration and returns an estimated hourly and monthly compute cost without creating or modifying the cluster. It applies the same validation as the Create One Cluster endpoint, so invalid configurations are rejected with the same errors. The estimate excludes backup storage, disk storage, data transfer, and premium feature surcharges, which are billed based on actual usage. Subscription, payment, and resource policy checks are not performed, so a configuration that can be priced here may still be rejected during the actual operation.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return EstimateCreateClusterCostApiRequest
+*/
+func (a *ClustersAPIService) EstimateCreateClusterCost(ctx context.Context, groupId string, clusterDescription20240805 *ClusterDescription20240805) EstimateCreateClusterCostApiRequest {
+	return EstimateCreateClusterCostApiRequest{
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    groupId,
+		clusterDescription20240805: clusterDescription20240805,
+	}
+}
+
+// EstimateCreateClusterCostExecute executes the request
+//
+//	@return ClusterCostEstimate
+func (a *ClustersAPIService) EstimateCreateClusterCostExecute(r EstimateCreateClusterCostApiRequest) (*ClusterCostEstimate, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *ClusterCostEstimate
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.EstimateCreateClusterCost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters:estimateCreateCost"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.clusterDescription20240805 == nil {
+		return localVarReturnValue, nil, reportError("clusterDescription20240805 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.clusterDescription20240805
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type EstimateTenantUpgradeCostApiRequest struct {
+	ctx                                    context.Context
+	ApiService                             ClustersAPI
+	groupId                                string
+	legacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest
+}
+
+type EstimateTenantUpgradeCostApiParams struct {
+	GroupId                                string
+	LegacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest
+}
+
+func (a *ClustersAPIService) EstimateTenantUpgradeCostWithParams(ctx context.Context, args *EstimateTenantUpgradeCostApiParams) EstimateTenantUpgradeCostApiRequest {
+	return EstimateTenantUpgradeCostApiRequest{
+		ApiService:                             a,
+		ctx:                                    ctx,
+		groupId:                                args.GroupId,
+		legacyAtlasTenantClusterUpgradeRequest: args.LegacyAtlasTenantClusterUpgradeRequest,
+	}
+}
+
+func (r EstimateTenantUpgradeCostApiRequest) Execute() (*ClusterCostEstimate, *http.Response, error) {
+	return r.ApiService.EstimateTenantUpgradeCostExecute(r)
+}
+
+/*
+EstimateTenantUpgradeCost Estimate the Cost of Upgrading One Shared-Tier Cluster
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	This endpoint validates a supplied cluster configuration and returns an estimated hourly and monthly compute cost without creating or modifying the cluster. It applies the same validation as the Upgrade One Shared-Tier Cluster endpoint, so invalid configurations are rejected with the same errors. The estimate excludes backup storage, disk storage, data transfer, and premium feature surcharges, which are billed based on actual usage. Subscription, payment, and resource policy checks are not performed, so a configuration that can be priced here may still be rejected during the actual operation.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return EstimateTenantUpgradeCostApiRequest
+*/
+func (a *ClustersAPIService) EstimateTenantUpgradeCost(ctx context.Context, groupId string, legacyAtlasTenantClusterUpgradeRequest *LegacyAtlasTenantClusterUpgradeRequest) EstimateTenantUpgradeCostApiRequest {
+	return EstimateTenantUpgradeCostApiRequest{
+		ApiService:                             a,
+		ctx:                                    ctx,
+		groupId:                                groupId,
+		legacyAtlasTenantClusterUpgradeRequest: legacyAtlasTenantClusterUpgradeRequest,
+	}
+}
+
+// EstimateTenantUpgradeCostExecute executes the request
+//
+//	@return ClusterCostEstimate
+func (a *ClustersAPIService) EstimateTenantUpgradeCostExecute(r EstimateTenantUpgradeCostApiRequest) (*ClusterCostEstimate, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *ClusterCostEstimate
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.EstimateTenantUpgradeCost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters:estimateTenantUpgradeCost"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.legacyAtlasTenantClusterUpgradeRequest == nil {
+		return localVarReturnValue, nil, reportError("legacyAtlasTenantClusterUpgradeRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.legacyAtlasTenantClusterUpgradeRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type EstimateUpdateClusterCostApiRequest struct {
+	ctx                                context.Context
+	ApiService                         ClustersAPI
+	groupId                            string
+	clusterName                        string
+	clusterDescription20240805         *ClusterDescription20240805
+	useEffectiveInstanceFields         *bool
+	useEffectiveFieldsReplicationSpecs *bool
+}
+
+type EstimateUpdateClusterCostApiParams struct {
+	GroupId                            string
+	ClusterName                        string
+	ClusterDescription20240805         *ClusterDescription20240805
+	UseEffectiveInstanceFields         *bool
+	UseEffectiveFieldsReplicationSpecs *bool
+}
+
+func (a *ClustersAPIService) EstimateUpdateClusterCostWithParams(ctx context.Context, args *EstimateUpdateClusterCostApiParams) EstimateUpdateClusterCostApiRequest {
+	return EstimateUpdateClusterCostApiRequest{
+		ApiService:                         a,
+		ctx:                                ctx,
+		groupId:                            args.GroupId,
+		clusterName:                        args.ClusterName,
+		clusterDescription20240805:         args.ClusterDescription20240805,
+		useEffectiveInstanceFields:         args.UseEffectiveInstanceFields,
+		useEffectiveFieldsReplicationSpecs: args.UseEffectiveFieldsReplicationSpecs,
+	}
+}
+
+// When true, hardware specification fields for autoscaling-enabled clusters are resolved to their effective (current operational) values before pricing. When false (default), the client-specified values are priced. Set this to match the header sent on the corresponding cluster update.
+func (r EstimateUpdateClusterCostApiRequest) UseEffectiveInstanceFields(useEffectiveInstanceFields bool) EstimateUpdateClusterCostApiRequest {
+	r.useEffectiveInstanceFields = &useEffectiveInstanceFields
+	return r
+}
+
+// Controls how &#x60;replicationSpecs&#x60; are interpreted for auto-sharded clusters before pricing. When false (default), &#x60;replicationSpecs&#x60; is treated as the actual cluster state.
+func (r EstimateUpdateClusterCostApiRequest) UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs bool) EstimateUpdateClusterCostApiRequest {
+	r.useEffectiveFieldsReplicationSpecs = &useEffectiveFieldsReplicationSpecs
+	return r
+}
+
+func (r EstimateUpdateClusterCostApiRequest) Execute() (*ClusterCostEstimate, *http.Response, error) {
+	return r.ApiService.EstimateUpdateClusterCostExecute(r)
+}
+
+/*
+EstimateUpdateClusterCost Estimate the Cost of Updating One Cluster
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	This endpoint validates a supplied cluster configuration and returns an estimated hourly and monthly compute cost without creating or modifying the cluster. It applies the same validation as the Update One Cluster endpoint, so invalid configurations are rejected with the same errors. The estimate excludes backup storage, disk storage, data transfer, and premium feature surcharges, which are billed based on actual usage. Subscription, payment, and resource policy checks are not performed, so a configuration that can be priced here may still be rejected during the actual operation.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@return EstimateUpdateClusterCostApiRequest
+*/
+func (a *ClustersAPIService) EstimateUpdateClusterCost(ctx context.Context, groupId string, clusterName string, clusterDescription20240805 *ClusterDescription20240805) EstimateUpdateClusterCostApiRequest {
+	return EstimateUpdateClusterCostApiRequest{
+		ApiService:                 a,
+		ctx:                        ctx,
+		groupId:                    groupId,
+		clusterName:                clusterName,
+		clusterDescription20240805: clusterDescription20240805,
+	}
+}
+
+// EstimateUpdateClusterCostExecute executes the request
+//
+//	@return ClusterCostEstimate
+func (a *ClustersAPIService) EstimateUpdateClusterCostExecute(r EstimateUpdateClusterCostApiRequest) (*ClusterCostEstimate, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *ClusterCostEstimate
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.EstimateUpdateClusterCost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:estimateUpdateCost"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.clusterDescription20240805 == nil {
+		return localVarReturnValue, nil, reportError("clusterDescription20240805 is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.useEffectiveInstanceFields != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Instance-Fields", r.useEffectiveInstanceFields, "")
+	}
+	if r.useEffectiveFieldsReplicationSpecs != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Fields-Replication-Specs", r.useEffectiveFieldsReplicationSpecs, "")
+	}
+	// body params
+	localVarPostBody = r.clusterDescription20240805
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type GetClusterApiRequest struct {
 	ctx                                context.Context
 	ApiService                         ClustersAPI
@@ -1015,16 +1948,18 @@ func (r GetClusterApiRequest) UseEffectiveFieldsReplicationSpecs(useEffectiveFie
 	return r
 }
 
-func (r GetClusterApiRequest) Execute() (*ClusterDescription20240805, *http.Response, error) {
+func (r GetClusterApiRequest) Execute() (*ApiAtlasClusterDescriptionPreview, *http.Response, error) {
 	return r.ApiService.GetClusterExecute(r)
 }
 
 /*
 GetCluster Return One Cluster from One Project
 
-Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. This feature is not available for serverless clusters.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-This endpoint can also be used on Flex clusters that were created using the [Create Cluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the Get Flex Cluster endpoint for Flex clusters instead. Deprecated versions: v2-{2023-02-01}, v2-{2023-01-01}
+	Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. This feature is not available for serverless clusters.
+
+This endpoint can also be used on Flex clusters that were created using the [Create Cluster](https://www.mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/createCluster) endpoint or former M2/M5 clusters that have been migrated to Flex clusters until January 2026. Please use the Get Flex Cluster endpoint for Flex clusters instead. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1042,13 +1977,13 @@ func (a *ClustersAPIService) GetCluster(ctx context.Context, groupId string, clu
 
 // GetClusterExecute executes the request
 //
-//	@return ClusterDescription20240805
-func (a *ClustersAPIService) GetClusterExecute(r GetClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
+//	@return ApiAtlasClusterDescriptionPreview
+func (a *ClustersAPIService) GetClusterExecute(r GetClusterApiRequest) (*ApiAtlasClusterDescriptionPreview, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *ClusterDescription20240805
+		localVarReturnValue *ApiAtlasClusterDescriptionPreview
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.GetCluster")
@@ -1086,7 +2021,7 @@ func (a *ClustersAPIService) GetClusterExecute(r GetClusterApiRequest) (*Cluster
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-08-05+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1260,6 +2195,137 @@ func (a *ClustersAPIService) GetClusterAdaptiveSettingsExecute(r GetClusterAdapt
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type GetClusterSqlInterfaceApiRequest struct {
+	ctx         context.Context
+	ApiService  ClustersAPI
+	groupId     string
+	clusterName string
+}
+
+type GetClusterSqlInterfaceApiParams struct {
+	GroupId     string
+	ClusterName string
+}
+
+func (a *ClustersAPIService) GetClusterSqlInterfaceWithParams(ctx context.Context, args *GetClusterSqlInterfaceApiParams) GetClusterSqlInterfaceApiRequest {
+	return GetClusterSqlInterfaceApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     args.GroupId,
+		clusterName: args.ClusterName,
+	}
+}
+
+func (r GetClusterSqlInterfaceApiRequest) Execute() (*SqlInterfaceStatusResponse, *http.Response, error) {
+	return r.ApiService.GetClusterSqlInterfaceExecute(r)
+}
+
+/*
+GetClusterSqlInterface Return SQL Interface Status
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns the current SQL Interface status, either ON or OFF, for the specified cluster. If no status is configured, this resource returns OFF. The response also indicates whether SQL Interface is supported for this cluster.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@return GetClusterSqlInterfaceApiRequest
+*/
+func (a *ClustersAPIService) GetClusterSqlInterface(ctx context.Context, groupId string, clusterName string) GetClusterSqlInterfaceApiRequest {
+	return GetClusterSqlInterfaceApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+	}
+}
+
+// GetClusterSqlInterfaceExecute executes the request
+//
+//	@return SqlInterfaceStatusResponse
+func (a *ClustersAPIService) GetClusterSqlInterfaceExecute(r GetClusterSqlInterfaceApiRequest) (*SqlInterfaceStatusResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *SqlInterfaceStatusResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.GetClusterSqlInterface")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/sqlInterface"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type GetClusterStatusApiRequest struct {
 	ctx         context.Context
 	ApiService  ClustersAPI
@@ -1351,6 +2417,149 @@ func (a *ClustersAPIService) GetClusterStatusExecute(r GetClusterStatusApiReques
 
 	// to determine the Accept header (only first one)
 	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type GetEndpointConnectionStringApiRequest struct {
+	ctx                context.Context
+	ApiService         ClustersAPI
+	groupId            string
+	clusterName        string
+	connectionStringId string
+}
+
+type GetEndpointConnectionStringApiParams struct {
+	GroupId            string
+	ClusterName        string
+	ConnectionStringId string
+}
+
+func (a *ClustersAPIService) GetEndpointConnectionStringWithParams(ctx context.Context, args *GetEndpointConnectionStringApiParams) GetEndpointConnectionStringApiRequest {
+	return GetEndpointConnectionStringApiRequest{
+		ApiService:         a,
+		ctx:                ctx,
+		groupId:            args.GroupId,
+		clusterName:        args.ClusterName,
+		connectionStringId: args.ConnectionStringId,
+	}
+}
+
+func (r GetEndpointConnectionStringApiRequest) Execute() (*PrivateEndpointConnectionStringResponse, *http.Response, error) {
+	return r.ApiService.GetEndpointConnectionStringExecute(r)
+}
+
+/*
+GetEndpointConnectionString Return One Private Endpoint Connection String for One Cluster
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns one private endpoint connection string from the specified cluster. This endpoint treats `deleteRequested = true` records as not found.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@param connectionStringId Unique 24-hexadecimal digit string that identifies this private endpoint connection string.
+	@return GetEndpointConnectionStringApiRequest
+*/
+func (a *ClustersAPIService) GetEndpointConnectionString(ctx context.Context, groupId string, clusterName string, connectionStringId string) GetEndpointConnectionStringApiRequest {
+	return GetEndpointConnectionStringApiRequest{
+		ApiService:         a,
+		ctx:                ctx,
+		groupId:            groupId,
+		clusterName:        clusterName,
+		connectionStringId: connectionStringId,
+	}
+}
+
+// GetEndpointConnectionStringExecute executes the request
+//
+//	@return PrivateEndpointConnectionStringResponse
+func (a *ClustersAPIService) GetEndpointConnectionStringExecute(r GetEndpointConnectionStringApiRequest) (*PrivateEndpointConnectionStringResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PrivateEndpointConnectionStringResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.GetEndpointConnectionString")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/privateEndpointConnectionStrings/{connectionStringId}"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+	if r.connectionStringId == "" {
+		return localVarReturnValue, nil, reportError("connectionStringId is empty and must be specified")
+	}
+	if r.connectionStringId == "." || r.connectionStringId == ".." {
+		return localVarReturnValue, nil, reportError("connectionStringId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"connectionStringId"+"}", url.PathEscape(r.connectionStringId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2309,6 +3518,209 @@ func (a *ClustersAPIService) ListClustersExecute(r ListClustersApiRequest) (*Pag
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ListEndpointConnectionStringsApiRequest struct {
+	ctx            context.Context
+	ApiService     ClustersAPI
+	groupId        string
+	clusterName    string
+	includeCount   *bool
+	itemsPerPage   *int
+	pageNum        *int
+	status         *string
+	managementType *string
+}
+
+type ListEndpointConnectionStringsApiParams struct {
+	GroupId        string
+	ClusterName    string
+	IncludeCount   *bool
+	ItemsPerPage   *int
+	PageNum        *int
+	Status         *string
+	ManagementType *string
+}
+
+func (a *ClustersAPIService) ListEndpointConnectionStringsWithParams(ctx context.Context, args *ListEndpointConnectionStringsApiParams) ListEndpointConnectionStringsApiRequest {
+	return ListEndpointConnectionStringsApiRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		groupId:        args.GroupId,
+		clusterName:    args.ClusterName,
+		includeCount:   args.IncludeCount,
+		itemsPerPage:   args.ItemsPerPage,
+		pageNum:        args.PageNum,
+		status:         args.Status,
+		managementType: args.ManagementType,
+	}
+}
+
+// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+func (r ListEndpointConnectionStringsApiRequest) IncludeCount(includeCount bool) ListEndpointConnectionStringsApiRequest {
+	r.includeCount = &includeCount
+	return r
+}
+
+// Number of items that the response returns per page.
+func (r ListEndpointConnectionStringsApiRequest) ItemsPerPage(itemsPerPage int) ListEndpointConnectionStringsApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListEndpointConnectionStringsApiRequest) PageNum(pageNum int) ListEndpointConnectionStringsApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+// Filter records by lifecycle status.
+func (r ListEndpointConnectionStringsApiRequest) Status(status string) ListEndpointConnectionStringsApiRequest {
+	r.status = &status
+	return r
+}
+
+// Filter records by management type.
+func (r ListEndpointConnectionStringsApiRequest) ManagementType(managementType string) ListEndpointConnectionStringsApiRequest {
+	r.managementType = &managementType
+	return r
+}
+
+func (r ListEndpointConnectionStringsApiRequest) Execute() (*PaginatedPrivateEndpointConnectionStringResponse, *http.Response, error) {
+	return r.ApiService.ListEndpointConnectionStringsExecute(r)
+}
+
+/*
+ListEndpointConnectionStrings Return All Private Endpoint Connection Strings for One Cluster
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns all private endpoint connection strings for the specified cluster.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@return ListEndpointConnectionStringsApiRequest
+*/
+func (a *ClustersAPIService) ListEndpointConnectionStrings(ctx context.Context, groupId string, clusterName string) ListEndpointConnectionStringsApiRequest {
+	return ListEndpointConnectionStringsApiRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		groupId:     groupId,
+		clusterName: clusterName,
+	}
+}
+
+// ListEndpointConnectionStringsExecute executes the request
+//
+//	@return PaginatedPrivateEndpointConnectionStringResponse
+func (a *ClustersAPIService) ListEndpointConnectionStringsExecute(r ListEndpointConnectionStringsApiRequest) (*PaginatedPrivateEndpointConnectionStringResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedPrivateEndpointConnectionStringResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.ListEndpointConnectionStrings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/privateEndpointConnectionStrings"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.includeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCount = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	}
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	if r.status != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "")
+	}
+	if r.managementType != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "managementType", r.managementType, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type PinFeatureCompatibilityVersionApiRequest struct {
 	ctx         context.Context
 	ApiService  ClustersAPI
@@ -2897,7 +4309,7 @@ type UpdateClusterApiRequest struct {
 	ApiService                         ClustersAPI
 	groupId                            string
 	clusterName                        string
-	clusterDescription20240805         *ClusterDescription20240805
+	apiAtlasClusterDescriptionPreview  *ApiAtlasClusterDescriptionPreview
 	useEffectiveInstanceFields         *bool
 	useEffectiveFieldsReplicationSpecs *bool
 }
@@ -2905,7 +4317,7 @@ type UpdateClusterApiRequest struct {
 type UpdateClusterApiParams struct {
 	GroupId                            string
 	ClusterName                        string
-	ClusterDescription20240805         *ClusterDescription20240805
+	ApiAtlasClusterDescriptionPreview  *ApiAtlasClusterDescriptionPreview
 	UseEffectiveInstanceFields         *bool
 	UseEffectiveFieldsReplicationSpecs *bool
 }
@@ -2916,7 +4328,7 @@ func (a *ClustersAPIService) UpdateClusterWithParams(ctx context.Context, args *
 		ctx:                                ctx,
 		groupId:                            args.GroupId,
 		clusterName:                        args.ClusterName,
-		clusterDescription20240805:         args.ClusterDescription20240805,
+		apiAtlasClusterDescriptionPreview:  args.ApiAtlasClusterDescriptionPreview,
 		useEffectiveInstanceFields:         args.UseEffectiveInstanceFields,
 		useEffectiveFieldsReplicationSpecs: args.UseEffectiveFieldsReplicationSpecs,
 	}
@@ -2934,39 +4346,41 @@ func (r UpdateClusterApiRequest) UseEffectiveFieldsReplicationSpecs(useEffective
 	return r
 }
 
-func (r UpdateClusterApiRequest) Execute() (*ClusterDescription20240805, *http.Response, error) {
+func (r UpdateClusterApiRequest) Execute() (*ApiAtlasClusterDescriptionPreview, *http.Response, error) {
 	return r.ApiService.UpdateClusterExecute(r)
 }
 
 /*
 UpdateCluster Update One Cluster in One Project
 
-Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update clusters with asymmetrically-sized shards. To update a cluster's termination protection, the requesting Service Account or API Key must have the Project Owner role. For all other updates, the requesting Service Account or API Key must have the Project Cluster Manager role, the Project Cluster Resilience Tester role, or the Project Replica Set Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Updates the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. This resource can update clusters with asymmetrically-sized shards. To update a cluster's termination protection, the requesting Service Account or API Key must have the Project Owner role. For all other updates, the requesting Service Account or API Key must have the Project Cluster Manager role, the Project Cluster Resilience Tester role, or the Project Replica Set Manager role. You can't modify a paused cluster (`paused : true`). You must call this endpoint to set `paused : false`. After this endpoint responds with `paused : false`, you can call it again with the changes you want to make to the cluster. This feature is not available for serverless clusters. Deprecated versions: v2-{2024-10-23}, v2-{2024-08-05}, v2-{2023-02-01}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
 	@param clusterName Human-readable label that identifies the cluster.
 	@return UpdateClusterApiRequest
 */
-func (a *ClustersAPIService) UpdateCluster(ctx context.Context, groupId string, clusterName string, clusterDescription20240805 *ClusterDescription20240805) UpdateClusterApiRequest {
+func (a *ClustersAPIService) UpdateCluster(ctx context.Context, groupId string, clusterName string, apiAtlasClusterDescriptionPreview *ApiAtlasClusterDescriptionPreview) UpdateClusterApiRequest {
 	return UpdateClusterApiRequest{
-		ApiService:                 a,
-		ctx:                        ctx,
-		groupId:                    groupId,
-		clusterName:                clusterName,
-		clusterDescription20240805: clusterDescription20240805,
+		ApiService:                        a,
+		ctx:                               ctx,
+		groupId:                           groupId,
+		clusterName:                       clusterName,
+		apiAtlasClusterDescriptionPreview: apiAtlasClusterDescriptionPreview,
 	}
 }
 
 // UpdateClusterExecute executes the request
 //
-//	@return ClusterDescription20240805
-func (a *ClustersAPIService) UpdateClusterExecute(r UpdateClusterApiRequest) (*ClusterDescription20240805, *http.Response, error) {
+//	@return ApiAtlasClusterDescriptionPreview
+func (a *ClustersAPIService) UpdateClusterExecute(r UpdateClusterApiRequest) (*ApiAtlasClusterDescriptionPreview, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *ClusterDescription20240805
+		localVarReturnValue *ApiAtlasClusterDescriptionPreview
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.UpdateCluster")
@@ -2993,12 +4407,12 @@ func (a *ClustersAPIService) UpdateClusterExecute(r UpdateClusterApiRequest) (*C
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.clusterDescription20240805 == nil {
-		return localVarReturnValue, nil, reportError("clusterDescription20240805 is required and must be specified")
+	if r.apiAtlasClusterDescriptionPreview == nil {
+		return localVarReturnValue, nil, reportError("apiAtlasClusterDescriptionPreview is required and must be specified")
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-10-23+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -3007,7 +4421,7 @@ func (a *ClustersAPIService) UpdateClusterExecute(r UpdateClusterApiRequest) (*C
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-10-23+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -3021,7 +4435,7 @@ func (a *ClustersAPIService) UpdateClusterExecute(r UpdateClusterApiRequest) (*C
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Fields-Replication-Specs", r.useEffectiveFieldsReplicationSpecs, "")
 	}
 	// body params
-	localVarPostBody = r.clusterDescription20240805
+	localVarPostBody = r.apiAtlasClusterDescriptionPreview
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3160,6 +4574,146 @@ func (a *ClustersAPIService) UpdateClusterAdaptiveSettingsExecute(r UpdateCluste
 	}
 	// body params
 	localVarPostBody = r.adaptiveSettingsUpdateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type UpdateClusterSqlInterfaceApiRequest struct {
+	ctx                             context.Context
+	ApiService                      ClustersAPI
+	groupId                         string
+	clusterName                     string
+	sqlInterfaceStatusUpdateRequest *SqlInterfaceStatusUpdateRequest
+}
+
+type UpdateClusterSqlInterfaceApiParams struct {
+	GroupId                         string
+	ClusterName                     string
+	SqlInterfaceStatusUpdateRequest *SqlInterfaceStatusUpdateRequest
+}
+
+func (a *ClustersAPIService) UpdateClusterSqlInterfaceWithParams(ctx context.Context, args *UpdateClusterSqlInterfaceApiParams) UpdateClusterSqlInterfaceApiRequest {
+	return UpdateClusterSqlInterfaceApiRequest{
+		ApiService:                      a,
+		ctx:                             ctx,
+		groupId:                         args.GroupId,
+		clusterName:                     args.ClusterName,
+		sqlInterfaceStatusUpdateRequest: args.SqlInterfaceStatusUpdateRequest,
+	}
+}
+
+func (r UpdateClusterSqlInterfaceApiRequest) Execute() (*SqlInterfaceStatusResponse, *http.Response, error) {
+	return r.ApiService.UpdateClusterSqlInterfaceExecute(r)
+}
+
+/*
+UpdateClusterSqlInterface Update SQL Interface Status
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Enables or disables the SQL Interface for the specified cluster by setting its status to ON or OFF. Returns a conflict if SQL Interface can't be enabled for this cluster or project.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@param clusterName Human-readable label that identifies the cluster.
+	@return UpdateClusterSqlInterfaceApiRequest
+*/
+func (a *ClustersAPIService) UpdateClusterSqlInterface(ctx context.Context, groupId string, clusterName string, sqlInterfaceStatusUpdateRequest *SqlInterfaceStatusUpdateRequest) UpdateClusterSqlInterfaceApiRequest {
+	return UpdateClusterSqlInterfaceApiRequest{
+		ApiService:                      a,
+		ctx:                             ctx,
+		groupId:                         groupId,
+		clusterName:                     clusterName,
+		sqlInterfaceStatusUpdateRequest: sqlInterfaceStatusUpdateRequest,
+	}
+}
+
+// UpdateClusterSqlInterfaceExecute executes the request
+//
+//	@return SqlInterfaceStatusResponse
+func (a *ClustersAPIService) UpdateClusterSqlInterfaceExecute(r UpdateClusterSqlInterfaceApiRequest) (*SqlInterfaceStatusResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *SqlInterfaceStatusResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.UpdateClusterSqlInterface")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}/sqlInterface"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+	if r.clusterName == "" {
+		return localVarReturnValue, nil, reportError("clusterName is empty and must be specified")
+	}
+	if r.clusterName == "." || r.clusterName == ".." {
+		return localVarReturnValue, nil, reportError("clusterName must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterName"+"}", url.PathEscape(r.clusterName), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.sqlInterfaceStatusUpdateRequest == nil {
+		return localVarReturnValue, nil, reportError("sqlInterfaceStatusUpdateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.sqlInterfaceStatusUpdateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -3558,6 +5112,134 @@ func (a *ClustersAPIService) UpgradeTenantUpgradeExecute(r UpgradeTenantUpgradeA
 	}
 	// body params
 	localVarPostBody = r.legacyAtlasTenantClusterUpgradeRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ValidateGroupClusterConfigurationsApiRequest struct {
+	ctx                            context.Context
+	ApiService                     ClustersAPI
+	groupId                        string
+	clusterConfigurationValidation *ClusterConfigurationValidation
+}
+
+type ValidateGroupClusterConfigurationsApiParams struct {
+	GroupId                        string
+	ClusterConfigurationValidation *ClusterConfigurationValidation
+}
+
+func (a *ClustersAPIService) ValidateGroupClusterConfigurationsWithParams(ctx context.Context, args *ValidateGroupClusterConfigurationsApiParams) ValidateGroupClusterConfigurationsApiRequest {
+	return ValidateGroupClusterConfigurationsApiRequest{
+		ApiService:                     a,
+		ctx:                            ctx,
+		groupId:                        args.GroupId,
+		clusterConfigurationValidation: args.ClusterConfigurationValidation,
+	}
+}
+
+func (r ValidateGroupClusterConfigurationsApiRequest) Execute() (*ClusterConfigurationValidationResult, *http.Response, error) {
+	return r.ApiService.ValidateGroupClusterConfigurationsExecute(r)
+}
+
+/*
+ValidateGroupClusterConfigurations Validate One Cluster Configuration
+
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Checks if the given cluster configuration is valid and ready to be used to create or edit a cluster.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ValidateGroupClusterConfigurationsApiRequest
+*/
+func (a *ClustersAPIService) ValidateGroupClusterConfigurations(ctx context.Context, groupId string, clusterConfigurationValidation *ClusterConfigurationValidation) ValidateGroupClusterConfigurationsApiRequest {
+	return ValidateGroupClusterConfigurationsApiRequest{
+		ApiService:                     a,
+		ctx:                            ctx,
+		groupId:                        groupId,
+		clusterConfigurationValidation: clusterConfigurationValidation,
+	}
+}
+
+// ValidateGroupClusterConfigurationsExecute executes the request
+//
+//	@return ClusterConfigurationValidationResult
+func (a *ClustersAPIService) ValidateGroupClusterConfigurationsExecute(r ValidateGroupClusterConfigurationsApiRequest) (*ClusterConfigurationValidationResult, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *ClusterConfigurationValidationResult
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.ValidateGroupClusterConfigurations")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusterConfigurations:validate"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.clusterConfigurationValidation == nil {
+		return localVarReturnValue, nil, reportError("clusterConfigurationValidation is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.clusterConfigurationValidation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -26,6 +26,8 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	// Date and time when MongoDB Cloud created this serverless instance. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC.
 	// Read only field.
 	CreateDate *time.Time `json:"createDate,omitempty"`
+	// Available in Public Preview: Optional field that indicates whether your cluster will be Atlas INFINITE or CORE. This field applies only to flex and shared clusters. You can set it only when you create the cluster, or when you upgrade a flex cluster to a dedicated cluster. This value is immutable once the dedicated cluster exists; attempting to change it on an update request returns an error.
+	DatabaseEdition *string `json:"databaseEdition,omitempty"`
 	// Number of hours after cluster creation that this cluster will be automatically deleted.  This field is used to derive `deleteAfterDate` relative to `createDate`.  When set to null or zero on cluster creation, the cluster will not be automatically deleted.  When set to a positive value on cluster creation, the cluster will be automatically deleted after the specified number of hours.  When updating this field on an existing (non-deleted) cluster, and this is set to null, then existing values are preserved for this & `deleteAfterDate`.  When updating this field on an existing (non-deleted) cluster, and this is set to zero, then `deleteAfterDate` is reset to null (disable auto deletion) regardless of previous configurations.  When updating this field on an existing (non-deleted) cluster, and this is set to a positive value, then `createDate` + `deleteAfterCreationHours` must be later than now else the field update is ignored and existing values are preserved for this & `deleteAfterDate`.
 	DeleteAfterCreationHours *int `json:"deleteAfterCreationHours,omitempty"`
 	// The date at which this cluster will be automatically deleted.  This parameter expresses its value in the ISO 8601 timestamp format in UTC and is derived based on the `createDate` + `deleteAfterCreationHours`.
@@ -35,6 +37,9 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	DiskSizeGB *float64 `json:"diskSizeGB,omitempty"`
 	// Disk warming mode selection.
 	DiskWarmingMode *string `json:"diskWarmingMode,omitempty"`
+	// Available in Public Preview: Field that represents whether your cluster is Atlas INFINITE or CORE. This field applies only to flex and shared clusters. This is read-only and always returned in the response. It reflects the actual cluster state. This value matches `databaseEdition` if it was set, otherwise it reflects the default database edition assigned to the cluster.
+	// Read only field.
+	EffectiveDatabaseEdition *string `json:"effectiveDatabaseEdition,omitempty"`
 	// Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster `replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize` setting must be `M10` or higher and `\"backupEnabled\" : false` or omitted entirely.
 	EncryptionAtRestProvider *string `json:"encryptionAtRestProvider,omitempty"`
 	// Feature compatibility version of the cluster.
@@ -566,6 +571,46 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) SetCreateDateNil() {
 	o.NullFields = addNullField(o.NullFields, "CreateDate")
 }
 
+// GetDatabaseEdition returns the DatabaseEdition field value if set, zero value otherwise
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetDatabaseEdition() string {
+	if o == nil || IsNil(o.DatabaseEdition) {
+		var ret string
+		return ret
+	}
+	return *o.DatabaseEdition
+}
+
+// GetDatabaseEditionOk returns a tuple with the DatabaseEdition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetDatabaseEditionOk() (*string, bool) {
+	if o == nil || IsNil(o.DatabaseEdition) {
+		return nil, false
+	}
+
+	return o.DatabaseEdition, true
+}
+
+// HasDatabaseEdition returns a boolean if a field has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) HasDatabaseEdition() bool {
+	if o != nil && !IsNil(o.DatabaseEdition) {
+		return true
+	}
+
+	return false
+}
+
+// SetDatabaseEdition gets a reference to the given string and assigns it to the DatabaseEdition field.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetDatabaseEdition(v string) {
+	o.DatabaseEdition = &v
+	o.NullFields = removeNullField(o.NullFields, "DatabaseEdition")
+}
+
+// SetDatabaseEditionNil sets DatabaseEdition to an explicit JSON null when marshaled.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetDatabaseEditionNil() {
+	o.DatabaseEdition = nil
+	o.NullFields = addNullField(o.NullFields, "DatabaseEdition")
+}
+
 // GetDeleteAfterCreationHours returns the DeleteAfterCreationHours field value if set, zero value otherwise
 func (o *LegacyAtlasTenantClusterUpgradeRequest) GetDeleteAfterCreationHours() int {
 	if o == nil || IsNil(o.DeleteAfterCreationHours) {
@@ -724,6 +769,46 @@ func (o *LegacyAtlasTenantClusterUpgradeRequest) SetDiskWarmingMode(v string) {
 func (o *LegacyAtlasTenantClusterUpgradeRequest) SetDiskWarmingModeNil() {
 	o.DiskWarmingMode = nil
 	o.NullFields = addNullField(o.NullFields, "DiskWarmingMode")
+}
+
+// GetEffectiveDatabaseEdition returns the EffectiveDatabaseEdition field value if set, zero value otherwise
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetEffectiveDatabaseEdition() string {
+	if o == nil || IsNil(o.EffectiveDatabaseEdition) {
+		var ret string
+		return ret
+	}
+	return *o.EffectiveDatabaseEdition
+}
+
+// GetEffectiveDatabaseEditionOk returns a tuple with the EffectiveDatabaseEdition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) GetEffectiveDatabaseEditionOk() (*string, bool) {
+	if o == nil || IsNil(o.EffectiveDatabaseEdition) {
+		return nil, false
+	}
+
+	return o.EffectiveDatabaseEdition, true
+}
+
+// HasEffectiveDatabaseEdition returns a boolean if a field has been set.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) HasEffectiveDatabaseEdition() bool {
+	if o != nil && !IsNil(o.EffectiveDatabaseEdition) {
+		return true
+	}
+
+	return false
+}
+
+// SetEffectiveDatabaseEdition gets a reference to the given string and assigns it to the EffectiveDatabaseEdition field.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetEffectiveDatabaseEdition(v string) {
+	o.EffectiveDatabaseEdition = &v
+	o.NullFields = removeNullField(o.NullFields, "EffectiveDatabaseEdition")
+}
+
+// SetEffectiveDatabaseEditionNil sets EffectiveDatabaseEdition to an explicit JSON null when marshaled.
+func (o *LegacyAtlasTenantClusterUpgradeRequest) SetEffectiveDatabaseEditionNil() {
+	o.EffectiveDatabaseEdition = nil
+	o.NullFields = addNullField(o.NullFields, "EffectiveDatabaseEdition")
 }
 
 // GetEncryptionAtRestProvider returns the EncryptionAtRestProvider field value if set, zero value otherwise
