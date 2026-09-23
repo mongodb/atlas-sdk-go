@@ -1,9 +1,10 @@
 #!/bin/sh
+set -eu
 rm -Rf ../mockadmin
 
 # install only if not already present
 if ! which mockery ; then
-	docker run --rm -u "$(id -u):$(id -g)" -v "$(dirname "$PWD")":/src --workdir=/src vektra/mockery:v2.53.5
+	docker run --rm -u "$(id -u):$(id -g)" -v "$(dirname "$PWD")":/src --workdir=/src vektra/mockery:v2.53.7
 else
 	mockery --dir ../mockadmin
 fi
