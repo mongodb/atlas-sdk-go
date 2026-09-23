@@ -2058,7 +2058,7 @@ func (r ListGroupMcpConfigsApiRequest) ItemsPerPage(itemsPerPage int) ListGroupM
 	return r
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListGroupMcpConfigsApiRequest) IncludeCount(includeCount bool) ListGroupMcpConfigsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -2226,7 +2226,7 @@ func (r ListGroupMcpSecretsApiRequest) ItemsPerPage(itemsPerPage int) ListGroupM
 	return r
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListGroupMcpSecretsApiRequest) IncludeCount(includeCount bool) ListGroupMcpSecretsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -2400,7 +2400,7 @@ func (r ListOrgMcpConfigsApiRequest) ItemsPerPage(itemsPerPage int) ListOrgMcpCo
 	return r
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListOrgMcpConfigsApiRequest) IncludeCount(includeCount bool) ListOrgMcpConfigsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -2568,7 +2568,7 @@ func (r ListOrgMcpSecretsApiRequest) ItemsPerPage(itemsPerPage int) ListOrgMcpSe
 	return r
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListOrgMcpSecretsApiRequest) IncludeCount(includeCount bool) ListOrgMcpSecretsApiRequest {
 	r.includeCount = &includeCount
 	return r

@@ -635,7 +635,7 @@ func (a *ProgrammaticAPIKeysAPIService) CreateOrgAccessEntryWithParams(ctx conte
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r CreateOrgAccessEntryApiRequest) IncludeCount(includeCount bool) CreateOrgAccessEntryApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1447,7 +1447,7 @@ func (a *ProgrammaticAPIKeysAPIService) ListGroupApiKeysWithParams(ctx context.C
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListGroupApiKeysApiRequest) IncludeCount(includeCount bool) ListGroupApiKeysApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1615,7 +1615,7 @@ func (a *ProgrammaticAPIKeysAPIService) ListOrgAccessEntriesWithParams(ctx conte
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListOrgAccessEntriesApiRequest) IncludeCount(includeCount bool) ListOrgAccessEntriesApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1789,7 +1789,7 @@ func (a *ProgrammaticAPIKeysAPIService) ListOrgApiKeysWithParams(ctx context.Con
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListOrgApiKeysApiRequest) IncludeCount(includeCount bool) ListOrgApiKeysApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -2084,7 +2084,7 @@ func (r UpdateApiKeyRolesApiRequest) ItemsPerPage(itemsPerPage int) UpdateApiKey
 	return r
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r UpdateApiKeyRolesApiRequest) IncludeCount(includeCount bool) UpdateApiKeyRolesApiRequest {
 	r.includeCount = &includeCount
 	return r

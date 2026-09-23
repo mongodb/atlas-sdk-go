@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DatabaseEdition** | Pointer to **string** | Available in Public Preview: Optional field that indicates whether your tenant cluster will be upgraded to Atlas INFINITE or CORE. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Tags** | Pointer to [**[]ResourceTag**](ResourceTag.md) | List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the instance. | [optional] 
 **TerminationProtectionEnabled** | Pointer to **bool** | Flag that indicates whether termination protection is enabled on the cluster. If set to &#x60;true&#x60;, MongoDB Cloud won&#39;t delete the cluster. If set to &#x60;false&#x60;, MongoDB Cloud will delete the cluster. | [optional] [default to false]
@@ -26,6 +27,37 @@ will change when the set of required properties is changed
 NewFlexClusterDescriptionUpdate20241113WithDefaults instantiates a new FlexClusterDescriptionUpdate20241113 object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDatabaseEdition
+
+`func (o *FlexClusterDescriptionUpdate20241113) GetDatabaseEdition() string`
+
+GetDatabaseEdition returns the DatabaseEdition field if non-nil, zero value otherwise.
+
+### GetDatabaseEditionOk
+
+`func (o *FlexClusterDescriptionUpdate20241113) GetDatabaseEditionOk() (*string, bool)`
+
+GetDatabaseEditionOk returns a tuple with the DatabaseEdition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDatabaseEdition
+
+`func (o *FlexClusterDescriptionUpdate20241113) SetDatabaseEdition(v string)`
+
+SetDatabaseEdition sets DatabaseEdition field to given value.
+
+### HasDatabaseEdition
+
+`func (o *FlexClusterDescriptionUpdate20241113) HasDatabaseEdition() bool`
+
+HasDatabaseEdition returns a boolean if a field has been set.
+
+### SetDatabaseEditionNil
+
+`func (o *FlexClusterDescriptionUpdate20241113) SetDatabaseEditionNil()`
+
+SetDatabaseEditionNil sets DatabaseEdition to an explicit JSON null when marshaled, overriding any value previously set with SetDatabaseEdition. Calling SetDatabaseEdition again clears the null override.
 
 ### GetLinks
 

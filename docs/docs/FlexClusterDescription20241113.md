@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ClusterType** | Pointer to **string** | Flex cluster topology. | [optional] [readonly] [default to "REPLICASET"]
 **ConnectionStrings** | Pointer to [**FlexConnectionStrings20241113**](FlexConnectionStrings20241113.md) |  | [optional] 
 **CreateDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud created this instance. This parameter expresses its value in ISO 8601 format in UTC. | [optional] [readonly] 
+**DatabaseEdition** | Pointer to **string** | Available in Public Preview: Optional field that indicates whether your tenant cluster will be upgraded to Atlas INFINITE or CORE. | [optional] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the instance. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
@@ -161,6 +162,37 @@ HasCreateDate returns a boolean if a field has been set.
 `func (o *FlexClusterDescription20241113) SetCreateDateNil()`
 
 SetCreateDateNil sets CreateDate to an explicit JSON null when marshaled, overriding any value previously set with SetCreateDate. Calling SetCreateDate again clears the null override.
+
+### GetDatabaseEdition
+
+`func (o *FlexClusterDescription20241113) GetDatabaseEdition() string`
+
+GetDatabaseEdition returns the DatabaseEdition field if non-nil, zero value otherwise.
+
+### GetDatabaseEditionOk
+
+`func (o *FlexClusterDescription20241113) GetDatabaseEditionOk() (*string, bool)`
+
+GetDatabaseEditionOk returns a tuple with the DatabaseEdition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDatabaseEdition
+
+`func (o *FlexClusterDescription20241113) SetDatabaseEdition(v string)`
+
+SetDatabaseEdition sets DatabaseEdition field to given value.
+
+### HasDatabaseEdition
+
+`func (o *FlexClusterDescription20241113) HasDatabaseEdition() bool`
+
+HasDatabaseEdition returns a boolean if a field has been set.
+
+### SetDatabaseEditionNil
+
+`func (o *FlexClusterDescription20241113) SetDatabaseEditionNil()`
+
+SetDatabaseEditionNil sets DatabaseEdition to an explicit JSON null when marshaled, overriding any value previously set with SetDatabaseEdition. Calling SetDatabaseEdition again clears the null override.
 
 ### GetGroupId
 

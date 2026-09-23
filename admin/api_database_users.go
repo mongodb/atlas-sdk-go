@@ -14,7 +14,7 @@ type DatabaseUsersAPI interface {
 	/*
 		CreateDatabaseUser Create One Database User in One Project
 
-		Creates one database user in the specified project. This MongoDB Cloud supports a maximum of 100 database users per project. If you require more than 100 database users on a project, contact Support.
+		Creates one database user in the specified project. This MongoDB Cloud supports a default limit of 100 and a maximum of 900 database users per project. If you require more than 900 database users on a project, contact Support.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -166,7 +166,7 @@ func (r CreateDatabaseUserApiRequest) Execute() (*CloudDatabaseUser, *http.Respo
 /*
 CreateDatabaseUser Create One Database User in One Project
 
-Creates one database user in the specified project. This MongoDB Cloud supports a maximum of 100 database users per project. If you require more than 100 database users on a project, contact Support.
+Creates one database user in the specified project. This MongoDB Cloud supports a default limit of 100 and a maximum of 900 database users per project. If you require more than 900 database users on a project, contact Support.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -556,7 +556,7 @@ func (a *DatabaseUsersAPIService) ListDatabaseUsersWithParams(ctx context.Contex
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListDatabaseUsersApiRequest) IncludeCount(includeCount bool) ListDatabaseUsersApiRequest {
 	r.includeCount = &includeCount
 	return r

@@ -1263,7 +1263,7 @@ func (a *TeamsAPIService) ListGroupTeamsWithParams(ctx context.Context, args *Li
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListGroupTeamsApiRequest) IncludeCount(includeCount bool) ListGroupTeamsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1434,7 +1434,7 @@ func (r ListOrgTeamsApiRequest) ItemsPerPage(itemsPerPage int) ListOrgTeamsApiRe
 	return r
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListOrgTeamsApiRequest) IncludeCount(includeCount bool) ListOrgTeamsApiRequest {
 	r.includeCount = &includeCount
 	return r

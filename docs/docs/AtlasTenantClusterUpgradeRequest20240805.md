@@ -14,7 +14,9 @@ Name | Type | Description | Notes
 **ConfigServerType** | Pointer to **string** | Describes a sharded cluster&#39;s config server type. | [optional] [readonly] 
 **ConnectionStrings** | Pointer to [**ClusterConnectionStrings**](ClusterConnectionStrings.md) |  | [optional] 
 **CreateDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud created this cluster. This parameter expresses its value in ISO 8601 format in UTC. | [optional] [readonly] 
+**DatabaseEdition** | Pointer to **string** | Available in Public Preview: Optional field that indicates whether your cluster will be Atlas INFINITE or CORE. You can set it only when you create the cluster, or when you upgrade a Free or Flex cluster to a dedicated cluster. This value is immutable once the dedicated cluster exists; attempting to change it on an update request returns an error. | [optional] 
 **DiskWarmingMode** | Pointer to **string** | Disk warming mode selection. | [optional] [default to "FULLY_WARMED"]
+**EffectiveDatabaseEdition** | Pointer to **string** | Available in Public Preview: Field that represents whether your cluster is Atlas INFINITE or CORE. This is read-only and always returned in the response. It reflects the actual cluster state. This value matches &#x60;databaseEdition&#x60; if it was set, otherwise it reflects the default database edition assigned to the cluster. | [optional] [readonly] 
 **EffectiveReplicationSpecs** | Pointer to [**[]ReplicationSpec20240805**](ReplicationSpec20240805.md) | List of settings that represent the actual cluster state. This is read-only and always returned in the response. It reflects the current cluster configuration, which may differ from &#x60;replicationSpecs&#x60; due to system-managed changes. | [optional] [readonly] 
 **EncryptionAtRestProvider** | Pointer to **string** | Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster &#x60;replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize&#x60; setting must be &#x60;M10&#x60; or higher and &#x60;\&quot;backupEnabled\&quot; : false&#x60; or omitted entirely. | [optional] 
 **FeatureCompatibilityVersion** | Pointer to **string** | Feature compatibility version of the cluster. This will always appear regardless of whether FCV is pinned. | [optional] [readonly] 
@@ -371,6 +373,37 @@ HasCreateDate returns a boolean if a field has been set.
 
 SetCreateDateNil sets CreateDate to an explicit JSON null when marshaled, overriding any value previously set with SetCreateDate. Calling SetCreateDate again clears the null override.
 
+### GetDatabaseEdition
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) GetDatabaseEdition() string`
+
+GetDatabaseEdition returns the DatabaseEdition field if non-nil, zero value otherwise.
+
+### GetDatabaseEditionOk
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) GetDatabaseEditionOk() (*string, bool)`
+
+GetDatabaseEditionOk returns a tuple with the DatabaseEdition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDatabaseEdition
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) SetDatabaseEdition(v string)`
+
+SetDatabaseEdition sets DatabaseEdition field to given value.
+
+### HasDatabaseEdition
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) HasDatabaseEdition() bool`
+
+HasDatabaseEdition returns a boolean if a field has been set.
+
+### SetDatabaseEditionNil
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) SetDatabaseEditionNil()`
+
+SetDatabaseEditionNil sets DatabaseEdition to an explicit JSON null when marshaled, overriding any value previously set with SetDatabaseEdition. Calling SetDatabaseEdition again clears the null override.
+
 ### GetDiskWarmingMode
 
 `func (o *AtlasTenantClusterUpgradeRequest20240805) GetDiskWarmingMode() string`
@@ -401,6 +434,37 @@ HasDiskWarmingMode returns a boolean if a field has been set.
 `func (o *AtlasTenantClusterUpgradeRequest20240805) SetDiskWarmingModeNil()`
 
 SetDiskWarmingModeNil sets DiskWarmingMode to an explicit JSON null when marshaled, overriding any value previously set with SetDiskWarmingMode. Calling SetDiskWarmingMode again clears the null override.
+
+### GetEffectiveDatabaseEdition
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) GetEffectiveDatabaseEdition() string`
+
+GetEffectiveDatabaseEdition returns the EffectiveDatabaseEdition field if non-nil, zero value otherwise.
+
+### GetEffectiveDatabaseEditionOk
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) GetEffectiveDatabaseEditionOk() (*string, bool)`
+
+GetEffectiveDatabaseEditionOk returns a tuple with the EffectiveDatabaseEdition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEffectiveDatabaseEdition
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) SetEffectiveDatabaseEdition(v string)`
+
+SetEffectiveDatabaseEdition sets EffectiveDatabaseEdition field to given value.
+
+### HasEffectiveDatabaseEdition
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) HasEffectiveDatabaseEdition() bool`
+
+HasEffectiveDatabaseEdition returns a boolean if a field has been set.
+
+### SetEffectiveDatabaseEditionNil
+
+`func (o *AtlasTenantClusterUpgradeRequest20240805) SetEffectiveDatabaseEditionNil()`
+
+SetEffectiveDatabaseEditionNil sets EffectiveDatabaseEdition to an explicit JSON null when marshaled, overriding any value previously set with SetEffectiveDatabaseEdition. Calling SetEffectiveDatabaseEdition again clears the null override.
 
 ### GetEffectiveReplicationSpecs
 

@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Predicates** | Pointer to [**[]any**](any.md) | List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values. | [optional] [readonly] 
+**Predicates** | Pointer to [**[]any**](any.md) | List that contains the search criteria that the query uses. To use the values in key-value pairs in these predicates requires **Project Observability Viewer** or **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud redacts these values. | [optional] [readonly] 
+**Raw** | Pointer to **string** | Opaque serialized raw slow query log line or query shape for the query shape to be improved with index suggestions. The format isn&#39;t stable, so don&#39;t parse this value. Accessing this value requires **Project Observability Viewer** or **Project Data Access Read Only** permissions or greater. Otherwise, MongoDB Cloud returns &#x60;null&#x60;. | [optional] [readonly] 
 **Stats** | Pointer to [**PerformanceAdvisorOpStats**](PerformanceAdvisorOpStats.md) |  | [optional] 
 
 ## Methods
@@ -56,6 +57,37 @@ HasPredicates returns a boolean if a field has been set.
 `func (o *PerformanceAdvisorOperation) SetPredicatesNil()`
 
 SetPredicatesNil sets Predicates to an explicit JSON null when marshaled, overriding any value previously set with SetPredicates. Calling SetPredicates again clears the null override.
+
+### GetRaw
+
+`func (o *PerformanceAdvisorOperation) GetRaw() string`
+
+GetRaw returns the Raw field if non-nil, zero value otherwise.
+
+### GetRawOk
+
+`func (o *PerformanceAdvisorOperation) GetRawOk() (*string, bool)`
+
+GetRawOk returns a tuple with the Raw field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRaw
+
+`func (o *PerformanceAdvisorOperation) SetRaw(v string)`
+
+SetRaw sets Raw field to given value.
+
+### HasRaw
+
+`func (o *PerformanceAdvisorOperation) HasRaw() bool`
+
+HasRaw returns a boolean if a field has been set.
+
+### SetRawNil
+
+`func (o *PerformanceAdvisorOperation) SetRawNil()`
+
+SetRawNil sets Raw to an explicit JSON null when marshaled, overriding any value previously set with SetRaw. Calling SetRaw again clears the null override.
 
 ### GetStats
 

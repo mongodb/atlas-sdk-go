@@ -20,6 +20,9 @@ type OrgServiceAccount struct {
 	Roles *[]string `json:"roles,omitempty"`
 	// A list of secrets associated with the specified Service Account.
 	Secrets *[]ServiceAccountSecret `json:"secrets,omitempty"`
+	// Indicates whether the Service Account is system managed.
+	// Read only field.
+	SystemManaged bool `json:"systemManaged"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`
@@ -35,8 +38,9 @@ func (o *OrgServiceAccount) MarshalJSON() ([]byte, error) {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrgServiceAccount() *OrgServiceAccount {
+func NewOrgServiceAccount(systemManaged bool) *OrgServiceAccount {
 	this := OrgServiceAccount{}
+	this.SystemManaged = systemManaged
 	return &this
 }
 
@@ -286,4 +290,28 @@ func (o *OrgServiceAccount) SetSecrets(v []ServiceAccountSecret) {
 func (o *OrgServiceAccount) SetSecretsNil() {
 	o.Secrets = nil
 	o.NullFields = addNullField(o.NullFields, "Secrets")
+}
+
+// GetSystemManaged returns the SystemManaged field value
+func (o *OrgServiceAccount) GetSystemManaged() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.SystemManaged
+}
+
+// GetSystemManagedOk returns a tuple with the SystemManaged field value
+// and a boolean to check if the value has been set.
+func (o *OrgServiceAccount) GetSystemManagedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SystemManaged, true
+}
+
+// SetSystemManaged sets field value
+func (o *OrgServiceAccount) SetSystemManaged(v bool) {
+	o.SystemManaged = v
 }

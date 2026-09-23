@@ -4215,7 +4215,7 @@ func (a *CloudBackupsAPIService) ListBackupExportsWithParams(ctx context.Context
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListBackupExportsApiRequest) IncludeCount(includeCount bool) ListBackupExportsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -4392,7 +4392,7 @@ func (a *CloudBackupsAPIService) ListBackupPrivateEndpointsWithParams(ctx contex
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListBackupPrivateEndpointsApiRequest) IncludeCount(includeCount bool) ListBackupPrivateEndpointsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -4569,7 +4569,7 @@ func (a *CloudBackupsAPIService) ListBackupRestoreJobsWithParams(ctx context.Con
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListBackupRestoreJobsApiRequest) IncludeCount(includeCount bool) ListBackupRestoreJobsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -4878,7 +4878,7 @@ func (a *CloudBackupsAPIService) ListBackupSnapshotDatabasesWithParams(ctx conte
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListBackupSnapshotDatabasesApiRequest) IncludeCount(includeCount bool) ListBackupSnapshotDatabasesApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -5073,7 +5073,7 @@ func (a *CloudBackupsAPIService) ListBackupSnapshotsWithParams(ctx context.Conte
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListBackupSnapshotsApiRequest) IncludeCount(includeCount bool) ListBackupSnapshotsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -5435,7 +5435,7 @@ func (a *CloudBackupsAPIService) ListExportBucketsWithParams(ctx context.Context
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListExportBucketsApiRequest) IncludeCount(includeCount bool) ListExportBucketsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -5818,7 +5818,7 @@ func (a *CloudBackupsAPIService) ListSnapshotDatabaseCollectionsWithParams(ctx c
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListSnapshotDatabaseCollectionsApiRequest) IncludeCount(includeCount bool) ListSnapshotDatabaseCollectionsApiRequest {
 	r.includeCount = &includeCount
 	return r

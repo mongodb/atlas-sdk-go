@@ -1555,7 +1555,7 @@ func (a *InvoicesAPIService) ListInvoicesWithParams(ctx context.Context, args *L
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListInvoicesApiRequest) IncludeCount(includeCount bool) ListInvoicesApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1794,7 +1794,7 @@ func (a *InvoicesAPIService) ListOrgInvoiceReportsWithParams(ctx context.Context
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListOrgInvoiceReportsApiRequest) IncludeCount(includeCount bool) ListOrgInvoiceReportsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1965,7 +1965,7 @@ func (a *InvoicesAPIService) ListSkusWithParams(ctx context.Context, args *ListS
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListSkusApiRequest) IncludeCount(includeCount bool) ListSkusApiRequest {
 	r.includeCount = &includeCount
 	return r

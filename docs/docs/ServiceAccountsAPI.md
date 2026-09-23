@@ -46,7 +46,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 
  **serviceAccountIPAccessListEntry** | [**[]ServiceAccountIPAccessListEntry**](ServiceAccountIPAccessListEntry.md) | A list of access list entries to add to the access list of the specified Service Account for the project. | 
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
+ **includeCount** | **bool** | Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
 
@@ -137,7 +137,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -222,7 +222,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -304,7 +304,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -357,7 +357,7 @@ Name | Type | Description  | Notes
 
 
  **serviceAccountIPAccessListEntry** | [**[]ServiceAccountIPAccessListEntry**](ServiceAccountIPAccessListEntry.md) | A list of access list entries to add to the access list of the specified Service Account for the organization. | 
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
+ **includeCount** | **bool** | Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
 
@@ -395,7 +395,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -480,7 +480,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -562,7 +562,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -646,7 +646,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -730,7 +730,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -811,7 +811,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -895,7 +895,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -979,7 +979,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -1060,7 +1060,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -1143,7 +1143,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -1226,7 +1226,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -1313,7 +1313,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -1398,7 +1398,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -1449,7 +1449,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
+ **includeCount** | **bool** | Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
 
@@ -1487,7 +1487,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -1573,7 +1573,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -1624,7 +1624,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
+ **includeCount** | **bool** | Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
 
@@ -1662,7 +1662,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -1748,7 +1748,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -1833,7 +1833,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {

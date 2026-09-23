@@ -10,7 +10,7 @@ type ApiSearchDeploymentEffectiveSpec struct {
 	// Hardware specification for the Search Node instance sizes.
 	// Read only field.
 	InstanceSize *string `json:"instanceSize,omitempty"`
-	// Number of Search Nodes in this region.
+	// Number of Search Nodes for this configuration.
 	// Read only field.
 	NodeCount *int `json:"nodeCount,omitempty"`
 	// Cloud provider region where Search Nodes are provisioned.

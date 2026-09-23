@@ -1824,7 +1824,7 @@ func (a *MonitoringAndLogsAPIService) ListDatabasesWithParams(ctx context.Contex
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListDatabasesApiRequest) IncludeCount(includeCount bool) ListDatabasesApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1998,7 +1998,7 @@ func (a *MonitoringAndLogsAPIService) ListGroupProcessesWithParams(ctx context.C
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListGroupProcessesApiRequest) IncludeCount(includeCount bool) ListGroupProcessesApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -2711,7 +2711,7 @@ func (a *MonitoringAndLogsAPIService) ListProcessDisksWithParams(ctx context.Con
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListProcessDisksApiRequest) IncludeCount(includeCount bool) ListProcessDisksApiRequest {
 	r.includeCount = &includeCount
 	return r

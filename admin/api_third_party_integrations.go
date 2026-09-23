@@ -169,7 +169,7 @@ func (a *ThirdPartyIntegrationsAPIService) CreateGroupIntegrationWithParams(ctx 
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r CreateGroupIntegrationApiRequest) IncludeCount(includeCount bool) CreateGroupIntegrationApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -590,7 +590,7 @@ func (a *ThirdPartyIntegrationsAPIService) ListGroupIntegrationsWithParams(ctx c
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListGroupIntegrationsApiRequest) IncludeCount(includeCount bool) ListGroupIntegrationsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -761,7 +761,7 @@ func (a *ThirdPartyIntegrationsAPIService) UpdateGroupIntegrationWithParams(ctx 
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r UpdateGroupIntegrationApiRequest) IncludeCount(includeCount bool) UpdateGroupIntegrationApiRequest {
 	r.includeCount = &includeCount
 	return r

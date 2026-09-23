@@ -10,6 +10,8 @@ import (
 type DropIndexSuggestionsIndex struct {
 	// Usage count (since last restart) of index.
 	AccessCount *int64 `json:"accessCount,omitempty"`
+	// Collation this index was built with. An index only serves a query that runs with the same collation. Absent when the index uses the default (simple) collation.
+	Collation *map[string]any `json:"collation,omitempty"`
 	// List that contains documents that specify a key in the index and its sort order.
 	Index *[]any `json:"index,omitempty"`
 	// Name of index.
@@ -88,6 +90,46 @@ func (o *DropIndexSuggestionsIndex) SetAccessCount(v int64) {
 func (o *DropIndexSuggestionsIndex) SetAccessCountNil() {
 	o.AccessCount = nil
 	o.NullFields = addNullField(o.NullFields, "AccessCount")
+}
+
+// GetCollation returns the Collation field value if set, zero value otherwise
+func (o *DropIndexSuggestionsIndex) GetCollation() map[string]any {
+	if o == nil || IsNil(o.Collation) {
+		var ret map[string]any
+		return ret
+	}
+	return *o.Collation
+}
+
+// GetCollationOk returns a tuple with the Collation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DropIndexSuggestionsIndex) GetCollationOk() (*map[string]any, bool) {
+	if o == nil || IsNil(o.Collation) {
+		return nil, false
+	}
+
+	return o.Collation, true
+}
+
+// HasCollation returns a boolean if a field has been set.
+func (o *DropIndexSuggestionsIndex) HasCollation() bool {
+	if o != nil && !IsNil(o.Collation) {
+		return true
+	}
+
+	return false
+}
+
+// SetCollation gets a reference to the given map[string]any and assigns it to the Collation field.
+func (o *DropIndexSuggestionsIndex) SetCollation(v map[string]any) {
+	o.Collation = &v
+	o.NullFields = removeNullField(o.NullFields, "Collation")
+}
+
+// SetCollationNil sets Collation to an explicit JSON null when marshaled.
+func (o *DropIndexSuggestionsIndex) SetCollationNil() {
+	o.Collation = nil
+	o.NullFields = addNullField(o.NullFields, "Collation")
 }
 
 // GetIndex returns the Index field value if set, zero value otherwise

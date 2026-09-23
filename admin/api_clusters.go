@@ -1792,7 +1792,7 @@ func (a *ClustersAPIService) ListClusterDetailsWithParams(ctx context.Context, a
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListClusterDetailsApiRequest) IncludeCount(includeCount bool) ListClusterDetailsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1954,7 +1954,7 @@ func (a *ClustersAPIService) ListClusterProviderRegionsWithParams(ctx context.Co
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListClusterProviderRegionsApiRequest) IncludeCount(includeCount bool) ListClusterProviderRegionsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -2147,7 +2147,7 @@ func (a *ClustersAPIService) ListClustersWithParams(ctx context.Context, args *L
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListClustersApiRequest) IncludeCount(includeCount bool) ListClustersApiRequest {
 	r.includeCount = &includeCount
 	return r

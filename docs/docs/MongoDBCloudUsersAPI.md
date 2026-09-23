@@ -43,7 +43,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -128,7 +128,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -210,7 +210,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -295,7 +295,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -380,7 +380,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -462,7 +462,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -538,7 +538,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -623,7 +623,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -708,7 +708,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -788,7 +788,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -868,7 +868,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -921,7 +921,7 @@ Other parameters are passed through a pointer to a apiListGroupUsersRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
+ **includeCount** | **bool** | Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **flattenTeams** | **bool** | Flag that indicates whether the returned list should include users who belong to a team with a role in this project. You might not have assigned the individual users a role in this project. If &#x60;\&quot;flattenTeams\&quot; : false&#x60;, this resource returns only users with a role in the project.  If &#x60;\&quot;flattenTeams\&quot; : true&#x60;, this resource returns both users with roles in the project and users who belong to teams with roles in the project. | [default to false]
@@ -964,7 +964,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -1015,7 +1015,7 @@ Other parameters are passed through a pointer to a apiListOrgUsersRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **includeCount** | **bool** | Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response. | [default to true]
+ **includeCount** | **bool** | Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation. | [default to true]
  **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
  **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
  **username** | **string** | Email address to filter users by. Not supported in deprecated versions. | 
@@ -1056,7 +1056,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -1151,7 +1151,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -1232,7 +1232,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -1317,7 +1317,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -1402,7 +1402,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -1487,7 +1487,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {
@@ -1568,7 +1568,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312025/admin"
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
 )
 
 func main() {

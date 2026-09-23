@@ -14,10 +14,12 @@ Name | Type | Description | Notes
 **ConfigServerType** | Pointer to **string** | Describes a sharded cluster&#39;s config server type. | [optional] [readonly] 
 **ConnectionStrings** | Pointer to [**ClusterConnectionStrings**](ClusterConnectionStrings.md) |  | [optional] 
 **CreateDate** | Pointer to **time.Time** | Date and time when MongoDB Cloud created this serverless instance. MongoDB Cloud represents this timestamp in ISO 8601 format in UTC. | [optional] [readonly] 
+**DatabaseEdition** | Pointer to **string** | Available in Public Preview: Optional field that indicates whether your cluster will be Atlas INFINITE or CORE. This field applies only to flex and shared clusters. You can set it only when you create the cluster, or when you upgrade a flex cluster to a dedicated cluster. This value is immutable once the dedicated cluster exists; attempting to change it on an update request returns an error. | [optional] 
 **DeleteAfterCreationHours** | Pointer to **int** | Number of hours after cluster creation that this cluster will be automatically deleted.  This field is used to derive &#x60;deleteAfterDate&#x60; relative to &#x60;createDate&#x60;.  When set to null or zero on cluster creation, the cluster will not be automatically deleted.  When set to a positive value on cluster creation, the cluster will be automatically deleted after the specified number of hours.  When updating this field on an existing (non-deleted) cluster, and this is set to null, then existing values are preserved for this &amp; &#x60;deleteAfterDate&#x60;.  When updating this field on an existing (non-deleted) cluster, and this is set to zero, then &#x60;deleteAfterDate&#x60; is reset to null (disable auto deletion) regardless of previous configurations.  When updating this field on an existing (non-deleted) cluster, and this is set to a positive value, then &#x60;createDate&#x60; + &#x60;deleteAfterCreationHours&#x60; must be later than now else the field update is ignored and existing values are preserved for this &amp; &#x60;deleteAfterDate&#x60;. | [optional] 
 **DeleteAfterDate** | Pointer to **time.Time** | The date at which this cluster will be automatically deleted.  This parameter expresses its value in the ISO 8601 timestamp format in UTC and is derived based on the &#x60;createDate&#x60; + &#x60;deleteAfterCreationHours&#x60;. | [optional] [readonly] 
 **DiskSizeGB** | Pointer to **float64** | Storage capacity of instance data volumes expressed in gigabytes. Increase this number to add capacity.   This value is not configurable on M0/M2/M5 clusters.   MongoDB Cloud requires this parameter if you set &#x60;replicationSpecs&#x60;.   If you specify a disk size below the minimum (10 GB), this parameter defaults to the minimum disk size value.    Storage charge calculations depend on whether you choose the default value or a custom value.   The maximum value for disk storage cannot exceed 50 times the maximum RAM for the selected cluster. If you require more storage space, consider upgrading your cluster to a higher tier. | [optional] 
 **DiskWarmingMode** | Pointer to **string** | Disk warming mode selection. | [optional] [default to "FULLY_WARMED"]
+**EffectiveDatabaseEdition** | Pointer to **string** | Available in Public Preview: Field that represents whether your cluster is Atlas INFINITE or CORE. This field applies only to flex and shared clusters. This is read-only and always returned in the response. It reflects the actual cluster state. This value matches &#x60;databaseEdition&#x60; if it was set, otherwise it reflects the default database edition assigned to the cluster. | [optional] [readonly] 
 **EncryptionAtRestProvider** | Pointer to **string** | Cloud service provider that manages your customer keys to provide an additional layer of encryption at rest for the cluster. To enable customer key management for encryption at rest, the cluster &#x60;replicationSpecs[n].regionConfigs[m].{type}Specs.instanceSize&#x60; setting must be &#x60;M10&#x60; or higher and &#x60;\&quot;backupEnabled\&quot; : false&#x60; or omitted entirely. | [optional] 
 **FeatureCompatibilityVersion** | Pointer to **string** | Feature compatibility version of the cluster. | [optional] [readonly] 
 **FeatureCompatibilityVersionExpirationDate** | Pointer to **time.Time** | Feature compatibility version expiration date. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
@@ -378,6 +380,37 @@ HasCreateDate returns a boolean if a field has been set.
 
 SetCreateDateNil sets CreateDate to an explicit JSON null when marshaled, overriding any value previously set with SetCreateDate. Calling SetCreateDate again clears the null override.
 
+### GetDatabaseEdition
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) GetDatabaseEdition() string`
+
+GetDatabaseEdition returns the DatabaseEdition field if non-nil, zero value otherwise.
+
+### GetDatabaseEditionOk
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) GetDatabaseEditionOk() (*string, bool)`
+
+GetDatabaseEditionOk returns a tuple with the DatabaseEdition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDatabaseEdition
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetDatabaseEdition(v string)`
+
+SetDatabaseEdition sets DatabaseEdition field to given value.
+
+### HasDatabaseEdition
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) HasDatabaseEdition() bool`
+
+HasDatabaseEdition returns a boolean if a field has been set.
+
+### SetDatabaseEditionNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetDatabaseEditionNil()`
+
+SetDatabaseEditionNil sets DatabaseEdition to an explicit JSON null when marshaled, overriding any value previously set with SetDatabaseEdition. Calling SetDatabaseEdition again clears the null override.
+
 ### GetDeleteAfterCreationHours
 
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) GetDeleteAfterCreationHours() int`
@@ -501,6 +534,37 @@ HasDiskWarmingMode returns a boolean if a field has been set.
 `func (o *LegacyAtlasTenantClusterUpgradeRequest) SetDiskWarmingModeNil()`
 
 SetDiskWarmingModeNil sets DiskWarmingMode to an explicit JSON null when marshaled, overriding any value previously set with SetDiskWarmingMode. Calling SetDiskWarmingMode again clears the null override.
+
+### GetEffectiveDatabaseEdition
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) GetEffectiveDatabaseEdition() string`
+
+GetEffectiveDatabaseEdition returns the EffectiveDatabaseEdition field if non-nil, zero value otherwise.
+
+### GetEffectiveDatabaseEditionOk
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) GetEffectiveDatabaseEditionOk() (*string, bool)`
+
+GetEffectiveDatabaseEditionOk returns a tuple with the EffectiveDatabaseEdition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEffectiveDatabaseEdition
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetEffectiveDatabaseEdition(v string)`
+
+SetEffectiveDatabaseEdition sets EffectiveDatabaseEdition field to given value.
+
+### HasEffectiveDatabaseEdition
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) HasEffectiveDatabaseEdition() bool`
+
+HasEffectiveDatabaseEdition returns a boolean if a field has been set.
+
+### SetEffectiveDatabaseEditionNil
+
+`func (o *LegacyAtlasTenantClusterUpgradeRequest) SetEffectiveDatabaseEditionNil()`
+
+SetEffectiveDatabaseEditionNil sets EffectiveDatabaseEdition to an explicit JSON null when marshaled, overriding any value previously set with SetEffectiveDatabaseEdition. Calling SetEffectiveDatabaseEdition again clears the null override.
 
 ### GetEncryptionAtRestProvider
 
