@@ -4,7 +4,7 @@ package admin
 
 // ApiSearchDeploymentResponse struct for ApiSearchDeploymentResponse
 type ApiSearchDeploymentResponse struct {
-	// List of settings that configure the Search Nodes for your cluster, with per-region detail including the region name and cloud provider.
+	// List of settings that configure the Search Nodes for your cluster. Each entry describes one region or, when `shardId` is present, one shard in one region.
 	// Read only field.
 	EffectiveSpecs *[]ApiSearchDeploymentEffectiveSpec `json:"effectiveSpecs,omitempty"`
 	// Cloud service provider that manages your customer keys to provide an additional layer of Encryption At Rest for the cluster.

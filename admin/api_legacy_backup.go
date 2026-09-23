@@ -1210,7 +1210,7 @@ func (a *LegacyBackupAPIService) ListClusterBackupCheckpointsWithParams(ctx cont
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListClusterBackupCheckpointsApiRequest) IncludeCount(includeCount bool) ListClusterBackupCheckpointsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1394,7 +1394,7 @@ func (a *LegacyBackupAPIService) ListClusterRestoreJobsWithParams(ctx context.Co
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListClusterRestoreJobsApiRequest) IncludeCount(includeCount bool) ListClusterRestoreJobsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1589,7 +1589,7 @@ func (a *LegacyBackupAPIService) ListClusterSnapshotsWithParams(ctx context.Cont
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListClusterSnapshotsApiRequest) IncludeCount(includeCount bool) ListClusterSnapshotsApiRequest {
 	r.includeCount = &includeCount
 	return r

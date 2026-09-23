@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EffectiveSpecs** | Pointer to [**[]ApiSearchDeploymentEffectiveSpec**](ApiSearchDeploymentEffectiveSpec.md) | List of settings that configure the Search Nodes for your cluster, with per-region detail including the region name and cloud provider. | [optional] [readonly] 
+**EffectiveSpecs** | Pointer to [**[]ApiSearchDeploymentEffectiveSpec**](ApiSearchDeploymentEffectiveSpec.md) | List of settings that configure the Search Nodes for your cluster. Each entry describes one region or, when &#x60;shardId&#x60; is present, one shard in one region. | [optional] [readonly] 
 **EncryptionAtRestProvider** | Pointer to **string** | Cloud service provider that manages your customer keys to provide an additional layer of Encryption At Rest for the cluster. | [optional] [readonly] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the search deployment. | [optional] [readonly] 

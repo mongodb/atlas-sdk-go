@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | Human-readable name for the Service Account. | [optional] 
 **Roles** | Pointer to **[]string** | A list of Project roles associated with the Service Account. | [optional] 
 **Secrets** | Pointer to [**[]ServiceAccountSecret**](ServiceAccountSecret.md) | A list of secrets associated with the specified Service Account. | [optional] 
+**SystemManaged** | **bool** | Indicates whether the Service Account is system managed. | [readonly] 
 
 ## Methods
 
 ### NewGroupServiceAccount
 
-`func NewGroupServiceAccount() *GroupServiceAccount`
+`func NewGroupServiceAccount(systemManaged bool, ) *GroupServiceAccount`
 
 NewGroupServiceAccount instantiates a new GroupServiceAccount object
 This constructor will assign default values to properties that have it defined,
@@ -215,6 +216,25 @@ HasSecrets returns a boolean if a field has been set.
 `func (o *GroupServiceAccount) SetSecretsNil()`
 
 SetSecretsNil sets Secrets to an explicit JSON null when marshaled, overriding any value previously set with SetSecrets. Calling SetSecrets again clears the null override.
+
+### GetSystemManaged
+
+`func (o *GroupServiceAccount) GetSystemManaged() bool`
+
+GetSystemManaged returns the SystemManaged field if non-nil, zero value otherwise.
+
+### GetSystemManagedOk
+
+`func (o *GroupServiceAccount) GetSystemManagedOk() (*bool, bool)`
+
+GetSystemManagedOk returns a tuple with the SystemManaged field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSystemManaged
+
+`func (o *GroupServiceAccount) SetSystemManaged(v bool)`
+
+SetSystemManaged sets SystemManaged field to given value.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

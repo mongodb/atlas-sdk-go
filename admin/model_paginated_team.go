@@ -10,7 +10,7 @@ type PaginatedTeam struct {
 	// List of returned documents that MongoDB Cloud provides when completing this request.
 	// Read only field.
 	Results []TeamResponse `json:"results"`
-	// Total number of documents available. MongoDB Cloud omits this value if `includeCount` is set to `false`. The total number is an estimate and may not be exact.
+	// Total number of documents available. When `includeCount` is set to `false`, MongoDB Cloud may omit this value or return it when the count is available without additional calculation. The total number is an estimate and may not be exact.
 	// Read only field.
 	TotalCount *int `json:"totalCount,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).

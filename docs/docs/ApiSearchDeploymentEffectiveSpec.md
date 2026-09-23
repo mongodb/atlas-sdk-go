@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CloudProvider** | Pointer to **string** | Cloud service provider on which Search Nodes are provisioned. | [optional] [readonly] 
 **InstanceSize** | Pointer to **string** | Hardware specification for the Search Node instance sizes. | [optional] [readonly] 
-**NodeCount** | Pointer to **int** | Number of Search Nodes in this region. | [optional] [readonly] 
+**NodeCount** | Pointer to **int** | Number of Search Nodes for this configuration. | [optional] [readonly] 
 **RegionName** | Pointer to **string** | Cloud provider region where Search Nodes are provisioned. | [optional] [readonly] 
 
 ## Methods

@@ -19,7 +19,8 @@ type MetricIntegrationResponse struct {
 	// Read only field.
 	MetricIntegrationId string `json:"metricIntegrationId"`
 	// Array of metric categories to export. Determines which types of metrics are sent to the integration.
-	MetricSelection []string `json:"metricSelection"`
+	MetricSelection []string             `json:"metricSelection"`
+	Oauth           *OAuthConfigResponse `json:"oauth,omitempty"`
 	// The provider type for the metric integration. Identifies the third-party service provider.
 	ProviderType string `json:"providerType"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
@@ -239,6 +240,46 @@ func (o *MetricIntegrationResponse) GetMetricSelectionOk() (*[]string, bool) {
 // SetMetricSelection sets field value
 func (o *MetricIntegrationResponse) SetMetricSelection(v []string) {
 	o.MetricSelection = v
+}
+
+// GetOauth returns the Oauth field value if set, zero value otherwise
+func (o *MetricIntegrationResponse) GetOauth() OAuthConfigResponse {
+	if o == nil || IsNil(o.Oauth) {
+		var ret OAuthConfigResponse
+		return ret
+	}
+	return *o.Oauth
+}
+
+// GetOauthOk returns a tuple with the Oauth field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MetricIntegrationResponse) GetOauthOk() (*OAuthConfigResponse, bool) {
+	if o == nil || IsNil(o.Oauth) {
+		return nil, false
+	}
+
+	return o.Oauth, true
+}
+
+// HasOauth returns a boolean if a field has been set.
+func (o *MetricIntegrationResponse) HasOauth() bool {
+	if o != nil && !IsNil(o.Oauth) {
+		return true
+	}
+
+	return false
+}
+
+// SetOauth gets a reference to the given OAuthConfigResponse and assigns it to the Oauth field.
+func (o *MetricIntegrationResponse) SetOauth(v OAuthConfigResponse) {
+	o.Oauth = &v
+	o.NullFields = removeNullField(o.NullFields, "Oauth")
+}
+
+// SetOauthNil sets Oauth to an explicit JSON null when marshaled.
+func (o *MetricIntegrationResponse) SetOauthNil() {
+	o.Oauth = nil
+	o.NullFields = addNullField(o.NullFields, "Oauth")
 }
 
 // GetProviderType returns the ProviderType field value

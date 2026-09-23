@@ -1241,7 +1241,7 @@ func (a *NetworkPeeringAPIService) ListGroupContainerAllWithParams(ctx context.C
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListGroupContainerAllApiRequest) IncludeCount(includeCount bool) ListGroupContainerAllApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1415,7 +1415,7 @@ func (r ListGroupContainersApiRequest) ProviderName(providerName string) ListGro
 	return r
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListGroupContainersApiRequest) IncludeCount(includeCount bool) ListGroupContainersApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -1587,7 +1587,7 @@ func (a *NetworkPeeringAPIService) ListGroupPeersWithParams(ctx context.Context,
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListGroupPeersApiRequest) IncludeCount(includeCount bool) ListGroupPeersApiRequest {
 	r.includeCount = &includeCount
 	return r

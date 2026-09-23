@@ -164,7 +164,7 @@ func (a *ProjectIPAccessListAPIService) CreateAccessListEntryWithParams(ctx cont
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r CreateAccessListEntryApiRequest) IncludeCount(includeCount bool) CreateAccessListEntryApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -705,7 +705,7 @@ func (a *ProjectIPAccessListAPIService) ListAccessListEntriesWithParams(ctx cont
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListAccessListEntriesApiRequest) IncludeCount(includeCount bool) ListAccessListEntriesApiRequest {
 	r.includeCount = &includeCount
 	return r

@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **OrgId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the organization that owns the project to which this alert applies. | [optional] [readonly] 
 **Resolved** | Pointer to **time.Time** | Date and time that this alert changed to &#x60;\&quot;status\&quot; : \&quot;CLOSED\&quot;&#x60;. This parameter expresses its value in the ISO 8601 timestamp format in UTC. The resource returns this parameter once &#x60;\&quot;status\&quot; : \&quot;CLOSED\&quot;&#x60;. | [optional] [readonly] 
+**Severity** | Pointer to **string** | Severity of the event. | [optional] [readonly] 
 **Status** | Pointer to **string** | State of this alert at the time you requested its details. TRACKING indicates the alert condition exists but has not persisted for the minimum notification delay. OPEN indicates the alert condition currently exists. CLOSED indicates the alert condition has been resolved. | [optional] [readonly] 
 **Updated** | Pointer to **time.Time** | Date and time when someone last updated this alert. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 **ClusterName** | Pointer to **string** | Human-readable label that identifies the cluster to which this alert applies. This resource returns this parameter for alerts of events impacting backups, replica sets, or sharded clusters. | [optional] [readonly] 
@@ -420,6 +421,37 @@ HasResolved returns a boolean if a field has been set.
 `func (o *AlertViewForNdsGroup) SetResolvedNil()`
 
 SetResolvedNil sets Resolved to an explicit JSON null when marshaled, overriding any value previously set with SetResolved. Calling SetResolved again clears the null override.
+
+### GetSeverity
+
+`func (o *AlertViewForNdsGroup) GetSeverity() string`
+
+GetSeverity returns the Severity field if non-nil, zero value otherwise.
+
+### GetSeverityOk
+
+`func (o *AlertViewForNdsGroup) GetSeverityOk() (*string, bool)`
+
+GetSeverityOk returns a tuple with the Severity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSeverity
+
+`func (o *AlertViewForNdsGroup) SetSeverity(v string)`
+
+SetSeverity sets Severity field to given value.
+
+### HasSeverity
+
+`func (o *AlertViewForNdsGroup) HasSeverity() bool`
+
+HasSeverity returns a boolean if a field has been set.
+
+### SetSeverityNil
+
+`func (o *AlertViewForNdsGroup) SetSeverityNil()`
+
+SetSeverityNil sets Severity to an explicit JSON null when marshaled, overriding any value previously set with SetSeverity. Calling SetSeverity again clears the null override.
 
 ### GetStatus
 

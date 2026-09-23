@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AvgObjSize** | Pointer to **float64** | The average size of an object in the collection of this index. | [optional] [readonly] 
+**Collation** | Pointer to [**map[string]any**](interface{}.md) | Collation the queries behind this suggestion run with. An index only serves a query when the two share a collation, so an index created from this suggestion must be created with it. Absent when those queries use the default (simple) collation. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this index. | [optional] [readonly] 
 **Impact** | Pointer to **[]string** | List that contains unique 24-hexadecimal character string that identifies the query shapes in this response that the Performance Advisor suggests. | [optional] [readonly] 
 **Index** | Pointer to **[]map[string]int** | List that contains documents that specify a key in the index and its sort order. | [optional] [readonly] 
@@ -60,6 +61,37 @@ HasAvgObjSize returns a boolean if a field has been set.
 `func (o *PerformanceAdvisorIndex) SetAvgObjSizeNil()`
 
 SetAvgObjSizeNil sets AvgObjSize to an explicit JSON null when marshaled, overriding any value previously set with SetAvgObjSize. Calling SetAvgObjSize again clears the null override.
+
+### GetCollation
+
+`func (o *PerformanceAdvisorIndex) GetCollation() map[string]any`
+
+GetCollation returns the Collation field if non-nil, zero value otherwise.
+
+### GetCollationOk
+
+`func (o *PerformanceAdvisorIndex) GetCollationOk() (*map[string]any, bool)`
+
+GetCollationOk returns a tuple with the Collation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCollation
+
+`func (o *PerformanceAdvisorIndex) SetCollation(v map[string]any)`
+
+SetCollation sets Collation field to given value.
+
+### HasCollation
+
+`func (o *PerformanceAdvisorIndex) HasCollation() bool`
+
+HasCollation returns a boolean if a field has been set.
+
+### SetCollationNil
+
+`func (o *PerformanceAdvisorIndex) SetCollationNil()`
+
+SetCollationNil sets Collation to an explicit JSON null when marshaled, overriding any value previously set with SetCollation. Calling SetCollation again clears the null override.
 
 ### GetId
 

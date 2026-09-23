@@ -459,7 +459,7 @@ func (a *EventsAPIService) ListEventTypesWithParams(ctx context.Context, args *L
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListEventTypesApiRequest) IncludeCount(includeCount bool) ListEventTypesApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -633,7 +633,7 @@ func (a *EventsAPIService) ListGroupEventsWithParams(ctx context.Context, args *
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListGroupEventsApiRequest) IncludeCount(includeCount bool) ListGroupEventsApiRequest {
 	r.includeCount = &includeCount
 	return r
@@ -882,7 +882,7 @@ func (a *EventsAPIService) ListOrgEventsWithParams(ctx context.Context, args *Li
 	}
 }
 
-// Flag that indicates whether the response returns the total number of items (&#x60;totalCount&#x60;) in the response.
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
 func (r ListOrgEventsApiRequest) IncludeCount(includeCount bool) ListOrgEventsApiRequest {
 	r.includeCount = &includeCount
 	return r

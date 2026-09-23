@@ -4,6 +4,8 @@ package admin
 
 // FlexClusterDescriptionUpdate20241113 Settings that you can specify when you update a flex cluster.
 type FlexClusterDescriptionUpdate20241113 struct {
+	// Available in Public Preview: Optional field that indicates whether your tenant cluster will be upgraded to Atlas INFINITE or CORE.
+	DatabaseEdition *string `json:"databaseEdition,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
@@ -41,6 +43,46 @@ func NewFlexClusterDescriptionUpdate20241113WithDefaults() *FlexClusterDescripti
 	var terminationProtectionEnabled bool = false
 	this.TerminationProtectionEnabled = &terminationProtectionEnabled
 	return &this
+}
+
+// GetDatabaseEdition returns the DatabaseEdition field value if set, zero value otherwise
+func (o *FlexClusterDescriptionUpdate20241113) GetDatabaseEdition() string {
+	if o == nil || IsNil(o.DatabaseEdition) {
+		var ret string
+		return ret
+	}
+	return *o.DatabaseEdition
+}
+
+// GetDatabaseEditionOk returns a tuple with the DatabaseEdition field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FlexClusterDescriptionUpdate20241113) GetDatabaseEditionOk() (*string, bool) {
+	if o == nil || IsNil(o.DatabaseEdition) {
+		return nil, false
+	}
+
+	return o.DatabaseEdition, true
+}
+
+// HasDatabaseEdition returns a boolean if a field has been set.
+func (o *FlexClusterDescriptionUpdate20241113) HasDatabaseEdition() bool {
+	if o != nil && !IsNil(o.DatabaseEdition) {
+		return true
+	}
+
+	return false
+}
+
+// SetDatabaseEdition gets a reference to the given string and assigns it to the DatabaseEdition field.
+func (o *FlexClusterDescriptionUpdate20241113) SetDatabaseEdition(v string) {
+	o.DatabaseEdition = &v
+	o.NullFields = removeNullField(o.NullFields, "DatabaseEdition")
+}
+
+// SetDatabaseEditionNil sets DatabaseEdition to an explicit JSON null when marshaled.
+func (o *FlexClusterDescriptionUpdate20241113) SetDatabaseEditionNil() {
+	o.DatabaseEdition = nil
+	o.NullFields = addNullField(o.NullFields, "DatabaseEdition")
 }
 
 // GetLinks returns the Links field value if set, zero value otherwise

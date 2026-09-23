@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AccessCount** | Pointer to **int64** | Usage count (since last restart) of index. | [optional] 
+**Collation** | Pointer to [**map[string]any**](interface{}.md) | Collation this index was built with. An index only serves a query that runs with the same collation. Absent when the index uses the default (simple) collation. | [optional] 
 **Index** | Pointer to [**[]any**](any.md) | List that contains documents that specify a key in the index and its sort order. | [optional] 
 **Name** | Pointer to **string** | Name of index. | [optional] 
 **Namespace** | Pointer to **string** | Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as &#x60;&lt;database&gt;.&lt;collection&gt;&#x60;. | [optional] 
@@ -61,6 +62,37 @@ HasAccessCount returns a boolean if a field has been set.
 `func (o *DropIndexSuggestionsIndex) SetAccessCountNil()`
 
 SetAccessCountNil sets AccessCount to an explicit JSON null when marshaled, overriding any value previously set with SetAccessCount. Calling SetAccessCount again clears the null override.
+
+### GetCollation
+
+`func (o *DropIndexSuggestionsIndex) GetCollation() map[string]any`
+
+GetCollation returns the Collation field if non-nil, zero value otherwise.
+
+### GetCollationOk
+
+`func (o *DropIndexSuggestionsIndex) GetCollationOk() (*map[string]any, bool)`
+
+GetCollationOk returns a tuple with the Collation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCollation
+
+`func (o *DropIndexSuggestionsIndex) SetCollation(v map[string]any)`
+
+SetCollation sets Collation field to given value.
+
+### HasCollation
+
+`func (o *DropIndexSuggestionsIndex) HasCollation() bool`
+
+HasCollation returns a boolean if a field has been set.
+
+### SetCollationNil
+
+`func (o *DropIndexSuggestionsIndex) SetCollationNil()`
+
+SetCollationNil sets Collation to an explicit JSON null when marshaled, overriding any value previously set with SetCollation. Calling SetCollation again clears the null override.
 
 ### GetIndex
 

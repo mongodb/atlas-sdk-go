@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **IntegrationType** | **string** | Type of metric integration. Identifies which protocol will be used for the integration. | 
 **MetricIntegrationId** | **string** | Unique identifier of the metric integration configuration. | [readonly] 
 **MetricSelection** | **[]string** | Array of metric categories to export. Determines which types of metrics are sent to the integration. | 
+**Oauth** | Pointer to [**OAuthConfigResponse**](OAuthConfigResponse.md) |  | [optional] 
 **ProviderType** | **string** | The provider type for the metric integration. Identifies the third-party service provider. | 
 
 ## Methods
@@ -176,6 +177,37 @@ and a boolean to check if the value has been set.
 `func (o *MetricIntegrationResponse) SetMetricSelection(v []string)`
 
 SetMetricSelection sets MetricSelection field to given value.
+
+### GetOauth
+
+`func (o *MetricIntegrationResponse) GetOauth() OAuthConfigResponse`
+
+GetOauth returns the Oauth field if non-nil, zero value otherwise.
+
+### GetOauthOk
+
+`func (o *MetricIntegrationResponse) GetOauthOk() (*OAuthConfigResponse, bool)`
+
+GetOauthOk returns a tuple with the Oauth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOauth
+
+`func (o *MetricIntegrationResponse) SetOauth(v OAuthConfigResponse)`
+
+SetOauth sets Oauth field to given value.
+
+### HasOauth
+
+`func (o *MetricIntegrationResponse) HasOauth() bool`
+
+HasOauth returns a boolean if a field has been set.
+
+### SetOauthNil
+
+`func (o *MetricIntegrationResponse) SetOauthNil()`
+
+SetOauthNil sets Oauth to an explicit JSON null when marshaled, overriding any value previously set with SetOauth. Calling SetOauth again clears the null override.
 
 ### GetProviderType
 
