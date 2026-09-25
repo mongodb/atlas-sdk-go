@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312026/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -1776,24 +1776,24 @@ func (_c *ProjectsAPI_GetGroupSettings_Call) RunAndReturn(run func(context.Conte
 }
 
 // GetGroupSettingsExecute provides a mock function with given fields: r
-func (_m *ProjectsAPI) GetGroupSettingsExecute(r admin.GetGroupSettingsApiRequest) (*admin.GroupSettings, *http.Response, error) {
+func (_m *ProjectsAPI) GetGroupSettingsExecute(r admin.GetGroupSettingsApiRequest) (*admin.GroupSettingsPreview, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for GetGroupSettingsExecute")
 	}
 
-	var r0 *admin.GroupSettings
+	var r0 *admin.GroupSettingsPreview
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetGroupSettingsApiRequest) (*admin.GroupSettings, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupSettingsApiRequest) (*admin.GroupSettingsPreview, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetGroupSettingsApiRequest) *admin.GroupSettings); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetGroupSettingsApiRequest) *admin.GroupSettingsPreview); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.GroupSettings)
+			r0 = ret.Get(0).(*admin.GroupSettingsPreview)
 		}
 	}
 
@@ -1832,12 +1832,12 @@ func (_c *ProjectsAPI_GetGroupSettingsExecute_Call) Run(run func(r admin.GetGrou
 	return _c
 }
 
-func (_c *ProjectsAPI_GetGroupSettingsExecute_Call) Return(_a0 *admin.GroupSettings, _a1 *http.Response, _a2 error) *ProjectsAPI_GetGroupSettingsExecute_Call {
+func (_c *ProjectsAPI_GetGroupSettingsExecute_Call) Return(_a0 *admin.GroupSettingsPreview, _a1 *http.Response, _a2 error) *ProjectsAPI_GetGroupSettingsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsAPI_GetGroupSettingsExecute_Call) RunAndReturn(run func(admin.GetGroupSettingsApiRequest) (*admin.GroupSettings, *http.Response, error)) *ProjectsAPI_GetGroupSettingsExecute_Call {
+func (_c *ProjectsAPI_GetGroupSettingsExecute_Call) RunAndReturn(run func(admin.GetGroupSettingsApiRequest) (*admin.GroupSettingsPreview, *http.Response, error)) *ProjectsAPI_GetGroupSettingsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -3181,17 +3181,17 @@ func (_c *ProjectsAPI_UpdateGroupInvitesWithParams_Call) RunAndReturn(run func(c
 	return _c
 }
 
-// UpdateGroupSettings provides a mock function with given fields: ctx, groupId, groupSettings
-func (_m *ProjectsAPI) UpdateGroupSettings(ctx context.Context, groupId string, groupSettings *admin.GroupSettings) admin.UpdateGroupSettingsApiRequest {
-	ret := _m.Called(ctx, groupId, groupSettings)
+// UpdateGroupSettings provides a mock function with given fields: ctx, groupId, groupSettingsPreview
+func (_m *ProjectsAPI) UpdateGroupSettings(ctx context.Context, groupId string, groupSettingsPreview *admin.GroupSettingsPreview) admin.UpdateGroupSettingsApiRequest {
+	ret := _m.Called(ctx, groupId, groupSettingsPreview)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpdateGroupSettings")
 	}
 
 	var r0 admin.UpdateGroupSettingsApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupSettings) admin.UpdateGroupSettingsApiRequest); ok {
-		r0 = rf(ctx, groupId, groupSettings)
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.GroupSettingsPreview) admin.UpdateGroupSettingsApiRequest); ok {
+		r0 = rf(ctx, groupId, groupSettingsPreview)
 	} else {
 		r0 = ret.Get(0).(admin.UpdateGroupSettingsApiRequest)
 	}
@@ -3207,14 +3207,14 @@ type ProjectsAPI_UpdateGroupSettings_Call struct {
 // UpdateGroupSettings is a helper method to define mock.On call
 //   - ctx context.Context
 //   - groupId string
-//   - groupSettings *admin.GroupSettings
-func (_e *ProjectsAPI_Expecter) UpdateGroupSettings(ctx any, groupId any, groupSettings any) *ProjectsAPI_UpdateGroupSettings_Call {
-	return &ProjectsAPI_UpdateGroupSettings_Call{Call: _e.mock.On("UpdateGroupSettings", ctx, groupId, groupSettings)}
+//   - groupSettingsPreview *admin.GroupSettingsPreview
+func (_e *ProjectsAPI_Expecter) UpdateGroupSettings(ctx any, groupId any, groupSettingsPreview any) *ProjectsAPI_UpdateGroupSettings_Call {
+	return &ProjectsAPI_UpdateGroupSettings_Call{Call: _e.mock.On("UpdateGroupSettings", ctx, groupId, groupSettingsPreview)}
 }
 
-func (_c *ProjectsAPI_UpdateGroupSettings_Call) Run(run func(ctx context.Context, groupId string, groupSettings *admin.GroupSettings)) *ProjectsAPI_UpdateGroupSettings_Call {
+func (_c *ProjectsAPI_UpdateGroupSettings_Call) Run(run func(ctx context.Context, groupId string, groupSettingsPreview *admin.GroupSettingsPreview)) *ProjectsAPI_UpdateGroupSettings_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(*admin.GroupSettings))
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.GroupSettingsPreview))
 	})
 	return _c
 }
@@ -3224,30 +3224,30 @@ func (_c *ProjectsAPI_UpdateGroupSettings_Call) Return(_a0 admin.UpdateGroupSett
 	return _c
 }
 
-func (_c *ProjectsAPI_UpdateGroupSettings_Call) RunAndReturn(run func(context.Context, string, *admin.GroupSettings) admin.UpdateGroupSettingsApiRequest) *ProjectsAPI_UpdateGroupSettings_Call {
+func (_c *ProjectsAPI_UpdateGroupSettings_Call) RunAndReturn(run func(context.Context, string, *admin.GroupSettingsPreview) admin.UpdateGroupSettingsApiRequest) *ProjectsAPI_UpdateGroupSettings_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // UpdateGroupSettingsExecute provides a mock function with given fields: r
-func (_m *ProjectsAPI) UpdateGroupSettingsExecute(r admin.UpdateGroupSettingsApiRequest) (*admin.GroupSettings, *http.Response, error) {
+func (_m *ProjectsAPI) UpdateGroupSettingsExecute(r admin.UpdateGroupSettingsApiRequest) (*admin.GroupSettingsPreview, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpdateGroupSettingsExecute")
 	}
 
-	var r0 *admin.GroupSettings
+	var r0 *admin.GroupSettingsPreview
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateGroupSettingsApiRequest) (*admin.GroupSettings, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupSettingsApiRequest) (*admin.GroupSettingsPreview, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateGroupSettingsApiRequest) *admin.GroupSettings); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateGroupSettingsApiRequest) *admin.GroupSettingsPreview); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.GroupSettings)
+			r0 = ret.Get(0).(*admin.GroupSettingsPreview)
 		}
 	}
 
@@ -3286,12 +3286,12 @@ func (_c *ProjectsAPI_UpdateGroupSettingsExecute_Call) Run(run func(r admin.Upda
 	return _c
 }
 
-func (_c *ProjectsAPI_UpdateGroupSettingsExecute_Call) Return(_a0 *admin.GroupSettings, _a1 *http.Response, _a2 error) *ProjectsAPI_UpdateGroupSettingsExecute_Call {
+func (_c *ProjectsAPI_UpdateGroupSettingsExecute_Call) Return(_a0 *admin.GroupSettingsPreview, _a1 *http.Response, _a2 error) *ProjectsAPI_UpdateGroupSettingsExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *ProjectsAPI_UpdateGroupSettingsExecute_Call) RunAndReturn(run func(admin.UpdateGroupSettingsApiRequest) (*admin.GroupSettings, *http.Response, error)) *ProjectsAPI_UpdateGroupSettingsExecute_Call {
+func (_c *ProjectsAPI_UpdateGroupSettingsExecute_Call) RunAndReturn(run func(admin.UpdateGroupSettingsApiRequest) (*admin.GroupSettingsPreview, *http.Response, error)) *ProjectsAPI_UpdateGroupSettingsExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

@@ -16,6 +16,9 @@ type ApiSearchDeploymentEffectiveSpec struct {
 	// Cloud provider region where Search Nodes are provisioned.
 	// Read only field.
 	RegionName *string `json:"regionName,omitempty"`
+	// Shard that owns this Search Node configuration.
+	// Read only field.
+	ShardId *string `json:"shardId,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`
@@ -202,4 +205,44 @@ func (o *ApiSearchDeploymentEffectiveSpec) SetRegionName(v string) {
 func (o *ApiSearchDeploymentEffectiveSpec) SetRegionNameNil() {
 	o.RegionName = nil
 	o.NullFields = addNullField(o.NullFields, "RegionName")
+}
+
+// GetShardId returns the ShardId field value if set, zero value otherwise
+func (o *ApiSearchDeploymentEffectiveSpec) GetShardId() string {
+	if o == nil || IsNil(o.ShardId) {
+		var ret string
+		return ret
+	}
+	return *o.ShardId
+}
+
+// GetShardIdOk returns a tuple with the ShardId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiSearchDeploymentEffectiveSpec) GetShardIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ShardId) {
+		return nil, false
+	}
+
+	return o.ShardId, true
+}
+
+// HasShardId returns a boolean if a field has been set.
+func (o *ApiSearchDeploymentEffectiveSpec) HasShardId() bool {
+	if o != nil && !IsNil(o.ShardId) {
+		return true
+	}
+
+	return false
+}
+
+// SetShardId gets a reference to the given string and assigns it to the ShardId field.
+func (o *ApiSearchDeploymentEffectiveSpec) SetShardId(v string) {
+	o.ShardId = &v
+	o.NullFields = removeNullField(o.NullFields, "ShardId")
+}
+
+// SetShardIdNil sets ShardId to an explicit JSON null when marshaled.
+func (o *ApiSearchDeploymentEffectiveSpec) SetShardIdNil() {
+	o.ShardId = nil
+	o.NullFields = addNullField(o.NullFields, "ShardId")
 }
