@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AutoScaling** | Pointer to [**ApiSearchAutoScaling**](ApiSearchAutoScaling.md) | Autoscaling settings configured for this Search deployment. | [optional] [readonly] 
+**BaselineSpecs** | Pointer to [**[]ApiSearchDeploymentEffectiveSpec**](ApiSearchDeploymentEffectiveSpec.md) | List of starting settings for the Search Nodes in each cluster region. | [optional] [readonly] 
 **EffectiveSpecs** | Pointer to [**[]ApiSearchDeploymentEffectiveSpec**](ApiSearchDeploymentEffectiveSpec.md) | List of settings that configure the Search Nodes for your cluster. Each entry describes one region or, when &#x60;shardId&#x60; is present, one shard in one region. | [optional] [readonly] 
 **EncryptionAtRestProvider** | Pointer to **string** | Cloud service provider that manages your customer keys to provide an additional layer of Encryption At Rest for the cluster. | [optional] [readonly] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
@@ -29,6 +31,68 @@ will change when the set of required properties is changed
 NewApiSearchDeploymentResponseWithDefaults instantiates a new ApiSearchDeploymentResponse object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAutoScaling
+
+`func (o *ApiSearchDeploymentResponse) GetAutoScaling() ApiSearchAutoScaling`
+
+GetAutoScaling returns the AutoScaling field if non-nil, zero value otherwise.
+
+### GetAutoScalingOk
+
+`func (o *ApiSearchDeploymentResponse) GetAutoScalingOk() (*ApiSearchAutoScaling, bool)`
+
+GetAutoScalingOk returns a tuple with the AutoScaling field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoScaling
+
+`func (o *ApiSearchDeploymentResponse) SetAutoScaling(v ApiSearchAutoScaling)`
+
+SetAutoScaling sets AutoScaling field to given value.
+
+### HasAutoScaling
+
+`func (o *ApiSearchDeploymentResponse) HasAutoScaling() bool`
+
+HasAutoScaling returns a boolean if a field has been set.
+
+### SetAutoScalingNil
+
+`func (o *ApiSearchDeploymentResponse) SetAutoScalingNil()`
+
+SetAutoScalingNil sets AutoScaling to an explicit JSON null when marshaled, overriding any value previously set with SetAutoScaling. Calling SetAutoScaling again clears the null override.
+
+### GetBaselineSpecs
+
+`func (o *ApiSearchDeploymentResponse) GetBaselineSpecs() []ApiSearchDeploymentEffectiveSpec`
+
+GetBaselineSpecs returns the BaselineSpecs field if non-nil, zero value otherwise.
+
+### GetBaselineSpecsOk
+
+`func (o *ApiSearchDeploymentResponse) GetBaselineSpecsOk() (*[]ApiSearchDeploymentEffectiveSpec, bool)`
+
+GetBaselineSpecsOk returns a tuple with the BaselineSpecs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBaselineSpecs
+
+`func (o *ApiSearchDeploymentResponse) SetBaselineSpecs(v []ApiSearchDeploymentEffectiveSpec)`
+
+SetBaselineSpecs sets BaselineSpecs field to given value.
+
+### HasBaselineSpecs
+
+`func (o *ApiSearchDeploymentResponse) HasBaselineSpecs() bool`
+
+HasBaselineSpecs returns a boolean if a field has been set.
+
+### SetBaselineSpecsNil
+
+`func (o *ApiSearchDeploymentResponse) SetBaselineSpecsNil()`
+
+SetBaselineSpecsNil sets BaselineSpecs to an explicit JSON null when marshaled, overriding any value previously set with SetBaselineSpecs. Calling SetBaselineSpecs again clears the null override.
 
 ### GetEffectiveSpecs
 
