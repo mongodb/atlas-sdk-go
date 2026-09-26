@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **InstanceSize** | Pointer to **string** | Hardware specification for the Search Node instance sizes. | [optional] [readonly] 
 **NodeCount** | Pointer to **int** | Number of Search Nodes for this configuration. | [optional] [readonly] 
 **RegionName** | Pointer to **string** | Cloud provider region where Search Nodes are provisioned. | [optional] [readonly] 
+**ShardId** | Pointer to **string** | Shard that owns this Search Node configuration. | [optional] [readonly] 
 
 ## Methods
 
@@ -151,6 +152,37 @@ HasRegionName returns a boolean if a field has been set.
 `func (o *ApiSearchDeploymentEffectiveSpec) SetRegionNameNil()`
 
 SetRegionNameNil sets RegionName to an explicit JSON null when marshaled, overriding any value previously set with SetRegionName. Calling SetRegionName again clears the null override.
+
+### GetShardId
+
+`func (o *ApiSearchDeploymentEffectiveSpec) GetShardId() string`
+
+GetShardId returns the ShardId field if non-nil, zero value otherwise.
+
+### GetShardIdOk
+
+`func (o *ApiSearchDeploymentEffectiveSpec) GetShardIdOk() (*string, bool)`
+
+GetShardIdOk returns a tuple with the ShardId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShardId
+
+`func (o *ApiSearchDeploymentEffectiveSpec) SetShardId(v string)`
+
+SetShardId sets ShardId field to given value.
+
+### HasShardId
+
+`func (o *ApiSearchDeploymentEffectiveSpec) HasShardId() bool`
+
+HasShardId returns a boolean if a field has been set.
+
+### SetShardIdNil
+
+`func (o *ApiSearchDeploymentEffectiveSpec) SetShardIdNil()`
+
+SetShardIdNil sets ShardId to an explicit JSON null when marshaled, overriding any value previously set with SetShardId. Calling SetShardId again clears the null override.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

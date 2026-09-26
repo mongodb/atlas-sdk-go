@@ -3064,6 +3064,62 @@ components:
                         - DESCENDING
                     type: string
             type: object
+        ApiSearchAutoScalingView:
+            description: Settings that let Atlas change the Search Node tier on its own. Bounds apply to the whole deployment, and Atlas scales each region and shard independently within them. Omit to keep autoscaling off.
+            properties:
+                compute:
+                    $ref: '#/components/schemas/ApiSearchComputeAutoScalingView'
+            type: object
+        ApiSearchComputeAutoScalingView:
+            description: Settings that control Search Node tier scaling based on load.
+            properties:
+                enabled:
+                    default: false
+                    description: Flag that indicates whether Atlas raises the Search Node tier when the nodes are under sustained load. If set to `true`, you must also set `maxInstanceTier`.
+                    type: boolean
+                maxInstanceTier:
+                    description: Highest Search Node tier that Atlas can scale up to. Required when `enabled` is `true`.
+                    enum:
+                        - S10
+                        - S20
+                        - S30
+                        - S40
+                        - S50
+                        - S60
+                        - S70
+                        - S80
+                        - S90
+                        - S100
+                        - S110
+                        - S120
+                        - S130
+                        - S135
+                        - S140
+                    type: string
+                minInstanceTier:
+                    description: Lowest Search Node tier that Atlas can scale down to. Required when `scaleDownEnabled` is `true`. Scaling down is not supported yet, so setting this returns an error.
+                    enum:
+                        - S10
+                        - S20
+                        - S30
+                        - S40
+                        - S50
+                        - S60
+                        - S70
+                        - S80
+                        - S90
+                        - S100
+                        - S110
+                        - S120
+                        - S130
+                        - S135
+                        - S140
+                    type: string
+                scaleDownEnabled:
+                    default: false
+                    description: Flag that indicates whether Atlas lowers the Search Node tier when load drops. Takes effect only when `enabled` is `true`. If set to `true`, you must also set `minInstanceTier`. Scaling down is not supported yet, so setting this to `true` returns an error.
+                    type: boolean
+            type: object
         ApiSearchDeploymentEffectiveSpecView:
             properties:
                 cloudProvider:
@@ -3116,6 +3172,10 @@ components:
                 regionName:
                     description: Cloud provider region where Search Nodes are provisioned.
                     example: US_EAST_1
+                    readOnly: true
+                    type: string
+                shardId:
+                    description: Shard that owns this Search Node configuration.
                     readOnly: true
                     type: string
             type: object
@@ -3177,6 +3237,10 @@ components:
             type: object
         ApiSearchDeploymentRequestView:
             properties:
+                autoScaling:
+                    allOf:
+                        - $ref: '#/components/schemas/ApiSearchAutoScalingView'
+                    description: Settings that let Atlas change the Search Node tier on its own. Bounds apply to the whole deployment, and Atlas scales each region and shard independently within them. Omit to keep autoscaling off.
                 defaultNodeCount:
                     description: Default number of Search Nodes per region. Applied to a region without an explicit override.
                     example: 2
@@ -3196,6 +3260,17 @@ components:
             type: object
         ApiSearchDeploymentResponseView:
             properties:
+                autoScaling:
+                    allOf:
+                        - $ref: '#/components/schemas/ApiSearchAutoScalingView'
+                    description: Autoscaling settings configured for this Search deployment.
+                    readOnly: true
+                baselineSpecs:
+                    description: List of starting settings for the Search Nodes in each cluster region.
+                    items:
+                        $ref: '#/components/schemas/ApiSearchDeploymentEffectiveSpecView'
+                    readOnly: true
+                    type: array
                 effectiveSpecs:
                     description: List of settings that configure the Search Nodes for your cluster. Each entry describes one region or, when `shardId` is present, one shard in one region.
                     items:
@@ -30757,6 +30832,118 @@ components:
                     readOnly: true
                     type: array
             type: object
+        OrgLogIntegrationHeader:
+            description: HTTP header with name and value.
+            properties:
+                name:
+                    description: Header name.
+                    example: Authorization
+                    type: string
+                value:
+                    description: Header value. Redacted in responses.
+                    example: Bearer token123
+                    format: password
+                    type: string
+            required:
+                - name
+                - value
+            type: object
+        OrgLogIntegrationRequest:
+            description: Request schema for creating an organization-level log integration.
+            discriminator:
+                mapping:
+                    OTEL_LOG_EXPORT: '#/components/schemas/OrgOtelLogIntegrationRequest'
+                propertyName: type
+            oneOf:
+                - $ref: '#/components/schemas/OrgOtelLogIntegrationRequest'
+            properties:
+                logTypes:
+                    description: Array of log types exported by this integration.
+                    example:
+                        - EVENTS
+                    items:
+                        enum:
+                            - EVENTS
+                        type: string
+                    maxItems: 1
+                    type: array
+                    uniqueItems: true
+                type:
+                    description: Type of log integration. Identifies which service will receive the exported events. This value cannot be modified after the integration is created.
+                    enum:
+                        - OTEL_LOG_EXPORT
+                    type: string
+            required:
+                - logTypes
+                - type
+            title: Organization Log Integration Request
+            type: object
+        OrgLogIntegrationResponse:
+            description: Response schema for organization-level log integration operations.
+            discriminator:
+                mapping:
+                    OTEL_LOG_EXPORT: '#/components/schemas/OrgOtelLogIntegrationResponse'
+                propertyName: type
+            oneOf:
+                - $ref: '#/components/schemas/OrgOtelLogIntegrationResponse'
+            properties:
+                id:
+                    description: Unique 24-character hexadecimal digit string that identifies the log integration configuration.
+                    example: 507f1f77bcf86cd799439011
+                    readOnly: true
+                    type: string
+                logTypes:
+                    description: Array of log types exported by this integration.
+                    example:
+                        - EVENTS
+                    items:
+                        enum:
+                            - EVENTS
+                        type: string
+                    maxItems: 1
+                    type: array
+                    uniqueItems: true
+                type:
+                    description: Type of log integration. Identifies which service will receive the exported events. This value cannot be modified after the integration is created.
+                    enum:
+                        - OTEL_LOG_EXPORT
+                    type: string
+            required:
+                - id
+                - logTypes
+                - type
+            title: Organization Log Integration Response
+            type: object
+        OrgLogIntegrationUpdateRequest:
+            description: Request schema for updating an organization-level log integration.
+            discriminator:
+                mapping:
+                    OTEL_LOG_EXPORT: '#/components/schemas/OrgOtelLogIntegrationUpdateRequest'
+                propertyName: type
+            oneOf:
+                - $ref: '#/components/schemas/OrgOtelLogIntegrationUpdateRequest'
+            properties:
+                logTypes:
+                    description: Array of log types exported by this integration.
+                    example:
+                        - EVENTS
+                    items:
+                        enum:
+                            - EVENTS
+                        type: string
+                    maxItems: 1
+                    type: array
+                    uniqueItems: true
+                type:
+                    description: Type of log integration. Identifies which service will receive the exported events. This value cannot be modified after the integration is created.
+                    enum:
+                        - OTEL_LOG_EXPORT
+                    type: string
+            required:
+                - logTypes
+                - type
+            title: Organization Log Integration Update Request
+            type: object
         OrgMcpConfigResponse:
             properties:
                 clientId:
@@ -30900,6 +31087,94 @@ components:
             required:
                 - typeName
             title: Organization Notification
+            type: object
+        OrgOtelLogIntegrationRequest:
+            allOf:
+                - $ref: '#/components/schemas/OrgLogIntegrationRequest'
+                - properties:
+                    otelEndpoint:
+                        description: OpenTelemetry collector endpoint URL. Must be HTTPS and not exceed 2048 characters.
+                        example: https://otel-collector.example.com:4318/v1/logs
+                        type: string
+                    otelSuppliedHeaders:
+                        description: HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB.
+                        items:
+                            $ref: '#/components/schemas/OrgLogIntegrationHeader'
+                        maxItems: 10
+                        minItems: 1
+                        type: array
+                    type:
+                        description: Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created.
+                        enum:
+                            - OTEL_LOG_EXPORT
+                        type: string
+                  type: object
+            description: Request schema for creating an organization-level OpenTelemetry log integration.
+            required:
+                - logTypes
+                - otelEndpoint
+                - otelSuppliedHeaders
+                - type
+            title: Organization OTel Log Integration Request
+            type: object
+        OrgOtelLogIntegrationResponse:
+            allOf:
+                - $ref: '#/components/schemas/OrgLogIntegrationResponse'
+                - properties:
+                    otelEndpoint:
+                        description: OpenTelemetry collector endpoint URL.
+                        example: https://otel-collector.example.com:4318/v1/logs
+                        type: string
+                    otelSuppliedHeaders:
+                        description: HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB. Values are redacted.
+                        items:
+                            $ref: '#/components/schemas/OrgLogIntegrationHeader'
+                        maxItems: 10
+                        minItems: 1
+                        type: array
+                    type:
+                        description: Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created.
+                        enum:
+                            - OTEL_LOG_EXPORT
+                        type: string
+                  type: object
+            description: Details to integrate OpenTelemetry event export with one Atlas organization.
+            required:
+                - id
+                - logTypes
+                - otelEndpoint
+                - otelSuppliedHeaders
+                - type
+            title: Organization OTel Log Integration Response
+            type: object
+        OrgOtelLogIntegrationUpdateRequest:
+            allOf:
+                - $ref: '#/components/schemas/OrgLogIntegrationUpdateRequest'
+                - properties:
+                    otelEndpoint:
+                        description: OpenTelemetry collector endpoint URL. Must be HTTPS and not exceed 2048 characters.
+                        example: https://otel-collector.example.com:4318/v1/logs
+                        type: string
+                    otelSuppliedHeaders:
+                        description: HTTP headers for authentication and configuration. Maximum 10 headers, total size limit 2KB.
+                        items:
+                            $ref: '#/components/schemas/OrgLogIntegrationHeader'
+                        maxItems: 10
+                        minItems: 1
+                        type: array
+                    type:
+                        description: Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created.
+                        enum:
+                            - OTEL_LOG_EXPORT
+                        type: string
+                  type: object
+            description: Request schema for updating an organization-level OpenTelemetry log integration.
+            required:
+                - logTypes
+                - otelEndpoint
+                - otelSuppliedHeaders
+                - type
+            title: Organization OTel Log Integration Update Request
             type: object
         OrgPaginatedEventView:
             properties:
@@ -33114,6 +33389,32 @@ components:
                     description: List of returned documents that MongoDB Cloud provides when completing this request.
                     items:
                         $ref: '#/components/schemas/OrgGroup'
+                    readOnly: true
+                    type: array
+                totalCount:
+                    description: Total number of documents available. When `includeCount` is set to `false`, MongoDB Cloud may omit this value or return it when the count is available without additional calculation. The total number is an estimate and may not be exact.
+                    format: int32
+                    minimum: 0
+                    readOnly: true
+                    type: integer
+            required:
+                - results
+            type: object
+        PaginatedOrgLogIntegrationResponse:
+            properties:
+                links:
+                    description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+                    externalDocs:
+                        description: Web Linking Specification (RFC 5988)
+                        url: https://datatracker.ietf.org/doc/html/rfc5988
+                    items:
+                        $ref: '#/components/schemas/Link'
+                    readOnly: true
+                    type: array
+                results:
+                    description: List of returned documents that MongoDB Cloud provides when completing this request.
+                    items:
+                        $ref: '#/components/schemas/OrgLogIntegrationResponse'
                     readOnly: true
                     type: array
                 totalCount:
@@ -43489,7 +43790,7 @@ info:
     termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
     title: MongoDB Atlas Administration API
     version: "2.0"
-    x-xgen-sha: a06785990fe6669e5123654fa1117c0e879e6616
+    x-xgen-sha: d7a00f00333b964140d2cb4417e7d209287f8046
 openapi: 3.0.1
 paths:
     /api/atlas/v2:
@@ -89585,6 +89886,461 @@ paths:
                 - Organization Owner
             x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Migration-Service/operation/createOrgLiveMigrationLinkToken
             x-xgen-operation-id-override: createLinkToken
+    /api/atlas/v2/orgs/{orgId}/logIntegrations:
+        get:
+            description: Returns all log integration configurations for the organization.
+            operationId: listOrgLogIntegrations
+            parameters:
+                - $ref: '#/components/parameters/envelope'
+                - $ref: '#/components/parameters/orgId'
+                - $ref: '#/components/parameters/includeCount'
+                - $ref: '#/components/parameters/itemsPerPage'
+                - $ref: '#/components/parameters/pageNum'
+                - $ref: '#/components/parameters/pretty'
+            responses:
+                "200":
+                    content:
+                        application/vnd.atlas.2025-03-12+json:
+                            schema:
+                                $ref: '#/components/schemas/PaginatedOrgLogIntegrationResponse'
+                            x-xgen-version: "2025-03-12"
+                    description: OK
+                    headers:
+                        RateLimit-Limit:
+                            $ref: '#/components/headers/HeaderRateLimitLimit'
+                        RateLimit-Remaining:
+                            $ref: '#/components/headers/HeaderRateLimitRemaining'
+                "400":
+                    $ref: '#/components/responses/badRequest'
+                "401":
+                    $ref: '#/components/responses/unauthorized'
+                "403":
+                    $ref: '#/components/responses/forbidden'
+                "404":
+                    $ref: '#/components/responses/notFound'
+                "429":
+                    $ref: '#/components/responses/tooManyRequests'
+                "500":
+                    $ref: '#/components/responses/internalServerError'
+            summary: Return All Organization Log Integrations
+            tags:
+                - Push-Based Log Export
+            x-codeSamples:
+                - label: Atlas CLI
+                  lang: cURL
+                  source: atlas api pushBasedLogExport listOrgLogIntegrations --help
+                - label: Go
+                  lang: go
+                  source: |
+                    import (
+                    	"os"
+                    	"context"
+                    	"log"
+                    	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+                    )
+
+                    func main() {
+                    	ctx := context.Background()
+                    	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+                    	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+                    	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+                    	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+                    	if err != nil {
+                    		log.Fatalf("Error: %v", err)
+                    	}
+
+                    	params = &sdk.ListOrgLogIntegrationsApiParams{}
+                    	sdkResp, httpResp, err := client.Push - BasedLogExportApi.
+                    		ListOrgLogIntegrationsWithParams(ctx, params).
+                    		Execute()
+                    }
+                - label: curl (Service Accounts)
+                  lang: cURL
+                  source: |-
+                    curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/logIntegrations?pretty=true"
+                - label: curl (Digest)
+                  lang: cURL
+                  source: |-
+                    curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+                      --digest --include \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/logIntegrations?pretty=true"
+            x-rolesRequirements:
+                - Organization Owner
+            x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/listOrgLogIntegrations
+        post:
+            description: Creates a new organization-level log integration configuration identified by a unique ID.
+            operationId: createOrgLogIntegration
+            parameters:
+                - $ref: '#/components/parameters/envelope'
+                - $ref: '#/components/parameters/orgId'
+                - $ref: '#/components/parameters/pretty'
+            requestBody:
+                content:
+                    application/vnd.atlas.2025-03-12+json:
+                        schema:
+                            $ref: '#/components/schemas/OrgLogIntegrationRequest'
+                        x-xgen-version: "2025-03-12"
+                description: Log integration configuration to create.
+                required: true
+            responses:
+                "201":
+                    content:
+                        application/vnd.atlas.2025-03-12+json:
+                            schema:
+                                $ref: '#/components/schemas/OrgLogIntegrationResponse'
+                            x-xgen-version: "2025-03-12"
+                    description: Created
+                    headers:
+                        RateLimit-Limit:
+                            $ref: '#/components/headers/HeaderRateLimitLimit'
+                        RateLimit-Remaining:
+                            $ref: '#/components/headers/HeaderRateLimitRemaining'
+                "400":
+                    $ref: '#/components/responses/badRequest'
+                "401":
+                    $ref: '#/components/responses/unauthorized'
+                "403":
+                    $ref: '#/components/responses/forbidden'
+                "404":
+                    $ref: '#/components/responses/notFound'
+                "429":
+                    $ref: '#/components/responses/tooManyRequests'
+                "500":
+                    $ref: '#/components/responses/internalServerError'
+            summary: Create One Organization Log Integration
+            tags:
+                - Push-Based Log Export
+            x-codeSamples:
+                - label: Atlas CLI
+                  lang: cURL
+                  source: atlas api pushBasedLogExport createOrgLogIntegration --help
+                - label: Go
+                  lang: go
+                  source: |
+                    import (
+                    	"os"
+                    	"context"
+                    	"log"
+                    	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+                    )
+
+                    func main() {
+                    	ctx := context.Background()
+                    	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+                    	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+                    	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+                    	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+                    	if err != nil {
+                    		log.Fatalf("Error: %v", err)
+                    	}
+
+                    	params = &sdk.CreateOrgLogIntegrationApiParams{}
+                    	sdkResp, httpResp, err := client.Push - BasedLogExportApi.
+                    		CreateOrgLogIntegrationWithParams(ctx, params).
+                    		Execute()
+                    }
+                - label: curl (Service Accounts)
+                  lang: cURL
+                  source: |-
+                    curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      --header "Content-Type: application/json" \
+                      -X POST "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/logIntegrations" \
+                      -d '{ <Payload> }'
+                - label: curl (Digest)
+                  lang: cURL
+                  source: |-
+                    curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+                      --digest --include \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      --header "Content-Type: application/json" \
+                      -X POST "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/logIntegrations" \
+                      -d '{ <Payload> }'
+            x-rolesRequirements:
+                - Organization Owner
+            x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/createOrgLogIntegration
+    /api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId}:
+        delete:
+            description: Removes one organization-level log integration configuration identified by its unique ID.
+            operationId: deleteOrgLogIntegration
+            parameters:
+                - $ref: '#/components/parameters/envelope'
+                - $ref: '#/components/parameters/orgId'
+                - $ref: '#/components/parameters/pretty'
+                - description: Unique identifier of the log integration configuration.
+                  in: path
+                  name: logIntegrationId
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "204":
+                    content:
+                        application/vnd.atlas.2025-03-12+json:
+                            x-xgen-version: "2025-03-12"
+                    description: No Content
+                    headers:
+                        RateLimit-Limit:
+                            $ref: '#/components/headers/HeaderRateLimitLimit'
+                        RateLimit-Remaining:
+                            $ref: '#/components/headers/HeaderRateLimitRemaining'
+                "400":
+                    $ref: '#/components/responses/badRequest'
+                "401":
+                    $ref: '#/components/responses/unauthorized'
+                "403":
+                    $ref: '#/components/responses/forbidden'
+                "404":
+                    $ref: '#/components/responses/notFound'
+                "429":
+                    $ref: '#/components/responses/tooManyRequests'
+                "500":
+                    $ref: '#/components/responses/internalServerError'
+            summary: Remove One Organization Log Integration
+            tags:
+                - Push-Based Log Export
+            x-codeSamples:
+                - label: Atlas CLI
+                  lang: cURL
+                  source: atlas api pushBasedLogExport deleteOrgLogIntegration --help
+                - label: Go
+                  lang: go
+                  source: |
+                    import (
+                    	"os"
+                    	"context"
+                    	"log"
+                    	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+                    )
+
+                    func main() {
+                    	ctx := context.Background()
+                    	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+                    	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+                    	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+                    	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+                    	if err != nil {
+                    		log.Fatalf("Error: %v", err)
+                    	}
+
+                    	params = &sdk.DeleteOrgLogIntegrationApiParams{}
+                    	httpResp, err := client.Push - BasedLogExportApi.
+                    		DeleteOrgLogIntegrationWithParams(ctx, params).
+                    		Execute()
+                    }
+                - label: curl (Service Accounts)
+                  lang: cURL
+                  source: |-
+                    curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X DELETE "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId}"
+                - label: curl (Digest)
+                  lang: cURL
+                  source: |-
+                    curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+                      --digest --include \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X DELETE "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId}"
+            x-rolesRequirements:
+                - Organization Owner
+            x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/deleteOrgLogIntegration
+        get:
+            description: Returns the configuration for one organization-level log integration identified by its unique ID.
+            operationId: getOrgLogIntegration
+            parameters:
+                - $ref: '#/components/parameters/envelope'
+                - $ref: '#/components/parameters/orgId'
+                - $ref: '#/components/parameters/pretty'
+                - description: Unique identifier of the log integration configuration.
+                  in: path
+                  name: logIntegrationId
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    content:
+                        application/vnd.atlas.2025-03-12+json:
+                            schema:
+                                $ref: '#/components/schemas/OrgLogIntegrationResponse'
+                            x-xgen-version: "2025-03-12"
+                    description: OK
+                    headers:
+                        RateLimit-Limit:
+                            $ref: '#/components/headers/HeaderRateLimitLimit'
+                        RateLimit-Remaining:
+                            $ref: '#/components/headers/HeaderRateLimitRemaining'
+                "400":
+                    $ref: '#/components/responses/badRequest'
+                "401":
+                    $ref: '#/components/responses/unauthorized'
+                "403":
+                    $ref: '#/components/responses/forbidden'
+                "404":
+                    $ref: '#/components/responses/notFound'
+                "429":
+                    $ref: '#/components/responses/tooManyRequests'
+                "500":
+                    $ref: '#/components/responses/internalServerError'
+            summary: Return One Organization Log Integration
+            tags:
+                - Push-Based Log Export
+            x-codeSamples:
+                - label: Atlas CLI
+                  lang: cURL
+                  source: atlas api pushBasedLogExport getOrgLogIntegration --help
+                - label: Go
+                  lang: go
+                  source: |
+                    import (
+                    	"os"
+                    	"context"
+                    	"log"
+                    	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+                    )
+
+                    func main() {
+                    	ctx := context.Background()
+                    	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+                    	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+                    	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+                    	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+                    	if err != nil {
+                    		log.Fatalf("Error: %v", err)
+                    	}
+
+                    	params = &sdk.GetOrgLogIntegrationApiParams{}
+                    	sdkResp, httpResp, err := client.Push - BasedLogExportApi.
+                    		GetOrgLogIntegrationWithParams(ctx, params).
+                    		Execute()
+                    }
+                - label: curl (Service Accounts)
+                  lang: cURL
+                  source: |-
+                    curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId}?pretty=true"
+                - label: curl (Digest)
+                  lang: cURL
+                  source: |-
+                    curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+                      --digest --include \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      -X GET "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId}?pretty=true"
+            x-rolesRequirements:
+                - Organization Owner
+            x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/getOrgLogIntegration
+        put:
+            description: Updates one organization-level log integration configuration identified by its unique ID. Read endpoints redact header values; a redacted value sent back unchanged leaves the stored value in place, so supply a header value in full only when changing it.
+            operationId: updateOrgLogIntegration
+            parameters:
+                - $ref: '#/components/parameters/envelope'
+                - $ref: '#/components/parameters/orgId'
+                - $ref: '#/components/parameters/pretty'
+                - description: Unique identifier of the log integration configuration.
+                  in: path
+                  name: logIntegrationId
+                  required: true
+                  schema:
+                    type: string
+            requestBody:
+                content:
+                    application/vnd.atlas.2025-03-12+json:
+                        schema:
+                            $ref: '#/components/schemas/OrgLogIntegrationUpdateRequest'
+                        x-xgen-version: "2025-03-12"
+                description: Log integration configuration to update.
+                required: true
+            responses:
+                "200":
+                    content:
+                        application/vnd.atlas.2025-03-12+json:
+                            schema:
+                                $ref: '#/components/schemas/OrgLogIntegrationResponse'
+                            x-xgen-version: "2025-03-12"
+                    description: OK
+                    headers:
+                        RateLimit-Limit:
+                            $ref: '#/components/headers/HeaderRateLimitLimit'
+                        RateLimit-Remaining:
+                            $ref: '#/components/headers/HeaderRateLimitRemaining'
+                "400":
+                    $ref: '#/components/responses/badRequest'
+                "401":
+                    $ref: '#/components/responses/unauthorized'
+                "403":
+                    $ref: '#/components/responses/forbidden'
+                "404":
+                    $ref: '#/components/responses/notFound'
+                "429":
+                    $ref: '#/components/responses/tooManyRequests'
+                "500":
+                    $ref: '#/components/responses/internalServerError'
+            summary: Update One Organization Log Integration
+            tags:
+                - Push-Based Log Export
+            x-codeSamples:
+                - label: Atlas CLI
+                  lang: cURL
+                  source: atlas api pushBasedLogExport updateOrgLogIntegration --help
+                - label: Go
+                  lang: go
+                  source: |
+                    import (
+                    	"os"
+                    	"context"
+                    	"log"
+                    	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+                    )
+
+                    func main() {
+                    	ctx := context.Background()
+                    	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+                    	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+                    	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+                    	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+                    	if err != nil {
+                    		log.Fatalf("Error: %v", err)
+                    	}
+
+                    	params = &sdk.UpdateOrgLogIntegrationApiParams{}
+                    	sdkResp, httpResp, err := client.Push - BasedLogExportApi.
+                    		UpdateOrgLogIntegrationWithParams(ctx, params).
+                    		Execute()
+                    }
+                - label: curl (Service Accounts)
+                  lang: cURL
+                  source: |-
+                    curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      --header "Content-Type: application/json" \
+                      -X PUT "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId}" \
+                      -d '{ <Payload> }'
+                - label: curl (Digest)
+                  lang: cURL
+                  source: |-
+                    curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+                      --digest --include \
+                      --header "Accept: application/vnd.atlas.2025-03-12+json" \
+                      --header "Content-Type: application/json" \
+                      -X PUT "https://cloud.mongodb.com/api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId}" \
+                      -d '{ <Payload> }'
+            x-rolesRequirements:
+                - Organization Owner
+            x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Push-Based-Log-Export/operation/updateOrgLogIntegration
     /api/atlas/v2/orgs/{orgId}/maintenanceSettings:
         get:
             description: Returns maintenance settings for the specified organization.
