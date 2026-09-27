@@ -6,13 +6,18 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateGroupLogIntegration**](PushBasedLogExportAPI.md#CreateGroupLogIntegration) | **Post** /api/atlas/v2/groups/{groupId}/logIntegrations | Create One Log Integration
 [**CreateLogExport**](PushBasedLogExportAPI.md#CreateLogExport) | **Post** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Create One Push-Based Log Export Configuration in One Project
+[**CreateOrgLogIntegration**](PushBasedLogExportAPI.md#CreateOrgLogIntegration) | **Post** /api/atlas/v2/orgs/{orgId}/logIntegrations | Create One Organization Log Integration
 [**DeleteGroupLogIntegration**](PushBasedLogExportAPI.md#DeleteGroupLogIntegration) | **Delete** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Remove One Log Integration
 [**DeleteLogExport**](PushBasedLogExportAPI.md#DeleteLogExport) | **Delete** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Disable Push-Based Log Export for One Project
+[**DeleteOrgLogIntegration**](PushBasedLogExportAPI.md#DeleteOrgLogIntegration) | **Delete** /api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId} | Remove One Organization Log Integration
 [**GetGroupLogIntegration**](PushBasedLogExportAPI.md#GetGroupLogIntegration) | **Get** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Return One Log Integration
 [**GetLogExport**](PushBasedLogExportAPI.md#GetLogExport) | **Get** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Return One Push-Based Log Export Configuration in One Project
+[**GetOrgLogIntegration**](PushBasedLogExportAPI.md#GetOrgLogIntegration) | **Get** /api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId} | Return One Organization Log Integration
 [**ListGroupLogIntegrations**](PushBasedLogExportAPI.md#ListGroupLogIntegrations) | **Get** /api/atlas/v2/groups/{groupId}/logIntegrations | Return All Active Log Integrations
+[**ListOrgLogIntegrations**](PushBasedLogExportAPI.md#ListOrgLogIntegrations) | **Get** /api/atlas/v2/orgs/{orgId}/logIntegrations | Return All Organization Log Integrations
 [**UpdateGroupLogIntegration**](PushBasedLogExportAPI.md#UpdateGroupLogIntegration) | **Put** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Update One Log Integration
 [**UpdateLogExport**](PushBasedLogExportAPI.md#UpdateLogExport) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update One Push-Based Log Export Configuration in One Project
+[**UpdateOrgLogIntegration**](PushBasedLogExportAPI.md#UpdateOrgLogIntegration) | **Put** /api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId} | Update One Organization Log Integration
 
 
 
@@ -178,6 +183,88 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CreateOrgLogIntegration
+
+> OrgLogIntegrationResponse CreateOrgLogIntegration(ctx, orgId, orgLogIntegrationRequest OrgLogIntegrationRequest).Execute()
+
+Create One Organization Log Integration
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    orgLogIntegrationRequest := *admin.NewOrgLogIntegrationRequest([]string{"LogTypes_example"}, "Type_example") // OrgLogIntegrationRequest | 
+
+    resp, r, err := sdk.PushBasedLogExportAPI.CreateOrgLogIntegration(context.Background(), orgId, &orgLogIntegrationRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportAPI.CreateOrgLogIntegration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `CreateOrgLogIntegration`: OrgLogIntegrationResponse
+    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportAPI.CreateOrgLogIntegration`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateOrgLogIntegrationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **orgLogIntegrationRequest** | [**OrgLogIntegrationRequest**](OrgLogIntegrationRequest.md) | Log integration configuration to create. | 
+
+### Return type
+
+[**OrgLogIntegrationResponse**](OrgLogIntegrationResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2025-03-12+json
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeleteGroupLogIntegration
 
 > DeleteGroupLogIntegration(ctx, groupId, id).Execute()
@@ -331,6 +418,87 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteOrgLogIntegration
+
+> DeleteOrgLogIntegration(ctx, orgId, logIntegrationId).Execute()
+
+Remove One Organization Log Integration
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    logIntegrationId := "logIntegrationId_example" // string | 
+
+    r, err := sdk.PushBasedLogExportAPI.DeleteOrgLogIntegration(context.Background(), orgId, logIntegrationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportAPI.DeleteOrgLogIntegration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**logIntegrationId** | **string** | Unique identifier of the log integration configuration. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteOrgLogIntegrationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -500,6 +668,89 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetOrgLogIntegration
+
+> OrgLogIntegrationResponse GetOrgLogIntegration(ctx, orgId, logIntegrationId).Execute()
+
+Return One Organization Log Integration
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    logIntegrationId := "logIntegrationId_example" // string | 
+
+    resp, r, err := sdk.PushBasedLogExportAPI.GetOrgLogIntegration(context.Background(), orgId, logIntegrationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportAPI.GetOrgLogIntegration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetOrgLogIntegration`: OrgLogIntegrationResponse
+    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportAPI.GetOrgLogIntegration`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**logIntegrationId** | **string** | Unique identifier of the log integration configuration. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOrgLogIntegrationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**OrgLogIntegrationResponse**](OrgLogIntegrationResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListGroupLogIntegrations
 
 > PaginatedLogIntegrationResponse ListGroupLogIntegrations(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).IntegrationType(integrationType).Execute()
@@ -574,6 +825,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PaginatedLogIntegrationResponse**](PaginatedLogIntegrationResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListOrgLogIntegrations
+
+> PaginatedOrgLogIntegrationResponse ListOrgLogIntegrations(ctx, orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+
+Return All Organization Log Integrations
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    includeCount := true // bool |  (optional) (default to true)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
+
+    resp, r, err := sdk.PushBasedLogExportAPI.ListOrgLogIntegrations(context.Background(), orgId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportAPI.ListOrgLogIntegrations`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListOrgLogIntegrations`: PaginatedOrgLogIntegrationResponse
+    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportAPI.ListOrgLogIntegrations`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListOrgLogIntegrationsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **includeCount** | **bool** | Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation. | [default to true]
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+
+### Return type
+
+[**PaginatedOrgLogIntegrationResponse**](PaginatedOrgLogIntegrationResponse.md)
 
 ### Authorization
 [DigestAuth](../README.md#Authentication)
@@ -747,6 +1084,91 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/vnd.atlas.2023-01-01+json
 - **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateOrgLogIntegration
+
+> OrgLogIntegrationResponse UpdateOrgLogIntegration(ctx, orgId, logIntegrationId, orgLogIntegrationUpdateRequest OrgLogIntegrationUpdateRequest).Execute()
+
+Update One Organization Log Integration
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    orgId := "4888442a3354817a7320eb61" // string | 
+    logIntegrationId := "logIntegrationId_example" // string | 
+    orgLogIntegrationUpdateRequest := *admin.NewOrgLogIntegrationUpdateRequest([]string{"LogTypes_example"}, "Type_example") // OrgLogIntegrationUpdateRequest | 
+
+    resp, r, err := sdk.PushBasedLogExportAPI.UpdateOrgLogIntegration(context.Background(), orgId, logIntegrationId, &orgLogIntegrationUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PushBasedLogExportAPI.UpdateOrgLogIntegration`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `UpdateOrgLogIntegration`: OrgLogIntegrationResponse
+    fmt.Fprintf(os.Stdout, "Response from `PushBasedLogExportAPI.UpdateOrgLogIntegration`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**orgId** | **string** | Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [&#x60;/orgs&#x60;](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access. | 
+**logIntegrationId** | **string** | Unique identifier of the log integration configuration. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateOrgLogIntegrationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **orgLogIntegrationUpdateRequest** | [**OrgLogIntegrationUpdateRequest**](OrgLogIntegrationUpdateRequest.md) | Log integration configuration to update. | 
+
+### Return type
+
+[**OrgLogIntegrationResponse**](OrgLogIntegrationResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2025-03-12+json
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

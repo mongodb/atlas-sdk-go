@@ -394,13 +394,18 @@ Class        | Method        | HTTP request  | Description   |
 *ProjectsAPI* | [UpdateInviteById](./docs/ProjectsAPI.md#updateinvitebyid) | **Patch** /api/atlas/v2/groups/{groupId}/invites/{invitationId} | Update One Invitation in One Project by Invitation ID |
 *PushBasedLogExportAPI* | [CreateGroupLogIntegration](./docs/PushBasedLogExportAPI.md#creategrouplogintegration) | **Post** /api/atlas/v2/groups/{groupId}/logIntegrations | Create One Log Integration |
 *PushBasedLogExportAPI* | [CreateLogExport](./docs/PushBasedLogExportAPI.md#createlogexport) | **Post** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Create One Push-Based Log Export Configuration in One Project |
+*PushBasedLogExportAPI* | [CreateOrgLogIntegration](./docs/PushBasedLogExportAPI.md#createorglogintegration) | **Post** /api/atlas/v2/orgs/{orgId}/logIntegrations | Create One Organization Log Integration |
 *PushBasedLogExportAPI* | [DeleteGroupLogIntegration](./docs/PushBasedLogExportAPI.md#deletegrouplogintegration) | **Delete** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Remove One Log Integration |
 *PushBasedLogExportAPI* | [DeleteLogExport](./docs/PushBasedLogExportAPI.md#deletelogexport) | **Delete** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Disable Push-Based Log Export for One Project |
+*PushBasedLogExportAPI* | [DeleteOrgLogIntegration](./docs/PushBasedLogExportAPI.md#deleteorglogintegration) | **Delete** /api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId} | Remove One Organization Log Integration |
 *PushBasedLogExportAPI* | [GetGroupLogIntegration](./docs/PushBasedLogExportAPI.md#getgrouplogintegration) | **Get** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Return One Log Integration |
 *PushBasedLogExportAPI* | [GetLogExport](./docs/PushBasedLogExportAPI.md#getlogexport) | **Get** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Return One Push-Based Log Export Configuration in One Project |
+*PushBasedLogExportAPI* | [GetOrgLogIntegration](./docs/PushBasedLogExportAPI.md#getorglogintegration) | **Get** /api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId} | Return One Organization Log Integration |
 *PushBasedLogExportAPI* | [ListGroupLogIntegrations](./docs/PushBasedLogExportAPI.md#listgrouplogintegrations) | **Get** /api/atlas/v2/groups/{groupId}/logIntegrations | Return All Active Log Integrations |
+*PushBasedLogExportAPI* | [ListOrgLogIntegrations](./docs/PushBasedLogExportAPI.md#listorglogintegrations) | **Get** /api/atlas/v2/orgs/{orgId}/logIntegrations | Return All Organization Log Integrations |
 *PushBasedLogExportAPI* | [UpdateGroupLogIntegration](./docs/PushBasedLogExportAPI.md#updategrouplogintegration) | **Put** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Update One Log Integration |
 *PushBasedLogExportAPI* | [UpdateLogExport](./docs/PushBasedLogExportAPI.md#updatelogexport) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update One Push-Based Log Export Configuration in One Project |
+*PushBasedLogExportAPI* | [UpdateOrgLogIntegration](./docs/PushBasedLogExportAPI.md#updateorglogintegration) | **Put** /api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId} | Update One Organization Log Integration |
 *QueryShapeInsightsAPI* | [GetClusterQueryShape](./docs/QueryShapeInsightsAPI.md#getclusterqueryshape) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash} | Return One Query Shape |
 *QueryShapeInsightsAPI* | [GetQueryShapeDetails](./docs/QueryShapeInsightsAPI.md#getqueryshapedetails) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details | Return Query Shape Details |
 *QueryShapeInsightsAPI* | [ListClusterQueryShapes](./docs/QueryShapeInsightsAPI.md#listclusterqueryshapes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes | Return All Query Shapes |
@@ -586,6 +591,8 @@ Class        | Method        | HTTP request  | Description   |
  - [ApiMeasurementsGeneralViewAtlas](./docs/ApiMeasurementsGeneralViewAtlas.md)
  - [ApiPrivateDownloadDeliveryUrl](./docs/ApiPrivateDownloadDeliveryUrl.md)
  - [ApiPublicUsageDetailsQueryRequest](./docs/ApiPublicUsageDetailsQueryRequest.md)
+ - [ApiSearchAutoScaling](./docs/ApiSearchAutoScaling.md)
+ - [ApiSearchComputeAutoScaling](./docs/ApiSearchComputeAutoScaling.md)
  - [ApiSearchDeploymentEffectiveSpec](./docs/ApiSearchDeploymentEffectiveSpec.md)
  - [ApiSearchDeploymentRequest](./docs/ApiSearchDeploymentRequest.md)
  - [ApiSearchDeploymentRequestSpec](./docs/ApiSearchDeploymentRequestSpec.md)
@@ -846,6 +853,10 @@ Class        | Method        | HTTP request  | Description   |
  - [OrgDelegationSettingsUpdateRequest](./docs/OrgDelegationSettingsUpdateRequest.md)
  - [OrgFederationSettings](./docs/OrgFederationSettings.md)
  - [OrgGroup](./docs/OrgGroup.md)
+ - [OrgLogIntegrationHeader](./docs/OrgLogIntegrationHeader.md)
+ - [OrgLogIntegrationRequest](./docs/OrgLogIntegrationRequest.md)
+ - [OrgLogIntegrationResponse](./docs/OrgLogIntegrationResponse.md)
+ - [OrgLogIntegrationUpdateRequest](./docs/OrgLogIntegrationUpdateRequest.md)
  - [OrgMcpConfigResponse](./docs/OrgMcpConfigResponse.md)
  - [OrgMcpConfigUpdateRequest](./docs/OrgMcpConfigUpdateRequest.md)
  - [OrgPaginatedEvent](./docs/OrgPaginatedEvent.md)
@@ -922,6 +933,7 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedNetworkAccess](./docs/PaginatedNetworkAccess.md)
  - [PaginatedOnlineArchive](./docs/PaginatedOnlineArchive.md)
  - [PaginatedOrgGroup](./docs/PaginatedOrgGroup.md)
+ - [PaginatedOrgLogIntegrationResponse](./docs/PaginatedOrgLogIntegrationResponse.md)
  - [PaginatedOrgMcpConfig](./docs/PaginatedOrgMcpConfig.md)
  - [PaginatedOrgServiceAccounts](./docs/PaginatedOrgServiceAccounts.md)
  - [PaginatedOrgUser](./docs/PaginatedOrgUser.md)

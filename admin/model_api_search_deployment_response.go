@@ -4,6 +4,12 @@ package admin
 
 // ApiSearchDeploymentResponse struct for ApiSearchDeploymentResponse
 type ApiSearchDeploymentResponse struct {
+	// Autoscaling settings configured for this Search deployment.
+	// Read only field.
+	AutoScaling *ApiSearchAutoScaling `json:"autoScaling,omitempty"`
+	// List of starting settings for the Search Nodes in each cluster region.
+	// Read only field.
+	BaselineSpecs *[]ApiSearchDeploymentEffectiveSpec `json:"baselineSpecs,omitempty"`
 	// List of settings that configure the Search Nodes for your cluster. Each entry describes one region or, when `shardId` is present, one shard in one region.
 	// Read only field.
 	EffectiveSpecs *[]ApiSearchDeploymentEffectiveSpec `json:"effectiveSpecs,omitempty"`
@@ -49,6 +55,86 @@ func NewApiSearchDeploymentResponse() *ApiSearchDeploymentResponse {
 func NewApiSearchDeploymentResponseWithDefaults() *ApiSearchDeploymentResponse {
 	this := ApiSearchDeploymentResponse{}
 	return &this
+}
+
+// GetAutoScaling returns the AutoScaling field value if set, zero value otherwise
+func (o *ApiSearchDeploymentResponse) GetAutoScaling() ApiSearchAutoScaling {
+	if o == nil || IsNil(o.AutoScaling) {
+		var ret ApiSearchAutoScaling
+		return ret
+	}
+	return *o.AutoScaling
+}
+
+// GetAutoScalingOk returns a tuple with the AutoScaling field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiSearchDeploymentResponse) GetAutoScalingOk() (*ApiSearchAutoScaling, bool) {
+	if o == nil || IsNil(o.AutoScaling) {
+		return nil, false
+	}
+
+	return o.AutoScaling, true
+}
+
+// HasAutoScaling returns a boolean if a field has been set.
+func (o *ApiSearchDeploymentResponse) HasAutoScaling() bool {
+	if o != nil && !IsNil(o.AutoScaling) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoScaling gets a reference to the given ApiSearchAutoScaling and assigns it to the AutoScaling field.
+func (o *ApiSearchDeploymentResponse) SetAutoScaling(v ApiSearchAutoScaling) {
+	o.AutoScaling = &v
+	o.NullFields = removeNullField(o.NullFields, "AutoScaling")
+}
+
+// SetAutoScalingNil sets AutoScaling to an explicit JSON null when marshaled.
+func (o *ApiSearchDeploymentResponse) SetAutoScalingNil() {
+	o.AutoScaling = nil
+	o.NullFields = addNullField(o.NullFields, "AutoScaling")
+}
+
+// GetBaselineSpecs returns the BaselineSpecs field value if set, zero value otherwise
+func (o *ApiSearchDeploymentResponse) GetBaselineSpecs() []ApiSearchDeploymentEffectiveSpec {
+	if o == nil || IsNil(o.BaselineSpecs) {
+		var ret []ApiSearchDeploymentEffectiveSpec
+		return ret
+	}
+	return *o.BaselineSpecs
+}
+
+// GetBaselineSpecsOk returns a tuple with the BaselineSpecs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiSearchDeploymentResponse) GetBaselineSpecsOk() (*[]ApiSearchDeploymentEffectiveSpec, bool) {
+	if o == nil || IsNil(o.BaselineSpecs) {
+		return nil, false
+	}
+
+	return o.BaselineSpecs, true
+}
+
+// HasBaselineSpecs returns a boolean if a field has been set.
+func (o *ApiSearchDeploymentResponse) HasBaselineSpecs() bool {
+	if o != nil && !IsNil(o.BaselineSpecs) {
+		return true
+	}
+
+	return false
+}
+
+// SetBaselineSpecs gets a reference to the given []ApiSearchDeploymentEffectiveSpec and assigns it to the BaselineSpecs field.
+func (o *ApiSearchDeploymentResponse) SetBaselineSpecs(v []ApiSearchDeploymentEffectiveSpec) {
+	o.BaselineSpecs = &v
+	o.NullFields = removeNullField(o.NullFields, "BaselineSpecs")
+}
+
+// SetBaselineSpecsNil sets BaselineSpecs to an explicit JSON null when marshaled.
+func (o *ApiSearchDeploymentResponse) SetBaselineSpecsNil() {
+	o.BaselineSpecs = nil
+	o.NullFields = addNullField(o.NullFields, "BaselineSpecs")
 }
 
 // GetEffectiveSpecs returns the EffectiveSpecs field value if set, zero value otherwise

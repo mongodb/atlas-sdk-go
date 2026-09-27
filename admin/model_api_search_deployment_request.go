@@ -4,6 +4,8 @@ package admin
 
 // ApiSearchDeploymentRequest struct for ApiSearchDeploymentRequest
 type ApiSearchDeploymentRequest struct {
+	// Settings that let Atlas change the Search Node tier on its own. Bounds apply to the whole deployment, and Atlas scales each region and shard independently within them. Omit to keep autoscaling off.
+	AutoScaling *ApiSearchAutoScaling `json:"autoScaling,omitempty"`
 	// Default number of Search Nodes per region. Applied to a region without an explicit override.
 	DefaultNodeCount *int `json:"defaultNodeCount,omitempty"`
 	// List of settings that configure the Search Nodes for your cluster. Provide one element per region when configuring asymmetric deployments; a single element applies to all regions.
@@ -35,6 +37,46 @@ func NewApiSearchDeploymentRequest(specs []ApiSearchDeploymentRequestSpec) *ApiS
 func NewApiSearchDeploymentRequestWithDefaults() *ApiSearchDeploymentRequest {
 	this := ApiSearchDeploymentRequest{}
 	return &this
+}
+
+// GetAutoScaling returns the AutoScaling field value if set, zero value otherwise
+func (o *ApiSearchDeploymentRequest) GetAutoScaling() ApiSearchAutoScaling {
+	if o == nil || IsNil(o.AutoScaling) {
+		var ret ApiSearchAutoScaling
+		return ret
+	}
+	return *o.AutoScaling
+}
+
+// GetAutoScalingOk returns a tuple with the AutoScaling field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiSearchDeploymentRequest) GetAutoScalingOk() (*ApiSearchAutoScaling, bool) {
+	if o == nil || IsNil(o.AutoScaling) {
+		return nil, false
+	}
+
+	return o.AutoScaling, true
+}
+
+// HasAutoScaling returns a boolean if a field has been set.
+func (o *ApiSearchDeploymentRequest) HasAutoScaling() bool {
+	if o != nil && !IsNil(o.AutoScaling) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoScaling gets a reference to the given ApiSearchAutoScaling and assigns it to the AutoScaling field.
+func (o *ApiSearchDeploymentRequest) SetAutoScaling(v ApiSearchAutoScaling) {
+	o.AutoScaling = &v
+	o.NullFields = removeNullField(o.NullFields, "AutoScaling")
+}
+
+// SetAutoScalingNil sets AutoScaling to an explicit JSON null when marshaled.
+func (o *ApiSearchDeploymentRequest) SetAutoScalingNil() {
+	o.AutoScaling = nil
+	o.NullFields = addNullField(o.NullFields, "AutoScaling")
 }
 
 // GetDefaultNodeCount returns the DefaultNodeCount field value if set, zero value otherwise
