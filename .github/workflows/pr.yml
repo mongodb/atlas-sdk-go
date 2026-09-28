@@ -39,6 +39,12 @@ jobs:
           node-version: 22.x
           cache: npm
           cache-dependency-path: ./tools/package-lock.json
+      - name: Use npm version compatible with the committed lockfile
+        # Dependabot regenerates the lockfile with npm >= 11.11.0, which records
+        # libc fields on platform-specific optional deps. The npm bundled with
+        # Node 22 is 10.x and silently strips them, so `npm install` in the
+        # generation step would fail the final `git diff --exit-code`.
+        run: npm install -g npm@11.17.0
       - working-directory: ./tools
         run: |
           npm install
