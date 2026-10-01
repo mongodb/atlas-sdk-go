@@ -280,11 +280,11 @@ func (c *APIClient) prepareRequest(
 				w.Boundary()
 				part, err1 := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
 				if err1 != nil {
-						return nil, err
+						return nil, err1
 				}
 				_, err1 = part.Write(formFile.fileBytes)
 				if err1 != nil {
-						return nil, err
+						return nil, err1
 				}
 			}
 		}
@@ -486,10 +486,7 @@ func addFile(w *multipart.Writer, fieldName, path string) error {
 	if err != nil {
 		return err
 	}
-	err = file.Close()
-	if err != nil {
-		return err
-	}
+	defer file.Close()
 
 	part, err := w.CreateFormFile(fieldName, filepath.Base(path))
 	if err != nil {
