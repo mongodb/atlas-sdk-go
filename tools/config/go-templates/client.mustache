@@ -253,7 +253,7 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// add form parameters and file if available.
-	if strings.HasPrefix(headerParams["Content-Type"], "multipart/form-data") && len(formParams) > 0 || (len(formFiles) > 0) {
+	if (strings.HasPrefix(headerParams["Content-Type"], "multipart/form-data") && len(formParams) > 0) || len(formFiles) > 0 {
 		if body != nil {
 			return nil, errors.New("cannot specify postBody and multipart form at the same time")
 		}
@@ -276,17 +276,21 @@ func (c *APIClient) prepareRequest(
 			}
 		}
 		for _, formFile := range formFiles {
-			if len(formFile.fileBytes) > 0 && formFile.fileName != "" {
-				w.Boundary()
-				part, err1 := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
-				if err1 != nil {
-						return nil, err
-				}
-				_, err1 = part.Write(formFile.fileBytes)
-				if err1 != nil {
-						return nil, err
-				}
+			if len(formFile.fileBytes) == 0 || formFile.fileName == "" {
+				continue
 			}
+			part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
+			if err != nil {
+					return nil, err
+			}
+			if _, err = part.Write(formFile.fileBytes); err != nil {
+					return nil, err
+			}
+		}
+
+		// Finish the multipart body before calculating its length
+		if err := w.Close(); err != nil {
+			return nil, err
 		}
 
 		// Set the Boundary in the Content-Type
@@ -294,7 +298,6 @@ func (c *APIClient) prepareRequest(
 
 		// Set Content-Length
 		headerParams["Content-Length"] = fmt.Sprintf("%d", body.Len())
-		w.Close()
 	}
 
 	if strings.HasPrefix(headerParams["Content-Type"], "application/x-www-form-urlencoded") && len(formParams) > 0 {
@@ -486,10 +489,7 @@ func addFile(w *multipart.Writer, fieldName, path string) error {
 	if err != nil {
 		return err
 	}
-	err = file.Close()
-	if err != nil {
-		return err
-	}
+	defer file.Close()
 
 	part, err := w.CreateFormFile(fieldName, filepath.Base(path))
 	if err != nil {
