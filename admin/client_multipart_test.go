@@ -54,6 +54,18 @@ func TestAddFile_WritesFilePayload(t *testing.T) {
 	}
 }
 
+func TestAddFile_MissingFileReturnsOpenError(t *testing.T) {
+	w := multipart.NewWriter(&bytes.Buffer{})
+
+	err := addFile(w, "upload", filepath.Join(t.TempDir(), "does-not-exist.txt"))
+	if err == nil {
+		t.Fatal("expected addFile to return an error for a missing file, got nil")
+	}
+	if !os.IsNotExist(err) {
+		t.Fatalf("expected the underlying file-open error to surface unmasked, got: %v", err)
+	}
+}
+
 func TestPrepareRequest_MultipartAtFileSuccess(t *testing.T) {
 	client := newMultipartTestClient()
 

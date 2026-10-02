@@ -397,7 +397,7 @@ func (c *APIClient) prepareRequest(
 	}
 
 	// add form parameters and file if available.
-	if strings.HasPrefix(headerParams["Content-Type"], "multipart/form-data") && len(formParams) > 0 || (len(formFiles) > 0) {
+	if (strings.HasPrefix(headerParams["Content-Type"], "multipart/form-data") && len(formParams) > 0) || len(formFiles) > 0 {
 		if body != nil {
 			return nil, errors.New("cannot specify postBody and multipart form at the same time")
 		}
@@ -420,16 +420,15 @@ func (c *APIClient) prepareRequest(
 			}
 		}
 		for _, formFile := range formFiles {
-			if len(formFile.fileBytes) > 0 && formFile.fileName != "" {
-				w.Boundary()
-				part, err1 := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
-				if err1 != nil {
-					return nil, err1
-				}
-				_, err1 = part.Write(formFile.fileBytes)
-				if err1 != nil {
-					return nil, err1
-				}
+			if len(formFile.fileBytes) == 0 || formFile.fileName == "" {
+				continue
+			}
+			part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
+			if err != nil {
+				return nil, err
+			}
+			if _, err = part.Write(formFile.fileBytes); err != nil {
+				return nil, err
 			}
 		}
 
