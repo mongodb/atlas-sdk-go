@@ -64,14 +64,18 @@ type PushBasedLogExportAPI interface {
 	CreateLogExportExecute(r CreateLogExportApiRequest) (*http.Response, error)
 
 	/*
-		CreateOrgLogIntegration Create One Organization Log Integration
+			CreateOrgLogIntegration Create One Organization Log Integration
 
-		Creates a new organization-level log integration configuration identified by a unique ID.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@param orgLogIntegrationRequest Log integration configuration to create.
-		@return CreateOrgLogIntegrationApiRequest
+		 Creates a new organization-level log integration configuration identified by a unique ID. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param orgLogIntegrationRequest Log integration configuration to create.
+			@return CreateOrgLogIntegrationApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	CreateOrgLogIntegration(ctx context.Context, orgId string, orgLogIntegrationRequest *OrgLogIntegrationRequest) CreateOrgLogIntegrationApiRequest
 	/*
@@ -81,6 +85,8 @@ type PushBasedLogExportAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param CreateOrgLogIntegrationApiParams - Parameters for the request
 		@return CreateOrgLogIntegrationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	CreateOrgLogIntegrationWithParams(ctx context.Context, args *CreateOrgLogIntegrationApiParams) CreateOrgLogIntegrationApiRequest
 
@@ -139,14 +145,18 @@ type PushBasedLogExportAPI interface {
 	DeleteLogExportExecute(r DeleteLogExportApiRequest) (*http.Response, error)
 
 	/*
-		DeleteOrgLogIntegration Remove One Organization Log Integration
+			DeleteOrgLogIntegration Remove One Organization Log Integration
 
-		Removes one organization-level log integration configuration identified by its unique ID.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@param logIntegrationId Unique identifier of the log integration configuration.
-		@return DeleteOrgLogIntegrationApiRequest
+		 Removes one organization-level log integration configuration identified by its unique ID. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param logIntegrationId Unique identifier of the log integration configuration.
+			@return DeleteOrgLogIntegrationApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	DeleteOrgLogIntegration(ctx context.Context, orgId string, logIntegrationId string) DeleteOrgLogIntegrationApiRequest
 	/*
@@ -156,6 +166,8 @@ type PushBasedLogExportAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param DeleteOrgLogIntegrationApiParams - Parameters for the request
 		@return DeleteOrgLogIntegrationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	DeleteOrgLogIntegrationWithParams(ctx context.Context, args *DeleteOrgLogIntegrationApiParams) DeleteOrgLogIntegrationApiRequest
 
@@ -214,14 +226,18 @@ type PushBasedLogExportAPI interface {
 	GetLogExportExecute(r GetLogExportApiRequest) (*PushBasedLogExportProject, *http.Response, error)
 
 	/*
-		GetOrgLogIntegration Return One Organization Log Integration
+			GetOrgLogIntegration Return One Organization Log Integration
 
-		Returns the configuration for one organization-level log integration identified by its unique ID.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@param logIntegrationId Unique identifier of the log integration configuration.
-		@return GetOrgLogIntegrationApiRequest
+		 Returns the configuration for one organization-level log integration identified by its unique ID. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param logIntegrationId Unique identifier of the log integration configuration.
+			@return GetOrgLogIntegrationApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	GetOrgLogIntegration(ctx context.Context, orgId string, logIntegrationId string) GetOrgLogIntegrationApiRequest
 	/*
@@ -231,6 +247,8 @@ type PushBasedLogExportAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param GetOrgLogIntegrationApiParams - Parameters for the request
 		@return GetOrgLogIntegrationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	GetOrgLogIntegrationWithParams(ctx context.Context, args *GetOrgLogIntegrationApiParams) GetOrgLogIntegrationApiRequest
 
@@ -261,13 +279,17 @@ type PushBasedLogExportAPI interface {
 	ListGroupLogIntegrationsExecute(r ListGroupLogIntegrationsApiRequest) (*PaginatedLogIntegrationResponse, *http.Response, error)
 
 	/*
-		ListOrgLogIntegrations Return All Organization Log Integrations
+			ListOrgLogIntegrations Return All Organization Log Integrations
 
-		Returns all log integration configurations for the organization.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@return ListOrgLogIntegrationsApiRequest
+		 Returns all log integration configurations for the organization. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@return ListOrgLogIntegrationsApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	ListOrgLogIntegrations(ctx context.Context, orgId string) ListOrgLogIntegrationsApiRequest
 	/*
@@ -277,6 +299,8 @@ type PushBasedLogExportAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param ListOrgLogIntegrationsApiParams - Parameters for the request
 		@return ListOrgLogIntegrationsApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	ListOrgLogIntegrationsWithParams(ctx context.Context, args *ListOrgLogIntegrationsApiParams) ListOrgLogIntegrationsApiRequest
 
@@ -337,15 +361,19 @@ type PushBasedLogExportAPI interface {
 	UpdateLogExportExecute(r UpdateLogExportApiRequest) (*http.Response, error)
 
 	/*
-		UpdateOrgLogIntegration Update One Organization Log Integration
+			UpdateOrgLogIntegration Update One Organization Log Integration
 
-		Updates one organization-level log integration configuration identified by its unique ID. Read endpoints redact header values; a redacted value sent back unchanged leaves the stored value in place, so supply a header value in full only when changing it.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
-		@param logIntegrationId Unique identifier of the log integration configuration.
-		@param orgLogIntegrationUpdateRequest Log integration configuration to update.
-		@return UpdateOrgLogIntegrationApiRequest
+		 Updates one organization-level log integration configuration identified by its unique ID. Read endpoints redact header values; a redacted value sent back unchanged leaves the stored value in place, so supply a header value in full only when changing it. Deprecated versions: v2-{2025-03-12}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
+			@param logIntegrationId Unique identifier of the log integration configuration.
+			@param orgLogIntegrationUpdateRequest Log integration configuration to update.
+			@return UpdateOrgLogIntegrationApiRequest
+
+			Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	UpdateOrgLogIntegration(ctx context.Context, orgId string, logIntegrationId string, orgLogIntegrationUpdateRequest *OrgLogIntegrationUpdateRequest) UpdateOrgLogIntegrationApiRequest
 	/*
@@ -355,6 +383,8 @@ type PushBasedLogExportAPI interface {
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param UpdateOrgLogIntegrationApiParams - Parameters for the request
 		@return UpdateOrgLogIntegrationApiRequest
+
+		Deprecated: this method has been deprecated. Please check the latest resource version for PushBasedLogExportAPI
 	*/
 	UpdateOrgLogIntegrationWithParams(ctx context.Context, args *UpdateOrgLogIntegrationApiParams) UpdateOrgLogIntegrationApiRequest
 
@@ -631,11 +661,15 @@ func (r CreateOrgLogIntegrationApiRequest) Execute() (*OrgLogIntegrationResponse
 /*
 CreateOrgLogIntegration Create One Organization Log Integration
 
-Creates a new organization-level log integration configuration identified by a unique ID.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Creates a new organization-level log integration configuration identified by a unique ID. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return CreateOrgLogIntegrationApiRequest
+
+Deprecated
 */
 func (a *PushBasedLogExportAPIService) CreateOrgLogIntegration(ctx context.Context, orgId string, orgLogIntegrationRequest *OrgLogIntegrationRequest) CreateOrgLogIntegrationApiRequest {
 	return CreateOrgLogIntegrationApiRequest{
@@ -649,6 +683,8 @@ func (a *PushBasedLogExportAPIService) CreateOrgLogIntegration(ctx context.Conte
 // CreateOrgLogIntegrationExecute executes the request
 //
 //	@return OrgLogIntegrationResponse
+//
+// Deprecated
 func (a *PushBasedLogExportAPIService) CreateOrgLogIntegrationExecute(r CreateOrgLogIntegrationApiRequest) (*OrgLogIntegrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -679,7 +715,7 @@ func (a *PushBasedLogExportAPIService) CreateOrgLogIntegrationExecute(r CreateOr
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -688,7 +724,7 @@ func (a *PushBasedLogExportAPIService) CreateOrgLogIntegrationExecute(r CreateOr
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -972,12 +1008,16 @@ func (r DeleteOrgLogIntegrationApiRequest) Execute() (*http.Response, error) {
 /*
 DeleteOrgLogIntegration Remove One Organization Log Integration
 
-Removes one organization-level log integration configuration identified by its unique ID.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Removes one organization-level log integration configuration identified by its unique ID. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param logIntegrationId Unique identifier of the log integration configuration.
 	@return DeleteOrgLogIntegrationApiRequest
+
+Deprecated
 */
 func (a *PushBasedLogExportAPIService) DeleteOrgLogIntegration(ctx context.Context, orgId string, logIntegrationId string) DeleteOrgLogIntegrationApiRequest {
 	return DeleteOrgLogIntegrationApiRequest{
@@ -989,6 +1029,7 @@ func (a *PushBasedLogExportAPIService) DeleteOrgLogIntegration(ctx context.Conte
 }
 
 // DeleteOrgLogIntegrationExecute executes the request
+// Deprecated
 func (a *PushBasedLogExportAPIService) DeleteOrgLogIntegrationExecute(r DeleteOrgLogIntegrationApiRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
@@ -1031,7 +1072,7 @@ func (a *PushBasedLogExportAPIService) DeleteOrgLogIntegrationExecute(r DeleteOr
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1334,12 +1375,16 @@ func (r GetOrgLogIntegrationApiRequest) Execute() (*OrgLogIntegrationResponse, *
 /*
 GetOrgLogIntegration Return One Organization Log Integration
 
-Returns the configuration for one organization-level log integration identified by its unique ID.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns the configuration for one organization-level log integration identified by its unique ID. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param logIntegrationId Unique identifier of the log integration configuration.
 	@return GetOrgLogIntegrationApiRequest
+
+Deprecated
 */
 func (a *PushBasedLogExportAPIService) GetOrgLogIntegration(ctx context.Context, orgId string, logIntegrationId string) GetOrgLogIntegrationApiRequest {
 	return GetOrgLogIntegrationApiRequest{
@@ -1353,6 +1398,8 @@ func (a *PushBasedLogExportAPIService) GetOrgLogIntegration(ctx context.Context,
 // GetOrgLogIntegrationExecute executes the request
 //
 //	@return OrgLogIntegrationResponse
+//
+// Deprecated
 func (a *PushBasedLogExportAPIService) GetOrgLogIntegrationExecute(r GetOrgLogIntegrationApiRequest) (*OrgLogIntegrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1396,7 +1443,7 @@ func (a *PushBasedLogExportAPIService) GetOrgLogIntegrationExecute(r GetOrgLogIn
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1664,11 +1711,15 @@ func (r ListOrgLogIntegrationsApiRequest) Execute() (*PaginatedOrgLogIntegration
 /*
 ListOrgLogIntegrations Return All Organization Log Integrations
 
-Returns all log integration configurations for the organization.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns all log integration configurations for the organization. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@return ListOrgLogIntegrationsApiRequest
+
+Deprecated
 */
 func (a *PushBasedLogExportAPIService) ListOrgLogIntegrations(ctx context.Context, orgId string) ListOrgLogIntegrationsApiRequest {
 	return ListOrgLogIntegrationsApiRequest{
@@ -1681,6 +1732,8 @@ func (a *PushBasedLogExportAPIService) ListOrgLogIntegrations(ctx context.Contex
 // ListOrgLogIntegrationsExecute executes the request
 //
 //	@return PaginatedOrgLogIntegrationResponse
+//
+// Deprecated
 func (a *PushBasedLogExportAPIService) ListOrgLogIntegrationsExecute(r ListOrgLogIntegrationsApiRequest) (*PaginatedOrgLogIntegrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1738,7 +1791,7 @@ func (a *PushBasedLogExportAPIService) ListOrgLogIntegrationsExecute(r ListOrgLo
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2058,12 +2111,16 @@ func (r UpdateOrgLogIntegrationApiRequest) Execute() (*OrgLogIntegrationResponse
 /*
 UpdateOrgLogIntegration Update One Organization Log Integration
 
-Updates one organization-level log integration configuration identified by its unique ID. Read endpoints redact header values; a redacted value sent back unchanged leaves the stored value in place, so supply a header value in full only when changing it.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Updates one organization-level log integration configuration identified by its unique ID. Read endpoints redact header values; a redacted value sent back unchanged leaves the stored value in place, so supply a header value in full only when changing it. Deprecated versions: v2-{2025-03-12}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param orgId Unique 24-hexadecimal digit string that identifies the organization that contains your projects. Use the [`/orgs`](#tag/Organizations/operation/listOrganizations) endpoint to retrieve all organizations to which the authenticated user has access.
 	@param logIntegrationId Unique identifier of the log integration configuration.
 	@return UpdateOrgLogIntegrationApiRequest
+
+Deprecated
 */
 func (a *PushBasedLogExportAPIService) UpdateOrgLogIntegration(ctx context.Context, orgId string, logIntegrationId string, orgLogIntegrationUpdateRequest *OrgLogIntegrationUpdateRequest) UpdateOrgLogIntegrationApiRequest {
 	return UpdateOrgLogIntegrationApiRequest{
@@ -2078,6 +2135,8 @@ func (a *PushBasedLogExportAPIService) UpdateOrgLogIntegration(ctx context.Conte
 // UpdateOrgLogIntegrationExecute executes the request
 //
 //	@return OrgLogIntegrationResponse
+//
+// Deprecated
 func (a *PushBasedLogExportAPIService) UpdateOrgLogIntegrationExecute(r UpdateOrgLogIntegrationApiRequest) (*OrgLogIntegrationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -2115,7 +2174,7 @@ func (a *PushBasedLogExportAPIService) UpdateOrgLogIntegrationExecute(r UpdateOr
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2124,7 +2183,7 @@ func (a *PushBasedLogExportAPIService) UpdateOrgLogIntegrationExecute(r UpdateOr
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
