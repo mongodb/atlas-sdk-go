@@ -17,7 +17,7 @@ type StreamsStartStreamProcessorWith struct {
 	ResumeFromCheckpoint *bool `json:"resumeFromCheckpoint,omitempty"`
 	// The operation time after which the change stream source should begin reporting. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	StartAtOperationTime *time.Time `json:"startAtOperationTime,omitempty"`
-	// Selected tier for the Stream Workspace. Configures Memory or VCPU allowances.
+	// Baseline processing tier requested by the user.
 	Tier *string `json:"tier,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.

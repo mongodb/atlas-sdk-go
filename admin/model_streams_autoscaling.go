@@ -11,7 +11,7 @@ type StreamsAutoscaling struct {
 	Links *[]Link `json:"links,omitempty"`
 	// Tier ceiling for autoscaling (scale-up limit).  - **Omitted:**   - On `CREATE`: falls back to the workspace max tier (there is no current bound to preserve).   - On `MODIFY` or `:startWith`: the current bound is preserved. - **`null`** on `CREATE`, `MODIFY`, or `:startWith`: resets the bound to the workspace max tier. - **A tier value** on `CREATE`, `MODIFY`, or `:startWith`: sets the bound to that tier.
 	MaxTier *string `json:"maxTier,omitempty"`
-	// Tier floor for autoscaling (scale-down limit).  - **Omitted:**   - On `CREATE`: falls back to the workspace default tier (there is no current bound to preserve).   - On `MODIFY` or `:startWith`: the current bound is preserved. - **`null`** on `CREATE`, `MODIFY`, or `:startWith`: resets the bound to the workspace default tier. - **A tier value** on `CREATE`, `MODIFY`, or `:startWith`: sets the bound to that tier.
+	// Tier floor for autoscaling (scale-down limit).  - **Omitted:**   - On `CREATE`: defaults to the lower of the processor `tier` and the workspace default tier (there is no current bound to preserve).   - On `MODIFY` or `:startWith`: the current bound is preserved. - **`null`** on `CREATE`, `MODIFY`, or `:startWith`: resets the bound to the lower of the processor `tier` and the workspace default tier. - **A tier value** on `CREATE`, `MODIFY`, or `:startWith`: sets the bound to that tier.
 	MinTier *string `json:"minTier,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.

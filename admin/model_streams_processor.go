@@ -7,7 +7,7 @@ type StreamsProcessor struct {
 	// Unique 24-hexadecimal character string that identifies the stream processor.
 	// Read only field.
 	Id *string `json:"_id,omitempty"`
-	// Selected tier for the Stream Workspace. Configures Memory or VCPU allowances.
+	// Tier the stream processor is currently running on. The server sets this value from `tier` on create and on every start or restart, may move it within [`minTier`, `maxTier`] while autoscaling is enabled, and restores it to `tier` when autoscaling is disabled. Patching `tier` does not change it directly; the new tier takes effect at the next start or restart.
 	// Read only field.
 	EffectiveTier *string `json:"effectiveTier,omitempty"`
 	// Flag that enables or disables failover for the stream processor.
@@ -20,7 +20,7 @@ type StreamsProcessor struct {
 	Options *StreamsOptions `json:"options,omitempty"`
 	// Stream aggregation pipeline you want to apply to your streaming data.
 	Pipeline *[]any `json:"pipeline,omitempty"`
-	// Selected tier for the Stream Workspace. Configures Memory or VCPU allowances.
+	// Baseline tier of the stream processor. The processor starts or restarts on this tier; `effectiveTier` reports the tier it is currently running.
 	Tier *string `json:"tier,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
