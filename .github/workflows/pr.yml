@@ -75,3 +75,8 @@ jobs:
         run: |
           export PATH=${PATH}:`go env GOPATH`/bin
           make -e openapi-pipeline
+      - name: Run the JavaScript tests and format check
+        # Reuses the tools dependencies that the pipeline installed with npm ci,
+        # so the JS regression tests also run on this toolchain.
+        working-directory: ./tools
+        run: npm run ci
