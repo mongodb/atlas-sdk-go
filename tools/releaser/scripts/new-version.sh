@@ -43,7 +43,7 @@ else
 	source "$script_path/breaking-changes.sh"
 
 	echo "Modifying all instances of version from $SDK_RESOURCE_VERSION to $NEW_RESOURCE_VERSION across the repository."
-	npm install
+	npm ci
 	npm exec -c "replace-in-file /$SDK_MAJOR_VERSION/g $NEW_MAJOR_VERSION $VERSION_UPDATE_PATHS $VERSION_IGNORE_FLAGS --isRegex"
 fi 
 

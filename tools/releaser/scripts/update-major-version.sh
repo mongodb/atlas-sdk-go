@@ -28,7 +28,7 @@ echo -e "# Breaking Changes\n## SDK changes\n ${BREAKING_CHANGES:-TODO} \n## API
 		> "$script_path/../breaking_changes/${TARGET_BREAKING_CHANGES_FILE}.md"
 
 echo "Modifying $SDK_MAJOR_VERSION to $BUMPED_MAJOR_VERSION Resource Version across the repository."
-npm install
+npm ci
 npm exec -c "replace-in-file /$SDK_MAJOR_VERSION/g $BUMPED_MAJOR_VERSION $VERSION_UPDATE_PATHS $VERSION_IGNORE_FLAGS --isRegex"
 
 ## Explicitly update version.go file

@@ -10,5 +10,5 @@ else
 fi
 
 # Use any instead of interface{} in genereated mocks
-npm install
+npm ci
 npm exec -c "replace-in-file /interface{}/g any  ../mockadmin/**/*.go --isRegex"

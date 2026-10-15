@@ -21,7 +21,7 @@ echo "# Running generation pipeline"
 echo "# Running transformation based on $OPENAPI_FILE_NAME to the $transformed_file"
 cp "$OPENAPI_FOLDER/$OPENAPI_FILE_NAME" "$openapiFileLocation"
 
-npm install
+npm ci
 npm exec --prefix .. atlas-openapi-transformer -- transform --input "$openapiFileLocation" --output "$openapiFileLocation"
 
 # The spec has been growing by roughly 1KB/day; SnakeYAML's parser (bundled

@@ -36,12 +36,12 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
         with:
-          node-version: 22.x
+          node-version: 24.x
           cache: npm
           cache-dependency-path: ./tools/package-lock.json
       - working-directory: ./tools
         run: |
-          npm install
+          npm ci
           npm run ci
       - run: make install-goimports
       - working-directory: ./tools
@@ -51,3 +51,27 @@ jobs:
       - name: Fail when generate introducing diff
         run: |
           git diff --exit-code
+
+  compatibility:
+    name: compatibility (Node 22.23.2)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e
+        with:
+          go-version-file: go.mod
+          cache: false # see https://github.com/golangci/golangci-lint-action/issues/807
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          # Declared floor (engines.node >= 22) and the downstream consumer
+          # toolchain. Ships npm 10.9.8, so no npm pin is needed.
+          node-version: 22.23.2
+          cache: npm
+          cache-dependency-path: ./tools/package-lock.json
+      - name: Run the full generation pipeline
+        # Mirrors the downstream consumers, which run `make -e openapi-pipeline`
+        # against their own specs. Needs Java (openapi-generator) and goimports,
+        # not just `npm run ci`.
+        run: |
+          export PATH=${PATH}:`go env GOPATH`/bin
+          make -e openapi-pipeline
