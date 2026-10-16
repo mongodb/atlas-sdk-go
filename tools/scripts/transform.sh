@@ -18,5 +18,5 @@ openapiFileLocation="$OPENAPI_FOLDER/$transformed_file"
 echo "# Running transformation from $transformed_file OpenAPI from $OPENAPI_FILE_NAME"
 cp "$OPENAPI_FOLDER/$OPENAPI_FILE_NAME" "$openapiFileLocation"
 
-npm install
+npm ci
 npm exec --prefix .. atlas-openapi-transformer -- transform --input "$openapiFileLocation" --output "$openapiFileLocation"

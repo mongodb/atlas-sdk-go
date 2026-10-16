@@ -93,7 +93,7 @@ if [ "${TARGET_API_VERSION}" = "preview" ]; then
   # place), producing a superset spec for the rest of the generation pipeline.
   # Mirrors the transformer invocation used in transform.sh.
   echo "Merging preview deltas into $OPENAPI_FILE_NAME"
-  npm install
+  npm ci
   PREVIEW_MERGE_ARGS=(--preview "${OPENAPI_FOLDER}/${PREVIEW_FILE_NAME}")
   for private_preview_file in "${PRIVATE_PREVIEW_FILE_NAMES[@]}"; do
     PREVIEW_MERGE_ARGS+=(--preview "${OPENAPI_FOLDER}/${private_preview_file}")

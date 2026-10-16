@@ -3,7 +3,7 @@ const yargs = require("yargs/yargs");
 const { hideBin } = require("yargs/helpers");
 const { getAPI, saveAPI } = require("./engine/apifile");
 const { mergePreview } = require("./engine/mergePreview");
-const simpleLogger = require("simple-node-logger");
+const { createLogger } = require("./logger");
 const {
   runFlatteningTransformations,
   runAllTransformations,
@@ -24,9 +24,7 @@ function writeOutput({ doc, output }) {
 }
 
 function configureLogger(level) {
-  const log = simpleLogger.createSimpleLogger();
-  log.setLevel(level || "warn");
-  return log;
+  return createLogger(level || "warn");
 }
 
 yargs(hideBin(process.argv))
