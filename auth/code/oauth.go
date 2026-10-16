@@ -23,24 +23,35 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"os"
 	"runtime"
 	"strings"
 
+	sdkAuth "go.mongodb.org/atlas-sdk/v20250312026/auth"
 	"go.mongodb.org/atlas-sdk/v20250312026/internal/core"
 )
 
-const defaultBaseURL = "https://cloud.mongodb.com/"
+const (
+	defaultBaseURL       = "https://cloud.mongodb.com/"
+	defaultAuthServerURL = sdkAuth.DefaultAuthServerURL
+	authServerURLEnvVar  = "MONGODB_ATLAS_AUTH_SERVER_URL"
+)
 
 var (
 	userAgent = fmt.Sprintf("go-atlas-sdk-auth/%s (%s;%s)", core.Version, runtime.GOOS, runtime.GOARCH)
 )
 
 type Config struct {
-	client    *http.Client
-	ClientID  string
-	AuthURL   *url.URL
-	UserAgent string
-	Scopes    []string
+	client   *http.Client
+	ClientID string
+	// AuthURL is the device-authorization base URL.
+	AuthURL *url.URL
+	// AuthServerURL is the Authorization Code + PKCE issuer URL.
+	AuthServerURL *url.URL
+	UserAgent     string
+	Scopes        []string
+
+	authServerURLError error
 
 	// copy raw server response to the Response struct
 	withRaw bool
@@ -48,16 +59,28 @@ type Config struct {
 
 type ConfigOpt func(*Config) error
 
+// NewConfig returns a client using the production OAuth issuer by default.
+// MONGODB_ATLAS_AUTH_SERVER_URL overrides it; malformed values fail at discovery.
 func NewConfig(httpClient *http.Client) *Config {
 	if httpClient == nil {
 		httpClient = http.DefaultClient
 	}
 
 	baseURL, _ := url.Parse(defaultBaseURL)
+	issuerURL := os.Getenv(authServerURLEnvVar)
+	if issuerURL == "" {
+		issuerURL = defaultAuthServerURL
+	}
+	authServerURL, authServerURLError := url.Parse(issuerURL)
+	if authServerURLError != nil {
+		authServerURL = nil
+	}
 	c := &Config{
-		client:    httpClient,
-		AuthURL:   baseURL,
-		UserAgent: userAgent,
+		client:             httpClient,
+		AuthURL:            baseURL,
+		AuthServerURL:      authServerURL,
+		UserAgent:          userAgent,
+		authServerURLError: authServerURLError,
 	}
 	return c
 }
@@ -72,7 +95,7 @@ func NewConfigWithOptions(httpClient *http.Client, opts ...ConfigOpt) (*Config, 
 	return c, nil
 }
 
-// SetAuthURL is a config option for setting the base URL.
+// SetAuthURL sets the device-authorization base URL.
 func SetAuthURL(bu string) ConfigOpt {
 	return func(c *Config) error {
 		u, err := url.Parse(bu)
@@ -81,6 +104,20 @@ func SetAuthURL(bu string) ConfigOpt {
 		}
 
 		c.AuthURL = u
+		return nil
+	}
+}
+
+// SetAuthServerURL sets the HTTPS PKCE issuer, overriding the environment.
+func SetAuthServerURL(issuerURL string) ConfigOpt {
+	return func(c *Config) error {
+		u, err := parseOAuthEndpoint(issuerURL, "Authorization Server issuer")
+		if err != nil {
+			return err
+		}
+
+		c.AuthServerURL = u
+		c.authServerURLError = nil
 		return nil
 	}
 }

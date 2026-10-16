@@ -84,6 +84,13 @@ func testClientDefaultBaseURL(t *testing.T, c *Config) {
 	}
 }
 
+func testClientDefaultAuthServerURL(t *testing.T, c *Config) {
+	t.Helper()
+	if c.AuthServerURL == nil || c.AuthServerURL.String() != defaultAuthServerURL {
+		t.Errorf("NewConfig AuthServerURL = %v, expected %v", c.AuthServerURL, defaultAuthServerURL)
+	}
+}
+
 func testClientDefaultUserAgent(t *testing.T, c *Config) {
 	t.Helper()
 	if c.UserAgent != userAgent {
@@ -94,15 +101,18 @@ func testClientDefaultUserAgent(t *testing.T, c *Config) {
 func testClientDefaults(t *testing.T, c *Config) {
 	t.Helper()
 	testClientDefaultBaseURL(t, c)
+	testClientDefaultAuthServerURL(t, c)
 	testClientDefaultUserAgent(t, c)
 }
 
 func TestNewConfig(t *testing.T) {
+	t.Setenv(authServerURLEnvVar, "")
 	c := NewConfig(nil)
 	testClientDefaults(t, c)
 }
 
 func TestNewConfigWithOptions(t *testing.T) {
+	t.Setenv(authServerURLEnvVar, "")
 	c, err := NewConfigWithOptions(nil)
 
 	if err != nil {
@@ -207,5 +217,19 @@ func TestCustomBaseURL(t *testing.T) {
 	}
 	if got := c.AuthURL.String(); got != baseURL {
 		t.Errorf("New() BaseURL = %s; expected %s", got, baseURL)
+	}
+}
+
+func TestCustomAuthServerURL(t *testing.T) {
+	const issuerURL = "https://auth.example.com"
+	c, err := NewConfigWithOptions(nil, SetAuthServerURL(issuerURL))
+	if err != nil {
+		t.Fatalf("NewConfigWithOptions() unexpected error: %v", err)
+	}
+	if got := c.AuthServerURL.String(); got != issuerURL {
+		t.Errorf("AuthServerURL = %s; expected %s", got, issuerURL)
+	}
+	if got := c.AuthURL.String(); got != defaultBaseURL {
+		t.Errorf("SetAuthServerURL changed AuthURL to %s; expected %s", got, defaultBaseURL)
 	}
 }
