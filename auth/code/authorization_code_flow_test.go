@@ -271,11 +271,12 @@ func TestConfig_RejectsHTTPAuthServerURLs(t *testing.T) {
 	if err != nil {
 		t.Fatalf("GeneratePKCE() returned error: %v", err)
 	}
-	metadata := &AuthServerMetadata{
-		Issuer:                c.AuthServerURL.String(),
-		AuthorizationEndpoint: "https://auth.example.com/authorize",
-		TokenEndpoint:         "https://auth.example.com/tokens",
-	}
+	metadata := authServerMetadataForConfig(
+		c,
+		"https://auth.example.com/authorize",
+		"https://auth.example.com/tokens",
+		"",
+	)
 	if _, err := c.AuthorizationURL(metadata, "http://127.0.0.1/callback", "state", pkce); err == nil || !strings.Contains(err.Error(), "HTTPS") {
 		t.Errorf("AuthorizationURL() error = %v, expected HTTP issuer to be rejected", err)
 	}
@@ -402,11 +403,13 @@ func TestConfig_AuthorizationURLRejectsMetadataFromDifferentIssuer(t *testing.T)
 	if err != nil {
 		t.Fatalf("GeneratePKCE() returned error: %v", err)
 	}
-	metadata := &AuthServerMetadata{
-		Issuer:                "https://other.example.com",
-		AuthorizationEndpoint: "https://auth.example.com/authorize",
-		TokenEndpoint:         "https://auth.example.com/tokens",
-	}
+	metadata := authServerMetadataForConfig(
+		c,
+		"https://auth.example.com/authorize",
+		"https://auth.example.com/tokens",
+		"",
+	)
+	metadata.Issuer = "https://other.example.com"
 	if _, err := c.AuthorizationURL(metadata, "http://127.0.0.1/callback", "state", pkce); err == nil || !strings.Contains(err.Error(), "does not match configured issuer") {
 		t.Fatalf("AuthorizationURL() error = %v, expected issuer mismatch", err)
 	}
@@ -424,6 +427,7 @@ func TestConfig_ExchangeCode(t *testing.T) {
 		if got := r.Header.Get("Accept"); got != "application/json" {
 			t.Errorf("Accept = %q", got)
 		}
+		r.Body = http.MaxBytesReader(w, r.Body, 1<<20)
 		if err := r.ParseForm(); err != nil {
 			t.Errorf("ParseForm() returned error: %v", err)
 		}
@@ -570,6 +574,7 @@ func TestConfig_RefreshAccessToken(t *testing.T) {
 		if got := r.Header.Get("Content-Type"); got != "application/x-www-form-urlencoded" {
 			t.Errorf("Content-Type = %q", got)
 		}
+		r.Body = http.MaxBytesReader(w, r.Body, 1<<20)
 		if err := r.ParseForm(); err != nil {
 			t.Errorf("ParseForm() returned error: %v", err)
 		}
@@ -657,6 +662,7 @@ func TestConfig_RevokeAuthServerToken(t *testing.T) {
 		if r.Method != http.MethodPost {
 			t.Errorf("method = %s, expected POST", r.Method)
 		}
+		r.Body = http.MaxBytesReader(w, r.Body, 1<<20)
 		if err := r.ParseForm(); err != nil {
 			t.Errorf("ParseForm() returned error: %v", err)
 		}

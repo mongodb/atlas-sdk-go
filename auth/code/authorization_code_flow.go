@@ -119,7 +119,7 @@ func (c *Config) DiscoverAuthServer(ctx context.Context) (*AuthServerMetadata, *
 	}
 
 	discoveryURL := c.AuthServerURL.ResolveReference(&url.URL{Path: wellKnownPath})
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, discoveryURL.String(), nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, discoveryURL.String(), http.NoBody)
 	if err != nil {
 		return nil, nil, fmt.Errorf("creating OAuth discovery request: %w", err)
 	}
@@ -399,6 +399,7 @@ func (c *Config) doOAuthRequest(req *http.Request) (*http.Response, error) {
 	client.CheckRedirect = func(*http.Request, []*http.Request) error {
 		return http.ErrUseLastResponse
 	}
+	// #nosec G704 -- OAuth request URLs are configured issuers or HTTPS endpoints from their validated discovery metadata.
 	return client.Do(req)
 }
 
