@@ -16,6 +16,9 @@ type ApiError struct {
 	// Parameters used to give more information about the error.
 	// Read only field.
 	Parameters *[]any `json:"parameters,omitempty"`
+	// Atlas Resource Policies that caused the request to be denied. Returned only when `errorCode` is `ATLAS_RESOURCE_POLICIES_VIOLATION_NOT_AUTHORIZED`.
+	// Read only field.
+	PoliciesCausingDecision *[]ResourcePolicyReference `json:"policiesCausingDecision,omitempty"`
 	// Application error message returned with this error.
 	// Read only field.
 	Reason *string `json:"reason,omitempty"`
@@ -215,6 +218,46 @@ func (o *ApiError) SetParameters(v []any) {
 func (o *ApiError) SetParametersNil() {
 	o.Parameters = nil
 	o.NullFields = addNullField(o.NullFields, "Parameters")
+}
+
+// GetPoliciesCausingDecision returns the PoliciesCausingDecision field value if set, zero value otherwise
+func (o *ApiError) GetPoliciesCausingDecision() []ResourcePolicyReference {
+	if o == nil || IsNil(o.PoliciesCausingDecision) {
+		var ret []ResourcePolicyReference
+		return ret
+	}
+	return *o.PoliciesCausingDecision
+}
+
+// GetPoliciesCausingDecisionOk returns a tuple with the PoliciesCausingDecision field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiError) GetPoliciesCausingDecisionOk() (*[]ResourcePolicyReference, bool) {
+	if o == nil || IsNil(o.PoliciesCausingDecision) {
+		return nil, false
+	}
+
+	return o.PoliciesCausingDecision, true
+}
+
+// HasPoliciesCausingDecision returns a boolean if a field has been set.
+func (o *ApiError) HasPoliciesCausingDecision() bool {
+	if o != nil && !IsNil(o.PoliciesCausingDecision) {
+		return true
+	}
+
+	return false
+}
+
+// SetPoliciesCausingDecision gets a reference to the given []ResourcePolicyReference and assigns it to the PoliciesCausingDecision field.
+func (o *ApiError) SetPoliciesCausingDecision(v []ResourcePolicyReference) {
+	o.PoliciesCausingDecision = &v
+	o.NullFields = removeNullField(o.NullFields, "PoliciesCausingDecision")
+}
+
+// SetPoliciesCausingDecisionNil sets PoliciesCausingDecision to an explicit JSON null when marshaled.
+func (o *ApiError) SetPoliciesCausingDecisionNil() {
+	o.PoliciesCausingDecision = nil
+	o.NullFields = addNullField(o.NullFields, "PoliciesCausingDecision")
 }
 
 // GetReason returns the Reason field value if set, zero value otherwise

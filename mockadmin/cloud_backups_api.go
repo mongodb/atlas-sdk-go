@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312026/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -3059,6 +3059,168 @@ func (_c *CloudBackupsAPI_GetClusterBackupSnapshotWithParams_Call) Return(_a0 ad
 }
 
 func (_c *CloudBackupsAPI_GetClusterBackupSnapshotWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetClusterBackupSnapshotApiParams) admin.GetClusterBackupSnapshotApiRequest) *CloudBackupsAPI_GetClusterBackupSnapshotWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetClusterBackupSubscription provides a mock function with given fields: ctx, groupId, clusterName
+func (_m *CloudBackupsAPI) GetClusterBackupSubscription(ctx context.Context, groupId string, clusterName string) admin.GetClusterBackupSubscriptionApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetClusterBackupSubscription")
+	}
+
+	var r0 admin.GetClusterBackupSubscriptionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetClusterBackupSubscriptionApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName)
+	} else {
+		r0 = ret.Get(0).(admin.GetClusterBackupSubscriptionApiRequest)
+	}
+
+	return r0
+}
+
+// CloudBackupsAPI_GetClusterBackupSubscription_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterBackupSubscription'
+type CloudBackupsAPI_GetClusterBackupSubscription_Call struct {
+	*mock.Call
+}
+
+// GetClusterBackupSubscription is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+func (_e *CloudBackupsAPI_Expecter) GetClusterBackupSubscription(ctx any, groupId any, clusterName any) *CloudBackupsAPI_GetClusterBackupSubscription_Call {
+	return &CloudBackupsAPI_GetClusterBackupSubscription_Call{Call: _e.mock.On("GetClusterBackupSubscription", ctx, groupId, clusterName)}
+}
+
+func (_c *CloudBackupsAPI_GetClusterBackupSubscription_Call) Run(run func(ctx context.Context, groupId string, clusterName string)) *CloudBackupsAPI_GetClusterBackupSubscription_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsAPI_GetClusterBackupSubscription_Call) Return(_a0 admin.GetClusterBackupSubscriptionApiRequest) *CloudBackupsAPI_GetClusterBackupSubscription_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CloudBackupsAPI_GetClusterBackupSubscription_Call) RunAndReturn(run func(context.Context, string, string) admin.GetClusterBackupSubscriptionApiRequest) *CloudBackupsAPI_GetClusterBackupSubscription_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetClusterBackupSubscriptionExecute provides a mock function with given fields: r
+func (_m *CloudBackupsAPI) GetClusterBackupSubscriptionExecute(r admin.GetClusterBackupSubscriptionApiRequest) (*admin.ClusterBackupSubscriptionResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetClusterBackupSubscriptionExecute")
+	}
+
+	var r0 *admin.ClusterBackupSubscriptionResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetClusterBackupSubscriptionApiRequest) (*admin.ClusterBackupSubscriptionResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetClusterBackupSubscriptionApiRequest) *admin.ClusterBackupSubscriptionResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ClusterBackupSubscriptionResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetClusterBackupSubscriptionApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetClusterBackupSubscriptionApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// CloudBackupsAPI_GetClusterBackupSubscriptionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterBackupSubscriptionExecute'
+type CloudBackupsAPI_GetClusterBackupSubscriptionExecute_Call struct {
+	*mock.Call
+}
+
+// GetClusterBackupSubscriptionExecute is a helper method to define mock.On call
+//   - r admin.GetClusterBackupSubscriptionApiRequest
+func (_e *CloudBackupsAPI_Expecter) GetClusterBackupSubscriptionExecute(r any) *CloudBackupsAPI_GetClusterBackupSubscriptionExecute_Call {
+	return &CloudBackupsAPI_GetClusterBackupSubscriptionExecute_Call{Call: _e.mock.On("GetClusterBackupSubscriptionExecute", r)}
+}
+
+func (_c *CloudBackupsAPI_GetClusterBackupSubscriptionExecute_Call) Run(run func(r admin.GetClusterBackupSubscriptionApiRequest)) *CloudBackupsAPI_GetClusterBackupSubscriptionExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetClusterBackupSubscriptionApiRequest))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsAPI_GetClusterBackupSubscriptionExecute_Call) Return(_a0 *admin.ClusterBackupSubscriptionResponse, _a1 *http.Response, _a2 error) *CloudBackupsAPI_GetClusterBackupSubscriptionExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *CloudBackupsAPI_GetClusterBackupSubscriptionExecute_Call) RunAndReturn(run func(admin.GetClusterBackupSubscriptionApiRequest) (*admin.ClusterBackupSubscriptionResponse, *http.Response, error)) *CloudBackupsAPI_GetClusterBackupSubscriptionExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetClusterBackupSubscriptionWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudBackupsAPI) GetClusterBackupSubscriptionWithParams(ctx context.Context, args *admin.GetClusterBackupSubscriptionApiParams) admin.GetClusterBackupSubscriptionApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetClusterBackupSubscriptionWithParams")
+	}
+
+	var r0 admin.GetClusterBackupSubscriptionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetClusterBackupSubscriptionApiParams) admin.GetClusterBackupSubscriptionApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetClusterBackupSubscriptionApiRequest)
+	}
+
+	return r0
+}
+
+// CloudBackupsAPI_GetClusterBackupSubscriptionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetClusterBackupSubscriptionWithParams'
+type CloudBackupsAPI_GetClusterBackupSubscriptionWithParams_Call struct {
+	*mock.Call
+}
+
+// GetClusterBackupSubscriptionWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetClusterBackupSubscriptionApiParams
+func (_e *CloudBackupsAPI_Expecter) GetClusterBackupSubscriptionWithParams(ctx any, args any) *CloudBackupsAPI_GetClusterBackupSubscriptionWithParams_Call {
+	return &CloudBackupsAPI_GetClusterBackupSubscriptionWithParams_Call{Call: _e.mock.On("GetClusterBackupSubscriptionWithParams", ctx, args)}
+}
+
+func (_c *CloudBackupsAPI_GetClusterBackupSubscriptionWithParams_Call) Run(run func(ctx context.Context, args *admin.GetClusterBackupSubscriptionApiParams)) *CloudBackupsAPI_GetClusterBackupSubscriptionWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetClusterBackupSubscriptionApiParams))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsAPI_GetClusterBackupSubscriptionWithParams_Call) Return(_a0 admin.GetClusterBackupSubscriptionApiRequest) *CloudBackupsAPI_GetClusterBackupSubscriptionWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CloudBackupsAPI_GetClusterBackupSubscriptionWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetClusterBackupSubscriptionApiParams) admin.GetClusterBackupSubscriptionApiRequest) *CloudBackupsAPI_GetClusterBackupSubscriptionWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -6150,6 +6312,169 @@ func (_c *CloudBackupsAPI_UpdateBackupSnapshotWithParams_Call) Return(_a0 admin.
 }
 
 func (_c *CloudBackupsAPI_UpdateBackupSnapshotWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateBackupSnapshotApiParams) admin.UpdateBackupSnapshotApiRequest) *CloudBackupsAPI_UpdateBackupSnapshotWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateClusterBackupSubscription provides a mock function with given fields: ctx, groupId, clusterName, clusterBackupSubscriptionUpdateRequest
+func (_m *CloudBackupsAPI) UpdateClusterBackupSubscription(ctx context.Context, groupId string, clusterName string, clusterBackupSubscriptionUpdateRequest *admin.ClusterBackupSubscriptionUpdateRequest) admin.UpdateClusterBackupSubscriptionApiRequest {
+	ret := _m.Called(ctx, groupId, clusterName, clusterBackupSubscriptionUpdateRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateClusterBackupSubscription")
+	}
+
+	var r0 admin.UpdateClusterBackupSubscriptionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ClusterBackupSubscriptionUpdateRequest) admin.UpdateClusterBackupSubscriptionApiRequest); ok {
+		r0 = rf(ctx, groupId, clusterName, clusterBackupSubscriptionUpdateRequest)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateClusterBackupSubscriptionApiRequest)
+	}
+
+	return r0
+}
+
+// CloudBackupsAPI_UpdateClusterBackupSubscription_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateClusterBackupSubscription'
+type CloudBackupsAPI_UpdateClusterBackupSubscription_Call struct {
+	*mock.Call
+}
+
+// UpdateClusterBackupSubscription is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - clusterName string
+//   - clusterBackupSubscriptionUpdateRequest *admin.ClusterBackupSubscriptionUpdateRequest
+func (_e *CloudBackupsAPI_Expecter) UpdateClusterBackupSubscription(ctx any, groupId any, clusterName any, clusterBackupSubscriptionUpdateRequest any) *CloudBackupsAPI_UpdateClusterBackupSubscription_Call {
+	return &CloudBackupsAPI_UpdateClusterBackupSubscription_Call{Call: _e.mock.On("UpdateClusterBackupSubscription", ctx, groupId, clusterName, clusterBackupSubscriptionUpdateRequest)}
+}
+
+func (_c *CloudBackupsAPI_UpdateClusterBackupSubscription_Call) Run(run func(ctx context.Context, groupId string, clusterName string, clusterBackupSubscriptionUpdateRequest *admin.ClusterBackupSubscriptionUpdateRequest)) *CloudBackupsAPI_UpdateClusterBackupSubscription_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ClusterBackupSubscriptionUpdateRequest))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsAPI_UpdateClusterBackupSubscription_Call) Return(_a0 admin.UpdateClusterBackupSubscriptionApiRequest) *CloudBackupsAPI_UpdateClusterBackupSubscription_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CloudBackupsAPI_UpdateClusterBackupSubscription_Call) RunAndReturn(run func(context.Context, string, string, *admin.ClusterBackupSubscriptionUpdateRequest) admin.UpdateClusterBackupSubscriptionApiRequest) *CloudBackupsAPI_UpdateClusterBackupSubscription_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateClusterBackupSubscriptionExecute provides a mock function with given fields: r
+func (_m *CloudBackupsAPI) UpdateClusterBackupSubscriptionExecute(r admin.UpdateClusterBackupSubscriptionApiRequest) (*admin.ClusterBackupSubscriptionResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateClusterBackupSubscriptionExecute")
+	}
+
+	var r0 *admin.ClusterBackupSubscriptionResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.UpdateClusterBackupSubscriptionApiRequest) (*admin.ClusterBackupSubscriptionResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.UpdateClusterBackupSubscriptionApiRequest) *admin.ClusterBackupSubscriptionResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.ClusterBackupSubscriptionResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.UpdateClusterBackupSubscriptionApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.UpdateClusterBackupSubscriptionApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// CloudBackupsAPI_UpdateClusterBackupSubscriptionExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateClusterBackupSubscriptionExecute'
+type CloudBackupsAPI_UpdateClusterBackupSubscriptionExecute_Call struct {
+	*mock.Call
+}
+
+// UpdateClusterBackupSubscriptionExecute is a helper method to define mock.On call
+//   - r admin.UpdateClusterBackupSubscriptionApiRequest
+func (_e *CloudBackupsAPI_Expecter) UpdateClusterBackupSubscriptionExecute(r any) *CloudBackupsAPI_UpdateClusterBackupSubscriptionExecute_Call {
+	return &CloudBackupsAPI_UpdateClusterBackupSubscriptionExecute_Call{Call: _e.mock.On("UpdateClusterBackupSubscriptionExecute", r)}
+}
+
+func (_c *CloudBackupsAPI_UpdateClusterBackupSubscriptionExecute_Call) Run(run func(r admin.UpdateClusterBackupSubscriptionApiRequest)) *CloudBackupsAPI_UpdateClusterBackupSubscriptionExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.UpdateClusterBackupSubscriptionApiRequest))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsAPI_UpdateClusterBackupSubscriptionExecute_Call) Return(_a0 *admin.ClusterBackupSubscriptionResponse, _a1 *http.Response, _a2 error) *CloudBackupsAPI_UpdateClusterBackupSubscriptionExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *CloudBackupsAPI_UpdateClusterBackupSubscriptionExecute_Call) RunAndReturn(run func(admin.UpdateClusterBackupSubscriptionApiRequest) (*admin.ClusterBackupSubscriptionResponse, *http.Response, error)) *CloudBackupsAPI_UpdateClusterBackupSubscriptionExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// UpdateClusterBackupSubscriptionWithParams provides a mock function with given fields: ctx, args
+func (_m *CloudBackupsAPI) UpdateClusterBackupSubscriptionWithParams(ctx context.Context, args *admin.UpdateClusterBackupSubscriptionApiParams) admin.UpdateClusterBackupSubscriptionApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for UpdateClusterBackupSubscriptionWithParams")
+	}
+
+	var r0 admin.UpdateClusterBackupSubscriptionApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.UpdateClusterBackupSubscriptionApiParams) admin.UpdateClusterBackupSubscriptionApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.UpdateClusterBackupSubscriptionApiRequest)
+	}
+
+	return r0
+}
+
+// CloudBackupsAPI_UpdateClusterBackupSubscriptionWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'UpdateClusterBackupSubscriptionWithParams'
+type CloudBackupsAPI_UpdateClusterBackupSubscriptionWithParams_Call struct {
+	*mock.Call
+}
+
+// UpdateClusterBackupSubscriptionWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.UpdateClusterBackupSubscriptionApiParams
+func (_e *CloudBackupsAPI_Expecter) UpdateClusterBackupSubscriptionWithParams(ctx any, args any) *CloudBackupsAPI_UpdateClusterBackupSubscriptionWithParams_Call {
+	return &CloudBackupsAPI_UpdateClusterBackupSubscriptionWithParams_Call{Call: _e.mock.On("UpdateClusterBackupSubscriptionWithParams", ctx, args)}
+}
+
+func (_c *CloudBackupsAPI_UpdateClusterBackupSubscriptionWithParams_Call) Run(run func(ctx context.Context, args *admin.UpdateClusterBackupSubscriptionApiParams)) *CloudBackupsAPI_UpdateClusterBackupSubscriptionWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.UpdateClusterBackupSubscriptionApiParams))
+	})
+	return _c
+}
+
+func (_c *CloudBackupsAPI_UpdateClusterBackupSubscriptionWithParams_Call) Return(_a0 admin.UpdateClusterBackupSubscriptionApiRequest) *CloudBackupsAPI_UpdateClusterBackupSubscriptionWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *CloudBackupsAPI_UpdateClusterBackupSubscriptionWithParams_Call) RunAndReturn(run func(context.Context, *admin.UpdateClusterBackupSubscriptionApiParams) admin.UpdateClusterBackupSubscriptionApiRequest) *CloudBackupsAPI_UpdateClusterBackupSubscriptionWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
