@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
-	"go.mongodb.org/atlas-sdk/v20250312026/admin"
-	"go.mongodb.org/atlas-sdk/v20250312026/examples"
+	"go.mongodb.org/atlas-sdk/v20250312027/admin"
+	"go.mongodb.org/atlas-sdk/v20250312027/examples"
 )
 
 /*

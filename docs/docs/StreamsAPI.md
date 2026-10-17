@@ -10,12 +10,14 @@ Method | HTTP request | Description
 [**CreateStreamConnection**](StreamsAPI.md#CreateStreamConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Create One Stream Connection
 [**CreateStreamProcessor**](StreamsAPI.md#CreateStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor | Create One Stream Processor
 [**CreateStreamWorkspace**](StreamsAPI.md#CreateStreamWorkspace) | **Post** /api/atlas/v2/groups/{groupId}/streams | Create One Stream Workspace
+[**CreateWorkspacePrivateEndpoint**](StreamsAPI.md#CreateWorkspacePrivateEndpoint) | **Post** /api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints | Create One Workspace Private Endpoint for Atlas Stream Processing
 [**DeletePrivateLinkConnection**](StreamsAPI.md#DeletePrivateLinkConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId} | Delete One Private Link Connection
 [**DeleteStreamConnection**](StreamsAPI.md#DeleteStreamConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName} | Delete One Stream Connection
 [**DeleteStreamFailoverConnection**](StreamsAPI.md#DeleteStreamFailoverConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections/{failoverConnectionId} | Delete One Stream Failover Connection
 [**DeleteStreamProcessor**](StreamsAPI.md#DeleteStreamProcessor) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Delete One Stream Processor
 [**DeleteStreamWorkspace**](StreamsAPI.md#DeleteStreamWorkspace) | **Delete** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Delete One Stream Workspace
 [**DeleteVpcPeeringConnection**](StreamsAPI.md#DeleteVpcPeeringConnection) | **Delete** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id} | Delete One VPC Peering Connection
+[**DeleteWorkspacePrivateEndpoint**](StreamsAPI.md#DeleteWorkspacePrivateEndpoint) | **Delete** /api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints/{endpointId} | Remove One Workspace Private Endpoint for Atlas Stream Processing
 [**DownloadAuditLogs**](StreamsAPI.md#DownloadAuditLogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/auditLogs | Download Audit Logs for One Atlas Stream Processing Workspace
 [**DownloadOperationalLogs**](StreamsAPI.md#DownloadOperationalLogs) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}:downloadOperationalLogs | Download Operational Logs for One Atlas Stream Processing Workspace
 [**GetAccountDetails**](StreamsAPI.md#GetAccountDetails) | **Get** /api/atlas/v2/groups/{groupId}/streams/accountDetails | Return Account ID and VPC ID for One Project and Region
@@ -25,12 +27,14 @@ Method | HTTP request | Description
 [**GetStreamProcessor**](StreamsAPI.md#GetStreamProcessor) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName} | Return One Stream Processor
 [**GetStreamProcessors**](StreamsAPI.md#GetStreamProcessors) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processors | Return All Stream Processors in One Stream Workspace
 [**GetStreamWorkspace**](StreamsAPI.md#GetStreamWorkspace) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName} | Return One Stream Workspace
+[**GetWorkspacePrivateEndpoint**](StreamsAPI.md#GetWorkspacePrivateEndpoint) | **Get** /api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints/{endpointId} | Return One Workspace Private Endpoint for Atlas Stream Processing
 [**ListActivePeeringConnections**](StreamsAPI.md#ListActivePeeringConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/activeVpcPeeringConnections | Return All Active Incoming VPC Peering Connections
 [**ListFailoverConnections**](StreamsAPI.md#ListFailoverConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections | Return All Stream Failover Connections
 [**ListPrivateLinkConnections**](StreamsAPI.md#ListPrivateLinkConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Return All Private Link Connections
 [**ListStreamConnections**](StreamsAPI.md#ListStreamConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections | Return All Connections of the Stream Workspaces
 [**ListStreamWorkspaces**](StreamsAPI.md#ListStreamWorkspaces) | **Get** /api/atlas/v2/groups/{groupId}/streams | Return All Stream Workspaces in One Project
 [**ListVpcPeeringConnections**](StreamsAPI.md#ListVpcPeeringConnections) | **Get** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections | Return All VPC Peering Connections
+[**ListWorkspacePrivateEndpoints**](StreamsAPI.md#ListWorkspacePrivateEndpoints) | **Get** /api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints | Return All Workspace Private Endpoints for Atlas Stream Processing
 [**RejectVpcPeeringConnection**](StreamsAPI.md#RejectVpcPeeringConnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject | Reject One Incoming VPC Peering Connection
 [**StartStreamProcessor**](StreamsAPI.md#StartStreamProcessor) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:start | Start One Stream Processor
 [**StartStreamProcessorWith**](StreamsAPI.md#StartStreamProcessorWith) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}:startWith | Start One Stream Processor With Options
@@ -61,7 +65,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -144,7 +148,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -232,7 +236,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -314,7 +318,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -384,7 +388,7 @@ Name | Type | Description  | Notes
 
 ## CreateStreamProcessor
 
-> StreamsProcessor CreateStreamProcessor(ctx, groupId, tenantName, streamsProcessor StreamsProcessor).Execute()
+> StreamsProcessor CreateStreamProcessor(ctx, groupId, tenantName, streamsProcessorRequest StreamsProcessorRequest).Execute()
 
 Create One Stream Processor
 
@@ -399,7 +403,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -414,9 +418,9 @@ func main() {
 
     groupId := "32b6e34b3d91647abb20e7b8" // string | 
     tenantName := "tenantName_example" // string | 
-    streamsProcessor := *admin.NewStreamsProcessor() // StreamsProcessor | 
+    streamsProcessorRequest := *admin.NewStreamsProcessorRequest("Name_example", []any{"TODO"}) // StreamsProcessorRequest | 
 
-    resp, r, err := sdk.StreamsAPI.CreateStreamProcessor(context.Background(), groupId, tenantName, &streamsProcessor).Execute()
+    resp, r, err := sdk.StreamsAPI.CreateStreamProcessor(context.Background(), groupId, tenantName, &streamsProcessorRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.CreateStreamProcessor`: %v (%v)\n", err, r)
         apiError, ok := admin.AsError(err)
@@ -448,7 +452,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **streamsProcessor** | [**StreamsProcessor**](StreamsProcessor.md) | Details to create an Atlas Streams Processor. | 
+ **streamsProcessorRequest** | [**StreamsProcessorRequest**](StreamsProcessorRequest.md) | Details to create an Atlas Streams Processor. | 
 
 ### Return type
 
@@ -484,7 +488,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -549,6 +553,86 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CreateWorkspacePrivateEndpoint
+
+> CreateWorkspacePrivateEndpoint(ctx, groupId, streamsWorkspacePrivateEndpointRequest StreamsWorkspacePrivateEndpointRequest).Execute()
+
+Create One Workspace Private Endpoint for Atlas Stream Processing
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    streamsWorkspacePrivateEndpointRequest := *admin.NewStreamsWorkspacePrivateEndpointRequest("vpce-0abc123def4567890-abc123.us-east-1.vpce.amazonaws.com", "vpce-0abc123def4567890", "US_EAST_1") // StreamsWorkspacePrivateEndpointRequest | 
+
+    r, err := sdk.StreamsAPI.CreateWorkspacePrivateEndpoint(context.Background(), groupId, &streamsWorkspacePrivateEndpointRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.CreateWorkspacePrivateEndpoint`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateWorkspacePrivateEndpointRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **streamsWorkspacePrivateEndpointRequest** | [**StreamsWorkspacePrivateEndpointRequest**](StreamsWorkspacePrivateEndpointRequest.md) | Customer VPC endpoint to register for Atlas Stream Processing. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2025-03-12+json
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeletePrivateLinkConnection
 
 > DeletePrivateLinkConnection(ctx, groupId, connectionId).Execute()
@@ -566,7 +650,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -647,7 +731,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -731,7 +815,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -818,7 +902,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -902,7 +986,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -983,7 +1067,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -1047,6 +1131,87 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeleteWorkspacePrivateEndpoint
+
+> DeleteWorkspacePrivateEndpoint(ctx, groupId, endpointId).Execute()
+
+Remove One Workspace Private Endpoint for Atlas Stream Processing
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    endpointId := "vpce-0abc123def4567890" // string | 
+
+    r, err := sdk.StreamsAPI.DeleteWorkspacePrivateEndpoint(context.Background(), groupId, endpointId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.DeleteWorkspacePrivateEndpoint`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**endpointId** | **string** | Unique identifier of the customer&#39;s VPC endpoint. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteWorkspacePrivateEndpointRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DownloadAuditLogs
 
 > io.ReadCloser DownloadAuditLogs(ctx, groupId, tenantName).EndDate(endDate).StartDate(startDate).SpName(spName).Execute()
@@ -1064,7 +1229,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -1153,7 +1318,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -1242,7 +1407,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -1326,7 +1491,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -1409,7 +1574,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -1495,7 +1660,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -1584,7 +1749,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -1670,7 +1835,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -1759,7 +1924,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -1827,6 +1992,89 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetWorkspacePrivateEndpoint
+
+> StreamsWorkspacePrivateEndpointResponse GetWorkspacePrivateEndpoint(ctx, groupId, endpointId).Execute()
+
+Return One Workspace Private Endpoint for Atlas Stream Processing
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    endpointId := "vpce-0abc123def4567890" // string | 
+
+    resp, r, err := sdk.StreamsAPI.GetWorkspacePrivateEndpoint(context.Background(), groupId, endpointId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.GetWorkspacePrivateEndpoint`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `GetWorkspacePrivateEndpoint`: StreamsWorkspacePrivateEndpointResponse
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.GetWorkspacePrivateEndpoint`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+**endpointId** | **string** | Unique identifier of the customer&#39;s VPC endpoint. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetWorkspacePrivateEndpointRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**StreamsWorkspacePrivateEndpointResponse**](StreamsWorkspacePrivateEndpointResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListActivePeeringConnections
 
 > PaginatedApiStreamsVPCPeeringConnection ListActivePeeringConnections(ctx, groupId).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
@@ -1844,7 +2092,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -1928,7 +2176,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -2018,7 +2266,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -2102,7 +2350,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -2189,7 +2437,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -2273,7 +2521,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -2342,6 +2590,92 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListWorkspacePrivateEndpoints
+
+> PaginatedStreamsWorkspacePrivateEndpointResponse ListWorkspacePrivateEndpoints(ctx, groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+
+Return All Workspace Private Endpoints for Atlas Stream Processing
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    includeCount := true // bool |  (optional) (default to true)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
+
+    resp, r, err := sdk.StreamsAPI.ListWorkspacePrivateEndpoints(context.Background(), groupId).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `StreamsAPI.ListWorkspacePrivateEndpoints`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListWorkspacePrivateEndpoints`: PaginatedStreamsWorkspacePrivateEndpointResponse
+    fmt.Fprintf(os.Stdout, "Response from `StreamsAPI.ListWorkspacePrivateEndpoints`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListWorkspacePrivateEndpointsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **includeCount** | **bool** | Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation. | [default to true]
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+
+### Return type
+
+[**PaginatedStreamsWorkspacePrivateEndpointResponse**](PaginatedStreamsWorkspacePrivateEndpointResponse.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RejectVpcPeeringConnection
 
 > RejectVpcPeeringConnection(ctx, groupId, id).Execute()
@@ -2359,7 +2693,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -2440,7 +2774,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -2524,7 +2858,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -2610,7 +2944,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -2694,7 +3028,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -2779,7 +3113,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -2867,7 +3201,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -2958,7 +3292,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -3046,7 +3380,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
@@ -3131,7 +3465,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312026/admin"
+    "go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 func main() {
