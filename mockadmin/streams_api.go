@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312026/admin"
+	admin "go.mongodb.org/atlas-sdk/v20250312027/admin"
 
 	http "net/http"
 
@@ -670,17 +670,17 @@ func (_c *StreamsAPI_CreateStreamConnectionWithParams_Call) RunAndReturn(run fun
 	return _c
 }
 
-// CreateStreamProcessor provides a mock function with given fields: ctx, groupId, tenantName, streamsProcessor
-func (_m *StreamsAPI) CreateStreamProcessor(ctx context.Context, groupId string, tenantName string, streamsProcessor *admin.StreamsProcessor) admin.CreateStreamProcessorApiRequest {
-	ret := _m.Called(ctx, groupId, tenantName, streamsProcessor)
+// CreateStreamProcessor provides a mock function with given fields: ctx, groupId, tenantName, streamsProcessorRequest
+func (_m *StreamsAPI) CreateStreamProcessor(ctx context.Context, groupId string, tenantName string, streamsProcessorRequest *admin.StreamsProcessorRequest) admin.CreateStreamProcessorApiRequest {
+	ret := _m.Called(ctx, groupId, tenantName, streamsProcessorRequest)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CreateStreamProcessor")
 	}
 
 	var r0 admin.CreateStreamProcessorApiRequest
-	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.StreamsProcessor) admin.CreateStreamProcessorApiRequest); ok {
-		r0 = rf(ctx, groupId, tenantName, streamsProcessor)
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.StreamsProcessorRequest) admin.CreateStreamProcessorApiRequest); ok {
+		r0 = rf(ctx, groupId, tenantName, streamsProcessorRequest)
 	} else {
 		r0 = ret.Get(0).(admin.CreateStreamProcessorApiRequest)
 	}
@@ -697,14 +697,14 @@ type StreamsAPI_CreateStreamProcessor_Call struct {
 //   - ctx context.Context
 //   - groupId string
 //   - tenantName string
-//   - streamsProcessor *admin.StreamsProcessor
-func (_e *StreamsAPI_Expecter) CreateStreamProcessor(ctx any, groupId any, tenantName any, streamsProcessor any) *StreamsAPI_CreateStreamProcessor_Call {
-	return &StreamsAPI_CreateStreamProcessor_Call{Call: _e.mock.On("CreateStreamProcessor", ctx, groupId, tenantName, streamsProcessor)}
+//   - streamsProcessorRequest *admin.StreamsProcessorRequest
+func (_e *StreamsAPI_Expecter) CreateStreamProcessor(ctx any, groupId any, tenantName any, streamsProcessorRequest any) *StreamsAPI_CreateStreamProcessor_Call {
+	return &StreamsAPI_CreateStreamProcessor_Call{Call: _e.mock.On("CreateStreamProcessor", ctx, groupId, tenantName, streamsProcessorRequest)}
 }
 
-func (_c *StreamsAPI_CreateStreamProcessor_Call) Run(run func(ctx context.Context, groupId string, tenantName string, streamsProcessor *admin.StreamsProcessor)) *StreamsAPI_CreateStreamProcessor_Call {
+func (_c *StreamsAPI_CreateStreamProcessor_Call) Run(run func(ctx context.Context, groupId string, tenantName string, streamsProcessorRequest *admin.StreamsProcessorRequest)) *StreamsAPI_CreateStreamProcessor_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.StreamsProcessor))
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.StreamsProcessorRequest))
 	})
 	return _c
 }
@@ -714,7 +714,7 @@ func (_c *StreamsAPI_CreateStreamProcessor_Call) Return(_a0 admin.CreateStreamPr
 	return _c
 }
 
-func (_c *StreamsAPI_CreateStreamProcessor_Call) RunAndReturn(run func(context.Context, string, string, *admin.StreamsProcessor) admin.CreateStreamProcessorApiRequest) *StreamsAPI_CreateStreamProcessor_Call {
+func (_c *StreamsAPI_CreateStreamProcessor_Call) RunAndReturn(run func(context.Context, string, string, *admin.StreamsProcessorRequest) admin.CreateStreamProcessorApiRequest) *StreamsAPI_CreateStreamProcessor_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -991,6 +991,159 @@ func (_c *StreamsAPI_CreateStreamWorkspaceWithParams_Call) Return(_a0 admin.Crea
 }
 
 func (_c *StreamsAPI_CreateStreamWorkspaceWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateStreamWorkspaceApiParams) admin.CreateStreamWorkspaceApiRequest) *StreamsAPI_CreateStreamWorkspaceWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateWorkspacePrivateEndpoint provides a mock function with given fields: ctx, groupId, streamsWorkspacePrivateEndpointRequest
+func (_m *StreamsAPI) CreateWorkspacePrivateEndpoint(ctx context.Context, groupId string, streamsWorkspacePrivateEndpointRequest *admin.StreamsWorkspacePrivateEndpointRequest) admin.CreateWorkspacePrivateEndpointApiRequest {
+	ret := _m.Called(ctx, groupId, streamsWorkspacePrivateEndpointRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateWorkspacePrivateEndpoint")
+	}
+
+	var r0 admin.CreateWorkspacePrivateEndpointApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, *admin.StreamsWorkspacePrivateEndpointRequest) admin.CreateWorkspacePrivateEndpointApiRequest); ok {
+		r0 = rf(ctx, groupId, streamsWorkspacePrivateEndpointRequest)
+	} else {
+		r0 = ret.Get(0).(admin.CreateWorkspacePrivateEndpointApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_CreateWorkspacePrivateEndpoint_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateWorkspacePrivateEndpoint'
+type StreamsAPI_CreateWorkspacePrivateEndpoint_Call struct {
+	*mock.Call
+}
+
+// CreateWorkspacePrivateEndpoint is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - streamsWorkspacePrivateEndpointRequest *admin.StreamsWorkspacePrivateEndpointRequest
+func (_e *StreamsAPI_Expecter) CreateWorkspacePrivateEndpoint(ctx any, groupId any, streamsWorkspacePrivateEndpointRequest any) *StreamsAPI_CreateWorkspacePrivateEndpoint_Call {
+	return &StreamsAPI_CreateWorkspacePrivateEndpoint_Call{Call: _e.mock.On("CreateWorkspacePrivateEndpoint", ctx, groupId, streamsWorkspacePrivateEndpointRequest)}
+}
+
+func (_c *StreamsAPI_CreateWorkspacePrivateEndpoint_Call) Run(run func(ctx context.Context, groupId string, streamsWorkspacePrivateEndpointRequest *admin.StreamsWorkspacePrivateEndpointRequest)) *StreamsAPI_CreateWorkspacePrivateEndpoint_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(*admin.StreamsWorkspacePrivateEndpointRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_CreateWorkspacePrivateEndpoint_Call) Return(_a0 admin.CreateWorkspacePrivateEndpointApiRequest) *StreamsAPI_CreateWorkspacePrivateEndpoint_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_CreateWorkspacePrivateEndpoint_Call) RunAndReturn(run func(context.Context, string, *admin.StreamsWorkspacePrivateEndpointRequest) admin.CreateWorkspacePrivateEndpointApiRequest) *StreamsAPI_CreateWorkspacePrivateEndpoint_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateWorkspacePrivateEndpointExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) CreateWorkspacePrivateEndpointExecute(r admin.CreateWorkspacePrivateEndpointApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateWorkspacePrivateEndpointExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.CreateWorkspacePrivateEndpointApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.CreateWorkspacePrivateEndpointApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.CreateWorkspacePrivateEndpointApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// StreamsAPI_CreateWorkspacePrivateEndpointExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateWorkspacePrivateEndpointExecute'
+type StreamsAPI_CreateWorkspacePrivateEndpointExecute_Call struct {
+	*mock.Call
+}
+
+// CreateWorkspacePrivateEndpointExecute is a helper method to define mock.On call
+//   - r admin.CreateWorkspacePrivateEndpointApiRequest
+func (_e *StreamsAPI_Expecter) CreateWorkspacePrivateEndpointExecute(r any) *StreamsAPI_CreateWorkspacePrivateEndpointExecute_Call {
+	return &StreamsAPI_CreateWorkspacePrivateEndpointExecute_Call{Call: _e.mock.On("CreateWorkspacePrivateEndpointExecute", r)}
+}
+
+func (_c *StreamsAPI_CreateWorkspacePrivateEndpointExecute_Call) Run(run func(r admin.CreateWorkspacePrivateEndpointApiRequest)) *StreamsAPI_CreateWorkspacePrivateEndpointExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.CreateWorkspacePrivateEndpointApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_CreateWorkspacePrivateEndpointExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsAPI_CreateWorkspacePrivateEndpointExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *StreamsAPI_CreateWorkspacePrivateEndpointExecute_Call) RunAndReturn(run func(admin.CreateWorkspacePrivateEndpointApiRequest) (*http.Response, error)) *StreamsAPI_CreateWorkspacePrivateEndpointExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// CreateWorkspacePrivateEndpointWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) CreateWorkspacePrivateEndpointWithParams(ctx context.Context, args *admin.CreateWorkspacePrivateEndpointApiParams) admin.CreateWorkspacePrivateEndpointApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for CreateWorkspacePrivateEndpointWithParams")
+	}
+
+	var r0 admin.CreateWorkspacePrivateEndpointApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.CreateWorkspacePrivateEndpointApiParams) admin.CreateWorkspacePrivateEndpointApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.CreateWorkspacePrivateEndpointApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_CreateWorkspacePrivateEndpointWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateWorkspacePrivateEndpointWithParams'
+type StreamsAPI_CreateWorkspacePrivateEndpointWithParams_Call struct {
+	*mock.Call
+}
+
+// CreateWorkspacePrivateEndpointWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.CreateWorkspacePrivateEndpointApiParams
+func (_e *StreamsAPI_Expecter) CreateWorkspacePrivateEndpointWithParams(ctx any, args any) *StreamsAPI_CreateWorkspacePrivateEndpointWithParams_Call {
+	return &StreamsAPI_CreateWorkspacePrivateEndpointWithParams_Call{Call: _e.mock.On("CreateWorkspacePrivateEndpointWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_CreateWorkspacePrivateEndpointWithParams_Call) Run(run func(ctx context.Context, args *admin.CreateWorkspacePrivateEndpointApiParams)) *StreamsAPI_CreateWorkspacePrivateEndpointWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.CreateWorkspacePrivateEndpointApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_CreateWorkspacePrivateEndpointWithParams_Call) Return(_a0 admin.CreateWorkspacePrivateEndpointApiRequest) *StreamsAPI_CreateWorkspacePrivateEndpointWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_CreateWorkspacePrivateEndpointWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateWorkspacePrivateEndpointApiParams) admin.CreateWorkspacePrivateEndpointApiRequest) *StreamsAPI_CreateWorkspacePrivateEndpointWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1913,6 +2066,159 @@ func (_c *StreamsAPI_DeleteVpcPeeringConnectionWithParams_Call) Return(_a0 admin
 }
 
 func (_c *StreamsAPI_DeleteVpcPeeringConnectionWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteVpcPeeringConnectionApiParams) admin.DeleteVpcPeeringConnectionApiRequest) *StreamsAPI_DeleteVpcPeeringConnectionWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteWorkspacePrivateEndpoint provides a mock function with given fields: ctx, groupId, endpointId
+func (_m *StreamsAPI) DeleteWorkspacePrivateEndpoint(ctx context.Context, groupId string, endpointId string) admin.DeleteWorkspacePrivateEndpointApiRequest {
+	ret := _m.Called(ctx, groupId, endpointId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteWorkspacePrivateEndpoint")
+	}
+
+	var r0 admin.DeleteWorkspacePrivateEndpointApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.DeleteWorkspacePrivateEndpointApiRequest); ok {
+		r0 = rf(ctx, groupId, endpointId)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteWorkspacePrivateEndpointApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_DeleteWorkspacePrivateEndpoint_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteWorkspacePrivateEndpoint'
+type StreamsAPI_DeleteWorkspacePrivateEndpoint_Call struct {
+	*mock.Call
+}
+
+// DeleteWorkspacePrivateEndpoint is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - endpointId string
+func (_e *StreamsAPI_Expecter) DeleteWorkspacePrivateEndpoint(ctx any, groupId any, endpointId any) *StreamsAPI_DeleteWorkspacePrivateEndpoint_Call {
+	return &StreamsAPI_DeleteWorkspacePrivateEndpoint_Call{Call: _e.mock.On("DeleteWorkspacePrivateEndpoint", ctx, groupId, endpointId)}
+}
+
+func (_c *StreamsAPI_DeleteWorkspacePrivateEndpoint_Call) Run(run func(ctx context.Context, groupId string, endpointId string)) *StreamsAPI_DeleteWorkspacePrivateEndpoint_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteWorkspacePrivateEndpoint_Call) Return(_a0 admin.DeleteWorkspacePrivateEndpointApiRequest) *StreamsAPI_DeleteWorkspacePrivateEndpoint_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteWorkspacePrivateEndpoint_Call) RunAndReturn(run func(context.Context, string, string) admin.DeleteWorkspacePrivateEndpointApiRequest) *StreamsAPI_DeleteWorkspacePrivateEndpoint_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteWorkspacePrivateEndpointExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) DeleteWorkspacePrivateEndpointExecute(r admin.DeleteWorkspacePrivateEndpointApiRequest) (*http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteWorkspacePrivateEndpointExecute")
+	}
+
+	var r0 *http.Response
+	var r1 error
+	if rf, ok := ret.Get(0).(func(admin.DeleteWorkspacePrivateEndpointApiRequest) (*http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.DeleteWorkspacePrivateEndpointApiRequest) *http.Response); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.DeleteWorkspacePrivateEndpointApiRequest) error); ok {
+		r1 = rf(r)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
+// StreamsAPI_DeleteWorkspacePrivateEndpointExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteWorkspacePrivateEndpointExecute'
+type StreamsAPI_DeleteWorkspacePrivateEndpointExecute_Call struct {
+	*mock.Call
+}
+
+// DeleteWorkspacePrivateEndpointExecute is a helper method to define mock.On call
+//   - r admin.DeleteWorkspacePrivateEndpointApiRequest
+func (_e *StreamsAPI_Expecter) DeleteWorkspacePrivateEndpointExecute(r any) *StreamsAPI_DeleteWorkspacePrivateEndpointExecute_Call {
+	return &StreamsAPI_DeleteWorkspacePrivateEndpointExecute_Call{Call: _e.mock.On("DeleteWorkspacePrivateEndpointExecute", r)}
+}
+
+func (_c *StreamsAPI_DeleteWorkspacePrivateEndpointExecute_Call) Run(run func(r admin.DeleteWorkspacePrivateEndpointApiRequest)) *StreamsAPI_DeleteWorkspacePrivateEndpointExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.DeleteWorkspacePrivateEndpointApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteWorkspacePrivateEndpointExecute_Call) Return(_a0 *http.Response, _a1 error) *StreamsAPI_DeleteWorkspacePrivateEndpointExecute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteWorkspacePrivateEndpointExecute_Call) RunAndReturn(run func(admin.DeleteWorkspacePrivateEndpointApiRequest) (*http.Response, error)) *StreamsAPI_DeleteWorkspacePrivateEndpointExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// DeleteWorkspacePrivateEndpointWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) DeleteWorkspacePrivateEndpointWithParams(ctx context.Context, args *admin.DeleteWorkspacePrivateEndpointApiParams) admin.DeleteWorkspacePrivateEndpointApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for DeleteWorkspacePrivateEndpointWithParams")
+	}
+
+	var r0 admin.DeleteWorkspacePrivateEndpointApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.DeleteWorkspacePrivateEndpointApiParams) admin.DeleteWorkspacePrivateEndpointApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.DeleteWorkspacePrivateEndpointApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_DeleteWorkspacePrivateEndpointWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'DeleteWorkspacePrivateEndpointWithParams'
+type StreamsAPI_DeleteWorkspacePrivateEndpointWithParams_Call struct {
+	*mock.Call
+}
+
+// DeleteWorkspacePrivateEndpointWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.DeleteWorkspacePrivateEndpointApiParams
+func (_e *StreamsAPI_Expecter) DeleteWorkspacePrivateEndpointWithParams(ctx any, args any) *StreamsAPI_DeleteWorkspacePrivateEndpointWithParams_Call {
+	return &StreamsAPI_DeleteWorkspacePrivateEndpointWithParams_Call{Call: _e.mock.On("DeleteWorkspacePrivateEndpointWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_DeleteWorkspacePrivateEndpointWithParams_Call) Run(run func(ctx context.Context, args *admin.DeleteWorkspacePrivateEndpointApiParams)) *StreamsAPI_DeleteWorkspacePrivateEndpointWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.DeleteWorkspacePrivateEndpointApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteWorkspacePrivateEndpointWithParams_Call) Return(_a0 admin.DeleteWorkspacePrivateEndpointApiRequest) *StreamsAPI_DeleteWorkspacePrivateEndpointWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_DeleteWorkspacePrivateEndpointWithParams_Call) RunAndReturn(run func(context.Context, *admin.DeleteWorkspacePrivateEndpointApiParams) admin.DeleteWorkspacePrivateEndpointApiRequest) *StreamsAPI_DeleteWorkspacePrivateEndpointWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -3378,6 +3684,168 @@ func (_c *StreamsAPI_GetStreamWorkspaceWithParams_Call) RunAndReturn(run func(co
 	return _c
 }
 
+// GetWorkspacePrivateEndpoint provides a mock function with given fields: ctx, groupId, endpointId
+func (_m *StreamsAPI) GetWorkspacePrivateEndpoint(ctx context.Context, groupId string, endpointId string) admin.GetWorkspacePrivateEndpointApiRequest {
+	ret := _m.Called(ctx, groupId, endpointId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetWorkspacePrivateEndpoint")
+	}
+
+	var r0 admin.GetWorkspacePrivateEndpointApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string) admin.GetWorkspacePrivateEndpointApiRequest); ok {
+		r0 = rf(ctx, groupId, endpointId)
+	} else {
+		r0 = ret.Get(0).(admin.GetWorkspacePrivateEndpointApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_GetWorkspacePrivateEndpoint_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetWorkspacePrivateEndpoint'
+type StreamsAPI_GetWorkspacePrivateEndpoint_Call struct {
+	*mock.Call
+}
+
+// GetWorkspacePrivateEndpoint is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+//   - endpointId string
+func (_e *StreamsAPI_Expecter) GetWorkspacePrivateEndpoint(ctx any, groupId any, endpointId any) *StreamsAPI_GetWorkspacePrivateEndpoint_Call {
+	return &StreamsAPI_GetWorkspacePrivateEndpoint_Call{Call: _e.mock.On("GetWorkspacePrivateEndpoint", ctx, groupId, endpointId)}
+}
+
+func (_c *StreamsAPI_GetWorkspacePrivateEndpoint_Call) Run(run func(ctx context.Context, groupId string, endpointId string)) *StreamsAPI_GetWorkspacePrivateEndpoint_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_GetWorkspacePrivateEndpoint_Call) Return(_a0 admin.GetWorkspacePrivateEndpointApiRequest) *StreamsAPI_GetWorkspacePrivateEndpoint_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_GetWorkspacePrivateEndpoint_Call) RunAndReturn(run func(context.Context, string, string) admin.GetWorkspacePrivateEndpointApiRequest) *StreamsAPI_GetWorkspacePrivateEndpoint_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetWorkspacePrivateEndpointExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) GetWorkspacePrivateEndpointExecute(r admin.GetWorkspacePrivateEndpointApiRequest) (*admin.StreamsWorkspacePrivateEndpointResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetWorkspacePrivateEndpointExecute")
+	}
+
+	var r0 *admin.StreamsWorkspacePrivateEndpointResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GetWorkspacePrivateEndpointApiRequest) (*admin.StreamsWorkspacePrivateEndpointResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GetWorkspacePrivateEndpointApiRequest) *admin.StreamsWorkspacePrivateEndpointResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.StreamsWorkspacePrivateEndpointResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GetWorkspacePrivateEndpointApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GetWorkspacePrivateEndpointApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsAPI_GetWorkspacePrivateEndpointExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetWorkspacePrivateEndpointExecute'
+type StreamsAPI_GetWorkspacePrivateEndpointExecute_Call struct {
+	*mock.Call
+}
+
+// GetWorkspacePrivateEndpointExecute is a helper method to define mock.On call
+//   - r admin.GetWorkspacePrivateEndpointApiRequest
+func (_e *StreamsAPI_Expecter) GetWorkspacePrivateEndpointExecute(r any) *StreamsAPI_GetWorkspacePrivateEndpointExecute_Call {
+	return &StreamsAPI_GetWorkspacePrivateEndpointExecute_Call{Call: _e.mock.On("GetWorkspacePrivateEndpointExecute", r)}
+}
+
+func (_c *StreamsAPI_GetWorkspacePrivateEndpointExecute_Call) Run(run func(r admin.GetWorkspacePrivateEndpointApiRequest)) *StreamsAPI_GetWorkspacePrivateEndpointExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GetWorkspacePrivateEndpointApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_GetWorkspacePrivateEndpointExecute_Call) Return(_a0 *admin.StreamsWorkspacePrivateEndpointResponse, _a1 *http.Response, _a2 error) *StreamsAPI_GetWorkspacePrivateEndpointExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsAPI_GetWorkspacePrivateEndpointExecute_Call) RunAndReturn(run func(admin.GetWorkspacePrivateEndpointApiRequest) (*admin.StreamsWorkspacePrivateEndpointResponse, *http.Response, error)) *StreamsAPI_GetWorkspacePrivateEndpointExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GetWorkspacePrivateEndpointWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) GetWorkspacePrivateEndpointWithParams(ctx context.Context, args *admin.GetWorkspacePrivateEndpointApiParams) admin.GetWorkspacePrivateEndpointApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GetWorkspacePrivateEndpointWithParams")
+	}
+
+	var r0 admin.GetWorkspacePrivateEndpointApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GetWorkspacePrivateEndpointApiParams) admin.GetWorkspacePrivateEndpointApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GetWorkspacePrivateEndpointApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_GetWorkspacePrivateEndpointWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GetWorkspacePrivateEndpointWithParams'
+type StreamsAPI_GetWorkspacePrivateEndpointWithParams_Call struct {
+	*mock.Call
+}
+
+// GetWorkspacePrivateEndpointWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GetWorkspacePrivateEndpointApiParams
+func (_e *StreamsAPI_Expecter) GetWorkspacePrivateEndpointWithParams(ctx any, args any) *StreamsAPI_GetWorkspacePrivateEndpointWithParams_Call {
+	return &StreamsAPI_GetWorkspacePrivateEndpointWithParams_Call{Call: _e.mock.On("GetWorkspacePrivateEndpointWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_GetWorkspacePrivateEndpointWithParams_Call) Run(run func(ctx context.Context, args *admin.GetWorkspacePrivateEndpointApiParams)) *StreamsAPI_GetWorkspacePrivateEndpointWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GetWorkspacePrivateEndpointApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_GetWorkspacePrivateEndpointWithParams_Call) Return(_a0 admin.GetWorkspacePrivateEndpointApiRequest) *StreamsAPI_GetWorkspacePrivateEndpointWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_GetWorkspacePrivateEndpointWithParams_Call) RunAndReturn(run func(context.Context, *admin.GetWorkspacePrivateEndpointApiParams) admin.GetWorkspacePrivateEndpointApiRequest) *StreamsAPI_GetWorkspacePrivateEndpointWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // ListActivePeeringConnections provides a mock function with given fields: ctx, groupId
 func (_m *StreamsAPI) ListActivePeeringConnections(ctx context.Context, groupId string) admin.ListActivePeeringConnectionsApiRequest {
 	ret := _m.Called(ctx, groupId)
@@ -4343,6 +4811,167 @@ func (_c *StreamsAPI_ListVpcPeeringConnectionsWithParams_Call) Return(_a0 admin.
 }
 
 func (_c *StreamsAPI_ListVpcPeeringConnectionsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListVpcPeeringConnectionsApiParams) admin.ListVpcPeeringConnectionsApiRequest) *StreamsAPI_ListVpcPeeringConnectionsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListWorkspacePrivateEndpoints provides a mock function with given fields: ctx, groupId
+func (_m *StreamsAPI) ListWorkspacePrivateEndpoints(ctx context.Context, groupId string) admin.ListWorkspacePrivateEndpointsApiRequest {
+	ret := _m.Called(ctx, groupId)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListWorkspacePrivateEndpoints")
+	}
+
+	var r0 admin.ListWorkspacePrivateEndpointsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string) admin.ListWorkspacePrivateEndpointsApiRequest); ok {
+		r0 = rf(ctx, groupId)
+	} else {
+		r0 = ret.Get(0).(admin.ListWorkspacePrivateEndpointsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_ListWorkspacePrivateEndpoints_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListWorkspacePrivateEndpoints'
+type StreamsAPI_ListWorkspacePrivateEndpoints_Call struct {
+	*mock.Call
+}
+
+// ListWorkspacePrivateEndpoints is a helper method to define mock.On call
+//   - ctx context.Context
+//   - groupId string
+func (_e *StreamsAPI_Expecter) ListWorkspacePrivateEndpoints(ctx any, groupId any) *StreamsAPI_ListWorkspacePrivateEndpoints_Call {
+	return &StreamsAPI_ListWorkspacePrivateEndpoints_Call{Call: _e.mock.On("ListWorkspacePrivateEndpoints", ctx, groupId)}
+}
+
+func (_c *StreamsAPI_ListWorkspacePrivateEndpoints_Call) Run(run func(ctx context.Context, groupId string)) *StreamsAPI_ListWorkspacePrivateEndpoints_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_ListWorkspacePrivateEndpoints_Call) Return(_a0 admin.ListWorkspacePrivateEndpointsApiRequest) *StreamsAPI_ListWorkspacePrivateEndpoints_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_ListWorkspacePrivateEndpoints_Call) RunAndReturn(run func(context.Context, string) admin.ListWorkspacePrivateEndpointsApiRequest) *StreamsAPI_ListWorkspacePrivateEndpoints_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListWorkspacePrivateEndpointsExecute provides a mock function with given fields: r
+func (_m *StreamsAPI) ListWorkspacePrivateEndpointsExecute(r admin.ListWorkspacePrivateEndpointsApiRequest) (*admin.PaginatedStreamsWorkspacePrivateEndpointResponse, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListWorkspacePrivateEndpointsExecute")
+	}
+
+	var r0 *admin.PaginatedStreamsWorkspacePrivateEndpointResponse
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListWorkspacePrivateEndpointsApiRequest) (*admin.PaginatedStreamsWorkspacePrivateEndpointResponse, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListWorkspacePrivateEndpointsApiRequest) *admin.PaginatedStreamsWorkspacePrivateEndpointResponse); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedStreamsWorkspacePrivateEndpointResponse)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListWorkspacePrivateEndpointsApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListWorkspacePrivateEndpointsApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// StreamsAPI_ListWorkspacePrivateEndpointsExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListWorkspacePrivateEndpointsExecute'
+type StreamsAPI_ListWorkspacePrivateEndpointsExecute_Call struct {
+	*mock.Call
+}
+
+// ListWorkspacePrivateEndpointsExecute is a helper method to define mock.On call
+//   - r admin.ListWorkspacePrivateEndpointsApiRequest
+func (_e *StreamsAPI_Expecter) ListWorkspacePrivateEndpointsExecute(r any) *StreamsAPI_ListWorkspacePrivateEndpointsExecute_Call {
+	return &StreamsAPI_ListWorkspacePrivateEndpointsExecute_Call{Call: _e.mock.On("ListWorkspacePrivateEndpointsExecute", r)}
+}
+
+func (_c *StreamsAPI_ListWorkspacePrivateEndpointsExecute_Call) Run(run func(r admin.ListWorkspacePrivateEndpointsApiRequest)) *StreamsAPI_ListWorkspacePrivateEndpointsExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListWorkspacePrivateEndpointsApiRequest))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_ListWorkspacePrivateEndpointsExecute_Call) Return(_a0 *admin.PaginatedStreamsWorkspacePrivateEndpointResponse, _a1 *http.Response, _a2 error) *StreamsAPI_ListWorkspacePrivateEndpointsExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *StreamsAPI_ListWorkspacePrivateEndpointsExecute_Call) RunAndReturn(run func(admin.ListWorkspacePrivateEndpointsApiRequest) (*admin.PaginatedStreamsWorkspacePrivateEndpointResponse, *http.Response, error)) *StreamsAPI_ListWorkspacePrivateEndpointsExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListWorkspacePrivateEndpointsWithParams provides a mock function with given fields: ctx, args
+func (_m *StreamsAPI) ListWorkspacePrivateEndpointsWithParams(ctx context.Context, args *admin.ListWorkspacePrivateEndpointsApiParams) admin.ListWorkspacePrivateEndpointsApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListWorkspacePrivateEndpointsWithParams")
+	}
+
+	var r0 admin.ListWorkspacePrivateEndpointsApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListWorkspacePrivateEndpointsApiParams) admin.ListWorkspacePrivateEndpointsApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListWorkspacePrivateEndpointsApiRequest)
+	}
+
+	return r0
+}
+
+// StreamsAPI_ListWorkspacePrivateEndpointsWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListWorkspacePrivateEndpointsWithParams'
+type StreamsAPI_ListWorkspacePrivateEndpointsWithParams_Call struct {
+	*mock.Call
+}
+
+// ListWorkspacePrivateEndpointsWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListWorkspacePrivateEndpointsApiParams
+func (_e *StreamsAPI_Expecter) ListWorkspacePrivateEndpointsWithParams(ctx any, args any) *StreamsAPI_ListWorkspacePrivateEndpointsWithParams_Call {
+	return &StreamsAPI_ListWorkspacePrivateEndpointsWithParams_Call{Call: _e.mock.On("ListWorkspacePrivateEndpointsWithParams", ctx, args)}
+}
+
+func (_c *StreamsAPI_ListWorkspacePrivateEndpointsWithParams_Call) Run(run func(ctx context.Context, args *admin.ListWorkspacePrivateEndpointsApiParams)) *StreamsAPI_ListWorkspacePrivateEndpointsWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListWorkspacePrivateEndpointsApiParams))
+	})
+	return _c
+}
+
+func (_c *StreamsAPI_ListWorkspacePrivateEndpointsWithParams_Call) Return(_a0 admin.ListWorkspacePrivateEndpointsApiRequest) *StreamsAPI_ListWorkspacePrivateEndpointsWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *StreamsAPI_ListWorkspacePrivateEndpointsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListWorkspacePrivateEndpointsApiParams) admin.ListWorkspacePrivateEndpointsApiRequest) *StreamsAPI_ListWorkspacePrivateEndpointsWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
