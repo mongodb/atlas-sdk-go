@@ -27,6 +27,8 @@ import (
 	"sync/atomic"
 	"testing"
 	"time"
+
+	"golang.org/x/oauth2"
 )
 
 func authServerMetadataForConfig(c *Config, authorizationEndpoint, tokenEndpoint, revocationEndpoint string) *AuthServerMetadata {
@@ -46,13 +48,9 @@ func TestGeneratePKCE(t *testing.T) {
 	if len(pkce.CodeVerifier) != 43 {
 		t.Errorf("verifier length = %d, expected 43", len(pkce.CodeVerifier))
 	}
-	hash := sha256.Sum256([]byte(pkce.CodeVerifier))
-	wantChallenge := base64.RawURLEncoding.EncodeToString(hash[:])
-	if pkce.CodeChallenge != wantChallenge {
-		t.Errorf("challenge = %q, expected S256(verifier) %q", pkce.CodeChallenge, wantChallenge)
-	}
-	if len(pkce.CodeChallenge) != 43 {
-		t.Errorf("challenge length = %d, expected 43", len(pkce.CodeChallenge))
+	verifierBytes, err := base64.RawURLEncoding.DecodeString(pkce.CodeVerifier)
+	if err != nil || len(verifierBytes) != 32 {
+		t.Errorf("verifier = %q, expected 32 bytes of base64url-encoded randomness", pkce.CodeVerifier)
 	}
 
 	other, err := GeneratePKCE()
@@ -350,6 +348,8 @@ func TestConfig_AuthorizationURL(t *testing.T) {
 	if err != nil {
 		t.Fatalf("AuthorizationURL() returned invalid URL %q: %v", got, err)
 	}
+	hash := sha256.Sum256([]byte(pkce.CodeVerifier))
+	wantChallenge := base64.RawURLEncoding.EncodeToString(hash[:])
 	want := map[string]string{
 		"tenant":                "atlas",
 		"response_type":         "code",
@@ -357,7 +357,7 @@ func TestConfig_AuthorizationURL(t *testing.T) {
 		"redirect_uri":          "http://127.0.0.1:1234/callback",
 		"scope":                 "atlas openid",
 		"state":                 "test-state",
-		"code_challenge":        pkce.CodeChallenge,
+		"code_challenge":        wantChallenge,
 		"code_challenge_method": "S256",
 	}
 	for key, value := range want {
@@ -375,7 +375,7 @@ func TestConfig_AuthorizationURLRequiresStateAndPKCE(t *testing.T) {
 		"https://auth.example.com/token",
 		"https://auth.example.com/revoke",
 	)
-	pkce := &PKCEParams{CodeVerifier: "verifier", CodeChallenge: "challenge"}
+	pkce := &PKCEParams{CodeVerifier: "verifier"}
 
 	for _, test := range []struct {
 		name  string
@@ -384,8 +384,7 @@ func TestConfig_AuthorizationURLRequiresStateAndPKCE(t *testing.T) {
 	}{
 		{name: "missing state", state: "", pkce: pkce},
 		{name: "missing PKCE", state: "state", pkce: nil},
-		{name: "missing verifier", state: "state", pkce: &PKCEParams{CodeChallenge: "challenge"}},
-		{name: "mismatched PKCE", state: "state", pkce: &PKCEParams{CodeVerifier: "verifier", CodeChallenge: "challenge"}},
+		{name: "missing verifier", state: "state", pkce: &PKCEParams{}},
 	} {
 		t.Run(test.name, func(t *testing.T) {
 			_, err := c.AuthorizationURL(metadata, "http://127.0.0.1/callback", test.state, test.pkce)
@@ -432,11 +431,12 @@ func TestConfig_ExchangeCode(t *testing.T) {
 			t.Errorf("ParseForm() returned error: %v", err)
 		}
 		gotForm = r.PostForm
+		w.Header().Set("Content-Type", "application/json")
 		fmt.Fprint(w, `{"access_token":"access-token","refresh_token":"refresh-token","scope":"atlas","id_token":"id-token","token_type":"Bearer","expires_in":3600}`)
 	}))
 	defer server.Close()
 
-	c, err := NewConfigWithOptions(server.Client(), SetClientID("test-client"), SetAuthServerURL(server.URL))
+	c, err := NewConfigWithOptions(server.Client(), SetClientID("test-client"), SetAuthServerURL(server.URL), SetWithRaw())
 	if err != nil {
 		t.Fatalf("NewConfigWithOptions() returned error: %v", err)
 	}
@@ -448,6 +448,9 @@ func TestConfig_ExchangeCode(t *testing.T) {
 	}
 	if resp == nil || resp.StatusCode != http.StatusOK {
 		t.Fatalf("response = %v, expected HTTP 200", resp)
+	}
+	if !strings.Contains(string(resp.Raw), `"access_token":"access-token"`) {
+		t.Errorf("raw response = %q, expected token response body", resp.Raw)
 	}
 	if token.AccessToken != "access-token" || token.RefreshToken != "refresh-token" || token.IDToken != "id-token" {
 		t.Errorf("token = %+v", token)
@@ -471,6 +474,7 @@ func TestConfig_ExchangeCode(t *testing.T) {
 
 func TestConfig_ExchangeCodeErrorResponse(t *testing.T) {
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusBadRequest)
 		fmt.Fprint(w, `{"error":"invalid_grant","error_description":"authorization code expired","error_uri":"https://auth.example.com/errors"}`)
 	}))
@@ -547,19 +551,20 @@ func TestConfig_ExchangeCodeDoesNotFollowRedirects(t *testing.T) {
 	}
 }
 
-func TestDecodeOAuthTokenRequiresAccessTokenAndExpiry(t *testing.T) {
+func TestTokenFromOAuth2RequiresAccessTokenAndExpiry(t *testing.T) {
 	for _, test := range []struct {
-		name string
-		body string
+		name  string
+		token *oauth2.Token
 	}{
-		{name: "missing access token", body: `{"expires_in":3600}`},
-		{name: "missing expiry", body: `{"access_token":"at"}`},
-		{name: "zero expiry", body: `{"access_token":"at","expires_in":0}`},
-		{name: "negative expiry", body: `{"access_token":"at","expires_in":-1}`},
+		{name: "nil token"},
+		{name: "missing access token", token: &oauth2.Token{ExpiresIn: 3600}},
+		{name: "missing expiry", token: &oauth2.Token{AccessToken: "at"}},
+		{name: "zero expiry", token: &oauth2.Token{AccessToken: "at", ExpiresIn: 0}},
+		{name: "negative expiry", token: &oauth2.Token{AccessToken: "at", ExpiresIn: -1}},
 	} {
 		t.Run(test.name, func(t *testing.T) {
-			if _, err := decodeOAuthToken([]byte(test.body), "test exchange"); err == nil {
-				t.Fatal("decodeOAuthToken() returned nil error for an incomplete token response")
+			if _, err := tokenFromOAuth2(test.token, "test exchange"); err == nil {
+				t.Fatal("tokenFromOAuth2() returned nil error for an incomplete token")
 			}
 		})
 	}
@@ -579,6 +584,7 @@ func TestConfig_RefreshAccessToken(t *testing.T) {
 			t.Errorf("ParseForm() returned error: %v", err)
 		}
 		gotForm = r.PostForm
+		w.Header().Set("Content-Type", "application/json")
 		fmt.Fprint(w, `{"access_token":"new-access-token","refresh_token":"rotated-refresh-token","token_type":"Bearer","expires_in":1800}`)
 	}))
 	defer server.Close()
@@ -616,6 +622,7 @@ func TestConfig_RefreshAccessToken(t *testing.T) {
 
 func TestConfig_RefreshAccessTokenRetainsRefreshTokenWhenNotRotated(t *testing.T) {
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
 		fmt.Fprint(w, `{"access_token":"new-access-token","token_type":"Bearer","expires_in":1800}`)
 	}))
 	defer server.Close()
@@ -633,6 +640,7 @@ func TestConfig_RefreshAccessTokenRetainsRefreshTokenWhenNotRotated(t *testing.T
 
 func TestConfig_RefreshAccessTokenErrorResponse(t *testing.T) {
 	server := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusBadRequest)
 		fmt.Fprint(w, `{"error":"invalid_grant","error_description":"refresh token expired"}`)
 	}))

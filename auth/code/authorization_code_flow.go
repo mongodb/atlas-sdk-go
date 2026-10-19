@@ -15,10 +15,8 @@
 package code
 
 import (
+	"bytes"
 	"context"
-	"crypto/rand"
-	"crypto/sha256"
-	"encoding/base64"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -28,6 +26,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"golang.org/x/oauth2"
 
 	"go.mongodb.org/atlas-sdk/v20250312026/internal/core"
 )
@@ -47,10 +47,10 @@ type AuthServerMetadata struct {
 	CacheExpiry time.Time `json:"-"`
 }
 
-// PKCEParams holds an RFC 7636 verifier and its S256 challenge.
+// PKCEParams holds an RFC 7636 code verifier. The S256 challenge is generated
+// by golang.org/x/oauth2.
 type PKCEParams struct {
-	CodeVerifier  string
-	CodeChallenge string
+	CodeVerifier string
 }
 
 // OAuthError describes an authorization-server error response.
@@ -83,27 +83,27 @@ func (e *OAuthError) Error() string {
 	return message
 }
 
-// GeneratePKCE creates a random verifier and its S256 challenge.
+// GeneratePKCE creates a random verifier for the Authorization Code flow.
 func GeneratePKCE() (*PKCEParams, error) {
-	verifierBytes := make([]byte, 32)
-	if _, err := rand.Read(verifierBytes); err != nil {
-		return nil, fmt.Errorf("generating PKCE code verifier: %w", err)
+	verifier, err := generateOAuth2RandomValue("PKCE code verifier")
+	if err != nil {
+		return nil, err
 	}
-
-	verifier := base64.RawURLEncoding.EncodeToString(verifierBytes)
-	return &PKCEParams{
-		CodeVerifier:  verifier,
-		CodeChallenge: s256CodeChallenge(verifier),
-	}, nil
+	return &PKCEParams{CodeVerifier: verifier}, nil
 }
 
 // GenerateState creates random OAuth state for the authorization request.
 func GenerateState() (string, error) {
-	stateBytes := make([]byte, 32)
-	if _, err := rand.Read(stateBytes); err != nil {
-		return "", fmt.Errorf("generating OAuth state: %w", err)
-	}
-	return base64.RawURLEncoding.EncodeToString(stateBytes), nil
+	return generateOAuth2RandomValue("OAuth state")
+}
+
+func generateOAuth2RandomValue(name string) (_ string, err error) {
+	defer func() {
+		if recovered := recover(); recovered != nil {
+			err = fmt.Errorf("generating %s: %v", name, recovered)
+		}
+	}()
+	return oauth2.GenerateVerifier(), nil
 }
 
 // DiscoverAuthServer fetches and validates metadata for the configured issuer.
@@ -194,15 +194,9 @@ func (c *Config) validateAuthServerMetadata(metadata *AuthServerMetadata) error 
 // AuthorizationURL builds a request from discovered metadata, state, and PKCE.
 // Retain and validate state, and keep the verifier until code exchange.
 func (c *Config) AuthorizationURL(metadata *AuthServerMetadata, redirectURI, state string, pkce *PKCEParams) (string, error) {
-	if err := c.validateAuthServerMetadata(metadata); err != nil {
-		return "", err
-	}
-	u, err := parseOAuthEndpoint(metadata.AuthorizationEndpoint, "authorization endpoint")
+	oauthConfig, err := c.newOAuth2Config(metadata)
 	if err != nil {
 		return "", err
-	}
-	if c.ClientID == "" {
-		return "", errors.New("OAuth client ID is not configured")
 	}
 	if redirectURI == "" {
 		return "", errors.New("OAuth redirect URI is required")
@@ -210,35 +204,19 @@ func (c *Config) AuthorizationURL(metadata *AuthServerMetadata, redirectURI, sta
 	if state == "" {
 		return "", errors.New("OAuth state is required")
 	}
-	if pkce == nil || pkce.CodeVerifier == "" || pkce.CodeChallenge == "" {
-		return "", errors.New("PKCE code verifier and challenge are required")
-	}
-	if pkce.CodeChallenge != s256CodeChallenge(pkce.CodeVerifier) {
-		return "", errors.New("PKCE code challenge does not match the S256 code verifier")
+	if pkce == nil || pkce.CodeVerifier == "" {
+		return "", errors.New("PKCE code verifier is required")
 	}
 
-	query := u.Query()
-	query.Set("response_type", "code")
-	query.Set("client_id", c.ClientID)
-	query.Set("redirect_uri", redirectURI)
-	if len(c.Scopes) > 0 {
-		query.Set("scope", strings.Join(c.Scopes, " "))
-	}
-	query.Set("state", state)
-	query.Set("code_challenge", pkce.CodeChallenge)
-	query.Set("code_challenge_method", "S256")
-	u.RawQuery = query.Encode()
-
-	return u.String(), nil
+	oauthConfig.RedirectURL = redirectURI
+	return oauthConfig.AuthCodeURL(state, oauth2.S256ChallengeOption(pkce.CodeVerifier)), nil
 }
 
 // ExchangeCode exchanges an authorization code using its redirect URI and verifier.
 func (c *Config) ExchangeCode(ctx context.Context, metadata *AuthServerMetadata, authorizationCode, redirectURI, codeVerifier string) (*Token, *core.Response, error) {
-	if err := c.validateAuthServerMetadata(metadata); err != nil {
+	oauthConfig, err := c.newOAuth2Config(metadata)
+	if err != nil {
 		return nil, nil, err
-	}
-	if c.ClientID == "" {
-		return nil, nil, errors.New("OAuth client ID is not configured")
 	}
 	if authorizationCode == "" {
 		return nil, nil, errors.New("authorization code is required")
@@ -250,18 +228,17 @@ func (c *Config) ExchangeCode(ctx context.Context, metadata *AuthServerMetadata,
 		return nil, nil, errors.New("PKCE code verifier is required")
 	}
 
-	form := url.Values{
-		"grant_type":    {"authorization_code"},
-		"code":          {authorizationCode},
-		"redirect_uri":  {redirectURI},
-		"client_id":     {c.ClientID},
-		"code_verifier": {codeVerifier},
-	}
-	resp, body, err := c.postOAuthForm(ctx, metadata.TokenEndpoint, "token exchange", form)
+	oauthConfig.RedirectURL = redirectURI
+	oauthCtx, responseCapture := c.oauth2Context(ctx)
+	oauthToken, err := oauthConfig.Exchange(oauthCtx, authorizationCode, oauth2.VerifierOption(codeVerifier))
+	resp := c.oauth2Response(responseCapture)
 	if err != nil {
-		return nil, resp, err
+		if ctx.Err() != nil {
+			return nil, resp, ctx.Err()
+		}
+		return nil, resp, oauth2TokenError(err, "token exchange")
 	}
-	token, err := decodeOAuthToken(body, "token exchange")
+	token, err := tokenFromOAuth2(oauthToken, "token exchange")
 	if err != nil {
 		return nil, resp, err
 	}
@@ -270,33 +247,70 @@ func (c *Config) ExchangeCode(ctx context.Context, metadata *AuthServerMetadata,
 
 // RefreshAccessToken exchanges a refresh token and retains it if not rotated.
 func (c *Config) RefreshAccessToken(ctx context.Context, metadata *AuthServerMetadata, refreshToken string) (*Token, *core.Response, error) {
-	if err := c.validateAuthServerMetadata(metadata); err != nil {
+	oauthConfig, err := c.newOAuth2Config(metadata)
+	if err != nil {
 		return nil, nil, err
-	}
-	if c.ClientID == "" {
-		return nil, nil, errors.New("OAuth client ID is not configured")
 	}
 	if refreshToken == "" {
 		return nil, nil, errors.New("OAuth refresh token is required")
 	}
 
-	form := url.Values{
-		"grant_type":    {"refresh_token"},
-		"client_id":     {c.ClientID},
-		"refresh_token": {refreshToken},
+	oauthCtx, responseCapture := c.oauth2Context(ctx)
+	tokenSource := oauthConfig.TokenSource(oauthCtx, &oauth2.Token{RefreshToken: refreshToken})
+	oauthToken, err := tokenSource.Token()
+	resp := c.oauth2Response(responseCapture)
+	if err != nil {
+		if ctx.Err() != nil {
+			return nil, resp, ctx.Err()
+		}
+		return nil, resp, oauth2TokenError(err, "token refresh")
 	}
-	resp, body, err := c.postOAuthForm(ctx, metadata.TokenEndpoint, "token refresh", form)
+	token, err := tokenFromOAuth2(oauthToken, "token refresh")
 	if err != nil {
 		return nil, resp, err
-	}
-	token, err := decodeOAuthToken(body, "token refresh")
-	if err != nil {
-		return nil, resp, err
-	}
-	if token.RefreshToken == "" {
-		token.RefreshToken = refreshToken
 	}
 	return token, resp, nil
+}
+
+func (c *Config) newOAuth2Config(metadata *AuthServerMetadata) (*oauth2.Config, error) {
+	if err := c.validateAuthServerMetadata(metadata); err != nil {
+		return nil, err
+	}
+	if c.ClientID == "" {
+		return nil, errors.New("OAuth client ID is not configured")
+	}
+	return &oauth2.Config{
+		ClientID: c.ClientID,
+		Scopes:   append([]string(nil), c.Scopes...),
+		Endpoint: oauth2.Endpoint{
+			AuthURL:   metadata.AuthorizationEndpoint,
+			TokenURL:  metadata.TokenEndpoint,
+			AuthStyle: oauth2.AuthStyleInParams,
+		},
+	}, nil
+}
+
+func oauth2TokenError(err error, operation string) error {
+	var retrieveErr *oauth2.RetrieveError
+	if errors.As(err, &retrieveErr) {
+		statusCode := 0
+		if retrieveErr.Response != nil {
+			statusCode = retrieveErr.Response.StatusCode
+		}
+		if retrieveErr.ErrorCode != "" || retrieveErr.ErrorDescription != "" || retrieveErr.ErrorURI != "" {
+			return &OAuthError{
+				Operation:        operation,
+				StatusCode:       statusCode,
+				ErrorCode:        retrieveErr.ErrorCode,
+				ErrorDescription: retrieveErr.ErrorDescription,
+				ErrorURI:         retrieveErr.ErrorURI,
+			}
+		}
+		if statusCode > 0 {
+			return fmt.Errorf("OAuth %s endpoint returned HTTP %d", operation, statusCode)
+		}
+	}
+	return fmt.Errorf("OAuth %s request failed: %w", operation, err)
 }
 
 // RevokeAuthServerToken revokes a token at the discovered endpoint.
@@ -378,20 +392,28 @@ func parseOAuthError(statusCode int, operation string, body []byte) error {
 	return fmt.Errorf("OAuth %s endpoint returned HTTP %d", operation, statusCode)
 }
 
-func decodeOAuthToken(body []byte, operation string) (*Token, error) {
-	var token Token
-	if err := json.Unmarshal(body, &token); err != nil {
-		return nil, fmt.Errorf("decoding OAuth %s response: %w", operation, err)
-	}
-	if token.AccessToken == "" {
+func tokenFromOAuth2(oauthToken *oauth2.Token, operation string) (*Token, error) {
+	if oauthToken == nil || oauthToken.AccessToken == "" {
 		return nil, fmt.Errorf("decoding OAuth %s response: access_token is missing", operation)
 	}
-	if token.ExpiresIn <= 0 {
+	if oauthToken.ExpiresIn <= 0 {
 		return nil, fmt.Errorf("decoding OAuth %s response: expires_in must be positive", operation)
 	}
-	token.Expiry = time.Now().Add(time.Duration(token.ExpiresIn) * time.Second)
 
-	return &token, nil
+	return &Token{
+		AccessToken:  oauthToken.AccessToken,
+		RefreshToken: oauthToken.RefreshToken,
+		Scope:        oauth2StringExtra(oauthToken, "scope"),
+		IDToken:      oauth2StringExtra(oauthToken, "id_token"),
+		TokenType:    oauthToken.TokenType,
+		ExpiresIn:    int(oauthToken.ExpiresIn),
+		Expiry:       oauthToken.Expiry,
+	}, nil
+}
+
+func oauth2StringExtra(token *oauth2.Token, key string) string {
+	value, _ := token.Extra(key).(string)
+	return value
 }
 
 func (c *Config) doOAuthRequest(req *http.Request) (*http.Response, error) {
@@ -401,6 +423,83 @@ func (c *Config) doOAuthRequest(req *http.Request) (*http.Response, error) {
 	}
 	// #nosec G704 -- OAuth request URLs are configured issuers or HTTPS endpoints from their validated discovery metadata.
 	return client.Do(req)
+}
+
+const oauth2ResponseBodyLimit = 1 << 20
+
+type oauth2ResponseCapture struct {
+	response *http.Response
+	body     []byte
+}
+
+type oauth2ResponseTransport struct {
+	base        http.RoundTripper
+	capture     *oauth2ResponseCapture
+	captureBody bool
+	userAgent   string
+}
+
+func (t *oauth2ResponseTransport) RoundTrip(req *http.Request) (*http.Response, error) {
+	request := req.Clone(req.Context())
+	request.Header = req.Header.Clone()
+	if request.Header == nil {
+		request.Header = make(http.Header)
+	}
+	request.Header.Set("Accept", "application/json")
+	if t.userAgent != "" {
+		request.Header.Set("User-Agent", t.userAgent)
+	}
+
+	// #nosec G704 -- OAuth requests are sent to validated HTTPS endpoints from the configured issuer.
+	response, err := t.base.RoundTrip(request)
+	if err != nil || response == nil {
+		return response, err
+	}
+	t.capture.response = response
+	if response.Body == nil || !t.captureBody {
+		return response, nil
+	}
+
+	body, err := io.ReadAll(io.LimitReader(response.Body, oauth2ResponseBodyLimit))
+	if err != nil {
+		_ = response.Body.Close()
+		return nil, err
+	}
+	_ = response.Body.Close()
+	t.capture.body = body
+	response.Body = io.NopCloser(bytes.NewReader(body))
+	return response, nil
+}
+
+func (c *Config) oauth2Context(ctx context.Context) (context.Context, *oauth2ResponseCapture) {
+	client := *c.client
+	client.CheckRedirect = func(*http.Request, []*http.Request) error {
+		return http.ErrUseLastResponse
+	}
+
+	baseTransport := client.Transport
+	if baseTransport == nil {
+		baseTransport = http.DefaultTransport
+	}
+	capture := &oauth2ResponseCapture{}
+	client.Transport = &oauth2ResponseTransport{
+		base:        baseTransport,
+		capture:     capture,
+		captureBody: c.withRaw,
+		userAgent:   c.UserAgent,
+	}
+	return context.WithValue(ctx, oauth2.HTTPClient, &client), capture
+}
+
+func (c *Config) oauth2Response(capture *oauth2ResponseCapture) *core.Response {
+	if capture == nil || capture.response == nil {
+		return nil
+	}
+	response := &core.Response{Response: capture.response}
+	if c.withRaw {
+		response.Raw = capture.body
+	}
+	return response
 }
 
 func authServerMetadataCacheExpiry(header http.Header) time.Time {
@@ -444,9 +543,4 @@ func parseOAuthEndpoint(raw, name string) (*url.URL, error) {
 		return nil, fmt.Errorf("OAuth %s must be an absolute HTTPS URL", name)
 	}
 	return u, nil
-}
-
-func s256CodeChallenge(verifier string) string {
-	hash := sha256.Sum256([]byte(verifier))
-	return base64.RawURLEncoding.EncodeToString(hash[:])
 }
