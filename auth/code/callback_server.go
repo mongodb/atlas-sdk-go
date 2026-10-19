@@ -96,14 +96,18 @@ func (s *CallbackServer) WaitForCallback(ctx context.Context) (string, error) {
 	}
 }
 
-// Close shuts down the listener.
+// Close shuts down the callback server and releases its listener.
 func (s *CallbackServer) Close() error {
 	s.complete(callbackResult{err: ErrCallbackServerClosed})
-	err := s.server.Close()
-	if errors.Is(err, http.ErrServerClosed) {
-		return nil
+	serverErr := s.server.Close()
+	listenerErr := s.listener.Close()
+	if errors.Is(serverErr, http.ErrServerClosed) || errors.Is(serverErr, net.ErrClosed) {
+		serverErr = nil
 	}
-	return err
+	if errors.Is(listenerErr, net.ErrClosed) {
+		listenerErr = nil
+	}
+	return errors.Join(serverErr, listenerErr)
 }
 
 func (s *CallbackServer) complete(result callbackResult) bool {

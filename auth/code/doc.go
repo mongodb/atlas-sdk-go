@@ -13,10 +13,10 @@
 // limitations under the License.
 
 /*
-Package code provides a way to follow a Device Authorization Grant
-https://datatracker.ietf.org/doc/html/rfc8628 and the OAuth 2.0 Authorization
-Code Grant https://datatracker.ietf.org/doc/html/rfc6749#section-4.1 with PKCE
-https://datatracker.ietf.org/doc/html/rfc7636.
+Package code implements the OAuth 2.0 Device Authorization Grant
+(https://datatracker.ietf.org/doc/html/rfc8628) and Authorization Code Grant
+(https://datatracker.ietf.org/doc/html/rfc6749#section-4.1) with PKCE
+(https://datatracker.ietf.org/doc/html/rfc7636).
 
 Usage
 
@@ -39,16 +39,15 @@ For example:
 	}
 	fmt.Println(token.AccessToken)
 
-NOTE: Using the https://godoc.org/context package, one can easily
-pass cancellation signals and deadlines to various services of the client for
-handling a request. In case there is no context available, then context.Background()
-can be used as a starting point.
+Client methods accept context.Context values for cancellation and deadlines.
+Use context.Background() as a starting point when no request-scoped context is
+available.
 
 Authorization Code + PKCE
 
 	The authorization code flow is separate from device authorization. The caller
-	provides a redirect URI, receives the authorization response, and validates
-	state before exchanging the code:
+	starts a loopback callback server, opens the authorization URL, and waits for
+	a state-validated callback before exchanging the code with the PKCE verifier:
 
 	config, err := code.NewConfigWithOptions(nil,
 	    code.SetClientID("my-client-id"),

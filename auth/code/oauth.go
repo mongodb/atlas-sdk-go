@@ -53,14 +53,16 @@ type Config struct {
 
 	authServerURLError error
 
-	// copy raw server response to the Response struct
+	// withRaw indicates whether responses should include their raw body.
 	withRaw bool
 }
 
+// ConfigOpt configures a Config instance.
 type ConfigOpt func(*Config) error
 
 // NewConfig returns a client using the production OAuth issuer by default.
-// MONGODB_ATLAS_AUTH_SERVER_URL overrides it; malformed values fail at discovery.
+// MONGODB_ATLAS_AUTH_SERVER_URL overrides the issuer. Invalid values are reported
+// during discovery.
 func NewConfig(httpClient *http.Client) *Config {
 	if httpClient == nil {
 		httpClient = http.DefaultClient
@@ -85,6 +87,7 @@ func NewConfig(httpClient *http.Client) *Config {
 	return c
 }
 
+// NewConfigWithOptions returns a Config with the provided options applied.
 func NewConfigWithOptions(httpClient *http.Client, opts ...ConfigOpt) (*Config, error) {
 	c := NewConfig(httpClient)
 	for _, opt := range opts {
@@ -108,7 +111,7 @@ func SetAuthURL(bu string) ConfigOpt {
 	}
 }
 
-// SetAuthServerURL sets the HTTPS PKCE issuer, overriding the environment.
+// SetAuthServerURL sets the HTTPS issuer used by Authorization Code + PKCE.
 func SetAuthServerURL(issuerURL string) ConfigOpt {
 	return func(c *Config) error {
 		u, err := parseOAuthEndpoint(issuerURL, "Authorization Server issuer")
@@ -122,7 +125,7 @@ func SetAuthServerURL(issuerURL string) ConfigOpt {
 	}
 }
 
-// SetWithRaw is a client option for getting raw atlas server response within Response structure.
+// SetWithRaw includes the raw server response body in core.Response.
 func SetWithRaw() ConfigOpt {
 	return func(c *Config) error {
 		c.withRaw = true
@@ -130,7 +133,7 @@ func SetWithRaw() ConfigOpt {
 	}
 }
 
-// SetUserAgent is a config option for setting the user agent.
+// SetUserAgent sets a custom prefix for the SDK user agent.
 func SetUserAgent(ua string) ConfigOpt {
 	return func(c *Config) error {
 		c.UserAgent = fmt.Sprintf("%s %s", ua, userAgent)
@@ -138,7 +141,7 @@ func SetUserAgent(ua string) ConfigOpt {
 	}
 }
 
-// SetClientID is a config option for setting the ClientID.
+// SetClientID sets the OAuth client ID.
 func SetClientID(clientID string) ConfigOpt {
 	return func(c *Config) error {
 		c.ClientID = clientID
@@ -146,7 +149,7 @@ func SetClientID(clientID string) ConfigOpt {
 	}
 }
 
-// SetScopes is a config option for setting the Scopes.
+// SetScopes sets the OAuth scopes requested by the client.
 func SetScopes(scopes []string) ConfigOpt {
 	return func(c *Config) error {
 		c.Scopes = scopes
@@ -154,7 +157,7 @@ func SetScopes(scopes []string) ConfigOpt {
 	}
 }
 
-// A TokenSource is anything that can return a token.
+// TokenSource returns tokens and must be safe for concurrent use.
 type TokenSource interface {
 	// Token returns a token or an error.
 	// Token must be safe for concurrent use by multiple goroutines.

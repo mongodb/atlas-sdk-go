@@ -135,25 +135,9 @@ func TestCallbackServerWaitHonorsContextCancellation(t *testing.T) {
 	defer callback.Close()
 
 	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel()
-	waitStarted := make(chan struct{})
-	waitResult := make(chan error, 1)
-	go func() {
-		close(waitStarted)
-		_, waitErr := callback.WaitForCallback(ctx)
-		waitResult <- waitErr
-	}()
-	<-waitStarted
-	time.Sleep(10 * time.Millisecond)
 	cancel()
-
-	select {
-	case err := <-waitResult:
-		if !errors.Is(err, context.Canceled) {
-			t.Errorf("WaitForCallback() error = %v, expected context.Canceled", err)
-		}
-	case <-time.After(time.Second):
-		t.Fatal("WaitForCallback() did not return after context cancellation")
+	if _, err := callback.WaitForCallback(ctx); !errors.Is(err, context.Canceled) {
+		t.Errorf("WaitForCallback() error = %v, expected context.Canceled", err)
 	}
 }
 

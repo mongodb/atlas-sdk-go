@@ -43,12 +43,11 @@ type AuthServerMetadata struct {
 	TokenEndpoint                 string   `json:"token_endpoint"`
 	RevocationEndpoint            string   `json:"revocation_endpoint,omitempty"`
 	CodeChallengeMethodsSupported []string `json:"code_challenge_methods_supported,omitempty"`
-	// CacheExpiry is derived from HTTP cache headers and is not part of the AS response.
+	// CacheExpiry is derived from HTTP cache headers and is not part of the discovery document.
 	CacheExpiry time.Time `json:"-"`
 }
 
-// PKCEParams holds an RFC 7636 code verifier. The S256 challenge is generated
-// by golang.org/x/oauth2.
+// PKCEParams holds the verifier used by golang.org/x/oauth2 to generate the S256 challenge.
 type PKCEParams struct {
 	CodeVerifier string
 }
@@ -98,6 +97,8 @@ func GenerateState() (string, error) {
 }
 
 func generateOAuth2RandomValue(name string) (_ string, err error) {
+	// x/oauth2.GenerateVerifier panics if the secure random source fails. Preserve
+	// this package's error-returning API.
 	defer func() {
 		if recovered := recover(); recovered != nil {
 			err = fmt.Errorf("generating %s: %v", name, recovered)
@@ -191,8 +192,8 @@ func (c *Config) validateAuthServerMetadata(metadata *AuthServerMetadata) error 
 	return nil
 }
 
-// AuthorizationURL builds a request from discovered metadata, state, and PKCE.
-// Retain and validate state, and keep the verifier until code exchange.
+// AuthorizationURL returns an authorization URL with the supplied state and PKCE verifier.
+// Keep both values for callback validation and code exchange.
 func (c *Config) AuthorizationURL(metadata *AuthServerMetadata, redirectURI, state string, pkce *PKCEParams) (string, error) {
 	oauthConfig, err := c.newOAuth2Config(metadata)
 	if err != nil {
@@ -416,13 +417,17 @@ func oauth2StringExtra(token *oauth2.Token, key string) string {
 	return value
 }
 
-func (c *Config) doOAuthRequest(req *http.Request) (*http.Response, error) {
+func (c *Config) oauth2HTTPClient() *http.Client {
 	client := *c.client
 	client.CheckRedirect = func(*http.Request, []*http.Request) error {
 		return http.ErrUseLastResponse
 	}
-	// #nosec G704 -- OAuth request URLs are configured issuers or HTTPS endpoints from their validated discovery metadata.
-	return client.Do(req)
+	return &client
+}
+
+func (c *Config) doOAuthRequest(req *http.Request) (*http.Response, error) {
+	// #nosec G704 -- OAuth requests use the configured issuer or validated HTTPS endpoints from its metadata.
+	return c.oauth2HTTPClient().Do(req)
 }
 
 const oauth2ResponseBodyLimit = 1 << 20
@@ -432,6 +437,7 @@ type oauth2ResponseCapture struct {
 	body     []byte
 }
 
+// oauth2ResponseTransport adds SDK headers and captures responses for core.Response.
 type oauth2ResponseTransport struct {
 	base        http.RoundTripper
 	capture     *oauth2ResponseCapture
@@ -472,11 +478,7 @@ func (t *oauth2ResponseTransport) RoundTrip(req *http.Request) (*http.Response, 
 }
 
 func (c *Config) oauth2Context(ctx context.Context) (context.Context, *oauth2ResponseCapture) {
-	client := *c.client
-	client.CheckRedirect = func(*http.Request, []*http.Request) error {
-		return http.ErrUseLastResponse
-	}
-
+	client := c.oauth2HTTPClient()
 	baseTransport := client.Transport
 	if baseTransport == nil {
 		baseTransport = http.DefaultTransport
@@ -488,7 +490,7 @@ func (c *Config) oauth2Context(ctx context.Context) (context.Context, *oauth2Res
 		captureBody: c.withRaw,
 		userAgent:   c.UserAgent,
 	}
-	return context.WithValue(ctx, oauth2.HTTPClient, &client), capture
+	return context.WithValue(ctx, oauth2.HTTPClient, client), capture
 }
 
 func (c *Config) oauth2Response(capture *oauth2ResponseCapture) *core.Response {
