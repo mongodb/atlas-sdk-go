@@ -121,13 +121,14 @@ func TestConfig_DiscoverProductionAuthServer(t *testing.T) {
 }
 
 func TestConfig_DiscoverAuthServerFromEnvironment(t *testing.T) {
+	const issuerPath = "/tenant"
 	var server *httptest.Server
 	server = httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodGet {
 			t.Errorf("method = %s, expected GET", r.Method)
 		}
-		if r.URL.Path != "/.well-known/oauth-authorization-server" {
-			t.Errorf("path = %q, expected OAuth well-known path", r.URL.Path)
+		if want := "/.well-known/oauth-authorization-server" + issuerPath; r.URL.Path != want {
+			t.Errorf("path = %q, expected %q", r.URL.Path, want)
 		}
 		if got := r.Header.Get("Accept"); got != "application/json" {
 			t.Errorf("Accept = %q, expected application/json", got)
@@ -138,11 +139,12 @@ func TestConfig_DiscoverAuthServerFromEnvironment(t *testing.T) {
 			"authorization_endpoint": %q,
 			"token_endpoint": %q,
 			"code_challenge_methods_supported": ["S256"]
-		}`, server.URL, "https://auth.example.com/authorize", "https://auth.example.com/token")
+		}`, server.URL+issuerPath, "https://auth.example.com/authorize", "https://auth.example.com/token")
 	}))
 	defer server.Close()
 
-	t.Setenv(authServerURLEnvVar, server.URL)
+	issuerURL := server.URL + issuerPath
+	t.Setenv(authServerURLEnvVar, issuerURL)
 	c := NewConfig(server.Client())
 	metadata, resp, err := c.DiscoverAuthServer(ctx)
 	if err != nil {
@@ -151,8 +153,8 @@ func TestConfig_DiscoverAuthServerFromEnvironment(t *testing.T) {
 	if resp == nil || resp.StatusCode != http.StatusOK {
 		t.Fatalf("response = %v, expected HTTP 200", resp)
 	}
-	if metadata.Issuer != server.URL {
-		t.Errorf("issuer = %q, expected %q", metadata.Issuer, server.URL)
+	if metadata.Issuer != issuerURL {
+		t.Errorf("issuer = %q, expected %q", metadata.Issuer, issuerURL)
 	}
 	if metadata.AuthorizationEndpoint != "https://auth.example.com/authorize" {
 		t.Errorf("authorization endpoint = %q", metadata.AuthorizationEndpoint)
@@ -182,6 +184,25 @@ func TestAuthServerMetadataCacheExpiryFallbacks(t *testing.T) {
 		header.Set("Cache-Control", "no-store")
 		if expiry := authServerMetadataCacheExpiry(header); time.Since(expiry) > time.Second {
 			t.Errorf("no-store cache expiry = %v, expected now", expiry)
+		}
+	})
+
+	t.Run("no-store overrides max-age", func(t *testing.T) {
+		header := make(http.Header)
+		header.Set("Cache-Control", "max-age=3600, no-store")
+		expiry := authServerMetadataCacheExpiry(header)
+		if delta := time.Until(expiry); delta > time.Second || delta < -time.Second {
+			t.Errorf("cache expiry = %v, expected now because no-store overrides max-age", expiry)
+		}
+	})
+
+	t.Run("no-store in later header overrides max-age", func(t *testing.T) {
+		header := make(http.Header)
+		header.Add("Cache-Control", "max-age=3600")
+		header.Add("Cache-Control", "no-store")
+		expiry := authServerMetadataCacheExpiry(header)
+		if delta := time.Until(expiry); delta > time.Second || delta < -time.Second {
+			t.Errorf("cache expiry = %v, expected now because no-store overrides max-age", expiry)
 		}
 	})
 }

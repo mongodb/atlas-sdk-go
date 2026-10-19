@@ -38,6 +38,26 @@ const wellKnownPath = ".well-known/oauth-authorization-server"
 
 const defaultAuthServerMetadataCacheTTL = 7 * 24 * time.Hour
 
+func authServerDiscoveryURL(issuer *url.URL) (*url.URL, error) {
+	discoveryPath := "/" + wellKnownPath
+	issuerPath := issuer.EscapedPath()
+	if issuerPath != "" && issuerPath != "/" {
+		discoveryPath += issuerPath
+	}
+	path, err := url.PathUnescape(discoveryPath)
+	if err != nil {
+		return nil, fmt.Errorf("constructing OAuth discovery path: %w", err)
+	}
+
+	discoveryURL := *issuer
+	discoveryURL.Path = path
+	discoveryURL.RawPath = discoveryPath
+	discoveryURL.RawQuery = ""
+	discoveryURL.Fragment = ""
+	discoveryURL.RawFragment = ""
+	return &discoveryURL, nil
+}
+
 // AuthServerMetadata holds discovered OAuth endpoints and cache expiry.
 type AuthServerMetadata struct {
 	Issuer                        string   `json:"issuer"`
@@ -105,7 +125,10 @@ func (c *Config) DiscoverAuthServer(ctx context.Context) (*AuthServerMetadata, *
 		return nil, nil, err
 	}
 
-	discoveryURL := c.AuthServerURL.ResolveReference(&url.URL{Path: wellKnownPath})
+	discoveryURL, err := authServerDiscoveryURL(c.AuthServerURL)
+	if err != nil {
+		return nil, nil, err
+	}
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, discoveryURL.String(), http.NoBody)
 	if err != nil {
 		return nil, nil, fmt.Errorf("creating OAuth discovery request: %w", err)
@@ -492,19 +515,27 @@ func (c *Config) oauth2Response(capture *oauth2ResponseCapture) *core.Response {
 
 func authServerMetadataCacheExpiry(header http.Header) time.Time {
 	now := time.Now()
-	for _, directive := range strings.Split(header.Get("Cache-Control"), ",") {
+	var maxAgeSeconds int64
+	hasMaxAge := false
+	cacheControl := strings.Join(header.Values("Cache-Control"), ",")
+	for _, directive := range strings.Split(cacheControl, ",") {
 		parts := strings.SplitN(strings.TrimSpace(directive), "=", 2)
-		if len(parts) == 1 && (strings.EqualFold(parts[0], "no-cache") || strings.EqualFold(parts[0], "no-store")) {
+		name := strings.TrimSpace(parts[0])
+		if strings.EqualFold(name, "no-cache") || strings.EqualFold(name, "no-store") {
 			return now
 		}
-		if len(parts) != 2 || !strings.EqualFold(strings.TrimSpace(parts[0]), "max-age") {
+		if len(parts) != 2 || !strings.EqualFold(name, "max-age") {
 			continue
 		}
 		seconds, err := strconv.ParseInt(strings.Trim(strings.TrimSpace(parts[1]), `"`), 10, 64)
 		maxCacheAgeSeconds := int64(^uint64(0)>>1) / int64(time.Second)
 		if err == nil && seconds >= 0 && seconds <= maxCacheAgeSeconds {
-			return now.Add(time.Duration(seconds) * time.Second)
+			maxAgeSeconds = seconds
+			hasMaxAge = true
 		}
+	}
+	if hasMaxAge {
+		return now.Add(time.Duration(maxAgeSeconds) * time.Second)
 	}
 
 	if expires := header.Get("Expires"); expires != "" {

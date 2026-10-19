@@ -110,10 +110,17 @@ func (s *CallbackServer) Close() error {
 	return errors.Join(serverErr, listenerErr)
 }
 
-func (s *CallbackServer) complete(result callbackResult) bool {
+func (s *CallbackServer) complete(result callbackResult) {
+	s.completeWithResponse(result, nil)
+}
+
+func (s *CallbackServer) completeWithResponse(result callbackResult, writeResponse func()) bool {
 	completed := false
 	s.once.Do(func() {
 		s.result = result
+		if writeResponse != nil {
+			writeResponse()
+		}
 		close(s.done)
 		completed = true
 	})
@@ -140,29 +147,32 @@ func (s *CallbackServer) handleCallback(w http.ResponseWriter, r *http.Request) 
 			ErrorDescription: query.Get("error_description"),
 			ErrorURI:         query.Get("error_uri"),
 		}
-		if !s.complete(callbackResult{err: err}) {
+		if !s.completeWithResponse(callbackResult{err: err}, func() {
+			writeCallbackResponse(w, http.StatusBadRequest, "Authorization failed. You may close this window.")
+		}) {
 			writeCallbackResponse(w, http.StatusGone, "Authorization response already received.")
 			return
 		}
-		writeCallbackResponse(w, http.StatusBadRequest, "Authorization failed. You may close this window.")
 		return
 	}
 
 	code := query.Get("code")
 	if code == "" {
-		if !s.complete(callbackResult{err: errors.New("OAuth callback response did not include an authorization code")}) {
+		if !s.completeWithResponse(callbackResult{err: errors.New("OAuth callback response did not include an authorization code")}, func() {
+			writeCallbackResponse(w, http.StatusBadRequest, "Authorization failed: no code received.")
+		}) {
 			writeCallbackResponse(w, http.StatusGone, "Authorization response already received.")
 			return
 		}
-		writeCallbackResponse(w, http.StatusBadRequest, "Authorization failed: no code received.")
 		return
 	}
 
-	if !s.complete(callbackResult{code: code}) {
+	if !s.completeWithResponse(callbackResult{code: code}, func() {
+		writeCallbackResponse(w, http.StatusOK, "Authorization successful. You may close this window.")
+	}) {
 		writeCallbackResponse(w, http.StatusGone, "Authorization response already received.")
 		return
 	}
-	writeCallbackResponse(w, http.StatusOK, "Authorization successful. You may close this window.")
 }
 
 func writeCallbackResponse(w http.ResponseWriter, status int, message string) {
@@ -170,4 +180,7 @@ func writeCallbackResponse(w http.ResponseWriter, status int, message string) {
 	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 	w.WriteHeader(status)
 	_, _ = io.WriteString(w, message)
+	if flusher, ok := w.(http.Flusher); ok {
+		flusher.Flush()
+	}
 }

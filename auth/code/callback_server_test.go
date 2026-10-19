@@ -20,6 +20,7 @@ import (
 	"io"
 	"net"
 	"net/http"
+	"net/http/httptest"
 	"net/url"
 	"strings"
 	"testing"
@@ -127,6 +128,68 @@ func TestCallbackServerPreservesOAuthErrorAfterStateValidation(t *testing.T) {
 	}
 }
 
+func TestCallbackServerWaitsForResponseFlush(t *testing.T) {
+	callback, err := StartCallbackServer("expected-state")
+	if err != nil {
+		t.Fatalf("StartCallbackServer() returned error: %v", err)
+	}
+	defer callback.Close()
+
+	allowFlush := make(chan struct{}, 1)
+	defer func() {
+		select {
+		case allowFlush <- struct{}{}:
+		default:
+		}
+	}()
+
+	recorder := httptest.NewRecorder()
+	responseWriter := &blockingCallbackResponseWriter{
+		ResponseRecorder: recorder,
+		flushStarted:     make(chan struct{}),
+		allowFlush:       allowFlush,
+	}
+	requestURL := callback.RedirectURI() + "?" + url.Values{
+		"state": {"expected-state"},
+		"code":  {"authorization-code"},
+	}.Encode()
+	request := httptest.NewRequest(http.MethodGet, requestURL, http.NoBody)
+	handlerDone := make(chan struct{})
+	go func() {
+		callback.handleCallback(responseWriter, request)
+		close(handlerDone)
+	}()
+
+	select {
+	case <-responseWriter.flushStarted:
+	case <-time.After(time.Second):
+		t.Fatal("callback handler did not flush its response")
+	}
+	select {
+	case <-callback.done:
+		t.Fatal("callback result was published before the response was flushed")
+	default:
+	}
+
+	allowFlush <- struct{}{}
+	select {
+	case <-callback.done:
+	case <-time.After(time.Second):
+		t.Fatal("callback result was not published after the response was flushed")
+	}
+	if code, err := callback.WaitForCallback(context.Background()); err != nil || code != "authorization-code" {
+		t.Errorf("WaitForCallback() = (%q, %v), expected authorization code", code, err)
+	}
+	if recorder.Code != http.StatusOK || recorder.Body.String() != "Authorization successful. You may close this window." {
+		t.Errorf("callback response = (%d, %q)", recorder.Code, recorder.Body.String())
+	}
+	select {
+	case <-handlerDone:
+	case <-time.After(time.Second):
+		t.Fatal("callback handler did not finish")
+	}
+}
+
 func TestCallbackServerWaitHonorsContextCancellation(t *testing.T) {
 	callback, err := StartCallbackServer("expected-state")
 	if err != nil {
@@ -170,4 +233,16 @@ func sendCallbackRequest(t *testing.T, callback *CallbackServer, query url.Value
 		t.Fatalf("callback request failed: %v", err)
 	}
 	return resp
+}
+
+type blockingCallbackResponseWriter struct {
+	*httptest.ResponseRecorder
+	flushStarted chan struct{}
+	allowFlush   <-chan struct{}
+}
+
+func (w *blockingCallbackResponseWriter) Flush() {
+	close(w.flushStarted)
+	<-w.allowFlush
+	w.ResponseRecorder.Flush()
 }
