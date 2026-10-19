@@ -27,8 +27,8 @@ import (
 	"runtime"
 	"strings"
 
-	sdkAuth "go.mongodb.org/atlas-sdk/v20250312026/auth"
-	"go.mongodb.org/atlas-sdk/v20250312026/internal/core"
+	sdkAuth "go.mongodb.org/atlas-sdk/v20250312027/auth"
+	"go.mongodb.org/atlas-sdk/v20250312027/internal/core"
 )
 
 const (

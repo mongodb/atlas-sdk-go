@@ -4,7 +4,9 @@ package admin
 
 // QueryStatsSummary A summary of execution statistics for a given query shape.
 type QueryStatsSummary struct {
-	// Average total time in milliseconds spent running queries with the given query shape. If the query resulted in `getMore` commands, this metric includes the time spent processing the `getMore` requests. This metric does not include time spent waiting for the client.
+	// Average time in microseconds from the beginning of query processing to the first server response, per execution of queries with the given query shape. Calculated as `totalTimeToResponseMicros` divided by `execCount` over the requested time range. As a duration it can be longer or shorter than `avgWorkingMillis` (reported in milliseconds, so convert before comparing): longer when executions spent time blocked on locks or flow control rather than working, shorter when they kept working after the first batch to return later `getMore` batches.
+	AvgTimeToResponseMicros *float64 `json:"avgTimeToResponseMicros,omitempty"`
+	// Average active execution time in milliseconds per execution of queries with the given query shape, calculated as `totalWorkingMillis` divided by `execCount` over the requested time range. Excludes intentional pauses such as time waiting on locks or flow control.
 	AvgWorkingMillis *float64 `json:"avgWorkingMillis,omitempty"`
 	// The number of bytes read by the given query shape from the disk to the cache.
 	BytesRead *float64 `json:"bytesRead,omitempty"`
@@ -57,9 +59,9 @@ type QueryStatsSummary struct {
 	QueryShapeHash *string `json:"queryShapeHash,omitempty"`
 	// Indicates whether this query shape represents a system-initiated query.
 	SystemQuery *bool `json:"systemQuery,omitempty"`
-	// Time in microseconds spent from the beginning of query processing to the first server response.
+	// Total time in microseconds from the beginning of query processing to the first server response, summed across executions of queries with the given query shape. Includes time spent waiting on locks or flow control. Stops at the first batch of results, so time spent serving later `getMore` batches is not counted.
 	TotalTimeToResponseMicros *float64 `json:"totalTimeToResponseMicros,omitempty"`
-	// Total time in milliseconds spent running queries with the given query shape. If the query resulted in `getMore` commands, this metric includes the time spent processing the `getMore` requests. This metric does not include time spent waiting for the client.
+	// Total time in milliseconds that queries with the given query shape spent actively executing, summed across executions, including time spent processing `getMore` requests. Excludes intentional pauses such as time waiting on locks or flow control, and time spent waiting for the client.
 	TotalWorkingMillis *float64 `json:"totalWorkingMillis,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
@@ -87,6 +89,46 @@ func NewQueryStatsSummary() *QueryStatsSummary {
 func NewQueryStatsSummaryWithDefaults() *QueryStatsSummary {
 	this := QueryStatsSummary{}
 	return &this
+}
+
+// GetAvgTimeToResponseMicros returns the AvgTimeToResponseMicros field value if set, zero value otherwise
+func (o *QueryStatsSummary) GetAvgTimeToResponseMicros() float64 {
+	if o == nil || IsNil(o.AvgTimeToResponseMicros) {
+		var ret float64
+		return ret
+	}
+	return *o.AvgTimeToResponseMicros
+}
+
+// GetAvgTimeToResponseMicrosOk returns a tuple with the AvgTimeToResponseMicros field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummary) GetAvgTimeToResponseMicrosOk() (*float64, bool) {
+	if o == nil || IsNil(o.AvgTimeToResponseMicros) {
+		return nil, false
+	}
+
+	return o.AvgTimeToResponseMicros, true
+}
+
+// HasAvgTimeToResponseMicros returns a boolean if a field has been set.
+func (o *QueryStatsSummary) HasAvgTimeToResponseMicros() bool {
+	if o != nil && !IsNil(o.AvgTimeToResponseMicros) {
+		return true
+	}
+
+	return false
+}
+
+// SetAvgTimeToResponseMicros gets a reference to the given float64 and assigns it to the AvgTimeToResponseMicros field.
+func (o *QueryStatsSummary) SetAvgTimeToResponseMicros(v float64) {
+	o.AvgTimeToResponseMicros = &v
+	o.NullFields = removeNullField(o.NullFields, "AvgTimeToResponseMicros")
+}
+
+// SetAvgTimeToResponseMicrosNil sets AvgTimeToResponseMicros to an explicit JSON null when marshaled.
+func (o *QueryStatsSummary) SetAvgTimeToResponseMicrosNil() {
+	o.AvgTimeToResponseMicros = nil
+	o.NullFields = addNullField(o.NullFields, "AvgTimeToResponseMicros")
 }
 
 // GetAvgWorkingMillis returns the AvgWorkingMillis field value if set, zero value otherwise

@@ -24,7 +24,7 @@ Usage
 		"context"
 		"fmt"
 
-		"go.mongodb.org/atlas-sdk/v20250312026/auth/code"
+		"go.mongodb.org/atlas-sdk/v20250312027/auth/code"
 	)
 
 Construct a new client Config, then use the various methods to complete a flow.

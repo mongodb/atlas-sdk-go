@@ -1697,16 +1697,20 @@ components:
           format: date-time
           type: string
         adaptiveCapacity:
-          description: Governs adaptive capacity behavior of Azure nodes in single-cloud Azure clusters or multi-cloud clusters that include Azure nodes. Adaptive capacity enables fallback hardware selection when the primary instance family is unavailable. ``ENABLED`` means the cluster explicitly opts in to adaptive capacity. ``DISABLED`` means the cluster explicitly opts out; the cluster receives capacity errors instead of being placed on fallback hardware. ``null`` means the field is unset; Azure clusters use adaptive capacity by default when the feature is enabled at the group level. Setting this field for single-cloud AWS or GCP clusters is a no-op.
+          description: Governs adaptive capacity behavior of nodes in clusters on providers that support fallback hardware, including those providers' nodes in multi-cloud clusters. Adaptive capacity enables fallback hardware selection when the primary instance family is unavailable. ``ENABLED`` means the cluster explicitly opts in to adaptive capacity. ``DISABLED`` means the cluster explicitly opts out; the cluster receives capacity errors instead of being placed on fallback hardware. ``null`` means the field is unset; clusters use adaptive capacity by default on a provider that supports it.
           type: string
         advancedConfiguration:
           $ref: "#/components/schemas/ApiAtlasClusterAdvancedConfiguration"
         backupEnabled:
-          default: false
-          description: Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses Cloud Backups for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to `false`, the cluster doesn't use backups.
+          description: |-
+            Flag that indicates whether Atlas backs up the cluster.
+
+            On Atlas Core clusters, dedicated clusters use [Cloud Backups](https://www.mongodb.com/docs/atlas/backup/cloud-backup/overview/) and Flex clusters use [Flex Cluster Backups](https://www.mongodb.com/docs/atlas/backup/cloud-backup/flex-cluster-backup/). Default value is `false`. For clusters that use local [NVMe SSDs](https://www.mongodb.com/docs/atlas/manage-clusters/#nvme-storage) for storage, you can't disable backup, so you must set `backupEnabled` to `true`.
+
+            On Atlas Infinite clusters, the `backupEnabled` flag controls Additional Backup Retention, not whether backups run. To retain snapshots beyond the 24-hour window, set `backupEnabled` to `true`. For Atlas Infinite clusters, continuous cloud backups are enabled by default, always run, and include a 24-hour window in which you can restore to any point in time. Atlas then applies your snapshot retention policies. To keep only the included window under an Atlas-managed retention policy that you can't edit, set `backupEnabled` to `false`. A cluster covered by a Data Protection policy has this flag set to `true` regardless of the requested value. Default value is `true`.
           externalDocs:
             description: Cloud Backups
-            url: https://docs.atlas.mongodb.com/backup/cloud-backup/overview/
+            url: https://www.mongodb.com/docs/atlas/backup/cloud-backup/overview/
           type: boolean
         biConnector:
           $ref: "#/components/schemas/BiConnector"
@@ -1845,10 +1849,13 @@ components:
           description: Flag that indicates whether the cluster is paused.
           type: boolean
         pitEnabled:
-          description: Flag that indicates whether the cluster uses continuous cloud backups.
+          description: |-
+            Flag that indicates whether the cluster uses continuous cloud backups.
+
+            For Atlas Infinite clusters, continuous cloud backups always run. Omit this field or set it to `true`. Setting it to `false` returns an invalid attribute error.
           externalDocs:
             description: Continuous Cloud Backups
-            url: https://docs.atlas.mongodb.com/backup/cloud-backup/overview/
+            url: https://www.mongodb.com/docs/atlas/backup/cloud-backup/overview/
           type: boolean
         redactClientLogData:
           description: |-
@@ -4422,16 +4429,20 @@ components:
           format: date-time
           type: string
         adaptiveCapacity:
-          description: Governs adaptive capacity behavior of Azure nodes in single-cloud Azure clusters or multi-cloud clusters that include Azure nodes. Adaptive capacity enables fallback hardware selection when the primary instance family is unavailable. ``ENABLED`` means the cluster explicitly opts in to adaptive capacity. ``DISABLED`` means the cluster explicitly opts out; the cluster receives capacity errors instead of being placed on fallback hardware. ``null`` means the field is unset; Azure clusters use adaptive capacity by default when the feature is enabled at the group level. Setting this field for single-cloud AWS or GCP clusters is a no-op.
+          description: Governs adaptive capacity behavior of nodes in clusters on providers that support fallback hardware, including those providers' nodes in multi-cloud clusters. Adaptive capacity enables fallback hardware selection when the primary instance family is unavailable. ``ENABLED`` means the cluster explicitly opts in to adaptive capacity. ``DISABLED`` means the cluster explicitly opts out; the cluster receives capacity errors instead of being placed on fallback hardware. ``null`` means the field is unset; clusters use adaptive capacity by default on a provider that supports it.
           type: string
         advancedConfiguration:
           $ref: "#/components/schemas/ApiAtlasClusterAdvancedConfiguration"
         backupEnabled:
-          default: false
-          description: Flag that indicates whether the cluster can perform backups. If set to `true`, the cluster can perform backups. You must set this value to `true` for NVMe clusters. Backup uses Cloud Backups for dedicated clusters and [Shared Cluster Backups](https://docs.atlas.mongodb.com/backup/shared-tier/overview/) for tenant clusters. If set to `false`, the cluster doesn't use backups.
+          description: |-
+            Flag that indicates whether Atlas backs up the cluster.
+
+            On Atlas Core clusters, dedicated clusters use [Cloud Backups](https://www.mongodb.com/docs/atlas/backup/cloud-backup/overview/) and Flex clusters use [Flex Cluster Backups](https://www.mongodb.com/docs/atlas/backup/cloud-backup/flex-cluster-backup/). Default value is `false`. For clusters that use local [NVMe SSDs](https://www.mongodb.com/docs/atlas/manage-clusters/#nvme-storage) for storage, you can't disable backup, so you must set `backupEnabled` to `true`.
+
+            On Atlas Infinite clusters, the `backupEnabled` flag controls Additional Backup Retention, not whether backups run. To retain snapshots beyond the 24-hour window, set `backupEnabled` to `true`. For Atlas Infinite clusters, continuous cloud backups are enabled by default, always run, and include a 24-hour window in which you can restore to any point in time. Atlas then applies your snapshot retention policies. To keep only the included window under an Atlas-managed retention policy that you can't edit, set `backupEnabled` to `false`. A cluster covered by a Data Protection policy has this flag set to `true` regardless of the requested value. Default value is `true`.
           externalDocs:
             description: Cloud Backups
-            url: https://docs.atlas.mongodb.com/backup/cloud-backup/overview/
+            url: https://www.mongodb.com/docs/atlas/backup/cloud-backup/overview/
           type: boolean
         biConnector:
           $ref: "#/components/schemas/BiConnector"
@@ -4570,10 +4581,13 @@ components:
           description: Flag that indicates whether the cluster is paused.
           type: boolean
         pitEnabled:
-          description: Flag that indicates whether the cluster uses continuous cloud backups.
+          description: |-
+            Flag that indicates whether the cluster uses continuous cloud backups.
+
+            For Atlas Infinite clusters, continuous cloud backups always run. Omit this field or set it to `true`. Setting it to `false` returns an invalid attribute error.
           externalDocs:
             description: Continuous Cloud Backups
-            url: https://docs.atlas.mongodb.com/backup/cloud-backup/overview/
+            url: https://www.mongodb.com/docs/atlas/backup/cloud-backup/overview/
           type: boolean
         redactClientLogData:
           description: |-
@@ -13941,6 +13955,32 @@ components:
       required:
         - results
       type: object
+    PaginatedStreamsWorkspacePrivateEndpointResponse:
+      properties:
+        links:
+          description: List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
+          externalDocs:
+            description: Web Linking Specification (RFC 5988)
+            url: https://datatracker.ietf.org/doc/html/rfc5988
+          items:
+            $ref: "#/components/schemas/Link"
+          readOnly: true
+          type: array
+        results:
+          description: List of returned documents that MongoDB Cloud provides when completing this request.
+          items:
+            $ref: "#/components/schemas/StreamsWorkspacePrivateEndpointResponse"
+          readOnly: true
+          type: array
+        totalCount:
+          description: Total number of documents available. When `includeCount` is set to `false`, MongoDB Cloud may omit this value or return it when the count is available without additional calculation. The total number is an estimate and may not be exact.
+          format: int32
+          minimum: 0
+          readOnly: true
+          type: integer
+      required:
+        - results
+      type: object
     PemFileInfo:
       description: PEM file information for the identity provider's current certificates.
       properties:
@@ -14534,8 +14574,12 @@ components:
     QueryStatsSummary:
       description: A summary of execution statistics for a given query shape.
       properties:
+        avgTimeToResponseMicros:
+          description: "Average time in microseconds from the beginning of query processing to the first server response, per execution of queries with the given query shape. Calculated as `totalTimeToResponseMicros` divided by `execCount` over the requested time range. As a duration it can be longer or shorter than `avgWorkingMillis` (reported in milliseconds, so convert before comparing): longer when executions spent time blocked on locks or flow control rather than working, shorter when they kept working after the first batch to return later `getMore` batches."
+          format: double
+          type: number
         avgWorkingMillis:
-          description: Average total time in milliseconds spent running queries with the given query shape. If the query resulted in `getMore` commands, this metric includes the time spent processing the `getMore` requests. This metric does not include time spent waiting for the client.
+          description: Average active execution time in milliseconds per execution of queries with the given query shape, calculated as `totalWorkingMillis` divided by `execCount` over the requested time range. Excludes intentional pauses such as time waiting on locks or flow control.
           format: double
           type: number
         bytesRead:
@@ -14633,11 +14677,11 @@ components:
           description: Indicates whether this query shape represents a system-initiated query.
           type: boolean
         totalTimeToResponseMicros:
-          description: Time in microseconds spent from the beginning of query processing to the first server response.
+          description: Total time in microseconds from the beginning of query processing to the first server response, summed across executions of queries with the given query shape. Includes time spent waiting on locks or flow control. Stops at the first batch of results, so time spent serving later `getMore` batches is not counted.
           format: double
           type: number
         totalWorkingMillis:
-          description: Total time in milliseconds spent running queries with the given query shape. If the query resulted in `getMore` commands, this metric includes the time spent processing the `getMore` requests. This metric does not include time spent waiting for the client.
+          description: Total time in milliseconds that queries with the given query shape spent actively executing, summed across executions, including time spent processing `getMore` requests. Excludes intentional pauses such as time waiting on locks or flow control, and time spent waiting for the client.
           format: double
           type: number
       type: object
@@ -15780,16 +15824,18 @@ components:
             - **`null`** on `CREATE`, `MODIFY`, or `:startWith`: resets the bound to the workspace max tier.
             - **A tier value** on `CREATE`, `MODIFY`, or `:startWith`: sets the bound to that tier.
           type: string
+          x-xgen-server-computed-when-client-omitted: true
         minTier:
           description: |-
             Tier floor for autoscaling (scale-down limit).
 
             - **Omitted:**
-              - On `CREATE`: falls back to the workspace default tier (there is no current bound to preserve).
+              - On `CREATE`: defaults to the lower of the processor `tier` and the workspace default tier (there is no current bound to preserve).
               - On `MODIFY` or `:startWith`: the current bound is preserved.
-            - **`null`** on `CREATE`, `MODIFY`, or `:startWith`: resets the bound to the workspace default tier.
+            - **`null`** on `CREATE`, `MODIFY`, or `:startWith`: resets the bound to the lower of the processor `tier` and the workspace default tier.
             - **A tier value** on `CREATE`, `MODIFY`, or `:startWith`: sets the bound to that tier.
           type: string
+          x-xgen-server-computed-when-client-omitted: true
       type: object
     StreamsConnection:
       description: Settings that define a connection to an external data store.
@@ -16238,8 +16284,7 @@ components:
             $ref: "#/components/schemas/Document"
           type: array
         tier:
-          description: Selected tier for the Stream Workspace. Configures Memory or VCPU allowances.
-          title: Stream Workspace Tier
+          description: Baseline processing tier requested by the user.
           type: string
       type: object
     StreamsModifyStreamProcessorOptions:
@@ -16404,9 +16449,8 @@ components:
           readOnly: true
           type: string
         effectiveTier:
-          description: Selected tier for the Stream Workspace. Configures Memory or VCPU allowances.
+          description: Tier the stream processor is currently running on. The server sets this value from `tier` on create and on every start or restart, may move it within [`minTier`, `maxTier`] while autoscaling is enabled, and restores it to `tier` when autoscaling is disabled. Patching `tier` does not change it directly; the new tier takes effect at the next start or restart.
           readOnly: true
-          title: Stream Workspace Tier
           type: string
         failoverEnabled:
           description: Flag that enables or disables failover for the stream processor.
@@ -16434,9 +16478,35 @@ components:
             $ref: "#/components/schemas/Document"
           type: array
         tier:
-          description: Selected tier for the Stream Workspace. Configures Memory or VCPU allowances.
-          title: Stream Workspace Tier
+          description: Baseline tier of the stream processor. The processor starts or restarts on this tier; `effectiveTier` reports the tier it is currently running.
           type: string
+      type: object
+    StreamsProcessorRequest:
+      description: Details to create a stream processor.
+      properties:
+        failoverEnabled:
+          description: Flag that enables or disables failover for the stream processor.
+          type: boolean
+        name:
+          description: Human-readable name of the stream processor.
+          type: string
+        options:
+          $ref: "#/components/schemas/StreamsOptions"
+        pipeline:
+          description: Stream aggregation pipeline you want to apply to your streaming data.
+          externalDocs:
+            description: Supported Aggregation Pipeline Stages
+            url: https://www.mongodb.com/docs/atlas/atlas-stream-processing/stream-aggregation/#std-label-stream-aggregation
+          items:
+            $ref: "#/components/schemas/Document"
+          minItems: 1
+          type: array
+        tier:
+          description: Baseline processing tier requested by the user.
+          type: string
+      required:
+        - name
+        - pipeline
       type: object
     StreamsProcessorStatus:
       description: Desired status change to apply to a tenant's stream processors.
@@ -16472,9 +16542,8 @@ components:
           readOnly: true
           type: string
         effectiveTier:
-          description: Selected tier for the Stream Workspace. Configures Memory or VCPU allowances.
+          description: Tier the stream processor is currently running on. The server sets this value from `tier` on create and on every start or restart, may move it within [`minTier`, `maxTier`] while autoscaling is enabled, and restores it to `tier` when autoscaling is disabled. Patching `tier` does not change it directly; the new tier takes effect at the next start or restart.
           readOnly: true
-          title: Stream Workspace Tier
           type: string
         eligibleForFailover:
           description: Flag that indicates whether the stream processor is eligible for failover.
@@ -16517,8 +16586,7 @@ components:
           readOnly: true
           type: object
         tier:
-          description: Selected tier for the Stream Workspace. Configures Memory or VCPU allowances.
-          title: Stream Workspace Tier
+          description: Baseline tier of the stream processor. The processor starts or restarts on this tier; `effectiveTier` reports the tier it is currently running.
           type: string
       required:
         - _id
@@ -16627,8 +16695,7 @@ components:
           format: date-time
           type: string
         tier:
-          description: Selected tier for the Stream Workspace. Configures Memory or VCPU allowances.
-          title: Stream Workspace Tier
+          description: Baseline processing tier requested by the user.
           type: string
       type: object
     StreamsTenant:
@@ -16711,6 +16778,56 @@ components:
           $ref: "#/components/schemas/BaseStreamsRegion"
         streamConfig:
           $ref: "#/components/schemas/StreamConfig"
+      type: object
+    StreamsWorkspacePrivateEndpointRequest:
+      description: Customer VPC endpoint to register for inbound private connectivity to Atlas Stream Processing.
+      properties:
+        customerDnsName:
+          description: DNS name of the customer's VPC endpoint.
+          example: vpce-0abc123def4567890-abc123.us-east-1.vpce.amazonaws.com
+          type: string
+        id:
+          description: Unique identifier of the customer's VPC endpoint.
+          example: vpce-0abc123def4567890
+          type: string
+        region:
+          description: Human-readable label identifying the region of the customer's VPC endpoint.
+          example: US_EAST_1
+          type: string
+      required:
+        - customerDnsName
+        - id
+        - region
+      type: object
+    StreamsWorkspacePrivateEndpointResponse:
+      description: Customer VPC endpoint registered for inbound private connectivity to Atlas Stream Processing.
+      properties:
+        customerDnsName:
+          description: DNS name of the customer's VPC endpoint.
+          example: vpce-0abc123def4567890-abc123.us-east-1.vpce.amazonaws.com
+          type: string
+        endpointServiceName:
+          description: Name of the Atlas endpoint service the customer's VPC endpoint connects to. Absent when no endpoint service is configured for the endpoint's region.
+          example: com.amazonaws.vpce.us-east-1.vpce-svc-0123456789abcdef0
+          readOnly: true
+          type: string
+        id:
+          description: Unique identifier of the customer's VPC endpoint.
+          example: vpce-0abc123def4567890
+          type: string
+        provider:
+          description: Cloud provider hosting the customer's VPC endpoint.
+          example: AWS
+          readOnly: true
+          type: string
+        region:
+          description: Human-readable label identifying the region of the customer's VPC endpoint.
+          example: US_EAST_1
+          type: string
+        status:
+          description: Status of the endpoint registration.
+          readOnly: true
+          type: string
       type: object
     SynonymMappingStatusDetail:
       description: Contains the status of the index's synonym mappings on each search host. This field (and its subfields) only appear if the index has synonyms defined.
@@ -20539,7 +20656,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: d7a00f00333b964140d2cb4417e7d209287f8046
+  x-xgen-sha: fa4665e868c5a69164839b6999989418142664a3
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -28445,6 +28562,8 @@ paths:
       x-rolesRequirements:
         - Project Owner
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Clusters/operation/deleteGroupCluster
+      x-xgen-long-running-operation:
+        legacy: true
     get:
       description: |-
         Returns the details for one cluster in the specified project. Clusters contain a group of hosts that maintain the same data set. The response includes clusters with asymmetrically-sized shards. This feature is not available for serverless clusters.
@@ -33725,7 +33844,10 @@ paths:
       x-xgen-changelog:
         2025-05-08: Corrects an issue where the endpoint would allow a rolling index build to be initiated while there was already an index build in progress. The endpoint now returns 400 if an index build is already in progress.
         2026-04-06: Corrects an issue where index creation was throwing a 500 error instead of a 409 error when there was an existing index with the same name.
+        2026-09-29: Indexes created with a collation and no explicit name now receive a default name with a collation-derived suffix, so that indexes over the same keys with different collations do not conflict.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Rolling-Index/operation/createGroupClusterIndexRollingIndex
+      x-xgen-long-running-operation:
+        legacy: true
       x-xgen-method-verb-override:
         customMethod: false
         verb: createRollingIndex
@@ -34933,6 +35055,8 @@ paths:
       x-rolesRequirements:
         - Project Cluster Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Overload-Protection-Simulation/operation/deleteGroupClusterOverloadSimulation
+      x-xgen-long-running-operation:
+        legacy: true
     get:
       description: Returns the overload protection simulation for one cluster.
       operationId: getClusterOverloadSimulation
@@ -35748,7 +35872,7 @@ paths:
             description: Query shape statistics data series to retrieve. A series represents a specific metric about query execution. To include multiple series, pass the parameter multiple times delimited with an ampersand (`&`) between each series. Omit this parameter to return results for all available series. The `P50_EXECUTION_TIME`, `P90_EXECUTION_TIME`, and `P99_EXECUTION_TIME` series are deprecated as the values they report may be inaccurate. They will be removed in a future release. The write command series (`DOCS_MATCHED`, `DOCS_MODIFIED`, `DOCS_UPSERTED`, `DOCS_DELETED`, `DOCS_INSERTED`, `KEYS_INSERTED`, `KEYS_DELETED`) return data only for clusters running MongoDB 9.0 or later with write query shape statistics enabled for the project.
             items:
               type: string
-            maxItems: 22
+            maxItems: 23
             type: array
             uniqueItems: true
           style: form
@@ -40185,6 +40309,8 @@ paths:
         - Project Database Access Admin
         - Project Stream Processing Owner
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Custom-Database-Roles/operation/createGroupCustomDbRoleRole
+      x-xgen-long-running-operation:
+        legacy: true
   /api/atlas/v2/groups/{groupId}/customDBRoles/roles/{roleName}:
     delete:
       description: Removes one custom role from the specified project. You can't remove a custom role that would leave one or more child roles with no parent roles or actions. You also can't remove a custom role that would leave one or more database users without roles.
@@ -42842,6 +42968,8 @@ paths:
       x-rolesRequirements:
         - Project Owner
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Encryption-at-Rest-using-Customer-Key-Management/operation/createGroupEncryptionAtRestPrivateEndpoint
+      x-xgen-long-running-operation:
+        legacy: true
   /api/atlas/v2/groups/{groupId}/encryptionAtRest/{cloudProvider}/privateEndpoints/{endpointId}:
     delete:
       description: Deletes one private endpoint, identified by its ID, for encryption at rest using Customer Key Management.
@@ -46557,6 +46685,8 @@ paths:
       x-rolesRequirements:
         - Organization Owner
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Cloud-Migration-Service/operation/cutoverGroupLiveMigration
+      x-xgen-long-running-operation:
+        legacy: true
       x-xgen-method-verb-override:
         customMethod: true
   /api/atlas/v2/groups/{groupId}/liveMigrations/validate:
@@ -49530,6 +49660,8 @@ paths:
       x-rolesRequirements:
         - Project Network Access Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Network-Peering/operation/deleteGroupPeer
+      x-xgen-long-running-operation:
+        legacy: true
     get:
       description: Returns details about one specified network peering connection in the specified project.
       operationId: getGroupPeer
@@ -55552,6 +55684,8 @@ paths:
       x-xgen-changelog:
         2023-09-11: The MongoDB Atlas Streams Processing API is now exposed as part of private preview, but is subject to change until GA.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/deleteGroupStreamWorkspace
+      x-xgen-long-running-operation:
+        legacy: true
       x-xgen-method-verb-override:
         customMethod: false
         verb: deleteWorkspace
@@ -56167,6 +56301,8 @@ paths:
         - Organization Stream Processing Admin
         - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/deleteGroupStreamConnection
+      x-xgen-long-running-operation:
+        legacy: true
     get:
       description: Returns the details of one stream connection within the specified stream workspace.
       operationId: getStreamConnection
@@ -56891,7 +57027,7 @@ paths:
         content:
           application/vnd.atlas.2024-05-30+json:
             schema:
-              $ref: "#/components/schemas/StreamsProcessor"
+              $ref: "#/components/schemas/StreamsProcessorRequest"
         description: Details to create an Atlas Streams Processor.
         required: true
       responses:
@@ -58207,6 +58343,8 @@ paths:
       x-xgen-changelog:
         2024-10-02: The MongoDB Atlas Streams Processing Private Link API is now exposed as part of private preview, but is subject to change until GA.
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/deleteGroupStreamPrivateLinkConnection
+      x-xgen-long-running-operation:
+        legacy: true
     get:
       description: Returns the details of one Private Link connection within the project.
       operationId: getPrivateLinkConnection
@@ -58564,6 +58702,8 @@ paths:
         - Organization Stream Processing Admin
         - Project Stream Processing Owner
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/deleteGroupStreamVpcPeeringConnection
+      x-xgen-long-running-operation:
+        legacy: true
   /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept:
     post:
       description: Requests the acceptance of an incoming VPC Peering connection.
@@ -58659,6 +58799,8 @@ paths:
         - Organization Stream Processing Admin
         - Project Stream Processing Owner
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/acceptGroupStreamVpcPeeringConnection
+      x-xgen-long-running-operation:
+        legacy: true
   /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:reject:
     post:
       description: Requests the rejection of an incoming VPC Peering connection.
@@ -58747,6 +58889,8 @@ paths:
         - Organization Stream Processing Admin
         - Project Stream Processing Owner
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/rejectGroupStreamVpcPeeringConnection
+      x-xgen-long-running-operation:
+        legacy: true
   /api/atlas/v2/groups/{groupId}/streams:withSampleConnections:
     post:
       description: Creates one stream workspace in the specified project with sample connections.
@@ -58841,6 +58985,370 @@ paths:
         - Project Data Access Admin
         - Project Stream Processing Manager
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/withGroupStreamSampleConnections
+  /api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints:
+    get:
+      description: Returns all private endpoints registered for Atlas Stream Processing in the specified project.
+      operationId: listWorkspacePrivateEndpoints
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - $ref: "#/components/parameters/includeCount"
+        - $ref: "#/components/parameters/itemsPerPage"
+        - $ref: "#/components/parameters/pageNum"
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/PaginatedStreamsWorkspacePrivateEndpointResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return All Workspace Private Endpoints for Atlas Stream Processing
+      tags:
+        - Streams
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api streams listWorkspacePrivateEndpoints --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.ListGroupStreamsWorkspacePrivateEndpointsApiParams{}
+            	sdkResp, httpResp, err := client.StreamsApi.
+            		ListGroupStreamsWorkspacePrivateEndpointsWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints?pretty=true"
+      x-rolesRequirements:
+        - Organization Stream Processing Admin
+        - Project Stream Processing Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/listGroupStreamsWorkspacePrivateEndpoints
+    post:
+      description: Registers one customer VPC endpoint for Atlas Stream Processing in the specified project.
+      operationId: createWorkspacePrivateEndpoint
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+      requestBody:
+        content:
+          application/vnd.atlas.2025-03-12+json:
+            schema:
+              $ref: "#/components/schemas/StreamsWorkspacePrivateEndpointRequest"
+            x-xgen-version: 2025-03-12
+        description: Customer VPC endpoint to register for Atlas Stream Processing.
+        required: true
+      responses:
+        "202":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              x-xgen-version: 2025-03-12
+          description: Accepted
+          headers:
+            Location:
+              description: Relative URI of the registered workspace private endpoint, which reports the registration once it has been applied.
+              schema:
+                description: Relative URI of the workspace private endpoint.
+                format: uri
+                type: string
+              style: simple
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "409":
+          $ref: "#/components/responses/conflict"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Create One Workspace Private Endpoint for Atlas Stream Processing
+      tags:
+        - Streams
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api streams createWorkspacePrivateEndpoint --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.CreateGroupStreamsWorkspacePrivateEndpointApiParams{}
+            	sdkResp, httpResp, err := client.StreamsApi.
+            		CreateGroupStreamsWorkspacePrivateEndpointWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints" \
+              -d '{ <Payload> }'
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              --header "Content-Type: application/json" \
+              -X POST "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints" \
+              -d '{ <Payload> }'
+      x-rolesRequirements:
+        - Organization Stream Processing Admin
+        - Project Stream Processing Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/createGroupStreamsWorkspacePrivateEndpoint
+      x-xgen-long-running-operation:
+        legacy: false
+  /api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints/{endpointId}:
+    delete:
+      description: Removes one private endpoint registered for Atlas Stream Processing in the specified project.
+      operationId: deleteWorkspacePrivateEndpoint
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique identifier of the customer's VPC endpoint.
+          in: path
+          name: endpointId
+          required: true
+          schema:
+            example: vpce-0abc123def4567890
+            pattern: ^vpce-[a-z0-9]{17}$
+            type: string
+      responses:
+        "204":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              x-xgen-version: 2025-03-12
+          description: No Content
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Remove One Workspace Private Endpoint for Atlas Stream Processing
+      tags:
+        - Streams
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api streams deleteWorkspacePrivateEndpoint --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.DeleteGroupStreamsWorkspacePrivateEndpointApiParams{}
+            	httpResp, err := client.StreamsApi.
+            		DeleteGroupStreamsWorkspacePrivateEndpointWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints/{endpointId}"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X DELETE "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints/{endpointId}"
+      x-rolesRequirements:
+        - Organization Stream Processing Admin
+        - Project Stream Processing Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/deleteGroupStreamsWorkspacePrivateEndpoint
+    get:
+      description: Returns one private endpoint registered for Atlas Stream Processing in the specified project.
+      operationId: getWorkspacePrivateEndpoint
+      parameters:
+        - $ref: "#/components/parameters/groupId"
+        - description: Unique identifier of the customer's VPC endpoint.
+          in: path
+          name: endpointId
+          required: true
+          schema:
+            example: vpce-0abc123def4567890
+            pattern: ^vpce-[a-z0-9]{17}$
+            type: string
+      responses:
+        "200":
+          content:
+            application/vnd.atlas.2025-03-12+json:
+              schema:
+                $ref: "#/components/schemas/StreamsWorkspacePrivateEndpointResponse"
+              x-xgen-version: 2025-03-12
+          description: OK
+          headers:
+            RateLimit-Limit:
+              $ref: "#/components/headers/HeaderRateLimitLimit"
+            RateLimit-Remaining:
+              $ref: "#/components/headers/HeaderRateLimitRemaining"
+        "400":
+          $ref: "#/components/responses/badRequest"
+        "401":
+          $ref: "#/components/responses/unauthorized"
+        "403":
+          $ref: "#/components/responses/forbidden"
+        "404":
+          $ref: "#/components/responses/notFound"
+        "429":
+          $ref: "#/components/responses/tooManyRequests"
+        "500":
+          $ref: "#/components/responses/internalServerError"
+      summary: Return One Workspace Private Endpoint for Atlas Stream Processing
+      tags:
+        - Streams
+      x-codeSamples:
+        - label: Atlas CLI
+          lang: cURL
+          source: atlas api streams getWorkspacePrivateEndpoint --help
+        - label: Go
+          lang: go
+          source: |
+            import (
+            	"os"
+            	"context"
+            	"log"
+            	sdk "go.mongodb.org/atlas-sdk/v20250312001/admin"
+            )
+
+            func main() {
+            	ctx := context.Background()
+            	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
+            	clientSecret := os.Getenv("MONGODB_ATLAS_CLIENT_SECRET")
+
+            	// See https://dochub.mongodb.org/core/atlas-go-sdk-oauth
+            	client, err := sdk.NewClient(sdk.UseOAuthAuth(clientID, clientSecret))
+
+            	if err != nil {
+            		log.Fatalf("Error: %v", err)
+            	}
+
+            	params = &sdk.GetGroupStreamsWorkspacePrivateEndpointApiParams{}
+            	sdkResp, httpResp, err := client.StreamsApi.
+            		GetGroupStreamsWorkspacePrivateEndpointWithParams(ctx, params).
+            		Execute()
+            }
+        - label: curl (Service Accounts)
+          lang: cURL
+          source: |-
+            curl --include --header "Authorization: Bearer ${ACCESS_TOKEN}" \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints/{endpointId}?pretty=true"
+        - label: curl (Digest)
+          lang: cURL
+          source: |-
+            curl --user "${PUBLIC_KEY}:${PRIVATE_KEY}" \
+              --digest --include \
+              --header "Accept: application/vnd.atlas.2025-03-12+json" \
+              -X GET "https://cloud.mongodb.com/api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints/{endpointId}?pretty=true"
+      x-rolesRequirements:
+        - Organization Stream Processing Admin
+        - Project Stream Processing Owner
+      x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/getGroupStreamsWorkspacePrivateEndpoint
   /api/atlas/v2/groups/{groupId}/teams:
     get:
       description: Returns all teams to which the authenticated user has access in the project specified using its unique 24-hexadecimal digit identifier. All members of the team share the same project access.
@@ -59477,6 +59985,8 @@ paths:
       x-rolesRequirements:
         - Project Owner
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/LDAP-Configuration/operation/updateGroupUserSecurity
+      x-xgen-long-running-operation:
+        legacy: true
   /api/atlas/v2/groups/{groupId}/userSecurity/customerX509:
     delete:
       description: |-
@@ -59559,6 +60069,8 @@ paths:
       x-rolesRequirements:
         - Project Owner
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/X.509-Authentication/operation/disableGroupUserSecurityCustomerX509
+      x-xgen-long-running-operation:
+        legacy: true
       x-xgen-method-verb-override:
         customMethod: "True"
         verb: disable
@@ -59641,6 +60153,8 @@ paths:
       x-rolesRequirements:
         - Project Owner
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/LDAP-Configuration/operation/deleteGroupUserSecurityLdapUserToDnMapping
+      x-xgen-long-running-operation:
+        legacy: true
   /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify:
     post:
       description: Verifies the LDAP configuration for the specified project.
@@ -62685,6 +63199,8 @@ paths:
       x-rolesRequirements:
         - Organization Billing Viewer
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Invoices/operation/createOrgBillingCostExplorerUsageProcess
+      x-xgen-long-running-operation:
+        legacy: true
       x-xgen-method-verb-override:
         customMethod: false
         verb: createProcess
