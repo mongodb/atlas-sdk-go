@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Unique 24-hexadecimal character string that identifies the stream processor. | [readonly] 
-**EffectiveTier** | **string** | Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. | [readonly] 
+**EffectiveTier** | **string** | Tier the stream processor is currently running on. The server sets this value from &#x60;tier&#x60; on create and on every start or restart, may move it within [&#x60;minTier&#x60;, &#x60;maxTier&#x60;] while autoscaling is enabled, and restores it to &#x60;tier&#x60; when autoscaling is disabled. Patching &#x60;tier&#x60; does not change it directly; the new tier takes effect at the next start or restart. | [readonly] 
 **EligibleForFailover** | Pointer to **bool** | Flag that indicates whether the stream processor is eligible for failover. | [optional] [readonly] 
 **FailoverEnabled** | Pointer to **bool** | Flag that enables or disables failover for the stream processor. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **Pipeline** | [**[]any**](any.md) | Stream aggregation pipeline you want to apply to your streaming data. | [readonly] 
 **State** | **string** | The state of the stream processor. Commonly occurring states are &#39;CREATED&#39;, &#39;STARTED&#39;, &#39;STOPPED&#39; and &#39;FAILED&#39;. | [readonly] 
 **Stats** | Pointer to [**any**](interface{}.md) | The stats associated with the stream processor. | [optional] [readonly] 
-**Tier** | Pointer to **string** | Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. | [optional] 
+**Tier** | Pointer to **string** | Baseline tier of the stream processor. The processor starts or restarts on this tier; &#x60;effectiveTier&#x60; reports the tier it is currently running. | [optional] 
 
 ## Methods
 

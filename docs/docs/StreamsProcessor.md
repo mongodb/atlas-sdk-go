@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the stream processor. | [optional] [readonly] 
-**EffectiveTier** | Pointer to **string** | Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. | [optional] [readonly] 
+**EffectiveTier** | Pointer to **string** | Tier the stream processor is currently running on. The server sets this value from &#x60;tier&#x60; on create and on every start or restart, may move it within [&#x60;minTier&#x60;, &#x60;maxTier&#x60;] while autoscaling is enabled, and restores it to &#x60;tier&#x60; when autoscaling is disabled. Patching &#x60;tier&#x60; does not change it directly; the new tier takes effect at the next start or restart. | [optional] [readonly] 
 **FailoverEnabled** | Pointer to **bool** | Flag that enables or disables failover for the stream processor. | [optional] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable name of the stream processor. | [optional] 
 **Options** | Pointer to [**StreamsOptions**](StreamsOptions.md) |  | [optional] 
 **Pipeline** | Pointer to [**[]any**](any.md) | Stream aggregation pipeline you want to apply to your streaming data. | [optional] 
-**Tier** | Pointer to **string** | Selected tier for the Stream Workspace. Configures Memory or VCPU allowances. | [optional] 
+**Tier** | Pointer to **string** | Baseline tier of the stream processor. The processor starts or restarts on this tier; &#x60;effectiveTier&#x60; reports the tier it is currently running. | [optional] 
 
 ## Methods
 
