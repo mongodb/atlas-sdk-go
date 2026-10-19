@@ -86,8 +86,8 @@ func testClientDefaultBaseURL(t *testing.T, c *Config) {
 
 func testClientDefaultAuthServerURL(t *testing.T, c *Config) {
 	t.Helper()
-	if c.AuthServerURL == nil || c.AuthServerURL.String() != defaultAuthServerURL {
-		t.Errorf("NewConfig AuthServerURL = %v, expected %v", c.AuthServerURL, defaultAuthServerURL)
+	if c.AuthServerURL == nil || c.AuthServerURL.String() != DefaultAuthServerURL {
+		t.Errorf("NewConfig AuthServerURL = %v, expected %v", c.AuthServerURL, DefaultAuthServerURL)
 	}
 }
 

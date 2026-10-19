@@ -97,14 +97,14 @@ func TestConfig_DiscoverProductionAuthServer(t *testing.T) {
 	if err != nil {
 		t.Fatalf("DiscoverAuthServer() returned error: %v", err)
 	}
-	if got, want := requestedURL, defaultAuthServerURL+"/.well-known/oauth-authorization-server"; got != want {
+	if got, want := requestedURL, DefaultAuthServerURL+"/.well-known/oauth-authorization-server"; got != want {
 		t.Errorf("discovery URL = %q, expected %q", got, want)
 	}
 	if resp == nil || resp.StatusCode != http.StatusOK {
 		t.Fatalf("response = %v, expected HTTP 200", resp)
 	}
-	if metadata.Issuer != defaultAuthServerURL {
-		t.Errorf("issuer = %q, expected %q", metadata.Issuer, defaultAuthServerURL)
+	if metadata.Issuer != DefaultAuthServerURL {
+		t.Errorf("issuer = %q, expected %q", metadata.Issuer, DefaultAuthServerURL)
 	}
 	if metadata.AuthorizationEndpoint != "https://cloud.mongodb.com/oauth/authorize" {
 		t.Errorf("authorization endpoint = %q", metadata.AuthorizationEndpoint)

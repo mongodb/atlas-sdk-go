@@ -27,14 +27,12 @@ import (
 	"runtime"
 	"strings"
 
-	sdkAuth "go.mongodb.org/atlas-sdk/v20250312027/auth"
 	"go.mongodb.org/atlas-sdk/v20250312027/internal/core"
 )
 
 const (
-	defaultBaseURL       = "https://cloud.mongodb.com/"
-	defaultAuthServerURL = sdkAuth.DefaultAuthServerURL
-	authServerURLEnvVar  = "MONGODB_ATLAS_AUTH_SERVER_URL"
+	defaultBaseURL      = "https://cloud.mongodb.com/"
+	authServerURLEnvVar = "MONGODB_ATLAS_AUTH_SERVER_URL"
 )
 
 var (
@@ -69,7 +67,7 @@ func NewConfig(httpClient *http.Client) *Config {
 	baseURL, _ := url.Parse(defaultBaseURL)
 	issuerURL := os.Getenv(authServerURLEnvVar)
 	if issuerURL == "" {
-		issuerURL = defaultAuthServerURL
+		issuerURL = DefaultAuthServerURL
 	}
 	authServerURL, authServerURLError := url.Parse(issuerURL)
 	if authServerURLError != nil {
