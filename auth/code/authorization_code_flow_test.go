@@ -40,6 +40,20 @@ func authServerMetadataForConfig(c *Config, authorizationEndpoint, tokenEndpoint
 	}
 }
 
+func TestGenerateVerifier(t *testing.T) {
+	verifier := GenerateVerifier()
+	if len(verifier) != 43 {
+		t.Errorf("verifier length = %d, expected 43", len(verifier))
+	}
+	verifierBytes, err := base64.RawURLEncoding.DecodeString(verifier)
+	if err != nil || len(verifierBytes) != 32 {
+		t.Errorf("verifier = %q, expected 32 bytes of base64url-encoded randomness", verifier)
+	}
+	if verifier == GenerateVerifier() {
+		t.Error("two calls generated the same code verifier")
+	}
+}
+
 func TestGenerateState(t *testing.T) {
 	state, err := GenerateState()
 	if err != nil {
@@ -243,7 +257,7 @@ func TestConfig_RejectsHTTPAuthServerURLs(t *testing.T) {
 		t.Fatalf("DiscoverAuthServer() error = %v, expected HTTP issuer to be rejected", err)
 	}
 	c.ClientID = "test-client"
-	codeVerifier := oauth2.GenerateVerifier()
+	codeVerifier := GenerateVerifier()
 	metadata := authServerMetadataForConfig(
 		c,
 		"https://auth.example.com/authorize",
@@ -265,7 +279,7 @@ func TestConfig_RejectsHTTPAuthorizationServerEndpoints(t *testing.T) {
 	if err != nil {
 		t.Fatalf("NewConfigWithOptions() returned error: %v", err)
 	}
-	codeVerifier := oauth2.GenerateVerifier()
+	codeVerifier := GenerateVerifier()
 	metadata := authServerMetadataForConfig(
 		c,
 		"http://auth.example.com/authorize",
@@ -297,7 +311,7 @@ func TestConfig_AuthorizationURL(t *testing.T) {
 		t.Fatalf("NewConfigWithOptions() returned error: %v", err)
 	}
 
-	codeVerifier := oauth2.GenerateVerifier()
+	codeVerifier := GenerateVerifier()
 	metadata := authServerMetadataForConfig(c,
 		"https://auth.example.com/authorize?tenant=atlas",
 		"https://auth.example.com/token",
@@ -344,7 +358,7 @@ func TestConfig_AuthorizationURLRequiresStateAndPKCE(t *testing.T) {
 		"https://auth.example.com/token",
 		"https://auth.example.com/revoke",
 	)
-	codeVerifier := oauth2.GenerateVerifier()
+	codeVerifier := GenerateVerifier()
 
 	for _, test := range []struct {
 		name         string
@@ -366,7 +380,7 @@ func TestConfig_AuthorizationURLRequiresStateAndPKCE(t *testing.T) {
 func TestConfig_AuthorizationURLRejectsMetadataFromDifferentIssuer(t *testing.T) {
 	t.Setenv(authServerURLEnvVar, "")
 	c, _ := NewConfigWithOptions(nil, SetClientID("test-client"))
-	codeVerifier := oauth2.GenerateVerifier()
+	codeVerifier := GenerateVerifier()
 	metadata := authServerMetadataForConfig(
 		c,
 		"https://auth.example.com/authorize",

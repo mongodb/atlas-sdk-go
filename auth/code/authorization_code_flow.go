@@ -88,6 +88,11 @@ func GenerateState() (string, error) {
 	return base64.RawURLEncoding.EncodeToString(stateBytes), nil
 }
 
+// GenerateVerifier creates a random PKCE code verifier.
+func GenerateVerifier() string {
+	return oauth2.GenerateVerifier()
+}
+
 // DiscoverAuthServer fetches and validates metadata for the configured issuer.
 func (c *Config) DiscoverAuthServer(ctx context.Context) (*AuthServerMetadata, *core.Response, error) {
 	if c.AuthServerURL == nil {

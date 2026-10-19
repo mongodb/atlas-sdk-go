@@ -24,8 +24,6 @@ Usage
 		"context"
 		"fmt"
 
-		"golang.org/x/oauth2"
-
 		"go.mongodb.org/atlas-sdk/v20250312026/auth/code"
 	)
 
@@ -67,7 +65,7 @@ Authorization Code + PKCE
 	if err != nil {
 	    panic(err)
 	}
-	codeVerifier := oauth2.GenerateVerifier()
+	codeVerifier := code.GenerateVerifier()
 	state, err := code.GenerateState()
 	if err != nil {
 	    panic(err)
