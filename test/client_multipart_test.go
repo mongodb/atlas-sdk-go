@@ -17,7 +17,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.mongodb.org/atlas-sdk/v20250312026/admin"
+	"go.mongodb.org/atlas-sdk/v20250312027/admin"
 )
 
 const multipartEndpoint = "https://cloud.mongodb.com/api/atlas/v2/fake-endpoint"

@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AvgWorkingMillis** | Pointer to **float64** | Average total time in milliseconds spent running queries with the given query shape. If the query resulted in &#x60;getMore&#x60; commands, this metric includes the time spent processing the &#x60;getMore&#x60; requests. This metric does not include time spent waiting for the client. | [optional] 
+**AvgTimeToResponseMicros** | Pointer to **float64** | Average time in microseconds from the beginning of query processing to the first server response, per execution of queries with the given query shape. Calculated as &#x60;totalTimeToResponseMicros&#x60; divided by &#x60;execCount&#x60; over the requested time range. As a duration it can be longer or shorter than &#x60;avgWorkingMillis&#x60; (reported in milliseconds, so convert before comparing): longer when executions spent time blocked on locks or flow control rather than working, shorter when they kept working after the first batch to return later &#x60;getMore&#x60; batches. | [optional] 
+**AvgWorkingMillis** | Pointer to **float64** | Average active execution time in milliseconds per execution of queries with the given query shape, calculated as &#x60;totalWorkingMillis&#x60; divided by &#x60;execCount&#x60; over the requested time range. Excludes intentional pauses such as time waiting on locks or flow control. | [optional] 
 **BytesRead** | Pointer to **float64** | The number of bytes read by the given query shape from the disk to the cache. | [optional] 
 **Command** | Pointer to **string** | The MongoDB command issued for this query shape. The insert, update, and delete commands appear only for clusters running MongoDB 9.0 or later. | [optional] 
 **CpuTime** | Pointer to **float64** | Total CPU time in nanoseconds consumed by queries with the given query shape. Available for MDB 8.2 and higher. | [optional] 
@@ -29,8 +30,8 @@ Name | Type | Description | Notes
 **QueryShape** | Pointer to **string** | A query shape is a set of specifications that group similar queries together. Specifications can include filters, sorts, projections, aggregation pipeline stages, a namespace, and others. Queries that have similar specifications have the same query shape. | [optional] 
 **QueryShapeHash** | Pointer to **string** | A hexadecimal string that represents the hash of a MongoDB query shape. | [optional] 
 **SystemQuery** | Pointer to **bool** | Indicates whether this query shape represents a system-initiated query. | [optional] 
-**TotalTimeToResponseMicros** | Pointer to **float64** | Time in microseconds spent from the beginning of query processing to the first server response. | [optional] 
-**TotalWorkingMillis** | Pointer to **float64** | Total time in milliseconds spent running queries with the given query shape. If the query resulted in &#x60;getMore&#x60; commands, this metric includes the time spent processing the &#x60;getMore&#x60; requests. This metric does not include time spent waiting for the client. | [optional] 
+**TotalTimeToResponseMicros** | Pointer to **float64** | Total time in microseconds from the beginning of query processing to the first server response, summed across executions of queries with the given query shape. Includes time spent waiting on locks or flow control. Stops at the first batch of results, so time spent serving later &#x60;getMore&#x60; batches is not counted. | [optional] 
+**TotalWorkingMillis** | Pointer to **float64** | Total time in milliseconds that queries with the given query shape spent actively executing, summed across executions, including time spent processing &#x60;getMore&#x60; requests. Excludes intentional pauses such as time waiting on locks or flow control, and time spent waiting for the client. | [optional] 
 
 ## Methods
 
@@ -50,6 +51,37 @@ will change when the set of required properties is changed
 NewQueryStatsSummaryWithDefaults instantiates a new QueryStatsSummary object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetAvgTimeToResponseMicros
+
+`func (o *QueryStatsSummary) GetAvgTimeToResponseMicros() float64`
+
+GetAvgTimeToResponseMicros returns the AvgTimeToResponseMicros field if non-nil, zero value otherwise.
+
+### GetAvgTimeToResponseMicrosOk
+
+`func (o *QueryStatsSummary) GetAvgTimeToResponseMicrosOk() (*float64, bool)`
+
+GetAvgTimeToResponseMicrosOk returns a tuple with the AvgTimeToResponseMicros field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAvgTimeToResponseMicros
+
+`func (o *QueryStatsSummary) SetAvgTimeToResponseMicros(v float64)`
+
+SetAvgTimeToResponseMicros sets AvgTimeToResponseMicros field to given value.
+
+### HasAvgTimeToResponseMicros
+
+`func (o *QueryStatsSummary) HasAvgTimeToResponseMicros() bool`
+
+HasAvgTimeToResponseMicros returns a boolean if a field has been set.
+
+### SetAvgTimeToResponseMicrosNil
+
+`func (o *QueryStatsSummary) SetAvgTimeToResponseMicrosNil()`
+
+SetAvgTimeToResponseMicrosNil sets AvgTimeToResponseMicros to an explicit JSON null when marshaled, overriding any value previously set with SetAvgTimeToResponseMicros. Calling SetAvgTimeToResponseMicros again clears the null override.
 
 ### GetAvgWorkingMillis
 
