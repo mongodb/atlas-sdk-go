@@ -17,6 +17,8 @@ package code
 import (
 	"bytes"
 	"context"
+	"crypto/rand"
+	"encoding/base64"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -45,11 +47,6 @@ type AuthServerMetadata struct {
 	CodeChallengeMethodsSupported []string `json:"code_challenge_methods_supported,omitempty"`
 	// CacheExpiry is derived from HTTP cache headers and is not part of the discovery document.
 	CacheExpiry time.Time `json:"-"`
-}
-
-// PKCEParams holds the verifier used by golang.org/x/oauth2 to generate the S256 challenge.
-type PKCEParams struct {
-	CodeVerifier string
 }
 
 // OAuthError describes an authorization-server error response.
@@ -82,29 +79,13 @@ func (e *OAuthError) Error() string {
 	return message
 }
 
-// GeneratePKCE creates a random verifier for the Authorization Code flow.
-func GeneratePKCE() (*PKCEParams, error) {
-	verifier, err := generateOAuth2RandomValue("PKCE code verifier")
-	if err != nil {
-		return nil, err
-	}
-	return &PKCEParams{CodeVerifier: verifier}, nil
-}
-
 // GenerateState creates random OAuth state for the authorization request.
 func GenerateState() (string, error) {
-	return generateOAuth2RandomValue("OAuth state")
-}
-
-func generateOAuth2RandomValue(name string) (_ string, err error) {
-	// x/oauth2.GenerateVerifier panics if the secure random source fails. Preserve
-	// this package's error-returning API.
-	defer func() {
-		if recovered := recover(); recovered != nil {
-			err = fmt.Errorf("generating %s: %v", name, recovered)
-		}
-	}()
-	return oauth2.GenerateVerifier(), nil
+	stateBytes := make([]byte, 32)
+	if _, err := rand.Read(stateBytes); err != nil {
+		return "", fmt.Errorf("generating OAuth state: %w", err)
+	}
+	return base64.RawURLEncoding.EncodeToString(stateBytes), nil
 }
 
 // DiscoverAuthServer fetches and validates metadata for the configured issuer.
@@ -194,7 +175,7 @@ func (c *Config) validateAuthServerMetadata(metadata *AuthServerMetadata) error 
 
 // AuthorizationURL returns an authorization URL with the supplied state and PKCE verifier.
 // Keep both values for callback validation and code exchange.
-func (c *Config) AuthorizationURL(metadata *AuthServerMetadata, redirectURI, state string, pkce *PKCEParams) (string, error) {
+func (c *Config) AuthorizationURL(metadata *AuthServerMetadata, redirectURI, state, codeVerifier string) (string, error) {
 	oauthConfig, err := c.newOAuth2Config(metadata)
 	if err != nil {
 		return "", err
@@ -205,12 +186,12 @@ func (c *Config) AuthorizationURL(metadata *AuthServerMetadata, redirectURI, sta
 	if state == "" {
 		return "", errors.New("OAuth state is required")
 	}
-	if pkce == nil || pkce.CodeVerifier == "" {
+	if codeVerifier == "" {
 		return "", errors.New("PKCE code verifier is required")
 	}
 
 	oauthConfig.RedirectURL = redirectURI
-	return oauthConfig.AuthCodeURL(state, oauth2.S256ChallengeOption(pkce.CodeVerifier)), nil
+	return oauthConfig.AuthCodeURL(state, oauth2.S256ChallengeOption(codeVerifier)), nil
 }
 
 // ExchangeCode exchanges an authorization code using its redirect URI and verifier.

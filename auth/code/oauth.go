@@ -53,11 +53,9 @@ type Config struct {
 
 	authServerURLError error
 
-	// withRaw indicates whether responses should include their raw body.
 	withRaw bool
 }
 
-// ConfigOpt configures a Config instance.
 type ConfigOpt func(*Config) error
 
 // NewConfig returns a client using the production OAuth issuer by default.
@@ -87,7 +85,6 @@ func NewConfig(httpClient *http.Client) *Config {
 	return c
 }
 
-// NewConfigWithOptions returns a Config with the provided options applied.
 func NewConfigWithOptions(httpClient *http.Client, opts ...ConfigOpt) (*Config, error) {
 	c := NewConfig(httpClient)
 	for _, opt := range opts {
@@ -112,6 +109,7 @@ func SetAuthURL(bu string) ConfigOpt {
 }
 
 // SetAuthServerURL sets the HTTPS issuer used by Authorization Code + PKCE.
+// It overrides MONGODB_ATLAS_AUTH_SERVER_URL.
 func SetAuthServerURL(issuerURL string) ConfigOpt {
 	return func(c *Config) error {
 		u, err := parseOAuthEndpoint(issuerURL, "Authorization Server issuer")
@@ -133,7 +131,7 @@ func SetWithRaw() ConfigOpt {
 	}
 }
 
-// SetUserAgent sets a custom prefix for the SDK user agent.
+// SetUserAgent is a config option for setting the user agent.
 func SetUserAgent(ua string) ConfigOpt {
 	return func(c *Config) error {
 		c.UserAgent = fmt.Sprintf("%s %s", ua, userAgent)
@@ -141,7 +139,7 @@ func SetUserAgent(ua string) ConfigOpt {
 	}
 }
 
-// SetClientID sets the OAuth client ID.
+// SetClientID is a config option for setting the ClientID.
 func SetClientID(clientID string) ConfigOpt {
 	return func(c *Config) error {
 		c.ClientID = clientID
@@ -149,7 +147,7 @@ func SetClientID(clientID string) ConfigOpt {
 	}
 }
 
-// SetScopes sets the OAuth scopes requested by the client.
+// SetScopes is a config option for setting the Scopes.
 func SetScopes(scopes []string) ConfigOpt {
 	return func(c *Config) error {
 		c.Scopes = scopes
@@ -157,7 +155,7 @@ func SetScopes(scopes []string) ConfigOpt {
 	}
 }
 
-// TokenSource returns tokens and must be safe for concurrent use.
+// A TokenSource is anything that can return a token.
 type TokenSource interface {
 	// Token returns a token or an error.
 	// Token must be safe for concurrent use by multiple goroutines.

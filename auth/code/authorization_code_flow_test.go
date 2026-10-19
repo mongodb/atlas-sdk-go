@@ -40,28 +40,6 @@ func authServerMetadataForConfig(c *Config, authorizationEndpoint, tokenEndpoint
 	}
 }
 
-func TestGeneratePKCE(t *testing.T) {
-	pkce, err := GeneratePKCE()
-	if err != nil {
-		t.Fatalf("GeneratePKCE() returned error: %v", err)
-	}
-	if len(pkce.CodeVerifier) != 43 {
-		t.Errorf("verifier length = %d, expected 43", len(pkce.CodeVerifier))
-	}
-	verifierBytes, err := base64.RawURLEncoding.DecodeString(pkce.CodeVerifier)
-	if err != nil || len(verifierBytes) != 32 {
-		t.Errorf("verifier = %q, expected 32 bytes of base64url-encoded randomness", pkce.CodeVerifier)
-	}
-
-	other, err := GeneratePKCE()
-	if err != nil {
-		t.Fatalf("second GeneratePKCE() returned error: %v", err)
-	}
-	if pkce.CodeVerifier == other.CodeVerifier {
-		t.Error("two calls generated the same code verifier")
-	}
-}
-
 func TestGenerateState(t *testing.T) {
 	state, err := GenerateState()
 	if err != nil {
@@ -265,17 +243,14 @@ func TestConfig_RejectsHTTPAuthServerURLs(t *testing.T) {
 		t.Fatalf("DiscoverAuthServer() error = %v, expected HTTP issuer to be rejected", err)
 	}
 	c.ClientID = "test-client"
-	pkce, err := GeneratePKCE()
-	if err != nil {
-		t.Fatalf("GeneratePKCE() returned error: %v", err)
-	}
+	codeVerifier := oauth2.GenerateVerifier()
 	metadata := authServerMetadataForConfig(
 		c,
 		"https://auth.example.com/authorize",
 		"https://auth.example.com/tokens",
 		"",
 	)
-	if _, err := c.AuthorizationURL(metadata, "http://127.0.0.1/callback", "state", pkce); err == nil || !strings.Contains(err.Error(), "HTTPS") {
+	if _, err := c.AuthorizationURL(metadata, "http://127.0.0.1/callback", "state", codeVerifier); err == nil || !strings.Contains(err.Error(), "HTTPS") {
 		t.Errorf("AuthorizationURL() error = %v, expected HTTP issuer to be rejected", err)
 	}
 
@@ -290,10 +265,7 @@ func TestConfig_RejectsHTTPAuthorizationServerEndpoints(t *testing.T) {
 	if err != nil {
 		t.Fatalf("NewConfigWithOptions() returned error: %v", err)
 	}
-	pkce, err := GeneratePKCE()
-	if err != nil {
-		t.Fatalf("GeneratePKCE() returned error: %v", err)
-	}
+	codeVerifier := oauth2.GenerateVerifier()
 	metadata := authServerMetadataForConfig(
 		c,
 		"http://auth.example.com/authorize",
@@ -301,10 +273,10 @@ func TestConfig_RejectsHTTPAuthorizationServerEndpoints(t *testing.T) {
 		"http://auth.example.com/tokens/revoke",
 	)
 
-	if _, err := c.AuthorizationURL(metadata, "http://127.0.0.1/callback", "state", pkce); err == nil || !strings.Contains(err.Error(), "HTTPS") {
+	if _, err := c.AuthorizationURL(metadata, "http://127.0.0.1/callback", "state", codeVerifier); err == nil || !strings.Contains(err.Error(), "HTTPS") {
 		t.Errorf("AuthorizationURL() error = %v, expected HTTP endpoint to be rejected", err)
 	}
-	if _, _, err := c.ExchangeCode(ctx, metadata, "code", "http://127.0.0.1/callback", pkce.CodeVerifier); err == nil || !strings.Contains(err.Error(), "HTTPS") {
+	if _, _, err := c.ExchangeCode(ctx, metadata, "code", "http://127.0.0.1/callback", codeVerifier); err == nil || !strings.Contains(err.Error(), "HTTPS") {
 		t.Errorf("ExchangeCode() error = %v, expected HTTP endpoint to be rejected", err)
 	}
 	if _, _, err := c.RefreshAccessToken(ctx, metadata, "refresh-token"); err == nil || !strings.Contains(err.Error(), "HTTPS") {
@@ -325,10 +297,7 @@ func TestConfig_AuthorizationURL(t *testing.T) {
 		t.Fatalf("NewConfigWithOptions() returned error: %v", err)
 	}
 
-	pkce, err := GeneratePKCE()
-	if err != nil {
-		t.Fatalf("GeneratePKCE() returned error: %v", err)
-	}
+	codeVerifier := oauth2.GenerateVerifier()
 	metadata := authServerMetadataForConfig(c,
 		"https://auth.example.com/authorize?tenant=atlas",
 		"https://auth.example.com/token",
@@ -338,7 +307,7 @@ func TestConfig_AuthorizationURL(t *testing.T) {
 		metadata,
 		"http://127.0.0.1:1234/callback",
 		"test-state",
-		pkce,
+		codeVerifier,
 	)
 	if err != nil {
 		t.Fatalf("AuthorizationURL() returned error: %v", err)
@@ -348,7 +317,7 @@ func TestConfig_AuthorizationURL(t *testing.T) {
 	if err != nil {
 		t.Fatalf("AuthorizationURL() returned invalid URL %q: %v", got, err)
 	}
-	hash := sha256.Sum256([]byte(pkce.CodeVerifier))
+	hash := sha256.Sum256([]byte(codeVerifier))
 	wantChallenge := base64.RawURLEncoding.EncodeToString(hash[:])
 	want := map[string]string{
 		"tenant":                "atlas",
@@ -375,19 +344,18 @@ func TestConfig_AuthorizationURLRequiresStateAndPKCE(t *testing.T) {
 		"https://auth.example.com/token",
 		"https://auth.example.com/revoke",
 	)
-	pkce := &PKCEParams{CodeVerifier: "verifier"}
+	codeVerifier := oauth2.GenerateVerifier()
 
 	for _, test := range []struct {
-		name  string
-		state string
-		pkce  *PKCEParams
+		name         string
+		state        string
+		codeVerifier string
 	}{
-		{name: "missing state", state: "", pkce: pkce},
-		{name: "missing PKCE", state: "state", pkce: nil},
-		{name: "missing verifier", state: "state", pkce: &PKCEParams{}},
+		{name: "missing state", state: "", codeVerifier: codeVerifier},
+		{name: "missing verifier", state: "state", codeVerifier: ""},
 	} {
 		t.Run(test.name, func(t *testing.T) {
-			_, err := c.AuthorizationURL(metadata, "http://127.0.0.1/callback", test.state, test.pkce)
+			_, err := c.AuthorizationURL(metadata, "http://127.0.0.1/callback", test.state, test.codeVerifier)
 			if err == nil {
 				t.Fatal("AuthorizationURL() returned nil error")
 			}
@@ -398,10 +366,7 @@ func TestConfig_AuthorizationURLRequiresStateAndPKCE(t *testing.T) {
 func TestConfig_AuthorizationURLRejectsMetadataFromDifferentIssuer(t *testing.T) {
 	t.Setenv(authServerURLEnvVar, "")
 	c, _ := NewConfigWithOptions(nil, SetClientID("test-client"))
-	pkce, err := GeneratePKCE()
-	if err != nil {
-		t.Fatalf("GeneratePKCE() returned error: %v", err)
-	}
+	codeVerifier := oauth2.GenerateVerifier()
 	metadata := authServerMetadataForConfig(
 		c,
 		"https://auth.example.com/authorize",
@@ -409,7 +374,7 @@ func TestConfig_AuthorizationURLRejectsMetadataFromDifferentIssuer(t *testing.T)
 		"",
 	)
 	metadata.Issuer = "https://other.example.com"
-	if _, err := c.AuthorizationURL(metadata, "http://127.0.0.1/callback", "state", pkce); err == nil || !strings.Contains(err.Error(), "does not match configured issuer") {
+	if _, err := c.AuthorizationURL(metadata, "http://127.0.0.1/callback", "state", codeVerifier); err == nil || !strings.Contains(err.Error(), "does not match configured issuer") {
 		t.Fatalf("AuthorizationURL() error = %v, expected issuer mismatch", err)
 	}
 }

@@ -20,7 +20,14 @@ Package code implements the OAuth 2.0 Device Authorization Grant
 
 Usage
 
-	import "go.mongodb.org/atlas-sdk/v20250312026/auth/code"
+	import (
+		"context"
+		"fmt"
+
+		"golang.org/x/oauth2"
+
+		"go.mongodb.org/atlas-sdk/v20250312026/auth/code"
+	)
 
 Construct a new client Config, then use the various methods to complete a flow.
 For example:
@@ -60,10 +67,7 @@ Authorization Code + PKCE
 	if err != nil {
 	    panic(err)
 	}
-	pkce, err := code.GeneratePKCE()
-	if err != nil {
-	    panic(err)
-	}
+	codeVerifier := oauth2.GenerateVerifier()
 	state, err := code.GenerateState()
 	if err != nil {
 	    panic(err)
@@ -75,7 +79,7 @@ Authorization Code + PKCE
 	defer callback.Close()
 	redirectURI := callback.RedirectURI()
 	authorizationURL, err := config.AuthorizationURL(
-	    metadata, redirectURI, state, pkce,
+		metadata, redirectURI, state, codeVerifier,
 	)
 	if err != nil {
 	    panic(err)
@@ -86,7 +90,7 @@ Authorization Code + PKCE
 	    panic(err)
 	}
 	token, _, err := config.ExchangeCode(
-	    context.Background(), metadata, authorizationCode, redirectURI, pkce.CodeVerifier,
+		context.Background(), metadata, authorizationCode, redirectURI, codeVerifier,
 	)
 	if err != nil {
 	    panic(err)
