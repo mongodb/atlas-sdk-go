@@ -70,7 +70,7 @@ Authorization Code + PKCE
 	if err != nil {
 	    panic(err)
 	}
-	callback, err := code.StartCallbackServer(state)
+	callback, err := code.StartCallbackServer(state, "/my-app/callback")
 	if err != nil {
 	    panic(err)
 	}

@@ -21,11 +21,11 @@ import (
 	"io"
 	"net"
 	"net/http"
+	"net/url"
+	"strings"
 	"sync"
 	"time"
 )
-
-const callbackPath = "/atlas-cli/callback"
 
 // ErrCallbackServerClosed is returned when the server closes before receiving a callback.
 var ErrCallbackServerClosed = errors.New("OAuth callback server closed before receiving a response")
@@ -37,18 +37,25 @@ type callbackResult struct {
 
 // CallbackServer accepts one state-validated loopback authorization callback.
 type CallbackServer struct {
-	listener net.Listener
-	server   *http.Server
-	state    string
-	done     chan struct{}
-	result   callbackResult
-	once     sync.Once
+	listener     net.Listener
+	server       *http.Server
+	state        string
+	callbackPath string
+	done         chan struct{}
+	result       callbackResult
+	once         sync.Once
 }
 
-// StartCallbackServer listens on 127.0.0.1 using an ephemeral port.
-func StartCallbackServer(expectedState string) (*CallbackServer, error) {
+// StartCallbackServer listens on 127.0.0.1 using an ephemeral port and serves
+// callbacks at callbackPath. callbackPath must be an absolute URL path without
+// a query or fragment, and must match the path registered for the OAuth client.
+func StartCallbackServer(expectedState, callbackPath string) (*CallbackServer, error) {
 	if expectedState == "" {
 		return nil, errors.New("expected OAuth state is required")
+	}
+	callbackPath, err := normalizeCallbackPath(callbackPath)
+	if err != nil {
+		return nil, err
 	}
 
 	listener, err := net.Listen("tcp", "127.0.0.1:0")
@@ -57,14 +64,19 @@ func StartCallbackServer(expectedState string) (*CallbackServer, error) {
 	}
 
 	callback := &CallbackServer{
-		listener: listener,
-		state:    expectedState,
-		done:     make(chan struct{}),
+		listener:     listener,
+		state:        expectedState,
+		callbackPath: callbackPath,
+		done:         make(chan struct{}),
 	}
-	mux := http.NewServeMux()
-	mux.HandleFunc(callbackPath, callback.handleCallback)
 	callback.server = &http.Server{
-		Handler:           mux,
+		Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			if r.URL.EscapedPath() != callback.callbackPath {
+				http.NotFound(w, r)
+				return
+			}
+			callback.handleCallback(w, r)
+		}),
 		ReadHeaderTimeout: 5 * time.Second,
 	}
 
@@ -76,9 +88,30 @@ func StartCallbackServer(expectedState string) (*CallbackServer, error) {
 	return callback, nil
 }
 
+func normalizeCallbackPath(callbackPath string) (string, error) {
+	if !strings.HasPrefix(callbackPath, "/") {
+		return "", errors.New("OAuth callback path must be an absolute URL path")
+	}
+	if strings.ContainsAny(callbackPath, "?#") {
+		return "", errors.New("OAuth callback path must not include a query or fragment")
+	}
+
+	parsedPath, err := url.ParseRequestURI(callbackPath)
+	if err != nil {
+		return "", fmt.Errorf("invalid OAuth callback path: %w", err)
+	}
+	if parsedPath.Path == "" || !strings.HasPrefix(parsedPath.Path, "/") ||
+		parsedPath.IsAbs() || parsedPath.Host != "" || parsedPath.Opaque != "" ||
+		parsedPath.RawQuery != "" || parsedPath.ForceQuery || parsedPath.Fragment != "" {
+		return "", errors.New("OAuth callback path must not include a host, query, or fragment")
+	}
+
+	return parsedPath.EscapedPath(), nil
+}
+
 // RedirectURI returns the loopback callback URI.
 func (s *CallbackServer) RedirectURI() string {
-	return fmt.Sprintf("http://127.0.0.1:%d%s", s.Port(), callbackPath)
+	return fmt.Sprintf("http://127.0.0.1:%d%s", s.Port(), s.callbackPath)
 }
 
 // Port returns the callback listener's port.

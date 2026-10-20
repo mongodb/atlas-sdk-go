@@ -27,8 +27,10 @@ import (
 	"time"
 )
 
+const testCallbackPath = "/test-app/callback"
+
 func TestStartCallbackServerUsesEphemeralLoopbackURI(t *testing.T) {
-	callback, err := StartCallbackServer("expected-state")
+	callback, err := StartCallbackServer("expected-state", testCallbackPath)
 	if err != nil {
 		t.Fatalf("StartCallbackServer() returned error: %v", err)
 	}
@@ -38,16 +40,36 @@ func TestStartCallbackServerUsesEphemeralLoopbackURI(t *testing.T) {
 	if err != nil {
 		t.Fatalf("RedirectURI() returned invalid URL: %v", err)
 	}
-	if u.Scheme != "http" || u.Hostname() != "127.0.0.1" || u.Path != callbackPath {
-		t.Errorf("redirect URI = %q, expected loopback HTTP callback at %s", u, callbackPath)
+	if u.Scheme != "http" || u.Hostname() != "127.0.0.1" || u.Path != testCallbackPath {
+		t.Errorf("redirect URI = %q, expected loopback HTTP callback at %s", u, testCallbackPath)
 	}
 	if callback.Port() == 0 || u.Port() == "" {
 		t.Errorf("callback port = %d, expected an OS-assigned port", callback.Port())
 	}
 }
 
+func TestStartCallbackServerRejectsInvalidCallbackPaths(t *testing.T) {
+	tests := []struct {
+		name string
+		path string
+	}{
+		{name: "empty", path: ""},
+		{name: "relative", path: "callback"},
+		{name: "query", path: "/callback?query=1"},
+		{name: "fragment", path: "/callback#fragment"},
+		{name: "absolute URL", path: "https://example.com/callback"},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			if _, err := StartCallbackServer("expected-state", test.path); err == nil {
+				t.Errorf("StartCallbackServer(%q) returned nil error, expected invalid callback path", test.path)
+			}
+		})
+	}
+}
+
 func TestCallbackServerRejectsMismatchedStateWithoutConsumingFlow(t *testing.T) {
-	callback, err := StartCallbackServer("expected-state")
+	callback, err := StartCallbackServer("expected-state", testCallbackPath)
 	if err != nil {
 		t.Fatalf("StartCallbackServer() returned error: %v", err)
 	}
@@ -93,7 +115,7 @@ func TestCallbackServerRejectsMismatchedStateWithoutConsumingFlow(t *testing.T) 
 }
 
 func TestCallbackServerPreservesOAuthErrorAfterStateValidation(t *testing.T) {
-	callback, err := StartCallbackServer("expected-state")
+	callback, err := StartCallbackServer("expected-state", testCallbackPath)
 	if err != nil {
 		t.Fatalf("StartCallbackServer() returned error: %v", err)
 	}
@@ -129,7 +151,7 @@ func TestCallbackServerPreservesOAuthErrorAfterStateValidation(t *testing.T) {
 }
 
 func TestCallbackServerWaitsForResponseFlush(t *testing.T) {
-	callback, err := StartCallbackServer("expected-state")
+	callback, err := StartCallbackServer("expected-state", testCallbackPath)
 	if err != nil {
 		t.Fatalf("StartCallbackServer() returned error: %v", err)
 	}
@@ -191,7 +213,7 @@ func TestCallbackServerWaitsForResponseFlush(t *testing.T) {
 }
 
 func TestCallbackServerWaitHonorsContextCancellation(t *testing.T) {
-	callback, err := StartCallbackServer("expected-state")
+	callback, err := StartCallbackServer("expected-state", testCallbackPath)
 	if err != nil {
 		t.Fatalf("StartCallbackServer() returned error: %v", err)
 	}
@@ -205,7 +227,7 @@ func TestCallbackServerWaitHonorsContextCancellation(t *testing.T) {
 }
 
 func TestCallbackServerCloseReleasesListener(t *testing.T) {
-	callback, err := StartCallbackServer("expected-state")
+	callback, err := StartCallbackServer("expected-state", testCallbackPath)
 	if err != nil {
 		t.Fatalf("StartCallbackServer() returned error: %v", err)
 	}
