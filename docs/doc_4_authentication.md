@@ -138,10 +138,22 @@ The Authorization Code flow uses `Config.AuthServerURL`, configurable with
 `code.SetAuthServerURL`. Use `DiscoverAuthServer` to obtain endpoint metadata,
 `AuthorizationURL` to create the PKCE authorization URL, `ExchangeCode` to
 exchange the callback code, and `RefreshAccessToken` or `RevokeAuthServerToken`
-to manage tokens. `StartCallbackServer` accepts the callback path registered
-for the OAuth client and validates `state`. When discovery metadata advertises
-`authorization_response_iss_parameter_supported`, it also requires the callback
-`iss` to match the discovered issuer.
+to manage tokens. The OAuth client ID must be recognized by the authorization
+server for the requested resource. Register the loopback redirect path with the
+client and pass the same path to `StartCallbackServer`; the listener selects an
+ephemeral loopback port. The callback server validates `state`, validates any
+present `iss` against the discovered issuer, and requires `iss` when discovery
+metadata advertises `authorization_response_iss_parameter_supported`.
+
+The production issuer advertises
+`client_id_metadata_document_supported`, which indicates support for
+Client ID Metadata Documents (CIMD). With CIMD, a client can use the HTTPS URL
+of a JSON document containing its client metadata as its `client_id`; the
+authorization server retrieves that document instead of relying on a manually
+assigned client ID. The discovery flag indicates server capability; whether a
+specific client can use CIMD depends on the authorization server's policy. See
+[the OAuth Client ID Metadata Document draft](https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/)
+for the document format.
 
 `ExchangeCode` returns a `*code.Token`, distinct from the `auth.Token` used by
 Service Account OAuth. Its `SetAuthHeader` method adds the access token as a

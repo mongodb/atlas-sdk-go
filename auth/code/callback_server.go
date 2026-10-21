@@ -36,7 +36,8 @@ type callbackResult struct {
 }
 
 // CallbackServer accepts one state-validated loopback authorization callback,
-// validating its issuer when the authorization server advertises support.
+// validating its issuer when present and requiring it when the authorization
+// server advertises support.
 type CallbackServer struct {
 	listener      net.Listener
 	server        *http.Server
@@ -52,9 +53,9 @@ type CallbackServer struct {
 // StartCallbackServer listens on 127.0.0.1 using an ephemeral port and serves
 // callbacks at callbackPath. callbackPath must be an absolute URL path without
 // a query or fragment, and must match the path registered for the OAuth client.
-// When metadata advertises authorization response issuer support, the callback
-// must include an iss parameter that matches metadata.Issuer. metadata must be
-// the validated authorization-server discovery response.
+// Any iss parameter in the callback must match metadata.Issuer. When metadata
+// advertises authorization response issuer support, the callback must include
+// iss. metadata must be the validated authorization-server discovery response.
 func StartCallbackServer(expectedState, callbackPath string, metadata *AuthServerMetadata) (*CallbackServer, error) {
 	if expectedState == "" {
 		return nil, errors.New("expected OAuth state is required")
@@ -175,10 +176,13 @@ func (s *CallbackServer) completeWithResponse(result callbackResult, writeRespon
 }
 
 func (s *CallbackServer) validateCallbackIssuer(query url.Values) error {
-	if !s.requireIssuer {
+	issuers, present := query["iss"]
+	if !present {
+		if s.requireIssuer {
+			return errors.New("OAuth callback response must include exactly one issuer")
+		}
 		return nil
 	}
-	issuers := query["iss"]
 	if len(issuers) != 1 || issuers[0] == "" {
 		return errors.New("OAuth callback response must include exactly one issuer")
 	}

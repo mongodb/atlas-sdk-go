@@ -67,6 +67,8 @@ type AuthServerMetadata struct {
 	CodeChallengeMethodsSupported []string `json:"code_challenge_methods_supported,omitempty"`
 	// AuthorizationResponseIssParameterSupported reports whether authorization responses include an iss parameter.
 	AuthorizationResponseIssParameterSupported bool `json:"authorization_response_iss_parameter_supported,omitempty"`
+	// ClientIDMetadataDocumentSupported reports whether the server supports client metadata documents at client_id URLs.
+	ClientIDMetadataDocumentSupported bool `json:"client_id_metadata_document_supported,omitempty"`
 	// CacheExpiry is derived from HTTP cache headers and is not part of the discovery document.
 	CacheExpiry time.Time `json:"-"`
 }

@@ -35,8 +35,17 @@ The Authorization Code flow uses `Config.AuthServerURL`, configured with
 `RevokeAuthServerToken`. `GenerateState` and `GenerateVerifier` create per-login
 state and PKCE values. `StartCallbackServer` validates state and, when discovery
 metadata advertises `AuthorizationResponseIssParameterSupported`, requires the
-callback `iss` to match the discovered issuer. The returned `CallbackServer`
-provides `RedirectURI`, `Port`, `WaitForCallback`, and `Close` methods.
+callback `iss`; whenever the callback includes `iss`, it validates it against the
+discovered issuer. The returned `CallbackServer` provides `RedirectURI`, `Port`,
+`WaitForCallback`, and `Close` methods.
+
+The OAuth client ID must be recognized by the authorization server for the
+requested resource, and its registered redirect path must match the path passed
+to `StartCallbackServer`. The listener uses an ephemeral loopback port. Atlas
+discovery reports `ClientIDMetadataDocumentSupported`, indicating support for
+Client ID Metadata Documents. Where accepted by the authorization server, a
+client can use the HTTPS URL of its metadata document as its client ID instead
+of using a manually assigned ID.
 
 Token-returning methods in both flows return `*Token` values.
 `Token.SetAuthHeader` adds the access token as a Bearer header. See

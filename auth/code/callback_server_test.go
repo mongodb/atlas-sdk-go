@@ -78,19 +78,25 @@ func TestStartCallbackServerRejectsInvalidCallbackPaths(t *testing.T) {
 	}
 }
 
-func TestCallbackServerValidatesIssuerWhenMetadataAdvertisesSupport(t *testing.T) {
+func TestCallbackServerValidatesIssuerWhenPresentOrRequired(t *testing.T) {
 	tests := []struct {
-		name    string
-		issuer  string
-		wantErr string
+		name         string
+		issSupported bool
+		issuers      []string
+		wantErr      string
 	}{
-		{name: "matching issuer", issuer: testCallbackIssuer},
-		{name: "missing issuer", wantErr: "include exactly one issuer"},
-		{name: "mismatched issuer", issuer: "https://other.example.com", wantErr: "does not match discovered issuer"},
+		{name: "issuer omitted when not advertised"},
+		{name: "matching issuer when not advertised", issuers: []string{testCallbackIssuer}},
+		{name: "mismatched issuer when not advertised", issuers: []string{"https://other.example.com"}, wantErr: "does not match discovered issuer"},
+		{name: "empty issuer when not advertised", issuers: []string{""}, wantErr: "include exactly one issuer"},
+		{name: "duplicate issuer when not advertised", issuers: []string{testCallbackIssuer, testCallbackIssuer}, wantErr: "include exactly one issuer"},
+		{name: "matching issuer when advertised", issSupported: true, issuers: []string{testCallbackIssuer}},
+		{name: "missing issuer when advertised", issSupported: true, wantErr: "include exactly one issuer"},
+		{name: "mismatched issuer when advertised", issSupported: true, issuers: []string{"https://other.example.com"}, wantErr: "does not match discovered issuer"},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			callback, err := StartCallbackServer("expected-state", testCallbackPath, callbackServerTestMetadata(true))
+			callback, err := StartCallbackServer("expected-state", testCallbackPath, callbackServerTestMetadata(test.issSupported))
 			if err != nil {
 				t.Fatalf("StartCallbackServer() returned error: %v", err)
 			}
@@ -100,8 +106,8 @@ func TestCallbackServerValidatesIssuerWhenMetadataAdvertisesSupport(t *testing.T
 				"state": {"expected-state"},
 				"code":  {"authorization-code"},
 			}
-			if test.issuer != "" {
-				query.Set("iss", test.issuer)
+			for _, issuer := range test.issuers {
+				query.Add("iss", issuer)
 			}
 			response := sendCallbackRequest(t, callback, query)
 			_ = response.Body.Close()

@@ -26,8 +26,9 @@ go test ./mock/cluster_test.go
 
 This example demonstrates browser-based user authentication and uses the
 returned `code.Token` with the Atlas Admin API client.
-Register `/my-app/callback` as a redirect path for the OAuth client before
-running it.
+Use a client ID registered for the Atlas Admin API, and register
+`/my-app/callback` as its loopback redirect path before running the example.
+The callback server chooses an ephemeral loopback port.
 
 ```bash
 export MONGODB_ATLAS_CLIENT_ID=<your-client-id>

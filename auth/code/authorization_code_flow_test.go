@@ -77,6 +77,7 @@ func TestConfig_DiscoverProductionAuthServer(t *testing.T) {
 		"authorization_endpoint": "https://cloud.mongodb.com/oauth/authorize",
 		"token_endpoint": "https://authorize.mongodb.com/tokens",
 		"revocation_endpoint": "https://authorize.mongodb.com/tokens/revoke",
+		"client_id_metadata_document_supported": true,
 		"code_challenge_methods_supported": ["S256"]
 	}`
 	var requestedURL string
@@ -113,6 +114,9 @@ func TestConfig_DiscoverProductionAuthServer(t *testing.T) {
 	}
 	if metadata.RevocationEndpoint != "https://authorize.mongodb.com/tokens/revoke" {
 		t.Errorf("revocation endpoint = %q", metadata.RevocationEndpoint)
+	}
+	if !metadata.ClientIDMetadataDocumentSupported {
+		t.Error("client_id_metadata_document_supported = false, expected true")
 	}
 	if metadata.AuthorizationResponseIssParameterSupported {
 		t.Error("authorization_response_iss_parameter_supported = true, expected false when omitted")
