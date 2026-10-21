@@ -60,13 +60,13 @@ func authServerDiscoveryURL(issuer *url.URL) (*url.URL, error) {
 
 // AuthServerMetadata holds discovered OAuth endpoints and cache expiry.
 type AuthServerMetadata struct {
-	Issuer                                     string   `json:"issuer"`
-	AuthorizationEndpoint                      string   `json:"authorization_endpoint"`
-	TokenEndpoint                              string   `json:"token_endpoint"`
-	RevocationEndpoint                         string   `json:"revocation_endpoint,omitempty"`
-	CodeChallengeMethodsSupported              []string `json:"code_challenge_methods_supported,omitempty"`
+	Issuer                        string   `json:"issuer"`
+	AuthorizationEndpoint         string   `json:"authorization_endpoint"`
+	TokenEndpoint                 string   `json:"token_endpoint"`
+	RevocationEndpoint            string   `json:"revocation_endpoint,omitempty"`
+	CodeChallengeMethodsSupported []string `json:"code_challenge_methods_supported,omitempty"`
 	// AuthorizationResponseIssParameterSupported reports whether authorization responses include an iss parameter.
-	AuthorizationResponseIssParameterSupported bool     `json:"authorization_response_iss_parameter_supported,omitempty"`
+	AuthorizationResponseIssParameterSupported bool `json:"authorization_response_iss_parameter_supported,omitempty"`
 	// CacheExpiry is derived from HTTP cache headers and is not part of the discovery document.
 	CacheExpiry time.Time `json:"-"`
 }
