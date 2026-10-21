@@ -31,6 +31,7 @@ running it.
 
 ```bash
 export MONGODB_ATLAS_CLIENT_ID=<your-client-id>
+export MONGODB_ATLAS_CALLBACK_PATH='/my-app/callback'
 go run ./auth_code/auth_code.go
 ```
 

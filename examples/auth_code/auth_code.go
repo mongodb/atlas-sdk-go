@@ -14,7 +14,7 @@ import (
 	"go.mongodb.org/atlas-sdk/v20250312027/auth/code"
 )
 
-const callbackPath = "/my-app/callback" // Register this path for the OAuth client.
+const callbackPathEnv = "MONGODB_ATLAS_CALLBACK_PATH"
 
 // accessTokenTransport adds a Bearer token only for the Atlas API host.
 type accessTokenTransport struct {
@@ -41,6 +41,10 @@ func run() error {
 	clientID := os.Getenv("MONGODB_ATLAS_CLIENT_ID")
 	if clientID == "" {
 		return errors.New("set MONGODB_ATLAS_CLIENT_ID to a registered OAuth client ID")
+	}
+	callbackPath := os.Getenv(callbackPathEnv)
+	if callbackPath == "" {
+		return errors.New("set MONGODB_ATLAS_CALLBACK_PATH to the path registered for the OAuth client")
 	}
 
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
