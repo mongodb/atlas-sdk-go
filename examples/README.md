@@ -22,6 +22,18 @@ go test ./mock/cluster_test.go
 
 ## Examples Reference
 
+### Authorization Code + PKCE Example
+
+This example demonstrates browser-based user authentication and uses the
+returned `code.Token` with the Atlas Admin API client.
+Register `/my-app/callback` as a redirect path for the OAuth client before
+running it.
+
+```bash
+export MONGODB_ATLAS_CLIENT_ID=<your-client-id>
+go run ./auth_code/auth_code.go
+```
+
 ### Update Cluster Example
 
 This example demonstrates how to safely change an Atlas cluster tier using a minimal PATCH payload.
