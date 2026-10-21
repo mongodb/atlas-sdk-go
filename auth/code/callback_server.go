@@ -35,23 +35,35 @@ type callbackResult struct {
 	err  error
 }
 
-// CallbackServer accepts one state-validated loopback authorization callback.
+// CallbackServer accepts one state-validated loopback authorization callback,
+// validating its issuer when the authorization server advertises support.
 type CallbackServer struct {
-	listener     net.Listener
-	server       *http.Server
-	state        string
-	callbackPath string
-	done         chan struct{}
-	result       callbackResult
-	once         sync.Once
+	listener      net.Listener
+	server        *http.Server
+	state         string
+	callbackPath  string
+	issuer        string
+	requireIssuer bool
+	done          chan struct{}
+	result        callbackResult
+	once          sync.Once
 }
 
 // StartCallbackServer listens on 127.0.0.1 using an ephemeral port and serves
 // callbacks at callbackPath. callbackPath must be an absolute URL path without
 // a query or fragment, and must match the path registered for the OAuth client.
-func StartCallbackServer(expectedState, callbackPath string) (*CallbackServer, error) {
+// When metadata advertises authorization response issuer support, the callback
+// must include an iss parameter that matches metadata.Issuer. metadata must be
+// the validated authorization-server discovery response.
+func StartCallbackServer(expectedState, callbackPath string, metadata *AuthServerMetadata) (*CallbackServer, error) {
 	if expectedState == "" {
 		return nil, errors.New("expected OAuth state is required")
+	}
+	if metadata == nil {
+		return nil, errors.New("OAuth Authorization Server metadata is required")
+	}
+	if _, err := parseOAuthEndpoint(metadata.Issuer, "Authorization Server issuer"); err != nil {
+		return nil, err
 	}
 	callbackPath, err := normalizeCallbackPath(callbackPath)
 	if err != nil {
@@ -64,10 +76,12 @@ func StartCallbackServer(expectedState, callbackPath string) (*CallbackServer, e
 	}
 
 	callback := &CallbackServer{
-		listener:     listener,
-		state:        expectedState,
-		callbackPath: callbackPath,
-		done:         make(chan struct{}),
+		listener:      listener,
+		state:         expectedState,
+		callbackPath:  callbackPath,
+		issuer:        metadata.Issuer,
+		requireIssuer: metadata.AuthorizationResponseIssParameterSupported,
+		done:          make(chan struct{}),
 	}
 	callback.server = &http.Server{
 		Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -160,6 +174,20 @@ func (s *CallbackServer) completeWithResponse(result callbackResult, writeRespon
 	return completed
 }
 
+func (s *CallbackServer) validateCallbackIssuer(query url.Values) error {
+	if !s.requireIssuer {
+		return nil
+	}
+	issuers := query["iss"]
+	if len(issuers) != 1 || issuers[0] == "" {
+		return errors.New("OAuth callback response must include exactly one issuer")
+	}
+	if issuers[0] != s.issuer {
+		return errors.New("OAuth callback issuer does not match discovered issuer")
+	}
+	return nil
+}
+
 func (s *CallbackServer) handleCallback(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
 		writeCallbackResponse(w, http.StatusMethodNotAllowed, "Method not allowed.")
@@ -170,6 +198,16 @@ func (s *CallbackServer) handleCallback(w http.ResponseWriter, r *http.Request) 
 	if query.Get("state") != s.state {
 		// Reject unsolicited callbacks without consuming the one valid result.
 		writeCallbackResponse(w, http.StatusBadRequest, "Authorization failed: state mismatch.")
+		return
+	}
+
+	if err := s.validateCallbackIssuer(query); err != nil {
+		if !s.completeWithResponse(callbackResult{err: err}, func() {
+			writeCallbackResponse(w, http.StatusBadRequest, "Authorization failed: issuer validation failed.")
+		}) {
+			writeCallbackResponse(w, http.StatusGone, "Authorization response already received.")
+			return
+		}
 		return
 	}
 

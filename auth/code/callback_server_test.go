@@ -27,10 +27,20 @@ import (
 	"time"
 )
 
-const testCallbackPath = "/test-app/callback"
+const (
+	testCallbackPath   = "/test-app/callback"
+	testCallbackIssuer = "https://auth.example.com"
+)
+
+func callbackServerTestMetadata(issSupported bool) *AuthServerMetadata {
+	return &AuthServerMetadata{
+		Issuer: testCallbackIssuer,
+		AuthorizationResponseIssParameterSupported: issSupported,
+	}
+}
 
 func TestStartCallbackServerUsesEphemeralLoopbackURI(t *testing.T) {
-	callback, err := StartCallbackServer("expected-state", testCallbackPath)
+	callback, err := StartCallbackServer("expected-state", testCallbackPath, callbackServerTestMetadata(false))
 	if err != nil {
 		t.Fatalf("StartCallbackServer() returned error: %v", err)
 	}
@@ -61,15 +71,63 @@ func TestStartCallbackServerRejectsInvalidCallbackPaths(t *testing.T) {
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			if _, err := StartCallbackServer("expected-state", test.path); err == nil {
+			if _, err := StartCallbackServer("expected-state", test.path, callbackServerTestMetadata(false)); err == nil {
 				t.Errorf("StartCallbackServer(%q) returned nil error, expected invalid callback path", test.path)
 			}
 		})
 	}
 }
 
+func TestCallbackServerValidatesIssuerWhenMetadataAdvertisesSupport(t *testing.T) {
+	tests := []struct {
+		name    string
+		issuer  string
+		wantErr string
+	}{
+		{name: "matching issuer", issuer: testCallbackIssuer},
+		{name: "missing issuer", wantErr: "include exactly one issuer"},
+		{name: "mismatched issuer", issuer: "https://other.example.com", wantErr: "does not match discovered issuer"},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			callback, err := StartCallbackServer("expected-state", testCallbackPath, callbackServerTestMetadata(true))
+			if err != nil {
+				t.Fatalf("StartCallbackServer() returned error: %v", err)
+			}
+			defer callback.Close()
+
+			query := url.Values{
+				"state": {"expected-state"},
+				"code":  {"authorization-code"},
+			}
+			if test.issuer != "" {
+				query.Set("iss", test.issuer)
+			}
+			response := sendCallbackRequest(t, callback, query)
+			_ = response.Body.Close()
+
+			code, err := callback.WaitForCallback(context.Background())
+			if test.wantErr != "" {
+				if response.StatusCode != http.StatusBadRequest {
+					t.Errorf("callback status = %d, expected HTTP 400", response.StatusCode)
+				}
+				if code != "" || err == nil || !strings.Contains(err.Error(), test.wantErr) {
+					t.Errorf("WaitForCallback() = (%q, %v), expected issuer validation error containing %q", code, err, test.wantErr)
+				}
+				return
+			}
+			if response.StatusCode != http.StatusOK {
+				t.Errorf("callback status = %d, expected HTTP 200", response.StatusCode)
+			}
+			if code != "authorization-code" || err != nil {
+				t.Errorf("WaitForCallback() = (%q, %v), expected authorization code", code, err)
+			}
+		})
+	}
+}
+
 func TestCallbackServerRejectsMismatchedStateWithoutConsumingFlow(t *testing.T) {
-	callback, err := StartCallbackServer("expected-state", testCallbackPath)
+	callback, err := StartCallbackServer("expected-state", testCallbackPath, callbackServerTestMetadata(false))
 	if err != nil {
 		t.Fatalf("StartCallbackServer() returned error: %v", err)
 	}
@@ -115,7 +173,7 @@ func TestCallbackServerRejectsMismatchedStateWithoutConsumingFlow(t *testing.T) 
 }
 
 func TestCallbackServerPreservesOAuthErrorAfterStateValidation(t *testing.T) {
-	callback, err := StartCallbackServer("expected-state", testCallbackPath)
+	callback, err := StartCallbackServer("expected-state", testCallbackPath, callbackServerTestMetadata(false))
 	if err != nil {
 		t.Fatalf("StartCallbackServer() returned error: %v", err)
 	}
@@ -151,7 +209,7 @@ func TestCallbackServerPreservesOAuthErrorAfterStateValidation(t *testing.T) {
 }
 
 func TestCallbackServerWaitsForResponseFlush(t *testing.T) {
-	callback, err := StartCallbackServer("expected-state", testCallbackPath)
+	callback, err := StartCallbackServer("expected-state", testCallbackPath, callbackServerTestMetadata(false))
 	if err != nil {
 		t.Fatalf("StartCallbackServer() returned error: %v", err)
 	}
@@ -213,7 +271,7 @@ func TestCallbackServerWaitsForResponseFlush(t *testing.T) {
 }
 
 func TestCallbackServerWaitHonorsContextCancellation(t *testing.T) {
-	callback, err := StartCallbackServer("expected-state", testCallbackPath)
+	callback, err := StartCallbackServer("expected-state", testCallbackPath, callbackServerTestMetadata(false))
 	if err != nil {
 		t.Fatalf("StartCallbackServer() returned error: %v", err)
 	}
@@ -227,7 +285,7 @@ func TestCallbackServerWaitHonorsContextCancellation(t *testing.T) {
 }
 
 func TestCallbackServerCloseReleasesListener(t *testing.T) {
-	callback, err := StartCallbackServer("expected-state", testCallbackPath)
+	callback, err := StartCallbackServer("expected-state", testCallbackPath, callbackServerTestMetadata(false))
 	if err != nil {
 		t.Fatalf("StartCallbackServer() returned error: %v", err)
 	}

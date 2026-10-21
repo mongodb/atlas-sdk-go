@@ -114,6 +114,9 @@ func TestConfig_DiscoverProductionAuthServer(t *testing.T) {
 	if metadata.RevocationEndpoint != "https://authorize.mongodb.com/tokens/revoke" {
 		t.Errorf("revocation endpoint = %q", metadata.RevocationEndpoint)
 	}
+	if metadata.AuthorizationResponseIssParameterSupported {
+		t.Error("authorization_response_iss_parameter_supported = true, expected false when omitted")
+	}
 	if time.Until(metadata.CacheExpiry) < 3590*time.Second || time.Until(metadata.CacheExpiry) > 3610*time.Second {
 		t.Errorf("metadata cache expiry = %v, expected about one hour from now", metadata.CacheExpiry)
 	}
@@ -137,6 +140,7 @@ func TestConfig_DiscoverAuthServerFromConfiguredIssuer(t *testing.T) {
 			"issuer": %q,
 			"authorization_endpoint": %q,
 			"token_endpoint": %q,
+			"authorization_response_iss_parameter_supported": true,
 			"code_challenge_methods_supported": ["S256"]
 		}`, server.URL+issuerPath, "https://auth.example.com/authorize", "https://auth.example.com/token")
 	}))
@@ -168,6 +172,9 @@ func TestConfig_DiscoverAuthServerFromConfiguredIssuer(t *testing.T) {
 	}
 	if len(metadata.CodeChallengeMethodsSupported) != 1 || metadata.CodeChallengeMethodsSupported[0] != "S256" {
 		t.Errorf("code challenge methods = %v, expected [S256]", metadata.CodeChallengeMethodsSupported)
+	}
+	if !metadata.AuthorizationResponseIssParameterSupported {
+		t.Error("authorization_response_iss_parameter_supported = false, expected true")
 	}
 }
 
