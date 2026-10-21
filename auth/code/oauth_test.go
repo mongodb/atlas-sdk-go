@@ -77,10 +77,10 @@ func testMethod(t *testing.T, r *http.Request) {
 	}
 }
 
-func testClientDefaultBaseURL(t *testing.T, c *Config) {
+func testClientDefaultDeviceAuthURL(t *testing.T, c *Config) {
 	t.Helper()
-	if c.AuthURL == nil || c.AuthURL.String() != defaultBaseURL {
-		t.Errorf("NewConfig BaseURL = %v, expected %v", c.AuthURL, defaultBaseURL)
+	if c.AuthURL == nil || c.AuthURL.String() != defaultDeviceAuthBaseURL {
+		t.Errorf("NewConfig AuthURL = %v, expected %v", c.AuthURL, defaultDeviceAuthBaseURL)
 	}
 }
 
@@ -100,19 +100,17 @@ func testClientDefaultUserAgent(t *testing.T, c *Config) {
 
 func testClientDefaults(t *testing.T, c *Config) {
 	t.Helper()
-	testClientDefaultBaseURL(t, c)
+	testClientDefaultDeviceAuthURL(t, c)
 	testClientDefaultAuthServerURL(t, c)
 	testClientDefaultUserAgent(t, c)
 }
 
 func TestNewConfig(t *testing.T) {
-	t.Setenv(authServerURLEnvVar, "")
 	c := NewConfig(nil)
 	testClientDefaults(t, c)
 }
 
 func TestNewConfigWithOptions(t *testing.T) {
-	t.Setenv(authServerURLEnvVar, "")
 	c, err := NewConfigWithOptions(nil)
 
 	if err != nil {
@@ -142,7 +140,7 @@ func TestNewPlainRequest(t *testing.T) {
 
 	requestPath := "foo"
 
-	inURL, outURL := requestPath, defaultBaseURL+requestPath
+	inURL, outURL := requestPath, defaultDeviceAuthBaseURL+requestPath
 	req, _ := c.NewRequest(ctx, http.MethodGet, inURL, nil)
 
 	// test relative URL was expanded
@@ -229,7 +227,7 @@ func TestCustomAuthServerURL(t *testing.T) {
 	if got := c.AuthServerURL.String(); got != issuerURL {
 		t.Errorf("AuthServerURL = %s; expected %s", got, issuerURL)
 	}
-	if got := c.AuthURL.String(); got != defaultBaseURL {
-		t.Errorf("SetAuthServerURL changed AuthURL to %s; expected %s", got, defaultBaseURL)
+	if got := c.AuthURL.String(); got != defaultDeviceAuthBaseURL {
+		t.Errorf("SetAuthServerURL changed device AuthURL to %s; expected %s", got, defaultDeviceAuthBaseURL)
 	}
 }

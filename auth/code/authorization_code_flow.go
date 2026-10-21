@@ -116,9 +116,6 @@ func GenerateVerifier() string {
 // DiscoverAuthServer fetches and validates metadata for the configured issuer.
 func (c *Config) DiscoverAuthServer(ctx context.Context) (*AuthServerMetadata, *core.Response, error) {
 	if c.AuthServerURL == nil {
-		if c.authServerURLError != nil {
-			return nil, nil, fmt.Errorf("invalid %s: %w", authServerURLEnvVar, c.authServerURLError)
-		}
 		return nil, nil, errors.New("OAuth Authorization Server issuer URL is not configured")
 	}
 	if _, err := parseOAuthEndpoint(c.AuthServerURL.String(), "Authorization Server issuer"); err != nil {
@@ -170,9 +167,6 @@ func (c *Config) DiscoverAuthServer(ctx context.Context) (*AuthServerMetadata, *
 
 func (c *Config) validateAuthServerMetadata(metadata *AuthServerMetadata) error {
 	if c.AuthServerURL == nil {
-		if c.authServerURLError != nil {
-			return fmt.Errorf("invalid %s: %w", authServerURLEnvVar, c.authServerURLError)
-		}
 		return errors.New("OAuth Authorization Server issuer URL is not configured")
 	}
 	if metadata == nil {

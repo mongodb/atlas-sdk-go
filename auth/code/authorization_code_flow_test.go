@@ -72,7 +72,6 @@ func TestGenerateState(t *testing.T) {
 }
 
 func TestConfig_DiscoverProductionAuthServer(t *testing.T) {
-	t.Setenv(authServerURLEnvVar, "")
 	const metadataJSON = `{
 		"issuer": "https://authorize.mongodb.com",
 		"authorization_endpoint": "https://cloud.mongodb.com/oauth/authorize",
@@ -120,7 +119,7 @@ func TestConfig_DiscoverProductionAuthServer(t *testing.T) {
 	}
 }
 
-func TestConfig_DiscoverAuthServerFromEnvironment(t *testing.T) {
+func TestConfig_DiscoverAuthServerFromConfiguredIssuer(t *testing.T) {
 	const issuerPath = "/tenant"
 	var server *httptest.Server
 	server = httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -144,8 +143,10 @@ func TestConfig_DiscoverAuthServerFromEnvironment(t *testing.T) {
 	defer server.Close()
 
 	issuerURL := server.URL + issuerPath
-	t.Setenv(authServerURLEnvVar, issuerURL)
-	c := NewConfig(server.Client())
+	c, err := NewConfigWithOptions(server.Client(), SetAuthServerURL(issuerURL))
+	if err != nil {
+		t.Fatalf("NewConfigWithOptions() returned error: %v", err)
+	}
 	metadata, resp, err := c.DiscoverAuthServer(ctx)
 	if err != nil {
 		t.Fatalf("DiscoverAuthServer() returned error: %v", err)
@@ -262,18 +263,19 @@ func TestConfig_DiscoverAuthServerErrors(t *testing.T) {
 	})
 }
 
-func TestConfig_DiscoverAuthServerReportsInvalidEnvironmentURL(t *testing.T) {
-	t.Setenv(authServerURLEnvVar, "https://[invalid")
-	c := NewConfig(nil)
-	_, _, err := c.DiscoverAuthServer(ctx)
-	if err == nil || !strings.Contains(err.Error(), authServerURLEnvVar) {
-		t.Fatalf("DiscoverAuthServer() error = %v, expected invalid environment URL error", err)
+func TestConfig_SetAuthServerURLRejectsInvalidIssuer(t *testing.T) {
+	if _, err := NewConfigWithOptions(nil, SetAuthServerURL("https://[invalid")); err == nil {
+		t.Fatal("SetAuthServerURL() returned nil error for an invalid issuer")
 	}
 }
 
 func TestConfig_RejectsHTTPAuthServerURLs(t *testing.T) {
-	t.Setenv(authServerURLEnvVar, "http://auth.example.com")
 	c := NewConfig(nil)
+	httpIssuerURL, err := url.Parse("http://auth.example.com")
+	if err != nil {
+		t.Fatalf("parsing test issuer: %v", err)
+	}
+	c.AuthServerURL = httpIssuerURL
 	if _, _, err := c.DiscoverAuthServer(ctx); err == nil || !strings.Contains(err.Error(), "HTTPS") {
 		t.Fatalf("DiscoverAuthServer() error = %v, expected HTTP issuer to be rejected", err)
 	}
@@ -295,7 +297,6 @@ func TestConfig_RejectsHTTPAuthServerURLs(t *testing.T) {
 }
 
 func TestConfig_RejectsHTTPAuthorizationServerEndpoints(t *testing.T) {
-	t.Setenv(authServerURLEnvVar, "")
 	c, err := NewConfigWithOptions(nil, SetClientID("test-client"))
 	if err != nil {
 		t.Fatalf("NewConfigWithOptions() returned error: %v", err)
@@ -323,7 +324,6 @@ func TestConfig_RejectsHTTPAuthorizationServerEndpoints(t *testing.T) {
 }
 
 func TestConfig_AuthorizationURL(t *testing.T) {
-	t.Setenv(authServerURLEnvVar, "")
 	c, err := NewConfigWithOptions(nil,
 		SetClientID("test-client"),
 		SetScopes([]string{"atlas", "openid"}),
@@ -372,7 +372,6 @@ func TestConfig_AuthorizationURL(t *testing.T) {
 }
 
 func TestConfig_AuthorizationURLRequiresStateAndPKCE(t *testing.T) {
-	t.Setenv(authServerURLEnvVar, "")
 	c, _ := NewConfigWithOptions(nil, SetClientID("test-client"))
 	metadata := authServerMetadataForConfig(c,
 		"https://auth.example.com/authorize",
@@ -399,7 +398,6 @@ func TestConfig_AuthorizationURLRequiresStateAndPKCE(t *testing.T) {
 }
 
 func TestConfig_AuthorizationURLRejectsMetadataFromDifferentIssuer(t *testing.T) {
-	t.Setenv(authServerURLEnvVar, "")
 	c, _ := NewConfigWithOptions(nil, SetClientID("test-client"))
 	codeVerifier := GenerateVerifier()
 	metadata := authServerMetadataForConfig(

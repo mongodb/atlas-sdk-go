@@ -23,7 +23,6 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"os"
 	"runtime"
 	"strings"
 
@@ -31,8 +30,7 @@ import (
 )
 
 const (
-	defaultBaseURL      = "https://cloud.mongodb.com/"
-	authServerURLEnvVar = "MONGODB_ATLAS_AUTH_SERVER_URL"
+	defaultDeviceAuthBaseURL = "https://cloud.mongodb.com/"
 )
 
 var (
@@ -42,43 +40,32 @@ var (
 type Config struct {
 	client   *http.Client
 	ClientID string
-	// AuthURL is the device-authorization base URL.
+	// AuthURL is the base URL for the device-authorization endpoints.
 	AuthURL *url.URL
 	// AuthServerURL is the Authorization Code + PKCE issuer URL.
 	AuthServerURL *url.URL
 	UserAgent     string
 	Scopes        []string
 
-	authServerURLError error
-
 	withRaw bool
 }
 
 type ConfigOpt func(*Config) error
 
-// NewConfig returns a client using the production OAuth issuer by default.
-// MONGODB_ATLAS_AUTH_SERVER_URL overrides the issuer. Invalid values are reported
-// during discovery.
+// NewConfig returns a client with the default device-authorization base URL and
+// production OAuth issuer. Use SetAuthURL or SetAuthServerURL to override them.
 func NewConfig(httpClient *http.Client) *Config {
 	if httpClient == nil {
 		httpClient = http.DefaultClient
 	}
 
-	baseURL, _ := url.Parse(defaultBaseURL)
-	issuerURL := os.Getenv(authServerURLEnvVar)
-	if issuerURL == "" {
-		issuerURL = DefaultAuthServerURL
-	}
-	authServerURL, authServerURLError := url.Parse(issuerURL)
-	if authServerURLError != nil {
-		authServerURL = nil
-	}
+	deviceAuthURL, _ := url.Parse(defaultDeviceAuthBaseURL)
+	authServerURL, _ := url.Parse(DefaultAuthServerURL)
 	c := &Config{
-		client:             httpClient,
-		AuthURL:            baseURL,
-		AuthServerURL:      authServerURL,
-		UserAgent:          userAgent,
-		authServerURLError: authServerURLError,
+		client:        httpClient,
+		AuthURL:       deviceAuthURL,
+		AuthServerURL: authServerURL,
+		UserAgent:     userAgent,
 	}
 	return c
 }
@@ -107,7 +94,6 @@ func SetAuthURL(bu string) ConfigOpt {
 }
 
 // SetAuthServerURL sets the HTTPS issuer used by Authorization Code + PKCE.
-// It overrides MONGODB_ATLAS_AUTH_SERVER_URL.
 func SetAuthServerURL(issuerURL string) ConfigOpt {
 	return func(c *Config) error {
 		u, err := parseOAuthEndpoint(issuerURL, "Authorization Server issuer")
@@ -116,7 +102,6 @@ func SetAuthServerURL(issuerURL string) ConfigOpt {
 		}
 
 		c.AuthServerURL = u
-		c.authServerURLError = nil
 		return nil
 	}
 }
