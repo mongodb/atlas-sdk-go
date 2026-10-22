@@ -29,35 +29,43 @@ import (
 	"go.mongodb.org/atlas-sdk/v20250312027/internal/core"
 )
 
-const defaultBaseURL = "https://cloud.mongodb.com/"
+const (
+	defaultDeviceAuthBaseURL = "https://cloud.mongodb.com/"
+)
 
 var (
 	userAgent = fmt.Sprintf("go-atlas-sdk-auth/%s (%s;%s)", core.Version, runtime.GOOS, runtime.GOARCH)
 )
 
 type Config struct {
-	client    *http.Client
-	ClientID  string
-	AuthURL   *url.URL
-	UserAgent string
-	Scopes    []string
+	client   *http.Client
+	ClientID string
+	// AuthURL is the base URL for the device-authorization endpoints.
+	AuthURL *url.URL
+	// AuthServerURL is the Authorization Code + PKCE issuer URL.
+	AuthServerURL *url.URL
+	UserAgent     string
+	Scopes        []string
 
-	// copy raw server response to the Response struct
 	withRaw bool
 }
 
 type ConfigOpt func(*Config) error
 
+// NewConfig returns a client with the default device-authorization base URL and
+// production OAuth issuer. Use SetAuthURL or SetAuthServerURL to override them.
 func NewConfig(httpClient *http.Client) *Config {
 	if httpClient == nil {
 		httpClient = http.DefaultClient
 	}
 
-	baseURL, _ := url.Parse(defaultBaseURL)
+	deviceAuthURL, _ := url.Parse(defaultDeviceAuthBaseURL)
+	authServerURL, _ := url.Parse(DefaultAuthServerURL)
 	c := &Config{
-		client:    httpClient,
-		AuthURL:   baseURL,
-		UserAgent: userAgent,
+		client:        httpClient,
+		AuthURL:       deviceAuthURL,
+		AuthServerURL: authServerURL,
+		UserAgent:     userAgent,
 	}
 	return c
 }
@@ -72,7 +80,7 @@ func NewConfigWithOptions(httpClient *http.Client, opts ...ConfigOpt) (*Config, 
 	return c, nil
 }
 
-// SetAuthURL is a config option for setting the base URL.
+// SetAuthURL sets the device-authorization base URL.
 func SetAuthURL(bu string) ConfigOpt {
 	return func(c *Config) error {
 		u, err := url.Parse(bu)
@@ -85,7 +93,20 @@ func SetAuthURL(bu string) ConfigOpt {
 	}
 }
 
-// SetWithRaw is a client option for getting raw atlas server response within Response structure.
+// SetAuthServerURL sets the HTTPS issuer used by Authorization Code + PKCE.
+func SetAuthServerURL(issuerURL string) ConfigOpt {
+	return func(c *Config) error {
+		u, err := parseOAuthEndpoint(issuerURL, "Authorization Server issuer")
+		if err != nil {
+			return err
+		}
+
+		c.AuthServerURL = u
+		return nil
+	}
+}
+
+// SetWithRaw includes the raw server response body in core.Response.
 func SetWithRaw() ConfigOpt {
 	return func(c *Config) error {
 		c.withRaw = true

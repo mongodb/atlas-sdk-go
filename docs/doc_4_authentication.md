@@ -103,3 +103,76 @@ Clients can cache these Access Tokens to mitigate rate limiting and adhere to [A
 For an example on how to cache and reuse OAuth tokens in the Atlas SDK for Go, see the Service Account OAuth Token Cache 
 [Service Account OAuth Token Cache example](https://github.com/mongodb/atlas-sdk-go/tree/main/examples/service_account_token_store).
 
+## User Account Authentication with `auth/code`
+
+The `auth/code` package exposes two user-authentication flows through a shared
+`code.Config`. The Device Authorization Grant is retained for legacy consumers.
+New interactive consumers should use Authorization Code + PKCE.
+
+### Legacy Device Authorization Grant
+
+The device flow uses `Config.AuthURL`, configurable with `code.SetAuthURL`. Its
+methods are `RequestCode`, `GetToken`, `PollToken`, `RefreshToken`, `RevokeToken`,
+and `RegistrationConfig`.
+
+```go
+// Assume context, fmt, and code are imported. config has a client ID and scopes.
+func pollDeviceFlow(ctx context.Context, config *code.Config) error {
+	deviceCode, _, err := config.RequestCode(ctx)
+	if err != nil {
+		return err
+	}
+	fmt.Printf("Open %s and enter %s\n", deviceCode.VerificationURI, deviceCode.UserCode)
+	_, _, err = config.PollToken(ctx, deviceCode)
+	if err != nil {
+		return err
+	}
+	fmt.Println("Device authorization complete.")
+	return nil
+}
+```
+
+### Authorization Code + PKCE
+
+The Authorization Code flow uses `Config.AuthServerURL`, configurable with
+`code.SetAuthServerURL`. Use `DiscoverAuthServer` to obtain endpoint metadata,
+`AuthorizationURL` to create the PKCE authorization URL, `ExchangeCode` to
+exchange the callback code, and `RefreshAccessToken` or `RevokeAuthServerToken`
+to manage tokens. The OAuth client ID must be recognized by the authorization
+server for the requested resource. Register the loopback redirect path with the
+client and pass the same path to `StartCallbackServer`; the listener selects an
+ephemeral loopback port. The callback server validates `state`, validates any
+present `iss` against the discovered issuer, and requires `iss` when discovery
+metadata advertises `authorization_response_iss_parameter_supported`.
+
+The production issuer advertises
+`client_id_metadata_document_supported`, which indicates support for
+Client ID Metadata Documents (CIMD). With CIMD, a client can use the HTTPS URL
+of a JSON document containing its client metadata as its `client_id`; the
+authorization server retrieves that document instead of relying on a manually
+assigned client ID. The discovery flag indicates server capability; whether a
+specific client can use CIMD depends on the authorization server's policy. See
+[the OAuth Client ID Metadata Document draft](https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/)
+for the document format.
+
+`ExchangeCode` returns a `*code.Token`, distinct from the `auth.Token` used by
+Service Account OAuth. Its `SetAuthHeader` method adds the access token as a
+Bearer header. A complete Admin API example is in
+[examples/auth_code](https://github.com/mongodb/atlas-sdk-go/tree/main/examples/auth_code).
+
+```go
+// Assume context and net/http are imported. token comes from ExchangeCode. apiURL is an Atlas endpoint.
+func requestWithToken(ctx context.Context, token *code.Token, apiURL string) error {
+	request, err := http.NewRequestWithContext(ctx, http.MethodGet, apiURL, http.NoBody)
+	if err != nil {
+		return err
+	}
+	token.SetAuthHeader(request)
+	response, err := http.DefaultClient.Do(request)
+	if err != nil {
+		return err
+	}
+	defer response.Body.Close()
+	return nil
+}
+```

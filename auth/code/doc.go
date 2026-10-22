@@ -13,32 +13,43 @@
 // limitations under the License.
 
 /*
-Package auth provides a way to follow a Device Authorization Grant https://datatracker.ietf.org/doc/html/rfc8628.
+Package code implements Atlas user authentication using OAuth 2.0.
 
-Usage
+Both flows share `Config`, `Token`, and common options. `NewConfig` and
+`NewConfigWithOptions` create a `Config`. `SetClientID`, `SetScopes`,
+`SetUserAgent`, and `SetWithRaw` configure both flows. `SetAuthURL` configures
+the device endpoint. `SetAuthServerURL` configures the Authorization Server issuer.
 
-	import "go.mongodb.org/atlas-sdk/auth"
+# Device Authorization Grant (Legacy)
 
-Construct a new client Config, then use the various methods to complete a flow.
-For example:
+The legacy device flow remains available for existing consumers. Its `Config`
+methods are `RequestCode`, `GetToken`, `PollToken`, `RefreshToken`, `RevokeToken`,
+and `RegistrationConfig`. It uses `Config.NewRequest` and `Config.Do` for HTTP
+requests. `IsTimeoutErr` reports device-flow expiration errors.
 
-	config, err := auth.NewConfigWithOptions(nil, auth.SetClientID("my-client-id"), auth.SetScopes([]string{"openid"}))
-	if err != nil {
-		panic(err)
-	}
-	code, _, err := config.RequestCode(context.TODO())
-	if err != nil {
-		panic(err)
-	}
-	token, _, err := config.PollToken(context.TODO(), code)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(token.AccessToken)
+# Authorization Code + PKCE
 
-NOTE: Using the https://godoc.org/context package, one can easily
-pass cancellation signals and deadlines to various services of the client for
-handling a request. In case there is no context available, then context.Background()
-can be used as a starting point.
+The Authorization Code flow uses `Config.AuthServerURL`, configured with
+`SetAuthServerURL`. Its `Config` methods are `DiscoverAuthServer`,
+`AuthorizationURL`, `ExchangeCode`, `RefreshAccessToken`, and
+`RevokeAuthServerToken`. `GenerateState` and `GenerateVerifier` create per-login
+state and PKCE values. `StartCallbackServer` validates state and, when discovery
+metadata advertises `AuthorizationResponseIssParameterSupported`, requires the
+callback `iss`; whenever the callback includes `iss`, it validates it against the
+discovered issuer. The returned `CallbackServer` provides `RedirectURI`, `Port`,
+`WaitForCallback`, and `Close` methods.
+
+The OAuth client ID must be recognized by the authorization server for the
+requested resource, and its registered redirect path must match the path passed
+to `StartCallbackServer`. The listener uses an ephemeral loopback port. Atlas
+discovery reports `ClientIDMetadataDocumentSupported`, indicating support for
+Client ID Metadata Documents. Where accepted by the authorization server, a
+client can use the HTTPS URL of its metadata document as its client ID instead
+of using a manually assigned ID.
+
+Token-returning methods in both flows return `*Token` values.
+`Token.SetAuthHeader` adds the access token as a Bearer header. See
+`examples/auth_code` for using an exchanged token with the Atlas Admin API.
+Flow methods accept contexts for cancellation and deadlines.
 */
 package code

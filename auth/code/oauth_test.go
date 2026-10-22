@@ -77,10 +77,17 @@ func testMethod(t *testing.T, r *http.Request) {
 	}
 }
 
-func testClientDefaultBaseURL(t *testing.T, c *Config) {
+func testClientDefaultDeviceAuthURL(t *testing.T, c *Config) {
 	t.Helper()
-	if c.AuthURL == nil || c.AuthURL.String() != defaultBaseURL {
-		t.Errorf("NewConfig BaseURL = %v, expected %v", c.AuthURL, defaultBaseURL)
+	if c.AuthURL == nil || c.AuthURL.String() != defaultDeviceAuthBaseURL {
+		t.Errorf("NewConfig AuthURL = %v, expected %v", c.AuthURL, defaultDeviceAuthBaseURL)
+	}
+}
+
+func testClientDefaultAuthServerURL(t *testing.T, c *Config) {
+	t.Helper()
+	if c.AuthServerURL == nil || c.AuthServerURL.String() != DefaultAuthServerURL {
+		t.Errorf("NewConfig AuthServerURL = %v, expected %v", c.AuthServerURL, DefaultAuthServerURL)
 	}
 }
 
@@ -93,7 +100,8 @@ func testClientDefaultUserAgent(t *testing.T, c *Config) {
 
 func testClientDefaults(t *testing.T, c *Config) {
 	t.Helper()
-	testClientDefaultBaseURL(t, c)
+	testClientDefaultDeviceAuthURL(t, c)
+	testClientDefaultAuthServerURL(t, c)
 	testClientDefaultUserAgent(t, c)
 }
 
@@ -132,7 +140,7 @@ func TestNewPlainRequest(t *testing.T) {
 
 	requestPath := "foo"
 
-	inURL, outURL := requestPath, defaultBaseURL+requestPath
+	inURL, outURL := requestPath, defaultDeviceAuthBaseURL+requestPath
 	req, _ := c.NewRequest(ctx, http.MethodGet, inURL, nil)
 
 	// test relative URL was expanded
@@ -207,5 +215,19 @@ func TestCustomBaseURL(t *testing.T) {
 	}
 	if got := c.AuthURL.String(); got != baseURL {
 		t.Errorf("New() BaseURL = %s; expected %s", got, baseURL)
+	}
+}
+
+func TestCustomAuthServerURL(t *testing.T) {
+	const issuerURL = "https://auth.example.com"
+	c, err := NewConfigWithOptions(nil, SetAuthServerURL(issuerURL))
+	if err != nil {
+		t.Fatalf("NewConfigWithOptions() unexpected error: %v", err)
+	}
+	if got := c.AuthServerURL.String(); got != issuerURL {
+		t.Errorf("AuthServerURL = %s; expected %s", got, issuerURL)
+	}
+	if got := c.AuthURL.String(); got != defaultDeviceAuthBaseURL {
+		t.Errorf("SetAuthServerURL changed device AuthURL to %s; expected %s", got, defaultDeviceAuthBaseURL)
 	}
 }
