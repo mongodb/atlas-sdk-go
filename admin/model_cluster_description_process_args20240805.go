@@ -18,7 +18,7 @@ type ClusterDescriptionProcessArgs20240805 struct {
 	DefaultWriteConcern *string `json:"defaultWriteConcern,omitempty"`
 	// Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript. When using 8.0+, we recommend disabling server-side JavaScript and using operators of aggregation pipeline as more performant alternative.
 	JavascriptEnabled *bool `json:"javascriptEnabled,omitempty"`
-	// Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should consider setting TLS 1.2 as the minimum TLS protocol version.
+	// Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections.
 	MinimumEnabledTlsProtocol *string `json:"minimumEnabledTlsProtocol,omitempty"`
 	// Flag that indicates whether the cluster disables executing any query that requires a collection scan to return results.
 	NoTableScan *bool `json:"noTableScan,omitempty"`
