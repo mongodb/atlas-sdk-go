@@ -36,6 +36,9 @@
       * [Admin API Authentication using Service Accounts](./doc_4_authentication.md#admin-api-authentication-using-service-accounts)
       * [Revocation](./doc_4_authentication.md#revocation)
       * [OAuth Token Cache](./doc_4_authentication.md#oauth-token-cache)
+   * [User Account Authentication with auth/code](./doc_4_authentication.md#user-account-authentication-with-authcode)
+      * [Legacy Device Authorization Grant](./doc_4_authentication.md#legacy-device-authorization-grant)
+      * [Authorization Code + PKCE](./doc_4_authentication.md#authorization-code--pkce)
 
 * [Best Practices](./doc_5_best_practices.md#best-practices)
    * [Using Getters Instead of Direct Field Access](./doc_5_best_practices.md#using-getters-instead-of-direct-field-access)
