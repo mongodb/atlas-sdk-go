@@ -600,7 +600,7 @@ components:
           writeOnly: true
         name:
           description: A name for the new API key that will be created.
-          maxLength: 250
+          maxLength: 50
           minLength: 1
           type: string
       required:
@@ -677,7 +677,7 @@ components:
       properties:
         name:
           description: A new name for the API key.
-          maxLength: 250
+          maxLength: 50
           minLength: 1
           type: string
       required:
@@ -9392,7 +9392,7 @@ components:
           description: Flag that indicates whether someone enabled this alert configuration for the specified project.
           type: boolean
         eventTypeName:
-          $ref: "#/components/schemas/StreamProcessorEventTypeViewAlertableWithThreshold"
+          $ref: "#/components/schemas/StreamsPrivateLinkEndpointEventTypeViewForNdsGroupAlertable"
           description: Incident that triggered this alert.
         groupId:
           description: Unique 24-hexadecimal digit string that identifies the project that owns this alert configuration.
@@ -9418,7 +9418,8 @@ components:
         matchers:
           description: List of rules that determine whether MongoDB Cloud checks an object for the alert configuration.
           items:
-            $ref: "#/components/schemas/StreamsMatcher"
+            $ref: "#/components/schemas/StreamsPrivateLinkEndpointMatcher"
+          maxItems: 100
           type: array
         notifications:
           description: List that contains the targets that MongoDB Cloud sends notifications.
@@ -15735,14 +15736,6 @@ components:
           title: Stream Workspace Tier
           type: string
       type: object
-    StreamProcessorEventTypeViewAlertableWithThreshold:
-      description: Event type that triggers an alert.
-      example: OUTSIDE_STREAM_PROCESSOR_METRIC_THRESHOLD
-      externalDocs:
-        description: Atlas Alert Event Types
-        url: https://www.mongodb.com/docs/atlas/reference/atlas-alert-event-types/
-      title: Stream Processor Event Types
-      type: string
     StreamProcessorMetricThreshold:
       description: Threshold for the metric that, when exceeded, triggers an alert. The metric threshold pertains to event types which reflects changes of measurements and metrics in stream processors.
       properties:
@@ -16232,29 +16225,6 @@ components:
           description: Describes the transport type. Can be either `SASL_PLAINTEXT`, `SASL_SSL`, or `SSL`.
           type: string
       type: object
-    StreamsMatcher:
-      description: Rules to apply when comparing a stream processing workspace or stream processor against this alert configuration.
-      properties:
-        fieldName:
-          $ref: "#/components/schemas/StreamsMatcherField"
-        operator:
-          description: Comparison operator to apply when checking the current metric value against **matcher[n].value**. The `REGEX` operator only supports inclusive matches. Use the `NOT_CONTAINS` operator to exclude values.
-          type: string
-        value:
-          description: Value to match or exceed using the specified `matchers.operator`.
-          example: event-replica-set
-          type: string
-      required:
-        - fieldName
-        - operator
-        - value
-      title: Matchers
-      type: object
-    StreamsMatcherField:
-      description: Name of the parameter in the target object that MongoDB Cloud checks. The parameter must match all rules for MongoDB Cloud to check for alert configurations.
-      example: INSTANCE_NAME
-      title: Streams Matcher Fields
-      type: string
     StreamsModifyStreamProcessor:
       description: A request to modify an existing stream processor.
       properties:
@@ -16439,6 +16409,37 @@ components:
           description: The domain hostname for the AWS Confluent Serverless Private Link connection. Allowed only when no domain is currently set, or when the connection is in `IDLE` state.
           type: string
       type: object
+    StreamsPrivateLinkEndpointEventTypeViewForNdsGroupAlertable:
+      description: Event type that triggers an alert.
+      example: STREAMS_PRIVATE_LINK_ENDPOINT_UNUSED_FIRST_WARNING
+      externalDocs:
+        description: Atlas Alert Event Types
+        url: https://www.mongodb.com/docs/atlas/reference/atlas-alert-event-types/
+      title: Stream Processing Private Link Endpoint Event Types
+      type: string
+    StreamsPrivateLinkEndpointMatcher:
+      description: Rules to apply when comparing a private link endpoint against this alert configuration.
+      properties:
+        fieldName:
+          $ref: "#/components/schemas/StreamsPrivateLinkEndpointMatcherField"
+        operator:
+          description: Comparison operator to apply when checking the current metric value against **matcher[n].value**. The `REGEX` operator only supports inclusive matches. Use the `NOT_CONTAINS` operator to exclude values.
+          type: string
+        value:
+          description: Value to match or exceed using the specified `matchers.operator`.
+          example: event-replica-set
+          type: string
+      required:
+        - fieldName
+        - operator
+        - value
+      title: Matchers
+      type: object
+    StreamsPrivateLinkEndpointMatcherField:
+      description: Name of the parameter in the target object that MongoDB Cloud checks. The parameter must match all rules for MongoDB Cloud to check for alert configurations.
+      example: ENDPOINT_ID
+      title: Streams Private Link Endpoint Matcher Fields
+      type: string
     StreamsProcessor:
       description: An atlas stream processor.
       properties:
@@ -20656,7 +20657,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: fa4665e868c5a69164839b6999989418142664a3
+  x-xgen-sha: 7a0d8031117d5c5153c57209387545e6e6e38af2
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
