@@ -24,7 +24,7 @@
     "ci": "npm run test && npm run format:check"
   },
   "engines": {
-    "node": ">= 22",
+    "node": ">= 24",
     "npm": ">= 10.9.8"
   }
 }
