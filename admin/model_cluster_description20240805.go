@@ -83,7 +83,8 @@ type ClusterDescription20240805 struct {
 	// Flag that indicates whether the cluster retains backups.
 	RetainBackups *bool `json:"retainBackups,omitempty"`
 	// Root Certificate Authority that MongoDB Atlas cluster uses. MongoDB Cloud supports Internet Security Research Group.
-	RootCertType *string `json:"rootCertType,omitempty"`
+	RootCertType        *string              `json:"rootCertType,omitempty"`
+	SearchAutoMigration *SearchAutoMigration `json:"searchAutoMigration,omitempty"`
 	// Human-readable label that indicates any current activity being taken on this cluster by the Atlas control plane. With the exception of CREATING and DELETING states, clusters should always be available and have a Primary node even when in states indicating ongoing activity.   - `IDLE`: Atlas is making no changes to this cluster and all changes requested via the UI or API can be assumed to have been applied.  - `CREATING`: A cluster being provisioned for the very first time returns state CREATING until it is ready for connections. Ensure IP Access List and DB Users are configured before attempting to connect.  - `UPDATING`: A change requested via the UI, API, AutoScaling, or other scheduled activity is taking place.  - `DELETING`: The cluster is in the process of deletion and will soon be deleted.  - `REPAIRING`: One or more nodes in the cluster are being returned to service by the Atlas control plane. Other nodes should continue to provide service as normal.
 	// Read only field.
 	StateName *string `json:"stateName,omitempty"`
@@ -1516,6 +1517,46 @@ func (o *ClusterDescription20240805) SetRootCertType(v string) {
 func (o *ClusterDescription20240805) SetRootCertTypeNil() {
 	o.RootCertType = nil
 	o.NullFields = addNullField(o.NullFields, "RootCertType")
+}
+
+// GetSearchAutoMigration returns the SearchAutoMigration field value if set, zero value otherwise
+func (o *ClusterDescription20240805) GetSearchAutoMigration() SearchAutoMigration {
+	if o == nil || IsNil(o.SearchAutoMigration) {
+		var ret SearchAutoMigration
+		return ret
+	}
+	return *o.SearchAutoMigration
+}
+
+// GetSearchAutoMigrationOk returns a tuple with the SearchAutoMigration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterDescription20240805) GetSearchAutoMigrationOk() (*SearchAutoMigration, bool) {
+	if o == nil || IsNil(o.SearchAutoMigration) {
+		return nil, false
+	}
+
+	return o.SearchAutoMigration, true
+}
+
+// HasSearchAutoMigration returns a boolean if a field has been set.
+func (o *ClusterDescription20240805) HasSearchAutoMigration() bool {
+	if o != nil && !IsNil(o.SearchAutoMigration) {
+		return true
+	}
+
+	return false
+}
+
+// SetSearchAutoMigration gets a reference to the given SearchAutoMigration and assigns it to the SearchAutoMigration field.
+func (o *ClusterDescription20240805) SetSearchAutoMigration(v SearchAutoMigration) {
+	o.SearchAutoMigration = &v
+	o.NullFields = removeNullField(o.NullFields, "SearchAutoMigration")
+}
+
+// SetSearchAutoMigrationNil sets SearchAutoMigration to an explicit JSON null when marshaled.
+func (o *ClusterDescription20240805) SetSearchAutoMigrationNil() {
+	o.SearchAutoMigration = nil
+	o.NullFields = addNullField(o.NullFields, "SearchAutoMigration")
 }
 
 // GetStateName returns the StateName field value if set, zero value otherwise

@@ -41,15 +41,17 @@ type AtlasSearchAPI interface {
 	CreateClusterFtsIndexExecute(r CreateClusterFtsIndexApiRequest) (*ClusterSearchIndex, *http.Response, error)
 
 	/*
-		CreateClusterSearchDeployment Create Search Nodes
+			CreateClusterSearchDeployment Create Search Nodes
 
-		Creates Search Nodes for the specified cluster.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Label that identifies the cluster to create Search Nodes for.
-		@param apiSearchDeploymentRequest Creates Search Nodes for the specified cluster.
-		@return CreateClusterSearchDeploymentApiRequest
+		 Creates Search Nodes for the specified cluster. Deprecated versions: v2-{2024-05-30}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Label that identifies the cluster to create Search Nodes for.
+			@param apiSearchDeploymentRequest Creates Search Nodes for the specified cluster.
+			@return CreateClusterSearchDeploymentApiRequest
 	*/
 	CreateClusterSearchDeployment(ctx context.Context, groupId string, clusterName string, apiSearchDeploymentRequest *ApiSearchDeploymentRequest) CreateClusterSearchDeploymentApiRequest
 	/*
@@ -63,7 +65,7 @@ type AtlasSearchAPI interface {
 	CreateClusterSearchDeploymentWithParams(ctx context.Context, args *CreateClusterSearchDeploymentApiParams) CreateClusterSearchDeploymentApiRequest
 
 	// Method available only for mocking purposes
-	CreateClusterSearchDeploymentExecute(r CreateClusterSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error)
+	CreateClusterSearchDeploymentExecute(r CreateClusterSearchDeploymentApiRequest) (*ApiSearchDeploymentPreviewResponse, *http.Response, error)
 
 	/*
 		CreateClusterSearchIndex Create One Atlas Search Index
@@ -120,14 +122,16 @@ type AtlasSearchAPI interface {
 	DeleteClusterFtsIndexExecute(r DeleteClusterFtsIndexApiRequest) (*http.Response, error)
 
 	/*
-		DeleteClusterSearchDeployment Delete Search Nodes
+			DeleteClusterSearchDeployment Delete Search Nodes
 
-		Deletes the Search Nodes for the specified cluster.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Label that identifies the cluster to delete.
-		@return DeleteClusterSearchDeploymentApiRequest
+		 Deletes the Search Nodes for the specified cluster. Deprecated versions: v2-{2024-05-30}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Label that identifies the cluster to delete.
+			@return DeleteClusterSearchDeploymentApiRequest
 	*/
 	DeleteClusterSearchDeployment(ctx context.Context, groupId string, clusterName string) DeleteClusterSearchDeploymentApiRequest
 	/*
@@ -225,14 +229,16 @@ type AtlasSearchAPI interface {
 	GetClusterFtsIndexExecute(r GetClusterFtsIndexApiRequest) (*ClusterSearchIndex, *http.Response, error)
 
 	/*
-		GetClusterSearchDeployment Return All Search Nodes
+			GetClusterSearchDeployment Return All Search Nodes
 
-		Returns the Search Nodes for the specified cluster. Deprecated versions: v2-{2024-05-30}, v2-{2023-01-01}
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Label that identifies the cluster to return the Search Nodes for.
-		@return GetClusterSearchDeploymentApiRequest
+		 Returns the Search Nodes for the specified cluster. Deprecated versions: v2-{2025-03-12}, v2-{2024-05-30}, v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Label that identifies the cluster to return the Search Nodes for.
+			@return GetClusterSearchDeploymentApiRequest
 	*/
 	GetClusterSearchDeployment(ctx context.Context, groupId string, clusterName string) GetClusterSearchDeploymentApiRequest
 	/*
@@ -246,7 +252,7 @@ type AtlasSearchAPI interface {
 	GetClusterSearchDeploymentWithParams(ctx context.Context, args *GetClusterSearchDeploymentApiParams) GetClusterSearchDeploymentApiRequest
 
 	// Method available only for mocking purposes
-	GetClusterSearchDeploymentExecute(r GetClusterSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error)
+	GetClusterSearchDeploymentExecute(r GetClusterSearchDeploymentApiRequest) (*ApiSearchDeploymentPreviewResponse, *http.Response, error)
 
 	/*
 		GetClusterSearchIndex Return One Atlas Search Index by ID
@@ -411,15 +417,17 @@ type AtlasSearchAPI interface {
 	UpdateClusterFtsIndexExecute(r UpdateClusterFtsIndexApiRequest) (*ClusterSearchIndex, *http.Response, error)
 
 	/*
-		UpdateClusterSearchDeployment Update Search Nodes
+			UpdateClusterSearchDeployment Update Search Nodes
 
-		Updates the Search Nodes for the specified cluster. Deprecated versions: v2-{2023-01-01}
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param clusterName Label that identifies the cluster to update the Search Nodes for.
-		@param apiSearchDeploymentRequest Updates the Search Nodes for the specified cluster.
-		@return UpdateClusterSearchDeploymentApiRequest
+		 Updates the Search Nodes for the specified cluster. Deprecated versions: v2-{2024-05-30}, v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@param clusterName Label that identifies the cluster to update the Search Nodes for.
+			@param apiSearchDeploymentRequest Updates the Search Nodes for the specified cluster.
+			@return UpdateClusterSearchDeploymentApiRequest
 	*/
 	UpdateClusterSearchDeployment(ctx context.Context, groupId string, clusterName string, apiSearchDeploymentRequest *ApiSearchDeploymentRequest) UpdateClusterSearchDeploymentApiRequest
 	/*
@@ -433,7 +441,7 @@ type AtlasSearchAPI interface {
 	UpdateClusterSearchDeploymentWithParams(ctx context.Context, args *UpdateClusterSearchDeploymentApiParams) UpdateClusterSearchDeploymentApiRequest
 
 	// Method available only for mocking purposes
-	UpdateClusterSearchDeploymentExecute(r UpdateClusterSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error)
+	UpdateClusterSearchDeploymentExecute(r UpdateClusterSearchDeploymentApiRequest) (*ApiSearchDeploymentPreviewResponse, *http.Response, error)
 
 	/*
 		UpdateClusterSearchIndex Update One Atlas Search Index by ID
@@ -659,14 +667,16 @@ func (a *AtlasSearchAPIService) CreateClusterSearchDeploymentWithParams(ctx cont
 	}
 }
 
-func (r CreateClusterSearchDeploymentApiRequest) Execute() (*ApiSearchDeploymentResponse, *http.Response, error) {
+func (r CreateClusterSearchDeploymentApiRequest) Execute() (*ApiSearchDeploymentPreviewResponse, *http.Response, error) {
 	return r.ApiService.CreateClusterSearchDeploymentExecute(r)
 }
 
 /*
 CreateClusterSearchDeployment Create Search Nodes
 
-Creates Search Nodes for the specified cluster.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Creates Search Nodes for the specified cluster. Deprecated versions: v2-{2024-05-30}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -685,13 +695,13 @@ func (a *AtlasSearchAPIService) CreateClusterSearchDeployment(ctx context.Contex
 
 // CreateClusterSearchDeploymentExecute executes the request
 //
-//	@return ApiSearchDeploymentResponse
-func (a *AtlasSearchAPIService) CreateClusterSearchDeploymentExecute(r CreateClusterSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error) {
+//	@return ApiSearchDeploymentPreviewResponse
+func (a *AtlasSearchAPIService) CreateClusterSearchDeploymentExecute(r CreateClusterSearchDeploymentApiRequest) (*ApiSearchDeploymentPreviewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *ApiSearchDeploymentResponse
+		localVarReturnValue *ApiSearchDeploymentPreviewResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchAPIService.CreateClusterSearchDeployment")
@@ -723,7 +733,7 @@ func (a *AtlasSearchAPIService) CreateClusterSearchDeploymentExecute(r CreateClu
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-05-30+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -732,7 +742,7 @@ func (a *AtlasSearchAPIService) CreateClusterSearchDeploymentExecute(r CreateClu
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1066,7 +1076,9 @@ func (r DeleteClusterSearchDeploymentApiRequest) Execute() (*http.Response, erro
 /*
 DeleteClusterSearchDeployment Delete Search Nodes
 
-Deletes the Search Nodes for the specified cluster.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Deletes the Search Nodes for the specified cluster. Deprecated versions: v2-{2024-05-30}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1125,7 +1137,7 @@ func (a *AtlasSearchAPIService) DeleteClusterSearchDeploymentExecute(r DeleteClu
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1588,14 +1600,16 @@ func (a *AtlasSearchAPIService) GetClusterSearchDeploymentWithParams(ctx context
 	}
 }
 
-func (r GetClusterSearchDeploymentApiRequest) Execute() (*ApiSearchDeploymentResponse, *http.Response, error) {
+func (r GetClusterSearchDeploymentApiRequest) Execute() (*ApiSearchDeploymentPreviewResponse, *http.Response, error) {
 	return r.ApiService.GetClusterSearchDeploymentExecute(r)
 }
 
 /*
 GetClusterSearchDeployment Return All Search Nodes
 
-Returns the Search Nodes for the specified cluster. Deprecated versions: v2-{2024-05-30}, v2-{2023-01-01}
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns the Search Nodes for the specified cluster. Deprecated versions: v2-{2025-03-12}, v2-{2024-05-30}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -1613,13 +1627,13 @@ func (a *AtlasSearchAPIService) GetClusterSearchDeployment(ctx context.Context, 
 
 // GetClusterSearchDeploymentExecute executes the request
 //
-//	@return ApiSearchDeploymentResponse
-func (a *AtlasSearchAPIService) GetClusterSearchDeploymentExecute(r GetClusterSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error) {
+//	@return ApiSearchDeploymentPreviewResponse
+func (a *AtlasSearchAPIService) GetClusterSearchDeploymentExecute(r GetClusterSearchDeploymentApiRequest) (*ApiSearchDeploymentPreviewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *ApiSearchDeploymentResponse
+		localVarReturnValue *ApiSearchDeploymentPreviewResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchAPIService.GetClusterSearchDeployment")
@@ -1657,7 +1671,7 @@ func (a *AtlasSearchAPIService) GetClusterSearchDeploymentExecute(r GetClusterSe
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2619,14 +2633,16 @@ func (a *AtlasSearchAPIService) UpdateClusterSearchDeploymentWithParams(ctx cont
 	}
 }
 
-func (r UpdateClusterSearchDeploymentApiRequest) Execute() (*ApiSearchDeploymentResponse, *http.Response, error) {
+func (r UpdateClusterSearchDeploymentApiRequest) Execute() (*ApiSearchDeploymentPreviewResponse, *http.Response, error) {
 	return r.ApiService.UpdateClusterSearchDeploymentExecute(r)
 }
 
 /*
 UpdateClusterSearchDeployment Update Search Nodes
 
-Updates the Search Nodes for the specified cluster. Deprecated versions: v2-{2023-01-01}
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Updates the Search Nodes for the specified cluster. Deprecated versions: v2-{2024-05-30}, v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2645,13 +2661,13 @@ func (a *AtlasSearchAPIService) UpdateClusterSearchDeployment(ctx context.Contex
 
 // UpdateClusterSearchDeploymentExecute executes the request
 //
-//	@return ApiSearchDeploymentResponse
-func (a *AtlasSearchAPIService) UpdateClusterSearchDeploymentExecute(r UpdateClusterSearchDeploymentApiRequest) (*ApiSearchDeploymentResponse, *http.Response, error) {
+//	@return ApiSearchDeploymentPreviewResponse
+func (a *AtlasSearchAPIService) UpdateClusterSearchDeploymentExecute(r UpdateClusterSearchDeploymentApiRequest) (*ApiSearchDeploymentPreviewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    any
 		formFiles           []formFile
-		localVarReturnValue *ApiSearchDeploymentResponse
+		localVarReturnValue *ApiSearchDeploymentPreviewResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AtlasSearchAPIService.UpdateClusterSearchDeployment")
@@ -2683,7 +2699,7 @@ func (a *AtlasSearchAPIService) UpdateClusterSearchDeploymentExecute(r UpdateClu
 	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/vnd.atlas.2024-05-30+json"}
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.preview+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2692,7 +2708,7 @@ func (a *AtlasSearchAPIService) UpdateClusterSearchDeploymentExecute(r UpdateClu
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2024-05-30+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

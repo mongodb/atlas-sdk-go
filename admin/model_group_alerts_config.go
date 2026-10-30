@@ -25,7 +25,7 @@ type GroupAlertsConfig struct {
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
 	// List of rules that determine whether MongoDB Cloud checks an object for the alert configuration.
-	Matchers *[]StreamsMatcher `json:"matchers,omitempty"`
+	Matchers *[]StreamsPrivateLinkEndpointMatcher `json:"matchers,omitempty"`
 	// List that contains the targets that MongoDB Cloud sends notifications.
 	Notifications *[]AlertsNotificationRootForGroup `json:"notifications,omitempty"`
 	// Severity of the event.
@@ -308,9 +308,9 @@ func (o *GroupAlertsConfig) SetLinksNil() {
 }
 
 // GetMatchers returns the Matchers field value if set, zero value otherwise
-func (o *GroupAlertsConfig) GetMatchers() []StreamsMatcher {
+func (o *GroupAlertsConfig) GetMatchers() []StreamsPrivateLinkEndpointMatcher {
 	if o == nil || IsNil(o.Matchers) {
-		var ret []StreamsMatcher
+		var ret []StreamsPrivateLinkEndpointMatcher
 		return ret
 	}
 	return *o.Matchers
@@ -318,7 +318,7 @@ func (o *GroupAlertsConfig) GetMatchers() []StreamsMatcher {
 
 // GetMatchersOk returns a tuple with the Matchers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GroupAlertsConfig) GetMatchersOk() (*[]StreamsMatcher, bool) {
+func (o *GroupAlertsConfig) GetMatchersOk() (*[]StreamsPrivateLinkEndpointMatcher, bool) {
 	if o == nil || IsNil(o.Matchers) {
 		return nil, false
 	}
@@ -335,8 +335,8 @@ func (o *GroupAlertsConfig) HasMatchers() bool {
 	return false
 }
 
-// SetMatchers gets a reference to the given []StreamsMatcher and assigns it to the Matchers field.
-func (o *GroupAlertsConfig) SetMatchers(v []StreamsMatcher) {
+// SetMatchers gets a reference to the given []StreamsPrivateLinkEndpointMatcher and assigns it to the Matchers field.
+func (o *GroupAlertsConfig) SetMatchers(v []StreamsPrivateLinkEndpointMatcher) {
 	o.Matchers = &v
 	o.NullFields = removeNullField(o.NullFields, "Matchers")
 }
