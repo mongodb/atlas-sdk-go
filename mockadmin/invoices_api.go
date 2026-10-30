@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312027/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -346,6 +346,167 @@ func (_c *InvoicesAPI_CreateOrgInvoiceReportWithParams_Call) Return(_a0 admin.Cr
 }
 
 func (_c *InvoicesAPI_CreateOrgInvoiceReportWithParams_Call) RunAndReturn(run func(context.Context, *admin.CreateOrgInvoiceReportApiParams) admin.CreateOrgInvoiceReportApiRequest) *InvoicesAPI_CreateOrgInvoiceReportWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GenerateInvoiceReport provides a mock function with given fields: ctx, orgId, invoiceId, reportGenerationRequest
+func (_m *InvoicesAPI) GenerateInvoiceReport(ctx context.Context, orgId string, invoiceId string, reportGenerationRequest *admin.ReportGenerationRequest) admin.GenerateInvoiceReportApiRequest {
+	ret := _m.Called(ctx, orgId, invoiceId, reportGenerationRequest)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GenerateInvoiceReport")
+	}
+
+	var r0 admin.GenerateInvoiceReportApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, string, string, *admin.ReportGenerationRequest) admin.GenerateInvoiceReportApiRequest); ok {
+		r0 = rf(ctx, orgId, invoiceId, reportGenerationRequest)
+	} else {
+		r0 = ret.Get(0).(admin.GenerateInvoiceReportApiRequest)
+	}
+
+	return r0
+}
+
+// InvoicesAPI_GenerateInvoiceReport_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GenerateInvoiceReport'
+type InvoicesAPI_GenerateInvoiceReport_Call struct {
+	*mock.Call
+}
+
+// GenerateInvoiceReport is a helper method to define mock.On call
+//   - ctx context.Context
+//   - orgId string
+//   - invoiceId string
+//   - reportGenerationRequest *admin.ReportGenerationRequest
+func (_e *InvoicesAPI_Expecter) GenerateInvoiceReport(ctx any, orgId any, invoiceId any, reportGenerationRequest any) *InvoicesAPI_GenerateInvoiceReport_Call {
+	return &InvoicesAPI_GenerateInvoiceReport_Call{Call: _e.mock.On("GenerateInvoiceReport", ctx, orgId, invoiceId, reportGenerationRequest)}
+}
+
+func (_c *InvoicesAPI_GenerateInvoiceReport_Call) Run(run func(ctx context.Context, orgId string, invoiceId string, reportGenerationRequest *admin.ReportGenerationRequest)) *InvoicesAPI_GenerateInvoiceReport_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(string), args[2].(string), args[3].(*admin.ReportGenerationRequest))
+	})
+	return _c
+}
+
+func (_c *InvoicesAPI_GenerateInvoiceReport_Call) Return(_a0 admin.GenerateInvoiceReportApiRequest) *InvoicesAPI_GenerateInvoiceReport_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *InvoicesAPI_GenerateInvoiceReport_Call) RunAndReturn(run func(context.Context, string, string, *admin.ReportGenerationRequest) admin.GenerateInvoiceReportApiRequest) *InvoicesAPI_GenerateInvoiceReport_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GenerateInvoiceReportExecute provides a mock function with given fields: r
+func (_m *InvoicesAPI) GenerateInvoiceReportExecute(r admin.GenerateInvoiceReportApiRequest) (string, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GenerateInvoiceReportExecute")
+	}
+
+	var r0 string
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.GenerateInvoiceReportApiRequest) (string, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.GenerateInvoiceReportApiRequest) string); ok {
+		r0 = rf(r)
+	} else {
+		r0 = ret.Get(0).(string)
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.GenerateInvoiceReportApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.GenerateInvoiceReportApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// InvoicesAPI_GenerateInvoiceReportExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GenerateInvoiceReportExecute'
+type InvoicesAPI_GenerateInvoiceReportExecute_Call struct {
+	*mock.Call
+}
+
+// GenerateInvoiceReportExecute is a helper method to define mock.On call
+//   - r admin.GenerateInvoiceReportApiRequest
+func (_e *InvoicesAPI_Expecter) GenerateInvoiceReportExecute(r any) *InvoicesAPI_GenerateInvoiceReportExecute_Call {
+	return &InvoicesAPI_GenerateInvoiceReportExecute_Call{Call: _e.mock.On("GenerateInvoiceReportExecute", r)}
+}
+
+func (_c *InvoicesAPI_GenerateInvoiceReportExecute_Call) Run(run func(r admin.GenerateInvoiceReportApiRequest)) *InvoicesAPI_GenerateInvoiceReportExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.GenerateInvoiceReportApiRequest))
+	})
+	return _c
+}
+
+func (_c *InvoicesAPI_GenerateInvoiceReportExecute_Call) Return(_a0 string, _a1 *http.Response, _a2 error) *InvoicesAPI_GenerateInvoiceReportExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *InvoicesAPI_GenerateInvoiceReportExecute_Call) RunAndReturn(run func(admin.GenerateInvoiceReportApiRequest) (string, *http.Response, error)) *InvoicesAPI_GenerateInvoiceReportExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// GenerateInvoiceReportWithParams provides a mock function with given fields: ctx, args
+func (_m *InvoicesAPI) GenerateInvoiceReportWithParams(ctx context.Context, args *admin.GenerateInvoiceReportApiParams) admin.GenerateInvoiceReportApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for GenerateInvoiceReportWithParams")
+	}
+
+	var r0 admin.GenerateInvoiceReportApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.GenerateInvoiceReportApiParams) admin.GenerateInvoiceReportApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.GenerateInvoiceReportApiRequest)
+	}
+
+	return r0
+}
+
+// InvoicesAPI_GenerateInvoiceReportWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'GenerateInvoiceReportWithParams'
+type InvoicesAPI_GenerateInvoiceReportWithParams_Call struct {
+	*mock.Call
+}
+
+// GenerateInvoiceReportWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.GenerateInvoiceReportApiParams
+func (_e *InvoicesAPI_Expecter) GenerateInvoiceReportWithParams(ctx any, args any) *InvoicesAPI_GenerateInvoiceReportWithParams_Call {
+	return &InvoicesAPI_GenerateInvoiceReportWithParams_Call{Call: _e.mock.On("GenerateInvoiceReportWithParams", ctx, args)}
+}
+
+func (_c *InvoicesAPI_GenerateInvoiceReportWithParams_Call) Run(run func(ctx context.Context, args *admin.GenerateInvoiceReportApiParams)) *InvoicesAPI_GenerateInvoiceReportWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.GenerateInvoiceReportApiParams))
+	})
+	return _c
+}
+
+func (_c *InvoicesAPI_GenerateInvoiceReportWithParams_Call) Return(_a0 admin.GenerateInvoiceReportApiRequest) *InvoicesAPI_GenerateInvoiceReportWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *InvoicesAPI_GenerateInvoiceReportWithParams_Call) RunAndReturn(run func(context.Context, *admin.GenerateInvoiceReportApiParams) admin.GenerateInvoiceReportApiRequest) *InvoicesAPI_GenerateInvoiceReportWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1799,6 +1960,166 @@ func (_c *InvoicesAPI_ListOrgInvoiceReportsWithParams_Call) Return(_a0 admin.Lis
 }
 
 func (_c *InvoicesAPI_ListOrgInvoiceReportsWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListOrgInvoiceReportsApiParams) admin.ListOrgInvoiceReportsApiRequest) *InvoicesAPI_ListOrgInvoiceReportsWithParams_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListSkuServices provides a mock function with given fields: ctx
+func (_m *InvoicesAPI) ListSkuServices(ctx context.Context) admin.ListSkuServicesApiRequest {
+	ret := _m.Called(ctx)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListSkuServices")
+	}
+
+	var r0 admin.ListSkuServicesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context) admin.ListSkuServicesApiRequest); ok {
+		r0 = rf(ctx)
+	} else {
+		r0 = ret.Get(0).(admin.ListSkuServicesApiRequest)
+	}
+
+	return r0
+}
+
+// InvoicesAPI_ListSkuServices_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSkuServices'
+type InvoicesAPI_ListSkuServices_Call struct {
+	*mock.Call
+}
+
+// ListSkuServices is a helper method to define mock.On call
+//   - ctx context.Context
+func (_e *InvoicesAPI_Expecter) ListSkuServices(ctx any) *InvoicesAPI_ListSkuServices_Call {
+	return &InvoicesAPI_ListSkuServices_Call{Call: _e.mock.On("ListSkuServices", ctx)}
+}
+
+func (_c *InvoicesAPI_ListSkuServices_Call) Run(run func(ctx context.Context)) *InvoicesAPI_ListSkuServices_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context))
+	})
+	return _c
+}
+
+func (_c *InvoicesAPI_ListSkuServices_Call) Return(_a0 admin.ListSkuServicesApiRequest) *InvoicesAPI_ListSkuServices_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *InvoicesAPI_ListSkuServices_Call) RunAndReturn(run func(context.Context) admin.ListSkuServicesApiRequest) *InvoicesAPI_ListSkuServices_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListSkuServicesExecute provides a mock function with given fields: r
+func (_m *InvoicesAPI) ListSkuServicesExecute(r admin.ListSkuServicesApiRequest) (*admin.PaginatedApiSkuService, *http.Response, error) {
+	ret := _m.Called(r)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListSkuServicesExecute")
+	}
+
+	var r0 *admin.PaginatedApiSkuService
+	var r1 *http.Response
+	var r2 error
+	if rf, ok := ret.Get(0).(func(admin.ListSkuServicesApiRequest) (*admin.PaginatedApiSkuService, *http.Response, error)); ok {
+		return rf(r)
+	}
+	if rf, ok := ret.Get(0).(func(admin.ListSkuServicesApiRequest) *admin.PaginatedApiSkuService); ok {
+		r0 = rf(r)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*admin.PaginatedApiSkuService)
+		}
+	}
+
+	if rf, ok := ret.Get(1).(func(admin.ListSkuServicesApiRequest) *http.Response); ok {
+		r1 = rf(r)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*http.Response)
+		}
+	}
+
+	if rf, ok := ret.Get(2).(func(admin.ListSkuServicesApiRequest) error); ok {
+		r2 = rf(r)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
+// InvoicesAPI_ListSkuServicesExecute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSkuServicesExecute'
+type InvoicesAPI_ListSkuServicesExecute_Call struct {
+	*mock.Call
+}
+
+// ListSkuServicesExecute is a helper method to define mock.On call
+//   - r admin.ListSkuServicesApiRequest
+func (_e *InvoicesAPI_Expecter) ListSkuServicesExecute(r any) *InvoicesAPI_ListSkuServicesExecute_Call {
+	return &InvoicesAPI_ListSkuServicesExecute_Call{Call: _e.mock.On("ListSkuServicesExecute", r)}
+}
+
+func (_c *InvoicesAPI_ListSkuServicesExecute_Call) Run(run func(r admin.ListSkuServicesApiRequest)) *InvoicesAPI_ListSkuServicesExecute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(admin.ListSkuServicesApiRequest))
+	})
+	return _c
+}
+
+func (_c *InvoicesAPI_ListSkuServicesExecute_Call) Return(_a0 *admin.PaginatedApiSkuService, _a1 *http.Response, _a2 error) *InvoicesAPI_ListSkuServicesExecute_Call {
+	_c.Call.Return(_a0, _a1, _a2)
+	return _c
+}
+
+func (_c *InvoicesAPI_ListSkuServicesExecute_Call) RunAndReturn(run func(admin.ListSkuServicesApiRequest) (*admin.PaginatedApiSkuService, *http.Response, error)) *InvoicesAPI_ListSkuServicesExecute_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
+// ListSkuServicesWithParams provides a mock function with given fields: ctx, args
+func (_m *InvoicesAPI) ListSkuServicesWithParams(ctx context.Context, args *admin.ListSkuServicesApiParams) admin.ListSkuServicesApiRequest {
+	ret := _m.Called(ctx, args)
+
+	if len(ret) == 0 {
+		panic("no return value specified for ListSkuServicesWithParams")
+	}
+
+	var r0 admin.ListSkuServicesApiRequest
+	if rf, ok := ret.Get(0).(func(context.Context, *admin.ListSkuServicesApiParams) admin.ListSkuServicesApiRequest); ok {
+		r0 = rf(ctx, args)
+	} else {
+		r0 = ret.Get(0).(admin.ListSkuServicesApiRequest)
+	}
+
+	return r0
+}
+
+// InvoicesAPI_ListSkuServicesWithParams_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListSkuServicesWithParams'
+type InvoicesAPI_ListSkuServicesWithParams_Call struct {
+	*mock.Call
+}
+
+// ListSkuServicesWithParams is a helper method to define mock.On call
+//   - ctx context.Context
+//   - args *admin.ListSkuServicesApiParams
+func (_e *InvoicesAPI_Expecter) ListSkuServicesWithParams(ctx any, args any) *InvoicesAPI_ListSkuServicesWithParams_Call {
+	return &InvoicesAPI_ListSkuServicesWithParams_Call{Call: _e.mock.On("ListSkuServicesWithParams", ctx, args)}
+}
+
+func (_c *InvoicesAPI_ListSkuServicesWithParams_Call) Run(run func(ctx context.Context, args *admin.ListSkuServicesApiParams)) *InvoicesAPI_ListSkuServicesWithParams_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(context.Context), args[1].(*admin.ListSkuServicesApiParams))
+	})
+	return _c
+}
+
+func (_c *InvoicesAPI_ListSkuServicesWithParams_Call) Return(_a0 admin.ListSkuServicesApiRequest) *InvoicesAPI_ListSkuServicesWithParams_Call {
+	_c.Call.Return(_a0)
+	return _c
+}
+
+func (_c *InvoicesAPI_ListSkuServicesWithParams_Call) RunAndReturn(run func(context.Context, *admin.ListSkuServicesApiParams) admin.ListSkuServicesApiRequest) *InvoicesAPI_ListSkuServicesWithParams_Call {
 	_c.Call.Return(run)
 	return _c
 }

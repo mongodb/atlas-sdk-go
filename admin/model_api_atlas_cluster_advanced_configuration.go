@@ -8,7 +8,7 @@ type ApiAtlasClusterAdvancedConfiguration struct {
 	CustomOpensslCipherConfigTls12 *[]string `json:"customOpensslCipherConfigTls12,omitempty"`
 	// The custom OpenSSL cipher suite list for TLS 1.3. Requires `tlsCipherConfigMode` = `CUSTOM`; when `tlsCipherConfigMode` is omitted, supplying a non-empty list infers `CUSTOM`.
 	CustomOpensslCipherConfigTls13 *[]string `json:"customOpensslCipherConfigTls13,omitempty"`
-	// Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should consider setting TLS 1.2 as the minimum TLS protocol version.
+	// Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections.
 	MinimumEnabledTlsProtocol *string `json:"minimumEnabledTlsProtocol,omitempty"`
 	// The TLS cipher suite configuration mode. The default mode uses the default cipher suites. The custom mode allows you to specify custom cipher suites for both TLS 1.2 and TLS 1.3.
 	TlsCipherConfigMode *string `json:"tlsCipherConfigMode,omitempty"`
