@@ -124,6 +124,8 @@ type APIClient struct {
 
 	PushBasedLogExportAPI PushBasedLogExportAPI
 
+	QuerySamplingAPI QuerySamplingAPI
+
 	QueryShapeInsightsAPI QueryShapeInsightsAPI
 
 	RateLimitingAPI RateLimitingAPI
@@ -141,6 +143,12 @@ type APIClient struct {
 	ServerlessPrivateEndpointsAPI ServerlessPrivateEndpointsAPI
 
 	ServiceAccountsAPI ServiceAccountsAPI
+
+	ShardKeyAnalyzerAPI ShardKeyAnalyzerAPI
+
+	ShardingInsightsAPI ShardingInsightsAPI
+
+	ShardingRecommendationsAPI ShardingRecommendationsAPI
 
 	StreamsAPI StreamsAPI
 
@@ -210,6 +218,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProjectIPAccessListAPI = (*ProjectIPAccessListAPIService)(&c.common)
 	c.ProjectsAPI = (*ProjectsAPIService)(&c.common)
 	c.PushBasedLogExportAPI = (*PushBasedLogExportAPIService)(&c.common)
+	c.QuerySamplingAPI = (*QuerySamplingAPIService)(&c.common)
 	c.QueryShapeInsightsAPI = (*QueryShapeInsightsAPIService)(&c.common)
 	c.RateLimitingAPI = (*RateLimitingAPIService)(&c.common)
 	c.RemoteMCPConfigurationsAPI = (*RemoteMCPConfigurationsAPIService)(&c.common)
@@ -219,6 +228,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ServerlessInstancesAPI = (*ServerlessInstancesAPIService)(&c.common)
 	c.ServerlessPrivateEndpointsAPI = (*ServerlessPrivateEndpointsAPIService)(&c.common)
 	c.ServiceAccountsAPI = (*ServiceAccountsAPIService)(&c.common)
+	c.ShardKeyAnalyzerAPI = (*ShardKeyAnalyzerAPIService)(&c.common)
+	c.ShardingInsightsAPI = (*ShardingInsightsAPIService)(&c.common)
+	c.ShardingRecommendationsAPI = (*ShardingRecommendationsAPIService)(&c.common)
 	c.StreamsAPI = (*StreamsAPIService)(&c.common)
 	c.TeamsAPI = (*TeamsAPIService)(&c.common)
 	c.ThirdPartyIntegrationsAPI = (*ThirdPartyIntegrationsAPIService)(&c.common)
