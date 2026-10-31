@@ -406,6 +406,9 @@ Class        | Method        | HTTP request  | Description   |
 *PushBasedLogExportAPI* | [UpdateGroupLogIntegration](./docs/PushBasedLogExportAPI.md#updategrouplogintegration) | **Put** /api/atlas/v2/groups/{groupId}/logIntegrations/{id} | Update One Log Integration |
 *PushBasedLogExportAPI* | [UpdateLogExport](./docs/PushBasedLogExportAPI.md#updatelogexport) | **Patch** /api/atlas/v2/groups/{groupId}/pushBasedLogExport | Update One Push-Based Log Export Configuration in One Project |
 *PushBasedLogExportAPI* | [UpdateOrgLogIntegration](./docs/PushBasedLogExportAPI.md#updateorglogintegration) | **Put** /api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId} | Update One Organization Log Integration |
+*QuerySamplingAPI* | [CreateClusterQuerySampling](./docs/QuerySamplingAPI.md#createclusterquerysampling) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/querySampling | Create Query Sampling for One Namespace |
+*QuerySamplingAPI* | [DeleteClusterQuerySampling](./docs/QuerySamplingAPI.md#deleteclusterquerysampling) | **Delete** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/querySampling/{namespace} | Remove Query Sampling from One Namespace |
+*QuerySamplingAPI* | [GetClusterQuerySampling](./docs/QuerySamplingAPI.md#getclusterquerysampling) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/querySampling/{namespace} | Return Query Sampling State for One Namespace |
 *QueryShapeInsightsAPI* | [GetClusterQueryShape](./docs/QueryShapeInsightsAPI.md#getclusterqueryshape) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes/{queryShapeHash} | Return One Query Shape |
 *QueryShapeInsightsAPI* | [GetQueryShapeDetails](./docs/QueryShapeInsightsAPI.md#getqueryshapedetails) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapeInsights/{queryShapeHash}/details | Return Query Shape Details |
 *QueryShapeInsightsAPI* | [ListClusterQueryShapes](./docs/QueryShapeInsightsAPI.md#listclusterqueryshapes) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/queryShapes | Return All Query Shapes |
@@ -470,6 +473,17 @@ Class        | Method        | HTTP request  | Description   |
 *ServiceAccountsAPI* | [ListOrgServiceAccounts](./docs/ServiceAccountsAPI.md#listorgserviceaccounts) | **Get** /api/atlas/v2/orgs/{orgId}/serviceAccounts | Return All Organization Service Accounts |
 *ServiceAccountsAPI* | [UpdateGroupServiceAccount](./docs/ServiceAccountsAPI.md#updategroupserviceaccount) | **Patch** /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId} | Update One Project Service Account |
 *ServiceAccountsAPI* | [UpdateOrgServiceAccount](./docs/ServiceAccountsAPI.md#updateorgserviceaccount) | **Patch** /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId} | Update One Organization Service Account |
+*ShardKeyAnalyzerAPI* | [CreateShardKeyAnalysis](./docs/ShardKeyAnalyzerAPI.md#createshardkeyanalysis) | **Post** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/shardKeyAnalyses | Create One Shard Key Analysis for One Cluster |
+*ShardKeyAnalyzerAPI* | [GetAnalysisOperation](./docs/ShardKeyAnalyzerAPI.md#getanalysisoperation) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/shardKeyAnalyses/operations/{operationId} | Return One Shard Key Analysis Operation for One Cluster |
+*ShardKeyAnalyzerAPI* | [GetShardKeyAnalysis](./docs/ShardKeyAnalyzerAPI.md#getshardkeyanalysis) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/shardKeyAnalyses/{analysisId} | Return One Shard Key Analysis for One Cluster |
+*ShardKeyAnalyzerAPI* | [ListAnalysisOperations](./docs/ShardKeyAnalyzerAPI.md#listanalysisoperations) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/shardKeyAnalyses/operations | Return All Shard Key Analysis Operations for One Cluster |
+*ShardKeyAnalyzerAPI* | [ListShardKeyAnalyses](./docs/ShardKeyAnalyzerAPI.md#listshardkeyanalyses) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/shardKeyAnalyses | Return All Shard Key Analyses for One Cluster |
+*ShardingInsightsAPI* | [GetClusterShardMetric](./docs/ShardingInsightsAPI.md#getclustershardmetric) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/shardMetrics/{replicaSetName} | Return One Shard in One Cluster |
+*ShardingInsightsAPI* | [GetClusterShardingInsights](./docs/ShardingInsightsAPI.md#getclustershardinginsights) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/shardingInsights | Return Sharding Insights for One Cluster |
+*ShardingInsightsAPI* | [GetShardMetricMeasurements](./docs/ShardingInsightsAPI.md#getshardmetricmeasurements) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/shardMetrics/{replicaSetName}/measurements | Return Measurements for One Shard |
+*ShardingInsightsAPI* | [ListClusterShardMetrics](./docs/ShardingInsightsAPI.md#listclustershardmetrics) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/shardMetrics | Return All Shards in One Cluster |
+*ShardingInsightsAPI* | [ListShardMetricMeasurements](./docs/ShardingInsightsAPI.md#listshardmetricmeasurements) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/shardMetrics:listMeasurements | Return Measurements for All Shards of One Cluster |
+*ShardingRecommendationsAPI* | [GetClusterShardingRecommendations](./docs/ShardingRecommendationsAPI.md#getclustershardingrecommendations) | **Get** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/shardingRecommendations | Return Sharding Recommendations for One Cluster |
 *StreamsAPI* | [AcceptVpcPeeringConnection](./docs/StreamsAPI.md#acceptvpcpeeringconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/vpcPeeringConnections/{id}:accept | Accept One Incoming VPC Peering Connection |
 *StreamsAPI* | [CreateFailoverConnection](./docs/StreamsAPI.md#createfailoverconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/{tenantName}/connections/{connectionName}/failoverConnections | Create One Failover Stream Connection |
 *StreamsAPI* | [CreatePrivateLinkConnection](./docs/StreamsAPI.md#createprivatelinkconnection) | **Post** /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections | Create One Private Link Connection |
@@ -667,6 +681,7 @@ Class        | Method        | HTTP request  | Description   |
  - [ClusterProviderSettings](./docs/ClusterProviderSettings.md)
  - [ClusterSearchIndex](./docs/ClusterSearchIndex.md)
  - [ClusterServerlessBackupOptions](./docs/ClusterServerlessBackupOptions.md)
+ - [ClusterShardMeasurementsResponse](./docs/ClusterShardMeasurementsResponse.md)
  - [ClusterStatus](./docs/ClusterStatus.md)
  - [CollStatsLatencyNamespaceMetric](./docs/CollStatsLatencyNamespaceMetric.md)
  - [CollStatsLatencyNamespaceMetrics](./docs/CollStatsLatencyNamespaceMetrics.md)
@@ -952,6 +967,9 @@ Class        | Method        | HTTP request  | Description   |
  - [PaginatedServerlessInstanceDescription](./docs/PaginatedServerlessInstanceDescription.md)
  - [PaginatedServiceAccountGroup](./docs/PaginatedServiceAccountGroup.md)
  - [PaginatedServiceAccountIPAccessEntry](./docs/PaginatedServiceAccountIPAccessEntry.md)
+ - [PaginatedShardKeyAnalysisOperationResponse](./docs/PaginatedShardKeyAnalysisOperationResponse.md)
+ - [PaginatedShardKeyAnalysisResponse](./docs/PaginatedShardKeyAnalysisResponse.md)
+ - [PaginatedShardMetricsResponse](./docs/PaginatedShardMetricsResponse.md)
  - [PaginatedSnapshot](./docs/PaginatedSnapshot.md)
  - [PaginatedStreamsWorkspacePrivateEndpointResponse](./docs/PaginatedStreamsWorkspacePrivateEndpointResponse.md)
  - [PaginatedTeam](./docs/PaginatedTeam.md)
@@ -979,6 +997,8 @@ Class        | Method        | HTTP request  | Description   |
  - [ProtectedHours](./docs/ProtectedHours.md)
  - [PublicApiUsageDetailsLineItem](./docs/PublicApiUsageDetailsLineItem.md)
  - [PushBasedLogExportProject](./docs/PushBasedLogExportProject.md)
+ - [QuerySamplingCreateRequest](./docs/QuerySamplingCreateRequest.md)
+ - [QuerySamplingResponse](./docs/QuerySamplingResponse.md)
  - [QueryShapeResponse](./docs/QueryShapeResponse.md)
  - [QueryShapeSeenMetadata](./docs/QueryShapeSeenMetadata.md)
  - [QueryShapeUpdateRequest](./docs/QueryShapeUpdateRequest.md)
@@ -1023,8 +1043,29 @@ Class        | Method        | HTTP request  | Description   |
  - [ServiceAccountIPAccessListEntry](./docs/ServiceAccountIPAccessListEntry.md)
  - [ServiceAccountSecret](./docs/ServiceAccountSecret.md)
  - [ServiceAccountSecretRequest](./docs/ServiceAccountSecretRequest.md)
+ - [ShardAlert](./docs/ShardAlert.md)
+ - [ShardCacheThroughput](./docs/ShardCacheThroughput.md)
+ - [ShardCpuUtilization](./docs/ShardCpuUtilization.md)
  - [ShardEntry](./docs/ShardEntry.md)
+ - [ShardKeyAnalysisError](./docs/ShardKeyAnalysisError.md)
+ - [ShardKeyAnalysisOperationResponse](./docs/ShardKeyAnalysisOperationResponse.md)
+ - [ShardKeyAnalysisRequest](./docs/ShardKeyAnalysisRequest.md)
+ - [ShardKeyAnalysisResponse](./docs/ShardKeyAnalysisResponse.md)
+ - [ShardKeyMostCommonValue](./docs/ShardKeyMostCommonValue.md)
+ - [ShardKeyReadSampleSize](./docs/ShardKeyReadSampleSize.md)
+ - [ShardKeyWriteSampleSize](./docs/ShardKeyWriteSampleSize.md)
  - [ShardKeys](./docs/ShardKeys.md)
+ - [ShardMeasurement](./docs/ShardMeasurement.md)
+ - [ShardMeasurementDataPoint](./docs/ShardMeasurementDataPoint.md)
+ - [ShardMeasurementSeries](./docs/ShardMeasurementSeries.md)
+ - [ShardMeasurementsResponse](./docs/ShardMeasurementsResponse.md)
+ - [ShardMetricsResponse](./docs/ShardMetricsResponse.md)
+ - [ShardOperations](./docs/ShardOperations.md)
+ - [ShardingInsightsBalancingWindow](./docs/ShardingInsightsBalancingWindow.md)
+ - [ShardingInsightsResponse](./docs/ShardingInsightsResponse.md)
+ - [ShardingRecommendation](./docs/ShardingRecommendation.md)
+ - [ShardingRecommendationTrigger](./docs/ShardingRecommendationTrigger.md)
+ - [ShardingRecommendationsResponse](./docs/ShardingRecommendationsResponse.md)
  - [ShardingRequest](./docs/ShardingRequest.md)
  - [SkuResponse](./docs/SkuResponse.md)
  - [Source](./docs/Source.md)
@@ -1043,12 +1084,12 @@ Class        | Method        | HTTP request  | Description   |
  - [StreamsKafkaNetworking](./docs/StreamsKafkaNetworking.md)
  - [StreamsKafkaNetworkingAccess](./docs/StreamsKafkaNetworkingAccess.md)
  - [StreamsKafkaSecurity](./docs/StreamsKafkaSecurity.md)
- - [StreamsMatcher](./docs/StreamsMatcher.md)
  - [StreamsModifyStreamProcessor](./docs/StreamsModifyStreamProcessor.md)
  - [StreamsModifyStreamProcessorOptions](./docs/StreamsModifyStreamProcessorOptions.md)
  - [StreamsOptions](./docs/StreamsOptions.md)
  - [StreamsPrivateLinkConnection](./docs/StreamsPrivateLinkConnection.md)
  - [StreamsPrivateLinkConnectionRequest](./docs/StreamsPrivateLinkConnectionRequest.md)
+ - [StreamsPrivateLinkEndpointMatcher](./docs/StreamsPrivateLinkEndpointMatcher.md)
  - [StreamsProcessor](./docs/StreamsProcessor.md)
  - [StreamsProcessorRequest](./docs/StreamsProcessorRequest.md)
  - [StreamsProcessorStatus](./docs/StreamsProcessorStatus.md)
