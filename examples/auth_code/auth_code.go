@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"go.mongodb.org/atlas-sdk/v20250312027/admin"
-	"go.mongodb.org/atlas-sdk/v20250312027/auth/code"
+	"go.mongodb.org/atlas-sdk/v20250312028/admin"
+	"go.mongodb.org/atlas-sdk/v20250312028/auth/code"
 )
 
 const callbackPathEnv = "MONGODB_ATLAS_CALLBACK_PATH"
