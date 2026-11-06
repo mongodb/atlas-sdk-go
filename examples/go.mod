@@ -1,12 +1,12 @@
-module go.mongodb.org/atlas-sdk/v20250312027/examples
+module go.mongodb.org/atlas-sdk/v20250312028/examples
 
 go 1.26.0
 
-replace go.mongodb.org/atlas-sdk/v20250312027 => ../
+replace go.mongodb.org/atlas-sdk/v20250312028 => ../
 
 require (
 	github.com/hashicorp/go-retryablehttp v0.7.8
-	go.mongodb.org/atlas-sdk/v20250312027 v20250312027.2.0
+	go.mongodb.org/atlas-sdk/v20250312028 v20250312028.2.0
 )
 
 require (
