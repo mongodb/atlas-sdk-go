@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ErrorMessage** | Pointer to **string** | Connection error message. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique identifier of the connection. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Name** | Pointer to **string** | Human-readable label that identifies the stream connection. For the Sample type, this is the name of the sample source. | [optional] 
@@ -27,6 +28,9 @@ Name | Type | Description | Notes
 **SchemaRegistryUrls** | Pointer to **[]string** | List of Schema Registry endpoint URLs used by this connection. Each URL must use the http or https scheme and specify a valid host and optional port. | [optional] 
 **Azure** | Pointer to [**AzureConnection**](AzureConnection.md) |  | [optional] 
 **Gcp** | Pointer to [**StreamsGCPConnectionConfig**](StreamsGCPConnectionConfig.md) |  | [optional] 
+**CatalogProvider** | Pointer to **string** | Catalog system the connection points at. Cannot be changed after creation. | [optional] 
+**Databricks** | Pointer to [**StreamsDatabricksConnectionConfig**](StreamsDatabricksConnectionConfig.md) |  | [optional] 
+**Snowflake** | Pointer to [**StreamsSnowflakeConnectionConfig**](StreamsSnowflakeConnectionConfig.md) |  | [optional] 
 
 ## Methods
 
@@ -46,6 +50,37 @@ will change when the set of required properties is changed
 NewStreamsConnectionWithDefaults instantiates a new StreamsConnection object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetErrorMessage
+
+`func (o *StreamsConnection) GetErrorMessage() string`
+
+GetErrorMessage returns the ErrorMessage field if non-nil, zero value otherwise.
+
+### GetErrorMessageOk
+
+`func (o *StreamsConnection) GetErrorMessageOk() (*string, bool)`
+
+GetErrorMessageOk returns a tuple with the ErrorMessage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetErrorMessage
+
+`func (o *StreamsConnection) SetErrorMessage(v string)`
+
+SetErrorMessage sets ErrorMessage field to given value.
+
+### HasErrorMessage
+
+`func (o *StreamsConnection) HasErrorMessage() bool`
+
+HasErrorMessage returns a boolean if a field has been set.
+
+### SetErrorMessageNil
+
+`func (o *StreamsConnection) SetErrorMessageNil()`
+
+SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled, overriding any value previously set with SetErrorMessage. Calling SetErrorMessage again clears the null override.
 
 ### GetId
 
@@ -759,6 +794,99 @@ HasGcp returns a boolean if a field has been set.
 `func (o *StreamsConnection) SetGcpNil()`
 
 SetGcpNil sets Gcp to an explicit JSON null when marshaled, overriding any value previously set with SetGcp. Calling SetGcp again clears the null override.
+
+### GetCatalogProvider
+
+`func (o *StreamsConnection) GetCatalogProvider() string`
+
+GetCatalogProvider returns the CatalogProvider field if non-nil, zero value otherwise.
+
+### GetCatalogProviderOk
+
+`func (o *StreamsConnection) GetCatalogProviderOk() (*string, bool)`
+
+GetCatalogProviderOk returns a tuple with the CatalogProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogProvider
+
+`func (o *StreamsConnection) SetCatalogProvider(v string)`
+
+SetCatalogProvider sets CatalogProvider field to given value.
+
+### HasCatalogProvider
+
+`func (o *StreamsConnection) HasCatalogProvider() bool`
+
+HasCatalogProvider returns a boolean if a field has been set.
+
+### SetCatalogProviderNil
+
+`func (o *StreamsConnection) SetCatalogProviderNil()`
+
+SetCatalogProviderNil sets CatalogProvider to an explicit JSON null when marshaled, overriding any value previously set with SetCatalogProvider. Calling SetCatalogProvider again clears the null override.
+
+### GetDatabricks
+
+`func (o *StreamsConnection) GetDatabricks() StreamsDatabricksConnectionConfig`
+
+GetDatabricks returns the Databricks field if non-nil, zero value otherwise.
+
+### GetDatabricksOk
+
+`func (o *StreamsConnection) GetDatabricksOk() (*StreamsDatabricksConnectionConfig, bool)`
+
+GetDatabricksOk returns a tuple with the Databricks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDatabricks
+
+`func (o *StreamsConnection) SetDatabricks(v StreamsDatabricksConnectionConfig)`
+
+SetDatabricks sets Databricks field to given value.
+
+### HasDatabricks
+
+`func (o *StreamsConnection) HasDatabricks() bool`
+
+HasDatabricks returns a boolean if a field has been set.
+
+### SetDatabricksNil
+
+`func (o *StreamsConnection) SetDatabricksNil()`
+
+SetDatabricksNil sets Databricks to an explicit JSON null when marshaled, overriding any value previously set with SetDatabricks. Calling SetDatabricks again clears the null override.
+
+### GetSnowflake
+
+`func (o *StreamsConnection) GetSnowflake() StreamsSnowflakeConnectionConfig`
+
+GetSnowflake returns the Snowflake field if non-nil, zero value otherwise.
+
+### GetSnowflakeOk
+
+`func (o *StreamsConnection) GetSnowflakeOk() (*StreamsSnowflakeConnectionConfig, bool)`
+
+GetSnowflakeOk returns a tuple with the Snowflake field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSnowflake
+
+`func (o *StreamsConnection) SetSnowflake(v StreamsSnowflakeConnectionConfig)`
+
+SetSnowflake sets Snowflake field to given value.
+
+### HasSnowflake
+
+`func (o *StreamsConnection) HasSnowflake() bool`
+
+HasSnowflake returns a boolean if a field has been set.
+
+### SetSnowflakeNil
+
+`func (o *StreamsConnection) SetSnowflakeNil()`
+
+SetSnowflakeNil sets Snowflake to an explicit JSON null when marshaled, overriding any value previously set with SetSnowflake. Calling SetSnowflake again clears the null override.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

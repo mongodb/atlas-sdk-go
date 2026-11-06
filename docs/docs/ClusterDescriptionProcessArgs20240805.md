@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **DefaultMaxTimeMS** | Pointer to **int** | Default time limit in milliseconds for individual read operations to complete. | [optional] 
 **DefaultWriteConcern** | Pointer to **string** | Default level of acknowledgment requested from MongoDB for write operations when none is specified by the driver. | [optional] 
 **JavascriptEnabled** | Pointer to **bool** | Flag that indicates whether the cluster allows execution of operations that perform server-side executions of JavaScript. When using 8.0+, we recommend disabling server-side JavaScript and using operators of aggregation pipeline as more performant alternative. | [optional] 
-**MinimumEnabledTlsProtocol** | Pointer to **string** | Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. Clusters using TLS 1.0 or 1.1 should consider setting TLS 1.2 as the minimum TLS protocol version. | [optional] 
+**MinimumEnabledTlsProtocol** | Pointer to **string** | Minimum Transport Layer Security (TLS) version that the cluster accepts for incoming connections. | [optional] 
 **NoTableScan** | Pointer to **bool** | Flag that indicates whether the cluster disables executing any query that requires a collection scan to return results. | [optional] 
 **OplogMinRetentionHours** | Pointer to **float64** | Minimum retention window for cluster&#39;s oplog expressed in hours. A value of null indicates that the cluster uses the default minimum oplog window that MongoDB Cloud calculates. | [optional] 
 **OplogSizeMB** | Pointer to **int** | Storage limit of cluster&#39;s oplog expressed in megabytes. A value of null indicates that the cluster uses the default oplog size that MongoDB Cloud calculates. | [optional] 

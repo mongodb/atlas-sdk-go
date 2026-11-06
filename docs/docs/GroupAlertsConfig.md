@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the project that owns this alert configuration. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies this alert configuration. | [optional] [readonly] 
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Matchers** | Pointer to [**[]StreamsMatcher**](StreamsMatcher.md) | List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. | [optional] 
+**Matchers** | Pointer to [**[]StreamsPrivateLinkEndpointMatcher**](StreamsPrivateLinkEndpointMatcher.md) | List of rules that determine whether MongoDB Cloud checks an object for the alert configuration. | [optional] 
 **Notifications** | Pointer to [**[]AlertsNotificationRootForGroup**](AlertsNotificationRootForGroup.md) | List that contains the targets that MongoDB Cloud sends notifications. | [optional] 
 **SeverityOverride** | Pointer to **string** | Severity of the event. | [optional] 
 **Updated** | Pointer to **time.Time** | Date and time when someone last updated this alert configuration. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
@@ -224,20 +224,20 @@ SetLinksNil sets Links to an explicit JSON null when marshaled, overriding any v
 
 ### GetMatchers
 
-`func (o *GroupAlertsConfig) GetMatchers() []StreamsMatcher`
+`func (o *GroupAlertsConfig) GetMatchers() []StreamsPrivateLinkEndpointMatcher`
 
 GetMatchers returns the Matchers field if non-nil, zero value otherwise.
 
 ### GetMatchersOk
 
-`func (o *GroupAlertsConfig) GetMatchersOk() (*[]StreamsMatcher, bool)`
+`func (o *GroupAlertsConfig) GetMatchersOk() (*[]StreamsPrivateLinkEndpointMatcher, bool)`
 
 GetMatchersOk returns a tuple with the Matchers field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMatchers
 
-`func (o *GroupAlertsConfig) SetMatchers(v []StreamsMatcher)`
+`func (o *GroupAlertsConfig) SetMatchers(v []StreamsPrivateLinkEndpointMatcher)`
 
 SetMatchers sets Matchers field to given value.
 

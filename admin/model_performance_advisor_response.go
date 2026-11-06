@@ -4,6 +4,10 @@ package admin
 
 // PerformanceAdvisorResponse Response that contains Performance Advisor suggested indexes and query shapes.
 type PerformanceAdvisorResponse struct {
+	// Explanation of Performance Advisor availability limitations on the current tier.
+	// Read only field.
+	Message *string          `json:"message,omitempty"`
+	Scale   *ApiClusterScale `json:"scale,omitempty"`
 	// List of query predicates, sorts, and projections that the Performance Advisor suggests.
 	// Read only field.
 	Shapes *[]PerformanceAdvisorShape `json:"shapes,omitempty"`
@@ -36,6 +40,86 @@ func NewPerformanceAdvisorResponse() *PerformanceAdvisorResponse {
 func NewPerformanceAdvisorResponseWithDefaults() *PerformanceAdvisorResponse {
 	this := PerformanceAdvisorResponse{}
 	return &this
+}
+
+// GetMessage returns the Message field value if set, zero value otherwise
+func (o *PerformanceAdvisorResponse) GetMessage() string {
+	if o == nil || IsNil(o.Message) {
+		var ret string
+		return ret
+	}
+	return *o.Message
+}
+
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PerformanceAdvisorResponse) GetMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.Message) {
+		return nil, false
+	}
+
+	return o.Message, true
+}
+
+// HasMessage returns a boolean if a field has been set.
+func (o *PerformanceAdvisorResponse) HasMessage() bool {
+	if o != nil && !IsNil(o.Message) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given string and assigns it to the Message field.
+func (o *PerformanceAdvisorResponse) SetMessage(v string) {
+	o.Message = &v
+	o.NullFields = removeNullField(o.NullFields, "Message")
+}
+
+// SetMessageNil sets Message to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorResponse) SetMessageNil() {
+	o.Message = nil
+	o.NullFields = addNullField(o.NullFields, "Message")
+}
+
+// GetScale returns the Scale field value if set, zero value otherwise
+func (o *PerformanceAdvisorResponse) GetScale() ApiClusterScale {
+	if o == nil || IsNil(o.Scale) {
+		var ret ApiClusterScale
+		return ret
+	}
+	return *o.Scale
+}
+
+// GetScaleOk returns a tuple with the Scale field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PerformanceAdvisorResponse) GetScaleOk() (*ApiClusterScale, bool) {
+	if o == nil || IsNil(o.Scale) {
+		return nil, false
+	}
+
+	return o.Scale, true
+}
+
+// HasScale returns a boolean if a field has been set.
+func (o *PerformanceAdvisorResponse) HasScale() bool {
+	if o != nil && !IsNil(o.Scale) {
+		return true
+	}
+
+	return false
+}
+
+// SetScale gets a reference to the given ApiClusterScale and assigns it to the Scale field.
+func (o *PerformanceAdvisorResponse) SetScale(v ApiClusterScale) {
+	o.Scale = &v
+	o.NullFields = removeNullField(o.NullFields, "Scale")
+}
+
+// SetScaleNil sets Scale to an explicit JSON null when marshaled.
+func (o *PerformanceAdvisorResponse) SetScaleNil() {
+	o.Scale = nil
+	o.NullFields = addNullField(o.NullFields, "Scale")
 }
 
 // GetShapes returns the Shapes field value if set, zero value otherwise

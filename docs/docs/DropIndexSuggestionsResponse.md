@@ -5,7 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **HiddenIndexes** | Pointer to [**[]DropIndexSuggestionsIndex**](DropIndexSuggestionsIndex.md) | List that contains the documents with information about the hidden indexes that the Performance Advisor suggests to remove. | [optional] [readonly] 
+**Message** | Pointer to **string** | Explanation of Performance Advisor availability limitations on the current tier. | [optional] [readonly] 
 **RedundantIndexes** | Pointer to [**[]DropIndexSuggestionsIndex**](DropIndexSuggestionsIndex.md) | List that contains the documents with information about the redundant indexes that the Performance Advisor suggests to remove. | [optional] [readonly] 
+**Scale** | Pointer to [**ApiClusterScale**](ApiClusterScale.md) |  | [optional] 
 **UnusedIndexes** | Pointer to [**[]DropIndexSuggestionsIndex**](DropIndexSuggestionsIndex.md) | List that contains the documents with information about the unused indexes that the Performance Advisor suggests to remove. | [optional] [readonly] 
 
 ## Methods
@@ -58,6 +60,37 @@ HasHiddenIndexes returns a boolean if a field has been set.
 
 SetHiddenIndexesNil sets HiddenIndexes to an explicit JSON null when marshaled, overriding any value previously set with SetHiddenIndexes. Calling SetHiddenIndexes again clears the null override.
 
+### GetMessage
+
+`func (o *DropIndexSuggestionsResponse) GetMessage() string`
+
+GetMessage returns the Message field if non-nil, zero value otherwise.
+
+### GetMessageOk
+
+`func (o *DropIndexSuggestionsResponse) GetMessageOk() (*string, bool)`
+
+GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessage
+
+`func (o *DropIndexSuggestionsResponse) SetMessage(v string)`
+
+SetMessage sets Message field to given value.
+
+### HasMessage
+
+`func (o *DropIndexSuggestionsResponse) HasMessage() bool`
+
+HasMessage returns a boolean if a field has been set.
+
+### SetMessageNil
+
+`func (o *DropIndexSuggestionsResponse) SetMessageNil()`
+
+SetMessageNil sets Message to an explicit JSON null when marshaled, overriding any value previously set with SetMessage. Calling SetMessage again clears the null override.
+
 ### GetRedundantIndexes
 
 `func (o *DropIndexSuggestionsResponse) GetRedundantIndexes() []DropIndexSuggestionsIndex`
@@ -88,6 +121,37 @@ HasRedundantIndexes returns a boolean if a field has been set.
 `func (o *DropIndexSuggestionsResponse) SetRedundantIndexesNil()`
 
 SetRedundantIndexesNil sets RedundantIndexes to an explicit JSON null when marshaled, overriding any value previously set with SetRedundantIndexes. Calling SetRedundantIndexes again clears the null override.
+
+### GetScale
+
+`func (o *DropIndexSuggestionsResponse) GetScale() ApiClusterScale`
+
+GetScale returns the Scale field if non-nil, zero value otherwise.
+
+### GetScaleOk
+
+`func (o *DropIndexSuggestionsResponse) GetScaleOk() (*ApiClusterScale, bool)`
+
+GetScaleOk returns a tuple with the Scale field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScale
+
+`func (o *DropIndexSuggestionsResponse) SetScale(v ApiClusterScale)`
+
+SetScale sets Scale field to given value.
+
+### HasScale
+
+`func (o *DropIndexSuggestionsResponse) HasScale() bool`
+
+HasScale returns a boolean if a field has been set.
+
+### SetScaleNil
+
+`func (o *DropIndexSuggestionsResponse) SetScaleNil()`
+
+SetScaleNil sets Scale to an explicit JSON null when marshaled, overriding any value previously set with SetScale. Calling SetScale again clears the null override.
 
 ### GetUnusedIndexes
 

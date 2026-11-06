@@ -4,6 +4,9 @@ package admin
 
 // StreamsConnection Settings that define a connection to an external data store.
 type StreamsConnection struct {
+	// Connection error message.
+	// Read only field.
+	ErrorMessage *string `json:"errorMessage,omitempty"`
 	// Unique identifier of the connection.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
@@ -44,6 +47,10 @@ type StreamsConnection struct {
 	SchemaRegistryUrls *[]string                   `json:"schemaRegistryUrls,omitempty"`
 	Azure              *AzureConnection            `json:"azure,omitempty"`
 	Gcp                *StreamsGCPConnectionConfig `json:"gcp,omitempty"`
+	// Catalog system the connection points at. Cannot be changed after creation.
+	CatalogProvider *string                            `json:"catalogProvider,omitempty"`
+	Databricks      *StreamsDatabricksConnectionConfig `json:"databricks,omitempty"`
+	Snowflake       *StreamsSnowflakeConnectionConfig  `json:"snowflake,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`
@@ -70,6 +77,46 @@ func NewStreamsConnection() *StreamsConnection {
 func NewStreamsConnectionWithDefaults() *StreamsConnection {
 	this := StreamsConnection{}
 	return &this
+}
+
+// GetErrorMessage returns the ErrorMessage field value if set, zero value otherwise
+func (o *StreamsConnection) GetErrorMessage() string {
+	if o == nil || IsNil(o.ErrorMessage) {
+		var ret string
+		return ret
+	}
+	return *o.ErrorMessage
+}
+
+// GetErrorMessageOk returns a tuple with the ErrorMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetErrorMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.ErrorMessage) {
+		return nil, false
+	}
+
+	return o.ErrorMessage, true
+}
+
+// HasErrorMessage returns a boolean if a field has been set.
+func (o *StreamsConnection) HasErrorMessage() bool {
+	if o != nil && !IsNil(o.ErrorMessage) {
+		return true
+	}
+
+	return false
+}
+
+// SetErrorMessage gets a reference to the given string and assigns it to the ErrorMessage field.
+func (o *StreamsConnection) SetErrorMessage(v string) {
+	o.ErrorMessage = &v
+	o.NullFields = removeNullField(o.NullFields, "ErrorMessage")
+}
+
+// SetErrorMessageNil sets ErrorMessage to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetErrorMessageNil() {
+	o.ErrorMessage = nil
+	o.NullFields = addNullField(o.NullFields, "ErrorMessage")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
@@ -990,4 +1037,124 @@ func (o *StreamsConnection) SetGcp(v StreamsGCPConnectionConfig) {
 func (o *StreamsConnection) SetGcpNil() {
 	o.Gcp = nil
 	o.NullFields = addNullField(o.NullFields, "Gcp")
+}
+
+// GetCatalogProvider returns the CatalogProvider field value if set, zero value otherwise
+func (o *StreamsConnection) GetCatalogProvider() string {
+	if o == nil || IsNil(o.CatalogProvider) {
+		var ret string
+		return ret
+	}
+	return *o.CatalogProvider
+}
+
+// GetCatalogProviderOk returns a tuple with the CatalogProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetCatalogProviderOk() (*string, bool) {
+	if o == nil || IsNil(o.CatalogProvider) {
+		return nil, false
+	}
+
+	return o.CatalogProvider, true
+}
+
+// HasCatalogProvider returns a boolean if a field has been set.
+func (o *StreamsConnection) HasCatalogProvider() bool {
+	if o != nil && !IsNil(o.CatalogProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetCatalogProvider gets a reference to the given string and assigns it to the CatalogProvider field.
+func (o *StreamsConnection) SetCatalogProvider(v string) {
+	o.CatalogProvider = &v
+	o.NullFields = removeNullField(o.NullFields, "CatalogProvider")
+}
+
+// SetCatalogProviderNil sets CatalogProvider to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetCatalogProviderNil() {
+	o.CatalogProvider = nil
+	o.NullFields = addNullField(o.NullFields, "CatalogProvider")
+}
+
+// GetDatabricks returns the Databricks field value if set, zero value otherwise
+func (o *StreamsConnection) GetDatabricks() StreamsDatabricksConnectionConfig {
+	if o == nil || IsNil(o.Databricks) {
+		var ret StreamsDatabricksConnectionConfig
+		return ret
+	}
+	return *o.Databricks
+}
+
+// GetDatabricksOk returns a tuple with the Databricks field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetDatabricksOk() (*StreamsDatabricksConnectionConfig, bool) {
+	if o == nil || IsNil(o.Databricks) {
+		return nil, false
+	}
+
+	return o.Databricks, true
+}
+
+// HasDatabricks returns a boolean if a field has been set.
+func (o *StreamsConnection) HasDatabricks() bool {
+	if o != nil && !IsNil(o.Databricks) {
+		return true
+	}
+
+	return false
+}
+
+// SetDatabricks gets a reference to the given StreamsDatabricksConnectionConfig and assigns it to the Databricks field.
+func (o *StreamsConnection) SetDatabricks(v StreamsDatabricksConnectionConfig) {
+	o.Databricks = &v
+	o.NullFields = removeNullField(o.NullFields, "Databricks")
+}
+
+// SetDatabricksNil sets Databricks to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetDatabricksNil() {
+	o.Databricks = nil
+	o.NullFields = addNullField(o.NullFields, "Databricks")
+}
+
+// GetSnowflake returns the Snowflake field value if set, zero value otherwise
+func (o *StreamsConnection) GetSnowflake() StreamsSnowflakeConnectionConfig {
+	if o == nil || IsNil(o.Snowflake) {
+		var ret StreamsSnowflakeConnectionConfig
+		return ret
+	}
+	return *o.Snowflake
+}
+
+// GetSnowflakeOk returns a tuple with the Snowflake field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetSnowflakeOk() (*StreamsSnowflakeConnectionConfig, bool) {
+	if o == nil || IsNil(o.Snowflake) {
+		return nil, false
+	}
+
+	return o.Snowflake, true
+}
+
+// HasSnowflake returns a boolean if a field has been set.
+func (o *StreamsConnection) HasSnowflake() bool {
+	if o != nil && !IsNil(o.Snowflake) {
+		return true
+	}
+
+	return false
+}
+
+// SetSnowflake gets a reference to the given StreamsSnowflakeConnectionConfig and assigns it to the Snowflake field.
+func (o *StreamsConnection) SetSnowflake(v StreamsSnowflakeConnectionConfig) {
+	o.Snowflake = &v
+	o.NullFields = removeNullField(o.NullFields, "Snowflake")
+}
+
+// SetSnowflakeNil sets Snowflake to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetSnowflakeNil() {
+	o.Snowflake = nil
+	o.NullFields = addNullField(o.NullFields, "Snowflake")
 }

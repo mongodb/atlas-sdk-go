@@ -1,4 +1,4 @@
-# StreamsMatcher
+# StreamsPrivateLinkEndpointMatcher
 
 ## Properties
 
@@ -10,77 +10,77 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewStreamsMatcher
+### NewStreamsPrivateLinkEndpointMatcher
 
-`func NewStreamsMatcher(fieldName string, operator string, value string, ) *StreamsMatcher`
+`func NewStreamsPrivateLinkEndpointMatcher(fieldName string, operator string, value string, ) *StreamsPrivateLinkEndpointMatcher`
 
-NewStreamsMatcher instantiates a new StreamsMatcher object
+NewStreamsPrivateLinkEndpointMatcher instantiates a new StreamsPrivateLinkEndpointMatcher object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewStreamsMatcherWithDefaults
+### NewStreamsPrivateLinkEndpointMatcherWithDefaults
 
-`func NewStreamsMatcherWithDefaults() *StreamsMatcher`
+`func NewStreamsPrivateLinkEndpointMatcherWithDefaults() *StreamsPrivateLinkEndpointMatcher`
 
-NewStreamsMatcherWithDefaults instantiates a new StreamsMatcher object
+NewStreamsPrivateLinkEndpointMatcherWithDefaults instantiates a new StreamsPrivateLinkEndpointMatcher object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetFieldName
 
-`func (o *StreamsMatcher) GetFieldName() string`
+`func (o *StreamsPrivateLinkEndpointMatcher) GetFieldName() string`
 
 GetFieldName returns the FieldName field if non-nil, zero value otherwise.
 
 ### GetFieldNameOk
 
-`func (o *StreamsMatcher) GetFieldNameOk() (*string, bool)`
+`func (o *StreamsPrivateLinkEndpointMatcher) GetFieldNameOk() (*string, bool)`
 
 GetFieldNameOk returns a tuple with the FieldName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFieldName
 
-`func (o *StreamsMatcher) SetFieldName(v string)`
+`func (o *StreamsPrivateLinkEndpointMatcher) SetFieldName(v string)`
 
 SetFieldName sets FieldName field to given value.
 
 ### GetOperator
 
-`func (o *StreamsMatcher) GetOperator() string`
+`func (o *StreamsPrivateLinkEndpointMatcher) GetOperator() string`
 
 GetOperator returns the Operator field if non-nil, zero value otherwise.
 
 ### GetOperatorOk
 
-`func (o *StreamsMatcher) GetOperatorOk() (*string, bool)`
+`func (o *StreamsPrivateLinkEndpointMatcher) GetOperatorOk() (*string, bool)`
 
 GetOperatorOk returns a tuple with the Operator field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetOperator
 
-`func (o *StreamsMatcher) SetOperator(v string)`
+`func (o *StreamsPrivateLinkEndpointMatcher) SetOperator(v string)`
 
 SetOperator sets Operator field to given value.
 
 ### GetValue
 
-`func (o *StreamsMatcher) GetValue() string`
+`func (o *StreamsPrivateLinkEndpointMatcher) GetValue() string`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *StreamsMatcher) GetValueOk() (*string, bool)`
+`func (o *StreamsPrivateLinkEndpointMatcher) GetValueOk() (*string, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *StreamsMatcher) SetValue(v string)`
+`func (o *StreamsPrivateLinkEndpointMatcher) SetValue(v string)`
 
 SetValue sets Value field to given value.
 

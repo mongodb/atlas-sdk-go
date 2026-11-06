@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Error** | **int** | HTTP status code returned with this error. | [readonly] 
 **ErrorCode** | **string** | Application error code returned with this error. | [readonly] 
 **Parameters** | Pointer to [**[]any**](any.md) | Parameters used to give more information about the error. | [optional] [readonly] 
+**PoliciesCausingDecision** | Pointer to [**[]ResourcePolicyReference**](ResourcePolicyReference.md) | Atlas Resource Policies that caused the request to be denied. Returned only when &#x60;errorCode&#x60; is &#x60;ATLAS_RESOURCE_POLICIES_VIOLATION_NOT_AUTHORIZED&#x60;. | [optional] [readonly] 
 **Reason** | Pointer to **string** | Application error message returned with this error. | [optional] [readonly] 
 
 ## Methods
@@ -160,6 +161,37 @@ HasParameters returns a boolean if a field has been set.
 `func (o *ApiError) SetParametersNil()`
 
 SetParametersNil sets Parameters to an explicit JSON null when marshaled, overriding any value previously set with SetParameters. Calling SetParameters again clears the null override.
+
+### GetPoliciesCausingDecision
+
+`func (o *ApiError) GetPoliciesCausingDecision() []ResourcePolicyReference`
+
+GetPoliciesCausingDecision returns the PoliciesCausingDecision field if non-nil, zero value otherwise.
+
+### GetPoliciesCausingDecisionOk
+
+`func (o *ApiError) GetPoliciesCausingDecisionOk() (*[]ResourcePolicyReference, bool)`
+
+GetPoliciesCausingDecisionOk returns a tuple with the PoliciesCausingDecision field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPoliciesCausingDecision
+
+`func (o *ApiError) SetPoliciesCausingDecision(v []ResourcePolicyReference)`
+
+SetPoliciesCausingDecision sets PoliciesCausingDecision field to given value.
+
+### HasPoliciesCausingDecision
+
+`func (o *ApiError) HasPoliciesCausingDecision() bool`
+
+HasPoliciesCausingDecision returns a boolean if a field has been set.
+
+### SetPoliciesCausingDecisionNil
+
+`func (o *ApiError) SetPoliciesCausingDecisionNil()`
+
+SetPoliciesCausingDecisionNil sets PoliciesCausingDecision to an explicit JSON null when marshaled, overriding any value previously set with SetPoliciesCausingDecision. Calling SetPoliciesCausingDecision again clears the null override.
 
 ### GetReason
 

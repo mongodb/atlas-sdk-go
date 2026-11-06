@@ -278,6 +278,28 @@ type InvoicesAPI interface {
 	ListOrgInvoiceReportsExecute(r ListOrgInvoiceReportsApiRequest) (*PaginatedInvoiceReport, *http.Response, error)
 
 	/*
+		ListSkuServices Return All Stock Keeping Unit Services
+
+		Returns all launched SKU services. SKU services are the customer-facing categories that SKUs are grouped under on MongoDB invoices.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@return ListSkuServicesApiRequest
+	*/
+	ListSkuServices(ctx context.Context) ListSkuServicesApiRequest
+	/*
+		ListSkuServices Return All Stock Keeping Unit Services
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ListSkuServicesApiParams - Parameters for the request
+		@return ListSkuServicesApiRequest
+	*/
+	ListSkuServicesWithParams(ctx context.Context, args *ListSkuServicesApiParams) ListSkuServicesApiRequest
+
+	// Method available only for mocking purposes
+	ListSkuServicesExecute(r ListSkuServicesApiRequest) (*PaginatedApiSkuService, *http.Response, error)
+
+	/*
 		ListSkus Return All Stock Keeping Units
 
 		Returns all available SKUs (Stock Keeping Units) that can appear on MongoDB invoices. SKUs represent different products and services offered by MongoDB.
@@ -1866,6 +1888,159 @@ func (a *InvoicesAPIService) ListOrgInvoiceReportsExecute(r ListOrgInvoiceReport
 		return localVarReturnValue, nil, reportError("invoiceId must not be a dot-segment path parameter")
 	}
 	localVarPath = strings.Replace(localVarPath, "{"+"invoiceId"+"}", url.PathEscape(r.invoiceId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.includeCount != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	} else {
+		var defaultValue bool = true
+		r.includeCount = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "includeCount", r.includeCount, "")
+	}
+	if r.itemsPerPage != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	} else {
+		var defaultValue int = 100
+		r.itemsPerPage = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "itemsPerPage", r.itemsPerPage, "")
+	}
+	if r.pageNum != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	} else {
+		var defaultValue int = 1
+		r.pageNum = &defaultValue
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageNum", r.pageNum, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ListSkuServicesApiRequest struct {
+	ctx          context.Context
+	ApiService   InvoicesAPI
+	includeCount *bool
+	itemsPerPage *int
+	pageNum      *int
+}
+
+type ListSkuServicesApiParams struct {
+	IncludeCount *bool
+	ItemsPerPage *int
+	PageNum      *int
+}
+
+func (a *InvoicesAPIService) ListSkuServicesWithParams(ctx context.Context, args *ListSkuServicesApiParams) ListSkuServicesApiRequest {
+	return ListSkuServicesApiRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		includeCount: args.IncludeCount,
+		itemsPerPage: args.ItemsPerPage,
+		pageNum:      args.PageNum,
+	}
+}
+
+// Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation.
+func (r ListSkuServicesApiRequest) IncludeCount(includeCount bool) ListSkuServicesApiRequest {
+	r.includeCount = &includeCount
+	return r
+}
+
+// Number of items that the response returns per page.
+func (r ListSkuServicesApiRequest) ItemsPerPage(itemsPerPage int) ListSkuServicesApiRequest {
+	r.itemsPerPage = &itemsPerPage
+	return r
+}
+
+// Number of the page that displays the current set of the total objects that the response returns.
+func (r ListSkuServicesApiRequest) PageNum(pageNum int) ListSkuServicesApiRequest {
+	r.pageNum = &pageNum
+	return r
+}
+
+func (r ListSkuServicesApiRequest) Execute() (*PaginatedApiSkuService, *http.Response, error) {
+	return r.ApiService.ListSkuServicesExecute(r)
+}
+
+/*
+ListSkuServices Return All Stock Keeping Unit Services
+
+Returns all launched SKU services. SKU services are the customer-facing categories that SKUs are grouped under on MongoDB invoices.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ListSkuServicesApiRequest
+*/
+func (a *InvoicesAPIService) ListSkuServices(ctx context.Context) ListSkuServicesApiRequest {
+	return ListSkuServicesApiRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// ListSkuServicesExecute executes the request
+//
+//	@return PaginatedApiSkuService
+func (a *InvoicesAPIService) ListSkuServicesExecute(r ListSkuServicesApiRequest) (*PaginatedApiSkuService, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *PaginatedApiSkuService
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InvoicesAPIService.ListSkuServices")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/skuServices"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
