@@ -38,6 +38,7 @@ Name | Type | Description | Notes
 **ReplicationSpecs** | Pointer to [**[]ReplicationSpec20240805**](ReplicationSpec20240805.md) | List of settings that configure your cluster regions. This array has one object per shard representing node configurations in each shard. For replica sets there is only one object representing node configurations. | [optional] 
 **RetainBackups** | Pointer to **bool** | Flag that indicates whether the cluster retains backups. | [optional] [default to false]
 **RootCertType** | Pointer to **string** | Root Certificate Authority that MongoDB Atlas cluster uses. MongoDB Cloud supports Internet Security Research Group. | [optional] [default to "ISRGROOTX1"]
+**SearchAutoMigration** | Pointer to [**SearchAutoMigration**](SearchAutoMigration.md) |  | [optional] 
 **StateName** | Pointer to **string** | Human-readable label that indicates any current activity being taken on this cluster by the Atlas control plane. With the exception of CREATING and DELETING states, clusters should always be available and have a Primary node even when in states indicating ongoing activity.   - &#x60;IDLE&#x60;: Atlas is making no changes to this cluster and all changes requested via the UI or API can be assumed to have been applied.  - &#x60;CREATING&#x60;: A cluster being provisioned for the very first time returns state CREATING until it is ready for connections. Ensure IP Access List and DB Users are configured before attempting to connect.  - &#x60;UPDATING&#x60;: A change requested via the UI, API, AutoScaling, or other scheduled activity is taking place.  - &#x60;DELETING&#x60;: The cluster is in the process of deletion and will soon be deleted.  - &#x60;REPAIRING&#x60;: One or more nodes in the cluster are being returned to service by the Atlas control plane. Other nodes should continue to provide service as normal. | [optional] [readonly] 
 **Tags** | Pointer to [**[]ResourceTag**](ResourceTag.md) | List that contains key-value pairs between 1 to 255 characters in length for tagging and categorizing the cluster. | [optional] 
 **TerminationProtectionEnabled** | Pointer to **bool** | Flag that indicates whether termination protection is enabled on the cluster. If set to &#x60;true&#x60;, MongoDB Cloud won&#39;t delete the cluster. If set to &#x60;false&#x60;, MongoDB Cloud will delete the cluster. | [optional] [default to false]
@@ -1116,6 +1117,37 @@ HasRootCertType returns a boolean if a field has been set.
 `func (o *ClusterDescription20240805) SetRootCertTypeNil()`
 
 SetRootCertTypeNil sets RootCertType to an explicit JSON null when marshaled, overriding any value previously set with SetRootCertType. Calling SetRootCertType again clears the null override.
+
+### GetSearchAutoMigration
+
+`func (o *ClusterDescription20240805) GetSearchAutoMigration() SearchAutoMigration`
+
+GetSearchAutoMigration returns the SearchAutoMigration field if non-nil, zero value otherwise.
+
+### GetSearchAutoMigrationOk
+
+`func (o *ClusterDescription20240805) GetSearchAutoMigrationOk() (*SearchAutoMigration, bool)`
+
+GetSearchAutoMigrationOk returns a tuple with the SearchAutoMigration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSearchAutoMigration
+
+`func (o *ClusterDescription20240805) SetSearchAutoMigration(v SearchAutoMigration)`
+
+SetSearchAutoMigration sets SearchAutoMigration field to given value.
+
+### HasSearchAutoMigration
+
+`func (o *ClusterDescription20240805) HasSearchAutoMigration() bool`
+
+HasSearchAutoMigration returns a boolean if a field has been set.
+
+### SetSearchAutoMigrationNil
+
+`func (o *ClusterDescription20240805) SetSearchAutoMigrationNil()`
+
+SetSearchAutoMigrationNil sets SearchAutoMigration to an explicit JSON null when marshaled, overriding any value previously set with SetSearchAutoMigration. Calling SetSearchAutoMigration again clears the null override.
 
 ### GetStateName
 

@@ -11,8 +11,10 @@ Name | Type | Description | Notes
 **HostId** | Pointer to **string** | Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | [optional] [readonly] 
 **Links** | Pointer to [**[]LinkAtlas**](LinkAtlas.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
 **Measurements** | Pointer to [**[]MetricsMeasurementAtlas**](MetricsMeasurementAtlas.md) | List that contains measurements and their data points. | [optional] [readonly] 
+**Message** | Pointer to **string** | Explanation of measurement availability limitations on the current tier. | [optional] [readonly] 
 **PartitionName** | Pointer to **string** | Human-readable label of the disk or partition to which the measurements apply. | [optional] [readonly] 
 **ProcessId** | Pointer to **string** | Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (&#x60;mongod&#x60; or &#x60;mongos&#x60;). The port must be the IANA port on which the MongoDB process listens for requests. | [optional] [readonly] 
+**Scale** | Pointer to [**ApiClusterScaleViewAtlas**](ApiClusterScaleViewAtlas.md) |  | [optional] 
 **Start** | Pointer to **time.Time** | Date and time that specifies when to start retrieving measurements. If you set **start**, you must set **end**. You can&#39;t set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC. | [optional] [readonly] 
 
 ## Methods
@@ -251,6 +253,37 @@ HasMeasurements returns a boolean if a field has been set.
 
 SetMeasurementsNil sets Measurements to an explicit JSON null when marshaled, overriding any value previously set with SetMeasurements. Calling SetMeasurements again clears the null override.
 
+### GetMessage
+
+`func (o *ApiMeasurementsGeneralViewAtlas) GetMessage() string`
+
+GetMessage returns the Message field if non-nil, zero value otherwise.
+
+### GetMessageOk
+
+`func (o *ApiMeasurementsGeneralViewAtlas) GetMessageOk() (*string, bool)`
+
+GetMessageOk returns a tuple with the Message field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMessage
+
+`func (o *ApiMeasurementsGeneralViewAtlas) SetMessage(v string)`
+
+SetMessage sets Message field to given value.
+
+### HasMessage
+
+`func (o *ApiMeasurementsGeneralViewAtlas) HasMessage() bool`
+
+HasMessage returns a boolean if a field has been set.
+
+### SetMessageNil
+
+`func (o *ApiMeasurementsGeneralViewAtlas) SetMessageNil()`
+
+SetMessageNil sets Message to an explicit JSON null when marshaled, overriding any value previously set with SetMessage. Calling SetMessage again clears the null override.
+
 ### GetPartitionName
 
 `func (o *ApiMeasurementsGeneralViewAtlas) GetPartitionName() string`
@@ -312,6 +345,37 @@ HasProcessId returns a boolean if a field has been set.
 `func (o *ApiMeasurementsGeneralViewAtlas) SetProcessIdNil()`
 
 SetProcessIdNil sets ProcessId to an explicit JSON null when marshaled, overriding any value previously set with SetProcessId. Calling SetProcessId again clears the null override.
+
+### GetScale
+
+`func (o *ApiMeasurementsGeneralViewAtlas) GetScale() ApiClusterScaleViewAtlas`
+
+GetScale returns the Scale field if non-nil, zero value otherwise.
+
+### GetScaleOk
+
+`func (o *ApiMeasurementsGeneralViewAtlas) GetScaleOk() (*ApiClusterScaleViewAtlas, bool)`
+
+GetScaleOk returns a tuple with the Scale field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScale
+
+`func (o *ApiMeasurementsGeneralViewAtlas) SetScale(v ApiClusterScaleViewAtlas)`
+
+SetScale sets Scale field to given value.
+
+### HasScale
+
+`func (o *ApiMeasurementsGeneralViewAtlas) HasScale() bool`
+
+HasScale returns a boolean if a field has been set.
+
+### SetScaleNil
+
+`func (o *ApiMeasurementsGeneralViewAtlas) SetScaleNil()`
+
+SetScaleNil sets Scale to an explicit JSON null when marshaled, overriding any value previously set with SetScale. Calling SetScale again clears the null override.
 
 ### GetStart
 

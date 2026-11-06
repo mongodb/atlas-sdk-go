@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**ListInvoicePending**](InvoicesAPI.md#ListInvoicePending) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/pending | Return All Pending Invoices for One Organization
 [**ListInvoices**](InvoicesAPI.md#ListInvoices) | **Get** /api/atlas/v2/orgs/{orgId}/invoices | Return All Invoices for One Organization
 [**ListOrgInvoiceReports**](InvoicesAPI.md#ListOrgInvoiceReports) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/reports | Return All Invoice Reports for One Invoice
+[**ListSkuServices**](InvoicesAPI.md#ListSkuServices) | **Get** /api/atlas/v2/skuServices | Return All Stock Keeping Unit Services
 [**ListSkus**](InvoicesAPI.md#ListSkus) | **Get** /api/atlas/v2/skus | Return All Stock Keeping Units
 [**SearchInvoiceLineItems**](InvoicesAPI.md#SearchInvoiceLineItems) | **Get** /api/atlas/v2/orgs/{orgId}/invoices/{invoiceId}/lineItems:search | Return All Line Items for One Invoice by Invoice ID
 
@@ -37,7 +38,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312027/admin"
+    "go.mongodb.org/atlas-sdk/v20250312028/admin"
 )
 
 func main() {
@@ -119,7 +120,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312027/admin"
+    "go.mongodb.org/atlas-sdk/v20250312028/admin"
 )
 
 func main() {
@@ -204,7 +205,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312027/admin"
+    "go.mongodb.org/atlas-sdk/v20250312028/admin"
 )
 
 func main() {
@@ -287,7 +288,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312027/admin"
+    "go.mongodb.org/atlas-sdk/v20250312028/admin"
 )
 
 func main() {
@@ -370,7 +371,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312027/admin"
+    "go.mongodb.org/atlas-sdk/v20250312028/admin"
 )
 
 func main() {
@@ -453,7 +454,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312027/admin"
+    "go.mongodb.org/atlas-sdk/v20250312028/admin"
 )
 
 func main() {
@@ -539,7 +540,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312027/admin"
+    "go.mongodb.org/atlas-sdk/v20250312028/admin"
 )
 
 func main() {
@@ -625,7 +626,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312027/admin"
+    "go.mongodb.org/atlas-sdk/v20250312028/admin"
 )
 
 func main() {
@@ -705,7 +706,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312027/admin"
+    "go.mongodb.org/atlas-sdk/v20250312028/admin"
 )
 
 func main() {
@@ -785,7 +786,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312027/admin"
+    "go.mongodb.org/atlas-sdk/v20250312028/admin"
 )
 
 func main() {
@@ -883,7 +884,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312027/admin"
+    "go.mongodb.org/atlas-sdk/v20250312028/admin"
 )
 
 func main() {
@@ -955,6 +956,86 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListSkuServices
+
+> PaginatedApiSkuService ListSkuServices(ctx).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+
+Return All Stock Keeping Unit Services
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312028/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    includeCount := true // bool |  (optional) (default to true)
+    itemsPerPage := int(56) // int |  (optional) (default to 100)
+    pageNum := int(56) // int |  (optional) (default to 1)
+
+    resp, r, err := sdk.InvoicesAPI.ListSkuServices(context.Background()).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `InvoicesAPI.ListSkuServices`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ListSkuServices`: PaginatedApiSkuService
+    fmt.Fprintf(os.Stdout, "Response from `InvoicesAPI.ListSkuServices`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListSkuServicesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **includeCount** | **bool** | Flag that indicates whether MongoDB Cloud calculates the total number of items for the response. When set to &#x60;false&#x60;, MongoDB Cloud may skip an additional count operation. The response may still include &#x60;totalCount&#x60; when the count is available without additional calculation. | [default to true]
+ **itemsPerPage** | **int** | Number of items that the response returns per page. | [default to 100]
+ **pageNum** | **int** | Number of the page that displays the current set of the total objects that the response returns. | [default to 1]
+
+### Return type
+
+[**PaginatedApiSkuService**](PaginatedApiSkuService.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/vnd.atlas.2025-03-12+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListSkus
 
 > PaginatedApiSKU ListSkus(ctx).IncludeCount(includeCount).ItemsPerPage(itemsPerPage).PageNum(pageNum).Execute()
@@ -972,7 +1053,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312027/admin"
+    "go.mongodb.org/atlas-sdk/v20250312028/admin"
 )
 
 func main() {
@@ -1052,7 +1133,7 @@ import (
     "fmt"
     "os"
 
-    "go.mongodb.org/atlas-sdk/v20250312027/admin"
+    "go.mongodb.org/atlas-sdk/v20250312028/admin"
 )
 
 func main() {

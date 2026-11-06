@@ -4,7 +4,11 @@ package admin
 
 // QueryStatsSummaryListResponse struct for QueryStatsSummaryListResponse
 type QueryStatsSummaryListResponse struct {
+	// Explanation of query shape insights availability limitations on the current tier.
+	// Read only field.
+	Message              *string                       `json:"message,omitempty"`
 	QueryStatsCollection *QueryStatsCollectionResponse `json:"queryStatsCollection,omitempty"`
+	Scale                *ApiClusterScale              `json:"scale,omitempty"`
 	// List of query shape statistic summaries from Query Shape Insights.
 	Summaries *[]QueryStatsSummary `json:"summaries,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
@@ -33,6 +37,46 @@ func NewQueryStatsSummaryListResponse() *QueryStatsSummaryListResponse {
 func NewQueryStatsSummaryListResponseWithDefaults() *QueryStatsSummaryListResponse {
 	this := QueryStatsSummaryListResponse{}
 	return &this
+}
+
+// GetMessage returns the Message field value if set, zero value otherwise
+func (o *QueryStatsSummaryListResponse) GetMessage() string {
+	if o == nil || IsNil(o.Message) {
+		var ret string
+		return ret
+	}
+	return *o.Message
+}
+
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummaryListResponse) GetMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.Message) {
+		return nil, false
+	}
+
+	return o.Message, true
+}
+
+// HasMessage returns a boolean if a field has been set.
+func (o *QueryStatsSummaryListResponse) HasMessage() bool {
+	if o != nil && !IsNil(o.Message) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given string and assigns it to the Message field.
+func (o *QueryStatsSummaryListResponse) SetMessage(v string) {
+	o.Message = &v
+	o.NullFields = removeNullField(o.NullFields, "Message")
+}
+
+// SetMessageNil sets Message to an explicit JSON null when marshaled.
+func (o *QueryStatsSummaryListResponse) SetMessageNil() {
+	o.Message = nil
+	o.NullFields = addNullField(o.NullFields, "Message")
 }
 
 // GetQueryStatsCollection returns the QueryStatsCollection field value if set, zero value otherwise
@@ -73,6 +117,46 @@ func (o *QueryStatsSummaryListResponse) SetQueryStatsCollection(v QueryStatsColl
 func (o *QueryStatsSummaryListResponse) SetQueryStatsCollectionNil() {
 	o.QueryStatsCollection = nil
 	o.NullFields = addNullField(o.NullFields, "QueryStatsCollection")
+}
+
+// GetScale returns the Scale field value if set, zero value otherwise
+func (o *QueryStatsSummaryListResponse) GetScale() ApiClusterScale {
+	if o == nil || IsNil(o.Scale) {
+		var ret ApiClusterScale
+		return ret
+	}
+	return *o.Scale
+}
+
+// GetScaleOk returns a tuple with the Scale field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueryStatsSummaryListResponse) GetScaleOk() (*ApiClusterScale, bool) {
+	if o == nil || IsNil(o.Scale) {
+		return nil, false
+	}
+
+	return o.Scale, true
+}
+
+// HasScale returns a boolean if a field has been set.
+func (o *QueryStatsSummaryListResponse) HasScale() bool {
+	if o != nil && !IsNil(o.Scale) {
+		return true
+	}
+
+	return false
+}
+
+// SetScale gets a reference to the given ApiClusterScale and assigns it to the Scale field.
+func (o *QueryStatsSummaryListResponse) SetScale(v ApiClusterScale) {
+	o.Scale = &v
+	o.NullFields = removeNullField(o.NullFields, "Scale")
+}
+
+// SetScaleNil sets Scale to an explicit JSON null when marshaled.
+func (o *QueryStatsSummaryListResponse) SetScaleNil() {
+	o.Scale = nil
+	o.NullFields = addNullField(o.NullFields, "Scale")
 }
 
 // GetSummaries returns the Summaries field value if set, zero value otherwise

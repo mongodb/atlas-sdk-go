@@ -26,7 +26,7 @@ import (
 	"runtime"
 	"strings"
 
-	"go.mongodb.org/atlas-sdk/v20250312027/internal/core"
+	"go.mongodb.org/atlas-sdk/v20250312028/internal/core"
 )
 
 const (

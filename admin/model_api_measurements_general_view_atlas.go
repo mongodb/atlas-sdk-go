@@ -29,12 +29,16 @@ type ApiMeasurementsGeneralViewAtlas struct {
 	// List that contains measurements and their data points.
 	// Read only field.
 	Measurements *[]MetricsMeasurementAtlas `json:"measurements,omitempty"`
+	// Explanation of measurement availability limitations on the current tier.
+	// Read only field.
+	Message *string `json:"message,omitempty"`
 	// Human-readable label of the disk or partition to which the measurements apply.
 	// Read only field.
 	PartitionName *string `json:"partitionName,omitempty"`
 	// Combination of hostname and Internet Assigned Numbers Authority (IANA) port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (`mongod` or `mongos`). The port must be the IANA port on which the MongoDB process listens for requests.
 	// Read only field.
-	ProcessId *string `json:"processId,omitempty"`
+	ProcessId *string                   `json:"processId,omitempty"`
+	Scale     *ApiClusterScaleViewAtlas `json:"scale,omitempty"`
 	// Date and time that specifies when to start retrieving measurements. If you set **start**, you must set **end**. You can't set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Start *time.Time `json:"start,omitempty"`
@@ -346,6 +350,46 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetMeasurementsNil() {
 	o.NullFields = addNullField(o.NullFields, "Measurements")
 }
 
+// GetMessage returns the Message field value if set, zero value otherwise
+func (o *ApiMeasurementsGeneralViewAtlas) GetMessage() string {
+	if o == nil || IsNil(o.Message) {
+		var ret string
+		return ret
+	}
+	return *o.Message
+}
+
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiMeasurementsGeneralViewAtlas) GetMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.Message) {
+		return nil, false
+	}
+
+	return o.Message, true
+}
+
+// HasMessage returns a boolean if a field has been set.
+func (o *ApiMeasurementsGeneralViewAtlas) HasMessage() bool {
+	if o != nil && !IsNil(o.Message) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given string and assigns it to the Message field.
+func (o *ApiMeasurementsGeneralViewAtlas) SetMessage(v string) {
+	o.Message = &v
+	o.NullFields = removeNullField(o.NullFields, "Message")
+}
+
+// SetMessageNil sets Message to an explicit JSON null when marshaled.
+func (o *ApiMeasurementsGeneralViewAtlas) SetMessageNil() {
+	o.Message = nil
+	o.NullFields = addNullField(o.NullFields, "Message")
+}
+
 // GetPartitionName returns the PartitionName field value if set, zero value otherwise
 func (o *ApiMeasurementsGeneralViewAtlas) GetPartitionName() string {
 	if o == nil || IsNil(o.PartitionName) {
@@ -424,6 +468,46 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetProcessId(v string) {
 func (o *ApiMeasurementsGeneralViewAtlas) SetProcessIdNil() {
 	o.ProcessId = nil
 	o.NullFields = addNullField(o.NullFields, "ProcessId")
+}
+
+// GetScale returns the Scale field value if set, zero value otherwise
+func (o *ApiMeasurementsGeneralViewAtlas) GetScale() ApiClusterScaleViewAtlas {
+	if o == nil || IsNil(o.Scale) {
+		var ret ApiClusterScaleViewAtlas
+		return ret
+	}
+	return *o.Scale
+}
+
+// GetScaleOk returns a tuple with the Scale field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiMeasurementsGeneralViewAtlas) GetScaleOk() (*ApiClusterScaleViewAtlas, bool) {
+	if o == nil || IsNil(o.Scale) {
+		return nil, false
+	}
+
+	return o.Scale, true
+}
+
+// HasScale returns a boolean if a field has been set.
+func (o *ApiMeasurementsGeneralViewAtlas) HasScale() bool {
+	if o != nil && !IsNil(o.Scale) {
+		return true
+	}
+
+	return false
+}
+
+// SetScale gets a reference to the given ApiClusterScaleViewAtlas and assigns it to the Scale field.
+func (o *ApiMeasurementsGeneralViewAtlas) SetScale(v ApiClusterScaleViewAtlas) {
+	o.Scale = &v
+	o.NullFields = removeNullField(o.NullFields, "Scale")
+}
+
+// SetScaleNil sets Scale to an explicit JSON null when marshaled.
+func (o *ApiMeasurementsGeneralViewAtlas) SetScaleNil() {
+	o.Scale = nil
+	o.NullFields = addNullField(o.NullFields, "Scale")
 }
 
 // GetStart returns the Start field value if set, zero value otherwise
