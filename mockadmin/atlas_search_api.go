@@ -5,7 +5,7 @@ package mockadmin
 import (
 	context "context"
 
-	admin "go.mongodb.org/atlas-sdk/v20250312027/admin"
+	admin "github.com/mongodb/atlas-sdk-go/admin"
 
 	http "net/http"
 
@@ -238,24 +238,24 @@ func (_c *AtlasSearchAPI_CreateClusterSearchDeployment_Call) RunAndReturn(run fu
 }
 
 // CreateClusterSearchDeploymentExecute provides a mock function with given fields: r
-func (_m *AtlasSearchAPI) CreateClusterSearchDeploymentExecute(r admin.CreateClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentResponse, *http.Response, error) {
+func (_m *AtlasSearchAPI) CreateClusterSearchDeploymentExecute(r admin.CreateClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentPreviewResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for CreateClusterSearchDeploymentExecute")
 	}
 
-	var r0 *admin.ApiSearchDeploymentResponse
+	var r0 *admin.ApiSearchDeploymentPreviewResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.CreateClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentPreviewResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.CreateClusterSearchDeploymentApiRequest) *admin.ApiSearchDeploymentResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.CreateClusterSearchDeploymentApiRequest) *admin.ApiSearchDeploymentPreviewResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.ApiSearchDeploymentResponse)
+			r0 = ret.Get(0).(*admin.ApiSearchDeploymentPreviewResponse)
 		}
 	}
 
@@ -294,12 +294,12 @@ func (_c *AtlasSearchAPI_CreateClusterSearchDeploymentExecute_Call) Run(run func
 	return _c
 }
 
-func (_c *AtlasSearchAPI_CreateClusterSearchDeploymentExecute_Call) Return(_a0 *admin.ApiSearchDeploymentResponse, _a1 *http.Response, _a2 error) *AtlasSearchAPI_CreateClusterSearchDeploymentExecute_Call {
+func (_c *AtlasSearchAPI_CreateClusterSearchDeploymentExecute_Call) Return(_a0 *admin.ApiSearchDeploymentPreviewResponse, _a1 *http.Response, _a2 error) *AtlasSearchAPI_CreateClusterSearchDeploymentExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *AtlasSearchAPI_CreateClusterSearchDeploymentExecute_Call) RunAndReturn(run func(admin.CreateClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentResponse, *http.Response, error)) *AtlasSearchAPI_CreateClusterSearchDeploymentExecute_Call {
+func (_c *AtlasSearchAPI_CreateClusterSearchDeploymentExecute_Call) RunAndReturn(run func(admin.CreateClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentPreviewResponse, *http.Response, error)) *AtlasSearchAPI_CreateClusterSearchDeploymentExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -1343,24 +1343,24 @@ func (_c *AtlasSearchAPI_GetClusterSearchDeployment_Call) RunAndReturn(run func(
 }
 
 // GetClusterSearchDeploymentExecute provides a mock function with given fields: r
-func (_m *AtlasSearchAPI) GetClusterSearchDeploymentExecute(r admin.GetClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentResponse, *http.Response, error) {
+func (_m *AtlasSearchAPI) GetClusterSearchDeploymentExecute(r admin.GetClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentPreviewResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for GetClusterSearchDeploymentExecute")
 	}
 
-	var r0 *admin.ApiSearchDeploymentResponse
+	var r0 *admin.ApiSearchDeploymentPreviewResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.GetClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentPreviewResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.GetClusterSearchDeploymentApiRequest) *admin.ApiSearchDeploymentResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.GetClusterSearchDeploymentApiRequest) *admin.ApiSearchDeploymentPreviewResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.ApiSearchDeploymentResponse)
+			r0 = ret.Get(0).(*admin.ApiSearchDeploymentPreviewResponse)
 		}
 	}
 
@@ -1399,12 +1399,12 @@ func (_c *AtlasSearchAPI_GetClusterSearchDeploymentExecute_Call) Run(run func(r 
 	return _c
 }
 
-func (_c *AtlasSearchAPI_GetClusterSearchDeploymentExecute_Call) Return(_a0 *admin.ApiSearchDeploymentResponse, _a1 *http.Response, _a2 error) *AtlasSearchAPI_GetClusterSearchDeploymentExecute_Call {
+func (_c *AtlasSearchAPI_GetClusterSearchDeploymentExecute_Call) Return(_a0 *admin.ApiSearchDeploymentPreviewResponse, _a1 *http.Response, _a2 error) *AtlasSearchAPI_GetClusterSearchDeploymentExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *AtlasSearchAPI_GetClusterSearchDeploymentExecute_Call) RunAndReturn(run func(admin.GetClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentResponse, *http.Response, error)) *AtlasSearchAPI_GetClusterSearchDeploymentExecute_Call {
+func (_c *AtlasSearchAPI_GetClusterSearchDeploymentExecute_Call) RunAndReturn(run func(admin.GetClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentPreviewResponse, *http.Response, error)) *AtlasSearchAPI_GetClusterSearchDeploymentExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }
@@ -2488,24 +2488,24 @@ func (_c *AtlasSearchAPI_UpdateClusterSearchDeployment_Call) RunAndReturn(run fu
 }
 
 // UpdateClusterSearchDeploymentExecute provides a mock function with given fields: r
-func (_m *AtlasSearchAPI) UpdateClusterSearchDeploymentExecute(r admin.UpdateClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentResponse, *http.Response, error) {
+func (_m *AtlasSearchAPI) UpdateClusterSearchDeploymentExecute(r admin.UpdateClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentPreviewResponse, *http.Response, error) {
 	ret := _m.Called(r)
 
 	if len(ret) == 0 {
 		panic("no return value specified for UpdateClusterSearchDeploymentExecute")
 	}
 
-	var r0 *admin.ApiSearchDeploymentResponse
+	var r0 *admin.ApiSearchDeploymentPreviewResponse
 	var r1 *http.Response
 	var r2 error
-	if rf, ok := ret.Get(0).(func(admin.UpdateClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentResponse, *http.Response, error)); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentPreviewResponse, *http.Response, error)); ok {
 		return rf(r)
 	}
-	if rf, ok := ret.Get(0).(func(admin.UpdateClusterSearchDeploymentApiRequest) *admin.ApiSearchDeploymentResponse); ok {
+	if rf, ok := ret.Get(0).(func(admin.UpdateClusterSearchDeploymentApiRequest) *admin.ApiSearchDeploymentPreviewResponse); ok {
 		r0 = rf(r)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(*admin.ApiSearchDeploymentResponse)
+			r0 = ret.Get(0).(*admin.ApiSearchDeploymentPreviewResponse)
 		}
 	}
 
@@ -2544,12 +2544,12 @@ func (_c *AtlasSearchAPI_UpdateClusterSearchDeploymentExecute_Call) Run(run func
 	return _c
 }
 
-func (_c *AtlasSearchAPI_UpdateClusterSearchDeploymentExecute_Call) Return(_a0 *admin.ApiSearchDeploymentResponse, _a1 *http.Response, _a2 error) *AtlasSearchAPI_UpdateClusterSearchDeploymentExecute_Call {
+func (_c *AtlasSearchAPI_UpdateClusterSearchDeploymentExecute_Call) Return(_a0 *admin.ApiSearchDeploymentPreviewResponse, _a1 *http.Response, _a2 error) *AtlasSearchAPI_UpdateClusterSearchDeploymentExecute_Call {
 	_c.Call.Return(_a0, _a1, _a2)
 	return _c
 }
 
-func (_c *AtlasSearchAPI_UpdateClusterSearchDeploymentExecute_Call) RunAndReturn(run func(admin.UpdateClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentResponse, *http.Response, error)) *AtlasSearchAPI_UpdateClusterSearchDeploymentExecute_Call {
+func (_c *AtlasSearchAPI_UpdateClusterSearchDeploymentExecute_Call) RunAndReturn(run func(admin.UpdateClusterSearchDeploymentApiRequest) (*admin.ApiSearchDeploymentPreviewResponse, *http.Response, error)) *AtlasSearchAPI_UpdateClusterSearchDeploymentExecute_Call {
 	_c.Call.Return(run)
 	return _c
 }

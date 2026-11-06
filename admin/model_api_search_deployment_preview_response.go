@@ -2,8 +2,8 @@
 
 package admin
 
-// ApiSearchDeploymentResponse struct for ApiSearchDeploymentResponse
-type ApiSearchDeploymentResponse struct {
+// ApiSearchDeploymentPreviewResponse struct for ApiSearchDeploymentPreviewResponse
+type ApiSearchDeploymentPreviewResponse struct {
 	// Autoscaling settings configured for this Search deployment.
 	// Read only field.
 	AutoScaling *ApiSearchAutoScaling `json:"autoScaling,omitempty"`
@@ -35,30 +35,30 @@ type ApiSearchDeploymentResponse struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiSearchDeploymentResponse) MarshalJSON() ([]byte, error) {
-	type noMethod ApiSearchDeploymentResponse
+func (o *ApiSearchDeploymentPreviewResponse) MarshalJSON() ([]byte, error) {
+	type noMethod ApiSearchDeploymentPreviewResponse
 	return marshalWithNullFields(noMethod(*o), o.NullFields)
 }
 
-// NewApiSearchDeploymentResponse instantiates a new ApiSearchDeploymentResponse object
+// NewApiSearchDeploymentPreviewResponse instantiates a new ApiSearchDeploymentPreviewResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApiSearchDeploymentResponse() *ApiSearchDeploymentResponse {
-	this := ApiSearchDeploymentResponse{}
+func NewApiSearchDeploymentPreviewResponse() *ApiSearchDeploymentPreviewResponse {
+	this := ApiSearchDeploymentPreviewResponse{}
 	return &this
 }
 
-// NewApiSearchDeploymentResponseWithDefaults instantiates a new ApiSearchDeploymentResponse object
+// NewApiSearchDeploymentPreviewResponseWithDefaults instantiates a new ApiSearchDeploymentPreviewResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewApiSearchDeploymentResponseWithDefaults() *ApiSearchDeploymentResponse {
-	this := ApiSearchDeploymentResponse{}
+func NewApiSearchDeploymentPreviewResponseWithDefaults() *ApiSearchDeploymentPreviewResponse {
+	this := ApiSearchDeploymentPreviewResponse{}
 	return &this
 }
 
 // GetAutoScaling returns the AutoScaling field value if set, zero value otherwise
-func (o *ApiSearchDeploymentResponse) GetAutoScaling() ApiSearchAutoScaling {
+func (o *ApiSearchDeploymentPreviewResponse) GetAutoScaling() ApiSearchAutoScaling {
 	if o == nil || IsNil(o.AutoScaling) {
 		var ret ApiSearchAutoScaling
 		return ret
@@ -68,7 +68,7 @@ func (o *ApiSearchDeploymentResponse) GetAutoScaling() ApiSearchAutoScaling {
 
 // GetAutoScalingOk returns a tuple with the AutoScaling field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiSearchDeploymentResponse) GetAutoScalingOk() (*ApiSearchAutoScaling, bool) {
+func (o *ApiSearchDeploymentPreviewResponse) GetAutoScalingOk() (*ApiSearchAutoScaling, bool) {
 	if o == nil || IsNil(o.AutoScaling) {
 		return nil, false
 	}
@@ -77,7 +77,7 @@ func (o *ApiSearchDeploymentResponse) GetAutoScalingOk() (*ApiSearchAutoScaling,
 }
 
 // HasAutoScaling returns a boolean if a field has been set.
-func (o *ApiSearchDeploymentResponse) HasAutoScaling() bool {
+func (o *ApiSearchDeploymentPreviewResponse) HasAutoScaling() bool {
 	if o != nil && !IsNil(o.AutoScaling) {
 		return true
 	}
@@ -86,19 +86,19 @@ func (o *ApiSearchDeploymentResponse) HasAutoScaling() bool {
 }
 
 // SetAutoScaling gets a reference to the given ApiSearchAutoScaling and assigns it to the AutoScaling field.
-func (o *ApiSearchDeploymentResponse) SetAutoScaling(v ApiSearchAutoScaling) {
+func (o *ApiSearchDeploymentPreviewResponse) SetAutoScaling(v ApiSearchAutoScaling) {
 	o.AutoScaling = &v
 	o.NullFields = removeNullField(o.NullFields, "AutoScaling")
 }
 
 // SetAutoScalingNil sets AutoScaling to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentResponse) SetAutoScalingNil() {
+func (o *ApiSearchDeploymentPreviewResponse) SetAutoScalingNil() {
 	o.AutoScaling = nil
 	o.NullFields = addNullField(o.NullFields, "AutoScaling")
 }
 
 // GetBaselineSpecs returns the BaselineSpecs field value if set, zero value otherwise
-func (o *ApiSearchDeploymentResponse) GetBaselineSpecs() []ApiSearchDeploymentEffectiveSpec {
+func (o *ApiSearchDeploymentPreviewResponse) GetBaselineSpecs() []ApiSearchDeploymentEffectiveSpec {
 	if o == nil || IsNil(o.BaselineSpecs) {
 		var ret []ApiSearchDeploymentEffectiveSpec
 		return ret
@@ -108,7 +108,7 @@ func (o *ApiSearchDeploymentResponse) GetBaselineSpecs() []ApiSearchDeploymentEf
 
 // GetBaselineSpecsOk returns a tuple with the BaselineSpecs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiSearchDeploymentResponse) GetBaselineSpecsOk() (*[]ApiSearchDeploymentEffectiveSpec, bool) {
+func (o *ApiSearchDeploymentPreviewResponse) GetBaselineSpecsOk() (*[]ApiSearchDeploymentEffectiveSpec, bool) {
 	if o == nil || IsNil(o.BaselineSpecs) {
 		return nil, false
 	}
@@ -117,7 +117,7 @@ func (o *ApiSearchDeploymentResponse) GetBaselineSpecsOk() (*[]ApiSearchDeployme
 }
 
 // HasBaselineSpecs returns a boolean if a field has been set.
-func (o *ApiSearchDeploymentResponse) HasBaselineSpecs() bool {
+func (o *ApiSearchDeploymentPreviewResponse) HasBaselineSpecs() bool {
 	if o != nil && !IsNil(o.BaselineSpecs) {
 		return true
 	}
@@ -126,19 +126,19 @@ func (o *ApiSearchDeploymentResponse) HasBaselineSpecs() bool {
 }
 
 // SetBaselineSpecs gets a reference to the given []ApiSearchDeploymentEffectiveSpec and assigns it to the BaselineSpecs field.
-func (o *ApiSearchDeploymentResponse) SetBaselineSpecs(v []ApiSearchDeploymentEffectiveSpec) {
+func (o *ApiSearchDeploymentPreviewResponse) SetBaselineSpecs(v []ApiSearchDeploymentEffectiveSpec) {
 	o.BaselineSpecs = &v
 	o.NullFields = removeNullField(o.NullFields, "BaselineSpecs")
 }
 
 // SetBaselineSpecsNil sets BaselineSpecs to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentResponse) SetBaselineSpecsNil() {
+func (o *ApiSearchDeploymentPreviewResponse) SetBaselineSpecsNil() {
 	o.BaselineSpecs = nil
 	o.NullFields = addNullField(o.NullFields, "BaselineSpecs")
 }
 
 // GetEffectiveSpecs returns the EffectiveSpecs field value if set, zero value otherwise
-func (o *ApiSearchDeploymentResponse) GetEffectiveSpecs() []ApiSearchDeploymentEffectiveSpec {
+func (o *ApiSearchDeploymentPreviewResponse) GetEffectiveSpecs() []ApiSearchDeploymentEffectiveSpec {
 	if o == nil || IsNil(o.EffectiveSpecs) {
 		var ret []ApiSearchDeploymentEffectiveSpec
 		return ret
@@ -148,7 +148,7 @@ func (o *ApiSearchDeploymentResponse) GetEffectiveSpecs() []ApiSearchDeploymentE
 
 // GetEffectiveSpecsOk returns a tuple with the EffectiveSpecs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiSearchDeploymentResponse) GetEffectiveSpecsOk() (*[]ApiSearchDeploymentEffectiveSpec, bool) {
+func (o *ApiSearchDeploymentPreviewResponse) GetEffectiveSpecsOk() (*[]ApiSearchDeploymentEffectiveSpec, bool) {
 	if o == nil || IsNil(o.EffectiveSpecs) {
 		return nil, false
 	}
@@ -157,7 +157,7 @@ func (o *ApiSearchDeploymentResponse) GetEffectiveSpecsOk() (*[]ApiSearchDeploym
 }
 
 // HasEffectiveSpecs returns a boolean if a field has been set.
-func (o *ApiSearchDeploymentResponse) HasEffectiveSpecs() bool {
+func (o *ApiSearchDeploymentPreviewResponse) HasEffectiveSpecs() bool {
 	if o != nil && !IsNil(o.EffectiveSpecs) {
 		return true
 	}
@@ -166,19 +166,19 @@ func (o *ApiSearchDeploymentResponse) HasEffectiveSpecs() bool {
 }
 
 // SetEffectiveSpecs gets a reference to the given []ApiSearchDeploymentEffectiveSpec and assigns it to the EffectiveSpecs field.
-func (o *ApiSearchDeploymentResponse) SetEffectiveSpecs(v []ApiSearchDeploymentEffectiveSpec) {
+func (o *ApiSearchDeploymentPreviewResponse) SetEffectiveSpecs(v []ApiSearchDeploymentEffectiveSpec) {
 	o.EffectiveSpecs = &v
 	o.NullFields = removeNullField(o.NullFields, "EffectiveSpecs")
 }
 
 // SetEffectiveSpecsNil sets EffectiveSpecs to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentResponse) SetEffectiveSpecsNil() {
+func (o *ApiSearchDeploymentPreviewResponse) SetEffectiveSpecsNil() {
 	o.EffectiveSpecs = nil
 	o.NullFields = addNullField(o.NullFields, "EffectiveSpecs")
 }
 
 // GetEncryptionAtRestProvider returns the EncryptionAtRestProvider field value if set, zero value otherwise
-func (o *ApiSearchDeploymentResponse) GetEncryptionAtRestProvider() string {
+func (o *ApiSearchDeploymentPreviewResponse) GetEncryptionAtRestProvider() string {
 	if o == nil || IsNil(o.EncryptionAtRestProvider) {
 		var ret string
 		return ret
@@ -188,7 +188,7 @@ func (o *ApiSearchDeploymentResponse) GetEncryptionAtRestProvider() string {
 
 // GetEncryptionAtRestProviderOk returns a tuple with the EncryptionAtRestProvider field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiSearchDeploymentResponse) GetEncryptionAtRestProviderOk() (*string, bool) {
+func (o *ApiSearchDeploymentPreviewResponse) GetEncryptionAtRestProviderOk() (*string, bool) {
 	if o == nil || IsNil(o.EncryptionAtRestProvider) {
 		return nil, false
 	}
@@ -197,7 +197,7 @@ func (o *ApiSearchDeploymentResponse) GetEncryptionAtRestProviderOk() (*string, 
 }
 
 // HasEncryptionAtRestProvider returns a boolean if a field has been set.
-func (o *ApiSearchDeploymentResponse) HasEncryptionAtRestProvider() bool {
+func (o *ApiSearchDeploymentPreviewResponse) HasEncryptionAtRestProvider() bool {
 	if o != nil && !IsNil(o.EncryptionAtRestProvider) {
 		return true
 	}
@@ -206,19 +206,19 @@ func (o *ApiSearchDeploymentResponse) HasEncryptionAtRestProvider() bool {
 }
 
 // SetEncryptionAtRestProvider gets a reference to the given string and assigns it to the EncryptionAtRestProvider field.
-func (o *ApiSearchDeploymentResponse) SetEncryptionAtRestProvider(v string) {
+func (o *ApiSearchDeploymentPreviewResponse) SetEncryptionAtRestProvider(v string) {
 	o.EncryptionAtRestProvider = &v
 	o.NullFields = removeNullField(o.NullFields, "EncryptionAtRestProvider")
 }
 
 // SetEncryptionAtRestProviderNil sets EncryptionAtRestProvider to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentResponse) SetEncryptionAtRestProviderNil() {
+func (o *ApiSearchDeploymentPreviewResponse) SetEncryptionAtRestProviderNil() {
 	o.EncryptionAtRestProvider = nil
 	o.NullFields = addNullField(o.NullFields, "EncryptionAtRestProvider")
 }
 
 // GetGroupId returns the GroupId field value if set, zero value otherwise
-func (o *ApiSearchDeploymentResponse) GetGroupId() string {
+func (o *ApiSearchDeploymentPreviewResponse) GetGroupId() string {
 	if o == nil || IsNil(o.GroupId) {
 		var ret string
 		return ret
@@ -228,7 +228,7 @@ func (o *ApiSearchDeploymentResponse) GetGroupId() string {
 
 // GetGroupIdOk returns a tuple with the GroupId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiSearchDeploymentResponse) GetGroupIdOk() (*string, bool) {
+func (o *ApiSearchDeploymentPreviewResponse) GetGroupIdOk() (*string, bool) {
 	if o == nil || IsNil(o.GroupId) {
 		return nil, false
 	}
@@ -237,7 +237,7 @@ func (o *ApiSearchDeploymentResponse) GetGroupIdOk() (*string, bool) {
 }
 
 // HasGroupId returns a boolean if a field has been set.
-func (o *ApiSearchDeploymentResponse) HasGroupId() bool {
+func (o *ApiSearchDeploymentPreviewResponse) HasGroupId() bool {
 	if o != nil && !IsNil(o.GroupId) {
 		return true
 	}
@@ -246,19 +246,19 @@ func (o *ApiSearchDeploymentResponse) HasGroupId() bool {
 }
 
 // SetGroupId gets a reference to the given string and assigns it to the GroupId field.
-func (o *ApiSearchDeploymentResponse) SetGroupId(v string) {
+func (o *ApiSearchDeploymentPreviewResponse) SetGroupId(v string) {
 	o.GroupId = &v
 	o.NullFields = removeNullField(o.NullFields, "GroupId")
 }
 
 // SetGroupIdNil sets GroupId to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentResponse) SetGroupIdNil() {
+func (o *ApiSearchDeploymentPreviewResponse) SetGroupIdNil() {
 	o.GroupId = nil
 	o.NullFields = addNullField(o.NullFields, "GroupId")
 }
 
 // GetId returns the Id field value if set, zero value otherwise
-func (o *ApiSearchDeploymentResponse) GetId() string {
+func (o *ApiSearchDeploymentPreviewResponse) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -268,7 +268,7 @@ func (o *ApiSearchDeploymentResponse) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiSearchDeploymentResponse) GetIdOk() (*string, bool) {
+func (o *ApiSearchDeploymentPreviewResponse) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -277,7 +277,7 @@ func (o *ApiSearchDeploymentResponse) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *ApiSearchDeploymentResponse) HasId() bool {
+func (o *ApiSearchDeploymentPreviewResponse) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -286,20 +286,20 @@ func (o *ApiSearchDeploymentResponse) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *ApiSearchDeploymentResponse) SetId(v string) {
+func (o *ApiSearchDeploymentPreviewResponse) SetId(v string) {
 	o.Id = &v
 	o.NullFields = removeNullField(o.NullFields, "Id")
 }
 
 // SetIdNil sets Id to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentResponse) SetIdNil() {
+func (o *ApiSearchDeploymentPreviewResponse) SetIdNil() {
 	o.Id = nil
 	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
 // GetSpecs returns the Specs field value if set, zero value otherwise
 // Deprecated
-func (o *ApiSearchDeploymentResponse) GetSpecs() []ApiSearchDeploymentSpec {
+func (o *ApiSearchDeploymentPreviewResponse) GetSpecs() []ApiSearchDeploymentSpec {
 	if o == nil || IsNil(o.Specs) {
 		var ret []ApiSearchDeploymentSpec
 		return ret
@@ -310,7 +310,7 @@ func (o *ApiSearchDeploymentResponse) GetSpecs() []ApiSearchDeploymentSpec {
 // GetSpecsOk returns a tuple with the Specs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // Deprecated
-func (o *ApiSearchDeploymentResponse) GetSpecsOk() (*[]ApiSearchDeploymentSpec, bool) {
+func (o *ApiSearchDeploymentPreviewResponse) GetSpecsOk() (*[]ApiSearchDeploymentSpec, bool) {
 	if o == nil || IsNil(o.Specs) {
 		return nil, false
 	}
@@ -319,7 +319,7 @@ func (o *ApiSearchDeploymentResponse) GetSpecsOk() (*[]ApiSearchDeploymentSpec, 
 }
 
 // HasSpecs returns a boolean if a field has been set.
-func (o *ApiSearchDeploymentResponse) HasSpecs() bool {
+func (o *ApiSearchDeploymentPreviewResponse) HasSpecs() bool {
 	if o != nil && !IsNil(o.Specs) {
 		return true
 	}
@@ -329,19 +329,19 @@ func (o *ApiSearchDeploymentResponse) HasSpecs() bool {
 
 // SetSpecs gets a reference to the given []ApiSearchDeploymentSpec and assigns it to the Specs field.
 // Deprecated
-func (o *ApiSearchDeploymentResponse) SetSpecs(v []ApiSearchDeploymentSpec) {
+func (o *ApiSearchDeploymentPreviewResponse) SetSpecs(v []ApiSearchDeploymentSpec) {
 	o.Specs = &v
 	o.NullFields = removeNullField(o.NullFields, "Specs")
 }
 
 // SetSpecsNil sets Specs to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentResponse) SetSpecsNil() {
+func (o *ApiSearchDeploymentPreviewResponse) SetSpecsNil() {
 	o.Specs = nil
 	o.NullFields = addNullField(o.NullFields, "Specs")
 }
 
 // GetStateName returns the StateName field value if set, zero value otherwise
-func (o *ApiSearchDeploymentResponse) GetStateName() string {
+func (o *ApiSearchDeploymentPreviewResponse) GetStateName() string {
 	if o == nil || IsNil(o.StateName) {
 		var ret string
 		return ret
@@ -351,7 +351,7 @@ func (o *ApiSearchDeploymentResponse) GetStateName() string {
 
 // GetStateNameOk returns a tuple with the StateName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApiSearchDeploymentResponse) GetStateNameOk() (*string, bool) {
+func (o *ApiSearchDeploymentPreviewResponse) GetStateNameOk() (*string, bool) {
 	if o == nil || IsNil(o.StateName) {
 		return nil, false
 	}
@@ -360,7 +360,7 @@ func (o *ApiSearchDeploymentResponse) GetStateNameOk() (*string, bool) {
 }
 
 // HasStateName returns a boolean if a field has been set.
-func (o *ApiSearchDeploymentResponse) HasStateName() bool {
+func (o *ApiSearchDeploymentPreviewResponse) HasStateName() bool {
 	if o != nil && !IsNil(o.StateName) {
 		return true
 	}
@@ -369,13 +369,13 @@ func (o *ApiSearchDeploymentResponse) HasStateName() bool {
 }
 
 // SetStateName gets a reference to the given string and assigns it to the StateName field.
-func (o *ApiSearchDeploymentResponse) SetStateName(v string) {
+func (o *ApiSearchDeploymentPreviewResponse) SetStateName(v string) {
 	o.StateName = &v
 	o.NullFields = removeNullField(o.NullFields, "StateName")
 }
 
 // SetStateNameNil sets StateName to an explicit JSON null when marshaled.
-func (o *ApiSearchDeploymentResponse) SetStateNameNil() {
+func (o *ApiSearchDeploymentPreviewResponse) SetStateNameNil() {
 	o.StateName = nil
 	o.NullFields = addNullField(o.NullFields, "StateName")
 }

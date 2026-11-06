@@ -14,7 +14,7 @@ type SearchIndexResponse struct {
 	LatestDefinitionVersion *SearchIndexDefinitionVersion            `json:"latestDefinitionVersion,omitempty"`
 	// Label that identifies this index. Within each namespace, the names of all indexes must be unique.
 	Name *string `json:"name,omitempty"`
-	// Flag that indicates whether the index is queryable on all hosts.
+	// Flag that indicates whether the index is queryable on the nodes currently receiving query traffic.
 	Queryable *bool `json:"queryable,omitempty"`
 	// Condition of the search index when you made this request.  - `DELETING`: The index is being deleted. - `FAILED` The index build failed. Indexes can enter the FAILED state due to an invalid index definition. - `STALE`: The index is queryable but has stopped replicating data from the indexed collection. Searches on the index may return out-of-date data. - `PENDING`: Atlas has not yet started building the index. - `BUILDING`: Atlas is building or re-building the index after an edit. - `READY`: The index is ready and can support queries.
 	Status *string `json:"status,omitempty"`

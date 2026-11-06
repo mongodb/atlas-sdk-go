@@ -7,9 +7,13 @@ type DropIndexSuggestionsResponse struct {
 	// List that contains the documents with information about the hidden indexes that the Performance Advisor suggests to remove.
 	// Read only field.
 	HiddenIndexes *[]DropIndexSuggestionsIndex `json:"hiddenIndexes,omitempty"`
+	// Explanation of Performance Advisor availability limitations on the current tier.
+	// Read only field.
+	Message *string `json:"message,omitempty"`
 	// List that contains the documents with information about the redundant indexes that the Performance Advisor suggests to remove.
 	// Read only field.
 	RedundantIndexes *[]DropIndexSuggestionsIndex `json:"redundantIndexes,omitempty"`
+	Scale            *ApiClusterScale             `json:"scale,omitempty"`
 	// List that contains the documents with information about the unused indexes that the Performance Advisor suggests to remove.
 	// Read only field.
 	UnusedIndexes *[]DropIndexSuggestionsIndex `json:"unusedIndexes,omitempty"`
@@ -81,6 +85,46 @@ func (o *DropIndexSuggestionsResponse) SetHiddenIndexesNil() {
 	o.NullFields = addNullField(o.NullFields, "HiddenIndexes")
 }
 
+// GetMessage returns the Message field value if set, zero value otherwise
+func (o *DropIndexSuggestionsResponse) GetMessage() string {
+	if o == nil || IsNil(o.Message) {
+		var ret string
+		return ret
+	}
+	return *o.Message
+}
+
+// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DropIndexSuggestionsResponse) GetMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.Message) {
+		return nil, false
+	}
+
+	return o.Message, true
+}
+
+// HasMessage returns a boolean if a field has been set.
+func (o *DropIndexSuggestionsResponse) HasMessage() bool {
+	if o != nil && !IsNil(o.Message) {
+		return true
+	}
+
+	return false
+}
+
+// SetMessage gets a reference to the given string and assigns it to the Message field.
+func (o *DropIndexSuggestionsResponse) SetMessage(v string) {
+	o.Message = &v
+	o.NullFields = removeNullField(o.NullFields, "Message")
+}
+
+// SetMessageNil sets Message to an explicit JSON null when marshaled.
+func (o *DropIndexSuggestionsResponse) SetMessageNil() {
+	o.Message = nil
+	o.NullFields = addNullField(o.NullFields, "Message")
+}
+
 // GetRedundantIndexes returns the RedundantIndexes field value if set, zero value otherwise
 func (o *DropIndexSuggestionsResponse) GetRedundantIndexes() []DropIndexSuggestionsIndex {
 	if o == nil || IsNil(o.RedundantIndexes) {
@@ -119,6 +163,46 @@ func (o *DropIndexSuggestionsResponse) SetRedundantIndexes(v []DropIndexSuggesti
 func (o *DropIndexSuggestionsResponse) SetRedundantIndexesNil() {
 	o.RedundantIndexes = nil
 	o.NullFields = addNullField(o.NullFields, "RedundantIndexes")
+}
+
+// GetScale returns the Scale field value if set, zero value otherwise
+func (o *DropIndexSuggestionsResponse) GetScale() ApiClusterScale {
+	if o == nil || IsNil(o.Scale) {
+		var ret ApiClusterScale
+		return ret
+	}
+	return *o.Scale
+}
+
+// GetScaleOk returns a tuple with the Scale field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DropIndexSuggestionsResponse) GetScaleOk() (*ApiClusterScale, bool) {
+	if o == nil || IsNil(o.Scale) {
+		return nil, false
+	}
+
+	return o.Scale, true
+}
+
+// HasScale returns a boolean if a field has been set.
+func (o *DropIndexSuggestionsResponse) HasScale() bool {
+	if o != nil && !IsNil(o.Scale) {
+		return true
+	}
+
+	return false
+}
+
+// SetScale gets a reference to the given ApiClusterScale and assigns it to the Scale field.
+func (o *DropIndexSuggestionsResponse) SetScale(v ApiClusterScale) {
+	o.Scale = &v
+	o.NullFields = removeNullField(o.NullFields, "Scale")
+}
+
+// SetScaleNil sets Scale to an explicit JSON null when marshaled.
+func (o *DropIndexSuggestionsResponse) SetScaleNil() {
+	o.Scale = nil
+	o.NullFields = addNullField(o.NullFields, "Scale")
 }
 
 // GetUnusedIndexes returns the UnusedIndexes field value if set, zero value otherwise
