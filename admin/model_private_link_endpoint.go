@@ -7,6 +7,9 @@ type PrivateLinkEndpoint struct {
 	// Cloud service provider that serves the requested endpoint.
 	// Read only field.
 	CloudProvider string `json:"cloudProvider"`
+	// Identifiers of private endpoint connection strings that reference this private endpoint.
+	// Read only field.
+	ConnectionStringIds *[]string `json:"connectionStringIds,omitempty"`
 	// Flag that indicates whether MongoDB Cloud received a request to remove the specified private endpoint from the private endpoint service.
 	// Read only field.
 	DeleteRequested *bool `json:"deleteRequested,omitempty"`
@@ -95,6 +98,46 @@ func (o *PrivateLinkEndpoint) GetCloudProviderOk() (*string, bool) {
 // SetCloudProvider sets field value
 func (o *PrivateLinkEndpoint) SetCloudProvider(v string) {
 	o.CloudProvider = v
+}
+
+// GetConnectionStringIds returns the ConnectionStringIds field value if set, zero value otherwise
+func (o *PrivateLinkEndpoint) GetConnectionStringIds() []string {
+	if o == nil || IsNil(o.ConnectionStringIds) {
+		var ret []string
+		return ret
+	}
+	return *o.ConnectionStringIds
+}
+
+// GetConnectionStringIdsOk returns a tuple with the ConnectionStringIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PrivateLinkEndpoint) GetConnectionStringIdsOk() (*[]string, bool) {
+	if o == nil || IsNil(o.ConnectionStringIds) {
+		return nil, false
+	}
+
+	return o.ConnectionStringIds, true
+}
+
+// HasConnectionStringIds returns a boolean if a field has been set.
+func (o *PrivateLinkEndpoint) HasConnectionStringIds() bool {
+	if o != nil && !IsNil(o.ConnectionStringIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetConnectionStringIds gets a reference to the given []string and assigns it to the ConnectionStringIds field.
+func (o *PrivateLinkEndpoint) SetConnectionStringIds(v []string) {
+	o.ConnectionStringIds = &v
+	o.NullFields = removeNullField(o.NullFields, "ConnectionStringIds")
+}
+
+// SetConnectionStringIdsNil sets ConnectionStringIds to an explicit JSON null when marshaled.
+func (o *PrivateLinkEndpoint) SetConnectionStringIdsNil() {
+	o.ConnectionStringIds = nil
+	o.NullFields = addNullField(o.NullFields, "ConnectionStringIds")
 }
 
 // GetDeleteRequested returns the DeleteRequested field value if set, zero value otherwise

@@ -31,7 +31,7 @@ import (
 
 	"golang.org/x/oauth2"
 
-	"go.mongodb.org/atlas-sdk/v20250312027/internal/core"
+	"github.com/mongodb/atlas-sdk-go/internal/core"
 )
 
 const wellKnownPath = ".well-known/oauth-authorization-server"
