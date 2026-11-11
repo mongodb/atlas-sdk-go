@@ -51,6 +51,8 @@ type StreamsConnection struct {
 	CatalogProvider *string                            `json:"catalogProvider,omitempty"`
 	Databricks      *StreamsDatabricksConnectionConfig `json:"databricks,omitempty"`
 	Snowflake       *StreamsSnowflakeConnectionConfig  `json:"snowflake,omitempty"`
+	// Base HTTPS URL of the catalog. Must be on the provider's domain: `*.cloud.databricks.com` or `*.azuredatabricks.net` for Databricks Unity, and `*.snowflakecomputing.com` for Snowflake Horizon.
+	CatalogUrl *string `json:"catalogUrl,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`
@@ -1157,4 +1159,44 @@ func (o *StreamsConnection) SetSnowflake(v StreamsSnowflakeConnectionConfig) {
 func (o *StreamsConnection) SetSnowflakeNil() {
 	o.Snowflake = nil
 	o.NullFields = addNullField(o.NullFields, "Snowflake")
+}
+
+// GetCatalogUrl returns the CatalogUrl field value if set, zero value otherwise
+func (o *StreamsConnection) GetCatalogUrl() string {
+	if o == nil || IsNil(o.CatalogUrl) {
+		var ret string
+		return ret
+	}
+	return *o.CatalogUrl
+}
+
+// GetCatalogUrlOk returns a tuple with the CatalogUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StreamsConnection) GetCatalogUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.CatalogUrl) {
+		return nil, false
+	}
+
+	return o.CatalogUrl, true
+}
+
+// HasCatalogUrl returns a boolean if a field has been set.
+func (o *StreamsConnection) HasCatalogUrl() bool {
+	if o != nil && !IsNil(o.CatalogUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetCatalogUrl gets a reference to the given string and assigns it to the CatalogUrl field.
+func (o *StreamsConnection) SetCatalogUrl(v string) {
+	o.CatalogUrl = &v
+	o.NullFields = removeNullField(o.NullFields, "CatalogUrl")
+}
+
+// SetCatalogUrlNil sets CatalogUrl to an explicit JSON null when marshaled.
+func (o *StreamsConnection) SetCatalogUrlNil() {
+	o.CatalogUrl = nil
+	o.NullFields = addNullField(o.NullFields, "CatalogUrl")
 }

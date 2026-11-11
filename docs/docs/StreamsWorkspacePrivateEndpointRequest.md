@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerDnsName** | **string** | DNS name of the customer&#39;s VPC endpoint. | 
-**Id** | **string** | Unique identifier of the customer&#39;s VPC endpoint. | 
-**Region** | **string** | Human-readable label identifying the region of the customer&#39;s VPC endpoint. | 
+**CustomerDnsName** | **string** | DNS name of your VPC endpoint. | 
+**Id** | **string** | Unique identifier of your VPC endpoint. | 
+**Region** | **string** | Human-readable label identifying the region of your VPC endpoint. | 
 
 ## Methods
 

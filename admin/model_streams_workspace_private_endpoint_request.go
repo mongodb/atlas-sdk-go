@@ -2,13 +2,13 @@
 
 package admin
 
-// StreamsWorkspacePrivateEndpointRequest Customer VPC endpoint to register for inbound private connectivity to Atlas Stream Processing.
+// StreamsWorkspacePrivateEndpointRequest VPC endpoint to register for inbound private connectivity to Atlas Stream Processing.
 type StreamsWorkspacePrivateEndpointRequest struct {
-	// DNS name of the customer's VPC endpoint.
+	// DNS name of your VPC endpoint.
 	CustomerDnsName string `json:"customerDnsName"`
-	// Unique identifier of the customer's VPC endpoint.
+	// Unique identifier of your VPC endpoint.
 	Id string `json:"id"`
-	// Human-readable label identifying the region of the customer's VPC endpoint.
+	// Human-readable label identifying the region of your VPC endpoint.
 	Region string `json:"region"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.

@@ -2,19 +2,19 @@
 
 package admin
 
-// StreamsWorkspacePrivateEndpointResponse Customer VPC endpoint registered for inbound private connectivity to Atlas Stream Processing.
+// StreamsWorkspacePrivateEndpointResponse VPC endpoint registered for inbound private connectivity to Atlas Stream Processing.
 type StreamsWorkspacePrivateEndpointResponse struct {
-	// DNS name of the customer's VPC endpoint.
+	// DNS name of your VPC endpoint.
 	CustomerDnsName *string `json:"customerDnsName,omitempty"`
-	// Name of the Atlas endpoint service the customer's VPC endpoint connects to. Absent when no endpoint service is configured for the endpoint's region.
+	// Name of the Atlas endpoint service your VPC endpoint connects to. Absent when no endpoint service is configured for the endpoint's region.
 	// Read only field.
 	EndpointServiceName *string `json:"endpointServiceName,omitempty"`
-	// Unique identifier of the customer's VPC endpoint.
+	// Unique identifier of your VPC endpoint.
 	Id *string `json:"id,omitempty"`
-	// Cloud provider hosting the customer's VPC endpoint.
+	// Cloud provider hosting the VPC endpoint.
 	// Read only field.
 	Provider *string `json:"provider,omitempty"`
-	// Human-readable label identifying the region of the customer's VPC endpoint.
+	// Human-readable label identifying the region of your VPC endpoint.
 	Region *string `json:"region,omitempty"`
 	// Status of the endpoint registration.
 	// Read only field.

@@ -163,11 +163,11 @@ type StreamsAPI interface {
 	/*
 		CreateWorkspacePrivateEndpoint Create One Workspace Private Endpoint for Atlas Stream Processing
 
-		Registers one customer VPC endpoint for Atlas Stream Processing in the specified project.
+		Registers one VPC endpoint for Atlas Stream Processing in the specified project.
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param streamsWorkspacePrivateEndpointRequest Customer VPC endpoint to register for Atlas Stream Processing.
+		@param streamsWorkspacePrivateEndpointRequest VPC endpoint to register for Atlas Stream Processing.
 		@return CreateWorkspacePrivateEndpointApiRequest
 	*/
 	CreateWorkspacePrivateEndpoint(ctx context.Context, groupId string, streamsWorkspacePrivateEndpointRequest *StreamsWorkspacePrivateEndpointRequest) CreateWorkspacePrivateEndpointApiRequest
@@ -339,7 +339,7 @@ type StreamsAPI interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param endpointId Unique identifier of the customer's VPC endpoint.
+		@param endpointId Unique identifier of your VPC endpoint.
 		@return DeleteWorkspacePrivateEndpointApiRequest
 	*/
 	DeleteWorkspacePrivateEndpoint(ctx context.Context, groupId string, endpointId string) DeleteWorkspacePrivateEndpointApiRequest
@@ -582,7 +582,7 @@ type StreamsAPI interface {
 
 		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@param endpointId Unique identifier of the customer's VPC endpoint.
+		@param endpointId Unique identifier of your VPC endpoint.
 		@return GetWorkspacePrivateEndpointApiRequest
 	*/
 	GetWorkspacePrivateEndpoint(ctx context.Context, groupId string, endpointId string) GetWorkspacePrivateEndpointApiRequest
@@ -1847,7 +1847,7 @@ func (r CreateWorkspacePrivateEndpointApiRequest) Execute() (*http.Response, err
 /*
 CreateWorkspacePrivateEndpoint Create One Workspace Private Endpoint for Atlas Stream Processing
 
-Registers one customer VPC endpoint for Atlas Stream Processing in the specified project.
+Registers one VPC endpoint for Atlas Stream Processing in the specified project.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
@@ -2680,7 +2680,7 @@ Removes one private endpoint registered for Atlas Stream Processing in the speci
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param endpointId Unique identifier of the customer's VPC endpoint.
+	@param endpointId Unique identifier of your VPC endpoint.
 	@return DeleteWorkspacePrivateEndpointApiRequest
 */
 func (a *StreamsAPIService) DeleteWorkspacePrivateEndpoint(ctx context.Context, groupId string, endpointId string) DeleteWorkspacePrivateEndpointApiRequest {
@@ -4147,7 +4147,7 @@ Returns one private endpoint registered for Atlas Stream Processing in the speci
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-	@param endpointId Unique identifier of the customer's VPC endpoint.
+	@param endpointId Unique identifier of your VPC endpoint.
 	@return GetWorkspacePrivateEndpointApiRequest
 */
 func (a *StreamsAPIService) GetWorkspacePrivateEndpoint(ctx context.Context, groupId string, endpointId string) GetWorkspacePrivateEndpointApiRequest {

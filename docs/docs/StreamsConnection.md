@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **CatalogProvider** | Pointer to **string** | Catalog system the connection points at. Cannot be changed after creation. | [optional] 
 **Databricks** | Pointer to [**StreamsDatabricksConnectionConfig**](StreamsDatabricksConnectionConfig.md) |  | [optional] 
 **Snowflake** | Pointer to [**StreamsSnowflakeConnectionConfig**](StreamsSnowflakeConnectionConfig.md) |  | [optional] 
+**CatalogUrl** | Pointer to **string** | Base HTTPS URL of the catalog. Must be on the provider&#39;s domain: &#x60;*.cloud.databricks.com&#x60; or &#x60;*.azuredatabricks.net&#x60; for Databricks Unity, and &#x60;*.snowflakecomputing.com&#x60; for Snowflake Horizon. | [optional] 
 
 ## Methods
 
@@ -887,6 +888,37 @@ HasSnowflake returns a boolean if a field has been set.
 `func (o *StreamsConnection) SetSnowflakeNil()`
 
 SetSnowflakeNil sets Snowflake to an explicit JSON null when marshaled, overriding any value previously set with SetSnowflake. Calling SetSnowflake again clears the null override.
+
+### GetCatalogUrl
+
+`func (o *StreamsConnection) GetCatalogUrl() string`
+
+GetCatalogUrl returns the CatalogUrl field if non-nil, zero value otherwise.
+
+### GetCatalogUrlOk
+
+`func (o *StreamsConnection) GetCatalogUrlOk() (*string, bool)`
+
+GetCatalogUrlOk returns a tuple with the CatalogUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCatalogUrl
+
+`func (o *StreamsConnection) SetCatalogUrl(v string)`
+
+SetCatalogUrl sets CatalogUrl field to given value.
+
+### HasCatalogUrl
+
+`func (o *StreamsConnection) HasCatalogUrl() bool`
+
+HasCatalogUrl returns a boolean if a field has been set.
+
+### SetCatalogUrlNil
+
+`func (o *StreamsConnection) SetCatalogUrlNil()`
+
+SetCatalogUrlNil sets CatalogUrl to an explicit JSON null when marshaled, overriding any value previously set with SetCatalogUrl. Calling SetCatalogUrl again clears the null override.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
