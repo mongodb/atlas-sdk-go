@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CustomerDnsName** | Pointer to **string** | DNS name of the customer&#39;s VPC endpoint. | [optional] 
-**EndpointServiceName** | Pointer to **string** | Name of the Atlas endpoint service the customer&#39;s VPC endpoint connects to. Absent when no endpoint service is configured for the endpoint&#39;s region. | [optional] [readonly] 
-**Id** | Pointer to **string** | Unique identifier of the customer&#39;s VPC endpoint. | [optional] 
-**Provider** | Pointer to **string** | Cloud provider hosting the customer&#39;s VPC endpoint. | [optional] [readonly] 
-**Region** | Pointer to **string** | Human-readable label identifying the region of the customer&#39;s VPC endpoint. | [optional] 
+**CustomerDnsName** | Pointer to **string** | DNS name of your VPC endpoint. | [optional] 
+**EndpointServiceName** | Pointer to **string** | Name of the Atlas endpoint service your VPC endpoint connects to. Absent when no endpoint service is configured for the endpoint&#39;s region. | [optional] [readonly] 
+**Id** | Pointer to **string** | Unique identifier of your VPC endpoint. | [optional] 
+**Provider** | Pointer to **string** | Cloud provider hosting the VPC endpoint. | [optional] [readonly] 
+**Region** | Pointer to **string** | Human-readable label identifying the region of your VPC endpoint. | [optional] 
 **Status** | Pointer to **string** | Status of the endpoint registration. | [optional] [readonly] 
 
 ## Methods

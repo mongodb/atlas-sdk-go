@@ -16945,6 +16945,10 @@ components:
           $ref: "#/components/schemas/StreamsDatabricksConnectionConfig"
         snowflake:
           $ref: "#/components/schemas/StreamsSnowflakeConnectionConfig"
+        catalogUrl:
+          description: "Base HTTPS URL of the catalog. Must be on the provider's domain: `*.cloud.databricks.com` or `*.azuredatabricks.net` for Databricks Unity, and `*.snowflakecomputing.com` for Snowflake Horizon."
+          format: uri
+          type: string
       readOnly: true
       type: object
       x-xgen-discriminator:
@@ -17871,18 +17875,18 @@ components:
           $ref: "#/components/schemas/StreamConfig"
       type: object
     StreamsWorkspacePrivateEndpointRequest:
-      description: Customer VPC endpoint to register for inbound private connectivity to Atlas Stream Processing.
+      description: VPC endpoint to register for inbound private connectivity to Atlas Stream Processing.
       properties:
         customerDnsName:
-          description: DNS name of the customer's VPC endpoint.
+          description: DNS name of your VPC endpoint.
           example: vpce-0abc123def4567890-abc123.us-east-1.vpce.amazonaws.com
           type: string
         id:
-          description: Unique identifier of the customer's VPC endpoint.
+          description: Unique identifier of your VPC endpoint.
           example: vpce-0abc123def4567890
           type: string
         region:
-          description: Human-readable label identifying the region of the customer's VPC endpoint.
+          description: Human-readable label identifying the region of your VPC endpoint.
           example: US_EAST_1
           type: string
       required:
@@ -17891,28 +17895,28 @@ components:
         - region
       type: object
     StreamsWorkspacePrivateEndpointResponse:
-      description: Customer VPC endpoint registered for inbound private connectivity to Atlas Stream Processing.
+      description: VPC endpoint registered for inbound private connectivity to Atlas Stream Processing.
       properties:
         customerDnsName:
-          description: DNS name of the customer's VPC endpoint.
+          description: DNS name of your VPC endpoint.
           example: vpce-0abc123def4567890-abc123.us-east-1.vpce.amazonaws.com
           type: string
         endpointServiceName:
-          description: Name of the Atlas endpoint service the customer's VPC endpoint connects to. Absent when no endpoint service is configured for the endpoint's region.
+          description: Name of the Atlas endpoint service your VPC endpoint connects to. Absent when no endpoint service is configured for the endpoint's region.
           example: com.amazonaws.vpce.us-east-1.vpce-svc-0123456789abcdef0
           readOnly: true
           type: string
         id:
-          description: Unique identifier of the customer's VPC endpoint.
+          description: Unique identifier of your VPC endpoint.
           example: vpce-0abc123def4567890
           type: string
         provider:
-          description: Cloud provider hosting the customer's VPC endpoint.
+          description: Cloud provider hosting the VPC endpoint.
           example: AWS
           readOnly: true
           type: string
         region:
-          description: Human-readable label identifying the region of the customer's VPC endpoint.
+          description: Human-readable label identifying the region of your VPC endpoint.
           example: US_EAST_1
           type: string
         status:
@@ -21791,7 +21795,7 @@ info:
   termsOfService: https://www.mongodb.com/mongodb-management-service-terms-and-conditions
   title: MongoDB Atlas Administration API
   version: "2.0"
-  x-xgen-sha: b5e3b15fa7f674ade0f81a9cb4c42cccee3a1fb2
+  x-xgen-sha: 4ac90cbee72e06d01c4e6930dcf52b7fe368b215
 openapi: 3.0.1
 paths:
   /api/atlas/v2:
@@ -61605,7 +61609,7 @@ paths:
         - Project Stream Processing Owner
       x-xgen-docs-url: https://mongodb.com/docs/atlas/reference/api-resources-spec/v2/#tag/Streams/operation/listGroupStreamsWorkspacePrivateEndpoints
     post:
-      description: Registers one customer VPC endpoint for Atlas Stream Processing in the specified project.
+      description: Registers one VPC endpoint for Atlas Stream Processing in the specified project.
       operationId: createWorkspacePrivateEndpoint
       parameters:
         - $ref: "#/components/parameters/groupId"
@@ -61615,7 +61619,7 @@ paths:
             schema:
               $ref: "#/components/schemas/StreamsWorkspacePrivateEndpointRequest"
             x-xgen-version: 2025-03-12
-        description: Customer VPC endpoint to register for Atlas Stream Processing.
+        description: VPC endpoint to register for Atlas Stream Processing.
         required: true
       responses:
         "202":
@@ -61712,7 +61716,7 @@ paths:
       operationId: deleteWorkspacePrivateEndpoint
       parameters:
         - $ref: "#/components/parameters/groupId"
-        - description: Unique identifier of the customer's VPC endpoint.
+        - description: Unique identifier of your VPC endpoint.
           in: path
           name: endpointId
           required: true
@@ -61799,7 +61803,7 @@ paths:
       operationId: getWorkspacePrivateEndpoint
       parameters:
         - $ref: "#/components/parameters/groupId"
-        - description: Unique identifier of the customer's VPC endpoint.
+        - description: Unique identifier of your VPC endpoint.
           in: path
           name: endpointId
           required: true
