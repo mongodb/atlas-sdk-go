@@ -4,6 +4,7 @@ const {
   applyModelNameTransformations,
   transformAllOf,
   transformOneOf,
+  applyAnyOfTransformations,
   applyOperationIdOverrides,
   applyServersValidation,
 } = require("../src/transformations");
@@ -29,6 +30,21 @@ test("Transform oneOf model", () => {
   expect(
     api.components.schemas.ApiAtlasHardwareSpecView.properties,
   ).toMatchInlineSnapshot(cases.PropertiesOneOf);
+});
+
+test("Transform nested oneOf preserves inline allOf properties", () => {
+  transformOneOf(".components.schemas.StreamsDataCatalogConnection", api);
+  transformOneOf(".components.schemas.StreamsConnection", api);
+  expect(
+    api.components.schemas.StreamsConnection.properties,
+  ).toMatchInlineSnapshot(cases.NestedOneOfInlineAllOfProperties);
+});
+
+test("Transform nested anyOf preserves inline allOf properties", () => {
+  applyAnyOfTransformations(api);
+  expect(
+    api.components.schemas.AnyOfConnection.properties,
+  ).toMatchInlineSnapshot(cases.NestedAnyOfInlineAllOfProperties);
 });
 
 test("Transform oneOf model with discriminator emits x-xgen-discriminator extension", () => {

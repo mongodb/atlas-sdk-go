@@ -554,6 +554,60 @@
       },
       "ExampleResourceResponseView20230201": {
         "type": "object"
+      },
+      "StreamsConnection": {
+        "type": "object",
+        "oneOf": [
+          { "$ref": "#/components/schemas/StreamsDataCatalogConnection" }
+        ]
+      },
+      "StreamsDataCatalogConnection": {
+        "type": "object",
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "catalogUrl": { "type": "string", "format": "uri" }
+            }
+          }
+        ],
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/StreamsDatabricksUnityCatalogConnection"
+          }
+        ]
+      },
+      "StreamsDatabricksUnityCatalogConnection": {
+        "type": "object",
+        "properties": {
+          "catalogProvider": { "type": "string" },
+          "databricks": { "type": "object" }
+        }
+      },
+      "AnyOfConnection": {
+        "type": "object",
+        "anyOf": [{ "$ref": "#/components/schemas/AnyOfCatalogConnection" }]
+      },
+      "AnyOfCatalogConnection": {
+        "type": "object",
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "catalogUrl": { "type": "string", "format": "uri" }
+            }
+          }
+        ],
+        "anyOf": [
+          { "$ref": "#/components/schemas/AnyOfCatalogProviderConnection" }
+        ]
+      },
+      "AnyOfCatalogProviderConnection": {
+        "type": "object",
+        "properties": {
+          "catalogProvider": { "type": "string" },
+          "databricks": { "type": "object" }
+        }
       }
     }
   }
