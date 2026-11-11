@@ -87,23 +87,27 @@ function transformAnyOfProperties(parentObject, api) {
   );
 
   for (let childObject of childObjects) {
-    if (!childObject.properties) {
-      // When we missing props, we need to look at the allOf parent child inheritance
-      if (childObject.allOf) {
-        childObject.properties = {};
-        for (allOfItem of childObject.allOf) {
-          // We only add properties.
-          if (allOfItem.properties) {
-            childObject.properties = {
-              ...childObject.properties,
-              ...allOfItem.properties,
-            };
-          }
+    if (childObject.allOf) {
+      // Children may define properties both directly and in inline allOf entries.
+      childObject.properties = { ...childObject.properties };
+      for (const allOfItem of childObject.allOf) {
+        // We only add properties.
+        if (allOfItem.properties) {
+          childObject.properties = {
+            ...childObject.properties,
+            ...allOfItem.properties,
+          };
         }
-      } else {
-        // Otherwise this situation require human intervention
-        throw new Error(`${JSON.stringify(childObject, "", 2)}`);
       }
+    } else if (!childObject.properties) {
+      // No direct properties and no allOf, invalid schema.
+      console.error(
+        "OpenAPI object is missing properties or allOf field. This is usually an error in the OpenAPI spec.",
+      );
+      console.error(
+        "Please ensure that elements of anyOf schema are objects (classes) instead of single types (bool, string etc.).",
+      );
+      throw new Error(`${JSON.stringify(childObject, "", 2)}`);
     }
     const childProperties = JSON.parse(JSON.stringify(childObject.properties));
     console.debug(`${childObject.title}: moving child properties into parent`);

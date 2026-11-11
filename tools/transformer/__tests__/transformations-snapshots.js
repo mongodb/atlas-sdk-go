@@ -167,6 +167,20 @@ module.exports = {
   },
 }
 `,
+  NestedAnyOfInlineAllOfProperties: `
+{
+  "catalogProvider": {
+    "type": "string",
+  },
+  "catalogUrl": {
+    "format": "uri",
+    "type": "string",
+  },
+  "databricks": {
+    "type": "object",
+  },
+}
+`,
   DiscriminatorExtension: `
 {
   "mapping": {
