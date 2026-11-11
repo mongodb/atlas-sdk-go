@@ -31,6 +31,14 @@ test("Transform oneOf model", () => {
   ).toMatchInlineSnapshot(cases.PropertiesOneOf);
 });
 
+test("Transform nested oneOf preserves inline allOf properties", () => {
+  transformOneOf(".components.schemas.StreamsDataCatalogConnection", api);
+  transformOneOf(".components.schemas.StreamsConnection", api);
+  expect(
+    api.components.schemas.StreamsConnection.properties,
+  ).toMatchInlineSnapshot(cases.NestedOneOfInlineAllOfProperties);
+});
+
 test("Transform oneOf model with discriminator emits x-xgen-discriminator extension", () => {
   transformOneOf(".components.schemas.ApiAtlasRegionConfigView", api);
   const result = api.components.schemas.ApiAtlasRegionConfigView;
