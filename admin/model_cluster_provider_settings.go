@@ -8,7 +8,7 @@ type ClusterProviderSettings struct {
 	AutoScaling  *ClusterFreeAutoScaling `json:"autoScaling,omitempty"`
 	// Maximum Disk Input/Output Operations per Second (IOPS) that the database host can perform.
 	DiskIOPS *int `json:"diskIOPS,omitempty"`
-	// Flag that indicates whether the Amazon Elastic Block Store (EBS) encryption feature encrypts the host's root volume for both data at rest within the volume and for data moving between the volume and the cluster. Clusters always have this setting enabled.
+	// Deprecated: Flag that indicates whether the Amazon Elastic Block Store (EBS) encryption feature encrypts the host's root volume for both data at rest within the volume and for data moving between the volume and the cluster. Clusters always have this setting enabled.
 	// Deprecated
 	EncryptEBSVolume *bool `json:"encryptEBSVolume,omitempty"`
 	// Cluster tier, with a default storage and memory capacity, that applies to all the data-bearing hosts in your cluster. You must set `providerSettings.providerName` to `FLEX` and specify the cloud service provider in `providerSettings.backingProviderName`.

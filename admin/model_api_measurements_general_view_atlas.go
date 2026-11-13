@@ -42,6 +42,9 @@ type ApiMeasurementsGeneralViewAtlas struct {
 	// Date and time that specifies when to start retrieving measurements. If you set **start**, you must set **end**. You can't set this parameter and **period** in the same request. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	Start *time.Time `json:"start,omitempty"`
+	// Explanation of why the response contains no measurement data points, when applicable.
+	// Read only field.
+	WarningMessage *string `json:"warningMessage,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`
@@ -548,4 +551,44 @@ func (o *ApiMeasurementsGeneralViewAtlas) SetStart(v time.Time) {
 func (o *ApiMeasurementsGeneralViewAtlas) SetStartNil() {
 	o.Start = nil
 	o.NullFields = addNullField(o.NullFields, "Start")
+}
+
+// GetWarningMessage returns the WarningMessage field value if set, zero value otherwise
+func (o *ApiMeasurementsGeneralViewAtlas) GetWarningMessage() string {
+	if o == nil || IsNil(o.WarningMessage) {
+		var ret string
+		return ret
+	}
+	return *o.WarningMessage
+}
+
+// GetWarningMessageOk returns a tuple with the WarningMessage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApiMeasurementsGeneralViewAtlas) GetWarningMessageOk() (*string, bool) {
+	if o == nil || IsNil(o.WarningMessage) {
+		return nil, false
+	}
+
+	return o.WarningMessage, true
+}
+
+// HasWarningMessage returns a boolean if a field has been set.
+func (o *ApiMeasurementsGeneralViewAtlas) HasWarningMessage() bool {
+	if o != nil && !IsNil(o.WarningMessage) {
+		return true
+	}
+
+	return false
+}
+
+// SetWarningMessage gets a reference to the given string and assigns it to the WarningMessage field.
+func (o *ApiMeasurementsGeneralViewAtlas) SetWarningMessage(v string) {
+	o.WarningMessage = &v
+	o.NullFields = removeNullField(o.NullFields, "WarningMessage")
+}
+
+// SetWarningMessageNil sets WarningMessage to an explicit JSON null when marshaled.
+func (o *ApiMeasurementsGeneralViewAtlas) SetWarningMessageNil() {
+	o.WarningMessage = nil
+	o.NullFields = addNullField(o.NullFields, "WarningMessage")
 }
