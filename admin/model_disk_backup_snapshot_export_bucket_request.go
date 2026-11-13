@@ -19,7 +19,7 @@ type DiskBackupSnapshotExportBucketRequest struct {
 	RoleId *string `json:"roleId,omitempty"`
 	// URL of the Azure Storage Account to export to. For example: `https://examplestorageaccount.blob.core.windows.net/exportcontainer`. Only standard endpoints (with `blob.core.windows.net`) are supported.
 	ServiceUrl *string `json:"serviceUrl,omitempty"`
-	// UUID that identifies the Azure Active Directory Tenant ID. Deprecated: this field is ignored; the `tenantId` of the Cloud Provider Access role (from `roleId`) is used.
+	// Deprecated: The `tenantId` of the Cloud Provider Access role (from `roleId`) is used instead. UUID that identifies the Azure Active Directory Tenant ID.
 	// Deprecated
 	TenantId *string `json:"tenantId,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).

@@ -113,17 +113,19 @@ type MonitoringAndLogsAPI interface {
 	GetGroupProcessExecute(r GetGroupProcessApiRequest) (*ApiHostViewAtlas, *http.Response, error)
 
 	/*
-		GetIndexMeasurements Return Atlas Search Metrics for One Index in One Namespace
+			GetIndexMeasurements Return Atlas Search Metrics for One Index in One Namespace
 
-		Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process. You must have the Project Read Only or higher role to view the Atlas Search metric types.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
-		@param indexName Human-readable label that identifies the index.
-		@param databaseName Human-readable label that identifies the database.
-		@param collectionName Human-readable label that identifies the collection.
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return GetIndexMeasurementsApiRequest
+		 Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process. You must have the Project Read Only or higher role to view the Atlas Search metric types. Deprecated versions: v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
+			@param indexName Human-readable label that identifies the index.
+			@param databaseName Human-readable label that identifies the database.
+			@param collectionName Human-readable label that identifies the collection.
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@return GetIndexMeasurementsApiRequest
 	*/
 	GetIndexMeasurements(ctx context.Context, processId string, indexName string, databaseName string, collectionName string, groupId string) GetIndexMeasurementsApiRequest
 	/*
@@ -294,16 +296,18 @@ type MonitoringAndLogsAPI interface {
 	ListHostFtsMetricsExecute(r ListHostFtsMetricsApiRequest) (*CloudSearchMetrics, *http.Response, error)
 
 	/*
-		ListIndexMeasurements Return All Atlas Search Index Metrics for One Namespace
+			ListIndexMeasurements Return All Atlas Search Index Metrics for One Namespace
 
-		Returns the Atlas Search index metrics within the specified time range for one namespace in the specified process.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
-		@param databaseName Human-readable label that identifies the database.
-		@param collectionName Human-readable label that identifies the collection.
-		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
-		@return ListIndexMeasurementsApiRequest
+		 Returns the Atlas Search index metrics within the specified time range for one namespace in the specified process. Deprecated versions: v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
+			@param databaseName Human-readable label that identifies the database.
+			@param collectionName Human-readable label that identifies the collection.
+			@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+			@return ListIndexMeasurementsApiRequest
 	*/
 	ListIndexMeasurements(ctx context.Context, processId string, databaseName string, collectionName string, groupId string) ListIndexMeasurementsApiRequest
 	/*
@@ -1094,7 +1098,9 @@ func (r GetIndexMeasurementsApiRequest) Execute() (*MeasurementsIndexes, *http.R
 /*
 GetIndexMeasurements Return Atlas Search Metrics for One Index in One Namespace
 
-Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process. You must have the Project Read Only or higher role to view the Atlas Search metric types.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns the Atlas Search metrics data series within the provided time range for one namespace and index name on the specified process. You must have the Project Read Only or higher role to view the Atlas Search metric types. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
@@ -1205,7 +1211,7 @@ func (a *MonitoringAndLogsAPIService) GetIndexMeasurementsExecute(r GetIndexMeas
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -2344,7 +2350,9 @@ func (r ListIndexMeasurementsApiRequest) Execute() (*MeasurementsIndexes, *http.
 /*
 ListIndexMeasurements Return All Atlas Search Index Metrics for One Namespace
 
-Returns the Atlas Search index metrics within the specified time range for one namespace in the specified process.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns the Atlas Search index metrics within the specified time range for one namespace in the specified process. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param processId Combination of hostname and IANA port that serves the MongoDB process. The host must be the hostname, fully qualified domain name (FQDN), or Internet Protocol address (IPv4 or IPv6) of the host that runs the MongoDB process (mongod or mongos). The port must be the IANA port on which the MongoDB process listens for requests.
@@ -2446,7 +2454,7 @@ func (a *MonitoringAndLogsAPIService) ListIndexMeasurementsExecute(r ListIndexMe
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

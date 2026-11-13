@@ -7,7 +7,7 @@ type AzureConnection struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// Azure region where the storage account is located.
+	// Deprecated: Azure region where the storage account is located.
 	// Deprecated
 	Region *string `json:"region,omitempty"`
 	// Unique ID of the Azure Service Principal that has access to the storage account.
