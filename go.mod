@@ -6,7 +6,7 @@ require (
 	github.com/go-test/deep v1.1.2
 	github.com/mongodb-forks/digest v1.2.0
 	github.com/stretchr/testify v1.12.1
-	golang.org/x/oauth2 v0.37.0
+	golang.org/x/oauth2 v0.38.0
 )
 
 require (
