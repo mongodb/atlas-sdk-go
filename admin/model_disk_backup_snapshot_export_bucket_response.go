@@ -18,7 +18,7 @@ type DiskBackupSnapshotExportBucketResponse struct {
 	// AWS region for the export bucket. This is set by Atlas and is never user-supplied.
 	// Read only field.
 	Region *string `json:"region,omitempty"`
-	// Indicates whether to use private link. User supplied.
+	// Indicates whether to use private link.
 	RequirePrivateNetworking *bool `json:"requirePrivateNetworking,omitempty"`
 	// Unique 24-hexadecimal digit string that identifies the GCP Cloud Provider Access Role that MongoDB Cloud uses to access the Google Cloud Storage Bucket.
 	RoleId *string `json:"roleId,omitempty"`

@@ -56,7 +56,7 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	// Unique 24-hexadecimal digit string that identifies the cluster.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
-	// Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.  Cluster labels are deprecated and will be removed in a future release. We strongly recommend that you use Resource Tags instead.
+	// Deprecated: Cluster labels will be removed in a future release. We strongly recommend that you use Resource Tags instead.  Collection of key-value pairs between 1 to 255 characters in length that tag and categorize the cluster. The MongoDB Cloud console doesn't display your labels.
 	// Deprecated
 	Labels *[]ComponentLabel `json:"labels,omitempty"`
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
@@ -89,7 +89,7 @@ type LegacyAtlasTenantClusterUpgradeRequest struct {
 	ProviderSettings      *ClusterProviderSettings `json:"providerSettings,omitempty"`
 	// Set this field to configure the replica set scaling mode for your cluster.  By default, Atlas scales under `WORKLOAD_TYPE`. This mode allows Atlas to scale your analytics nodes in parallel to your operational nodes.  When configured as `SEQUENTIAL`, Atlas scales all nodes sequentially. This mode is intended for steady-state workloads and applications performing latency-sensitive secondary reads.  When configured as `NODE_TYPE`, Atlas scales your electable nodes in parallel with your read-only and analytics nodes. This mode is intended for large, dynamic workloads requiring frequent and timely cluster tier scaling. This is the fastest scaling strategy, but it might impact latency of workloads when performing extensive secondary reads.
 	ReplicaSetScalingStrategy *string `json:"replicaSetScalingStrategy,omitempty"`
-	// Number of members that belong to the replica set. Each member retains a copy of your databases, providing high availability and data redundancy. Use `replicationSpecs` instead.
+	// Deprecated: Use `replicationSpecs` instead. Number of members that belong to the replica set. Each member retains a copy of your databases, providing high availability and data redundancy.
 	// Deprecated
 	ReplicationFactor *int `json:"replicationFactor,omitempty"`
 	// Physical location where MongoDB Cloud provisions cluster nodes.

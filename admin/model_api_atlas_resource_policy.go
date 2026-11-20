@@ -10,29 +10,21 @@ import (
 type ApiAtlasResourcePolicy struct {
 	CreatedByUser *ApiAtlasUserMetadata `json:"createdByUser,omitempty"`
 	// Date and time in UTC when the atlas resource policy was created.
-	// Read only field.
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 	// Description of the atlas resource policy.
-	// Read only field.
 	Description *string `json:"description,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the atlas resource policy.
-	// Read only field.
 	Id                *string               `json:"id,omitempty"`
 	LastUpdatedByUser *ApiAtlasUserMetadata `json:"lastUpdatedByUser,omitempty"`
 	// Date and time in UTC when the atlas resource policy was last updated.
-	// Read only field.
 	LastUpdatedDate *time.Time `json:"lastUpdatedDate,omitempty"`
 	// Human-readable label that describes the atlas resource policy.
-	// Read only field.
 	Name *string `json:"name,omitempty"`
 	// Unique 24-hexadecimal character string that identifies the organization the atlas resource policy belongs to.
-	// Read only field.
 	OrgId *string `json:"orgId,omitempty"`
 	// List of policies that make up the atlas resource policy.
-	// Read only field.
 	Policies *[]ApiAtlasPolicy `json:"policies,omitempty"`
 	// A string that identifies the version of the atlas resource policy.
-	// Read only field.
 	Version *string `json:"version,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
