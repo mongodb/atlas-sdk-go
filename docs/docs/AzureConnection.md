@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**[]Link**](Link.md) | List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships. | [optional] [readonly] 
-**Region** | Pointer to **string** | Azure region where the storage account is located. | [optional] 
+**Region** | Pointer to **string** | Deprecated: Azure region where the storage account is located. | [optional] 
 **ServicePrincipalId** | Pointer to **string** | Unique ID of the Azure Service Principal that has access to the storage account. | [optional] 
 **StorageAccountName** | Pointer to **string** | Name of the Azure Storage Account to connect to. | [optional] 
 

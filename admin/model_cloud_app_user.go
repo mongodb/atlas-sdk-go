@@ -13,7 +13,7 @@ type CloudAppUser struct {
 	// Date and time when the current account is created. This value is in the ISO 8601 timestamp format in UTC.
 	// Read only field.
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	// Email address that belongs to the MongoDB Cloud user.
+	// Deprecated: Email address that belongs to the MongoDB Cloud user.
 	// Read only field.
 	// Deprecated
 	EmailAddress string `json:"emailAddress"`

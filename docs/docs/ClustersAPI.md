@@ -26,6 +26,7 @@ Method | HTTP request | Description
 [**UpdateProcessArgs**](ClustersAPI.md#UpdateProcessArgs) | **Patch** /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/processArgs | Update Advanced Configuration Options for One Cluster
 [**UpgradeClusterToServerless**](ClustersAPI.md#UpgradeClusterToServerless) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgradeToServerless | Upgrade One Shared-Tier Cluster to One Serverless Instance
 [**UpgradeTenantUpgrade**](ClustersAPI.md#UpgradeTenantUpgrade) | **Post** /api/atlas/v2/groups/{groupId}/clusters/tenantUpgrade | Upgrade One Shared-Tier Cluster
+[**ValidateGroupClusterConfigurations**](ClustersAPI.md#ValidateGroupClusterConfigurations) | **Post** /api/atlas/v2/groups/{groupId}/clusterConfigurations:validate | Validate One Cluster Configuration
 
 
 
@@ -1869,6 +1870,92 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/vnd.atlas.2023-01-01+json
 - **Accept**: application/vnd.atlas.2023-01-01+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ValidateGroupClusterConfigurations
+
+> ClusterConfigurationValidationResult ValidateGroupClusterConfigurations(ctx, groupId, clusterConfigurationValidation ClusterConfigurationValidation).UseEffectiveInstanceFields(useEffectiveInstanceFields).UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs).Execute()
+
+Validate One Cluster Configuration
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+
+    "go.mongodb.org/atlas-sdk/v20250312028/admin"
+)
+
+func main() {
+    apiKey := os.Getenv("MONGODB_ATLAS_PUBLIC_KEY")
+    apiSecret := os.Getenv("MONGODB_ATLAS_PRIVATE_KEY")
+
+    sdk, err := admin.NewClient(admin.UseDigestAuth(apiKey, apiSecret))
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error initializing SDK: %v\n", err)
+        return
+    }
+
+    groupId := "32b6e34b3d91647abb20e7b8" // string | 
+    clusterConfigurationValidation := *admin.NewClusterConfigurationValidation(*admin.NewClusterDescription20240805(), false) // ClusterConfigurationValidation | 
+    useEffectiveInstanceFields := true // bool |  (optional) (default to false)
+    useEffectiveFieldsReplicationSpecs := true // bool |  (optional) (default to false)
+
+    resp, r, err := sdk.ClustersAPI.ValidateGroupClusterConfigurations(context.Background(), groupId, &clusterConfigurationValidation).UseEffectiveInstanceFields(useEffectiveInstanceFields).UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.ValidateGroupClusterConfigurations`: %v (%v)\n", err, r)
+        apiError, ok := admin.AsError(err)
+        if ok {
+            fmt.Fprintf(os.Stderr, "API error obj: %v\n", apiError)
+        }
+        return
+    }
+    // response from `ValidateGroupClusterConfigurations`: ClusterConfigurationValidationResult
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.ValidateGroupClusterConfigurations`: %v (%v)\n", resp, r)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**groupId** | **string** | Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiValidateGroupClusterConfigurationsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **clusterConfigurationValidation** | [**ClusterConfigurationValidation**](ClusterConfigurationValidation.md) | Cluster configuration to validate. | 
+ **useEffectiveInstanceFields** | **bool** | When true, hardware specification fields for autoscaling-enabled clusters are resolved to their effective (current operational) values before validating an edit. When false (default), the client-specified values are validated. Set this to match the header sent on the corresponding cluster update. | [default to false]
+ **useEffectiveFieldsReplicationSpecs** | **bool** | Controls how &#x60;replicationSpecs&#x60; are interpreted for auto-sharded clusters when validating an edit. When false (default), &#x60;replicationSpecs&#x60; is treated as the actual cluster state. | [default to false]
+
+### Return type
+
+[**ClusterConfigurationValidationResult**](ClusterConfigurationValidationResult.md)
+
+### Authorization
+[DigestAuth](../README.md#Authentication)
+
+### HTTP request headers
+
+- **Content-Type**: application/vnd.atlas.2025-03-12+json
+- **Accept**: application/vnd.atlas.2025-03-12+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
