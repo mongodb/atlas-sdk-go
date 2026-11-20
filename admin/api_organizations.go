@@ -300,12 +300,14 @@ type OrganizationsAPI interface {
 	ListOrgInvitesExecute(r ListOrgInvitesApiRequest) ([]OrganizationInvitation, *http.Response, error)
 
 	/*
-		ListOrgs Return All Organizations
+			ListOrgs Return All Organizations
 
-		Returns all organizations to which the requesting Service Account or API Key has access.
+			This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
 
-		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-		@return ListOrgsApiRequest
+		 Returns all organizations to which the requesting Service Account or API Key has access. Deprecated versions: v2-{2023-01-01}
+
+			@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+			@return ListOrgsApiRequest
 	*/
 	ListOrgs(ctx context.Context) ListOrgsApiRequest
 	/*
@@ -1979,7 +1981,9 @@ func (r ListOrgsApiRequest) Execute() (*PaginatedOrganization, *http.Response, e
 /*
 ListOrgs Return All Organizations
 
-Returns all organizations to which the requesting Service Account or API Key has access.
+This API is in preview. Breaking changes might be introduced before it is released. Don't use preview APIs in production.
+
+	Returns all organizations to which the requesting Service Account or API Key has access. Deprecated versions: v2-{2023-01-01}
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ListOrgsApiRequest
@@ -2047,7 +2051,7 @@ func (a *OrganizationsAPIService) ListOrgsExecute(r ListOrgsApiRequest) (*Pagina
 	}
 
 	// to determine the Accept header (only first one)
-	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2023-01-01+json"}
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.preview+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

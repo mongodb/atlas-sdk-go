@@ -2,7 +2,7 @@
 
 package admin
 
-// ObjectStoragePrivateEndpointResponse struct for ObjectStoragePrivateEndpointResponse
+// ObjectStoragePrivateEndpointResponse Object Storage Private Endpoint Response.
 type ObjectStoragePrivateEndpointResponse struct {
 	// Human-readable label that identifies the cloud provider.
 	CloudProvider *string `json:"cloudProvider,omitempty"`
@@ -12,16 +12,28 @@ type ObjectStoragePrivateEndpointResponse struct {
 	// Unique 24-hexadecimal digit string that identifies the Private Endpoint Service.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
-	// Connection name of the Private Endpoint.
-	// Read only field.
-	PrivateEndpointConnectionName *string `json:"privateEndpointConnectionName,omitempty"`
-	// Cloud provider region in which the Object Storage bucket is located. For cross-region endpoints, this differs from `vpcRegionName`, which is the region in which the VPC interface endpoint is deployed.
-	RegionName *string `json:"regionName,omitempty"`
 	// State of the Object Storage private endpoint.
 	// Read only field.
 	Status *string `json:"status,omitempty"`
-	// Cloud provider region in which the VPC interface endpoint is deployed. Echoes `regionName` for same-region endpoints.
+	// Connection name of the Private Endpoint.
+	// Read only field.
+	PrivateEndpointConnectionName *string `json:"privateEndpointConnectionName,omitempty"`
+	// Physical location where MongoDB Cloud deploys your AWS-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts.
+	RegionName *string `json:"regionName,omitempty"`
+	// Physical location where MongoDB Cloud deploys your Azure-hosted MongoDB cluster nodes. The region you choose can affect network latency for clients accessing your databases. When MongoDB Cloud deploys a dedicated cluster, it checks if a VPC or VPC connection exists for that provider and region. If not, MongoDB Cloud creates them as part of the deployment. MongoDB Cloud assigns the VPC a CIDR block. To limit a new VPC peering connection to one CIDR block and region, create the connection first. Deploy the cluster after the connection starts. Contact MongoDB to become an early adopter.
 	VpcRegionName *string `json:"vpcRegionName,omitempty"`
+	// Cloud provider resource ID of the private endpoint. Returned for Azure private endpoints once the endpoint has been provisioned.
+	// Read only field.
+	PrivateEndpointResourceId *string `json:"privateEndpointResourceId,omitempty"`
+	// Unique 24-hexadecimal digit string that identifies the Cloud Provider Access role used to provision the private endpoint and re-validate storage account access. Returned for Azure private endpoints only.
+	RoleId *string `json:"roleId,omitempty"`
+	// URL of the Azure Storage Account for the private endpoint, exactly as supplied at creation. Returned for Azure private endpoints only.
+	ServiceUrl *string `json:"serviceUrl,omitempty"`
+	// Name of the Azure Storage Account the private endpoint is attached to. Returned for Azure private endpoints only.
+	// Read only field.
+	StorageAccountName *string `json:"storageAccountName,omitempty"`
+	// ARM resource ID of the Azure Storage Account that the private endpoint connects to. Returned for Azure private endpoints only.
+	StorageAccountResourceId *string `json:"storageAccountResourceId,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`
@@ -170,6 +182,46 @@ func (o *ObjectStoragePrivateEndpointResponse) SetIdNil() {
 	o.NullFields = addNullField(o.NullFields, "Id")
 }
 
+// GetStatus returns the Status field value if set, zero value otherwise
+func (o *ObjectStoragePrivateEndpointResponse) GetStatus() string {
+	if o == nil || IsNil(o.Status) {
+		var ret string
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ObjectStoragePrivateEndpointResponse) GetStatusOk() (*string, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *ObjectStoragePrivateEndpointResponse) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given string and assigns it to the Status field.
+func (o *ObjectStoragePrivateEndpointResponse) SetStatus(v string) {
+	o.Status = &v
+	o.NullFields = removeNullField(o.NullFields, "Status")
+}
+
+// SetStatusNil sets Status to an explicit JSON null when marshaled.
+func (o *ObjectStoragePrivateEndpointResponse) SetStatusNil() {
+	o.Status = nil
+	o.NullFields = addNullField(o.NullFields, "Status")
+}
+
 // GetPrivateEndpointConnectionName returns the PrivateEndpointConnectionName field value if set, zero value otherwise
 func (o *ObjectStoragePrivateEndpointResponse) GetPrivateEndpointConnectionName() string {
 	if o == nil || IsNil(o.PrivateEndpointConnectionName) {
@@ -250,46 +302,6 @@ func (o *ObjectStoragePrivateEndpointResponse) SetRegionNameNil() {
 	o.NullFields = addNullField(o.NullFields, "RegionName")
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise
-func (o *ObjectStoragePrivateEndpointResponse) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
-		var ret string
-		return ret
-	}
-	return *o.Status
-}
-
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ObjectStoragePrivateEndpointResponse) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
-		return nil, false
-	}
-
-	return o.Status, true
-}
-
-// HasStatus returns a boolean if a field has been set.
-func (o *ObjectStoragePrivateEndpointResponse) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given string and assigns it to the Status field.
-func (o *ObjectStoragePrivateEndpointResponse) SetStatus(v string) {
-	o.Status = &v
-	o.NullFields = removeNullField(o.NullFields, "Status")
-}
-
-// SetStatusNil sets Status to an explicit JSON null when marshaled.
-func (o *ObjectStoragePrivateEndpointResponse) SetStatusNil() {
-	o.Status = nil
-	o.NullFields = addNullField(o.NullFields, "Status")
-}
-
 // GetVpcRegionName returns the VpcRegionName field value if set, zero value otherwise
 func (o *ObjectStoragePrivateEndpointResponse) GetVpcRegionName() string {
 	if o == nil || IsNil(o.VpcRegionName) {
@@ -328,4 +340,204 @@ func (o *ObjectStoragePrivateEndpointResponse) SetVpcRegionName(v string) {
 func (o *ObjectStoragePrivateEndpointResponse) SetVpcRegionNameNil() {
 	o.VpcRegionName = nil
 	o.NullFields = addNullField(o.NullFields, "VpcRegionName")
+}
+
+// GetPrivateEndpointResourceId returns the PrivateEndpointResourceId field value if set, zero value otherwise
+func (o *ObjectStoragePrivateEndpointResponse) GetPrivateEndpointResourceId() string {
+	if o == nil || IsNil(o.PrivateEndpointResourceId) {
+		var ret string
+		return ret
+	}
+	return *o.PrivateEndpointResourceId
+}
+
+// GetPrivateEndpointResourceIdOk returns a tuple with the PrivateEndpointResourceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ObjectStoragePrivateEndpointResponse) GetPrivateEndpointResourceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.PrivateEndpointResourceId) {
+		return nil, false
+	}
+
+	return o.PrivateEndpointResourceId, true
+}
+
+// HasPrivateEndpointResourceId returns a boolean if a field has been set.
+func (o *ObjectStoragePrivateEndpointResponse) HasPrivateEndpointResourceId() bool {
+	if o != nil && !IsNil(o.PrivateEndpointResourceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateEndpointResourceId gets a reference to the given string and assigns it to the PrivateEndpointResourceId field.
+func (o *ObjectStoragePrivateEndpointResponse) SetPrivateEndpointResourceId(v string) {
+	o.PrivateEndpointResourceId = &v
+	o.NullFields = removeNullField(o.NullFields, "PrivateEndpointResourceId")
+}
+
+// SetPrivateEndpointResourceIdNil sets PrivateEndpointResourceId to an explicit JSON null when marshaled.
+func (o *ObjectStoragePrivateEndpointResponse) SetPrivateEndpointResourceIdNil() {
+	o.PrivateEndpointResourceId = nil
+	o.NullFields = addNullField(o.NullFields, "PrivateEndpointResourceId")
+}
+
+// GetRoleId returns the RoleId field value if set, zero value otherwise
+func (o *ObjectStoragePrivateEndpointResponse) GetRoleId() string {
+	if o == nil || IsNil(o.RoleId) {
+		var ret string
+		return ret
+	}
+	return *o.RoleId
+}
+
+// GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ObjectStoragePrivateEndpointResponse) GetRoleIdOk() (*string, bool) {
+	if o == nil || IsNil(o.RoleId) {
+		return nil, false
+	}
+
+	return o.RoleId, true
+}
+
+// HasRoleId returns a boolean if a field has been set.
+func (o *ObjectStoragePrivateEndpointResponse) HasRoleId() bool {
+	if o != nil && !IsNil(o.RoleId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleId gets a reference to the given string and assigns it to the RoleId field.
+func (o *ObjectStoragePrivateEndpointResponse) SetRoleId(v string) {
+	o.RoleId = &v
+	o.NullFields = removeNullField(o.NullFields, "RoleId")
+}
+
+// SetRoleIdNil sets RoleId to an explicit JSON null when marshaled.
+func (o *ObjectStoragePrivateEndpointResponse) SetRoleIdNil() {
+	o.RoleId = nil
+	o.NullFields = addNullField(o.NullFields, "RoleId")
+}
+
+// GetServiceUrl returns the ServiceUrl field value if set, zero value otherwise
+func (o *ObjectStoragePrivateEndpointResponse) GetServiceUrl() string {
+	if o == nil || IsNil(o.ServiceUrl) {
+		var ret string
+		return ret
+	}
+	return *o.ServiceUrl
+}
+
+// GetServiceUrlOk returns a tuple with the ServiceUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ObjectStoragePrivateEndpointResponse) GetServiceUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.ServiceUrl) {
+		return nil, false
+	}
+
+	return o.ServiceUrl, true
+}
+
+// HasServiceUrl returns a boolean if a field has been set.
+func (o *ObjectStoragePrivateEndpointResponse) HasServiceUrl() bool {
+	if o != nil && !IsNil(o.ServiceUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceUrl gets a reference to the given string and assigns it to the ServiceUrl field.
+func (o *ObjectStoragePrivateEndpointResponse) SetServiceUrl(v string) {
+	o.ServiceUrl = &v
+	o.NullFields = removeNullField(o.NullFields, "ServiceUrl")
+}
+
+// SetServiceUrlNil sets ServiceUrl to an explicit JSON null when marshaled.
+func (o *ObjectStoragePrivateEndpointResponse) SetServiceUrlNil() {
+	o.ServiceUrl = nil
+	o.NullFields = addNullField(o.NullFields, "ServiceUrl")
+}
+
+// GetStorageAccountName returns the StorageAccountName field value if set, zero value otherwise
+func (o *ObjectStoragePrivateEndpointResponse) GetStorageAccountName() string {
+	if o == nil || IsNil(o.StorageAccountName) {
+		var ret string
+		return ret
+	}
+	return *o.StorageAccountName
+}
+
+// GetStorageAccountNameOk returns a tuple with the StorageAccountName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ObjectStoragePrivateEndpointResponse) GetStorageAccountNameOk() (*string, bool) {
+	if o == nil || IsNil(o.StorageAccountName) {
+		return nil, false
+	}
+
+	return o.StorageAccountName, true
+}
+
+// HasStorageAccountName returns a boolean if a field has been set.
+func (o *ObjectStoragePrivateEndpointResponse) HasStorageAccountName() bool {
+	if o != nil && !IsNil(o.StorageAccountName) {
+		return true
+	}
+
+	return false
+}
+
+// SetStorageAccountName gets a reference to the given string and assigns it to the StorageAccountName field.
+func (o *ObjectStoragePrivateEndpointResponse) SetStorageAccountName(v string) {
+	o.StorageAccountName = &v
+	o.NullFields = removeNullField(o.NullFields, "StorageAccountName")
+}
+
+// SetStorageAccountNameNil sets StorageAccountName to an explicit JSON null when marshaled.
+func (o *ObjectStoragePrivateEndpointResponse) SetStorageAccountNameNil() {
+	o.StorageAccountName = nil
+	o.NullFields = addNullField(o.NullFields, "StorageAccountName")
+}
+
+// GetStorageAccountResourceId returns the StorageAccountResourceId field value if set, zero value otherwise
+func (o *ObjectStoragePrivateEndpointResponse) GetStorageAccountResourceId() string {
+	if o == nil || IsNil(o.StorageAccountResourceId) {
+		var ret string
+		return ret
+	}
+	return *o.StorageAccountResourceId
+}
+
+// GetStorageAccountResourceIdOk returns a tuple with the StorageAccountResourceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ObjectStoragePrivateEndpointResponse) GetStorageAccountResourceIdOk() (*string, bool) {
+	if o == nil || IsNil(o.StorageAccountResourceId) {
+		return nil, false
+	}
+
+	return o.StorageAccountResourceId, true
+}
+
+// HasStorageAccountResourceId returns a boolean if a field has been set.
+func (o *ObjectStoragePrivateEndpointResponse) HasStorageAccountResourceId() bool {
+	if o != nil && !IsNil(o.StorageAccountResourceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStorageAccountResourceId gets a reference to the given string and assigns it to the StorageAccountResourceId field.
+func (o *ObjectStoragePrivateEndpointResponse) SetStorageAccountResourceId(v string) {
+	o.StorageAccountResourceId = &v
+	o.NullFields = removeNullField(o.NullFields, "StorageAccountResourceId")
+}
+
+// SetStorageAccountResourceIdNil sets StorageAccountResourceId to an explicit JSON null when marshaled.
+func (o *ObjectStoragePrivateEndpointResponse) SetStorageAccountResourceIdNil() {
+	o.StorageAccountResourceId = nil
+	o.NullFields = addNullField(o.NullFields, "StorageAccountResourceId")
 }
