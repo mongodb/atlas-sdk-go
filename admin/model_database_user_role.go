@@ -16,9 +16,11 @@ type DatabaseUserRole struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DatabaseUserRole) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o DatabaseUserRole) MarshalJSON() ([]byte, error) {
 	type noMethod DatabaseUserRole
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewDatabaseUserRole instantiates a new DatabaseUserRole object

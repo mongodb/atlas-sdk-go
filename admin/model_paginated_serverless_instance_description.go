@@ -19,9 +19,11 @@ type PaginatedServerlessInstanceDescription struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedServerlessInstanceDescription) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o PaginatedServerlessInstanceDescription) MarshalJSON() ([]byte, error) {
 	type noMethod PaginatedServerlessInstanceDescription
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPaginatedServerlessInstanceDescription instantiates a new PaginatedServerlessInstanceDescription object

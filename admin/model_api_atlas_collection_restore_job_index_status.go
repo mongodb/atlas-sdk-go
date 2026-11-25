@@ -14,9 +14,11 @@ type ApiAtlasCollectionRestoreJobIndexStatus struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiAtlasCollectionRestoreJobIndexStatus) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o ApiAtlasCollectionRestoreJobIndexStatus) MarshalJSON() ([]byte, error) {
 	type noMethod ApiAtlasCollectionRestoreJobIndexStatus
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewApiAtlasCollectionRestoreJobIndexStatus instantiates a new ApiAtlasCollectionRestoreJobIndexStatus object

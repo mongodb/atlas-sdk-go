@@ -15,9 +15,11 @@ type ApiPublicUsageDetailsQueryRequest struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiPublicUsageDetailsQueryRequest) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o ApiPublicUsageDetailsQueryRequest) MarshalJSON() ([]byte, error) {
 	type noMethod ApiPublicUsageDetailsQueryRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewApiPublicUsageDetailsQueryRequest instantiates a new ApiPublicUsageDetailsQueryRequest object

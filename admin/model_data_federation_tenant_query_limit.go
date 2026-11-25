@@ -36,9 +36,11 @@ type DataFederationTenantQueryLimit struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DataFederationTenantQueryLimit) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o DataFederationTenantQueryLimit) MarshalJSON() ([]byte, error) {
 	type noMethod DataFederationTenantQueryLimit
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewDataFederationTenantQueryLimit instantiates a new DataFederationTenantQueryLimit object

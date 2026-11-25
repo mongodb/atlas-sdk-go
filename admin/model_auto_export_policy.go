@@ -14,9 +14,11 @@ type AutoExportPolicy struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *AutoExportPolicy) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o AutoExportPolicy) MarshalJSON() ([]byte, error) {
 	type noMethod AutoExportPolicy
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewAutoExportPolicy instantiates a new AutoExportPolicy object

@@ -19,9 +19,11 @@ type PaginatedFederationIdentityProvider struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedFederationIdentityProvider) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o PaginatedFederationIdentityProvider) MarshalJSON() ([]byte, error) {
 	type noMethod PaginatedFederationIdentityProvider
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPaginatedFederationIdentityProvider instantiates a new PaginatedFederationIdentityProvider object

@@ -45,9 +45,11 @@ type BackupRestoreJobDelivery struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *BackupRestoreJobDelivery) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o BackupRestoreJobDelivery) MarshalJSON() ([]byte, error) {
 	type noMethod BackupRestoreJobDelivery
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewBackupRestoreJobDelivery instantiates a new BackupRestoreJobDelivery object

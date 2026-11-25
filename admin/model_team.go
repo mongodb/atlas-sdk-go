@@ -20,9 +20,11 @@ type Team struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *Team) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o Team) MarshalJSON() ([]byte, error) {
 	type noMethod Team
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewTeam instantiates a new Team object

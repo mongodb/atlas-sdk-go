@@ -37,9 +37,11 @@ type OverloadProtectionSimulationResponse struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *OverloadProtectionSimulationResponse) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o OverloadProtectionSimulationResponse) MarshalJSON() ([]byte, error) {
 	type noMethod OverloadProtectionSimulationResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewOverloadProtectionSimulationResponse instantiates a new OverloadProtectionSimulationResponse object

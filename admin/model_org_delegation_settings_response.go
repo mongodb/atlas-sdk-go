@@ -18,9 +18,11 @@ type OrgDelegationSettingsResponse struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *OrgDelegationSettingsResponse) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o OrgDelegationSettingsResponse) MarshalJSON() ([]byte, error) {
 	type noMethod OrgDelegationSettingsResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewOrgDelegationSettingsResponse instantiates a new OrgDelegationSettingsResponse object

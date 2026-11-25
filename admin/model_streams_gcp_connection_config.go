@@ -15,9 +15,11 @@ type StreamsGCPConnectionConfig struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsGCPConnectionConfig) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o StreamsGCPConnectionConfig) MarshalJSON() ([]byte, error) {
 	type noMethod StreamsGCPConnectionConfig
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewStreamsGCPConnectionConfig instantiates a new StreamsGCPConnectionConfig object

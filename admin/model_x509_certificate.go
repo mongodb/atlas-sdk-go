@@ -18,9 +18,11 @@ type X509Certificate struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *X509Certificate) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o X509Certificate) MarshalJSON() ([]byte, error) {
 	type noMethod X509Certificate
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewX509Certificate instantiates a new X509Certificate object

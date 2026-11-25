@@ -19,9 +19,11 @@ type PaginatedHostViewAtlas struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedHostViewAtlas) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o PaginatedHostViewAtlas) MarshalJSON() ([]byte, error) {
 	type noMethod PaginatedHostViewAtlas
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPaginatedHostViewAtlas instantiates a new PaginatedHostViewAtlas object

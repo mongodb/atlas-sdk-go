@@ -22,9 +22,11 @@ type CloudProviderEndpointServiceRequest struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *CloudProviderEndpointServiceRequest) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o CloudProviderEndpointServiceRequest) MarshalJSON() ([]byte, error) {
 	type noMethod CloudProviderEndpointServiceRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewCloudProviderEndpointServiceRequest instantiates a new CloudProviderEndpointServiceRequest object

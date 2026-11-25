@@ -14,9 +14,11 @@ type AdvancedAutoScalingSettings struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *AdvancedAutoScalingSettings) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o AdvancedAutoScalingSettings) MarshalJSON() ([]byte, error) {
 	type noMethod AdvancedAutoScalingSettings
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewAdvancedAutoScalingSettings instantiates a new AdvancedAutoScalingSettings object

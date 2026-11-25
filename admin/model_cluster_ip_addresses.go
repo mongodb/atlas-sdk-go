@@ -25,9 +25,11 @@ type ClusterIPAddresses struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ClusterIPAddresses) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o ClusterIPAddresses) MarshalJSON() ([]byte, error) {
 	type noMethod ClusterIPAddresses
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewClusterIPAddresses instantiates a new ClusterIPAddresses object

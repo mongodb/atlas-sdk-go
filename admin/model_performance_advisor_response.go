@@ -20,9 +20,11 @@ type PerformanceAdvisorResponse struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PerformanceAdvisorResponse) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o PerformanceAdvisorResponse) MarshalJSON() ([]byte, error) {
 	type noMethod PerformanceAdvisorResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPerformanceAdvisorResponse instantiates a new PerformanceAdvisorResponse object

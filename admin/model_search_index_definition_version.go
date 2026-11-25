@@ -18,9 +18,11 @@ type SearchIndexDefinitionVersion struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *SearchIndexDefinitionVersion) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o SearchIndexDefinitionVersion) MarshalJSON() ([]byte, error) {
 	type noMethod SearchIndexDefinitionVersion
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewSearchIndexDefinitionVersion instantiates a new SearchIndexDefinitionVersion object

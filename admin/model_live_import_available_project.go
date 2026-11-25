@@ -20,9 +20,11 @@ type LiveImportAvailableProject struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *LiveImportAvailableProject) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o LiveImportAvailableProject) MarshalJSON() ([]byte, error) {
 	type noMethod LiveImportAvailableProject
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewLiveImportAvailableProject instantiates a new LiveImportAvailableProject object

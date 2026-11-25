@@ -15,9 +15,11 @@ type ClusterStatus struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ClusterStatus) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o ClusterStatus) MarshalJSON() ([]byte, error) {
 	type noMethod ClusterStatus
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewClusterStatus instantiates a new ClusterStatus object

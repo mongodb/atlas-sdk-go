@@ -19,9 +19,11 @@ type PaginatedShardMetricsResponse struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedShardMetricsResponse) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o PaginatedShardMetricsResponse) MarshalJSON() ([]byte, error) {
 	type noMethod PaginatedShardMetricsResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPaginatedShardMetricsResponse instantiates a new PaginatedShardMetricsResponse object

@@ -26,9 +26,11 @@ type ApiKeyUserDetails struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiKeyUserDetails) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o ApiKeyUserDetails) MarshalJSON() ([]byte, error) {
 	type noMethod ApiKeyUserDetails
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewApiKeyUserDetails instantiates a new ApiKeyUserDetails object

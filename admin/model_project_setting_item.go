@@ -12,9 +12,11 @@ type ProjectSettingItem struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ProjectSettingItem) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o ProjectSettingItem) MarshalJSON() ([]byte, error) {
 	type noMethod ProjectSettingItem
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewProjectSettingItem instantiates a new ProjectSettingItem object

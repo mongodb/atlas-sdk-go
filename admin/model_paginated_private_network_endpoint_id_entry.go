@@ -19,9 +19,11 @@ type PaginatedPrivateNetworkEndpointIdEntry struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedPrivateNetworkEndpointIdEntry) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o PaginatedPrivateNetworkEndpointIdEntry) MarshalJSON() ([]byte, error) {
 	type noMethod PaginatedPrivateNetworkEndpointIdEntry
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPaginatedPrivateNetworkEndpointIdEntry instantiates a new PaginatedPrivateNetworkEndpointIdEntry object

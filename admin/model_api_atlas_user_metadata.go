@@ -16,9 +16,11 @@ type ApiAtlasUserMetadata struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiAtlasUserMetadata) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o ApiAtlasUserMetadata) MarshalJSON() ([]byte, error) {
 	type noMethod ApiAtlasUserMetadata
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewApiAtlasUserMetadata instantiates a new ApiAtlasUserMetadata object

@@ -19,9 +19,11 @@ type PaginatedTeamRole struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedTeamRole) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o PaginatedTeamRole) MarshalJSON() ([]byte, error) {
 	type noMethod PaginatedTeamRole
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPaginatedTeamRole instantiates a new PaginatedTeamRole object

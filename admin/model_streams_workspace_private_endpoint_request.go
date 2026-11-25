@@ -16,9 +16,11 @@ type StreamsWorkspacePrivateEndpointRequest struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsWorkspacePrivateEndpointRequest) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o StreamsWorkspacePrivateEndpointRequest) MarshalJSON() ([]byte, error) {
 	type noMethod StreamsWorkspacePrivateEndpointRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewStreamsWorkspacePrivateEndpointRequest instantiates a new StreamsWorkspacePrivateEndpointRequest object

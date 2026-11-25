@@ -38,9 +38,11 @@ type MeasurementsNonIndex struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *MeasurementsNonIndex) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o MeasurementsNonIndex) MarshalJSON() ([]byte, error) {
 	type noMethod MeasurementsNonIndex
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewMeasurementsNonIndex instantiates a new MeasurementsNonIndex object

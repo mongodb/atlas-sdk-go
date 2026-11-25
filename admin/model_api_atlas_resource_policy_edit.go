@@ -16,9 +16,11 @@ type ApiAtlasResourcePolicyEdit struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiAtlasResourcePolicyEdit) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o ApiAtlasResourcePolicyEdit) MarshalJSON() ([]byte, error) {
 	type noMethod ApiAtlasResourcePolicyEdit
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewApiAtlasResourcePolicyEdit instantiates a new ApiAtlasResourcePolicyEdit object

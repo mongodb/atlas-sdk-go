@@ -24,9 +24,11 @@ type LiveMigrationRequest20240530 struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *LiveMigrationRequest20240530) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o LiveMigrationRequest20240530) MarshalJSON() ([]byte, error) {
 	type noMethod LiveMigrationRequest20240530
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewLiveMigrationRequest20240530 instantiates a new LiveMigrationRequest20240530 object

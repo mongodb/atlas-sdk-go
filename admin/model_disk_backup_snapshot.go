@@ -71,9 +71,11 @@ type DiskBackupSnapshot struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DiskBackupSnapshot) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o DiskBackupSnapshot) MarshalJSON() ([]byte, error) {
 	type noMethod DiskBackupSnapshot
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewDiskBackupSnapshot instantiates a new DiskBackupSnapshot object

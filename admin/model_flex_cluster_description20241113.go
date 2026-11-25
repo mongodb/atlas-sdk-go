@@ -50,9 +50,11 @@ type FlexClusterDescription20241113 struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *FlexClusterDescription20241113) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o FlexClusterDescription20241113) MarshalJSON() ([]byte, error) {
 	type noMethod FlexClusterDescription20241113
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewFlexClusterDescription20241113 instantiates a new FlexClusterDescription20241113 object

@@ -18,9 +18,11 @@ type RegionSpec struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *RegionSpec) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o RegionSpec) MarshalJSON() ([]byte, error) {
 	type noMethod RegionSpec
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewRegionSpec instantiates a new RegionSpec object

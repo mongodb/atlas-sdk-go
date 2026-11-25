@@ -45,9 +45,11 @@ type DataProtectionSettings20231001 struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DataProtectionSettings20231001) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o DataProtectionSettings20231001) MarshalJSON() ([]byte, error) {
 	type noMethod DataProtectionSettings20231001
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewDataProtectionSettings20231001 instantiates a new DataProtectionSettings20231001 object

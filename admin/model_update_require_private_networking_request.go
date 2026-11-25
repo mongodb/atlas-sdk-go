@@ -12,9 +12,11 @@ type UpdateRequirePrivateNetworkingRequest struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *UpdateRequirePrivateNetworkingRequest) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o UpdateRequirePrivateNetworkingRequest) MarshalJSON() ([]byte, error) {
 	type noMethod UpdateRequirePrivateNetworkingRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewUpdateRequirePrivateNetworkingRequest instantiates a new UpdateRequirePrivateNetworkingRequest object

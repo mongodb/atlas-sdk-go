@@ -21,9 +21,11 @@ type StreamsKafkaNetworkingAccess struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsKafkaNetworkingAccess) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o StreamsKafkaNetworkingAccess) MarshalJSON() ([]byte, error) {
 	type noMethod StreamsKafkaNetworkingAccess
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewStreamsKafkaNetworkingAccess instantiates a new StreamsKafkaNetworkingAccess object

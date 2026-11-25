@@ -19,9 +19,11 @@ type PaginatedLogIntegrationResponse struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedLogIntegrationResponse) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o PaginatedLogIntegrationResponse) MarshalJSON() ([]byte, error) {
 	type noMethod PaginatedLogIntegrationResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPaginatedLogIntegrationResponse instantiates a new PaginatedLogIntegrationResponse object

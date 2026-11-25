@@ -46,9 +46,11 @@ type DataLakeStoreSettings struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DataLakeStoreSettings) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o DataLakeStoreSettings) MarshalJSON() ([]byte, error) {
 	type noMethod DataLakeStoreSettings
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewDataLakeStoreSettings instantiates a new DataLakeStoreSettings object

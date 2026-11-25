@@ -17,9 +17,11 @@ type StreamsPublicPrivateLinkNetworkingAccess struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsPublicPrivateLinkNetworkingAccess) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o StreamsPublicPrivateLinkNetworkingAccess) MarshalJSON() ([]byte, error) {
 	type noMethod StreamsPublicPrivateLinkNetworkingAccess
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewStreamsPublicPrivateLinkNetworkingAccess instantiates a new StreamsPublicPrivateLinkNetworkingAccess object

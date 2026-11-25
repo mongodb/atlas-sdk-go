@@ -19,9 +19,11 @@ type PaginatedApiAtlasDiskBackupExportJob struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedApiAtlasDiskBackupExportJob) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o PaginatedApiAtlasDiskBackupExportJob) MarshalJSON() ([]byte, error) {
 	type noMethod PaginatedApiAtlasDiskBackupExportJob
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPaginatedApiAtlasDiskBackupExportJob instantiates a new PaginatedApiAtlasDiskBackupExportJob object

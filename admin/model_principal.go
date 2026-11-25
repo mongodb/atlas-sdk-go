@@ -15,9 +15,11 @@ type Principal struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *Principal) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o Principal) MarshalJSON() ([]byte, error) {
 	type noMethod Principal
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPrincipal instantiates a new Principal object

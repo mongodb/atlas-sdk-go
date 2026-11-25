@@ -15,9 +15,11 @@ type ActivityFeedLinkResponse struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ActivityFeedLinkResponse) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o ActivityFeedLinkResponse) MarshalJSON() ([]byte, error) {
 	type noMethod ActivityFeedLinkResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewActivityFeedLinkResponse instantiates a new ActivityFeedLinkResponse object

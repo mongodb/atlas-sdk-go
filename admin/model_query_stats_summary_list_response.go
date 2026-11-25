@@ -17,9 +17,11 @@ type QueryStatsSummaryListResponse struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *QueryStatsSummaryListResponse) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o QueryStatsSummaryListResponse) MarshalJSON() ([]byte, error) {
 	type noMethod QueryStatsSummaryListResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewQueryStatsSummaryListResponse instantiates a new QueryStatsSummaryListResponse object

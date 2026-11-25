@@ -14,9 +14,11 @@ type DataLakeDataProcessRegion struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DataLakeDataProcessRegion) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o DataLakeDataProcessRegion) MarshalJSON() ([]byte, error) {
 	type noMethod DataLakeDataProcessRegion
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewDataLakeDataProcessRegion instantiates a new DataLakeDataProcessRegion object

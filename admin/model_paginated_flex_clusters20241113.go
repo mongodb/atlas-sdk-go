@@ -19,9 +19,11 @@ type PaginatedFlexClusters20241113 struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedFlexClusters20241113) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o PaginatedFlexClusters20241113) MarshalJSON() ([]byte, error) {
 	type noMethod PaginatedFlexClusters20241113
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPaginatedFlexClusters20241113 instantiates a new PaginatedFlexClusters20241113 object

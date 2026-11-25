@@ -20,9 +20,11 @@ type StreamProcessorMetricThreshold struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamProcessorMetricThreshold) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o StreamProcessorMetricThreshold) MarshalJSON() ([]byte, error) {
 	type noMethod StreamProcessorMetricThreshold
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewStreamProcessorMetricThreshold instantiates a new StreamProcessorMetricThreshold object

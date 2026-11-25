@@ -16,9 +16,11 @@ type OrgServiceAccountUpdateRequest struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *OrgServiceAccountUpdateRequest) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o OrgServiceAccountUpdateRequest) MarshalJSON() ([]byte, error) {
 	type noMethod OrgServiceAccountUpdateRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewOrgServiceAccountUpdateRequest instantiates a new OrgServiceAccountUpdateRequest object

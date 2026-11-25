@@ -29,9 +29,11 @@ type AWSKMSConfiguration struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *AWSKMSConfiguration) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o AWSKMSConfiguration) MarshalJSON() ([]byte, error) {
 	type noMethod AWSKMSConfiguration
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewAWSKMSConfiguration instantiates a new AWSKMSConfiguration object

@@ -19,9 +19,11 @@ type InboundControlPlaneCloudProviderIPAddresses struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *InboundControlPlaneCloudProviderIPAddresses) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o InboundControlPlaneCloudProviderIPAddresses) MarshalJSON() ([]byte, error) {
 	type noMethod InboundControlPlaneCloudProviderIPAddresses
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewInboundControlPlaneCloudProviderIPAddresses instantiates a new InboundControlPlaneCloudProviderIPAddresses object

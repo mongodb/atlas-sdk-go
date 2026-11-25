@@ -19,9 +19,11 @@ type StreamsProcessorRequest struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsProcessorRequest) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o StreamsProcessorRequest) MarshalJSON() ([]byte, error) {
 	type noMethod StreamsProcessorRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewStreamsProcessorRequest instantiates a new StreamsProcessorRequest object

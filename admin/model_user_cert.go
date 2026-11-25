@@ -35,9 +35,11 @@ type UserCert struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *UserCert) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o UserCert) MarshalJSON() ([]byte, error) {
 	type noMethod UserCert
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewUserCert instantiates a new UserCert object

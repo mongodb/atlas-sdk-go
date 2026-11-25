@@ -37,9 +37,11 @@ type StreamsFailoverConnection struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsFailoverConnection) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o StreamsFailoverConnection) MarshalJSON() ([]byte, error) {
 	type noMethod StreamsFailoverConnection
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewStreamsFailoverConnection instantiates a new StreamsFailoverConnection object

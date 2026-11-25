@@ -20,9 +20,11 @@ type GroupServiceAccountRequest struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *GroupServiceAccountRequest) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o GroupServiceAccountRequest) MarshalJSON() ([]byte, error) {
 	type noMethod GroupServiceAccountRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewGroupServiceAccountRequest instantiates a new GroupServiceAccountRequest object

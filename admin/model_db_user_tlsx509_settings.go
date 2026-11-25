@@ -15,9 +15,11 @@ type DBUserTLSX509Settings struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DBUserTLSX509Settings) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o DBUserTLSX509Settings) MarshalJSON() ([]byte, error) {
 	type noMethod DBUserTLSX509Settings
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewDBUserTLSX509Settings instantiates a new DBUserTLSX509Settings object

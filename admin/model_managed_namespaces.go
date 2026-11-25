@@ -24,9 +24,11 @@ type ManagedNamespaces struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ManagedNamespaces) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o ManagedNamespaces) MarshalJSON() ([]byte, error) {
 	type noMethod ManagedNamespaces
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewManagedNamespaces instantiates a new ManagedNamespaces object

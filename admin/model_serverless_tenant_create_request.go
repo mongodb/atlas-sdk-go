@@ -13,9 +13,11 @@ type ServerlessTenantCreateRequest struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ServerlessTenantCreateRequest) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o ServerlessTenantCreateRequest) MarshalJSON() ([]byte, error) {
 	type noMethod ServerlessTenantCreateRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewServerlessTenantCreateRequest instantiates a new ServerlessTenantCreateRequest object

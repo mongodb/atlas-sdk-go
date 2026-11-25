@@ -20,9 +20,11 @@ type MetricDataPoint struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *MetricDataPoint) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o MetricDataPoint) MarshalJSON() ([]byte, error) {
 	type noMethod MetricDataPoint
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewMetricDataPoint instantiates a new MetricDataPoint object

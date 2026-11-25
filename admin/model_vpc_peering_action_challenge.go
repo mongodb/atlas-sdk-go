@@ -17,9 +17,11 @@ type VPCPeeringActionChallenge struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *VPCPeeringActionChallenge) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o VPCPeeringActionChallenge) MarshalJSON() ([]byte, error) {
 	type noMethod VPCPeeringActionChallenge
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewVPCPeeringActionChallenge instantiates a new VPCPeeringActionChallenge object

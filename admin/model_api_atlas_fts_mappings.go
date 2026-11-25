@@ -14,9 +14,11 @@ type ApiAtlasFTSMappings struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiAtlasFTSMappings) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o ApiAtlasFTSMappings) MarshalJSON() ([]byte, error) {
 	type noMethod ApiAtlasFTSMappings
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewApiAtlasFTSMappings instantiates a new ApiAtlasFTSMappings object

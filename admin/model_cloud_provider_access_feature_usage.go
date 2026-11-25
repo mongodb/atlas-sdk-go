@@ -14,9 +14,11 @@ type CloudProviderAccessFeatureUsage struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *CloudProviderAccessFeatureUsage) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o CloudProviderAccessFeatureUsage) MarshalJSON() ([]byte, error) {
 	type noMethod CloudProviderAccessFeatureUsage
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewCloudProviderAccessFeatureUsage instantiates a new CloudProviderAccessFeatureUsage object

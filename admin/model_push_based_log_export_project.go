@@ -29,9 +29,11 @@ type PushBasedLogExportProject struct {
 }
 
 // MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PushBasedLogExportProject) MarshalJSON() ([]byte, error) {
+// The value receiver matters: a nested struct-typed field is not addressable
+// inside marshalWithNullFields, so a pointer receiver would never be reached.
+func (o PushBasedLogExportProject) MarshalJSON() ([]byte, error) {
 	type noMethod PushBasedLogExportProject
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPushBasedLogExportProject instantiates a new PushBasedLogExportProject object
