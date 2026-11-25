@@ -9,6 +9,9 @@ const {
   applyServersValidation,
 } = require("../src/transformations");
 const cases = require("./transformations-snapshots");
+const {
+  cloudProviderAccessFeatureUsageTransformation,
+} = require("../src/atlasTransformations");
 
 let api = {};
 beforeEach(() => {
@@ -170,5 +173,115 @@ describe("applyServersValidation", () => {
     expect(() => applyServersValidation(operationServers)).toThrow(
       /servers block at operation level/,
     );
+  });
+});
+
+describe("cloudProviderAccessFeatureUsageTransformation", () => {
+  function variant(featureIdRef) {
+    return {
+      allOf: [
+        { $ref: "#/components/schemas/CloudProviderAccessFeatureUsage" },
+        {
+          properties: {
+            featureId: { $ref: "#/components/schemas/" + featureIdRef },
+          },
+          type: "object",
+        },
+      ],
+    };
+  }
+
+  const buildApi = () => ({
+    components: {
+      schemas: {
+        CloudProviderAccessFeatureUsage: {
+          discriminator: {
+            mapping: {
+              ATLAS_DATA_LAKE:
+                "#/components/schemas/CloudProviderAccessDataLakeFeatureUsage",
+              ENCRYPTION_AT_REST:
+                "#/components/schemas/CloudProviderAccessEncryptionAtRestFeatureUsage",
+              PUSH_BASED_LOG_EXPORT:
+                "#/components/schemas/CloudProviderAccessPushBasedLogExportFeatureUsage",
+            },
+            propertyName: "featureType",
+          },
+          properties: { featureType: { type: "string" } },
+          type: "object",
+        },
+        CloudProviderAccessDataLakeFeatureUsage: variant(
+          "CloudProviderAccessFeatureUsageDataLakeFeatureId",
+        ),
+        CloudProviderAccessEncryptionAtRestFeatureUsage: variant(
+          "ApiAtlasCloudProviderAccessFeatureUsageFeatureIdView",
+        ),
+        CloudProviderAccessPushBasedLogExportFeatureUsage: variant(
+          "CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId",
+        ),
+        CloudProviderAccessFeatureUsageDataLakeFeatureId: {
+          properties: {
+            groupId: { type: "string" },
+            name: { type: "string" },
+          },
+          type: "object",
+        },
+        CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId: {
+          properties: {
+            bucketName: { type: "string" },
+            groupId: { type: "string" },
+          },
+          type: "object",
+        },
+        // The ENCRYPTION_AT_REST variant points at an empty schema.
+        ApiAtlasCloudProviderAccessFeatureUsageFeatureIdView: {
+          nullable: true,
+          type: "object",
+        },
+      },
+    },
+  });
+
+  test("collects every variant featureId into a synthetic oneOf model", () => {
+    const api = buildApi();
+    cloudProviderAccessFeatureUsageTransformation(api);
+
+    expect(
+      api.components.schemas.CloudProviderAccessFeatureUsage.properties
+        .featureId,
+    ).toEqual({
+      $ref: "#/components/schemas/BaseCloudProviderAccessFeatureUsageFeatureId",
+    });
+    expect(
+      api.components.schemas.BaseCloudProviderAccessFeatureUsageFeatureId,
+    ).toEqual({
+      oneOf: [
+        {
+          $ref: "#/components/schemas/CloudProviderAccessFeatureUsageDataLakeFeatureId",
+        },
+        {
+          $ref: "#/components/schemas/CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId",
+        },
+      ],
+    });
+  });
+
+  test("strips featureId from the variant that is not collected", () => {
+    const api = buildApi();
+    cloudProviderAccessFeatureUsageTransformation(api);
+
+    // An empty schema cannot be a oneOf entry, but the property still has to go.
+    // Leaving it behind would overwrite the synthetic ref during flattening.
+    expect(
+      api.components.schemas.CloudProviderAccessEncryptionAtRestFeatureUsage
+        .allOf[1].properties.featureId,
+    ).toBeUndefined();
+  });
+
+  test("is a no-op when the parent schema is absent", () => {
+    const api = { components: { schemas: {} } };
+    expect(() =>
+      cloudProviderAccessFeatureUsageTransformation(api),
+    ).not.toThrow();
+    expect(api.components.schemas).toEqual({});
   });
 });
