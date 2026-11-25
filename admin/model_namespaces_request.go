@@ -12,10 +12,11 @@ type NamespacesRequest struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *NamespacesRequest) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o NamespacesRequest) MarshalJSON() ([]byte, error) {
 	type noMethod NamespacesRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewNamespacesRequest instantiates a new NamespacesRequest object

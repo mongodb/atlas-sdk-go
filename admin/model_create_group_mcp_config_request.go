@@ -15,10 +15,11 @@ type CreateGroupMcpConfigRequest struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *CreateGroupMcpConfigRequest) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o CreateGroupMcpConfigRequest) MarshalJSON() ([]byte, error) {
 	type noMethod CreateGroupMcpConfigRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewCreateGroupMcpConfigRequest instantiates a new CreateGroupMcpConfigRequest object

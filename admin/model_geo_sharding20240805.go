@@ -18,10 +18,11 @@ type GeoSharding20240805 struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *GeoSharding20240805) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o GeoSharding20240805) MarshalJSON() ([]byte, error) {
 	type noMethod GeoSharding20240805
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewGeoSharding20240805 instantiates a new GeoSharding20240805 object

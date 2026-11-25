@@ -85,10 +85,11 @@ type EventViewForOrg struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *EventViewForOrg) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o EventViewForOrg) MarshalJSON() ([]byte, error) {
 	type noMethod EventViewForOrg
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewEventViewForOrg instantiates a new EventViewForOrg object

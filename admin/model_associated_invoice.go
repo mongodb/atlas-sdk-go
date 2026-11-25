@@ -15,10 +15,11 @@ type AssociatedInvoice struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *AssociatedInvoice) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o AssociatedInvoice) MarshalJSON() ([]byte, error) {
 	type noMethod AssociatedInvoice
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewAssociatedInvoice instantiates a new AssociatedInvoice object

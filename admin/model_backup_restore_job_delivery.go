@@ -44,10 +44,11 @@ type BackupRestoreJobDelivery struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *BackupRestoreJobDelivery) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o BackupRestoreJobDelivery) MarshalJSON() ([]byte, error) {
 	type noMethod BackupRestoreJobDelivery
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewBackupRestoreJobDelivery instantiates a new BackupRestoreJobDelivery object

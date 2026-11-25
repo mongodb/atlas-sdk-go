@@ -19,10 +19,11 @@ type EnvelopedPerformanceAdvisorResponse struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *EnvelopedPerformanceAdvisorResponse) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o EnvelopedPerformanceAdvisorResponse) MarshalJSON() ([]byte, error) {
 	type noMethod EnvelopedPerformanceAdvisorResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewEnvelopedPerformanceAdvisorResponse instantiates a new EnvelopedPerformanceAdvisorResponse object

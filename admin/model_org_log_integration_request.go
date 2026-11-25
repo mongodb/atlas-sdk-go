@@ -17,10 +17,11 @@ type OrgLogIntegrationRequest struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *OrgLogIntegrationRequest) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o OrgLogIntegrationRequest) MarshalJSON() ([]byte, error) {
 	type noMethod OrgLogIntegrationRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewOrgLogIntegrationRequest instantiates a new OrgLogIntegrationRequest object

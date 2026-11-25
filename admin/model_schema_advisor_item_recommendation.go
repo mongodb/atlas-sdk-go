@@ -18,10 +18,11 @@ type SchemaAdvisorItemRecommendation struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *SchemaAdvisorItemRecommendation) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o SchemaAdvisorItemRecommendation) MarshalJSON() ([]byte, error) {
 	type noMethod SchemaAdvisorItemRecommendation
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewSchemaAdvisorItemRecommendation instantiates a new SchemaAdvisorItemRecommendation object

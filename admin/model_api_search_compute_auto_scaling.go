@@ -17,10 +17,11 @@ type ApiSearchComputeAutoScaling struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiSearchComputeAutoScaling) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o ApiSearchComputeAutoScaling) MarshalJSON() ([]byte, error) {
 	type noMethod ApiSearchComputeAutoScaling
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewApiSearchComputeAutoScaling instantiates a new ApiSearchComputeAutoScaling object

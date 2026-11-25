@@ -23,10 +23,11 @@ type LiveMigrationRequest20240530 struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *LiveMigrationRequest20240530) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o LiveMigrationRequest20240530) MarshalJSON() ([]byte, error) {
 	type noMethod LiveMigrationRequest20240530
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewLiveMigrationRequest20240530 instantiates a new LiveMigrationRequest20240530 object

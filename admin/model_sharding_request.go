@@ -15,10 +15,11 @@ type ShardingRequest struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ShardingRequest) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o ShardingRequest) MarshalJSON() ([]byte, error) {
 	type noMethod ShardingRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewShardingRequest instantiates a new ShardingRequest object

@@ -66,10 +66,11 @@ type ThirdPartyIntegration struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ThirdPartyIntegration) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o ThirdPartyIntegration) MarshalJSON() ([]byte, error) {
 	type noMethod ThirdPartyIntegration
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewThirdPartyIntegration instantiates a new ThirdPartyIntegration object

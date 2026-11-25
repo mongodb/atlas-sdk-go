@@ -15,10 +15,11 @@ type DatabasePermittedNamespaceResource struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DatabasePermittedNamespaceResource) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o DatabasePermittedNamespaceResource) MarshalJSON() ([]byte, error) {
 	type noMethod DatabasePermittedNamespaceResource
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewDatabasePermittedNamespaceResource instantiates a new DatabasePermittedNamespaceResource object

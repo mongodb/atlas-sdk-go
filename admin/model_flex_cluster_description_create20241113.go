@@ -22,10 +22,11 @@ type FlexClusterDescriptionCreate20241113 struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *FlexClusterDescriptionCreate20241113) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o FlexClusterDescriptionCreate20241113) MarshalJSON() ([]byte, error) {
 	type noMethod FlexClusterDescriptionCreate20241113
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewFlexClusterDescriptionCreate20241113 instantiates a new FlexClusterDescriptionCreate20241113 object

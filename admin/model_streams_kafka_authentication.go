@@ -41,10 +41,11 @@ type StreamsKafkaAuthentication struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsKafkaAuthentication) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o StreamsKafkaAuthentication) MarshalJSON() ([]byte, error) {
 	type noMethod StreamsKafkaAuthentication
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewStreamsKafkaAuthentication instantiates a new StreamsKafkaAuthentication object

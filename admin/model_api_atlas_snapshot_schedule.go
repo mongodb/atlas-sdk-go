@@ -31,10 +31,11 @@ type ApiAtlasSnapshotSchedule struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiAtlasSnapshotSchedule) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o ApiAtlasSnapshotSchedule) MarshalJSON() ([]byte, error) {
 	type noMethod ApiAtlasSnapshotSchedule
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewApiAtlasSnapshotSchedule instantiates a new ApiAtlasSnapshotSchedule object

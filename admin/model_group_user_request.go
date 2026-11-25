@@ -15,10 +15,11 @@ type GroupUserRequest struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *GroupUserRequest) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o GroupUserRequest) MarshalJSON() ([]byte, error) {
 	type noMethod GroupUserRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewGroupUserRequest instantiates a new GroupUserRequest object

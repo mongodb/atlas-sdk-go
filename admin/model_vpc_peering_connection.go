@@ -42,10 +42,11 @@ type VPCPeeringConnection struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *VPCPeeringConnection) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o VPCPeeringConnection) MarshalJSON() ([]byte, error) {
 	type noMethod VPCPeeringConnection
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewVPCPeeringConnection instantiates a new VPCPeeringConnection object

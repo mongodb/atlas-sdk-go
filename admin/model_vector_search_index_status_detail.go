@@ -17,10 +17,11 @@ type VectorSearchIndexStatusDetail struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *VectorSearchIndexStatusDetail) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o VectorSearchIndexStatusDetail) MarshalJSON() ([]byte, error) {
 	type noMethod VectorSearchIndexStatusDetail
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewVectorSearchIndexStatusDetail instantiates a new VectorSearchIndexStatusDetail object

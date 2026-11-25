@@ -16,10 +16,11 @@ type VPCPeeringActionChallenge struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *VPCPeeringActionChallenge) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o VPCPeeringActionChallenge) MarshalJSON() ([]byte, error) {
 	type noMethod VPCPeeringActionChallenge
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewVPCPeeringActionChallenge instantiates a new VPCPeeringActionChallenge object

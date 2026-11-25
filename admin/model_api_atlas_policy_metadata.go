@@ -12,10 +12,11 @@ type ApiAtlasPolicyMetadata struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiAtlasPolicyMetadata) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o ApiAtlasPolicyMetadata) MarshalJSON() ([]byte, error) {
 	type noMethod ApiAtlasPolicyMetadata
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewApiAtlasPolicyMetadata instantiates a new ApiAtlasPolicyMetadata object

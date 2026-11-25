@@ -14,10 +14,11 @@ type StreamsDatabricksAuthentication struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsDatabricksAuthentication) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o StreamsDatabricksAuthentication) MarshalJSON() ([]byte, error) {
 	type noMethod StreamsDatabricksAuthentication
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewStreamsDatabricksAuthentication instantiates a new StreamsDatabricksAuthentication object

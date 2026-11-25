@@ -14,10 +14,11 @@ type ControlPlaneIPAddresses struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ControlPlaneIPAddresses) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o ControlPlaneIPAddresses) MarshalJSON() ([]byte, error) {
 	type noMethod ControlPlaneIPAddresses
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewControlPlaneIPAddresses instantiates a new ControlPlaneIPAddresses object

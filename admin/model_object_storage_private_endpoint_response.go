@@ -27,10 +27,11 @@ type ObjectStoragePrivateEndpointResponse struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ObjectStoragePrivateEndpointResponse) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o ObjectStoragePrivateEndpointResponse) MarshalJSON() ([]byte, error) {
 	type noMethod ObjectStoragePrivateEndpointResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewObjectStoragePrivateEndpointResponse instantiates a new ObjectStoragePrivateEndpointResponse object

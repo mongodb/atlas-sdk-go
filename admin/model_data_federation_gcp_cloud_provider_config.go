@@ -14,10 +14,11 @@ type DataFederationGCPCloudProviderConfig struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DataFederationGCPCloudProviderConfig) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o DataFederationGCPCloudProviderConfig) MarshalJSON() ([]byte, error) {
 	type noMethod DataFederationGCPCloudProviderConfig
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewDataFederationGCPCloudProviderConfig instantiates a new DataFederationGCPCloudProviderConfig object

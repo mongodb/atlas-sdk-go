@@ -23,10 +23,11 @@ type OnlineArchiveSchedule struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *OnlineArchiveSchedule) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o OnlineArchiveSchedule) MarshalJSON() ([]byte, error) {
 	type noMethod OnlineArchiveSchedule
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewOnlineArchiveSchedule instantiates a new OnlineArchiveSchedule object

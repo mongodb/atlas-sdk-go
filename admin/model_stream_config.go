@@ -16,10 +16,11 @@ type StreamConfig struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamConfig) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o StreamConfig) MarshalJSON() ([]byte, error) {
 	type noMethod StreamConfig
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewStreamConfig instantiates a new StreamConfig object

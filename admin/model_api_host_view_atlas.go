@@ -49,10 +49,11 @@ type ApiHostViewAtlas struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiHostViewAtlas) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o ApiHostViewAtlas) MarshalJSON() ([]byte, error) {
 	type noMethod ApiHostViewAtlas
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewApiHostViewAtlas instantiates a new ApiHostViewAtlas object

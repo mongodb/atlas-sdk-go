@@ -13,10 +13,11 @@ type ApiPrivateDownloadDeliveryUrl struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiPrivateDownloadDeliveryUrl) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o ApiPrivateDownloadDeliveryUrl) MarshalJSON() ([]byte, error) {
 	type noMethod ApiPrivateDownloadDeliveryUrl
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewApiPrivateDownloadDeliveryUrl instantiates a new ApiPrivateDownloadDeliveryUrl object

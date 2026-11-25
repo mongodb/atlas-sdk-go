@@ -18,10 +18,11 @@ type PaginatedStreamsWorkspacePrivateEndpointResponse struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedStreamsWorkspacePrivateEndpointResponse) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o PaginatedStreamsWorkspacePrivateEndpointResponse) MarshalJSON() ([]byte, error) {
 	type noMethod PaginatedStreamsWorkspacePrivateEndpointResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPaginatedStreamsWorkspacePrivateEndpointResponse instantiates a new PaginatedStreamsWorkspacePrivateEndpointResponse object

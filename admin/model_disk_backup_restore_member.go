@@ -18,10 +18,11 @@ type DiskBackupRestoreMember struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DiskBackupRestoreMember) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o DiskBackupRestoreMember) MarshalJSON() ([]byte, error) {
 	type noMethod DiskBackupRestoreMember
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewDiskBackupRestoreMember instantiates a new DiskBackupRestoreMember object

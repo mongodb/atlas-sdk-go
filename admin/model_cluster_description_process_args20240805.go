@@ -41,10 +41,11 @@ type ClusterDescriptionProcessArgs20240805 struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ClusterDescriptionProcessArgs20240805) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o ClusterDescriptionProcessArgs20240805) MarshalJSON() ([]byte, error) {
 	type noMethod ClusterDescriptionProcessArgs20240805
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewClusterDescriptionProcessArgs20240805 instantiates a new ClusterDescriptionProcessArgs20240805 object

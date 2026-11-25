@@ -24,10 +24,11 @@ type CreateEndpointRequest struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *CreateEndpointRequest) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o CreateEndpointRequest) MarshalJSON() ([]byte, error) {
 	type noMethod CreateEndpointRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewCreateEndpointRequest instantiates a new CreateEndpointRequest object

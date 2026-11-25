@@ -18,10 +18,11 @@ type PaginatedDiskPartition struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedDiskPartition) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o PaginatedDiskPartition) MarshalJSON() ([]byte, error) {
 	type noMethod PaginatedDiskPartition
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPaginatedDiskPartition instantiates a new PaginatedDiskPartition object

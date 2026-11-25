@@ -19,10 +19,11 @@ type ShardKeyAnalysisRequest struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ShardKeyAnalysisRequest) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o ShardKeyAnalysisRequest) MarshalJSON() ([]byte, error) {
 	type noMethod ShardKeyAnalysisRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewShardKeyAnalysisRequest instantiates a new ShardKeyAnalysisRequest object

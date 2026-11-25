@@ -11,10 +11,11 @@ type CostExplorerFilterResponse struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *CostExplorerFilterResponse) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o CostExplorerFilterResponse) MarshalJSON() ([]byte, error) {
 	type noMethod CostExplorerFilterResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewCostExplorerFilterResponse instantiates a new CostExplorerFilterResponse object
