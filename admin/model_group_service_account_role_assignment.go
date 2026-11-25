@@ -11,10 +11,11 @@ type GroupServiceAccountRoleAssignment struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *GroupServiceAccountRoleAssignment) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o GroupServiceAccountRoleAssignment) MarshalJSON() ([]byte, error) {
 	type noMethod GroupServiceAccountRoleAssignment
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewGroupServiceAccountRoleAssignment instantiates a new GroupServiceAccountRoleAssignment object

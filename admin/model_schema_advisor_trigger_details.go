@@ -15,10 +15,11 @@ type SchemaAdvisorTriggerDetails struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *SchemaAdvisorTriggerDetails) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o SchemaAdvisorTriggerDetails) MarshalJSON() ([]byte, error) {
 	type noMethod SchemaAdvisorTriggerDetails
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewSchemaAdvisorTriggerDetails instantiates a new SchemaAdvisorTriggerDetails object

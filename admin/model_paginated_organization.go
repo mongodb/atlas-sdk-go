@@ -18,10 +18,11 @@ type PaginatedOrganization struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedOrganization) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o PaginatedOrganization) MarshalJSON() ([]byte, error) {
 	type noMethod PaginatedOrganization
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPaginatedOrganization instantiates a new PaginatedOrganization object

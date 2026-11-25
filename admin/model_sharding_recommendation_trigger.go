@@ -24,10 +24,11 @@ type ShardingRecommendationTrigger struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ShardingRecommendationTrigger) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o ShardingRecommendationTrigger) MarshalJSON() ([]byte, error) {
 	type noMethod ShardingRecommendationTrigger
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewShardingRecommendationTrigger instantiates a new ShardingRecommendationTrigger object

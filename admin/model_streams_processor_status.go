@@ -18,10 +18,11 @@ type StreamsProcessorStatus struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsProcessorStatus) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o StreamsProcessorStatus) MarshalJSON() ([]byte, error) {
 	type noMethod StreamsProcessorStatus
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewStreamsProcessorStatus instantiates a new StreamsProcessorStatus object

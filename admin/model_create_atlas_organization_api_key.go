@@ -13,10 +13,11 @@ type CreateAtlasOrganizationApiKey struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *CreateAtlasOrganizationApiKey) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o CreateAtlasOrganizationApiKey) MarshalJSON() ([]byte, error) {
 	type noMethod CreateAtlasOrganizationApiKey
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewCreateAtlasOrganizationApiKey instantiates a new CreateAtlasOrganizationApiKey object

@@ -18,10 +18,11 @@ type PaginatedAtlasAiModelApiKeysResponse struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedAtlasAiModelApiKeysResponse) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o PaginatedAtlasAiModelApiKeysResponse) MarshalJSON() ([]byte, error) {
 	type noMethod PaginatedAtlasAiModelApiKeysResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPaginatedAtlasAiModelApiKeysResponse instantiates a new PaginatedAtlasAiModelApiKeysResponse object

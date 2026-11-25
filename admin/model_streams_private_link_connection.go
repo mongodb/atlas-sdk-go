@@ -52,10 +52,11 @@ type StreamsPrivateLinkConnection struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *StreamsPrivateLinkConnection) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o StreamsPrivateLinkConnection) MarshalJSON() ([]byte, error) {
 	type noMethod StreamsPrivateLinkConnection
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewStreamsPrivateLinkConnection instantiates a new StreamsPrivateLinkConnection object

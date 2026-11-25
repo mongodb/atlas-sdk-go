@@ -25,10 +25,11 @@ type MetricIntegrationRequest struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *MetricIntegrationRequest) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o MetricIntegrationRequest) MarshalJSON() ([]byte, error) {
 	type noMethod MetricIntegrationRequest
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewMetricIntegrationRequest instantiates a new MetricIntegrationRequest object

@@ -14,10 +14,11 @@ type SearchSynonymMappingDefinition struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *SearchSynonymMappingDefinition) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o SearchSynonymMappingDefinition) MarshalJSON() ([]byte, error) {
 	type noMethod SearchSynonymMappingDefinition
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewSearchSynonymMappingDefinition instantiates a new SearchSynonymMappingDefinition object

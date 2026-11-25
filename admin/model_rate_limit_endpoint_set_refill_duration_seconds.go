@@ -13,10 +13,11 @@ type RateLimitEndpointSetRefillDurationSeconds struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *RateLimitEndpointSetRefillDurationSeconds) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o RateLimitEndpointSetRefillDurationSeconds) MarshalJSON() ([]byte, error) {
 	type noMethod RateLimitEndpointSetRefillDurationSeconds
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewRateLimitEndpointSetRefillDurationSeconds instantiates a new RateLimitEndpointSetRefillDurationSeconds object

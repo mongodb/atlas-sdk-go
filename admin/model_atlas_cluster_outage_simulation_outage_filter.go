@@ -15,10 +15,11 @@ type AtlasClusterOutageSimulationOutageFilter struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *AtlasClusterOutageSimulationOutageFilter) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o AtlasClusterOutageSimulationOutageFilter) MarshalJSON() ([]byte, error) {
 	type noMethod AtlasClusterOutageSimulationOutageFilter
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewAtlasClusterOutageSimulationOutageFilter instantiates a new AtlasClusterOutageSimulationOutageFilter object

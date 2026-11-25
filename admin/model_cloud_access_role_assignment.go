@@ -15,10 +15,11 @@ type CloudAccessRoleAssignment struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *CloudAccessRoleAssignment) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o CloudAccessRoleAssignment) MarshalJSON() ([]byte, error) {
 	type noMethod CloudAccessRoleAssignment
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewCloudAccessRoleAssignment instantiates a new CloudAccessRoleAssignment object

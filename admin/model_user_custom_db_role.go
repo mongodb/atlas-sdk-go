@@ -15,10 +15,11 @@ type UserCustomDBRole struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *UserCustomDBRole) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o UserCustomDBRole) MarshalJSON() ([]byte, error) {
 	type noMethod UserCustomDBRole
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewUserCustomDBRole instantiates a new UserCustomDBRole object

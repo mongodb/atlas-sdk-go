@@ -15,10 +15,11 @@ type MeasurementDiskPartition struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *MeasurementDiskPartition) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o MeasurementDiskPartition) MarshalJSON() ([]byte, error) {
 	type noMethod MeasurementDiskPartition
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewMeasurementDiskPartition instantiates a new MeasurementDiskPartition object

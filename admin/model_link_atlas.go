@@ -13,10 +13,11 @@ type LinkAtlas struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *LinkAtlas) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o LinkAtlas) MarshalJSON() ([]byte, error) {
 	type noMethod LinkAtlas
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewLinkAtlas instantiates a new LinkAtlas object

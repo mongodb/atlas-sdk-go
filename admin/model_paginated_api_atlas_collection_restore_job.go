@@ -18,10 +18,11 @@ type PaginatedApiAtlasCollectionRestoreJob struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedApiAtlasCollectionRestoreJob) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o PaginatedApiAtlasCollectionRestoreJob) MarshalJSON() ([]byte, error) {
 	type noMethod PaginatedApiAtlasCollectionRestoreJob
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPaginatedApiAtlasCollectionRestoreJob instantiates a new PaginatedApiAtlasCollectionRestoreJob object

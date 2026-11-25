@@ -17,10 +17,11 @@ type LegacyReplicationSpec struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *LegacyReplicationSpec) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o LegacyReplicationSpec) MarshalJSON() ([]byte, error) {
 	type noMethod LegacyReplicationSpec
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewLegacyReplicationSpec instantiates a new LegacyReplicationSpec object

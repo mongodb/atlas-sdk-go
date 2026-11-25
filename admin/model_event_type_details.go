@@ -18,10 +18,11 @@ type EventTypeDetails struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *EventTypeDetails) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o EventTypeDetails) MarshalJSON() ([]byte, error) {
 	type noMethod EventTypeDetails
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewEventTypeDetails instantiates a new EventTypeDetails object

@@ -13,10 +13,11 @@ type BackupLabel struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *BackupLabel) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o BackupLabel) MarshalJSON() ([]byte, error) {
 	type noMethod BackupLabel
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewBackupLabel instantiates a new BackupLabel object

@@ -11,10 +11,11 @@ type AWSCustomDNSEnabled struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *AWSCustomDNSEnabled) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o AWSCustomDNSEnabled) MarshalJSON() ([]byte, error) {
 	type noMethod AWSCustomDNSEnabled
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewAWSCustomDNSEnabled instantiates a new AWSCustomDNSEnabled object

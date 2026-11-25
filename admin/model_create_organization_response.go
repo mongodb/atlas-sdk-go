@@ -20,10 +20,11 @@ type CreateOrganizationResponse struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *CreateOrganizationResponse) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o CreateOrganizationResponse) MarshalJSON() ([]byte, error) {
 	type noMethod CreateOrganizationResponse
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewCreateOrganizationResponse instantiates a new CreateOrganizationResponse object

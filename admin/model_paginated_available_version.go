@@ -18,10 +18,11 @@ type PaginatedAvailableVersion struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedAvailableVersion) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o PaginatedAvailableVersion) MarshalJSON() ([]byte, error) {
 	type noMethod PaginatedAvailableVersion
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPaginatedAvailableVersion instantiates a new PaginatedAvailableVersion object

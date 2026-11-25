@@ -46,10 +46,13 @@ type _{{{classname}}} {{{classname}}}
 {{/isAdditionalPropertiesTrue}}
 {{^isArray}}
 {{^isAdditionalPropertiesTrue}}
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *{{classname}}) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+{{! Note: a model embedding a parent (allOf) would get the parent's value-receiver MarshalJSON promoted }}
+{{! onto noMethod below, dropping its own fields. The generator flattens allOf today, so this is unreachable. }}
+func (o {{classname}}) MarshalJSON() ([]byte, error) {
 	type noMethod {{classname}}
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 {{/isAdditionalPropertiesTrue}}

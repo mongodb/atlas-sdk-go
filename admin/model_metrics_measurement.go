@@ -18,10 +18,11 @@ type MetricsMeasurement struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *MetricsMeasurement) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o MetricsMeasurement) MarshalJSON() ([]byte, error) {
 	type noMethod MetricsMeasurement
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewMetricsMeasurement instantiates a new MetricsMeasurement object

@@ -13,10 +13,11 @@ type DatabaseInheritedRole struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *DatabaseInheritedRole) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o DatabaseInheritedRole) MarshalJSON() ([]byte, error) {
 	type noMethod DatabaseInheritedRole
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewDatabaseInheritedRole instantiates a new DatabaseInheritedRole object

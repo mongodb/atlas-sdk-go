@@ -18,10 +18,11 @@ type PaginatedCloudBackupReplicaSet struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedCloudBackupReplicaSet) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o PaginatedCloudBackupReplicaSet) MarshalJSON() ([]byte, error) {
 	type noMethod PaginatedCloudBackupReplicaSet
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPaginatedCloudBackupReplicaSet instantiates a new PaginatedCloudBackupReplicaSet object

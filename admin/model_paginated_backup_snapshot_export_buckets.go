@@ -18,10 +18,11 @@ type PaginatedBackupSnapshotExportBuckets struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PaginatedBackupSnapshotExportBuckets) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o PaginatedBackupSnapshotExportBuckets) MarshalJSON() ([]byte, error) {
 	type noMethod PaginatedBackupSnapshotExportBuckets
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPaginatedBackupSnapshotExportBuckets instantiates a new PaginatedBackupSnapshotExportBuckets object

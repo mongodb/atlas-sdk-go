@@ -17,10 +17,11 @@ type ApiSearchDeploymentRequestSpec struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *ApiSearchDeploymentRequestSpec) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o ApiSearchDeploymentRequestSpec) MarshalJSON() ([]byte, error) {
 	type noMethod ApiSearchDeploymentRequestSpec
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewApiSearchDeploymentRequestSpec instantiates a new ApiSearchDeploymentRequestSpec object

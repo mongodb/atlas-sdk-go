@@ -18,10 +18,11 @@ type PinnedNamespaces struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-func (o *PinnedNamespaces) MarshalJSON() ([]byte, error) {
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
+func (o PinnedNamespaces) MarshalJSON() ([]byte, error) {
 	type noMethod PinnedNamespaces
-	return marshalWithNullFields(noMethod(*o), o.NullFields)
+	return marshalWithNullFields(noMethod(o), o.NullFields)
 }
 
 // NewPinnedNamespaces instantiates a new PinnedNamespaces object
