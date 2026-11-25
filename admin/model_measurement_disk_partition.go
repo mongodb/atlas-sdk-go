@@ -15,9 +15,8 @@ type MeasurementDiskPartition struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-// The value receiver matters: a nested struct-typed field is not addressable
-// inside marshalWithNullFields, so a pointer receiver would never be reached.
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
 func (o MeasurementDiskPartition) MarshalJSON() ([]byte, error) {
 	type noMethod MeasurementDiskPartition
 	return marshalWithNullFields(noMethod(o), o.NullFields)

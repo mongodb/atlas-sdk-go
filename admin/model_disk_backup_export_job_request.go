@@ -20,9 +20,8 @@ type DiskBackupExportJobRequest struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-// The value receiver matters: a nested struct-typed field is not addressable
-// inside marshalWithNullFields, so a pointer receiver would never be reached.
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
 func (o DiskBackupExportJobRequest) MarshalJSON() ([]byte, error) {
 	type noMethod DiskBackupExportJobRequest
 	return marshalWithNullFields(noMethod(o), o.NullFields)

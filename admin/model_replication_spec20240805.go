@@ -19,9 +19,8 @@ type ReplicationSpec20240805 struct {
 	NullFields []string `json:"-"`
 }
 
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-// The value receiver matters: a nested struct-typed field is not addressable
-// inside marshalWithNullFields, so a pointer receiver would never be reached.
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
 func (o ReplicationSpec20240805) MarshalJSON() ([]byte, error) {
 	type noMethod ReplicationSpec20240805
 	return marshalWithNullFields(noMethod(o), o.NullFields)

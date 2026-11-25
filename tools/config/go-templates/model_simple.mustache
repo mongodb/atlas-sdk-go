@@ -46,9 +46,8 @@ type _{{{classname}}} {{{classname}}}
 {{/isAdditionalPropertiesTrue}}
 {{^isArray}}
 {{^isAdditionalPropertiesTrue}}
-// MarshalJSON honors NullFields, in addition to the regular struct tags.
-// The value receiver matters: a nested struct-typed field is not addressable
-// inside marshalWithNullFields, so a pointer receiver would never be reached.
+// MarshalJSON honors NullFields. It needs a value receiver: nested struct
+// values aren't addressable in marshalWithNullFields.
 {{! Note: a model embedding a parent (allOf) would get the parent's value-receiver MarshalJSON promoted }}
 {{! onto noMethod below, dropping its own fields. The generator flattens allOf today, so this is unreachable. }}
 func (o {{classname}}) MarshalJSON() ([]byte, error) {
