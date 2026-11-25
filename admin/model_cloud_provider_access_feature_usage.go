@@ -6,8 +6,8 @@ package admin
 type CloudProviderAccessFeatureUsage struct {
 	// Human-readable label that describes one MongoDB Cloud feature linked to this Amazon Web Services (AWS) Identity and Access Management (IAM) role.
 	// Read only field.
-	FeatureType *string                                                     `json:"featureType,omitempty"`
-	FeatureId   *CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId `json:"featureId,omitempty"`
+	FeatureType *string                                       `json:"featureType,omitempty"`
+	FeatureId   *BaseCloudProviderAccessFeatureUsageFeatureId `json:"featureId,omitempty"`
 	// NullFields is an internal field that is never sent as part of the payload (see the `json:"-"` tag below).
 	// It holds a list of field names (e.g. "FieldName") to send as an explicit JSON null instead of their actual value.
 	NullFields []string `json:"-"`
@@ -77,9 +77,9 @@ func (o *CloudProviderAccessFeatureUsage) SetFeatureTypeNil() {
 }
 
 // GetFeatureId returns the FeatureId field value if set, zero value otherwise
-func (o *CloudProviderAccessFeatureUsage) GetFeatureId() CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId {
+func (o *CloudProviderAccessFeatureUsage) GetFeatureId() BaseCloudProviderAccessFeatureUsageFeatureId {
 	if o == nil || IsNil(o.FeatureId) {
-		var ret CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId
+		var ret BaseCloudProviderAccessFeatureUsageFeatureId
 		return ret
 	}
 	return *o.FeatureId
@@ -87,7 +87,7 @@ func (o *CloudProviderAccessFeatureUsage) GetFeatureId() CloudProviderAccessFeat
 
 // GetFeatureIdOk returns a tuple with the FeatureId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CloudProviderAccessFeatureUsage) GetFeatureIdOk() (*CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId, bool) {
+func (o *CloudProviderAccessFeatureUsage) GetFeatureIdOk() (*BaseCloudProviderAccessFeatureUsageFeatureId, bool) {
 	if o == nil || IsNil(o.FeatureId) {
 		return nil, false
 	}
@@ -104,8 +104,8 @@ func (o *CloudProviderAccessFeatureUsage) HasFeatureId() bool {
 	return false
 }
 
-// SetFeatureId gets a reference to the given CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId and assigns it to the FeatureId field.
-func (o *CloudProviderAccessFeatureUsage) SetFeatureId(v CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId) {
+// SetFeatureId gets a reference to the given BaseCloudProviderAccessFeatureUsageFeatureId and assigns it to the FeatureId field.
+func (o *CloudProviderAccessFeatureUsage) SetFeatureId(v BaseCloudProviderAccessFeatureUsageFeatureId) {
 	o.FeatureId = &v
 	o.NullFields = removeNullField(o.NullFields, "FeatureId")
 }
