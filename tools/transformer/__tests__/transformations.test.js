@@ -5,6 +5,8 @@ const {
   transformAllOf,
   transformOneOf,
   applyAnyOfTransformations,
+  applyDiscriminatorTransformations,
+  applyOneOfTransformations,
   applyOperationIdOverrides,
   applyServersValidation,
 } = require("../src/transformations");
@@ -283,5 +285,31 @@ describe("cloudProviderAccessFeatureUsageTransformation", () => {
       cloudProviderAccessFeatureUsageTransformation(api),
     ).not.toThrow();
     expect(api.components.schemas).toEqual({});
+  });
+
+  test("keeps every variant field through the discriminator and oneOf passes", () => {
+    const api = buildApi();
+    cloudProviderAccessFeatureUsageTransformation(api);
+    applyDiscriminatorTransformations(api);
+    applyOneOfTransformations(api);
+
+    // The parent has to survive flattening still pointing at the synthetic model.
+    // If a child kept its own featureId it would overwrite this ref, which is the
+    // bug the property stripping exists to prevent.
+    expect(
+      api.components.schemas.CloudProviderAccessFeatureUsage.properties
+        .featureId,
+    ).toEqual({
+      $ref: "#/components/schemas/BaseCloudProviderAccessFeatureUsageFeatureId",
+    });
+
+    // The synthetic model is flattened in place, so it ends up holding the fields
+    // of every variant rather than only the last one.
+    expect(
+      Object.keys(
+        api.components.schemas.BaseCloudProviderAccessFeatureUsageFeatureId
+          .properties,
+      ).sort(),
+    ).toEqual(["bucketName", "groupId", "name"]);
   });
 });
