@@ -187,7 +187,7 @@ function hasPropertiesOrAllOf(openapi, ref) {
 
 // Each variant of CloudProviderAccessFeatureUsage declares featureId with its own type.
 // Without this the parent keeps only PUSH_BASED_LOG_EXPORT's type and the fields of the
-// other variants, such as privateEndpointId, are dropped.
+// other variants, such as name or sinkName, are dropped.
 function cloudProviderAccessFeatureUsageTransformation(openapi) {
   extractDiscriminatorChildProperty(
     openapi,
