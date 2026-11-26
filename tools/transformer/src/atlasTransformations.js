@@ -26,6 +26,9 @@ function runFlatteningTransformations(openapi) {
   // Handles complex polymorphic type from search API
   openapi = searchAPIIssuesTransformation(openapi);
 
+  // Handles the per-variant featureId of CloudProviderAccessFeatureUsage
+  openapi = cloudProviderAccessFeatureUsageTransformation(openapi);
+
   openapi = applyDiscriminatorTransformations(openapi);
   openapi = applyOneOfTransformations(openapi);
   openapi = applyAnyOfTransformations(openapi);
@@ -97,6 +100,8 @@ function runAllTransformations(openapi) {
 module.exports = {
   runFlatteningTransformations: runFlatteningTransformations,
   runAllTransformations: runAllTransformations,
+  cloudProviderAccessFeatureUsageTransformation:
+    cloudProviderAccessFeatureUsageTransformation,
 };
 
 // Temporary transformation until new search version is introduced.
@@ -117,42 +122,78 @@ function searchAPIIssuesTransformation(openapi) {
   ];
 
   for (const model of modelsToFix) {
-    const responseParent = model.modelObject;
-    if (!responseParent) {
+    if (!model.modelObject) {
       console.error("SearchTransformation: Model object not found:", model);
       continue; // Skip to the next model if not found.
     }
-
-    if (responseParent.discriminator && responseParent.discriminator.mapping) {
-      const transformedModel = (openapi.components.schemas[model.newModelName] =
-        {
-          oneOf: [],
-        });
-      responseParent.properties[model.property] = {
-        $ref: "#/components/schemas/" + model.newModelName,
-      };
-
-      for (const mappingKey in responseParent.discriminator.mapping) {
-        const ref = responseParent.discriminator.mapping[mappingKey];
-        if (!ref) {
-          continue; // Skip if there's no reference
-        }
-        const reference = resolveOpenAPIReference(openapi, ref);
-        if (
-          reference &&
-          reference.allOf &&
-          reference.allOf[1] &&
-          reference.allOf[1].properties &&
-          reference.allOf[1].properties[model.property]
-        ) {
-          transformedModel.oneOf.push({
-            $ref: reference.allOf[1].properties[model.property].$ref,
-          });
-          delete reference.allOf[1].properties[model.property];
-        }
-      }
-    }
-    console.debug("SearchTransformation:", responseParent);
+    extractDiscriminatorChildProperty(
+      openapi,
+      model.modelObject,
+      model.property,
+      model.newModelName,
+    );
   }
+  return openapi;
+}
+
+// The children of a discriminated schema can each declare the same property with a
+// different type. Flattening the children onto the parent keeps only the last mapping
+// entry's type and silently drops the others. Collect the child refs into a synthetic
+// oneOf model instead, so the merged model keeps the fields of every variant.
+function extractDiscriminatorChildProperty(
+  openapi,
+  parent,
+  property,
+  newModelName,
+) {
+  if (!parent || !parent.discriminator || !parent.discriminator.mapping) {
+    return;
+  }
+
+  const oneOfRefs = [];
+  for (const childRef of Object.values(parent.discriminator.mapping)) {
+    if (!childRef) {
+      continue; // Skip if there's no reference
+    }
+    const child = resolveOpenAPIReference(openapi, childRef);
+    const holder = (child.allOf || []).find(
+      (item) => item.properties && item.properties[property],
+    );
+    if (!holder) {
+      continue;
+    }
+
+    const propertyRef = holder.properties[property].$ref;
+    // Strip the property from the child either way. Leaving it behind would overwrite
+    // the synthetic ref when the children are flattened onto the parent.
+    delete holder.properties[property];
+    // transformOneOfProperties rejects a oneOf entry with neither properties nor allOf,
+    // so an empty schema cannot be collected.
+    if (propertyRef && hasPropertiesOrAllOf(openapi, propertyRef)) {
+      oneOfRefs.push({ $ref: propertyRef });
+    }
+  }
+
+  openapi.components.schemas[newModelName] = { oneOf: oneOfRefs };
+  parent.properties[property] = {
+    $ref: "#/components/schemas/" + newModelName,
+  };
+}
+
+function hasPropertiesOrAllOf(openapi, ref) {
+  const schema = resolveOpenAPIReference(openapi, ref);
+  return !!(schema && (schema.properties || schema.allOf));
+}
+
+// Each variant of CloudProviderAccessFeatureUsage declares featureId with its own type.
+// Without this the parent keeps only PUSH_BASED_LOG_EXPORT's type and the fields of the
+// other variants, such as name or sinkName, are dropped.
+function cloudProviderAccessFeatureUsageTransformation(openapi) {
+  extractDiscriminatorChildProperty(
+    openapi,
+    openapi.components.schemas.CloudProviderAccessFeatureUsage,
+    "featureId",
+    "BaseCloudProviderAccessFeatureUsageFeatureId",
+  );
   return openapi;
 }

@@ -3687,40 +3687,21 @@ components:
           readOnly: true
           type: string
         featureId:
-          $ref: "#/components/schemas/CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId"
+          $ref: "#/components/schemas/BaseCloudProviderAccessFeatureUsageFeatureId"
       type: object
       x-xgen-discriminator:
         propertyName: featureType
         mapping:
           ATLAS_DATA_LAKE:
-            properties:
-              - featureId
+            properties: []
           ATLAS_LOG_INTEGRATION:
-            properties:
-              - featureId
+            properties: []
           ENCRYPTION_AT_REST:
-            properties:
-              - featureId
+            properties: []
           EXPORT_SNAPSHOT:
-            properties:
-              - featureId
+            properties: []
           PUSH_BASED_LOG_EXPORT:
-            properties:
-              - featureId
-    CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId:
-      description: Identifying characteristics about the Amazon Web Services (AWS) Simple Storage Service (S3) export bucket linked to this AWS Identity and Access Management (IAM) role.
-      properties:
-        bucketName:
-          description: Name of the AWS S3 bucket to which your logs will be exported to.
-          readOnly: true
-          type: string
-        groupId:
-          description: Unique 24-hexadecimal digit string that identifies your project.
-          example: 32b6e34b3d91647abb20e7b8
-          pattern: ^([a-f0-9]{24})$
-          readOnly: true
-          type: string
-      type: object
+            properties: []
     CloudProviderAccessGCPServiceAccount:
       allOf:
         - $ref: "#/components/schemas/CloudProviderAccessRole"
@@ -19078,6 +19059,37 @@ components:
         nestedRoot:
           description: Top-level path to the array that contains vector fields. When provided, vector fields under this path are treated as nested.
           example: sections
+          type: string
+    BaseCloudProviderAccessFeatureUsageFeatureId:
+      properties:
+        groupId:
+          description: Unique 24-hexadecimal digit string that identifies your project.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+          type: string
+        name:
+          description: Human-readable label that identifies the data lake.
+          type: string
+        configId:
+          description: Unique 24-hexadecimal digit string that identifies the Atlas log integration configuration.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+          type: string
+        sinkName:
+          description: Human-readable label that identifies the sink, such as an S3/GCS bucket or Azure container name.
+          readOnly: true
+          type: string
+        exportBucketId:
+          description: Unique 24-hexadecimal digit string that identifies the AWS S3 bucket to which you export your snapshots.
+          example: 32b6e34b3d91647abb20e7b8
+          pattern: ^([a-f0-9]{24})$
+          readOnly: true
+          type: string
+        bucketName:
+          description: Name of the AWS S3 bucket to which your logs will be exported to.
+          readOnly: true
           type: string
     AWSCustomDNSEnabled:
       properties:
