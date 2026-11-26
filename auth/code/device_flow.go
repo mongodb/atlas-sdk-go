@@ -22,7 +22,7 @@ import (
 	"strings"
 	"time"
 
-	core "go.mongodb.org/atlas-sdk/v20250312028/internal/core"
+	core "go.mongodb.org/atlas-sdk/v20250312029/internal/core"
 )
 
 const authExpiredError = "DEVICE_AUTHORIZATION_EXPIRED"
