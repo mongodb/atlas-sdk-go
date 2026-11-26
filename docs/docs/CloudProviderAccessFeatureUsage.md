@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FeatureType** | Pointer to **string** | Human-readable label that describes one MongoDB Cloud feature linked to this Amazon Web Services (AWS) Identity and Access Management (IAM) role. | [optional] [readonly] 
-**FeatureId** | Pointer to [**CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId**](CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId.md) |  | [optional] 
+**FeatureId** | Pointer to [**BaseCloudProviderAccessFeatureUsageFeatureId**](BaseCloudProviderAccessFeatureUsageFeatureId.md) |  | [optional] 
 
 ## Methods
 
@@ -59,20 +59,20 @@ SetFeatureTypeNil sets FeatureType to an explicit JSON null when marshaled, over
 
 ### GetFeatureId
 
-`func (o *CloudProviderAccessFeatureUsage) GetFeatureId() CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId`
+`func (o *CloudProviderAccessFeatureUsage) GetFeatureId() BaseCloudProviderAccessFeatureUsageFeatureId`
 
 GetFeatureId returns the FeatureId field if non-nil, zero value otherwise.
 
 ### GetFeatureIdOk
 
-`func (o *CloudProviderAccessFeatureUsage) GetFeatureIdOk() (*CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId, bool)`
+`func (o *CloudProviderAccessFeatureUsage) GetFeatureIdOk() (*BaseCloudProviderAccessFeatureUsageFeatureId, bool)`
 
 GetFeatureIdOk returns a tuple with the FeatureId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeatureId
 
-`func (o *CloudProviderAccessFeatureUsage) SetFeatureId(v CloudProviderAccessFeatureUsagePushBasedLogExportFeatureId)`
+`func (o *CloudProviderAccessFeatureUsage) SetFeatureId(v BaseCloudProviderAccessFeatureUsageFeatureId)`
 
 SetFeatureId sets FeatureId field to given value.
 
