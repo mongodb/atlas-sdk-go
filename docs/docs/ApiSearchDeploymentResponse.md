@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **EncryptionAtRestProvider** | Pointer to **string** | Cloud service provider that manages your customer keys to provide an additional layer of Encryption At Rest for the cluster. | [optional] [readonly] 
 **GroupId** | Pointer to **string** | Unique 24-hexadecimal character string that identifies the project. | [optional] [readonly] 
 **Id** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the search deployment. | [optional] [readonly] 
-**Specs** | Pointer to [**[]ApiSearchDeploymentSpec**](ApiSearchDeploymentSpec.md) | Deprecated. &#x60;specs&#x60; will be removed in a future release. We strongly recommend that you use &#x60;effectiveSpecs&#x60; instead. | [optional] [readonly] 
+**Specs** | Pointer to [**[]ApiSearchDeploymentSpec**](ApiSearchDeploymentSpec.md) | Deprecated: &#x60;specs&#x60; will be removed in a future release. We strongly recommend that you use &#x60;effectiveSpecs&#x60; instead. | [optional] [readonly] 
 **StateName** | Pointer to **string** | Human-readable label that indicates the current operating condition of this search deployment. | [optional] [readonly] 
 
 ## Methods
