@@ -22,7 +22,7 @@ type ApiSearchDeploymentResponse struct {
 	// Unique 24-hexadecimal digit string that identifies the search deployment.
 	// Read only field.
 	Id *string `json:"id,omitempty"`
-	// Deprecated. `specs` will be removed in a future release. We strongly recommend that you use `effectiveSpecs` instead.
+	// Deprecated: `specs` will be removed in a future release. We strongly recommend that you use `effectiveSpecs` instead.
 	// Read only field.
 	// Deprecated
 	Specs *[]ApiSearchDeploymentSpec `json:"specs,omitempty"`

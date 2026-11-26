@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ConfigId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the Atlas log integration configuration. | [optional] [readonly] 
 **SinkName** | Pointer to **string** | Human-readable label that identifies the sink, such as an S3/GCS bucket or Azure container name. | [optional] [readonly] 
 **ExportBucketId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the AWS S3 bucket to which you export your snapshots. | [optional] [readonly] 
+**PrivateEndpointId** | Pointer to **string** | Unique 24-hexadecimal digit string that identifies the object storage private endpoint. | [optional] [readonly] 
 **BucketName** | Pointer to **string** | Name of the AWS S3 bucket to which your logs will be exported to. | [optional] [readonly] 
 
 ## Methods
@@ -184,6 +185,37 @@ HasExportBucketId returns a boolean if a field has been set.
 `func (o *BaseCloudProviderAccessFeatureUsageFeatureId) SetExportBucketIdNil()`
 
 SetExportBucketIdNil sets ExportBucketId to an explicit JSON null when marshaled, overriding any value previously set with SetExportBucketId. Calling SetExportBucketId again clears the null override.
+
+### GetPrivateEndpointId
+
+`func (o *BaseCloudProviderAccessFeatureUsageFeatureId) GetPrivateEndpointId() string`
+
+GetPrivateEndpointId returns the PrivateEndpointId field if non-nil, zero value otherwise.
+
+### GetPrivateEndpointIdOk
+
+`func (o *BaseCloudProviderAccessFeatureUsageFeatureId) GetPrivateEndpointIdOk() (*string, bool)`
+
+GetPrivateEndpointIdOk returns a tuple with the PrivateEndpointId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivateEndpointId
+
+`func (o *BaseCloudProviderAccessFeatureUsageFeatureId) SetPrivateEndpointId(v string)`
+
+SetPrivateEndpointId sets PrivateEndpointId field to given value.
+
+### HasPrivateEndpointId
+
+`func (o *BaseCloudProviderAccessFeatureUsageFeatureId) HasPrivateEndpointId() bool`
+
+HasPrivateEndpointId returns a boolean if a field has been set.
+
+### SetPrivateEndpointIdNil
+
+`func (o *BaseCloudProviderAccessFeatureUsageFeatureId) SetPrivateEndpointIdNil()`
+
+SetPrivateEndpointIdNil sets PrivateEndpointId to an explicit JSON null when marshaled, overriding any value previously set with SetPrivateEndpointId. Calling SetPrivateEndpointId again clears the null override.
 
 ### GetBucketName
 

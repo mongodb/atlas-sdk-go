@@ -18,6 +18,9 @@ type BaseCloudProviderAccessFeatureUsageFeatureId struct {
 	// Unique 24-hexadecimal digit string that identifies the AWS S3 bucket to which you export your snapshots.
 	// Read only field.
 	ExportBucketId *string `json:"exportBucketId,omitempty"`
+	// Unique 24-hexadecimal digit string that identifies the object storage private endpoint.
+	// Read only field.
+	PrivateEndpointId *string `json:"privateEndpointId,omitempty"`
 	// Name of the AWS S3 bucket to which your logs will be exported to.
 	// Read only field.
 	BucketName *string `json:"bucketName,omitempty"`
@@ -248,6 +251,46 @@ func (o *BaseCloudProviderAccessFeatureUsageFeatureId) SetExportBucketId(v strin
 func (o *BaseCloudProviderAccessFeatureUsageFeatureId) SetExportBucketIdNil() {
 	o.ExportBucketId = nil
 	o.NullFields = addNullField(o.NullFields, "ExportBucketId")
+}
+
+// GetPrivateEndpointId returns the PrivateEndpointId field value if set, zero value otherwise
+func (o *BaseCloudProviderAccessFeatureUsageFeatureId) GetPrivateEndpointId() string {
+	if o == nil || IsNil(o.PrivateEndpointId) {
+		var ret string
+		return ret
+	}
+	return *o.PrivateEndpointId
+}
+
+// GetPrivateEndpointIdOk returns a tuple with the PrivateEndpointId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseCloudProviderAccessFeatureUsageFeatureId) GetPrivateEndpointIdOk() (*string, bool) {
+	if o == nil || IsNil(o.PrivateEndpointId) {
+		return nil, false
+	}
+
+	return o.PrivateEndpointId, true
+}
+
+// HasPrivateEndpointId returns a boolean if a field has been set.
+func (o *BaseCloudProviderAccessFeatureUsageFeatureId) HasPrivateEndpointId() bool {
+	if o != nil && !IsNil(o.PrivateEndpointId) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateEndpointId gets a reference to the given string and assigns it to the PrivateEndpointId field.
+func (o *BaseCloudProviderAccessFeatureUsageFeatureId) SetPrivateEndpointId(v string) {
+	o.PrivateEndpointId = &v
+	o.NullFields = removeNullField(o.NullFields, "PrivateEndpointId")
+}
+
+// SetPrivateEndpointIdNil sets PrivateEndpointId to an explicit JSON null when marshaled.
+func (o *BaseCloudProviderAccessFeatureUsageFeatureId) SetPrivateEndpointIdNil() {
+	o.PrivateEndpointId = nil
+	o.NullFields = addNullField(o.NullFields, "PrivateEndpointId")
 }
 
 // GetBucketName returns the BucketName field value if set, zero value otherwise

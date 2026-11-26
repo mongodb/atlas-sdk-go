@@ -44,13 +44,13 @@ type QueryStatsSummary struct {
 	NUpserted *float64 `json:"nUpserted,omitempty"`
 	// Human-readable label that identifies the namespace on the specified host. The resource expresses this parameter value as `<database>.<collection>`.
 	Namespace *string `json:"namespace,omitempty"`
-	// The 50th percentile value of execution time in microseconds. This field is deprecated as the values it reports may be inaccurate. It will be removed in a future release.
+	// Deprecated: The values it reports may be inaccurate. It will be removed in a future release. The 50th percentile value of execution time in microseconds.
 	// Deprecated
 	P50ExecMicros *float64 `json:"p50ExecMicros,omitempty"`
-	// The 90th percentile value of execution time in microseconds. This field is deprecated as the values it reports may be inaccurate. It will be removed in a future release.
+	// Deprecated: The values it reports may be inaccurate. It will be removed in a future release. The 90th percentile value of execution time in microseconds.
 	// Deprecated
 	P90ExecMicros *float64 `json:"p90ExecMicros,omitempty"`
-	// The 99th percentile value of execution time in microseconds. This field is deprecated as the values it reports may be inaccurate. It will be removed in a future release.
+	// Deprecated: The values it reports may be inaccurate. It will be removed in a future release. The 99th percentile value of execution time in microseconds.
 	// Deprecated
 	P99ExecMicros *float64 `json:"p99ExecMicros,omitempty"`
 	// A query shape is a set of specifications that group similar queries together. Specifications can include filters, sorts, projections, aggregation pipeline stages, a namespace, and others. Queries that have similar specifications have the same query shape.

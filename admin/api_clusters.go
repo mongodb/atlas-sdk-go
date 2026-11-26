@@ -560,6 +560,30 @@ type ClustersAPI interface {
 
 	// Method available only for mocking purposes
 	UpgradeTenantUpgradeExecute(r UpgradeTenantUpgradeApiRequest) (*LegacyAtlasCluster, *http.Response, error)
+
+	/*
+		ValidateGroupClusterConfigurations Validate One Cluster Configuration
+
+		Checks if the given cluster configuration is valid and ready to be used to create or edit a cluster.
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+		@param clusterConfigurationValidation Cluster configuration to validate.
+		@return ValidateGroupClusterConfigurationsApiRequest
+	*/
+	ValidateGroupClusterConfigurations(ctx context.Context, groupId string, clusterConfigurationValidation *ClusterConfigurationValidation) ValidateGroupClusterConfigurationsApiRequest
+	/*
+		ValidateGroupClusterConfigurations Validate One Cluster Configuration
+
+
+		@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+		@param ValidateGroupClusterConfigurationsApiParams - Parameters for the request
+		@return ValidateGroupClusterConfigurationsApiRequest
+	*/
+	ValidateGroupClusterConfigurationsWithParams(ctx context.Context, args *ValidateGroupClusterConfigurationsApiParams) ValidateGroupClusterConfigurationsApiRequest
+
+	// Method available only for mocking purposes
+	ValidateGroupClusterConfigurationsExecute(r ValidateGroupClusterConfigurationsApiRequest) (*ClusterConfigurationValidationResult, *http.Response, error)
 }
 
 // ClustersAPIService ClustersAPI service
@@ -3558,6 +3582,156 @@ func (a *ClustersAPIService) UpgradeTenantUpgradeExecute(r UpgradeTenantUpgradeA
 	}
 	// body params
 	localVarPostBody = r.legacyAtlasTenantClusterUpgradeRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := a.client.makeApiError(localVarHTTPResponse, localVarHTTPMethod, localVarPath)
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarHTTPResponse.Body, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		defer localVarHTTPResponse.Body.Close()
+		buf, readErr := io.ReadAll(localVarHTTPResponse.Body)
+		if readErr != nil {
+			err = readErr
+		}
+		newErr := &GenericOpenAPIError{
+			body:  buf,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ValidateGroupClusterConfigurationsApiRequest struct {
+	ctx                                context.Context
+	ApiService                         ClustersAPI
+	groupId                            string
+	clusterConfigurationValidation     *ClusterConfigurationValidation
+	useEffectiveInstanceFields         *bool
+	useEffectiveFieldsReplicationSpecs *bool
+}
+
+type ValidateGroupClusterConfigurationsApiParams struct {
+	GroupId                            string
+	ClusterConfigurationValidation     *ClusterConfigurationValidation
+	UseEffectiveInstanceFields         *bool
+	UseEffectiveFieldsReplicationSpecs *bool
+}
+
+func (a *ClustersAPIService) ValidateGroupClusterConfigurationsWithParams(ctx context.Context, args *ValidateGroupClusterConfigurationsApiParams) ValidateGroupClusterConfigurationsApiRequest {
+	return ValidateGroupClusterConfigurationsApiRequest{
+		ApiService:                         a,
+		ctx:                                ctx,
+		groupId:                            args.GroupId,
+		clusterConfigurationValidation:     args.ClusterConfigurationValidation,
+		useEffectiveInstanceFields:         args.UseEffectiveInstanceFields,
+		useEffectiveFieldsReplicationSpecs: args.UseEffectiveFieldsReplicationSpecs,
+	}
+}
+
+// When true, hardware specification fields for autoscaling-enabled clusters are resolved to their effective (current operational) values before validating an edit. When false (default), the client-specified values are validated. Set this to match the header sent on the corresponding cluster update.
+func (r ValidateGroupClusterConfigurationsApiRequest) UseEffectiveInstanceFields(useEffectiveInstanceFields bool) ValidateGroupClusterConfigurationsApiRequest {
+	r.useEffectiveInstanceFields = &useEffectiveInstanceFields
+	return r
+}
+
+// Controls how &#x60;replicationSpecs&#x60; are interpreted for auto-sharded clusters when validating an edit. When false (default), &#x60;replicationSpecs&#x60; is treated as the actual cluster state.
+func (r ValidateGroupClusterConfigurationsApiRequest) UseEffectiveFieldsReplicationSpecs(useEffectiveFieldsReplicationSpecs bool) ValidateGroupClusterConfigurationsApiRequest {
+	r.useEffectiveFieldsReplicationSpecs = &useEffectiveFieldsReplicationSpecs
+	return r
+}
+
+func (r ValidateGroupClusterConfigurationsApiRequest) Execute() (*ClusterConfigurationValidationResult, *http.Response, error) {
+	return r.ApiService.ValidateGroupClusterConfigurationsExecute(r)
+}
+
+/*
+ValidateGroupClusterConfigurations Validate One Cluster Configuration
+
+Checks if the given cluster configuration is valid and ready to be used to create or edit a cluster.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param groupId Unique 24-hexadecimal digit string that identifies your project. Use the [/groups](#tag/Projects/operation/listProjects) endpoint to retrieve all projects to which the authenticated user has access.  **NOTE**: Groups and projects are synonymous terms. Your group id is the same as your project id. For existing groups, your group/project id remains the same. The resource and corresponding endpoints use the term groups.
+	@return ValidateGroupClusterConfigurationsApiRequest
+*/
+func (a *ClustersAPIService) ValidateGroupClusterConfigurations(ctx context.Context, groupId string, clusterConfigurationValidation *ClusterConfigurationValidation) ValidateGroupClusterConfigurationsApiRequest {
+	return ValidateGroupClusterConfigurationsApiRequest{
+		ApiService:                     a,
+		ctx:                            ctx,
+		groupId:                        groupId,
+		clusterConfigurationValidation: clusterConfigurationValidation,
+	}
+}
+
+// ValidateGroupClusterConfigurationsExecute executes the request
+//
+//	@return ClusterConfigurationValidationResult
+func (a *ClustersAPIService) ValidateGroupClusterConfigurationsExecute(r ValidateGroupClusterConfigurationsApiRequest) (*ClusterConfigurationValidationResult, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    any
+		formFiles           []formFile
+		localVarReturnValue *ClusterConfigurationValidationResult
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.ValidateGroupClusterConfigurations")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/atlas/v2/groups/{groupId}/clusterConfigurations:validate"
+	if r.groupId == "" {
+		return localVarReturnValue, nil, reportError("groupId is empty and must be specified")
+	}
+	if r.groupId == "." || r.groupId == ".." {
+		return localVarReturnValue, nil, reportError("groupId must not be a dot-segment path parameter")
+	}
+	localVarPath = strings.Replace(localVarPath, "{"+"groupId"+"}", url.PathEscape(r.groupId), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.clusterConfigurationValidation == nil {
+		return localVarReturnValue, nil, reportError("clusterConfigurationValidation is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header (only first one)
+	localVarHTTPHeaderAccepts := []string{"application/vnd.atlas.2025-03-12+json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.useEffectiveInstanceFields != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Instance-Fields", r.useEffectiveInstanceFields, "")
+	}
+	if r.useEffectiveFieldsReplicationSpecs != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Use-Effective-Fields-Replication-Specs", r.useEffectiveFieldsReplicationSpecs, "")
+	}
+	// body params
+	localVarPostBody = r.clusterConfigurationValidation
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
