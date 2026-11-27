@@ -17,10 +17,16 @@ jobs:
   # the next APIBot PR picks up the regenerated code and drives the release.
   # For those changes we regenerate in CI and test against the regenerated code
   # instead of failing on the expected diff.
+  #
+  # While admin/ is waiting for that APIBot regeneration, change sets that touch
+  # neither generator inputs nor admin/ skip the drift check too, so unrelated
+  # PRs and main pushes don't fail on the inherited diff. Hand edits to admin/
+  # are still checked.
   changes:
     runs-on: ubuntu-latest
     outputs:
       generator: ${{ steps.detect.outputs.generator }}
+      drift: ${{ steps.detect.outputs.drift }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -40,16 +46,27 @@ jobs:
           fi
 
           generator=false
+          # Strict by default: run the drift check unless this change set makes
+          # it meaningless (generator inputs, intentionally not regenerated) or
+          # impossible to attribute (no admin/ change at all).
+          drift=true
           if [ -n "${base}" ] && git cat-file -e "${base}^{commit}" 2>/dev/null; then
             echo "Files changed since ${base}:"
             git diff --name-only "${base}" HEAD | tee changed.txt
             if grep -qE '^(openapi/|tools/(config|transformer|scripts)/|tools/(package\.json|package-lock\.json|openapitools\.json|Makefile)$)' changed.txt; then
               generator=true
+              drift=false
+            elif ! grep -qE '^admin/' changed.txt; then
+              # Nothing here can alter generated code, and admin/ may still be
+              # awaiting the next APIBot regeneration. Don't fail on a diff this
+              # change set didn't introduce.
+              drift=false
             fi
           else
             echo "No usable base commit; enforcing strict drift check."
           fi
           echo "generator=${generator}" | tee -a "$GITHUB_OUTPUT"
+          echo "drift=${drift}" | tee -a "$GITHUB_OUTPUT"
 
   code-health:
     needs: changes
@@ -101,6 +118,6 @@ jobs:
           PATH="${PATH}:$(go env GOPATH)/bin"; export PATH
           make clean_and_generate
       - name: Fail when generate introducing diff
-        if: needs.changes.outputs.generator != 'true'
+        if: needs.changes.outputs.drift == 'true'
         run: |
           git diff --exit-code
