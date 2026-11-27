@@ -12,7 +12,64 @@ permissions:
   contents: read
 
 jobs:
+  # Generator changes (templates, transformer, generator version, spec) are
+  # intentionally merged without regenerating admin/ to keep PRs reviewable;
+  # the next APIBot PR picks up the regenerated code and drives the release.
+  # For those changes we regenerate in CI and test against the regenerated code
+  # instead of failing on the expected diff.
+  #
+  # While admin/ is waiting for that APIBot regeneration, change sets that touch
+  # neither generator inputs nor admin/ skip the drift check too, so unrelated
+  # PRs and main pushes don't fail on the inherited diff. Hand edits to admin/
+  # are still checked.
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      generator: ${{ steps.detect.outputs.generator }}
+      drift: ${{ steps.detect.outputs.drift }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+      - name: Detect generator input changes
+        id: detect
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          base=""
+          if [ "${EVENT_NAME}" = "pull_request" ]; then
+            base="${PR_BASE_SHA}"
+          elif [ -n "${PUSH_BEFORE_SHA}" ] && [ "${PUSH_BEFORE_SHA}" != "0000000000000000000000000000000000000000" ]; then
+            base="${PUSH_BEFORE_SHA}"
+          fi
+
+          generator=false
+          # Strict by default: run the drift check unless this change set makes
+          # it meaningless (generator inputs, intentionally not regenerated) or
+          # impossible to attribute (no admin/ change at all).
+          drift=true
+          if [ -n "${base}" ] && git cat-file -e "${base}^{commit}" 2>/dev/null; then
+            echo "Files changed since ${base}:"
+            git diff --name-only "${base}" HEAD | tee changed.txt
+            if grep -qE '^(openapi/|tools/(config|transformer|scripts)/|tools/(package\.json|package-lock\.json|openapitools\.json|Makefile)$)' changed.txt; then
+              generator=true
+              drift=false
+            elif ! grep -qE '^admin/' changed.txt; then
+              # Nothing here can alter generated code, and admin/ may still be
+              # awaiting the next APIBot regeneration. Don't fail on a diff this
+              # change set didn't introduce.
+              drift=false
+            fi
+          else
+            echo "No usable base commit; enforcing strict drift check."
+          fi
+          echo "generator=${generator}" | tee -a "$GITHUB_OUTPUT"
+          echo "drift=${drift}" | tee -a "$GITHUB_OUTPUT"
+
   code-health:
+    needs: changes
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
@@ -20,6 +77,18 @@ jobs:
         with:
           go-version-file: go.mod
           cache: false # see https://github.com/golangci/golangci-lint-action/issues/807
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        if: needs.changes.outputs.generator == 'true'
+        with:
+          node-version: 24.x
+          cache: npm
+          cache-dependency-path: ./tools/package-lock.json
+      - name: Regenerate SDK (generator inputs changed)
+        if: needs.changes.outputs.generator == 'true'
+        run: |
+          make install-goimports
+          PATH="${PATH}:$(go env GOPATH)/bin"; export PATH
+          make -C tools clean_and_generate
       - name: lint
         uses: golangci/golangci-lint-action@ba0d7d2ec06a0ea1cb5fa41b2e4a3ab91d21278a
         with:
@@ -28,9 +97,9 @@ jobs:
         run: make test
       - name: example-tests
         run: make test-examples
-  
+
   build:
-    needs: code-health # only run if code-health passes
+    needs: [changes, code-health] # only run if code-health passes
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
@@ -46,8 +115,9 @@ jobs:
       - run: make install-goimports
       - working-directory: ./tools
         run: |
-          export PATH=${PATH}:`go env GOPATH`/bin
+          PATH="${PATH}:$(go env GOPATH)/bin"; export PATH
           make clean_and_generate
       - name: Fail when generate introducing diff
+        if: needs.changes.outputs.drift == 'true'
         run: |
           git diff --exit-code
