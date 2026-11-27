@@ -4,6 +4,8 @@ package admin
 
 // LogIntegrationResponse Response schema for log integration operations.
 type LogIntegrationResponse struct {
+	// State of a one-time backfill of historical events to this integration's sink.
+	EventBackfill *EventBackfillResponse `json:"eventBackfill,omitempty"`
 	// Unique 24-character hexadecimal digit string that identifies the log integration configuration.
 	Id string `json:"id"`
 	// Array of log types exported by this integration.
@@ -68,6 +70,46 @@ func NewLogIntegrationResponse(id string, logTypes []string, type_ string) *LogI
 func NewLogIntegrationResponseWithDefaults() *LogIntegrationResponse {
 	this := LogIntegrationResponse{}
 	return &this
+}
+
+// GetEventBackfill returns the EventBackfill field value if set, zero value otherwise
+func (o *LogIntegrationResponse) GetEventBackfill() EventBackfillResponse {
+	if o == nil || IsNil(o.EventBackfill) {
+		var ret EventBackfillResponse
+		return ret
+	}
+	return *o.EventBackfill
+}
+
+// GetEventBackfillOk returns a tuple with the EventBackfill field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LogIntegrationResponse) GetEventBackfillOk() (*EventBackfillResponse, bool) {
+	if o == nil || IsNil(o.EventBackfill) {
+		return nil, false
+	}
+
+	return o.EventBackfill, true
+}
+
+// HasEventBackfill returns a boolean if a field has been set.
+func (o *LogIntegrationResponse) HasEventBackfill() bool {
+	if o != nil && !IsNil(o.EventBackfill) {
+		return true
+	}
+
+	return false
+}
+
+// SetEventBackfill gets a reference to the given EventBackfillResponse and assigns it to the EventBackfill field.
+func (o *LogIntegrationResponse) SetEventBackfill(v EventBackfillResponse) {
+	o.EventBackfill = &v
+	o.NullFields = removeNullField(o.NullFields, "EventBackfill")
+}
+
+// SetEventBackfillNil sets EventBackfill to an explicit JSON null when marshaled.
+func (o *LogIntegrationResponse) SetEventBackfillNil() {
+	o.EventBackfill = nil
+	o.NullFields = addNullField(o.NullFields, "EventBackfill")
 }
 
 // GetId returns the Id field value

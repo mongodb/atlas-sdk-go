@@ -13,7 +13,7 @@ type StreamsStartStreamProcessorWith struct {
 	// List of one or more Uniform Resource Locators (URLs) that point to API sub-resources, related API resources, or both. RFC 5988 outlines these relationships.
 	// Read only field.
 	Links *[]Link `json:"links,omitempty"`
-	// When true or not specified, the stream processor resumes from its last checkpoint. When false, the stream processor starts fresh.
+	// When true or not specified, the stream processor resumes from its last checkpoint. When false, the stream processor starts fresh. If `failover.clearCheckpoint` is also set, this field takes precedence; `true` together with `failover.clearCheckpoint: true` on a FORCED failover is rejected as a conflict.
 	ResumeFromCheckpoint *bool `json:"resumeFromCheckpoint,omitempty"`
 	// The operation time after which the change stream source should begin reporting. This parameter expresses its value in the ISO 8601 timestamp format in UTC.
 	StartAtOperationTime *time.Time `json:"startAtOperationTime,omitempty"`
