@@ -4,7 +4,8 @@ package admin
 
 // StreamsStartProcessorFailover Failover options for starting a stream processor.
 type StreamsStartProcessorFailover struct {
-	// If true, clears the checkpoint so the failover processor does not resume from it. Applies only to FORCED failover; clearing may cause duplicate or missing records in the output.
+	// Deprecated: use the top-level `resumeFromCheckpoint` field set to `false` instead. If true, clears the checkpoint so the failover processor does not resume from it. Applies only to FORCED failover; clearing may cause duplicate or missing records in the output. If `resumeFromCheckpoint` is also set, it takes precedence; `resumeFromCheckpoint: true` together with `clearCheckpoint: true` on a FORCED failover is rejected as a conflict.
+	// Deprecated
 	ClearCheckpoint *bool `json:"clearCheckpoint,omitempty"`
 	// If true, simulates the operation without making any changes.
 	DryRun *bool `json:"dryRun,omitempty"`
@@ -43,6 +44,7 @@ func NewStreamsStartProcessorFailoverWithDefaults() *StreamsStartProcessorFailov
 }
 
 // GetClearCheckpoint returns the ClearCheckpoint field value if set, zero value otherwise
+// Deprecated
 func (o *StreamsStartProcessorFailover) GetClearCheckpoint() bool {
 	if o == nil || IsNil(o.ClearCheckpoint) {
 		var ret bool
@@ -53,6 +55,7 @@ func (o *StreamsStartProcessorFailover) GetClearCheckpoint() bool {
 
 // GetClearCheckpointOk returns a tuple with the ClearCheckpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *StreamsStartProcessorFailover) GetClearCheckpointOk() (*bool, bool) {
 	if o == nil || IsNil(o.ClearCheckpoint) {
 		return nil, false
@@ -71,6 +74,7 @@ func (o *StreamsStartProcessorFailover) HasClearCheckpoint() bool {
 }
 
 // SetClearCheckpoint gets a reference to the given bool and assigns it to the ClearCheckpoint field.
+// Deprecated
 func (o *StreamsStartProcessorFailover) SetClearCheckpoint(v bool) {
 	o.ClearCheckpoint = &v
 	o.NullFields = removeNullField(o.NullFields, "ClearCheckpoint")

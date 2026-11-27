@@ -4,6 +4,8 @@ package admin
 
 // OrgLogIntegrationUpdateRequest Request schema for updating an organization-level log integration.
 type OrgLogIntegrationUpdateRequest struct {
+	// Requests a one-time backfill of historical events to this integration's sink.
+	EventBackfill *EventBackfillRequest `json:"eventBackfill,omitempty"`
 	// Array of log types exported by this integration.
 	LogTypes []string `json:"logTypes"`
 	// Human-readable label that identifies the service to which you want to integrate with Atlas. The value must match the log integration type. This value cannot be modified after the integration is created.
@@ -41,6 +43,46 @@ func NewOrgLogIntegrationUpdateRequest(logTypes []string, type_ string) *OrgLogI
 func NewOrgLogIntegrationUpdateRequestWithDefaults() *OrgLogIntegrationUpdateRequest {
 	this := OrgLogIntegrationUpdateRequest{}
 	return &this
+}
+
+// GetEventBackfill returns the EventBackfill field value if set, zero value otherwise
+func (o *OrgLogIntegrationUpdateRequest) GetEventBackfill() EventBackfillRequest {
+	if o == nil || IsNil(o.EventBackfill) {
+		var ret EventBackfillRequest
+		return ret
+	}
+	return *o.EventBackfill
+}
+
+// GetEventBackfillOk returns a tuple with the EventBackfill field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrgLogIntegrationUpdateRequest) GetEventBackfillOk() (*EventBackfillRequest, bool) {
+	if o == nil || IsNil(o.EventBackfill) {
+		return nil, false
+	}
+
+	return o.EventBackfill, true
+}
+
+// HasEventBackfill returns a boolean if a field has been set.
+func (o *OrgLogIntegrationUpdateRequest) HasEventBackfill() bool {
+	if o != nil && !IsNil(o.EventBackfill) {
+		return true
+	}
+
+	return false
+}
+
+// SetEventBackfill gets a reference to the given EventBackfillRequest and assigns it to the EventBackfill field.
+func (o *OrgLogIntegrationUpdateRequest) SetEventBackfill(v EventBackfillRequest) {
+	o.EventBackfill = &v
+	o.NullFields = removeNullField(o.NullFields, "EventBackfill")
+}
+
+// SetEventBackfillNil sets EventBackfill to an explicit JSON null when marshaled.
+func (o *OrgLogIntegrationUpdateRequest) SetEventBackfillNil() {
+	o.EventBackfill = nil
+	o.NullFields = addNullField(o.NullFields, "EventBackfill")
 }
 
 // GetLogTypes returns the LogTypes field value
